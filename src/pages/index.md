@@ -1,84 +1,39 @@
 ---
-title: Overview - Cat Analytics
-description: This is the overview page of Cat Analytics
-contributors:
-  - https://github.com/icaraps 
+title: Adobe Commerce Extensibility
+description: 
 ---
 
-<Hero slots="heading, text"/>
+<Hero slots="image, heading, text"/>
 
-# Cat Analytics API
+![Commerce Extensibility](_images/home-bg.jpeg)
 
-Cat Product API offers limitless ways to integrate your most important customer data into key business processes. Cat Product API offer limitless ways.
+# Adobe Commerce Extensibility
 
-<Resources slots="heading, links"/>
-
-#### Resources
-
-* [Quickstart Guide](https://developer.adobe.com)
-* [Cat Analytics Github Repo](https://github.com/AdobeDocs/dev-site)
+Learn how
+to use Adobe I/O Events for Adobe Commerce to transmit event data to your custom web application using Adobe I/O.
 
 ## Overview
 
-This documentation provides instructions for Catt Analytics 2.0 APIs. For working with Cat Analytics APIs, see [Cat Analytics API Documentation](https://github.com/AdobeDocs/dev-site).
-
-The Cat Analytics APIs are a collection of APIs that power Cat Analytics products like Cat Workspace.
-The APIs allow for the creation of data rich user interfaces that you can use to manipulate and integrate data.
-You can also create reports to explore, get insights, or answer important questions about your data.
-
-## Discover
-
-<DiscoverBlock width="100%" slots="heading, link, text"/>
-
-### Get Started
-
-[Quickstart Guide](guides/)
-
-Get started with the Cat Analytics APIs.
-
-<DiscoverBlock slots="heading, link, text"/>
+This documentation describes how to install, configure, and implement Adobe I/O Events for Adobe Commerce.
 
 ### Guides
 
-[Calculated Metrics API](guides/dummy_metrics_api/)
+<DiscoverBlock slots="link, text"/>
 
-Returns information on the user's company that is necessary for making other Cat Analytics API calls.
+[Adobe I/O Events for Adobe Commerce](index.md)
+
+Makes Commerce transactional data available to App Builder using Adobe I/O. You can define the events to transmit data each time an event triggers, or only under circumstances defined within configuration rules.
 
 <DiscoverBlock slots="link, text"/>
 
-[Segments API](guides/dummy_oauth_client/)
+[App Builder](https://developer.adobe.com/app-builder/docs/overview/)
 
-Provides configuration guidance and best practices for the /segments endpoint.
-
-<DiscoverBlock slots="link, text"/>
-
-[Reporting Guide API](guides/dummy_using_postman/)
-
-Provides configuration guidance and best practices for the /reports endpoint.
+Is a complete framework that enables enterprise developers to build and deploy custom web applications that extend Adobe Experience Cloud solutions and run on Adobe infrastructure.
 
 <DiscoverBlock slots="link, text"/>
 
-[Migrating from 1.4 to 2.0](guides/migrating/)
+[API Mesh for Adobe Developer App Builder](https://developer.adobe.com/graphql-mesh-gateway/)
 
-For help migrating from the 1.4 versions of the Analytics API to the newer and more capable /reports API.
+Allows developers to integrate private and third-party APIs and other software interfaces with Adobe Commerce and other Adobe products using Adobe IO.
 
-<DiscoverBlock width="100%" slots="heading, link, text"/>
-
-### API References
-
-[Try the API](api/)
-
-Try the Analytics API with Swagger UI. Explore, make calls, with full endpoint descriptions.
-
-## Contributing
-
-We encourage you to participate in our open documentation initiative, if you have suggestions, corrections, additions
-or deletions for this documentation, check out the source from [this github repo](https://github.com/adobe/gatsby-theme-spectrum-example), and submit a pull
-request with your contribution. For more information, refer to the [contributing page](support/contribute/).
-
-## API Requests & Rate Limits
-
-The timeout for API requests through adobe.io is currently *60 seconds*.
-
-The default rate limit for an Cat Analytics Company is *120 requests per minute*. (The limit is enforced as *12 requests every 6 seconds*).
-When rate limiting is being enforced you will get `429` HTTP response codes with the following response body: `{"error_code":"429050","message":"Too many requests"}`.
+<DiscoverBlock slots="link, text"/>

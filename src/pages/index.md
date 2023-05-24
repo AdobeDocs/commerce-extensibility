@@ -20,7 +20,7 @@ This documentation describes how to install, configure, and implement Adobe I/O 
 
 <DiscoverBlock slots="link, text"/>
 
-[Adobe I/O Events for Adobe Commerce](get-started/index.md)
+[Adobe I/O Events for Adobe Commerce](index.md)
 
 Makes Commerce transactional data available to App Builder using Adobe I/O. You can define the events to transmit data each time an event triggers, or only under circumstances defined within configuration rules.
 

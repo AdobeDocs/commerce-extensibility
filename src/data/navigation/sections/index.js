@@ -1,4 +1,4 @@
-const backoffice = require("./backoffice");
-const events = require("./backoffice");
+const adminuisdk = require("./admin-ui-sdk");
+const amazon = require("./amazon-sales-channel");
 
-module.exports = [...backoffice];
+module.exports = [...adminuisdk, ...amazon];

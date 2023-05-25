@@ -4,7 +4,11 @@ module.exports = [
       path: "/",
     },
     {
-      title: "BackOffice SDK",
-      path: "/backoffice/",
+      title: "Admin UI SDK",
+      path: "/admin-ui-sdk/",
     },
+    {
+      title: "Amazon Sales Channel",
+      path: "/amazon-sales-channel/"
+    }
   ];

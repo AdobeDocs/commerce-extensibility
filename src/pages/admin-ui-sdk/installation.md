@@ -5,7 +5,7 @@ description: Learn how to install the Adobe Commerce Admin UI SDK.
 
 # Install Adobe Commerce Admin UI SDK
 
-This topic describes the basic steps you need to install the Admin UI SDK.
+This topic describes the basic steps to install the Admin UI SDK.
 
 ## Prerequisites
 
@@ -29,7 +29,7 @@ You can install the Admin UI SDK on Adobe Commerce on cloud infrastructure and o
 
 ### Adobe Commerce on cloud infrastructure
 
-This method is used for installing the SDK for a cloud instance.
+This method installs the SDK on a cloud instance.
 
 1. On your local workstation, change to the Cloud project root directory.
 
@@ -55,7 +55,7 @@ This method is used for installing the SDK for a cloud instance.
 
 ### On-premises
 
-This method is used for installing the SDK for an On-premises instance.
+This method installs the SDK on an On-premises instance.
 
 1. Add the SDK module to the `require` section of the `composer.json` file:
 
@@ -87,6 +87,6 @@ This method is used for installing the SDK for an On-premises instance.
    bin/magento cache:clean
    ```
 
-1. Commit changes.
+1. Commit your changes.
 
 1. Update your on-premises instance to ensure the committed code is deployed.

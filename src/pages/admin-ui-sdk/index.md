@@ -5,9 +5,9 @@ description: An architectural overview of the Adobe Commerce Admin UI SDK
 
 # Adobe Commerce Admin UI SDK overview
 
-The Adobe Commerce Admin UI SDK enables an Adobe App Builder developer to extend the Commerce Admin to include custom menus and pages. These Admin customizations were traditionally defined in a PHP module. The principles of Out of Process development require a more modern approach. The Admin UI SDK provides the merchant with the means to use the Admin to configure and interact with an app developed with App Builder.
+The Adobe Commerce Admin UI SDK enables an Adobe App Builder developer to extend the Commerce Admin to include custom menus and pages. These Admin customizations were traditionally defined in a PHP module. The principles of Out-of-Process development require a more modern approach. The Admin UI SDK provides the merchant with the means to use the Admin to configure and interact with an app developed in App Builder.
 
-Many different types of apps will use this SDK. It represents a one-to-many approach for supporting Out of Process UI Extensibility. Application developers, internal adopters, and merchants using Out of Process Extensibility no longer have to rely on purely headless applications. Instead, they can now build and use secure and authenticated UIs directly from the Commerce Admin panel.
+Many types of apps will use this SDK. It represents a one-to-many approach for supporting Out of Process UI Extensibility. Application developers, internal adopters, and merchants using Out of Process Extensibility no longer have to rely on purely headless applications. Instead, they can now build and use secure and authenticated UIs directly from the Commerce Admin panel.
 
 ## Architecture
 

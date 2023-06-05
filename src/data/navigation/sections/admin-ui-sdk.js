@@ -12,8 +12,8 @@ module.exports = [
       path: "/admin-ui-sdk/configuration.md"
     },
     {
-      title: "App development",
-      path: "/admin-ui-sdk/app-development.md"
+      title: "App registration",
+      path: "/admin-ui-sdk/app-registration.md"
     },
     {
       title: "MenuApp component",

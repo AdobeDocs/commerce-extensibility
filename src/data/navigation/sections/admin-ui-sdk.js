@@ -24,6 +24,10 @@ module.exports = [
       path: "/admin-ui-sdk/reference/page-app.md"
     },
     {
+      title: "Troubleshooting",
+      path: "/admin-ui-sdk/troubleshooting.md"
+    },
+    {
       title: "Release notes",
       path: "/admin-ui-sdk/release-notes.md"
     }

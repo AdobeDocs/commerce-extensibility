@@ -25,6 +25,6 @@ Amazon Sales Channel on App Builder connects Adobe Commerce and Amazon to unify 
 
 ## Merchant documentation
 
-You can use the [existing user guide](https://experienceleague.adobe.com/docs/commerce-channels/amazon/guide-overview.html) as a reference for the app behaviors. Note that Amazon Sales Channel on App Builder does not feature order management, listing and pricing rules, and several other capabilities of the PHP application. 
+You can use the [existing user guide](https://experienceleague.adobe.com/docs/commerce-channels/amazon/guide-overview.html) as a reference for the app behaviors. Note that Amazon Sales Channel on App Builder does not feature order management, listing and pricing rules, and several other capabilities of the PHP application.
 
 In general, the sample app looks and feels like the PHP extension. However, some capabilities and behaviors are not exactly the same. Partners and developers should view Amazon Sales Channel on App Builder as a learning tool to enable more building high quality, out of process app with confidence.

@@ -154,4 +154,4 @@ runtimeManifest:
       actions:
 ```
 
-Complete this file with the actions from your app. 
+Complete this file with the actions from your app.

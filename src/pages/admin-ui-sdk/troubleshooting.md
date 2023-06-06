@@ -17,7 +17,7 @@ It's common to have the App menu missing from the Commerce Admin Panel menu when
 
 *  **The registration of the menu is not correct.** Make sure that you defined the correct `menu` method with a `getItems` function that returns an array of the menus to register. 
 
-To make sure your registration is correctly deployed, navigate in your browser to `<appURL>/index.html`. You can find your application URL in your project workspace in the Adobe developer console. 
+   *  To make sure your registration is correctly deployed, navigate in your browser to `<appURL>/index.html`. You can find your application URL in your project workspace in the Adobe developer console. 
 
 Check the elements in your browser developer tools and look for the script src in the body. It usually have the following format `index.<random>.js`. 
 

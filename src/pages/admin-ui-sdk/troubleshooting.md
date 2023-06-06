@@ -50,12 +50,3 @@ Timeout errors can occur when a process or operation takes longer than the speci
    *  If you are unable to resolve the timeout issue, escalate the problem to the appropriate support or engineering team.
    *  Provide detailed information about the troubleshooting steps you have taken so far to expedite the resolution process.
 
-## Support
-
-Congratulations! You've reached the end of our Troubleshooting Documentation.
-
-We hope that this guide has equipped you with the knowledge and tools to effectively troubleshoot issues and overcome obstacles. 
-
-Should you encounter any challenges in the future, don't hesitate to revisit this documentation or reach out to our support team for further assistance. We're here to help you every step of the way.
-
-Happy problem-solving!

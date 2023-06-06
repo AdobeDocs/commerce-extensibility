@@ -25,7 +25,7 @@ Replace in the URL the `index.html` with this javascript to access its content. 
 
 ## App page is not displayed when accessing the menu
 
-App page is not displayed when the extensionId specified doesn't match with the application or when the registration is missing mandatory methods. 
+An app page is not displayed when the `extensionId` specified doesn't match with the application or when the registration is missing mandatory methods. 
 
 1. Check the app registration and make sure it contains the following:
 	

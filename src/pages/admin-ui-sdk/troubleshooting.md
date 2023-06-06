@@ -7,7 +7,7 @@ description:
 
 In this comprehensive troubleshooting guide, we'll help you navigate through common challenges and provide solutions to get you back on track. We'll walk you through the troubleshooting process, empowering you to resolve problems efficiently and effectively.
 
-## App menu is missing in the Commerce Admin Panel menu
+## App menu is missing in the Commerce Admin
 
 It's common to have the App menu missing from the Commerce Admin Panel menu when:
 

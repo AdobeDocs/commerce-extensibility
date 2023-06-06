@@ -40,7 +40,7 @@ Timeout errors can occur when a process or operation takes longer than the speci
 
 1. Check Network Connectivity:
 
-	- Ensure that your network connection is stable and not experiencing any interruptions.
+   *  Ensure that your network connection is stable and not experiencing any interruptions.
    *  Verify that the server or service you are accessing is reachable from your network.
 
 2. Refresh the page to check that the issue was not temporary. 

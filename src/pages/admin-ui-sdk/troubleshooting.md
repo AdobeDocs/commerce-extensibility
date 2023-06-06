@@ -29,7 +29,7 @@ An app page is not displayed when the `extensionId` specified doesn't match with
 
 *  Check the app registration and make sure it contains the following:
 	
-	- `extension:getId` method that returns a string with the extensionId. 
+   *  `extension:getId` method that returns a string with the `extensionId`. 
 	- `page:getTitle` method that returns a string with the page title.
 
 2. Check the extensionId is the same used in the registration to identify correctly the application with a unique name. 

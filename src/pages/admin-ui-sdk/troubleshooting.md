@@ -11,7 +11,7 @@ In this comprehensive troubleshooting guide, we'll help you navigate through com
 
 It's common to have the App menu missing from the Commerce Admin Panel menu when:
 
-1. The app is not correctly published in App Builder. Go to the App project in the developer console and check that the Production workspace is in status Published. If this is not the case, request an approval to publish and test again once the application in Approved. 
+*  **The app is not correctly published in App Builder.** Go to the App project in the developer console and check that the Production workspace has a status of Published. If this is not the case, request an approval to publish and test again once the application in Approved. 
 
 2. Latest changes are not correclty deployed and published. Make sure to deploy the latest changes using `aio app deploy` in the correct `org/project/workspace`.
 

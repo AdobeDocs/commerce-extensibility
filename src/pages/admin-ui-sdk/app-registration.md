@@ -5,7 +5,7 @@ description: Learn about registering your app in the App Registry
 
 # App registration
 
-When the application on App Builder is ready to be published, a registration to the Adobe Registry is required to add a menu in the Admin Panel.
+Your app must be correctly configured with Adobe App Registry to use the Admin UI SDK to create a custom UI in Commerce. You must perform the following steps before submitting your app to be published.
 
 ## Add or update the `install.yml` file
 

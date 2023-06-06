@@ -13,7 +13,7 @@ It's common to have the App menu missing from the Commerce Admin Panel menu when
 
 *  **The app is not correctly published in App Builder.** Go to the App project in the developer console and check that the Production workspace has a status of Published. If this is not the case, request an approval to publish and test again once the application in Approved. 
 
-2. Latest changes are not correclty deployed and published. Make sure to deploy the latest changes using `aio app deploy` in the correct `org/project/workspace`.
+*. **The latest changes are not correctly deployed and published.** Make sure to deploy the latest changes using `aio app deploy` in the correct `org/project/workspace`.
 
 3. The registration of the menu is not correct. Make sure that you defined the correct `menu` method with a function `getItems` that returns an array of the menus to register. 
 

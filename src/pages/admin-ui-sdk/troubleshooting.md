@@ -47,7 +47,7 @@ Timeout errors can occur when a process or operation takes longer than the speci
 
 3. Escalate to Support or Engineering:
 
-	- If you are unable to resolve the timeout issue, escalate the problem to the appropriate support or engineering team.
+   *  If you are unable to resolve the timeout issue, escalate the problem to the appropriate support or engineering team.
    *  Provide detailed information about the troubleshooting steps you have taken so far to expedite the resolution process.
 
 ## Support

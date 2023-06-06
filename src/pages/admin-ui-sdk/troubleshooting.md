@@ -5,7 +5,7 @@ description:
 
 # Troubleshooting
 
-Encountering issues? Don't worry, we've got you covered. In this comprehensive troubleshooting guide, we'll help you navigate through common challenges and provide solutions to get you back on track. We'll walk you through the troubleshooting process, empowering you to resolve problems efficiently and effectively. Happy debugging!
+In this comprehensive troubleshooting guide, we'll help you navigate through common challenges and provide solutions to get you back on track. We'll walk you through the troubleshooting process, empowering you to resolve problems efficiently and effectively.
 
 ## App menu is missing in the Commerce Admin Panel menu
 

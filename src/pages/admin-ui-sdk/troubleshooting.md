@@ -15,7 +15,7 @@ It's common to have the App menu missing from the Commerce Admin Panel menu when
 
 *. **The latest changes are not correctly deployed and published.** Make sure to deploy the latest changes using `aio app deploy` in the correct `org/project/workspace`.
 
-3. The registration of the menu is not correct. Make sure that you defined the correct `menu` method with a function `getItems` that returns an array of the menus to register. 
+*  **The registration of the menu is not correct.** Make sure that you defined the correct `menu` method with a `getItems` function that returns an array of the menus to register. 
 
 To make sure your registration is correctly deployed, navigate in your browser to `<appURL>/index.html`. You can find your application URL in your project workspace in the Adobe developer console. 
 

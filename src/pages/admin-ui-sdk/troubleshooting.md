@@ -27,7 +27,7 @@ Replace in the URL the `index.html` with this javascript to access its content. 
 
 An app page is not displayed when the `extensionId` specified doesn't match with the application or when the registration is missing mandatory methods. 
 
-1. Check the app registration and make sure it contains the following:
+*  Check the app registration and make sure it contains the following:
 	
 	- `extension:getId` method that returns a string with the extensionId. 
 	- `page:getTitle` method that returns a string with the page title.

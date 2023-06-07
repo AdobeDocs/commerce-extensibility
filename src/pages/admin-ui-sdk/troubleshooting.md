@@ -9,7 +9,7 @@ In this comprehensive troubleshooting guide, we'll help you navigate through com
 
 ## App menu is missing in the Commerce Admin
 
-It's common to have the App menu missing from the Commerce Admin Panel menu when:
+It's common to have the App menu missing from the Commerce Admin menu when:
 
 *  **The app is not correctly published in App Builder.** Go to the App project in the developer console and check that the Production workspace has a status of Published. If this is not the case, request an approval to publish and test again once the application in Approved.
 
@@ -23,7 +23,7 @@ It's common to have the App menu missing from the Commerce Admin Panel menu when
 
    `bin/magento admin:adobe-ims:enable`
 
-   [Configure the Commerce Admin Integration with Adobe ID](https://experienceleague.adobe.com/docs/commerce-admin/start/admin/ims/adobe-ims-config.html#) provides additional information about setting up Adobe Identity Management Service (IMS) on Commerce.
+   [Configure the Commerce Admin Integration with Adobe ID](https://experienceleague.adobe.com/docs/commerce-admin/start/admin/ims/adobe-ims-config.html#) provides additional information about setting up Adobe Identity Management Service (IMS) on Adobe Commerce.
 
 *  **The registration of the menu is not correct.** Make sure that you defined the correct `menu` method with a `getItems` function that returns an array of the menus to register.
 

@@ -21,7 +21,9 @@ It's common to have the App menu missing from the Commerce Admin Panel menu when
 
    If the response indicates the module has not been enabled, run the following command:
 
-   `bin/magento module:enable Magento_AdminAdobeIms`
+   `bin/magento admin:adobe-ims:enable`
+
+   [Configure the Commerce Admin Integration with Adobe ID](https://experienceleague.adobe.com/docs/commerce-admin/start/admin/ims/adobe-ims-config.html#) provides additional information about setting up Adobe Identity Management Service (IMS) on Commerce.
 
 *  **The registration of the menu is not correct.** Make sure that you defined the correct `menu` method with a `getItems` function that returns an array of the menus to register.
 
@@ -42,7 +44,7 @@ An app page is not displayed when the `extensionId` specified doesn't match with
 
 *  Check the `extensionId` is the same used in the registration to identify correctly the application with a unique name.
 
-## Timout error
+## Timeout error
 
 Timeout errors can occur when a process or operation takes longer than the specified time limit to complete. The retrieval of extensions from App Registry has a timeout set to 10000ms.
 

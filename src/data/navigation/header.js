@@ -12,7 +12,7 @@ module.exports = [
       path: "/admin-ui-sdk/",
     },
     {
-      title: "Reference app",
+      title: "Reference App",
       path: "/amazon-sales-channel/"
     }
   ];

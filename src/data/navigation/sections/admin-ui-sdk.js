@@ -12,7 +12,7 @@ module.exports = [
       path: "/admin-ui-sdk/configuration.md"
     },
     {
-      title: "App registration",
+      title: "App UI registration",
       path: "/admin-ui-sdk/app-registration.md"
     },
     {

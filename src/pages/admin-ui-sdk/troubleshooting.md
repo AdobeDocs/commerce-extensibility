@@ -9,11 +9,21 @@ In this comprehensive troubleshooting guide, we'll help you navigate through com
 
 ## App menu is missing in the Commerce Admin
 
-It's common to have the App menu missing from the Commerce Admin Panel menu when:
+It's common to have the App menu missing from the Commerce Admin menu when:
 
 *  **The app is not correctly published in App Builder.** Go to the App project in the developer console and check that the Production workspace has a status of Published. If this is not the case, request an approval to publish and test again once the application in Approved.
 
-*. **The latest changes are not correctly deployed and published.** Make sure to deploy the latest changes using `aio app deploy` in the correct `org/project/workspace`.
+*  **The latest changes are not correctly deployed and published.** Make sure to deploy the latest changes using `aio app deploy` in the correct `org/project/workspace`.
+
+*  **The `Magento_AdminAdobeIms`module has not been enabled.** Run the following command from the Adobe Commerce command line to check the status of this module.
+
+   `bin/magento module:status Magento_AdminAdobeIms`
+
+   If the response indicates the module has not been enabled, run the following command:
+
+   `bin/magento admin:adobe-ims:enable`
+
+   [Configure the Commerce Admin Integration with Adobe ID](https://experienceleague.adobe.com/docs/commerce-admin/start/admin/ims/adobe-ims-config.html#) provides additional information about setting up Adobe Identity Management Service (IMS) on Adobe Commerce.
 
 *  **The registration of the menu is not correct.** Make sure that you defined the correct `menu` method with a `getItems` function that returns an array of the menus to register.
 
@@ -21,7 +31,7 @@ It's common to have the App menu missing from the Commerce Admin Panel menu when
 
    *  Check the elements in your browser developer tools and look for the script `src` in the body. It usually has the format `index.<random>.js`.
 
-Replace in the URL the `index.html` with this javascript to access its content. Search for `getItems` for example and make sure the registration defined in your app is the same one you see deployed.
+      Replace in the URL the `index.html` with this javascript to access its content. Search for `getItems` for example and make sure the registration defined in your app is the same one you see deployed.
 
 ## App page is not displayed when accessing the menu
 
@@ -32,9 +42,9 @@ An app page is not displayed when the `extensionId` specified doesn't match with
    *  `extension:getId` method that returns a string with the `extensionId`.
    *  `page:getTitle` method that returns a string with the page title.
 
-*. Check the `extensionId` is the same used in the registration to identify correctly the application with a unique name.
+*  Check the `extensionId` is the same used in the registration to identify correctly the application with a unique name.
 
-## Timout error
+## Timeout error
 
 Timeout errors can occur when a process or operation takes longer than the specified time limit to complete. The retrieval of extensions from App Registry has a timeout set to 10000ms.
 

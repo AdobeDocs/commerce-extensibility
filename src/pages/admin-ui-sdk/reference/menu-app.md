@@ -1,22 +1,22 @@
 ---
 title: MenuApp component
-description: 
+description: MenuApp component props and usage.
 ---
 
 # MenuApp component
 
-The `MenuApp` component adds a menu item to the Commerce Admin UI menu page. The component selects the DOM element on the Admin menu page that matches the string value for its `rootElmSelector` prop. That element is where the MenuApp component renders a new menu item with the URL to the App Builder page where new Commerce features can be added out-of-process.
+`MenuApp` adds a menu item to the Commerce Admin UI menu page. This component selects the DOM element on the Admin menu page that matches its `rootElmSelector` prop. This is where the `MenuApp` renders a new menu item with a URL to the out-of-process App Builder page used to add Commerce features.
 
 ## MenuApp Props
 
 | Name              | Type     | Required | Default | Description                                 |
 | ----------------- | -------- | -------- | ------- | ------------------------------------------- |
-| `menuHtmlUrl`     | `string` | true     | null    | URL to the App Builder page.                |
+| `menuHtmlUrl`     | `string` | true     | null    | URL to the out-of-process App Builder page. |
 | `rootElmSelector` | `string` | true     | null    | DOM element `id` on the Admin UI menu page. |
 
 ## MenuApp Usage
 
-The following example shows how to use the `MenuApp` component within your extension. The example assumes that you have already created an `extensionsProvider` object that contains the extension configuration. For more information, see [Creating an extensions provider](../extensions-provider.md).
+This example shows how to use the MenuApp component. The example assumes you have already created an `ExtensionsProvider` object. See [Creating an extensions provider](../extensions-provider.md).
 
 ```tsx
 import React from 'react'
@@ -35,6 +35,8 @@ async function main(config) {
       console.error(e.message);
       return () => []
     });
+
+// Render a menu item in the Admin UI menu page.
 
 const menuRootSelector = '#uix-menu-placeholder'
 const menuElement = ReactDOM.createRoot(document.querySelector(menuRootSelector))

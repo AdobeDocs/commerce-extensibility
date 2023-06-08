@@ -1,29 +1,49 @@
 ---
 title: PageApp component
-description: 
+description: PageApp component functions, props, and usage.
 ---
 
 # PageApp component
 
-The `PageApp` component displays an out-of-process page within the Commerce Admin UI using an `iframe`. The component uses a single prop, `extensionId`, to retrieve the title and URL of the page. It uses the page title to change the title of the current Admin UI page. And it uses the URL to load the page into the `iframe` it added to the Admin UI.
+`PageApp` displays out-of-process pages in the Commerce Admin UI using an `iframe`. This component uses a single prop, extensionId, to retrieve the title and URL. The component uses the title to change the Admin UI page title, and the URL to load the page into its `iframe`.
 
-## PageApp Props
+## PageApp functions
+
+| Name              | Args        | Type     | Description                                                         |
+| ----------------- | ----------- | -------- | ------------------------------------------------------------------- |
+| `updatePageTitle` | `pageTitle` | `string` | Sets the title of the Admin page to the title of the `iframe` page. |
+
+### `updatePageTitle` usage
+
+The `PageApp` component uses the `updatePageTitle` function internally to set the title of the Admin UI page to the title of the `iframe` page. But you can also use this function directly within your extension to change the Admin UI page title.
+
+```js
+// file.js within your extension
+
+import { updatePageTitle } from '@adobe/commerce-backend-ui-extensibility/components/PageApp';
+
+updatePageTitle('My Custom Title');
+```
+
+## PageApp props
 
 | Name          | Type     | Required | Default | Description                                     |
 | ------------- | -------- | -------- | ------- | ----------------------------------------------- |
 | `extensionId` | `string` | true     | null    | The id that identifies the out-of-process page. |
 
-## PageApp Usage
+## PageApp usage
 
 The following example shows how to use the `PageApp` component within your extension. The example assumes that you have already created an `extensionsProvider` object that contains the extension configuration. For more information, see [Creating an extensions provider](../extensions-provider.md).
 
-```tsx
+```js
+// index.js of your extension
+
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { Extensible, createExtensionRegistryProvider } from '@adobe/uix-host-react'
 import { PageApp } from '@adobe/commerce-backend-ui-extensibility/components/PageApp';
 
-// Your extension's async init function, main.
+// Your extension's async init function: main.
 
 async function main(config) {
   const extensionsProvider = () => fetch(config.registryUrl)
@@ -50,7 +70,7 @@ if (config.extensionId !== undefined && !!document.getElementById('uix-page-cont
 }
 ```
 
-**Usage explanation:**
+**Usage explanation**
 
 - The `if` statement checks if the `config` object has an `extensionId` property and if an element with the ID `uix-page-content` exists in the Commerce Admin page.
 

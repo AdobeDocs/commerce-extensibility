@@ -8,12 +8,16 @@ module.exports = [
       path: "/admin-ui-sdk/installation.md"
     },
     {
+      title: "App UI registration",
+      path: "/admin-ui-sdk/app-registration.md"
+    },
+    {
       title: "Admin configuration and testing",
       path: "/admin-ui-sdk/configuration.md"
     },
     {
-      title: "App UI registration",
-      path: "/admin-ui-sdk/app-registration.md"
+      title: "Troubleshooting",
+      path: "/admin-ui-sdk/troubleshooting.md"
     },
     {
       title: "MenuApp component",
@@ -22,10 +26,6 @@ module.exports = [
     {
       title: "PageApp component",
       path: "/admin-ui-sdk/reference/page-app.md"
-    },
-    {
-      title: "Troubleshooting",
-      path: "/admin-ui-sdk/troubleshooting.md"
     },
     {
       title: "Release notes",

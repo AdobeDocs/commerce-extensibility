@@ -9,18 +9,39 @@ description:
 
 # Adobe Commerce Extensibility
 
-Learn how
-to use Adobe I/O Events for Adobe Commerce to transmit event data to your custom web application using Adobe I/O.
+Learn how develop Out-of-Process apps that extend and customize Adobe Commerce.
 
 ## Overview
 
-This documentation describes how to install, configure, and implement Adobe I/O Events for Adobe Commerce.
+This documentation provides resources for developing Out-of-Process apps for Adobe Commerce.
 
-### Guides
+### Discover
+
+Use these sections to learn about developing Commerce apps.
 
 <DiscoverBlock slots="link, text"/>
 
-[Adobe I/O Events for Adobe Commerce](index.md)
+[App Developer Guide](app=development/index.md)
+
+Learn how to make the transition from developing Commerce PHP extensions to developing Out-of-Process apps.
+
+<DiscoverBlock slots="link, text"/>
+
+[Admin UI SDK](admin-ui-sdk/index.md)
+
+Extend the Commerce Admin to include the menus and pages necessary for merchants to configure and interact with your app.
+
+<DiscoverBlock slots="link, text"/>
+
+[Reference App](amazon-sales-channel/index.md)
+
+Explore the Amazon Sales Channel reference app to help visualize the world of Commerce Out-of-Process apps.
+
+### Related information
+
+<DiscoverBlock slots="link, text"/>
+
+[Adobe I/O Events for Adobe Commerce](https://developer.adobe.com/commerce/events/)
 
 Makes Commerce transactional data available to App Builder using Adobe I/O. You can define the events to transmit data each time an event triggers, or only under circumstances defined within configuration rules.
 
@@ -36,4 +57,6 @@ Is a complete framework that enables enterprise developers to build and deploy c
 
 Allows developers to integrate private and third-party APIs and other software interfaces with Adobe Commerce and other Adobe products using Adobe IO.
 
-<DiscoverBlock slots="link, text"/>
+## Contributing to this documentation
+
+We encourage you to participate in our open documentation initiative. If you have suggestions, corrections, additions, or deletions for this documentation, check out the source on [GitHub](https://github.com/adobedocs/commerce-php), and open a pull request.

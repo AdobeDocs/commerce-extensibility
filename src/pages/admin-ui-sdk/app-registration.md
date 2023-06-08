@@ -1,9 +1,9 @@
 ---
-title: App registration
-description: Learn about registering your app in the App Registry
+title: App UI registration
+description: Learn about registering your UI changes to the App Registry
 ---
 
-# App registration
+# App UI registration
 
 Your app must be correctly configured with Adobe App Registry to use the Admin UI SDK to create a custom UI in Commerce. You must perform the following steps before submitting your app to be published.
 

@@ -21,7 +21,7 @@ Use these sections to learn about developing Commerce apps.
 
 <DiscoverBlock slots="link, text"/>
 
-[App Developer Guide](app=development/index.md)
+[App Developer Guide](app-development/index.md)
 
 Learn how to make the transition from developing Commerce PHP extensions to developing Out-of-Process apps.
 

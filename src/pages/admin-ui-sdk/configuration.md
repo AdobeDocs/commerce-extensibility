@@ -133,8 +133,8 @@ You can download a sample app from the [Commerce UI test extension repository](h
 1.  Run your extension locally.
 
    ```bash
-  aio app run
-  ```
+   aio app run
+   ```
 
 1.  Check that the menu is correctly added to the Admin.
 

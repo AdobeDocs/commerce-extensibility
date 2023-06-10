@@ -5,80 +5,137 @@ description: Learn how to configure the Admin to enable local testing of your Ad
 
 # Admin configuration and testing
 
-The Adobe Commerce Admin UI SDK enables you to use a local server to view and test your Admin changes before you submit your app to the Adobe Marketplace.
-
-## Create a server configuration file
-
-Example of a `server.js` implementation
-
-```js
-const http = require('https');
-const fs = require('fs');
-const url = require('url');
-
-const options = {
-    key: fs.readFileSync('key.pem'),
-    cert: fs.readFileSync('cert.pem')
-  };
- 
-console.log('Server will listen at :  https://localhost ');
-http.createServer(options, function (req, res) {
-    res.writeHead(200, {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': '*'
-    });
-    let json_response;
-    
-    console.log(url.parse(req.url,true).pathname);
-    if (url.parse(req.url,true).pathname == "/config") {
-        json_response = {
-            baseUrl: "https://localhost:9090/",
-            apiKey: "apiKey",
-            auth: {
-                schema: "Bearer",
-                imsToken: "dummyToken"
-            },
-            imsOrg: "imsOrg",
-            version: 1,
-            service: "aem"
-        }
-    } else {
-        json_response = [{
-            "name": "backend-page-content-1",
-            "title": "Test extension",
-            "description": "No",
-            "icon": "no",
-            "publisher": "aQQ6300000008LEGAY",
-            "endpoints": {
-              "aem/commerce-admin.page-content.add/1": {
-                "view": [{
-                  "href": "https://localhost:9080/"
-                }]
-              }
-            },
-            "xrInfo": {
-              "supportEmail": "test@adobe.com",
-              "appId": "4a4c7cf8-bd64-4649-b8ed-662cd0d9c918"
-            },
-            "status": "PUBLISHED" }]
-    }
- 
-    res.end( JSON.stringify(json_response) );
-}).listen(9090);
-```
+The Adobe Commerce Admin UI SDK enables you to use a local server to view and test your Admin customizations before you submit your app to the Adobe Marketplace.
 
 ## Configure the Admin
 
-Navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Admin UI SDK** and edit the **General Configuration** screen.
+Navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Admin UI SDK** and edit the **General Configuration** screen. When you enable the local service, all calls are automatically redirected to the local server, instead of connecting to Adobe's App Registry. The values you specify must match the contents of your local `server.js` file.
 
-![Local server configuration](../_images/sdk-general-configuration.png)
+[Test with a sample app](#test-with-a-sample-app) lists a sample `server.js` file.
+
+![Local server configuration](../_images/sdk-config.png)
 
 1. Select **Yes** from the **Enable local service** menu.
 
-1. Set the **Base URL** that points to your localhost. The default
+1. Set the **Base URL** that points to your localhost, including the port.
 
-1. Set the **IMS Token**. You can use dummyToken for example as a token and set it in your `server.js` file.
+1. Set the **IMS Token**. In the sample `server.js` file, this value is set to `dummyToken`.
 
-1. Set the **IMS Org Id**. You can use `imsOrg` for example as a token and set it in your `server.js` file.
-Make sure that the configuration matches your local server input. If this is enabled, all calls will be automatically redirected to the local server instead of connecting to Adobe's App Registry.
+1. Set the **IMS Org Id**. In the sample `server.js` file, this value is set to `imsOrg`.
+
+1. Save your configuration.
+
+1. Clear the cache.
+
+   ```bash
+   bin/magento cache:flush
+   ```
+
+## Test with a sample app
+
+You can download a sample app from the [Commerce UI test extension repository](https://github.com/magento/app-builder-samples) to gain insight on how the Admin SDK injects menus and pages into the Admin.
+
+1. Run the following command to clone and sync the repository:
+
+   ```bash
+   git clone git@github.com:magento/app-builder-samples.git
+   ```
+
+1. Change directories to the cloned repository's root directory.
+
+1. Create a `server.js` file to define a local server:
+
+   ```js
+   const http = require('https');
+   const fs = require('fs');
+   const url = require('url');
+   
+   const options = {
+    key: fs.readFileSync('key.pem'),
+    cert: fs.readFileSync('cert.pem')
+    };
+    
+    console.log('Server will listen at :  https://localhost ');
+    http.createServer(options, function (req, res) {
+      res.writeHead(200, {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': '*'
+      });
+      let json_response;
+      
+      console.log(url.parse(req.url,true).pathname);
+      if (url.parse(req.url,true).pathname == "/config") {
+        json_response = {
+          baseUrl: "https://localhost.adobe.io:9090/",
+          apiKey: "apiKey",
+          auth: {
+            schema: "Bearer",
+            imsToken: "dummyToken"
+          },
+          imsOrg: "imsOrg",
+          version: 1,
+          service: "commerce",
+          extensionPoint: "backend-ui"
+        }
+      } else {
+        json_response = [{
+          "name": "test-extension",
+          "title": "Test extension",
+          "description": "No",
+          "icon": "no",
+          "publisher": "aQQ6300000008LEGAY",
+          "endpoints": {
+            "commerce/backend-ui/1": {
+              "view": [{
+                "href": "https://localhost:9080/"
+              }]
+            }
+          },
+          "xrInfo": {
+            "supportEmail": "test@adobe.com",
+            "appId": "4a4c7cf8-bd64-4649-b8ed-662cd0d9c918"
+          },
+          "status": "PUBLISHED" }]
+        }
+        //console.log(json_response);
+      res.end( JSON.stringify(json_response) );
+    }).listen(9090);
+    ```
+
+1.  Run the local server:
+
+   ```bash
+   node server.js
+   ```
+
+1.  Make sure you have access to the localhost server configuration by entering the following URL in your browser:
+
+   `https://localhost:9090/config`
+
+   The browser displays a JSON file similar to the following:
+
+   ```json
+   {
+    "baseUrl":"https://localhost.adobe.io:9090/",
+    "apiKey":"apiKey",
+    "auth":{
+      "schema":"Bearer",
+      "imsToken":"dummyToken"
+    },
+    "imsOrg":"imsOrg",
+    "version":1,
+    "service":"commerce",
+    "extensionPoint":"backend-ui"
+    }
+```
+
+1.  Run your extension locally.
+
+   ```bash
+  aio app run
+  ```
+
+1.  Check that the menu is correctly added to the Admin.
+
+   ![Local server configuration](../_images/fetched-orders.png)

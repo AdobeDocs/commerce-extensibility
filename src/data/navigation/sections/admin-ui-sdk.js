@@ -20,14 +20,6 @@ module.exports = [
       path: "/admin-ui-sdk/troubleshooting.md"
     },
     {
-      title: "MenuApp component",
-      path: "/admin-ui-sdk/reference/menu-app.md"
-    },
-    {
-      title: "PageApp component",
-      path: "/admin-ui-sdk/reference/page-app.md"
-    },
-    {
       title: "Release notes",
       path: "/admin-ui-sdk/release-notes.md"
     }

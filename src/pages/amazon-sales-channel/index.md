@@ -25,7 +25,7 @@ This app is not intended or supported for production use. While the provided cap
 
 Amazon Sales Channel on App Builder connects Adobe Commerce and Amazon to unify and synchronize your selling platforms. This type of integration allows merchants to manage their product and order data from a single, up-to-date experience. The sample app functionality represents only a subset of the original PHP extension's capabilities. We chose this subset of functionality based on the value provided to partners and developers looking to understand and use our next generation extensibility capabilities.
 
-The central goal of this reference app is build confidence in the App Builder framework and deliver reusable, Commerce-specific patterns for accelerating implementations.
+The central goal of this reference app is to build confidence in the App Builder framework and deliver reusable, Commerce-specific patterns for accelerating implementations.
 
 ## Merchant documentation
 

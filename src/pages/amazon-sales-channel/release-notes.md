@@ -21,4 +21,4 @@ Adobe Commerce for Cloud and on-premises
 
 Amazon Sales Channel on App Builder is a reference app that demonstrates how Adobe Developer App Builder can create integrations and extensions without modifying the core Commerce application. This app is not intended or supported for production use.
 
-The sample app functionality represents only a subset of the original PHP extension's capabilities. For example, it does not feature order management, listing and pricing rules.
+The sample app functionality represents only a subset of the original PHP extension's capabilities. For example, it does not include order management or listing and pricing rules.

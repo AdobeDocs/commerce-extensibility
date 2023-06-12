@@ -7,13 +7,13 @@ description: Learn how to make the transition from developing Commerce PHP exten
 
 Developers have traditionally used PHP to create in-process extensions that add features, functionality, services, and integrations to Adobe Commerce. This model requires any new code to be compatible with upgrades, the server's PHP version, and many other essential server applications and services that Commerce uses.
 
-Adobe Developer App Builder uses out-of-process extensibility to avoid these compatibility issues. It provides a unified third-party extensibility framework for integrating and creating custom applications that extend Adobe Commerce. Since this extensibility framework is built on Adobe's infrastructure, developers can build custom microservices, and extend and integrate Adobe Commerce across other Adobe solutions and third-party integrations.
+Adobe Developer App Builder uses out-of-process extensibility to avoid these compatibility issues. It provides a unified third-party extensibility framework for integrating and creating custom apps that extend Adobe Commerce. Since this extensibility framework is built on Adobe's infrastructure, developers can also extend Adobe Commerce with third-party systems.
 
 ## How do I port an extension into an app?
 
 Start by becoming familiar with the [App Builder documentation](https://developer.adobe.com/app-builder/docs/overview/) and [create an Adobe developer account](https://developer.adobe.com/app-builder/docs/overview/getting_access/).
 
-Once you've become comfortable with the Adobe I/O infrastructure, analyze  your current extensions and begin mapping its in-process features into the App Builder and Adobe I/O environment. Key areas to consider include:
+Once you've become comfortable with the Adobe I/O infrastructure, analyze  your current extensions and begin mapping their in-process features into the App Builder and Adobe I/O environment. Key areas to consider include:
 
 *  Frontend development
 *  APIs
@@ -29,11 +29,11 @@ Once you've become comfortable with the Adobe I/O infrastructure, analyze  your 
 
 ### APIs
 
-[API Mesh for Adobe Developer App Builder](https://developer.adobe.com/graphql-mesh-gateway/) enables developers to integrate private and third-party APIs and other software interfaces with Adobe Commerce and other Adobe products using Adobe I/O.
+[API Mesh for Adobe Developer App Builder](https://developer.adobe.com/graphql-mesh-gateway/) enables developers to connect multiple APIs from Adobe Commerce, other Adobe products, and 3rd party sources into a single GraphQL endpoint. An orchestration layer transforms data from these disparate sources into the formats required to perform the tasks to fulfill business and user experience requirements.
 
 ### Plugins and observers
 
-[Adobe I/O Events for Adobe Commerce](https://developer.adobe.com/commerce/events/) makes Commerce transactional data available to App Builder using Adobe I/O. You can define the events to transmit data each time an event triggers, or only under circumstances defined within configuration rules.
+[Adobe I/O Events for Adobe Commerce](https://developer.adobe.com/commerce/events/) enables building event-driven Commerce integrations using App Builder. You can define key events, like customer account updates, to be emitted from Commerce and construct apps that listen and react to these events.
 
 ### Admin development
 

@@ -105,9 +105,9 @@ You can download a sample app from the [Commerce UI test extension repository](h
 
 1.  Run the local server:
 
-   ```bash
-   node server.js
-   ```
+    ```bash
+    node server.js
+    ```
 
 1.  Make sure you have access to the localhost server configuration by entering the following URL in your browser:
 
@@ -117,7 +117,7 @@ You can download a sample app from the [Commerce UI test extension repository](h
 
    ```json
    {
-    "baseUrl":"https://localhost.adobe.io:9090/",
+    "baseUrl":"https://localhost:9090/",
     "apiKey":"apiKey",
     "auth":{
       "schema":"Bearer",
@@ -132,9 +132,9 @@ You can download a sample app from the [Commerce UI test extension repository](h
 
 1.  Run your extension locally.
 
-   ```bash
-   aio app run
-   ```
+    ```bash
+    aio app run
+    ```
 
 1.  Check that the menu is correctly added to the Admin.
 

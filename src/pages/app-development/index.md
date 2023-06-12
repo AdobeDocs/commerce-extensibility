@@ -15,12 +15,17 @@ Start by becoming familiar with the [App Builder documentation](https://develope
 
 Once you've become comfortable with the Adobe I/O infrastructure, analyze  your current extensions and begin mapping its in-process features into the App Builder and Adobe I/O environment. Key areas to consider include:
 
+*  Frontend development
 *  APIs
 *  Plugins and observers
 *  Backend development
 *  Custom cron jobs
 *  Database data
 *  Filesystem
+
+### Frontend development
+
+[Spectrum](https://spectrum.adobe.com/page/principles/) provides all the tools you need to create the next generation of React-based applications. Adobe Commerce continues support of legacy PWA and Luma storefronts.
 
 ### APIs
 

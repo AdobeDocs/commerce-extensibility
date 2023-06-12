@@ -45,9 +45,11 @@ In your App Builder project
 
 1. On the **Add an API** page, filter on **Adobe Services** and select **I/O Management API**. Then click **Next**.
 
-1. On the **Configure API** page, select the **OAuth Server-to-Server** option and click **Save configured API**.
+1. On the **Configure API** page, select the **Service Account (JWT)** option and click **Save configured API**.
 
-   **Note**: You can set up server-to-server authentication using JSON Web Tokens (JWT). However, this method has been deprecated in favor of OAuth and must be replaced no later than January 1, 2025. See [Service Account (JWT) Authentication](https://developer.adobe.com/developer-console/docs/guides/authentication/JWT/) for details on implementing this solution.
+   **Note**: OAuth Server to Server authentication is not currently supported.
+
+1. Select **Generate key pair**.  
 
 1. Click **Save configured API**.
 

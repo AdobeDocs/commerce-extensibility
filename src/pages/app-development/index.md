@@ -1,6 +1,6 @@
 ---
 title: Adobe Commerce App Developer's Guide Overview
-description: 
+description: Learn how to make the transition from developing Commerce PHP extensions to developing Out-of-Process apps.
 ---
 
 # Adobe Commerce App Developer's Guide Overview
@@ -25,7 +25,7 @@ Once you've become comfortable with the Adobe I/O infrastructure, analyze  your 
 
 ### Frontend development
 
-[Spectrum](https://spectrum.adobe.com/page/principles/) provides all the tools you need to create the next generation of React-based applications. Adobe Commerce continues support of legacy PWA and Luma storefronts.
+[Spectrum](https://spectrum.adobe.com/page/principles/) provides all the tools you need to create the next generation of React-based applications. Adobe Commerce continues support of legacy [PWA Studio](https://developer.adobe.com/commerce/pwa-studio/) and [Luma](https://developer.adobe.com/commerce/frontend-core/) storefronts.
 
 ### APIs
 
@@ -35,7 +35,7 @@ Once you've become comfortable with the Adobe I/O infrastructure, analyze  your 
 
 [Adobe I/O Events for Adobe Commerce](https://developer.adobe.com/commerce/events/) makes Commerce transactional data available to App Builder using Adobe I/O. You can define the events to transmit data each time an event triggers, or only under circumstances defined within configuration rules.
 
-###  Admin development
+### Admin development
 
 The [Adobe Commerce Admin UI SDK](../admin-ui-sdk/index.md) enables an App Builder developer to extend the [Commerce Admin](https://experienceleague.adobe.com/docs/commerce-admin/start/admin/admin.html) to include custom menus and pages.
 
@@ -49,11 +49,11 @@ The [Adobe I/O Key/Value Storage library](https://github.com/adobe/aio-lib-state
 
 ### Filesystem
 
-the [Adobe I/O Files library](https://github.com/adobe/aio-lib-state) provides a JavaScript abstraction on top of cloud blob storages with a simple file-system like persistence API.
+The [Adobe I/O Files library](https://github.com/adobe/aio-lib-state) provides a JavaScript abstraction on top of cloud blob storages with a simple file-system like persistence API.
 
 ## Related information
 
-View the following tutorials for more information about using App Builder to build Out-of-Process apps:
+View the following tutorials for more information about using App Builder to build out-of-process apps:
 
 *  [Introduction to App Builder](https://experienceleague.adobe.com/docs/commerce-learn/tutorials/adobe-developer-app-builder/introduction-to-app-builder.html)
 

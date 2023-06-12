@@ -1,6 +1,6 @@
 module.exports = [
     {
         title: "Overview",
-        path: "/app-development/index.md",
+        path: "/app-development/index.md"   
     }
-  ];
+];

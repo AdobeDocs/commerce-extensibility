@@ -31,7 +31,7 @@ Use the following steps to configure Commerce and subscribe to catalog update ev
 
 1. Register your Commerce instance as an event provider. See [Configure Adobe Commerce](https://developer.adobe.com/commerce/events/get-started/configure-commerce/) for details.
 
-1. After you have configured your instance is configured and the event provider is created, use the following command to subscribe to the `observer.catalog_product_save_after` event:
+1. After you have configured your instance and the event provider is created, use the following command to subscribe to the `observer.catalog_product_save_after` event:
 
    ```bash
    bin/magento events:subscribe observer.catalog_product_save_after --fields=sku --fields=price --fields=stock_data.qty --fields=asin --fields=amazon_condition --fields=name

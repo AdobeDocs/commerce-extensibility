@@ -12,9 +12,30 @@ You must install [nodeJS 16.13+](https://nodejs.org/en/download) as your JavaScr
 ## Adobe Commerce
 
 *  (Required) Adobe Commerce 2.4.5+
-*  (Optional) [Adobe Commerce Admin UI SDK](https://developer-stage.adobe.com/commerce/extensibility/admin-ui-sdk/) enables you to attach the App Builder application to the Adobe Commerce Admin.
+*  (Optional) [Adobe Commerce Admin UI SDK](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/) enables you to attach the App Builder application to the Adobe Commerce Admin.
 
 In addition to these software requirements, you must have access to the Commerce environment from an external network. You must also have the ability to add API integrations.
+
+### Create custom attributes
+
+To subscribe to catalog update events from Adobe Commerce, you must create the following custom attributes in **Stores** > **Attributes** > **Product** > **Add New Attribute**:
+
+| Default label | Attribute Code | Scope | Notes |
+| --- | --- | --- | --- |
+| ASIN | `asin` | Global | |
+| Amazon Condition | `amazon_condition` | Global | Condition of the listing item. The [Amazon docs](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-reference#conditiontype) list the possible values. |
+
+### Subscribe to catalog update events
+
+Use the following steps to configure Commerce and subscribe to catalog update events. The [_Getting started with Adobe I/O Events for Adobe Commerce_](https://developer.adobe.com/commerce/events/get-started/configure-commerce/) guide provides additional context.
+
+1. Register your Commerce instance as an event provider. See [Configure Adobe Commerce](https://developer.adobe.com/commerce/events/get-started/configure-commerce/) for details.
+
+1. After you have configured your instance is configured and the event provider is created, use the following command to subscribe to the `observer.catalog_product_save_after` event:
+
+   ```bash
+   bin/magento events:subscribe observer.catalog_product_save_after --fields=sku --fields=price --fields=stock_data.qty --fields=asin --fields=amazon_condition --fields=name
+   ```
 
 ## Adobe Developer Console
 

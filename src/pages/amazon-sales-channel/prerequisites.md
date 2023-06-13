@@ -12,7 +12,7 @@ You must install [nodeJS 16.13+](https://nodejs.org/en/download) as your JavaScr
 ## Adobe Commerce
 
 *  (Required) Adobe Commerce 2.4.5+
-*  (Optional) [Adobe Commerce Admin UI SDK](https://developer-stage.adobe.com/commerce/extensibility/admin-ui-sdk/) enables you to attach the App Builder application into the Adobe Commerce Admin.
+*  (Optional) [Adobe Commerce Admin UI SDK](https://developer-stage.adobe.com/commerce/extensibility/admin-ui-sdk/) enables you to attach the App Builder application to the Adobe Commerce Admin.
 
 In addition to these software requirements, you must have access to the Commerce environment from an external network. You must also have the ability to add API integrations.
 
@@ -29,13 +29,13 @@ The [Adobe I/O CLI](https://developer.adobe.com/runtime/docs/guides/tools/cli_in
 
 1. Run `npm install -g @adobe/aio-cli` to install Adobe I/O Extensible CLI.
 
-1. Run `aio login` to authenticate to console.
+1. Run `aio login` to authenticate to the developer console.
 
-1. Run `aio console org select`to select your organization.
+1. Run `aio console org select` to select your organization.
 
 1. Run `aio console project select` to select your project.
 
-1. Run `aio console workspace select` and select "Stage" as your workspace .
+1. Run `aio console workspace select` and select "Stage" as your workspace.
 
 For more information, refer to [Adobe I/O CLI documentation](https://github.com/adobe/aio-cli/blob/master/README.md).
 
@@ -70,7 +70,7 @@ Create an IAM policy per [Amazon SPI Guide](https://developer-docs.amazon.com/sp
 
 ### Amazon Seller Central
 
-The app type of Amazon Sales Channel is **Private Seller**. Be sure to specify this integration type as you configure your instance. See [Determine app type](https://developer-docs.amazon.com/sp-api/docs/determine-app-type) for more information.
+The app type of Amazon Sales Channel is **Private Seller**. Specify this integration type when you configure your instance. See [Determine app type](https://developer-docs.amazon.com/sp-api/docs/determine-app-type) for more information.
 
 1. [Register yourself as a private developer](https://developer-docs.amazon.com/sp-api/docs/registering-as-a-developer#to-register-as-a-private-developer-for-private-seller-applications).
 
@@ -78,7 +78,7 @@ The app type of Amazon Sales Channel is **Private Seller**. Be sure to specify t
 
 1. [Self authorize](https://developer-docs.amazon.com/sp-api/docs/self-authorization) your application to generate access keys.
 
-When you creating an account from the App Builder application UI, you will need the following set of Amazon credentials:
+When you create an account from the App Builder application UI, you will need the following set of Amazon credentials:
 
 | Field | Where to get |
 | --- | --- |

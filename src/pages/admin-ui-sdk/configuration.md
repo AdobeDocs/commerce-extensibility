@@ -136,6 +136,8 @@ You can download a sample app from the [Commerce UI test extension repository](h
    aio app run
    ```
 
-1. Check that the menu is correctly added to the Admin.
+1. Check that the **First App on App Builder** option has been added to the **Marketing** menu in the Admin and that selecting the option takes you to the **Fetched orders from Adobe Commerce** page.
 
-   ![Local server configuration](../_images/fetched-orders.png)
+   ![Fetched orders from Adobe Commerce page](../_images/first-app.png)
+
+   ![First App on App Builder menu](../_images/fetched-orders.png)

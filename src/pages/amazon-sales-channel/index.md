@@ -21,6 +21,8 @@ Amazon Sales Channel on App Builder is based on an existing PHP extension (Amazo
 
 This app is not intended or supported for production use. While the provided capabilities are robust, they are only to be used as a reference to build your own applications. Merchants looking to connect and synchronize their Amazon store with Commerce should use the existing [Amazon Sales Channel PHP extension](https://marketplace.magento.com/magento-module-amazon.html), which can be acquired through Commerce Marketplace, or implement another integration.
 
+To install this app, clone the [aio-amazon-sales-channel](https://github.com/adobe/amazon-sales-channel-app-builder) repo and follow the procedures described in [Prequisites](prerequisites.md) and [Install the Amazon Sales Channel app](installation.md).
+
 ## Application functionality
 
 Amazon Sales Channel on App Builder connects Adobe Commerce and Amazon to unify and synchronize your selling platforms. This type of integration allows merchants to manage their product and order data from a single, up-to-date experience. The sample app functionality represents only a subset of the original PHP extension's capabilities. We chose this subset of functionality based on the value provided to partners and developers looking to understand and use our next generation extensibility capabilities.

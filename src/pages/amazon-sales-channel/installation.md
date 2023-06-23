@@ -11,7 +11,7 @@ Review the [Prerequisites](prerequisites.md) before you attempt to install the A
 
 ## Clone application source code
 
-Clone the `amazon-sales-channel-app-builder` repo to your working directory:
+Clone the [`amazon-sales-channel-app-builder` repo](https://github.com/adobe/amazon-sales-channel-app-builder) to your working directory:
 
 ```bash
 git clone git@github.com:adobe/amazon-sales-channel-app-builder.git <custom-directory>
@@ -138,17 +138,16 @@ See [I/O Events for Adobe Commerce](https://developer.adobe.com/commerce/events/
 
 ### Subscribe to Adobe Commerce events
 
-1. Ensure that your Adobe Commerce instance is registered as an event provider as described in [Subscribe and register events
-](https://developer.adobe.com/commerce/events/get-started/configure-commerce/#subscribe-and-register-events).
+1. Ensure that your Adobe Commerce instance is registered as an event provider as described in [Subscribe and register events](https://developer.adobe.com/commerce/events/get-started/configure-commerce/#subscribe-and-register-events).
 
 1. Register the `observer.catalog_product_save_after` event in your project in [developer console](https://developer.adobe.com/console/).
 
-   *  Add a new service of type `Event`.
-   *  Select your event provider.
-   *  Choose the `observer.catalog_product_save_after` event subscription.
-   *  Select the JWT credential.
-   *  Set a name for your event registration.
-   *  Select your Runtime action, which should be similar to `amazon-app/__secured_catalog-product-save-after-listener - <your project>-<your workspace>`, then save the event.
+   * Add a new service of type `Event`.
+   * Select your event provider.
+   * Choose the `observer.catalog_product_save_after` event subscription.
+   * Select the JWT credential.
+   * Set a name for your event registration.
+   * Select your Runtime action, which should be similar to `amazon-app/__secured_catalog-product-save-after-listener - <your project>-<your workspace>`, then save the event.
 
 At this point, if you go to the `Debug tracing` area in your new event created inside the [developer console](https://developer.adobe.com/console/), you should be able to see any incoming events from your Adobe Commerce instance.
 
@@ -188,14 +187,13 @@ aio app test #runs UI and actions tests
 aio app test --e2e #runs end-to-end tests
 ```
 
-#### Adding additional action dependencies
+### Adding additional action dependencies
 
 You have two options to resolve your action's dependencies:
 
-*  **Packaged action file**: Add your actions dependencies to the root `package.json` and install them using `npm install`. Then set the `function`
-field in `ext.config.yaml` to point to the **entry file** of your action folder. `webpack` is used to package your code and dependencies into a single minified `js` file. The action will then be deployed as a single file. Use this method if you want to reduce the size of your actions.
+* **Packaged action file**: Add your actions dependencies to the root `package.json` and install them using `npm install`. Then set the `function` field in `ext.config.yaml` to point to the **entry file** of your action folder. `webpack` is used to package your code and dependencies into a single minified `js` file. The action will then be deployed as a single file. Use this method if you want to reduce the size of your actions.
 
-*  **Zipped action folder**: In the folder containing the action code, add a `package.json` with the action dependencies. Then set the `function` field in `ext.config.yaml` to point to the **folder** of that action. The required dependencies are installed within that directory. In addition, the process zips the folder before deploying it as a zipped action. Use this method if you want to keep your action's dependencies separated.
+* **Zipped action folder**: In the folder containing the action code, add a `package.json` with the action dependencies. Then set the `function` field in `ext.config.yaml` to point to the **folder** of that action. The required dependencies are installed within that directory. In addition, the process zips the folder before deploying it as a zipped action. Use this method if you want to keep your action's dependencies separated.
 
 ### Debugging in VS Code
 

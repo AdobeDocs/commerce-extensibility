@@ -5,6 +5,8 @@ description: Learn how the Amazon Sales Channel app development team implemented
 
 # Credentials management
 
+App Builder is an excellent framework for building integrations that connect Commerce to 3rd-party systems like Amazon or ERPs. These systems often require credentials to support your application to securely communicate and update them.
+
 The Amazon Sales Channel app requires credentials and secrets to perform certain actions and interact with the Amazon API. These items must be changed every 180 days to comply with Amazon standards, and they could be updated in runtime. Therefore, creating a static set of credentials is not an option.
 
 This topic describes the method the development team used to safely store these credentials in a way that allows for easy and updating whenever required.

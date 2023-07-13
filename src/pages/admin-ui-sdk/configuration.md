@@ -88,7 +88,7 @@ You can download a sample app from the [Commerce UI test extension repository](h
           "endpoints": {
             "commerce/backend-ui/1": {
               "view": [{
-                "href": "https://localhost:9080/"
+                "href": "https://localhost:9080/index.html"
               }]
             }
           },

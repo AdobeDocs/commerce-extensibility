@@ -11,10 +11,16 @@ module.exports = [
         title: "Installation",
         path: "/amazon-sales-channel/installation.md",
     },
-    // {
-    //    title: "Best Practices",
-    //    path: "/amazon-sales-channel/best-practices/index.md",
-    // },
+    {
+        title: "Best practices",
+        path: "/amazon-sales-channel/best-practices/index.md",
+        pages: [
+            {
+                title: "Credentials management",
+                path: "/amazon-sales-channel/best-practices/credentials.md"
+            }
+        ]
+    },
     {
         title: "Release Notes",
         path: "/amazon-sales-channel/release-notes.md"

@@ -12,7 +12,7 @@ module.exports = [
         path: "/amazon-sales-channel/installation.md",
     },
     {
-        title: "Best Practices",
+        title: "Best practices",
         path: "/amazon-sales-channel/best-practices/index.md",
         pages: [
             {

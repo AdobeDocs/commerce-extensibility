@@ -9,11 +9,11 @@ App Builder is an excellent framework for building integrations that connect Com
 
 The Amazon Sales Channel app requires credentials and secrets to perform certain actions and interact with the Amazon API. These items must be changed every 180 days to comply with Amazon standards, and they could be updated in runtime. Therefore, creating a static set of credentials is not an option.
 
-This topic describes the method the development team used to safely store these credentials in a way that allows for easy and updating whenever required.
+This topic describes the method the development team used to safely store these credentials in a way that allows for easy updating when necessary.
 
 ## Use case
 
-The development team chose to implement a cypher algorithm to safely store and retrieve these credentials. This algorithm encrypts the credentials of each store using a unique vector randomly generated when the store is created.
+The development team chose to implement a cypher algorithm to safely store and retrieve these credentials. This algorithm encrypts the credentials of each store using a unique vector that is randomly generated when the store is created.
 
 The merchant enters credentials and secrets when creating a new store through the Admin using the **Add Amazon Store** menu.
 
@@ -23,13 +23,13 @@ Once the merchant completes the form, an action is triggered to randomly generat
 
 This vector is then used in another action that encrypts the credentials and stores them in the [`lib-file` storage system](https://github.com/adobe/aio-lib-files). To use or update the credentials, they must be retrieved from `lib-file` and decrypted with the same vector used for encryption.
 
-The following diagram describes the generic flow of the credentials storage and encryption process.
+The following diagram describes the generic flow of the credential storage and encryption process.
 
 ![Credentials storage and encryption flow](../../_images/credentials-flow.png)
 
 ## Encryption algorithm
 
-We recommend using the AES-256 encryption algorithm, which requires a 32-character encryption key, an initialization vector, and a 16-bit authentication tag. AES-256 is a resilient encryption algorithm that is nearly impossible to break through brute force.
+We recommend using the AES-256 encryption algorithm, which requires a 32-character encryption key, an initialization vector, and a 16-bit authentication tag. AES-256 is a resilient encryption algorithm that is nearly impossible to brute force.
 
 The [`encrypt.ts`](https://github.com/adobe/amazon-sales-channel-app-builder/blob/main/actions-src/shared/security/encrypt.ts) file provides encryption and decryption functions, as shown below:
 
@@ -75,9 +75,9 @@ export function decrypt(text: string, cipherArgs: CipherArgs): string {
 
 ## Credentials Data Schema
 
-Each data file is identified by the `accountId` parameter and contains the account's set of credentials required to access the Amazon API and other sensitive data that should be encrypted before being stored in the `lib-file` storage as a safety precaution.
+Each data file is identified by the `accountId` parameter and contains the account's set of credentials required to access the Amazon API and other sensitive data that should be encrypted before being stored in the `lib-file` as a safety precaution.
 
-* `amazonsp-credentials-<accountId>` - This `string`-type blob being saved will be an encrypted AES256 string containing the following structure:
+* `amazonsp-credentials-<accountId>` - Once saved, this `string`-type blob will be an encrypted AES256 string containing the following structure:
 
    ```typescript
    {
@@ -160,7 +160,7 @@ await credentialsRepository.saveCredentials(
 
 ### Decryption example
 
-In [this example](https://github.com/adobe/amazon-sales-channel-app-builder/blob/main/actions-src/api/account/runtime/getCredentials.ts), we retrieve the list of accounts, and the encryption helper is initialized with the encryption key and initialization vector
+In [this example](https://github.com/adobe/amazon-sales-channel-app-builder/blob/main/actions-src/api/account/runtime/getCredentials.ts), we retrieve the list of accounts, and the encryption helper is initialized with the encryption key and initialization vector.
 
 The account's credentials are retrieved from the `lib-file` storage system and decrypted using the encryption library.
 

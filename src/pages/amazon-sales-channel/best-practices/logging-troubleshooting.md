@@ -31,7 +31,10 @@ To view logs in real time, run the following command:
 aio rt logs --tail
 ```
 
-![aio rt logs output](../../_images/log-output.png)
+```terminal
+283976-asctestamina-stage/amazon-app/scheduled-amazon-sync-products:e7e5281de72049d3a5281de720c9d3c7
+2023-07-18T10:27:05.585Z       stdout: 2023-07-18T10:27:05.585Z [main /283976-asctestamina-stage/amazon-app/scheduled-amazon-sync-products] info: {"message":"Start retrieving Amazon product updates","params":{}}
+```
 
 Sometimes there are logs that do not appear, like web action logs or small random hiccups. In such a case, you can use the activation ID to get specific logs for that action.
 
@@ -39,12 +42,45 @@ Sometimes there are logs that do not appear, like web action logs or small rando
 
 In this example, we are tailing our logs. We know that there is a scheduled runtime action named `sync-orders` that was executed, but its logs were never displayed. We must get its activation ID from the activation list and get the logs directly for that runtime action.
 
-![sync-orders logs are missing](../../_images/sync-orders-missing.png)
-
 1. Run the following command to return a list of runtime entities:
 
    ```bash
    aio rt activation list
+   ```
+
+   ```terminal
+   Datetime        Status    Kind      Version    Activation ID                    Start Wait  Init Duration Entity
+   ─────────────── ───────── ───────── ──────── ─ ──────────────────────────────── ───── ───── ──── ──────── ─────────────────────────────────────────────────────
+   07/18 12:09:04  success   nodejs:18 0.0.10     2491e3f886264b2891e3f88626fb2820 cold  2289  727  1885ms   amazon-app/scheduled-amazon-sync-products
+   07/18 12:09:02  success   trigger   0.0.9      4373d5bf7bcd4371b3d5bf7bcd937197 --    --    --   --       everyThreeMin
+   07/18 12:06:05  success   nodejs:18 0.0.9      e3eda8a94b6f4bf3ada8a94b6f3bf3f6 cold  3230  664  1829ms   amazon-app/scheduled-amazon-sync-products
+   07/18 12:06:02  success   trigger   0.0.8      ae2d87a5af6045f4ad87a5af6095f463 --    --    --   --       everyThreeMin
+   07/18 12:03:04  success   nodejs:18 0.0.9      b2878be443c444ed878be443c444ed4d cold  2196  751  1788ms   amazon-app/scheduled-amazon-sync-products
+   07/18 12:03:02  success   trigger   0.0.8      80639009d2184c9ca39009d2182c9ce8 --    --    --   --       everyThreeMin
+   07/18 12:02:07  success   nodejs:18 0.0.9      fb491c0dd31e4d97891c0dd31ecd9730 cold  2216  702  1712ms   amazon-app/scheduled-amazon-sync-listing-improvements
+   07/18 12:02:07  success   nodejs:18 0.0.9      b1a8bdbee4884974a8bdbee48869745e cold  2213  956  1236ms   amazon-app/scheduled-amazon-sync-orders
+   07/18 12:02:05  success   trigger   0.0.8      d88d73a273ec40fb8d73a273ece0fb2d --    --    --   --       everyTenMin
+   07/18 12:00:05  success   nodejs:18 0.0.9      00479a279a234cd7879a279a233cd799 cold  3264  573  2143ms   amazon-app/scheduled-amazon-sync-products
+   07/18 12:00:02  success   trigger   0.0.8      0d3466d142a64a5ab466d142a67a5a8e --    --    --   --       everyThreeMin
+   07/18 11:57:05  success   nodejs:18 0.0.9      eb13ee8b00434b5f93ee8b0043fb5f61 cold  3215  589  1581ms   amazon-app/scheduled-amazon-sync-products
+   07/18 11:57:02  success   trigger   0.0.8      75088e55df85453c888e55df85e53ca3 --    --    --   --       everyThreeMin
+   07/18 11:54:04  success   nodejs:18 0.0.9      3eb429d46e0c45ceb429d46e0c25ce67 cold  2195  695  1693ms   amazon-app/scheduled-amazon-sync-products
+   07/18 11:54:02  success   trigger   0.0.8      23c2b9e6188c404d82b9e6188c904de4 --    --    --   --       everyThreeMin
+   07/18 11:52:15  success   nodejs:18 0.0.9      bf54aa75b6294fd994aa75b629dfd91d cold  10410 626  1560ms   amazon-app/scheduled-amazon-sync-listing-improvements
+   07/18 11:52:07  success   nodejs:18 0.0.9      fcf0e0153d59409db0e0153d59809d36 cold  2208  1404 1738ms   amazon-app/scheduled-amazon-sync-orders
+   07/18 11:52:05  success   trigger   0.0.8      cd54ae8d9b46472f94ae8d9b46e72f71 --    --    --   --       everyTenMin
+   07/18 11:51:04  success   nodejs:18 0.0.9      1659c848908840bf99c8489088d0bf1b cold  2207  586  1570ms   amazon-app/scheduled-amazon-sync-products
+   07/18 11:51:02  success   trigger   0.0.8      c1327a57f2734b91b27a57f2737b91c1 --    --    --   --       everyThreeMin
+   07/18 11:48:04  success   nodejs:18 0.0.9      c0c5a3ceb6c4424585a3ceb6c4a24570 cold  2195  941  1927ms   amazon-app/scheduled-amazon-sync-products
+   07/18 11:48:02  success   trigger   0.0.8      047760cb71314236b760cb713172362a --    --    --   --       everyThreeMin
+   07/18 11:45:04  success   nodejs:18 0.0.9      86e59628804f4d15a59628804fed15e2 cold  2194  915  1936ms   amazon-app/scheduled-amazon-sync-products
+   07/18 11:45:02  success   trigger   0.0.8      fe014774ee084ce2814774ee08ace245 --    --    --   --       everyThreeMin
+   07/18 11:42:08  success   nodejs:18 0.0.9      5641f4fb9ae84ea281f4fb9ae8eea297 cold  3264  585  2594ms   amazon-app/scheduled-amazon-sync-listing-improvements
+   07/18 11:42:08  success   nodejs:18 0.0.9      91e748ccdf5246f1a748ccdf52b6f10c cold  3238  621  939ms    amazon-app/scheduled-amazon-sync-orders
+   07/18 11:42:05  success   trigger   0.0.8      e31c7d64b37a4ac49c7d64b37adac485 --    --    --   --       everyTenMin
+   07/18 11:42:04  success   nodejs:18 0.0.9      ba601e7a82c741b2a01e7a82c771b2ea cold  2197  578  1574ms   amazon-app/scheduled-amazon-sync-products
+   07/18 11:42:02  success   trigger   0.0.8      575a91cfd9a044169a91cfd9a0b416e4 --    --    --   --       everyThreeMin
+   07/18 11:41:26  app error nodejs:18 0.0.9      1a5bc097961647cb9bc097961677cb0b cold  432   647  658ms    amazon-app/amazon-get-sales
    ```
 
 1. Specify the activation ID to return a list of applicable log updates.
@@ -53,7 +89,13 @@ In this example, we are tailing our logs. We know that there is a scheduled runt
    aio rt logs <activation ID>
    ```
 
-   ![aio rt logs output](../../_images/log-list.png)
+   For example, `aio rt logs b1a8bdbee4884974a8bdbee48869745e` returns the following:
+
+   ```terminal
+   === activation logs b1a8bdbee4884974a8bdbee48869745e
+   2023-07-18T10:02:08.375Z       stdout: 2023-07-18T10:02:08.375Z [main /283976-asctestamina-stage/amazon-app/scheduled-amazon-sync-orders] info: {"message":"Sync orders from Amazon into Adobe Commerce","params":{}}
+   2023-07-18T10:02:08.649Z       stdout: 2023-07-18T10:02:08.649Z [main /283976-asctestamina-stage/amazon-app/scheduled-amazon-sync-orders] info: {"message":"Synced account orders","params":{}}
+   ```
 
    **Note:** If you have installed the `watch` command, you can run the `watch -n2 aio rt activation list` to refresh the activation list every two seconds.
 

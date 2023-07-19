@@ -7,7 +7,7 @@ description: Learn how you can use Amazon Sales Channel on App Builder as a refe
 
 Amazon Sales Channel on App Builder is a flagship reference app developed by Adobe Commerce to accelerate merchant and partner adoption of out-of-process extensibility.
 
-This app showcases how Adobe Developer App Builder can create integrations and extensions without modifying the core Commerce application. Amazon Sales Channel on App Builder focuses on demonstrating how to develop key capabilities and extensibility use cases with App Builder. Partners and developers can leverage the application code, best practice guides, and documentation to confidently create their own next-generation extensions and integrations.
+This app showcases how Adobe Developer App Builder can create integrations and extensions without modifying the core Commerce application. [Amazon Sales Channel on App Builder](https://github.com/adobe/amazon-sales-channel-app-builder) focuses on demonstrating how to develop key capabilities and extensibility use cases with App Builder. Partners and developers can leverage the application code, best practice guides, and documentation to confidently create their own next-generation extensions and integrations.
 
 The application presents many common use cases for extending Adobe Commerce, including:
 

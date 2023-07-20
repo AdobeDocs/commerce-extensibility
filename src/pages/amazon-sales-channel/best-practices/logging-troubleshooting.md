@@ -36,7 +36,7 @@ aio rt logs --tail
 2023-07-18T10:27:05.585Z       stdout: 2023-07-18T10:27:05.585Z [main /283976-asctestamina-stage/amazon-app/scheduled-amazon-sync-products] info: {"message":"Start retrieving Amazon product updates","params":{}}
 ```
 
-Sometimes logs do not appear, like web action logs or small random hiccups. In such a case, you can use the activation ID to get specific logs for that action.
+Sometimes logs do not appear, like web action logs or small random hiccups. In such a case, you can use the activation ID to get specific logs for that action. When an action is invoked, it produces an activation record that contains information about this invocation, including `activationId`, `statusCode`, logs, and more. By default, activations have a 7-day time to live (TTL). Activation IDs are an excellent resource to key on for debugging internally and should be provided in the description of support issues around runtime actions.  The OpenWhisk documentation describes the [full list activation properties](https://github.com/apache/openwhisk/blob/master/docs/actions.md#understanding-the-activation-record).
 
 #### Get logs using the aio CLI
 

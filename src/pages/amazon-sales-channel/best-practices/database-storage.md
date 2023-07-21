@@ -5,19 +5,25 @@ description:
 
 # Database storage
 
-The [Adobe I/O Files](https://github.com/adobe/aio-lib-files) and [Adobe I/O State](https://github.com/adobe/aio-lib-state) libraries provide long- and short-term storage for App Builder. The Adobe I/O State library is an npm module that provides a JavaScript abstraction on top of distributed/cloud DBs with a simple key-value store state persistence API. The Adobe I/O Files library provides a JavaScript abstraction on top of cloud blob storages with a simple filesystem-like persistence API.
+Adobe Developer App Builder is a cloud native framework that has storage capabilities for both long term and short term storage.
 
-The state library is meant for storing and accessing small values, while the files library should be used for storing bigger amounts of data.
+The [Adobe I/O Files](https://github.com/adobe/aio-lib-files) and [Adobe I/O State](https://github.com/adobe/aio-lib-state) libraries provide zero-config file and state caching for App Builder. The Adobe I/O State library is an npm module that provides a JavaScript abstraction on top of distributed/cloud databases with a simple key-value store state persistence API. The Adobe I/O Files library provides a JavaScript abstraction on top of cloud blob storage with a simple file-system like persistence API. Use the state library for storing and accessing small values and the files library for storing larger amounts of data.
 
 ## Adobe I/O State library
 
-The Amazon Sales Channel app requires the joining of models between Adobe Commerce and Amazon Seller Partner. Functionality within Amazon Sales Channel requires updating data on both sides. Therefore, we need associations to link models to both services.
+There are benefits and limitations in using the Adobe I/O State library.
 
-Attributes are one example where models must be linked. We defined an attribute model that could map data between Commerce and Amazon attributes. The model had the following requirements:
+### Benefits
+
+The Amazon Sales Channel app requires the joining of models between Adobe Commerce and Amazon Seller Partner. Functionality within Amazon Sales Channel requires updating data on both sides. Therefore, it is essential to link models to both services.
+
+Attributes are one example where models must be linked. The development team defined an attribute model that could map data between Commerce and Amazon attributes. The model had the following requirements:
 
 * **Persistence**. The system must be able to track and sync the data on both sides as users pull in the latest values.
 
-* **Fast response times**. We were required to have reasonable load times on the frontend of the application, which could not be achieved by directly querying both resources and mapping the data on the fly.
+* **Fast response times**. Reasonable load times on the frontend of the application are a requirement. These could not be achieved by directly querying both resources and mapping the data on the fly.
+
+Amazon's Selling Partner APIs throttling controls significantly impact application performance. The development team attempted workarounds such as increasing period for repeated calls and investigating Amazon's webhooks functionality. However, the best technical solution was to leverage App Builder's storage capabilities.
 
 ### Pitfalls
 
@@ -85,121 +91,39 @@ export async function pageable<T>(
 
   const promises: Array<Promise<T>> = [];
   subsetIds.forEach((id: ID) => {
- | promises.push(repository.getEntity(id));
+    promises.push(repository.getEntity(id));
   });
 
   const collection: Array<T> = await Promise.all(promises);
 
   return {
- | total,
- | collection,
- | count: collection.length,
- | pagination: {
- |   currentPage,
- |   lastPage: Math.ceil(total / itemsPerPage),
- | },
+    total,
+    collection,
+    count: collection.length,
+    pagination: {
+      currentPage,
+      lastPage: Math.ceil(total / itemsPerPage),
+    },
   };
 }
 ```
 
 ## Adobe I/O File library
 
+There are benefits and limitations in using the Adobe I/O File library.
+
+### Benefits
+
 Since `lib-files` uses blob storage in the Azure cloud, each user has their own segregated buckets. This is more segregated than `lib-state`, which is a shared Cosmos DB cluster.
 
-We also found that while `lib-state` is great at read/write operations, `lib-files` is not. The file library is a great option for tasks that are not read/write heavy. Since credentials require the utmost security, it did not seem prudent to use `lib-state` for this use case as it's not multi-tenant.Therefore, reading credentials from lib-files was a better option overall.
+The development team also found that while `lib-state` is great at read/write operations, `lib-files` is not. The file library is a great option for tasks that are not read/write heavy. Since credentials require the utmost security, it did not seem prudent to use `lib-state` for this use case as it's not multi-tenant.Therefore, reading credentials from lib-files was a better option overall.
 
-## Model
+### Pitfalls
 
-### Account
+The `lib-files` library has some limitations from both practice and the public documentation. Its closest comparison is Amazon S3 storage.
 
-An account is an association between an Adobe Commerce store and an Amazon Selling Partner account.
+* Read/write operations are not suitable for a high throughput layer. If you need to run a large number of operations, it can take roughly ten to 20 seconds to return sizable results.
 
-Param | Type | Description
---- | --- | ---
-`id` | | string | uuid4 identifier for the account
-`storeName` |string | Name of the Commerce store
-`attributeId`| string | |
-`countryId` | number | |
-`sellerId` | string | |
-`emailAddress` | string | Email address for the account
-`websiteId` | number | ID of the Commerce website
-`websiteName` | string | Name of the Commerce website
-`status` | string |  |
-`createdAt` | string | DateTime when account was created
-`lastUpdatedAt` | string | DateTime when account was updated
-`listingSettings` | object | Configuration for listings
-`lifetimeSales` | object | Report for lifetime sales
-`orderSettings` | object | Configuration for orders and order ingestion
+* The development team ran into some errors trying to run an async version. There were more difficulties in both writing and reading at the same time to file storage.
 
-### Attribute
-
-Collection of an attribute with many subsets of different values e.g colour
-
-Param | Type | Description
---- | --- | ---
-`id` | string | uuid4 identifier for the Attribute
-`marketplaceId` | string | Id for the Amazon marketplace the attribute
-`amazonAttributeName` | string | The name of the Attribute that it maps to in Amazon
-`productCatalogAttributeCode` | string | The Product catalog attribute code in Commerce
-`overwriteMagentoValues` | string | Custom flag that allows Amazon values to overwrite values defined in Adobe Commerce
-`status` | Boolean | Active or Inactive
-`values` | AttributeValues | Key/value list of values related to the attribute
-
-### Communication error log
-
-Collection of communication errors when sending requests to Amazon Seller Partner API
-
-Param | Type | Description
---- | --- | ---
-`id` | string | uuid4 identifier for the account
-`storeName` | string | Name of the Commerce store
-`marketplaceId` | string | Id for the Amazon marketplace
-`region` | CountryName | Region for the Amazon marketplace: `United States` or `Canada`
-`sellerId` | string | |
-`createdAt` | string | DateTime when log was created
-`code` | string | Error code returned from the request
-`message` | string | Error message returned from the request
-
-### Listing changes
-
-Collection of listing changes for a product e.g change in price or quantity
-
-Param | Type | Description
---- | --- | ---
-`id` | string | uuid4 identifier for the account
-`storeName` | string | Name of the Commerce store
-`marketplaceId` | string | Id for the Amazon marketplace
-`region` | CountryName | Region for the Amazon marketplace. 'United States' or 'Canada'
-`sellerId` | string | |
-`createdAt` | string | DateTime when listing change was created
-`listingAction` | string | Name of the listing action. One of `Price`, `Quantity`, or `Condition`
-`sellerSku` | string | SKU for the Listing change
-`comments` | string | Comments for the listing change
-
-### Products
-
-Collection of products
-
-Param | Type | Description
---- | --- | ---
-`id` | string | uuid4 identifier for the account
-`status` | string | Product status
-`price` | float | Product price
-`stock` | int | Product quantity
-`name` | string | Product name
-`asin` | string | Amazon Standard Identification Number
-`sku` | string | Product identifier
-`productType` | string | |
-`attributes` | Array&lt;Attribute&gt; | List of attributes for the Product
-
-### Credentials
-
-Credentials for communicating with the Amazon Selling Partner marketplace.
-
-Param | Type | Description
---- | --- | ---
-`sellingPartnerAppClientId` | string | Client ID for Amazon Selling Partner App
-`sellingPartnerAppClientSecret` | string | Client Secret for Amazon Selling Partner App
-`awsAccessKeyId` | string | AWS access key
-`awsAccessKeySecret` | string | AWS access key secret
-`awsSellingPartnerRole` | string | AWS Selling Partner role
+* Developers must be aware of the difference between public  and non-public folders open up the permissions of the bucket.

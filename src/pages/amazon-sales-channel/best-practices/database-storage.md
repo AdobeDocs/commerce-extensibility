@@ -1,6 +1,6 @@
 ---
 title: Database storage
-description: 
+description: Learn about the decisions to use the Adobe I/O Files and Adobe I/O State libraries to store data.
 ---
 
 # Database storage
@@ -11,7 +11,7 @@ The [Adobe I/O Files](https://github.com/adobe/aio-lib-files) and [Adobe I/O Sta
 
 ## Adobe I/O State library
 
-There are benefits and limitations in using the Adobe I/O State library.
+Implementing the Adobe I/O State library has its benefits and limitations.
 
 ### Benefits
 
@@ -25,7 +25,7 @@ Attributes are one example where models must be linked. The development team def
 
 Amazon's Selling Partner APIs throttling controls significantly impact application performance. The development team attempted workarounds such as increasing period for repeated calls and investigating Amazon's webhooks functionality. However, the best technical solution was to leverage App Builder's storage capabilities.
 
-### Pitfalls
+### Limitations
 
 The `lib-state` library has some very clear limitation from both practice and the public documentation. A common misconception is that this library is a replacement for a traditional RDBMS/noSQL database. Instead, it has technical capabilities which are similar to Redis or other caching services. The library [README](https://github.com/adobe/aio-lib-state) lists these limitations:
 
@@ -118,7 +118,7 @@ Since `lib-files` uses blob storage in the Azure cloud, each user has their own 
 
 The development team also found that while `lib-state` is great at read/write operations, `lib-files` is not. The file library is a great option for tasks that are not read/write heavy. Since credentials require the utmost security, it did not seem prudent to use `lib-state` for this use case as it's not multi-tenant.Therefore, reading credentials from lib-files was a better option overall.
 
-### Pitfalls
+### Limitations
 
 The `lib-files` library has some limitations from both practice and the public documentation. Its closest comparison is Amazon S3 storage.
 

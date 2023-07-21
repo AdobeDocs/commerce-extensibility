@@ -18,6 +18,10 @@ module.exports = [
             {
                 title: "Credentials management",
                 path: "/amazon-sales-channel/best-practices/credentials.md"
+            },
+            {
+                title: "Logging and troubleshooting",
+                path: "/amazon-sales-channel/best-practices/logging-troubleshooting.md"
             }
         ]
     },

@@ -7,7 +7,7 @@ description: Learn how you can use Amazon Sales Channel on App Builder as a refe
 
 Amazon Sales Channel on App Builder is a flagship reference app developed by Adobe Commerce to accelerate merchant and partner adoption of out-of-process extensibility.
 
-This app showcases how Adobe Developer App Builder can create integrations and extensions without modifying the core Commerce application. Amazon Sales Channel on App Builder focuses on demonstrating how to develop key capabilities and extensibility use cases with App Builder. Partners and developers can leverage the application code, best practice guides, and documentation to confidently create their own next-generation extensions and integrations.
+This app showcases how Adobe Developer App Builder can create integrations and extensions without modifying the core Commerce application. [Amazon Sales Channel on App Builder](https://github.com/adobe/amazon-sales-channel-app-builder) focuses on demonstrating how to develop key capabilities and extensibility use cases with App Builder. Partners and developers can leverage the application code, best practice guides, and documentation to confidently create their own next-generation extensions and integrations.
 
 The application presents many common use cases for extending Adobe Commerce, including:
 
@@ -34,3 +34,9 @@ The central goal of this reference app is to build confidence in the App Builder
 You can use the [PHP extension user guide](https://experienceleague.adobe.com/docs/commerce-channels/amazon/guide-overview.html) to understand the reference app behaviors. Note that Amazon Sales Channel on App Builder does not feature order management, listing and pricing rules, and several other capabilities of the PHP application.
 
 In general, the sample app looks and feels like the PHP extension. However, some capabilities and behaviors are not exactly the same. Partners and developers should view Amazon Sales Channel on App Builder as a learning tool to enable building high-quality, out-of-process apps with confidence.
+
+## Additional resources
+
+* Join the [#app-builder-community slack channel](https://github.com/AdobeDocs/commerce-extensibility/pull/49/magentocommeng.slack.com) in the Commerce Engineering Slack workspace to ask questions directly to teams and partners working with App Builder.
+
+* Review [Common Troubleshooting](https://developer.adobe.com/app-builder/docs/getting_started/common_troubleshooting/) in the App Builder _Getting Started_ guide for the latest debugging tips.

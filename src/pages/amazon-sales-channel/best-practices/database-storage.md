@@ -57,7 +57,7 @@ This can be avoided by maintaining an index of keys. Example would be a simple a
 
 `const entities = ["id-1", "id-2", "id-3"];`
 
-This will enable you to create some utility functions which would slice the list of entities into separate chunks, a limit on the number of returned items and using the page as a cursor to get the next set of results when queried. Example:
+Using an index of keys enables you to create utility functions that would divide the list of entities into separate chunks. This practice creates a limit on the number of returned items and uses the page as a cursor to get the next set of results when queried. For example:
 
 ```js
 export function findPage<T>(

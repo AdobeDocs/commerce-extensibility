@@ -22,6 +22,10 @@ module.exports = [
             {
                 title: "Logging and troubleshooting",
                 path: "/amazon-sales-channel/best-practices/logging-troubleshooting.md"
+            },
+            {
+                title: "Database storage",
+                path: "/amazon-sales-channel/best-practices/database-storage.md"
             }
         ]
     },

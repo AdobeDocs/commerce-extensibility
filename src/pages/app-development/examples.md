@@ -5,11 +5,11 @@ description: Learn how to use API Mesh, Adobe I/O Events, and App Builder to ext
 
 # Extensibility examples
 
-There are many ways to extend [Adobe Commerce](https://business.adobe.com/products/magento/extended-capabilities.html) today, such as [APIs](https://developer.adobe.com/commerce/webapi/) and [extensions](https://business.adobe.com/products/magento/marketplace.html). However, these options in isolation only encapsulate a small fraction of what is possible with extensibility. This article speculates on what is possible with new and emergent offerings and more complicated integrations to explore the boundaries of what is possible.
+There are many ways to extend [Adobe Commerce](https://business.adobe.com/products/magento/extended-capabilities.html) today, such as [APIs](https://developer.adobe.com/commerce/webapi/) and [extensions](https://business.adobe.com/products/magento/marketplace.html). However, these options in isolation only encapsulate a small fraction of possibilities with extensibility. This article speculates on what is possible with new and emergent offerings and more complicated integrations to explore the boundaries of what can be created in the future.
 
 ## Understanding the components
 
-There are several new and developing technologies created by Adobe that can further extend the Adobe Commerce platform. Before getting into more complex examples, we will take a look at each of these services individually.
+There are several new and developing technologies created by Adobe that can further extend the Adobe Commerce platform. Each of the following services has unique features and capabilities, which are important to understand individually before considering more complicated examples.
 
 ### Adobe Developer App Builder
 
@@ -21,6 +21,27 @@ To learn more about App Builder, follow [this step-by-step tutorial](https://dev
 
 [API Mesh](https://developer.adobe.com/graphql-mesh-gateway/) is an Adobe service that allows you to take multiple disparate sources, such as GraphQL endpoints, REST APIs, JSON Schemas, and SOAP implementations, and combine them into a single queryable GraphQL endpoint. By creating a mesh, you can connect Adobe Commerce to App Builder, Adobe IO Gateway, and any other service that provides an accessible source. You can further customize your experience by [transforming](https://developer.adobe.com/graphql-mesh-gateway/gateway/transforms/) source data.
 
+![API Mesh diagram](../_images/api-mesh-diagram.png)
+
+<!--( mermaid.js code for image, removed one arrow
+flowchart TD
+    subgraph Data Sources&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    B[(GraphQL)] 
+    A[( API )] 
+    D[( JSON \n Schema )] 
+    C[(SOAP)]
+    end
+    subgraph API  Mesh&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    F1[(Your Mesh)]
+    end
+    subgraph Endpoint 
+    H1[(Unified GraphQL \n Endpoint)] <-- F1
+    end
+    F1 --- A
+    F1 --- B
+    F1 --- C
+    F1 --- D
+-->
 API Mesh has several features which allow for further extensibility:
 
 - [Hooks](https://developer.adobe.com/graphql-mesh-gateway/gateway/hooks/) - Allow you to invoke composable local or remote functions, which can be used for authenticating or checking for a header before making a request.

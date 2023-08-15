@@ -15,7 +15,7 @@ There are several new and developing technologies created by Adobe that can furt
 
 [App Builder](https://developer.adobe.com/app-builder/docs/overview/) is a complete framework that allows you to build and deploy custom web applications to extend Adobe Commerce and other Adobe solutions while running on Adobe infrastructure. With [React Spectrum](https://react-spectrum.adobe.com/react-spectrum/index.html) these single-page applications (SPAs) are only limited by your React knowledge.
 
-To learn more about App Builder, we recommend following [this step-by-step tutorial](https://developer.adobe.com/app-builder/docs/getting_started/first_app/) on creating your first app. This will provide you with the foundational knowledge of what App Builder is and how it works.
+To learn more about App Builder, follow [this step-by-step tutorial](https://developer.adobe.com/app-builder/docs/getting_started/first_app/) on creating your first app. This provides you with the foundational knowledge of what App Builder is and how it works.
 
 ### API Mesh for Adobe Developer App Builder
 
@@ -27,13 +27,13 @@ API Mesh has several features which allow for further extensibility:
 
 - [Custom Resolvers](https://developer.adobe.com/graphql-mesh-gateway/gateway/extending-unified-schema/) - Allow you to upload a JavaScript resolver to your mesh that can modify the schema. In [this example](https://developer.adobe.com/graphql-mesh-gateway/gateway/extending-unified-schema/#programmatic-additionalresolvers), we show how you could use a discounts API to apply discounts to your products.
 
-To learn more about API Mesh, we recommend following [this walkthrough](https://developer.adobe.com/graphql-mesh-gateway/gateway/mesh_walkthrough/) where you will create, query, and transform data using a sample mesh.
+To learn more about API Mesh, follow [this walkthrough](https://developer.adobe.com/graphql-mesh-gateway/gateway/mesh_walkthrough/) where you create, query, and transform data using a sample mesh.
 
 ### Adobe I/O Events
 
 [Adobe I/O Events](https://developer.adobe.com/commerce/events/get-started/) allows you to create event-driven applications that take action when a shopper performs an action on an Adobe product. Commerce can now make transactional data available to applications created with Adobe App Builder.
 
-We recommend reading through the [Conditional Events](https://developer.adobe.com/commerce/events/get-started/conditional-events/) documentation to get an idea of what is possible with Adobe I/O Events.
+Read through the [Conditional Events](https://developer.adobe.com/commerce/events/get-started/conditional-events/) documentation to get an idea of what is possible with Adobe I/O Events.
 
 ## Combining extensibility components
 
@@ -41,7 +41,7 @@ While App Builder, API Mesh, and Adobe I/O Events provide powerful extensibility
 
 ### Example: Change logging
 
-Let's consider a scenario where you want to create an accessible log that keeps records of specific changes to your Adobe Commerce products. You could create a [conditional event](https://developer.adobe.com/commerce/events/get-started/conditional-events/) that fires when a product's price is changed beyond a specified threshold. That event is consumed by your App Builder app in a mesh that combines your Adobe Commerce REST endpoint and a third-party logging API. The App Builder app could then serve the logged data through an interactive webpage.
+Consider a scenario where you want to create an accessible log that keeps records of specific changes to your Adobe Commerce products. You could create a [conditional event](https://developer.adobe.com/commerce/events/get-started/conditional-events/) that fires when a product's price is changed beyond a specified threshold. That event is consumed by your App Builder app in a mesh that combines your Adobe Commerce REST endpoint and a third-party logging API. The App Builder app could then serve the logged data through an interactive webpage.
 
 ### Example: Tracking efficiency
 
@@ -49,4 +49,4 @@ If you are curious about the quality and turnaround time of your shipping provid
 
 ### Example: Adding placeholder data
 
-Consider a scenario where you want to create placeholder products, but you do not want the page to be empty and you don't want to manually create placeholder data. You could create an event that fires when a product description contains `<placeholder>` or some similar trigger that is consumed by your App Builder app, which uses Adobe Commerce's REST API along with a third-party placeholder data app to populate your `stage` storefront with placeholder data.
+Consider a scenario where you want to create placeholder products, but you do not want the page to be empty and you do not want to manually create placeholder data. You could create an event that fires when a product description contains `<placeholder>` or some similar trigger that is consumed by your App Builder app, which uses Adobe Commerce's REST API along with a third-party placeholder data app to populate your `stage` storefront with placeholder data.

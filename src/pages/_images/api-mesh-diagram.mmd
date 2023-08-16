@@ -1,0 +1,17 @@
+flowchart TD
+    subgraph Data Sources&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    B[(GraphQL)] 
+    A[( API )] 
+    D[( JSON \n Schema )] 
+    C[(SOAP)]
+    end
+    subgraph API  Mesh&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    F1[(Your Mesh)]
+    end
+    subgraph Endpoint 
+    H1[(Unified GraphQL \n Endpoint)] <--> F1
+    end
+    F1 --- A
+    F1 --- B
+    F1 --- C
+    F1 --- D

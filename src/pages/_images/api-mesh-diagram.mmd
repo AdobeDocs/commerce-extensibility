@@ -1,17 +1,34 @@
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#FF330F',
+      'primaryTextColor': '#fff',
+      'primaryBorderColor': '#7C0000',
+      'lineColor': '#041E2F',
+      'secondaryColor': '#006100',
+      'tertiaryColor': '#fff'
+    }
+  }
+}%%
 flowchart TD
-    subgraph Data Sources&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-    B[(GraphQL)] 
-    A[( API )] 
-    D[( JSON \n Schema )] 
-    C[(SOAP)]
-    end
-    subgraph API  Mesh&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-    F1[(Your Mesh)]
-    end
     subgraph Endpoint 
-    H1[(Unified GraphQL \n Endpoint)] <--> F1
+    A[(&nbsp&nbsp&nbspUnified GraphQL&nbsp&nbsp&nbsp \n Endpoint)]
     end
-    F1 --- A
-    F1 --- B
-    F1 --- C
-    F1 --- D
+    subgraph &nbspAPI&nbsp&nbspMesh
+    B[(&nbsp&nbsp&nbspYour Mesh&nbsp&nbsp&nbsp)]
+    end
+    subgraph Data  &nbsp Sources
+    C[(GraphQL)] 
+    D[( REST )] 
+    E[( Adobe I/O \n Runtime )] 
+    F[(SOAP)]
+    G[(Custom API)]
+    end
+
+    A --- B
+    B --- C
+    B --- D
+    B --- E
+    B --- F
+    B --- G

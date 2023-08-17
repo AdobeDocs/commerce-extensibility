@@ -5,17 +5,17 @@ description: Learn how to use API Mesh, Adobe I/O Events, and App Builder to ext
 
 # Extensibility examples
 
-There are many ways to extend [Adobe Commerce](https://business.adobe.com/products/magento/extended-capabilities.html) today, such as [APIs](https://developer.adobe.com/commerce/webapi/) and [extensions](https://business.adobe.com/products/magento/marketplace.html). However, these options in isolation only encapsulate a small fraction of possibilities with extensibility. This article speculates on what is possible with new and emergent offerings and more complicated integrations to explore the boundaries of what can be created in the future.
+There are many ways to extend [Adobe Commerce](../index.md) today, such as [APIs](https://developer.adobe.com/commerce/webapi/) and [extensions](https://developer.adobe.com/commerce/marketplace/guides/sellers/extension-create/). However, these options in isolation only encapsulate a small fraction of possibilities with extensibility. This article speculates on what is possible with new and emergent offerings and more complicated integrations to explore the boundaries of what can be created in the future.
 
 ## Understanding the components
 
-There are several new and developing technologies created by Adobe that can further extend the Adobe Commerce platform. Each of the following services has unique features and capabilities, which are important to understand individually before considering more complicated examples.
+Adobe has several new and developing technologies that can further extend the Adobe Commerce platform. Each of the following services has unique features and capabilities, which are important to understand individually before considering more complicated examples.
 
 ### Adobe Developer App Builder
 
 [App Builder](https://developer.adobe.com/app-builder/docs/overview/) is a complete framework that allows you to build and deploy custom web applications to extend Adobe Commerce and other Adobe solutions while running on Adobe infrastructure. With [React Spectrum](https://react-spectrum.adobe.com/react-spectrum/index.html) these single-page applications (SPAs) are only limited by your React knowledge.
 
-To learn more about App Builder, follow [this step-by-step tutorial](https://developer.adobe.com/app-builder/docs/getting_started/first_app/) on creating your first app. This provides you with the foundational knowledge of what App Builder is and how it works.
+To learn more about App Builder, follow [this step-by-step tutorial](https://developer.adobe.com/app-builder/docs/getting_started/first_app/) on creating your first app. These instructions provide you with the foundational knowledge of what App Builder is and how it works.
 
 ### API Mesh for Adobe Developer App Builder
 
@@ -34,9 +34,9 @@ To learn more about API Mesh, follow [this walkthrough](https://developer.adobe.
 
 ### Adobe I/O Events
 
-[Adobe I/O Events](https://developer.adobe.com/commerce/events/get-started/) allows you to create event-driven applications that take action when a shopper performs an action on an Adobe product. Commerce can now make transactional data available to applications created with Adobe App Builder.
+[Adobe I/O Events for Adobe Commerce](https://developer.adobe.com/commerce/events/get-started/) allows you to create event-driven applications that take action when a shopper performs an action on a Commerce storefront, such as adding a product to a cart, clicking the Buy button, or creating an account. Commerce can now make transactional data available to applications created with Adobe App Builder.
 
-Read through the [Conditional Events](https://developer.adobe.com/commerce/events/get-started/conditional-events/) documentation to get an idea of what is possible with Adobe I/O Events.
+In addition, [Conditional Events](https://developer.adobe.com/commerce/events/get-started/conditional-events/) give you the power to define rules that execute workflows when certain thresholds are met. For example, you could create a rule that sends a special coupon code for any new customer from a specified state.
 
 ## Combining extensibility components
 
@@ -44,7 +44,7 @@ While App Builder, API Mesh, and Adobe I/O Events provide powerful extensibility
 
 ### Example: Change logging
 
-Consider a scenario where you want to create an accessible log that keeps records of specific changes to your Adobe Commerce products. You could create a [conditional event](https://developer.adobe.com/commerce/events/get-started/conditional-events/) that fires when a product's price is changed beyond a specified threshold. That event is consumed by your App Builder app in a mesh that combines your Adobe Commerce REST endpoint and a third-party logging API. The App Builder app could then serve the logged data through an interactive webpage.
+Consider a scenario where you want to create an accessible log that keeps records of specific changes to your Adobe Commerce products. You could create a conditional event that fires when a product's price is changed beyond a specified threshold. That event is consumed by your App Builder app in a mesh that combines your Adobe Commerce REST endpoint and a third-party logging API. The App Builder app could then serve the logged data through an interactive webpage.
 
 ### Example: Tracking efficiency
 
@@ -52,4 +52,4 @@ If you are curious about the quality and turnaround time of your shipping provid
 
 ### Example: Adding placeholder data
 
-Consider a scenario where you want to create placeholder products, but you do not want the page to be empty and you do not want to manually create placeholder data. You could create an event that fires when a product description contains `<placeholder>` or some similar trigger that is consumed by your App Builder app, which uses Adobe Commerce's REST API along with a third-party placeholder data app to populate your `stage` storefront with placeholder data.
+Consider a scenario where you want to create placeholder products, but you do not want the page to be empty and you do not want to manually create placeholder data. You could create an event that fires when a product description contains a string like `<placeholder>`. This event is consumed by your App Builder app, which uses Adobe Commerce's REST API along with a third-party placeholder data app to populate your `stage` storefront with placeholder data.

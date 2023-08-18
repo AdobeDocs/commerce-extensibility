@@ -42,6 +42,9 @@ In addition, [Conditional Events](https://developer.adobe.com/commerce/events/ge
 
 While App Builder, API Mesh, and Adobe I/O Events provide powerful extensibility on their own, combining them allows Adobe Commerce users to maximize their extensibility. The next few sections describe possible example implementations of this type of integration.
 
+![Integrated Commerce](../_images/integrated-commerce.png)
+<!-- [Link to .mmd file](../_images/integrated-commerce.mmd) -->
+
 ### Example: Change logging
 
 Consider a scenario where you want to create an accessible log that keeps records of specific changes to your Adobe Commerce products. You could create a conditional event that fires when a product's price is changed beyond a specified threshold. That event is consumed by your App Builder app in a mesh that combines your Adobe Commerce REST endpoint and a third-party logging API. The App Builder app could then serve the logged data through an interactive webpage.

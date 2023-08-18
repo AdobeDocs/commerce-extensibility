@@ -1,0 +1,30 @@
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#fff',
+      'primaryTextColor': '#041E2F',
+      'tertiaryTextColor': '#fffff',
+      'primaryBorderColor': '#FF330F',
+      'lineColor': '#6A90D2',
+      'secondaryColor': '#fff',
+      'tertiaryColor': '#F2F3F5',
+      'clusterBorder': '#000'
+    }
+  }
+}%%
+flowchart LR
+    subgraph &nbspOrchestration Layer &nbsp
+    A[(API Mesh)]
+    end
+    subgraph Adobe I/O Runtime
+    B[(Adobe Commerce \n on Cloud Infrastructure)]
+    end
+    subgraph &nbsp Microservice or SPA &nbsp
+    C[(Adobe Developer \n App Builder )] 
+
+    end
+
+    A --- |Calls between \nCommerce Events \n and your Mesh| B
+    B --- |Calls between\n Adobe Commerce\n and your App| C
+    C --- |Calls between \n your App\n and your Mesh| A

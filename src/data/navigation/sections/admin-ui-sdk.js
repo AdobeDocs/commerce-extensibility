@@ -12,6 +12,21 @@ module.exports = [
       path: "/admin-ui-sdk/app-registration.md"
     },
     {
+      title: "Extension points",
+      path: "/admin-ui-sdk/extension-points/index.md",
+      pages: [
+        {
+          title: "Menu",
+          path: "admin-ui-sdk/extension-points/menu.md"
+        },
+        {
+          title: "Product",
+          path: "admin-ui-sdk/extension-points/product.md"
+        }
+
+      ]
+    },
+    {
       title: "Admin configuration and testing",
       path: "/admin-ui-sdk/configuration.md"
     },

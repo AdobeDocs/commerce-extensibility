@@ -24,13 +24,17 @@ To learn more about App Builder, follow [this step-by-step tutorial](https://dev
 ![API Mesh diagram](../_images/api-mesh-diagram.png)
 <!-- [Link to .mmd file](../_images/api-mesh-diagram.mmd) -->
 
+API Mesh adds extensibility at the web API layer (headless/consumer level) by providing the relevant data and behavior from different API sources to the consumer (usually an experience like a storefront, web store, or kiosk) without needing to modify these sources.
+
+Additionally, the unified GraphQL endpoint allows you to integrate with other services or synchronize data between systems.
+
 API Mesh has several features which allow for further extensibility:
 
-- [Hooks](https://developer.adobe.com/graphql-mesh-gateway/gateway/hooks/) - Allow you to invoke composable local or remote functions, which can be used for authenticating or checking for a header before making a request.
+- `beforeAll` [Hooks](https://developer.adobe.com/graphql-mesh-gateway/gateway/hooks/) - Allow you to insert a function before the query takes place, which can be used for authenticating or checking for a header before making a request.
 
-- [Custom Resolvers](https://developer.adobe.com/graphql-mesh-gateway/gateway/extending-unified-schema/) - Allow you to upload a JavaScript resolver to your mesh that can modify the schema. In [this example](https://developer.adobe.com/graphql-mesh-gateway/gateway/extending-unified-schema/#programmatic-additionalresolvers), we show how you could use a discounts API to apply discounts to your products.
+- [Custom Resolvers](https://developer.adobe.com/graphql-mesh-gateway/gateway/extending-unified-schema/) - Allow you to upload a resolver to your mesh that uses Javascript to modify schema data. In [this example](https://developer.adobe.com/graphql-mesh-gateway/gateway/extending-unified-schema/#programmatic-additionalresolvers), we show how you could use a discounts API to apply discounts to your products.
 
-To learn more about API Mesh, follow [this walkthrough](https://developer.adobe.com/graphql-mesh-gateway/gateway/mesh_walkthrough/) where you create, query, and transform data using a sample mesh.
+To learn more about API Mesh, follow [this walkthrough](https://developer.adobe.com/graphql-mesh-gateway/gateway/mesh_walkthrough/) where you create, query, and transform data using a sample configuration. [Transforms](https://developer.adobe.com/graphql-mesh-gateway/gateway/transforms/) in API Mesh allow you to modify the structure of a source's data without modifying the source itself.
 
 ### Adobe I/O Events
 
@@ -41,6 +45,8 @@ In addition, [Conditional Events](https://developer.adobe.com/commerce/events/ge
 ## Combining extensibility components
 
 While App Builder, API Mesh, and Adobe I/O Events provide powerful extensibility on their own, combining them allows Adobe Commerce users to maximize their extensibility. The next few sections describe possible example implementations of this type of integration.
+
+The Commerce storefront acts as a consumer, while API Mesh acts as an orchestration layer. The consumer sends events to the orchestration layer which can access backend systems and vendor APIs then compute or modify the data and return it to the storefront or pass it on to the single-page application (App Builder). The consumer or storefront can also contact the single-page application directly.
 
 ![Integrated Commerce](../_images/integrated-commerce.png)
 <!-- [Link to .mmd file](../_images/integrated-commerce.mmd) -->

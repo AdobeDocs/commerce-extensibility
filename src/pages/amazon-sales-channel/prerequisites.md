@@ -7,14 +7,36 @@ description: Determine what software you need to install the Amazon Sales Channe
 
 This topic describes how to set up your local development environment so that you can install the Adobe Sales Channel reference app.
 
-You must install [nodeJS 16.13+](https://nodejs.org/en/download) as your JavaScript runtime.
+To install the reference app, you must:
 
-## Adobe Commerce
+*  Have an Adobe Developer account with System Administrator or Developer Role permissions. [Getting started with Adobe Developer Console](https://developer.adobe.com/developer-console/docs/guides/getting-started/) describes how to enroll in the Adobe developer program.
 
-*  (Required) Adobe Commerce 2.4.5+
-*  (Optional) [Adobe Commerce Admin UI SDK](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/) enables you to attach the App Builder application to the Adobe Commerce Admin.
+*  Be familiar with [Adobe I/O Runtime](https://developer.adobe.com/runtime/docs/guides/getting-started/) and [Adobe IO Events](https://developer.adobe.com/runtime/docs/).
+
+*  Install the [`aio CLI`](https://developer.adobe.com/runtime/docs/guides/getting-started/setup/)
+
+*  Have access to an Adobe Commerce 2.4.5+ on cloud infrastructure or to an on-premises instance.
+
+*  (Recommended) Install [Adobe Commerce Admin UI SDK](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/), which enables you to attach the App Builder application to the Adobe Commerce Admin.
+
+*  Install [nodeJS 16.13+](https://nodejs.org/en/download) as your JavaScript runtime.
 
 In addition to these software requirements, you must have access to the Commerce environment from an external network. You must also have the ability to add API integrations.
+
+## Adobe Commerce configuration and setup
+
+Before you begin the process of installing the Adobe Sales Channel reference app, you must configure I/O Events for Adobe Commerce and add custom attributes to the Admin.
+
+### Configure I/O Events for Adobe Commerce
+
+Follow the instructions in [Configure Adobe Commerce](https://developer.adobe.com/commerce/events/get-started/configure-commerce/) to enable communication with Adobe I/O and create an event provider. Specifically, follow these procedures:
+
+* [Configure the Adobe I/O connection](https://developer.adobe.com/commerce/events/get-started/configure-commerce/#configure-the-adobe-io-connection)
+
+* [Create an event provider and complete the Commerce configuration
+](https://developer.adobe.com/commerce/events/get-started/configure-commerce/#create-an-event-provider-and-complete-the-commerce-configuration)
+
+Do not perform the **Subscribe and register events** procedure. The Amazon Sales Channel app [installation](installation.md) instructions describe the process for this app.
 
 ### Create custom attributes
 
@@ -24,55 +46,6 @@ To subscribe to catalog update events from Adobe Commerce, you must create the f
 | --- | --- | --- | --- |
 | ASIN | `asin` | Global | |
 | Amazon Condition | `amazon_condition` | Global | Condition of the listing item. The [Amazon docs](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-reference#conditiontype) list the possible values. |
-
-### Subscribe to catalog update events
-
-Use the following steps to configure Commerce and subscribe to catalog update events. The [_Getting started with Adobe I/O Events for Adobe Commerce_](https://developer.adobe.com/commerce/events/get-started/configure-commerce/) guide provides additional context.
-
-1. Register your Commerce instance as an event provider. See [Configure Adobe Commerce](https://developer.adobe.com/commerce/events/get-started/configure-commerce/) for details.
-
-1. After you have configured your instance and the event provider is created, use the following command to subscribe to the `observer.catalog_product_save_after` event:
-
-   ```bash
-   bin/magento events:subscribe observer.catalog_product_save_after --fields=sku --fields=price --fields=stock_data.qty --fields=asin --fields=amazon_condition --fields=name
-   ```
-
-## Adobe Developer Console
-
-The [Adobe Developer Console](https://developer.adobe.com/developer-console/docs/guides/getting-started/) allows you to create projects and begin your development journey. Create a project and make sure that you have access to the following:
-
-*  [Adobe IO Runtime](https://developer.adobe.com/runtime/docs/)
-*  [Adobe IO Events](https://developer.adobe.com/runtime/docs/)
-
-### Adobe I/O CLI
-
-The [Adobe I/O CLI](https://developer.adobe.com/runtime/docs/guides/tools/cli_install) allows you to manage your projects and workspaces. Install this essential tool by following these steps:
-
-1. Run `npm install -g @adobe/aio-cli` to install Adobe I/O Extensible CLI.
-
-1. Run `aio login` to authenticate to the developer console.
-
-1. Run `aio console org select` to select your organization.
-
-1. Run `aio console project select` to select your project.
-
-1. Run `aio console workspace select` and select "Stage" as your workspace.
-
-For more information, refer to [Adobe I/O CLI documentation](https://github.com/adobe/aio-cli/blob/master/README.md).
-
-### Adobe Developer App Builder
-
-[Adobe Developer App Builder](https://developer.adobe.com/app-builder/docs/overview/) is a complete framework that enables enterprise developers to build and deploy custom web applications that extend Adobe Commerce and other Experience Cloud solutions and run on Adobe infrastructure.
-
-The following package needs to be installed locally to properly register events:
-
-*  [aio-cli-plugin-extension](https://github.com/adobe/aio-cli-plugin-extension)
-
-The following packages need to be installed locally to properly run your `aio` with `--local` flag enabled:
-
-*  [Java 11 or higher](https://www.oracle.com/es/java/technologies/javase/jdk11-archive-downloads.html)
-*  [Maven](https://maven.apache.org/)
-*  [Docker](https://docs.docker.com/desktop/)
 
 ## Amazon SP API
 

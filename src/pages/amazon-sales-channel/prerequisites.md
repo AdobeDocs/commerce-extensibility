@@ -5,7 +5,7 @@ description: Determine what software you need to install the Amazon Sales Channe
 
 # Prerequisites
 
-This topic describes how to set up your local development environment so that you can install the Adobe Sales Channel reference app.
+This topic describes how to set up your local development environment so that you can install the Adobe Sales Channel reference app on an Adobe Commerce 2.4.5+ instance.
 
 To install the reference app, you must:
 

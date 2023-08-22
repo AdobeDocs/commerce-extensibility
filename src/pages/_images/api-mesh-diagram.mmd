@@ -7,30 +7,39 @@
       'tertiaryTextColor': '#fffff',
       'primaryBorderColor': '#FF330F',
       'lineColor': '#6A90D2',
-      'secondaryColor': '#fff',
+      'secondaryColor': '#006100',
       'tertiaryColor': '#F2F3F5',
       'clusterBorder': '#000'
     }
   }
 }%%
 flowchart TD
-    subgraph Endpoint 
-    A[(&nbsp&nbsp&nbspUnified GraphQL&nbsp&nbsp&nbsp \n Endpoint)]
+    subgraph  
+    A[(API Gateway)]
     end
-    subgraph &nbspAPI&nbsp&nbspMesh
-    B[(&nbsp&nbsp&nbspYour Mesh&nbsp&nbsp&nbsp)]
+    subgraph &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspAPI &nbspMesh
+    B[(Unified GraphQL \nEndpoint)]
     end
-    subgraph Data  &nbsp Sources
+    subgraph Data Sources &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
     C[(GraphQL)] 
-    D[( REST )] 
-    E[( Adobe I/O \n Runtime )] 
+    D[( OpenAPI )] 
+    D1[( REST )] 
+
     F[(SOAP)]
-    G[(Custom API)]
+    E[( JsonSchema )] 
+
+    E1[( Adobe I/O \n Runtime )] 
+    E2[(Custom API)]
+    E3[( REST )] 
+
     end
 
     A --- B
     B --- C
     B --- D
     B --- E
+    D --- D1
     B --- F
-    B --- G
+    E --- E1
+    E --- E2
+    E --- E3

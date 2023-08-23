@@ -47,8 +47,6 @@ In your App Builder project:
 
 1. On the **Configure API** page, select the **Service Account (JWT)** option and click **Save configured API**.
 
-   **Note**: OAuth Server to Server authentication is not currently supported.
-
 1. Select **Generate key pair**.  
 
 1. Click **Save configured API**.

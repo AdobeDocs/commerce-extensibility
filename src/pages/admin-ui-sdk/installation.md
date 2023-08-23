@@ -27,6 +27,10 @@ The [Adobe App Builder _Getting Started_ guide](https://developer.adobe.com/app-
 
 You can install the Admin UI SDK on Adobe Commerce on cloud infrastructure and on-premises instances.
 
+### Enable Adobe IMS for Commerce
+
+You must implement Adobe Identity Management Service (IMS) for Adobe Commerce to use the Admin UI SDK. [Configure the Commerce Admin Integration with Adobe ID](https://experienceleague.adobe.com/docs/commerce-admin/start/admin/ims/adobe-ims-config.html?lang=en) describes this process.
+
 ### Adobe Commerce on cloud infrastructure
 
 This method installs the SDK on a cloud instance.

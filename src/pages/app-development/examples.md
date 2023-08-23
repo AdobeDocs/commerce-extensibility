@@ -19,7 +19,7 @@ To learn more about App Builder, follow [this step-by-step tutorial](https://dev
 
 ### API Mesh for Adobe Developer App Builder
 
-[API Mesh](https://developer.adobe.com/graphql-mesh-gateway/) is an Adobe service that allows you to take multiple vendor APIs of different protocols, like GraphQL, REST APIs, JSON Schemas, and SOAP implementations, and combine them into a single unified GraphQL endpoint. By consuming a mesh's unified GraphQL endpoint, you can connect Adobe Commerce to App Builder, Adobe I/O Events for Adobe Commerce, and any other service that provides an accessible source. You can further customize your experience by using [transforms](https://developer.adobe.com/graphql-mesh-gateway/gateway/transforms/) to customize the source data to your needs.
+[API Mesh](https://developer.adobe.com/graphql-mesh-gateway/) is an Adobe service that allows you to take multiple vendor APIs of different protocols, like GraphQL, REST, JSON schemas, and SOAP implementations, and combine them into a single unified GraphQL endpoint. By consuming a mesh's unified GraphQL endpoint, you can connect Adobe Commerce to App Builder, Adobe I/O Events for Adobe Commerce, and any other service that provides an accessible source. You can further customize your experience by using [transforms](https://developer.adobe.com/graphql-mesh-gateway/gateway/transforms/) to customize the source data to your needs.
 
 ![API Mesh diagram](../_images/api-mesh-diagram.png)
 <!-- [Link to .mmd file](../_images/api-mesh-diagram.mmd) -->
@@ -32,9 +32,9 @@ API Mesh has several features which allow for further extensibility:
 
 - `beforeAll` [Hooks](https://developer.adobe.com/graphql-mesh-gateway/gateway/hooks/) - Allow you to insert a function before the query takes place, which can be helpful for use cases like authenticating or checking for a header before making a request.
 
-- [Custom Resolvers](https://developer.adobe.com/graphql-mesh-gateway/gateway/extending-unified-schema/) - Allow you to upload a resolver to your mesh that uses Javascript to modify data, insert custom logic, and return custom computed data. In [this example](https://developer.adobe.com/graphql-mesh-gateway/gateway/extending-unified-schema/#programmatic-additionalresolvers), we show how you could use a discounts API to apply discounts to your products.
+- [Custom Resolvers](https://developer.adobe.com/graphql-mesh-gateway/gateway/extending-unified-schema/) - Allow you to upload a resolver to your mesh that uses JavaScript to modify data, insert custom logic, and return custom computed data. In [this example](https://developer.adobe.com/graphql-mesh-gateway/gateway/extending-unified-schema/#programmatic-additionalresolvers), we show how you could use a discounts API to apply discounts to your products.
 
-- [Transforms](https://developer.adobe.com/graphql-mesh-gateway/gateway/transforms/) in API Mesh allow you to modify the structure of an API's data without modifying the source itself.
+- [Transforms](https://developer.adobe.com/graphql-mesh-gateway/gateway/transforms/) - Allow you to modify the structure of an API's data without modifying the source itself.
 
 To learn more about API Mesh, follow [this walkthrough](https://developer.adobe.com/graphql-mesh-gateway/gateway/mesh_walkthrough/) where you create, query, and transform data using a sample configuration.
 
@@ -48,7 +48,7 @@ In addition, [Conditional Events](https://developer.adobe.com/commerce/events/ge
 
 While App Builder, API Mesh, and Adobe I/O Events provide powerful extensibility on their own, combining them allows Adobe Commerce users to maximize their extensibility. The next few sections describe possible example implementations of this type of integration.
 
-The Commerce storefront acts as a consumer, while API Mesh acts as an orchestration layer. The consumer sends events to the orchestration layer which can access backend systems and vendor APIs then compute or modify the data and return it to the storefront or pass it on to the single-page application (App Builder). The consumer or storefront can also contact the single-page application directly.
+The Commerce storefront acts as a consumer, while API Mesh acts as an orchestration layer. The consumer sends events to the orchestration layer, which can access backend systems and vendor APIs, then compute or modify the data and return it to the storefront or pass it on to the single-page application (App Builder). The consumer or storefront can also contact the single-page application directly.
 
 ![Integrated Commerce](../_images/integrated-commerce.png)
 <!-- [Link to .mmd file](../_images/integrated-commerce.mmd) -->

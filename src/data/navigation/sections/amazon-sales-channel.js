@@ -26,6 +26,10 @@ module.exports = [
             {
                 title: "Database storage",
                 path: "/amazon-sales-channel/best-practices/database-storage.md"
+            },
+            {
+                title: "Forward logs to New Relic",
+                path: "/amazon-sales-channel/best-practices/forwarding-logs.md"
             }
         ]
     },

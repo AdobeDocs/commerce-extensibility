@@ -1,11 +1,11 @@
 ---
 title: menu
-description: Admin UI SDK menu registration - API Reference
+description: Create a new menu that redirects to the App Builder app.
 ---
 
 # menu
 
-The `menu` extension point allows to create a new menu that redirects to the App Builder app.
+The `menu` extension point create a new menu that redirects to the App Builder app.
 
 ## Example customization
 

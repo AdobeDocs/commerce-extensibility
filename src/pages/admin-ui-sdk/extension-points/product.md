@@ -1,6 +1,6 @@
 ---
 title: product
-description: Customize the products in the Adobe Commerce Admin Panel
+description: Customize the products pages in the Adobe Commerce Admin.
 ---
 
 # product

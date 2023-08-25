@@ -1,11 +1,11 @@
 ---
 title: page
-description: 
+description: Create a new page that redirects to your App Builder app.
 ---
 
 # page
 
-The `page` extension point allows to create a new menu that redirects to the App Builder app.
+The `page` extension point creates a new page that redirects to your App Builder app.
 
 ## Example customization
 

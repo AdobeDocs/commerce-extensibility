@@ -59,7 +59,7 @@ Create an `ExtensionRegistration`  component that registers the menu configurati
 3. Create an `ExtensionRegistration.js` file as follows:
 
    ```javascript
-      import { register } from '@adobe/uix-guest';
+   import { register } from '@adobe/uix-guest';
 
    export default function ExtensionRegistration() {
      init().catch(console.error);

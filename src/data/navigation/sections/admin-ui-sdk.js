@@ -16,11 +16,15 @@ module.exports = [
       path: "/admin-ui-sdk/extension-points/index.md",
       pages: [
         {
-          title: "Menu",
+          title: "menu",
           path: "admin-ui-sdk/extension-points/menu.md"
         },
         {
-          title: "Product",
+          title: "page",
+          path: "admin-ui-sdk/extension-points/page.md"
+        },
+        {
+          title: "product",
           path: "admin-ui-sdk/extension-points/product.md"
         }
 

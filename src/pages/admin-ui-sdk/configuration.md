@@ -9,11 +9,13 @@ The Adobe Commerce Admin UI SDK allows you to use a local server to view and tes
 
 ## Configure the Admin
 
-Navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Admin UI SDK** and edit the **General Configuration** screen. When you enable the local service, all calls are automatically redirected to the local server, instead of connecting to Adobe's App Registry. The values you specify must match the contents of your local `server.js` file.
+Navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Admin UI SDK** and edit the **Local testing** screen. When you enable the local service, all calls are automatically redirected to the local server, instead of connecting to Adobe's App Registry. The values you specify must match the contents of your local `server.js` file.
 
 [Test with a sample app](#test-with-a-sample-app) provides a sample `server.js` file.
 
 ![Local server configuration](../_images/sdk-config.png)
+
+1. Select **Yes** from the **Enable Admin UI SDK** menu.
 
 1. Select **Yes** from the **Enable local service** menu.
 

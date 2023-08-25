@@ -5,11 +5,11 @@ description: Create a new menu that redirects to the App Builder app.
 
 # menu
 
-The `menu` extension point create a new menu that redirects to the App Builder app.
+The `menu` extension point creates a new menu that redirects to the App Builder app.
 
 ## Example customization
 
-The following example creates adds the **Marketing** > **First App on App Builder** menu option.
+The following example creates the **Marketing** > **First App on App Builder** menu option.
 
 ```javascript
 menu: {

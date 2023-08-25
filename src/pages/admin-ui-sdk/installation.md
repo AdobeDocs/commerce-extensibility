@@ -94,3 +94,19 @@ This method installs the SDK on an On-premises instance.
 1. Commit your changes.
 
 1. Update your on-premises instance to ensure the committed code is deployed.
+
+## Update the Commerce Admin UI SDK
+
+Use the following procedure to update patch versions of the SDK, such as from V1.0.0 to V1.1.0.
+
+1. Run the following command to update the SDK:
+
+   ```bash
+   composer update magento/module-commerce-backend-uix
+   ```
+
+1. Run the following commands to upgrade Adobe Commerce and clear the cache.
+
+   ```bash
+   bin/magento setup:upgrade && bin/magento cache:clean
+   ```

@@ -13,7 +13,7 @@ You can customize the following product features:
 
 ## Example customization​
 
-The following example creates adds mass actions labeled `First App Mass Action` and `Another Mass Action`.
+The following example creates mass actions labeled `First App Mass Action` and `Another Mass Action`.
 
 ```javascript
 product: {
@@ -43,10 +43,10 @@ product: {
 ## Parameters
 
 | Field | Type | Required | Description |
-| === | --- |--- |--- |
+| --- | --- | --- | --- |
 | `actionId` | string | Yes | A unique ID assigned to the action. The recommended format is `<extensionId>::<actionName>` |
-| `label` | string | Yes | An Action label to display in the Mass Actions grid |
-| `type` | string | Yes | A unique ID that identifies the type of the action. |
-| `path` | string | Yes | The relative path in the application to redirect to the action. The URL will be appended with a query of selected `productIds` |
-| `confirm.title` | string | No | The title of a dialog that confirms the mass action |
 | `confirm.message` | string | No | The message displayed on the confirmation dialog for a mass action |
+| `confirm.title` | string | No | The title of a dialog that confirms the mass action |
+| `label` | string | Yes | An Action label to display in the Mass Actions grid |
+| `path` | string | Yes | The relative path in the application to redirect to the action. The URL will be appended with a query of selected `productIds` |
+| `type` | string | Yes | A unique ID that identifies the type of the action. |

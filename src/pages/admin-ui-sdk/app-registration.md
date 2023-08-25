@@ -59,7 +59,7 @@ Create an `ExtensionRegistration`  component that registers the menu configurati
 3. Create an `ExtensionRegistration.js` file as follows:
 
    ```javascript
-   import { register } from '@adobe/uix-guest';
+      import { register } from '@adobe/uix-guest';
 
    export default function ExtensionRegistration() {
      init().catch(console.error);
@@ -71,39 +71,15 @@ Create an `ExtensionRegistration`  component that registers the menu configurati
     const init = async () => {
       await register({
         id: extensionId,
-        debug: false,
         methods: {
-          extension: {
-            getId() {
-              return 'commerce-first-app';
-            }
-          },
-          menu: {
-            getItems() {
-              return [
-                {
-                  id: 'ext_page',
-                  title: 'First App on App Builder',
-                  action: `uixpage/index/index/uix-ext/${extensionId}`,
-                  parent: 'Magento_Backend::marketing',
-                },
-              ];
-            },
-          },
-          page: {
-            getTitle() {
-              return 'Commerce First App on App Builder';
-            },
-          },
-        },
+          ...
+        }
       }
-    );
-   };
+    )
+   }
    ```
 
-Upon registration, the `extension:getId`, `menu:getItems`, and `page:getTitle` methods should be defined for the app.
-
-In this example, the merchant accesses the custom menu from the **Marketing** menu in the Commerce Admin. The title displayed in the menu is defined in `getItems`, whereas the title displayed on page load is defined in `getTitle`.
+You must populate the `methods` section with calls to fetch menus, pages, and other entities to be displayed in the Admin. [Extension Points](extension-points/index.md) provides reference information and examples.
 
 ## Update the `App.js` routing
 

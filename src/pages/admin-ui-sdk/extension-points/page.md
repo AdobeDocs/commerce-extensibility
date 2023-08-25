@@ -20,5 +20,5 @@ page: {
 ## Parameters
 
 | Field | Type | Required | Description |
-| === | --- |--- |--- |
+| --- | --- | --- | --- |
 | `title` | string | Yes | Page title to display in the Adobe Commerce Admin Panel when loading the application |

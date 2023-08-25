@@ -28,7 +28,7 @@ menu: {
 ## Parameters
 
 | Field | Type | Required | Description |
-| === | --- |--- |--- |
+| --- | --- | --- | --- |
 | `id` | string | Yes | A unique ID to identify the application menu in Adobe Commerce Admin. |
-| `title`  | string | No | The title to display. |
 | `parent` | string | No | The parent menu. |
+| `title`  | string | No | The title to display. |

@@ -29,7 +29,7 @@ Learn how to make the transition from developing Commerce PHP extensions to deve
 
 [Events](events/index.md)
 
-Makes Commerce transactional data available to App Builder using Adobe I/O. You can define the events to transmit data each time an event triggers, or only under circumstances defined within configuration rules.
+Make Commerce transactional data available to App Builder using Adobe I/O. You can define the events to transmit data each time an event triggers, or only under circumstances defined within configuration rules.
 
 <DiscoverBlock slots="link, text"/>
 

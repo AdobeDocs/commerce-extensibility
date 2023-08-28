@@ -172,7 +172,7 @@ The command supports observer events by default. You must perform additional ste
 
 <InlineAlert variant="info" slots="text"/>
 
-You can also subscribe to a plugin event if it was registered in the `app/etc/config.php` file and subsequently unsubscribed with the [`events:unsubscribe` command](#unsubscribe-from-a-commerce-event). [Register events](./module-development.md#register-events) describes the format of these files.)
+You can also subscribe to a plugin event if it was registered in the `app/etc/config.php` file and subsequently unsubscribed with the [`events:unsubscribe` command](#unsubscribe-from-a-commerce-event). [Register events](./module-development.md#register-events) describes the format of these files.
 
 You can also create and subscribe to a conditional event. Conditional events allow you to determine the conditions that the Commerce events client module uses to emit native or custom events to your application. See [Create conditional events](./conditional-events.md) for detailed information and examples.
 
@@ -182,7 +182,7 @@ You can also create and subscribe to a conditional event. Conditional events all
 
 ### Arguments
 
-`<event_code>` Required. Specifies the event to subscribe to. The value must in the format `<type.event_name>`.
+`<event_code>` Required. Specifies the event to subscribe to. The value must be in the format `<type.event_name>`.
 
 ### Options
 

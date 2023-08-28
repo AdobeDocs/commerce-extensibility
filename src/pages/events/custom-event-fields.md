@@ -20,7 +20,7 @@ Attribute | Required | Description
 `class` | Yes | The fully-qualified class name.
 `priority` | No | An integer indicating the order in which multiple processors are executed. The system executes unprioritized processors first, in the order listed. All processors with defined priority values are executed in numerical order, from lowest to highest.
 
-The following example adds the `order_status`, `order_id`, and `order_details` fields to the `observer.sales_order_save_after` event payload. The assigned `priority` values indicate the processors will be execute in the following order:
+The following example adds the `order_status`, `order_id`, and `order_details` fields to the `observer.sales_order_save_after` event payload. The assigned `priority` values indicate the processors will be executed in the following order:
 
 1. TestProcessorOrderStatus
 1. TestProcessorOrderDetails

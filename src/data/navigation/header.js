@@ -8,6 +8,10 @@ module.exports = [
       path: "/app-development"
     },
     {
+      title: "Events",
+      path: "/events/"
+    },
+    {
       title: "Admin UI SDK",
       path: "/admin-ui-sdk/",
     },

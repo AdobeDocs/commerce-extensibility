@@ -27,6 +27,12 @@ Learn how to make the transition from developing Commerce PHP extensions to deve
 
 <DiscoverBlock slots="link, text"/>
 
+[Events](events/index.md)
+
+Make Commerce transactional data available to App Builder using Adobe I/O. You can define the events to transmit data each time an event triggers, or only under circumstances defined within configuration rules.
+
+<DiscoverBlock slots="link, text"/>
+
 [Admin UI SDK](admin-ui-sdk/index.md)
 
 Extend the Commerce Admin to include the menus and pages necessary for merchants to configure and interact with your app.
@@ -38,12 +44,6 @@ Extend the Commerce Admin to include the menus and pages necessary for merchants
 Explore the Amazon Sales Channel reference app to help visualize the world of Commerce Out-of-Process apps.
 
 ### Related information
-
-<DiscoverBlock slots="link, text"/>
-
-[Adobe I/O Events for Adobe Commerce](https://developer.adobe.com/commerce/events/)
-
-Makes Commerce transactional data available to App Builder using Adobe I/O. You can define the events to transmit data each time an event triggers, or only under circumstances defined within configuration rules.
 
 <DiscoverBlock slots="link, text"/>
 

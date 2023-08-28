@@ -29,7 +29,7 @@ Before you begin the process of installing the Adobe Sales Channel reference app
 
 ### Configure I/O Events for Adobe Commerce
 
-Follow the instructions in [Configure Adobe Commerce](../events/configure-commerce/) to enable communication with Adobe I/O and create an event provider. Specifically, follow these procedures:
+Follow the instructions in [Configure Adobe Commerce](../events/configure-commerce.md/) to enable communication with Adobe I/O and create an event provider. Specifically, follow these procedures:
 
 * [Configure the Adobe I/O connection](../events/configure-commerce.md#configure-the-adobe-io-connection)
 

@@ -40,7 +40,7 @@ This method installs the SDK on a cloud instance.
 1. Update your `composer.json` file:
 
    ```bash
-   composer require magento/module-commerce-backend-uix": ">=1.0
+   composer require "magento/module-commerce-backend-uix": ">=1.0"
    ```
 
 1. Update dependencies and install the extension:

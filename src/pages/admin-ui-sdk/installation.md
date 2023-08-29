@@ -64,7 +64,7 @@ This method installs the SDK on an On-premises instance.
 1. Add the SDK module to the `require` section of the `composer.json` file:
 
    ```bash
-   composer require magento/module-commerce-backend-uix": ">=1.0
+   composer require "magento/module-commerce-backend-uix": ">=1.0"
    ```
 
 1. Update dependencies and install the extension:

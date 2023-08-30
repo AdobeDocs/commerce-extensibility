@@ -40,9 +40,9 @@ To learn more about API Mesh, follow [this walkthrough](https://developer.adobe.
 
 ### Adobe I/O Events
 
-[Adobe I/O Events for Adobe Commerce](https://developer.adobe.com/commerce/events/get-started/) allows you to react to an event using a runtime function when a shopper performs an action on a Commerce storefront, such as adding a product to a cart, clicking the Buy button, or creating an account. Commerce can now make transactional data available to applications created with Adobe App Builder.
+[Adobe I/O Events for Adobe Commerce](../events/index.md) allows you to react to an event using a runtime function when a shopper performs an action on a Commerce storefront, such as adding a product to a cart, clicking the Buy button, or creating an account. Commerce can now make transactional data available to applications created with Adobe App Builder.
 
-In addition, [Conditional Events](https://developer.adobe.com/commerce/events/get-started/conditional-events/) give you the power to define rules that execute workflows when certain thresholds are met. For example, you could create a rule that sends a special coupon code for any new customer from a specified state.
+In addition, [Conditional Events](../events/conditional-events.md) give you the power to define rules that execute workflows when certain thresholds are met. For example, you could create a rule that sends a special coupon code for any new customer from a specified state.
 
 ## Combining extensibility components
 

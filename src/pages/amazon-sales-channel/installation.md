@@ -47,8 +47,6 @@ In your App Builder project:
 
 1. On the **Configure API** page, select the **Service Account (JWT)** option and click **Save configured API**.
 
-   **Note**: OAuth Server to Server authentication is not currently supported.
-
 1. Select **Generate key pair**.  
 
 1. Click **Save configured API**.
@@ -134,11 +132,11 @@ Create the `etc/io_events.xml` file in the root directory of your module, if it 
 </event>
 ```
 
-See [I/O Events for Adobe Commerce](https://developer.adobe.com/commerce/events/get-started/module-development/#io_eventsxml) for more details. Adobe recommends using the `io_events.xml` method to configure events, but you can also configure events by modifying the `app.config` file or by using the CLI. The same event and fields are required, regardless of the method implemented.
+See [I/O Events for Adobe Commerce](../events/module-development.md#io_eventsxml) for more details. Adobe recommends using the `io_events.xml` method to configure events, but you can also configure events by modifying the `app.config` file or by using the CLI. The same event and fields are required, regardless of the method implemented.
 
 ### Subscribe to Adobe Commerce events
 
-1. Ensure that your Adobe Commerce instance is registered as an event provider as described in [Subscribe and register events](https://developer.adobe.com/commerce/events/get-started/configure-commerce/#subscribe-and-register-events).
+1. Ensure that your Adobe Commerce instance is registered as an event provider as described in [Subscribe and register events](../events/configure-commerce.md#subscribe-and-register-events).
 
 1. Register the `observer.catalog_product_save_after` event in your project in [developer console](https://developer.adobe.com/console/).
 

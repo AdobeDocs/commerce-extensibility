@@ -25,7 +25,11 @@ Once you've become comfortable with the Adobe I/O infrastructure, analyze  your 
 
 ### Frontend development
 
-[Spectrum](https://spectrum.adobe.com/page/principles/) provides all the tools you need to create the next generation of React-based applications. Adobe Commerce continues support of legacy [PWA Studio](https://developer.adobe.com/commerce/pwa-studio/) and [Luma](https://developer.adobe.com/commerce/frontend-core/) storefronts.
+[Spectrum](https://spectrum.adobe.com/page/principles/) provides all the tools you need to create the next generation of React-based applications. You can use Spectrum UI components to build apps that match the look and feel of the Adobe Commerce Admin.
+
+<InlineAlert variant="info" slots="text"/>
+
+Adobe Commerce continues to support the [PWA Studio](https://developer.adobe.com/commerce/pwa-studio/) and [Luma](https://developer.adobe.com/commerce/frontend-core/) storefronts.
 
 ### APIs
 

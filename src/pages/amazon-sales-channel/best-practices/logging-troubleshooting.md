@@ -15,7 +15,7 @@ When building and troubleshooting your application, it is important to understan
 
 ## Implement a logger in a runtime action
 
-To implement a Logger in a runtime action add code similar to the following:
+To implement a Logger in a runtime action, add code similar to the following:
 
 ```js
 import { Core } from '@adobe/aio-sdk';

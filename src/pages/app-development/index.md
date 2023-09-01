@@ -25,7 +25,7 @@ Once you've become comfortable with the Adobe I/O infrastructure, analyze  your 
 
 ### Frontend development
 
-[Spectrum](https://spectrum.adobe.com/page/principles/) provides all the tools you need to create the next generation of React-based applications. You can use Spectrum UI components to build apps that match the look and feel of the Adobe Commerce Admin. See [Admin UI SDK](#admin-development).
+[Spectrum](https://spectrum.adobe.com/page/principles/) provides all the tools you need to create the next generation of React-based applications. You can use Spectrum UI components to build apps consistent with Adobe standards and leverage our SDK (#admin-development) to securely create custom app UIs in the Adobe Commerce Admin.
 
 <InlineAlert variant="info" slots="text"/>
 

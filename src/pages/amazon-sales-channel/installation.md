@@ -1,6 +1,9 @@
 ---
 title: Install the Amazon Sales Channel app
 description: 
+keywords:
+  - App Builder
+  - Extensibility
 ---
 
 # Install the Amazon Sales Channel app

@@ -1,6 +1,9 @@
 ---
 title: Commerce module development
 description: Learn what you need to do to enable your modules for Adobe I/O Events.
+keywords:
+  - Eventing
+  - Extensibility
 ---
 
 # Commerce module development

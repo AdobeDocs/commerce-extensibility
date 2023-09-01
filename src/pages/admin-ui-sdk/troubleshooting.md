@@ -1,6 +1,9 @@
 ---
 title: Troubleshooting
 description: 
+keywords:
+  - App Builder
+  - Extensibility
 ---
 
 # Troubleshooting

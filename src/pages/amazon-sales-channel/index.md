@@ -1,6 +1,9 @@
 ---
 title: Amazon Sales Channel on App Builder overview
 description: Learn how you can use Amazon Sales Channel on App Builder as a reference app to build your own Adobe Commerce apps.
+keywords:
+  - App Builder
+  - Extensibility
 ---
 
 # Amazon Sales Channel on App Builder overview

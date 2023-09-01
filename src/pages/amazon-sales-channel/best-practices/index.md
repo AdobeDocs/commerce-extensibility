@@ -1,6 +1,9 @@
 ---
 title: Best practices overview
 description: 
+keywords:
+  - App Builder
+  - Extensibility
 ---
 
 # Best practices overview

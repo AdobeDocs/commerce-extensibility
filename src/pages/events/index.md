@@ -1,6 +1,9 @@
 ---
 title: Adobe I/O Events for Adobe Commerce Overview
 description: An architectural overview of Adobe I/O Events for Adobe Commerce
+keywords:
+  - Eventing
+  - Extensibility
 ---
 
 # Adobe I/O Events for Adobe Commerce Overview

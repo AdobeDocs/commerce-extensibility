@@ -1,6 +1,9 @@
 ---
 title: Credentials management
 description: Learn how the Amazon Sales Channel app development team implemented AES-256 encryption algorithm to store Amazon credentials and secrets.
+keywords:
+  - App Builder
+  - Extensibility
 ---
 
 # Credentials management

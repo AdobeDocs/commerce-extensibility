@@ -13,6 +13,19 @@ Adobe Developer App Builder offers different options to facilitate logging from 
 
 When building and troubleshooting your application, it is important to understand the differences between events and runtime actions. These concepts are often interrelated, with events triggering runtime actions, but the actual functionality and logging capabilities are separate entities. Best practice is to determine whether the event delivery was successful, and then investigate any resulting runtime actions.
 
+## Implement a logger in a runtime action
+
+To implement a Logger in a runtime action add code similar to the following:
+
+```js
+import { Core } from '@adobe/aio-sdk';
+
+logger = Core.Logger('main', 'info');
+logger.info("Hello App Builder");
+```
+
+The [`logger.ts` file](https://github.com/adobe/amazon-sales-channel-app-builder/blob/main/actions-src/shared/logger.ts) in the `amazon-sales-channel-app-builder` repo provides an extensive example.
+
 ### Set the log level
 
 You can configure the log level per action in your `ext.config.yml` or `app.config.yml` file, as follows:
@@ -143,6 +156,10 @@ If the command is successful, but you cannot see any log in Splunk, run the foll
 ```bash
 aio app config get log-forwarding errors
 ```
+
+## Log forwarding to New Relic
+
+[Forwarding logs to New Relic](https://developer.adobe.com/app-builder/docs/guides/application_logging/new_relic/) in the _App Builder Logging_ guide describes how to implement log forwarding on this platform.
 
 ## Splunk logging vs IO Runtime logging
 

@@ -1,6 +1,6 @@
 ---
 title: Install the Amazon Sales Channel app
-description: 
+description: Learn how to install the reference App Builder app for Adobe Commerce.
 keywords:
   - App Builder
   - Extensibility

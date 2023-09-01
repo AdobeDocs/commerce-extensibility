@@ -1,6 +1,6 @@
 ---
 title: Best practices overview
-description: 
+description: Learn about best pactices for using Adobe Commerce extensibility technology.
 keywords:
   - App Builder
   - Extensibility

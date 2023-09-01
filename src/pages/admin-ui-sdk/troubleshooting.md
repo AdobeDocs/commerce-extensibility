@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: 
+description: Learn how to resolve common issues related to the Admin UI SDK.
 keywords:
   - App Builder
   - Extensibility

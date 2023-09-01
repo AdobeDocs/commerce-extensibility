@@ -27,6 +27,10 @@ The [Adobe App Builder _Getting Started_ guide](https://developer.adobe.com/app-
 
 You can install the Admin UI SDK on Adobe Commerce on cloud infrastructure and on-premises instances.
 
+### Enable Adobe IMS for Commerce
+
+You must implement Adobe Identity Management Service (IMS) for Adobe Commerce to use the Admin UI SDK. [Configure the Commerce Admin Integration with Adobe ID](https://experienceleague.adobe.com/docs/commerce-admin/start/admin/ims/adobe-ims-config.html?lang=en) describes this process.
+
 ### Adobe Commerce on cloud infrastructure
 
 This method installs the SDK on a cloud instance.
@@ -36,7 +40,7 @@ This method installs the SDK on a cloud instance.
 1. Update your `composer.json` file:
 
    ```bash
-   composer require magento/module-commerce-backend-uix": ">=1.0
+   composer require "magento/module-commerce-backend-uix": ">=1.0"
    ```
 
 1. Update dependencies and install the extension:
@@ -60,7 +64,7 @@ This method installs the SDK on an On-premises instance.
 1. Add the SDK module to the `require` section of the `composer.json` file:
 
    ```bash
-   composer require magento/module-commerce-backend-uix": ">=1.0
+   composer require "magento/module-commerce-backend-uix": ">=1.0"
    ```
 
 1. Update dependencies and install the extension:
@@ -90,3 +94,19 @@ This method installs the SDK on an On-premises instance.
 1. Commit your changes.
 
 1. Update your on-premises instance to ensure the committed code is deployed.
+
+## Update the Commerce Admin UI SDK
+
+Use the following procedure to update patch versions of the SDK, such as from V1.0.0 to V1.1.0.
+
+1. Run the following command to update the SDK:
+
+   ```bash
+   composer update magento/module-commerce-backend-uix
+   ```
+
+1. Run the following commands to upgrade Adobe Commerce and clear the cache.
+
+   ```bash
+   bin/magento setup:upgrade && bin/magento cache:clean
+   ```

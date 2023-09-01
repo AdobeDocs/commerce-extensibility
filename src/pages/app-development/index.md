@@ -33,7 +33,7 @@ Once you've become comfortable with the Adobe I/O infrastructure, analyze  your 
 
 ### Plugins and observers
 
-[Adobe I/O Events for Adobe Commerce](https://developer.adobe.com/commerce/events/) enables building event-driven Commerce integrations using App Builder. You can define key events, like customer account updates, to be emitted from Commerce and construct apps that listen and react to these events.
+[Adobe I/O Events for Adobe Commerce](../events/index.md) enables building event-driven Commerce integrations using App Builder. You can define key events, like customer account updates, to be emitted from Commerce and construct apps that listen and react to these events.
 
 ### Admin development
 

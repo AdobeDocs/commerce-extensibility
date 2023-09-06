@@ -1,6 +1,9 @@
 ---
 title: Admin configuration and testing
 description: Learn how to configure the Admin to enable local testing of your Admin customizations.
+keywords:
+  - App Builder
+  - Extensibility
 ---
 
 # Admin configuration and testing

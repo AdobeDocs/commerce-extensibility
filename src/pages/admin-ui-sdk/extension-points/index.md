@@ -1,6 +1,9 @@
 ---
 title: Extension points
 description: Learn about the Admin UI SDK extension points
+keywords:
+  - App Builder
+  - Extensibility
 ---
 
 # Adobe Commerce Admin UI SDK extension points

@@ -1,6 +1,8 @@
 ---
 title: Adobe Commerce Extensibility
-description: 
+description: See an overview of the latest extensibility technology for Adobe Commerce development.
+keywords:
+  - Extensibility
 ---
 
 <Hero slots="image, heading, text"/>

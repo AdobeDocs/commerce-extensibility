@@ -1,6 +1,9 @@
 ---
 title: Database storage
 description: Learn about the decisions to use the Adobe I/O Files and Adobe I/O State libraries to store data.
+keywords:
+  - App Builder
+  - Extensibility
 ---
 
 # Database storage

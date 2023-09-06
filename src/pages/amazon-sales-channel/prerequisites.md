@@ -1,6 +1,9 @@
 ---
 title: Prerequisites
 description: Determine what software you need to install the Amazon Sales Channel app and how to configure your Amazon Seller Central account.
+keywords:
+  - App Builder
+  - Extensibility
 ---
 
 # Prerequisites

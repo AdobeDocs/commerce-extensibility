@@ -1,6 +1,9 @@
 ---
 title: Release notes
 description: This page lists new features and known issues for each release of Adobe Commerce Admin UI SDK
+keywords:
+  - App Builder
+  - Extensibility
 ---
 
 # Adobe Commerce Admin UI SDK release notes

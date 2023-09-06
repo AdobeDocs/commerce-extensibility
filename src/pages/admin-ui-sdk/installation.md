@@ -1,6 +1,9 @@
 ---
 title: Install Adobe Commerce Admin UI SDK
 description: Learn how to install the Adobe Commerce Admin UI SDK.
+keywords:
+  - App Builder
+  - Extensibility
 ---
 
 # Install Adobe Commerce Admin UI SDK

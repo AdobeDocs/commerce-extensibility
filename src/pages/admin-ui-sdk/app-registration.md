@@ -1,6 +1,9 @@
 ---
 title: App UI registration
 description: Learn about registering your UI changes to the App Registry
+keywords:
+  - App Builder
+  - Extensibility
 ---
 
 # App UI registration

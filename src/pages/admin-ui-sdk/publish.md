@@ -1,6 +1,9 @@
 ---
 title: Prepare your app for production
-description: This page 
+description: Learn how to prepare your app for non-local testing and for production.
+keywords:
+  - App Builder
+  - Extensibility
 ---
 
 # Prepare your app for production

@@ -17,4 +17,4 @@ During the testing phase, an administrator of your enterprise organization perfo
 
 1. Perform all testing. If any changes need to be made to your app, ask the administrator to reject the app within the My Exchange utility. Update your code and resubmit your app for approval. Repeat these steps until you have completed all testing.
 
-1. When you have completed all testing and are ready to publicly publish the app, resubmit your app, but ask the Adobe Review team to approve it.
+1. When you have completed all testing and are ready to publicly publish the app, submit your app to [Commerce Marketplace](https://developer.adobe.com/commerce/marketplace/guides/sellers/apps/).

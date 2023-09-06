@@ -2,7 +2,7 @@
 title: Install Adobe I/O Events for Adobe Commerce
 description: Learn how to install the Commerce modules needed for Adobe I/O Events for Adobe Commerce.
 keywords:
-  - Eventing
+  - Events
   - Extensibility
 ---
 

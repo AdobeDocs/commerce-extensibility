@@ -2,7 +2,7 @@
 title: Event management commands
 description: Provides details about the commands needed to set up Adobe I/O Events for Adobe Commerce.
 keywords:
-  - Eventing
+  - Events
   - Extensibility
 ---
 

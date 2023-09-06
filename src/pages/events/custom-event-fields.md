@@ -2,7 +2,7 @@
 title: Add custom fields to an event
 description: Learn how to add custom fields to an event.
 keywords:
-  - Eventing
+  - Events
   - Extensibility
 ---
 

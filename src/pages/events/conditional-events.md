@@ -2,7 +2,7 @@
 title: Create conditional events
 description: Create custom Adobe Commerce conditional events using declarative configuration.
 keywords:
-  - Eventing
+  - Events
   - Extensibility
 ---
 

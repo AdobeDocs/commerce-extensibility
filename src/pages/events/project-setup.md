@@ -2,7 +2,7 @@
 title: Create an App Builder project
 description: Create a project in the Adobe Developer Console, generate API credentials, and download the workspace configuration.
 keywords:
-  - Eventing
+  - Events
   - Extensibility
 ---
 

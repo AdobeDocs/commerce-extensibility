@@ -2,7 +2,7 @@
 title: Configure Adobe Commerce
 description: Learn how to configure both Commerce and your existing Adobe App Builder project.
 keywords:
-  - Eventing
+  - Events
   - Extensibility
 ---
 

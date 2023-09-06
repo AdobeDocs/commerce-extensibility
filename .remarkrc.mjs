@@ -1,8 +1,10 @@
+import remarkValidateLinks from 'remark-validate-links';
 import remarkFrontmatter from 'remark-frontmatter';
 import remarkLintFrontmatterSchema from 'remark-lint-frontmatter-schema';
 
 const remarkConfig = {
 	plugins: [
+		remarkValidateLinks,
 		remarkFrontmatter,
 		[
 			remarkLintFrontmatterSchema,

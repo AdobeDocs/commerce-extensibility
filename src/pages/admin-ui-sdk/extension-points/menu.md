@@ -1,6 +1,9 @@
 ---
 title: menu
 description: Create a new menu that redirects to the App Builder app.
+keywords:
+  - App Builder
+  - Extensibility
 ---
 
 # menu

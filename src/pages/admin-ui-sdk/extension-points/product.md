@@ -1,6 +1,9 @@
 ---
 title: product
 description: Customize the products pages in the Adobe Commerce Admin.
+keywords:
+  - App Builder
+  - Extensibility
 ---
 
 # product

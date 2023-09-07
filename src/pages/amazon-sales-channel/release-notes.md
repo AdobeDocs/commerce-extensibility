@@ -1,6 +1,9 @@
 ---
 title: Release notes
 description: This page lists new features and known issues for each release of Amazon Sales Channel on App Builder 1.0.0
+keywords:
+  - App Builder
+  - Extensibility
 ---
 
 # Release notes

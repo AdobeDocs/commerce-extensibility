@@ -1,6 +1,9 @@
 ---
 title: page
 description: Create a new page that redirects to your App Builder app.
+keywords:
+  - App Builder
+  - Extensibility
 ---
 
 # page

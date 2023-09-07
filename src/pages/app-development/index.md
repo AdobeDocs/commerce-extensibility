@@ -1,6 +1,9 @@
 ---
 title: Adobe Commerce App Developer's Guide Overview
 description: Learn how to make the transition from developing Commerce PHP extensions to developing Out-of-Process apps.
+keywords:
+  - App Builder
+  - Extensibility
 ---
 
 # Adobe Commerce App Developer's Guide Overview
@@ -25,7 +28,11 @@ Once you've become comfortable with the Adobe I/O infrastructure, analyze  your 
 
 ### Frontend development
 
-[Spectrum](https://spectrum.adobe.com/page/principles/) provides all the tools you need to create the next generation of React-based applications. Adobe Commerce continues support of legacy [PWA Studio](https://developer.adobe.com/commerce/pwa-studio/) and [Luma](https://developer.adobe.com/commerce/frontend-core/) storefronts.
+[Spectrum](https://spectrum.adobe.com/page/principles/) provides all the tools you need to create the next generation of React-based applications. You can use Spectrum UI components to build apps consistent with Adobe standards and leverage our SDK (#admin-development) to securely create custom app UIs in the Adobe Commerce Admin.
+
+<InlineAlert variant="info" slots="text"/>
+
+Adobe Commerce continues to support the [PWA Studio](https://developer.adobe.com/commerce/pwa-studio/) and [Luma](https://developer.adobe.com/commerce/frontend-core/) storefronts.
 
 ### APIs
 

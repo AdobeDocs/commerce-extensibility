@@ -15,7 +15,7 @@ Adobe has developed several new technologies that can further extend the Adobe C
 
 [App Builder](https://developer.adobe.com/app-builder/docs/overview/) is a complete framework that allows you to build and deploy custom web applications to extend Adobe Commerce and other Adobe solutions while running on Adobe infrastructure.
 
-To learn more about App Builder, follow [this step-by-step tutorial](https://developer.adobe.com/app-builder/docs/getting_started/first_app/) on creating your first app. These instructions will help you build foundational knowledge of App Builder and the tools it provides. You will learn how to create an app using the Adobe I/O CLI, and how to organize your code and projects within the developer console.
+To learn more about App Builder, follow [this step-by-step tutorial](https://developer.adobe.com/app-builder/docs/getting_started/first_app/) on creating your first app. These instructions allow you to build foundational knowledge of App Builder and the tools it provides. You can learn how to create an app using the Adobe I/O CLI, and how to organize your code and projects within the developer console.
 
 ### API Mesh for Adobe Developer App Builder
 
@@ -32,7 +32,7 @@ API Mesh has several features which allow for further extensibility:
 
 - `beforeAll` [Hooks](https://developer.adobe.com/graphql-mesh-gateway/gateway/hooks/) - Allow you to insert a function before the query takes place, which can be helpful for use cases like authenticating or checking for a header before making a request.
 
-- [Custom Resolvers](https://developer.adobe.com/graphql-mesh-gateway/gateway/extending-unified-schema/) - Allow you to upload a resolver to your mesh that uses JavaScript to modify data, insert custom logic, and return custom computed data. In [this example](https://developer.adobe.com/graphql-mesh-gateway/gateway/extending-unified-schema/#programmatic-additionalresolvers), we show how you could use a discounts API to apply discounts to your products.
+- [Custom Resolvers](https://developer.adobe.com/graphql-mesh-gateway/gateway/extending-unified-schema/) - Allow you to upload a resolver to your mesh that uses JavaScript to modify data, insert custom logic, and return custom computed data. [This example](https://developer.adobe.com/graphql-mesh-gateway/gateway/extending-unified-schema/#programmatic-additionalresolvers) uses a discounts API to apply discounts to your products.
 
 - [Transforms](https://developer.adobe.com/graphql-mesh-gateway/gateway/transforms/) - Allow you to modify the structure of an API's data without modifying the source itself.
 
@@ -48,7 +48,7 @@ In addition, [Conditional Events](../events/conditional-events.md) give you the 
 
 While App Builder, API Mesh, and Adobe I/O Events provide powerful extensibility on their own, combining them allows Adobe Commerce users to maximize their extensibility. The next few sections describe possible example implementations of this type of integration.
 
-The Commerce storefront acts as a consumer, while API Mesh acts as an orchestration layer. The consumer sends events to the orchestration layer, which can access backend systems and vendor APIs, then compute or modify the data and return it to the storefront or pass it on to the single-page application (App Builder). The consumer or storefront can also contact the single-page application directly.
+The Commerce storefront acts as a consumer, while API Mesh acts as an orchestration layer. The consumer sends events to the orchestration layer, which can access backend systems and vendor APIs. The orchestration layer can then compute or modify the data and return it to the storefront or pass it on to the single-page application (App Builder). The consumer or storefront can also contact the single-page application directly.
 
 ![Integrated Commerce](../_images/integrated-commerce.png)
 <!-- [Link to .mmd file](../_images/integrated-commerce.mmd) -->

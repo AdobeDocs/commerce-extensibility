@@ -1,0 +1,45 @@
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#fff',
+      'primaryTextColor': '#041E2F',
+      'tertiaryTextColor': '#fffff',
+      'primaryBorderColor': '#FF330F',
+      'lineColor': '#6A90D2',
+      'secondaryColor': '#006100',
+      'tertiaryColor': '#F2F3F5',
+      'clusterBorder': '#000'
+    }
+  }
+}%%
+flowchart TD
+    subgraph  
+    A[(API Gateway)]
+    end
+    subgraph &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspAPI &nbspMesh
+    B[(Unified GraphQL \nEndpoint)]
+    end
+    subgraph Data Sources &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    C[(GraphQL)] 
+    D[( OpenAPI )] 
+    D1[( REST )] 
+
+    F[(SOAP)]
+    E[( JsonSchema )] 
+
+    E1[( Adobe I/O \n Runtime )] 
+    E2[(Custom API)]
+    E3[( REST )] 
+
+    end
+
+    A --- B
+    B --- C
+    B --- D
+    B --- E
+    D --- D1
+    B --- F
+    E --- E1
+    E --- E2
+    E --- E3

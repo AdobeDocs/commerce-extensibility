@@ -44,11 +44,15 @@ To learn more about API Mesh, follow [this walkthrough](https://developer.adobe.
 
 In addition, [Conditional Events](../events/conditional-events.md) give you the power to define rules that execute workflows when certain thresholds are met. For example, you could create a rule that sends a special coupon code for any new customer from a specified state.
 
+### Adobe Commerce Admin UI SDK
+
+The [Adobe Commerce Admin UI SDK](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/) enables App Builder developers to extend the Commerce Admin to include custom menus and pages. The Admin UI SDK allows merchants to use the Admin to configure and interact with an app developed in App Builder.
+
 ## Combining extensibility components
 
 While App Builder, API Mesh, and Adobe I/O Events provide powerful extensibility on their own, combining them allows Adobe Commerce users to maximize their extensibility. The next few sections describe possible example implementations of this type of integration.
 
-The Commerce storefront acts as a consumer, while API Mesh acts as an orchestration layer. The consumer sends events to the orchestration layer, which can access backend systems and vendor APIs. The orchestration layer can then compute or modify the data and return it to the storefront or pass it on to the single-page application (App Builder). The consumer or storefront can also contact the single-page application directly.
+The Commerce back office acts as a consumer, while API Mesh acts as an orchestration layer. The consumer sends events to the orchestration layer, which can access other systems and vendor APIs. The orchestration layer can then compute or modify the data and send it to a storefront or pass it on to an ERP or a single-page application (App Builder). The consumer or back office can also contact the single-page application directly.
 
 ![Integrated Commerce](../_images/integrated-commerce.png)
 <!-- [Link to .mmd file](../_images/integrated-commerce.mmd) -->

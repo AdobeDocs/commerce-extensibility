@@ -8,6 +8,18 @@ keywords:
 
 # Release notes
 
+## Version 1.1.1
+
+### Release date
+
+September 12, 2023
+
+### Bug fixes
+
+* Fixed an issue with a missing tab ID that occurred due to a dependency on a non-mandatory module.
+
+* Mass actions are now correctly cleared when the last app is removed.
+
 ## Version 1.1.0
 
 ### Release date

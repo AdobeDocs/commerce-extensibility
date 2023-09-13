@@ -16,7 +16,7 @@ See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io
 
 ### Release date
 
-June 24, 2023
+August 24, 2023
 
 ### Enhancements
 

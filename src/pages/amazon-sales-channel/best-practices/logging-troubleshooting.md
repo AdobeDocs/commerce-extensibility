@@ -1,6 +1,6 @@
 ---
 title: Logging and troubleshooting
-description: Learn the development team's recommendations about logging, based on their experience developing the Amazon Sales Channel app. Troubleshooting tips are also provided. 
+description: Learn the development team's recommendations about logging, based on their experience developing the Amazon Sales Channel app.
 keywords:
   - App Builder
   - Extensibility

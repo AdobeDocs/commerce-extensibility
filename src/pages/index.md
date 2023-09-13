@@ -15,7 +15,7 @@ Learn how develop Out-of-Process apps that extend and customize Adobe Commerce.
 
 ## Overview
 
-This documentation provides resources for developing Out-of-Process apps for Adobe Commerce.
+This documentation provides resources for [extending](https://business.adobe.com/products/magento/extended-capabilities.html) and developing Out-of-Process applications for Adobe Commerce.
 
 ### Discover
 

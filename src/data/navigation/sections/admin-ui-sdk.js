@@ -31,8 +31,12 @@ module.exports = [
       ]
     },
     {
-      title: "Admin configuration and testing",
+      title: "Admin configuration and local testing",
       path: "/admin-ui-sdk/configuration.md"
+    },
+    {
+      title: "Prepare your app for production",
+      path: "admin-ui-sdk/publish.md"
     },
     {
       title: "Troubleshooting",

@@ -1,12 +1,12 @@
 ---
 title: Release notes
-description: This page lists new features and known issues for each release of Adobe Commerce Admin UI SDK 1.0.0
+description: This page lists new features and known issues for each release of Adobe Commerce Admin UI SDK
 keywords:
   - App Builder
   - Extensibility
 ---
 
-# Release notes
+# Adobe Commerce Admin UI SDK release notes
 
 ## Version 1.1.1
 
@@ -35,6 +35,10 @@ August 25, 2023
 ### Bug fixes
 
 * Menus are now rendered correctly when no registrations are found.
+
+## Known issues
+
+* You cannot deploy an app that uses the Admin UI SDK in a staging environment. Instead, you must deploy it in a production environment. See [Prepare your app for production](publish.md) for details about this workaround.
 
 ## Version 1.0.0
 

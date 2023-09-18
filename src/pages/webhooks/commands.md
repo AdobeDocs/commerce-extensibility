@@ -10,6 +10,7 @@ keywords:
 ## Display the payload of a webhook
 
 The `webhooks:info` command returns the payload of the specified webhook. You can optionally specify the depth of the payload to reduce the amount data returned.
+
 ### Usage
 
 `bin/magento webhooks:info <webhook-name> [--webhook-type=`before` | `after`] [--depth=<integer>]`
@@ -38,7 +39,7 @@ The `webhooks:info` command returns the payload of the specified webhook. You ca
 
 ## Return a list of supported webhook event names
 
-The `webhooks:list:all` command returns a list of events defined in the specified module that can be used as the trigger for a webhook. 
+The `webhooks:list:all` command returns a list of events defined in the specified module that can be used as the trigger for a webhook.
 
 ### Usage
 

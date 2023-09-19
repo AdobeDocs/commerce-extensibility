@@ -41,6 +41,7 @@ For this action, you can create a webhook on method `observer.checkout_cart_prod
 
 In the example above the payload based on `fields` configuration will be sent to the registered URL with added headers from the `headers` section.
 The payload:
+
 ```json
 {
   "product": {
@@ -50,7 +51,9 @@ The payload:
   }
 }
 ```
+
 The headers:
+
 ```php
 [
     'custom-header-one' => 'header value one',
@@ -63,6 +66,7 @@ The endpoint should return 200 response with desired operations which should be 
 - `exception` - the code execution should be terminated with provided error message
 
 Example of the exception response:
+
 ```json
 {
   "op": "exception",
@@ -70,9 +74,11 @@ Example of the exception response:
   "message": "The product can not be added to the cart as it is out of the stock"
 }
 ```
+
 The `class` and `message` are optional, if not set the LocalizedException will be thrown with the `fallbackErrorMessage` or default message if `fallbackErrorMessage` is not set.
 
 Example of the success response:
+
 ```json
 {
   "op": "success"
@@ -187,7 +193,9 @@ You can specify list of desired fields for each of your configured webhooks:
     </method>
 </config>
 ```
+
 For this example the payload will be reduced to the next structure:
+
 ```json
 {
   "product": {
@@ -196,7 +204,9 @@ For this example the payload will be reduced to the next structure:
   }
 }
 ```
+
 The source argument is optional, and you can specify the source directly in the name
+
 ```xml
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -215,7 +225,9 @@ The source argument is optional, and you can specify the source directly in the 
     </method>
 </config>
 ```
+
 But in this case the structure of the payload will be:
+
 ```json
 {
   "data": {

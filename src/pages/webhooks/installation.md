@@ -57,7 +57,6 @@ The following steps apply to both Adobe Commerce on cloud infrastructure and on-
    bin/magento setup:di:compile
    ```
 
-
 ## Cloud configuration
 
 Use the following steps to perform additional configuration for Adobe Commerce on cloud infrastructure:

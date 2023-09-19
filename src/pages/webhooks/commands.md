@@ -10,6 +10,7 @@ keywords:
 ## Display the payload of a webhook
 
 The `webhooks:info` command returns the payload of the specified webhook. You can optionally specify the depth of the payload to reduce the amount data returned.
+The actual payload can be different from that shown in the `webhooks:info` as it generates in runtime based on the current state of objects and variables.
 
 ### Usage
 
@@ -19,22 +20,126 @@ The `webhooks:info` command returns the payload of the specified webhook. You ca
 
 `webhook-name` Required.
 
-`--webhook-type` Optional.
+`--webhook-type` Optional. The default value is "before"
 
 ### Options
 
-`--depth=<integer>` Determines how many nested levels of the payload to return. The default value is `?`.
+`--depth=<integer>` Determines how many nested levels of the payload to return. The default value is `3`.
 
 ### Example
 
 ```bash
-
+bin/magento webhooks:info observer.catalog_product_save_before
 ```
 
 ### Response
 
 ```terminal
-
+{
+    "eventName": "string",
+    "data": {
+        "data_object": {
+            "store_id": "int",
+            "name": "string",
+            "price": "float",
+            "visibility": "int",
+            "attribute_set_id": "int",
+            "created_at": "string",
+            "updated_at": "string",
+            "type_id": "array",
+            "status": "int",
+            "category_id": "int",
+            "category": {
+                "products_position": "array",
+                "store_ids": "array",
+                "store_id": "int",
+                "url": "string",
+                "parent_category": "\Magento\Catalog\Model\Category",
+                "parent_id": "int",
+                "custom_design_date": "array",
+                "path_ids": "array",
+                "level": "int",
+                "request_path": "string",
+                "name": "string",
+                "product_count": "int",
+                "available_sort_by": "array",
+                "default_sort_by": "string",
+                "path": "string",
+                "position": "int",
+                "children_count": "int",
+                "created_at": "string",
+                "updated_at": "string",
+                "is_active": "bool",
+                "category_id": "int",
+                "display_mode": "string",
+                "include_in_menu": "bool",
+                "url_key": "string",
+                "children_data": "\Magento\Catalog\Api\Data\CategoryTreeInterface[]"
+            },
+            "category_ids": "array",
+            "website_ids": "array",
+            "store_ids": "array",
+            "qty": "float",
+            "data_changed": "bool",
+            "calculated_final_price": "float",
+            "minimal_price": "float",
+            "special_price": "float",
+            "special_from_date": "mixed",
+            "special_to_date": "mixed",
+            "related_products": "array",
+            "related_product_ids": "array",
+            "up_sell_products": "array",
+            "up_sell_product_ids": "array",
+            "cross_sell_products": "array",
+            "cross_sell_product_ids": "array",
+            "media_attributes": "array",
+            "media_attribute_values": "array",
+            "media_gallery_images": {
+                "loaded": "bool",
+                "last_page_number": "int",
+                "page_size": "int",
+                "size": "int",
+                "first_item": "\Magento\Framework\DataObject",
+                "last_item": "\Magento\Framework\DataObject",
+                "items": "\Magento\Framework\DataObject[]",
+                "all_ids": "array",
+                "new_empty_item": "\Magento\Framework\DataObject",
+                "iterator": "\ArrayIterator"
+            },
+            "salable": "bool",
+            "is_salable": "bool",
+            "custom_design_date": "array",
+            "request_path": "string",
+            "gift_message_available": "string",
+            "options": [
+                {
+                    "product_sku": "string",
+                    "option_id": "int",
+                    "title": "string",
+                    "type": "string",
+                    "sort_order": "int",
+                    "is_require": "bool",
+                    "price": "float",
+                    "price_type": "string",
+                    "sku": "string",
+                    "file_extension": "string",
+                    "max_characters": "int",
+                    "image_size_x": "int",
+                    "image_size_y": "int",
+                    "values": "\Magento\Catalog\Api\Data\ProductCustomOptionValuesInterface[]",
+                    "extension_attributes": "\Magento\Catalog\Api\Data\ProductCustomOptionExtensionInterface"
+                }
+            ],
+            "preconfigured_values": {
+                "empty": "bool"
+            },
+            "identities": "array",
+            "id": "int",
+            "quantity_and_stock_status": "array",
+            "stock_data": "array"
+        }
+    }
+}
 ```
 
 ## Return a list of supported webhook event names
@@ -134,7 +239,7 @@ ok | 10:25:24 AM
 
 ## Generate plugins
 
-The `webhooks:generate:module` command generates plugins based on webhook registrations and places it into the Commerce `app/code/Magento` directory.
+The `webhooks:generate:module` command generates the `AdobeCommerceWebhookPlugins` module with plugins based on webhook registrations and places it into the Commerce `app/code/Magento` directory.
 
 ### Usage
 

@@ -79,7 +79,6 @@ Example of the success response:
 }
 ```
 
-
 ## Using environment or configuration variables
 
 It's not recommended to store secrets or other sensitive data in the `webhooks.xml` file, to avoid this is recommended to use environment or configuration variables:
@@ -164,7 +163,6 @@ class AddProductToCartResolver implements HeaderResolverInterface
     </method>
 </config>
 ```
-
 
 ## Fields
 

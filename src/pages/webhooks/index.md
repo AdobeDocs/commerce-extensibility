@@ -12,8 +12,8 @@ To check if webhooks registered correctly run the `bin/magento webhooks:list` co
 
 ## Example of single webhook executed before adding product to the cart:
 
-For example, you need to check product stock in the external service before adding the product to the card. 
-For this action, you can create a webhook on method `observer.checkout_cart_product_add_before` which will be executed before execution of observer `checkout_cart_product_add_before` 
+For example, you need to check product stock in the external service before adding the product to the card.
+For this action, you can create a webhook on method `observer.checkout_cart_product_add_before` which will be executed before execution of observer `checkout_cart_product_add_before`.
 
 ```xml
 <?xml version="1.0"?>
@@ -62,6 +62,7 @@ The headers:
 ```
 
 The endpoint should return 200 response with desired operations which should be executed on Adobe Commerce side. At the moment two operations are supported
+
 - `success` - continue code execution without any changes
 - `exception` - the code execution should be terminated with provided error message
 
@@ -108,16 +109,17 @@ It's not recommended to store secrets or other sensitive data in the `webhooks.x
 </config>
 ```
 
-In this example the hook url will be formed by combining environment variable `APP_VALIDATE_STOCK_URL` with `/product-validate-stock`. 
-It can be useful for developing on different environment such as `stage` and `prod` as hook url can be different for different environment types. 
+In this example the hook url will be formed by combining environment variable `APP_VALIDATE_STOCK_URL` with `/product-validate-stock`.
+It can be useful for developing on different environment such as `stage` and `prod` as hook url can be different for different environment types.
 The headers will contain two records:
+
 - `Authorization` - Bearer: + value from environment variable `APP_VALIDATE_STOCK_AUTHORIZATION_TOKEN`
 - `api-key` - Value from the Adobe Commerce configuration by path `path/to/api-key`
 
 ## Dynamic header resolver
 
 In some cases it's not convenient to store secrets in environment variable as they can expire or for some other reasons.
-For such situations the dynamic header resolver can be used. 
+For such situations the dynamic header resolver can be used.
 To create your own resolver you need to create a new class that implements `Magento\AdobeCommerceWebhooks\Model\HeaderResolverInterface`.
 
 ```php
@@ -299,7 +301,7 @@ The example of exception operation:
 ```
 
 - `op`: exception
-- `class`: The exception class, the value is optional, if not set the `\Magento\Framework\Exception\LocalizedException` will be thrown 
+- `class`: The exception class, the value is optional, if not set the `\Magento\Framework\Exception\LocalizedException` will be thrown.
 - `message`: The exception message, the value is optional, if not set the `fallbackErrorMessage` will be shown, if `fallbackErrorMessage` is not set the default error message will be shown.
 
 ### Success

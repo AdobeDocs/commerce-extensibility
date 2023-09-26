@@ -8,6 +8,14 @@ module.exports = [
       path: "/webhooks/installation.md",
     },
     {
+      title: "Construct the webhooks file",
+      path: "/webhooks/file-construction.md"
+    },
+    {
+      title: "Configuration reference",
+      path: "/webhooks/xml-schema.md"
+    },
+    {
       title: "Command reference",
       path: "/webhooks/commands.md",
     },

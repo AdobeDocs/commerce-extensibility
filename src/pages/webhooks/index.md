@@ -262,11 +262,20 @@ You can add to the webhook payload values from the application context:
 ```xml
 <fields>
     <field name="customer.entity_id" source="data.customer.entity_id" />
-    <field name="customer.customer_email" source="context_customer_session.customer.email" />
+    <field name="customer.customer_email" source="context_customer_session.get_customer.get_email" />
 </fields>
 ```
 
 In this example the `customer.customer_email` will be set to the next value `Magento\Customer\Model\Session::getCustomer()::getEmail()`.
+
+String arguments to use when accessing the application context can also be specified. Arguments can be provided within curly braces and delimited by colons if there are multiple:
+
+<fields>
+    <field name="config_value" source="context_scope_config.get_value{value/path:default}" />
+</fields>
+
+In this example the `config_value` will be set to the next value `Magento\Framework\App\Config\ScopeConfigInterface::getValue('value/path', 'default')`.
+
 If the value is not exists or can't be processed the appropriate message will be logged and the hook execution won't be interrupted.
 
 The list of supported contexts:

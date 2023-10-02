@@ -261,7 +261,7 @@ When a shopper adds a product to the cart, a third-party inventory management sy
 
 **Default Payload:**
 
-The `observer.checkout_cart_product_add_before` webhook is not based on the resource model. The payload is obtained from the code execution in the application.
+The following `observer.checkout_cart_product_add_before` payload was obtained from the code execution in the application. The `extension_attributes` section was deleted for brevity.
 
 ```json
 {
@@ -335,6 +335,7 @@ The `observer.checkout_cart_product_add_before` webhook is not based on the reso
     }
 }
 ```
+
 **webhook.xml configuration:**
 
 ```xml

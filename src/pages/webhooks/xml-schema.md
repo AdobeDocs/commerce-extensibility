@@ -42,12 +42,12 @@ The `method` element must define the webhook `name` and `type`. The combination 
 
 | Attribute | Type  | Description | Is required | Default |
 |---|---|---|---|
-| `name`    | String | The webhook code name. The value must be in the form `<type>.<event_name>`, where `type` is either `observer` or `plugin`, and `event_name` is a Commerce event name. Use the `bin/magento webhooks:list:all` command to display a list of possible events. | true        | Not applicable     |
+| `name`    | String | The webhook code name. The value must be in the form `<type>.<webhook_name>`, where `type` is either `observer` or `plugin`, and `webhook_name` matches a valid Commerce event name. Use the `bin/magento webhooks:list:all` command to display a list of possible webhooks. | true        | Not applicable     |
 | `type`    | String | Specifies whether the webhook should be executed `before` or  `after` the original action.  | true        | Not applicable     |
 
 ## hooks element
 
-The `hooks` element is required. It does contain any attributes, but it must contain one or more `batch` elements.
+The `hooks` element is required. It does not contain any attributes, but it must contain one or more `batch` elements.
 
 ## batch element
 

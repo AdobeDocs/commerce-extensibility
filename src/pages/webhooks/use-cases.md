@@ -269,12 +269,12 @@ The following `observer.checkout_cart_product_add_before` payload was obtained f
     "eventName": "checkout_cart_product_add_before",
     "data": {
         "info": {
-            "uenc": "aHR0cDovL21hZ2VudG8yNDVlZS5sb2NhbC9wcm9kdWN0LTEuaHRtbA~~",
+            "uenc": "<value>",
             "product": "23",
             "selected_configurable_option": "",
             "related_product": "",
             "item": "23",
-            "form_key": "TyQnCt98Qs6U63YA",
+            "form_key": "<value>",
             "qty": "1"
         },
         "product": {

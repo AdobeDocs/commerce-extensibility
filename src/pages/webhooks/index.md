@@ -7,6 +7,9 @@ keywords:
 
 # Adobe Commerce Webhooks Overview
 
+Webhooks enable developers to configure synchronous logic to execute calls to external systems when an Adobe Commerce event triggers. Synchronous calls are required when Commerce needs to immediately compute or validate something (order totals, taxes, payments) using a 3rd party endpoint and write the result back into Adobe Commerce. For example, a developer needs to implement an integration with a 3rd party shipping provider to verify shipping costs. Before a shopper can fully check out, Commerce needs to ask the external shipping system to calculate the exact shipping rate for the order.  Commerce then saves the response and is able to display/charge the shopper.
+
+
 ## Run a single webhook before adding a product to the cart
 
 This example checks an external service to determine whether there is sufficient product before the shopper adds the product to the cart. It creates a webhook on method `observer.checkout_cart_product_add_before`, which runs before the observer `checkout_cart_product_add_before`.

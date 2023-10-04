@@ -5,9 +5,9 @@ keywords:
   - Extensibility
 ---
 
-# Webhooks configuration reference
+# Webhook configuration reference
 
-To configure webhooks, you must create an `etc/webhooks.xml` file of an enabled Adobe Commerce module.
+Webhooks are configured in a `webhooks.xml` file. This file can be placed in the system `<install_directory>/app/etc` directory or in the `etc` directory of an enabled Adobe Commerce module.
 
 Run the `bin/magento webhooks:list` command  to determine if the webhooks you create in this file register correctly. The webhook name will be displayed in the list of the registered webhooks.
 
@@ -66,14 +66,14 @@ The `hook` element defines the HTTP request to the remote server.
 | `name` | String | A hook name that is unique within a batch. | true        | Not applicable     |
 | `url` | String | The HTTP endpoint to send the request for processing. | true        | Not applicable     |
 | `method` | String | The HTTP method, such as POST or PUT, that invokes the hook. | false       | POST    |
-| `headers` | Array  | A set of HTTP headers to send with the request. | false       | []      |
-| `fields` | Array  | A set of fields to include in the hook payload. If not set, the entire payload will be sent. | false       | []      |
 | `priority` | Int    | The priority of the merging hook results in the batch.  | false       | 0       |
 | `required` | Boolean   | Specifies whether hook execution is required or optional. When set to `false` (optional), if the hook fails to execute, the failure is logged and subsequent hooks continue to be processed. When `true`, a failure terminates the process. | false       | true    |
 | `timeout` | Int    | A hard timeout limit (milliseconds) for the request. Requests exceeding this timeout are aborted and logged. | false       | 0       |
 | `softTimeout`| Int    | A soft timeout limit (milliseconds) for the request. Requests exceeding this timeout are logged for debugging purposes. | false       | Not applicable     |
 | `fallbackErrorMessage` | Int    | The error message to return when the hook fails. | false       | Not applicable     |
 | `remove` | Boolean   | Indicates whether to skip a removed hook during the batch execution. | false       | false   |
+| `headers` | Array  | A set of HTTP headers to send with the request. | false       | []      |
+| `fields` | Array  | A set of fields to include in the hook payload. If not set, the entire payload will be sent. | false       | []      |
 
 ### headers and header elements
 
@@ -92,6 +92,6 @@ A `fields` element is optional and can contain one or more `field` elements. The
 | Attribute | Type   | Description  | Is required | Default |
 |---|---|---|---|---|
 | `name` | String  | The path to the field to include, such as `product.sku`. Do not include the top-level `data` object in the name. | true        | Not applicable     |
-| `source` | String  | The path to the value in the payload. If not set, the `name` is used as source. Commerce events typically| false       | Not applicable     |
-| `converter` | String  | A class that is used to convert the value of the field before sending to the webhook. | false       | Not applicable     |
+| `source` | String  | The path to the value in the payload. If not set, the `name` is used as source. | false       | Not applicable     |
+| `converter` | String  | A class that transforms the value of a field, such as from integer to string. | false       | Not applicable     |
 | `remove` | Boolean | Set to `true` to remove the field from the payload. | false | false   |

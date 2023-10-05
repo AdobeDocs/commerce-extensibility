@@ -30,7 +30,7 @@ The value of the `webhook-name` argument must be a valid Commerce event name. Th
 
 where:
 
-*  `type` specifies the origin of the event. Specify `observer` if the event is emitted by a Commerce observer, or specify `plugin` if the event is emitted by a plugin.
+*  `type` specifies the origin of the event. Specify `observer` if the event is emitted by a Commerce observer, or specify plugin if the event is based on resource model methods or API interfaces.
 *  `event_name` identifies the event. For example: `catalog_product_save_after`.
 
 ### Usage

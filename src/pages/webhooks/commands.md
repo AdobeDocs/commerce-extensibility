@@ -325,7 +325,7 @@ The webhook endpoint will receive the next payload according to `fields` configu
 
 In case of error or returning the exception operation you will see the appropriate information in the command output
 
-```
+```bash
 Failed to process webhook "observer.checkout_cart_product_add_before". Or webhook endpoint returned exception operation. Error: Webhook Response: The product is out of stock
 Check logs for more information.
 ```

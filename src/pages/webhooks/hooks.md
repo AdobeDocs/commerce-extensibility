@@ -13,12 +13,11 @@ The [webhook configuration reference](xml-schema.md) describes each element in d
 
 ## Define the connection
 
-The following hook definition includes the hook name, the destination URL, and timeout information. The `required` attribute indicates that a failure will terminate the process. The `fallbackErrorMessage` will be written to the error log and can be displayed on the storefront.
+The following hook definition includes the hook name, the destination URL, and timeout information. The `fallbackErrorMessage` will be written to the error log and can be displayed on the storefront.
 
 ```xml
 <hook name="validate_stock" url="{env:APP_VALIDATE_STOCK_URL}/product-validate-stock"
-timeout="2000" softTimeout="200" required="true"
-fallbackErrorMessage="Can't add the product to the cart right now">`
+timeout="2000" softTimeout="200" fallbackErrorMessage="Can't add the product to the cart right now">`
 ```
 
 The hook URL is formed by concatenating the `APP_VALIDATE_STOCK_URL` environment variable and the partial path `/product-validate-stock`. This practice is useful for developing in different environments, such as those for staging and production, where the hook URLs are different.

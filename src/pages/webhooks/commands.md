@@ -13,6 +13,7 @@ Adobe Commerce provides the following commands to configure and process webhooks
 * [webhooks:list:all](#return-a-list-of-supported-webhook-event-names)
 * [webhooks:list](#return-a-list-of-subscribed-webhooks)
 * [webhooks:generate:module](#generate-plugins)
+* [webhooks:dev:run](#emulate-webhook-execution)
 
 ## Display the payload of a webhook
 
@@ -276,4 +277,56 @@ bin/magento webhooks:generate:module
 
 ```terminal
 Module was generated in the app/code/Magento directory
+```
+
+## Emulate webhook execution
+
+The `webhooks:dev:run` command is used for development and testing purposes only. It emulates the execution of your registered webhook containing a custom payload with requiring changes to the Commerce application.
+Run this command after setting the initial webhook payload in a `webhooks.xml` file, Then run the command again any time you make subsequent modifications to the payload until you can confirm that the payload works as expected.
+
+### Usage
+
+`bin/magento webhooks:dev:run <webhook-name> <webhook-arguments-payload>`
+
+### Arguments
+
+&lt;webhook-name:type> Required. The combination of webhook name and type. The name must begin with either `observer.` or `plugin.`. The `type` must be either `before` or `after`. Example: `observer.checkout_cart_product_add_before:before`
+
+&lt;webhook-arguments-payload> Required. The webhook arguments payload in JSON format. The payload will be filtered according to the `fields` rules defined in a `webhooks.xml` file before being sent to the webhook endpoint. This emulates how the real arguments will be filtered in the generated plugin for the webhook.
+
+### Example
+
+The webhooks.xml file registered the following webhook:
+
+```xml
+    <method name="observer.checkout_cart_product_add_before" type="before">
+        <hooks>
+            <batch>
+                <hook name="validate_stock" url="{env:APP_BUILDER_PROJECT_URL}/product-validate-stock" timeout="2000" softTimeout="200" fallbackErrorMessage="The product stock validation failed">
+                    <fields>
+                        <field name='product.name' source='data.product.name' />
+                        <field name='product.sku' source='data.product.sku' />
+                    </fields>
+                </hook>
+            </batch>
+        </hooks>
+    </method>
+```
+
+Instead of manually adding a product to the cart from the storefront, you can run the following command, which specifies a custom payload:
+
+```bash
+bin/magento webhooks:dev:run observer.checkout_cart_product_add_before:before '{"data":{"product":{"sku":"simple-product","name":"Simple Product"}}}'
+
+The webhook endpoint receives the following payload, according to `fields` configured for the webhook:
+
+```json
+{"product":{"name":"Simple Product","sku":"simple-product"}}
+```
+
+In case of error or returning the exception operation you will see the appropriate information in the command output
+
+```bash
+Failed to process webhook "observer.checkout_cart_product_add_before". Or webhook endpoint returned exception operation. Error: Webhook Response: The product is out of stock
+Check logs for more information.
 ```

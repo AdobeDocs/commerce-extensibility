@@ -296,7 +296,7 @@ Run this command after setting the initial webhook payload in a `webhooks.xml` f
 
 ### Example
 
-For example, you have registered the next webhook:
+The webhooks.xml file registered the following webhook:
 
 ```xml
     <method name="observer.checkout_cart_product_add_before" type="before">
@@ -313,7 +313,7 @@ For example, you have registered the next webhook:
     </method>
 ```
 
-Instead pf manually adding a product to the cart from the storefront, you can run the following command, which specifies a custom payload:
+Instead of manually adding a product to the cart from the storefront, you can run the following command, which specifies a custom payload:
 
 ```bash
 bin/magento webhooks:dev:run observer.checkout_cart_product_add_before:before '{"data":{"product":{"sku":"simple-product","name":"Simple Product"}}}'

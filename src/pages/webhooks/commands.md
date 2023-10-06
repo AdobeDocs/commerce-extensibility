@@ -313,7 +313,7 @@ For example, you have registered the next webhook:
     </method>
 ```
 
-Instead of trying to add the product to the cart through the Adobe Commerce UI, you can run the next command with custom payload:
+Instead pf manually adding a product to the cart from the storefront, you can run the following command, which specifies a custom payload:
 
 `bin/magento webhooks:dev:run observer.checkout_cart_product_add_before:before '{"data":{"product":{"sku":"simple-product","name":"Simple Product"}}}'`
 

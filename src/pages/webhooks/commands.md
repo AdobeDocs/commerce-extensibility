@@ -290,7 +290,7 @@ Run this command after setting the initial webhook payload in a `webhooks.xml` f
 
 ### Arguments
 
-&lt;webhook-name> Required. The combination of webhook name and type, the name must begin with either `observer.` or `plugin.`. Example: `observer.checkout_cart_product_add_before:before`
+&lt;webhook-name:type> Required. The combination of webhook name and type. The name must begin with either `observer.` or `plugin.`. The `type` must be either `before` or `after`. Example: `observer.checkout_cart_product_add_before:before`
 
 &lt;webhook-arguments-payload> Required. The webhook arguments payload in JSON format. The payload will be filtered according to the `fields` rules before being sent to the webhook endpoint. This emulates how the real arguments will be filtered in the generated plugin for the webhool.
 

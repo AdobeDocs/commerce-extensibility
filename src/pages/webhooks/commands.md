@@ -318,7 +318,7 @@ Instead pf manually adding a product to the cart from the storefront, you can ru
 ```bash
 bin/magento webhooks:dev:run observer.checkout_cart_product_add_before:before '{"data":{"product":{"sku":"simple-product","name":"Simple Product"}}}'
 
-The webhook endpoint will receive the next payload according to `fields` configured for the webhook:
+The webhook endpoint receives the following payload, according to `fields` configured for the webhook:
 
 ```json
 {"product":{"name":"Simple Product","sku":"simple-product"}}

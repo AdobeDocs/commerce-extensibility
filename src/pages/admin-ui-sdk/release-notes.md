@@ -12,7 +12,7 @@ keywords:
 
 ### Release date
 
-October 10, 2023
+October 6, 2023
 
 ### Enhancements
 

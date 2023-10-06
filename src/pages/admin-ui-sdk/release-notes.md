@@ -8,6 +8,16 @@ keywords:
 
 # Adobe Commerce Admin UI SDK release notes
 
+## Version 1.1.2
+
+### Release date
+
+October 6, 2023
+
+### Enhancements
+
+Fixed security cross-site scripting (XSS) and password hash security vulnerabilities.
+
 ## Version 1.1.1
 
 ### Release date

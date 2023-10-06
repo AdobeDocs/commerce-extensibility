@@ -179,3 +179,13 @@ Supported contexts:
 | `context_scope_config`      | Magento\Framework\App\Config\ScopeConfigInterface |
 | `context_http_request`      | Magento\Framework\App\Request\Http                |
 | `context_staging`           | Magento\Staging\Model\VersionManager              |
+
+## Clean the cache
+
+If you are adding webhook functionality to an instance that is in production mode, run the following command to clean the cache and make the webhook available to the system:
+
+```bash
+bin/magento cache:clean config
+```
+
+If the instance is in developer mode, these configuration changes are detected automatically.

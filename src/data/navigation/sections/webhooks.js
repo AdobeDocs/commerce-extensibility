@@ -4,8 +4,8 @@ module.exports = [
       path: "/webhooks/index.md"
     },
     {
-      title: "Installation",
-      path: "/webhooks/installation.md",
+      title: "Use cases",
+      path: "webhooks/use-cases.md"
     },
     {
       title: "Configure hooks",
@@ -16,16 +16,16 @@ module.exports = [
       path: "/webhooks/responses.md"
     },
     {
-      title: "Use cases",
-      path: "webhooks/use-cases.md"
-    },
-    {
       title: "Configuration reference",
       path: "/webhooks/xml-schema.md"
     },
     {
       title: "Command reference",
       path: "/webhooks/commands.md",
+    },
+    {
+      title: "Installation",
+      path: "/webhooks/installation.md",
     },
     {
       title: "Release notes",

@@ -35,6 +35,11 @@ Make Commerce transactional data available to App Builder using Adobe I/O. You c
 
 <DiscoverBlock slots="link, text"/>
 
+[Webhooks](webhooks/index.md)
+
+Configure webhooks to synchronously send data to an external system when an event triggers and update Adobe Commerce in real time.
+<DiscoverBlock slots="link, text"/>
+
 [Admin UI SDK](admin-ui-sdk/index.md)
 
 Extend the Commerce Admin to include the menus and pages necessary for merchants to configure and interact with your app.

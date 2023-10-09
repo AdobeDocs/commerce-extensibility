@@ -6,3 +6,20 @@ keywords:
 ---
 
 # Release notes
+
+## Version 1.0.0
+
+### Release date
+
+October 10, 2023
+
+### Compatibility
+
+Adobe Commerce for Cloud
+
+*  2.4.5 and higher
+*  `ece-tools` 2002.1.16+
+
+Adobe Commerce (on-premises)
+
+*  2.4.5 and higher

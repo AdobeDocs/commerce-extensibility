@@ -11,7 +11,11 @@ This topic uses common scenarios to describe how to implement webhooks on Adobe 
 
 ## Discount code validation
 
-A merchant uses a third-party extension to create and manage discount codes. When a shopper applies a coupon code to their cart, the coupon code must be validated. The Commerce checkout process can continue if the code is valid. Otherwise, the error message `App Builder Webhook Response: The discount code "<code-value>" is not valid` displays on the Payment Method checkout page.
+A merchant uses a third-party extension to create and manage discount codes. When a shopper applies a coupon code to their cart, the coupon code must be validated. The Commerce checkout process can continue if the code is valid. Otherwise, the following error message displays on the Payment Method checkout page:
+
+```text
+App Builder Webhook Response: The discount code "<code-value>" is not valid
+```
 
 **Webhook name:**
 

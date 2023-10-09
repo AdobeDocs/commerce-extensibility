@@ -7,20 +7,42 @@ keywords:
 
 # Webhooks commands
 
+Adobe Commerce provides the following commands to configure and process webhooks:
+
+* [webhooks:info](#display-the-payload-of-a-webhook)
+* [webhooks:list:all](#return-a-list-of-supported-webhook-event-names)
+* [webhooks:list](#return-a-list-of-subscribed-webhooks)
+* [webhooks:generate:module](#generate-plugins)
+* [webhooks:dev:run](#emulate-webhook-execution)
+
 ## Display the payload of a webhook
 
 The `webhooks:info` command returns the payload of the specified webhook. You can optionally specify the depth of the payload to reduce the amount data returned.
-The actual payload can be different from that shown in the `webhooks:info` as it generates in runtime based on the current state of objects and variables.
+
+<InlineAlert variant="info" slots="text" />
+
+The actual payload of a transmitted webhook can be different from that returned by the `webhooks:info`. The command response is based on the current state of objects and variables.
+
+The value of the `webhook-name` argument must be a valid Commerce event name. The value must use the following pattern:
+
+```text
+<type>.<event_name>
+```
+
+where:
+
+*  `type` specifies the origin of the event. Specify `observer` if the event is emitted by a Commerce observer, or specify plugin if the event is based on resource model methods or API interfaces.
+*  `event_name` identifies the event. For example: `catalog_product_save_after`.
 
 ### Usage
 
-`bin/magento webhooks:info <webhook-name> [--webhook-type=`before` | `after`] [--depth=<integer>]`
+`bin/magento webhooks:info <webhook-name> [--webhook-type="<value>"] [--depth=<integer>]`
 
 ### Arguments
 
-`webhook-name` Required.
+&lt;webhook-name> Required. The name must begin with either `observer.` or `plugin.`
 
-`--webhook-type` Optional. The default value is "before"
+`--webhook-type` Optional. Indicates whether the plugin that generates the event is a `before` or `after` plugin. The default value is `before`. `around` plugins are not supported.
 
 ### Options
 
@@ -255,4 +277,30 @@ bin/magento webhooks:generate:module
 
 ```terminal
 Module was generated in the app/code/Magento directory
+```
+
+## Emulate webhook execution
+
+The `webhooks:dev:run` command is used for development and testing purposes only. It emulates the execution of your registered webhook containing a custom payload with requiring changes to the Commerce application. [Testing webhooks](testing.md) further describes how to run this command.
+
+### Usage
+
+`bin/magento webhooks:dev:run <webhook-name> <webhook-arguments-payload>`
+
+### Arguments
+
+&lt;webhook-name:type> Required. The combination of webhook name and type. The name must begin with either `observer.` or `plugin.`. The `type` must be either `before` or `after`. Example: `observer.checkout_cart_product_add_before:before`
+
+&lt;webhook-arguments-payload> Required. The webhook arguments payload in JSON format. The payload will be filtered according to the `fields` rules defined in a `webhooks.xml` file before being sent to the webhook endpoint. This emulates how the real arguments will be filtered in the generated plugin for the webhook.
+
+### Example
+
+```bash
+bin/magento webhooks:dev:run observer.checkout_cart_product_add_before:before '{"data":{"product":{"sku":"simple-product","name":"Simple Product"}}}'
+```
+
+The webhook endpoint receives the following payload, according to `fields` configured for the webhook:
+
+```json
+{"product":{"name":"Simple Product","sku":"simple-product"}}
 ```

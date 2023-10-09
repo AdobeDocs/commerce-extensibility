@@ -12,6 +12,10 @@ module.exports = [
       path: "/webhooks/hooks.md"
     },
     {
+      title: "Testing webhooks",
+      path: "/webhooks/testing.md"
+    },
+    {
       title: "Responses and logging",
       path: "/webhooks/responses.md"
     },

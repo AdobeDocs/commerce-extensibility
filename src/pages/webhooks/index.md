@@ -18,3 +18,19 @@ This process is illustrated in the following diagram.
 1. The event triggers a real-time call from Commerce to a URL endpoint, such as an Order Management System. This call contains relevant data, such as the Commerce product SKU and requests information from that external system. As an example, the call could request a product's stock status to make sure it is available to be purchased.
 
 1. Execution completes by resolving the response from the external system back into the Commerce application. For example, if the external system responds that the product is available, Commerce completes the shopper's action and adds the product to the shopping cart. If the product is not available, the flow is interrupted and an exception is thrown. ("Exception: Product is not in stock"). The shopper cannot add the product to the cart.
+
+Webhooks are defined in `webhooks.xml` files. Extension developers should place this file in the `etc` directory of their custom module. Merchants who want to implement their own webhooks can define them in the system `app/etc/webhooks.xml` file.
+
+## Webhook development process
+
+Use these guidelines to develop your own webhooks:
+
+1. Identify the Adobe Commerce event that triggers a webhook. Adobe Commerce merchants can browse the available events from the Admin by selecting **System** > Events > **Events** to display the Event list page.
+
+1. Understand the default payload of the corresponding webhook by running the [`bin/magento webhooks:info` command](commands.md#display-the-payload-of-a-webhook).
+
+1. Gather the requirements to make a web call to the external server. This includes the URL, connection information, headers, and the payload the server expects.
+
+1. Create a [`webhooks.xml` file](hooks.md). Review the sample [use cases](use-cases.md) for ideas.
+
+1. [Test](testing) your `webhooks.xml` file and understand the [response](responses.md).

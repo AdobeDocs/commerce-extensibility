@@ -33,4 +33,4 @@ Use these guidelines to develop your own webhooks:
 
 1. Create a [`webhooks.xml` file](hooks.md). Review the sample [use cases](use-cases.md) for ideas.
 
-1. [Test](testing) your `webhooks.xml` file and understand the [response](responses.md).
+1. [Test](testing.md) your `webhooks.xml` file and understand the [response](responses.md).

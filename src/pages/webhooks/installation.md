@@ -7,17 +7,13 @@ keywords:
 
 # Install Adobe Commerce Webhooks
 
-## Install Webhooks modules on Commerce
-
 The following steps apply to both Adobe Commerce on cloud infrastructure and on-premises installations. Cloud customers must perform additional steps to configure the `ece-tools` package.
 
-1. If you are running Commerce xxx, use the following command to load the webhooks modules:
+1. Use the following command to load the webhooks modules:
 
    ```bash
    composer require magento/commerce-webhooks=^1.0 --no-update
    ```
-
-   Commerce 2.4.7-beta3 ? and later loads these modules automatically.
 
 1. Update the project dependencies.
 

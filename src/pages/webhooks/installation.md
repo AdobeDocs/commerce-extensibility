@@ -27,7 +27,7 @@ The following steps apply to both Adobe Commerce on cloud infrastructure and on-
    bin/magento module:enable --all
    ```
 
-## On-premise installation
+## On-premises installation
 
 1. Run the following command to initialize the `AdobeCommerceWebhookPlugins` module. This module consists of generated plugins based on a list of subscribed webhooks.
 
@@ -65,9 +65,9 @@ Use the following steps to perform additional configuration for Adobe Commerce o
 
 1. Run the `composer info magento/ece-tools` command to determine your version of ece-tools. If the version is less than `2002.1.16`, [update to the most recent version](https://experienceleague.adobe.com/docs/commerce-cloud-service/user-guide/dev-tools/ece-tools/update-package.html).
 
-If the ece-tools version `2002.1.16` is not released yet, use the develop branch from the git:
+   If the ece-tools version `2002.1.16` is not available yet, install the `develop` branch from git.
 
-Add to the repositories section of your `composer.json`
+   Add the following to the `repositories` section of your `composer.json` file:
 
    ```json
       "ece-tools": {
@@ -76,13 +76,13 @@ Add to the repositories section of your `composer.json`
       },
    ```
 
-Add to the `require` section of your `composer.json`
+   Add the following to the `require` section of your `composer.json`:
 
    ```json
       "magento/ece-tools": "dev-develop as 2002.1.16",
    ```
 
-Run the `composer update`.
+   Run the `composer update` command.
 
 1. Enable webhooks in the `.magento.env.yaml` file:
 

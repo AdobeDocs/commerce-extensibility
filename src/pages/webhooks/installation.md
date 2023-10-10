@@ -68,16 +68,20 @@ Use the following steps to perform additional configuration for Adobe Commerce o
 If the ece-tools version `2002.1.16` is not released yet, use the develop branch from the git:
 
 Add to the repositories section of your `composer.json`
+
 ```json
         "ece-tools": {
             "type": "git",
             "url": "git@github.com:magento/ece-tools.git"
         },
 ```
+
 Add to the `require` section of your `composer.json`
+
 ```json
     "magento/ece-tools": "dev-develop as 2002.1.16",
 ```
+
 Run the `composer update`.
 
 1. Enable webhooks in the `.magento.env.yaml` file:

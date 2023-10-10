@@ -19,7 +19,7 @@ October 10, 2023
 
 Adobe Commerce for Cloud
 
-*  2.4.5 and higher
+*  2.4.4 and higher
 *  `ece-tools` 2002.1.16+
 
 Adobe Commerce (on-premises)

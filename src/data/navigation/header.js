@@ -5,11 +5,15 @@ module.exports = [
     },
     {
       title: "App Development",
-      path: "/app-development"
+      path: "/app-development/"
     },
     {
       title: "Events",
       path: "/events/"
+    },
+    {
+      title: "Webhooks",
+      path: "/webhooks/"
     },
     {
       title: "Admin UI SDK",

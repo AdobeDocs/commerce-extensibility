@@ -24,4 +24,4 @@ Adobe Commerce for Cloud
 
 Adobe Commerce (on-premises)
 
-*  2.4.5 and higher
+*  2.4.4 and higher

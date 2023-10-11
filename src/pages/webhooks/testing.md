@@ -7,7 +7,7 @@ keywords:
 
 # Testing Webhooks
 
-Use the `[webhooks:dev:run <webhook-name> <webhook-arguments-payload>](commands.md#emulate-webhook-execution)` command in development mode to test your webhooks locally. It emulates the execution of your registered webhook, which contains a custom payload, without requiring changes to the Commerce application. Run this command after setting the initial webhook payload in a `webhooks.xml` file. Then run the command again any time you make subsequent modifications to the payload until you can confirm that the payload works as expected.
+Use the [`webhooks:dev:run <webhook-name> <webhook-arguments-payload>`](commands.md#emulate-webhook-execution) command in development mode to test your webhooks locally. It emulates the execution of your registered webhook, which contains a custom payload, without requiring changes to the Commerce application. Run this command after setting the initial webhook payload in a `webhooks.xml` file. Then run the command again any time you make subsequent modifications to the payload until you can confirm that the payload works as expected.
 
 In this example, the `webhooks.xml` file registered the following webhook:
 

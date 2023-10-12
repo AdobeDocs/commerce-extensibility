@@ -8,9 +8,7 @@ keywords:
 
 # product
 
-The `product` extension point customizes product features in the Adobe Commerce Admin.
-​
-You can customize the following product features:
+The `product` extension point customizes product features in the Adobe Commerce Admin. You can customize the following product features:
 
 * Product grid mass actions
 

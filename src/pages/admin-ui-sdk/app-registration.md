@@ -50,7 +50,7 @@ Create an `ExtensionRegistration`  component that registers the menu configurati
 1. Add the `uix-guest` dependency in the `package.json`.
 
    ```json
-   "@adobe/uix-guest": "^0.8.2"
+   "@adobe/uix-guest": "^0.8.3"
    ```
 
 2. Run `npm install`.

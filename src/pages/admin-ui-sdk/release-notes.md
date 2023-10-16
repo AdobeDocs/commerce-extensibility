@@ -16,17 +16,13 @@ October 18, 2023
 
 ### Enhancements
 
-* Added the `order` extension point. You can use this extension point to add columns to the Sales Order grid. <!-- CEXT-2272 -->
+* Created the [`order` extension point](extension-points/order.md), which adds columns to the order grid. <!-- CEXT-2272 -->
 
-* Added the `admin_ui_sdk` cache type. When enabled, Commerce caches customizations to the Admin. <!-- CEXT-2377 -->
+* Added the [`admin_ui_sdk` cache type](configuration.md#clean-the-admin-ui-sdk-cache). When enabled, Commerce caches customizations to the Admin. <!-- CEXT-2377 -->
 
-Add the possibility to add a section in the menu, API now support isSection attribute. <!-- CEXT- -->
+* Added the `isSection` and `sortOrder` parameters to the [`menu` extension point](extension-points/menu.md). The `isSection` parameter allows you to define a menu section, while `sortOrder` defines the placement of a menu item. <!-- CEXT 2249, CEXT-2289 -->
 
-* Added the `sortOrder` parameter to the `menu` extension point. <!-- CEXT-2289 -->
-
-* Added the `productSelectLimit` parameter for mass actions in the `product` extension point. <!-- CEXT-2357 -->
-
-Enhance performance on Admin UI SDK. <!-- CEXT- -->
+* Added the `productSelectLimit` parameter for mass actions in the [`product` extension point](extension-points/product.md). <!-- CEXT-2357 -->
 
 ### Bug fixes
 
@@ -40,7 +36,7 @@ October 6, 2023
 
 ### Enhancements
 
-Fixed security cross-site scripting (XSS) and password hash security vulnerabilities.
+Fixed cross-site scripting (XSS) and password hash security vulnerabilities.
 
 ## Version 1.1.1
 

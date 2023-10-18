@@ -46,6 +46,7 @@ Check logs for more information.
 ```
 
 Responses for a webhook endpoint may be cached if the `ttl` attribute for a hook is set. To clean the webhook response cache while testing your webhooks locally, run the following command:
+
 ```bash
 bin/magento cache:clean webhooks_response
 ```

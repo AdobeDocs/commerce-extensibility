@@ -8,9 +8,7 @@ keywords:
 
 # product
 
-The `product` extension point customizes product features in the Adobe Commerce Admin.
-​
-You can customize the following product features:
+The `product` extension point customizes product features in the Adobe Commerce Admin. You can customize the following product features:
 
 * Product grid mass actions
 
@@ -30,13 +28,14 @@ product: {
                     title: 'First App Mass Action',
                     message: 'Are you sure your want to proceed with First App Mass Action on selected products?'
                 },
-                path: 'first-mass-action'
+                path: '#/first-mass-action',
+                productSelectLimit: 1
             },
             {
                 actionId: `${extensionId}::another-first-mass-action`,
                 label: 'Another Mass Action',
                 type: `${extensionId}.another-mass-action`,
-                path: 'another-mass-action'
+                path: '#/another-mass-action'
             }
         ]
     }
@@ -51,5 +50,6 @@ product: {
 | `confirm.message` | string | No | The message displayed on the confirmation dialog for a mass action |
 | `confirm.title` | string | No | The title of a dialog that confirms the mass action |
 | `label` | string | Yes | An Action label to display in the Mass Actions grid |
-| `path` | string | Yes | The relative path in the application to redirect to the action. The URL will be appended with a query of selected `productIds` |
+| `path` | string | Yes | The relative path in the application to redirect to the action. You might need to prepend `#/` to the path to ensure access to the correct page. |
+| `productSelectLimit` | integer | No | Set the maximum number products that can be selected for a mass action. By default, the number is unlimited. |
 | `type` | string | Yes | A unique ID that identifies the type of the action. |

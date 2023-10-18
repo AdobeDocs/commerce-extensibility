@@ -8,6 +8,26 @@ keywords:
 
 # Adobe Commerce Admin UI SDK release notes
 
+## Version 1.2.0
+
+### Release date
+
+October 18, 2023
+
+### Enhancements
+
+* Created the [`order` extension point](extension-points/order.md), which adds columns to the order grid. <!-- CEXT-2272 -->
+
+* Added the [`admin_ui_sdk` cache type](configuration.md#clean-the-admin-ui-sdk-cache). When enabled, Commerce caches customizations to the Admin. <!-- CEXT-2377 -->
+
+* Added the `isSection` and `sortOrder` parameters to the [`menu` extension point](extension-points/menu.md). The `isSection` parameter allows you to define a menu section, while `sortOrder` defines the placement of a menu item. <!-- CEXT 2249, CEXT-2289 -->
+
+* Added the `productSelectLimit` parameter for mass actions in the [`product` extension point](extension-points/product.md). <!-- CEXT-2357 -->
+
+### Bug fixes
+
+* Minimized the number of calls needed to build a menu. <!-- CEXT-2396 -->
+
 ## Version 1.1.2
 
 ### Release date
@@ -16,7 +36,7 @@ October 6, 2023
 
 ### Enhancements
 
-Fixed security cross-site scripting (XSS) and password hash security vulnerabilities.
+Fixed cross-site scripting (XSS) and password hash security vulnerabilities.
 
 ## Version 1.1.1
 

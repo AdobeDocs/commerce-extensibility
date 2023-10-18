@@ -36,6 +36,14 @@ Navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **A
    bin/magento cache:flush
    ```
 
+## Clean the Admin UI SDK cache
+
+The `admin_ui_sdk` cache type stores Admin customizations.  As you develop these customizations, run the following command to ensure you are seeing the latest changes:
+
+```bash
+bin/magento cache clean admin_ui_sdk
+```
+
 ## Test with a sample app
 
 You can download a sample app from the [Commerce UI test extension repository](https://github.com/magento/app-builder-samples) to gain insight on how the Admin SDK injects menus and pages into the Admin.

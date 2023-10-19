@@ -8,6 +8,18 @@ keywords:
 
 # Adobe Commerce Admin UI SDK release notes
 
+## Version 1.2.1
+
+### Release date
+
+October 24, 2023
+
+### Bug fixes
+
+* Menus display correctly when the Admin UI SDK is enabled but no menu registrations are found. <!-- CEXT-2438 -->
+
+* Custom date columns in the order grid now use ISO formatting. Previously, these values were simple timestamps.
+
 ## Version 1.2.0
 
 ### Release date

@@ -8,13 +8,13 @@ keywords:
 
 # product
 
-The `product` extension point customizes product features in the Adobe Commerce Admin. You can customize the following product features:
-
-* Product grid mass actions
+The `product` extension point customizes product grid mass actions in the Adobe Commerce Admin.
 
 ## Example customization​
 
-The following example creates mass actions labeled `First App Mass Action` and `Another Mass Action`.
+The following example creates mass actions labeled `First App Mass Action` and `Another Mass Action`. The `extensionId` value matches the ID specified at [app registration](../app-registration.md).
+
+The `path` parameter specifies where to redirect an action. You will need to pass a list of selected items, and this can be done by defining a [sharedContext](index.md#shared-contexts).
 
 ```javascript
 product: {

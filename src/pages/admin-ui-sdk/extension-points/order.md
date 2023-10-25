@@ -43,6 +43,71 @@ order: {
 }
 ```
 
+### Sample GraphQL Mesh configuration file
+
+The following sample mesh configuration file defines the external source that contains the data to populate in the custom columns.
+
+```json
+{
+    "meshConfig": {
+        "sources": [
+            {
+                "name": "orders",
+                "handler": {
+                    "JsonSchema": {
+                        "baseUrl": "https://www.example.com",
+                        "operations": [
+                            {
+                                "type": "Query",
+                                "field": "orders",
+                                "path": "/graphql",
+                                "method": "GET",
+                                "responseSchema": "./schema.json"
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+} 
+```
+
+### Sample schema file
+
+This sample `schema.json` file is referenced in the mesh configuration file. It defines the response of the external `orderGridColumns` query that fetches column data.
+
+```json
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "orderGridColumns": {
+        "type": "object",
+        "patternProperties": {
+          "^0": {
+            "type": "object",
+            "properties": {
+              "first_column": {
+                "type": "string"
+              },
+              "second_column": {
+                "type": "integer"
+              },
+              "third_column": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      }
+    },
+    "required": [
+      "orderGridColumns"
+    ]
+}
+```
+
 ## Parameters
 
 ​| Field | Type | Required | Description |

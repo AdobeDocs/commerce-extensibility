@@ -8,7 +8,7 @@ keywords:
 
 # order
 
-The `order` extension point enables you to add columns to the grid on the **Sales** > **Orders** page in the Adobe Commerce Admin. This extension point requires a GraphQL Mesh instance to retrieve the data to be added to the custom columns.
+The `order` extension point enables you to add columns to the grid on the **Sales** > **Orders** page in the Adobe Commerce Admin. This extension point requires an [API Mesh](https://developer.adobe.com/graphql-mesh-gateway/gateway) for Adobe Developer App Builder instance to retrieve the data to be added to the custom columns.
 
 You can use the [`aio api-mesh:describe` command](https://developer.adobe.com/graphql-mesh-gateway/gateway/command-reference/#aio-api-meshdescribe) to retrieve the values of the API key and mesh ID. The key is appended to the mesh endpoint URL.
 
@@ -43,7 +43,7 @@ order: {
 }
 ```
 
-### Sample GraphQL Mesh configuration file
+### Sample API Mesh configuration file
 
 The following sample mesh configuration file defines the external source that contains the data to populate in the custom columns.
 

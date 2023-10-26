@@ -16,20 +16,22 @@ The `sharedContext` constant contains a set of selected IDs, the Commerce base U
 
 ```js
 const sharedContext = {
-  selectedIds: config.productMassAction.selectedIds,
-  commerceBaseUrl: config.baseUrl,
-  imsToken: registryConfig.auth.imsToken
+  selectedIds: array,
+  commerceBaseUrl: string,
+  imsToken: string
 }
-```
 
 In the following code example, the `getGuestConnection()` call uses a `sharedContext` to retrieve a list of selected IDs.
 
 ```js
+const getGuestConnection = async () => {
+    return await attach({
+        id: extensionId
+   })
+}
+    
 getGuestConnection().then((guestConnection) => {
-  guestConnection.sharedContext.get('selectedIds').forEach((id) => {
-    items.push({id: id})
-  })
-  setIsLoading(false)
+  guestConnection.sharedContext.get('selectedIds')
 })
 
 The `path` parameter for a `productMassAction` specifies where to send the selected IDs.

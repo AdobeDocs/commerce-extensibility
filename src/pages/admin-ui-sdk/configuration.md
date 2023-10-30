@@ -43,7 +43,7 @@ Navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **A
 The `admin_ui_sdk` cache type stores Admin customizations.  As you develop these customizations, run the following command to ensure you are seeing the latest changes:
 
 ```bash
-bin/magento cache clean admin_ui_sdk
+bin/magento cache:clean admin_ui_sdk
 ```
 
 ## Test with a sample app

@@ -12,13 +12,21 @@ keywords:
 
 ### Release date
 
-October 24, 2023
+October 31, 2023
+
+### Enhancements
+
+* Added the **Mock AdobeAdminIms Module** field to the Admin UI SDK configuration page in the Admin. This field determines whether to send mock or real Adobe IMS credentials. <!-- CEXT-2449 -->
+
+* Added the **Admin UI SDK** (`Magento_CommerceBackendUix::admin`) resource. Administrators who are not assigned this resource will not have access the Admin UI SDK configuration page. <!-- CEXT-2425 -->
+
+* Custom date columns in the order grid now use ISO 8601 formatting. Previously, these values were simple timestamps. <!-- CEXT-2436 -->
 
 ### Bug fixes
 
 * Menus display correctly when the Admin UI SDK is enabled but no menu registrations are found. <!-- CEXT-2438 -->
 
-* Custom date columns in the order grid now use ISO formatting. Previously, these values were simple timestamps.
+* Orders exported in CSV format from the orders grid now include data in custom columns as expected. <!-- CEXT-2440 -->
 
 ## Version 1.2.0
 

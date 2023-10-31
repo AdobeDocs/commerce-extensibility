@@ -26,8 +26,6 @@ October 31, 2023
 
 * Menus display correctly when the Admin UI SDK is enabled but no menu registrations are found. <!-- CEXT-2438 -->
 
-* Orders exported in CSV format from the orders grid now include data in custom columns as expected. <!-- CEXT-2440 -->
-
 ## Version 1.2.0
 
 ### Release date

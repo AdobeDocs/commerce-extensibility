@@ -117,4 +117,4 @@ This sample `schema.json` file is referenced in the mesh configuration file. It 
 | `properties.align` | string | Yes | The alignment of the values in the column. One of `left`, `right`, `center`. |
 | `properties.columnId` | string | Yes | The identifier used in the external dataset to identify the column. |
 | `properties.label` | string | Yes | The label of the column to display. |
-| `properties.type` | string | Yes | The data type of the values in the column. Supported values: `boolean`, `date`, `float`, `integer`, `string`.|
+| `properties.type` | string | Yes | The data type of the values in the column. Supported values: `boolean`, `date`, `float`, `integer`, `string`. Date values must be ISO 8601-compliant. |

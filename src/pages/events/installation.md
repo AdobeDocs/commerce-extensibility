@@ -26,11 +26,19 @@ The following steps apply to both Adobe Commerce on cloud infrastructure and on-
 
    Commerce 2.4.6 and later loads these modules automatically.
 
+1. Enable the new modules:
+
+   ```bash
+   bin/magento module:enable --all
+   ```
+
 1. Update the project dependencies.
 
-  ```bash
-  composer update
-  ```
+   ```bash
+   composer update
+   ```
+
+## On-premise installation
 
 1. Run the following command to initialize the `AdobeCommerceEvents` module. This module consists of generated plugins based on a list of subscribed events and helps publish and process events.
 
@@ -38,10 +46,10 @@ The following steps apply to both Adobe Commerce on cloud infrastructure and on-
    bin/magento events:generate:module
    ```
 
-1. Enable the new modules:
+1. Enable the generated modules:
 
    ```bash
-   bin/magento module:enable --all
+   bin/magento module:enable Magento_AdobeCommerceEvents
    ```
 
 1. Upgrade your instance:

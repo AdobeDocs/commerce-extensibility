@@ -46,7 +46,7 @@ The following steps apply to both Adobe Commerce on cloud infrastructure and on-
    bin/magento events:generate:module
    ```
 
-1. Enable the generated modules:
+1. Enable the generated module:
 
    ```bash
    bin/magento module:enable Magento_AdobeCommerceEvents

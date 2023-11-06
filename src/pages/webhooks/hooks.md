@@ -138,7 +138,7 @@ The following example configures the webhook described above.
 
 You can implement a converter class to convert a field to a different data type. For example, Commerce stores order IDs as numeric values. If the hook endpoint expects order IDs to be text values, you must convert the numeric value to a string representation before sending the payload.
 
-All converter classes must implement `Magento\AdobeCommerceWebhooks\Model\Filter\Converter\FieldConverterInterface`. The `toExternalFormat` method of a converter class is used to convert a field value before sending a request to the hook endpoint. 
+All converter classes must implement `Magento\AdobeCommerceWebhooks\Model\Filter\Converter\FieldConverterInterface`. The `toExternalFormat` method of a converter class is used to convert a field value before sending a request to the hook endpoint.
 
 ```xml
 <fields>

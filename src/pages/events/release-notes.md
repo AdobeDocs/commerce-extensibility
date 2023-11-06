@@ -12,6 +12,14 @@ These release notes describe the latest version of Adobe I/O Events for Adobe Co
 
 See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io-events-for-adobe-commerce) for upgrade instructions.
 
+## Version 1.4.0
+
+* Increased the default value of retry count from three to seven to improve deliveries of failed events.
+
+* Added support for using nested fields in the rules of conditional events.
+
+* Added support of `io_events.xml` from the root `app/etc` directory.
+
 ## Version 1.3.0
 
 ### Release date

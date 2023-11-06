@@ -14,11 +14,11 @@ See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io
 
 ## Version 1.4.0
 
-* Increased the default value of re-try count to improve deliveries of failed events
+* Increased the default value of retry count from three to seven to improve deliveries of failed events.
 
-* Added support for using nested fields in the rules of conditional events
+* Added support for using nested fields in the rules of conditional events.
 
-* Added support of `io_events.xml` from the root `app/etc` directory
+* Added support of `io_events.xml` from the root `app/etc` directory.
 
 ## Version 1.3.0
 

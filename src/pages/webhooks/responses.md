@@ -22,7 +22,7 @@ operation | Description
 --- | ---
 `success` | the process that triggered the original event continues without any changes.
 `exception` | causes Commerce to terminate the process that triggered the original event
-`add` | updates the arguments in the original events by adding data described in the operation 
+`add` | updates the arguments in the original events by adding data described in the operation
 `replace` | replaces the arguments values in the original events based based on the response
 `remove` | removes values or nodes from the arguments in the original event by provided path
 

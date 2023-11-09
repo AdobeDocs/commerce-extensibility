@@ -14,7 +14,7 @@ Exceptions and notices are logged in the `<installation_directory>/var/log/syste
 
 ## Responses
 
-The endpoint is expected to return a `200` response and a JSON object or array of objects that indicates the result of the operation. The object can contain the list of fields based on the operation (`op`) which should be performed.
+The endpoint is expected to return a `200` response and a JSON object or array of objects that indicates the result of the operation. Each operation object can contain the list of fields based on the operation (`op`) which should be performed.
 
 At the moment Adobe Commerce webhooks support 5 different operations:
 

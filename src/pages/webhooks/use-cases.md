@@ -181,7 +181,7 @@ plugin.magento.gift_card_account.api.gift_card_account_management.save_by_quote_
 
 ```json
 {
-   "giftCard" {
+   "giftCard": {
         "cartId": null,
         "gift_cards": "string[]"
     }
@@ -347,7 +347,7 @@ The following `observer.checkout_cart_product_add_before` payload was obtained f
     <hooks>
         <batch>
             <hook name="validate_stock" url="{env:APP_BUILDER_URL}/product-validate-stock" timeout="5000"
-softTimeout="100" priority="100" required="true" fallbackErrorMessage="The product stock valdiation failed">
+softTimeout="100" priority="100" required="true" fallbackErrorMessage="The product stock validation failed">
                 <headers>
                     <header resolver="Magento\WebhookModule\Model\AddProductToCartResolver" />
                 </headers>
@@ -366,10 +366,254 @@ softTimeout="100" priority="100" required="true" fallbackErrorMessage="The produ
 
 ```json
 {
-   "product" {
+   "product": {
         "name": "string",
         "category_ids": "string[]",
         "sku": "string"
     }
 }
+```
+
+## Overwrite of tax calculation
+
+When a shopper goes to the checkout, a third-party system calculate taxes based on quote details and overwrite taxes values.
+
+**webhook.xml configuration:**
+
+```xml
+<method name="plugin.magento.tax.api.tax_calculation.calculate_tax" type="after">
+    <hooks>
+        <batch>
+            <hook name="update_order" url="{env:APP_BUILDER_URL}/calculate-taxes" method="POST" timeout="5000" softTimeout="1000" priority="300" required="false" fallbackErrorMessage="The taxes can not be calculated">
+                <headers>
+                    <header name="x-gw-ims-org-id">{env:APP_BUILDER_IMS_ORG_ID}</header>
+                    <header name="Authorization">Bearer {env:APP_BUILDER_AUTH_TOKEN}</header>
+                </headers>
+                <fields>
+                    <field name="quoteDetails" />
+                </fields>
+            </hook>
+        </batch>
+    </hooks>
+</method>
+```
+
+The payload received by third-party endpoint based on the configured list of fields:
+
+```json
+{
+  "quoteDetails": {
+    "billing_address": {
+      "region": {
+        "region_code": null,
+        "region": null,
+        "region_id": 57
+      },
+      "country_id": "US",
+      "street": [
+        "123 Domain Dr"
+      ],
+      "postcode": "78768",
+      "city": "Austin"
+    },
+    "shipping_address": {
+      ...
+    },
+    "customer_tax_class_key": {
+      "type": "id",
+      "value": "3"
+    },
+    "items": [
+      {
+        "code": "sequence-1",
+        "quantity": 1,
+        "tax_class_key": {
+          "type": "id",
+          "value": "2"
+        },
+        "is_tax_included": false,
+        "type": "product",
+        "extension_attributes": {
+          "price_for_tax_calculation": 200
+        },
+        "unit_price": 200,
+        "discount_amount": 0,
+        "parent_code": null
+      },
+      {
+        "code": "sequence-2",
+        "quantity": 1,
+        "tax_class_key": {
+          "type": "id",
+          "value": "2"
+        },
+        "is_tax_included": false,
+        "type": "product",
+        "extension_attributes": {
+          "price_for_tax_calculation": 100
+        },
+        "unit_price": 100,
+        "discount_amount": 0,
+        "parent_code": null
+      },
+      {
+        "type": "shipping",
+        "code": "shipping",
+        "quantity": 1,
+        "unit_price": 10,
+        "tax_class_key": {
+          "type": "id",
+          "value": 0
+        },
+        "is_tax_included": false,
+        "extension_attributes": []
+      }
+    ],
+    "customer_id": null
+  }
+}
+```
+
+Based on the input arguments and third-party endpoint logic that tax percent should be `19` the response operations list can look like:
+
+```json
+[
+    {
+        "op": "replace",
+        "path": "result/items/sequence-1",
+        "value": {
+            "row_tax": 38,
+            "price_incl_tax": 238,
+            "row_total_incl_tax": 238,
+            "tax_percent": 19
+        }
+    },
+    {
+        "op": "replace",
+        "path": "result/items/sequence-2",
+        "value": {
+            "row_tax": 19,
+            "price_incl_tax": 119,
+            "row_total_incl_tax": 119,
+            "tax_percent": 19
+        }
+    },
+    {
+        "op": "replace",
+        "path": "result/items/shipping",
+        "value": {
+            "row_tax": 1.9,
+            "price_incl_tax": 11.9,
+            "row_total_incl_tax": 11.9,
+            "tax_percent": 19
+        }
+    },
+    {
+        "op": "replace",
+        "path": "result/tax_amount",
+        "value": 58.9
+    },
+    {
+        "op": "replace",
+        "path": "result/applied_taxes/amount",
+        "value": 58.9
+    },
+    {
+        "op": "replace",
+        "path": "result/applied_taxes/percent",
+        "value": 19
+    }
+]
+```
+
+The result of `plugin.magento.tax.api.tax_calculation.calculate_tax` will be modified based on the provided operations.
+
+**Endpoint code example for the AppBuilder action:**
+
+```js
+const { Core } = require('@adobe/aio-sdk')
+const { errorResponse, stringParameters, checkMissingRequestInputs } = require('../utils')
+ 
+// main function that will be executed by Adobe I/O Runtime
+async function main (params) {
+  // create a Logger
+  const logger = Core.Logger('main', { level: params.LOG_LEVEL || 'info' })
+ 
+  try {
+    // 'info' is the default level if not set
+    logger.info('Calling the main action')
+ 
+    // log parameters, only if params.LOG_LEVEL === 'debug'
+    logger.debug(stringParameters(params))
+ 
+    //check for missing request input parameters and headers
+    const requiredParams = [/* add required params */]
+    const requiredHeaders = ['Authorization']
+    const errorMessage = checkMissingRequestInputs(params, requiredParams, requiredHeaders)
+    if (errorMessage) {
+      // return and log client errors
+      return errorResponse(400, errorMessage, logger)
+    }
+ 
+    const quoteDetails = params.quoteDetails;
+    console.log(JSON.stringify(quoteDetails, null, 4));
+    let total = 0;
+    let operations = [];
+ 
+    // Skip tax calculation if billing addres does not contain postcode
+    if (!quoteDetails.billing_address.postcode) {
+      return {
+        statusCode: 200,
+        body: JSON.stringify({
+          op: "success"
+        })
+      }
+    }
+ 
+    // Just for demo purposes, the taxPercent is equal to: last number in zip code + 10
+    const taxPercent = 10 + parseInt(quoteDetails.billing_address.postcode.slice(-1));
+ 
+    quoteDetails.items.forEach((item) => {
+      total += item.quantity * item.unit_price;
+      const itemTax = item.unit_price * taxPercent / 100;
+      operations.push({
+        op: 'replace',
+        path: 'result/items/' + item.code,
+        value: {
+          'row_tax': itemTax * item.quantity,
+          'price_incl_tax': item.unit_price + itemTax,
+          'row_total_incl_tax': item.unit_price + itemTax * item.quantity,
+          'tax_percent': taxPercent,
+        }
+      })
+    })
+    operations.push({
+      op: 'replace',
+      path: 'result/tax_amount',
+      value: total * taxPercent / 100
+    });
+    operations.push({
+      op: 'replace',
+      path: 'result/applied_taxes/amount',
+      value: total * taxPercent / 100
+    });
+    operations.push({
+      op: 'replace',
+      path: 'result/applied_taxes/percent',
+      value: taxPercent
+    });
+ 
+    return {
+      statusCode: 200,
+      body: JSON.stringify(operations)
+    }
+  } catch (error) {
+    // log any server errors
+    logger.error(error)
+    // return with 500
+    return errorResponse(500, 'server error', logger)
+  }
+}
+ 
+exports.main = main
 ```

@@ -14,9 +14,15 @@ keywords:
 
 Extensibility, as a concept, reflects the possibility for growth and the ease of extending functionality in a system. When referring to extensibility in Adobe Commerce, we mean the ability of developers to expand, customize, and control their interactions with Adobe Commerce.
 
+The following diagram highlights the main components of the Adobe Commerce extensibility strategy:
+
+![extensibility strategy](https://experienceleague.adobe.com/docs/commerce-operations/implementation-playbook/architecture/extensibility-strategy.html)
+
 Extensibility generally has two variations, in-process extensibility and out-of-process extensibility. In the context of Adobe Commerce, in-process extensibility refers to extended functionality offerings that are located inside or alongside the Adobe Commerce monolith. Conversely, out-of-process extensibility refers to extended functionality and services that operate outside the core software.
 
-The main benefits of out-of-process extensibility are:
+Out-of-process extensibility can reduce the total cost of ownership by simplifying upgrades and giving developers more control of the timing, coding, and implementation of their systems. 
+
+Other benefits of out-of-process extensibility include:
 
 - Scalability - Extensions can be scaled separately from the core software, allowing for greater efficiency.
 
@@ -28,7 +34,7 @@ The main benefits of out-of-process extensibility are:
 
 Adobe Commerce and Magento Open Source provide the following in-process extensibile offerings:
 
-- Marketplace Extensions - Create and sell PHP extensions in the [Adobe Commerce Marketplace](https://commercemarketplace.adobe.com)
+- [Marketplace Extensions](https://developer.adobe.com/commerce/marketplace/guides/sellers/extensions/) - Create and sell PHP extensions in the [Adobe Commerce Marketplace](https://commercemarketplace.adobe.com)
 
 - [REST](https://developer.adobe.com/commerce/webapi/rest) - Use REST calls to interact with your Adobe Commerce store
 

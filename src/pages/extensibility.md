@@ -20,7 +20,7 @@ The following diagram highlights the main components of the Adobe Commerce [exte
 
 Extensibility generally has two variations, in-process extensibility and out-of-process extensibility. In the context of Adobe Commerce, in-process extensibility refers to extended functionality offerings that are located inside or alongside the Adobe Commerce monolith. Conversely, out-of-process extensibility refers to extended functionality and services that operate outside the core software.
 
-Out-of-process extensibility can reduce the total cost of ownership by simplifying upgrades and giving developers more control of the timing, coding, and implementation of their systems. 
+Out-of-process extensibility can reduce the total cost of ownership by simplifying upgrades and giving developers more control of the timing, coding, and implementation of their systems.
 
 Other benefits of out-of-process extensibility include:
 

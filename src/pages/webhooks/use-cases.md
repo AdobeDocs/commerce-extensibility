@@ -374,9 +374,9 @@ softTimeout="100" priority="100" required="true" fallbackErrorMessage="The produ
 }
 ```
 
-## Overwrite of tax calculation
+## Overwrite tax calculation
 
-When a shopper goes to the checkout, a third-party system calculate taxes based on quote details and overwrite taxes values.
+When a shopper goes to the checkout, a third-party system calculates taxes based on quote details and overwrites the default tax values.
 
 **webhook.xml configuration:**
 
@@ -398,7 +398,7 @@ When a shopper goes to the checkout, a third-party system calculate taxes based 
 </method>
 ```
 
-The payload received by third-party endpoint based on the configured list of fields:
+The third-party endpoint receives the following payload, which is based on the configured list of fields:
 
 ```json
 {
@@ -474,7 +474,7 @@ The payload received by third-party endpoint based on the configured list of fie
 }
 ```
 
-Based on the input arguments and third-party endpoint logic that tax percent should be `19` the response operations list can look like:
+Based on the input arguments and third-party endpoint logic, the tax percentage should be `19`. The response operations list can look like:
 
 ```json
 [

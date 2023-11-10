@@ -1,6 +1,6 @@
 ---
-title: Understanding extensbility
-description: Learn about in-process and out-of-process offerings provided Adobe Commerce and Magento Open Source.
+title: Understanding extensibility
+description: Learn about in-process and out-of-process offerings provided by Adobe Commerce and Magento Open Source.
 keywords:
  - Extensibility
  - App Builder
@@ -14,9 +14,9 @@ keywords:
 
 Extensibility, as a concept, reflects the possibility for growth and the ease of extending functionality in a system. When referring to extensibility in Adobe Commerce, we mean the ability of developers to expand, customize, and control their interactions with Adobe Commerce.
 
-The following diagram highlights the main components of the Adobe Commerce extensibility strategy:
+The following diagram highlights the main components of the Adobe Commerce [extensibility strategy](https://experienceleague.adobe.com/docs/commerce-operations/implementation-playbook/architecture/extensibility-strategy.html):
 
-![extensibility strategy](https://experienceleague.adobe.com/docs/commerce-operations/implementation-playbook/architecture/extensibility-strategy.html)
+![extensibility strategy](./_images/extensibility-strategy-overview.png)
 
 Extensibility generally has two variations, in-process extensibility and out-of-process extensibility. In the context of Adobe Commerce, in-process extensibility refers to extended functionality offerings that are located inside or alongside the Adobe Commerce monolith. Conversely, out-of-process extensibility refers to extended functionality and services that operate outside the core software.
 
@@ -32,7 +32,7 @@ Other benefits of out-of-process extensibility include:
 
 ## In-process offerings
 
-Adobe Commerce and Magento Open Source provide the following in-process extensibile offerings:
+Adobe Commerce and Magento Open Source provide the following in-process extensible offerings:
 
 - [Marketplace Extensions](https://developer.adobe.com/commerce/marketplace/guides/sellers/extensions/) - Create and sell PHP extensions in the [Adobe Commerce Marketplace](https://commercemarketplace.adobe.com)
 
@@ -46,7 +46,7 @@ Adobe Commerce offers the following out-of-process offerings:
 
 - [Admin UI SDK](admin-ui-sdk/index.md) - Customize and enhance your admin with new pages and features for your merchants
 
-- [API Mesh for Adobe Developer App Builder](https://developer.adobe.com/graphql-mesh-gateway/) - Coordinate and combine multiple API, GraphQL and other sources to a single, queryable GraphQL endpoint
+- [API Mesh for Adobe Developer App Builder](https://developer.adobe.com/graphql-mesh-gateway/) - Coordinate and combine multiple API, GraphQL and other sources into a single, queryable GraphQL endpoint
 
 - [Events](./events/index.md) - Use custom event triggers to interact with other extensible offerings
 

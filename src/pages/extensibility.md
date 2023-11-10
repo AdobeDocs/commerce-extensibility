@@ -1,12 +1,11 @@
 ---
 title: Understanding extensbility
-description: This page explains the out-of-process extensibility offerings for Adobe Commerce and contrasts them with the in-process offerings provided by both Adobe Commerce and Magento Open Source.
+description: Learn about in-process and out-of-process offerings provided Adobe Commerce and Magento Open Source.
 keywords:
- - extensibility
+ - Extensibility
  - App Builder
  - API Mesh
  - Events
- - Integration
  - REST
  - Tools
 ---

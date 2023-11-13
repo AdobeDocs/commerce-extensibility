@@ -44,23 +44,23 @@ Adobe Commerce and Magento Open Source provide the following in-process extensib
 
 - [Marketplace Extensions](https://developer.adobe.com/commerce/marketplace/guides/sellers/extensions/) - Create and sell PHP extensions in the [Adobe Commerce Marketplace](https://commercemarketplace.adobe.com)
 
-- [REST](https://developer.adobe.com/commerce/webapi/rest) - Use REST calls to interact with your Adobe Commerce store
+- [REST](https://developer.adobe.com/commerce/webapi/rest) - Use REST calls to interact with your Commerce instance on behalf of an administrator, customer, guest, or integration.
 
-- [GraphQL](https://developer.adobe.com/commerce/webapi/graphql/) - Use GraphQL requests to get customizable responses from your Adobe Commerce store
+- [GraphQL](https://developer.adobe.com/commerce/webapi/graphql/) - Use GraphQL requests to transfer information between the storefront and backend.
 
 ## Out-of-process offerings
 
 Adobe Commerce offers the following out-of-process offerings:
 
-- [Admin UI SDK](./admin-ui-sdk/index.md) - Customize and enhance your admin with new pages and features for your merchants
+- [Admin UI SDK](./admin-ui-sdk/index.md) - Customize and enhance your Admin with new pages and features for your merchants
 
-- [API Mesh for Adobe Developer App Builder](https://developer.adobe.com/graphql-mesh-gateway/) - Coordinate and combine multiple API, GraphQL and other sources into a single, queryable GraphQL endpoint
+- [API Mesh for Adobe Developer App Builder](https://developer.adobe.com/graphql-mesh-gateway/) - Coordinate and combine multiple API, GraphQL, REST, and other sources into a single, queryable GraphQL endpoint
 
 - [Events](./events/index.md) - Use custom event triggers to interact with other extensible offerings
 
 - [Marketplace Apps](./app-development/index.md) - Create and sell custom single-page applications on the [Adobe Commerce Marketplace](https://commercemarketplace.adobe.com)
 
-- [Webhooks](./webhooks/index.md) - Use webhooks to automatically trigger interactions between Adobe Commerce and other extensible offerings
+- [Webhooks](./webhooks/index.md) - Use webhooks to automatically trigger interactions between Commerce and third-party systems
 
 <InlineAlert variant="info" slots="text"/>
 

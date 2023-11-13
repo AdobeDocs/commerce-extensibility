@@ -36,6 +36,8 @@ Other benefits of out-of-process extensibility include:
 
 - Technological Independence - Developers can choose whichever tech stacks and coding languages that fit their needs.
 
+<p></p>
+
 ## In-process offerings
 
 Adobe Commerce and Magento Open Source provide the following in-process extensible offerings:
@@ -45,8 +47,6 @@ Adobe Commerce and Magento Open Source provide the following in-process extensib
 - [REST](https://developer.adobe.com/commerce/webapi/rest) - Use REST calls to interact with your Adobe Commerce store
 
 - [GraphQL](https://developer.adobe.com/commerce/webapi/graphql/) - Use GraphQL requests to get customizable responses from your Adobe Commerce store
-
-<p></p>
 
 ## Out-of-process offerings
 

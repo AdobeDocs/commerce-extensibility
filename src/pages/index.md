@@ -46,6 +46,8 @@ Adobe Commerce and Magento Open Source provide the following in-process extensib
 
 - [GraphQL](https://developer.adobe.com/commerce/webapi/graphql/) - Use GraphQL requests to get customizable responses from your Adobe Commerce store
 
+<p></p>
+
 ## Out-of-process offerings
 
 Adobe Commerce offers the following out-of-process offerings:

@@ -44,15 +44,15 @@ Adobe Commerce and Magento Open Source provide the following in-process extensib
 
 Adobe Commerce offers the following out-of-process offerings:
 
-- [Admin UI SDK](admin-ui-sdk/index.md) - Customize and enhance your admin with new pages and features for your merchants
+- [Admin UI SDK](../admin-ui-sdk/index.md) - Customize and enhance your admin with new pages and features for your merchants
 
 - [API Mesh for Adobe Developer App Builder](https://developer.adobe.com/graphql-mesh-gateway/) - Coordinate and combine multiple API, GraphQL and other sources into a single, queryable GraphQL endpoint
 
-- [Events](./events/index.md) - Use custom event triggers to interact with other extensible offerings
+- [Events](../events/index.md) - Use custom event triggers to interact with other extensible offerings
 
-- [Marketplace Apps](./app-development/index.md) - Create and sell custom single-page applications on the [Adobe Commerce Marketplace](https://commercemarketplace.adobe.com)
+- [Marketplace Apps](../app-development/index.md) - Create and sell custom single-page applications on the [Adobe Commerce Marketplace](https://commercemarketplace.adobe.com)
 
-- [Webhooks](./webhooks/index.md) - Use webhooks to automatically trigger interactions between Adobe Commerce and other extensible offerings
+- [Webhooks](../webhooks/index.md) - Use webhooks to automatically trigger interactions between Adobe Commerce and other extensible offerings
 
 <InlineAlert variant="info" slots="text"/>
 

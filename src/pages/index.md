@@ -1,5 +1,5 @@
 ---
-title: Understanding extensibility
+title: Adobe Commerce extensibility
 description: Learn about in-process and out-of-process offerings provided by Adobe Commerce and Magento Open Source.
 keywords:
  - Extensibility
@@ -10,7 +10,13 @@ keywords:
  - Tools
 ---
 
-# Understanding extensibility
+<Hero slots="image, heading, text"/>
+
+![Commerce Extensibility](_images/home-bg.jpeg)
+
+# Adobe Commerce extensibility
+
+Learn how to develop Out-of-Process apps that extend and customize Adobe Commerce.
 
 Extensibility, as a concept, reflects the possibility for growth and the ease of extending functionality in a system. When referring to extensibility in Adobe Commerce, we mean the ability of developers to expand, customize, and control their interactions with Adobe Commerce.
 
@@ -57,3 +63,21 @@ Adobe Commerce offers the following out-of-process offerings:
 <InlineAlert variant="info" slots="text"/>
 
 Out-of-process offerings are only available with Adobe Commerce and are not available with Magento Open Source.
+
+### Related information
+
+<DiscoverBlock slots="link, text"/>
+
+[App Builder](https://developer.adobe.com/app-builder/docs/overview/)
+
+Is a complete framework that enables enterprise developers to build and deploy custom web applications that extend Adobe Experience Cloud solutions and run on Adobe infrastructure.
+
+<DiscoverBlock slots="link, text"/>
+
+[API Mesh for Adobe Developer App Builder](https://developer.adobe.com/graphql-mesh-gateway/)
+
+Allows developers to integrate private and third-party APIs and other software interfaces with Adobe Commerce and other Adobe products using Adobe IO.
+
+## Contributing to this documentation
+
+We encourage you to participate in our open documentation initiative. If you have suggestions, corrections, additions, or deletions for this documentation, check out the source on [GitHub](https://github.com/AdobeDocs/commerce-extensibility), and open a pull request.

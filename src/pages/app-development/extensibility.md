@@ -16,7 +16,7 @@ Extensibility, as a concept, reflects the possibility for growth and the ease of
 
 The following diagram highlights the main components of the Adobe Commerce [extensibility strategy](https://experienceleague.adobe.com/docs/commerce-operations/implementation-playbook/architecture/extensibility-strategy.html):
 
-![extensibility strategy](./_images/extensibility-strategy-overview.png)
+![extensibility strategy](../_images/extensibility-strategy-overview.png)
 
 Extensibility generally has two variations, in-process extensibility and out-of-process extensibility. In the context of Adobe Commerce, in-process extensibility refers to extended functionality offerings that are located inside or alongside the Adobe Commerce monolith. Conversely, out-of-process extensibility refers to extended functionality and services that operate outside the core software.
 

@@ -190,7 +190,7 @@ For example, the payload of the `plugin.magento.quote.api.shipment_estimation.es
 }
 ```
 
-To transmit the `postcode` property of the `address` object and the `carrier_code`, `method_code`, and `base_amount` for each shipping estimate, the webhook's fields can be configured as follows:
+To transmit the `postcode` property of the `address` object and the `carrier_code`, `method_code`, and `base_amount` for each shipping estimate, configure the webhook's fields as follows:
 
 ```xml
 <fields>
@@ -201,7 +201,7 @@ To transmit the `postcode` property of the `address` object and the `carrier_cod
 </fields>
 ```
 
-The following object would then be sent to the remote application:
+Commerce sends the following object to the remote application:
 
 ```json
 {

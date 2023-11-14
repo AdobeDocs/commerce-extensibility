@@ -62,7 +62,7 @@ Adobe Commerce offers the following out-of-process development tools:
 
 - [Webhooks](./webhooks/index.md) - Use webhooks to automatically trigger interactions between Commerce and third-party systems.
 
-- [Admin UI SDK](./admin-ui-sdk/index.md) - Customize and enhance your Admin with new pages and features for your merchants.
+- [Admin UI SDK](./admin-ui-sdk/index.md) - Customize and enhance the Commerce Admin with new pages and features for your merchants.
 
 Additionally, [Marketplace Apps](./app-development/index.md) allow you to create and sell custom single-page applications on the [Adobe Commerce Marketplace](https://commercemarketplace.adobe.com).
 

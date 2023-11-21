@@ -8,7 +8,7 @@ keywords:
 
 # Create conditional webhooks
 
-You may decide that you want to trigger webhooks only if the webhooks payload meets the required conditions. For example, you want to calculate taxes in 3rd party service only for specific zip codes, in such case there is no value in triggering webhook for other zip codes. 
+You may decide that you want to trigger webhooks only if the webhooks payload meets the required conditions. For example, you want to calculate taxes in 3rd party service only for specific zip codes, in such case there is no value in triggering webhook for other zip codes.
 
 A conditional webhooks can significantly reduce the amount of API calls which reduces the waiting time for clients.
 
@@ -32,7 +32,6 @@ Each rule contains the following:
    | `in`          | Checks whether the payload value is one of multiple specified values. The value must be a comma-separated list. You do not need to provide additional escape characters.        |
    | `isEmpty`     | Checks whether the payload value is empty.                                                                                                                                      |
    | `notEmpty`    | Checks whether the payload value is not empty. Inversion for `isEmpty` operation.                                                                                               |
-
 
 *  The value to compare against. When you assign the `regex` operator, you must delimit the regular expression value with valid characters, such as forward slashes (/). For example, `/^TV .*/i`, which checks whether the string starts with the string `TV`, ignoring the case of the letters.
 

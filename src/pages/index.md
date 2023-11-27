@@ -11,7 +11,7 @@ keywords:
 
 # Adobe Commerce Extensibility
 
-Learn how develop Out-of-Process apps that extend and customize Adobe Commerce.
+Learn how to develop Out-of-Process apps that extend and customize Adobe Commerce.
 
 ## Overview
 

@@ -20,13 +20,15 @@ Navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **A
 
 1. Select **Yes** from the **Enable Admin UI SDK** menu.
 
-1. Select **Yes** from the **Enable local service** menu.
+1. Select **Yes** from the **Enable Local Testing** menu.
 
-1. Set the **Base URL** that points to your localhost, including the port.
+1. Set the **Local Server Base URL** that points to your localhost, including the port.
 
-1. Set the **IMS Token**. In the sample `server.js` file, this value is set to `dummyToken`.
+1. The **Mock Admin IMS Module** menu determines whether to send mock or real authentication credentials for the Adobe Identity Management Service (IMS). Ensure this value is set to **Yes** for early-stage testing. Set the value to **No** when you are ready to test with real credentials.
 
-1. Set the **IMS Org Id**. In the sample `server.js` file, this value is set to `imsOrg`.
+1. Set the **Mock IMS Token**. In the sample `server.js` file, this value is set to `dummyToken`.
+
+1. Set the **Mock IMS Org ID**. In the sample `server.js` file, this value is set to `imsOrg`.
 
 1. Save your configuration.
 
@@ -41,7 +43,7 @@ Navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **A
 The `admin_ui_sdk` cache type stores Admin customizations.  As you develop these customizations, run the following command to ensure you are seeing the latest changes:
 
 ```bash
-bin/magento cache clean admin_ui_sdk
+bin/magento cache:clean admin_ui_sdk
 ```
 
 ## Test with a sample app

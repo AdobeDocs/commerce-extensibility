@@ -38,7 +38,7 @@ The following steps apply to both Adobe Commerce on cloud infrastructure and on-
 1. Enable the generated modules:
 
    ```bash
-   bin/magento module:enable AdobeCommerceWebhookPlugins
+   bin/magento module:enable Magento_AdobeCommerceWebhookPlugins
    ```
 
 1. Upgrade your instance:

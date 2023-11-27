@@ -8,7 +8,7 @@ keywords:
 
 # Create conditional webhooks
 
-You may decide that you want to trigger a webhook only if its payload meets certain conditions. For example, you could decide to calculate taxes using a 3rd-party service for specific postal codes only. If the postal code provided in the payload does not match the selected postal code, there is no value in triggering the webhook.
+You may decide that you want to trigger a webhook only if its payload meets certain conditions. For example, you could decide to calculate taxes using a third-party service for specific postal codes only. If the postal code provided in the payload does not match the selected postal code, there is no value in triggering the webhook.
 
 A conditional webhook can significantly reduce the number of API calls, which reduces the waiting time for clients.
 
@@ -59,7 +59,7 @@ The following example creates and registers a conditional webhook for the event 
 </method>
 ```
 
-The following example sends a webhook to a 3rd-party service when the product short description is empty. The service generates the text for the description. The webhook returns the operation with information to update the product short description. As a result, the webhook will not be triggered again for the same product.
+The following example sends a webhook to a third-party service when the product short description is empty. The service generates the text for the description. The webhook returns the operation with information to update the product short description. As a result, the webhook will not be triggered again for the same product.
 
 ```xml
        <method name="observer.catalog_product_save_before" type="before">

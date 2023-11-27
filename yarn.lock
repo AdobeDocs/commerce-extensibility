@@ -33,7 +33,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@adobe/gatsby-theme-aio@npm:^4.10.7":
+"@adobe/gatsby-theme-aio@npm:4.10.7":
   version: 4.10.7
   resolution: "@adobe/gatsby-theme-aio@npm:4.10.7"
   dependencies:
@@ -6276,9 +6276,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.0, caniuse-lite@npm:^1.0.30001400, caniuse-lite@npm:^1.0.30001426":
-  version: 1.0.30001443
-  resolution: "caniuse-lite@npm:1.0.30001443"
-  checksum: e39c17c54c7a2e263c05a7391b1126014be88826e5cacd6cf9e976b87c5a3a3ea3e53ff5d410093dbd56fac7b50fba4d55c2fa4d6b9c6bd28202886d7fedfd70
+  version: 1.0.30001565
+  resolution: "caniuse-lite@npm:1.0.30001565"
+  checksum: 7621f358d0e1158557430a111ca5506008ae0b2c796039ef53aeebf4e2ba15e5241cb89def21ea3a633b6a609273085835b44a522165d871fa44067cdf29cccd
   languageName: node
   linkType: hard
 
@@ -6832,7 +6832,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "commerce-extensibility@workspace:."
   dependencies:
-    "@adobe/gatsby-theme-aio": ^4.10.7
+    "@adobe/gatsby-theme-aio": 4.10.7
     gatsby: 4.22.0
     react: ^17.0.2
     react-dom: ^17.0.2

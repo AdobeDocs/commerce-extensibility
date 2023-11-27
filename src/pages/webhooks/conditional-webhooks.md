@@ -8,13 +8,13 @@ keywords:
 
 # Create conditional webhooks
 
-You may decide that you want to trigger webhooks only if the webhooks payload meets the required conditions. For example, you want to calculate taxes in 3rd party service only for specific zip codes, in such case there is no value in triggering webhook for other zip codes.
+You may decide that you want to trigger a webhook only if its payload meets certain conditions. For example, you could decide to calculate taxes using a 3rd-party service for specific postal codes only. If the postal code provided in the payload does not match the selected postal code, there is no value in triggering the webhook.
 
-A conditional webhooks can significantly reduce the amount of API calls which reduces the waiting time for clients.
+A conditional webhook can significantly reduce the number of API calls, which reduces the waiting time for clients.
 
 Conditional webhooks can have one or more rules. Each rule contains the following:
 
-*  A field for which the rule is applied. For nested fields, use the dot-separated format. For example: `data.order.product.id`
+*  The field to be evaluated. For nested fields, use the dot-separated format, such as `data.order.product.id`.
 
 *  An operator, which is represented as a comparison statement between the value supplied in the webhook payload and the threshold value.
 
@@ -25,17 +25,17 @@ Conditional webhooks can have one or more rules. Each rule contains the followin
    `greaterThan` | Checks whether the value supplied in the payload of the webhook is greater than a specified value. Applicable for integer and float data types.
    `lessThan` | Checks whether the payload value is less than a specified value. Applicable for integer and float data types.
    `equal` | Checks whether the payload value matches the specified value. For Boolean data types, use `1` to compare to `true` and `0` to compare to `false`.
-   `notEqual` | Checks whether the payload value do not match the specified value. Inversion for `equal` operation.
+   `notEqual` | Checks whether the payload value does not match the specified value.
    `regex` | A regular expression that checks for matches. The specified value must be compatible with the [regular expression match](https://www.php.net/manual/en/function.preg-match.php).
    `in`| Checks whether the payload value is one of multiple specified values. The value must be a comma-separated list. You do not need to provide additional escape characters.
    `isEmpty` | Checks whether the payload value is empty.
-   `notEmpty` | Checks whether the payload value is not empty. Inversion for `isEmpty` operation.
+   `notEmpty` | Checks whether the payload value is not empty.
 
-*  The value to compare against. When you assign the `regex` operator, you must delimit the regular expression value with valid characters, such as forward slashes (/). For example, `/^TV .*/i`, which checks whether the string starts with the string `TV`, ignoring the case of the letters.
+*  The value to compare against. When you assign the `regex` operator, you must delimit the regular expression value with valid characters, such as forward slashes (/). For example, `/^TV .*/i`, which checks whether the string starts with `TV`, ignoring the case of the letters.
 
 ## Define conditional webhooks in `webhooks.xml`
 
-The following example creates and registers a conditional webhooks for the event `plugin.magento.tax.api.tax_calculation.calculate_tax`. The webhook will be only triggered when all of the conditions are true:
+The following example creates and registers a conditional webhook for the event `plugin.magento.tax.api.tax_calculation.calculate_tax`. The webhook will be only triggered when all of the conditions are true:
 
 *  The value of `.quoteDetails.shipping_address.country_id` must be equal to `US`.
 *  The `quoteDetails.billing_address.postcode` must begin with `123`.
@@ -59,9 +59,7 @@ The following example creates and registers a conditional webhooks for the event
 </method>
 ```
 
-In the following example, we want to generate a product description when we save a product with a 3rd party service, but we don't want to send a webhook if the description is already set.
-
-The webhook will be triggered only if the product short description is empty. The webhook will return the operation with information to update the product short description, but the webhook won't be triggered again for the same product.
+The following example sends a webhook to a 3rd-party service when the product short description is empty. The service generates the text for the description. The webhook returns the operation with information to update the product short description. As a result, the webhook will not be triggered again for the same product.
 
 ```xml
        <method name="observer.catalog_product_save_before" type="before">
@@ -84,4 +82,4 @@ The webhook will be triggered only if the product short description is empty. Th
 
 ## Command line
 
-You can use the `bin/magento webhooks:list` command to display the contents of your subscribed webhooks with rules information.
+You can use the `bin/magento webhooks:list` command to display the contents of your subscribed webhooks, including rules information.

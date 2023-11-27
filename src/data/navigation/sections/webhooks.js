@@ -12,6 +12,10 @@ module.exports = [
       path: "/webhooks/hooks.md"
     },
     {
+      title: "Create conditional webhooks",
+      path: "/webhooks/conditional-webhooks.md"
+    },
+    {
       title: "Testing webhooks",
       path: "/webhooks/testing.md"
     },

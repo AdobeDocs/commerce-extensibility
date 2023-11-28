@@ -29,7 +29,7 @@ The following steps apply to both Adobe Commerce on cloud infrastructure and on-
 1. Enable the new modules:
 
    ```bash
-   bin/magento module:enable --all
+   bin/magento module:enable Magento_AdobeCommerceEventsClient Magento_AdobeCommerceEventsGenerator Magento_AdobeIoEventsClient Magento_AdobeCommerceOutOfProcessExtensibility
    ```
 
 1. Update the project dependencies.
@@ -103,3 +103,9 @@ Use the following procedure to update patch versions of Adobe I/O Events for Ado
    ```
 
    **Note:** Adobe Commerce on cloud infrastructure upgrades automatically.
+
+1. If updating from a version prior to 1.4.0, run the following command to enable a new module:
+
+   ```bash
+   bin/magento module:enable Magento_AdobeCommerceOutOfProcessExtensibility
+   ```

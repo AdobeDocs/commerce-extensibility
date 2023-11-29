@@ -19,7 +19,7 @@ November 30, 2023
 
 * You can now define [conditional webhooks](conditional-webhooks.md) that run only when configured conditions are met. <!--- CEXT-2541 -->
 
-* Prior to this release, the only supported webhook response values were `success` and `exception`. This release adds support for `add`, `remove`, and `replace` [responses](responses.md#responses). <!--- CEXT-2405, 2413, 2468 -->
+* Added support for data-modifying webhooks by introducing new [response operations](responses.md#responses): `add`, `remove`, and `replace`. <!--- CEXT-2405, 2413, 2468 -->
 
 * Added the ability to cache webhook responses and specify cache duration. The `ttl` attribute in the [`hook` element](xml-schema.md#hooks-element) of the `webhooks.xml` file defines the duration. Also added a new cache type, `webhooks_response`, to store webhook responses. <!--- CEXT-2403 -->
 

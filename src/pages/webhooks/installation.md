@@ -92,4 +92,3 @@ Use the following procedure to update minor or patch versions of Adobe Commerce 
    ```
 
    **Note:** Adobe Commerce on cloud infrastructure upgrades automatically.
-   

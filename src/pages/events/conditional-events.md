@@ -57,7 +57,7 @@ These fields are present and declared in the parent event.
         <fields>
             <field name="qty"/>
             <field name="category_id"/>
-            <field name="name">
+            <field name="name"/>
         </fields>
         <rules>
             <rule>

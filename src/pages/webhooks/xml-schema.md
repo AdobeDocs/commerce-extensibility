@@ -74,6 +74,7 @@ The `hook` element defines the HTTP request to the remote server.
 | `softTimeout`| Int    | A soft timeout limit (milliseconds) for the request. Requests exceeding this timeout are logged for debugging purposes. | false       | Not applicable     |
 | `fallbackErrorMessage` | Int    | The error message to return when the hook fails. | false       | Not applicable     |
 | `remove` | Boolean   | Indicates whether to skip a removed hook during the batch execution. | false       | false   |
+| `ttl` | Int    | The cache time-to-live (in seconds) for requests with the same URL, body, and headers. If this attribute is not specified, or if the value set to `0`, the response is not cached. | false       | 0       |
 | `headers` | Array  | A set of HTTP headers to send with the request. | false       | []      |
 | `fields` | Array  | A set of fields to include in the hook payload. If not set, the entire payload will be sent. | false       | []      |
 

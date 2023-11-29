@@ -17,7 +17,7 @@ November 30, 2023
 ### Enchancements
 
 * Enabled the following extension points:
-  * Add buttons to orders view
+  * Add buttons to the orders view
   * Add mass actions to the orders grid
   * Add columns to the products grid
 * Menus and extensions are cached to improve performance.

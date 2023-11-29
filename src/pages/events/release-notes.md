@@ -40,7 +40,6 @@ November 30, 2023
 
 * The **Test Connection** is now disabled when the provider ID is removed. <!--- CEXT-2216 -->
 
-
 ## Adobe IO Events client module updates
 
 ### Enhancements

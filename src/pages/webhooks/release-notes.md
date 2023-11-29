@@ -21,9 +21,7 @@ November 30, 2023
 
 * Prior to this release, the only supported webhook response values were `success` and `exception`. This release adds support for `add`, `remove`, and `replace` [responses](responses.md#responses). <!--- CEXT-2405, 2413, 2468 -->
 
-* You can now [configure specific fields within an array](hooks.md#configure-hooks) to transmit in a webhook. <!--- CEXT-2521 -->
-
-* Added the `webhooks_response` cache type. <!--- CEXT-2403 -->
+* Added the ability to cache webhook responses and specify cache duration. The `ttl` attribute in the [`hook` element](xml-schema.md#hooks-element) of the `webhooks.xml` file defines the duration. Also added a new cache type, `webhooks_response`, to store webhook responses. <!--- CEXT-2403 -->
 
 * You can now use a [converter class](hooks.md#field-converters) to convert the value in a hook endpoint response object that has an operation status of `replace`. <!--- CEXT-2455 -->
 

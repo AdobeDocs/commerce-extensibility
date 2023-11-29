@@ -26,16 +26,16 @@ The following steps apply to both Adobe Commerce on cloud infrastructure and on-
 
    Commerce 2.4.6 and later loads these modules automatically.
 
-1. Enable the new modules:
-
-   ```bash
-   bin/magento module:enable Magento_AdobeCommerceEventsClient Magento_AdobeCommerceEventsGenerator Magento_AdobeIoEventsClient Magento_AdobeCommerceOutOfProcessExtensibility
-   ```
-
 1. Update the project dependencies.
 
    ```bash
    composer update
+   ```
+
+1. Enable the new modules:
+
+   ```bash
+   bin/magento module:enable Magento_AdobeCommerceEventsClient Magento_AdobeCommerceEventsGenerator Magento_AdobeIoEventsClient Magento_AdobeCommerceOutOfProcessExtensibility
    ```
 
 ## On-premise installation

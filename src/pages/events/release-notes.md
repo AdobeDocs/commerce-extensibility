@@ -26,7 +26,7 @@ November 30, 2023
 
 * Added support for using nested fields in the rules of conditional events. <!--- CEXT-2482 -->
 
-* Increased the default value of the **Maximum retries to send events** configuration field has been increased from three to seven. <!--- CEXT-2466 -->
+* Increased the default value of the **Maximum retries to send events** configuration field from three to seven. <!--- CEXT-2466 -->
 
 * Updated the conversion logic for child array elements in an event. <!--- CEXT-2245 -->
 
@@ -49,7 +49,7 @@ November 30, 2023
 
 * Added the ability to switch to a development environment when testing the transmission of events. <!--- CEXT-2121 -->
 
-* The eventing template in App Builder works correctly when the Adobe I/O Authorization type set to OAuth. <!--- CEXT-2254 -->
+* The eventing template in App Builder works correctly when the Adobe I/O Authorization type is set to OAuth. <!--- CEXT-2254 -->
 
 * Updated an error message that occurred when eventing is not configured. <!--- CEXT-2568 -->
 

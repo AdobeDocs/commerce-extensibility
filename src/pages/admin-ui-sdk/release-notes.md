@@ -8,6 +8,29 @@ keywords:
 
 # Adobe Commerce Admin UI SDK release notes
 
+## Version 1.3.0
+
+### Release date
+
+November 30, 2023
+
+### Enchancements
+
+* Enabled the following extension points:
+  * Add buttons to orders view
+  * Add mass actions to the orders grid
+  * Add columns to the products grid
+* Menus and extensions are cached to improve performance.
+* When selecting a mass action, now only the needed extension is loaded.
+* A spinner is now displayed when content is being loaded on customized extension points.
+* Added the ability to redirect back to a grid page after executing a mass action.
+* Added the `clientId` parameter to [`sharedContext`](./extension-points/index.md#shared-contexts).
+
+### Bug fixes
+
+* Corrected a timeout issue caused by an incorrectly-applied ACL resource.
+* Customized columns are now exported as expected when exporting data from the Orders page.
+
 ## Version 1.2.1
 
 ### Release date

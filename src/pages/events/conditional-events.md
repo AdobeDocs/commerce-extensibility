@@ -38,7 +38,7 @@ Each rule contains the following:
 
 *  The value to compare against. When you assign the `regex` operator, you must delimit the regular expression value with valid characters, such as forward slashes (/). For example, `/^TV .*/i`, which checks whether the string starts with the string `TV`, ignoring the case of the letters.
 
-You can create conditional events within your module's `io_events.xml` file or from the command line.
+You can create conditional events within your module's or root `io_events.xml` file or from the command line.
 
 ## Define conditional events in `io_events.xml`
 
@@ -47,6 +47,7 @@ The following example creates and registers a conditional event named `plugin.ma
 *  The value of `qty` is less than 20
 *  The `category_id` is either 3, 4, or 5
 *  The product `name` contains `TV`
+*  The `store_id` of product category is either 1 or 2
 
 These fields are present and declared in the parent event.
 
@@ -75,6 +76,11 @@ These fields are present and declared in the parent event.
                 <operator>regex</operator>
                 <value>/^TV .*/i</value>
             </rule>
+           <rule>
+              <field>category.store_id</field>
+              <operator>in</operator>
+              <value>1,2</value>
+           </rule>
         </rules>
     </event>
 </config>

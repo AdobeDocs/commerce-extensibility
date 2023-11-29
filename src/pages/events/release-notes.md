@@ -12,6 +12,50 @@ These release notes describe the latest version of Adobe I/O Events for Adobe Co
 
 See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io-events-for-adobe-commerce) for upgrade instructions.
 
+## Version 1.4.0
+
+### Release date
+
+November 30, 2023
+
+## Commerce Eventing modules updates
+
+### Enhancements
+
+* Events can now be defined in the Commerce `app/etc/io_events.xml` file. <!--- CEXT-2360 -->
+
+* Added support for using nested fields in the rules of conditional events. <!--- CEXT-2482 -->
+
+* Increased the default value of the **Maximum retries to send events** configuration field from three to seven. <!--- CEXT-2466 -->
+
+* Updated the conversion logic for child array elements in an event. <!--- CEXT-2245 -->
+
+* Added the ability to switch to a development environment when testing the transmission of events. <!--- CEXT-2121 -->
+
+* Common logic for data collecting has been moved to a new module, `OutOfProcessExtensibility`. This module must be enabled as described in the [update instructions](./installation.md#update-adobe-io-events-for-adobe-commerce). <!--- CEXT-2215, 2266, 2267, 2312, 2503-->
+
+### Bug fixes
+
+* Corrected a condition that caused the `bin/magento setup:upgrade` command to return an error when the eventing module has been disabled. <!--- CEXT-2569 -->
+
+* The **Test Connection** is now disabled when the provider ID is removed. <!--- CEXT-2216 -->
+
+## Adobe IO Events client module updates
+
+### Enhancements
+
+* Added validation to ensure the workspace configuration has the correct structure of project > workspace credentials. <!--- CEXT-2174 -->
+
+* Added the ability to switch to a development environment when testing the transmission of events. <!--- CEXT-2121 -->
+
+* The eventing template in App Builder works correctly when the Adobe I/O Authorization type is set to OAuth. <!--- CEXT-2254 -->
+
+* Updated an error message that occurred when eventing is not configured. <!--- CEXT-2568 -->
+
+### Bug fixes
+
+* Corrected an issue that caused the Adobe Services tab of the Admin to disappear. <!--- PR-50 -->
+
 ## Version 1.3.0
 
 ### Release date

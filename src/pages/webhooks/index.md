@@ -19,7 +19,7 @@ This process is illustrated in the following diagram.
 
 1. Execution completes by resolving the response from the external system back into the Commerce application. For example, if the external system responds that the product is available, Commerce completes the shopper's action and adds the product to the shopping cart. If the product is not available, the flow is interrupted and an exception is thrown. ("Exception: Product is not in stock"). The shopper cannot add the product to the cart.
 
-Not all situations are ideal for webhooks. You should create a webhook only if synchronous communication with the external server is critical. For many scenarios, asynchronous communication is sufficient, and as a result, [Adobe I/O Events for Adobe Commerce](https://developer.adobe.com/commerce/extensibility/events/) might be a better fit.
+Not all situations are ideal for webhooks. You should create a webhook only if synchronous communication with the external server is critical. For many scenarios, asynchronous communication is sufficient, and as a result, [Adobe I/O Events for Adobe Commerce](../events/index.md) might be a better fit.
 
 The resolution of a remote call also determines whether you should implement a webhook. Webhooks currently can only be resolved as successful or by throwing an exception. If a response requires interpretation, such as a GET call that returns values to be parsed, then you cannot create a webhook for that call. [Use cases](use-cases.md) can help you understand when to implement wehhooks.
 

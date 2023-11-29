@@ -71,7 +71,7 @@ You cannot create an event provider until you have configured and saved a worksp
 
 1. In the **Environment ID** field, enter a temporary name for your workspaces while you are in development mode. When you are ready for production, change this value to a permanent value, such as **Production**.
 
-1. (Optional) By default, if an error occurs when Adobe Commerce attempts to send an event to Adobe I/O, Commerce retries a maximum of three times. To change this value, uncheck the **Use system value** checkbox and set a new value in the **Maximum retries to send events** field.
+1. (Optional) By default, if an error occurs when Adobe Commerce attempts to send an event to Adobe I/O, Commerce retries a maximum of seven times. To change this value, uncheck the **Use system value** checkbox and set a new value in the **Maximum retries to send events** field.
 
 1. (Optional) By default, Adobe Commerce runs a cron job (clean_event_data) every 24 hours that deletes event data that is three days old. To change the number of days to retain event data, uncheck the **Use system value** checkbox and set a new value in the **Event retention time (in days)** field.
 

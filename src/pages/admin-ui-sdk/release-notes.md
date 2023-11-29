@@ -17,9 +17,9 @@ November 30, 2023
 ### Enchancements
 
 * Enabled the following extension points:
-  * Add buttons to the orders view
-  * Add mass actions to the orders grid
-  * Add columns to the products grid
+  * [Add buttons to the orders view](./extension-points/order/view-button.md)
+  * [Add mass actions to the orders grid](./extension-points/order/mass-action.md)
+  * [Add columns to the products grid](./extension-points/product/grid-columns.md)
 * Menus and extensions are cached to improve performance.
 * When selecting a mass action, now only the needed extension is loaded.
 * A spinner is now displayed when content is being loaded on customized extension points.

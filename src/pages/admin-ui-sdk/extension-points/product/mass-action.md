@@ -1,14 +1,14 @@
 ---
-title: product
+title: product mass action
 description: Customize the products pages in the Adobe Commerce Admin.
 keywords:
   - App Builder
   - Extensibility
 ---
 
-# product
+# product mass action
 
-The `product` extension point customizes product grid mass actions in the Adobe Commerce Admin.
+The `product mass action` extension point customizes product grid mass actions in the Adobe Commerce Admin.
 
 ## Example customization​
 

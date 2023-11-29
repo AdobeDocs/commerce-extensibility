@@ -28,7 +28,7 @@ You can use the Commerce Admin or the command line to find supported events and 
 
 You can programmatically register events using the following methods:
 
-*  Create an `io_events.xml` file in your module
+*  Create an `io_events.xml` file in your module or in the root `app/etc` directory
 *  Declare them in the system `config.php` file
 
 For each event you register, you must define which fields to transmit to your App Builder application. The payload of an event can be massive. In addition, some events include sensitive or PCI compliance data by default. The payload of the `observer.catalog_product_save_after` event is similar to the following:
@@ -167,7 +167,7 @@ After you've registered at least one event, run the [events:generate:module comm
 
 ### io_events.xml
 
-Create the `<module-root>/etc/io_events.xml` file and define a list of events that should always be transmitted. Events listed in this file cannot be disabled with the [`events:unsubscribe` command](./commands.md#unsubscribe-from-a-commerce-event).
+Create the `<module-root>/etc/io_events.xml` or `app/etc/io_events.xml` file and define a list of events that should always be transmitted. Events listed in this file cannot be disabled with the [`events:unsubscribe` command](./commands.md#unsubscribe-from-a-commerce-event).
 
 You can transmit all the fields within an event by setting the value of the `field` element to `*` (`<field name="*"  />`). You cannot use the `*` wildcard character to match partial strings.
 

@@ -134,11 +134,98 @@ The following example configures the webhook described above.
 </hook>
 ```
 
+If the default payload of a webhook contains an array of objects, use the following construction to select fields from that array:
+
+```text
+<object_name>[].<field_name>
+```
+
+For example, the payload of the `plugin.magento.quote.api.shipment_estimation.estimate_by_extended_address` event contains a top-level `results[]` array. The array contains details about two individual shipping estimates.
+
+```json
+{
+    "subject": [],
+    "result": [
+        {
+            "carrier_code": "tablerate",
+            "method_code": "bestway",
+            "carrier_title": "Best Way",
+            "method_title": "Table Rate",
+            "amount": 15,
+            "base_amount": 15,
+            "available": true,
+            "error_message": "",
+            "price_excl_tax": 15,
+            "price_incl_tax": 15
+        },
+        {
+            "carrier_code": "flatrate",
+            "method_code": "flatrate",
+            "carrier_title": "Flat Rate",
+            "method_title": "Fixed",
+            "amount": 20,
+            "base_amount": 20,
+            "available": true,
+            "error_message": "",
+            "price_excl_tax": 20,
+            "price_incl_tax": 20
+        }
+    ],
+    "cartId": "21",
+    "address": {
+        "street": "123 Test Road",
+        "city": "Test City",
+        "region_id": 12,
+        "region": "California",
+        "country_id": "US",
+        "postcode": "90000",
+        "firstname": "Test",
+        "lastname": "Test",
+        "company": "",
+        "telephone": "1800000000",
+        "save_in_address_book": 1,
+        "region_code": "CA",
+        "extension_attributes": []
+    }
+}
+```
+
+To transmit the `postcode` property of the `address` object and the `carrier_code`, `method_code`, and `base_amount` for each shipping estimate, configure the webhook's fields as follows:
+
+```xml
+<fields>
+    <field name='postcode' source='address.postcode' />
+    <field name='result[].carrier_code' />
+    <field name='result[].method_code' />
+    <field name='result[].base_amount' />
+</fields>
+```
+
+Commerce sends the following object to the remote application:
+
+```json
+{
+    "postcode": "90000",
+    "result": [
+        {
+            "carrier_code": "tablerate",
+            "method_code": "bestway",
+            "base_amount": 15
+        },
+        {
+            "carrier_code": "flatrate",
+            "method_code": "flatrate",
+            "base_amount": 20
+        }
+    ]
+}
+```
+
 ### Field converters
 
 You can implement a converter class to convert a field to a different data type. For example, Commerce stores order IDs as numeric values. If the hook endpoint expects order IDs to be text values, you must convert the numeric value to a string representation before sending the payload.
 
-All converter classes must implement `Magento\AdobeCommerceWebhooks\Model\Filter\Converter\FieldConverterInterface`.
+All converter classes must implement `Magento\AdobeCommerceWebhooks\Model\Filter\Converter\FieldConverterInterface`. The `toExternalFormat` method of a converter class converts a field value before sending a request to the hook endpoint.
 
 ```xml
 <fields>
@@ -146,6 +233,10 @@ All converter classes must implement `Magento\AdobeCommerceWebhooks\Model\Filter
     <field name='order.status' source='data.order.status' converter="Path/To/The/Converter/Class" />
 </fields>
 ```
+
+A converter class can also convert the value in a hook endpoint response object that has an operation status of  `replace`. A value in a `replace` response object will be converted only if the path in the object corresponds to the source of a field with a configured converter class.
+
+For example, given the above hook field configuration, conversion occurs only if a `replace` response object specifies a path of `data/order/status`. In this case, the `fromExternalFormat` method of the configured converter class will be called to convert the value in the response object.
 
 ### Context fields
 

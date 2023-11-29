@@ -16,7 +16,7 @@ These release notes describe the latest version of Adobe Commerce Webhooks.
 November 30, 2023
 
 ### Enhancements
- 
+
 * You can now define [conditional webhooks](conditional-webhooks.md) that run only when configured conditions are met. <!--- CEXT-2541 -->
 
 * Prior to this release, the only supported webhook response values were `success` and `exception`. This release adds support for `add`, `remove`, and `replace` [responses](responses.md#responses). <!--- CEXT-2405, 2413, 2468 -->

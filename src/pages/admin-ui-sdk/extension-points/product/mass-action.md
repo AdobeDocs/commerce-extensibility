@@ -12,9 +12,9 @@ The `product mass action` extension point customizes product grid mass actions i
 
 ## Example customization​
 
-The following example creates mass actions labeled `First App Mass Action` and `Another Mass Action`. The `extensionId` value matches the ID specified at [app registration](../app-registration.md).
+The following example creates mass actions labeled `First App Mass Action` and `Another Mass Action`. The `extensionId` value matches the ID specified at [app registration](../../app-registration.md).
 
-The `path` parameter specifies where to redirect an action. The Admin UI SDK provides the selected product IDs in a [`sharedContext`](index.md#shared-contexts) when a merchant selects a mass action. Your implementation must read the selected items from the `sharedContext`.
+The `path` parameter specifies where to redirect an action. The Admin UI SDK provides the selected product IDs in a [`sharedContext`](../index.md#shared-contexts) when a merchant selects a mass action. Your implementation must read the selected items from the `sharedContext`.
 
 ```javascript
 product: {

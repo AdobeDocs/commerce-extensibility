@@ -21,7 +21,21 @@ module.exports = [
         },
         {
           title: "order",
-          path: "/admin-ui-sdk/extension-points/order.md"
+          path: "/admin-ui-sdk/extension-points/order.md",
+          pages: [
+            {
+              title: "grid column",
+              path: "/admin-ui-sdk/extension-points/grid-columns.md"
+            },
+            {
+              title: "mass action",
+              path: "admin-ui-sdk/extension-points/mass-action.md"
+            },
+            {
+              title: "view button",
+              path: "admin-ui-sdk/extension-points/view-button.md"
+            }
+          ]
         },
         {
           title: "page",

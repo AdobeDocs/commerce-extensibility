@@ -18,7 +18,7 @@ See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io
 
 November 30, 2023
 
-## commerce-eventing updates
+## Commerce Eventing modules updates
 
 ### Enhancements
 
@@ -41,7 +41,7 @@ November 30, 2023
 * The **Test Connection** is now disabled when the provider ID is removed. <!--- CEXT-2216 -->
 
 
-## module-adobe-io-events-client updates
+## Adobe IO Events client module updates
 
 ### Enhancements
 

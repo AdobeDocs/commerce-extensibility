@@ -14,7 +14,7 @@ keywords:
 
 November 30, 2023
 
-### Enchancements
+### Enhancements
 
 * Enabled the following extension points:
   * [Add buttons to the orders view](./extension-points/order/view-button.md)

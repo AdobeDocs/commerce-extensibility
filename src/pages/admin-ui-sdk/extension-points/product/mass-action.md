@@ -1,20 +1,20 @@
 ---
-title: product
+title: product mass action
 description: Customize the products pages in the Adobe Commerce Admin.
 keywords:
   - App Builder
   - Extensibility
 ---
 
-# product
+# product mass action
 
-The `product` extension point customizes product grid mass actions in the Adobe Commerce Admin.
+The `product mass action` extension point customizes product grid mass actions in the Adobe Commerce Admin.
 
 ## Example customization​
 
-The following example creates mass actions labeled `First App Mass Action` and `Another Mass Action`. The `extensionId` value matches the ID specified at [app registration](../app-registration.md).
+The following example creates mass actions labeled `First App Mass Action` and `Another Mass Action`. The `extensionId` value matches the ID specified at [app registration](../../app-registration.md).
 
-The `path` parameter specifies where to redirect an action. The Admin UI SDK provides the selected product IDs in a [`sharedContext`](index.md#shared-contexts) when a merchant selects a mass action. Your implementation must read the selected items from the `sharedContext`.
+The `path` parameter specifies where to redirect an action. The Admin UI SDK provides the selected product IDs in a [`sharedContext`](../index.md#shared-contexts) when a merchant selects a mass action. Your implementation must read the selected items from the `sharedContext`.
 
 ```javascript
 product: {

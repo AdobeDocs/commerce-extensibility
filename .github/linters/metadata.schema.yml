@@ -26,6 +26,7 @@ properties:
         - Security
         - Tools
         - Upgrade
+        - Webhooks
 
 required:
   - title

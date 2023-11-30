@@ -74,3 +74,21 @@ Use the following steps to perform additional configuration for Adobe Commerce o
    ```
 
 1. Commit and push updated files to the Cloud environment.
+
+## Update Adobe Commerce Webhooks
+
+Use the following procedure to update minor or patch versions of Adobe Commerce Webhooks, such as from V1.0.0 to V1.1.0.
+
+1. Run the following command to update the webhook modules:
+
+   ```bash
+   composer update magento/commerce-webhooks --with-dependencies
+   ```
+
+1. For on-premises installations, run the following command to upgrade Adobe Commerce and clear the cache.
+
+   ```bash
+   bin/magento setup:upgrade && bin/magento cache:clean
+   ```
+
+   **Note:** Adobe Commerce on cloud infrastructure upgrades automatically.

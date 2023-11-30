@@ -18,7 +18,8 @@ The `sharedContext` constant contains a set of selected IDs, the Commerce base U
 const sharedContext = {
   selectedIds: array,
   commerceBaseUrl: string,
-  imsToken: string
+  imsToken: string,
+  clientId: string
 }
 ```
 

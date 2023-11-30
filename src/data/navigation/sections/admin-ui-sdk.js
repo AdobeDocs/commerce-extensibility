@@ -21,7 +21,21 @@ module.exports = [
         },
         {
           title: "order",
-          path: "/admin-ui-sdk/extension-points/order.md"
+          path: "/admin-ui-sdk/extension-points/order/index.md",
+          pages: [
+            {
+              title: "grid columns",
+              path: "/admin-ui-sdk/extension-points/order/grid-columns.md"
+            },
+            {
+              title: "mass action",
+              path: "/admin-ui-sdk/extension-points/order/mass-action.md"
+            },
+            {
+              title: "view button",
+              path: "/admin-ui-sdk/extension-points/order/view-button.md"
+            }
+          ]
         },
         {
           title: "page",
@@ -29,7 +43,17 @@ module.exports = [
         },
         {
           title: "product",
-          path: "/admin-ui-sdk/extension-points/product.md"
+          path: "/admin-ui-sdk/extension-points/product/index.md",
+          pages: [
+            {
+              title: "grid columns",
+              path: "/admin-ui-sdk/extension-points/product/grid-columns.md"
+            },
+            {
+              title: "mass action",
+              path: "/admin-ui-sdk/extension-points/product/mass-action.md"
+            }
+          ]
         }
 
       ]

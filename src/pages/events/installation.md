@@ -100,7 +100,7 @@ Use the following steps to update to version 1.4.0.
    bin/magento module:disable Magento_AdobeCommerceEventsClient Magento_AdobeCommerceEventsGenerator Magento_AdobeCommerceEvents
    ```
 
-1. Update the eventing modules:
+1. Update the eventing codebase:
 
    ```bash
    composer update magento/commerce-eventing --with-dependencies

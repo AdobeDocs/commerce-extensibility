@@ -88,30 +88,52 @@ Use the following steps to perform additional configuration for Adobe Commerce o
 
 ## Update Adobe I/O Events for Adobe Commerce
 
-Use the following procedure to update patch versions of Adobe I/O Events for Adobe Commerce, such as from V1.0.0 to V1.0.1.
+Use the following procedure to update patch versions of Adobe I/O Events for Adobe Commerce, such as from V1.3.0 to V1.4.0.
 
-1. Run the following command to update the eventing modules:
+## On-premise updates
+
+Use the following steps to update to version 1.4.0.
+
+1. Disable the eventing modules:
+
+   ```bash
+   bin/magento module:disable Magento_AdobeCommerceEventsClient Magento_AdobeCommerceEventsGenerator Magento_AdobeCommerceEvents
+   ```
+
+1. Update the eventing modules:
 
    ```bash
    composer update magento/commerce-eventing --with-dependencies
    ```
 
-   **Note:** Perform the following steps only for on-premises installations. Adobe Commerce on cloud infrastructure upgrades automatically.
+1. Re-enable the pre-existing modules and enable the new `Magento_AdobeCommerceOutOfProcessExtensibility` module.
 
-1. Add the following line to the modules list in `app/etc/config.php`:
-
-   ```php
-   'Magento_AdobeCommerceOutOfProcessExtensibility' => 1
+   ```bash
+   bin/magento module:enable Magento_AdobeCommerceEventsClient Magento_AdobeCommerceEventsGenerator Magento_AdobeCommerceEvents Magento_AdobeCommerceOutOfProcessExtensibility
    ```
 
-1. Run the following command to upgrade Adobe Commerce:
+1. Upgrade Commerce:
 
    ```bash
    bin/magento setup:upgrade
    ```
 
-1. For on-premises installations, run the following command to clear the cache and generate new classes:
+1. Clear the cache:
 
    ```bash
-   bin/magento cache:clean && bin/magento setup:di:compile
+   bin/magento cache:clean
    ```
+
+1. Compile the dependencies:
+
+   ```bash
+   bin/magento bin/magento setup:di:compile
+   ```
+
+## Cloud updates
+
+Run the following command to update the eventing modules. ECE tools performs the other steps required by on-premises installations.
+
+```bash
+composer update magento/commerce-eventing --with-dependencies
+```

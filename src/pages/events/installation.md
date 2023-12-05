@@ -106,7 +106,7 @@ Use the following steps to update to version 1.4.0.
    composer update magento/commerce-eventing --with-dependencies
    ```
 
-1. Re-enable the pre-existing modules and enable the new `Magento_AdobeCommerceOutOfProcessExtensibility` module.
+1. Re-enable the pre-existing modules and enable the new `Magento_AdobeCommerceOutOfProcessExtensibility` module:
 
    ```bash
    bin/magento module:enable Magento_AdobeCommerceEventsClient Magento_AdobeCommerceEventsGenerator Magento_AdobeCommerceEvents Magento_AdobeCommerceOutOfProcessExtensibility

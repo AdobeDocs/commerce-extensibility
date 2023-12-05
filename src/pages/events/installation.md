@@ -88,24 +88,52 @@ Use the following steps to perform additional configuration for Adobe Commerce o
 
 ## Update Adobe I/O Events for Adobe Commerce
 
-Use the following procedure to update patch versions of Adobe I/O Events for Adobe Commerce, such as from V1.0.0 to V1.0.1.
+Use the following procedure to update minor or patch versions of Adobe I/O Events for Adobe Commerce, such as from V1.3.0 to V1.4.0.
 
-1. Run the following command to update the eventing modules:
+## On-premise updates
+
+Use the following steps to update to version 1.4.0.
+
+1. Disable the eventing modules:
+
+   ```bash
+   bin/magento module:disable Magento_AdobeCommerceEventsClient Magento_AdobeCommerceEventsGenerator Magento_AdobeCommerceEvents
+   ```
+
+1. Update the eventing codebase:
 
    ```bash
    composer update magento/commerce-eventing --with-dependencies
    ```
 
-1. For on-premises installations, run the following command to upgrade Adobe Commerce and clear the cache.
+1. Re-enable the pre-existing modules and enable the new `Magento_AdobeCommerceOutOfProcessExtensibility` module:
 
    ```bash
-   bin/magento setup:upgrade && bin/magento cache:clean
+   bin/magento module:enable Magento_AdobeCommerceEventsClient Magento_AdobeCommerceEventsGenerator Magento_AdobeCommerceEvents Magento_AdobeCommerceOutOfProcessExtensibility
    ```
 
-   **Note:** Adobe Commerce on cloud infrastructure upgrades automatically.
-
-1. If updating from a version prior to 1.4.0, run the following command to enable a new module:
+1. Upgrade Commerce:
 
    ```bash
-   bin/magento module:enable Magento_AdobeCommerceOutOfProcessExtensibility
+   bin/magento setup:upgrade
    ```
+
+1. Clear the cache:
+
+   ```bash
+   bin/magento cache:clean
+   ```
+
+1. Compile the dependencies:
+
+   ```bash
+   bin/magento bin/magento setup:di:compile
+   ```
+
+## Cloud updates
+
+Run the following command to update the eventing modules. ECE tools performs the other steps required by on-premises installations.
+
+```bash
+composer update magento/commerce-eventing --with-dependencies
+```

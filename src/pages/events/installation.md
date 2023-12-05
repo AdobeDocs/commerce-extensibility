@@ -96,22 +96,22 @@ Use the following procedure to update patch versions of Adobe I/O Events for Ado
    composer update magento/commerce-eventing --with-dependencies
    ```
 
-1. For on-premises installations, run the following command to upgrade Adobe Commerce:
+   **Note:** Perform the following steps only for on-premises installations. Adobe Commerce on cloud infrastructure upgrades automatically.
+
+1. Add the following line to the modules list in `app/etc/config.php`:
+
+   ```php
+   'Magento_AdobeCommerceOutOfProcessExtensibility' => 1
+   ```
+
+1. Run the following command to upgrade Adobe Commerce:
 
    ```bash
    bin/magento setup:upgrade
    ```
 
-   **Note:** Adobe Commerce on cloud infrastructure upgrades automatically.
-
 1. For on-premises installations, run the following command to clear the cache and generate new classes:
 
    ```bash
    bin/magento cache:clean && bin/magento setup:di:compile
-   ```
-
-1. If updating from a version prior to 1.4.0, run the following command to enable a new module:
-
-   ```bash
-   bin/magento module:enable Magento_AdobeCommerceOutOfProcessExtensibility
    ```

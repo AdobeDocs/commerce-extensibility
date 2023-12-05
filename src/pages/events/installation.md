@@ -88,7 +88,7 @@ Use the following steps to perform additional configuration for Adobe Commerce o
 
 ## Update Adobe I/O Events for Adobe Commerce
 
-Use the following procedure to update patch versions of Adobe I/O Events for Adobe Commerce, such as from V1.3.0 to V1.4.0.
+Use the following procedure to update minor or patch versions of Adobe I/O Events for Adobe Commerce, such as from V1.3.0 to V1.4.0.
 
 ## On-premise updates
 

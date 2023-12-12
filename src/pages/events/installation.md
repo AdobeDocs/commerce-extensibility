@@ -92,24 +92,10 @@ Use the following procedure to update minor or patch versions of Adobe I/O Event
 
 ## On-premise updates
 
-Use the following steps to update to version 1.4.0.
-
-1. Disable the eventing modules:
-
-   ```bash
-   bin/magento module:disable Magento_AdobeCommerceEventsClient Magento_AdobeCommerceEventsGenerator Magento_AdobeCommerceEvents
-   ```
-
-1. Update the eventing codebase:
+1. Run the following command to update the eventing modules:
 
    ```bash
    composer update magento/commerce-eventing --with-dependencies
-   ```
-
-1. Re-enable the pre-existing modules and enable the new `Magento_AdobeCommerceOutOfProcessExtensibility` module:
-
-   ```bash
-   bin/magento module:enable Magento_AdobeCommerceEventsClient Magento_AdobeCommerceEventsGenerator Magento_AdobeCommerceEvents Magento_AdobeCommerceOutOfProcessExtensibility
    ```
 
 1. Upgrade Commerce:
@@ -127,7 +113,7 @@ Use the following steps to update to version 1.4.0.
 1. Compile the dependencies:
 
    ```bash
-   bin/magento bin/magento setup:di:compile
+   bin/magento setup:di:compile
    ```
 
 ## Cloud updates

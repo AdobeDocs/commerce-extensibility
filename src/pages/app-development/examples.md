@@ -46,7 +46,7 @@ In addition, [Conditional Events](../events/conditional-events.md) give you the 
 
 ### Adobe Commerce Admin UI SDK
 
-The [Adobe Commerce Admin UI SDK](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/) enables App Builder developers to extend the Commerce Admin to include custom menus and pages. The Admin UI SDK allows merchants to use the Admin to configure and interact with an app developed in App Builder.
+The [Adobe Commerce Admin UI SDK](../admin-ui-sdk/index.md) enables App Builder developers to extend the Commerce Admin to include custom menus and pages. The Admin UI SDK allows merchants to use the Admin to configure and interact with an app developed in App Builder.
 
 ## Combining extensibility components
 

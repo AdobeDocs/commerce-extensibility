@@ -12,6 +12,16 @@ These release notes describe the latest version of Adobe I/O Events for Adobe Co
 
 See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io-events-for-adobe-commerce) for upgrade instructions.
 
+## Version 1.4.1
+
+### Release date
+
+December 14, 2023
+
+### Bug fixes
+
+* Fixed an error that occurred when on-premise instances updated to version 1.4.0.  <!--- CEXT-2606 -->
+
 ## Version 1.4.0
 
 ### Release date

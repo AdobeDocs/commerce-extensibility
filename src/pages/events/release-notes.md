@@ -20,7 +20,7 @@ December 14, 2023
 
 ### Bug fixes
 
-* Fixed an error that appeared when on-premise instances updated to version 1.4.0.  <!--- CEXT-2606 -->
+* Fixed an error that occurred when on-premise instances updated to version 1.4.0.  <!--- CEXT-2606 -->
 
 ## Version 1.4.0
 

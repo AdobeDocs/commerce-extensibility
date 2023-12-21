@@ -104,11 +104,11 @@ Commerce provides two sources for events: observers and plugins. You must specif
 
    ![Click Add service in your workspace](../_images/events/add-event.png)
 
-1. On the **Add events** page select **Commerce events**. Then click **Next**.
+1. On the **Add events** page, select **Commerce events**. Then click **Next**.
 
    ![Select Commerce events](../_images/events/select-commerce-event.png)
 
-   **Note:** If the **Commerce events** category is not shown check that you have created an event provider, and it has at least one subscribed event. You may need to run `bin/magento events:metadata:populate` to synchronize event registrations in Adobe Commerce with the created event provider.
+   **Note:** If the **Commerce events** category is not shown, check that you have created an event provider, and that it has at least one subscribed event. You may need to run the `bin/magento events:metadata:populate` command to synchronize event registrations in Adobe Commerce with the created event provider.
 
 1. On the **Configure event registration** page, select your event provider. Then click **Next**.
 

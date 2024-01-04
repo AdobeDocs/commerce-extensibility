@@ -179,6 +179,10 @@ You can also subscribe to a plugin event if it was registered in the `app/etc/co
 
 You can also create and subscribe to a conditional event. Conditional events allow you to determine the conditions that the Commerce events client module uses to emit native or custom events to your application. See [Create conditional events](./conditional-events.md) for detailed information and examples.
 
+<InlineAlert variant="info" slots="text"/>
+
+If you are implementing eventing in a performance testing environment, run the `bin/magento setup:perf:generate-fixtures` command before subscribing any events. Subscribing events before generating fixtures can cause errors.
+
 ### Usage
 
 `bin/magento events:subscribe <event_code> --force --fields=<name1> --fields=<name2> --parent <event_code> --rules=<field-name>|<operator>|<value> --rules=<field-name2>|<operator>|<value2>`

@@ -23,7 +23,7 @@ The `bin/magento events:subscribe <event_code> --force --fields=<name1> --fields
 
 ## Configure the `io_events.xml` file
 
-The `converter` attributes defines the converter class that updates the event data field value for the specified event. Only one converter class can be used per field
+The `converter` attribute defines the converter class that updates the event data field value for the specified event. Only one converter class can be used per field
 
 Attribute | Required | Description
 --- | --- | ---
@@ -70,15 +70,13 @@ The event payload will be similar to the following with converter:
 ```
 ## Converter definition
 
-The converter class must implement `FieldConverterInterface`. This interface contains the `convert` method, which accepts the following arguments. It returns an mixed type.
+The converter class must implement `FieldConverterInterface`. This interface contains the `convert` method, which accepts the following arguments. It returns a mixed type.
 
 `public function convert(mixed $value, Event $event): mixed`
 
-You must create a separate class for each field to be added.
+In the following example, the `TestConverterName` converter class updates the value of the `name` field in the `eventData` array.
 
-In the following example, the `TestConverterName` class updates the value of the `name` field in the `eventData` array.
-
-In the provided code excerpt, the initial value of the `name` field was `Men` and after applying the converter, the revised value is now `Test Name`
+In the provided code excerpt, the initial value of the `name` field was `Men` and after applying the converter, the updated value is now `Test Name`
 ```php
 <?php
 /**

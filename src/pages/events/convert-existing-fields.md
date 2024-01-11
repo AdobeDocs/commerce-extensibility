@@ -19,18 +19,18 @@ You must configure a module's `io_events.xml` or root `app/etc/io_events.xml` fi
 The `bin/magento events:subscribe <event_code> --force --fields=<name1> --fields='{"<name>":"<name2>", "converter":"<path\to\converterclass>"}'  --fields='{"<name>":"<name3>", "converter":"<path\to\converterclass>"}'` command creates and registers custom and native Commerce events.
 
 ## CLI Example
-bin/magento events:subscribe observer.catalog_category_save_after --fields="name" --fields='{"name":"store_id", "converter": "Magento\AdobeCommerceEventsClient\Event\TestConverterStoreid"}'
+`bin/magento events:subscribe observer.catalog_category_save_after --fields="name" --fields='{"name":"store_id", "converter": "Magento\AdobeCommerceEventsClient\Event\TestConverterStoreid"}'`
 
 ## Configure the `io_events.xml` file
 
-The `converter` attributes defines the converter that updates the event data field value for the specified event. Only one converter can be used per field
+The `converter` attributes defines the converter class that updates the event data field value for the specified event. Only one converter class can be used per field
 
 Attribute | Required | Description
 --- | --- | ---
 `converter` | No | The fully-qualified class name.
 
 
-The following example will update the value of the field `name` present in the `observer.catalog_category_save_after` event payload using the class `TestConverterName`.
+The following example will update the value of the field `name` present in the `observer.catalog_category_save_after` event payload using the converter class `TestConverterName`.
 
 ```xml
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module-commerce-events-client/etc/io_events.xsd">

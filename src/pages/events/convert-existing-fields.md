@@ -74,7 +74,7 @@ The converter class must implement `FieldConverterInterface`. This interface con
 
 `public function convert(mixed $value, Event $event): mixed`
 
-In the following example, the `TestConverterName` converter class updates the value of the `name` field in the `eventData` array.
+In the following example, the `TestConverterName` converter class updates the value of the `name` field in the `eventData` array to `Test Name`. In the sample payload above, this value was `Men`.
 
 In the provided code excerpt, the initial value of the `name` field was `Men` and after applying the converter, the updated value is now `Test Name`
 ```php

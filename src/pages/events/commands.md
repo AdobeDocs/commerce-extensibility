@@ -203,6 +203,8 @@ If you are implementing eventing in a performance testing environment, run the `
 
 `--rules=<field-name>|<operator>|<value>` Defines a rule that will be applied to the subscribed event. You can apply multiple rules to an event, but each rule must be defined separately. A rule definition must specify the field to be evaluated, an operator, and the value to be evaluated, in that order. The field name in a rule definition does not have to match a field specified with the `--fields` option.
 
+`--fields='{"<name>":"<name2>", "converter":"<path\to\converterclass>"}'` Applies the converter class to the given field.
+
 ### Example
 
 To subscribe to a native event:

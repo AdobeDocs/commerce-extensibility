@@ -44,7 +44,7 @@ The following example updates the value of the field `name` present in the `obse
 </config>
 ```
 
-The event payload will be similar to the following without converter:
+The default event payload is similar to the following:
 
 ```json
 {

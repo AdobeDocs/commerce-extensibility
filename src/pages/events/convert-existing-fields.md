@@ -30,7 +30,7 @@ Attribute | Required | Description
 `converter` | No | The fully-qualified class name.
 
 
-The following example will update the value of the field `name` present in the `observer.catalog_category_save_after` event payload using the converter class `TestConverterName`.
+The following example updates the value of the field `name` present in the `observer.catalog_category_save_after` event payload using the `TestConverterName` converter class.
 
 ```xml
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module-commerce-events-client/etc/io_events.xsd">

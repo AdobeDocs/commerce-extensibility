@@ -56,7 +56,7 @@ The default event payload is similar to the following:
   }
 }
 ```
-The event payload will be similar to the following with converter:
+The value of the `field` changes after the conversion:
 
 ```json
 {

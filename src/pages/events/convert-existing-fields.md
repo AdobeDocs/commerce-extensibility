@@ -6,7 +6,7 @@ keywords:
   - Extensibility
 ---
 
-# Convert subscribed field value
+# Convert payload field values
 
 Your custom module might generate data that would be useful to insert into an existing Commerce event. Converters allow you to enrich the data contained in an event before it is transmitted to the eventing service. 
 

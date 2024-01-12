@@ -8,20 +8,28 @@ keywords:
 
 # Convert payload field values
 
-Your custom module might generate data that would be useful to insert into an existing Commerce event. Converters allow you to enrich the data contained in an event before it is transmitted to the eventing service. 
+The event payload might include field values that are not easily interpretable for third-party implementations. Building the implementation solely based on identifiers can be challenging. To address this issue, a converter can be implemented, allowing customization for each field in the payload.
 
-<InlineAlert variant="info" slots="text"/>
+## Converter definition
 
-You must configure a module's `io_events.xml` or root `app/etc/io_events.xml` file to update the required fields. You can also declare them in the system `config.php` file or add them using the CLI while subsrcibing to an event.
+The converter class must implement `FieldConverterInterface`. This interface contains the `convert` method, which accepts the following arguments. It returns a mixed data type.
 
-## Command line
+`public function convert(mixed $value, Event $event): mixed`
+
+## Configure
+
+You must configure a module's `io_events.xml` or root `app/etc/io_events.xml` file to update the required
+ fields. You can also declare them in the system `config.php` file or add them using the CLI while subsrcibing to an event.
+
+### Command line 
 
 The `bin/magento events:subscribe <event_code> --force --fields=<name1> --fields='{"<name>":"<name2>", "converter":"<path\to\converterclass>"}'  --fields='{"<name>":"<name3>", "converter":"<path\to\converterclass>"}'` command creates and registers custom and native Commerce events.
 
-## CLI Example
-`bin/magento events:subscribe observer.catalog_category_save_after --fields="name" --fields='{"name":"store_id", "converter": "Magento\AdobeCommerceEventsClient\Event\TestConverterStoreid"}'`
+   ```bash
+   bin/magento events:subscribe observer.catalog_category_save_after --fields="name" --fields='{"name":"store_id", "converter": "Magento\AdobeCommerceEventsClient\Event\TestConverterStoreid"}'`
+   ```
 
-## Configure the `io_events.xml` file
+### Configure the `io_events.xml` file
 
 The `converter` attribute defines the converter class that updates the event data field value for the specified event. Only one converter class can be used per field
 
@@ -29,15 +37,14 @@ Attribute | Required | Description
 --- | --- | ---
 `converter` | No | The fully-qualified class name.
 
-
-The following example updates the value of the field `name` present in the `observer.catalog_category_save_after` event payload using the `TestConverterName` converter class.
+The following example updates the value of the field `store_id` present in the `observer.catalog_category_save_after` event payload using the `TestConverterStoreid` converter class.
 
 ```xml
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module-commerce-events-client/etc/io_events.xsd">
     <event name="observer.catalog_category_save_after" >
         <fields>
-            <field name="name" converter="Magento\AdobeCommerceEventsClient\Event\TestConverterName"/>
-            <field name="store_id"/>
+            <field name="name" />
+            <field name="store_id"converter="Magento\AdobeCommerceEventsClient\Event\TestConverterStoreid"/>
             <field name="is_active"/>
         </fields>
     </event>
@@ -52,31 +59,24 @@ The default event payload is similar to the following:
        "name": "Men",
        "store_id": "2",
        "is_active": "1"
-       
   }
 }
 ```
+
 The value of the `field` changes after the conversion:
 
 ```json
 {
     "value": {
-       "name": "Test Name",
-       "store_id": "2",
+       "name": "Men",
+       "store_id": "4",
        "is_active": "1"
-       
   }
 }
 ```
-## Converter definition
 
-The converter class must implement `FieldConverterInterface`. This interface contains the `convert` method, which accepts the following arguments. It returns a mixed type.
+In the following example, the `TestConverterStoreid` converter class updates the value of the `store_id` field in the `eventData` array to `4`. In the sample payload above, this value was `2`.
 
-`public function convert(mixed $value, Event $event): mixed`
-
-In the following example, the `TestConverterName` converter class updates the value of the `name` field in the `eventData` array to `Test Name`. In the sample payload above, this value was `Men`.
-
-In the provided code excerpt, the initial value of the `name` field was `Men` and after applying the converter, the updated value is now `Test Name`
 ```php
 <?php
 /**
@@ -89,7 +89,7 @@ namespace Magento\AdobeCommerceEventsClient\Event;
 
 use Magento\AdobeCommerceEventsClient\Event\Filter\FieldConverterInterface;
 
-class TestConverterName implements FieldConverterInterface
+class TestConverterStoreid implements FieldConverterInterface
 {
     /**
      * Method used to convert field value
@@ -99,7 +99,7 @@ class TestConverterName implements FieldConverterInterface
      */
     public function convert(mixed $value, Event $event): mixed
     {
-        return 'Test Name';
+        return 4;
     }
 }
 ```

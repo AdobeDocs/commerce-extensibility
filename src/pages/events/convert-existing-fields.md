@@ -1,5 +1,5 @@
 ---
-title: Convert exisiting fields for the event payload
+title: Convert payload field values
 description: Learn how to convert a field value based on a condition
 keywords:
   - Events

@@ -25,12 +25,15 @@ The SQL query to select all events from `event_data` table: `SELECT * FROM event
 ### The events table is empty
 
 1. Run `bin/magento events:list` to ensure that you have subscribed events.
+
 2. Check `app/code/Magento` directory to ensure that `AdobeCommerceEvents` module exists, if it's not exists it should be generated with the next command `bin/magento events:generate:module`.
 
 **Note**: It requires regenerating the `AdobeCommerceEvents` module each time you subscribe to the new `plugin.*` type event to create the required plugins based on it.
 
 3. Run `bin/magento module:status Magento_AdobeCommerceEvents` to check that `AdobeCommerceEvents` module is enabled and enable it if not.
+
 4. If it's a Cloud installation check that evenintg is enabled in `.magento.env.yaml`. If not enable it and push the changes to trigger deployment.
+
 ```yaml
    stage:
       global:
@@ -42,7 +45,7 @@ The SQL query to select all events from `event_data` table: `SELECT * FROM event
 Events are sent by crons, and if for a long period the status of the events in the `event_data` is still `0` it means that crons are not configured correctly.
 If it's a Cloud environment check logs as cron execution can be killed due to lack of space in the environment or other reasons.
 
-### The events have status failed to sent 
+### The events have status failed to sent
 
 If events has status `2` it means there was error during sending. The additional information can be found in the `info` column or `sytem.log` file.
 The next CLI command can show only logs related to the event batch sending.
@@ -77,7 +80,6 @@ Ensure that the same value is used in both Adobe Commerce and Developer Console:
 
 ![](../_images/events/instance-name-developer-console.png)
 ![](../_images/events/instance-name-developer-commerce.png)
-
 
 ## Event subscribe CLI command error:
 

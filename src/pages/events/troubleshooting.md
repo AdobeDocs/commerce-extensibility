@@ -97,3 +97,8 @@ That means that the event provider configured in the `Adobe I/O Event Provider I
 **Note** You won't be able to create a new event subscriptions with event provider that is associated with another workspace.
 
 The solution will be to use the event provider created with the currently configured `Adobe I/O Workspace Configuration`.
+
+## Event provider is not show in the App Builder
+
+After creating a new Event Provider it may not show in the App Builder until it has at least one active subscribed event. So, if you created a new event provider you need to synchronize your event subscriptions from Adobe Commerce it can be done by running `bin/magento events:metadata:populate` CLI command.
+Now, after refreshing the page with your App Builder project you should be able to find the provider.

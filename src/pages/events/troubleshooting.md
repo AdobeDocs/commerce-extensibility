@@ -1,6 +1,6 @@
 ---
 title: Events troubleshooting
-description: Provides details on how to solve frequent issues
+description: Describes how to resolve frequently-encountered isssues.
 keywords:
 - Events
 - Extensibility
@@ -10,97 +10,104 @@ keywords:
 
 ## Events are not showing in App Builder event registration
 
-If everything has been configured according to the documentation but after triggering the event and waiting some time event wasn't received, check if events exist in the `event_data` table.
-The `event_data` is a temporary storage of the events before transforming them into Adobe I/O events. Events in that table have a status column with 4 possible statuses:
+If Commerce is correctly [configured](configure-commerce.md), but triggered events aren't being received, check if the event exists in the `event_data` table.
+The `event_data` table temporarily stores events before transforming them into Adobe I/O events. The table contains a status column that can have the following values:
 
-Status id | Status
+Status ID | Status
 --- | ---
-`0` | waiting
-`1` | successfully sent
-`2` | failed to sent
-`3` | sending in progress
+`0` | Waiting
+`1` | Successfully sent
+`2` | Failed to send event
+`3` | Transmission is in progress
 
-The SQL query to select all events from `event_data` table: `SELECT * FROM event_data`
+You can use the following SQL query to select all events from `event_data` table:
 
-### The events table is empty
+`SELECT * FROM event_data`
+
+Use the query results to determine the next troubleshooting step.
+
+### The table is empty
+
+If the `event_data` table is empty, use the following procedure to diagnose the problem:
 
 1. Run `bin/magento events:list` to ensure that you have subscribed events.
 
-2. Check `app/code/Magento` directory to ensure that `AdobeCommerceEvents` module exists, if it's not exists it should be generated with the next command `bin/magento events:generate:module`.
+1. Check the `app/code/Magento` directory to determine whether the `AdobeCommerceEvents` module exists. If it does not exist, generate it with the `bin/magento events:generate:module` command.
 
-**Note**: It requires regenerating the `AdobeCommerceEvents` module each time you subscribe to the new `plugin.*` type event to create the required plugins based on it.
+   **Note**: You must regenerate the `AdobeCommerceEvents` module each time you subscribe to a new `plugin.*` type event so that Commerce can create the required plugins.
 
-3. Run `bin/magento module:status Magento_AdobeCommerceEvents` to check that `AdobeCommerceEvents` module is enabled and enable it if not.
+1. Run `bin/magento module:status Magento_AdobeCommerceEvents` to check that the `AdobeCommerceEvents` module is enabled. If it is not enabled, run `bin/magento module:enable Magento_AdobeCommerceEvents`.
 
-4. If it's a Cloud installation check that evenintg is enabled in `.magento.env.yaml`. If not enable it and push the changes to trigger deployment.
+1. On an Adobe Commerce on cloud infrastructure instance, check that eventing is enabled in `.magento.env.yaml`. If not enable it, and push the changes to trigger deployment.
 
-```yaml
+   ```yaml
    stage:
       global:
          ENABLE_EVENTING: true
-```
+   ```
 
-### The events exist but status is 0
+### The event status is `0`
 
-Events are sent by crons, and if for a long period the status of the events in the `event_data` is still `0` it means that crons are not configured correctly.
-If it's a Cloud environment check logs as cron execution can be killed due to lack of space in the environment or other reasons.
+Events are sent by crons. If the status of an event in the `event_data` is still `0` after a long period, then the crons are not configured correctly.
+In a Cloud environment, check the logs. Cron execution might have been killed due to lack of space in the environment or other reasons.
 
-### The events have status failed to sent
+### The event status is `2`
 
-If events has status `2` it means there was error during sending. The additional information can be found in the `info` column or `sytem.log` file.
-The next CLI command can show only logs related to the event batch sending.
+The event status `2` indicates there was error during transmission. The additional information can be found in the `info` column of the table or in the `system.log` file.
+The following CLI command can show only logs related to the event batch sending.
 
-```shell
+```bash
 cat var/log/system.log | grep -i batch
 ```
 
-If there was an error the output will contain information about it, for example:
+The output contains information about any errors that occurred. For example:
 
-``` shell
+```terminal
 report.ERROR: Publishing of batch of 6 events failed: Error code: 500; reason: Server Error {"reason":null,"message":"Unexpected server error occurred"} [] []
 report.INFO: Event data batch of 7 events was successfully published. [] []
 report.INFO: Event data batch of 2 events was successfully published. [] []
 ```
 
-### Client ID is invalid error
+### `Client ID is invalid` error
 
-If the next error is present in the logs:
+The following error indicates the project in the Developer Console is missing `Adobe I/O Events for Adobe Commerce` API.
 
-```shell
+```terminal
 Event publishing failed: Error code: 403; reason: Forbidden { "error": { "code": "Forbidden", "message": "Client ID is invalid", "details": { "error_code": "403003" } }
 ```
 
-It means that the project in the Developer Console is missing `Adobe I/O Events for Adobe Commerce` api. See [Set up a project](./project-setup.md#set-up-a-project) how to add the required api.
-After adding the required API, download the workspace configuration for your project again and update it in the Adobe Commerce admin in `Adobe I/O Workspace Configuration` field.
+[Set up a project](./project-setup.md#set-up-a-project) describes how to add the required API.
+After adding the required API, download the workspace configuration for your project again and update it in the Adobe Commerce admin in the **Adobe I/O Workspace Configuration** field.
 
-### The events have status successfully sent but still not received in the event registration
+### The status shows the events have been successfully sent, but they were not received in the event registration
 
 This can happen if you have a different value of `Adobe Commerce Instance ID` configured in the Adobe Commerce that is used in the event registration of the Developer Console.
 Ensure that the same value is used in both Adobe Commerce and Developer Console:
 
-![](../_images/events/instance-name-developer-console.png)
-![](../_images/events/instance-name-developer-commerce.png)
+![Choose your instance ](../_images/events/instance-name-developer-console.png)
 
-## Event subscribe CLI command error:
+![Adobe Commerce instance ID](../_images/events/instance-name-developer-commerce.png)
 
-If are trying to subscribe to events via CLI command and seeing the next error:
+## Event subscribe CLI command error
 
-```shell
-bin/magento events:subscribe observer.catalog_product_save_after --fields=name --fields=price
-```
+You might encounter the following error when attempting to subscribe to events with the `bin/magento events:subscribe` command:
 
-```shell
+```terminal
 Unsuccessful request: `POST https://api.adobe.io/events/xxxxx/eventmetadata` resulted in a `400 Bad Request` response:
 {"reason":"Bad Request. Request id: xxxxxxx.","message":"The current event provider's is associated with another workspace (check the provider's rel:update links to its workspace).."}
 ```
 
-That means that the event provider configured in the `Adobe I/O Event Provider ID` field of Adobe Commerce admin UI is associated with another workspace then configured in `Adobe I/O Workspace Configuration` field.
+This error indicates the event provider configured in the **Adobe I/O Event Provider ID** field in the Admin is associated with a different workspace than configured in the **Adobe I/O Workspace Configuration** field.
+You cannot create a new event subscriptions with an event provider that is associated with another workspace.
 
-**Note** You won't be able to create a new event subscriptions with event provider that is associated with another workspace.
+You must specify an event provider created with the currently configured **Adobe I/O Workspace Configuration**.
 
-The solution will be to use the event provider created with the currently configured `Adobe I/O Workspace Configuration`.
+## Event provider is not shown in App Builder
 
-## Event provider is not show in the App Builder
+After you create a new event provider, it might not show in the App Builder until it has at least one active subscribed event. Synchronize your event subscriptions from Adobe Commerce by the following command:
 
-After creating a new Event Provider it may not show in the App Builder until it has at least one active subscribed event. So, if you created a new event provider you need to synchronize your event subscriptions from Adobe Commerce it can be done by running `bin/magento events:metadata:populate` CLI command.
-Now, after refreshing the page with your App Builder project you should be able to find the provider.
+```bash
+bin/magento events:metadata:populate
+```
+
+After refreshing the page with your App Builder project, you should be able to find the provider.

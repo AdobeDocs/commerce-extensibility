@@ -8,7 +8,7 @@ keywords:
 
 # Events troubleshooting
 
-This topic describes how to resolve frequently-encountered issues with Adobe I/O Events for Adobe Commerce.
+This topic describes how to resolve frequently encountered issues with Adobe I/O Events for Adobe Commerce.
 
 ## Events are not showing in App Builder event registration
 
@@ -22,7 +22,7 @@ Status ID | Status
 `2` | Failed to send event
 `3` | Transmission is in progress
 
-You can use the following SQL query to select all events from `event_data` table:
+You can use the following SQL query to select all events from the `event_data` table:
 
 `SELECT * FROM event_data`
 
@@ -40,7 +40,7 @@ If the `event_data` table is empty, use the following procedure to diagnose the 
 
 1. Run `bin/magento module:status Magento_AdobeCommerceEvents` to check that the `AdobeCommerceEvents` module is enabled. If it is not enabled, run `bin/magento module:enable Magento_AdobeCommerceEvents`.
 
-1. On an Adobe Commerce on cloud infrastructure instance, check that eventing is enabled in `.magento.env.yaml`. If not enable it, and push the changes to trigger deployment.
+1. On an Adobe Commerce on cloud infrastructure instance, check that eventing is enabled in `.magento.env.yaml`. If not, enable it and push the changes to trigger deployment.
 
    ```yaml
    stage:
@@ -55,7 +55,7 @@ In a Cloud environment, check the logs. Cron execution might have been killed du
 
 ### The event status is `2`
 
-The event status `2` indicates there was error during transmission. The additional information can be found in the `info` column of the table or in the `system.log` file.
+The event status `2` indicates there was an error during transmission. Additional information can be found in the `info` column of the table or in the `system.log` file.
 The following CLI command can show only logs related to the event batch sending.
 
 ```bash
@@ -75,15 +75,15 @@ report.INFO: Event data batch of 2 events was successfully published. [] []
 The following error indicates the project in the Developer Console is missing the `Adobe I/O Events for Adobe Commerce` API.
 
 ```terminal
-Event publishing failed: Error code: 403; reason: Forbidden { "error": { "code": "Forbidden", "message": "Client ID is invalid", "details": { "error_code": "403003" } }
+Event publishing failed: Error code: 403; reason: Forbidden { "error": { "code": "Forbidden", "message": "Client ID is invalid", "details": { "error_code": "403003" } } }
 ```
 
 [Set up a project](./project-setup.md#set-up-a-project) describes how to add the required API.
-After adding the required API, download the workspace configuration for your project again and update it in the Adobe Commerce admin in the **Adobe I/O Workspace Configuration** field.
+After adding the required API, download the workspace configuration for your project again and update it in the **Adobe I/O Workspace Configuration** field in the Adobe Commerce admin.
 
 ### The status shows the events have been successfully sent, but they were not received in the event registration
 
-This can happen if you have a different value of `Adobe Commerce Instance ID` configured in the Adobe Commerce that is used in the event registration of the Developer Console.
+If events are not received, determine if you have a different value for the `Adobe Commerce Instance ID` configured in the Adobe Commerce environment that is used in the event registration of the Developer Console.
 Ensure that the same value is used in both Adobe Commerce and Developer Console:
 
 ![Choose your instance ](../_images/events/instance-name-developer-console.png)
@@ -99,14 +99,14 @@ Unsuccessful request: `POST https://api.adobe.io/events/xxxxx/eventmetadata` res
 {"reason":"Bad Request. Request id: xxxxxxx.","message":"The current event provider's is associated with another workspace (check the provider's rel:update links to its workspace).."}
 ```
 
-This error indicates the event provider configured in the **Adobe I/O Event Provider ID** field in the Admin is associated with a different workspace than configured in the **Adobe I/O Workspace Configuration** field.
-You cannot create a new event subscriptions with an event provider that is associated with another workspace.
+This error indicates the event provider configured in the **Adobe I/O Event Provider ID** field in the Admin is associated with a different workspace than the one configured in the **Adobe I/O Workspace Configuration** field.
+You cannot create a new event subscription with an event provider that is associated with another workspace.
 
 You must specify an event provider created with the currently configured **Adobe I/O Workspace Configuration**.
 
 ## Event provider is not shown in App Builder
 
-After you create a new event provider, it might not show in the App Builder until it has at least one active subscribed event. Synchronize your event subscriptions from Adobe Commerce by the following command:
+After you create a new event provider, it might not appear in App Builder until it has at least one active subscribed event. Synchronize your event subscriptions from Adobe Commerce by using the following command:
 
 ```bash
 bin/magento events:metadata:populate

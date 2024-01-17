@@ -223,6 +223,8 @@ The contents of an `observer.catalog_product_save_after` event are similar to th
 }
 ```
 
+The `<field>` element can also contain the `converter` attribute. Use this attribute to change the value of a field in the event payload. [Convert payload field values](./convert-field-values.md) describes its usage.
+
 ### Array of nested objects
 
 When the payload contains an array of objects, use the following construction to register specific fields from that array:

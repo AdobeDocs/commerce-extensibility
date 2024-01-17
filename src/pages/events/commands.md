@@ -193,7 +193,7 @@ If you are implementing eventing in a performance testing environment, run the `
 
 ### Options
 
-`--fields=<field_name>` Required. An event field to transmit to the Adobe App Builder application. You can specify this option multiple times. Each instance can contain only one field name.
+`--fields='{"<name>":"<field-name>", "converter":"<path\to\converterclass>"}'` Required, but the `converter` argument is optional. Specifies an event field to transmit to the Adobe App Builder application. You can specify this option multiple times. Each instance can contain only one field name. The `converter` argument applies the [converter class](convert-field-values.md) to the specified field.
 
 `--force`, `-f` Forces subscription to the event, even if it hasn't been defined locally.
 

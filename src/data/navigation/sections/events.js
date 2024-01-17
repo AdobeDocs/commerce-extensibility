@@ -28,8 +28,8 @@ module.exports = [
     path: "/events/custom-event-fields.md"
   },
   {
-    title: "Convert exisiting field value",
-    path: "/events/convert-existing-fields.md"
+    title: "Convert payload field values",
+    path: "/events/convert-field-values.md"
   },
   {
     title: "Command reference",

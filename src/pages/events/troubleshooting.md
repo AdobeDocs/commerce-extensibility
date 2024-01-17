@@ -1,12 +1,14 @@
 ---
 title: Events troubleshooting
-description: Describes how to resolve frequently-encountered isssues.
+description: Learn how to resolve issues with Adobe I/O Events for Adobe Commerce.
 keywords:
 - Events
 - Extensibility
 ---
 
 # Events troubleshooting
+
+This topic describes how to resolve frequently-encountered issues with Adobe I/O Events for Adobe Commerce.
 
 ## Events are not showing in App Builder event registration
 
@@ -70,7 +72,7 @@ report.INFO: Event data batch of 2 events was successfully published. [] []
 
 ### `Client ID is invalid` error
 
-The following error indicates the project in the Developer Console is missing `Adobe I/O Events for Adobe Commerce` API.
+The following error indicates the project in the Developer Console is missing the `Adobe I/O Events for Adobe Commerce` API.
 
 ```terminal
 Event publishing failed: Error code: 403; reason: Forbidden { "error": { "code": "Forbidden", "message": "Client ID is invalid", "details": { "error_code": "403003" } }

@@ -84,7 +84,6 @@ After adding the required API, download the workspace configuration for your pro
 ### The status shows the events have been successfully sent, but they were not received in the event registration
 
 If events are not received, determine if you have a different value for the `Adobe Commerce Instance ID` configured in the Adobe Commerce environment that is used in the event registration of the Developer Console.
-Ensure that the same value is used in both Adobe Commerce and Developer Console:
 
 ![Choose your instance ](../_images/events/instance-name-developer-console.png)
 

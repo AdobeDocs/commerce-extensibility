@@ -45,7 +45,7 @@ Create or update your project `extension-manifest.json` file so that it is simil
 
 ## Add an `ExtensionRegistration` component
 
-Create an `ExtensionRegistration`  component that registers the menu configuration in the App Registry. Use the `adobe/uix-sdk` with the `adobe-uix-guest` dependency. The [UI Extensibility](https://developer.adobe.com/uix/docs/overview/design/) Guide describes this process further.
+Create an `ExtensionRegistration` React component that registers the menu configuration in the App Registry. Use the `adobe/uix-sdk` with the `adobe-uix-guest` dependency. The [UI Extensibility Getting Started](https://developer.adobe.com/uix/docs/getting-started/design/) guide describes this process further.
 
 1. Add the `uix-guest` dependency in the `package.json`.
 

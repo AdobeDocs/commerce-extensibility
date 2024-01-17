@@ -70,6 +70,17 @@ Additionally, [Marketplace Apps](./app-development/index.md) allow you to create
 
 Out-of-process development tools are only available with Adobe Commerce and are not available with Magento Open Source.
 
+## Learning path
+
+Review the following resources to familiarize yourself with the extensibility options offered by Adobe Commerce:
+
+- [App Builder overview](https://developer.adobe.com/app-builder/docs/overview/)
+- [Getting access to App Builder](https://developer.adobe.com/app-builder/docs/overview/getting_access/)
+- [Creating your first App Builder application](https://developer.adobe.com/app-builder/docs/getting_started/first_app/)
+- [Create a mesh with API Mesh for Adobe Developer App Builder](https://developer.adobe.com/graphql-mesh-gateway/gateway/mesh_walkthrough/)
+- [Subscribe to an Adobe Commerce event](https://developer.adobe.com/commerce/extensibility/events/configure-commerce/#subscribe-and-register-events)
+- [Create a runtime action in Adobe I/O Runtime](https://developer.adobe.com/runtime/docs/guides/using/creating_actions/)
+
 ### Related information
 
 <DiscoverBlock slots="link, text"/>

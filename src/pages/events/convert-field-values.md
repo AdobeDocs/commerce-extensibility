@@ -107,7 +107,7 @@ bin/magento events:subscribe observer.catalog_product_save_after --fields="store
 ```
 ### `config.php` file
 
-```xml
+```php
 'io_events' => [
         'observer.catalog_product_save_after' => [
             'fields' => [

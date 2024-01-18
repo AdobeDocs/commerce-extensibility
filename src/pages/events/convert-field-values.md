@@ -12,7 +12,7 @@ The payload of an event often includes field values that are not easily interpre
 
 ## Converter definition
 
-Your converter class must implement `FieldConverterInterface`. This interface contains the `convert` method, which accepts `mixed` and `Event` arguments following arguments. The method returns a `mixed` data type.
+Your converter class must implement `FieldConverterInterface`. This interface contains the `convert` method, which accepts `mixed` and `Event` arguments. The method returns a `mixed` data type. You must create individual converter classes for each field when converting multiple fields within a payload. You can reuse a class to replace a specific field across multiple events.
 
 ```php
 interface FieldConverterInterface
@@ -28,8 +28,6 @@ interface FieldConverterInterface
 }
 ```
 
-<!-- Note to developer: Add text that describes advanced usage. Do you have to create a separate class for each field when you want to convert multiple fields within a payload? If you want to replace field X across multiple events, can you reuse the same class? Maybe this is elementary programming, but I'd like to state it. -->
-
 As an example, the `observer.catalog_product_save_after` event contains a top-level `visibility` field, which must contain an integer value. You want to convert these values to strings that match values on the external system. The following table describes these values.
 
 Commerce value | Converted value | Description
@@ -40,8 +38,6 @@ Commerce value | Converted value | Description
 4 | CATALOG_AND_SEARCH | This product appears in catalog listings and searches. For most products, this is the default.
 
 In the following example, the `TestConverterVisibility` converter class updates the value of the `visibility` field to a string.
-
-<!-- Note to developer: Update this code sample to reflect the scenario above. I assume this will be some sort of case statement. -->
 
 ```php
 <?php
@@ -65,7 +61,12 @@ class TestConverterVisibility implements FieldConverterInterface
      */
     public function convert(mixed $value, Event $event): mixed
     {
-        return 4;
+        return match ($value) {
+            '1' => 'NOT_VISIBLE_INDIVIDUALLY',
+            '2' => 'CATALOG_ONLY',
+            '3' => 'SEARCH_ONLY',
+            '4' => 'CATALOG_AND_SEARCH'
+        };
     }
 }
 ```
@@ -100,8 +101,6 @@ The converter changes the payload to:
 
 ## Register the converter
 
-<!-- Note to developer: I feel like we should either show an example config.php configuration or not mention it. -->
-
 You must configure a module's `io_events.xml` or root `app/etc/io_events.xml` file to update the required fields. You can also declare them in the system `config.php` file or add them using the CLI while subscribing to an event.
 
 ### Command line
@@ -109,16 +108,31 @@ You must configure a module's `io_events.xml` or root `app/etc/io_events.xml` fi
 The [`bin/magento events:subscribe --fields` command](commands.md#subscribe-to-an-event) defines the fields and converters to include in the payload of a subscribed event. The example command adds the `visibility` field and provides the path to the converter class. You can specify multiple fields in the same request.
 
 ```bash
-bin/magento events:subscribe observer.catalog_category_save_after --fields="name" --fields='{"name":"visibility", "converter": "Magento\AdobeCommerceEventsClient\Event\TestConverterVisibility"}'`
+bin/magento events:subscribe observer.catalog_product_save_after --fields="store_id" --fields='{"name":"visibility", "converter": "Magento\AdobeCommerceEventsClient\Event\TestConverterVisibility"}'`
+```
+
+### `config.php` file
+
+The following example `config.php` is the equivalent of the example `bin/magento events:subscribe` command in the **Command line** example above.
+
+```php
+'io_events' => [
+        'observer.catalog_product_save_after' => [
+            'fields' => [
+                'store_id',
+                [
+                    'name' => 'visibility',
+                    'converter' => 'Magento\\AdobeCommerceEventsClient\\Event\\TestConverterVisibility'
+                ]
+            ],
+            'enabled' => 1
+        ]
+ ]       
 ```
 
 ### Configure an `io_events.xml` file
 
-The `converter` attribute defines the converter class that updates the event data field value for the specified event. Only one converter class can be used per field
-
-Attribute | Required | Description
---- | --- | ---
-`converter` | No | The fully-qualified class name.
+The `converter` attribute of the `field` element defines the converter class that updates the event data field value for the specified event. Only one converter class can be defined per field.
 
 The following example updates the value of the field `visibility` present in the `observer.catalog_product_save_after` event payload using the `TestConverterVisibility` converter class.
 

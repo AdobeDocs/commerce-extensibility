@@ -110,7 +110,10 @@ The [`bin/magento events:subscribe --fields` command](commands.md#subscribe-to-a
 ```bash
 bin/magento events:subscribe observer.catalog_product_save_after --fields="store_id" --fields='{"name":"visibility", "converter": "Magento\AdobeCommerceEventsClient\Event\TestConverterVisibility"}'`
 ```
+
 ### `config.php` file
+
+The following example `config.php` is the equivalent of the example `bin/magento events:subscribe` command in the **Command line** example above.
 
 ```php
 'io_events' => [
@@ -126,6 +129,7 @@ bin/magento events:subscribe observer.catalog_product_save_after --fields="store
         ]
  ]       
 ```
+
 ### Configure an `io_events.xml` file
 
 The `converter` attribute defines the converter class that updates the event data field value for the specified event. Only one converter class can be used per field

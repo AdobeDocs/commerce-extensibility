@@ -132,11 +132,7 @@ The following example `config.php` is the equivalent of the example `bin/magento
 
 ### Configure an `io_events.xml` file
 
-The `converter` attribute defines the converter class that updates the event data field value for the specified event. Only one converter class can be used per field
-
-Attribute | Required | Description
---- | --- | ---
-`converter` | No | The fully-qualified class name.
+The `converter` attribute of the `field` element defines the converter class that updates the event data field value for the specified event. Only one converter class can be defined per field.
 
 The following example updates the value of the field `visibility` present in the `observer.catalog_product_save_after` event payload using the `TestConverterVisibility` converter class.
 

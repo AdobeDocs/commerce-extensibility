@@ -28,7 +28,7 @@ interface FieldConverterInterface
 }
 ```
 
-As an example, the `observer.catalog_product_save_after` event contains a top-level `visibility` field, which must contain an integer value. You want to convert these values to strings that match values on the external system. The following table describes these values.
+As an example, the `observer.catalog_product_save_after` event contains a top-level `visibility` field, which must contain an integer value. Convert these values to strings that match values on the external system. The following table describes these values.
 
 Commerce value | Converted value | Description
 --- | --- | ---
@@ -101,7 +101,7 @@ The converter changes the payload to:
 
 ## Register the converter
 
-You must configure a module's `io_events.xml` or root `app/etc/io_events.xml` file to update the required fields. You can also declare them in the system `config.php` file or add them using the CLI while subscribing to an event.
+You must configure a module's `io_events.xml` or root `app/etc/io_events.xml` file to update the required fields. You can also declare them in the system `config.php` file or add them when using the CLI to subscribe to an event.
 
 ### Command line
 

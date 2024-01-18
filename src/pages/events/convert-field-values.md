@@ -12,7 +12,7 @@ The payload of an event often includes field values that are not easily interpre
 
 ## Converter definition
 
-Your converter class must implement `FieldConverterInterface`. This interface contains the `convert` method, which accepts `mixed` and `Event` arguments following arguments. The method returns a `mixed` data type. Individual converter classes must be created for each field when aiming to convert multiple fields within a payload. Conversely, the same class can be reused to replace a specific field across multiple events.
+Your converter class must implement `FieldConverterInterface`. This interface contains the `convert` method, which accepts `mixed` and `Event` arguments. The method returns a `mixed` data type. You must create individual converter classes for each field when converting multiple fields within a payload. You can reuse a class to replace a specific field across multiple events.
 
 ```php
 interface FieldConverterInterface

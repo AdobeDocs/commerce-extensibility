@@ -36,6 +36,10 @@ module.exports = [
     path: "/events/commands.md",
   },
   {
+    title: "Troubleshooting",
+    path: "/events/troubleshooting.md",
+  },
+  {
     title: "Release notes",
     path: "/events/release-notes.md",
   }

@@ -61,7 +61,12 @@ class TestConverterVisibility implements FieldConverterInterface
      */
     public function convert(mixed $value, Event $event): mixed
     {
-        return 'CATALOG_AND_SEARCH';
+        return match ($value) {
+            '1' => 'NOT_VISIBLE_INDIVIDUALLY',
+            '2' => 'CATALOG_ONLY',
+            '3' => 'SEARCH_ONLY',
+            '4' => 'CATALOG_AND_SEARCH'
+        };
     }
 }
 ```

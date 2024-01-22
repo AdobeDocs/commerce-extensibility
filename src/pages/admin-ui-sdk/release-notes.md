@@ -26,7 +26,7 @@ January 25, 2024
 
 ### Bug fixes
 
-* The Admin now displays extensions correctly in the Admin when they are loaded from the extension manager registry. <!-- CEXT-2595 -->
+* The Admin now displays extensions correctly when they are loaded from the extension manager registry. <!-- CEXT-2595 -->
 
 ## Version 1.3.0
 

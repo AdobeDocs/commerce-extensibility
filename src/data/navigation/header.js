@@ -20,6 +20,10 @@ module.exports = [
       path: "/admin-ui-sdk/",
     },
     {
+      title: "Starter Kit",
+      path: "/starter-kit/"
+    },
+    {
       title: "Reference App",
       path: "/amazon-sales-channel/"
     }

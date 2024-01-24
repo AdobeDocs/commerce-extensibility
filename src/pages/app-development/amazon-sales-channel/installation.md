@@ -135,11 +135,11 @@ Create the `etc/io_events.xml` file in the root directory of your module, if it 
 </event>
 ```
 
-See [I/O Events for Adobe Commerce](../events/module-development.md#io_eventsxml) for more details. Adobe recommends using the `io_events.xml` method to configure events, but you can also configure events by modifying the `app.config` file or by using the CLI. The same event and fields are required, regardless of the method implemented.
+See [I/O Events for Adobe Commerce](../../events/module-development.md#io_eventsxml) for more details. Adobe recommends using the `io_events.xml` method to configure events, but you can also configure events by modifying the `app.config` file or by using the CLI. The same event and fields are required, regardless of the method implemented.
 
 ### Subscribe to Adobe Commerce events
 
-1. Ensure that your Adobe Commerce instance is registered as an event provider as described in [Subscribe and register events](../events/configure-commerce.md#subscribe-and-register-events).
+1. Ensure that your Adobe Commerce instance is registered as an event provider as described in [Subscribe and register events](../../events/configure-commerce.md#subscribe-and-register-events).
 
 1. Register the `observer.catalog_product_save_after` event in your project in [developer console](https://developer.adobe.com/console/).
 
@@ -172,9 +172,9 @@ At this point, if you go to the `Debug tracing` area in your new event created i
 
 ## Admin UI SDK
 
-The Amazon Sales Channel on App Builder is securely injected into the Commerce Admin experience using the [Admin UI SDK](../admin-ui-sdk/index.md). This UI extensibility functionality enables merchant administrators to use a seamless app UI experience in the Commerce Admin. This sample app is just one example of how App Builder integrations can extend Commerce Admin with their own apps' UI.
+The Amazon Sales Channel on App Builder is securely injected into the Commerce Admin experience using the [Admin UI SDK](../../admin-ui-sdk/index.md). This UI extensibility functionality enables merchant administrators to use a seamless app UI experience in the Commerce Admin. This sample app is just one example of how App Builder integrations can extend Commerce Admin with their own apps' UI.
 
-[Admin configuration and testing](../admin-ui-sdk/configuration.md) describes how to test functionality locally. For testing in production, push the Amazon Sales Channel app to production and have an administrator approve the app.
+[Admin configuration and testing](../../admin-ui-sdk/configuration.md) describes how to test functionality locally. For testing in production, push the Amazon Sales Channel app to production and have an administrator approve the app.
 
 ## Test the app
 

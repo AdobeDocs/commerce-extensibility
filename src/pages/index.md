@@ -72,14 +72,23 @@ Out-of-process development tools are only available with Adobe Commerce and are 
 
 ## Learning path
 
-Review the following resources to familiarize yourself with the extensibility options offered by Adobe Commerce:
+Review the following resources to familiarize yourself with the extensibility options offered by Adobe Commerce and start developing:
 
-- [App Builder overview](https://developer.adobe.com/app-builder/docs/overview/)
-- [Getting access to App Builder](https://developer.adobe.com/app-builder/docs/overview/getting_access/)
 - [Creating your first App Builder application](https://developer.adobe.com/app-builder/docs/getting_started/first_app/)
-- [Create a mesh with API Mesh for Adobe Developer App Builder](https://developer.adobe.com/graphql-mesh-gateway/gateway/mesh_walkthrough/)
-- [Subscribe to an Adobe Commerce event](https://developer.adobe.com/commerce/extensibility/events/configure-commerce/#subscribe-and-register-events)
-- [Create a runtime action in Adobe I/O Runtime](https://developer.adobe.com/runtime/docs/guides/using/creating_actions/)
+  - [App Builder overview](https://developer.adobe.com/app-builder/docs/overview/)
+  - [Getting access to App Builder](https://developer.adobe.com/app-builder/docs/overview/getting_access/)
+- [Orchestration with API Mesh](https://developer.adobe.com/graphql-mesh-gateway/)
+  - [Getting started](https://developer.adobe.com/graphql-mesh-gateway/gateway/getting-started/) (documentation)
+  - [Getting started](https://experienceleague.adobe.com/docs/commerce-learn/tutorials/adobe-developer-app-builder/api-mesh/getting-started-api-mesh.html) (video)
+  - [Creating a mesh](https://developer.adobe.com/graphql-mesh-gateway/gateway/create-mesh/)
+  - [Create a mesh with API Mesh for Adobe Developer App Builder](https://developer.adobe.com/graphql-mesh-gateway/gateway/mesh_walkthrough/)
+- [Build event-driven integrations](https://developer.adobe.com/commerce/extensibility/events/)
+  - [Installation](https://developer.adobe.com/commerce/extensibility/events/installation/)
+  - [Getting started](https://experienceleague.adobe.com/docs/commerce-learn/tutorials/adobe-developer-app-builder/io-events/getting-started-io-events.html?lang=en) (video)
+  - [Adobe I/O Events](https://developer.adobe.com/events/docs/)
+  - [Adobe I/O Events for Adobe Commerce](https://developer.adobe.com/commerce/extensibility/events/)
+- [Extend the Admin UI](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/)
+- [Extend native Commerce processes with webhooks](https://developer.adobe.com/commerce/extensibility/webhooks/)
 
 ### Related information
 

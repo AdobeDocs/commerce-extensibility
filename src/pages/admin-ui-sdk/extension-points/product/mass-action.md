@@ -35,6 +35,7 @@ product: {
                 actionId: `${extensionId}::another-first-mass-action`,
                 label: 'Another Mass Action',
                 type: `${extensionId}.another-mass-action`,
+                title: 'Another Products Mass Action',
                 path: '#/another-mass-action'
             }
         ]
@@ -50,6 +51,7 @@ product: {
 | `confirm.message` | string | No | The message displayed on the confirmation dialog for a mass action |
 | `confirm.title` | string | No | The title of a dialog that confirms the mass action |
 | `label` | string | Yes | An Action label to display in the Mass Actions grid |
+| `title` | string | No | An optional page title for the action. If not specified, the label is used. |
 | `path` | string | Yes | The relative path in the application to redirect to the action. You might need to prepend `#/` to the path to ensure access to the correct page. |
 | `productSelectLimit` | integer | No | Set the maximum number products that can be selected for a mass action. By default, the number is unlimited. |
 | `type` | string | Yes | A unique ID that identifies the type of the action. |

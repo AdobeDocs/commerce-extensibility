@@ -50,4 +50,4 @@ order: {
 | `path` | string | Yes | The relative path to the button page in the App. The order ID will be sent as part of the query. |
 | `level` | integer | No |  The position in which a set of buttons are placed in the toolbar. The possible values are `-1` (left), `0` (center), and `1` (right). |
 | `sortOrder` | integer | No | The order in which the button is placed inside the level. |
-| `class` | string | Yes  | The class of the button type. Possible values are `save`, `edit`, `reset`, and `custom`.
+| `class` | string | Yes  | The class of the button. Possible values are `save`, `edit`, `reset`, and `custom`. |

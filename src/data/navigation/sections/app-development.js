@@ -6,5 +6,9 @@ module.exports = [
     {
         title: "Extensibility examples",
         path: "/app-development/examples.md"   
+    },
+    {
+        title: "Learning path",
+        path: "/app-development/learning-path.md"   
     }
 ];

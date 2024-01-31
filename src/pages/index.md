@@ -16,7 +16,9 @@ keywords:
 
 # Adobe Commerce extensibility
 
-Learn how to develop Out-of-Process apps that extend and customize Adobe Commerce.
+Learn about in-process and out-of-process development tools provided by Adobe Commerce
+
+This guide explains how to develop Out-of-Process apps that extend and customize Adobe Commerce. For a more in-depth understanding of extensibility, follow our [learning path](./app-development/learning-path.md).
 
 Extensibility, as a concept, reflects the possibility for growth and the ease of extending functionality in a system. When referring to extensibility in Adobe Commerce, we mean the ability of developers to expand, customize, and control their interactions with Adobe Commerce.
 
@@ -69,26 +71,6 @@ Additionally, [Marketplace Apps](./app-development/index.md) allow you to create
 <InlineAlert variant="info" slots="text"/>
 
 Out-of-process development tools are only available with Adobe Commerce and are not available with Magento Open Source.
-
-## Learning path
-
-Review the following resources to familiarize yourself with the extensibility options offered by Adobe Commerce and start developing:
-
-- [Creating your first App Builder application](https://developer.adobe.com/app-builder/docs/getting_started/first_app/)
-  - [App Builder overview](https://developer.adobe.com/app-builder/docs/overview/)
-  - [Getting access to App Builder](https://developer.adobe.com/app-builder/docs/overview/getting_access/)
-- [Orchestration with API Mesh](https://developer.adobe.com/graphql-mesh-gateway/)
-  - [Getting started](https://developer.adobe.com/graphql-mesh-gateway/gateway/getting-started/) (documentation)
-  - [Getting started](https://experienceleague.adobe.com/docs/commerce-learn/tutorials/adobe-developer-app-builder/api-mesh/getting-started-api-mesh.html) (video)
-  - [Creating a mesh](https://developer.adobe.com/graphql-mesh-gateway/gateway/create-mesh/)
-  - [Create a mesh with API Mesh for Adobe Developer App Builder](https://developer.adobe.com/graphql-mesh-gateway/gateway/mesh_walkthrough/)
-- [Build event-driven integrations](https://developer.adobe.com/commerce/extensibility/events/)
-  - [Installation](https://developer.adobe.com/commerce/extensibility/events/installation/)
-  - [Getting started](https://experienceleague.adobe.com/docs/commerce-learn/tutorials/adobe-developer-app-builder/io-events/getting-started-io-events.html?lang=en) (video)
-  - [Adobe I/O Events](https://developer.adobe.com/events/docs/)
-  - [Adobe I/O Events for Adobe Commerce](https://developer.adobe.com/commerce/extensibility/events/)
-- [Extend the Admin UI](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/)
-- [Extend native Commerce processes with webhooks](https://developer.adobe.com/commerce/extensibility/webhooks/)
 
 ### Related information
 

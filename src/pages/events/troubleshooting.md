@@ -140,7 +140,7 @@ kill -9 <PROCESS_ID>
 
 or to run the command provided by `ece-tools`
 
-```bash 
+```bash
 vendor/bin/ece-tools cron:kill
 ```
 

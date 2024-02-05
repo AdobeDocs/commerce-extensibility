@@ -145,7 +145,9 @@ stage:
       consumers: []
 ```
 
-**Warning**: Due to the specific of the Cloud environment the deployment process may stuck if you have the running consumer in the background. See how to [resolve stuck deployment](./troubleshooting.md#stuck-deployment-on-cloud-environment-after-configuring-priority-events).
+<InlineAlert variant="warning" slots="text" />
+
+The deployment process might become stuck if the consumer runs in the background. The [Troubleshooting](./troubleshooting.md#stuck-deployment-after-configuring-priority-events) topic describes how to resolve this condition.
 
 See [Global variables](https://experienceleague.adobe.com/docs/commerce-cloud-service/user-guide/configure/env/stage/variables-global.html) for more information about the `ENABLE_EVENTING` variable.
 

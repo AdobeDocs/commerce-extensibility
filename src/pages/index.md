@@ -46,7 +46,7 @@ Extend the Commerce Admin to include the menus and pages necessary for merchants
 
 <DiscoverBlock slots="link, text"/>
 
-[Reference App](amazon-sales-channel/index.md)
+[Reference App](app-development/amazon-sales-channel/index.md)
 
 Explore the Amazon Sales Channel reference app to help visualize the world of Commerce Out-of-Process apps.
 

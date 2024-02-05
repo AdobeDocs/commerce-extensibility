@@ -145,6 +145,10 @@ stage:
       consumers: []
 ```
 
+<InlineAlert variant="warning" slots="text" />
+
+The deployment process might become stuck if the consumer runs in the background. The [Troubleshooting](./troubleshooting.md#stuck-deployment-after-configuring-priority-events) topic describes how to resolve this condition.
+
 See [Global variables](https://experienceleague.adobe.com/docs/commerce-cloud-service/user-guide/configure/env/stage/variables-global.html) for more information about the `ENABLE_EVENTING` variable.
 
 Cloud infrastructure and on-premises instances require different cron management procedures as described here:

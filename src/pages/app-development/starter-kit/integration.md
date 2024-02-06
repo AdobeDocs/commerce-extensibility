@@ -440,7 +440,7 @@ The interaction with the Adobe Commerce API is defined in the `sendData` functio
 
 - `customer`
   - `createCustomer` - `actions/customer/commerceCustomerApiClient.js`
-  - `updateCustomer` - `actions/customer/commerceCustomerApiClient.js` 
+  - `updateCustomer` - `actions/customer/commerceCustomerApiClient.js`
   - `deleteCustomer` - `actions/customer/commerceCustomerApiClient.js`
 - `customer_group`
   - `createCustomerGroup` - `actions/customer-group/commerceCustomerGroupApiClient.js`

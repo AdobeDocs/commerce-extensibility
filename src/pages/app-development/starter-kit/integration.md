@@ -260,6 +260,31 @@ The incoming information depends on the external API.
 }
 ```
 
+#### `stock`
+
+<CodeBlock slots="heading, code" repeat="1" languages="JSON" />
+
+#### update
+
+```json
+{
+  "sourceItems": [
+    {
+      "sku": "sku-one",
+      "source": "source-one",
+      "quantity": 0,
+      "outOfStock": true
+    },
+    {
+      "sku": "sku-two",
+      "source": "source-two",
+      "quantity": 66,
+      "outOfStock": false
+    }
+  ]
+}
+```
+
 ### Data validation
 
 The incoming data is validated against a JSON schema defined in the `schema.json` file.
@@ -428,6 +453,28 @@ The incoming data is validated against a JSON schema defined in the `schema.json
 }
 ```
 
+#### `stock`
+
+<CodeBlock slots="heading, code" repeat="1" languages="JSON" />
+
+#### update
+
+```json
+{
+  "type": "array",
+  "items": {
+    "properties": {
+      "sku": { "type": "string" },
+      "source": { "type": "string" },
+      "quantity": { "type":  "number" },
+      "outOfStock": { "type": "boolean" }
+    },
+    "required": [ "sku", "source", "quantity", "outOfStock" ],
+    "additionalProperties": true
+  }
+}
+```
+
 ### Payload transformation
 
 If necessary, make any transformation changes necessary for the external back-office application's formatting in the `transformData` function in the `transformer.js` file.
@@ -454,6 +501,8 @@ The interaction with the Adobe Commerce API is defined in the `sendData` functio
   - `createProduct` - `actions/product/commerceProductApiClient.js`
   - `updateProduct` - `actions/product/commerceProductApiClient.js`
   - `deleteProduct` - `actions/product/commerceProductApiClient.js`
+- `stock`
+  - `updateStock` - `actions/stock/commerceStockApiClient.js`
 
 Parameters from the environment can be accessed from `params`. Add the necessary parameters in the `actions/<object>/external/actions.config.yaml` under `created -> inputs`, `updated -> inputs`, or `deleted -> inputs` as follows:
 

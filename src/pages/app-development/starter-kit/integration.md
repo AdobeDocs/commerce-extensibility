@@ -10,6 +10,17 @@ keywords:
  - Tools
 ---
 
+import IncomingCustomer from './code-samples/incoming-customer.md';
+import IncomingCustomerGroup from './code-samples/incoming-customer-group.md';
+import IncomingOrder from './code-samples/incoming-order.md';
+import IncomingProduct from './code-samples/incoming-product.md';
+import IncomingStock from './code-samples/incoming-stock.md';
+import DataCustomer from './code-samples/data-customer.md';
+import DataCustomerGroup from './code-samples/data-customer-group.md';
+import DataOrder from './code-samples/data-order.md';
+import DataProduct from './code-samples/data-product.md';
+import DataStock from './code-samples/data-stock.md';
+
 # Integrate runtime actions
 
 The `create`, `update`, and `delete` runtime actions perform one of the following functions:
@@ -149,331 +160,55 @@ This runtime action is responsible for notifying Adobe Commerce when an `<object
 
 The incoming information depends on the external API.
 
+<br></br>
+<TabsBlock orientation="vertical" slots="heading, content" repeat="5"/>
+
 #### `customer`
 
-<CodeBlock slots="heading, code" repeat="3" languages="JSON, JSON, JSON" />
-
-#### create
-
-```json
-{
-  "email": "sample@email.com",
-  "name": "John",
-  "lastname": "Doe"
-}
-```
-
-#### update
-
-```json
-{
-  "id": 1234,
-  "email": "sample@email.com",
-  "name": "John",
-  "lastname": "Doe"
-}
-```
-
-#### delete
-
-```json
-{
-  "id": 1234
-}
-```
+<IncomingCustomer/>
 
 #### `customer_group`
 
-<CodeBlock slots="heading, code" repeat="3" languages="JSON, JSON, JSON" />
-
-#### create
-
-```json
-{
-  "name": "A Group Name",
-  "taxClassId": 25
-}
-```
-
-#### update
-
-```json
-{
-  "id": 8,
-  "name": "A Group Name",
-  "taxClassId": 25
-}
-```
-
-#### delete
-
-```json
-{
-  "id": 8
-}
-```
+<IncomingCustomerGroup/>
 
 #### `order`
 
-<CodeBlock slots="heading, code" repeat="1" languages="JSON" />
-
-#### update
-
-```json
-{
-  "id": 99,
-  "status": "shipped",
-  "notifyCustomer": false
-}
-```
+<IncomingOrder/>
 
 #### `product`
 
-<CodeBlock slots="heading, code" repeat="3" languages="JSON, JSON, JSON" />
-
-#### create
-
-```json
-{
-  "sku": "b7757d8a-3f3a-4ffd-932a-28cb07debef6",
-  "name": "A Product Name",
-  "description": "A product description"
-}
-```
-
-#### update
-
-```json
-{
-  "sku": "b7757d8a-3f3a-4ffd-932a-28cb07debef6",
-  "name": "A Product Name",
-  "price": 99.99,
-  "description": "A product description"
-}
-```
-
-#### delete
-
-```json
-{
-  "sku": "b7757d8a-3f3a-4ffd-932a-28cb07debef6"
-}
-```
+<IncomingProduct/>
 
 #### `stock`
 
-<CodeBlock slots="heading, code" repeat="1" languages="JSON" />
-
-#### update
-
-```json
-{
-  "sourceItems": [
-    {
-      "sku": "sku-one",
-      "source": "source-one",
-      "quantity": 0,
-      "outOfStock": true
-    },
-    {
-      "sku": "sku-two",
-      "source": "source-two",
-      "quantity": 66,
-      "outOfStock": false
-    }
-  ]
-}
-```
+<IncomingStock/>
 
 ### Data validation
 
 The incoming data is validated against a JSON schema defined in the `schema.json` file.
 
+<br></br>
+<TabsBlock orientation="vertical" slots="heading, content" repeat="5"/>
+
 #### `customer`
 
-<CodeBlock slots="heading, code" repeat="3" languages="JSON, JSON, JSON" />
-
-#### create
-
-```json
-{
-  "type": "object",
-  "properties": {
-    "name": { "type": "string" },
-    "lastname": {"type":  "string"},
-    "email": {"type":  "string"}
-  },
-  "required": ["name", "lastname", "email"],
-  "additionalProperties": true
-}
-```
-
-#### update
-
-```json
-{
-  "type": "object",
-  "properties": {
-    "id": {"type": "number"},
-    "name": { "type": "string" },
-    "lastname": {"type": "string"},
-    "email": {"type":  "string"}
-  },
-  "required": ["id", "name", "lastname", "email"],
-  "additionalProperties": true
-}
-```
-
-#### delete
-
-```json
-{
-  "type": "object",
-  "properties": {
-    "id": { "type": "number" }
-  },
-  "required": ["id"],
-  "additionalProperties": false
-}
-```
+<DataCustomer/>
 
 #### `customer_group`
 
-<CodeBlock slots="heading, code" repeat="3" languages="JSON, JSON, JSON" />
-
-#### create
-
-```json
-{
-  "type": "object",
-  "properties": {
-    "name": { "type": "string" },
-    "taxClassId": { "type": "number" }
-  },
-  "required": ["name", "taxClassId"],
-  "additionalProperties": true
-}
-```
-
-#### update
-
-```json
-{
-  "type": "object",
-  "properties": {
-    "sku": { "type": "string" },
-    "name": { "type": "string" },
-    "price": {"type":  "number"},
-    "description": {"type":  "string"}
-  },
-  "required": ["sku", "name", "price", "description"],
-  "additionalProperties": true
-}
-```
-
-#### delete
-
-```json
-{
-  "customer_group_id": 6,
-  "customer_group_code": "Group name code",
-  "tax_class_id": 4,
-  "tax_class_name": "Tax class name",
-  "extension_attributes": {
-    "exclude_website_ids":[]
-  }
-}
-```
+<DataCustomerGroup/>
 
 #### `order`
 
-<CodeBlock slots="heading, code" repeat="1" languages="JSON" />
-
-#### update
-
-```json
-{
-  "type": "object",
-  "properties": {
-    "id": { "type": "integer" },
-    "status": { "type": "string" },
-    "notifyCustomer": { "type":  "boolean"}
-  },
-  "required": ["id", "status"],
-  "additionalProperties": true
-}
-```
+<DataOrder/>
 
 #### `product`
 
-<CodeBlock slots="heading, code" repeat="3" languages="JSON, JSON, JSON" />
-
-#### create
-
-```json
-{
-  "type": "object",
-  "properties": {
-    "sku": { "type": "string" },
-    "name": { "type": "string" },
-    "price": {"type":  "number"},
-    "description": {"type":  "string"}
-  },
-  "required": ["sku", "name", "description"],
-  "additionalProperties": true
-}
-```
-
-#### update
-
-```json
-{
-  "type": "object",
-  "properties": {
-    "sku": { "type": "string" },
-    "name": { "type": "string" },
-    "price": {"type":  "number"},
-    "description": {"type":  "string"}
-  },
-  "required": ["sku", "name", "price", "description"],
-  "additionalProperties": true
-}
-```
-
-#### delete
-
-```json
-{
-  "type": "object",
-  "properties": {
-    "sku": { "type": "string" }
-  },
-  "required": ["sku"],
-  "additionalProperties": false
-}
-```
+<DataProduct/>
 
 #### `stock`
 
-<CodeBlock slots="heading, code" repeat="1" languages="JSON" />
-
-#### update
-
-```json
-{
-  "type": "array",
-  "items": {
-    "properties": {
-      "sku": { "type": "string" },
-      "source": { "type": "string" },
-      "quantity": { "type":  "number" },
-      "outOfStock": { "type": "boolean" }
-    },
-    "required": [ "sku", "source", "quantity", "outOfStock" ],
-    "additionalProperties": true
-  }
-}
-```
+<DataStock/>
 
 ### Payload transformation
 

@@ -17,7 +17,7 @@ February 7, 2024
 
 ### Enhancements
 
-* Added the ability to manage webhooks from the Admin, at **System** > **Webhooks**. You can now perform the following tasks:
+* Added the ability to [manage webhooks from the Admin](admin-configuration.md), at **System** > **Webhooks**. You can now perform the following tasks:
 
   * Create new webhooks.
   * Modify webhooks that are defined in an XML file.

@@ -19,7 +19,9 @@ February 7, 2024
 
 * Added a new module `AdobeCommerceWebhooksAdminUi` for managing webhooks from the Admin UI
 
-* Added an ability to modify and create webhooks from the Admin UI
+* Added an ability to modify xml-defined webhooks from the Admin UI
+
+* Added an ability to create new webhooks from the Admin UI
 
 * Added an ability to modify and create webhooks rules, headers and fields from the Admin UI
 

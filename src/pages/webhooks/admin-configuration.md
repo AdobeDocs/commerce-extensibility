@@ -9,7 +9,7 @@ keywords:
 
 You can use the Commerce Admin to extend and override existing hooks defined in `webhooks.xml` files and to create new hooks. You can make webhook configuration changes without updating the source `webhooks.xml` files. In Cloud instances, you do not need to redeploy after making hook configuration changes through the Admin, provided that the plugin classes for any new hooks already exist.
 
-Configuration changes made using the Admin override the behavior of the webhooks defined in an XML file. The webhooks execute based on the updated configuration, and the `webhooks:list` command returns these values.
+Configuration changes made using the Admin override and extend the behavior of the webhooks defined in an XML file. The webhooks execute based on the updated configuration, and the `webhooks:list` command returns these values.
 
 ## View registered hooks
 

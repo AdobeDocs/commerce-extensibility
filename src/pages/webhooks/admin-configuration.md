@@ -1,6 +1,6 @@
 ---
 title: Admin configuration
-description: Learn how to extend, override, and create hooks using the Webhooks Admin UI pages.
+description: Learn how to extend, override, and create hooks using the Admin.
 keywords:
   - Extensibility
 ---

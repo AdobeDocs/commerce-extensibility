@@ -9,6 +9,20 @@ keywords:
 
 These release notes describe the latest version of Adobe Commerce Webhooks.
 
+## Version 1.2.0
+
+### Release date
+
+February 7, 2024
+
+### Enhancements
+
+* Added a new module `AdobeCommerceWebhooksAdminUi` for managing webhooks from the Admin UI
+
+* Added an ability to modify and create webhooks from the Admin UI
+
+* Added an ability to modify and create webhooks rules, headers and fields from the Admin UI
+
 ## Version 1.1.0
 
 ### Release date

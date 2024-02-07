@@ -23,7 +23,7 @@ The rows of this grid show configuration settings for all registered hooks, both
 
 ## Edit an existing hook
 
-A form for editing existing hooks listed in the webhooks grid can be accessed by clicking **Edit** in the **Action** column of the grid.
+Click **Edit** in the **Action** column to modify an existing hook.
 
 ![Edit hook settings](../_images/webhooks/edit-hook-settings.png)
 

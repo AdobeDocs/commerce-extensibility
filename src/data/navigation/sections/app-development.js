@@ -36,6 +36,16 @@ module.exports = [
         ]
     },
     {
+        title: "Starter Kit",
+        path: "/app-development/starter-kit/index.md",
+        pages: [
+            {
+                title: "Project Setup",
+                path: "/app-development/starter-kit/project-setup.md"
+            }
+        ]
+    },
+    {
         title: "Reference App",
         path: "/app-development/amazon-sales-channel/index.md",
         pages: [

@@ -35,4 +35,4 @@ The **Hook fields**, **Hook Headers**, and **Hook Rules** form subsections can b
 
 ## Create a new hook
 
-A form for creating a new hook can be accessed by clicking **Add New Webhook** from the grid page. If the plugin for the webhook method entered into the form has not been generated for the Commerce instance, a warning to run the `webhooks:generate:module` command will appear upon clicking **Save**.
+Click **Add New Webhook** from the grid page to display the form for creating a new hook. If the plugin for the webhook method entered into the form has not been generated for the Commerce instance, a warning to run the `webhooks:generate:module` command will appear upon clicking **Save**.

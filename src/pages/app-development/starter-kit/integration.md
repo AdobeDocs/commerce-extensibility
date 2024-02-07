@@ -1,6 +1,6 @@
 ---
 title: Integrate runtime actions
-description: Learn how to use runtime actions with Adobe Commerce's Starter Kit.
+description: Learn how to use runtime actions with Adobe Commerce Extensibility Starter Kit.
 keywords:
  - Extensibility
  - App Builder
@@ -17,6 +17,8 @@ The `create`, `update`, and `delete` runtime actions perform one of the followin
 - [Notify the external application](#notify-the-external-application) - Notifies an external back-office application when an `<object>` is created, updated, or deleted in Adobe Commerce
 - [Notify Commerce](#notify-adobe-commerce) - Notifies Adobe Commerce when an `<object>` is created, updated, or deleted in an external back-office application
 
+![starter kit diagram](../../_images/starter-kit.png)
+
 ## Notify the external application
 
 This runtime action is responsible for notifying the external back-office application when an `<object>` is created, updated, or deleted in Adobe Commerce.
@@ -29,7 +31,7 @@ The `order` runtime action requires the `created_at` and `updated_at` fields.
 
 <CodeBlock slots="heading, code" repeat="4" languages="JSON, JSON, JSON, JSON" />
 
-#### `customer`
+#### customer
 
 ```json
 {
@@ -39,7 +41,7 @@ The `order` runtime action requires the `created_at` and `updated_at` fields.
 }
 ```
 
-#### `customer_group`
+#### customer_group
 
 ```json
 {
@@ -53,7 +55,7 @@ The `order` runtime action requires the `created_at` and `updated_at` fields.
 }
 ```
 
-#### `order`
+#### order
 
 ```json
 {
@@ -69,7 +71,7 @@ The `order` runtime action requires the `created_at` and `updated_at` fields.
 }
 ```
 
-#### `product`
+#### product
 
 ```json
 {

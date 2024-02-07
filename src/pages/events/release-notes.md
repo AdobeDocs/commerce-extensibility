@@ -12,6 +12,20 @@ These release notes describe the latest version of Adobe I/O Events for Adobe Co
 
 See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io-events-for-adobe-commerce) for upgrade instructions.
 
+## Version 1.5.0
+
+### Release date
+
+February 7, 2024
+
+### Enhancements
+
+* Added support of field converters. Now you can specify converter class that will be applied to fields in the event payload. <!--- CEXT-1699 -->
+
+* Added event tracking ID field for better tracking of the event delivery process.  <!--- CEXT-2759 -->
+
+* Increased test coverage of eventing modules <!--- CEXT-2640 -->
+
 ## Version 1.4.1
 
 ### Release date

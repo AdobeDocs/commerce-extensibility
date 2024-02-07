@@ -7,19 +7,21 @@ keywords:
 
 # Admin configuration
 
-You can use the Commerce Admin to extend and override existing hooks defined in `webhooks.xml` files and to create new hooks. You can make webhook configuration changes without updating the source `webhooks.xml` files. XML  In Cloud instances, you do not need to redeploy.
+You can use the Commerce Admin to extend and override existing hooks defined in `webhooks.xml` files and to create new hooks. You can make webhook configuration changes without updating the source `webhooks.xml` files by filling out a form for editing hooks. XML  In Cloud instances, you do not need to redeploy.
 
 Configuration changes made using the Commerce Admin will impact webhook execution and the output of the `webhooks:list` command.
 
 ## View registered hooks
 
-A grid listing the registered hooks can be found in the Commerce Admin:
-
-*  In the Admin, select **System** > Webhooks > **Webhooks** to display the _Webhooks_ grid page.
+In the Admin, select **System** > Webhooks > **Webhooks** to display the _Webhooks_ grid page.
 
 ![Webhooks grid](../_images/webhooks/webhooks-grid.png)
 
 The rows of this grid show configuration settings for all registered hooks, both active and inactive.
+
+## Create a new hook
+
+Click **Add New Webhook** from the grid page to display the form for creating a new hook. If the plugin for the webhook method entered into the form has not been generated for the Commerce instance, a warning to run the `webhooks:generate:module` command will appear upon clicking **Save**.
 
 ## Edit an existing hook
 
@@ -32,7 +34,3 @@ You can fully edit any hook that was originally defined in the Admin. However, h
 The **Hook fields**, **Hook Headers**, and **Hook Rules** form subsections can be used to edit or add hook fields, headers, and rules, respectively. For fields, headers, and rules defined in `webhooks.xml` files, the values of certain attributes cannot be changed through the form.
 
 ![Edit hook fields](../_images/webhooks/edit-hook-fields.png)
-
-## Create a new hook
-
-Click **Add New Webhook** from the grid page to display the form for creating a new hook. If the plugin for the webhook method entered into the form has not been generated for the Commerce instance, a warning to run the `webhooks:generate:module` command will appear upon clicking **Save**.

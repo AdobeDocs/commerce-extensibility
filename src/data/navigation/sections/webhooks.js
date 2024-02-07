@@ -28,6 +28,10 @@ module.exports = [
       path: "/webhooks/xml-schema.md"
     },
     {
+      title: "Admin configuration",
+      path: "/webhooks/admin-configuration.md"
+    },
+    {
       title: "Command reference",
       path: "/webhooks/commands.md",
     },

@@ -20,7 +20,7 @@ February 7, 2024
 
 ### Enhancements
 
-*  Added support for [field converters](convert-field-values.md). You can now create a converter class that changes the data type or value of fields in an event payload. <!--- CEXT-1699 -->
+* Added support for [field converters](convert-field-values.md). You can now create a converter class that changes the data type or value of fields in an event payload. <!--- CEXT-1699 -->
 
 * Added an event tracking ID field for better tracking of the event delivery process.  <!--- CEXT-2759 -->
 

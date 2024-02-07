@@ -17,7 +17,7 @@ A grid listing the registered hooks can be found in the Commerce Admin:
 
 ![Webhooks grid](../_images/webhooks/webhooks-grid.png)
 
-The rows of this grid show configuration settings for all registered hooks, both active and inactive. 
+The rows of this grid show configuration settings for all registered hooks, both active and inactive.
 
 ## Edit an existing hook
 

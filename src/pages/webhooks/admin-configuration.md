@@ -27,7 +27,7 @@ Click **Edit** in the **Action** column to modify an existing hook.
 
 ![Edit hook settings](../_images/webhooks/edit-hook-settings.png)
 
-In the **Hook settings** section of the form, hook attributes other than the hook name and names of the associated webhook method, webhook type, and batch can be modified. For a hook defined in a `webhooks.xml` file, the **Active** toggle can be used to override the value of the hook's `remove` attribute.
+You can fully edit any hook that was originally defined in the Admin. However, hooks defined in a `webhooks.xml` file are only partially editable. For these hooks, you cannot change the value of the webhook method, webhook type, batch name, or hook name. You can use the **Active** toggle to override the value of the `remove` attribute for any hook defined in an XML file.
 
 The **Hook fields**, **Hook Headers**, and **Hook Rules** form subsections can be used to edit or add hook fields, headers, and rules, respectively. For fields, headers, and rules defined in `webhooks.xml` files, the values of certain attributes cannot be changed through the form.
 

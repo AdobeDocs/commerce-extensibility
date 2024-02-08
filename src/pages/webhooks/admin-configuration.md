@@ -25,7 +25,7 @@ Click **Add New Webhook** from the grid page to display the form for creating a 
 
 <InlineAlert variant="warning" slots="text" />
 
-On Cloud instances, due to the read-only file system, the `webhooks:generate:module` command cannot be run. If a plugin-type webhook is added through the Admin, the method name and type should be declared in a `webhooks.xml` file.
+On Cloud instances, due to the read-only file system, the `webhooks:generate:module` command cannot be run. If a plugin-type webhook is added through the Admin, the method name and type should be declared in a `webhooks.xml` file so that the required plugins are generated during the build phase of the deployment process.
 
 ## Edit an existing hook
 

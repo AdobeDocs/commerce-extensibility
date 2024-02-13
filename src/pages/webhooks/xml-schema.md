@@ -24,7 +24,7 @@ A maximal `webhooks.xml` file has the following structure:
                     |__ fields
                     |   |__ field
                     |__ rules
-                    |   |__ rule
+                        |__ rule
 ```
 
 [Configure hooks](hooks.md) and [Create conditional webhooks](./conditional-webhooks.md) contain examples of fully-defined hooks.

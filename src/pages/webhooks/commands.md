@@ -261,7 +261,7 @@ ok | 10:25:24 AM
 
 ## Generate plugins
 
-The `webhooks:generate:module` command generates the `AdobeCommerceWebhookPlugins` module with plugins based on webhook registrations and places it into the Commerce `app/code/Magento` directory.
+The `webhooks:generate:module` command generates the `AdobeCommerceWebhookPlugins` module with plugins based on webhook registrations and places it into the Commerce `app/code/Magento` directory. This command is applicable for on-premises deployments only.
 
 ### Usage
 
@@ -291,7 +291,7 @@ The `webhooks:dev:run` command is used for development and testing purposes only
 
 `<webhook-name:type>` Required. The combination of webhook name and type. The name must begin with either `observer.` or `plugin.`. The `type` must be either `before` or `after`. Example: `observer.checkout_cart_product_add_before:before`
 
-`webhook-arguments-payload` Required. The webhook arguments payload in JSON format. The payload will be filtered according to the `fields` rules defined in a `webhooks.xml` file before being sent to the webhook endpoint. This emulates how the real arguments will be filtered in the generated plugin for the webhook.
+`<webhook-arguments-payload>` Required. The webhook arguments payload in JSON format. The payload will be filtered according to the `fields` rules defined in a `webhooks.xml` file before being sent to the webhook endpoint. This emulates how the real arguments will be filtered in the generated plugin for the webhook.
 
 ### Example
 

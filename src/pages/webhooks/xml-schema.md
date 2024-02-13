@@ -104,7 +104,7 @@ A `fields` element is optional and can contain one or more `field` elements. The
 
 ## `rules` and `rule` elements
 
-A `rules` element is optional and can contain one or more `rule` elements. Each `rule` element defines a conditional webhook, which configures the conditions that cause the webhook to be triggered. [Create conditional webhooks](./conditional-webhooks.md) provides example rules and fully describes the possible operator values.
+A `rules` element is optional and can contain one or more `rule` elements. Each `rule` element defines a conditional webhook, which configures the conditions that cause the webhook to be triggered when all conditions evaluate to `true`. [Create conditional webhooks](./conditional-webhooks.md) provides example rules and fully describes the possible operator values.
 
 | Attribute | Type   | Description  | Is required | Default |
 |---|---|---|---|---|

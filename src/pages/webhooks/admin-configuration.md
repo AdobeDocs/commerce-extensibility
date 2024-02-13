@@ -46,6 +46,8 @@ Field | Description
 **Active** | Indicates whether to skip a removed hook during the batch execution.
 **Method** | The HTTP method (POST, PUT, GET, or DELETE) used to invoke the hook.
 
+You must define at least one hook field, and you will usually need to define request headers. You can also optionally define rules that allow the webhook to run in limited situations. Continue defining these entities and click **Save** when you have fully defined a new webhook.
+
 ### Configure hook fields
 
 The **Hook Fields** configuration panel defines the payload of a webhook request. [Define the hook body](hooks.md#define-the-hook-body) describes how to construct the payload.

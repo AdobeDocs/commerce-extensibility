@@ -108,7 +108,7 @@ A `rules` element is optional and can contain one or more `rule` elements. Each 
 
 | Attribute | Type   | Description  | Is required | Default |
 |---|---|---|---|---|
-| `field` | String | The event field to be evaluated. For nested fields, use the dot-separated format, such as `data.order.product.id`.
-| `operator` | String | A string that defines which comparison operator to use. Examples include `equal`, `notEqual`, and `regex`.
-| `value` | String | The value to be compared.
-| `remove` | Boolean | Indicates whether the rule is active. The default value of `true` indicates the rule is active.
+| `field` | String | The event field to be evaluated. For nested fields, use the dot-separated format, such as `data.order.product.id`. | true | Not applicable
+| `operator` | String | A string that defines which comparison operator to use. Examples include `equal`, `notEqual`, and `regex`. | true | Not applicable
+| `value` | String | The value to be compared. | true | Not applicable
+| `remove` | Boolean | Indicates whether the rule is active. The default value of `true` indicates the rule is active. | false | false

@@ -14,7 +14,7 @@ In this example, the `webhooks.xml` file registered the following webhook:
 ```xml
     <method name="observer.checkout_cart_product_add_before" type="before">
         <hooks>
-            <batch>
+            <batch name="Update_Cart">
                 <hook name="validate_stock" url="{env:APP_BUILDER_PROJECT_URL}/product-validate-stock" timeout="2000" softTimeout="200" fallbackErrorMessage="The product stock validation failed">
                     <fields>
                         <field name='product.name' source='data.product.name' />

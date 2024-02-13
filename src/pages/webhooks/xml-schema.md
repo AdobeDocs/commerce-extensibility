@@ -22,10 +22,12 @@ A maximal `webhooks.xml` file has the following structure:
                     |__ headers
                     |   |__ header
                     |__ fields
-                        |__ field
+                    |   |__ field
+                    |__ rules
+                    |   |__ rule
 ```
 
-[Configure hooks](hooks.md) provides examples of fully-defined hooks.
+[Configure hooks](hooks.md) and [Create conditional webhooks](./conditional-webhooks.md) contain examples of fully-defined hooks.
 
 ## `config` attributes
 
@@ -40,12 +42,12 @@ xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_AdobeCommerceWebhooks:
 
 ## `method` element
 
-The `method` element must define the webhook `name` and `type`. The combination of method name and type must be unique across the system.
+The `method` element must define the webhook `name` and `type`. The combination of method `name` and `type` must be unique across the system.
 
 | Attribute | Type  | Description | Is required | Default |
 |---|---|---|---|
-| `name`    | String | The webhook code name. The value must be in the form `<type>.<webhook_name>`, where `type` is either `observer` or `plugin`, and `webhook_name` matches a valid Commerce event name. Use the `bin/magento webhooks:list:all` command to display a list of possible webhooks. | true        | Not applicable     |
-| `type`    | String | Specifies whether the webhook should be executed `before` or `after` the original action.  | true        | Not applicable     |
+| `name` | String | The webhook code name. The value must be in the form `<type>.<webhook_name>`, where `type` is either `observer` or `plugin`, and `webhook_name` matches a valid Commerce event name. Use the `bin/magento webhooks:list:all` command to display a list of possible webhooks. | true | Not applicable |
+| `type` | String | Specifies whether the webhook should be executed `before` or `after` the original action. | true | Not applicable |
 
 ## `hooks` element
 
@@ -53,10 +55,11 @@ The `hooks` element is required. It does not contain any attributes, but it must
 
 ## `batch` element
 
-The `batch` element sets the order in which multiple webhooks are executed. All hooks within a batch are sent in parallel.
+The `batch` element sets the order in which multiple webhooks are executed. All hooks within a batch are sent in parallel. Therefore, as you add hooks to a batch, keep in mind what task each hook will perform. For example, since the hooks are executed in parallel, you should not place a hook that relies on a response from another hook in the same batch.
 
 | Attribute | Type | Description                     | Is required | Default |
 |-----------|------|---------------------------------|-------------|---------|
+| `name` | String | A unique name for the batch. This value must contain English alphanumeric characters and underscores (_) only.| true | Not applicable |
 | `order`   | Int  | Sort order for batch execution. | false        | Not applicable     |
 
 ## `hook` element
@@ -70,7 +73,7 @@ The `hook` element defines the HTTP request to the remote server.
 | `method` | String | The HTTP method, such as POST or PUT, that invokes the hook. | false       | POST    |
 | `priority` | Int    | The priority of the merging hook results in the batch.  | false       | 0       |
 | `required` | Boolean   | Specifies whether hook execution is required or optional. When set to `false` (optional), if the hook fails to execute, the failure is logged and subsequent hooks continue to be processed. When `true`, a failure terminates the process. | false       | true    |
-| `timeout` | Int    | A hard timeout limit (milliseconds) for the request. Requests exceeding this timeout are aborted and logged. | false       | 0       |
+| `timeout` | Int    | A hard timeout limit (milliseconds) for the request. Requests exceeding this timeout are aborted and logged. The default value of 0 indicates there is no timeout limit. | false       | 0       |
 | `softTimeout`| Int    | A soft timeout limit (milliseconds) for the request. Requests exceeding this timeout are logged for debugging purposes. | false       | Not applicable     |
 | `fallbackErrorMessage` | Int    | The error message to return when the hook fails. | false       | Not applicable     |
 | `remove` | Boolean   | Indicates whether to skip a removed hook during the batch execution. | false       | false   |
@@ -95,6 +98,17 @@ A `fields` element is optional and can contain one or more `field` elements. The
 | Attribute | Type   | Description  | Is required | Default |
 |---|---|---|---|---|
 | `name` | String  | The path to the field to include in the transmitted webhook, such as `product.sku`.  | true        | Not applicable     |
-| `source` | String  | The path to the value in the default webhook. If not set, the `name` is used as source. | false       | Not applicable     |
+| `source` | String  | The path to the value in the default webhook. If not set, the value of `name` is used. | false       | Not applicable     |
 | `converter` | String  | A class that transforms the value of a field, such as from integer to string. | false       | Not applicable     |
 | `remove` | Boolean | Set to `true` to remove the field from the payload. | false | false   |
+
+## `rules` and `rule` elements
+
+A `rules` element is optional and can contain one or more `rule` elements. Each `rule` element defines a conditional webhook, which configures the conditions that cause the webhook to be triggered. [Create conditional webhooks](./conditional-webhooks.md) provides example rules and fully describes the possible operator values.
+
+| Attribute | Type   | Description  | Is required | Default |
+|---|---|---|---|---|
+| `field` | String | The event field to be evaluated. For nested fields, use the dot-separated format, such as `data.order.product.id`.
+| `operator` | String | A string that defines which comparison operator to use. Examples include `equal`, `notEqual`, and `regex`.
+| `value` | String | The value to be compared.
+| `remove` | Boolean | Indicates whether the rule is active. The default value of `true` indicates the rule is active.

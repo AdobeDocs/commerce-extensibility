@@ -25,7 +25,7 @@ Click **Add New Webhook** from the grid page to display the form for creating a 
 
 <InlineAlert variant="warning" slots="text" />
 
-If the plugin for the webhook method and type entered into the form has not been generated for the Commerce instance, a warning to run the `webhooks:generate:module` command will appear upon clicking **Save**. You cannot run the `webhooks:generate:module` command on Cloud instances, due to its read-only file system. If you add a plugin-type webhook through the Admin, declare the method name and type in a `webhooks.xml` file.
+If the plugin for the webhook method and type entered into the form have not been generated for the Commerce instance, a warning to run the `webhooks:generate:module` command will appear upon clicking **Save**. You cannot run the `webhooks:generate:module` command on Cloud instances, due to its read-only file system. If you add a plugin-type webhook through the Admin, declare the method name and type in a `webhooks.xml` file.
 
 ![New webhook](../_images/webhooks/new-hook-settings.png)
 
@@ -34,11 +34,11 @@ The **Hook Settings** configuration panel contains the following fields:
 Field | Description
 --- | ---
 **Webhook Method** | The internal name of a webhook. The value must be in the form `<type>.<webhook_name>`, where `type` is either `observer` or `plugin`, and `webhook_name` matches a valid Commerce event name. Use the [`bin/magento webhooks:list:all`](commands.md#return-a-list-of-supported-webhook-event-names) command to display a list of possible webhooks.
-**Webhook Type** | Select whether to run the webhook  `before` or `after` the original action.
+**Webhook Type** | Select whether to run the webhook `before` or `after` the original action.
 **Batch Name** | A unique name for the batch. Use a descriptive name that encompasses all the hooks in the batch. The name must contain English alphanumeric characters and underscores (_) only.
 **Hook Name** |  A name that must be unique within a batch. The name must contain English alphanumeric characters and underscores (_) only.
 **URL** | The HTTP endpoint to send the request for processing.
-**Timeout** | A hard timeout limit (milliseconds) for the request. Requests exceeding this timeout are aborted and logged.  The default value of 0 indicates there is no timeout limit.
+**Timeout** | A hard timeout limit (milliseconds) for the request. Requests exceeding this timeout are aborted and logged. The default value of 0 indicates there is no timeout limit.
 **Soft timeout** | A soft timeout limit (milliseconds) for the request. Requests exceeding this timeout are logged for debugging purposes.
 **Cache TTL** | The cache time-to-live (in seconds) for requests with the same URL, body, and headers. If this attribute is not specified, or if the value set to `0`, the response is not cached.
 **Fallback error message** | The error message to display when the hook fails.

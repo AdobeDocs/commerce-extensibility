@@ -32,6 +32,11 @@ The `create`, `update`, and `delete` runtime actions perform one of the followin
 
 ![starter kit diagram](../../_images/starter-kit.png)
 
+## Preprocessing and postprocessing
+
+- Preprocessing data - Any preprocessing needed before calling the Adobe Commerce API can be implemented in the `preProcess` function in the `pre.js` file.
+- Postprocess data - Any postprocessing needed after calling the Adobe Commerce API can be implemented in the `postProcess` function in the `post.js` file.
+
 ## Notify the external application
 
 This runtime action is responsible for notifying the external back-office application when an `<object>` is created, updated, or deleted in Adobe Commerce.
@@ -100,6 +105,10 @@ The `params` also specify the `event_code` and `event_id`.
 ### Payload transformation
 
 If necessary, make any transformation changes necessary for the external back-office application's formatting in the `transformData` function in the `transformer.js` file.
+
+### Preprocess data
+
+Any preprocessing needed before calling the external back-office application API can be implemented in the `preProcess` function in the `pre.js` file.
 
 ### Connect to the back-office application
 
@@ -224,10 +233,6 @@ The incoming data is validated against a JSON schema defined in the `schema.json
 
 If necessary, make any transformation changes necessary for the external back-office application's formatting in the `transformData` function in the `transformer.js` file.
 
-### Preprocessing data
-
-Any preprocessing needed before calling the Adobe Commerce API can be implemented in the `preProcess` function in the `pre.js` file.
-
 ### Interact with the Adobe Commerce API
 
 The interaction with the Adobe Commerce API is defined in the `sendData` function in the `sender.js` file. This function delegates to the following methods and locations:
@@ -312,10 +317,6 @@ deleted:
     require-adobe-auth: true
     final: true
 ```
-
-### Postprocess data
-
-Any postprocessing needed after calling the Adobe Commerce API can be implemented in the `postProcess` function in the `post.js` file.
 
 ## Expected responses
 

@@ -14,11 +14,13 @@ import IncomingCustomer from './code-samples/incoming-customer.md';
 import IncomingCustomerGroup from './code-samples/incoming-customer-group.md';
 import IncomingOrder from './code-samples/incoming-order.md';
 import IncomingProduct from './code-samples/incoming-product.md';
+import IncomingShipment from './code-samples/incoming-shipment.md';
 import IncomingStock from './code-samples/incoming-stock.md';
 import DataCustomer from './code-samples/data-customer.md';
 import DataCustomerGroup from './code-samples/data-customer-group.md';
 import DataOrder from './code-samples/data-order.md';
 import DataProduct from './code-samples/data-product.md';
+import DataShipment from './code-samples/data-shipment.md';
 import DataStock from './code-samples/data-stock.md';
 
 # Integrate runtime actions
@@ -179,6 +181,10 @@ The incoming information depends on the external API.
 
 <IncomingProduct/>
 
+#### `shipment`
+
+<IncomingShipment/>
+
 #### `stock`
 
 <IncomingStock/>
@@ -205,6 +211,10 @@ The incoming data is validated against a JSON schema defined in the `schema.json
 #### `product`
 
 <DataProduct/>
+
+#### `shipment`
+
+<DataShipment/>
 
 #### `stock`
 
@@ -236,6 +246,9 @@ The interaction with the Adobe Commerce API is defined in the `sendData` functio
   - `createProduct` - `actions/product/commerceProductApiClient.js`
   - `updateProduct` - `actions/product/commerceProductApiClient.js`
   - `deleteProduct` - `actions/product/commerceProductApiClient.js`
+- `shipment`
+  - `createShipment` - `actions/order/commerceShipmentApiClient.js`
+  - `updateShipment` - `actions/order/commerceShipmentApiClient.js`
 - `stock`
   - `updateStock` - `actions/stock/commerceStockApiClient.js`
 
@@ -331,3 +344,14 @@ return {
     error: errors
 }
 ```
+
+## `stock` runtime action sample code limitations
+
+The `stock` synchronization that connects a third-party system and Adobe Commerce uses the Adobe Commerce [inventory/source-items](https://adobe-commerce.redoc.ly/2.4.6-admin/tag/inventorysource-items/#operation/PostV1InventorySourceitems) REST endpoint to process the stock updates. The REST endpoint is included in the Starter Kit as an example implementation and depending on the integration's nonfunctional requirements, it may have the following limitations:
+
+- Payload size limit enforced by Adobe I/O Runtime - The [maximum `payload` size](https://developer.adobe.com/runtime/docs/guides/using/system_settings/) in Adobe I/O Runtime is not configurable. If an event carries a payload above the limit, for example, when dealing with a full stock synchronization event, it will cause an error. To prevent this situation, we recommend modifying the third-party system to generate event payloads within the `payload` limits.
+
+- Timeouts during the event processing - The [execution time range](https://developer.adobe.com/runtime/docs/guides/using/system_settings/) for a runtime action in Adobe I/O Runtime differs for `blocking` and `non-blocking` calls, with the limit being higher for `non-blocking` calls.
+  - You can resolve timeouts in runtime action executions depending on their cause:
+    - If the timeout is caused by a slow or busy Adobe Commerce REST API call, try using the (https://developer.adobe.com/commerce/webapi/rest/use-rest/asynchronous-web-endpoints/). This approach will cause the Commerce API to respond quickly because the data is processing asynchronously.
+    - If the timeout is caused by a long-running runtime action, for example, an action that interacts with multiple APIs sequentially and the total processing time exceeds the limits, we recommend using the [journaling approach](https://developer.adobe.com/app-builder/docs/resources/journaling-events/) for consuming events.

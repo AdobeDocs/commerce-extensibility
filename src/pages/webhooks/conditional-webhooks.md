@@ -37,13 +37,13 @@ Conditional webhooks can have one or more rules. Each rule contains the followin
 
 The following example creates and registers a conditional webhook for the event `plugin.magento.tax.api.tax_calculation.calculate_tax`. The webhook will be only triggered when all of the conditions are true:
 
-*  The value of `.quoteDetails.shipping_address.country_id` must be equal to `US`.
+*  The value of `quoteDetails.shipping_address.country_id` must be equal to `US`.
 *  The `quoteDetails.billing_address.postcode` must begin with `123`.
 
 ```xml
 <method name="plugin.magento.tax.api.tax_calculation.calculate_tax" type="after">
    <hooks>
-      <batch>
+      <batch name="Order_Updates">
          <hook name="update_order" url="{env:APP_URL}/calculate-taxes" method="POST" timeout="5000" softTimeout="1000" priority="300" required="false" fallbackErrorMessage="The taxes can not be calculated">
             <fields>
                <field name="quoteDetails" />
@@ -64,7 +64,7 @@ The following example sends a webhook to a third-party service when the product 
 ```xml
        <method name="observer.catalog_product_save_before" type="before">
        <hooks>
-           <batch>
+           <batch name ="Product_Updates">
                <hook name="generate_description" url="{env:APP_URL}/generate-product-description" timeout="5000" softTimeout="1000" priority="300" required="true" fallbackErrorMessage="The product could not be updated">
                    <fields>
                        <field name="product.name" source="data.product.name" />

@@ -25,6 +25,10 @@ February 7, 2024
 
  The `AdobeCommerceWebhooksAdminUi` module provides this support.
 
+### Backward-incompatible changes
+
+To support managing webhooks from the Admin, we introduced the `method.hooks.batch.name` field. This field is required and helps track changes made in the Admin. You must update all existing `webhooks.xml` files to include batch names. All new webhooks, whether created from a file or from the Admin, must define a batch name.
+
 ## Version 1.1.0
 
 ### Release date

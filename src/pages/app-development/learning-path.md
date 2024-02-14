@@ -12,7 +12,7 @@ keywords:
 
 # Extensibility learning path
 
-Follow the learning path links to learn the basics about App Builder setup and development.
+Follow the learning path links to understand the basics about App Builder setup and development.
 
 The following resources will help you get to know the extensibility options offered by Adobe Commerce and start developing:
 
@@ -30,7 +30,7 @@ The following resources will help you get to know the extensibility options offe
 
 ## How do I start developing?
 
-- Developing custom applications with Adobe Developer App Builder
+- Develop custom applications with Adobe Developer App Builder
   - [App Builder overview](https://developer.adobe.com/app-builder/docs/overview/) - An overview of the App Builder ecosystem. The App Builder documentation applies to all Adobe products that integrate with App Builder, including Adobe Commerce.
   - [Creating your first App Builder application](https://developer.adobe.com/app-builder/docs/getting_started/first_app/) - A generalized tutorial on creating your first App Builder app. If you are new to App Builder, Adobe recommends reviewing the App Builder overview before beginning this tutorial.
 - Orchestration with API Mesh for Adobe Developer App Builder
@@ -57,7 +57,7 @@ The following resources will help you get to know the extensibility options offe
 - Extend the Admin UI with the Admin UI SDK
   - [Admin UI SDK overview](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/) - Developer documentation on how to extend and customize the Commerce Admin to include custom menus and pages.
   - [Installation](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/installation/) - Developer documentation on how to set up the Admin UI SDK.
-  - [Extension points](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/extension-points/) - Developer documentation on how to use existing extension points in any Adobe Developer App Builder application that customizes Adobe Commerce Admin.
+  - [Extension points](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/extension-points/) - Developer documentation on how to use existing extension points in any Adobe Developer App Builder application that customizes the Adobe Commerce Admin.
 - Extend native Commerce processes with webhooks
   - [Overview](https://developer.adobe.com/commerce/extensibility/webhooks/) - An architectural overview of webhooks.
   - [Setup and installation](https://developer.adobe.com/commerce/extensibility/webhooks/installation/) - Information on how to install Commerce modules necessary for implementing webhooks.

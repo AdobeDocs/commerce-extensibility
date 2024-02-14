@@ -40,18 +40,6 @@ Other benefits of out-of-process extensibility include:
 
 <p></p>
 
-## In-process development tools
-
-Adobe Commerce and Magento Open Source provide the following in-process extensible development tools:
-
-- [REST](https://developer.adobe.com/commerce/webapi/rest) - Use REST calls to interact with your Commerce instance on behalf of an administrator, customer, guest, or integration.
-
-- [GraphQL](https://developer.adobe.com/commerce/webapi/graphql/) - Use GraphQL requests to transfer information between the storefront and backend.
-
-- [PHP Extensions](https://developer.adobe.com/commerce/php/development/) - Develop or modify Adobe Commerce and Magento Open Source components.
-
-- [Marketplace Extensions](https://developer.adobe.com/commerce/marketplace/guides/sellers/extensions/) - Create and sell PHP extensions in the [Adobe Commerce Marketplace](https://commercemarketplace.adobe.com).
-
 ## Out-of-process development tools
 
 Adobe Commerce offers the following out-of-process development tools:
@@ -71,6 +59,18 @@ Additionally, [Marketplace Apps](./app-development/index.md) allow you to create
 <InlineAlert variant="info" slots="text"/>
 
 Some out-of-process development tools are only available with Adobe Commerce and are not available with Magento Open Source.
+
+## In-process development tools
+
+Adobe Commerce and Magento Open Source provide the following in-process extensible development tools:
+
+- [REST](https://developer.adobe.com/commerce/webapi/rest) - Use REST calls to interact with your Commerce instance on behalf of an administrator, customer, guest, or integration.
+
+- [GraphQL](https://developer.adobe.com/commerce/webapi/graphql/) - Use GraphQL requests to transfer information between the storefront and backend.
+
+- [PHP Extensions](https://developer.adobe.com/commerce/php/development/) - Develop or modify Adobe Commerce and Magento Open Source components.
+
+- [Marketplace Extensions](https://developer.adobe.com/commerce/marketplace/guides/sellers/extensions/) - Create and sell PHP extensions in the [Adobe Commerce Marketplace](https://commercemarketplace.adobe.com).
 
 ### Related information
 

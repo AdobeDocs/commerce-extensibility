@@ -381,7 +381,7 @@ If the depth value of `2` was specified, the response would also include details
 
 ## Generate a Commerce module based on a list of subscribed events
 
-The `events:generate:module` command generates a module with plugins based on your configuration and places it into the Commerce `app/code/Magento/AdobeCommerceEvents` directory.
+The `events:generate:module` command generates a module with plugins based on your configuration and places it into the Commerce `app/code/Magento/AdobeCommerceEvents` directory.  This command is applicable for on-premises deployments only.
 
 ### Usage
 

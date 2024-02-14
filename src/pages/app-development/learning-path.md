@@ -50,8 +50,8 @@ The following resources will help you get to know the extensibility options offe
   - Eventing video tutorials - A set of developer-facing video tutorials that demonstrate how to set up I/O Events for Adobe Commerce
      - [Getting started](https://experienceleague.adobe.com/docs/commerce-learn/tutorials/adobe-developer-app-builder/io-events/getting-started-io-events.html) - A video tutorial on how to use I/O Events for Adobe Commerce.
      - Adobe I/O Events installation - Learn how to install several new modules in Adobe Commerce using Composer for the corresponding version.
-       - [Adobe Commerce 2.4.5](https://experienceleague.adobe.com/docs/commerce-learn/tutorials/adobe-developer-app-builder/io-events/2-4-5-installation.html)
        - [Adobe Commerce 2.4.6](https://experienceleague.adobe.com/docs/commerce-learn/tutorials/adobe-developer-app-builder/io-events/2-4-6-installation.html)
+       - [Adobe Commerce 2.4.5](https://experienceleague.adobe.com/docs/commerce-learn/tutorials/adobe-developer-app-builder/io-events/2-4-5-installation.html)
      - [Configure I/O Events for Adobe Commerce](https://experienceleague.adobe.com/docs/commerce-learn/tutorials/adobe-developer-app-builder/io-events/configure-commerce.html) - A tutorial video on how to set up I/O Events for Adobe Commerce.
      - [Create an App Builder project](https://experienceleague.adobe.com/docs/commerce-learn/tutorials/adobe-developer-app-builder/io-events/create-app-builder-project.html) - Learn how to create an Adobe Developer App Builder project to consume events from Adobe Commerce.
 - Extend the Admin UI with the Admin UI SDK
@@ -63,3 +63,4 @@ The following resources will help you get to know the extensibility options offe
   - [Setup and installation](https://developer.adobe.com/commerce/extensibility/webhooks/installation/) - Information on how to install Commerce modules necessary for implementing webhooks.
   - [Configuration](https://developer.adobe.com/commerce/extensibility/webhooks/hooks/) - Developer documentation on how to configure hooks for Adobe Commerce.
   - [Common use cases](https://developer.adobe.com/commerce/extensibility/webhooks/use-cases/) - Descriptions of common Adobe Commerce use cases for webhooks.
+  - [Webhooks](https://developer.adobe.com/commerce/extensibility/webhooks/admin-configuration/) - Learn how to extend, override, and create hooks using the Adobe Commerce Admin.

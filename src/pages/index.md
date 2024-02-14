@@ -70,7 +70,7 @@ Additionally, [Marketplace Apps](./app-development/index.md) allow you to create
 
 <InlineAlert variant="info" slots="text"/>
 
-Out-of-process development tools are only available with Adobe Commerce and are not available with Magento Open Source.
+Some out-of-process development tools are only available with Adobe Commerce and are not available with Magento Open Source.
 
 ### Related information
 

@@ -34,7 +34,7 @@ Other benefits of out-of-process extensibility include:
 
 - Scalability - Extensions can be scaled separately from the core software, allowing for greater efficiency.
 
-- Isolation - An isolated environment means that developers can upgrade or modify their extensions however they want and whenever they want without relying on a core release.
+- Isolation - An isolated environment means that developers can upgrade or modify their extensions at their discretion without relying on a core release.
 
 - Technological Independence - Developers can choose whichever tech stacks and coding languages that fit their needs.
 

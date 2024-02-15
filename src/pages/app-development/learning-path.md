@@ -22,6 +22,7 @@ The following resources will help you get to know the extensibility options offe
 - [Use Cases](https://www.youtube.com/watch?v=spm90jwC94A&t=1s) - a one-hour video on common App Builder use cases.
 - [Sample App](https://developer.adobe.com/commerce/extensibility/amazon-sales-channel/) - An internally developed sample app with best practices and references to an example GitHub repo.
 - [Demo](https://experienceleague.adobe.com/docs/commerce-learn/tutorials/adobe-developer-app-builder/app-builder-functional-demonstration.html) - A short video demonstrating a functional integration between Commerce and Amazon Marketplace.
+- [Logging and troubleshooting](https://developer.adobe.com/commerce/extensibility/amazon-sales-channel/best-practices/logging-troubleshooting/)
 
 ## How can I get set up?
 

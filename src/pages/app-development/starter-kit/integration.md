@@ -346,9 +346,9 @@ return {
 }
 ```
 
-## `stock` runtime action sample code limitations
+## `stock` runtime action best practices
 
-The `stock` synchronization that connects a third-party system and Adobe Commerce uses the Adobe Commerce [inventory/source-items](https://adobe-commerce.redoc.ly/2.4.6-admin/tag/inventorysource-items/#operation/PostV1InventorySourceitems) REST endpoint to process the stock updates. The REST endpoint is included in the Starter Kit as an example implementation and depending on the integration's nonfunctional requirements, it may have the following limitations:
+The `stock` synchronization that connects a third-party system and Adobe Commerce uses the Adobe Commerce [inventory/source-items](https://adobe-commerce.redoc.ly/2.4.6-admin/tag/inventorysource-items/#operation/PostV1InventorySourceitems) REST endpoint to process the stock updates. The REST endpoint is included in the Starter Kit as an example implementation and depending on the integration's nonfunctional requirements, we suggest the following best practices:
 
 - Payload size limit enforced by Adobe I/O Runtime - The [maximum `payload` size](https://developer.adobe.com/runtime/docs/guides/using/system_settings/) in Adobe I/O Runtime is not configurable. If an event carries a payload above the limit, for example, when dealing with a full stock synchronization event, it will cause an error. To prevent this situation, we recommend modifying the third-party system to generate event payloads within the `payload` limits.
 

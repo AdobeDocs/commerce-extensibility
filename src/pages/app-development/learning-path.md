@@ -64,3 +64,9 @@ The following resources will help you get to know the extensibility options offe
   - [Configuration](https://developer.adobe.com/commerce/extensibility/webhooks/hooks/) - Developer documentation on how to configure hooks for Adobe Commerce.
   - [Common use cases](https://developer.adobe.com/commerce/extensibility/webhooks/use-cases/) - Descriptions of common Adobe Commerce use cases for webhooks.
   - [Webhooks](https://developer.adobe.com/commerce/extensibility/webhooks/admin-configuration/) - Learn how to extend, override, and create hooks using the Adobe Commerce Admin.
+
+## Troubleshooting
+
+- [Logging and troubleshooting in App Builder](https://developer.adobe.com/commerce/extensibility/amazon-sales-channel/best-practices/logging-troubleshooting/)
+- [Adobe I/O Events frequently asked questions](https://developer.adobe.com/events/docs/support/faq/)
+- [App Builder security overview](https://developer.adobe.com/app-builder/docs/guides/security/)

@@ -203,7 +203,7 @@ The incoming information depends on the external API.
 The incoming data is validated against a JSON schema defined in the `schema.json` file.
 
 <br></br>
-<TabsBlock orientation="vertical" slots="heading, content" repeat="5"/>
+<TabsBlock orientation="vertical" slots="heading, content" repeat="6"/>
 
 #### `customer`
 

@@ -36,6 +36,16 @@ module.exports = [
         ]
     },
     {
+        title: "Starter kit",
+        path: "/app-development/starter-kit/index.md",
+        pages: [
+            {
+                title: "Integrate runtime actions",
+                path: "/app-development/starter-kit/integration.md",
+            }
+        ]
+    },
+    {
         title: "Reference App",
         path: "/app-development/amazon-sales-channel/index.md",
         pages: [
@@ -56,15 +66,5 @@ module.exports = [
             path: "/app-development/amazon-sales-channel/release-notes.md"
         }
     ]
-  },
-  {
-    title: "Starter kit",
-    path: "/app-development/starter-kit/index.md",
-    pages: [
-    {
-        title: "Integrate runtime actions",
-        path: "/app-development/starter-kit/integration.md",
-    }
-  ]
   }
 ];

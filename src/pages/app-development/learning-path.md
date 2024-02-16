@@ -68,3 +68,5 @@ The following resources will help you get to know the extensibility options offe
 ## Troubleshooting
 
 - [Logging and troubleshooting in App Builder](https://developer.adobe.com/commerce/extensibility/amazon-sales-channel/best-practices/logging-troubleshooting/)
+- [Adobe I/O Events frequently asked questions](https://developer.adobe.com/events/docs/support/faq/)
+- [App Builder security overview](https://developer.adobe.com/app-builder/docs/guides/security/)

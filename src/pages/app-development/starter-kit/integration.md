@@ -172,7 +172,7 @@ This runtime action is responsible for notifying Adobe Commerce when an `<object
 The incoming information depends on the external API.
 
 <br></br>
-<TabsBlock orientation="vertical" slots="heading, content" repeat="5"/>
+<TabsBlock orientation="vertical" slots="heading, content" repeat="6"/>
 
 #### `customer`
 

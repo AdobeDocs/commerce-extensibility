@@ -1,9 +1,11 @@
 ---
-title: Overview
-description: TBD.
+title: Adobe Commerce Extensibility Starter Kit
+description: Learn how to use the Adobe Commerce Extensibility Starter Kit to expedite setting up out-of-process extensions for Adobe Commerce.
 keywords:
-  - App Builder
-  - Extensibility
+ - Extensibility
+ - App Builder
+ - API Mesh
+ - Events
+ - REST
+ - Tools
 ---
-
-# Overview

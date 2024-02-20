@@ -106,7 +106,7 @@ You are now ready to download the Adobe Commerce Starter Kit and set up your dev
 
 ### Download and configure the project
 
-In the Beta stage, an Adobe Commerce representative will send you a ZIP file containing the Starter Kit repo. For GA, the Starter Kit will be available from Adobe Commerce Marketplace.
+In the Beta phase of the Starter Kit project, an Adobe Commerce representative will send you a ZIP file containing the Starter Kit repo. For GA, the Starter Kit will be available from Adobe Commerce Marketplace.
 
 1. Download and unzip the Starter Kit repo.
 

@@ -106,13 +106,9 @@ You are now ready to download the Adobe Commerce Starter Kit and set up your dev
 
 ### Download and configure the project
 
-<!-- Note to reviewer: Will the enterprise-integration/starter-kit repo be mirrored? It looks like a private repo -->
+In the Beta stage, an Adobe Commerce representative will send you a ZIP file containing the Starter Kit repo. For GA, the Starter Kit will be available from Adobe Commerce Marketplace.
 
-1. Download the Starter Kit repo.
-
-   ```bash
-   git clone git@git.corp.adobe.com:enterprise-integration/starter-kit.git
-   ```
+1. Download and unzip the Starter Kit repo.
 
 1. Change directories to the downloaded repo and copy the `env.dist` file.
 
@@ -183,11 +179,11 @@ You can confirm the success of the deployment in the Adobe Developer Console by 
 
 ## Onboarding
 
-The onboarding process configuring event registrations and completing the eventing configuration in Adobe Commerce.
+The onboarding process configures event registrations and completes the eventing configuration in Adobe Commerce.
 
 ### Configure the event registrations
 
-By default, the `./onboarding/custom/registrations.json` config file creates all the registrations for all entities that are prtesen in the repo's `app.config.yaml` file. You can edit the `registrations.json` file to remove any Commerce or back office unneeded registrations. For example, the YAML file shown in the [Configure the project](#configure-the-project) section commented out the `product-backoffice` package. In this case, you must remove backoffice from the product entity:
+By default, the `./onboarding/custom/registrations.json` config file creates all the registrations for all entities that are present in the repo's `app.config.yaml` file. You can edit the `registrations.json` file to remove any Commerce or back office unneeded registrations. For example, the YAML file shown in the [Configure the project](#configure-the-project) section commented out the `product-backoffice` package. In this case, you must remove backoffice from the product entity:
 
 ```json
 {

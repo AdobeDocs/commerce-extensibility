@@ -114,7 +114,7 @@ Any preprocessing needed before calling the external back-office application API
 
 Define the connection information in the `sendData` function in the `sender.js` file.  Include all the authentication and connection information in the `sender.js` file or an extracted file outside `index.js`.
 
-Parameters from the environment can be accessed from `params`. Add the necessary parameters in the `actions/<object>/commerce/actions.config.yaml` under `commerce-created -> inputs`, `commerce-updated -> inputs`, or `commerce-deleted -> inputs` as follows:
+Parameters from the environment can be accessed from `params`. Add the necessary parameters in the `actions/<object>/commerce/actions.config.yaml` under `created -> inputs`, `updated -> inputs`, or `deleted -> inputs` as follows:
 
 <CodeBlock slots="heading, code" repeat="3" languages="yaml, yaml, yaml" />
 
@@ -354,5 +354,5 @@ The `stock` synchronization that connects a third-party system and Adobe Commerc
 
 - Timeouts during the event processing - The [execution time range](https://developer.adobe.com/runtime/docs/guides/using/system_settings/) for a runtime action in Adobe I/O Runtime differs for `blocking` and `non-blocking` calls, with the limit being higher for `non-blocking` calls.
   - You can resolve timeouts in runtime action executions depending on their cause:
-    - If the timeout is caused by a slow or busy Adobe Commerce REST API call, try using the (https://developer.adobe.com/commerce/webapi/rest/use-rest/asynchronous-web-endpoints/). This approach will cause the Commerce API to respond quickly because the data is processing asynchronously.
+    - If the timeout is caused by a slow or busy Adobe Commerce REST API call, try using the [asynchronous web endpoints](https://developer.adobe.com/commerce/webapi/rest/use-rest/asynchronous-web-endpoints/). This approach will cause the Commerce API to respond quickly because the data is processing asynchronously.
     - If the timeout is caused by a long-running runtime action, for example, an action that interacts with multiple APIs sequentially and the total processing time exceeds the limits, we recommend using the [journaling approach](https://developer.adobe.com/app-builder/docs/resources/journaling-events/) for consuming events.

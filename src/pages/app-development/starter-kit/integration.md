@@ -27,8 +27,8 @@ import DataStock from './code-samples/data-stock.md';
 
 The `create`, `update`, and `delete` runtime actions perform one of the following functions:
 
-- [Notify the external application](#notify-the-external-application) - Notifies an external back-office application when an `<object>` is created, updated, or deleted in Adobe Commerce
-- [Notify Commerce](#notify-adobe-commerce) - Notifies Adobe Commerce when an `<object>` is created, updated, or deleted in an external back-office application
+- [Notify the external application](#notify-the-external-application) - Notifies an external back-office application when an `<object>` is created, updated, or deleted in Adobe Commerce. Actions that react to Adobe Commerce events and notify the external back-office application are located in the `actions/<object>/commerce` folder.
+- [Notify Commerce](#notify-adobe-commerce) - Notifies Adobe Commerce when an `<object>` is created, updated, or deleted in an external back-office application. Actions that react to back-office application events and notify Adobe Commerce are located in the `actions/<object>/external` folder.
 
 ![starter kit diagram](../../_images/starter-kit.png)
 
@@ -106,10 +106,6 @@ The `params` also specify the `event_code` and `event_id`.
 
 If necessary, make any transformation changes necessary for the external back-office application's formatting in the `transformData` function in the `transformer.js` file.
 
-### Preprocess data
-
-Any preprocessing needed before calling the external back-office application API can be implemented in the `preProcess` function in the `pre.js` file.
-
 ### Connect to the back-office application
 
 Define the connection information in the `sendData` function in the `sender.js` file.  Include all the authentication and connection information in the `sender.js` file or an extracted file outside `index.js`.
@@ -169,7 +165,7 @@ This runtime action is responsible for notifying Adobe Commerce when an `<object
 
 ### Incoming information
 
-The incoming information depends on the external API.
+The incoming information depends on the external API. The following sample implementation can be modified to accommodate your specific integration needs:
 
 <br></br>
 <TabsBlock orientation="vertical" slots="heading, content" repeat="6"/>

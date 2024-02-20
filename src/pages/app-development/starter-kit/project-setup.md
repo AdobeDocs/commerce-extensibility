@@ -28,7 +28,7 @@ import ProjectRequirements from '/src/_includes/project-requirements.md'
 
    ![Templated project](../../_images/common/set-up-templated-project.png)
 
-1. Specify a project title and app name. Make sure the **Include Runtime with each workspace** checkbox is selected. You can optionally create a custom workspace besides the default **Stage** workspace. If you want to do this, click **Add Workspace**, enter a name and description. Click **Save**. The Console creates a project and workspaces.
+1. Specify a project title and app name. Make sure the **Include Runtime with each workspace** checkbox is selected. You can optionally create a custom workspace other than the default **Stage** workspace. To create a custom workspace, click **Add Workspace**, and enter a name and description. Click **Save**. The Console creates a project and workspaces.
 
    ![New workspace](../../_images/common/workspaces.png)
 
@@ -36,7 +36,7 @@ import ProjectRequirements from '/src/_includes/project-requirements.md'
 
    ![Add an API to your workspace](../../_images/common/stage-add-api.png)
 
-1. You must add the following services to your workspace. Each service must be added individually. You can add multiple services simultaneously.
+1. Add the following services to your workspace. Each service must be added individually. You can add multiple services simultaneously.
 
    * I/O Management API
    * I/O Events
@@ -70,7 +70,7 @@ To download a `.json` file containing your workspace configuration:
 
 ## Create an integration in Adobe Commerce
 
-A Commerce integration generates the consumer key, consumer secret, access token, and access token secret that is required to connect to the Starter Kit. It also identifies the available API resources that are needed for the integration.
+A Commerce integration generates the consumer key, consumer secret, access token, and access token secret that are required to connect to the Starter Kit. It also identifies the available API resources that are needed for the integration.
 
 Use the following steps to create and activate an integration.
 
@@ -106,7 +106,7 @@ You are now ready to download the Adobe Commerce Starter Kit and set up your dev
 
 ### Download and configure the project
 
-In the Beta phase of the Starter Kit project, an Adobe Commerce representative will send you a ZIP file containing the Starter Kit repo. For GA, the Starter Kit will be available from Adobe Commerce Marketplace.
+In the Beta phase of the Starter Kit project, an Adobe Commerce representative will send you a ZIP file containing the Starter Kit repo. For GA, the Starter Kit will be available in the Adobe Commerce Marketplace.
 
 1. Download and unzip the Starter Kit repo.
 
@@ -120,13 +120,13 @@ In the Beta phase of the Starter Kit project, an Adobe Commerce representative w
 
 ### Configure the project
 
-1. Install the npm dependencies:
+1. Install npm dependencies:
 
    ```bash
    npm install
    ```
 
-1. Run the following Adobe I/O commands to connect your Starter Kit project to the App builder project you created earlier:
+1. Run the following Adobe I/O commands to connect your Starter Kit project to the App Builder project you created earlier:
 
    ```bash
    aio login
@@ -141,7 +141,7 @@ In the Beta phase of the Starter Kit project, an Adobe Commerce representative w
    aio app use --merge
    ```
 
-1. The `app.config.yaml` in the repo's root directory defines which packages to deploy. The Starter Kit provides packages for Commerce products, customers, orders, and stocks and their external back office counterparts. Comment out any packages that you do not need to deploy. In the following example, the `product-backoffice` packages has been disabled:
+1. The `app.config.yaml` in the repo's root directory defines which packages to deploy. The Starter Kit provides packages for Commerce products, customers, orders, and stocks and their external back office counterparts. Comment out any packages that you do not need to deploy. In the following example, the `product-backoffice` package has been disabled:
 
    ```yaml
    application:
@@ -183,7 +183,7 @@ The onboarding process configures event registrations and completes the eventing
 
 ### Configure the event registrations
 
-By default, the `./onboarding/custom/registrations.json` config file creates all the registrations for all entities that are present in the repo's `app.config.yaml` file. You can edit the `registrations.json` file to remove any Commerce or back office unneeded registrations. For example, the YAML file shown in the [Configure the project](#configure-the-project) section commented out the `product-backoffice` package. In this case, you must remove backoffice from the product entity:
+By default, the `./onboarding/custom/registrations.json` config file creates all the registrations for all entities that are present in the repo's `app.config.yaml` file. You can edit the `registrations.json` file to remove any unnecessary Commerce or back office registrations. For example, the YAML file shown in the [Configure the project](#configure-the-project) section comments out the `product-backoffice` package. In this case, you must remove backoffice from the product entity:
 
 ```json
 {
@@ -222,7 +222,7 @@ Process of On-Boarding done successfully: [
 ]
 ```
 
-Check your App developer console to confirm the registrations were created.
+Check your App in the Developer Console to confirm the registrations were created.
 
 ![Event registrations](../../_images/starterkit/registrations.png)
 
@@ -250,9 +250,9 @@ You must configure Commerce to communicate with your project. Configuration incl
 
 1. In the **Environment ID** field, enter a temporary name for your workspaces while in development mode. When you are ready for production, change this value to a permanent value, such as Production.
 
-1. (Optional) By default, if an error occurs when Adobe Commerce attempts to send an event to Adobe I/O, Commerce retries a maximum of seven times. To change this value, uncheck the Use system value checkbox and set a new value in the **Maximum retries to send events** field.
+1. (Optional) By default, if an error occurs when Adobe Commerce attempts to send an event to Adobe I/O, Commerce retries a maximum of seven times. To change this value, uncheck the **Use system value** checkbox and set a new value in the **Maximum retries to send events** field.
 
-1. (Optional) By default, Adobe Commerce runs a cron job (clean_event_data) every 24 hours that delete event data three days old. To change the number of days to retain event data, uncheck the Use system value checkbox and set a new value in the Event retention time (in days) field.
+1. (Optional) By default, Adobe Commerce runs a cron job (clean_event_data) every 24 hours that deletes event data three days old. To change the number of days to retain event data, uncheck the **Use system value** checkbox and set a new value in the **Event retention time (in days)** field.
 
 1. Click **Save Config**.
 

@@ -1,12 +1,12 @@
 ---
-title: Set up your Starter Kit project
-description: TBD.
+title: Set up your Adobe Commerce Starter Kit project
+description: Learn how to install, configure, and deploy your Adobe Commerce Starter Kit project.
 keywords:
   - App Builder
   - Extensibility
 ---
 
-# Set up your Starter Kit project
+# Set up your Adobe Commerce Starter Kit project
 
 To get started with Adobe Commerce Extensibility Starter Kit:
 

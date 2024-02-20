@@ -41,9 +41,9 @@ The `create`, `update`, and `delete` runtime actions perform one of the followin
 
 This runtime action is responsible for notifying the external back-office application when an `<object>` is created, updated, or deleted in Adobe Commerce.
 
-### Incoming information
+### Incoming event payload
 
-The information specified during [event registration](../../events/configure-commerce.md#subscribe-and-register-events) determines the incoming information.
+The incoming event payload specified during [event registration](../../events/configure-commerce.md#subscribe-and-register-events) determines the incoming information.
 
 The `order` runtime action requires the `created_at` and `updated_at` fields.
 

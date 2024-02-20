@@ -2,6 +2,6 @@
 
 *  Be familiar with [Adobe I/O Runtime](https://developer.adobe.com/runtime/docs/guides/getting-started/).
 
-*  Install the [`aio CLI`](https://developer.adobe.com/runtime/docs/guides/getting-started/setup/)
+*  Install the [`aio CLI`](https://developer.adobe.com/runtime/docs/guides/getting-started/setup/).
 
 *  Have access to an Adobe Commerce on cloud infrastructure or to an on-premises instance.

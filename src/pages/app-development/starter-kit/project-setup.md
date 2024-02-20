@@ -262,9 +262,9 @@ You must configure Commerce to communicate with your project. Configuration incl
 
 ### Subscribe to events in Adobe Commerce
 
-Use the `bin/magento events:subscribe` command to subscribe to events, as described in [Subscribe and register events](../../events/configure-commerce.md#subscribe-and-register-events). The following table defines the events and the minimal required fields.
+Use the `bin/magento events:subscribe` command to subscribe to events, as described in [Subscribe and register events](../../events/configure-commerce.md#subscribe-and-register-events). The following table defines the events that you must subscribe to and lists the required fields, if applicable.
 
-Entity | Event |Required fields
+Entity | Event | Required fields
 --- | --- | ---
 Product | `com.adobe.commerce.observer.catalog_product_delete_commit_after` | Not applicable
 Product | `com.adobe.commerce.observer.catalog_product_save_commit_after`   | `created_at`, `updated_at`

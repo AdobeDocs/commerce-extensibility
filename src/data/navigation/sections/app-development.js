@@ -36,12 +36,16 @@ module.exports = [
         ]
     },
     {
-        title: "Starter Kit",
+        title: "Starter kit",
         path: "/app-development/starter-kit/index.md",
         pages: [
             {
                 title: "Project Setup",
-                path: "/app-development/starter-kit/project-setup.md"
+                path: "/app-development/starter-kit/project-setup.md",
+            },
+            {
+                title: "Integrate runtime actions",
+                path: "/app-development/starter-kit/integration.md",
             }
         ]
     },

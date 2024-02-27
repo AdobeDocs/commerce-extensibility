@@ -46,6 +46,10 @@ module.exports = [
             {
                 title: "Integrate runtime actions",
                 path: "/app-development/starter-kit/integration.md",
+            },
+            {
+                title: "Webhooks example",
+                path: "/app-development/starter-kit/hooks.md"
             }
         ]
     },

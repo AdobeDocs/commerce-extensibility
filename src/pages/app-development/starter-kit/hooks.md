@@ -124,4 +124,4 @@ return {
 
 <InlineAlert variant="info" slots="text"/>
 
-These responses are adapted from the [Commerce webhook responses](../../webhooks/responses.md#responses). You can modify the response implementation in the code as needed.
+These responses are adapted from the [Commerce webhook responses](../../webhooks/responses.md#responses). You can modify the response implementation in your code as needed.

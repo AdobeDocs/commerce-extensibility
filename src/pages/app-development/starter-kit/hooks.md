@@ -95,7 +95,7 @@ Error response:
 
 ```javascript
 return {   
-  statusCode: '200',
+  statusCode: 200,
   body: {
     op: 'exception',
     message: 'Error message'
@@ -107,7 +107,7 @@ Success response:
 
 ```javascript
 return {
-  statusCode: '200',
+  statusCode: 200,
   body: {
     op: 'success'
   }

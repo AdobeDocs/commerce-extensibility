@@ -12,9 +12,17 @@ keywords:
 
 # Webhooks example
 
-The following runtime action demonstrates how to expose an entry point to perform a realtime check of the available stock for Commerce cart items. You must implement the stock-checking logic on an external service.
+The Adobe Commerce Extensibility Starter Kit supports custom webhooks. This reference implementation demonstrates how to expose an entry point to perform a realtime check of the available stock for Adobe Commerce cart items.
 
-This runtime response uses the [Adobe Commerce webhook module](https://developer.adobe.com/commerce/extensibility/webhooks/) to allow intercepting flows in Adobe Commerce.
+The runtime action included is in the Starter Kit package in the following location:
+
+- `actions/webhook/check-stock/index.js`
+
+<InlineAlert variant="info" slots="text"/>
+
+You must implement the stock-checking logic on an external service.
+
+This runtime action uses the [Adobe Commerce webhook module](../../webhooks/) to allow intercepting flows in Adobe Commerce.
 
 ## JSON payload example
 
@@ -116,4 +124,4 @@ return {
 
 <InlineAlert variant="info" slots="text"/>
 
-These responses are adapted to the [Commerce webhook module](https://developer.adobe.com/commerce/extensibility/webhooks/). You can modify the response implementation in the code as needed.
+These responses are adapted from the [Commerce webhook responses](../../webhooks/responses.md#responses). You can modify the response implementation in the code as needed.

@@ -8,6 +8,16 @@ keywords:
 
 # Adobe Commerce Admin UI SDK release notes
 
+## Version 1.3.2
+
+### Release date
+
+March 4, 2024
+
+### Bug fixes
+
+* Corrected a condition that allowed administrators who did not have proper permissions to view data in grid columns.
+
 ## Version 1.3.1
 
 ### Release date

@@ -48,7 +48,7 @@ module.exports = [
                 path: "/app-development/starter-kit/integration.md",
             },
             {
-                title: "Webhooks example",
+                title: "Webhooks",
                 path: "/app-development/starter-kit/hooks.md"
             }
         ]

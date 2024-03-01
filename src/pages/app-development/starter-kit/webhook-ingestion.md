@@ -1,5 +1,5 @@
 ---
-title: Ingest webhooks
+title: Webhook ingestion
 description: Learn how to ingest webhooks with Adobe Commerce Extensibility Starter Kit.
 keywords:
  - Extensibility
@@ -10,7 +10,7 @@ keywords:
  - Tools
 ---
 
-# Ingest webhooks
+# Webhooks ingestion
 
 The Adobe Commerce Extensibility Starter Kit supports ingestion webhooks. They provide an alternative method to deliver events for scenarios where the calling system cannot produce a request to interact directly with the event provider. For example, if the client cannot add custom headers to the request.
 

@@ -23,7 +23,7 @@ March 4, 2024
 * Changed the format of the event tracking ID to uuid4. <!--- CEXT-2853 -->
 
 * Added the `--destination` option to the `event:subscribe` command. <!--- CEXT-2895 -->
- 
+
 * Fixed an issue that occurred when the event metadata was created for a configured event provider for events with a custom destination. <!--- CEXT-2857 -->
 
 ## Version 1.5.0

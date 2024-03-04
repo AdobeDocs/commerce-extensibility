@@ -12,6 +12,20 @@ These release notes describe the latest version of Adobe I/O Events for Adobe Co
 
 See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io-events-for-adobe-commerce) for upgrade instructions.
 
+## Version 1.5.1
+
+### Release date
+
+March 4, 2024
+
+### Enhancements
+
+* Changed the format of the event tracking ID to uuid4. <!--- CEXT-2853 -->
+
+* Added the `--destination` option to the `event:subscribe` command. <!--- CEXT-2895 -->
+
+* Fixed an issue that occurred when the event metadata was created for a configured event provider for events with a custom destination. <!--- CEXT-2857 -->
+
 ## Version 1.5.0
 
 ### Release date

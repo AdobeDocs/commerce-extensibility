@@ -205,6 +205,8 @@ If you are implementing eventing in a performance testing environment, run the `
 
 `--fields='{"<name>":"<field-name>", "converter":"<path\to\converterclass>"}'` Applies the converter class to the given field.
 
+`--destination`, `-d` A custom destination for the event. This argument is used for SaaS integrations.
+
 ### Example
 
 To subscribe to a native event:

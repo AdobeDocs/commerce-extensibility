@@ -63,7 +63,7 @@ Sample validation logic is provided in the following location in the Starter Kit
 
 You can modify this file to add more validations to the `validateData` method, if necessary.
 
-### Authentication
+### Business logic
 
 The example runtime action `webhook\check-stock\index.js` references the `checkAvailableStock()` method in the `webhook\check-stock\stock.js` file. You must add custom business logic to the `params` in the `stock.js` file in order to test authentication with your third-party backoffice system.
 

@@ -1,6 +1,6 @@
 ---
-title: Webhook ingestion
-description: Learn how to ingest webhooks with Adobe Commerce Extensibility Starter Kit.
+title: Ingestion webhook
+description: Learn how to ingest with webhooks with Adobe Commerce Extensibility Starter Kit.
 keywords:
  - Extensibility
  - App Builder
@@ -10,7 +10,7 @@ keywords:
  - Tools
 ---
 
-# Webhooks ingestion
+# Ingestion webhook
 
 The Adobe Commerce Extensibility Starter Kit supports ingestion webhooks. They provide an alternative method to deliver events for scenarios where the calling system cannot produce a request to interact directly with the event provider. For example, if the client cannot add custom headers to the request.
 
@@ -27,7 +27,7 @@ ingestion:
 
 ## Customizing ingest webhooks
 
-Data parameters contain the array of [events](../../events/) to publish. Each event must include an entity, `event`, and `value`. The value parameter contains the data to send through the event.
+Data parameters contain the information of the [event](../../events/) to publish. Each event must include an entity, `event`, and `value`. The value parameter contains the data to send through the event.
 
 The following entities and their corresponding events are currently available:
 

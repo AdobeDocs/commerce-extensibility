@@ -44,8 +44,8 @@ module.exports = [
                 path: "/app-development/starter-kit/project-setup.md",
             },
             {
-                title: "Webhook ingestion",
-                path: "/app-development/starter-kit/webhooks-ingestion.md"
+                title: "Ingestion webhook",
+                path: "/app-development/starter-kit/ingestion-webhook.md"
             },
             {
                 title: "Integrate runtime actions",

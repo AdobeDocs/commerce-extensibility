@@ -9,6 +9,21 @@ keywords:
 
 These release notes describe the latest version of Adobe Commerce Webhooks.
 
+## Version 1.2.1
+
+### Release date
+
+March 18, 2024
+
+### Enhancements
+
+* Enhanced test coverage for the `AdobeCommerceWebhooksAdminUi` module. <!--CEXT-2834 -->
+
+### Bug fixes
+
+* Fixed integration test errors. <!--- CEXT-2920 -->
+* Fixed an error that occurred when loading the webhooks admin grid. <!--- CEXT-2941 -->
+
 ## Version 1.2.0
 
 ### Release date

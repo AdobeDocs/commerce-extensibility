@@ -22,7 +22,7 @@ March 18, 2024
 ### Bug fixes
 
 * Fixed integration test errors. <!--- CEXT-2920 -->
-* Fixed an error that occurred when loading the webhooks admin grid. <!--- CEXT-2941 -->
+* Removed the **Default View** drop down menu from the **Webhooks** page of the Admin. <!--- CEXT-2941 -->
 
 ## Version 1.2.0
 

@@ -14,7 +14,7 @@ The `order mass action` extension point customizes order grid mass actions in th
 
 The following example creates mass actions labeled `First App Mass Action` and `Another Mass Action`. The `extensionId` value matches the ID specified at [app registration](../../app-registration.md).
 
-The `path` parameter specifies where to redirect an action. The Admin UI SDK provides the selected product IDs in a [`sharedContext`](../index.md#shared-contexts) when a merchant selects a mass action. Your implementation must read the selected items from the `sharedContext`.
+The `path` parameter specifies where to redirect an action. The Admin UI SDK provides the selected product IDs in a [`sharedContext`](../../index.md#shared-contexts) when a merchant selects a mass action. Your implementation must read the selected items from the `sharedContext`.
 
 ```javascript
 order: {
@@ -37,6 +37,13 @@ order: {
                 title: 'Another Orders Mass Action',
                 type: `${extensionId}.another-mass-action`,
                 path: '#/another-mass-action'
+            },
+            {
+              actionId: `${extensionId}::update-mass-action`,
+              label: 'Update Mass Action',
+              path: 'api/v1/web/SampleExtension/update-orders',
+              displayIframe: false,
+              timeout: 15
             }
         ]
     }
@@ -54,4 +61,5 @@ order: {
 | `title` | string | No | An optional page title for the action. If not specified, the label is used.
 | `path` | string | Yes | The relative path in the application to redirect to the action. You might need to prepend `#/` to the path to ensure access to the correct page. |
 | `orderSelectLimit` | integer | No | Set the maximum number of orders that can be selected for a mass action. By default, the number is unlimited. |
-| `type` | string | Yes | A unique ID that identifies the type of action. |
+| `displayIframe` | boolean | No | The relative path will display an iFrame or not. Default value is `true`. Check more info [`here`](../../index.md#mass-action-without-iframe-display) |
+| `timeout` | integer | No | Only relevant when `displayIframe` is set to `false`. Timeout by seconds to the request sent to application. Default value is 10 seconds. |

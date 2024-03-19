@@ -41,7 +41,7 @@ The `path` parameter for a `productMassAction` specifies where to redirect the m
 
 ## Mass action without iFrame display
 
-When a mass action parameter `displayIframe` is set to `false` some additional consideration are to be taken into account.
+When a mass action `displayIframe` parameter is set to `false`, you must account for additional factors.
 
 ### Mass action request headers
 

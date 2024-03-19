@@ -39,7 +39,7 @@ getGuestConnection().then((guestConnection) => {
 
 The `path` parameter for a `productMassAction` specifies where to redirect the mass action UI.
 
-## Mass action without iFrame display
+## Mass actions without iFrames
 
 When a mass action `displayIframe` parameter is set to `false`, you must account for additional factors.
 
@@ -66,6 +66,7 @@ When the timeout is reached, Commerce:
 - Logs a 408 timeout status and error message.
 - Displays an error banner notification.
 - Sends the `admin_ui_sdk_mass_action_request_failed` event. The application can subscribe to this event to take action, such as rolling back updates in Commerce.
+
 The application can access details of the failed request using the GET `V1/adminuisdk/massaction/<requestId>` REST API. The token used to authenticate the request must have access to the Admin UI SDK. The call returns an error message if the request ID was not found or if it associated with a successful action.
 
 ### Recommendations

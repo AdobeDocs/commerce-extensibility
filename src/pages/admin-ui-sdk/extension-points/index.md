@@ -49,26 +49,26 @@ When a mass action `displayIframe` parameter is set to `false`, you must account
 | --- | --- |
 | `X-Request-ID` | A unique UUID v4 generated when the request is sent as a unique identifier. |
 | `Content-Type` | The request content type is `application/json`. |
-| `Accept` | The request accepts a response type is `application/json`. |
-| `Authorization` | The request is authenticated using an IMS token generated to the organization attached to the Commerce instance. |
-| `x-gw-ims-org-id` | The organization id. |
+| `Accept` | The request accepts a response type of `application/json`. |
+| `Authorization` | The request is authenticated using an IMS token generated for the organization attached to the Commerce instance. |
+| `x-gw-ims-org-id` | The organization ID. |
 
-### Failure on application side
+### Application failures
 
-Commerce expects an answer from the application with the error status and message.
-The error will be logged in Commerce and an error banner notification will be displayed to user.
+Commerce expects application responses to contain the error status and message.
+Commerce logs the error and displays an error banner notification to the user.
 
-### Failure due to connection interruption
+### Connection interruption failures
 
-The timeout will be applied in case a response is not sent to Commerce. By default it's 10 seconds unless it's customized in the extension point.
-When the timeout is reached:
+By default, Commerce waits 10 seconds for a response, though the extension point can customize this value.
+When the timeout is reached, Commerce:
 
-- A 408 timeout status with error message will be logged.
-- An error banner notification will be displayed to user.
-- An event will be dispatched: `admin_ui_sdk_mass_action_request_failed`. Application can subscribe to this event to take action such as rollback what is already updated in Commerce.
-- Application can access details of the failed request via REST API `V1/adminuisdk/massaction/<requestId>`. A token to Commerce with access to Admin UI SDK rights should be generated. If request is not found, it either do not exist or it succeeded in Commerce.
+- Logs a 408 timeout status and error message.
+- Displays an error banner notification.
+- Sends the `admin_ui_sdk_mass_action_request_failed` event. The application can subscribe to this event to take action, such as rolling back updates in Commerce.
+The application can access details of the failed request using the GET `V1/adminuisdk/massaction/<requestId>` REST API. The token used to authenticate the request must have access to the Admin UI SDK. The call returns an error message if the request ID was not found or if it associated with a successful action.
 
 ### Recommendations
 
-- Bulk update in Commerce to avoid inconsistency issues is case of failures.
-- Event and REST API answer contain the list of selected ids for the request. It is the application responsability to monitor what was updated or failed in Commerce.
+- Use bulk update in Commerce to avoid inconsistency issues in case of failures.
+- Event and REST API responses contain the list of selected IDs for a request. It is the application's responsibility to monitor updates or failures in Commerce.

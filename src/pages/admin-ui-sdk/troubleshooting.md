@@ -28,7 +28,7 @@ In this comprehensive troubleshooting guide, we'll help you navigate through com
 
    The response will contain the needed info.
 
-   ```bash
+   ```terminal
    Client ID:
    Organization ID:
    Client Secret configured
@@ -36,7 +36,7 @@ In this comprehensive troubleshooting guide, we'll help you navigate through com
 
 *  **The app is not correctly published in App Builder.** Go to the App project in the developer console and check that the Production workspace has a status of Published. If this is not the case, [request an approval to publish](./publish.md) and test again once the application in Approved.
 
-*  **The latest changes are not correctly deployed and published.** Make sure to deploy the latest changes using `aio app deploy` in the correct `org/project/workspace`.
+*  **The latest changes are not correctly deployed and published.** Make sure you deploy the latest changes using  the `aio app deploy` command in the correct `org/project/workspace`.
 
 ## App menu is missing in the Commerce Admin
 

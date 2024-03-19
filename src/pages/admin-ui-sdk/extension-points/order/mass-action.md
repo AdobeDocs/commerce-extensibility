@@ -61,5 +61,5 @@ order: {
 | `title` | string | No | An optional page title for the action. If not specified, the label is used.
 | `path` | string | Yes | The relative path in the application to redirect to the action. You might need to prepend `#/` to the path to ensure access to the correct page. |
 | `orderSelectLimit` | integer | No | Set the maximum number of orders that can be selected for a mass action. By default, the number is unlimited. |
-| `displayIframe` | boolean | No | The relative path will display an iFrame or not. Default value is `true`. Check more info [`here`](../../index.md#mass-action-without-iframe-display) |
+| `displayIframe` | boolean | No | Indicates whether an iFrame will be displayed at the relative path. The default value is `true`. Check more info [`here`](../../index.md#mass-action-without-iframe-display) |
 | `timeout` | integer | No | Only relevant when `displayIframe` is set to `false`. Timeout by seconds to the request sent to application. Default value is 10 seconds. |

@@ -13,7 +13,7 @@ These release notes describe the latest version of Adobe Commerce Webhooks.
 
 ### Release date
 
-March 18, 2024
+March 19, 2024
 
 ### Enhancements
 

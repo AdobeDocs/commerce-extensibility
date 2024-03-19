@@ -134,7 +134,6 @@ return {
 
 The contents of the `./actions/webhook` directory expose a webhook that can be invoked synchronously from Commerce in order to affect the behavior of a particular business flow.
 
-
 The ./actions/webhook/check-stock folder provides a sample implementation of a synchronous webhook action. Additional details can be found at this README
 
 <CodeBlock slots="heading, code" repeat="2" languages="JSON, JSON" />

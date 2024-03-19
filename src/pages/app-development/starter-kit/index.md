@@ -15,12 +15,12 @@ keywords:
 
 The Starter Kit provides boilerplate code to synchronize the following entities across systems:
 
-* Product
-* Customer
-* Customer Group
-* Stock
-* Order
-* Shipment
+- Customer
+- Customer Group
+- Order
+- Product
+- Shipment
+- Stock
 
 By default, object synchronization is bi-directional. Changes in Commerce are propagated to the external back-office application and vice versa.
 
@@ -53,19 +53,17 @@ The most important directories and files are described below.
 
 The `actions` directory has the following subdirectories:
 
-* `ingestion` - contains the source code for an alternative events ingestion endpoint.
-* `webhook` - contains the source for synchronous webhooks that can be called from Commerce.
-* Separate directories for each entity to be synchronized, including `customer`, `order`, and `product`.
+- `ingestion` - contains the source code for an alternative events ingestion endpoint.
+- `webhook` - contains the source for synchronous webhooks that can be called from Commerce.
+- Separate directories for each entity to be synchronized, including `customer`, `order`, and `product`.
 
 Each entity directory has `commerce` and `external` subdirectories. The `commerce` directory contains the runtime actions responsible for handling incoming events from Commerce and synchronizing the data with the 3rd-party external system. The `external` directory defines the runtime actions that handle incoming events from the external system and updates entities in Commerce.
 
 The contents of the `commerce` and `external` directories are similar. Each contains
 
-* A `consumer` directory. This directory contains the code for the runtime action that routes incoming events to the action responsible for handling each event.
-
-* One or more directories named after an action, such as `created`, `deleted`, and other actions that are appropriate for entity. Each of these directories contains the code for the runtime action responsible for handling one particular event.
-
-* An `actions.config.yaml` file. This file declares the runtime actions responsible for handling the events for an entity originating in Commerce or the external system.
+- A `consumer` directory. This directory contains the code for the runtime action that routes incoming events to the action responsible for handling each event.
+- One or more directories that are named after an action, such as `created`, `deleted`, and other actions that are appropriate for the entity. Each of these directories contains the code for the runtime action responsible for handling one particular event.
+- An `actions.config.yaml` file. This file declares the runtime actions responsible for handling the events for an entity originating in Commerce or the external system.
 
 Individual directories that define actions contain the following files:
 
@@ -80,7 +78,7 @@ File | Purpose
 
 ### `onboarding` directory
 
-The `onboarding` directory contains the scripting need to install and set up the Starter Kit. The `./onboarding/custom/starter-kit-registrations.json` configuration file creates all the registrations for all entities that are present in the repo's `app.config.yaml` file. You can edit this file to remove any unnecessary Commerce or back office registrations. [Onboarding](./project-setup.md#onboarding) describes the installation process.
+The `onboarding` directory contains the scripting needed to install and set up the Starter Kit. The `./onboarding/custom/starter-kit-registrations.json` configuration file creates all the registrations for all entities that are present in the repo's `app.config.yaml` file. You can edit this file to remove any unnecessary Commerce or back office registrations. [Onboarding](./project-setup.md#onboarding) describes the installation process.
 
 ### `test` directory
 

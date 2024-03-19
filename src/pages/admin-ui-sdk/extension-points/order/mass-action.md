@@ -37,6 +37,13 @@ order: {
                 title: 'Another Orders Mass Action',
                 type: `${extensionId}.another-mass-action`,
                 path: '#/another-mass-action'
+            },
+            {
+              actionId: `${extensionId}::update-mass-action`,
+              label: 'Update Mass Action',
+              path: 'api/v1/web/SampleExtension/update-orders',
+              displayIframe: false,
+              timeout: 15
             }
         ]
     }
@@ -54,4 +61,5 @@ order: {
 | `title` | string | No | An optional page title for the action. If not specified, the label is used.
 | `path` | string | Yes | The relative path in the application to redirect to the action. You might need to prepend `#/` to the path to ensure access to the correct page. |
 | `orderSelectLimit` | integer | No | Set the maximum number of orders that can be selected for a mass action. By default, the number is unlimited. |
-| `type` | string | Yes | A unique ID that identifies the type of action. |
+| `displayIframe` | boolean | No | Indicates whether an iFrame will be displayed at the relative path. The default value is `true`. [Mass actions without iFrames](../index.md#mass-actions-without-iframes) provides additional details. |
+| `timeout` | integer | No | Only relevant when `displayIframe` is set to `false`. Timeout by seconds to the request sent to application. Default value is 10 seconds. |

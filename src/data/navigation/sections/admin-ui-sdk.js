@@ -16,6 +16,16 @@ module.exports = [
       path: "/admin-ui-sdk/extension-points/index.md",
       pages: [
         {
+          title: "customer",
+          path: "/admin-ui-sdk/extension-points/customer/index.md",
+          pages: [
+            {
+              title: "grid columns",
+              path: "/admin-ui-sdk/extension-points/customer/grid-columns.md"
+            }
+          ]
+        },
+        {
           title: "menu",
           path: "/admin-ui-sdk/extension-points/menu.md"
         },

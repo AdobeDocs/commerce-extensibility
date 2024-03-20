@@ -32,11 +32,11 @@ The throttling controls of Amazon's Selling Partner APIs significantly impact ap
 
 The `lib-state` library has clear limitations both in practice and from the public documentation. A common misconception is that this library is a replacement for a traditional RDBMS/noSQL database. Instead, it has technical capabilities that are similar to Redis or other caching services. The library [README](https://github.com/adobe/aio-lib-state) lists these limitations:
 
-* Maximum state value size: 2MB
+* The namespace must be in the valid AppBuilder format: `amsorg-project(-workspace)?`
+* Maximum state value size: 1MB
 * Maximum state key size: 1024 bytes
-* Maximum total state size: 10 GB
-* Token expiry (need to re-init after expiry): 1 hour
-* Non-supported characters for state keys are: '/', '\', '?', '#'
+* Alphanumeric characters are supported as well as `-` (dash), `_` (underbar), and `.` (period)
+* The default TTL value is one day. The maximum is 365 days.
 
 These additional limitations should also be considered:
 

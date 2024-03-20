@@ -28,7 +28,7 @@ March 20, 2024
 
 * The `class` parameter has been removed from the `order view button` extension point.
 
-* Updated product dependencies. <!--- CEXT-2766 -->
+* Updated project dependencies. <!--- CEXT-2766 -->
 
 ## Version 1.3.2
 

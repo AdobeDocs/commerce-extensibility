@@ -112,3 +112,37 @@ bin/magento events:metadata:populate
 ```
 
 After refreshing the page with your App Builder project, you should be able to find the provider.
+
+## Stuck deployment after configuring priority events
+
+The deployment process can get stuck in some cases in the Cloud environment when consumers are running in the background. To resolve the issue, you must `ssh` into your environment and manually kill the consumer process.
+
+1. Use SSH to log in to the remote environment.
+
+   ```bash
+   magento-cloud ssh
+   ```
+
+1. Find the consumer processes.
+
+   ```bash
+   ps aux | grep consumer
+   ```
+
+   The response lists the running consumers.
+
+   ```terminal
+   web          980  2.4  0.0 232176 163012 ?       S    22:22   0:00 /usr/bin/php8.1-zts /app/bin/magento queue:consumers:start commerce.eventing.event.publish
+   ```
+
+1. Use one of the following commands to kill the consumer:
+
+   ```bash
+   kill -9 <PROCESS_ID>
+   ```
+
+   ```bash
+   vendor/bin/ece-tools cron:kill
+   ```
+
+By default, the consumer will restart within one minute, but this value may vary, based on your [cron configuration](https://experienceleague.adobe.com/docs/commerce-cloud-service/user-guide/configure/app/properties/crons-property.html) or whether you have set up a [worker](https://experienceleague.adobe.com/docs/commerce-cloud-service/user-guide/configure/app/properties/workers-property.html).

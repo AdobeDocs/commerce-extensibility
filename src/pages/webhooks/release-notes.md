@@ -9,6 +9,41 @@ keywords:
 
 These release notes describe the latest version of Adobe Commerce Webhooks.
 
+## Version 1.2.1
+
+### Release date
+
+March 19, 2024
+
+### Enhancements
+
+* Enhanced test coverage for the `AdobeCommerceWebhooksAdminUi` module. <!--CEXT-2834 -->
+
+### Bug fixes
+
+* Fixed integration test errors. <!--- CEXT-2920 -->
+* Removed the **Default View** drop down menu from the **Webhooks** page of the Admin. <!--- CEXT-2941 -->
+
+## Version 1.2.0
+
+### Release date
+
+February 7, 2024
+
+### Enhancements
+
+* Added the ability to [manage webhooks from the Admin](admin-configuration.md), at **System** > **Webhooks**. You can now perform the following tasks:
+
+  * Create new webhooks.
+  * Modify webhooks that are defined in an XML file.
+  * Modify and create webhooks rules, headers, and fields.
+
+ The `AdobeCommerceWebhooksAdminUi` module provides this support.
+
+### Backward-incompatible changes
+
+To support managing webhooks from the Admin, we introduced the `method.hooks.batch.name` field. This field is required and helps track changes made in the Admin. You must update all existing `webhooks.xml` files to include batch names. All new webhooks, whether created from a file or from the Admin, must define a batch name.
+
 ## Version 1.1.0
 
 ### Release date

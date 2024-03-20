@@ -76,3 +76,7 @@ Timeout errors can occur when a process or operation takes longer than the speci
 
    *  If you are unable to resolve the timeout issue, escalate the problem to the appropriate support or engineering team.
    *  Provide detailed information about the troubleshooting steps you have taken so far to expedite the resolution process.
+
+## Failed requests for mass actions that are not sent to an iFrame
+
+Commerce logs failed mass action requests that are not sent to an iFrame. An App Builder application can access details of the failed request using the `GET V1/adminuisdk/massaction/<requestId>` REST API. The [authentication token](https://developer.adobe.com/commerce/webapi/get-started/authentication/gs-authentication-token/) must have access to the Admin UI SDK. The call returns an error message if the request ID was not found or if it associated with a successful action. [Connection interruption failures](./extension-points/index.md#connection-interruption-failures) provides additional information.

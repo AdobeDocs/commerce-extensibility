@@ -12,7 +12,7 @@ keywords:
 
 ### Release date
 
-March 20, 2024
+March 21, 2024
 
 ### Enhancements
 

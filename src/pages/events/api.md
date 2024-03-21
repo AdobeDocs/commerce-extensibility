@@ -46,3 +46,61 @@ curl -i -X PUT \
  ```
 
 How to generate the admin token https://developer.adobe.com/commerce/webapi/rest/tutorials/prerequisite-tasks/
+
+
+## Subscribing to events
+
+To subscribe to the event via API you can send a `POST` request to `/V1/eventing/eventSubscribe`.  User role must have access to the ACL resource `Magento_AdobeIoEventsClient::event_subscribe`.
+
+The example of request body:
+
+```json
+{
+  "event": {
+    "name": "string",
+    "parent": "string",
+    "fields": [
+      {
+        "name": "string",
+        "converter": "string"
+      }
+    ],
+    "rules": [
+      {
+        "field": "string",
+        "operator": "string",
+        "value": "string"
+      }
+    ],
+    "destination": "string",
+    "priority": true
+  },
+  "force": true
+}
+```
+
+Example of CURL command for subscribing to the event `observer.catalog_category_save_after` with fields `name` and `entity_id` and setting this event as a priority:
+
+```
+curl -i -X PUT \
+   -H "Content-Type:application/json" \
+   -H "Authorization:Bearer <AUTH_TOKEN>" \
+   -d \
+'{
+  "event": {
+    "name": "observer.catalog_category_save_after",
+    "fields": [
+      {
+        "name": "name"
+      },
+      {
+        "name": "entity_id"
+      }
+    ],
+    "priority": true
+  }
+}' \
+ '<ADOBE_COMMERCE_URL>/rest/all/V1/eventing/eventSubscribe'
+```
+
+**Warning** Keep in mind that after subscribing to `plugin-type` events the module with event plugins must be generated manually [events:generate:module](commands.md#generate-a-commerce-module-based-on-a-list-of-subscribed-events)

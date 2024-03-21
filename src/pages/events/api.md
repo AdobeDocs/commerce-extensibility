@@ -27,7 +27,7 @@ You can configure commerce eventing with sending `PUT` request to `/V1/eventing/
 
 Example of CURL command:
 
-```
+```bash
 curl -i -X PUT \
    -H "Content-Type:application/json" \
    -H "Authorization:Bearer <AUTH_TOKEN>" \
@@ -46,7 +46,6 @@ curl -i -X PUT \
  ```
 
 How to generate the admin token https://developer.adobe.com/commerce/webapi/rest/tutorials/prerequisite-tasks/
-
 
 ## Subscribing to events
 
@@ -81,7 +80,7 @@ The example of request body:
 
 Example of CURL command for subscribing to the event `observer.catalog_category_save_after` with fields `name` and `entity_id` and setting this event as a priority:
 
-```
+```bash
 curl -i -X PUT \
    -H "Content-Type:application/json" \
    -H "Authorization:Bearer <AUTH_TOKEN>" \

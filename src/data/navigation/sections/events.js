@@ -36,6 +36,10 @@ module.exports = [
     path: "/events/commands.md",
   },
   {
+    title: "API reference",
+    path: "/events/api.md",
+  },
+  {
     title: "Troubleshooting",
     path: "/events/troubleshooting.md",
   },

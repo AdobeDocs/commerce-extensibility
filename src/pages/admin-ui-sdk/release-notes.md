@@ -8,6 +8,36 @@ keywords:
 
 # Adobe Commerce Admin UI SDK release notes
 
+## Version 1.3.2
+
+### Release date
+
+March 4, 2024
+
+### Bug fixes
+
+* Corrected a condition that allowed administrators who did not have proper permissions to view data in grid columns.
+
+## Version 1.3.1
+
+### Release date
+
+January 25, 2024
+
+### Enhancements
+
+* Enhanced unit coverage by 150%. <!-- CEXT-2345, CEXT-2425, CEXT-2593, CEXT-2596, CEXT-2600, CEXT-2601, CEXT-2602, CEXT-2603, CEXT-2604 -->
+
+* Added the ability to optionally specify a page title for a mass action. <!-- CEXT-2598 -->
+
+* The Admin UI SDK cache is now flushed weekly instead of every 12 hours. <!-- CEXT-2643 -->
+
+* The Admin UI SDK now supports PHP 8.3. <!-- CEXT-2724 -->
+
+### Bug fixes
+
+* The Admin now displays extensions correctly when they are loaded from the extension manager registry. <!-- CEXT-2595 -->
+
 ## Version 1.3.0
 
 ### Release date

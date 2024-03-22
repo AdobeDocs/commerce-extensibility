@@ -32,7 +32,7 @@ You must implement the stock-checking logic on an external service.
 
 ## Configure webhook
 
-Follow [admin configuration](../../webhooks/admin-configuration) to modify your webhook and define the connection between Adobe Commerce and your backoffice system using the `observer.checkout_cart_product_add_before` method.
+Follow [admin configuration](../../webhooks/admin-configuration.md) to modify your webhook and define the connection between Adobe Commerce and your backoffice system using the `observer.checkout_cart_product_add_before` method.
 
 ```json
 {

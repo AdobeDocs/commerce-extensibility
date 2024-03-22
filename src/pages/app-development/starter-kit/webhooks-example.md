@@ -12,11 +12,15 @@ keywords:
 
 # Webhooks example
 
-This reference implementation demonstrates how to expose an entry point in Adobe Commerce to perform a realtime check of the available stock for items in a third-party backoffice system.
+Starter-Kit can use the [Adobe Commerce webhook module](../../webhooks/) to allow intercepting flows in Adobe Commerce.
+
+This reference implementation makes a real-time query to a third-party system to determine whether the product a shopper placed in their cart is in stock.
 
 <InlineAlert variant="info" slots="text"/>
 
 If you do not want to implement webhooks, comment out the `webhook` section of the Starter Kit's `app.config.yaml` file before running `aio app deploy`.
+
+Webhooks are enabled by default. If you initially disabled webhooks, you can reenable them by uncommenting the `webhook` section of the `app.config.yaml` file. Additionally, you will need to [redeploy the project](./project-setup.md#deploy-the-project) and repeat the [onboarding process](./project-setup.md#onboarding).
 
 The runtime action included is in the Starter Kit package in the following location:
 
@@ -28,9 +32,7 @@ You must implement the stock-checking logic on an external service.
 
 ## Configure webhook
 
-This runtime action uses the [Adobe Commerce webhook module](../../webhooks/) to allow intercepting flows in Adobe Commerce.
-
-Follow [configure hooks](https://developer.adobe.com/commerce/extensibility/webhooks/hooks/) to modify your `webhooks.xml` file and define the connection between Adobe Commerce and your backoffice system using the `observer.checkout_cart_product_add_before` method.
+Follow [admin configuration](../../webhooks/admin-configuration) to modify your webhook and define the connection between Adobe Commerce and your backoffice system using the `observer.checkout_cart_product_add_before` method.
 
 ```json
 {

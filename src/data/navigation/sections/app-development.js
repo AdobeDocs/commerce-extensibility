@@ -8,6 +8,10 @@ module.exports = [
         path: "/app-development/examples.md"   
     },
     {
+        title: "Learning path",
+        path: "/app-development/learning-path.md"   
+    },
+    {
         title: "Best practices",
         path: "/app-development/best-practices/index.md",
         pages: [
@@ -36,12 +40,12 @@ module.exports = [
         ]
     },
     {
-        title: "Starter kit",
+        title: "Starter Kit",
         path: "/app-development/starter-kit/index.md",
         pages: [
             {
                 title: "Project Setup",
-                path: "/app-development/starter-kit/project-setup.md",
+                path: "/app-development/starter-kit/project-setup.md"
             },
             {
                 title: "Ingestion webhook",

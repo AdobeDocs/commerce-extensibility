@@ -193,7 +193,7 @@ If you are implementing eventing in a performance testing environment, run the `
 
 ### Options
 
-`--fields=<field_name>` Required. An event field to transmit to the Adobe App Builder application. You can specify this option multiple times. Each instance can contain only one field name.
+`--fields='{"<name>":"<field-name>", "converter":"<path\to\converterclass>"}'` Required, but the `converter` argument is optional. Specifies an event field to transmit to the Adobe App Builder application. You can specify this option multiple times. Each instance can contain only one field name. The `converter` argument applies the [converter class](convert-field-values.md) to the specified field.
 
 `--force`, `-f` Forces subscription to the event, even if it hasn't been defined locally.
 
@@ -202,6 +202,10 @@ If you are implementing eventing in a performance testing environment, run the `
 `--priority`, `-p` Expedites the transmission of this event. Specify this option for events that need to be delivered immediately. By default, events are sent by cron once per minute.
 
 `--rules=<field-name>|<operator>|<value>` Defines a rule that will be applied to the subscribed event. You can apply multiple rules to an event, but each rule must be defined separately. A rule definition must specify the field to be evaluated, an operator, and the value to be evaluated, in that order. The field name in a rule definition does not have to match a field specified with the `--fields` option.
+
+`--fields='{"<name>":"<field-name>", "converter":"<path\to\converterclass>"}'` Applies the converter class to the given field.
+
+`--destination`, `-d` A custom destination for the event. This argument is used for SaaS integrations.
 
 ### Example
 
@@ -379,7 +383,7 @@ If the depth value of `2` was specified, the response would also include details
 
 ## Generate a Commerce module based on a list of subscribed events
 
-The `events:generate:module` command generates a module with plugins based on your configuration and places it into the Commerce `app/code/Magento/AdobeCommerceEvents` directory.
+The `events:generate:module` command generates a module with plugins based on your configuration and places it into the Commerce `app/code/Magento/AdobeCommerceEvents` directory.  This command is applicable for on-premises deployments only.
 
 ### Usage
 

@@ -50,11 +50,7 @@ Adobe Commerce offers the following out-of-process development tools:
 
 - [Events](./events/index.md) - Use custom event triggers to interact with other extensible development tools.
 
-<<<<<<< HEAD
 - [Webhooks](./webhooks/index.md) - Use webhooks to automatically trigger interactions between Commerce and third-party systems.
-=======
-[Reference App](app-development/amazon-sales-channel/index.md)
->>>>>>> refs/remotes/origin/starter-kit-develop
 
 - [Admin UI SDK](./admin-ui-sdk/index.md) - Customize and enhance the Commerce Admin with new pages and features for your merchants.
 

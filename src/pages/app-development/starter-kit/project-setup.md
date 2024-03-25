@@ -141,20 +141,28 @@ In the Beta phase of the Starter Kit project, an Adobe Commerce representative w
    aio app use --merge
    ```
 
-1. The `app.config.yaml` in the repo's root directory defines which packages to deploy. The Starter Kit provides packages for Commerce products, customers, orders, and stocks and their external back office counterparts. Comment out any packages that you do not need to deploy. In the following example, the `product-backoffice` package has been disabled:
+1. The `app.config.yaml` in the repo's root directory defines which packages to deploy. The Starter Kit provides packages for Commerce products, customers, orders, and stocks and their external back office counterparts. Comment out any packages that you do not need to deploy. In the following example, the `ingestion` package has been disabled:
 
    ```yaml
    application:
    runtimeManifest:
     packages:
+    #  ingestion:
+    #    license: Apache-2.0
+    #    actions:
+    #      $include: ./actions/ingestion/actions.config.yaml
+      webhook:
+        license: Apache-2.0
+        actions:
+          $include: ./actions/webhook/actions.config.yaml
       product-commerce:
         license: Apache-2.0
         actions:
           $include: ./actions/product/commerce/actions.config.yaml
-    #  product-backoffice:
-    #    license: Apache-2.0
-    #    actions:
-    #      $include: ./actions/product/external/actions.config.yaml
+      product-backoffice:
+        license: Apache-2.0
+        actions:
+          $include: ./actions/product/external/actions.config.yaml
       customer-commerce:
         license: Apache-2.0
         actions:
@@ -163,7 +171,23 @@ In the Beta phase of the Starter Kit project, an Adobe Commerce representative w
         license: Apache-2.0
         actions:
           $include: ./actions/customer/external/actions.config.yaml
-    #  ...
+      order-commerce:
+        license: Apache-2.0
+        actions:
+          $include: ./actions/order/commerce/actions.config.yaml
+      order-backoffice:
+        license: Apache-2.0
+        actions:
+          $include: ./actions/order/external/actions.config.yaml
+      stock-commerce:
+        license: Apache-2.0
+        actions:
+          $include: ./actions/stock/commerce/actions.config.yaml
+      stock-backoffice:
+        license: Apache-2.0
+        actions:
+          $include: ./actions/stock/external/actions.config.yaml
+   ```
 
 ### Deploy the project
 
@@ -262,11 +286,11 @@ Use the `bin/magento events:subscribe` command to subscribe to events, as descri
 
 Entity | Event | Required fields
 --- | --- | ---
-Product | `com.adobe.commerce.observer.catalog_product_delete_commit_after` | Not applicable
-Product | `com.adobe.commerce.observer.catalog_product_save_commit_after`   | `created_at`, `updated_at`
-Customer | `com.adobe.commerce.observer.customer_save_commit_after` | `created_at`, `updated_at`
-Customer | `com.adobe.commerce.observer.customer_delete_commit_after` | Not applicable
-Customer group | `com.adobe.commerce.observer.customer_group_save_commit_after` | Not applicable
-Customer group | `com.adobe.commerce.observer.customer_group_delete_commit_after` | `customer_group_code`
-Order | `com.adobe.commerce.observer.sales_order_save_commit_after` | `created_at`, `updated_at`
-Stock | `com.adobe.commerce.observer.cataloginventory_stock_item_save_commit_after` | Not applicable
+Product | `observer.catalog_product_delete_commit_after` | `sku`
+Product | `observer.catalog_product_save_commit_after`   | `sku`, `created_at`, `updated_at`
+Customer | `observer.customer_save_commit_after` | `created_at`, `updated_at`
+Customer | `observer.customer_delete_commit_after` | `entity_id`
+Customer group | `observer.customer_group_save_commit_after` | `customer_group_code`
+Customer group | `observer.customer_group_delete_commit_after` | `customer_group_code`
+Order | `observer.sales_order_save_commit_after` | `created_at`, `updated_at`
+Stock | `observer.cataloginventory_stock_item_save_commit_after` | `product_id`

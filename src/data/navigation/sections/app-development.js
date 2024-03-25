@@ -48,8 +48,16 @@ module.exports = [
                 path: "/app-development/starter-kit/project-setup.md"
             },
             {
+                title: "Ingestion webhook",
+                path: "/app-development/starter-kit/ingestion-webhook.md"
+            },
+            {
                 title: "Integrate runtime actions",
                 path: "/app-development/starter-kit/integration.md",
+            },
+            {
+                title: "Commerce webhooks example",
+                path: "/app-development/starter-kit/webhooks-example.md"
             }
         ]
     },

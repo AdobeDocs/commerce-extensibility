@@ -12,7 +12,7 @@ keywords:
 
 # Webhooks example
 
-Starter-Kit can use the [Adobe Commerce webhook module](../../webhooks/) to allow intercepting flows in Adobe Commerce.
+The Adobe Commerce Extensibility Starter Kit can use the [Adobe Commerce webhook module](../../webhooks/) to allow intercepting flows in Adobe Commerce.
 
 This reference implementation makes a real-time query to a third-party system to determine whether the product a shopper placed in their cart is in stock.
 

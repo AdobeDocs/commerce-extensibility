@@ -52,8 +52,16 @@ module.exports = [
                 path: "/app-development/starter-kit/ingestion-webhook.md"
             },
             {
+                title: "Actions overview",
+                path: "/app-development/starter-kit/actions-overview.md"
+            },
+            {
                 title: "Integrate runtime actions",
                 path: "/app-development/starter-kit/integration.md",
+            },
+            {
+                title: "Developer tools",
+                path: "/app-development/starter-kit/developer-tools.md"
             },
             {
                 title: "Commerce webhooks example",

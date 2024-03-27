@@ -1,6 +1,6 @@
 ---
 title: Actions overview
-description: 
+description: Learn about the actions available in Starter Kit.
 keywords:
  - Extensibility
  - App Builder

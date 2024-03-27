@@ -21,7 +21,7 @@ The Adobe Commerce Extensibility Starter Kit includes boilerplate code and sampl
 
 The `consumer` and `event handler` actions implement the business logic needed to synchronize data between Commerce and the external systems being integrated.
 
-Additionally, boilerplate code, responses, and samples for event ingestion and synchronous webhook actions are provided. 
+Additionally, boilerplate code, responses, and samples for event ingestion and synchronous webhook actions are provided.
 
 <InlineAlert variant="info" slots="text"/>
 

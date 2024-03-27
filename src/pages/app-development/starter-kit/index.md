@@ -13,7 +13,7 @@ keywords:
 
 ## Project source code structure
 
-The Starter Kit provides boilerplate code to synchronize the following entities across systems:
+The Adobe Commerce Extensibility Starter Kit provides boilerplate code to synchronize the following entities across systems:
 
 - Customer
 - Customer Group

@@ -25,7 +25,7 @@ import DataStock from './code-samples/data-stock.md';
 
 # Integrate runtime actions
 
-The `create`, `update`, and `delete` runtime actions perform one of the following functions:
+The `create`, `update`, and `delete` runtime actions in the Adobe Commerce Extensibility Starter Kit perform one of the following functions:
 
 - [Notify the external application](#notify-the-external-application) - Notifies an external back-office application when an `<object>` is created, updated, or deleted in Adobe Commerce. Actions that react to Adobe Commerce events and notify the external back-office application are located in the `actions/<object>/commerce` folder.
 - [Notify Commerce](#notify-adobe-commerce) - Notifies Adobe Commerce when an `<object>` is created, updated, or deleted in an external back-office application. Actions that react to back-office application events and notify Adobe Commerce are located in the `actions/<object>/external` folder.

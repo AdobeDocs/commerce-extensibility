@@ -6,7 +6,7 @@ keywords:
   - Extensibility
 ---
 
-# Set up your Adobe Commerce Starter Kit project
+# Set up your Adobe Commerce Extensibility Starter Kit project
 
 To get started with Adobe Commerce Extensibility Starter Kit:
 

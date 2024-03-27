@@ -60,6 +60,10 @@ module.exports = [
                 path: "/app-development/starter-kit/integration.md",
             },
             {
+                title: "Developer tools",
+                path: "/app-development/starter-kit/developer-tools.md"
+            },
+            {
                 title: "Commerce webhooks example",
                 path: "/app-development/starter-kit/webhooks-example.md"
             }

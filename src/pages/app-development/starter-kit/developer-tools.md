@@ -25,12 +25,12 @@ To pass the parameters to the action, add the parameter as an `input` under the 
 
 ```yaml
 {action name}:
-  function: commerce/{action name}/index.js
+  function: {action name}/index.js
   web: 'no'
   runtime: nodejs:16
   inputs:
     LOG_LEVEL: debug
-    YOUR_PARAM: $YOUR_PARAM_ENV
+    YOUR_PARAM: $YOUR_PARAM
   annotations:
     require-adobe-auth: true
     final: true

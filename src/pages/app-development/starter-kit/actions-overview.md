@@ -25,7 +25,7 @@ Additionally, boilerplate code, responses, and samples for event ingestion and s
 
 <InlineAlert variant="info" slots="text"/>
 
-The responses for each action are configured for the [Commerce webhook module](https://developer.adobe.com/commerce/extensibility/webhooks/). To customize the responses for other implementations, modify the `response.js` file.
+The synchronous webhook responses for each action are configured for the [Commerce webhook module](https://developer.adobe.com/commerce/extensibility/webhooks/). To customize the responses for other implementations, modify the `responses.js` file.
 
 ## `consumer` action
 
@@ -33,7 +33,7 @@ The main purpose of this action is to route events to the [`event handler` actio
 
 The `consumer` action is subscribed to a set of events. In many cases, all the events originate from the same entity, such as the `product` entity. However, there are examples where a consumer receives events from multiple entities belonging to the same "domain", such as `order` and `shipment`. When the event provider receives an event, this runtime action will be automatically activated.
 
-The response returned by a `consumer` action is expected to be consistent with the response received from the activation of the subsequent `event handler` action. For example, if the `event handler` action returns an `HTTP/400` status, the consumer action is expected to respond with the same status.
+The response returned by a `consumer` action is expected to be consistent with the response received from the activation of the subsequent `event handler` action. For example, if the `event handler` action returns an `HTTP/400` status, the consumer action is expected to respond with the same status. This ensures that the event processing is appropriately retried based on the event handler action response.
 
 When it receives an event that it does not know how to route, it is expected to return HTTP/400 status. This will prevent the event handling from being retried.
 
@@ -191,6 +191,7 @@ return {
     statusCode: 200,
     body : {
       op: 'exception'
+      message: 'YOUR ERROR MESSAGE'
     }
   }
 }

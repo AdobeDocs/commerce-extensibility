@@ -12,6 +12,18 @@ These release notes describe the latest version of Adobe I/O Events for Adobe Co
 
 See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io-events-for-adobe-commerce) for upgrade instructions.
 
+## Version 1.6.0
+
+### Release date
+
+April 3, 2024
+
+### Enhancements
+
+* Added an API endpoint for configuring the eventing module. <!--- CEXT-2912 -->
+ 
+* Added an API endpoint for subscribing to events. <!--- CEXT-2911 -->
+
 ## Version 1.5.1
 
 ### Release date

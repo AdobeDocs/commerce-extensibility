@@ -21,7 +21,7 @@ April 3, 2024
 ### Enhancements
 
 * Added an API endpoint for configuring the eventing module. <!--- CEXT-2912 -->
- 
+
 * Added an API endpoint for subscribing to events. <!--- CEXT-2911 -->
 
 ## Version 1.5.1

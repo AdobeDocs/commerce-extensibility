@@ -48,7 +48,7 @@ After you subscribe to a `plugin-type` event, you must manually generate the mod
 `Content-Type: application/json`
 `Authorization: Bearer <administrator token>`
 
-The administrator must be granted access the `Magento_AdobeIoEventsClient::event_subscribe` resource.
+The administrator must be granted access to the `Magento_AdobeIoEventsClient::event_subscribe` resource.
 
 **Payload Parameters:**
 

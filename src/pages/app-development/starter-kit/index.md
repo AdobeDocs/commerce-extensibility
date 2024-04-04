@@ -10,8 +10,11 @@ keywords:
  - Tools
 ---
 
+# Adobe Commerce Extensibility Starter Kit
 
-# Project source code structure
+Integrating Adobe Commerce with your enterprise resource planning (ERP), order management system (OMS), or customer relationship management (CRM) is now easier with Adobe Commerce Extensibility Starter Kit. Starter Kit reduces the cost of integrating with ERP solutions and improves reliability of real-time connections. The Starter Kit includes reference integrations for commonly used commerce data like orders, products, and customers. It also includes onboarding scripts and a standardized architecture for developers to build while following best practices.
+
+## Project source code structure
 
 The Adobe Commerce Extensibility Starter Kit provides boilerplate code to synchronize the following entities across systems:
 

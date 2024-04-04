@@ -11,7 +11,7 @@ keywords:
 ---
 
 
-## Project source code structure
+# Project source code structure
 
 The Adobe Commerce Extensibility Starter Kit provides boilerplate code to synchronize the following entities across systems:
 

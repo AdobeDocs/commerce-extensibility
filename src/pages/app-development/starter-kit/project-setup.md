@@ -6,7 +6,7 @@ keywords:
   - Extensibility
 ---
 
-# Set up your Adobe Commerce Starter Kit project
+# Set up your Adobe Commerce Extensibility Starter Kit project
 
 To get started with Adobe Commerce Extensibility Starter Kit:
 
@@ -207,7 +207,7 @@ The onboarding process configures event registrations and completes the eventing
 
 ### Configure the event registrations
 
-By default, the `./onboarding/custom/registrations.json` config file creates all the registrations for all entities that are present in the repo's `app.config.yaml` file. You can edit the `registrations.json` file to remove any unnecessary Commerce or back office registrations. For example, the YAML file shown in the [Configure the project](#configure-the-project) section comments out the `product-backoffice` package. In this case, you must remove backoffice from the product entity:
+By default, the `./onboarding/custom/starter-kit-registrations.json` config file creates all the registrations for all entities that are present in the repo's `app.config.yaml` file. You can edit this file to remove any unnecessary Commerce or back office registrations. For example, the YAML file shown in the [Configure the project](#configure-the-project) section comments out the `product-backoffice` package. In this case, you must remove backoffice from the product entity:
 
 ```json
 {

@@ -12,7 +12,7 @@ Adobe Commerce provides several REST endpoints that interact with the eventing p
 
 ## Subscribe to events
 
-The `PUT /rest/<store_view_code>/V1/eventing/eventSubscribe` endpoint subscribes the event defined in the payload. The request body has the following format:
+The `POST /rest/<store_view_code>/V1/eventing/eventSubscribe` endpoint subscribes the event defined in the payload. The request body has the following format:
 
 ```json
 {
@@ -59,7 +59,7 @@ Review the [`events:subscribe` command](./commands.md#subscribe-to-an-event) to 
 The following cURL command subscribes to the `observer.catalog_category_save_after` event. The events contain the `name` and `entity_id` field. The priority setting expedites the transmission of this event.
 
 ```bash
-curl -i -X PUT \
+curl -i -X POST \
    -H "Content-Type:application/json" \
    -H "Authorization:Bearer <AUTH_TOKEN>" \
    -d \

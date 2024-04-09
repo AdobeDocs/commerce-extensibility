@@ -1,6 +1,6 @@
 ---
 title: Use cases
-description: 
+description: Describes use cases for the Adobe Commerce Extensibility Starter Kit.
 keywords:
  - Extensibility
  - App Builder

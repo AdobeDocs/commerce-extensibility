@@ -10,6 +10,10 @@ keywords:
  - Tools
 ---
 
+import BetaNote from '/src/_includes/starter-kit-beta.md'
+
+<BetaNote />
+
 # Webhooks example
 
 The Adobe Commerce Extensibility Starter Kit can use the [Adobe Commerce webhook module](../../webhooks/) to allow intercepting flows in Adobe Commerce.

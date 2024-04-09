@@ -10,6 +10,10 @@ keywords:
  - Tools
 ---
 
+import BetaNote from '/src/_includes/starter-kit-beta.md'
+
+<BetaNote />
+
 # Ingestion webhook
 
 The Adobe Commerce Extensibility Starter Kit supports ingestion webhooks. They provide an alternative method to deliver events for scenarios where the calling system cannot produce a request to interact directly with the event provider. For example, if the client cannot add custom headers to the request.

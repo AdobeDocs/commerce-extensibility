@@ -10,6 +10,9 @@ keywords:
  - Tools
 ---
 
+import BetaNote from '/src/_includes/starter-kit-beta.md'
+
+<BetaNote />
 
 # Developer tools
 

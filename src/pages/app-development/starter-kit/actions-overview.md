@@ -10,6 +10,10 @@ keywords:
  - Tools
 ---
 
+import BetaNote from '/src/_includes/starter-kit-beta.md'
+
+<BetaNote />
+
 # Actions overview
 
 The Adobe Commerce Extensibility Starter Kit includes boilerplate code and samples for the following types of actions:

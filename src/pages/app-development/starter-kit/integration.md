@@ -23,6 +23,10 @@ import DataProduct from './code-samples/data-product.md';
 import DataShipment from './code-samples/data-shipment.md';
 import DataStock from './code-samples/data-stock.md';
 
+import BetaNote from '/src/_includes/starter-kit-beta.md'
+
+<BetaNote />
+
 # Integrate runtime actions
 
 The `create`, `update`, and `delete` runtime actions in the Adobe Commerce Extensibility Starter Kit perform one of the following functions:

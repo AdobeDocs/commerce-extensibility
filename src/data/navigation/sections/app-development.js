@@ -30,26 +30,20 @@ module.exports = [
         ]
     },
     {
-        title: "Use cases",
-        path: "/app-development/use-cases/index.md",
-        pages: [
-            {
-                title: "Credentials management",
-                path: "/app-development/use-cases/curbside.md"
-            }
-        ]
-    },
-    {
         title: "Starter Kit",
         path: "/app-development/starter-kit/index.md",
         pages: [
             {
-                title: "Project Setup",
-                path: "/app-development/starter-kit/project-setup.md"
+                title: "Use cases",
+                path: "/app-development/starter-kit/use-cases.md"
             },
             {
-                title: "Ingestion webhook",
-                path: "/app-development/starter-kit/ingestion-webhook.md"
+                title: "Best practices",
+                path: "/app-development/starter-kit/best-practices.md"
+            },
+            {
+                title: "Project Setup",
+                path: "/app-development/starter-kit/project-setup.md"
             },
             {
                 title: "Actions overview",
@@ -64,9 +58,13 @@ module.exports = [
                 path: "/app-development/starter-kit/developer-tools.md"
             },
             {
+                title: "Ingestion webhook",
+                path: "/app-development/starter-kit/ingestion-webhook.md"
+            },
+            {
                 title: "Commerce webhooks example",
                 path: "/app-development/starter-kit/webhooks-example.md"
-            }
+            },
         ]
     },
     {

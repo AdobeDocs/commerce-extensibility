@@ -27,7 +27,7 @@ module.exports = [
     },
     {
         title: "Event-based integrations",
-        path: "/app-development/events.md"   
+        path: "/app-development/starter-kit/events.md"   
     },
     {
         title: "Real time integrations",

@@ -281,7 +281,7 @@ Module was generated in the app/code/Magento directory
 
 ## Emulate webhook execution
 
-The `webhooks:dev:run` command is used for development and testing purposes only. It emulates the execution of your registered webhook containing a custom payload with requiring changes to the Commerce application. [Testing webhooks](testing.md) further describes how to run this command.
+The `webhooks:dev:run` command is used for development and testing purposes only. It emulates the execution of your registered webhook containing a custom payload without requiring changes to the Commerce application. [Testing webhooks](testing.md) further describes how to run this command.
 
 ### Usage
 

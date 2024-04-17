@@ -24,7 +24,7 @@ This reference implementation makes a real-time query to a third-party system to
 
 If you do not want to implement webhooks, comment out the `webhook` section of the Starter Kit's `app.config.yaml` file before running `aio app deploy`.
 
-Webhooks are enabled by default. If you initially disabled webhooks, you can reenable them by uncommenting the `webhook` section of the `app.config.yaml` file. Additionally, you will need to [redeploy the project](./project-setup.md#deploy-the-project) and repeat the [onboarding process](./project-setup.md#onboarding).
+Webhooks are enabled by default. If you initially disabled webhooks, you can reenable them by uncommenting the `webhook` section of the `app.config.yaml` file. Additionally, you will need to redeploy the project and repeat the [onboarding process](./index.md#onboarding).
 
 The runtime action included is in the Starter Kit package in the following location:
 

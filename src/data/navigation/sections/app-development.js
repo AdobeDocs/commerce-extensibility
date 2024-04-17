@@ -9,15 +9,7 @@ module.exports = [
         path: "/app-development/starter-kit/index.md"
     },
     {
-        title: "Set up an App Builder project",
-        path: "/app-development/starter-kit/project-setup.md"
-    },
-    {
-        title: "Install the Starter Kit",
-        path: "/app-development/starter-kit/installation.md"
-    },
-    {
-        title: "Explore the Starter Kit structure",
+        title: "Explore the structure",
         path: "/app-development/starter-kit/structure.md"
     },
     {
@@ -40,6 +32,10 @@ module.exports = [
     {
         title: "Receive data from external sources",
         path: "/app-development/starter-kit/receive-data.md"
+    },
+    {
+        title: "Data consumer",
+        path: "/app-development/starter-kit/consumer.md"
     },
     {
         title: "Developer tools",

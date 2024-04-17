@@ -4,7 +4,7 @@ module.exports = [
       path: "/",
     },
     {
-      title: "App Development",
+      title: "Starter Kit",
       path: "/app-development/"
     },
     {

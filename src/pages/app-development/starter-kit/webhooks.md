@@ -25,7 +25,7 @@ The following sections demonstrate all the real-time integrations that Adobe Com
 
 The contents of the `./actions/webhook` directory expose a webhook that can be invoked synchronously from Commerce to affect the behavior of a particular business flow.
 
-The `./actions/webhook/check-stock` folder provides a [reference implementation](./webhooks-example.md) of a synchronous webhook action.
+The `./actions/webhook/check-stock` folder provides a [reference implementation](#webhooks-example) of a synchronous webhook action.
 
 To get the URL of the webhook, run the following command:
 

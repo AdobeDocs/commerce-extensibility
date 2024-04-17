@@ -1,6 +1,6 @@
 ---
 title: Send Commerce data
-description: Learn about the runtime action responsible for notifying the external back-office application when data is modified in Adobe Commerce.
+description: Learn about the runtime action responsible for notifying the external backoffice application when data is modified in Adobe Commerce.
 keywords:
  - Extensibility
  - App Builder
@@ -17,7 +17,7 @@ import integration from '/src/_includes/integration.md'
 
 # Send Commerce data
 
-This runtime action is responsible for notifying the external back-office application when an `<object>` is created, updated, or deleted in Adobe Commerce.
+This runtime action is responsible for notifying the external backoffice application when an `<object>` is created, updated, or deleted in Adobe Commerce.
 
 <integration />
 
@@ -86,9 +86,9 @@ The `params` also specify the `event_code` and `event_id`.
 
 ## Payload transformation
 
-If necessary, make any transformation changes necessary for the external back-office application's formatting in the `transformData` function in the `transformer.js` file.
+If necessary, make any transformation changes necessary for the external backoffice application's formatting in the `transformData` function in the `transformer.js` file.
 
-## Connect to the back-office application
+## Connect to the backoffice application
 
 Define the connection information in the `sendData` function in the `sender.js` file.  Include all the authentication and connection information in the `sender.js` file or an extracted file outside `index.js`.
 

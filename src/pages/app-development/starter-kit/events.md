@@ -115,6 +115,49 @@ webhook:
     final: true
 ```
 
+## `consumer` action
+
+The main purpose of this action is to route events to the [`event handler` action](#event-handler-action). Normally, this routing is determined by the name of the event received.
+
+The `consumer` action is subscribed to a set of events. In many cases, all the events originate from the same entity, such as the `product` entity. However, there are examples where a consumer receives events from multiple entities belonging to the same "domain", such as `order` and `shipment`. When the event provider receives an event, this runtime action will be automatically activated.
+
+The response returned by a `consumer` action is expected to be consistent with the response received from the activation of the subsequent `event handler` action. For example, if the `event handler` action returns an `HTTP/400` status, the consumer action is expected to respond with the same status. This ensures that the event processing is appropriately retried based on the event handler action response.
+
+When it receives an event that it does not know how to route, it is expected to return HTTP/400 status. This will prevent the event handling from being retried.
+
+By default, `consumer` actions have the following response:
+
+<CodeBlock slots="heading, code" repeat="2" languages="JSON, JSON" />
+
+### Success
+
+```js
+// ./actions/responses.js#successResponse
+return {
+  statusCode: 200,
+  body: {
+    type: 'EVENT TYPE',
+    response: {
+      // Response returned by the event handler action
+    }
+  }
+}
+```
+
+### Failure
+
+```js
+// ./actions/responses.js#errorResponse
+return {
+  error: {
+    statusCode: 400, // 404, 500, etc,
+    body : {
+      error: 'YOUR ERROR MESSAGE'
+    }
+  }
+}
+```
+
 ## `event handler` action
 
 The main purpose of this action is to manage an event that notifies you about a change in one of the integrated systems. Typically, its business logic includes an API call to propagate the changes to the other system being integrated.
@@ -155,9 +198,9 @@ return {
 
 ## event ingestion action
 
-The main purpose of this runtime action is to provide an alternative method to deliver events to the integration, if the 3rd-party, back-office application cannot fulfill the [Events Publishing API's](https://developer.adobe.com/events/docs/guides/api/eventsingress_api/) requirements.
+The main purpose of this runtime action is to provide an alternative method to deliver events to the integration, if the 3rd-party, backoffice application cannot fulfill the [Events Publishing API's](https://developer.adobe.com/events/docs/guides/api/eventsingress_api/) requirements.
 
-For more information, see [Ingestion webhooks](./ingestion-webhook.md).
+For more information, see [Ingestion webhooks](#ingestion-webhook).
 
 To get the URL of the webhook, run the following command:
 

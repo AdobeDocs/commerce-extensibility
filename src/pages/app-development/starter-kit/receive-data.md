@@ -1,6 +1,6 @@
 ---
 title: Receive data from external sources
-description: Something
+description: Learn about how to receive data from the external backoffice application.
 keywords:
  - Extensibility
  - App Builder
@@ -29,7 +29,7 @@ import integration from '/src/_includes/integration.md'
 
 # Receive data from external sources
 
-This runtime action is responsible for notifying Adobe Commerce when an `<object>` is created, updated, or deleted in the external back-office application.
+This runtime action is responsible for notifying Adobe Commerce when an `<object>` is created, updated, or deleted in the external backoffice application.
 
 <integration />
 
@@ -99,7 +99,7 @@ The incoming data is validated against a JSON schema defined in the `schema.json
 
 ## Payload transformation
 
-If necessary, make any transformation changes necessary for the external back-office application's formatting in the `transformData` function in the `transformer.js` file.
+If necessary, make any transformation changes necessary for the external backoffice application's formatting in the `transformData` function in the `transformer.js` file.
 
 ## Interact with the Adobe Commerce API
 

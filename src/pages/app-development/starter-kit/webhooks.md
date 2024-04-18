@@ -1,5 +1,5 @@
 ---
-title: Real time integrations
+title: Realtime integrations
 description: Something
 keywords:
  - Extensibility
@@ -17,7 +17,7 @@ import actions from '/src/_includes/actions.md'
 
 # Real-time integrations
 
-The following sections demonstrate all the real-time integrations that Adobe Commerce Extensibility Starter Kit has to offer, including the synchronous web hook action and an example implementation of a webhook.
+The following sections demonstrate all the real-time integrations that Adobe Commerce Extensibility Starter Kit has to offer, including the synchronous webhook action and an example implementation of a webhook.
 
 ## Synchronous webhook action
 
@@ -119,7 +119,7 @@ You can modify this file to add more validations to the `validateData` method, i
 
 #### Business logic
 
-The example runtime action `webhook\check-stock\index.js` references the `checkAvailableStock()` method in the `webhook\check-stock\stock.js` file. You must add custom business logic to the `params` in the `stock.js` file in order to test authentication with your third-party backoffice system.
+The example runtime action `webhook\check-stock\index.js` references the `checkAvailableStock()` method in the `webhook\check-stock\stock.js` file. You must add custom business logic to the `params` in the `stock.js` file to test authentication with your third-party backoffice system.
 
 You can also add custom responses.
 

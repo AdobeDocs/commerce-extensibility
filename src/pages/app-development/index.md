@@ -8,4 +8,6 @@ keywords:
 
 # Adobe Commerce App Developer's Guide Overview
 
-The home page will go here.
+This will be the front page.
+
+![front page](../_images/starterkit/temp-screenshot.png)

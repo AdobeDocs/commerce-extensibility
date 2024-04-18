@@ -29,7 +29,7 @@ To get started with Adobe Commerce Extensibility Starter Kit:
 
 Give us 45 minutes, and we will help you integrate Commerce with your back office system following our best practices.
 
-[!starter kit diagram](../../_images/starterkit/starter-kit-diagram.png)
+![starter kit diagram](../../_images/starterkit/starter-kit-diagram.png)
 
 ## Create your integration (step-by-step)
 
@@ -57,7 +57,7 @@ The best part about Starter Kit is that it provides a standardized architecture 
 
    ![Add an API to your workspace](../../_images/common/stage-add-api.png)
 
-1. Add the following services to your workspace. Each service must be added individually. You can add multiple services simultaneously.
+1. Add the following services to your workspace. Each service must be added individually. You cannot add multiple services simultaneously.
 
    * I/O Management API
    * I/O Events
@@ -119,9 +119,9 @@ Use the following steps to create and activate an integration.
 
 #### Install Adobe I/O Events for Adobe Commerce (Commerce 2.4.4 and 2.4.5 only)
 
-If you are running Adobe Commerce 2.4.4 or 2.4.5, you must install modules to enable eventing, as described in [Install Adobe I/O Events for Adobe Commerce](../../events/installation.md). These modules are installed automatically in subsequent versions of Commerce.
+If you are running Adobe Commerce 2.4.6 or higher, the modules that enable eventing are installed automatically. Skip to the next step. If you are running Commerce 2.4.4 or 2.4.5, you must install modules to enable eventing, as described in [Install Adobe I/O Events for Adobe Commerce](../../events/installation.md).
 
-### Download and configure the project
+### Download and configure the Starter Kit
 
 In the Beta phase of the Starter Kit project, an Adobe Commerce representative will send you a ZIP file containing the Starter Kit repo. For GA, the Starter Kit will be available in the Adobe Commerce Marketplace.
 
@@ -135,7 +135,7 @@ In the Beta phase of the Starter Kit project, an Adobe Commerce representative w
 
 1. Fill in the values in the `.env` file. The file describes where you can find the values for each environment variable.
 
-#### Configure the project
+#### Configure the Starter Kit
 
 1. Install npm dependencies:
 
@@ -158,7 +158,7 @@ In the Beta phase of the Starter Kit project, an Adobe Commerce representative w
    aio app use --merge
    ```
 
-1. The `app.config.yaml` in the repo's root directory defines which packages to deploy. The Starter Kit provides packages for Commerce products, customers, orders, and stocks and their external back office counterparts. Comment out any packages that you do not need to deploy. In the following example, the `ingestion` package has been disabled:
+1. The `app.config.yaml` in the repo's root directory defines which packages to deploy. The Starter Kit provides packages for Commerce products, customers, orders, shipments, and stocks and their external back office counterparts. Comment out any packages that you do not need to deploy. In the following example, the `ingestion` package has been disabled:
 
    ```yaml
    application:
@@ -218,9 +218,9 @@ You can confirm the success of the deployment in the Adobe Developer Console by 
 
 ![Adobe I/O Runtime actions](../../_images/starterkit/runtime-actions.png)
 
-#### Onboarding
+#### Complete the configuration
 
-The onboarding process configures event registrations and completes the eventing configuration in Adobe Commerce.
+The next steps in the onboarding process configures event registrations and completes the eventing configuration in Adobe Commerce.
 
 **Configure the event registrations**
 

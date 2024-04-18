@@ -34,10 +34,6 @@ module.exports = [
         path: "/app-development/starter-kit/receive-data.md"
     },
     {
-        title: "Data consumer",
-        path: "/app-development/starter-kit/consumer.md"
-    },
-    {
         title: "Developer tools",
         path: "/app-development/starter-kit/developer-tools.md"
     },

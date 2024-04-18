@@ -16,6 +16,7 @@ import ProjectRequirements from '/src/_includes/project-requirements.md'
 <BetaNote />
 
 # Adobe Commerce Extensibility Starter Kit
+
 Give us 45 minutes, and we will help you integrate Commerce with your back office system following our best practices.
 
 ## Prerequisites
@@ -223,7 +224,7 @@ The next steps in the onboarding process configures event registrations and comp
 
 **Configure the event registrations**
 
-By default, the `./onboarding/custom/starter-kit-registrations.json` config file creates all the registrations for all entities that are present in the repo's `app.config.yaml` file. You can edit this file to remove any unnecessary Commerce or back office registrations. For example, the YAML file shown in the [Configure the project](#configure-the-project) section comments out the `product-backoffice` package. In this case, you must remove backoffice from the product entity:
+By default, the `./onboarding/custom/starter-kit-registrations.json` config file creates all the registrations for all entities that are present in the repo's `app.config.yaml` file. You can edit this file to remove any unnecessary Commerce or back office registrations. For example, the YAML file shown in the [Configure the project](#configure-the-starter-kit) section comments out the `product-backoffice` package. In this case, you must remove backoffice from the product entity:
 
 ```json
 {

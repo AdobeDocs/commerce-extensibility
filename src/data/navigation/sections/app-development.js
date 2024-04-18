@@ -26,11 +26,11 @@ module.exports = [
         path: "/app-development/starter-kit/webhooks.md"
     },
     {
-        title: "Send Commerce data",
+        title: "Expose Commerce data",
         path: "/app-development/starter-kit/send-data.md"
     },
     {
-        title: "Receive data from external sources",
+        title: "Enrich Shopping experience",
         path: "/app-development/starter-kit/receive-data.md"
     },
     {

@@ -16,8 +16,7 @@ import ProjectRequirements from '/src/_includes/project-requirements.md'
 <BetaNote />
 
 # Adobe Commerce Extensibility Starter Kit
-
-Integrating Adobe Commerce with your enterprise resource planning (ERP), order management system (OMS), or customer relationship management (CRM) is now easier with Adobe Commerce Extensibility Starter Kit. Starter Kit reduces the cost of integrating with ERP solutions and improves reliability of real-time connections. The Starter Kit includes reference integrations for commonly used commerce data like orders, products, and customers. It also includes onboarding scripts and a standardized architecture for developers to build while following best practices.
+Give us 45 minutes, and we will help you integrate Commerce with your back office system following our best practices.
 
 ## Prerequisites
 
@@ -27,7 +26,7 @@ To get started with Adobe Commerce Extensibility Starter Kit:
 
 ## Big picture
 
-Give us 45 minutes, and we will help you integrate Commerce with your back office system following our best practices.
+Integrating Adobe Commerce with your enterprise resource planning (ERP), order management system (OMS), or customer relationship management (CRM) is now easier with Adobe Commerce Extensibility Starter Kit. Starter Kit reduces the cost of integrating with ERP solutions and improves reliability of real-time connections. The Starter Kit includes reference integrations for commonly used commerce data like orders, products, and customers. It also includes onboarding scripts and a standardized architecture for developers to build while following best practices.
 
 ![starter kit diagram](../../_images/starterkit/starter-kit-diagram.png)
 

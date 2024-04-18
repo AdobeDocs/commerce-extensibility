@@ -1,5 +1,5 @@
 ---
-title: Send Commerce data
+title: Expose Commerce data
 description: Learn about the runtime action responsible for notifying the external backoffice application when data is modified in Adobe Commerce.
 keywords:
  - Extensibility
@@ -15,7 +15,7 @@ import integration from '/src/_includes/integration.md'
 
 <BetaNote />
 
-# Send Commerce data
+# Expose Commerce data
 
 This runtime action is responsible for notifying the external backoffice application when an `<object>` is created, updated, or deleted in Adobe Commerce.
 

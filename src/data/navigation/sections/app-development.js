@@ -22,7 +22,7 @@ module.exports = [
         path: "/app-development/starter-kit/events.md"   
     },
     {
-        title: "Real time integrations",
+        title: "Realtime integrations",
         path: "/app-development/starter-kit/webhooks.md"
     },
     {

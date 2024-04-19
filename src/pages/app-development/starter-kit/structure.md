@@ -21,7 +21,7 @@ The Adobe Commerce Extensibility Starter Kit provides boilerplate code to synchr
 - Shipment
 - Stock
 
-By default, object synchronization is bi-directional. Changes in Commerce are propagated to the external back-office application and vice versa.
+By default, object synchronization is bi-directional. Changes in Commerce are propagated to the external backoffice application and vice versa.
 
 The source code follows the [file structure](https://developer.adobe.com/app-builder/docs/guides/extensions/extension_migration_guide/#old-file-structure) of a typical App Builder application. Most importantly, the `actions` directory contains the source code for all the serverless actions.
 

@@ -9,15 +9,7 @@ module.exports = [
         path: "/app-development/starter-kit/index.md"
     },
     {
-        title: "Set up an App Builder project",
-        path: "/app-development/starter-kit/project-setup.md"
-    },
-    {
-        title: "Install the Starter Kit",
-        path: "/app-development/starter-kit/installation.md"
-    },
-    {
-        title: "Explore the Starter Kit structure",
+        title: "Explore the structure",
         path: "/app-development/starter-kit/structure.md"
     },
     {
@@ -30,15 +22,15 @@ module.exports = [
         path: "/app-development/starter-kit/events.md"   
     },
     {
-        title: "Real time integrations",
+        title: "Realtime integrations",
         path: "/app-development/starter-kit/webhooks.md"
     },
     {
-        title: "Send Commerce data",
+        title: "Expose Commerce data",
         path: "/app-development/starter-kit/send-data.md"
     },
     {
-        title: "Receive data from external sources",
+        title: "Enrich Shopping experience",
         path: "/app-development/starter-kit/receive-data.md"
     },
     {

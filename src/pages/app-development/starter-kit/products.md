@@ -18,25 +18,25 @@ The following sections describe when events are fired for this object.
 
 ## Create
 
-Adobe Commerce origination
+Adobe Commerce supports the following create methods:
 
 - An Adobe Commerce API creates products from external systems
-- A new product is created in the Adobe Commerce Admin panel
+- An admin creates a new product in the Adobe Commerce Admin panel
 
-Back office integration origination
+Backoffice integrations support the following create methods:
 
-- A new product is created in the back office system
+- An admin creates a new product in the backoffice system
 - A bulk import from an existing Product Information Management (PIM) system creates new products
 
 ## Update
 
-Adobe Commerce origination
+Adobe Commerce supports the following update methods:
 
 - An Adobe Commerce API updates products from external systems
 - An admin user modifies the existing product
 - An admin user modifies the type of product (for example, from simple to configurable or virtual)
 
-Back office origination
+Backoffice integrations support the following update methods:
 
-- An existing product is modified in the backoffice system
+- An admin modifies an existing product in the backoffice system
 - A bulk import from an existing Product Information Management (PIM) system modifies products

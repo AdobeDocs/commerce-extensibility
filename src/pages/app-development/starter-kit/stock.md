@@ -1,6 +1,6 @@
 ---
 title: Stock data flow
-description: Learn about the data flow for the Stock object.
+description: Learn about the data flow for the stock object.
 keywords:
  - Extensibility
  - App Builder
@@ -18,34 +18,35 @@ The following sections describe when events are fired for this object.
 
 ## Create (stock hierarchy)
 
-Adobe Commerce origination
+Adobe Commerce supports the following create methods:
 
-- A new Stock Source is created in the Admin panel
+- An admin or an API creates a new stock source
 
-Back office integration origination
+Backoffice integrations support the following create methods:
 
-- A new Stock source is created in the backoffice system
+- An admin or an API creates a new stock source in the backoffice system
 
 ## Update (stock hierarchy)
 
-Adobe Commerce origination
+Adobe Commerce supports the following update methods:
 
 - Admin user modifies a stock source
-- Admin user modifies the relationship between an existing Stock source and a website
+- Admin user modifies the relationship between an existing stock source and a website
 
-Back office integration origination
+Backoffice integrations support the following update methods:
 
-- An existing Stock source is modified
-- An existing relationship between a Stock source and a website is modified
+- An admin modifies an existing stock source
+- An admin modifies an existing relationship between a stock source and a website
 
 ## Update (stock)
 
-Adobe Commerce origination
+Adobe Commerce supports the following update methods:
 
-- A stock quantity is modified in the Admin panel (to overwrite it quickly in a flash sale, accepting overselling situations)
+- An admin modifies a stock quantity in the Admin panel
+  - For example, to overwrite the quantity quickly in a flash sale where overselling situations is acceptable.
 
-Back office origination
+Backoffice integrations support the following update methods:
 
-- A daily full sync triggers a **FULL** stock update for each Stock source
+- A daily full sync triggers a **FULL** stock update for each stock source
 - A change in source stock quantity triggers a **DELTA** stock update
 - A stock allocation triggers a **DELTA** stock update

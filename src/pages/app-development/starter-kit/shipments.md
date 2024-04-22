@@ -16,7 +16,9 @@ This page describes the path that data takes as it travels between Adobe Commerc
 
 ## Create
 
-Back office integration
+Adobe Commerce and backoffice integrations support the following create methods:
 
-- A shipment is created and delivered to a distribution center or carrier management
+- An admin creates a shipment
+- A carrier marks a shipment as received by a distribution center or carrier management
+- A carrier marks a shipment as delivered
 - The distribution center or carrier management updates a shipment with tracking information

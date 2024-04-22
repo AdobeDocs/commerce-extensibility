@@ -16,17 +16,17 @@ This page describes the path that data takes as it travels between Adobe Commerc
 
 ## Create
 
-Adobe Commerce origination
+Adobe Commerce supports the following create methods:
 
 - A customer or guest makes a purchase
 
 ## Update (order status change)
 
-Adobe Commerce origination
+Adobe Commerce supports the following update methods:
 
 - An admin user changes an order status manually
 
-Back office origination
+Backoffice integrations support the following update methods:
 
 - An order flow changes the order status due to specific business logic
-  - Adobe Commerce is updated
+  - The order status updates in Adobe Commerce

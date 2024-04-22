@@ -17,9 +17,9 @@ April 22, 2024
 
 ### Enhancements
 
-* Added additional validation while saving webhooks in Admin UI. <!--CEXT-3053 -->
+* Added additional validation while saving webhooks in the Admin. <!--CEXT-3053 -->
 
-* Added the list of disallowed plugins. <!--CEXT-3051-->
+* Added a list of disallowed plugins. <!--CEXT-3051-->
 
 ## Version 1.2.1
 

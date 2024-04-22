@@ -1,0 +1,101 @@
+module.exports = [
+    {
+        title: "Create",
+        header: true,
+        path: "/starter-kit/dummy.md"
+    },
+    {
+        title: "Create your integration",
+        path: "/starter-kit/index.md"
+    },
+    {
+        title: "Explore the structure",
+        path: "/starter-kit/structure.md"
+    },
+    {
+        title: "Build & Customize",
+        header: true,
+        path: "/starter-kit/dummy.md"
+    },
+    {
+        title: "Event-based integrations",
+        path: "/starter-kit/events.md"   
+    },
+    {
+        title: "Realtime integrations",
+        path: "/starter-kit/webhooks.md"
+    },
+    {
+        title: "Expose Commerce data",
+        path: "/starter-kit/send-data.md"
+    },
+    {
+        title: "Enrich Shopping experience",
+        path: "/starter-kit/receive-data.md"
+    },
+    {
+        title: "Developer tools",
+        path: "/starter-kit/developer-tools.md"
+    },
+    {
+        title: "Collaborate & Launch",
+        header: true,
+        path: "/starter-kit/dummy.md"
+    },    
+    {
+        title: "Best practices",
+        path: "/starter-kit/best-practices.md"
+    },
+    {
+        title: "Prepare for launch",
+        path: "/starter-kit/launch.md"
+    },
+    {
+        title: "Data flows",
+        header: true,
+        path: "/starter-kit/dummy.md"
+    },
+    {
+        title: "Customers",
+        path: "/starter-kit/customers.md"
+    },
+    {
+        title: "Orders",
+        path: "/starter-kit/orders.md"
+    },
+    {
+        title: "Products",
+        path: "/starter-kit/products.md"
+    },
+    {
+        title: "Shipments",
+        path: "/starter-kit/shipments.md"
+    },
+    {
+        title: "Stock",
+        path: "/starter-kit/stock.md"
+    },
+    {
+        title: "Create a new data flow",
+        path: "/starter-kit/create-data-flow.md"
+    },
+    {
+        title: "Additional resources",
+        header: true,
+        path: "/starter-kit/dummy.md"
+    },
+    {
+        title: "Learning path",
+        path: "/learning-path.md"
+    },
+    /*
+    {
+        title: "Tutorials",
+        path: "https://experienceleague.adobe.com/en/docs/commerce-learn/tutorials/adobe-developer-app-builder/introduction-to-app-builder"
+    },
+    */
+    {
+        title: "Contact us",
+        path: "/starter-kit/contact-us.md"
+    }
+];

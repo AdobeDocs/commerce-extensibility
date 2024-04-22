@@ -1,101 +1,54 @@
 module.exports = [
     {
-        title: "Create",
-        header: true,
-        path: "/app-development/starter-kit/dummy.md"
+        title: "Overview",
+        path: "/app-development/index.md"   
     },
     {
-        title: "Create your integration",
-        path: "/app-development/starter-kit/index.md"
-    },
-    {
-        title: "Explore the structure",
-        path: "/app-development/starter-kit/structure.md"
-    },
-    {
-        title: "Build & Customize",
-        header: true,
-        path: "/app-development/starter-kit/dummy.md"
-    },
-    {
-        title: "Event-based integrations",
-        path: "/app-development/starter-kit/events.md"   
-    },
-    {
-        title: "Realtime integrations",
-        path: "/app-development/starter-kit/webhooks.md"
-    },
-    {
-        title: "Expose Commerce data",
-        path: "/app-development/starter-kit/send-data.md"
-    },
-    {
-        title: "Enrich Shopping experience",
-        path: "/app-development/starter-kit/receive-data.md"
-    },
-    {
-        title: "Developer tools",
-        path: "/app-development/starter-kit/developer-tools.md"
-    },
-    {
-        title: "Collaborate & Launch",
-        header: true,
-        path: "/app-development/starter-kit/dummy.md"
-    },    
-    {
-        title: "Best practices",
-        path: "/app-development/starter-kit/best-practices.md"
-    },
-    {
-        title: "Prepare for launch",
-        path: "/app-development/starter-kit/launch.md"
-    },
-    {
-        title: "Data flows",
-        header: true,
-        path: "/app-development/starter-kit/dummy.md"
-    },
-    {
-        title: "Customers",
-        path: "/app-development/starter-kit/customers.md"
-    },
-    {
-        title: "Orders",
-        path: "/app-development/starter-kit/orders.md"
-    },
-    {
-        title: "Products",
-        path: "/app-development/starter-kit/products.md"
-    },
-    {
-        title: "Shipments",
-        path: "/app-development/starter-kit/shipments.md"
-    },
-    {
-        title: "Stock",
-        path: "/app-development/starter-kit/stock.md"
-    },
-    {
-        title: "Create a new data flow",
-        path: "/app-development/starter-kit/create-data-flow.md"
-    },
-    {
-        title: "Additional resources",
-        header: true,
-        path: "/app-development/starter-kit/dummy.md"
+        title: "Extensibility examples",
+        path: "/app-development/examples.md"   
     },
     {
         title: "Learning path",
-        path: "/app-development/learning-path.md"
+        path: "/app-development/learning-path.md"   
     },
-    /*
     {
-        title: "Videos",
-        path: "https://experienceleague.adobe.com/en/docs/commerce-learn/tutorials/adobe-developer-app-builder/introduction-to-app-builder"
+        title: "Best practices",
+        path: "/app-development/best-practices/index.md",
+        pages: [
+            {
+                title: "Credentials management",
+                path: "/app-development/best-practices/credentials.md"
+            },
+            {
+                title: "Logging and troubleshooting",
+                path: "/app-development/best-practices/logging-troubleshooting.md"
+            },
+            {
+                title: "Database storage",
+                path: "/app-development/best-practices/database-storage.md"
+            }
+        ]
     },
-    */
     {
-        title: "Contact us",
-        path: "/app-development/starter-kit/contact-us.md"
-    }
+        title: "Reference App",
+        path: "/app-development/amazon-sales-channel/index.md",
+        pages: [
+        {
+            title: "Overview",
+            path: "/app-development/amazon-sales-channel/index.md",
+        },
+        {
+            title: "Prerequisites",
+            path: "/app-development/amazon-sales-channel/prerequisites.md",
+        },
+        {
+            title: "Installation",
+            path: "/app-development/amazon-sales-channel/installation.md",
+        },
+        {
+            title: "Release Notes",
+            path: "/app-development/amazon-sales-channel/release-notes.md"
+        }
+    ]
+  }
 ];

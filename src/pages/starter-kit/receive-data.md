@@ -37,7 +37,7 @@ This runtime action is responsible for notifying Adobe Commerce when an `<object
 
 The incoming information depends on the external API. The following sample implementation can be modified to accommodate your specific integration needs.
 
-![ingest info from commerce](../../_images/starterkit/ingest.png)
+![ingest info from commerce](../_images/starterkit/ingest.png)
 
 <br></br>
 <TabsBlock orientation="vertical" slots="heading, content" repeat="6"/>

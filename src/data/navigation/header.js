@@ -4,8 +4,12 @@ module.exports = [
       path: "/",
     },
     {
+      title: "App Development",
+      path: "/app-development"
+    },
+    {
       title: "Starter Kit",
-      path: "/app-development/"
+      path: "/starter-kit/"
     },
     {
       title: "Events",

@@ -34,7 +34,7 @@ Adobe Commerce origination
 
 - An Adobe Commerce API updates products from external systems
 - An admin user modifies the existing product
-- An admin user modifies the type of product (for example, simple > configurable, simple > digital)
+- An admin user modifies the type of product (for example, from simple to configurable or virtual)
 
 Back office origination
 

@@ -18,8 +18,8 @@ This page describes the path that data takes as it travels between Adobe Commerc
 
 Adobe Commerce origination
 
-- A new customer registers in Adobe Commerce (sign up or request)
-- A new customer registers in Adobe Commerce during or after purchase (sign up and purchase)
+- A shopper registers on the Create an Account page
+- A shopper registers during or after purchase (sign up and purchase)
 - An admin user registers a new customer
 
 Back office integration origination
@@ -31,7 +31,7 @@ Back office integration origination
 Adobe Commerce origination
 
 - The customer edits information via My Account
-- An admin User modifies existing customer information (including assignment to a different customer group)
+- An admin user or process modifies existing customer information (including assignment to a different customer group)
 
 Back office origination
 

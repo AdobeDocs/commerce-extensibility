@@ -30,7 +30,7 @@ Back office integration origination
 
 Adobe Commerce origination
 
-- Admin User modifies Stock source
+- Admin user modifies a stock source
 - Admin user modifies the relationship between an existing Stock source and a website
 
 Back office integration origination

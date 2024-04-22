@@ -18,7 +18,7 @@ This page describes the path that data takes as it travels between Adobe Commerc
 
 Adobe Commerce origination
 
-- A purchase is made in Adobe Commerce
+- A customer or guest makes a purchase
 
 ## Update (order status change)
 

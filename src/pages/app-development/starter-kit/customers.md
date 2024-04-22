@@ -14,7 +14,7 @@ keywords:
 
 This page describes the path that data takes as it travels between Adobe Commerce and your backoffice system when using the Adobe Commerce Extensibility Starter Kit.
 
-## Create
+## Customer create
 
 Adobe Commerce supports the following create methods:
 
@@ -26,7 +26,7 @@ Backoffice integrations support the following create methods:
 
 - A new or existing customer engages the company through sales, a partner, or a CRM, when records and emails are synched into Adobe Commerce.
 
-## Update
+## Customer update
 
 Adobe Commerce supports the following update methods:
 
@@ -37,7 +37,7 @@ Backoffice integrations support the following update methods:
 
 - An existing customer engages the company through sales, a partner, or a CRM (including assignment to a different customer group)
 
-## Create/Update
+## Customer group create/update
 
 Adobe Commerce supports the following create/update methods:
 

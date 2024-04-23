@@ -77,7 +77,7 @@ File | Purpose
 
 ### `onboarding` directory
 
-The `onboarding` directory contains the scripting needed to install and set up the Starter Kit. The `./onboarding/custom/starter-kit-registrations.json` configuration file creates all the registrations for all entities that are present in the repo's `app.config.yaml` file. You can edit this file to remove any unnecessary Commerce or back office registrations. [Onboarding](./index.md#onboarding) describes the installation process.
+The `onboarding` directory contains the scripting needed to install and set up the Starter Kit. The `./onboarding/custom/starter-kit-registrations.json` configuration file creates all the registrations for all entities that are present in the repo's `app.config.yaml` file. You can edit this file to remove any unnecessary Commerce or back office registrations. [Onboarding](./create-integration.md#onboarding) describes the installation process.
 
 ### `test` directory
 

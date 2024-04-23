@@ -34,7 +34,7 @@ module.exports = [
         path: "/starter-kit/send-data.md"
     },
     {
-        title: "Enrich Shopping experience",
+        title: "Enrich the shopping experience",
         path: "/starter-kit/receive-data.md"
     },
     {

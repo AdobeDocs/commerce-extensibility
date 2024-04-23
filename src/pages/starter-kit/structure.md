@@ -1,6 +1,6 @@
 ---
-title: Adobe Commerce Extensibility Starter Kit
-description: Learn how to use the Adobe Commerce Extensibility Starter Kit to expedite setting up out-of-process extensions for Adobe Commerce.
+title: Starter Kit structure
+description: Something
 keywords:
  - Extensibility
  - App Builder
@@ -14,11 +14,7 @@ import BetaNote from '/src/_includes/starter-kit-beta.md'
 
 <BetaNote />
 
-# Adobe Commerce Extensibility Starter Kit
-
-Integrating Adobe Commerce with your enterprise resource planning (ERP), order management system (OMS), or customer relationship management (CRM) is now easier with Adobe Commerce Extensibility Starter Kit. Starter Kit reduces the cost of integrating with ERP solutions and improves reliability of real-time connections. The Starter Kit includes reference integrations for commonly used commerce data like orders, products, and customers. It also includes onboarding scripts and a standardized architecture for developers to build while following best practices.
-
-## Project source code structure
+# Starter Kit structure
 
 The Adobe Commerce Extensibility Starter Kit provides boilerplate code to synchronize the following entities across systems:
 
@@ -29,7 +25,7 @@ The Adobe Commerce Extensibility Starter Kit provides boilerplate code to synchr
 - Shipment
 - Stock
 
-By default, object synchronization is bi-directional. Changes in Commerce are propagated to the external back-office application and vice versa.
+By default, object synchronization is bi-directional. Changes in Commerce are propagated to the external backoffice application and vice versa.
 
 The source code follows the [file structure](https://developer.adobe.com/app-builder/docs/guides/extensions/extension_migration_guide/#old-file-structure) of a typical App Builder application. Most importantly, the `actions` directory contains the source code for all the serverless actions.
 
@@ -85,7 +81,7 @@ File | Purpose
 
 ### `onboarding` directory
 
-The `onboarding` directory contains the scripting needed to install and set up the Starter Kit. The `./onboarding/custom/starter-kit-registrations.json` configuration file creates all the registrations for all entities that are present in the repo's `app.config.yaml` file. You can edit this file to remove any unnecessary Commerce or back office registrations. [Onboarding](./project-setup.md#onboarding) describes the installation process.
+The `onboarding` directory contains the scripting needed to install and set up the Starter Kit. The `./onboarding/custom/starter-kit-registrations.json` configuration file creates all the registrations for all entities that are present in the repo's `app.config.yaml` file. You can edit this file to remove any unnecessary Commerce or back office registrations. [Onboarding](./create-integration.md#onboarding) describes the installation process.
 
 ### `test` directory
 

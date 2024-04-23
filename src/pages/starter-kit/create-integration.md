@@ -1,23 +1,41 @@
 ---
-title: Set up your Adobe Commerce Starter Kit project
-description: Learn how to install, configure, and deploy your Adobe Commerce Starter Kit project.
+title: Adobe Commerce Extensibility Starter Kit
+description: Learn how to use the Adobe Commerce Extensibility Starter Kit to expedite setting up out-of-process extensions for Adobe Commerce.
 keywords:
-  - App Builder
-  - Extensibility
+ - Extensibility
+ - App Builder
+ - API Mesh
+ - Events
+ - REST
+ - Tools
 ---
 
-import BetaNote from '/src/_includes/starter-kit-beta.md';
+import BetaNote from '/src/_includes/starter-kit-beta.md'
 import ProjectRequirements from '/src/_includes/project-requirements.md'
 
 <BetaNote />
 
-# Set up your Adobe Commerce Extensibility Starter Kit project
+# Adobe Commerce Extensibility Starter Kit
+
+Give us 45 minutes, and we will help you integrate Commerce with your back office system following our best practices.
+
+## Prerequisites
 
 To get started with Adobe Commerce Extensibility Starter Kit:
 
 <ProjectRequirements />
 
-## Set up a project
+## Big picture
+
+Integrating Adobe Commerce with your enterprise resource planning (ERP), order management system (OMS), or customer relationship management (CRM) is now easier with Adobe Commerce Extensibility Starter Kit. Starter Kit reduces the cost of integrating with ERP solutions and improves reliability of real-time connections. The Starter Kit includes reference integrations for commonly used commerce data like orders, products, and customers. It also includes onboarding scripts and a standardized architecture for developers to build while following best practices.
+
+![starter kit diagram](../_images/starterkit/starter-kit-diagram.png)
+
+## Create your integration (step-by-step)
+
+The best part about Starter Kit is that it provides a standardized architecture that follows Adobe Commerce best practices. We think that you can get through this single-page tutorial in under an hour.
+
+### Onboarding
 
 [Projects Overview](https://developer.adobe.com/developer-console/docs/guides/projects/) describes the different types of projects and how to manage them. Here, we'll create a templated project.
 
@@ -25,21 +43,21 @@ To get started with Adobe Commerce Extensibility Starter Kit:
 
 1. Click **Create new project from template**.
 
-   ![Create a project](../../_images/common/create-project.png)
+   ![Create a project](../_images/common/create-project.png)
 
 1. Select **App Builder**. The **Set up templated project** page displays.
 
-   ![Templated project](../../_images/common/set-up-templated-project.png)
+   ![Templated project](../_images/common/set-up-templated-project.png)
 
 1. Specify a project title and app name. Make sure the **Include Runtime with each workspace** checkbox is selected. You can optionally create a custom workspace other than the default **Stage** workspace. To create a custom workspace, click **Add Workspace**, and enter a name and description. Click **Save**. The Console creates a project and workspaces.
 
-   ![New workspace](../../_images/common/workspaces.png)
+   ![New workspace](../_images/common/workspaces.png)
 
 1. In your workspace, click the **Add service** pop-up menu and select **API**.
 
-   ![Add an API to your workspace](../../_images/common/stage-add-api.png)
+   ![Add an API to your workspace](../_images/common/stage-add-api.png)
 
-1. Add the following services to your workspace. Each service must be added individually. You can add multiple services simultaneously.
+1. Add the following services to your workspace. Each service must be added individually. You cannot add multiple services simultaneously.
 
    * I/O Management API
    * I/O Events
@@ -47,11 +65,11 @@ To get started with Adobe Commerce Extensibility Starter Kit:
 
    Click one of these services, such as **I/O Management API**. Then click **Next**.
 
-   ![Add an API to your workspace](../../_images/common/stage-add-api.png)
+   ![Add an API to your workspace](../_images/common/stage-add-api.png)
 
 1. On the **Configure API** page, select the **OAuth Server-to-Server** option and click **Save configured API**.
 
-   ![generate a key pair](../../_images/common/setup-api-oauth.png)
+   ![generate a key pair](../_images/common/setup-api-oauth.png)
 
    **Note**: You can set up server-to-server authentication using JSON Web Tokens (JWT). However, this method has been deprecated in favor of OAuth and must be replaced no later than January 1, 2025. See [Service Account (JWT) Authentication](https://developer.adobe.com/developer-console/docs/guides/authentication/JWT/) for details on implementing this solution.
 
@@ -59,7 +77,7 @@ To get started with Adobe Commerce Extensibility Starter Kit:
 
 1. If you are using JWT authentication, unzip the downloaded `config.zip` file. The extracted `config` directory should contain a `certificate_pub.crt` and a `private.key` file. The `private.key` file is required to configure the Commerce Admin.
 
-## Download the workspace configuration file
+#### Download the workspace configuration file
 
 The console can generate a JSON file that defines the configuration of your workspace. You will use this file to configure the Commerce Admin and to set up the Starter Kit.
 
@@ -71,7 +89,7 @@ To download a `.json` file containing your workspace configuration:
 
    The `<Workspace-name>.json` file downloads automatically. In this example, the file is named `977AmethystGazelle-1340225-Stage.json`.
 
-## Create an integration in Adobe Commerce
+#### Create an integration in Adobe Commerce
 
 A Commerce integration generates the consumer key, consumer secret, access token, and access token secret that are required to connect to the Starter Kit. It also identifies the available API resources that are needed for the integration.
 
@@ -81,7 +99,7 @@ Use the following steps to create and activate an integration.
 
 1. Click **Add New Integration**. The **New Integration** page displays.
 
-   ![New integration](../../_images/starterkit/add-integration.png)
+   ![New integration](../_images/starterkit/add-integration.png)
 
 1. Enter a name for the integration in the **Name** field. Leave the other fields blank.
 
@@ -91,23 +109,19 @@ Use the following steps to create and activate an integration.
 
 1. Click the **Activate** link in the grid.
 
-  ![Activate link](../../_images/starterkit/activate-integration.png)
+  ![Activate link](../_images/starterkit/activate-integration.png)
 
 1. On the next page, click the **Allow** button to display the **Integration Tokens for Extensions** page.
 
-   ![Integration tokens](../../_images/starterkit/secrets.png)
+   ![Integration tokens](../_images/starterkit/secrets.png)
 
    You will need the integration details (consumer key, consumer secret, access token, and access token secret) to configure the Starter Kit. Copy these values to a safe place and click **Done**.
 
-## Install Adobe I/O Events for Adobe Commerce (Commerce 2.4.4 and 2.4.5 only)
+#### Install Adobe I/O Events for Adobe Commerce (Commerce 2.4.4 and 2.4.5 only)
 
-If you are running Adobe Commerce 2.4.4 or 2.4.5, you must install modules to enable eventing, as described in [Install Adobe I/O Events for Adobe Commerce](../../events/installation.md). These modules are installed automatically in subsequent versions of Commerce.
+If you are running Adobe Commerce 2.4.6 or higher, the modules that enable eventing are installed automatically. Skip to the next step. If you are running Commerce 2.4.4 or 2.4.5, you must install modules to enable eventing, as described in [Install Adobe I/O Events for Adobe Commerce](../events/installation.md).
 
-## Starter Kit set-up and onboarding
-
-You are now ready to download the Adobe Commerce Starter Kit and set up your development.
-
-### Download and configure the project
+### Download and configure the Starter Kit
 
 In the Beta phase of the Starter Kit project, an Adobe Commerce representative will send you a ZIP file containing the Starter Kit repo. For GA, the Starter Kit will be available in the Adobe Commerce Marketplace.
 
@@ -121,7 +135,7 @@ In the Beta phase of the Starter Kit project, an Adobe Commerce representative w
 
 1. Fill in the values in the `.env` file. The file describes where you can find the values for each environment variable.
 
-### Configure the project
+#### Configure the Starter Kit
 
 1. Install npm dependencies:
 
@@ -144,7 +158,7 @@ In the Beta phase of the Starter Kit project, an Adobe Commerce representative w
    aio app use --merge
    ```
 
-1. The `app.config.yaml` in the repo's root directory defines which packages to deploy. The Starter Kit provides packages for Commerce products, customers, orders, and stocks and their external back office counterparts. Comment out any packages that you do not need to deploy. In the following example, the `ingestion` package has been disabled:
+1. The `app.config.yaml` in the repo's root directory defines which packages to deploy. The Starter Kit provides packages for Commerce products, customers, orders, shipments, and stocks and their external back office counterparts. Comment out any packages that you do not need to deploy. In the following example, the `ingestion` package has been disabled:
 
    ```yaml
    application:
@@ -192,7 +206,7 @@ In the Beta phase of the Starter Kit project, an Adobe Commerce representative w
           $include: ./actions/stock/external/actions.config.yaml
    ```
 
-### Deploy the project
+#### Deploy the project
 
 Run the following command to deploy the project. The command deploys the runtime actions needed for the onboarding step:
 
@@ -202,15 +216,15 @@ aio app deploy
 
 You can confirm the success of the deployment in the Adobe Developer Console by navigating to the Runtime section on your workspace.
 
-![Adobe I/O Runtime actions](../../_images/starterkit/runtime-actions.png)
+![Adobe I/O Runtime actions](../_images/starterkit/runtime-actions.png)
 
-## Onboarding
+#### Complete the configuration
 
-The onboarding process configures event registrations and completes the eventing configuration in Adobe Commerce.
+The next steps in the onboarding process configures event registrations and completes the eventing configuration in Adobe Commerce.
 
-### Configure the event registrations
+**Configure the event registrations**
 
-By default, the `./onboarding/custom/starter-kit-registrations.json` config file creates all the registrations for all entities that are present in the repo's `app.config.yaml` file. You can edit this file to remove any unnecessary Commerce or back office registrations. For example, the YAML file shown in the [Configure the project](#configure-the-project) section comments out the `product-backoffice` package. In this case, you must remove backoffice from the product entity:
+By default, the `./onboarding/custom/starter-kit-registrations.json` config file creates all the registrations for all entities that are present in the repo's `app.config.yaml` file. You can edit this file to remove any unnecessary Commerce or back office registrations. For example, the YAML file shown in the [Configure the project](#configure-the-starter-kit) section comments out the `product-backoffice` package. In this case, you must remove backoffice from the product entity:
 
 ```json
 {
@@ -222,7 +236,7 @@ By default, the `./onboarding/custom/starter-kit-registrations.json` config file
 }
 ```
 
-### Execute the onboarding
+**Execute the onboarding**
 
 Run the following command to generate the IO Event providers and the registrations for your Starter Kit project.
 
@@ -251,15 +265,15 @@ Process of On-Boarding done successfully: [
 
 Check your App in the Developer Console to confirm the registrations were created.
 
-![Event registrations](../../_images/starterkit/registrations.png)
+![Event registrations](../_images/starterkit/registrations.png)
 
-### Complete the Adobe Commerce eventing configuration
+**Complete the Adobe Commerce eventing configuration**
 
 You must configure Commerce to communicate with your project. Configuration includes copying and pasting the contents of the workspace configuration file that you downloaded from the Adobe Developer Console.
 
 1. In the Commerce Admin, navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Adobe I/O Events** > **General configuration**. The following screen displays.
 
-   ![General configuration](../../_images/events/general-configuration.png)
+   ![General configuration](../_images/events/general-configuration.png)
 
 1. Select the server-to-server authorization method you implemented from the **Adobe I/O Authorization Type** menu. Adobe recommends using OAuth. JWT has been deprecated.
 
@@ -283,9 +297,9 @@ You must configure Commerce to communicate with your project. Configuration incl
 
 1. Click **Save Config**.
 
-### Subscribe to events in Adobe Commerce
+**Subscribe to events in Adobe Commerce**
 
-Use the `bin/magento events:subscribe` command to subscribe to events, as described in [Subscribe and register events](../../events/configure-commerce.md#subscribe-and-register-events). The following table defines the events for each supported entity that you must subscribe to and lists the required fields, if applicable.
+Use the `bin/magento events:subscribe` command to subscribe to events, as described in [Subscribe and register events](../events/configure-commerce.md#subscribe-and-register-events). The following table defines the events for each supported entity that you must subscribe to and lists the required fields, if applicable.
 
 Entity | Event | Required fields
 --- | --- | ---

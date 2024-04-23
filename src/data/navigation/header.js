@@ -5,7 +5,11 @@ module.exports = [
     },
     {
       title: "App Development",
-      path: "/app-development/"
+      path: "/app-development"
+    },
+    {
+      title: "Starter Kit",
+      path: "/starter-kit/"
     },
     {
       title: "Events",
@@ -18,5 +22,9 @@ module.exports = [
     {
       title: "Admin UI SDK",
       path: "/admin-ui-sdk/",
+    },
+    {
+      title: "API Mesh",
+      path: "https://developer.adobe.com/graphql-mesh-gateway/"
     }
   ];

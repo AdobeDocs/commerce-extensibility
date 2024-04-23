@@ -30,44 +30,6 @@ module.exports = [
         ]
     },
     {
-        title: "Starter Kit",
-        path: "/app-development/starter-kit/index.md",
-        pages: [
-            {
-                title: "Use cases",
-                path: "/app-development/starter-kit/use-cases.md"
-            },
-            {
-                title: "Best practices",
-                path: "/app-development/starter-kit/best-practices.md"
-            },
-            {
-                title: "Project Setup",
-                path: "/app-development/starter-kit/project-setup.md"
-            },
-            {
-                title: "Actions overview",
-                path: "/app-development/starter-kit/actions-overview.md"
-            },
-            {
-                title: "Integrate runtime actions",
-                path: "/app-development/starter-kit/integration.md",
-            },
-            {
-                title: "Developer tools",
-                path: "/app-development/starter-kit/developer-tools.md"
-            },
-            {
-                title: "Ingestion webhook",
-                path: "/app-development/starter-kit/ingestion-webhook.md"
-            },
-            {
-                title: "Commerce webhooks example",
-                path: "/app-development/starter-kit/webhooks-example.md"
-            },
-        ]
-    },
-    {
         title: "Reference App",
         path: "/app-development/amazon-sales-channel/index.md",
         pages: [

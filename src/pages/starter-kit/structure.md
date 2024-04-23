@@ -10,6 +10,10 @@ keywords:
  - Tools
 ---
 
+import BetaNote from '/src/_includes/starter-kit-beta.md'
+
+<BetaNote />
+
 # Starter Kit structure
 
 The Adobe Commerce Extensibility Starter Kit provides boilerplate code to synchronize the following entities across systems:

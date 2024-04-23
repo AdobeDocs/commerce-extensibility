@@ -8,6 +8,10 @@ keywords:
 
 # Adobe Commerce App Developer's Guide Overview
 
+import BetaNote from '/src/_includes/starter-kit-beta.md'
+
+<BetaNote />
+
 This will be the front page.
 
 ![front page](../_images/starterkit/temp-screenshot.png)

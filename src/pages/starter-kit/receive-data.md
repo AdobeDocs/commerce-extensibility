@@ -1,5 +1,5 @@
 ---
-title: Enrich Shopping experience
+title: Enrich Shopping experiences
 description: Learn about how to receive data from the external backoffice application.
 keywords:
  - Extensibility

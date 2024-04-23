@@ -86,7 +86,7 @@ module.exports = [
     {
         title: "Additional resources",
         header: true,
-        path: "/starter-kit/dummy.md",
+        path: "/starter-kit/contact-us.md",
         pages: [
             {
                 title: "Tutorials",

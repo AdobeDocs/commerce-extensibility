@@ -2,11 +2,15 @@ module.exports = [
     {
         title: "Create",
         header: true,
-        path: "/starter-kit/dummy.md"
+        path: "/starter-kit/index.md"
+    },
+    {
+        title: "Overview",
+        path: "/starter-kit/index.md"
     },
     {
         title: "Create your integration",
-        path: "/starter-kit/index.md"
+        path: "/starter-kit/create-integration.md"
     },
     {
         title: "Explore the structure",
@@ -15,7 +19,7 @@ module.exports = [
     {
         title: "Build & Customize",
         header: true,
-        path: "/starter-kit/dummy.md"
+        path: "/starter-kit/events.md"
     },
     {
         title: "Event-based integrations",
@@ -40,7 +44,7 @@ module.exports = [
     {
         title: "Collaborate & Launch",
         header: true,
-        path: "/starter-kit/dummy.md"
+        path: "/starter-kit/best-practices.md"
     },    
     {
         title: "Best practices",
@@ -53,7 +57,7 @@ module.exports = [
     {
         title: "Data flows",
         header: true,
-        path: "/starter-kit/dummy.md"
+        path: "/starter-kit/customers.md"
     },
     {
         title: "Customers",
@@ -82,20 +86,16 @@ module.exports = [
     {
         title: "Additional resources",
         header: true,
-        path: "/starter-kit/dummy.md"
-    },
-    {
-        title: "Learning path",
-        path: "/learning-path.md"
-    },
-    /*
-    {
-        title: "Tutorials",
-        path: "https://experienceleague.adobe.com/en/docs/commerce-learn/tutorials/adobe-developer-app-builder/introduction-to-app-builder"
-    },
-    */
-    {
-        title: "Contact us",
-        path: "/starter-kit/contact-us.md"
+        path: "/starter-kit/contact-us.md",
+        pages: [
+            {
+                title: "Tutorials",
+                path: "https://experienceleague.adobe.com/en/docs/commerce-learn/tutorials/adobe-developer-app-builder/introduction-to-app-builder"
+            },
+            {
+                title: "Contact us",
+                path: "/starter-kit/contact-us.md"
+            }
+        ]
     }
 ];

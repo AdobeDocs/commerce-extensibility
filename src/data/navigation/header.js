@@ -22,5 +22,9 @@ module.exports = [
     {
       title: "Admin UI SDK",
       path: "/admin-ui-sdk/",
+    },
+    {
+      title: "API Mesh",
+      path: "https://developer.adobe.com/graphql-mesh-gateway/"
     }
   ];

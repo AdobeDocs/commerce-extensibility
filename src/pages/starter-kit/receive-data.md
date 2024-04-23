@@ -1,5 +1,5 @@
 ---
-title: Enrich Shopping experiences
+title: Enrich the shopping experience
 description: Learn about how to receive data from the external backoffice application.
 keywords:
  - Extensibility
@@ -27,7 +27,7 @@ import integration from '/src/_includes/integration.md'
 
 <BetaNote />
 
-# Enrich Shopping experience
+# Enrich the shopping experience
 
 This runtime action is responsible for notifying Adobe Commerce when an `<object>` is created, updated, or deleted in the external backoffice application.
 

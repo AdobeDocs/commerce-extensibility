@@ -1,17 +1,51 @@
 ---
-title: Adobe Commerce App Developer's Guide Overview
-description: Learn how to make the transition from developing Commerce PHP extensions to developing Out-of-Process apps.
+title: Adobe Commerce Extensibility Starter Kit Overview
+description: Learn about the Adobe Commerce Extensibility Starter Kit and how you can use it to jump start your App Builder developer journey.
 keywords:
   - App Builder
   - Extensibility
 ---
 
-# Adobe Commerce App Developer's Guide Overview
+# Integrate your backoffice systems
 
 import BetaNote from '/src/_includes/starter-kit-beta.md'
 
 <BetaNote />
 
-This will be the front page.
+Use the Adobe Commerce Extensibility Starter Kit to enrich your shopping experience and support multichannel, global commerce for B2B, B2C, and hybrid businesses.
 
-![front page](../_images/starterkit/temp-screenshot.png)
+<DiscoverBlock slots="link, text"/>
+
+[Create your integration](./create-integration.md)
+
+Give us 45 minutes; we'll help you to integrate with your back office system following our best practices.
+
+<DiscoverBlock slots="link, text"/>
+
+[Expose Commerce data](./send-data.md)
+
+Initiate robust shopper synchronization with your backend systems.
+
+<DiscoverBlock slots="link, text"/>
+
+[Enrich data with Commerce](./receive-data.md)
+
+Enrich the shopper experience with backend integrations and realize the full power of Adobe Commerce.
+
+<DiscoverBlock slots="link, text"/>
+
+[Collaborate & launch](./best-practices.md)
+
+Learn how scaffolding will empower your teams from the first line of code to production.
+
+<DiscoverBlock slots="link, text"/>
+
+[Existing data flows](./products.md)
+
+Integrate quickly and easily using the Starter Kit template, which works with the most common data flows.
+
+<DiscoverBlock slots="link, text"/>
+
+[Need help?](./contact-us.md)
+
+For more information on best practices, troubleshooting, or to request support.

@@ -1,5 +1,5 @@
 ---
-title: Adobe Commerce Extensibility Starter Kit
+title: Install Adobe Commerce Extensibility Starter Kit
 description: Learn how to use the Adobe Commerce Extensibility Starter Kit to expedite setting up out-of-process extensions for Adobe Commerce.
 keywords:
  - Extensibility
@@ -15,7 +15,7 @@ import ProjectRequirements from '/src/_includes/project-requirements.md'
 
 <BetaNote />
 
-# Adobe Commerce Extensibility Starter Kit
+# Install Adobe Commerce Extensibility Starter Kit
 
 Give us 45 minutes, and we will help you integrate Commerce with your back office system following our best practices.
 

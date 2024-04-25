@@ -41,11 +41,12 @@ module.exports = [
         title: "Developer tools",
         path: "/starter-kit/developer-tools.md"
     },
+    /*
     {
         title: "Collaborate & Launch",
         header: true,
         path: "/starter-kit/best-practices.md"
-    },    
+    },
     {
         title: "Best practices",
         path: "/starter-kit/best-practices.md"
@@ -54,6 +55,7 @@ module.exports = [
         title: "Prepare for launch",
         path: "/starter-kit/launch.md"
     },
+    */
     {
         title: "Data flows",
         header: true,
@@ -79,10 +81,12 @@ module.exports = [
         title: "Stock",
         path: "/starter-kit/stock.md"
     },
+    /*
     {
         title: "Create a new data flow",
         path: "/starter-kit/create-data-flow.md"
     },
+    */
     {
         title: "Additional resources",
         header: true,
@@ -92,10 +96,12 @@ module.exports = [
                 title: "Tutorials",
                 path: "https://experienceleague.adobe.com/en/docs/commerce-learn/tutorials/adobe-developer-app-builder/introduction-to-app-builder"
             },
+            /*
             {
                 title: "Contact us",
                 path: "/starter-kit/contact-us.md"
             }
+            */
         ]
     }
 ];

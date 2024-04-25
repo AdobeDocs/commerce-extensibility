@@ -223,7 +223,7 @@ Commerce sends the following object to the remote application:
 
 <InlineAlert variant="warning" slots="text" />
 
-Some sensitive data like passwords can be sanitized in the webhook payload due to security concerns.
+Some sensitive data, such as passwords, can be sanitized in the webhook payload due to security concerns.
 
 ### Field converters
 

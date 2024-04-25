@@ -14,13 +14,9 @@ Adobe I/O Events for Adobe Commerce allows you to send and monitor custom Adobe 
 
 To get started with Adobe I/O Events, you must:
 
-*  Have an Adobe Developer account with System Administrator or Developer Role permissions. [Getting started with Adobe Developer Console](https://developer.adobe.com/developer-console/docs/guides/getting-started/) describes how to enroll in the Adobe developer program.
+import ProjectRequirements from '/src/_includes/project-requirements.md'
 
-*  Be familiar with [Adobe I/O Runtime](https://developer.adobe.com/runtime/docs/guides/getting-started/).
-
-*  Install the [`aio CLI`](https://developer.adobe.com/runtime/docs/guides/getting-started/setup/)
-
-*  Have access to an Adobe Commerce on cloud infrastructure or to an on-premises instance.
+<ProjectRequirements />
 
 ## Set up a project
 

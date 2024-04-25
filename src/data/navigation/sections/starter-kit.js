@@ -6,7 +6,7 @@ module.exports = [
         pages: [
             {
                 title: "Overview",
-                path: "https://developer.adobe.com/commerce/extensibility/starter-kit/"
+                path: "/starter-kit/"
             },
             {
                 title: "Create your integration",

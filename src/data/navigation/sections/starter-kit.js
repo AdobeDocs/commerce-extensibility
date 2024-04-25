@@ -41,16 +41,16 @@ module.exports = [
         title: "Developer tools",
         path: "/starter-kit/developer-tools.md"
     },
+    /*
     {
         title: "Collaborate & Launch",
         header: true,
         path: "/starter-kit/best-practices.md"
-    },    
+    },
     {
         title: "Best practices",
         path: "/starter-kit/best-practices.md"
     },
-    /*
     {
         title: "Prepare for launch",
         path: "/starter-kit/launch.md"

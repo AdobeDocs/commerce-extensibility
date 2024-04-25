@@ -9,7 +9,7 @@ module.exports = [
     },
     {
       title: "Starter Kit",
-      path: "/starter-kit/"
+      path: "https://developer.adobe.com/commerce/extensibility/starter-kit/"
     },
     {
       title: "Events",

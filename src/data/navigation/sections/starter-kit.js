@@ -2,44 +2,46 @@ module.exports = [
     {
         title: "Create",
         header: true,
-        path: "/starter-kit/index.md"
-    },
-    {
-        title: "Overview",
-        path: "/starter-kit/index.md"
-    },
-    {
-        title: "Create your integration",
-        path: "/starter-kit/create-integration.md"
-    },
-    {
-        title: "Explore the structure",
-        path: "/starter-kit/structure.md"
-    },
-    {
-        title: "Build & Customize",
-        header: true,
-        path: "/starter-kit/events.md"
-    },
-    {
-        title: "Event-based integrations",
-        path: "/starter-kit/events.md"   
-    },
-    {
-        title: "Realtime integrations",
-        path: "/starter-kit/webhooks.md"
-    },
-    {
-        title: "Expose Commerce data",
-        path: "/starter-kit/send-data.md"
-    },
-    {
-        title: "Enrich the shopping experience",
-        path: "/starter-kit/receive-data.md"
-    },
-    {
-        title: "Developer tools",
-        path: "/starter-kit/developer-tools.md"
+        path: "/starter-kit/index.md",
+        pages: [
+            {
+                title: "Overview",
+                path: "https://developer.adobe.com/commerce/extensibility/starter-kit/"
+            },
+            {
+                title: "Create your integration",
+                path: "/starter-kit/create-integration.md"
+            },
+            {
+                title: "Explore the structure",
+                path: "/starter-kit/structure.md"
+            },
+            {
+                title: "Build & Customize",
+                header: true,
+                path: "/starter-kit/events.md"
+            },
+            {
+                title: "Event-based integrations",
+                path: "/starter-kit/events.md"   
+            },
+            {
+                title: "Realtime integrations",
+                path: "/starter-kit/webhooks.md"
+            },
+            {
+                title: "Expose Commerce data",
+                path: "/starter-kit/send-data.md"
+            },
+            {
+                title: "Enrich the shopping experience",
+                path: "/starter-kit/receive-data.md"
+            },
+            {
+                title: "Developer tools",
+                path: "/starter-kit/developer-tools.md"
+            },
+        ],
     },
     /*
     {

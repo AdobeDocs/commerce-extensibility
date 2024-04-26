@@ -42,7 +42,7 @@ Learn how scaffolding will empower your teams from the first line of code to pro
 
 <DiscoverBlock slots="link, text"/>
 
-[Existing data flows](./products.md)
+[Existing data flows](./data-flows.md)
 
 Integrate quickly and easily using the Starter Kit template, which works with the most common data flows.
 

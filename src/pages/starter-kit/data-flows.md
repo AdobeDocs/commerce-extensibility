@@ -26,7 +26,7 @@ The following image indicates the general path of data using the red boxes and l
 
 Not all data flows support create, update, and delete operations. Review the specific data flow page for more information.
 
-The following data flows are currently available for the starter kit:
+The starter kit supports the following data flows:
 
 - [Customers](./customers.md)
 - [Orders](./orders.md)

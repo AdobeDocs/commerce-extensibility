@@ -61,7 +61,11 @@ module.exports = [
     {
         title: "Data flows",
         header: true,
-        path: "/starter-kit/customers.md"
+        path: "/starter-kit/data-flows.md"
+    },
+    {
+        title: "Overview",
+        path: "/starter-kit/data-flows.md"
     },
     {
         title: "Customers",

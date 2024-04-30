@@ -158,53 +158,9 @@ In the Beta phase of the Starter Kit project, an Adobe Commerce representative w
    aio app use --merge
    ```
 
-1. The `app.config.yaml` in the repo's root directory defines which packages to deploy. The Starter Kit provides packages for Commerce products, customers, orders, shipments, and stocks and their external back office counterparts. Comment out any packages that you do not need to deploy. In the following example, the `ingestion` package has been disabled:
+1. The `app.config.yaml` in the repo's root directory defines which packages to deploy. The Starter Kit provides packages for Commerce products, customers, orders, shipments, and stocks and their external back office counterparts. Comment out any packages that you do not need to deploy.
 
-   ```yaml
-   application:
-   runtimeManifest:
-    packages:
-    #  ingestion:
-    #    license: Apache-2.0
-    #    actions:
-    #      $include: ./actions/ingestion/actions.config.yaml
-      webhook:
-        license: Apache-2.0
-        actions:
-          $include: ./actions/webhook/actions.config.yaml
-      product-commerce:
-        license: Apache-2.0
-        actions:
-          $include: ./actions/product/commerce/actions.config.yaml
-      product-backoffice:
-        license: Apache-2.0
-        actions:
-          $include: ./actions/product/external/actions.config.yaml
-      customer-commerce:
-        license: Apache-2.0
-        actions:
-          $include: ./actions/customer/commerce/actions.config.yaml
-      customer-backoffice:
-        license: Apache-2.0
-        actions:
-          $include: ./actions/customer/external/actions.config.yaml
-      order-commerce:
-        license: Apache-2.0
-        actions:
-          $include: ./actions/order/commerce/actions.config.yaml
-      order-backoffice:
-        license: Apache-2.0
-        actions:
-          $include: ./actions/order/external/actions.config.yaml
-      stock-commerce:
-        license: Apache-2.0
-        actions:
-          $include: ./actions/stock/commerce/actions.config.yaml
-      stock-backoffice:
-        license: Apache-2.0
-        actions:
-          $include: ./actions/stock/external/actions.config.yaml
-   ```
+   **Note:** The `info` action is enabled by default. This action helps us monitor the adoption of the Starter Kit. Please do not disable, remove, or rename the `info` action.
 
 #### Deploy the project
 

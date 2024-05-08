@@ -1,6 +1,6 @@
 ---
-title: Starter Kit structure
-description: Something
+title: Starter kit structure
+description: Learn about the layout and content of the Adobe Commerce integration starter kit.
 keywords:
  - Extensibility
  - App Builder
@@ -14,9 +14,9 @@ import BetaNote from '/src/_includes/starter-kit-beta.md'
 
 <BetaNote />
 
-# Starter Kit structure
+# Starter kit structure
 
-The Adobe Commerce Integration Starter Kit provides boilerplate code to synchronize the following entities across systems:
+The Adobe Commerce integration starter kit provides boilerplate code to synchronize the following entities across systems:
 
 - Customer
 - Customer Group
@@ -29,7 +29,7 @@ By default, object synchronization is bi-directional. Changes in Commerce are pr
 
 The source code follows the [file structure](https://developer.adobe.com/app-builder/docs/guides/extensions/extension_migration_guide/#old-file-structure) of a typical App Builder application. Most importantly, the `actions` directory contains the source code for all the serverless actions.
 
-The following diagram shows the directory structure of the Starter Kit project:
+The following diagram shows the directory structure of the starter kit project:
 
 ```tree
 |__ root
@@ -81,10 +81,10 @@ File | Purpose
 
 ### `onboarding` directory
 
-The `onboarding` directory contains the scripting needed to install and set up the Starter Kit. The `./onboarding/custom/starter-kit-registrations.json` configuration file creates all the registrations for all entities that are present in the repo's `app.config.yaml` file. You can edit this file to remove any unnecessary Commerce or back office registrations. [Onboarding](./create-integration.md#onboarding) describes the installation process.
+The `onboarding` directory contains the scripting needed to install and set up the starter kit. The `./onboarding/custom/starter-kit-registrations.json` configuration file creates all the registrations for all entities that are present in the repo's `app.config.yaml` file. You can edit this file to remove any unnecessary Commerce or back office registrations. [Onboarding](./create-integration.md#onboarding) describes the installation process.
 
 ### `test` directory
 
-The Starter Kit provides unit tests for most of the included runtime actions. These tests are in the `test/actions` directory. You can also find unit tests for the onboarding script in the `test/onboarding` directory.
+The starter kit provides unit tests for most of the included runtime actions. These tests are in the `test/actions` directory. You can also find unit tests for the onboarding script in the `test/onboarding` directory.
 
 [Testing a Serverless Action](https://developer.adobe.com/app-builder/docs/resources/barcode-reader/test/) provides details about unit testing.

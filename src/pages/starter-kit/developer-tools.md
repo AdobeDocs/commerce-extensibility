@@ -1,6 +1,6 @@
 ---
 title: Developer tools
-description: Learn how to use environment variables, logging, and testing with the Starter Kit.
+description: Learn how to use environment variables, logging, and testing with the starter kit.
 keywords:
  - Extensibility
  - App Builder
@@ -16,7 +16,7 @@ import BetaNote from '/src/_includes/starter-kit-beta.md'
 
 # Developer tools
 
-The following sections describe development tools and processes available in the Starter Kit.
+The following sections describe development tools and processes available in the starter kit.
 
 ## Parameters as environment variables
 
@@ -49,11 +49,11 @@ async function main(params) {
 
 ## Logging
 
-Application logs allow developers to debug an application in development as well as monitor it in production. By default, the Starter Kit uses the [Adobe I/O SDK](https://github.com/adobe/aio-sdk) to store logs in Adobe I/O Runtime. You can find additional details in [Managing Application Logs](https://developer.adobe.com/app-builder/docs/guides/application_logging/).
+Application logs allow developers to debug an application in development as well as monitor it in production. By default, the starter kit uses the [Adobe I/O SDK](https://github.com/adobe/aio-sdk) to store logs in Adobe I/O Runtime. You can find additional details in [Managing Application Logs](https://developer.adobe.com/app-builder/docs/guides/application_logging/).
 
 Alternatively, the application logs can be forwarded to a customer-owned log management solution. Use [When to use Log Forwarding](https://developer.adobe.com/app-builder/docs/guides/application_logging/#when-to-use-log-forwarding) to inform your decision when choosing to store logs in Adobe I/O Runtime or forward them to a log management platform.
 
-If you are using Adobe Commerce on Cloud Infrastructure, you have access to a New Relic instance. [Forwarding Logs to New Relic](https://developer.adobe.com/app-builder/docs/guides/application_logging/new_relic/) page describes the process necessary to configure Starter Kit to forward logs to New Relic.
+If you are using Adobe Commerce on Cloud Infrastructure, you have access to a New Relic instance. [Forwarding Logs to New Relic](https://developer.adobe.com/app-builder/docs/guides/application_logging/new_relic/) page describes the process necessary to configure starter kit to forward logs to New Relic.
 
 ### Hiding secrets in logs
 
@@ -72,7 +72,7 @@ Adjust these values to hide any secrets you want to pass as `params` to your run
 
 ## Testing
 
-The Starter Kit provides unit tests for most of the predefined runtime actions. These tests are located in the `./test/actions` folder.
+The starter kit provides unit tests for most of the predefined runtime actions. These tests are located in the `./test/actions` folder.
 
 Additionally, unit tests for the onboarding script can be found in the `.test/onboarding` folder.
 
@@ -80,7 +80,7 @@ For more details about unit testing, refer to [Testing a Serverless Action](http
 
 ## Create or modify an event
 
-The Starter Kit comes with predefined events for each entity. If you need to add a new event to an entity or modify an existing one, use the following steps.
+The starter kit comes with predefined events for each entity. If you need to add a new event to an entity or modify an existing one, use the following steps.
 
 1. Add the event to the `./onboarding/config/events.json` file under the corresponding entity. For example, if the event is related to a customer and is coming from commerce, you should add it under the `customer` entity in the `commerce` section. To modify an existing event, edit the event in the corresponding section of the `./onboarding/config/events.json` file.
   

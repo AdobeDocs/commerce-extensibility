@@ -1,6 +1,6 @@
 ---
 title: Use cases
-description: Describes use cases for the Adobe Commerce Integration Starter Kit.
+description: Describes use cases for the Adobe Commerce integration starter kit.
 keywords:
  - Extensibility
  - App Builder

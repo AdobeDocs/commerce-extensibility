@@ -16,7 +16,7 @@ import BetaNote from '/src/_includes/starter-kit-beta.md'
 
 # `stock` data flow
 
-This page describes the path that data takes as it travels between Adobe Commerce and your backoffice system when using the Adobe Commerce Integration Starter Kit.
+This page describes the path that data takes as it travels between Adobe Commerce and your backoffice system when using the Adobe Commerce integration starter kit.
 
 The following sections describe when events are fired for this object.
 

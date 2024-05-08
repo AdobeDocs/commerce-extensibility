@@ -158,7 +158,7 @@ In the Beta phase of the Starter Kit project, an Adobe Commerce representative w
    aio app use --merge
    ```
 
-1. The `app.config.yaml` in the repo's root directory defines which packages to deploy. The Starter Kit provides packages for Commerce products, customers, orders, shipments, and stocks and their external back office counterparts. Comment out any unneeded packages that are not applicable to your project.
+1. The `app.config.yaml` file in the repo's root directory defines which packages to deploy. The Integration Starter Kit provides packages for Commerce products, customers, orders, shipments, and stocks and their external back office counterparts. Comment out any unneeded packages that are not applicable to your project.
 
    **Note:** The `info` action is enabled by default. This action is reserved for future use. Do not disable or delete the `info` action.
 

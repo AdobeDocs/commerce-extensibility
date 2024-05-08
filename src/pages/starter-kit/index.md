@@ -1,6 +1,6 @@
 ---
-title: Adobe Commerce Extensibility Starter Kit Overview
-description: Learn about the Adobe Commerce Extensibility Starter Kit and how you can use it to jump start your App Builder developer journey.
+title: Adobe Commerce Integration Starter Kit Overview
+description: Learn about the Adobe Commerce Integration Starter Kit and how you can use it to jump start your App Builder developer journey.
 keywords:
   - App Builder
   - Extensibility
@@ -12,7 +12,7 @@ import BetaNote from '/src/_includes/starter-kit-beta.md'
 
 <BetaNote />
 
-Use the Adobe Commerce Extensibility Starter Kit to enrich your shopping experience and support multichannel, global commerce for B2B, B2C, and hybrid businesses.
+Use the Adobe Commerce Integration Starter Kit to enrich your shopping experience and support multichannel, global commerce for B2B, B2C, and hybrid businesses.
 
 <DiscoverBlock slots="link, text"/>
 

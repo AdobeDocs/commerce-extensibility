@@ -17,7 +17,7 @@ import actions from '/src/_includes/actions.md'
 
 # Real-time integrations
 
-The following sections demonstrate all the real-time integrations that Adobe Commerce Extensibility Starter Kit has to offer, including the synchronous webhook action and an example implementation of a webhook.
+The following sections demonstrate all the real-time integrations that Adobe Commerce Extensibility Integration Kit has to offer, including the synchronous webhook action and an example implementation of a webhook.
 
 ## Synchronous webhook action
 
@@ -66,7 +66,7 @@ return {
 
 ## Webhooks example
 
-The Adobe Commerce Extensibility Starter Kit can use the [Adobe Commerce webhook module](../webhooks/) to allow intercepting flows in Adobe Commerce.
+The Adobe Commerce Integration Starter Kit can use the [Adobe Commerce webhook module](../webhooks/) to allow intercepting flows in Adobe Commerce.
 
 This reference implementation makes a real-time query to a third-party system to determine whether the product a shopper placed in their cart is in stock.
 

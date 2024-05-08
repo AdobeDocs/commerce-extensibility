@@ -17,13 +17,13 @@ import actions from '/src/_includes/actions.md'
 
 # Event-based integrations
 
-The following sections demonstrate all the event-based integrations that Adobe Commerce Extensibility Starter Kit has to offer, including webhook ingestion, event handler actions and event ingestion actions.
+The following sections demonstrate all the event-based integrations that Adobe Commerce Integration Starter Kit has to offer, including webhook ingestion, event handler actions and event ingestion actions.
 
 <actions />
 
 ## Ingestion webhook
 
-The Adobe Commerce Extensibility Starter Kit supports ingestion webhooks. They provide an alternative method to deliver events for scenarios where the calling system cannot produce a request to interact directly with the event provider. For example, if the client cannot add custom headers to the request.
+The Adobe Commerce Integration Starter Kit supports ingestion webhooks. They provide an alternative method to deliver events for scenarios where the calling system cannot produce a request to interact directly with the event provider. For example, if the client cannot add custom headers to the request.
 
 ### Enabling ingest webhooks
 

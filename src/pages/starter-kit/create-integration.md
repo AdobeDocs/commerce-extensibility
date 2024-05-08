@@ -1,6 +1,6 @@
 ---
-title: Install Adobe Commerce Extensibility Starter Kit
-description: Learn how to use the Adobe Commerce Extensibility Starter Kit to expedite setting up out-of-process extensions for Adobe Commerce.
+title: Install Adobe Commerce Integration Starter Kit
+description: Learn how to use the Adobe Commerce Integration Starter Kit to expedite setting up out-of-process extensions for Adobe Commerce.
 keywords:
  - Extensibility
  - App Builder
@@ -15,19 +15,19 @@ import ProjectRequirements from '/src/_includes/project-requirements.md'
 
 <BetaNote />
 
-# Install Adobe Commerce Extensibility Starter Kit
+# Install Adobe Commerce Integration Starter Kit
 
 Give us 45 minutes, and we will help you integrate Commerce with your back office system following our best practices.
 
 ## Prerequisites
 
-To get started with Adobe Commerce Extensibility Starter Kit:
+To get started with Adobe Commerce Integration Starter Kit:
 
 <ProjectRequirements />
 
 ## Big picture
 
-Integrating Adobe Commerce with your enterprise resource planning (ERP), order management system (OMS), or customer relationship management (CRM) is now easier with Adobe Commerce Extensibility Starter Kit. Starter Kit reduces the cost of integrating with ERP solutions and improves reliability of real-time connections. The Starter Kit includes reference integrations for commonly used commerce data like orders, products, and customers. It also includes onboarding scripts and a standardized architecture for developers to build while following best practices.
+Integrating Adobe Commerce with your enterprise resource planning (ERP), order management system (OMS), or customer relationship management (CRM) is now easier with Adobe Commerce Integration Starter Kit. Starter Kit reduces the cost of integrating with ERP solutions and improves reliability of real-time connections. The Starter Kit includes reference integrations for commonly used commerce data like orders, products, and customers. It also includes onboarding scripts and a standardized architecture for developers to build while following best practices.
 
 ![starter kit diagram](../_images/starterkit/starter-kit-diagram.png)
 

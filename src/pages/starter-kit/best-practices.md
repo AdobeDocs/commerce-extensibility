@@ -1,6 +1,6 @@
 ---
 title: Best practices
-description: Learn about best practices to use when developing with the Adobe Commerce Extensibility Starter Kit. 
+description: Learn about best practices to use when developing with the Adobe Commerce Integration Starter Kit. 
 keywords:
  - Extensibility
  - App Builder

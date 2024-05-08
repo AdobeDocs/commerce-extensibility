@@ -16,7 +16,7 @@ import BetaNote from '/src/_includes/starter-kit-beta.md'
 
 # Starter Kit structure
 
-The Adobe Commerce Extensibility Starter Kit provides boilerplate code to synchronize the following entities across systems:
+The Adobe Commerce Integration Starter Kit provides boilerplate code to synchronize the following entities across systems:
 
 - Customer
 - Customer Group

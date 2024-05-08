@@ -16,7 +16,7 @@ import BetaNote from '/src/_includes/starter-kit-beta.md'
 
 # Data flow overview
 
-This page describes the data flows that are currently available for Adobe Commerce Extensibility Starter Kit.
+This page describes the data flows that are currently available for Adobe Commerce Integration Starter Kit.
 
 The following image indicates the general path of data using the red boxes and lines. The term "Object" in this diagram refers to the objects in Adobe Commerce, for example, Products, Customers, or Orders.
 

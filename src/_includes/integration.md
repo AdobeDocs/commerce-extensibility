@@ -1,4 +1,4 @@
-The `create`, `update`, and `delete` runtime actions in the Adobe Commerce Extensibility Starter Kit perform one of the following functions:
+The `create`, `update`, and `delete` runtime actions in the Adobe Commerce Integration Starter Kit perform one of the following functions:
 
 - [Expose Commerce data](../pages/starter-kit/send-data.md) - Notifies an external back-office application when an `<object>` is created, updated, or deleted in Adobe Commerce. Actions that react to Adobe Commerce events and notify the external back-office application are located in the `actions/<object>/commerce` folder.
 - [Enrich Shopping experience](../pages/starter-kit/receive-data.md) - Notifies Adobe Commerce when an `<object>` is created, updated, or deleted in an external back-office application. Actions that react to back-office application events and notify Adobe Commerce are located in the `actions/<object>/external` folder.

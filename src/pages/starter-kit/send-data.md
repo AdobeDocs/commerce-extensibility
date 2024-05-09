@@ -10,10 +10,7 @@ keywords:
  - Tools
 ---
 
-import BetaNote from '/src/_includes/starter-kit-beta.md'
 import integration from '/src/_includes/integration.md'
-
-<BetaNote />
 
 # Expose Commerce data
 

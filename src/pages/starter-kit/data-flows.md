@@ -10,10 +10,6 @@ keywords:
  - Tools
 ---
 
-import BetaNote from '/src/_includes/starter-kit-beta.md'
-
-<BetaNote />
-
 # Data flow overview
 
 This page describes the data flows that are currently available for Adobe Commerce integration starter kit.

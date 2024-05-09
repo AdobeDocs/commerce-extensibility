@@ -162,7 +162,6 @@ In the Beta phase of the starter kit project, an Adobe Commerce representative w
 
    **Note:** The `info` action is enabled by default. This action is reserved for future use. Do not disable or delete the `info` action.
 
-
 #### Deploy the project
 
 Run the following command to deploy the project. The command deploys the runtime actions needed for the onboarding step:

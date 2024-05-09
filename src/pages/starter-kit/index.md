@@ -1,6 +1,6 @@
 ---
-title: Adobe Commerce Extensibility Starter Kit Overview
-description: Learn about the Adobe Commerce Extensibility Starter Kit and how you can use it to jump start your App Builder developer journey.
+title: Adobe Commerce integration starter kit overview
+description: Learn about the Adobe Commerce integration starter kit and how you can use it to jump start your App Builder developer journey.
 keywords:
   - App Builder
   - Extensibility
@@ -12,7 +12,7 @@ import BetaNote from '/src/_includes/starter-kit-beta.md'
 
 <BetaNote />
 
-Use the Adobe Commerce Extensibility Starter Kit to enrich your shopping experience and support multichannel, global commerce for B2B, B2C, and hybrid businesses.
+Use the Adobe Commerce integration starter kit to enrich your shopping experience and support multichannel, global commerce for B2B, B2C, and hybrid businesses.
 
 <DiscoverBlock slots="link, text"/>
 
@@ -44,7 +44,7 @@ Learn how scaffolding will empower your teams from the first line of code to pro
 
 [Existing data flows](./data-flows.md)
 
-Integrate quickly and easily using the Starter Kit template, which works with the most common data flows.
+Integrate quickly and easily using the starter kit template, which works with the most common data flows.
 
 <!--
 <DiscoverBlock slots="link, text"/>

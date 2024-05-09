@@ -17,7 +17,7 @@ import actions from '/src/_includes/actions.md'
 
 # Real-time integrations
 
-The following sections demonstrate all the real-time integrations that Adobe Commerce Extensibility Starter Kit has to offer, including the synchronous webhook action and an example implementation of a webhook.
+The following sections demonstrate all the real-time integrations that Adobe Commerce Extensibility Integration Kit has to offer, including the synchronous webhook action and an example implementation of a webhook.
 
 ## Synchronous webhook action
 
@@ -66,17 +66,17 @@ return {
 
 ## Webhooks example
 
-The Adobe Commerce Extensibility Starter Kit can use the [Adobe Commerce webhook module](../webhooks/) to allow intercepting flows in Adobe Commerce.
+The Adobe Commerce integration starter kit can use the [Adobe Commerce webhook module](../webhooks/) to allow intercepting flows in Adobe Commerce.
 
 This reference implementation makes a real-time query to a third-party system to determine whether the product a shopper placed in their cart is in stock.
 
 <InlineAlert variant="info" slots="text"/>
 
-If you do not want to implement webhooks, comment out the `webhook` section of the Starter Kit's `app.config.yaml` file before running `aio app deploy`.
+If you do not want to implement webhooks, comment out the `webhook` section of the starter kit's `app.config.yaml` file before running `aio app deploy`.
 
 Webhooks are enabled by default. If you initially disabled webhooks, you can reenable them by uncommenting the `webhook` section of the `app.config.yaml` file. Additionally, you will need to redeploy the project and repeat the [onboarding process](./create-integration.md#onboarding).
 
-The runtime action included is in the Starter Kit package in the following location:
+The runtime action included is in the starter kit package in the following location:
 
 - `actions/webhook/check-stock/index.js`
 
@@ -111,7 +111,7 @@ The following parameters are required:
 - `data.cart_id`
 - `data.items`
 
-Sample validation logic is provided in the following location in the Starter Kit package.
+Sample validation logic is provided in the following location in the starter kit package.
 
 - `webhook\check-stock\validator.js`
 

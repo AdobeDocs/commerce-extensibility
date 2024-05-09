@@ -1,6 +1,6 @@
 ---
 title: Contact us
-description: Something
+description: Learn how to report an issue or submit a feature request.
 keywords:
  - Extensibility
  - App Builder

@@ -1,6 +1,6 @@
 ---
 title: Data flows overview
-description: Learn about the data flow for the Starter Kit.
+description: Learn about the data flow for the starter kit.
 keywords:
  - Extensibility
  - App Builder
@@ -16,7 +16,7 @@ import BetaNote from '/src/_includes/starter-kit-beta.md'
 
 # Data flow overview
 
-This page describes the data flows that are currently available for Adobe Commerce Extensibility Starter Kit.
+This page describes the data flows that are currently available for Adobe Commerce integration starter kit.
 
 The following image indicates the general path of data using the red boxes and lines. The term "Object" in this diagram refers to the objects in Adobe Commerce, for example, Products, Customers, or Orders.
 

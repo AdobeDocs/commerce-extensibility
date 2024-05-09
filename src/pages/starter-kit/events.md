@@ -17,17 +17,17 @@ import actions from '/src/_includes/actions.md'
 
 # Event-based integrations
 
-The following sections demonstrate all the event-based integrations that Adobe Commerce Extensibility Starter Kit has to offer, including webhook ingestion, event handler actions and event ingestion actions.
+The following sections demonstrate all the event-based integrations that Adobe Commerce integration starter kit has to offer, including webhook ingestion, event handler actions and event ingestion actions.
 
 <actions />
 
 ## Ingestion webhook
 
-The Adobe Commerce Extensibility Starter Kit supports ingestion webhooks. They provide an alternative method to deliver events for scenarios where the calling system cannot produce a request to interact directly with the event provider. For example, if the client cannot add custom headers to the request.
+The Adobe Commerce integration starter kit supports ingestion webhooks. They provide an alternative method to deliver events for scenarios where the calling system cannot produce a request to interact directly with the event provider. For example, if the client cannot add custom headers to the request.
 
 ### Enabling ingest webhooks
 
-To enable webhooks in the Starter Kit, uncomment the `ingestion` section in your `app.config.yaml` file:
+To enable webhooks in the starter kit, uncomment the `ingestion` section in your `app.config.yaml` file:
 
 ```yaml
 ingestion:
@@ -63,7 +63,7 @@ The following entities and their corresponding events are currently available:
 
 <InlineAlert variant="tip" slots="text"/>
 
-The list of entities and their corresponding `backoffice` events is available in the Starter Kit's `onboarding/config/events.json` file.
+The list of entities and their corresponding `backoffice` events is available in the starter kit's `onboarding/config/events.json` file.
 
 The following JSON payload demonstrates a `product` entity with a `create` event:
 

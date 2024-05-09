@@ -1,6 +1,6 @@
 ---
-title: Install Adobe Commerce Extensibility Starter Kit
-description: Learn how to use the Adobe Commerce Extensibility Starter Kit to expedite setting up out-of-process extensions for Adobe Commerce.
+title: Install Adobe Commerce integration starter kit
+description: Learn how to use the Adobe Commerce integration starter kit to expedite setting up out-of-process extensions for Adobe Commerce.
 keywords:
  - Extensibility
  - App Builder
@@ -15,25 +15,25 @@ import ProjectRequirements from '/src/_includes/project-requirements.md'
 
 <BetaNote />
 
-# Install Adobe Commerce Extensibility Starter Kit
+# Install Adobe Commerce integration starter kit
 
 Give us 45 minutes, and we will help you integrate Commerce with your back office system following our best practices.
 
 ## Prerequisites
 
-To get started with Adobe Commerce Extensibility Starter Kit:
+To get started with Adobe Commerce integration starter kit:
 
 <ProjectRequirements />
 
 ## Big picture
 
-Integrating Adobe Commerce with your enterprise resource planning (ERP), order management system (OMS), or customer relationship management (CRM) is now easier with Adobe Commerce Extensibility Starter Kit. Starter Kit reduces the cost of integrating with ERP solutions and improves reliability of real-time connections. The Starter Kit includes reference integrations for commonly used commerce data like orders, products, and customers. It also includes onboarding scripts and a standardized architecture for developers to build while following best practices.
+Integrating Adobe Commerce with your enterprise resource planning (ERP), order management system (OMS), or customer relationship management (CRM) is now easier with Adobe Commerce integration starter kit. The starter kit reduces the cost of integrating with ERP solutions and improves reliability of real-time connections. It includes reference integrations for commonly used commerce data like orders, products, and customers. It also includes onboarding scripts and a standardized architecture for developers to build while following best practices.
 
 ![starter kit diagram](../_images/starterkit/starter-kit-diagram.png)
 
 ## Create your integration (step-by-step)
 
-The best part about Starter Kit is that it provides a standardized architecture that follows Adobe Commerce best practices. We think that you can get through this single-page tutorial in under an hour.
+The best part about the integration starter kit is that it provides a standardized architecture that follows Adobe Commerce best practices. We think that you can get through this single-page tutorial in under an hour.
 
 ### Onboarding
 
@@ -79,7 +79,7 @@ The best part about Starter Kit is that it provides a standardized architecture 
 
 #### Download the workspace configuration file
 
-The console can generate a JSON file that defines the configuration of your workspace. You will use this file to configure the Commerce Admin and to set up the Starter Kit.
+The console can generate a JSON file that defines the configuration of your workspace. You will use this file to configure the Commerce Admin and to set up the starter kit.
 
 To download a `.json` file containing your workspace configuration:
 
@@ -91,7 +91,7 @@ To download a `.json` file containing your workspace configuration:
 
 #### Create an integration in Adobe Commerce
 
-A Commerce integration generates the consumer key, consumer secret, access token, and access token secret that are required to connect to the Starter Kit. It also identifies the available API resources that are needed for the integration.
+A Commerce integration generates the consumer key, consumer secret, access token, and access token secret that are required to connect to the starter kit. It also identifies the available API resources that are needed for the integration.
 
 Use the following steps to create and activate an integration.
 
@@ -115,17 +115,17 @@ Use the following steps to create and activate an integration.
 
    ![Integration tokens](../_images/starterkit/secrets.png)
 
-   You will need the integration details (consumer key, consumer secret, access token, and access token secret) to configure the Starter Kit. Copy these values to a safe place and click **Done**.
+   You will need the integration details (consumer key, consumer secret, access token, and access token secret) to configure the starter kit. Copy these values to a safe place and click **Done**.
 
 #### Install Adobe I/O Events for Adobe Commerce (Commerce 2.4.4 and 2.4.5 only)
 
 If you are running Adobe Commerce 2.4.6 or higher, the modules that enable eventing are installed automatically. Skip to the next step. If you are running Commerce 2.4.4 or 2.4.5, you must install modules to enable eventing, as described in [Install Adobe I/O Events for Adobe Commerce](../events/installation.md).
 
-### Download and configure the Starter Kit
+### Download and configure the starter kit
 
-In the Beta phase of the Starter Kit project, an Adobe Commerce representative will send you a ZIP file containing the Starter Kit repo. For GA, the Starter Kit will be available in the Adobe Commerce Marketplace.
+In the Beta phase of the starter kit project, an Adobe Commerce representative will send you a ZIP file containing the starter kit repo. For GA, the starter kit will be available in the Adobe Commerce Marketplace.
 
-1. Download and unzip the Starter Kit repo.
+1. Download and unzip the starter kit repo.
 
 1. Change directories to the downloaded repo and copy the `env.dist` file.
 
@@ -135,7 +135,7 @@ In the Beta phase of the Starter Kit project, an Adobe Commerce representative w
 
 1. Fill in the values in the `.env` file. The file describes where you can find the values for each environment variable.
 
-#### Configure the Starter Kit
+#### Configure the starter kit
 
 1. Install npm dependencies:
 
@@ -143,7 +143,7 @@ In the Beta phase of the Starter Kit project, an Adobe Commerce representative w
    npm install
    ```
 
-1. Run the following Adobe I/O commands to connect your Starter Kit project to the App Builder project you created earlier:
+1. Run the following Adobe I/O commands to connect your starter kit project to the App Builder project you created earlier:
 
    ```bash
    aio login
@@ -194,7 +194,7 @@ By default, the `./onboarding/custom/starter-kit-registrations.json` config file
 
 **Execute the onboarding**
 
-Run the following command to generate the IO Event providers and the registrations for your Starter Kit project.
+Run the following command to generate the IO Event providers and the registrations for your starter kit project.
 
 ```bash
 npm run onboard

@@ -28,6 +28,10 @@ module.exports = [
       path: "/webhooks/xml-schema.md"
     },
     {
+        title: "Signature Verification",
+        path: "/webhooks/signature-verification.md"
+    },
+    {
       title: "Admin configuration",
       path: "/webhooks/admin-configuration.md"
     },

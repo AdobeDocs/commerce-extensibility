@@ -81,7 +81,7 @@ Keep in mind if the key pair is regenerated the old public key will be invalid a
 
 To verify the signature in the APP Builder action the `raw-http` annotation needs to be set for the webhook action. When `raw-http` annotation is set, the HTTP request query and body parameters are passed to the action as reserved properties.
 
-Sets the `PUBLIC_KEY` as environment variable in the webhook action configuration and use it to verify the signature.
+Sets the `PUBLIC_KEY` as an environment variable in the webhook action configuration in the `app.config.yaml` file and use it to verify the signature.
 
 ```yaml
     inputs:

@@ -9,7 +9,7 @@ module.exports = [
                 path: "/starter-kit/"
             },
             {
-                title: "Create your integration",
+                title: "Installation",
                 path: "/starter-kit/create-integration.md"
             },
             {

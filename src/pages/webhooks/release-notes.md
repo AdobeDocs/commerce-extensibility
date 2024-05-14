@@ -17,7 +17,7 @@ May 15, 2024
 
 ### Enhancements
 
-* Added the ability to enable [digital signature for webhooks](signature-verification.md). <!--CEXT-3047 -->
+* Added the ability to enable [digital signatures for webhooks](signature-verification.md). <!--CEXT-3047 -->
 
 * Updated the list of disallowed webhooks. <!--CEXT-3132 -->
 

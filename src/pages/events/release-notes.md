@@ -20,9 +20,9 @@ May 15, 2024
 
 ### Enhancements
 
-* Added the new `--hipaaAuditRequired` option to the event configuration. <!--- CEXT-3129 -->
+* Added the `--hipaaAuditRequired` option to the `bin/magento events:subscribe` command. Use this command to indicate the event contains data that is subject to HIPAA auditing. <!--- CEXT-3129 -->
 
-* Added event data dispatching before sending to the eventing service. <!--- CEXT-3156 -->
+* Added the ability to log data sent from Adobe Commerce to the Commerce Eventing Service. As a result, events are dispatched at the moment when data is sent. <!--- CEXT-3156 -->
 
 ## Version 1.6.0
 

@@ -1,27 +1,27 @@
 ---
-title: Adobe Commerce Webhooks Signature Verification
-description: This page describes hot to enable and use signature verification for Adobe Commerce Webhooks.
+title: Adobe Commerce Webhooks signature verification
+description: Learn how to enable and use signature verification for Adobe Commerce Webhooks.
 keywords:
   - Extensibility
 ---
 
-# Webhooks Signature Verification
+# Webhooks signature verification
 
-As webhook URL is publicly accessible, it is important to ensure that the incoming requests are sent by Adobe Commerce and not by a third-party actor. Adobe Commerce Webhooks provides a way to secure your webhook by enabling signature verification.
+Because webhook URLs are publicly accessible, it is important to ensure that the incoming requests are sent by Adobe Commerce and not by a third-party actor. You can enable signature verification to ensure your webhooks are secure.
 
 ## Enable signature verification
 
-By default, the signature verification is disabled as you may use another way to secure your webhook with authorization headers or IP whitelisting.
+Signature verifications are disabled by default, because you might have other ways for securing your webhooks. Authorization headers and IP whitelisting are common techniques.
 
-To enable it navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Webhooks** and change the **Enabled** to **Yes** and click **Regenerate key pair** to generate a new key pair.
+To enable signature verification, navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Webhooks** and change the **Enabled** to **Yes**. Then click **Regenerate key pair** to generate a new key pair.
 
 ![Webhooks configuration](../_images/webhooks/signature-configuration.png)
 
-After enabling the signature verification the new header `x-adobe-commerce-webhook-signature` will be added to the webhook requests from the Adobe Commerce. The value of this header is a base64 encoded HMAC SHA256 signature of the request body using the private key.
+After enabling the signature verification, Commerce adds the `x-adobe-commerce-webhook-signature` header. The value of this header is a base64 encoded HMAC SHA256 signature of the request body based on the private key.
 
 ## Verify the signature
 
-To verify the signature you need to decode the base64 encoded signature `x-adobe-commerce-webhook-signature` and compare it with the HMAC SHA256 signature of the base64 encoded request body using the public key from the webhooks configuration.
+To verify the signature you must decode value of `x-adobe-commerce-webhook-signature` header and compare it with the HMAC SHA256 signature of the base64 encoded request body using the public key from the webhooks configuration.
 
 Here is an example of the verification method of the signature using node.js:
 
@@ -48,7 +48,7 @@ module.exports = {
 }
 ```
 
-Here is an example of how to use the signature verification in the webhook action:
+The following example shows how to use the signature verification in the webhook action:
 
 ```javascript
 const signatureValidator = require('../signatureValidator');
@@ -75,13 +75,11 @@ app.post('/validate-signature', function (req, res) {
 });
 ```
 
-Keep in mind if the key pair is regenerated the old public key will be invalid and you need to update the public key in the signature verification code.
+Keep in mind that when the key pair is regenerated, the old public key will be invalid. You must subsequently update the public key in the signature verification code.
 
-## Verify the signature in the APP Builder action
+## Verify the signature in the App Builder action
 
-To verify the signature in the APP Builder action the `raw-http` annotation needs to be set for the webhook action. When `raw-http` annotation is set, the HTTP request query and body parameters are passed to the action as reserved properties.
-
-Sets the `PUBLIC_KEY` as environment variable in the webhook action configuration and use it to verify the signature.
+To verify the signature in the App Builder action, set the `raw-http` annotation in the `app.config.yaml` file. When the `raw-http` annotation is configured, the HTTP request query and body parameters are passed to the action as reserved properties.
 
 ```yaml
     inputs:
@@ -90,7 +88,7 @@ Sets the `PUBLIC_KEY` as environment variable in the webhook action configuratio
       raw-http: true
 ```
 
-The code example below shows how the signature can be verified in the APP Builder action:
+The following code example below shows how the signature can be verified in the App Builder action:
 
 ```javascript
 const { Core } = require('@adobe/aio-sdk')

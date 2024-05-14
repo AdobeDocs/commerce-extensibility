@@ -207,6 +207,8 @@ If you are implementing eventing in a performance testing environment, run the `
 
 `--destination`, `-d` A custom destination for the event. This argument is used for SaaS integrations.
 
+`--hipaaAuditRequired` Indicates the event contains data that is subject to HIPAA auditing.`
+
 ### Example
 
 To subscribe to a native event:

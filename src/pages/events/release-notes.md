@@ -12,6 +12,18 @@ These release notes describe the latest version of Adobe I/O Events for Adobe Co
 
 See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io-events-for-adobe-commerce) for upgrade instructions.
 
+## Version 1.7.0
+
+### Release date
+
+May 15, 2024
+
+### Enhancements
+
+* Added the new `--hipaaAuditRequired` option to the event configuration. <!--- CEXT-3129 -->
+
+* Added event data dispatching before sending to the eventing service. <!--- CEXT-3156 -->
+
 ## Version 1.6.0
 
 ### Release date

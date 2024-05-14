@@ -77,7 +77,6 @@ app.post('/validate-signature', function (req, res) {
 
 Keep in mind if the key pair is regenerated the old public key will be invalid and you need to update the public key in the signature verification code.
 
-
 ## Verify the signature in the APP Builder action
 
 To verify the signature in the APP Builder action the `raw-http` annotation needs to be set for the webhook action. When `raw-http` annotation is set, the HTTP request query and body parameters are passed to the action as reserved properties.

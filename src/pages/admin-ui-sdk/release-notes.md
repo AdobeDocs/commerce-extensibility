@@ -18,6 +18,8 @@ March 21, 2024
 
 * Added the [`customer grid columns` extension point](./extension-points/customer/grid-columns.md).  <!--- CEXT-2867  -->
 
+* Added the [`order get custom fees` extension point](./extension-points/order/custom-fees.md).  <!--- CEXT-2733  -->
+
 * Mass actions can now be implemented [without an iFrame](./extension-points/index.md#mass-actions-without-iframes). <!--- CEXT-2590, CEXT-2825, CEXT-2932, CEXT-2903 -->
 
 * Added the `GET V1/adminuisdk/massaction/<requestId>` REST API to debug mass action failures.

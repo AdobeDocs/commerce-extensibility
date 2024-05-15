@@ -233,7 +233,7 @@ Check your App in the Developer Console to confirm the registrations were create
 <InlineAlert variant="info" slots="text"/>
 
 If your Commerce instance Adobe I/O Events for Adobe Commerce module version is 1.6.0 or greater and the onboarding script completed successfully, the following steps are not required. The onboarding script will configure the Adobe Commerce instance automatically.
-Skip to the next section, or follow the steps in the next section to validate that the configuration is correct. 
+Skip to the next section, or follow the steps in the next section to validate that the configuration is correct.
 
 You must configure Commerce to communicate with your project. Configuration includes copying and pasting the contents of the workspace configuration file that you downloaded from the Adobe Developer Console.
 
@@ -268,9 +268,11 @@ You must configure Commerce to communicate with your project. Configuration incl
 <InlineAlert variant="info" slots="text"/>
 
 If your Commerce instance Adobe I/O Events for Adobe Commerce module version is 1.6.0 or greater, run the commerce-event-subscribe script to automatically subscribe to the Commerce events in `scripts/commerce-event-subscribe/config/commerce-event-subscribe.json`
+
 ```bash
 npm run commerce-event-subscribe
 ```
+
 Otherwise, follow the steps below to subscribe to the events manually.
 
 Use the `bin/magento events:subscribe` command to subscribe to events, as described in [Subscribe and register events](../events/configure-commerce.md#subscribe-and-register-events). The following table defines the events for each supported entity that you must subscribe to and lists the required fields, if applicable.

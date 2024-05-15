@@ -9,6 +9,18 @@ keywords:
 
 These release notes describe the latest version of Adobe Commerce Webhooks.
 
+## Version 1.4.0
+
+### Release date
+
+May 15, 2024
+
+### Enhancements
+
+* Added the ability to enable [digital signatures for webhooks](signature-verification.md). <!--CEXT-3047 -->
+
+* Updated the list of disallowed webhooks. <!--CEXT-3132 -->
+
 ## Version 1.3.1
 
 ### Release date

@@ -34,6 +34,10 @@ module.exports = [
           path: "/admin-ui-sdk/extension-points/order/index.md",
           pages: [
             {
+              title: "get custom fees",
+              path: "/admin-ui-sdk/extension-points/order/custom-fees.md"
+            },
+            {
               title: "grid columns",
               path: "/admin-ui-sdk/extension-points/order/grid-columns.md"
             },

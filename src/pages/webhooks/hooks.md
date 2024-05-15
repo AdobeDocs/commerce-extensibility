@@ -221,6 +221,10 @@ Commerce sends the following object to the remote application:
 }
 ```
 
+<InlineAlert variant="warning" slots="text" />
+
+Some sensitive data, such as passwords, can be sanitized in the webhook payload due to security concerns.
+
 ### Field converters
 
 You can implement a converter class to convert a field to a different data type. For example, Commerce stores order IDs as numeric values. If the hook endpoint expects order IDs to be text values, you must convert the numeric value to a string representation before sending the payload.

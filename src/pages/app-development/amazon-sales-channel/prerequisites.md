@@ -20,7 +20,7 @@ To install the reference app, you must:
 
 *  Have access to an Adobe Commerce 2.4.5+ on cloud infrastructure or to an on-premises instance.
 
-*  (Recommended) Install [Adobe Commerce Admin UI SDK](../admin-ui-sdk/index.md), which enables you to attach the App Builder application to the Adobe Commerce Admin.
+*  (Recommended) Install [Adobe Commerce Admin UI SDK](../../admin-ui-sdk/index.md), which enables you to attach the App Builder application to the Adobe Commerce Admin.
 
 *  Install [nodeJS 16.13+](https://nodejs.org/en/download) as your JavaScript runtime.
 
@@ -32,11 +32,11 @@ Before you begin the process of installing the Adobe Sales Channel reference app
 
 ### Configure I/O Events for Adobe Commerce
 
-Follow the instructions in [Configure Adobe Commerce](../events/configure-commerce.md/) to enable communication with Adobe I/O and create an event provider. Specifically, follow these procedures:
+Follow the instructions in [Configure Adobe Commerce](../../events/configure-commerce.md/) to enable communication with Adobe I/O and create an event provider. Specifically, follow these procedures:
 
-* [Configure the Adobe I/O connection](../events/configure-commerce.md#configure-the-adobe-io-connection)
+* [Configure the Adobe I/O connection](../../events/configure-commerce.md#configure-the-adobe-io-connection)
 
-* [Create an event provider and complete the Commerce configuration](../events/configure-commerce.md#create-an-event-provider-and-complete-the-commerce-configuration)
+* [Create an event provider and complete the Commerce configuration](../../events/configure-commerce.md#create-an-event-provider-and-complete-the-commerce-configuration)
 
 Do not perform the **Subscribe and register events** procedure. The Amazon Sales Channel app [installation](installation.md) instructions describe the process for this app.
 

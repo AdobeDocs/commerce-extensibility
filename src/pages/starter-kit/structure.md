@@ -45,7 +45,9 @@ The following diagram shows the directory structure of the starter kit project:
 |   |   |   |__ webhook
 |   |   |__ webhook
 |   |   |   |__ <action>
-|   |__ onboarding
+|   |__ scripts
+|   |   |__ commerce-event-subscribe
+|   |   |__ onboarding
 |   |__ test
 |   |__ utils
 ```

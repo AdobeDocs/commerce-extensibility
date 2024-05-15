@@ -81,9 +81,13 @@ File | Purpose
 `transformer.js` | Implements the logic to transform the incoming event payload to make it suitable for the target API being called to propagate the changes.
 `validator.js` | Implements the logic to validate the incoming event payload.
 
-### `onboarding` directory
+### `scripts/onboarding` directory
 
 The `onboarding` directory contains the scripting needed to install and set up the starter kit. The `./onboarding/custom/starter-kit-registrations.json` configuration file creates all the registrations for all entities that are present in the repo's `app.config.yaml` file. You can edit this file to remove any unnecessary Commerce or back office registrations. [Onboarding](./create-integration.md#onboarding) describes the installation process.
+
+### `scripts/commerce-event-subscribe` directory
+
+The `commerce-event-subscribe` directory contains the scripting needed to subscribe the Commerce event provider created during onboarding to the Commerce events. The `./onboarding/custom/starter-kit-registrations.json` configuration file contains all the Commerce events to subscribe to. You can edit this file to add, remove or adapt the events needed by your project. [Onboarding](./create-integration.md#onboarding) describes the installation process.
 
 ### `test` directory
 

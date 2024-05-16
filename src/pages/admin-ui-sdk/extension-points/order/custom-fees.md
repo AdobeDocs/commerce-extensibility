@@ -48,7 +48,7 @@ order: {
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-`id` | string | Yes | A unique ID that identifies the fee/discount. We recommended using the format: <extensionId>::<fee/discountName>
+`id` | string | Yes | A unique ID that identifies the fee/discount. We recommended using the format: `<extensionId>`::`<fee/discountName>`
 `label` | string | Yes | The name of the fee/discount to display.
 `value` | float | Yes | The amount of fee/discount to charge, in the base currency.
 `orderMinimumAmount` | float | No | The minimum amount of the order to apply the fee/discount. Default value: `0`.

@@ -200,8 +200,7 @@ By default, the `scripts/onboarding/config/starter-kit-registrations.json` confi
 
 Run the following command to generate the IO Event providers and the registrations for your starter kit project.
 
-IO Event providers and registratiosn will be configured automatically if you are using 
-Adobe I/O Events version is `1.6.0` or later.
+IO Event providers and registratiosn will be configured automatically if you are using Adobe I/O Events version is `1.6.0` or later.
 
 ```bash
 npm run onboard
@@ -268,13 +267,13 @@ You must configure Commerce to communicate with your project. Configuration incl
 
 **Subscribe to events in Adobe Commerce**
 
-    To automatically subscribe to Commerce events using Adobe I/O Events version `1.6.0` or later, run the `commerce-event-subscribe` script in the `scripts/commerce-event-subscribe/config/` directory.
+To automatically subscribe to Commerce events using Adobe I/O Events version `1.6.0` or later, run the `commerce-event-subscribe` script in the `scripts/commerce-event-subscribe/config/` directory.
 
-    ```bash
-    npm run commerce-event-subscribe
-    ```
+```bash
+npm run commerce-event-subscribe
+```
 
-    For earlier versions, follow the steps below to subscribe to the events manually.
+For earlier versions, follow the steps below to subscribe to the events manually.
 
 Use the `bin/magento events:subscribe` command to subscribe to events, as described in [Subscribe and register events](../events/configure-commerce.md#subscribe-and-register-events). The following table defines the events for each supported entity that you must subscribe to and lists the required fields, if applicable.
 

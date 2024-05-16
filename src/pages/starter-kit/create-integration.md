@@ -123,7 +123,7 @@ If you are running Adobe Commerce 2.4.6 or higher, the modules that enable event
 
 <InlineAlert variant="info" slots="text"/>
 
-By using an Adobe I/O Events for Commerce module version equal or greater to 1.6.0 you will benefit from some additional automated steps during the onboarding process.
+Using Adobe I/O Events for Commerce `1.6.0` or later will automate some steps of the onboarding process detailed in the following section.
 
 ### Download and configure the starter kit
 

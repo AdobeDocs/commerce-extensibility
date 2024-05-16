@@ -10,10 +10,6 @@ keywords:
  - Tools
 ---
 
-import BetaNote from '/src/_includes/starter-kit-beta.md'
-
-<BetaNote />
-
 # Create a new data flow
 
 Coming soon!

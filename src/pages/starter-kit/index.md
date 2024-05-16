@@ -8,10 +8,6 @@ keywords:
 
 # Integrate your backoffice systems
 
-import BetaNote from '/src/_includes/starter-kit-beta.md'
-
-<BetaNote />
-
 Use the Adobe Commerce integration starter kit to enrich your shopping experience and support multichannel, global commerce for B2B, B2C, and hybrid businesses.
 
 <DiscoverBlock slots="link, text"/>

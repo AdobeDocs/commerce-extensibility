@@ -22,10 +22,7 @@ import DataOrder from './code-samples/data-order.md';
 import DataProduct from './code-samples/data-product.md';
 import DataShipment from './code-samples/data-shipment.md';
 import DataStock from './code-samples/data-stock.md';
-import BetaNote from '/src/_includes/starter-kit-beta.md';
 import integration from '/src/_includes/integration.md'
-
-<BetaNote />
 
 # Enrich the shopping experience
 

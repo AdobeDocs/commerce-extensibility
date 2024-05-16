@@ -10,10 +10,7 @@ keywords:
  - Tools
 ---
 
-import BetaNote from '/src/_includes/starter-kit-beta.md'
 import ProjectRequirements from '/src/_includes/project-requirements.md'
-
-<BetaNote />
 
 # Install Adobe Commerce integration starter kit
 

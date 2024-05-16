@@ -87,7 +87,7 @@ To download a `.json` file containing your workspace configuration:
 
 1. Click the **Download All** button in the top-right corner.
 
-   The `<Workspace-name>.json` file downloads automatically. In this example, the file is named `977AmethystGazelle-1340225-Stage.json`. Make sure to rename the file to `workspace.json` and save it in the `scripts/onboarding/config/workspace.json` directory of the starter kit.  
+   The `<Workspace-name>.json` file downloads automatically. In this example, the file is named `977AmethystGazelle-1340225-Stage.json`. Rename the file `workspace.json` and save it in the `scripts/onboarding/config/` directory of the starter kit.  
 
 #### Create an integration in Adobe Commerce
 

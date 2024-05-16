@@ -82,7 +82,7 @@ For more details about unit testing, refer to [Testing a Serverless Action](http
 
 The starter kit comes with predefined events for each entity. If you need to add a new event to an entity or modify an existing one, use the following steps.
 
-1. Add the event to the `./onboarding/config/events.json` file under the corresponding entity. For example, if the event is related to a customer and is coming from commerce, you should add it under the `customer` entity in the `commerce` section. To modify an existing event, edit the event in the corresponding section of the `./onboarding/config/events.json` file.
+1. Add the event to the `scripts/onboarding/config/events.json` file under the corresponding entity. For example, if the event is related to a customer and is coming from commerce, you should add it under the `customer` entity in the `commerce` section. To modify an existing event, edit the event in the corresponding section of the `./onboarding/config/events.json` file.
   
   ```json
       "customer": {

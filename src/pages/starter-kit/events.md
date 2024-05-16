@@ -63,7 +63,7 @@ The following entities and their corresponding events are currently available:
 
 <InlineAlert variant="tip" slots="text"/>
 
-The list of entities and their corresponding `backoffice` events is available in the starter kit's `onboarding/config/events.json` file.
+The list of entities and their corresponding `backoffice` events is available in the starter kit's `scripts/onboarding/config/events.json` file.
 
 The following JSON payload demonstrates a `product` entity with a `create` event:
 

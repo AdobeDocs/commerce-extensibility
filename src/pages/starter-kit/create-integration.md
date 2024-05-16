@@ -34,7 +34,7 @@ The best part about the integration starter kit is that it provides a standardiz
 
 <InlineAlert variant="info" slots="text"/>
 
-Because the starter kit is a scaffolding designed to make custom integrations easier, Adobe does not provide support services for starter kit issues.
+Support services for the starter kit include the basic functionality and configuration. Because the starter kit is a scaffolding designed to make custom integrations easier, Adobe does not provide support services for modified code or your custom integrations.
 
 ### Onboarding
 

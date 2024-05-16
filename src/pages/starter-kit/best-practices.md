@@ -10,10 +10,6 @@ keywords:
  - Tools
 ---
 
-import BetaNote from '/src/_includes/starter-kit-beta.md'
-
-<BetaNote />
-
 # Best practices
 
 This page is under development and will be included with the initial release.

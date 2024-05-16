@@ -123,12 +123,12 @@ If you are running Adobe Commerce 2.4.6 or higher, the modules that enable event
 
 ### Download and configure the starter kit
 
-Use the following steps to download and configure the Adobe Commerce integration starter kit. The starter kit is located in a [public repository](https://github.com/magento/starter-kit).
+Use the following steps to download and configure the Adobe Commerce integration starter kit. The starter kit is located in a [public repository](https://github.com/adobe/commerce-integration-starter-kit).
 
 1. Clone the repo using SSH:
 
    ```bash
-   git clone git@github.com:magento/starter-kit.git
+   git clone git@github.com:adobe/commerce-integration-starter-kit.git
    ```
 
 1. Change directories to the downloaded repo and copy the `env.dist` file.

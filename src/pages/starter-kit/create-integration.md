@@ -232,8 +232,9 @@ Check your App in the Developer Console to confirm the registrations were create
 
 <InlineAlert variant="info" slots="text"/>
 
-If your Commerce instance Adobe I/O Events for Adobe Commerce module version is 1.6.0 or greater and the onboarding script completed successfully, the following steps are not required. The onboarding script will configure the Adobe Commerce instance automatically.
-Skip to the next section, or follow the steps in the next section to validate that the configuration is correct.
+The following steps are not required when using Adobe I/O Events version `1.6.0` or later. The onboarding script will configure the Adobe Commerce instance automatically.
+
+Proceed to the next section, or continue following the steps in this section to validate that the configuration is correct.
 
 You must configure Commerce to communicate with your project. Configuration includes copying and pasting the contents of the workspace configuration file that you downloaded from the Adobe Developer Console.
 

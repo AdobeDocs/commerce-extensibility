@@ -87,7 +87,7 @@ The `onboarding` directory contains the scripting needed to install and set up t
 
 ### `scripts/commerce-event-subscribe` directory
 
-The `commerce-event-subscribe` directory contains the scripting needed to subscribe the Commerce event provider created during onboarding to the Commerce events. The `./onboarding/custom/starter-kit-registrations.json` configuration file contains all the Commerce events to subscribe to. You can edit this file to add, remove or adapt the events needed by your project. [Onboarding](./create-integration.md#onboarding) describes the installation process.
+The `commerce-event-subscribe` directory contains the script to subscribe the Commerce event provider, which was created during onboarding, to the Commerce events. The `scripts/onboarding/custom/starter-kit-registrations.json` configuration file contains all the Commerce events you want subscribe to. Edit this file to add, remove, or modify the events necessary for your project. [Onboarding](./create-integration.md#onboarding) describes the installation process.
 
 ### `test` directory
 

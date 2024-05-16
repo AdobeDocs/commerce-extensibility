@@ -10,10 +10,7 @@ keywords:
  - Tools
 ---
 
-import BetaNote from '/src/_includes/starter-kit-beta.md'
 import ProjectRequirements from '/src/_includes/project-requirements.md'
-
-<BetaNote />
 
 # Install Adobe Commerce integration starter kit
 
@@ -127,9 +124,13 @@ If you are running Adobe Commerce 2.4.6 or higher, the modules that enable event
 
 ### Download and configure the starter kit
 
-In the Beta phase of the starter kit project, an Adobe Commerce representative will send you a ZIP file containing the starter kit repo. For GA, the starter kit will be available in the Adobe Commerce Marketplace.
+Use the following steps to download and configure the Adobe Commerce integration starter kit. The starter kit is located in a [public repository](https://github.com/adobe/commerce-integration-starter-kit).
 
-1. Download and unzip the starter kit repo.
+1. Clone the repo using SSH:
+
+   ```bash
+   git clone git@github.com:adobe/commerce-integration-starter-kit.git
+   ```
 
 1. Change directories to the downloaded repo and copy the `env.dist` file.
 

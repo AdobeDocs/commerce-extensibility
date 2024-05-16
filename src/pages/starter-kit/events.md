@@ -10,10 +10,7 @@ keywords:
  - Tools
 ---
 
-import BetaNote from '/src/_includes/starter-kit-beta.md'
 import actions from '/src/_includes/actions.md'
-
-<BetaNote />
 
 # Event-based integrations
 

@@ -10,10 +10,6 @@ keywords:
  - Tools
 ---
 
-import BetaNote from '/src/_includes/starter-kit-beta.md'
-
-<BetaNote />
-
 # Starter kit structure
 
 The Adobe Commerce integration starter kit provides boilerplate code to synchronize the following entities across systems:

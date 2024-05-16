@@ -199,7 +199,9 @@ By default, the `scripts/onboarding/config/starter-kit-registrations.json` confi
 **Execute the onboarding**
 
 Run the following command to generate the IO Event providers and the registrations for your starter kit project.
-If your Adobe I/O Events for Adobe Commerce module version is 1.6.0 or greater, it will also be automatically configured by the onboarding script.
+
+IO Event providers and registratiosn will be configured automatically if you are using 
+Adobe I/O Events version is `1.6.0` or later.
 
 ```bash
 npm run onboard

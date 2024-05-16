@@ -200,7 +200,7 @@ By default, the `scripts/onboarding/config/starter-kit-registrations.json` confi
 
 Run the following command to generate the IO Event providers and the registrations for your starter kit project.
 
-IO Event providers and registratiosn will be configured automatically if you are using Adobe I/O Events version is `1.6.0` or later.
+IO Event providers and registrations will be configured automatically if you are using Adobe I/O Events version is `1.6.0` or later.
 
 ```bash
 npm run onboard

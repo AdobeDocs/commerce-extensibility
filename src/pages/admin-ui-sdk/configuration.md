@@ -48,12 +48,12 @@ bin/magento cache:clean admin_ui_sdk
 
 ## Test with a sample app
 
-You can download a sample app from the [Commerce UI test extension repository](https://github.com/magento/app-builder-samples) to gain insight on how the Admin SDK injects menus and pages into the Admin.
+You can download a sample app from the [Commerce UI test extension repository](https://github.com/adobe/adobe-commerce-samples/tree/main/sample-extension) to gain insight on how the Admin SDK injects menus and pages into the Admin.
 
 1. Run the following command to clone and sync the repository:
 
    ```bash
-   git clone git@github.com:magento/app-builder-samples.git
+   git clone git@github.com:adobe/adobe-commerce-samples.git
    ```
 
 1. Change directories to the cloned repository's root directory.
@@ -77,24 +77,11 @@ You can download a sample app from the [Commerce UI test extension repository](h
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Headers': '*'
       });
-      let json_response;
       
       console.log(url.parse(req.url,true).pathname);
-      if (url.parse(req.url,true).pathname == "/config") {
-        json_response = {
-          baseUrl: "https://localhost.adobe.io:9090/",
-          apiKey: "apiKey",
-          auth: {
-            schema: "Bearer",
-            imsToken: "dummyToken"
-          },
-          imsOrg: "imsOrg",
-          version: 1,
-          service: "commerce",
-          extensionPoint: "backend-ui"
-        }
-      } else {
-        json_response = [{
+      
+      const json_response = [
+        {
           "name": "test-extension",
           "title": "Test extension",
           "description": "No",
@@ -111,9 +98,10 @@ You can download a sample app from the [Commerce UI test extension repository](h
             "supportEmail": "test@adobe.com",
             "appId": "4a4c7cf8-bd64-4649-b8ed-662cd0d9c918"
           },
-          "status": "PUBLISHED" }]
+          "status": "PUBLISHED" 
         }
-        //console.log(json_response);
+      ]
+
       res.end( JSON.stringify(json_response) );
     }).listen(9090);
     ```
@@ -126,23 +114,32 @@ You can download a sample app from the [Commerce UI test extension repository](h
 
 1. Make sure you have access to the localhost server configuration by entering the following URL in your browser:
 
-   `https://localhost:9090/config`
+   `https://localhost:9090`
 
    The browser displays a JSON file similar to the following:
 
    ```json
-   {
-    "baseUrl":"https://localhost:9090/",
-    "apiKey":"apiKey",
-    "auth":{
-      "schema":"Bearer",
-      "imsToken":"dummyToken"
-    },
-    "imsOrg":"imsOrg",
-    "version":1,
-    "service":"commerce",
-    "extensionPoint":"backend-ui"
-    }
+    [
+      {
+        "name": "test-extension",
+        "title": "Test extension",
+        "description": "No",
+        "icon": "no",
+        "publisher": "aQQ6300000008LEGAY",
+        "endpoints": {
+          "commerce/backend-ui/1": {
+            "view": [{
+              "href": "https://localhost:9080/index.html"
+            }]
+          }
+        },
+        "xrInfo": {
+          "supportEmail": "test@adobe.com",
+          "appId": "4a4c7cf8-bd64-4649-b8ed-662cd0d9c918"
+        },
+        "status": "PUBLISHED"
+      }
+    ]
    ```
 
 1. Run your extension locally.

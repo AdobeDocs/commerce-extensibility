@@ -19,7 +19,7 @@ The fee amounts are in the base currency of the store.
 
 ## Example customization​
 
-The following example enables the display of two fees on the Admin and storefront. The first instance applies a $1.00 fee to all orders. The second instance applied a fee of $5.00 only when the order total is at least $20.00
+The following example enables the display of two fees on the Admin and storefront. The first instance applies a $1.00 fee to all orders. The second instance applies a fee of $5.00 when the order total is $20.00 or more.
 
 ```javascript
 
@@ -48,7 +48,7 @@ order: {
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-`id` | string | Yes | A unique ID that identifies the fee/discount. We recommended using the format: `<extensionId>`::`<fee/discountName>`
+`id` | string | Yes | A unique ID that identifies the fee/discount. We recommended using the format: `<extensionId>`::`<fee/discountName>`.
 `label` | string | Yes | The name of the fee/discount to display.
 `value` | float | Yes | The amount of fee/discount to charge, in the base currency.
 `orderMinimumAmount` | float | No | The minimum amount of the order to apply the fee/discount. Default value: `0`.

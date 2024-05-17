@@ -70,7 +70,7 @@ Adjust these values to hide any secrets you want to pass as `params` to your run
 
 The starter kit provides unit tests for most of the predefined runtime actions. These tests are located in the `./test/actions` folder.
 
-Additionally, unit tests for the onboarding script can be found in the `.test/onboarding` folder.
+Additionally, unit tests for the onboarding script can be found in the `.test/scripts` folder.
 
 For more details about unit testing, refer to [Testing a Serverless Action](https://developer.adobe.com/app-builder/docs/resources/barcode-reader/test/).
 

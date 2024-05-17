@@ -88,7 +88,7 @@ To download a `.json` file containing your workspace configuration:
 
 1. Click the **Download All** button in the top-right corner.
 
-   The `<Workspace-name>.json` file downloads automatically. In this example, the file is named `977AmethystGazelle-1340225-Stage.json`.
+   The `<Workspace-name>.json` file downloads automatically. In this example, the file is named `977AmethystGazelle-1340225-Stage.json`. Rename the file `workspace.json` and save it in the `scripts/onboarding/config/` directory of the starter kit.  
 
 #### Create an integration in Adobe Commerce
 
@@ -121,6 +121,10 @@ Use the following steps to create and activate an integration.
 #### Install Adobe I/O Events for Adobe Commerce (Commerce 2.4.4 and 2.4.5 only)
 
 If you are running Adobe Commerce 2.4.6 or higher, the modules that enable eventing are installed automatically. Skip to the next step. If you are running Commerce 2.4.4 or 2.4.5, you must install modules to enable eventing, as described in [Install Adobe I/O Events for Adobe Commerce](../events/installation.md).
+
+<InlineAlert variant="info" slots="text"/>
+
+Using Adobe I/O Events for Commerce `1.6.0` or later will automate some steps of the onboarding process detailed in the following section.
 
 ### Download and configure the starter kit
 
@@ -185,7 +189,7 @@ The next steps in the onboarding process configures event registrations and comp
 
 **Configure the event registrations**
 
-By default, the `./onboarding/custom/starter-kit-registrations.json` config file creates all the registrations for all entities that are present in the repo's `app.config.yaml` file. You can edit this file to remove any unnecessary Commerce or back office registrations. For example, the YAML file shown in the [Configure the project](#configure-the-starter-kit) section comments out the `product-backoffice` package. In this case, you must remove backoffice from the product entity:
+By default, the `scripts/onboarding/config/starter-kit-registrations.json` config file creates all the registrations for all entities that are present in the repo's `app.config.yaml` file. You can edit this file to remove any unnecessary Commerce or back office registrations. For example, the YAML file shown in the [Configure the project](#configure-the-starter-kit) section comments out the `product-backoffice` package. In this case, you must remove backoffice from the product entity:
 
 ```json
 {
@@ -200,6 +204,8 @@ By default, the `./onboarding/custom/starter-kit-registrations.json` config file
 **Execute the onboarding**
 
 Run the following command to generate the IO Event providers and the registrations for your starter kit project.
+
+IO Event providers and registrations will be configured automatically if you are using Adobe I/O Events version is `1.6.0` or later.
 
 ```bash
 npm run onboard
@@ -230,6 +236,12 @@ Check your App in the Developer Console to confirm the registrations were create
 
 **Complete the Adobe Commerce eventing configuration**
 
+<InlineAlert variant="info" slots="text"/>
+
+The following steps are not required when using Adobe I/O Events version `1.6.0` or later. The onboarding script will configure the Adobe Commerce instance automatically.
+
+Proceed to the next section, or continue following the steps in this section to validate that the configuration is correct.
+
 You must configure Commerce to communicate with your project. Configuration includes copying and pasting the contents of the workspace configuration file that you downloaded from the Adobe Developer Console.
 
 1. In the Commerce Admin, navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Adobe I/O Events** > **General configuration**. The following screen displays.
@@ -259,6 +271,14 @@ You must configure Commerce to communicate with your project. Configuration incl
 1. Click **Save Config**.
 
 **Subscribe to events in Adobe Commerce**
+
+To automatically subscribe to Commerce events using Adobe I/O Events version `1.6.0` or later, run the `commerce-event-subscribe` script in the `scripts/commerce-event-subscribe/config/` directory.
+
+```bash
+npm run commerce-event-subscribe
+```
+
+For earlier versions, follow the steps below to subscribe to the events manually.
 
 Use the `bin/magento events:subscribe` command to subscribe to events, as described in [Subscribe and register events](../events/configure-commerce.md#subscribe-and-register-events). The following table defines the events for each supported entity that you must subscribe to and lists the required fields, if applicable.
 

@@ -9,6 +9,18 @@ keywords:
 
 These release notes describe the latest version of Adobe Commerce Webhooks.
 
+## Version 1.5.0
+
+### Release date
+
+May 15, 2024
+
+### Changes
+
+* The Admin configuration UI for webhooks was removed as part of a security risk mitigation. Webhooks provide developer-oriented functionality and the Admin UI gave an unprecedented amount of access to admins, which could be inappropriate in some cases. All other webhooks functionality is still supported.
+
+Upgrading to the latest version could impact existing webhooks. If you previously had webhooks that were created in the Admin UI, you must recreate them in an XML file. <!--CEXT-3241 -->
+
 ## Version 1.4.0
 
 ### Release date
@@ -68,7 +80,7 @@ February 7, 2024
 
 ### Enhancements
 
-* Added the ability to [manage webhooks from the Admin](admin-configuration.md), at **System** > **Webhooks**. You can now perform the following tasks:
+* Added the ability to manage webhooks from the Admin, at **System** > **Webhooks**. You can now perform the following tasks:
 
   * Create new webhooks.
   * Modify webhooks that are defined in an XML file.

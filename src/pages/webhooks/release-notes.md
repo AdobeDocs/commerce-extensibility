@@ -17,7 +17,9 @@ May 15, 2024
 
 ### Changes
 
-* Removed Admin configuration for webhooks. <!--CEXT-3241 -->
+* The Admin configuration UI for webhooks is no longer supported. If an admin provided edit access to a malicious user, the user could potentially create a webhook that represented a vulnerability. This issue only impacted on-prem installations and required a redeploy. Creating and editing webhooks via XML is still supported.
+
+  Upgrading to the latest version could impact your existing webhooks. If you had webhooks that were created in the Admin UI, you must recreate them in the XML file. <!--CEXT-3241 -->
 
 ## Version 1.4.0
 

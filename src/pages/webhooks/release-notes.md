@@ -9,6 +9,16 @@ keywords:
 
 These release notes describe the latest version of Adobe Commerce Webhooks.
 
+## Version 1.5.0
+
+### Release date
+
+May 15, 2024
+
+### Changes
+
+* Removed Admin configuration for webhooks. <!--CEXT-3241 -->
+
 ## Version 1.4.0
 
 ### Release date

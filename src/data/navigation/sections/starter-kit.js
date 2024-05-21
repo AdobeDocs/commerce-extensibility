@@ -16,11 +16,14 @@ module.exports = [
                 title: "Explore the structure",
                 path: "/starter-kit/structure.md"
             },
-            {
-                title: "Build & Customize",
-                header: true,
-                path: "/starter-kit/events.md"
-            },
+        ],
+    },
+    {
+        title: "Build & Customize",
+        header: true,
+        path: "/starter-kit/events.md",
+        pages: [
+
             {
                 title: "Event-based integrations",
                 path: "/starter-kit/events.md"   

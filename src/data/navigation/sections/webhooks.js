@@ -32,10 +32,6 @@ module.exports = [
       path: "/webhooks/signature-verification.md"
     },
     {
-      title: "Admin configuration",
-      path: "/webhooks/admin-configuration.md"
-    },
-    {
       title: "Command reference",
       path: "/webhooks/commands.md",
     },

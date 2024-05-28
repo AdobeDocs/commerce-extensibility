@@ -72,7 +72,8 @@ You cannot create an event provider until you have configured and saved a worksp
    **Note**: You must [enable cron](#check-cron-and-message-queue-configuration) so that Commerce can send events to the endpoint.
 
 1. Enter the merchant's company name in the **Merchant ID** and the environment name in **Environment ID** fields. The values of these fields will be combined and added as a `source` attribute to your event data to identify the source of the events. It can be useful for event filtration or other logic if you are using the same event provider for several environments or projects.
-   You must use alphanumeric and underscores only.
+
+   **NOTE**: The **Merchant ID** and **Environment ID** fields only support alphanumeric characters and underscores.
 
 ```javascript
 "source": "<merchant-id>.<environment-id>"

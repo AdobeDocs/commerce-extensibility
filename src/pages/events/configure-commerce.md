@@ -30,20 +30,28 @@ You must configure Commerce to communicate with your project. Configuration incl
 
 1. Copy the contents of the `<workspace-name>.json` file into the **Adobe I/O Workspace Configuration** field.
 
-1. Enter a unique identifier in the **Adobe Commerce Instance ID** field. This value identifies your project and routes events from Adobe Commerce to the correct event provider in Adobe I/O. The value of this field is visible in App Builder during the creation of Event Registration.
+1. Enter a unique identifier in the **Adobe Commerce Instance ID** field. This value identifies your project and routes events from Adobe Commerce to the correct `Event Provider` in Adobe I/O. The value of this field is visible in App Builder during the [creation of Event Registration](#subscribe-and-register-events).
 
    **NOTE**: The **Adobe Commerce Instance ID** field only support alphanumeric characters, hyphens and underscores.
 
 1. Click **Save Config**, but do not leave the page. The next section creates an event provider, which is necessary to complete the configuration.
 
-## Create an event provider
+## Create an Event Provider
 
-You cannot create an event provider until you have configured and saved a workspace file and instance ID values. If you are using JWT for server-to-server authentication, you must also have previously specified the private key.
+Our next step is to create an `Event Provider` in Adobe I/O Events to associate our Commerce Events subscriptions with the provider, the event subscriptions in Adobe Commerce will be created as `Event Metadata` in Adobe I/O Events infrastructure.
+
+Each `Event Provider` can have multiple event subscriptions (`Event Metadata`)  linked to it. The events subscriptions will be automatically linked to your `Event Provider` whenever you subscribe with `events:subscribe` CLI command, or you can manually synchronize all subscriptions with `events:metadata:populate` command.
+
+You can find the list of Event Providers, created in your organization, in App Builder UI during [creation of Event Registration in App Builder](#subscribe-and-register-events).
+
+The providers can be also managed using `aio` CLI tool, see [Provider Commands](https://developer.adobe.com/events/docs/guides/cli/#provider-commands) for more information.
+
+**NOTE**: You cannot create an event provider until you have configured and saved a workspace file and instance ID values. If you are using JWT for server-to-server authentication, you must also have previously specified the private key.
 
 1. Run the following command to create an event provider:
 
    ```bash
-   bin/magento events:create-event-provider --label "<unique_provider_label>" --description "<provider description>"
+   bin/magento events:create-event-provider --label "Provider Label" --description "Provider description"
    ```
 
    For example:
@@ -51,6 +59,8 @@ You cannot create an event provider until you have configured and saved a worksp
    ```bash
    bin/magento events:create-event-provider --label "My_server_provider" --description "Provides out-of-process extensibility for Adobe Commerce"
    ```
+
+   The `label` field will be shown as the name of the created Event Provider in the App Builder UI. The `description` field provides more context about the created Event Provider.
 
    **Note**: The label can contain English alphanumeric characters and underscores (_) only. The first character must be a letter.
 

@@ -30,7 +30,9 @@ You must configure Commerce to communicate with your project. Configuration incl
 
 1. Copy the contents of the `<workspace-name>.json` file into the **Adobe I/O Workspace Configuration** field.
 
-1. Enter a unique identifier in the **Adobe Commerce Instance ID** field. This value is an instance identification of your project that will be used in Adobe I/O event provider to route events from Adobe Commerce Instance to the correct event provider. The value of this field will also be shown in the App Builder during the creation of Event Registration. This value must contain English alphanumeric characters, underscores (_), and hyphens (-) only.
+1. Enter a unique identifier in the **Adobe Commerce Instance ID** field. This value identifies your project and routes events from Adobe Commerce to the correct event provider in Adobe I/O. The value of this field is visible in App Builder during the creation of Event Registration.
+
+   **NOTE**: The **Adobe Commerce Instance ID** field only support alphanumeric characters, hyphens and underscores.
 
 1. Click **Save Config**, but do not leave the page. The next section creates an event provider, which is necessary to complete the configuration.
 

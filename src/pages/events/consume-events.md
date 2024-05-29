@@ -19,7 +19,7 @@ When an Adobe I/O event registration is created, the subscribed events will by d
 
 ## Using a Webhook URL
 
-When creating or editing an event registration, a webhook URL can be registered. Doing so will cause subscribed Commerce events sent to Adobe I/O Events to be forwarded to the specified webhook URL. Seeee [Introduction to Adobe I/O Events Webhooks](https://developer.adobe.com/events/docs/guides/) for more details.
+When creating or editing an event registration, a webhook URL can be registered. Doing so will cause subscribed Commerce events sent to Adobe I/O Events to be forwarded to the specified webhook URL. See [Introduction to Adobe I/O Events Webhooks](https://developer.adobe.com/events/docs/guides/) for more details.
 
 ## Using a Runtime Action
 

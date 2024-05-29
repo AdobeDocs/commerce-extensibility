@@ -42,6 +42,18 @@ module.exports = [
   {
     title: "Consume events",
     path: "/events/consume-events.md",
+    pages: [
+      {
+        title: "Examples of Consuming Events",
+        path: "/events/consume-events-examples/index.md",
+        pages: [
+          {
+            title: "Runtime Action with a Callback to Commerce",
+            path: "/events/consume-events-examples/runtime-action-commerce-callback.md"
+          }
+        ]
+      }
+    ]
   },
   {
     title: "Troubleshooting",

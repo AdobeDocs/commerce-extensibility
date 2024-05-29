@@ -46,7 +46,9 @@ You can find the list of Event Providers, created in your organization, in App B
 
 The providers can be also managed using `aio` CLI tool, see [Provider Commands](https://developer.adobe.com/events/docs/guides/cli/#provider-commands) for more information.
 
-**NOTE**: You cannot create an event provider until you have configured and saved a workspace file and instance ID values. If you are using JWT for server-to-server authentication, you must also have previously specified the private key.
+<InlineAlert variant="info" slots="text"/>
+
+You cannot create an event provider until you have configured and saved instance ID values and a workspace file. If you are using JWT for server-to-server authentication, you must have previously specified the private key.
 
 1. Run the following command to create an event provider:
 

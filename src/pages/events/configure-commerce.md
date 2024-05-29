@@ -62,7 +62,7 @@ You cannot create an event provider until you have configured and saved instance
    bin/magento events:create-event-provider --label "My_server_provider" --description "Provides out-of-process extensibility for Adobe Commerce"
    ```
 
-   The `label` field will be shown as the name of the created Event Provider in the App Builder UI. The `description` field provides more context about the created Event Provider.
+   The `label` field displays as the name of the created Event Provider in the App Builder UI. The `description` field provides more context about the Event Provider.
 
    **Note**: The label can contain English alphanumeric characters and underscores (_) only. The first character must be a letter.
 

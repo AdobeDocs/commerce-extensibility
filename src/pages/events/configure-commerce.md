@@ -44,7 +44,7 @@ Each `Event Provider` can link to multiple event subscriptions (`Event Metadata`
 
 You can find the list of Event Providers created in your organization, in the App Builder UI when [creating an Event Registration in App Builder](#subscribe-and-register-events).
 
-The providers can be also managed using `aio` CLI tool, see [Provider Commands](https://developer.adobe.com/events/docs/guides/cli/#provider-commands) for more information.
+You can also use the `aio` CLI tool to manage providers. See [Provider Commands](https://developer.adobe.com/events/docs/guides/cli/#provider-commands) for more information.
 
 <InlineAlert variant="info" slots="text"/>
 

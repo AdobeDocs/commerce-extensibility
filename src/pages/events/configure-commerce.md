@@ -42,7 +42,7 @@ Create an `Event Provider` in Adobe I/O Events to associate the Commerce Events 
 
 Each `Event Provider` can link to multiple event subscriptions (`Event Metadata`). The event's subscriptions will be automatically linked to your `Event Provider` whenever you subscribe with the `events:subscribe` CLI command. You can also manually synchronize all subscriptions with the `events:metadata:populate` command.
 
-You can find the list of Event Providers, created in your organization, in App Builder UI during [creation of Event Registration in App Builder](#subscribe-and-register-events).
+You can find the list of Event Providers created in your organization, in the App Builder UI when [creating an Event Registration in App Builder](#subscribe-and-register-events).
 
 The providers can be also managed using `aio` CLI tool, see [Provider Commands](https://developer.adobe.com/events/docs/guides/cli/#provider-commands) for more information.
 

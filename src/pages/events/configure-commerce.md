@@ -38,7 +38,7 @@ You must configure Commerce to communicate with your project. Configuration incl
 
 ## Create an Event Provider
 
-Our next step is to create an `Event Provider` in Adobe I/O Events to associate our Commerce Events subscriptions with the provider, the event subscriptions in Adobe Commerce will be created as `Event Metadata` in Adobe I/O Events infrastructure.
+Create an `Event Provider` in Adobe I/O Events to associate the Commerce Events subscriptions with the provider. The event subscriptions in Adobe Commerce are created as `Event Metadata` in Adobe I/O Events infrastructure.
 
 Each `Event Provider` can have multiple event subscriptions (`Event Metadata`)  linked to it. The events subscriptions will be automatically linked to your `Event Provider` whenever you subscribe with `events:subscribe` CLI command, or you can manually synchronize all subscriptions with `events:metadata:populate` command.
 

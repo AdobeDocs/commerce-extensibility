@@ -25,7 +25,7 @@ When creating or editing an event registration, a webhook URL can be registered.
 
 An [Adobe I/O Runtime Action](https://developer.adobe.com/runtime/docs/guides/overview/entities/#actions) can be set up to receive Commerce events in an Adobe I/O event registration. Actions can be created from JavaScript functions, as described in [Creating Actions](https://developer.adobe.com/runtime/docs/guides/using/creating_actions/). Within an action, business logic can be executed based on the received event payload, API calls can be made back to Adobe Commerce to update data or access additional information, and data can be sent to another system.
 
-Below is a JavaScript code sample that could be used to create a runtime action for consuming `observer.sales_order_save_after` events. 
+Below is a JavaScript code sample that could be used to create a runtime action for consuming `observer.sales_order_save_after` events.
 
 ```js
 const { Core } = require('@adobe/aio-sdk')
@@ -73,11 +73,13 @@ exports.main = main
 ```
 
 The `main` actions first accesses the payload for a received `observer.sales_order_save_after` event:
+
 ```js
 event_payload = params.data.value
 ```
 
 The event payload for this event may not contain the saved order's extension attributes. In that case, the extension attributes can be fetched for the specific order using a Commerce API call:
+
 ```js
   const oauth = getCommerceOauthClient(
     {
@@ -91,7 +93,8 @@ The event payload for this event may not contain the saved order's extension att
   )
   const content = await oauth.get('orders/' + event_payload.entity_id)
 ```
-In this example, functions from the `oauth1a` module, as defined in the [adobe-commerce-samples repo](https://github.com/adobe/adobe-commerce-samples/blob/main/sample-extension/actions/oauth1a.js), are used. 
+
+In this example, functions from the `oauth1a` module, as defined in the [adobe-commerce-samples repo](https://github.com/adobe/adobe-commerce-samples/blob/main/sample-extension/actions/oauth1a.js), are used.
 
 The `consumerKey`, `consumerSecret`, `accessToken`, and `accessTokenSecret` provided in the input to `getCommerceOauthClient` can be retrieved from Commerce after creating and activating an [Integration](https://experienceleague.adobe.com/en/docs/commerce-admin/systems/integrations) in the Commerce admin. These values can then be configured in an App Builder [.env file](https://developer.adobe.com/app-builder/docs/guides/configuration/#env) and then [passed as inputs to the App Builder action](https://developer.adobe.com/app-builder/docs/guides/configuration/#using-environment-variables-in-runtime-actions) through the action's configuration.
 

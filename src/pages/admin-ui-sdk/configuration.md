@@ -48,7 +48,13 @@ bin/magento cache:clean admin_ui_sdk
 
 ## Test with a sample app
 
-You can download a sample app from the [Commerce UI test extension repository](https://github.com/adobe/adobe-commerce-samples/tree/main/sample-extension) to gain insight on how the Admin SDK injects menus and pages into the Admin.
+### Prerequisites
+
+* Adobe Commerce instance installed on local machine.
+
+### Configuration
+
+You can download a sample app from the [Adobe Commerce Samples repository](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/menu/custom-menu) to gain insight on how the Admin SDK injects menus and pages into the Admin.
 
 1. Run the following command to clone and sync the repository:
 
@@ -58,7 +64,7 @@ You can download a sample app from the [Commerce UI test extension repository](h
 
 1. Change directories to the cloned repository's root directory.
 
-1. Create a `server.js` file to define a local server:
+1. Create a `server.js` file in the `<repoRootDir>/admin-ui-sdk` to define a local server:
 
    ```js
    const http = require('https');
@@ -106,7 +112,9 @@ You can download a sample app from the [Commerce UI test extension repository](h
     }).listen(9090);
     ```
 
-1.  Run the local server:
+1. Generate the key.pem and cert.pem certificates in the same directory. You can use `openssl` command.
+
+1. Run the local server:
 
     ```bash
     node server.js
@@ -142,13 +150,17 @@ You can download a sample app from the [Commerce UI test extension repository](h
     ]
    ```
 
-1. Run your extension locally.
+### Custom menu example
+
+1. Change directories to `<repoRootDir>/admin-ui-sdk/menu/custom-menu`.
+
+1. Run your custom menu extension locally.
 
    ```bash
    aio app run
    ```
 
-1. Check that the **First App on App Builder** option has been added to the **Marketing** menu in the Admin and that selecting the option takes you to the **Fetched orders from Adobe Commerce** page.
+1. Check that the **Apps** section has been added to the main menu and **First App on App Builder** option has been added to the **Apps** menu in the Admin and that selecting the option takes you to the **Fetched orders from Adobe Commerce** page.
 
    ![Fetched orders from Adobe Commerce page](../_images/first-app.png)
 

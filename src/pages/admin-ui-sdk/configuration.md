@@ -112,7 +112,17 @@ You can download a sample app from the [Adobe Commerce Samples repository](https
     }).listen(9090);
     ```
 
-1. Generate the key.pem and cert.pem certificates in the same directory. You can use `openssl` command.
+1. Generate the key.pem certificate in the same directory.
+
+    ```bash
+    openssl genpkey -algorithm RSA -out key.pem -pkeyopt rsa_keygen_bits:2048
+    ```
+
+1. Generate the cert.pem certificate in the same directory.
+
+    ```bash
+    openssl req -new -x509 -key key.pem -out cert.pem -days 365
+    ```
 
 1. Run the local server:
 

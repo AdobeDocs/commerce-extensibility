@@ -17,6 +17,8 @@ Events sent from Commerce to Adobe I/O events can be consumed in a few different
 
 When an Adobe I/O event registration is created, the subscribed events will by default be added to an ordered list, referred to as the journal. These events can be consumed using a journaling endpoint URL that is unique to the registration. For more information on reading events from the journal, see the [Introduction to Journaling](https://developer.adobe.com/events/docs/guides/journaling_intro/).
 
+Events can also be consumed from the Journaling API using the [Adobe I/O Events SDK](https://github.com/adobe/aio-lib-events). See [Subscribe to Events Using Journaling](https://developer.adobe.com/events/docs/guides/sdk/sdk_journaling/) for details and sample code.
+
 ## Using a Webhook URL
 
 When creating or editing an event registration, a webhook URL can be registered. Doing so will cause subscribed Commerce events sent to Adobe I/O Events to be forwarded to the specified webhook URL. See [Introduction to Adobe I/O Events Webhooks](https://developer.adobe.com/events/docs/guides/) for more details.

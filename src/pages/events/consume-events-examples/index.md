@@ -1,11 +1,11 @@
 ---
-title: Examples of Consuming Events
-description: View code samples demonstrating how to consume Commerce Events sent to Adobe I/O.
+title: Sample Code for Consuming Events
+description: View sample code demonstrating how to consume Commerce Events sent to Adobe I/O.
 keywords:
   - Events
   - Extensibility
 ---
 
-# Examples of Consuming Events Overview
+# Sample Code for Consuming Events Overview
 
-The examples in this section demonstrate how to consume Commerce Events sent to Adobe I/O.
+The sample code in this section demonstrates how to consume Commerce Events sent to Adobe I/O.

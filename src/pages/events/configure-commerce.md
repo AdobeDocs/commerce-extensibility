@@ -28,22 +28,34 @@ You must configure Commerce to communicate with your project. Configuration incl
 
    See [Service Account (JWT) Authentication](https://developer.adobe.com/developer-console/docs/guides/authentication/JWT/) for more information about the `private.key` file.
 
-1. Copy the contents of the `<workspace-name>.json` file into the **Adobe I/O Workspace Configuration** field.
+1. Copy the entire contents of the `<workspace-name>.json` file into the **Adobe I/O Workspace Configuration** field.
 
-1. Enter a unique identifier in the **Adobe Commerce Instance ID** field. This value identifies your project and routes events from Adobe Commerce to the correct event provider in Adobe I/O. The value of this field is visible in App Builder during the creation of Event Registration.
+1. Enter a unique identifier in the **Adobe Commerce Instance ID** field. This unique value identifies your Commerce instance, which allows Commerce events to connect to the correct `Event Provider` in Adobe I/O. This ID corresponds to the **Provider** displayed when [subscribing to events](#subscribe-and-register-events).
 
-   **NOTE**: The **Adobe Commerce Instance ID** field only support alphanumeric characters, hyphens and underscores.
+   **NOTE**: The **Adobe Commerce Instance ID** field only supports alphanumeric characters, hyphens and underscores.
 
 1. Click **Save Config**, but do not leave the page. The next section creates an event provider, which is necessary to complete the configuration.
 
-## Create an event provider
+ The event provider will not appear in the Developer Console until after you subscribe to an event emitted by Commerce, such as `io_events.xml` or `config.php`.
 
-You cannot create an event provider until you have configured and saved a workspace file and instance ID values. If you are using JWT for server-to-server authentication, you must also have previously specified the private key.
+## Create an Event Provider
+
+Create an `Event Provider` in Adobe I/O Events to associate the Commerce Events subscriptions with the provider. The event subscriptions in Adobe Commerce are created as `Event Metadata` in Adobe I/O Events infrastructure.
+
+Each `Event Provider` can link to multiple event subscriptions (`Event Metadata`). The event's subscriptions will be automatically linked to your `Event Provider` whenever you subscribe with the `events:subscribe` CLI command. You can also manually synchronize all subscriptions with the `events:metadata:populate` command. The events subscriptions synchronization is also called each time during the execution of `setup:upgrade` command.
+
+You can find the list of Event Providers created in your organization, in the App Builder UI when [creating an Event Registration in App Builder](#subscribe-and-register-events).
+
+You can also use the `aio` CLI tool to manage providers. See [Provider Commands](https://developer.adobe.com/events/docs/guides/cli/#provider-commands) for more information.
+
+<InlineAlert variant="info" slots="text"/>
+
+You cannot create an event provider until you have configured and saved instance ID values and a workspace file. If you are using JWT for server-to-server authentication, you must have previously specified the private key.
 
 1. Run the following command to create an event provider:
 
    ```bash
-   bin/magento events:create-event-provider --label "<unique_provider_label>" --description "<provider description>"
+   bin/magento events:create-event-provider --label "Provider Label" --description "Provider description"
    ```
 
    For example:
@@ -51,6 +63,8 @@ You cannot create an event provider until you have configured and saved a worksp
    ```bash
    bin/magento events:create-event-provider --label "My_server_provider" --description "Provides out-of-process extensibility for Adobe Commerce"
    ```
+
+   The `label` field displays as the name of the created Event Provider in the App Builder UI. The `description` field provides more context about the Event Provider.
 
    **Note**: The label can contain English alphanumeric characters and underscores (_) only. The first character must be a letter.
 

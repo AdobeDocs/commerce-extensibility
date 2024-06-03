@@ -28,20 +28,34 @@ You must configure Commerce to communicate with your project. Configuration incl
 
    See [Service Account (JWT) Authentication](https://developer.adobe.com/developer-console/docs/guides/authentication/JWT/) for more information about the `private.key` file.
 
-1. Copy the contents of the `<workspace-name>.json` file into the **Adobe I/O Workspace Configuration** field.
+1. Copy the entire contents of the `<workspace-name>.json` file into the **Adobe I/O Workspace Configuration** field.
 
-1. Enter a unique identifier in the **Adobe Commerce Instance ID** field. This value must contain English alphanumeric characters, underscores (_), and hyphens (-) only.
+1. Enter a unique identifier in the **Adobe Commerce Instance ID** field. This unique value identifies your Commerce instance, which allows Commerce events to connect to the correct `Event Provider` in Adobe I/O. This ID corresponds to the **Provider** displayed when [subscribing to events](#subscribe-and-register-events).
+
+   **NOTE**: The **Adobe Commerce Instance ID** field only supports alphanumeric characters, hyphens and underscores.
 
 1. Click **Save Config**, but do not leave the page. The next section creates an event provider, which is necessary to complete the configuration.
 
-## Create an event provider and complete the Commerce configuration
+ The event provider will not appear in the Developer Console until after you subscribe to an event emitted by Commerce, such as `io_events.xml` or `config.php`.
 
-You cannot create an event provider until you have configured and saved a workspace file and instance ID values. If you are using JWT for server-to-server authentication, you must also have previously specified the private key.
+## Create an Event Provider
+
+Create an `Event Provider` in Adobe I/O Events to associate the Commerce Events subscriptions with the provider. The event subscriptions in Adobe Commerce are created as `Event Metadata` in Adobe I/O Events infrastructure.
+
+Each `Event Provider` can link to multiple event subscriptions (`Event Metadata`). The event's subscriptions will be automatically linked to your `Event Provider` whenever you subscribe with the `events:subscribe` CLI command. You can also manually synchronize all subscriptions with the `events:metadata:populate` command. The events subscriptions synchronization is also called each time during the execution of `setup:upgrade` command.
+
+You can find the list of Event Providers created in your organization, in the App Builder UI when [creating an Event Registration in App Builder](#subscribe-and-register-events).
+
+You can also use the `aio` CLI tool to manage providers. See [Provider Commands](https://developer.adobe.com/events/docs/guides/cli/#provider-commands) for more information.
+
+<InlineAlert variant="info" slots="text"/>
+
+You cannot create an event provider until you have configured and saved instance ID values and a workspace file. If you are using JWT for server-to-server authentication, you must have previously specified the private key.
 
 1. Run the following command to create an event provider:
 
    ```bash
-   bin/magento events:create-event-provider --label "<unique_provider_label>" --description "<provider description>"
+   bin/magento events:create-event-provider --label "Provider Label" --description "Provider description"
    ```
 
    For example:
@@ -50,26 +64,36 @@ You cannot create an event provider until you have configured and saved a worksp
    bin/magento events:create-event-provider --label "My_server_provider" --description "Provides out-of-process extensibility for Adobe Commerce"
    ```
 
+   The `label` field displays as the name of the created Event Provider in the App Builder UI. The `description` field provides more context about the Event Provider.
+
    **Note**: The label can contain English alphanumeric characters and underscores (_) only. The first character must be a letter.
 
    The command displays a message similar to the following:
 
    ```terminal
    No event provider found, a new event provider will be created
-   A new event provider has been created with ID 63a1f8fe-e911-45a4-9d3f
+   A new event provider has been created with ID 63a1f8fe-e911-45a4-9d3f-f512d2ef4626
    ```
 
 1. Copy the ID returned in the command output into the **Adobe I/O Event Provider ID** field in the Admin.
 
-   ![Commerce events configuration](../_images/events/commerce-events.png)
+   ![General configuration updated](../_images/events/general-configuration-updated.png)
+
+## Complete the Commerce configuration
 
 1. Enable Commerce Eventing by setting **Enabled** to `Yes`.
 
+   ![Commerce events configuration](../_images/events/commerce-events.png)
+
    **Note**: You must [enable cron](#check-cron-and-message-queue-configuration) so that Commerce can send events to the endpoint.
 
-1. Enter the merchant's company name in the **Merchant ID** field. You must use alphanumeric and underscores only.
+1. Enter the merchant's company name in the **Merchant ID** and the environment name in **Environment ID** fields. The values of these fields will be combined and added as a `source` attribute to your event data to identify the source of the events. It can be useful for event filtration or other logic if you are using the same event provider for several environments or projects.
 
-1. In the **Environment ID** field, enter a temporary name for your workspaces while you are in development mode. When you are ready for production, change this value to a permanent value, such as **Production**.
+   **NOTE**: The **Merchant ID** and **Environment ID** fields only support alphanumeric characters and underscores.
+
+```javascript
+"source": "<merchant-id>.<environment-id>"
+```
 
 1. (Optional) By default, if an error occurs when Adobe Commerce attempts to send an event to Adobe I/O, Commerce retries a maximum of seven times. To change this value, uncheck the **Use system value** checkbox and set a new value in the **Maximum retries to send events** field.
 

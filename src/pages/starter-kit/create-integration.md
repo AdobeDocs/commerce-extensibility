@@ -32,6 +32,10 @@ Integrating Adobe Commerce with your enterprise resource planning (ERP), order m
 
 The best part about the integration starter kit is that it provides a standardized architecture that follows Adobe Commerce best practices. We think that you can get through this single-page tutorial in under an hour.
 
+<InlineAlert variant="info" slots="text"/>
+
+Support services for the starter kit include the basic functionality and configuration. Because the starter kit is a scaffolding designed to make custom integrations easier, Adobe does not provide support services for modified code or your custom integrations.
+
 ### Onboarding
 
 [Projects Overview](https://developer.adobe.com/developer-console/docs/guides/projects/) describes the different types of projects and how to manage them. Here, we'll create a templated project.

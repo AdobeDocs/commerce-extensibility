@@ -50,7 +50,7 @@ bin/magento cache:clean admin_ui_sdk
 
 ### Prerequisites
 
-* Adobe Commerce instance installed on local machine.
+- An Adobe Commerce instance installed on the local machine.
 
 ### Configuration
 
@@ -64,7 +64,7 @@ You can download a sample app from the [Adobe Commerce Samples repository](https
 
 1. Change directories to the cloned repository's root directory.
 
-1. Create a `server.js` file in the `<repoRootDir>/admin-ui-sdk` to define a local server:
+1. Create a `server.js` file in `<repoRootDir>/admin-ui-sdk` to define a local server:
 
    ```js
    const http = require('https');
@@ -112,13 +112,13 @@ You can download a sample app from the [Adobe Commerce Samples repository](https
     }).listen(9090);
     ```
 
-1. Generate the key.pem certificate in the same directory.
+1. Generate the `key.pem` certificate in the same directory.
 
     ```bash
     openssl genpkey -algorithm RSA -out key.pem -pkeyopt rsa_keygen_bits:2048
     ```
 
-1. Generate the cert.pem certificate in the same directory.
+1. Generate the `cert.pem` certificate in the same directory.
 
     ```bash
     openssl req -new -x509 -key key.pem -out cert.pem -days 365
@@ -170,7 +170,7 @@ You can download a sample app from the [Adobe Commerce Samples repository](https
    aio app run
    ```
 
-1. Check that the **Apps** section has been added to the main menu and **First App on App Builder** option has been added to the **Apps** menu in the Admin and that selecting the option takes you to the **Fetched orders from Adobe Commerce** page.
+1. Confirm that the **Apps** section appears on the main menu and the **First App on App Builder** option appears in the **Apps** menu in the Admin. Click **First App on App Builder** and confirm that the **Fetched orders from Adobe Commerce** page opens.
 
    ![Fetched orders from Adobe Commerce page](../_images/first-app.png)
 

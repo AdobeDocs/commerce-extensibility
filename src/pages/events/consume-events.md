@@ -6,7 +6,7 @@ keywords:
   - Extensibility
 ---
 
-Events sent from Commerce to Adobe I/O events can be consumed in a few different ways. The following options for consuming events can be configured when adding events to your App Builder project and creating an event registration:
+Events sent from Adobe Commerce to Adobe I/O events can be consumed in a few different ways. The following options for consuming events can be configured when adding events to your App Builder project and creating an event registration:
 
 * [Using the Journaling API](#using-the-journaling-api)
 * [Using a Webhook URL](#using-a-webhook-url)
@@ -25,7 +25,7 @@ When creating or editing an event registration, a webhook URL can be registered.
 
 ## Using a Runtime Action
 
-An [Adobe I/O Runtime Action](https://developer.adobe.com/runtime/docs/guides/overview/entities/#actions) can be set up to receive Commerce events in an Adobe I/O event registration. Actions can be created from JavaScript functions, as described in [Creating Actions](https://developer.adobe.com/runtime/docs/guides/using/creating_actions/). Within an action, business logic can be executed based on the received event payload, API calls can be made back to Adobe Commerce to update data or access additional information, and data can be sent to another system.
+An [Adobe I/O Runtime Action](https://developer.adobe.com/runtime/docs/guides/overview/entities/#actions) can be set up to receive Commerce events in an event registration. Actions can be created from JavaScript functions, as described in [Creating Actions](https://developer.adobe.com/runtime/docs/guides/using/creating_actions/). Within an action, business logic can be executed based on the received event payload, API calls can be made back to Adobe Commerce to update data or access additional information, and data can be sent to another system.
 
 See [Runtime Action with a Callback to Commerce](./consume-events-examples/runtime-action-commerce-callback.md) for an example of how a runtime action can consume an event and make an API call back to Commerce to get more information.
 

@@ -65,7 +65,7 @@ The `main` actions first accesses the payload for a received `observer.sales_ord
 event_payload = params.data.value
 ```
 
-The event payload for this event may not contain the saved order's extension attributes. In that case, the extension attributes can be fetched for the specific order using a Commerce API call:
+The event payload for this event may not contain the saved order's extension attributes. If needed, the extension attributes can be fetched for the specific order captured by the event using a Commerce API call:
 
 ```js
   const oauth = getCommerceOauthClient(
@@ -83,8 +83,8 @@ The event payload for this event may not contain the saved order's extension att
 
 In this example, functions from the `oauth1a` module, as defined in the [adobe-commerce-samples repo](https://github.com/adobe/adobe-commerce-samples/blob/main/admin-ui-sdk/menu/custom-menu/actions/oauth1a.js), are used.
 
-The `consumerKey`, `consumerSecret`, `accessToken`, and `accessTokenSecret` provided in the input to `getCommerceOauthClient` can be retrieved from Commerce after creating and activating an [Integration](https://experienceleague.adobe.com/en/docs/commerce-admin/systems/integrations) in the Commerce admin. These values can then be configured in an App Builder [.env file](https://developer.adobe.com/app-builder/docs/guides/configuration/#env) and then [passed as inputs to the App Builder action](https://developer.adobe.com/app-builder/docs/guides/configuration/#using-environment-variables-in-runtime-actions) through the action's configuration.
+The `consumerKey`, `consumerSecret`, `accessToken`, and `accessTokenSecret` provided in the input to the `getCommerceOauthClient` function can be retrieved from Commerce after creating and activating an [Integration](https://experienceleague.adobe.com/en/docs/commerce-admin/systems/integrations) in the Commerce admin. These values can then be configured in an App Builder [.env file](https://developer.adobe.com/app-builder/docs/guides/configuration/#env) and then [passed as inputs to the App Builder action](https://developer.adobe.com/app-builder/docs/guides/configuration/#using-environment-variables-in-runtime-actions) through the action's configuration.
 
-Finally, the order's extension attributes retrieved from Commerce are added to the order event payload, and the payload is sent to a third-party Enterprise Resource Planning (ERP) system using a custom module.
+Finally, the order's extension attributes retrieved from Commerce can be added to the order event payload, and the payload can be sent to a third-party Enterprise Resource Planning (ERP) system using a custom module.
 
-After creating a runtime action using this code, an event registration can be created to subscribe to the `observer.sales_order_save_after` event and the new runtime action can be configured to receive the event notifications.
+After creating a runtime action using this code, an event registration can be created to subscribe to the `observer.sales_order_save_after` event, and the new runtime action can be configured to receive the event notifications.

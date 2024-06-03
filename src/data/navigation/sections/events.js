@@ -44,7 +44,7 @@ module.exports = [
     path: "/events/consume-events.md",
     pages: [
       {
-        title: "Examples of Consuming Events",
+        title: "Sample Code for Consuming Events",
         path: "/events/consume-events-examples/index.md",
         pages: [
           {

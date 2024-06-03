@@ -81,7 +81,7 @@ The event payload for this event may not contain the saved order's extension att
   const content = await oauth.get('orders/' + event_payload.entity_id)
 ```
 
-In this example, functions from the `oauth1a` module, as defined in the [adobe-commerce-samples repo](https://github.com/adobe/adobe-commerce-samples/blob/main/admin-ui-sdk/menu/custom-menu/actions/oauth1a.js), are used.
+In this example, functions from the `oauth1a` module, as defined in the [adobe-commerce-samples repo](https://github.com/adobe/adobe-commerce-samples/blob/main/sample-extension/actions/oauth1a.js), are used.
 
 The `consumerKey`, `consumerSecret`, `accessToken`, and `accessTokenSecret` provided in the input to the `getCommerceOauthClient` function can be retrieved from Commerce after creating and activating an [Integration](https://experienceleague.adobe.com/en/docs/commerce-admin/systems/integrations) in the Commerce admin. These values can then be configured in an App Builder [.env file](https://developer.adobe.com/app-builder/docs/guides/configuration/#env) and then [passed as inputs to the App Builder action](https://developer.adobe.com/app-builder/docs/guides/configuration/#using-environment-variables-in-runtime-actions) through the action's configuration.
 

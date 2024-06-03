@@ -48,7 +48,7 @@ bin/magento cache:clean admin_ui_sdk
 
 ## Test with a sample app
 
-You can download a sample app from the [Commerce UI test extension repository](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk) to gain insight on how the Admin SDK injects menus and pages into the Admin.
+You can download a sample app from the [Commerce UI test extension repository](https://github.com/adobe/adobe-commerce-samples/tree/main/sample-extension) to gain insight on how the Admin SDK injects menus and pages into the Admin.
 
 1. Run the following command to clone and sync the repository:
 

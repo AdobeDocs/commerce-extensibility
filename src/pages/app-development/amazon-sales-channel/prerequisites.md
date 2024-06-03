@@ -36,7 +36,7 @@ Follow the instructions in [Configure Adobe Commerce](../../events/configure-com
 
 * [Configure the Adobe I/O connection](../../events/configure-commerce.md#configure-the-adobe-io-connection)
 
-* [Create an event provider and complete the Commerce configuration](../../events/configure-commerce.md#create-an-event-provider-and-complete-the-commerce-configuration)
+* [Create an event provider and complete the Commerce configuration](../../events/configure-commerce.md#create-an-event-provider)
 
 Do not perform the **Subscribe and register events** procedure. The Amazon Sales Channel app [installation](installation.md) instructions describe the process for this app.
 

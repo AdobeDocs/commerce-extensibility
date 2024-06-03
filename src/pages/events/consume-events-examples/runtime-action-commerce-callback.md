@@ -42,7 +42,7 @@ async function main (params) {
     }
 
     // Send event data to a third-party ERP system
-    sendOrderToErpSystem(event_payload)
+    await sendOrderToErpSystem(event_payload)
       
     return {
       statusCode: 200,

@@ -40,7 +40,9 @@ Adobe Commerce continues to support the [PWA Studio](https://developer.adobe.com
 
 ### Plugins and observers
 
-[Adobe I/O Events for Adobe Commerce](../events/index.md) enables building event-driven Commerce integrations using App Builder. You can define key events, like customer account updates, to be emitted from Commerce and construct apps that listen and react to these events.
+[Adobe I/O Events for Adobe Commerce](../events/index.md) enables building near real-time event-driven Commerce integrations using App Builder. You can define key events, like customer account updates, to be emitted from Commerce and construct apps that listen and react to these events.
+
+[Adobe Commerce Webhooks](../webhooks/index.md) enables configuring synchronous logic to execute calls from Commerce to external systems when key events occur. This real-time communication with external systems can be used to validate or modify data in Commerce.
 
 ### Admin development
 

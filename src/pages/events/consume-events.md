@@ -6,7 +6,7 @@ keywords:
   - Extensibility
 ---
 
-Events sent from Adobe Commerce to Adobe I/O events can be consumed in a few different ways. The following options for consuming events can be configured when adding events to your App Builder project and creating an event registration:
+Events sent from Adobe Commerce to Adobe I/O events can be consumed in a few different ways. The following options for consuming events are available when adding events to your App Builder project and creating an event registration:
 
 * [Using the Journaling API](#using-the-journaling-api) (enabled by default)
 * [Using a Webhook URL](#using-a-webhook-url)

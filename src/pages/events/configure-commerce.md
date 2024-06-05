@@ -150,7 +150,7 @@ You are now set up to develop your App Builder extension.
 
 ## (Optionally) Set up App Builder project with event registration and runtime actions
 
-The first step to setting up your App Builder template is to set up your environment and create a runtime action. For details about this process, see [Setting up Your Environment](https://developer.adobe.com/runtime/docs/guides/getting-started/setup/) in the _Adobe IO Runtime Guide_ and [Create a templated project](https://developer.adobe.com/developer-console/docs/guides/projects/projects-template/) in the _Developer Console Guide_.
+If you want to add `Event Registrations` with `Runtime Actions` as events consumers, you can use the App Builder template **@adobe/generator-app-events-generic** to easily set up your project.
 
 1. Create a project directory on your local filesystem and change to that directory.
 

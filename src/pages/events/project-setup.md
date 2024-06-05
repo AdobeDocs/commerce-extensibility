@@ -73,3 +73,5 @@ To download a `.json` file containing your workspace configuration:
    ![Download the workspace config](../_images/events/download-workspace-config.png)
 
    The `<Workspace-name>.json` file downloads automatically. In this example, the file is named `485PeachHare-283976-Stage.json`.
+
+You've completed the basic setup of your project. The next step is to install Adobe I/O Events for Adobe Commerce.

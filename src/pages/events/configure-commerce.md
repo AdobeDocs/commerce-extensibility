@@ -180,7 +180,7 @@ The first step to setting up your App Builder template is to set up your environ
 
    * Select your project.
 
-   * Select the **@adobe/generator-app-events-generic** option using <space> and press <enter>.
+   * Select the **@adobe/generator-app-events-generic** option using &lt;space> and press &lt;enter>.
 
    ```bash
    ? Select Org: MyOrg

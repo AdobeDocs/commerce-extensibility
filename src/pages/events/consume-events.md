@@ -29,6 +29,10 @@ The webhook URL can be registered when creating or editing an event registration
 
 See [Introduction to Adobe I/O Events Webhooks](https://developer.adobe.com/events/docs/guides/) for more details.
 
+<InlineAlert variant="warning" slots="text"/>
+
+Be careful not to confuse this method of consuming events with [Runtime Actions as a Webhook](https://developer.adobe.com/events/docs/guides/runtime_webhooks/#benefits-of-using-runtime-action-as-webhook). Runtime Actions as a Webhook is a functionality for creating a URL for App Builder to receive events from a 3rd party system.
+
 ## Using a Runtime Action
 
 An [Adobe I/O Runtime Action](https://developer.adobe.com/runtime/docs/guides/overview/entities/#actions) can be set up to receive Commerce events in an event registration. Actions can be created from JavaScript functions, as described in [Creating Actions](https://developer.adobe.com/runtime/docs/guides/using/creating_actions/). Within an action, business logic can be executed based on the received event payload, API calls can be made back to Adobe Commerce to update data or access additional information, and data can be sent to another system.

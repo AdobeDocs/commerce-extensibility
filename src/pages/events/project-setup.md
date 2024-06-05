@@ -74,48 +74,8 @@ To download a `.json` file containing your workspace configuration:
 
    The `<Workspace-name>.json` file downloads automatically. In this example, the file is named `485PeachHare-283976-Stage.json`.
 
-## Set up App Builder and define a runtime action
+## (Optional) Bootstrap the App Builder project using the AIO CLI
 
-The first step to setting up your App Builder template is to set up your environment and create a runtime action. For details about this process, see [Setting up Your Environment](https://developer.adobe.com/runtime/docs/guides/getting-started/setup/) in the _Adobe IO Runtime Guide_ and [Create a templated project](https://developer.adobe.com/developer-console/docs/guides/projects/projects-template/) in the _Developer Console Guide_.
+Your App Builder project can be initialized with boilerplate for [Adobe I/O Runtime](https://developer.adobe.com/runtime) Actions, [Custom I/O Events](https://developer.adobe.com/events/docs/guides/using/custom_events/) and more.
 
-1. Create a project directory on your local filesystem and change to that directory.
-
-   ```bash
-   mkdir myproject && cd myproject
-   ```
-
-1. Log in to Adobe IO from a terminal:
-
-   ```bash
-   aio login
-   ```
-
-   Your web browser displays the login page.
-
-1. Enter your Adobe ID credentials.
-
-1. Close the browser tab and return to your terminal. Enter the following command to bootstrap your application:
-
-   ```bash
-   aio app init
-   ```
-
-   The terminal prompts you to select the path to your workspace.
-
-   * Select your project's organization.
-
-   * Select your project.
-
-   * Select the  **DX Experience Cloud SPA v1** option.
-
-   The command initializes a project with a default UI and creates a default Adobe I/O Runtime Action with an internal name of `dx-excshell-1/generic`. This action will be specified later when configuring your workspace to register events.
-
-1. Launch App Builder by running the following command:
-
-   ```bash
-   aio app run
-   ```
-
-   The command displays the URL where you can access the default UI. Running the command enables the runtime action referenced in [Subscribe and register events](configure-commerce.md#subscribe-and-register-events).
-
-You've completed the basic setup of your project. The next step is to install Adobe I/O Events for Adobe Commerce.
+See [Creating your First App Builder App](https://developer.adobe.com/app-builder/docs/getting_started/first_app/#3-signing-in-from-cli) for information on signing in from the AIO CLI and bootstrapping, developing, and deploying your app.

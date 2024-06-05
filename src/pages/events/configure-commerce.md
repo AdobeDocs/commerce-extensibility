@@ -150,6 +150,93 @@ Commerce provides two sources for events: observers and plugins. You must specif
 
 You are now set up to develop your App Builder extension.
 
+## (Optionally) Set up App Builder project with event registration and runtime actions
+
+The first step to setting up your App Builder template is to set up your environment and create a runtime action. For details about this process, see [Setting up Your Environment](https://developer.adobe.com/runtime/docs/guides/getting-started/setup/) in the _Adobe IO Runtime Guide_ and [Create a templated project](https://developer.adobe.com/developer-console/docs/guides/projects/projects-template/) in the _Developer Console Guide_.
+
+1. Create a project directory on your local filesystem and change to that directory.
+
+   ```bash
+   mkdir myproject && cd myproject
+   ```
+
+1. Log in to Adobe IO from a terminal:
+
+   ```bash
+   aio login
+   ```
+
+   Your web browser displays the login page.
+
+1. Enter your Adobe ID credentials.
+
+1. Close the browser tab and return to your terminal. Enter the following command to bootstrap your application:
+
+   ```bash
+   aio app init -w <workspace-name>
+   ```
+
+   The terminal prompts you to select the path to your workspace.
+
+   * Select your project's organization.
+
+   * Select your project.
+
+   * Select the  **@adobe/generator-app-events-generic** option.
+   
+   * Enter the name of the Adobe I/O Runtime Action that will be created (generic by default).
+
+   * Enter the name of `Event Registration` that will be created (Event Registration Default by default).
+
+   * Enter the description of the `Event Registration` (Registration for IO Events by default).
+
+   * Choose `Commerce Events` from the list of event providers families.
+
+   * Choose the `Event Provider` you created in the [Create an Event Provider](./configure-commerce.md#create-an-event-provider) section.
+
+   * Select the `Event Metadata` you want to associate with the event registration.
+
+   The command initializes a project with a basic Adobe I/O Runtime Action and configuration for the Event Registration.
+
+1. Deploy the generate application to the App Builder project by running the following command:
+
+   ```bash
+   aio app deploy
+   ```
+
+   The command deploys project generated in the previous step to the App Builder and creates a new `Event Registration` that delivers events to the Adobe I/O Runtime Action.
+
+1. You can add more Adobe I/O Runtime actions or `Event Registrations` by editing the `app.config.yaml` file and deploying the project with `aio app deploy` cli command.
+
+   ```yaml
+   application:
+     runtimeManifest:
+       packages:
+         TemplateTest:
+           license: Apache-2.0
+           actions:
+             generic:
+               function: actions/generic/index.js
+               web: 'no'
+               runtime: nodejs:18
+               inputs:
+                 LOG_LEVEL: debug
+               annotations:
+                 require-adobe-auth: false
+                 final: true
+     events:
+       registrations:
+         Event Registration Default:
+           description: Registration for IO Events
+           events_of_interest:
+             - provider_metadata: dx_commerce_events
+               event_codes:
+                 - com.adobe.commerce.observer.catalog_category_save_after
+                 - com.adobe.commerce.observer.catalog_product_save_after
+                 - com.adobe.commerce.observer.customer_save_after
+           runtime_action: Stage/generic
+   ```
+
 ## Check cron and message queue configuration
 
 Cron and message queues must be enabled. Commerce uses the `event_data_batch_send` cron job to transmit batches of event messages and the `clean_event_data` cron job to remove these messages from the database. These cron jobs are part of the `default` group.

@@ -221,7 +221,7 @@ The first step to setting up your App Builder template is to set up your environ
    ? We are about to create a new Event registration.
    How would you like to name this registration? Customer Event Registration
    ```
-   
+
    * Enter the description about what the registration is being created for (Registration for IO Events by default).
 
    ```bash

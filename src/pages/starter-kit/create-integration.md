@@ -246,23 +246,31 @@ You must configure Commerce to communicate with your project. Configuration incl
 
 1. In the Commerce Admin, navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Adobe I/O Events** > **General configuration**. The following screen displays.
 
-   ![General configuration](../_images/events/general-configuration.png)
+   ![General configuration](../_images/events/general-configuration-updated.png)
 
 1. Select the server-to-server authorization method you implemented from the **Adobe I/O Authorization Type** menu. Adobe recommends using OAuth. JWT has been deprecated.
 
 1. Copy the contents of the `<workspace-name>.json` file into the **Adobe I/O Workspace Configuration** field.
 
-1. Enter a unique identifier in the **Adobe Commerce Instance ID** field. This value must contain English alphanumeric characters, underscores (_), and hyphens (-) only.
+1. Enter a unique identifier in the **Adobe Commerce Instance ID** field. This unique value identifies your Commerce instance, which allows Commerce events to connect to the correct `Event Provider` in Adobe I/O. This ID corresponds to the **Provider** displayed when [subscribing to events](../events/configure-commerce.md#subscribe-and-register-events).
+
+   **Note**: This value must contain English alphanumeric characters, underscores (_), and hyphens (-) only.
 
 1. Click **Save Config**, but do not leave the page. The next section creates an event provider, which is necessary to complete the configuration.
 
 1. Enable Commerce Eventing by setting **Enabled** to `Yes`.
 
-   **Note**: You must enable cron so that Commerce can send events to the endpoint.
+   ![Commerce events configuration](../_images/events/commerce-events.png)
 
-1. Enter the merchant's company name in the **Merchant ID** field. You must use alphanumeric and underscores only.
+   **Note**: You must enable cron to allow Commerce to send events to the endpoint.
 
-1. In the **Environment ID** field, enter a temporary name for your workspaces while in development mode. When you are ready for production, change this value to a permanent value, such as Production.
+1. Enter the merchant's company name in the **Merchant ID** and the environment name in the **Environment ID** field. The values of these fields will be combined and added as a `source` attribute to your event data to identify the source of the events. It can be useful for event filtration or other logic if you are using the same event provider for several environments or projects.
+
+   **Note**: The **Merchant ID** and **Environment ID** fields only support alphanumeric characters and underscores.
+
+   ```javascript
+   "source": "<merchant-id>.<environment-id>"
+   ```
 
 1. (Optional) By default, if an error occurs when Adobe Commerce attempts to send an event to Adobe I/O, Commerce retries a maximum of seven times. To change this value, uncheck the **Use system value** checkbox and set a new value in the **Maximum retries to send events** field.
 

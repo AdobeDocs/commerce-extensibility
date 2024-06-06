@@ -268,9 +268,9 @@ You must configure Commerce to communicate with your project. Configuration incl
 
    **Note**: The **Merchant ID** and **Environment ID** fields only support alphanumeric characters and underscores.
 
-```javascript
-"source": "<merchant-id>.<environment-id>"
-```
+   ```javascript
+   "source": "<merchant-id>.<environment-id>"
+   ```
 
 1. (Optional) By default, if an error occurs when Adobe Commerce attempts to send an event to Adobe I/O, Commerce retries a maximum of seven times. To change this value, uncheck the **Use system value** checkbox and set a new value in the **Maximum retries to send events** field.
 

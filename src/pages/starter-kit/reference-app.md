@@ -12,7 +12,7 @@ keywords:
 
 # Reference Applications
 
-This page provides developers with a basic understanding of the types of applications they can create with Adobe Commerce integration starter kit.
+This page provides developers with a basic understanding of the types of applications they can create with Adobe Commerce integration starter kit. Adobe and its partners created these applications using the starter kit and can help you understand how to integrate Adobe Commerce with other systems.
 
 ## Microsoft Dynamics Finance and Operations Accelerator for Adobe Commerce
 
@@ -22,10 +22,10 @@ This reference application provides a base implementation for the most common da
 
 ### Features
 
-- **Out-of-the-Box Integration** - Leverage Adobe’s serverless extensibility architecture to integrate data between Adobe Commerce and Microsoft Dynamics Finance & Operations out-of-the-box.
-- **Sync common data types for ecommerce** - Sync customer, products, prices, and stock data from Microsoft Dynamics Finance & Operations to Adobe Commerce.
-- **Send orders to Microsoft Dynamics F&O** - Send orders from Adobe Commerce to Microsoft Dynamics Finance & Operations.
-- **Notify customers of shipment** - Notify customers of an order shipment when an order status is updated in Microsoft Dynamics.
+- **Out-of-the-Box Integration** - Leverage Adobe’s serverless extensibility architecture to integrate data between Adobe Commerce and D365 F&O out-of-the-box.
+- **Sync common data types for ecommerce** - Sync customer, products, prices, and stock data from D365 F&O to Commerce.
+- **Send orders to Microsoft Dynamics F&O** - Send orders from Commerce to D365 F&O.
+- **Notify customers of shipment** - Notify customers of an order shipment when an order status updates in D365 F&O.
 
 ### Use cases
 
@@ -33,13 +33,13 @@ This reference application uses starter kit [data flows](./data-flows.md) for th
 
 - Customer data flow
   - Customer
-    - Adobe Commerce synchronizes new and edits existing merchants to D365 F&O.
-    - Microsoft F&O synchronizes new and edits existing merchants to Adobe Commerce.
+    - Adobe Commerce synchronizes new and updated merchant data to D365 F&O.
+    - Microsoft F&O synchronizes new and updated merchant data to Adobe Commerce.
   - Customer groups
-    - Microsoft F&O synchronizes new and edits existing customer groups to Adobe Commerce.
+    - Microsoft F&O synchronizes new and updated customer groups to Adobe Commerce.
 - Products data flow
   - Customer
-    - Adobe Commerce synchronizes new and edits existing products to D365 F&O
+    - Adobe Commerce synchronizes new and updated products to D365 F&O
 - Order data flow
   - Order & flow
     - Adobe Commerce synchronizes new orders to D365 F&O

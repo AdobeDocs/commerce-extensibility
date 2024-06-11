@@ -31,16 +31,16 @@ This reference application provides a base implementation for the most common da
 
 This reference application uses starter kit [data flows](./data-flows.md) for the following use cases:
 
-- Customer data flow
+- **Customer data flow**
   - Customer
     - Adobe Commerce synchronizes new and updated merchant data to D365 F&O.
     - Microsoft F&O synchronizes new and updated merchant data to Adobe Commerce.
   - Customer groups
     - Microsoft F&O synchronizes new and updated customer groups to Adobe Commerce.
-- Products data flow
+- **Products data flow**
   - Customer
     - Adobe Commerce synchronizes new and updated products to D365 F&O
-- Order data flow
-  - Order & flow
+- **Order data flow**
+  - Order and order flow
     - Adobe Commerce synchronizes new orders to D365 F&O
     - Adobe Commerce synchronizes changes in order flow to Adobe Commerce

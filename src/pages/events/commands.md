@@ -132,7 +132,13 @@ bin/magento events:registrations:list -vv
 
 ## Create event metadata in Adobe I/O
 
-The `events:metadata:populate` command creates event metadata based on XML and application configurations.
+The `events:metadata:populate` command creates event metadata based on XML and application configurations. This metadata gets linked to the configured event provider.
+
+Event metadata is automatically created for new event subscriptions when the [`events:subscribe` command](#subscribe-to-an-event) is run and synchronized for events registered in `io_events.xml` files or `config.php` when the `setup:upgrade` command runs. Cases where creating event metadata using the `events:metadata:populate` command would be useful include the following:
+
+*  You have configured an event provider after an `io_events.xml` file was pushed to your cloud instance and a redeployment has not occurred since
+
+*  You have not run `setup:upgrade` since adding an `io_events.xml` file to your on-premise instance
 
 ### Usage
 

@@ -35,6 +35,8 @@ Be careful not to confuse this method of consuming events with [Runtime Actions 
 
 ## Using a Runtime Action
 
+An [Adobe I/O Runtime Action](https://developer.adobe.com/runtime/docs/guides/overview/entities/#actions) allows you to receive Commerce events in an event registration. You can create actions from JavaScript functions, as described in [Creating Actions](https://developer.adobe.com/runtime/docs/guides/using/creating_actions/). Within an action, you can execute business logic based on the received event payload, make API calls back to Adobe Commerce to update data, access additional information, and send data to another system.
+
 See [Runtime Action with a Callback to Commerce](./consume-events-examples/runtime-action-commerce-callback.md) for an example of how a runtime action can consume an event and make an API call back to Commerce to get more information.
 
 See more examples of end-to-end integrations between Commerce and 3rd party systems like ERPs that use runtime actions in our [Starter Kit](https://developer.adobe.com/commerce/extensibility/starter-kit/send-data/) documentation.

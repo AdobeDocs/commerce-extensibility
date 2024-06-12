@@ -8,11 +8,11 @@ keywords:
 
 # Runtime Action with a Callback to Commerce
 
-This example provides sample code for a runtime action that can consume a Commerce event and make an API call back to Commerce to obtain more information before sending data to a third-party system.
+This example provides sample code for a runtime action that can consume an Adobe Commerce event and make an API call back to Commerce to obtain more information before sending data to a third-party system.
 
 ## Runtime action example code
 
-Below is a JavaScript code sample that could be used to create a runtime action for consuming `observer.sales_order_save_after` events.
+You could use the following JavaScript code sample to create a runtime action for consuming `observer.sales_order_save_after` events.
 
 ```js
 const { Core } = require('@adobe/aio-sdk')
@@ -59,13 +59,13 @@ async function main (params) {
 exports.main = main
 ```
 
-The `main` actions first accesses the payload for a received `observer.sales_order_save_after` event:
+The `main` action first accesses the payload for a received `observer.sales_order_save_after` event:
 
 ```js
 event_payload = params.data.value
 ```
 
-The event payload for this event may not contain the saved order's extension attributes. If needed, the extension attributes can be fetched for the specific order captured by the event using a Commerce API call:
+The event payload for this event could not contain the saved order's extension attributes. If needed, you can fetch the extension attributes for the specific order captured by the event using a Commerce API call:
 
 ```js
   const oauth = getCommerceOauthClient(
@@ -81,10 +81,10 @@ The event payload for this event may not contain the saved order's extension att
   const content = await oauth.get('orders/' + event_payload.entity_id)
 ```
 
-In this example, functions from the `oauth1a` module, as defined in the [adobe-commerce-samples repo](https://github.com/adobe/adobe-commerce-samples/blob/main/admin-ui-sdk/menu/custom-menu/actions/oauth1a.js), are used.
+This example uses functions from the `oauth1a` module, as defined in the [adobe-commerce-samples repo](https://github.com/adobe/adobe-commerce-samples/blob/main/admin-ui-sdk/menu/custom-menu/actions/oauth1a.js).
 
-The `consumerKey`, `consumerSecret`, `accessToken`, and `accessTokenSecret` provided in the input to the `getCommerceOauthClient` function can be retrieved from Commerce after creating and activating an [Integration](https://experienceleague.adobe.com/en/docs/commerce-admin/systems/integrations) in the Commerce admin. These values can then be configured in an App Builder [.env file](https://developer.adobe.com/app-builder/docs/guides/configuration/#env) and then [passed as inputs to the App Builder action](https://developer.adobe.com/app-builder/docs/guides/configuration/#using-environment-variables-in-runtime-actions) through the action's configuration.
+You can retrieve the `consumerKey`, `consumerSecret`, `accessToken`, and `accessTokenSecret` provided in the input to the `getCommerceOauthClient` function from Commerce after creating and activating an [Integration](https://experienceleague.adobe.com/en/docs/commerce-admin/systems/integrations) in the Commerce admin. You can configure these values in an App Builder [.env file](https://developer.adobe.com/app-builder/docs/guides/configuration/#env) and then [pass them as inputs to the App Builder action](https://developer.adobe.com/app-builder/docs/guides/configuration/#using-environment-variables-in-runtime-actions) through the action's configuration.
 
-Finally, the order's extension attributes retrieved from Commerce can be added to the order event payload, and the payload can be sent to a third-party Enterprise Resource Planning (ERP) system using a custom module.
+You can now add the order's extension attributes retrieved from Commerce to the order event payload, and send the payload to a third-party Enterprise Resource Planning (ERP) system using a custom module.
 
-After creating a runtime action using this code, an event registration can be created to subscribe to the `observer.sales_order_save_after` event, and the new runtime action can be configured to receive the event notifications.
+After creating a runtime action using this code, you can create an event registration can to subscribe to the `observer.sales_order_save_after` event, and configure the new runtime action to receive the event notifications.

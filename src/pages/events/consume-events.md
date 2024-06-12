@@ -6,7 +6,7 @@ keywords:
   - Extensibility
 ---
 
-Events sent from Adobe Commerce to Adobe I/O events can be consumed in a few different ways. The following options for consuming events are available when adding events to your App Builder project and creating an event registration:
+You can consume events sent from Adobe Commerce to Adobe I/O events in several ways. The following options for consuming events are available when adding events to your App Builder project and creating an event registration:
 
 * [Using the Journaling API](#using-the-journaling-api) (enabled by default)
 * [Using a Webhook URL](#using-a-webhook-url)
@@ -15,15 +15,15 @@ Events sent from Adobe Commerce to Adobe I/O events can be consumed in a few dif
 
 ## Using the Journaling API
 
-When an Adobe I/O event registration is created, the subscribed events will by default be added to an ordered list, referred to as the journal. These events can be consumed using a journaling endpoint URL that is unique to the registration. For more information on reading events from the journal, see the [Introduction to Journaling](https://developer.adobe.com/events/docs/guides/journaling_intro/).
+When you create an Adobe I/O event registration, the subscribed events added to an ordered list, referred to as the journal, by default. You can consume these events using a journaling endpoint URL that is unique to the registration. For more information on reading events from the journal, see the [Introduction to Journaling](https://developer.adobe.com/events/docs/guides/journaling_intro/).
 
-Events can also be consumed from the Journaling API using the [Adobe I/O Events SDK](https://github.com/adobe/aio-lib-events). See [Subscribe to Events Using Journaling](https://developer.adobe.com/events/docs/guides/sdk/sdk_journaling/) for details and sample code.
+You can also consume events from the Journaling API using the [Adobe I/O Events SDK](https://github.com/adobe/aio-lib-events). See [Subscribe to Events Using Journaling](https://developer.adobe.com/events/docs/guides/sdk/sdk_journaling/) for details and sample code.
 
 ## Using a Webhook URL
 
-Consuming an event using a webhook URL is useful for cases that do not require App Builder to handle transformations to the event structure or additional API calls. This method of consuming events allows for easily forwarding events from Adobe Commerce to a 3rd party system via App Builder. Note that the destination system must have an endpoint that can receive webhook requests in order to use this option.
+Consuming an event using a webhook URL is useful for cases that do not require App Builder to handle transformations to the event structure or additional API calls, which simplifies forwarding events from Adobe Commerce to a 3rd-party system using App Builder. The destination system must have an endpoint that can receive webhook requests to use this option.
 
-The webhook URL can be registered when creating or editing an event registration. If the registration is being set up through the developer console UI, this option will appear in the final configuration step.
+You can register the webhook URL when creating or editing an event registration. If you are setting up the registration through the developer console UI, this option will appear in the final configuration step.
 
 ![Webhook registration](../_images/events/register-webhook.png)
 
@@ -35,7 +35,6 @@ Be careful not to confuse this method of consuming events with [Runtime Actions 
 
 ## Using a Runtime Action
 
-An [Adobe I/O Runtime Action](https://developer.adobe.com/runtime/docs/guides/overview/entities/#actions) can be set up to receive Commerce events in an event registration. Actions can be created from JavaScript functions, as described in [Creating Actions](https://developer.adobe.com/runtime/docs/guides/using/creating_actions/). Within an action, business logic can be executed based on the received event payload, API calls can be made back to Adobe Commerce to update data or access additional information, and data can be sent to another system.
 
 See [Runtime Action with a Callback to Commerce](./consume-events-examples/runtime-action-commerce-callback.md) for an example of how a runtime action can consume an event and make an API call back to Commerce to get more information.
 
@@ -43,4 +42,4 @@ See more examples of end-to-end integrations between Commerce and 3rd party syst
 
 ## Using Amazon EventBridge
 
-An Adobe I/O event registration can be configured to forward received Commerce events to Amazon EventBridge. See [Adobe I/O Events and Amazon EventBridge Integration](https://developer.adobe.com/events/docs/guides/amazon_eventbridge/) for more details.
+You can configure an Adobe I/O event registration to forward received Commerce events to Amazon EventBridge. See [Adobe I/O Events and Amazon EventBridge Integration](https://developer.adobe.com/events/docs/guides/amazon_eventbridge/) for more details.

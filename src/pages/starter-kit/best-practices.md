@@ -7,9 +7,10 @@ keywords:
  - API Mesh
  - Events
  - REST
+ - Starter Kit
  - Tools
 ---
 
 # Best practices
 
-This page is under development and will be included with the initial release.
+This page is under development.

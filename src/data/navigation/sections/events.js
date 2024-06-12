@@ -40,6 +40,22 @@ module.exports = [
     path: "/events/api.md",
   },
   {
+    title: "Consume events",
+    path: "/events/consume-events.md",
+    pages: [
+      {
+        title: "Sample Code for Consuming Events",
+        path: "/events/consume-events-examples/index.md",
+        pages: [
+          {
+            title: "Runtime Action with a Callback to Commerce",
+            path: "/events/consume-events-examples/runtime-action-commerce-callback.md"
+          }
+        ]
+      }
+    ]
+  },
+  {
     title: "Troubleshooting",
     path: "/events/troubleshooting.md",
   },

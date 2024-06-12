@@ -142,9 +142,9 @@ Commerce provides two sources for events: observers and plugins. You must specif
 
 1. Optionally create a new OAuth or JWT credential. Then click **Next**.
 
-1. Update the **Event registration name** and **Event registration description** fields. In the **How to receive events** section, under **Option 2**, select the runtime action you created in [Set up App Builder and define a runtime action](./project-setup.md#set-up-app-builder-and-define-a-runtime-action).
+1. Update the **Event registration name** and **Event registration description** fields. The Journaling API can consume your events by default. You can optionally select other consumption methods during this step. Learn more about your options in [Consuming Events](./consume-events.md).
 
-   ![Select a runtime action](../_images/events/select-runtime-action.png)
+   ![Select how to receive events](../_images/events/receive-events-options.png)
 
 1. Select **Save configured events**.
 

@@ -148,7 +148,7 @@ Commerce provides two sources for events: observers and plugins. You must specif
 
 You are now set up to develop your App Builder extension.
 
-## (Optionally) Set up App Builder project with event registration and runtime actions
+## (Optional) Set up an App Builder project with event registrations and runtime actions
 
 If you want to add `Event Registrations` with `Runtime Actions` as events consumers, you can use the App Builder template **@adobe/generator-app-events-generic** to easily set up your project.
 

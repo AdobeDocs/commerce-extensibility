@@ -215,7 +215,7 @@ If you want to add `Event Registrations` with `Runtime Actions` as events consum
 
    * Enter the name of `Event Registration` that will be created (Event Registration Default by default).
 
-   ```bash
+   ```terminal
    ? We are about to create a new Event registration.
    How would you like to name this registration? Customer Event Registration
    ```

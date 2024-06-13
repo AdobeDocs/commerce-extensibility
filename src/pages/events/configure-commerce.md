@@ -150,7 +150,7 @@ You are now set up to develop your App Builder extension.
 
 ## (Optional) Set up an App Builder project with event registrations and runtime actions
 
-If you want to add `Event Registrations` with `Runtime Actions` as events consumers, you can use the App Builder template **@adobe/generator-app-events-generic** to easily set up your project.
+If you want to add `Event Registrations` with `Runtime Actions` as event consumers, you can use the App Builder template **@adobe/generator-app-events-generic** to easily set up your project.
 
 1. Create a project directory on your local filesystem and change to that directory.
 
@@ -206,7 +206,7 @@ If you want to add `Event Registrations` with `Runtime Actions` as events consum
 
    * Enter the name of the non-web Runtime Action (generic by default).
 
-   ```bash
+   ```terminal
    ✔ Installed npm package @adobe/generator-app-events-generic
    ℹ Running template @adobe/generator-app-events-generic
    ? We are about to create a new sample action that A generic action that logs the events received from IO Events.
@@ -220,41 +220,41 @@ If you want to add `Event Registrations` with `Runtime Actions` as events consum
    How would you like to name this registration? Customer Event Registration
    ```
 
-   * Enter the description about what the registration is being created for (Registration for IO Events by default).
+   * Enter text that describes the purpose of the registration.  The default value is `Registration for IO Events`.
 
-   ```bash
+   ```terminal
    ? What is this registration being created for? Registration for receiving customer actions
    ```
 
    * Choose `Commerce Events` from the list of event providers families.
 
-   ```bash
+   ```terminal
    ? Choose from the following provider families ( provider metadata ) Commerce Events
    ```
 
    * Choose the `Event Provider` you created in the [Create an Event Provider](./configure-commerce.md#create-an-event-provider) section.
 
-   ```bash
+   ```terminal
    ? Choose from below provider for provider metadata: dx_commerce_events team-mercury-sandbox
    ```
 
    * Select the `Event Metadata` you want to associate with the event registration.
 
-   ```bash
+   ```terminal
    Choose event metadata for provider: team-mercury-sandbox Observer event customer_login, Observer event customer_logout
    ```
 
    The command initializes a project with a basic Adobe I/O Runtime Action and configuration for the Event Registration.
 
-1. Deploy the generate application to the App Builder project by running the following command:
+1. Deploy the generated application to the App Builder project by running the following command:
 
    ```bash
    aio app deploy
    ```
 
-   The command deploys project generated in the previous step to the App Builder and creates a new `Event Registration` that delivers events to the Adobe I/O Runtime Action.
+   The command deploys the project generated in the previous step to the App Builder. It also creates a new `Event Registration` that delivers events to the Adobe I/O Runtime Action.
 
-1. You can add more Adobe I/O Runtime actions or `Event Registrations` by editing the `app.config.yaml` file and deploying the project with `aio app deploy` cli command.
+1. You can add more Adobe I/O Runtime actions or Event Registrations by editing the `app.config.yaml` file and deploying the project with `aio app deploy` CLI command.
 
    ```yaml
    application:
@@ -284,7 +284,7 @@ If you want to add `Event Registrations` with `Runtime Actions` as events consum
            runtime_action: Stage/generic
    ```
 
-You can find the additional information visiting this the page [App Builder with IO Events](https://developer.adobe.com/events/docs/guides/appbuilder/#initialising-an-app-builder-app-with-io-events-template).
+[App Builder with IO Events](https://developer.adobe.com/events/docs/guides/appbuilder/#initialising-an-app-builder-app-with-io-events-template) provides additional information about setting up App Builder projects.
 
 ## Check cron and message queue configuration
 

@@ -32,7 +32,7 @@ You must configure Commerce to communicate with your project. Configuration incl
 
 1. Enter a unique identifier in the **Adobe Commerce Instance ID** field. This unique value identifies your Commerce instance, which allows Commerce events to connect to the correct `Event Provider` in Adobe I/O. This ID corresponds to the **Provider** displayed when [subscribing to events](#subscribe-and-register-events).
 
-   **NOTE**: The **Adobe Commerce Instance ID** field only supports alphanumeric characters, hyphens and underscores.
+   **Note**: The **Adobe Commerce Instance ID** field only supports alphanumeric characters, hyphens and underscores.
 
 1. Click **Save Config**, but do not leave the page. The next section creates an event provider, which is necessary to complete the configuration.
 
@@ -89,7 +89,7 @@ You cannot create an event provider until you have configured and saved instance
 
 1. Enter the merchant's company name in the **Merchant ID** and the environment name in **Environment ID** fields. The values of these fields will be combined and added as a `source` attribute to your event data to identify the source of the events. It can be useful for event filtration or other logic if you are using the same event provider for several environments or projects.
 
-   **NOTE**: The **Merchant ID** and **Environment ID** fields only support alphanumeric characters and underscores.
+   **Note**: The **Merchant ID** and **Environment ID** fields only support alphanumeric characters and underscores.
 
 ```javascript
 "source": "<merchant-id>.<environment-id>"
@@ -142,7 +142,9 @@ Commerce provides two sources for events: observers and plugins. You must specif
 
 1. Optionally create a new OAuth or JWT credential. Then click **Next**.
 
-1. Update the **Event registration name** and **Event registration description** fields.
+1. Update the **Event registration name** and **Event registration description** fields. The Journaling API can consume your events by default. You can optionally select other consumption methods during this step. Learn more about your options in [Consuming Events](./consume-events.md).
+
+   ![Select how to receive events](../_images/events/receive-events-options.png)
 
 1. Select **Save configured events**.
 

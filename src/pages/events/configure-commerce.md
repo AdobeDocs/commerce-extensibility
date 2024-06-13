@@ -182,7 +182,7 @@ If you want to add `Event Registrations` with `Runtime Actions` as events consum
 
    * Select the **@adobe/generator-app-events-generic** option using &lt;space> and press &lt;enter>.
 
-   ```bash
+   ```terminal
    ? Select Org: MyOrg
    ? Select a Project, or press + to create new: DeveloperSandbox
    ? What templates do you want to search for? All Templates

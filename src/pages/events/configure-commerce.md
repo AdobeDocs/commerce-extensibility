@@ -116,7 +116,7 @@ Commerce provides two sources for events: observers and plugins. You must specif
    ```
 
    ```bash
-   bin/magento events:subscribe observer.customer_login --fields=firstname --fields=lastname --fields=entity_id
+   bin/magento events:subscribe observer.customer_login --fields=customer.firstname --fields=customer.lastname
    ```
 
     **Warning**: When you use the `events:subscribe` command to subscribe to events on a Cloud environment, configuration information is stored in the `app/etc/config.php` file. You must keep in mind that this file can be replaced with the `app/etc/config.php` file from Git during deployment. As a result, the event subscription will be replaced as well.
@@ -149,6 +149,144 @@ Commerce provides two sources for events: observers and plugins. You must specif
 1. Select **Save configured events**.
 
 You are now set up to develop your App Builder extension.
+
+## (Optional) Set up an App Builder project with event registrations and runtime actions
+
+If you want to add `Event Registrations` with `Runtime Actions` as event consumers, you can use the App Builder template **@adobe/generator-app-events-generic** to easily set up your project.
+
+1. Create a project directory on your local filesystem and change to that directory.
+
+   ```bash
+   mkdir myproject && cd myproject
+   ```
+
+1. Log in to Adobe IO from a terminal:
+
+   ```bash
+   aio login
+   ```
+
+   Your web browser displays the login page.
+
+1. Enter your Adobe ID credentials.
+
+1. Close the browser tab and return to your terminal. Enter the following command to bootstrap your application:
+
+   ```bash
+   aio app init -w <workspace-name>
+   ```
+
+   The terminal prompts you to select the path to your workspace.
+
+   * Select your project's organization.
+
+   * Select your project.
+
+   * Select the **@adobe/generator-app-events-generic** option using &lt;space> and press &lt;enter>.
+
+     ```terminal
+     ? Select Org: MyOrg
+     ? Select a Project, or press + to create new: DeveloperSandbox
+     ? What templates do you want to search for? All Templates
+     ✔ Downloaded the list of templates
+     ? Choose the template(s) to install:
+     Pressing <enter> without selection will skip templates and install a standalone application.
+
+     ┌──────┬─────────────────────────────────────────────────────────────┬─────────────────────────────────────────────────────────────┬────────────────────────────────────────┬────────────────────────────────────────┐
+     │      │ Template                                                    │ Description                                                 │ Extension Point                        │ Categories                             │
+     ├──────┼─────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────────────────┼────────────────────────────────────────┼────────────────────────────────────────┤
+     │ ❯◉   │ @adobe/generator-app-events-generic *                       │ Adds event registrations and a generic action               │ N/A                                    │ action, events                         │
+     ├──────┼─────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────────────────┼────────────────────────────────────────┼────────────────────────────────────────┤
+     │  ◯   │ @adobe/aem-cf-editor-ui-ext-tpl *                           │ Extensibility template for AEM Content Fragment Editor      │ aem/cf-editor/1                        │ action, ui                             │
+     ├──────┼─────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────────────────┼────────────────────────────────────────┼────────────────────────────────────────┤
+     │  ◯   │ @adobe/generator-app-aem-react *                            │ Template for AEM React SPA based on WKND content.           │ N/A                                    │ ui                                     │
+     ├──────┼─────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────────────────┼────────────────────────────────────────┼────────────────────────────────────────┤
+     │  ◯   │ @adobe/aem-cf-admin-ui-ext-tpl *                            │ Extensibility template for AEM Content Fragment Admin       │ aem/cf-console-admin/1                 │ action, ui                             │
+     │      │                                                             │ Console                                                     │                                        │                                        │
+     └──────┴─────────────────────────────────────────────────────────────┴─────────────────────────────────────────────────────────────┴────────────────────────────────────────┴────────────────────────────────────────┘
+     ```
+
+   * Enter the name of the non-web Runtime Action. The default value is `generic`.
+
+     ```terminal
+     ✔ Installed npm package @adobe/generator-app-events-generic
+     ℹ Running template @adobe/generator-app-events-generic
+     ? We are about to create a new sample action that A generic action that logs the events received from IO Events.
+     How would you like to name this action? generic
+     ```
+
+   * Enter the name of event registration to create. The default value is `Event Registration`.
+
+     ```terminal
+     ? We are about to create a new Event registration.
+     How would you like to name this registration? Customer Event Registration
+     ```
+
+   * Enter text that describes the purpose of the registration.  The default value is `Registration for IO Events`.
+
+     ```terminal
+     ? What is this registration being created for? Registration for receiving customer actions
+     ```
+
+   * Select `Commerce Events` from the list of event provider families.
+
+     ```terminal
+     ? Choose from the following provider families ( provider metadata ) Commerce Events
+     ```
+
+   * Select the event provider you created in the [Create an Event Provider](./configure-commerce.md#create-an-event-provider) section.
+
+     ```terminal
+     ? Choose from below provider for provider metadata: dx_commerce_events team-mercury-sandbox
+     ```
+
+   * Select the event metadata you want to associate with the event registration.
+
+     ```terminal
+     Choose event metadata for provider: team-mercury-sandbox Observer event customer_login, Observer event customer_logout
+     ```
+
+   The command initializes a project with a basic Adobe I/O Runtime Action and a configuration for the event registration.
+
+1. Deploy the generated application to the App Builder project by running the following command:
+
+   ```bash
+   aio app deploy
+   ```
+
+   The command deploys the project and creates a new event registration that delivers events to the Adobe I/O Runtime Action.
+
+1. You can add more Adobe I/O Runtime actions or event registrations by editing the `app.config.yaml` file and redeploying the project with `aio app deploy` CLI command.
+
+   ```yaml
+   application:
+     runtimeManifest:
+       packages:
+         TemplateTest:
+           license: Apache-2.0
+           actions:
+             generic:
+               function: actions/generic/index.js
+               web: 'no'
+               runtime: nodejs:18
+               inputs:
+                 LOG_LEVEL: debug
+               annotations:
+                 require-adobe-auth: false
+                 final: true
+     events:
+       registrations:
+         Customer Event Registration:
+           description: Registration for receiving customer actions
+           events_of_interest:
+             - provider_metadata: dx_commerce_events
+               event_codes:
+                 - com.adobe.commerce.observer.customer_login
+                 - com.adobe.commerce.observer.customer_logout
+           runtime_action: Stage/generic
+   ```
+
+[App Builder with IO Events](https://developer.adobe.com/events/docs/guides/appbuilder/#initialising-an-app-builder-app-with-io-events-template) provides additional information about setting up App Builder projects.
 
 ## Check cron and message queue configuration
 

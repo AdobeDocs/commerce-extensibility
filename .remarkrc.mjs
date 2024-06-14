@@ -25,7 +25,8 @@ const remarkConfig = {
 			remarkLintNoDeadUrls,
 			{
 				skipUrlPatterns: [
-					"https://www.php.net"
+					"https://www.php.net",
+					"https://helpx.adobe.com/enterprise/using/manage-developers.html"
 				]
 			}
 		]

@@ -184,69 +184,69 @@ If you want to add `Event Registrations` with `Runtime Actions` as event consume
 
    * Select the **@adobe/generator-app-events-generic** option using &lt;space> and press &lt;enter>.
 
-   ```terminal
-   ? Select Org: MyOrg
-   ? Select a Project, or press + to create new: DeveloperSandbox
-   ? What templates do you want to search for? All Templates
-   ✔ Downloaded the list of templates
-   ? Choose the template(s) to install:
-   Pressing <enter> without selection will skip templates and install a standalone application.
-  
-   ┌──────┬─────────────────────────────────────────────────────────────┬─────────────────────────────────────────────────────────────┬────────────────────────────────────────┬────────────────────────────────────────┐
-   │      │ Template                                                    │ Description                                                 │ Extension Point                        │ Categories                             │
-   ├──────┼─────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────────────────┼────────────────────────────────────────┼────────────────────────────────────────┤
-   │ ❯◉   │ @adobe/generator-app-events-generic *                       │ Adds event registrations and a generic action               │ N/A                                    │ action, events                         │
-   ├──────┼─────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────────────────┼────────────────────────────────────────┼────────────────────────────────────────┤
-   │  ◯   │ @adobe/aem-cf-editor-ui-ext-tpl *                           │ Extensibility template for AEM Content Fragment Editor      │ aem/cf-editor/1                        │ action, ui                             │
-   ├──────┼─────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────────────────┼────────────────────────────────────────┼────────────────────────────────────────┤
-   │  ◯   │ @adobe/generator-app-aem-react *                            │ Template for AEM React SPA based on WKND content.           │ N/A                                    │ ui                                     │
-   ├──────┼─────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────────────────┼────────────────────────────────────────┼────────────────────────────────────────┤
-   │  ◯   │ @adobe/aem-cf-admin-ui-ext-tpl *                            │ Extensibility template for AEM Content Fragment Admin       │ aem/cf-console-admin/1                 │ action, ui                             │
-   │      │                                                             │ Console                                                     │                                        │                                        │
-   └──────┴─────────────────────────────────────────────────────────────┴─────────────────────────────────────────────────────────────┴────────────────────────────────────────┴────────────────────────────────────────┘
-   ```
+     ```terminal
+     ? Select Org: MyOrg
+     ? Select a Project, or press + to create new: DeveloperSandbox
+     ? What templates do you want to search for? All Templates
+     ✔ Downloaded the list of templates
+     ? Choose the template(s) to install:
+     Pressing <enter> without selection will skip templates and install a standalone application.
 
-   * Enter the name of the non-web Runtime Action (generic by default).
+     ┌──────┬─────────────────────────────────────────────────────────────┬─────────────────────────────────────────────────────────────┬────────────────────────────────────────┬────────────────────────────────────────┐
+     │      │ Template                                                    │ Description                                                 │ Extension Point                        │ Categories                             │
+     ├──────┼─────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────────────────┼────────────────────────────────────────┼────────────────────────────────────────┤
+     │ ❯◉   │ @adobe/generator-app-events-generic *                       │ Adds event registrations and a generic action               │ N/A                                    │ action, events                         │
+     ├──────┼─────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────────────────┼────────────────────────────────────────┼────────────────────────────────────────┤
+     │  ◯   │ @adobe/aem-cf-editor-ui-ext-tpl *                           │ Extensibility template for AEM Content Fragment Editor      │ aem/cf-editor/1                        │ action, ui                             │
+     ├──────┼─────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────────────────┼────────────────────────────────────────┼────────────────────────────────────────┤
+     │  ◯   │ @adobe/generator-app-aem-react *                            │ Template for AEM React SPA based on WKND content.           │ N/A                                    │ ui                                     │
+     ├──────┼─────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────────────────┼────────────────────────────────────────┼────────────────────────────────────────┤
+     │  ◯   │ @adobe/aem-cf-admin-ui-ext-tpl *                            │ Extensibility template for AEM Content Fragment Admin       │ aem/cf-console-admin/1                 │ action, ui                             │
+     │      │                                                             │ Console                                                     │                                        │                                        │
+     └──────┴─────────────────────────────────────────────────────────────┴─────────────────────────────────────────────────────────────┴────────────────────────────────────────┴────────────────────────────────────────┘
+     ```
 
-   ```terminal
-   ✔ Installed npm package @adobe/generator-app-events-generic
-   ℹ Running template @adobe/generator-app-events-generic
-   ? We are about to create a new sample action that A generic action that logs the events received from IO Events.
-   How would you like to name this action? generic
-   ```
+   * Enter the name of the non-web Runtime Action. The default value is `generic`.
 
-   * Enter the name of `Event Registration` that will be created (Event Registration Default by default).
+     ```terminal
+     ✔ Installed npm package @adobe/generator-app-events-generic
+     ℹ Running template @adobe/generator-app-events-generic
+     ? We are about to create a new sample action that A generic action that logs the events received from IO Events.
+     How would you like to name this action? generic
+     ```
 
-   ```terminal
-   ? We are about to create a new Event registration.
-   How would you like to name this registration? Customer Event Registration
-   ```
+   * Enter the name of event registration to create. The default value is `Event Registration`.
+     
+     ```terminal
+     ? We are about to create a new Event registration.
+     How would you like to name this registration? Customer Event Registration
+     ```
 
    * Enter text that describes the purpose of the registration.  The default value is `Registration for IO Events`.
 
-   ```terminal
-   ? What is this registration being created for? Registration for receiving customer actions
-   ```
+     ```terminal
+     ? What is this registration being created for? Registration for receiving customer actions
+     ```
 
-   * Choose `Commerce Events` from the list of event providers families.
+   * Select `Commerce Events` from the list of event provider families.
 
-   ```terminal
-   ? Choose from the following provider families ( provider metadata ) Commerce Events
-   ```
+     ```terminal
+     ? Choose from the following provider families ( provider metadata ) Commerce Events
+     ```
 
-   * Choose the `Event Provider` you created in the [Create an Event Provider](./configure-commerce.md#create-an-event-provider) section.
+   * Select the event provider you created in the [Create an Event Provider](./configure-commerce.md#create-an-event-provider) section.
 
-   ```terminal
-   ? Choose from below provider for provider metadata: dx_commerce_events team-mercury-sandbox
-   ```
+     ```terminal
+     ? Choose from below provider for provider metadata: dx_commerce_events team-mercury-sandbox
+     ```
 
-   * Select the `Event Metadata` you want to associate with the event registration.
+   * Select the event metadata you want to associate with the event registration.
 
-   ```terminal
-   Choose event metadata for provider: team-mercury-sandbox Observer event customer_login, Observer event customer_logout
-   ```
+     ```terminal
+     Choose event metadata for provider: team-mercury-sandbox Observer event customer_login, Observer event customer_logout
+     ```
 
-   The command initializes a project with a basic Adobe I/O Runtime Action and configuration for the Event Registration.
+   The command initializes a project with a basic Adobe I/O Runtime Action and a configuration for the event registration.
 
 1. Deploy the generated application to the App Builder project by running the following command:
 
@@ -254,9 +254,9 @@ If you want to add `Event Registrations` with `Runtime Actions` as event consume
    aio app deploy
    ```
 
-   The command deploys the project generated in the previous step to the App Builder. It also creates a new `Event Registration` that delivers events to the Adobe I/O Runtime Action.
+   The command deploys the project and creates a new event registration that delivers events to the Adobe I/O Runtime Action.
 
-1. You can add more Adobe I/O Runtime actions or Event Registrations by editing the `app.config.yaml` file and deploying the project with `aio app deploy` CLI command.
+1. You can add more Adobe I/O Runtime actions or event registrations by editing the `app.config.yaml` file and redeploying the project with `aio app deploy` CLI command.
 
    ```yaml
    application:

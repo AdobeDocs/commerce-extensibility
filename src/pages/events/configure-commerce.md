@@ -216,7 +216,7 @@ If you want to add `Event Registrations` with `Runtime Actions` as event consume
      ```
 
    * Enter the name of event registration to create. The default value is `Event Registration`.
-   
+
      ```terminal
      ? We are about to create a new Event registration.
      How would you like to name this registration? Customer Event Registration

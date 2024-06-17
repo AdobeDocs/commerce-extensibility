@@ -17,7 +17,7 @@ You can consume events sent from Adobe Commerce to Adobe I/O events in several w
 
 ## Using the Journaling API
 
-When you create an Adobe I/O event registration, the subscribed events get added to an ordered list, referred to as the journal, by default. You can consume these events using a journaling endpoint URL that is unique to the registration. For more information on reading events from the journal, see the [Introduction to Journaling](https://developer.adobe.com/events/docs/guides/journaling_intro/).
+When you create an Adobe I/O event registration, by default, the subscribed events get added to an ordered list (referred to as the journal). You can consume these events using a journaling endpoint URL that is unique to the registration. For more information on reading events from the journal, see the [Introduction to Journaling](https://developer.adobe.com/events/docs/guides/journaling_intro/).
 
 You can also consume events from the Journaling API using the [Adobe I/O Events SDK](https://github.com/adobe/aio-lib-events). See [Subscribe to Events Using Journaling](https://developer.adobe.com/events/docs/guides/sdk/sdk_journaling/) for details and sample code.
 

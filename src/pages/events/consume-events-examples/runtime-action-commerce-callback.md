@@ -87,4 +87,4 @@ You can retrieve the `consumerKey`, `consumerSecret`, `accessToken`, and `access
 
 You can now add the order's extension attributes retrieved from Commerce to the order event payload, and send the payload to a third-party Enterprise Resource Planning (ERP) system using a custom module.
 
-After creating a runtime action using this code, you can create an event registration can to subscribe to the `observer.sales_order_save_after` event, and configure the new runtime action to receive the event notifications.
+After creating a runtime action using this code, you can create an event registration to subscribe to the `observer.sales_order_save_after` event and configure the new runtime action to receive the event notifications.

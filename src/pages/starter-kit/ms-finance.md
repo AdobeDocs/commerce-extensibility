@@ -12,7 +12,7 @@ keywords:
 
 # Microsoft Dynamics Finance and Operations Accelerator for Adobe Commerce
 
-This reference application provides developers with a basic understanding of the types of applications they can create with Adobe Commerce integration starter kit. Adobe and its partners created this application using the starter kit. Use it to help you understand how to integrate Adobe Commerce with other systems.
+The [Microsoft Dynamics Finance and Operations Accelerator for Adobe Commerce](https://exchange.adobe.com/apps/ec/ab76757u7q/msft-d365-fo-for-adobe-commerce) reference application provides developers with a basic understanding of the types of applications they can create with Adobe Commerce integration starter kit. Adobe and its partners created this application using the starter kit. Use it to help you understand how to integrate Adobe Commerce with other systems.
 
 Microsoft's Dynamics 365 Finance and Operations (D365 F&O) is an enterprise resource planning (ERP) tool for medium and large businesses to handle their operational processes, such as finance, sales, purchase orders, and more.
 
@@ -22,7 +22,7 @@ This reference application provides a base implementation for the most common da
 
 ![F&O diagram](../_images/starterkit/FO365.png)
 
-- **Out-of-the-Box Integration** - Leverage Adobe’s serverless extensibility architecture to integrate data between Adobe Commerce and D365 F&O out-of-the-box.
+- **Out-of-the-Box Integration** - Leverage Adobe's serverless extensibility architecture to integrate data between Adobe Commerce and D365 F&O out-of-the-box.
 - **Sync common data types for ecommerce** - Sync customer, products, prices, and stock data from D365 F&O to Commerce.
 - **Send orders to Microsoft Dynamics F&O** - Send orders from Commerce to D365 F&O.
 - **Notify customers of shipment** - Notify customers of an order shipment when an order status updates in D365 F&O.

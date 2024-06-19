@@ -97,6 +97,17 @@ module.exports = [
     },
     */
     {
+        title: "Reference applications",
+        header: true,
+        path: "/starter-kit/ms-finance.md",
+        pages: [
+            {
+                title: "Microsoft Dynamics F&O Accelerator",
+                path: "/starter-kit/ms-finance.md"
+            }
+        ]
+    },
+    {
         title: "Additional resources",
         header: true,
         path: "/starter-kit/contact-us.md",

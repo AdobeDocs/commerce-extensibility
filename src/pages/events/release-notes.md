@@ -20,7 +20,7 @@ June 21, 2024
 
 ### Enhancements
 
-* Added the additional validation on HIPAA customers and sets the appropriate headers for events based on it. <!--- CEXT-3322 -->
+* Added additional validation on HIPAA customers. Events now contain the `cst:aio:x-event-phidata` header. <!--- CEXT-3322 -->
 
 ## Version 1.7.0
 

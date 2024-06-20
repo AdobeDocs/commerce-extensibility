@@ -12,6 +12,16 @@ These release notes describe the latest version of Adobe I/O Events for Adobe Co
 
 See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io-events-for-adobe-commerce) for upgrade instructions.
 
+## Version 1.7.1
+
+### Release date
+
+June 21, 2024
+
+### Enhancements
+
+* Added the additional validation on HIPAA customers and sets the appropriate headers for events based on it. <!--- CEXT-3322 -->
+
 ## Version 1.7.0
 
 ### Release date

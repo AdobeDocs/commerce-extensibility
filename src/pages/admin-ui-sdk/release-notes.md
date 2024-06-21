@@ -12,11 +12,15 @@ keywords:
 
 ### Release date
 
-March 21, 2024
+June 26, 2024
 
 ### Enhancements
 
-* Added the [`customer grid columns` extension point](./extension-points/customer/grid-columns.md).  <!--- CEXT-2867  -->
+* Added the following extension points:
+
+  * [`banner notification](./extension-points/banner-notification.md)
+  * [`customer grid columns`](./extension-points/customer/grid-columns.md).  <!--- CEXT-2867  -->
+  * [`customer mass action`](./extension-points/customer/mass-action.md).
 
 * Added the [`order get custom fees` extension point](./extension-points/order/custom-fees.md).  <!--- CEXT-2733  -->
 

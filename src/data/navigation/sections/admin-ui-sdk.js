@@ -16,12 +16,20 @@ module.exports = [
       path: "/admin-ui-sdk/extension-points/index.md",
       pages: [
         {
+          title: "banner notification",
+          path: "/admin-ui-sdk/extension-points/banner-notification.md"
+        },
+        {
           title: "customer",
           path: "/admin-ui-sdk/extension-points/customer/index.md",
           pages: [
             {
               title: "grid columns",
               path: "/admin-ui-sdk/extension-points/customer/grid-columns.md"
+            },
+            {
+              title: "mass action",
+              path: "admin-ui-sdk/extension-points/customer/mass-actions.md"
             }
           ]
         },

@@ -21,8 +21,7 @@ June 26, 2024
   * [`banner notification](./extension-points/banner-notification.md)
   * [`customer grid columns`](./extension-points/customer/grid-columns.md).  <!--- CEXT-2867  -->
   * [`customer mass action`](./extension-points/customer/mass-action.md).
-
-* Added the [`order get custom fees` extension point](./extension-points/order/custom-fees.md).  <!--- CEXT-2733  -->
+  * [`order get custom fees`](./extension-points/order/custom-fees.md).  <!--- CEXT-2733  -->
 
 * Mass actions can now be implemented [without an iFrame](./extension-points/index.md#mass-actions-without-iframes). <!--- CEXT-2590, CEXT-2825, CEXT-2932, CEXT-2903 -->
 

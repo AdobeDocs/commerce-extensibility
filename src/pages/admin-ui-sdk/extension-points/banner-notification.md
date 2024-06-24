@@ -8,7 +8,7 @@ keywords:
 
 # bannerNotification
 
-The `bannerNotification` extension point defines the contents of banner notifications that are displayed when a customer, order, or product mass action is attempted.
+The `bannerNotification` extension point defines the contents of banner notifications that display when attempting a customer, order, or product mass action.
 
 ## Example customization
 

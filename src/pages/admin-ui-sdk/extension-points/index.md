@@ -10,6 +10,8 @@ keywords:
 
 This section describes how to use existing extension points in any Adobe Developer App Builder application that customizes Adobe Commerce Admin.
 
+The [Adobe Commerce Samples repository](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/menu/custom-menu) contains samples for different extension points of the Adobe Commerce Admin UI SDK. Use these samples to gain insight on how the Admin SDK injects menus and pages into the Admin.
+
 ## Shared contexts
 
 The `sharedContext` constant contains a set of selected IDs, the Commerce base URL, and an IMS token, as shown below. It is available only when a mass action is selected in the Commerce Admin.

@@ -51,10 +51,10 @@ bannerNotification: {
 `customer.actionId` | Yes | The `actionId` of a customer mass action.
 where banner notification will be customized. It should be the same one that is defined in the customer mass action extension point.
 `customer.successMessage` | No | The success message to display when mass action is successful. A default message is displayed if this parameter is not defined.
-`customer.errorMessage` | No | The error message to display when mass action is successful. A default message is displayed if this parameter is not defined.
+`customer.errorMessage` | No | The error message to display when mass action fails. A default message is displayed if this parameter is not defined.
 `order.actionId` | string | Yes | The `actionId` of an [order mass action](./order/mass-action.md).
 `order.successMessage` | No | The success message to display when mass action is successful. A default message is displayed if this parameter is not defined.
-`order.errorMessage` | No | The error message to display when mass action is successful. A default message is displayed if this parameter is not defined.
+`order.errorMessage` | No | The error message to display when mass action fails. A default message is displayed if this parameter is not defined.
 `product.actionId` | Yes | The `actionId` of a [product mass action](./product/mass-action.md).
 `product.successMessage` | No | The success message to display when mass action is successful. A default message is displayed if this parameter is not defined.
-`product.errorMessage` | No | The error message to display when mass action is successful. A default message is displayed if this parameter is not defined.
+`product.errorMessage` | No | The error message to display when mass action fails. A default message is displayed if this parameter is not defined.

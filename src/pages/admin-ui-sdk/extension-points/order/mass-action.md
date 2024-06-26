@@ -63,3 +63,7 @@ order: {
 | `orderSelectLimit` | integer | No | Set the maximum number of orders that can be selected for a mass action. By default, the number is unlimited. |
 | `displayIframe` | boolean | No | Indicates whether an iFrame will be displayed at the relative path. The default value is `true`. [Mass actions without iFrames](../index.md#mass-actions-without-iframes) provides additional details. |
 | `timeout` | integer | No | Only relevant when `displayIframe` is set to `false`. Timeout by seconds to the request sent to application. Default value is 10 seconds. |
+
+## Sample code
+
+The Adobe Commerce Extensibility Code Samples repository demonstrates how to customize the [order mass action](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/order/custom-mass-action).

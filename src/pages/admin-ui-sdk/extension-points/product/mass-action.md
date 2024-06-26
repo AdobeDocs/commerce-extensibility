@@ -61,3 +61,7 @@ product: {
 | `productSelectLimit` | integer | No | Set the maximum number products that can be selected for a mass action. By default, the number is unlimited. |
 | `displayIframe` | boolean | No | Indicates whether an iFrame will be displayed at the relative path. The default value is `true`. [Mass actions without iFrames](../index.md#mass-actions-without-iframes) provides additional details. |
 | `timeout` | integer | No | Only relevant when `displayIframe` is set to `false`. The number of seconds to wait for a response to a request sent to the application. Default value is 10 seconds. |
+
+## Sample code
+
+The Adobe Commerce Extensibility Code Samples repository demonstrates how to customize the [product mass action](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/product/custom-mass-action).

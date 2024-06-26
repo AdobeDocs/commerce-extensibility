@@ -14,7 +14,7 @@ The [Adobe Commerce Samples repository](https://github.com/adobe/adobe-commerce-
 
 ## Shared contexts
 
-The `sharedContext` constant contains a set of selected IDs, the Commerce base URL, and an IMS token, as shown below. It is available only when a mass action is selected in the Commerce Admin.
+The `sharedContext` constant is available only when a mass action, menu, or order view button performs a redirection to an iFrame page. For mass actions, `sharedContext` contains a set of selected IDs, the Commerce base URL, the client ID, and an IMS token, as shown below. For menus and order view buttons, `sharedContext` contains only an IMS token.
 
 ```js
 const sharedContext = {
@@ -46,6 +46,8 @@ The `path` parameter for a `productMassAction` specifies where to redirect the m
 When a mass action `displayIframe` parameter is set to `false`, you must account for additional factors.
 
 ### Mass action request headers
+
+Use the following request headers when you perform a mass action without implementing an iFrame.
 
 | Header | Description |
 | --- | --- |

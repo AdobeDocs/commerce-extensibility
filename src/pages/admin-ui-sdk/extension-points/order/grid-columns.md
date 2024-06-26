@@ -118,3 +118,7 @@ This sample `schema.json` file is referenced in the mesh configuration file. It 
 | `properties.columnId` | string | Yes | The identifier used in the external dataset to identify the column. |
 | `properties.label` | string | Yes | The label of the column to display. |
 | `properties.type` | string | Yes | The data type of the values in the column. Supported values: `boolean`, `date`, `float`, `integer`, `string`. Date values must be ISO 8601-compliant. |
+
+## Sample code
+
+The Adobe Commerce Extensibility Code Samples repository demonstrates how to customize [order grid columns](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/order/custom-grid-columns).

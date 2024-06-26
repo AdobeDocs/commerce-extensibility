@@ -12,20 +12,20 @@ keywords:
 
 ### Release date
 
-June 26, 2024
+June 28, 2024
 
 ### Enhancements
 
 * Added the following extension points:
 
-  * [`banner notification](./extension-points/banner-notification.md)
+  * [`banner notification`](./extension-points/banner-notification.md)
   * [`customer grid columns`](./extension-points/customer/grid-columns.md)  <!--- CEXT-2867  -->
   * [`customer mass action`](./extension-points/customer/mass-action.md)
   * [`order get custom fees`](./extension-points/order/custom-fees.md)  <!--- CEXT-2733  -->
 
 * Mass actions can now be implemented [without an iFrame](./extension-points/index.md#mass-actions-without-iframes). <!--- CEXT-2590, CEXT-2825, CEXT-2932, CEXT-2903 -->
 
-* Added the `GET V1/adminuisdk/massaction/<requestId>` REST API to debug mass action failures.
+* Added the `GET V1/adminuisdk/massaction/<requestId>` [REST API](./extension-points/index.md#connection-interruption-failures) to debug mass action failures.
 
 * Added the **Refresh registrations** button to the configuration page. This button allows the administrator to  refresh the `admin_ui_sdk` cache and reload all extensions. <!--- CEXT-2642 -->
 

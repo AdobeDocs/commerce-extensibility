@@ -8,9 +8,9 @@ keywords:
 
 # bannerNotification
 
-The `bannerNotification` extension point defines the contents of banner notifications that display when attempting a customer, order, or product mass action.
+The `bannerNotification` extension point defines the contents of banner notifications that display when customizing a mass action or order view button.
 
-## Example customization
+## Example mass action customizations
 
 The following example defines success and error messages for multiple mass actions.
 
@@ -58,3 +58,29 @@ where banner notification will be customized. It should be the same one that is 
 `product.actionId` | Yes | The `actionId` of a [product mass action](./product/mass-action.md).
 `product.successMessage` | No | The success message to display when mass action is successful. A default message is displayed if this parameter is not defined.
 `product.errorMessage` | No | The error message to display when mass action fails. A default message is displayed if this parameter is not defined.
+
+## Example order view button customization
+
+The following example defines success and error messages for a custom order view button.
+
+```javascript
+bannerNotification: {
+  getOrderViewButtons() {
+    return [
+      {
+        buttonId: 'order-custom-view-button::create-return',
+        successMessage: 'Order View Button Success',
+        errorMessage: 'Order View Button Error'
+      }
+    ]
+  }
+}
+```
+
+## Parameters
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+`buttonId` | Yes | A `buttonId` defined in an order view button extension point.
+`successMessage` | No | The success message to display when the view button notification is successful. A default message is displayed if this parameter is not defined.
+`errorMessage` | No | The error message to display when the view button notification fails. A default message is displayed if this parameter is not defined.

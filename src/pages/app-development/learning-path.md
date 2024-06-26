@@ -63,7 +63,7 @@ The following resources will help you get to know the extensibility options offe
   - [Setup and installation](https://developer.adobe.com/commerce/extensibility/webhooks/installation/) - Information on how to install Commerce modules necessary for implementing webhooks.
   - [Configuration](https://developer.adobe.com/commerce/extensibility/webhooks/hooks/) - Developer documentation on how to configure hooks for Adobe Commerce.
   - [Common use cases](https://developer.adobe.com/commerce/extensibility/webhooks/use-cases/) - Descriptions of common Adobe Commerce use cases for webhooks.
-  - [Webhooks](https://developer.adobe.com/commerce/extensibility/webhooks/admin-configuration/) - Learn how to extend, override, and create hooks using the Adobe Commerce Admin.
+  <!-- - [Webhooks](https://developer.adobe.com/commerce/extensibility/webhooks/admin-configuration/) - Learn how to extend, override, and create hooks using the Adobe Commerce Admin. -->
 
 ## Troubleshooting
 

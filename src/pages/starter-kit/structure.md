@@ -7,12 +7,9 @@ keywords:
  - API Mesh
  - Events
  - REST
+ - Starter Kit
  - Tools
 ---
-
-import BetaNote from '/src/_includes/starter-kit-beta.md'
-
-<BetaNote />
 
 # Starter kit structure
 
@@ -45,7 +42,9 @@ The following diagram shows the directory structure of the starter kit project:
 |   |   |   |__ webhook
 |   |   |__ webhook
 |   |   |   |__ <action>
-|   |__ onboarding
+|   |__ scripts
+|   |   |__ commerce-event-subscribe
+|   |   |__ onboarding
 |   |__ test
 |   |__ utils
 ```
@@ -79,9 +78,13 @@ File | Purpose
 `transformer.js` | Implements the logic to transform the incoming event payload to make it suitable for the target API being called to propagate the changes.
 `validator.js` | Implements the logic to validate the incoming event payload.
 
-### `onboarding` directory
+### `scripts/onboarding` directory
 
-The `onboarding` directory contains the scripting needed to install and set up the starter kit. The `./onboarding/custom/starter-kit-registrations.json` configuration file creates all the registrations for all entities that are present in the repo's `app.config.yaml` file. You can edit this file to remove any unnecessary Commerce or back office registrations. [Onboarding](./create-integration.md#onboarding) describes the installation process.
+The `onboarding` directory contains the scripting needed to install and set up the starter kit. The `scripts/onboarding/config/starter-kit-registrations.json` configuration file creates all the registrations for all entities that are present in the repo's `app.config.yaml` file. You can edit this file to remove any unnecessary Commerce or back office registrations. [Onboarding](./create-integration.md#onboarding) describes the installation process.
+
+### `scripts/commerce-event-subscribe` directory
+
+The `commerce-event-subscribe` directory contains the script to subscribe the Commerce event provider, which was created during onboarding, to the Commerce events. The `scripts/onboarding/config/starter-kit-registrations.json` configuration file contains all the Commerce events you want subscribe to. Edit this file to add, remove, or modify the events necessary for your project. [Onboarding](./create-integration.md#onboarding) describes the installation process.
 
 ### `test` directory
 

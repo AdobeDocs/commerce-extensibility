@@ -48,17 +48,23 @@ bin/magento cache:clean admin_ui_sdk
 
 ## Test with a sample app
 
-You can download a sample app from the [Commerce UI test extension repository](https://github.com/magento/app-builder-samples) to gain insight on how the Admin SDK injects menus and pages into the Admin.
+### Prerequisites
+
+- An Adobe Commerce instance installed on the local machine.
+
+### Configuration
+
+You can download a sample app from the [Adobe Commerce Samples repository](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/menu/custom-menu) to gain insight on how the Admin SDK injects menus and pages into the Admin.
 
 1. Run the following command to clone and sync the repository:
 
    ```bash
-   git clone git@github.com:magento/app-builder-samples.git
+   git clone git@github.com:adobe/adobe-commerce-samples.git
    ```
 
 1. Change directories to the cloned repository's root directory.
 
-1. Create a `server.js` file to define a local server:
+1. Create a `server.js` file in `<repoRootDir>/admin-ui-sdk` to define a local server:
 
    ```js
    const http = require('https');
@@ -77,7 +83,11 @@ You can download a sample app from the [Commerce UI test extension repository](h
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Headers': '*'
       });
-      const json_response = {
+      
+      console.log(url.parse(req.url,true).pathname);
+      
+      const json_response = [
+        {
           "name": "test-extension",
           "title": "Test extension",
           "description": "No",
@@ -95,12 +105,26 @@ You can download a sample app from the [Commerce UI test extension repository](h
             "appId": "4a4c7cf8-bd64-4649-b8ed-662cd0d9c918"
           },
           "status": "PUBLISHED" 
-      }
+        }
+      ]
+      
       res.end( JSON.stringify(json_response) );
     }).listen(9090);
     ```
 
-1.  Run the local server:
+1. Generate the `key.pem` certificate in the same directory.
+
+    ```bash
+    openssl genpkey -algorithm RSA -out key.pem -pkeyopt rsa_keygen_bits:2048
+    ```
+
+1. Generate the `cert.pem` certificate in the same directory.
+
+    ```bash
+    openssl req -new -x509 -key key.pem -out cert.pem -days 365
+    ```
+
+1. Run the local server:
 
     ```bash
     node server.js
@@ -108,41 +132,45 @@ You can download a sample app from the [Commerce UI test extension repository](h
 
 1. Make sure you have access to the localhost server configuration by entering the following URL in your browser:
 
-   `https://localhost:9090/`
+   `https://localhost:9090`
 
    The browser displays a JSON file similar to the following:
 
    ```json
-      [
-        {
-            "name": "test-extension",
-            "title": "Test extension",
-            "description": "No",
-            "icon": "no",
-            "publisher": "aQQ6300000008LEGAY",
-            "endpoints": {
-              "commerce/backend-ui/1": {
-                "view": [{
-                  "href": "https://localhost:9080/index.html"
-                }]
-              }
-            },
-            "xrInfo": {
-              "supportEmail": "test@adobe.com",
-              "appId": "4a4c7cf8-bd64-4649-b8ed-662cd0d9c918"
-            },
-            "status": "PUBLISHED" 
-        }
-      ]
+    [
+      {
+        "name": "test-extension",
+        "title": "Test extension",
+        "description": "No",
+        "icon": "no",
+        "publisher": "aQQ6300000008LEGAY",
+        "endpoints": {
+          "commerce/backend-ui/1": {
+            "view": [{
+              "href": "https://localhost:9080/index.html"
+            }]
+          }
+        },
+        "xrInfo": {
+          "supportEmail": "test@adobe.com",
+          "appId": "4a4c7cf8-bd64-4649-b8ed-662cd0d9c918"
+        },
+        "status": "PUBLISHED"
+      }
+    ]
    ```
 
-1. Run your extension locally.
+### Custom menu example
+
+1. Change directories to `<repoRootDir>/admin-ui-sdk/menu/custom-menu`.
+
+1. Run your custom menu extension locally.
 
    ```bash
    aio app run
    ```
 
-1. Check that the **First App on App Builder** option has been added to the **Marketing** menu in the Admin and that selecting the option takes you to the **Fetched orders from Adobe Commerce** page.
+1. Confirm that the **Apps** section appears on the main menu and the **First App on App Builder** option appears in the **Apps** menu in the Admin. Click **First App on App Builder** and confirm that the **Fetched orders from Adobe Commerce** page opens.
 
    ![Fetched orders from Adobe Commerce page](../_images/first-app.png)
 

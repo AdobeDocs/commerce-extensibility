@@ -7,13 +7,11 @@ keywords:
  - API Mesh
  - Events
  - REST
+ - Starter Kit
  - Tools
 ---
 
-import BetaNote from '/src/_includes/starter-kit-beta.md'
 import actions from '/src/_includes/actions.md'
-
-<BetaNote />
 
 # Real-time integrations
 
@@ -86,7 +84,11 @@ You must implement the stock-checking logic on an external service.
 
 ### Configure webhook
 
-Follow [admin configuration](../webhooks/admin-configuration.md) to modify your webhook and define the connection between Adobe Commerce and your backoffice system using the `observer.checkout_cart_product_add_before` method.
+<InlineAlert variant="info" slots="text"/>
+
+Creating a webhook in the Admin configuration is temporarily disabled, due to changes in [Webhooks](../webhooks/release-notes.md#version-150). Instead, [create a webhook from an `xml` file](../webhooks/hooks.md).
+
+Follow admin configuration to modify your webhook and define the connection between Adobe Commerce and your backoffice system using the `observer.checkout_cart_product_add_before` method.
 
 ```json
 {

@@ -33,6 +33,7 @@ The following resources will help you get to know the extensibility options offe
 - Develop custom applications with Adobe Developer App Builder
   - [App Builder overview](https://developer.adobe.com/app-builder/docs/overview/) - An overview of the App Builder ecosystem. The App Builder documentation applies to all Adobe products that integrate with App Builder, including Adobe Commerce.
   - [Creating your first App Builder application](https://developer.adobe.com/app-builder/docs/getting_started/first_app/) - A generalized tutorial on creating your first App Builder app. If you are new to App Builder, Adobe recommends reviewing the App Builder overview before beginning this tutorial.
+  - [Building integrations with App Builder](https://developer.adobe.com/commerce/extensibility/starter-kit/create-integration/) - Accelerate building integrations with the integration starter kit for Adobe Commerce
 - Orchestration with API Mesh for Adobe Developer App Builder
   - [Getting started](https://developer.adobe.com/graphql-mesh-gateway/gateway/getting-started/) - Information on how to get started with API Mesh.
   - [Creating a mesh](https://developer.adobe.com/graphql-mesh-gateway/gateway/create-mesh/) - Developer documentation on creating a mesh.
@@ -43,6 +44,7 @@ The following resources will help you get to know the extensibility options offe
     - [Working with projects and workspaces](https://experienceleague.adobe.com/docs/commerce-learn/tutorials/adobe-developer-app-builder/api-mesh/aio-projects-workspaces.html)
     - [Create a mesh with a single source](https://experienceleague.adobe.com/docs/commerce-learn/tutorials/adobe-developer-app-builder/api-mesh/graphql-single-source.html)
     - [Create a mesh with multiple sources](https://experienceleague.adobe.com/docs/commerce-learn/tutorials/adobe-developer-app-builder/api-mesh/graphql-multiple-source.html?lang=en)
+  - [Try out the Commerce API](https://experienceleague.adobe.com/developer/commerce/storefront/playgrounds/commerce-services/) in the developer playground with zero setup required.
 - Build event-driven integrations with Adobe I/O Events for Adobe Commerce
   - [Adobe I/O Events](https://developer.adobe.com/events/docs/) - Developer documentation for general Adobe I/O Events functionality, not specific to Adobe Commerce. View this documentation for information about consuming events in App Builder using journaling, runtime actions, retry mechanisms, and more.
   - [Adobe I/O Events for Adobe Commerce](https://developer.adobe.com/commerce/extensibility/events/) - Developer documentation for Adobe I/O Events for Adobe Commerce.
@@ -64,8 +66,9 @@ The following resources will help you get to know the extensibility options offe
   - [Configuration](https://developer.adobe.com/commerce/extensibility/webhooks/hooks/) - Developer documentation on how to configure hooks for Adobe Commerce.
   - [Common use cases](https://developer.adobe.com/commerce/extensibility/webhooks/use-cases/) - Descriptions of common Adobe Commerce use cases for webhooks.
 
-## Troubleshooting
+## Additional Resources
 
+- [Code samples for extending and integrating Adobe Commerce](https://developer.adobe.com/commerce/code-samples)
 - [Logging and troubleshooting in App Builder](./best-practices/logging-troubleshooting.md)
 - [Adobe I/O Events frequently asked questions](https://developer.adobe.com/events/docs/support/faq/)
 - [App Builder security overview](https://developer.adobe.com/app-builder/docs/guides/security/)

@@ -16,6 +16,24 @@ module.exports = [
       path: "/admin-ui-sdk/extension-points/index.md",
       pages: [
         {
+          title: "banner notification",
+          path: "/admin-ui-sdk/extension-points/banner-notification.md"
+        },
+        {
+          title: "customer",
+          path: "/admin-ui-sdk/extension-points/customer/index.md",
+          pages: [
+            {
+              title: "grid columns",
+              path: "/admin-ui-sdk/extension-points/customer/grid-columns.md"
+            },
+            {
+              title: "mass action",
+              path: "admin-ui-sdk/extension-points/customer/mass-actions.md"
+            }
+          ]
+        },
+        {
           title: "menu",
           path: "/admin-ui-sdk/extension-points/menu.md"
         },
@@ -23,6 +41,10 @@ module.exports = [
           title: "order",
           path: "/admin-ui-sdk/extension-points/order/index.md",
           pages: [
+            {
+              title: "get custom fees",
+              path: "/admin-ui-sdk/extension-points/order/custom-fees.md"
+            },
             {
               title: "grid columns",
               path: "/admin-ui-sdk/extension-points/order/grid-columns.md"

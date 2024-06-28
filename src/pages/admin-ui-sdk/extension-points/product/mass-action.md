@@ -23,7 +23,6 @@ product: {
             {
                 actionId: `${extensionId}::first-mass-action`,
                 label: 'First App Mass Action',
-                type: `${extensionId}.first-mass-action`,
                 confirm: {
                     title: 'First App Mass Action',
                     message: 'Are you sure your want to proceed with First App Mass Action on selected products?'
@@ -34,9 +33,15 @@ product: {
             {
                 actionId: `${extensionId}::another-first-mass-action`,
                 label: 'Another Mass Action',
-                type: `${extensionId}.another-mass-action`,
                 title: 'Another Products Mass Action',
                 path: '#/another-mass-action'
+            },
+            {
+              actionId: `${extensionId}::update-mass-action`,
+              label: 'Update Mass Action',
+              path: 'api/v1/web/SampleExtension/update-products',
+              displayIframe: false,
+              timeout: 15
             }
         ]
     }
@@ -54,4 +59,9 @@ product: {
 | `title` | string | No | An optional page title for the action. If not specified, the label is used. |
 | `path` | string | Yes | The relative path in the application to redirect to the action. You might need to prepend `#/` to the path to ensure access to the correct page. |
 | `productSelectLimit` | integer | No | Set the maximum number products that can be selected for a mass action. By default, the number is unlimited. |
-| `type` | string | Yes | A unique ID that identifies the type of the action. |
+| `displayIframe` | boolean | No | Indicates whether an iFrame will be displayed at the relative path. The default value is `true`. [Mass actions without iFrames](../index.md#mass-actions-without-iframes) provides additional details. |
+| `timeout` | integer | No | Only relevant when `displayIframe` is set to `false`. The number of seconds to wait for a response to a request sent to the application. Default value is 10 seconds. |
+
+## Sample code
+
+The Adobe Commerce Extensibility Code Samples repository demonstrates how to customize the [product mass action](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/product/custom-mass-action).

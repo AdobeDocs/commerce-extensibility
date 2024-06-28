@@ -107,7 +107,7 @@ You can download a sample app from the [Adobe Commerce Samples repository](https
           "status": "PUBLISHED" 
         }
       ]
-
+      
       res.end( JSON.stringify(json_response) );
     }).listen(9090);
     ```

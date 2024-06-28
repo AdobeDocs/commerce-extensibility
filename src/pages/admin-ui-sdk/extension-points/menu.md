@@ -10,6 +10,8 @@ keywords:
 
 The `menu` extension point creates a new menu that redirects to the App Builder app.
 
+When you implement a menu that uses an iFrame, use a [`sharedContext`](./index.md#shared-contexts) to read the IMS token.
+
 ## Example customization
 
 The following example creates the **Apps** > **First App on App Builder** menu option.
@@ -43,3 +45,7 @@ The following example creates the **Apps** > **First App on App Builder** menu o
 | `parent` | string | No | The parent menu. |
 | `sortOrder` | integer | No | The position of the menu, relative to other menus in the section. A value of `1` indicates the menu will be listed first. If this parameter is not specified, it will be placed randomly.
 | `title`  | string | No | The title to display. |
+
+## Sample code
+
+The Adobe Commerce Extensibility Code Samples repository demonstrates how to customize a [menu](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/menu/custom-menu).

@@ -1,14 +1,14 @@
 ---
-title: order grid columns
-description: Customize the orders page in the Adobe Commerce Admin.
+title: customer grid columns
+description: Customize the customers page in the Adobe Commerce Admin.
 keywords:
   - App Builder
   - Extensibility
 ---
 
-# order grid columns
+# customer grid columns
 
-The `order grid columns` extension point enables you to add columns to the grid on the **Sales** > **Orders** page in the Adobe Commerce Admin. This extension point requires an [API Mesh](https://developer.adobe.com/graphql-mesh-gateway/gateway) for Adobe Developer App Builder instance to retrieve the data to be added to the custom columns.
+The `customer grid columns` extension point enables you to add columns to the grid on the **Customers** > **All Customers** page in the Adobe Commerce Admin. This extension point requires an [API Mesh](https://developer.adobe.com/graphql-mesh-gateway/gateway) for Adobe Developer App Builder instance to retrieve the data to be added to the custom columns.
 
 You can use the [`aio api-mesh:describe` command](https://developer.adobe.com/graphql-mesh-gateway/gateway/command-reference/#aio-api-meshdescribe) to retrieve the values of the API key and mesh ID. The key is appended to the mesh endpoint URL.
 
@@ -17,7 +17,7 @@ You can use the [`aio api-mesh:describe` command](https://developer.adobe.com/gr
 ​The following example creates custom columns labeled `First App Column` and `Second App Column`.
 
 ```javascript
-order: {
+customer: {
     getGridColumns() {
         return {
             data:{
@@ -52,14 +52,14 @@ The following sample mesh configuration file defines the external source that co
     "meshConfig": {
         "sources": [
             {
-                "name": "orders",
+                "name": "customers",
                 "handler": {
                     "JsonSchema": {
                         "baseUrl": "https://www.example.com",
                         "operations": [
                             {
                                 "type": "Query",
-                                "field": "orders",
+                                "field": "customers",
                                 "path": "/graphql",
                                 "method": "GET",
                                 "responseSchema": "./schema.json"
@@ -75,14 +75,14 @@ The following sample mesh configuration file defines the external source that co
 
 ### Sample schema file
 
-This sample `schema.json` file is referenced in the mesh configuration file. It defines the response of the external `orderGridColumns` query that fetches column data.
+This sample `schema.json` file is referenced in the mesh configuration file. It defines the response of the external `customerGridColumns` query that fetches column data.
 
 ```json
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
     "properties": {
-      "orderGridColumns": {
+      "customerGridColumns": {
         "type": "object",
         "patternProperties": {
           "^0": {
@@ -103,7 +103,7 @@ This sample `schema.json` file is referenced in the mesh configuration file. It 
       }
     },
     "required": [
-      "orderGridColumns"
+      "customerGridColumns"
     ]
 }
 ```
@@ -118,7 +118,3 @@ This sample `schema.json` file is referenced in the mesh configuration file. It 
 | `properties.columnId` | string | Yes | The identifier used in the external dataset to identify the column. |
 | `properties.label` | string | Yes | The label of the column to display. |
 | `properties.type` | string | Yes | The data type of the values in the column. Supported values: `boolean`, `date`, `float`, `integer`, `string`. Date values must be ISO 8601-compliant. |
-
-## Sample code
-
-The Adobe Commerce Extensibility Code Samples repository demonstrates how to customize [order grid columns](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/order/custom-grid-columns).

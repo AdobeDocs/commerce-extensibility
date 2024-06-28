@@ -7,13 +7,11 @@ keywords:
  - API Mesh
  - Events
  - REST
+ - Starter Kit
  - Tools
 ---
 
-import BetaNote from '/src/_includes/starter-kit-beta.md'
 import ProjectRequirements from '/src/_includes/project-requirements.md'
-
-<BetaNote />
 
 # Install Adobe Commerce integration starter kit
 
@@ -34,6 +32,10 @@ Integrating Adobe Commerce with your enterprise resource planning (ERP), order m
 ## Create your integration (step-by-step)
 
 The best part about the integration starter kit is that it provides a standardized architecture that follows Adobe Commerce best practices. We think that you can get through this single-page tutorial in under an hour.
+
+<InlineAlert variant="info" slots="text"/>
+
+Support services for the starter kit include the basic functionality and configuration. Because the starter kit is a scaffolding designed to make custom integrations easier, Adobe does not provide support services for modified code or your custom integrations.
 
 ### Onboarding
 
@@ -87,7 +89,7 @@ To download a `.json` file containing your workspace configuration:
 
 1. Click the **Download All** button in the top-right corner.
 
-   The `<Workspace-name>.json` file downloads automatically. In this example, the file is named `977AmethystGazelle-1340225-Stage.json`.
+   The `<Workspace-name>.json` file downloads automatically. In this example, the file is named `977AmethystGazelle-1340225-Stage.json`. Rename the file `workspace.json` and save it in the `scripts/onboarding/config/` directory of the starter kit.  
 
 #### Create an integration in Adobe Commerce
 
@@ -121,11 +123,19 @@ Use the following steps to create and activate an integration.
 
 If you are running Adobe Commerce 2.4.6 or higher, the modules that enable eventing are installed automatically. Skip to the next step. If you are running Commerce 2.4.4 or 2.4.5, you must install modules to enable eventing, as described in [Install Adobe I/O Events for Adobe Commerce](../events/installation.md).
 
+<InlineAlert variant="info" slots="text"/>
+
+Using Adobe I/O Events for Commerce `1.6.0` or later will automate some steps of the onboarding process detailed in the following section.
+
 ### Download and configure the starter kit
 
-In the Beta phase of the starter kit project, an Adobe Commerce representative will send you a ZIP file containing the starter kit repo. For GA, the starter kit will be available in the Adobe Commerce Marketplace.
+Use the following steps to download and configure the Adobe Commerce integration starter kit. The starter kit is located in a [public repository](https://github.com/adobe/commerce-integration-starter-kit).
 
-1. Download and unzip the starter kit repo.
+1. Clone the repo using SSH:
+
+   ```bash
+   git clone git@github.com:adobe/commerce-integration-starter-kit.git
+   ```
 
 1. Change directories to the downloaded repo and copy the `env.dist` file.
 
@@ -180,7 +190,7 @@ The next steps in the onboarding process configures event registrations and comp
 
 **Configure the event registrations**
 
-By default, the `./onboarding/custom/starter-kit-registrations.json` config file creates all the registrations for all entities that are present in the repo's `app.config.yaml` file. You can edit this file to remove any unnecessary Commerce or back office registrations. For example, the YAML file shown in the [Configure the project](#configure-the-starter-kit) section comments out the `product-backoffice` package. In this case, you must remove backoffice from the product entity:
+By default, the `scripts/onboarding/config/starter-kit-registrations.json` config file creates all the registrations for all entities that are present in the repo's `app.config.yaml` file. You can edit this file to remove any unnecessary Commerce or back office registrations. For example, the YAML file shown in the [Configure the project](#configure-the-starter-kit) section comments out the `product-backoffice` package. In this case, you must remove backoffice from the product entity:
 
 ```json
 {
@@ -195,6 +205,8 @@ By default, the `./onboarding/custom/starter-kit-registrations.json` config file
 **Execute the onboarding**
 
 Run the following command to generate the IO Event providers and the registrations for your starter kit project.
+
+IO Event providers and registrations will be configured automatically if you are using Adobe I/O Events version is `1.6.0` or later.
 
 ```bash
 npm run onboard
@@ -225,27 +237,41 @@ Check your App in the Developer Console to confirm the registrations were create
 
 **Complete the Adobe Commerce eventing configuration**
 
+<InlineAlert variant="info" slots="text"/>
+
+The following steps are not required when using Adobe I/O Events version `1.6.0` or later. The onboarding script will configure the Adobe Commerce instance automatically.
+
+Proceed to the next section, or continue following the steps in this section to validate that the configuration is correct.
+
 You must configure Commerce to communicate with your project. Configuration includes copying and pasting the contents of the workspace configuration file that you downloaded from the Adobe Developer Console.
 
 1. In the Commerce Admin, navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Adobe I/O Events** > **General configuration**. The following screen displays.
 
-   ![General configuration](../_images/events/general-configuration.png)
+   ![General configuration](../_images/events/general-configuration-updated.png)
 
 1. Select the server-to-server authorization method you implemented from the **Adobe I/O Authorization Type** menu. Adobe recommends using OAuth. JWT has been deprecated.
 
 1. Copy the contents of the `<workspace-name>.json` file into the **Adobe I/O Workspace Configuration** field.
 
-1. Enter a unique identifier in the **Adobe Commerce Instance ID** field. This value must contain English alphanumeric characters, underscores (_), and hyphens (-) only.
+1. Enter a unique identifier in the **Adobe Commerce Instance ID** field. This unique value identifies your Commerce instance, which allows Commerce events to connect to the correct `Event Provider` in Adobe I/O. This ID corresponds to the **Provider** displayed when [subscribing to events](../events/configure-commerce.md#subscribe-and-register-events).
+
+   **Note**: This value must contain English alphanumeric characters, underscores (_), and hyphens (-) only.
 
 1. Click **Save Config**, but do not leave the page. The next section creates an event provider, which is necessary to complete the configuration.
 
 1. Enable Commerce Eventing by setting **Enabled** to `Yes`.
 
-   **Note**: You must enable cron so that Commerce can send events to the endpoint.
+   ![Commerce events configuration](../_images/events/commerce-events.png)
 
-1. Enter the merchant's company name in the **Merchant ID** field. You must use alphanumeric and underscores only.
+   **Note**: You must enable cron to allow Commerce to send events to the endpoint.
 
-1. In the **Environment ID** field, enter a temporary name for your workspaces while in development mode. When you are ready for production, change this value to a permanent value, such as Production.
+1. Enter the merchant's company name in the **Merchant ID** and the environment name in the **Environment ID** field. The values of these fields will be combined and added as a `source` attribute to your event data to identify the source of the events. It can be useful for event filtration or other logic if you are using the same event provider for several environments or projects.
+
+   **Note**: The **Merchant ID** and **Environment ID** fields only support alphanumeric characters and underscores.
+
+   ```javascript
+   "source": "<merchant-id>.<environment-id>"
+   ```
 
 1. (Optional) By default, if an error occurs when Adobe Commerce attempts to send an event to Adobe I/O, Commerce retries a maximum of seven times. To change this value, uncheck the **Use system value** checkbox and set a new value in the **Maximum retries to send events** field.
 
@@ -254,6 +280,14 @@ You must configure Commerce to communicate with your project. Configuration incl
 1. Click **Save Config**.
 
 **Subscribe to events in Adobe Commerce**
+
+To automatically subscribe to Commerce events using Adobe I/O Events version `1.6.0` or later, run the `commerce-event-subscribe` script in the `scripts/commerce-event-subscribe/config/` directory.
+
+```bash
+npm run commerce-event-subscribe
+```
+
+For earlier versions, follow the steps below to subscribe to the events manually.
 
 Use the `bin/magento events:subscribe` command to subscribe to events, as described in [Subscribe and register events](../events/configure-commerce.md#subscribe-and-register-events). The following table defines the events for each supported entity that you must subscribe to and lists the required fields, if applicable.
 

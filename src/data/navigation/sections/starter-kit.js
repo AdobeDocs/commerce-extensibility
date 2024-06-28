@@ -16,11 +16,14 @@ module.exports = [
                 title: "Explore the structure",
                 path: "/starter-kit/structure.md"
             },
-            {
-                title: "Build & Customize",
-                header: true,
-                path: "/starter-kit/events.md"
-            },
+        ],
+    },
+    {
+        title: "Build & Customize",
+        header: true,
+        path: "/starter-kit/events.md",
+        pages: [
+
             {
                 title: "Event-based integrations",
                 path: "/starter-kit/events.md"   
@@ -93,6 +96,17 @@ module.exports = [
         path: "/starter-kit/create-data-flow.md"
     },
     */
+    {
+        title: "Reference applications",
+        header: true,
+        path: "/starter-kit/ms-finance.md",
+        pages: [
+            {
+                title: "Microsoft Dynamics F&O Accelerator",
+                path: "/starter-kit/ms-finance.md"
+            }
+        ]
+    },
     {
         title: "Additional resources",
         header: true,

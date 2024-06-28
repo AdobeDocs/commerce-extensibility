@@ -7,12 +7,9 @@ keywords:
  - API Mesh
  - Events
  - REST
+ - Starter Kit
  - Tools
 ---
-
-import BetaNote from '/src/_includes/starter-kit-beta.md'
-
-<BetaNote />
 
 # Create a new data flow
 

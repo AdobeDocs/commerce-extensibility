@@ -28,20 +28,34 @@ You must configure Commerce to communicate with your project. Configuration incl
 
    See [Service Account (JWT) Authentication](https://developer.adobe.com/developer-console/docs/guides/authentication/JWT/) for more information about the `private.key` file.
 
-1. Copy the contents of the `<workspace-name>.json` file into the **Adobe I/O Workspace Configuration** field.
+1. Copy the entire contents of the `<workspace-name>.json` file into the **Adobe I/O Workspace Configuration** field.
 
-1. Enter a unique identifier in the **Adobe Commerce Instance ID** field. This value must contain English alphanumeric characters, underscores (_), and hyphens (-) only.
+1. Enter a unique identifier in the **Adobe Commerce Instance ID** field. This unique value identifies your Commerce instance, which allows Commerce events to connect to the correct `Event Provider` in Adobe I/O. This ID corresponds to the **Provider** displayed when [subscribing to events](#subscribe-and-register-events).
+
+   **Note**: The **Adobe Commerce Instance ID** field only supports alphanumeric characters, hyphens and underscores.
 
 1. Click **Save Config**, but do not leave the page. The next section creates an event provider, which is necessary to complete the configuration.
 
-## Create an event provider and complete the Commerce configuration
+ The event provider will not appear in the Developer Console until after you subscribe to an event emitted by Commerce, such as `io_events.xml` or `config.php`.
 
-You cannot create an event provider until you have configured and saved a workspace file and instance ID values. If you are using JWT for server-to-server authentication, you must also have previously specified the private key.
+## Create an Event Provider
+
+Create an `Event Provider` in Adobe I/O Events to associate the Commerce Events subscriptions with the provider. The event subscriptions in Adobe Commerce are created as `Event Metadata` in Adobe I/O Events infrastructure.
+
+Each `Event Provider` can link to multiple event subscriptions (`Event Metadata`). The event's subscriptions will be automatically linked to your `Event Provider` whenever you subscribe with the `events:subscribe` CLI command. You can also manually synchronize all subscriptions with the `events:metadata:populate` command. The events subscriptions synchronization is also called each time during the execution of `setup:upgrade` command.
+
+You can find the list of Event Providers created in your organization, in the App Builder UI when [creating an Event Registration in App Builder](#subscribe-and-register-events).
+
+You can also use the `aio` CLI tool to manage providers. See [Provider Commands](https://developer.adobe.com/events/docs/guides/cli/#provider-commands) for more information.
+
+<InlineAlert variant="info" slots="text"/>
+
+You cannot create an event provider until you have configured and saved instance ID values and a workspace file. If you are using JWT for server-to-server authentication, you must have previously specified the private key.
 
 1. Run the following command to create an event provider:
 
    ```bash
-   bin/magento events:create-event-provider --label "<unique_provider_label>" --description "<provider description>"
+   bin/magento events:create-event-provider --label "Provider Label" --description "Provider description"
    ```
 
    For example:
@@ -50,26 +64,36 @@ You cannot create an event provider until you have configured and saved a worksp
    bin/magento events:create-event-provider --label "My_server_provider" --description "Provides out-of-process extensibility for Adobe Commerce"
    ```
 
+   The `label` field displays as the name of the created Event Provider in the App Builder UI. The `description` field provides more context about the Event Provider.
+
    **Note**: The label can contain English alphanumeric characters and underscores (_) only. The first character must be a letter.
 
    The command displays a message similar to the following:
 
    ```terminal
    No event provider found, a new event provider will be created
-   A new event provider has been created with ID 63a1f8fe-e911-45a4-9d3f
+   A new event provider has been created with ID 63a1f8fe-e911-45a4-9d3f-f512d2ef4626
    ```
 
 1. Copy the ID returned in the command output into the **Adobe I/O Event Provider ID** field in the Admin.
 
-   ![Commerce events configuration](../_images/events/commerce-events.png)
+   ![General configuration updated](../_images/events/general-configuration-updated.png)
+
+## Complete the Commerce configuration
 
 1. Enable Commerce Eventing by setting **Enabled** to `Yes`.
 
+   ![Commerce events configuration](../_images/events/commerce-events.png)
+
    **Note**: You must [enable cron](#check-cron-and-message-queue-configuration) so that Commerce can send events to the endpoint.
 
-1. Enter the merchant's company name in the **Merchant ID** field. You must use alphanumeric and underscores only.
+1. Enter the merchant's company name in the **Merchant ID** and the environment name in **Environment ID** fields. The values of these fields will be combined and added as a `source` attribute to your event data to identify the source of the events. It can be useful for event filtration or other logic if you are using the same event provider for several environments or projects.
 
-1. In the **Environment ID** field, enter a temporary name for your workspaces while you are in development mode. When you are ready for production, change this value to a permanent value, such as **Production**.
+   **Note**: The **Merchant ID** and **Environment ID** fields only support alphanumeric characters and underscores.
+
+```javascript
+"source": "<merchant-id>.<environment-id>"
+```
 
 1. (Optional) By default, if an error occurs when Adobe Commerce attempts to send an event to Adobe I/O, Commerce retries a maximum of seven times. To change this value, uncheck the **Use system value** checkbox and set a new value in the **Maximum retries to send events** field.
 
@@ -92,7 +116,7 @@ Commerce provides two sources for events: observers and plugins. You must specif
    ```
 
    ```bash
-   bin/magento events:subscribe observer.customer_login --fields=firstname --fields=lastname --fields=entity_id
+   bin/magento events:subscribe observer.customer_login --fields=customer.firstname --fields=customer.lastname
    ```
 
     **Warning**: When you use the `events:subscribe` command to subscribe to events on a Cloud environment, configuration information is stored in the `app/etc/config.php` file. You must keep in mind that this file can be replaced with the `app/etc/config.php` file from Git during deployment. As a result, the event subscription will be replaced as well.
@@ -118,13 +142,151 @@ Commerce provides two sources for events: observers and plugins. You must specif
 
 1. Optionally create a new OAuth or JWT credential. Then click **Next**.
 
-1. Update the **Event registration name** and **Event registration description** fields. In the **How to receive events** section, under **Option 2**, select the runtime action you created in [Set up App Builder and define a runtime action](./project-setup.md#set-up-app-builder-and-define-a-runtime-action).
+1. Update the **Event registration name** and **Event registration description** fields. The Journaling API can consume your events by default. You can optionally select other consumption methods during this step. Learn more about your options in [Consuming Events](./consume-events.md).
 
-   ![Select a runtime action](../_images/events/select-runtime-action.png)
+   ![Select how to receive events](../_images/events/receive-events-options.png)
 
 1. Select **Save configured events**.
 
 You are now set up to develop your App Builder extension.
+
+## (Optional) Set up an App Builder project with event registrations and runtime actions
+
+If you want to add `Event Registrations` with `Runtime Actions` as event consumers, you can use the App Builder template **@adobe/generator-app-events-generic** to easily set up your project.
+
+1. Create a project directory on your local filesystem and change to that directory.
+
+   ```bash
+   mkdir myproject && cd myproject
+   ```
+
+1. Log in to Adobe IO from a terminal:
+
+   ```bash
+   aio login
+   ```
+
+   Your web browser displays the login page.
+
+1. Enter your Adobe ID credentials.
+
+1. Close the browser tab and return to your terminal. Enter the following command to bootstrap your application:
+
+   ```bash
+   aio app init -w <workspace-name>
+   ```
+
+   The terminal prompts you to select the path to your workspace.
+
+   * Select your project's organization.
+
+   * Select your project.
+
+   * Select the **@adobe/generator-app-events-generic** option using &lt;space> and press &lt;enter>.
+
+     ```terminal
+     ? Select Org: MyOrg
+     ? Select a Project, or press + to create new: DeveloperSandbox
+     ? What templates do you want to search for? All Templates
+     ✔ Downloaded the list of templates
+     ? Choose the template(s) to install:
+     Pressing <enter> without selection will skip templates and install a standalone application.
+
+     ┌──────┬─────────────────────────────────────────────────────────────┬─────────────────────────────────────────────────────────────┬────────────────────────────────────────┬────────────────────────────────────────┐
+     │      │ Template                                                    │ Description                                                 │ Extension Point                        │ Categories                             │
+     ├──────┼─────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────────────────┼────────────────────────────────────────┼────────────────────────────────────────┤
+     │ ❯◉   │ @adobe/generator-app-events-generic *                       │ Adds event registrations and a generic action               │ N/A                                    │ action, events                         │
+     ├──────┼─────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────────────────┼────────────────────────────────────────┼────────────────────────────────────────┤
+     │  ◯   │ @adobe/aem-cf-editor-ui-ext-tpl *                           │ Extensibility template for AEM Content Fragment Editor      │ aem/cf-editor/1                        │ action, ui                             │
+     ├──────┼─────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────────────────┼────────────────────────────────────────┼────────────────────────────────────────┤
+     │  ◯   │ @adobe/generator-app-aem-react *                            │ Template for AEM React SPA based on WKND content.           │ N/A                                    │ ui                                     │
+     ├──────┼─────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────────────────┼────────────────────────────────────────┼────────────────────────────────────────┤
+     │  ◯   │ @adobe/aem-cf-admin-ui-ext-tpl *                            │ Extensibility template for AEM Content Fragment Admin       │ aem/cf-console-admin/1                 │ action, ui                             │
+     │      │                                                             │ Console                                                     │                                        │                                        │
+     └──────┴─────────────────────────────────────────────────────────────┴─────────────────────────────────────────────────────────────┴────────────────────────────────────────┴────────────────────────────────────────┘
+     ```
+
+   * Enter the name of the non-web Runtime Action. The default value is `generic`.
+
+     ```terminal
+     ✔ Installed npm package @adobe/generator-app-events-generic
+     ℹ Running template @adobe/generator-app-events-generic
+     ? We are about to create a new sample action that A generic action that logs the events received from IO Events.
+     How would you like to name this action? generic
+     ```
+
+   * Enter the name of event registration to create. The default value is `Event Registration`.
+
+     ```terminal
+     ? We are about to create a new Event registration.
+     How would you like to name this registration? Customer Event Registration
+     ```
+
+   * Enter text that describes the purpose of the registration.  The default value is `Registration for IO Events`.
+
+     ```terminal
+     ? What is this registration being created for? Registration for receiving customer actions
+     ```
+
+   * Select `Commerce Events` from the list of event provider families.
+
+     ```terminal
+     ? Choose from the following provider families ( provider metadata ) Commerce Events
+     ```
+
+   * Select the event provider you created in the [Create an Event Provider](./configure-commerce.md#create-an-event-provider) section.
+
+     ```terminal
+     ? Choose from below provider for provider metadata: dx_commerce_events team-mercury-sandbox
+     ```
+
+   * Select the event metadata you want to associate with the event registration.
+
+     ```terminal
+     Choose event metadata for provider: team-mercury-sandbox Observer event customer_login, Observer event customer_logout
+     ```
+
+   The command initializes a project with a basic Adobe I/O Runtime Action and a configuration for the event registration.
+
+1. Deploy the generated application to the App Builder project by running the following command:
+
+   ```bash
+   aio app deploy
+   ```
+
+   The command deploys the project and creates a new event registration that delivers events to the Adobe I/O Runtime Action.
+
+1. You can add more Adobe I/O Runtime actions or event registrations by editing the `app.config.yaml` file and redeploying the project with `aio app deploy` CLI command.
+
+   ```yaml
+   application:
+     runtimeManifest:
+       packages:
+         TemplateTest:
+           license: Apache-2.0
+           actions:
+             generic:
+               function: actions/generic/index.js
+               web: 'no'
+               runtime: nodejs:18
+               inputs:
+                 LOG_LEVEL: debug
+               annotations:
+                 require-adobe-auth: false
+                 final: true
+     events:
+       registrations:
+         Customer Event Registration:
+           description: Registration for receiving customer actions
+           events_of_interest:
+             - provider_metadata: dx_commerce_events
+               event_codes:
+                 - com.adobe.commerce.observer.customer_login
+                 - com.adobe.commerce.observer.customer_logout
+           runtime_action: Stage/generic
+   ```
+
+[App Builder with IO Events](https://developer.adobe.com/events/docs/guides/appbuilder/#initialising-an-app-builder-app-with-io-events-template) provides additional information about setting up App Builder projects.
 
 ## Check cron and message queue configuration
 

@@ -15,7 +15,7 @@ These release notes describe the latest version of Adobe Commerce Webhooks.
 
 July 10, 2024
 
-* Improved caching of webhook response during single request. <!--CEXT-3279 -->
+* Improved caching of webhook responses during single request. <!--CEXT-3279 -->
 
 * Fixed a possible vulnerability issue with showing the public key in the Admin UI configuration page. <!--CEXT-3354 -->
 

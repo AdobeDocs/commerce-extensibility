@@ -29,7 +29,7 @@ module.exports = [
             },
             {
               title: "mass action",
-              path: "admin-ui-sdk/extension-points/customer/mass-actions.md"
+              path: "admin-ui-sdk/extension-points/customer/mass-action.md"
             }
           ]
         },

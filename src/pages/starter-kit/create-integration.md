@@ -41,8 +41,6 @@ Support services for the starter kit include the basic functionality and configu
 
 [Projects Overview](https://developer.adobe.com/developer-console/docs/guides/projects/) describes the different types of projects and how to manage them. Here, we'll create a templated project.
 
-Before you begin the onboarding process, you must be granted access to Adobe Developer App Builder. If you have not yet submitted a request, you might want to do that, as described at [How to Get Access to App Builder](https://developer.adobe.com/app-builder/docs/overview/getting_access/).
-
 1. Log in to the Adobe Developer Console and select the desired organization from the dropdown menu in the top-right corner.
 
 1. Click **Create new project from template**.

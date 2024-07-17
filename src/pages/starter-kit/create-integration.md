@@ -199,8 +199,7 @@ By default, the `scripts/onboarding/config/starter-kit-registrations.json` confi
   "product": ["commerce"],
   "customer": ["commerce", "backoffice"],
   "order": ["commerce", "backoffice"],
-  "stock": ["commerce", "backoffice"],
-  "shipment": ["commerce", "backoffice"]
+  "stock": ["commerce", "backoffice"]
 }
 ```
 

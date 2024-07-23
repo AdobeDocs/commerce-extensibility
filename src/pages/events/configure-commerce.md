@@ -81,7 +81,7 @@ You can create an event provider using either the [Command line](./configure-com
 
 1. Copy the ID returned in the command output into the **Adobe I/O Event Provider ID** field in the Admin.
 
-   ![General configuration updated](../_images/events/general-configuration-providerid-cli.png)
+   ![General configuration updated](../_images/events/general-configuration-providerId-cli.png)
 
 ### Commerce Admin
 
@@ -94,7 +94,7 @@ You can create an event provider using either the [Command line](./configure-com
    ![General configuration](../_images/events/general-configuration-providerInfo.png)
 
    ![General configuration](../_images/events/general-configuration-providerId-adminui.png)
-   
+
 ## Complete the Commerce configuration
 
 1. Enable Commerce Eventing by setting **Enabled** to `Yes`.

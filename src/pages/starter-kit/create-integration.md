@@ -47,6 +47,8 @@ Support services for the starter kit include the basic functionality and configu
 
    ![Create a project](../_images/common/create-project.png)
 
+   If the **Create project from template** option is not displayed, it might be because your request to access App Builder has not yet been approved.
+
 1. Select **App Builder**. The **Set up templated project** page displays.
 
    ![Templated project](../_images/common/set-up-templated-project.png)
@@ -197,8 +199,7 @@ By default, the `scripts/onboarding/config/starter-kit-registrations.json` confi
   "product": ["commerce"],
   "customer": ["commerce", "backoffice"],
   "order": ["commerce", "backoffice"],
-  "stock": ["commerce", "backoffice"],
-  "shipment": ["commerce", "backoffice"]
+  "stock": ["commerce", "backoffice"]
 }
 ```
 

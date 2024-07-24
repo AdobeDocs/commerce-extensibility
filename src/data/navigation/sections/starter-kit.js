@@ -116,6 +116,10 @@ module.exports = [
                 title: "Tutorials",
                 path: "https://experienceleague.adobe.com/en/docs/commerce-learn/tutorials/adobe-developer-app-builder/introduction-to-app-builder"
             },
+            {
+                title: "Code samples",
+                path: "https://github.com/adobe/adobe-commerce-samples/tree/main/starter-kit"
+            },
             /*
             {
                 title: "Contact us",

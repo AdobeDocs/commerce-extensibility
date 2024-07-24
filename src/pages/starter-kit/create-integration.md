@@ -203,6 +203,8 @@ By default, the `scripts/onboarding/config/starter-kit-registrations.json` confi
 }
 ```
 
+The Customize Registrations and Events [code sample](https://github.com/adobe/adobe-commerce-samples/blob/main/starter-kit/customize-registrations-and-events/README.md) shows how you can configure your event registrations.
+
 **Execute the onboarding**
 
 Run the following command to generate the IO Event providers and the registrations for your starter kit project.

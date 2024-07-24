@@ -239,3 +239,10 @@ return {
   }
 }
 ```
+
+## Sample code
+
+The Adobe Commerce Extensibility Code Samples repository contains samples that illustrate the following concepts:
+
+- [Scheduled ingestion action](https://github.com/adobe/adobe-commerce-samples/tree/main/starter-kit/add-ingestion-scheduler)
+- [Customizing an event ingestion webhook](https://github.com/adobe/adobe-commerce-samples/tree/main/starter-kit/customize-ingestion-webhook)

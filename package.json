@@ -24,11 +24,11 @@
   },
   "packageManager": "yarn@3.2.1",
   "devDependencies": {
-    "remark-cli": "^11.0.0",
-    "remark-frontmatter": "4.0.1",
+    "remark-cli": "^12.0.1",
+    "remark-frontmatter": "^5.0.0",
     "remark-heading-id": "^1.0.1",
-    "remark-lint-frontmatter-schema": "^3.15.2",
+    "remark-lint-frontmatter-schema": "^3.15.4",
     "remark-lint-no-dead-urls": "^1.1.0",
-    "remark-validate-links": "^12.1.0"
+    "remark-validate-links": "^13.0.1"
   }
 }

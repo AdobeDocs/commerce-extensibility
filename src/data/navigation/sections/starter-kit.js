@@ -118,7 +118,7 @@ module.exports = [
             },
             {
                 title: "Code samples",
-                path: "https://github.com/adobe/adobe-commerce-samples"
+                path: "https://github.com/adobe/adobe-commerce-samples/tree/main/starter-kit"
             },
             /*
             {

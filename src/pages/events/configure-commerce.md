@@ -16,7 +16,7 @@ You must configure Commerce to communicate with your project. Configuration incl
 
 1. In the Commerce Admin, navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Adobe I/O Events** > **General configuration**. The following screen displays.
 
-   ![General configuration](../_images/events/general-configuration.png)
+   ![General configuration](../_images/events/general-configuration-empty.png)
 
 1. Select the server-to-server authorization method you implemented from the **Adobe I/O Authorization Type** menu. Adobe recommends using OAuth. JWT has been deprecated.
 

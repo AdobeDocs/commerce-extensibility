@@ -52,6 +52,10 @@ You can also use the `aio` CLI tool to manage providers. See [Provider Commands]
 
 You cannot create an event provider until you have configured and saved instance ID values and a workspace file. If you are using JWT for server-to-server authentication, you must have previously specified the private key.
 
+You can create an event provider using either the [Command line](./configure-commerce.md#command-line) or [Commerce Admin](./configure-commerce.md#commerce-admin).
+
+### Command line
+
 1. Run the following command to create an event provider:
 
    ```bash
@@ -66,18 +70,30 @@ You cannot create an event provider until you have configured and saved instance
 
    The `label` field displays as the name of the created Event Provider in the App Builder UI. The `description` field provides more context about the Event Provider.
 
-   **Note**: The label can contain English alphanumeric characters and underscores (_) only. The first character must be a letter.
+   **Note**: The label can contain English alphanumeric characters, spaces, underscores (_), and hyphens (-) only. The first character must be a letter.
 
    The command displays a message similar to the following:
 
    ```terminal
    No event provider found, a new event provider will be created
-   A new event provider has been created with ID 63a1f8fe-e911-45a4-9d3f-f512d2ef4626
+   A new event provider has been created with ID ad667bc6-1678-49ff-99fc-215d71ebf82f
    ```
 
 1. Copy the ID returned in the command output into the **Adobe I/O Event Provider ID** field in the Admin.
 
-   ![General configuration updated](../_images/events/general-configuration-updated.png)
+   ![General configuration updated](../_images/events/general-configuration-providerId-cli.png)
+
+### Commerce Admin
+
+1. In the Commerce Admin, navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Adobe I/O Events** > **General configuration**. The following screen displays.
+
+   ![General configuration](../_images/events/general-configuration-instanceId.png)
+
+2. Click on the **Create Event Provider** button, enter the **Label** and **Description**, and then click submit. The **Adobe I/O Event Provider ID** field will be populated with the newly generated event provider ID
+
+   ![General configuration](../_images/events/general-configuration-providerInfo.png)
+
+   ![General configuration](../_images/events/general-configuration-providerId-adminui.png)
 
 ## Complete the Commerce configuration
 

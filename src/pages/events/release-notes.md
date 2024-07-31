@@ -20,15 +20,15 @@ July 31, 2024
 
 ### Enhancements
 
-* Added synchronize events button to eventing general configuration. <!--- CEXT-3337 -->
+* Added the **Execute Synchronization** button the eventing general configuration in the Admin. This button performs the same action as running the `bin/magento events:metadata:populate` command. <!--- CEXT-3337 -->
 
-* Added create event provider button to eventing general configuration. <!--- CEXT-3336 -->
+* Added the **Create Event Provider** button, which replicates the function of the `bin/magento events:create-event-provider` command. <!--- CEXT-3336 -->
 
 * Updated copyrights in the generated module files. <!--- CEXT-3425 -->
 
 ### Bug fixes
 
-* Improved conversion of event payload that fixes an issue with missing data for some events. <!--- CEXT-3360 -->
+* Improved the conversion of event payloads, which fixes an issue with missing data for some events. <!--- CEXT-3360 -->
 
 ## Version 1.7.1
 

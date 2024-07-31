@@ -140,6 +140,8 @@ Event metadata is automatically created for new event subscriptions when you run
 * You have not run `setup:upgrade` since adding an `io_events.xml` file to your on-premise instance.
 * You manually edited the event subscriptions configuration in `app/etc/config.php`.
 
+As an alternative to running this command, you can click the **Execute Synchronization** button on the **General configuration** section of the Adobe I/O Events page in the Admin.
+
 ### Usage
 
 `events:metadata:populate`

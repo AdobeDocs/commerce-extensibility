@@ -38,13 +38,13 @@ You must configure Commerce to communicate with your project. Configuration incl
 
  The event provider will not appear in the Developer Console until after you subscribe to an event emitted by Commerce, such as `io_events.xml` or `config.php`.
 
-## Create an Event Provider
+## Create an event provider
 
-Create an `Event Provider` in Adobe I/O Events to associate the Commerce Events subscriptions with the provider. The event subscriptions in Adobe Commerce are created as `Event Metadata` in Adobe I/O Events infrastructure.
+Create an event provider in Adobe I/O Events to associate the Commerce Events subscriptions with the provider. The event subscriptions in Adobe Commerce are created as event metadata in Adobe I/O Events infrastructure.
 
-Each `Event Provider` can link to multiple event subscriptions (`Event Metadata`). The event's subscriptions will be automatically linked to your `Event Provider` whenever you subscribe with the `events:subscribe` CLI command. You can also manually synchronize all subscriptions with the `events:metadata:populate` command. The events subscriptions synchronization is also called each time during the execution of `setup:upgrade` command.
+Each event provider can link to multiple event subscriptions (event metadata). The event's subscriptions will be automatically linked to your event provider whenever you subscribe with the `events:subscribe` command. You can also manually synchronize all subscriptions with the `events:metadata:populate` command or by clicking the **Execute Synchronization** button on the **General configuration** section of the Adobe I/O Events page in the Admin. Running the `setup:upgrade` command also synchronizes events subscriptions.
 
-You can find the list of Event Providers created in your organization, in the App Builder UI when [creating an Event Registration in App Builder](#subscribe-and-register-events).
+You can find the list of event providers created in your organization, in the App Builder UI when [creating an Event Registration in App Builder](#subscribe-and-register-events).
 
 You can also use the `aio` CLI tool to manage providers. See [Provider Commands](https://developer.adobe.com/events/docs/guides/cli/#provider-commands) for more information.
 

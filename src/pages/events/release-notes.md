@@ -12,6 +12,24 @@ These release notes describe the latest version of Adobe I/O Events for Adobe Co
 
 See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io-events-for-adobe-commerce) for upgrade instructions.
 
+## Version 1.8.0
+
+### Release date
+
+July 31, 2024
+
+### Enhancements
+
+* Added synchronize events button to eventing general configuration. <!--- CEXT-3337 -->
+
+* Added create event provider button to eventing general configuration. <!--- CEXT-3336 -->
+
+* Updated copyrights in the generated module files. <!--- CEXT-3425 -->
+
+### Bug fixes
+
+* Improved conversion of event payload that fixes an issue with missing data for some events. <!--- CEXT-3360 -->
+
 ## Version 1.7.1
 
 ### Release date

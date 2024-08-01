@@ -45,15 +45,17 @@ If you decide to omit the arguments, the `event-types.json` file must have the f
  }
 ```
 
+As an alternative to above steps, you can click the [Create Event Provider](./configure-commerce.md#commerce-admin) button on the **General configuration** section of the Adobe I/O Events page in the Admin.
+
 ### Usage
 
 `bin/magento events:create-event-provider --label "<unique_provider_label>" --description "<provider description>"`
 
 ### Arguments
 
-`--label` A name that distinguishes your event provider from others in the project. The name can contain English alphanumeric characters and underscores (_) only. The first character must be a letter.
+`--label` A name that distinguishes your event provider from others in the project. The name can contain English alphanumeric characters, spaces, underscores (_), and hyphens (-) only. The first character must be a letter.
 
-`--description` A string that describes your event provider.
+`--description` A string that describes your event provider. The string can contain English alphanumeric characters, spaces, underscores (_), and hyphens (-) only.
 
 ### Example
 
@@ -139,6 +141,8 @@ Event metadata is automatically created for new event subscriptions when you run
 * You have configured an event provider after an `io_events.xml` file was pushed to your cloud instance and a redeployment has not occurred since this change.
 * You have not run `setup:upgrade` since adding an `io_events.xml` file to your on-premise instance.
 * You manually edited the event subscriptions configuration in `app/etc/config.php`.
+
+As an alternative to running this command, you can click the **Execute Synchronization** button on the **General configuration** section of the Adobe I/O Events page in the Admin.
 
 ### Usage
 

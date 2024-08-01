@@ -16,7 +16,7 @@ You must configure Commerce to communicate with your project. Configuration incl
 
 1. In the Commerce Admin, navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Adobe I/O Events** > **General configuration**. The following screen displays.
 
-   ![General configuration](../_images/events/general-configuration.png)
+   ![General configuration](../_images/events/general-configuration-empty.png)
 
 1. Select the server-to-server authorization method you implemented from the **Adobe I/O Authorization Type** menu. Adobe recommends using OAuth. JWT has been deprecated.
 
@@ -38,19 +38,23 @@ You must configure Commerce to communicate with your project. Configuration incl
 
  The event provider will not appear in the Developer Console until after you subscribe to an event emitted by Commerce, such as `io_events.xml` or `config.php`.
 
-## Create an Event Provider
+## Create an event provider
 
-Create an `Event Provider` in Adobe I/O Events to associate the Commerce Events subscriptions with the provider. The event subscriptions in Adobe Commerce are created as `Event Metadata` in Adobe I/O Events infrastructure.
+Create an event provider in Adobe I/O Events to associate the Commerce Events subscriptions with the provider. The event subscriptions in Adobe Commerce are created as event metadata in Adobe I/O Events infrastructure.
 
-Each `Event Provider` can link to multiple event subscriptions (`Event Metadata`). The event's subscriptions will be automatically linked to your `Event Provider` whenever you subscribe with the `events:subscribe` CLI command. You can also manually synchronize all subscriptions with the `events:metadata:populate` command. The events subscriptions synchronization is also called each time during the execution of `setup:upgrade` command.
+Each event provider can link to multiple event subscriptions (event metadata). The event's subscriptions will be automatically linked to your event provider whenever you subscribe with the `events:subscribe` command. You can also manually synchronize all subscriptions with the `events:metadata:populate` command or by clicking the **Execute Synchronization** button on the **General configuration** section of the Adobe I/O Events page in the Admin. Running the `setup:upgrade` command also synchronizes events subscriptions.
 
-You can find the list of Event Providers created in your organization, in the App Builder UI when [creating an Event Registration in App Builder](#subscribe-and-register-events).
+You can find the list of event providers created in your organization, in the App Builder UI when [creating an Event Registration in App Builder](#subscribe-and-register-events).
 
 You can also use the `aio` CLI tool to manage providers. See [Provider Commands](https://developer.adobe.com/events/docs/guides/cli/#provider-commands) for more information.
 
 <InlineAlert variant="info" slots="text"/>
 
 You cannot create an event provider until you have configured and saved instance ID values and a workspace file. If you are using JWT for server-to-server authentication, you must have previously specified the private key.
+
+You can create an event provider using either the [Command line](./configure-commerce.md#command-line) or [Commerce Admin](./configure-commerce.md#commerce-admin).
+
+### Command line
 
 1. Run the following command to create an event provider:
 
@@ -66,18 +70,30 @@ You cannot create an event provider until you have configured and saved instance
 
    The `label` field displays as the name of the created Event Provider in the App Builder UI. The `description` field provides more context about the Event Provider.
 
-   **Note**: The label can contain English alphanumeric characters and underscores (_) only. The first character must be a letter.
+   **Note**: The label can contain English alphanumeric characters, spaces, underscores (_), and hyphens (-) only. The first character must be a letter.
 
    The command displays a message similar to the following:
 
    ```terminal
    No event provider found, a new event provider will be created
-   A new event provider has been created with ID 63a1f8fe-e911-45a4-9d3f-f512d2ef4626
+   A new event provider has been created with ID ad667bc6-1678-49ff-99fc-215d71ebf82f
    ```
 
 1. Copy the ID returned in the command output into the **Adobe I/O Event Provider ID** field in the Admin.
 
-   ![General configuration updated](../_images/events/general-configuration-updated.png)
+   ![General configuration updated](../_images/events/general-configuration-providerId-cli.png)
+
+### Commerce Admin
+
+1. In the Commerce Admin, navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Adobe I/O Events** > **General configuration**. The following screen displays.
+
+   ![General configuration](../_images/events/general-configuration-instanceId.png)
+
+2. Click on the **Create Event Provider** button, enter the **Label** and **Description**, and then click submit. The **Adobe I/O Event Provider ID** field will be populated with the newly generated event provider ID
+
+   ![General configuration](../_images/events/general-configuration-providerInfo.png)
+
+   ![General configuration](../_images/events/general-configuration-providerId-adminui.png)
 
 ## Complete the Commerce configuration
 

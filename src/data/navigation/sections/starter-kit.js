@@ -113,8 +113,12 @@ module.exports = [
         path: "/starter-kit/contact-us.md",
         pages: [
             {
-                title: "Tutorials",
+                title: "App Builder Tutorials",
                 path: "https://experienceleague.adobe.com/en/docs/commerce-learn/tutorials/adobe-developer-app-builder/introduction-to-app-builder"
+            },
+            {
+                title: "Starter Kit Tutorials",
+                path: "https://experienceleague.adobe.com/en/docs/commerce-learn/tutorials/getting-started/back-office-integration-starter-kit/integrations"
             },
             {
                 title: "Code samples",

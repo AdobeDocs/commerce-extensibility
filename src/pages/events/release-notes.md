@@ -16,6 +16,18 @@ See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io
 
 ### Release date
 
+August 6, 2024
+
+### Enhancements
+
+* Improved error handling during managing event metadata. <!--- CEXT-3430 -->
+
+* Making Commerce Eventing Service Urls configurable.
+
+## Version 1.8.0
+
+### Release date
+
 July 31, 2024
 
 ### Enhancements

@@ -12,6 +12,30 @@ These release notes describe the latest version of Adobe I/O Events for Adobe Co
 
 See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io-events-for-adobe-commerce) for upgrade instructions.
 
+## Version 1.8.2
+
+### Release date
+
+August 15, 2024
+
+### Enhancements
+
+* Minor code improvements.
+
+### Bug fixes
+
+* Fixed the test connection button handling of error status codes <!--- CEXT-3484 -->
+
+## Version 1.8.1
+
+### Release date
+
+August 6, 2024
+
+### Enhancements
+
+* Improved error handling while managing event metadata. <!--- CEXT-3430 -->
+
 ## Version 1.8.0
 
 ### Release date

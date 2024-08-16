@@ -125,7 +125,7 @@ When it receives an event that it does not know how to route, it is expected to 
 
 By default, `consumer` actions have the following response:
 
-<CodeBlock slots="heading, code" repeat="2" languages="JSON, JSON" />
+<CodeBlock slots="heading, code" repeat="2" languages="javascript, javascript" />
 
 ### Success
 
@@ -166,7 +166,7 @@ The response returned by an event handler action includes a `statusCode` attribu
 
 By default, `event handler` actions have the following response:
 
-<CodeBlock slots="heading, code" repeat="2" languages="JSON, JSON" />
+<CodeBlock slots="heading, code" repeat="2" languages="javascript, javascript" />
 
 ### Success
 
@@ -208,7 +208,7 @@ aio runtime action get ingestion/webhook --url
 
 By default, `event ingestion` actions have the following response:
 
-<CodeBlock slots="heading, code" repeat="2" languages="JSON, JSON" />
+<CodeBlock slots="heading, code" repeat="2" languages="javascript, javascript" />
 
 ### Success
 

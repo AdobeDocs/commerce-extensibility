@@ -33,7 +33,7 @@ aio runtime action get webhook/check-stock --url
 
 By default, `synchronous webhook` actions have the following response:
 
-<CodeBlock slots="heading, code" repeat="2" languages="JSON, JSON" />
+<CodeBlock slots="heading, code" repeat="2" languages="javascript, javascript" />
 
 ### Success
 

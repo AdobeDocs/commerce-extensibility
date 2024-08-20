@@ -125,7 +125,7 @@ The interaction with the Adobe Commerce API is defined in the `sendData` functio
 
 Parameters from the environment can be accessed from `params`. Add the necessary parameters in the `actions/<object>/external/actions.config.yaml` under `created -> inputs`, `updated -> inputs`, or `deleted -> inputs` as follows:
 
-<CodeBlock slots="heading, code" repeat="3" languages="JSON, JSON, JSON" />
+<CodeBlock slots="heading, code" repeat="3" languages="yaml, yaml, yaml" />
 
 #### create
 

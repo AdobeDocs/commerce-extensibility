@@ -41,7 +41,7 @@ An [Adobe I/O Runtime Action](https://developer.adobe.com/runtime/docs/guides/ov
 
 See [Runtime Action with a Callback to Commerce](./consume-events-examples/runtime-action-commerce-callback.md) for an example of how a runtime action can consume an event and make an API call back to Commerce to get more information.
 
-See more examples of end-to-end integrations between Commerce and 3rd party systems like ERPs that use runtime actions in our [Starter Kit](https://developer.adobe.com/commerce/extensibility/starter-kit/send-data/) documentation.
+See more examples of end-to-end integrations between Commerce and 3rd party systems like ERPs that use runtime actions in our [Starter Kit](../starter-kit/send-data.md) documentation.
 
 ## Using Amazon EventBridge
 

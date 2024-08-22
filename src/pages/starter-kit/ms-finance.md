@@ -43,4 +43,4 @@ This reference application uses starter kit [data flows](./data-flows.md) for th
 - **Order data flow**
   - Order and order flow
     - Adobe Commerce synchronizes new orders to D365 F&O
-    - Adobe Commerce synchronizes changes in order flow to Adobe Commerce
+    - D365 F&O synchronizes changes in order flow to Adobe Commerce

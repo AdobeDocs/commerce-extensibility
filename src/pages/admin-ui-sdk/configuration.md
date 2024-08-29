@@ -164,6 +164,36 @@ You can download a sample app from the [Adobe Commerce Samples repository](https
 
 1. Change directories to `<repoRootDir>/admin-ui-sdk/menu/custom-menu`.
 
+1. Load dependencies running
+
+  ```bash
+  npm install
+  ```
+
+1. Select the project
+
+  ```bash
+  aio console project select
+  ```
+
+1. Select the workspace
+
+  ```bash
+  aio console workspace select
+  ```
+
+1. Sync the app builder project details
+
+  ```bash
+  aio app use
+  ```
+
+1. Build the solution
+
+  ```bash
+  aio app build
+  ```
+
 1. Run your custom menu extension locally.
 
    ```bash
@@ -175,3 +205,41 @@ You can download a sample app from the [Adobe Commerce Samples repository](https
    ![Fetched orders from Adobe Commerce page](../_images/first-app.png)
 
    ![First App on App Builder menu](../_images/fetched-orders.png)
+
+### Test using project workspaces
+
+To use a specific workspace from your project, you'll have to:
+
+1. Deploy the app to the workspace
+
+  ```bash
+  aio app deploy
+  ```
+
+  After deploy, you will see the URL to your app workspace under: `To view your deployed application:`
+
+1. Update the server `json_response` to point to your workspace by changing the app name and url
+
+  ```json
+  {
+    "name": "app_name",
+    "title": "Test extension",
+    "description": "No",
+    "icon": "no",
+    "publisher": "aQQ6300000008LEGAY",
+    "endpoints": {
+      "commerce/backend-ui/1": {
+        "view": [{
+          "href": "https://<app_workspace_url>/index.html"
+        }]
+      }
+    },
+    "xrInfo": {
+      "supportEmail": "test@adobe.com",
+      "appId": "4a4c7cf8-bd64-4649-b8ed-662cd0d9c918"
+    },
+    "status": "PUBLISHED" 
+  }
+  ```
+
+  You can add multiple workspaces to the server to test several applications at once.

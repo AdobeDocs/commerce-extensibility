@@ -164,31 +164,31 @@ You can download a sample app from the [Adobe Commerce Samples repository](https
 
 1. Change directories to `<repoRootDir>/admin-ui-sdk/menu/custom-menu`.
 
-1. Load dependencies running
+1. Run the following command to load dependencies.
 
   ```bash
   npm install
   ```
 
-1. Select the project
+1. Select your App Builder project.
 
   ```bash
   aio console project select
   ```
 
-1. Select the workspace
+1. Select the App Builder workspace.
 
   ```bash
   aio console workspace select
   ```
 
-1. Sync the app builder project details
+1. Sync the App Builder project details.
 
   ```bash
   aio app use
   ```
 
-1. Build the solution
+1. Build your solution.
 
   ```bash
   aio app build

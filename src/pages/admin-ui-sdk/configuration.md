@@ -208,17 +208,17 @@ You can download a sample app from the [Adobe Commerce Samples repository](https
 
 ### Test using project workspaces
 
-To use a specific workspace from your project, you'll have to:
+Use the following steps to test a specific workspace from your project:
 
-1. Deploy the app to the workspace
+1. Deploy the app to the workspace.
 
   ```bash
   aio app deploy
   ```
 
-  After deploy, you will see the URL to your app workspace under: `To view your deployed application:`
+  After deployment, the command displays the URL to your app workspace under `To view your deployed application:`
 
-1. Update the server `json_response` to point to your workspace by changing the app name and url
+1. Change the values of the `name` and `href` fields in the `json_response` section of the `server.js` file to point to your workspace.
 
   ```json
   {

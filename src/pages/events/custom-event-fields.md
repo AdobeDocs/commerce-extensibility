@@ -67,8 +67,8 @@ The processor class must implement `EventDataProcessorInterface`. This interface
 
 `public function process(Event $event, array $eventData): array`
 
-You must create a separate class for each field to be added. 
-Processor classes are executed during the event_data_batch_send cron job execution.
+You must create a separate class for each field to be added.
+Processor classes are executed during the `event_data_batch_send` cron job execution.
 
 In the following example, the `TestProcessorOrderStatus` class adds the `order_status` field and a value to the `eventData` array.
 

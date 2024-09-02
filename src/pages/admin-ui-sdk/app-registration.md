@@ -75,12 +75,13 @@ Create an `ExtensionRegistration` React component that registers the menu config
       await register({
         id: extensionId,
         methods: {
-          ...
         }
       }
     )
    }
    ```
+
+   The extension ID should be the same as the one defined in the `extension-manifest.json`.
 
 You must populate the `methods` section with calls to fetch menus, pages, and other entities to be displayed in the Admin. [Extension Points](extension-points/index.md) provides reference information and examples.
 
@@ -96,14 +97,14 @@ Make sure that your main page is correctly routed to the index. Here is an examp
 
 ```javascript
 <ErrorBoundary onError={onError} FallbackComponent={fallbackComponent}>
-  <BrowserRouter>
+  <HashRouter>
       <Provider theme={lightTheme} colorScheme={'light'}>
           <Routes>
               <Route path={'index.html'} element={<ExtensionRegistration />} />
               <Route index element={<MainPage runtime={props.runtime} ims={props.ims} />} />
           </Routes>
       </Provider>
-  </BrowserRouter>
+  </HashRouter>
 </ErrorBoundary>
 ```
 

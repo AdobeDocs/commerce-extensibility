@@ -1,14 +1,14 @@
 ---
-title: Order get custom fees
+title: Order custom fees
 description: Retrieve custom fees applied to orders in the Adobe Commerce Admin.
 keywords:
   - App Builder
   - Extensibility
 ---
 
-# Order get custom fees
+# Order custom fees
 
-The `order get custom fees` extension point displays one or more customized fees or discounts on the following locations:
+The `order custom fees` extension point displays one or more customized fees or discounts on the following locations:
 
 * The Orders Total section of the Create Order page and related pages in the Admin.
 * Invoice pages in the Admin.

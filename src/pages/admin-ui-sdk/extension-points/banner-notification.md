@@ -50,15 +50,15 @@ bannerNotification: {
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-`customer.actionId` | Yes | The `actionId` of a customer mass action where banner notification will be customized. It should be the same one that is defined in the customer mass action extension point.
-`customer.successMessage` | No | The success message to display when mass action is successful. A default message is displayed if this parameter is not defined.
-`customer.errorMessage` | No | The error message to display when mass action fails. A default message is displayed if this parameter is not defined.
+`customer.actionId` | string | Yes | The `actionId` of a customer mass action where banner notification will be customized. It should be the same one that is defined in the customer mass action extension point.
+`customer.successMessage` | string | No | The success message to display when mass action is successful. A default message is displayed if this parameter is not defined.
+`customer.errorMessage` | string | No | The error message to display when mass action fails. A default message is displayed if this parameter is not defined.
 `order.actionId` | string | Yes | The `actionId` of an [order mass action](./order/mass-action.md).
-`order.successMessage` | No | The success message to display when mass action is successful. A default message is displayed if this parameter is not defined.
-`order.errorMessage` | No | The error message to display when mass action fails. A default message is displayed if this parameter is not defined.
-`product.actionId` | Yes | The `actionId` of a [product mass action](./product/mass-action.md).
-`product.successMessage` | No | The success message to display when mass action is successful. A default message is displayed if this parameter is not defined.
-`product.errorMessage` | No | The error message to display when mass action fails. A default message is displayed if this parameter is not defined.
+`order.successMessage` | string | No | The success message to display when mass action is successful. A default message is displayed if this parameter is not defined.
+`order.errorMessage` | string | No | The error message to display when mass action fails. A default message is displayed if this parameter is not defined.
+`product.actionId` | string | Yes | The `actionId` of a [product mass action](./product/mass-action.md).
+`product.successMessage` | string | No | The success message to display when mass action is successful. A default message is displayed if this parameter is not defined.
+`product.errorMessage` | string | No | The error message to display when mass action fails. A default message is displayed if this parameter is not defined.
 
 ### Sample code
 
@@ -88,9 +88,9 @@ bannerNotification: {
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-`buttonId` | Yes | A `buttonId` defined in an order view button extension point.
-`successMessage` | No | The success message to display when the view button notification is successful. A default message is displayed if this parameter is not defined.
-`errorMessage` | No | The error message to display when the view button notification fails. A default message is displayed if this parameter is not defined.
+`buttonId` | string | Yes | A `buttonId` defined in an order view button extension point.
+`successMessage` | string | No | The success message to display when the view button notification is successful. A default message is displayed if this parameter is not defined.
+`errorMessage` | string | No | The error message to display when the view button notification fails. A default message is displayed if this parameter is not defined.
 
 ### Sample code
 

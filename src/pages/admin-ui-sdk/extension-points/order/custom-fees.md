@@ -1,14 +1,14 @@
 ---
-title: Order get custom fees
+title: Order custom fees
 description: Retrieve custom fees applied to orders in the Adobe Commerce Admin.
 keywords:
   - App Builder
   - Extensibility
 ---
 
-# Order get custom fees
+# Order custom fees
 
-The `order get custom fees` extension point displays one or more customized fees or discounts on the following locations:
+The `order custom fees` extension point displays one or more customized fees or discounts on the following locations:
 
 * The Orders Total section of the Create Order page and related pages in the Admin.
 * Invoice pages in the Admin.
@@ -54,3 +54,7 @@ order: {
 `orderMinimumAmount` | float | No | The minimum amount of the order to apply the fee/discount. Default value: `0`.
 `applyFeeOnLastInvoice` | boolean | No | Whether to apply the fee/discount to the last invoice. If `false`, the fee/discount will be applied to the first invoice. Default value: `false`.
 `applyFeeOnLastCreditmemo` | boolean | No | Whether to refund the fee/discount to the last credit memo. If `false`, the fee/discount will be refunded to the first credit memo. Default value: `true`.
+
+## Sample code
+
+The Adobe Commerce Extensibility Code Samples repository demonstrates how to customize [order custom fees](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/order/custom-fees).

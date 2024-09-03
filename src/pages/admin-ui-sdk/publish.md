@@ -26,8 +26,8 @@ During the testing phase, an administrator of your enterprise organization perfo
 
 ## Update an already published application
 
-To update an already published application, an administrator of your enterprise organization performs revoke and approvals again.
+To update an already published application, you must revoke it and go through the approval process again.
 
-1. Ask an enterprise organization administrator to revoke your published application in the [Adobe Exchange Manage panel](https://exchange.adobe.com/manage). Please note that once revoked, your application will no longer be public.
+1. Ask an enterprise organization administrator to revoke your published application in the [Adobe Exchange Manage panel](https://exchange.adobe.com/manage). Note that once revoked, your application will no longer be public.
 
 1. Deploy new changes to your application in the Production workspace and follow the same steps to publish the application.

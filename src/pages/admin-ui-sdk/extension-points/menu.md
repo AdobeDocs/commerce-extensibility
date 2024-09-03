@@ -12,6 +12,8 @@ The `menu` extension point creates a new menu that redirects to the App Builder 
 
 When you implement a menu that uses an iFrame, use a [`sharedContext`](./index.md#shared-contexts) to read the IMS token.
 
+Each application is limited to one section and one menu. To implement multiple menus, you must create a separate application for each menu.
+
 ## Example customization
 
 The following example creates the **Apps** > **First App on App Builder** menu option.
@@ -49,7 +51,3 @@ The following example creates the **Apps** > **First App on App Builder** menu o
 ## Sample code
 
 The Adobe Commerce Extensibility Code Samples repository demonstrates how to customize a [menu](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/menu/custom-menu).
-
-## Limitations
-
-Each application is limited to one section and one menu. To implement multiple menus, you will need to create separate applications for each menu.

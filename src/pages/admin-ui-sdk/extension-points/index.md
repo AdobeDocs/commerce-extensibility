@@ -84,7 +84,7 @@ Perform the following steps to update your extension points from Admin UI SDK 1.
 
 ### In your app on App Builder
 
-1. Create a new runtime action under `actions/registration/index.js`. Use the updated example customization shown in the documentation for your extension point as a guide.Refer to the provided samples to create a new runtime action in your app.
+1. Create a [new runtime action](../app-registration.md#create-a-registration-runtime-action) under `actions/registration/index.js`. Use the updated example customization shown in the documentation for your extension point as a guide.Refer to the provided samples to create a new runtime action in your app.
 
 1. Modify the [`app.config.yaml` file](../app-registration.md#update-the-appconfigyaml-file) to include the registration attached to the admin-ui-sdk package.
 

@@ -18,30 +18,28 @@ The following example defines success and error messages for multiple mass actio
 
 ```javascript
 bannerNotification: {
-    getMassActions() {
-      return {
+    massActions: {
         order: [
-          {
-            actionId: `${extensionId}::mass-action`,
-            successMessage: 'Selected orders were updated successfully',
-            errorMessage: 'App could not proceed with mass action on selected orders'
-          }
+            {
+                actionId: `${orderExtensionId}::mass-action-with-redirect`,
+                successMessage: 'Order custom success message',
+                errorMessage: 'Order custom error message'
+            }
         ],
         product: [
-          {
-            actionId: `${extensionId}::mass-action`,
-            successMessage: 'Selected products were updated successfully',
-            errorMessage: 'App could not proceed with mass action on selected products'
-          }
+            {
+                actionId: `${productExtensionId}::mass-action-with-redirect`,
+                successMessage: 'Product custom success message',
+                errorMessage: 'Product custom error message'
+            }
         ],
         customer: [
-          {
-            actionId: `${extensionId}::mass-action`,
-            successMessage: 'Selected customers were updated successfully',
-            errorMessage: 'App could not proceed with mass action on selected customers'
-          }
+            {
+                actionId: `${customerExtensionId}::mass-action-with-redirect`,
+                successMessage: 'Customer custom success message',
+                errorMessage: 'Customer custom error message'
+            }
         ]
-      }
     }
 }
 ```
@@ -72,15 +70,18 @@ The following example defines success and error messages for a custom order view
 
 ```javascript
 bannerNotification: {
-  getOrderViewButtons() {
-    return [
-      {
-        buttonId: 'order-custom-view-button::create-return',
-        successMessage: 'Order View Button Success',
-        errorMessage: 'Order View Button Error'
-      }
+    orderViewButtons: [
+        {
+            buttonId: `${extensionId}::mass-action-with-redirect`,
+            successMessage: 'Custom success message',
+            errorMessage: 'Custom error message'
+        },
+        {
+            buttonId: `${extensionId}::create-return`,
+            successMessage: 'Custom success message',
+            errorMessage: 'Custom error message'
+        }
     ]
-  }
 }
 ```
 

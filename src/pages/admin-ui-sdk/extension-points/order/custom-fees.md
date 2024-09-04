@@ -22,25 +22,22 @@ The fee amounts are in the base currency of the store.
 The following example enables the display of two fees on the Admin and storefront. The first instance applies a $1.00 fee to all orders. The second instance applies a fee of $5.00 when the order total is $20.00 or more.
 
 ```javascript
-
 order: {
-    getOrderCustomFees() {
-      return [
+    customFees: [
         {
-          id: 'test-fee-1',
-          label: 'Test Fee 1',
-          value: 1.00,
-          applyFeeOnLastCreditMemo: false
+            id: 'test-fee-1',
+            label: 'Test Fee 1',
+            value: 1.00,
+            applyFeeOnLastCreditMemo: false
         },
         {
-          id: 'test-fee-2',
-          label: 'Test Fee 2',
-          value: 5.00,
-          orderMinimumAmount: 20,
-          applyFeeOnLastInvoice: true
+            id: 'test-fee-2',
+            label: 'Test Fee 2',
+            value: 5.00,
+            orderMinimumAmount: 20,
+            applyFeeOnLastInvoice: true
         }
-      ]
-    }
+    ]
 }
 ```
 

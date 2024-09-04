@@ -19,23 +19,14 @@ Each application is limited to one section and one menu. To implement multiple m
 The following example creates the **Apps** > **First App on App Builder** menu option.
 
 ```javascript
-      menu: {
-        getItems() {
-          return [
-            {
-              id: `${extensionId}::first`,
-              title: 'First App on App Builder',
-              parent: `${extensionId}::apps`,
-              sortOrder: 1
-            },
-            {
-              id: `${extensionId}::apps`,
-              title: 'Apps',
-              isSection: true
-            }
-          ]
-        }
-      }
+menuItems: [
+    {
+        id: `${extensionId}::first`,
+        title: 'App on App Builder',
+        parent: `${extensionId}::apps`,
+        sortOrder: 1
+    }
+]
 ```
 
 ## Parameters

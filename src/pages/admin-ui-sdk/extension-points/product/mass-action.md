@@ -18,33 +18,23 @@ The `path` parameter specifies where to redirect an action. The Admin UI SDK pro
 
 ```javascript
 product: {
-    getMassActions() {
-        return [
-            {
-                actionId: `${extensionId}::first-mass-action`,
-                label: 'First App Mass Action',
-                confirm: {
-                    title: 'First App Mass Action',
-                    message: 'Are you sure your want to proceed with First App Mass Action on selected products?'
-                },
-                path: '#/first-mass-action',
-                productSelectLimit: 1
+    massActions: [
+        {
+            actionId: `${extensionId}::product-mass-action`,
+            label: 'Product Mass Action',
+            confirm: {
+                title: 'Mass Action',
+                message: 'Are you sure your want to proceed with Mass Action on selected products?'
             },
-            {
-                actionId: `${extensionId}::another-first-mass-action`,
-                label: 'Another Mass Action',
-                title: 'Another Products Mass Action',
-                path: '#/another-mass-action'
-            },
-            {
-              actionId: `${extensionId}::update-mass-action`,
-              label: 'Update Mass Action',
-              path: 'api/v1/web/SampleExtension/update-products',
-              displayIframe: false,
-              timeout: 15
-            }
-        ]
-    }
+            path: '#/mass-action',
+            productSelectLimit: 1
+        },
+        {
+            actionId: `${extensionId}::mass-action-with-redirect`,
+            label: 'Mass Action With Redirect',
+            path: '#/mass-action-with-redirect'
+        }
+    ]
 }
 ```
 

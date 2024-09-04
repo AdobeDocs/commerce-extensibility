@@ -14,27 +14,27 @@ The `order view button` extension point allows you to add a customized button to
 
 ```javascript
 order: {
-    getOrderViewButtons() {
-        return [
-            {
-                buttonId: `${extensionId}::delete-order`,
-                label: 'Delete',
-                confirm: {
-                message: 'Are you sure your want to delete the order?'
-                },
-                path: '#/delete-order',
-                level: 0,
-                sortOrder: 80
+    viewButtons: [
+        {
+            buttonId: `${extensionId}::delete-order`,
+            label: 'Delete',
+            confirm: {
+                message: 'Are you sure your want to proceed to delete order?'
             },
-            {
-                buttonId: `${extensionId}::create-return`,
-                label: 'Create a return',
-                path: '#/create-return',
-                level: 0,
-                sortOrder: 80
-            }
-        ]
-    }
+            path: '#/delete-order',
+            class: 'custom',
+            level: 0,
+            sortOrder: 80
+        },
+        {
+            buttonId: `${extensionId}::create-return`,
+            label: 'Create Return',
+            path: '#/create-return',
+            class: 'custom',
+            level: 0,
+            sortOrder: 80
+        }
+    ]
 }
 ```
 

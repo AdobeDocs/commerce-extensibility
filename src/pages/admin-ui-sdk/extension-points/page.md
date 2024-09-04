@@ -14,9 +14,7 @@ The `page` extension point creates a new page that redirects to your App Builder
 
 ```javascript
 page: {
-    getTitle() {
-        return 'Adobe Commerce First App on App Builder'
-    }
+    title: 'Adobe Commerce First App on App Builder'
 }
 ```
 

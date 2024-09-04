@@ -119,3 +119,5 @@ Use the following procedure to update patch versions of the SDK, such as from V1
    ```bash
    bin/magento setup:upgrade && bin/magento indexer:reindex && bin/magento cache:clean
    ```
+
+1. If you are updating from V1.x to V2.0, refer to [Migrate your extension point](./extension-points/index.md#migrate-your-extension-point-from-version-1x-to-20) for additional instructions.

@@ -106,7 +106,7 @@ This method installs the SDK on an On-premises instance.
 
 ## Update the Commerce Admin UI SDK
 
-Use the following procedure to update patch versions of the SDK, such as from V1.0.0 to V1.1.0.
+Use the following procedure to update patch versions of the SDK, such as from V1.0.0 to V1.1.0. 
 
 1. Run the following command to update the SDK:
 
@@ -119,3 +119,5 @@ Use the following procedure to update patch versions of the SDK, such as from V1
    ```bash
    bin/magento setup:upgrade && bin/magento indexer:reindex && bin/magento cache:clean
    ```
+
+1. If you are updating from V1.x to V2.0, refer to [Migrate your extension point](./extension-points/index.md#migrate-your-extension-point-from-version-1x-to-20) for additional instructions.

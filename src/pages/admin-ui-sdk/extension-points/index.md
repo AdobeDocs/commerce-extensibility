@@ -77,3 +77,25 @@ The application can access details of the failed request using the `GET V1/admin
 
 - Use bulk update in Commerce to avoid inconsistency issues in case of failures.
 - Event and REST API responses contain the list of selected IDs for a request. It is the application's responsibility to monitor updates or failures in Commerce.
+
+## Migrate your extension point from version 1.x to 2.0
+
+Perform the following steps to update your extension points from Admin UI SDK 1.x to 2.0.
+
+### In your app on App Builder
+
+1. Create a new runtime action under `actions/registration/index.js`. Use the updated example customization shown in the documentation for your extension point as a guide.Refer to the provided samples to create a new runtime action in your app.
+
+1. Modify the [`app.config.yaml` file](../app-registration.md#update-the-appconfigyaml-file) to include the registration attached to the admin-ui-sdk package.
+
+1. Remove all content from the methods in the [`ExtensionRegistration` class](../app-registration.md#add-an-extensionregistration-component) to prepare for the new version.
+
+1. [Deploy and publish](../publish.md) your app for testing.
+
+### In the Commerce instance
+
+Clear the cache in your Commerce instance to ensure all changes take effect properly by running the following command:
+
+```bash
+bin/magento cache:clean
+```

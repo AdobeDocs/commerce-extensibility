@@ -8,6 +8,20 @@ keywords:
 
 # Adobe Commerce Admin UI SDK release notes
 
+## Version 2.0
+
+### Release date
+
+September 4, 2024
+
+### Enhancements
+
+* This release changes how registrations are declared. Previously, calls were performed asynchronously. This could result with delayed retrieval and availability of registrations when loading pages in the Admin. Registrations are now loaded synchronously. resulting in a better merchant experience.
+
+  You must update any extension points developed with Admin UI SDK 1.x.
+
+* Added a customer fee column to the invoice and credit memo grids.
+
 ## Version 1.4.0
 
 ### Release date

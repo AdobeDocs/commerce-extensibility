@@ -106,7 +106,7 @@ This method installs the SDK on an On-premises instance.
 
 ## Update the Commerce Admin UI SDK
 
-Use the following procedure to update patch versions of the SDK, such as from V1.0.0 to V1.1.0. 
+Use the following procedure to update patch versions of the SDK, such as from V1.0.0 to V1.1.0.
 
 1. Run the following command to update the SDK:
 

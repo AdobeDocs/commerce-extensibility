@@ -20,7 +20,7 @@ September 4, 2024
 
   You must update any extension points developed with Admin UI SDK 1.x. [Migrate your extension point from 1.x to 2.0](./extension-points/index.md#migrate-your-extension-point-from-version-1x-to-20) describes how.
 
-* Added a customer fee column to the invoice and credit memo grids.
+* Added a custom fee column to the invoice and credit memo grids.
 
 ## Version 1.4.0
 

@@ -12,6 +12,14 @@ module.exports = [
         path: "/app-development/learning-path.md"   
     },
     {
+        title: "App development comparison",
+        path: "/app-development/app-development-comparison.md"   
+    },
+    {
+        title: "Services comparison",
+        path: "/app-development/services-comparison.md"   
+    },
+    {
         title: "Best practices",
         path: "/app-development/best-practices/index.md",
         pages: [

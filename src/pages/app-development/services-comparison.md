@@ -12,6 +12,7 @@ This guide highlights key differences and benefits between Adobe Commerce and Ad
 
 For more comparison information, refer to:
 
+- [Out-of-process extensibility overview](../index.md)
 - [Coding convention](#coding-conventions)
 - [Integrating third-party modules](#integrating-third-party-modules)
 

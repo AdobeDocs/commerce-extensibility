@@ -38,7 +38,7 @@ Commerce models are usually found in `app/code/<Vendor>/<Module>/Model/`. They o
 
 App Builder replaces the concept of Models with API endpoints and business logic functions that interact with external data sources or Adobe services.
 
-These JavaScript functions are typically contained in the [`actions` directory](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/implementing/configuring-and-extending/app-builder/actions). 
+These JavaScript functions are typically contained in the [`actions` directory](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/implementing/configuring-and-extending/app-builder/actions).
 
 ### Controllers
 
@@ -156,6 +156,6 @@ While both tools serve the same fundamental purpose of dependency management, th
 | Repositories | Default: Packagist, supports private and custom repositories | Default: NPM registry, supports private and custom registries |
 | Scripts | Limited script capabilities (via Composer scripts) | Extensive script capabilities via scripts field in `package.json` |
 | Use Cases | Installing Commerce and third-party PHP modules | Installing Node.js modules, building serverless functions |
-| Configuration File | `composer.json` | `package.json ` |
+| Configuration File | `composer.json` | `package.json` |
 | Example Command to Add Module | `composer require vendor/module-name` | `npm install module-name` |
 | Example Command to Update | `composer update` | `npm update` |

@@ -20,6 +20,10 @@ module.exports = [
         path: "/app-development/services-comparison.md"   
     },
     {
+        title: "Port extensions to apps",
+        path: "/app-development/port-extensions.md"
+    },
+    {
         title: "Best practices",
         path: "/app-development/best-practices/index.md",
         pages: [

@@ -1,6 +1,8 @@
 ---
 title: App Development Comparison
 description: Learn about the differences in app development between Adobe Commerce and App Builder.
+contributor_name: Comwrap Reply GmbH
+contributor_link: https://www.comwrap.com/en.html
 keywords:
   - App Builder
   - Extensibility

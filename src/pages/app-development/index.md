@@ -10,7 +10,7 @@ keywords:
 
 # Extensibility in Adobe Commerce
 
-Adobe Commerce is renowned for its flexibility and extensibility, allowing businesses to adapt their e-commerce platforms to their unique needs. With the evolving demands of e-commerce, Adobe Commerce offers various methods for extending its capabilities. These methods can be broadly categorized into **in-process, out-of-process, and hybrid** extensibility. Each approach has its own set of advantages and use cases, and understanding them is crucial for developers and businesses looking to maximize their platform's potential.
+Adobe Commerce is known for its flexibility and extensibility, allowing businesses to adapt their e-commerce platforms to their unique needs. With the evolving demands of e-commerce, Adobe Commerce offers various methods for extending its capabilities. These methods can be broadly categorized into **in-process, out-of-process, and hybrid** extensibility. Each approach has its own set of advantages and use cases, and understanding them is crucial for developers and businesses looking to maximize their platform's potential.
 
 ## In-process extensibility
 
@@ -18,16 +18,16 @@ In-process extensibility refers to the method where custom code or extensions ru
 
 The advantages of this approach include:
 
-* **Performance**. Since the custom code runs within the same process, it can directly interact with the core application, resulting in lower latency and faster execution times.
-* **Simplicity**. In-process extensions are typically easier to develop and deploy, as they leverage the existing infrastructure and codebase.
-* **Access to Core Functions**. Developers have direct access to the core functions and data structures of Adobe Commerce, allowing for deep customization.
+* **Performance** - Since the custom code runs within the same process, it can directly interact with the core application, resulting in lower latency and faster execution times.
+* **Simplicity** - In-process extensions are typically easier to develop and deploy, as they leverage the existing infrastructure and codebase.
+* **Access to Core Functions** - Developers have direct access to the core functions and data structures of Adobe Commerce, allowing for deep customization.
 
-The in-process model has some considerations that must be taken into account:
+The in-process model has some considerations that you must account for:
 
 * **Resource contention**. Extensions share the same resources (CPU, memory) with the core application. Performance bottlenecks can be a result if these resources are not managed properly.
 * **Stability**. Poorly written extensions can potentially destabilize the entire application. It is crucial to perform extensive testing to ensure this doesn't happen.
 
-In addition, Adobe Commerce has some functionality that should not be extended or built out-of-process:
+In addition, Adobe Commerce has some functionality that you should not extend or build out-of-process:
 
 * Creating new blocks and components for native Adobe Commerce (Luma, Base) templates.
 * Modifying existing objects, such as customers, orders, and products.
@@ -36,11 +36,11 @@ In addition, Adobe Commerce has some functionality that should not be extended o
 
 Developers have long used in-process extensibility solutions to provide additional functionality, such as the following:
 
-* **Customize the default checkout process**. Using in-process extensibility to modify the default checkout workflow allows for seamless integration with the core Adobe Commerce application. This integration enables precise adjustments, such as adding custom fields or changing the sequence of steps to complete the checkout process and better fit business needs.
+* **Customize the default checkout process** - Using in-process extensibility to modify the default checkout workflow allows for seamless integration with the core Adobe Commerce application. This integration enables precise adjustments, such as adding custom fields or changing the sequence of steps to complete the checkout process and better fit business needs.
 
-* **Add new payment gateways**. By integrating new payment gateways within the same process as the core application, businesses can ensure faster and more reliable payment processing, leveraging existing infrastructure for a smoother implementation.
+* **Add new payment gateways** - By integrating new payment gateways within the same process as the core application, businesses can ensure faster and more reliable payment processing, leveraging existing infrastructure for a smoother implementation.
 
-* **Modify product display logic**. In-process adjustments to product display logic enable direct manipulation of the core application's data structures and functions, allowing for real-time updates to how products are presented, which can include adding of new custom attributes or PageBuilder sections.
+* **Modify product display logic** - In-process adjustments to product display logic enable direct manipulation of the core application's data structures and functions, allowing for real-time updates to how products are presented, which can include adding of new custom attributes or PageBuilder sections.
 
 ## Out-of-process extensibility
 
@@ -48,9 +48,9 @@ With out-of-process extensibility, custom code and extensions run in separate pr
 
 The advantages of this approach include:
 
-* **Isolation**. Custom code runs independently of the core application, reducing the risk of crashing or slowing down the main site.
-* **Scalability**. Out-of-process services can be scaled independently, allowing for better resource management and scalability.
-* **Technology agnostic**. Developers can use different programming languages or frameworks for their extensions, providing greater flexibility.
+* **Isolation** - Custom code runs independently of the core application, reducing the risk of crashing or slowing down the main site.
+* **Scalability** - Out-of-process services can scale independently, allowing for better resource management and scalability.
+* **Technology agnostic** - Developers can use different programming languages or frameworks for their extensions, providing greater flexibility.
 
 However, setting up and managing out-of-process extensions can be more complex, requiring additional infrastructure and communication protocols. For example, you might have additional database requirements, Elasticsearch set up, etc.
 
@@ -72,17 +72,17 @@ The following use cases illustrate ideal candidates for out-of-process extensibi
 
 ### Example
 
-A typical task for most e-commerce projects is to export orders from Adobe Commerce system to an external Order Management Systems. With Adobe App Builder, you can build an out-of-process microservice to seamlessly transfer this data. (Let's name this service _Order Export Service (OES)_.) This service operates independently of the core Commerce application, ensuring efficient data synchronization and reducing the load on the backend. It can leverage APIs and webhooks to facilitate real-time and batch data export, providing a robust solution for keeping the OMS system up to date with the latest order information.
+A typical task for most e-commerce projects is to export orders from Adobe Commerce system to an external Order Management Systems. With Adobe App Builder, you can build an out-of-process microservice to seamlessly transfer this data. (We will name this service _Order Export Service (OES)_.) This service operates independently of the core Commerce application, ensuring efficient data synchronization and reducing the load on the backend. It can leverage APIs and webhooks to facilitate real-time and batch data export, providing a robust solution for keeping the OMS system up to date with the latest order information.
 
 The following diagram illustrates an out-of-process implementation using this service.
 
 ![Out of process example](../_images/oms1.svg)
 
-Configure Commerce to trigger [webhooks](https://developer.adobe.com/commerce/extensibility/webhooks/) whenever a new order is placed. These webhooks send order data to the OES. This can be achieved with [Adobe I/O Events for Adobe Commerce](https://developer.adobe.com/commerce/extensibility/events/).
+Configure Commerce to trigger [webhooks](https://developer.adobe.com/commerce/extensibility/webhooks/) whenever a customer places an order. These webhooks send order data to the OES. You can achieve this with [Adobe I/O Events for Adobe Commerce](https://developer.adobe.com/commerce/extensibility/events/).
 
 The OES running on App Builder has the following characteristics:
 
-* The service exposes an API endpoint to receive order data from Commerce. This endpoint is designed to handle both real-time webhook calls and batch data transmissions.
+* The service exposes an API endpoint to receive order data from Commerce. This endpoint handles both real-time webhook calls and batch data transmissions.
 
 * The service processes and transforms the incoming order data into a format compatible with the OMS system. This may involve mapping Commerce order fields to corresponding OMS fields, converting data types, and aggregating related information.
 
@@ -96,11 +96,11 @@ Hybrid extensibility combines elements of both in-process and out-of-process app
 
 Advantages of this approach include:
 
-* **Flexibility**. Developers can choose the best approach for each specific functionality, allowing for a more tailored solution.
-* **Resilience**. Critical functionalities can be isolated to prevent cascading failures, while less critical or performance-sensitive tasks can be handled in-process.
-* **Optimization**. Hybrid models can optimize performance and resource utilization by balancing in-process and out-of-process workloads.
+* **Flexibility** - Developers can choose the best approach for each specific functionality, allowing for a more tailored solution.
+* **Resilience** - Critical functionalities can be isolated to prevent cascading failures, while less critical or performance-sensitive tasks can be handled in-process.
+* **Optimization** - Hybrid models can optimize performance and resource utilization by balancing in-process and out-of-process workloads.
 
-On the other hand, management can be more difficult:
+Alternatively, management can be more difficult:
 
 * Managing hybrid solutions requires careful coordination to ensure seamless communication and integration between in-process and out-of-process components.
 * Efficiently balancing resources between in-process and out-of-process tasks is crucial to avoid bottlenecks and ensure optimal performance.
@@ -118,14 +118,14 @@ The following use cases describe ideal candidates for hybrid extensibility:
 Recall the out-of-process extensibility example, where the following processes are carried out.
 
 1. A webhook sends order information to the App Builder instance.
-2. App Builder transforms the data to meet the OMS requirements.
-3. App Builder sends the data to OMS.
+1. App Builder transforms the data to meet the OMS requirements.
+1. App Builder sends the data to OMS.
 
 But what if you need to request additional information from Adobe Commerce to complete the order export? For example, you are exporting an order, but the OMS also requires the customer object to be imported before it can accept the order information. In this case, your App Builder application must make an additional call to Commerce to retrieve the customer data. Perhaps the customer object has some custom metadata that is not available via the default GraphQL or REST APIs?
 
 For this use case, you must develop an extension on the Adobe Commerce side that modifies the GraphQL response, performs some custom logic on the Adobe Commerce instance, and delivers the expected results back.
 
-![Hybrid example](../_images/oms1.svg)
+![Hybrid example](../_images/oms2.svg)
 
 ## Conclusion
 

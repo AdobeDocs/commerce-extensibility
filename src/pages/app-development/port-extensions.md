@@ -30,6 +30,8 @@ Once you've become comfortable with the Adobe I/O infrastructure, analyze  your 
 
 [Spectrum](https://spectrum.adobe.com/page/principles/) provides all the tools you need to create the next generation of React-based applications. You can use Spectrum UI components to build apps consistent with Adobe standards and leverage our SDK (#admin-development) to securely create custom app UIs in the Adobe Commerce Admin.
 
+Alternatively, you can use native HTML with CSS to create your UI components.
+
 <InlineAlert variant="info" slots="text"/>
 
 Adobe Commerce continues to support the [PWA Studio](https://developer.adobe.com/commerce/pwa-studio/) and [Luma](https://developer.adobe.com/commerce/frontend-core/) storefronts.

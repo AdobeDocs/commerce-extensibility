@@ -38,6 +38,8 @@ Commerce models are usually found in `app/code/<Vendor>/<Module>/Model/`. They o
 
 #### App Builder
 
+**Recommended method**
+
 App Builder replaces the concept of Models with API endpoints and business logic functions that interact with external data sources or Adobe services.
 
 These JavaScript functions are typically contained in the [`actions` directory](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/implementing/configuring-and-extending/app-builder/actions).
@@ -53,6 +55,8 @@ Controllers handle HTTP requests and route them to the appropriate business logi
 These controllers usually extend from Magento's core controller classes like `\Magento\Framework\App\Action\Action`.
 
 #### App Builder
+
+**Recommended method**
 
 App Builder uses actions to handle HTTP requests and execute the necessary business logic. They are similar to controllers in traditional Model-View-Controller (MVC) frameworks.
 
@@ -72,6 +76,8 @@ Commerce observers listen to dispatch events during various points of the applic
 
 #### App Builder
 
+**Recommended method**
+
 In App Builder, you can create plugins and observers using [Adobe I/O Events](https://developer.adobe.com/events/docs/). Adobe I/O Events allows Commerce to publish events that services built on App Builder can consume. This enables you to extend the capabilities of Commerce by triggering actions in your custom App Builder application.
 
 Commerce plugins dispatch these events and App Builder actions handle them. For more information, see the [Adobe I/O Events for Adobe Commerce Overview](https://developer.adobe.com/commerce/extensibility/events/).
@@ -87,6 +93,8 @@ Cron jobs in Commerce are scheduled tasks that execute at specific intervals. Th
 In Commerce, you define Cron jobs in the module's `crontab.xml` file, but the actual logic is in classes found in the `cron` directory within the module.
 
 #### App Builder
+
+**Recommended method**
 
 Alarms in Adobe I/O Runtime are trigger provided by the OpenWhisk ecosystem. They allow you to schedule actions to run at specified intervals, similar to how [cron jobs](https://developer.adobe.com/app-builder/docs/resources/cron-jobs/) work in a traditional server environment.
 
@@ -106,6 +114,8 @@ Message producers send messages to the queue, and message consumers process thos
 
 #### App Builder
 
+**Recommended method**
+
 In App Builder, [Adobe I/O Events](https://developer.adobe.com/events/docs/) provides a substitute to message queues. Adobe I/O Events allows you to publish events and consume them asynchronously using Webhooks or the Journaling API. This mechanism helps manage background processes, decouple tasks, and handle asynchronous communication between different parts of the application.
 
 The configuration requires managing multiple XML files.
@@ -124,6 +134,8 @@ Commerce delivers extensive capabilities for developing custom Admin interfaces.
 
 #### App Builder
 
+**Recommended method**
+
 App Builder brings a modern approach to creating and integrating admin interfaces by leveraging the [Admin UI SDK](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/). This SDK allows developers to integrate Single Page Applications (SPAs) directly into the Commerce Admin interface, providing a seamless experience.
 
 ## Integrating third-party modules
@@ -139,6 +151,8 @@ In modern web development, integrating third-party modules and libraries is a co
 Commerce uses Composer, a dependency management tool for PHP, to manage the installation and updates of the Commerce system, as well as third-party extensions and libraries. Composer simplifies the process of declaring and resolving dependencies, ensuring that all necessary packages install properly and are compatible with each other. This tool maintains the integrity and functionality of a Commerce-based application, enabling developers to add, update, and manage PHP packages and Commerce modules.
 
 #### App Builder
+
+**Recommended method**
 
 App Builder leverages Node Package Manager (NPM) to manage dependencies for its serverless functions and other JavaScript-based components. NPM is the default package manager for Node.js and is essential for managing the vast ecosystem of JavaScript libraries and tools. It allows developers to install, update, and manage third-party modules, facilitating the rapid development and deployment of serverless applications within App Builder.
 

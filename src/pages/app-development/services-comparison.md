@@ -28,6 +28,10 @@ This section compares the persistent storage solutions used in Commerce to those
 
 MySQL is a relational database management system (RDBMS) used to store and manage structured data.
 
+<InlineAlert variant="info" slots="text"/>
+
+Modifying the default MySQL database can cause upgrade issues. Adobe recommends using App Builder with state database for simple app-specific data or a third-party database for more complex needs.
+
 Features:
 
 - Supports SQL for querying data.
@@ -59,6 +63,8 @@ Use cases:
 - Real-time analytics and leaderboard systems.
 
 ### App builder
+
+**Recommended method**
 
 [State Database](https://developer.adobe.com/app-builder/docs/guides/application_state/) is a key-value store provided by [Adobe I/O Runtime](https://developer.adobe.com/runtime/docs/guides/overview/) to store and manage stateful data.
 
@@ -116,6 +122,8 @@ For massive data flows, you can consider external storage as an option.
 
 ### App Builder
 
+**Recommended method**
+
 App builder uses an Adobe I/O Runtime service to store and manage files.
 
 Features:
@@ -145,6 +153,8 @@ This section compares the search capabilities between Adobe Commerce and App Bui
 - Third-party integrations - For businesses with specific needs or preferences, Adobe Commerce supports the integration of third-party search solutions.
 
 ### App Builder
+
+**Recommended method**
 
 Adobe App Builder does not come with a built-in full-text search service. However, developers can integrate external search services or implement custom search functionalities using multiple tools and technologies:
 

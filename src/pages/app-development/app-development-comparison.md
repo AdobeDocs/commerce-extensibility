@@ -18,6 +18,8 @@ The following sections help developers transition from Adobe Commerce extension 
 - [Integrating third-party modules](#integrating-third-party-modules)
 - [Services Comparison](./services-comparison.md)
 
+The in-process extensibility model has many disadvantages, such as increased maintenance costs, reduced software stability, and increased AC server overload. These disadvantages along with the increased business complexity and technology stack, we recommend using the out-of-process model whenever possible.
+
 ## Coding conventions
 
 Coding conventions are a set of guidelines that define how developers write and format code. This section highlights the differences in coding conventions between Commerce and App Builder.

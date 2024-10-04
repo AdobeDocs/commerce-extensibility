@@ -10,7 +10,7 @@ keywords:
 
 # Extensibility in Adobe Commerce
 
-Adobe Commerce is known for its flexibility and extensibility, allowing businesses to adapt their e-commerce platforms to their unique needs. With the evolving demands of e-commerce, Adobe Commerce offers various methods for extending its capabilities. These methods can be broadly categorized into **in-process, out-of-process, and hybrid** extensibility. Each approach has its own set of advantages and use cases, and understanding them is crucial for developers and businesses looking to maximize their platform's potential.
+Adobe Commerce is known for its flexibility and extensibility, allowing businesses to adapt their e-commerce platforms to their unique needs. With the evolving demands of e-commerce, Adobe Commerce offers various methods for extending its capabilities. These methods can be broadly categorized into **in-process, out-of-process, and hybrid** extensibility. Adobe recommends using the out-of-process extensibility method where possible due to its ease of maintenance.
 
 ## In-process extensibility
 

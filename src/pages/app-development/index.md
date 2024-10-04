@@ -52,7 +52,7 @@ The advantages of this approach include:
 * **Scalability** - Out-of-process services can scale independently, allowing for better resource management and scalability.
 * **Technology agnostic** - Developers can use different programming languages or frameworks for their extensions, providing greater flexibility.
 
-However, setting up and managing out-of-process extensions can be more complex, requiring additional infrastructure and communication protocols. For example, you might have additional database requirements, Elasticsearch set up, etc.
+When choosing out-of-process extensibility, Adobe provides developers with serverless runtime to host their apps, which reduces overhead for developers.
 
 ### Use cases
 

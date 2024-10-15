@@ -1247,7 +1247,7 @@ plugin.magento.quote.api.shipment_estimation.estimate_by_extended_address
 
 **Default payload:**
 
-The following payload was obtained from the code execution in the application using a webhook type of `after`. The data in the `address` section was deleted for brevity. 
+The following payload was obtained from the code execution in the application using a webhook type of `after`. The data in the `address` section was deleted for brevity.
 
 ```json
 {
@@ -1390,6 +1390,7 @@ plugin.magento.gift_card_account.api.gift_card_account_management.check_gift_car
 **Default payload:**
 
 This use case will use a webhook with type `after`. Therefore, the default payload structure is:
+
 ```json
 {
     "cartId": "int",

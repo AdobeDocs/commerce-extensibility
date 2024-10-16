@@ -99,9 +99,9 @@ async function main (params) {
     const response = {statusCode: 200}
     if (discountCode && discountCode.couponCode.toLowerCase().includes('test')) {
       response.body = JSON.stringify({
-          op: "exception",
-          message: `App Builder Webhook Response: The discount code "${discountCode.couponCode}" is not valid`
-        })
+        op: "exception",
+        message: `App Builder Webhook Response: The discount code "${discountCode.couponCode}" is not valid`
+      })
     } else {
       response.body = JSON.stringify({
         op: "success"
@@ -126,8 +126,8 @@ If validation fails, the runtime AppBuilder action returns an exception message.
 
 ```js
 response.body = JSON.stringify({
-    op: "exception",
-    message: `App Builder Webhook Response: The discount code "${discountCode.couponCode}" is not valid`
+  op: "exception",
+  message: `App Builder Webhook Response: The discount code "${discountCode.couponCode}" is not valid`
 })
 ```
 
@@ -250,8 +250,8 @@ If validation fails, the runtime AppBuilder action returns an exception message.
 
 ```js
 response.body = JSON.stringify({
-    op: "exception",
-    message: `App Builder Webhook Response: The gift card code "${giftCards[i]}" is not valid`
+  op: "exception",
+  message: `App Builder Webhook Response: The gift card code "${giftCards[i]}" is not valid`
 })
 ```
 

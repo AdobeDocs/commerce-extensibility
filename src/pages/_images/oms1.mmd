@@ -1,0 +1,8 @@
+flowchart LR
+    subgraph Box1[Adobe Commerce]
+        A1[New Order] --> A2[I/O Events to Adobe Commerce]
+    end
+    subgraph Box2[Order Export Service]
+        B1[Transformation]
+    end
+    Box1 --> Box2 --> Box3[Order Management System]

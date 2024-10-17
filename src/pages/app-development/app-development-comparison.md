@@ -10,7 +10,7 @@ keywords:
 
 # App Development Comparison
 
-Adobe Commerce is a powerful e-commerce platform that allows developers to use in-process extensibility to enhance its functionality. By combining Commerce with Adobe Developer App Builder, developers now have a new out-of-process set of tools. This guide highlights key differences and benefits between using Commerce's built-in extensibility offerings and App Builder's [out-of-process development tools](../index.md).
+Adobe Commerce is a powerful e-commerce platform that allows developers to use in-process extensibility to enhance its functionality. By combining Commerce with Adobe Developer App Builder, developers now have a new out-of-process set of tools. This guide highlights key differences and benefits of using Commerce's out-of-process extensibility with App Builder's [out-of-process development tools](../index.md).
 
 The following sections help developers transition from Adobe Commerce extension development to Adobe Developer App Builder development.
 

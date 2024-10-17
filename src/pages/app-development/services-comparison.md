@@ -10,7 +10,7 @@ keywords:
 
 # Services comparison
 
-This guide highlights key differences and benefits between Adobe Commerce and Adobe Developer App Builder services. It provides a comparison of services used in both platforms and outlines the differences in their implementation and usage.
+This guide highlights key differences and benefits of using Adobe Developer App Builder services over services available within Adobe Commerce. It provides a comparison of services used in both platforms and outlines the differences in their implementation and usage.
 
 For more comparison information, refer to:
 

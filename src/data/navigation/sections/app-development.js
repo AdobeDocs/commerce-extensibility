@@ -8,20 +8,18 @@ module.exports = [
         path: "/app-development/examples.md"   
     },
     {
-        title: "Learning path",
-        path: "/app-development/learning-path.md"   
-    },
-    {
-        title: "App development comparison",
-        path: "/app-development/app-development-comparison.md"   
-    },
-    {
-        title: "Services comparison",
-        path: "/app-development/services-comparison.md"   
-    },
-    {
-        title: "Port extensions to apps",
-        path: "/app-development/port-extensions.md"
+        title: "Porting extensions",
+        path: "/app-development/port-extensions.md",
+        pages: [
+            {
+                title: "App development comparison",
+                path: "/app-development/app-development-comparison.md"
+            },
+            {
+                title: "Services comparison",
+                path: "/app-development/services-comparison.md"   
+            },
+        ]
     },
     {
         title: "Best practices",
@@ -62,5 +60,9 @@ module.exports = [
             path: "/app-development/amazon-sales-channel/release-notes.md"
         }
     ]
-  }
+  },
+  {
+    title: "Learning path",
+    path: "/app-development/learning-path.md"   
+},
 ];

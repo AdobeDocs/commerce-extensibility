@@ -871,7 +871,7 @@ The payload for `observer.sales_order_place_before` contains similar data, but t
 
 **webhook.xml configuration:**
 
-The xml below configures a webhook for `plugin.magento.sales.api.order_management.place`:
+The XML below configures a webhook for `plugin.magento.sales.api.order_management.place`:
 
 ```xml
 <method name="plugin.magento.sales.api.order_management.place" type="before">
@@ -985,7 +985,7 @@ async function main (params) {
 exports.main = main
 ```
 
-If the products in the order can not be shipped to the selected address, the runtime AppBuilder action returns an exception message. The message is visible to the customer.
+If the products in the order cannot be shipped to the selected address, the runtime AppBuilder action returns an exception message. The message is visible to the customer.
 
 ```js
 response.body = JSON.stringify({

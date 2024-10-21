@@ -35,6 +35,8 @@ You will typically need to send authorization tokens and other connection parame
 </hook>
 ```
 
+The `x-adobe-commerce-request-id` is added automatically to each request and is used to track the request in the system. You can filter logs by this ID to find all logs related to a specific request.
+
 This example defines two headers:
 
 Name | Value

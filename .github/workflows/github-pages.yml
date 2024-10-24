@@ -1,18 +1,25 @@
 ---
 name: Github Pages
 on: workflow_dispatch
+permissions: {}
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: write
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Yarn Install
-        uses: bahmutov/npm-install@v1
-      - name: Build
-        run: |
-          yarn build
+      - uses: actions/checkout@v4
+      - name: Use Setup Node and Install Dependencies Action
+        uses: commerce-docs/devsite-install-action@main
+        with:
+          node-version-file: '.nvmrc'
+          cache-dependency-path: 'yarn.lock'
+
+      - name: Build site
+        run: yarn build
         env:
+          NODE_OPTIONS: "--max-old-space-size=8192"
           PREFIX_PATHS: true # works like --prefix-paths flag for 'gatsby build'
           PATH_PREFIX: ${{ github.event.repository.name }}
           ADOBE_LAUNCH_SRC: ${{ secrets.AIO_ADOBE_LAUNCH_SRC }}

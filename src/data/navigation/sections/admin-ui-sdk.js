@@ -12,8 +12,81 @@ module.exports = [
       path: "/admin-ui-sdk/app-registration.md"
     },
     {
-      title: "Admin configuration and testing",
+      title: "Extension points",
+      path: "/admin-ui-sdk/extension-points/index.md",
+      pages: [
+        {
+          title: "banner notification",
+          path: "/admin-ui-sdk/extension-points/banner-notification.md"
+        },
+        {
+          title: "customer",
+          path: "/admin-ui-sdk/extension-points/customer/index.md",
+          pages: [
+            {
+              title: "grid columns",
+              path: "/admin-ui-sdk/extension-points/customer/grid-columns.md"
+            },
+            {
+              title: "mass action",
+              path: "admin-ui-sdk/extension-points/customer/mass-action.md"
+            }
+          ]
+        },
+        {
+          title: "menu",
+          path: "/admin-ui-sdk/extension-points/menu.md"
+        },
+        {
+          title: "order",
+          path: "/admin-ui-sdk/extension-points/order/index.md",
+          pages: [
+            {
+              title: "custom fees",
+              path: "/admin-ui-sdk/extension-points/order/custom-fees.md"
+            },
+            {
+              title: "grid columns",
+              path: "/admin-ui-sdk/extension-points/order/grid-columns.md"
+            },
+            {
+              title: "mass action",
+              path: "/admin-ui-sdk/extension-points/order/mass-action.md"
+            },
+            {
+              title: "view button",
+              path: "/admin-ui-sdk/extension-points/order/view-button.md"
+            }
+          ]
+        },
+        {
+          title: "page",
+          path: "/admin-ui-sdk/extension-points/page.md"
+        },
+        {
+          title: "product",
+          path: "/admin-ui-sdk/extension-points/product/index.md",
+          pages: [
+            {
+              title: "grid columns",
+              path: "/admin-ui-sdk/extension-points/product/grid-columns.md"
+            },
+            {
+              title: "mass action",
+              path: "/admin-ui-sdk/extension-points/product/mass-action.md"
+            }
+          ]
+        }
+
+      ]
+    },
+    {
+      title: "Admin configuration and local testing",
       path: "/admin-ui-sdk/configuration.md"
+    },
+    {
+      title: "Prepare your app for production",
+      path: "admin-ui-sdk/publish.md"
     },
     {
       title: "Troubleshooting",

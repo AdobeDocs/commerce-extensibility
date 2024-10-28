@@ -26,15 +26,15 @@ You can use the following SQL query to select all events from the `event_data` t
 
 `SELECT * FROM event_data`
 
-Alternatively, the _Event Status_ grid, found by navigating to **System** > Events > **Event Status** in the Commerce admin, provides a way to view the status of triggered events contained in the `event_data` table through the UI.
+Alternatively, the _Events Status_ grid, found by navigating to **System** > Events > **Events Status** in the Commerce admin, provides a way to view the status of triggered events contained in the `event_data` table through the UI.
 
-![Event Status grid](../_images/events/event-status-grid.png)
+![Events Status grid](../_images/events/event-status-grid.png)
 
-Use the SQL query results or the content of the _Event Status_ grid to determine the next troubleshooting step.
+Use the SQL query results or the content of the _Events Status_ grid to determine the next troubleshooting step.
 
 ### The table or grid is empty
 
-If the `event_data` table or the _Event Status_ grid is empty, use the following procedure to diagnose the problem:
+If the `event_data` table or the _Events Status_ grid is empty, use the following procedure to diagnose the problem:
 
 1. Run `bin/magento events:list` to ensure that you have subscribed events.
 
@@ -54,12 +54,12 @@ If the `event_data` table or the _Event Status_ grid is empty, use the following
 
 ### The event status is `0` or `Waiting`
 
-Events are sent by crons. If the status of an event is still `0` in the `event_data` table or `Waiting` in the _Event Status_ grid after a long period, then the crons are not configured correctly.
+Events are sent by crons. If the status of an event is still `0` in the `event_data` table or `Waiting` in the _Events Status_ grid after a long period, then the crons are not configured correctly.
 In a Cloud environment, check the logs. Cron execution might have been killed due to lack of space in the environment or other reasons.
 
 ### The event status is `2` or `Failure`
 
-An event status of `2` in the `event_data` table, or `Failure` in the _Event Status_ grid, indicates there was an error during transmission. Additional information can be found in the `info` column of the table or in the `system.log` file.
+An event status of `2` in the `event_data` table, or `Failure` in the _Events Status_ grid, indicates there was an error during transmission. Additional information can be found in the `info` column of the table or in the `system.log` file.
 The following CLI command can show only logs related to the event batch sending.
 
 ```bash

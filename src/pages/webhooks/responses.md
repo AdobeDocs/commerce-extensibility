@@ -200,14 +200,14 @@ An optional hook was executed with a response code other than 2xx within the sof
 A required hook was executed with a response code other than 2xx within the soft and hard time limits. | Add error log entry<br/>Throw an exception
 An optional hook is aborted due to reaching the hard timeout limit. | Add error log entry
 A required hook is aborted due to reaching the hard timeout limit. | Add error log entry<br/>Throw an exception
-The execution time of hook exceeds the soft timeout limit. |   Add a notice to the error log
+The execution time of hook exceeds the soft timeout limit. | Add a notice to the error log
 
 
-## Database Logging
+## Database logging
 
-You can enable database logging for debugging webhooks from the admin UI. It's not recommended to enable database logging in production environments as it can affect the performance.
+You can enable database logging for debugging webhooks from the Admin. You should not enable database logging in production environments, as it can affect the performance.
 
-To enable database logging, navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Webhooks** > **Database logging configuration** and change the **Enabled** to **Yes**.
+To enable database logging, navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Webhooks** > **Database logging configuration** and set the **Enabled** option to **Yes**.
 
 ![Webhooks database logging configuration](../_images/webhooks/database-logging-configuration.png)
 
@@ -215,8 +215,8 @@ You can configure the minimum log level to store logs in the database and log re
 
 The logs are cleared once per day based on the retention time.
 
-After enabling database logging, the webhook logs are stored in the `webhook_log` table. To check logs in admin UI navigates to **System** > **Webhooks** > **Webhook Logs**.
+When database logging is enabled, the webhook logs are stored in the `webhook_log` table. To check logs in the Admin, navigate to **System** > **Webhooks** > **Webhook Logs**.
 
 ![Webhooks database logging](../_images/webhooks/database-logging.png)
 
-You can filter logs by multiple fields such as webhook method, type, hook name, request id.
+You can filter logs by multiple fields, such as webhook method, type, hook name, and request ID.

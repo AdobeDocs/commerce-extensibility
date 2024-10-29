@@ -9,6 +9,26 @@ keywords:
 
 These release notes describe the latest version of Adobe Commerce Webhooks.
 
+## Version 1.6.0
+
+### Release date
+
+October 30, 2024
+
+### Enhancements
+
+* Updated copyrights in the generated module files. <!--- CEXT-3508 -->
+
+* Added the **Webhooks Logs** grid to the Admin for viewing webhook execution information. <!--CEXT-3510 -->
+
+* Added additional debug logging related to webhooks response caching. <!--CEXT-3586 -->
+
+* Added additional observer events to the list of supported webhook event names. <!--CEXT-3671 -->
+
+## Bug fix
+
+* Fixed an issue causing `null` values to be returned in some payloads output by the `webhooks:info` command <!--CEXT-3608 -->
+
 ## Version 1.5.1
 
 ### Release date

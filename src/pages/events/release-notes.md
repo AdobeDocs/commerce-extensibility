@@ -12,6 +12,22 @@ These release notes describe the latest version of Adobe I/O Events for Adobe Co
 
 See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io-events-for-adobe-commerce) for upgrade instructions.
 
+## Version 1.9.0
+
+### Release date
+
+October 30, 2024
+
+### Enhancements
+
+* Added the **Events Status** grid to the Admin. This grid can be used to monitor the status of triggered events. <!--- CEXT-3593 -->
+
+* Added more detailed error messages for the **Execute Synchronization** and **Test Connection** buttons in the Adobe I/O Events configuration section of the Admin. <!--- CEXT-3594 -->
+
+* Renamed the **Events** item in the System menu of the Admin to **Events List**. <!--- CEXT-3658 -->
+
+* Added additional observer events to the list of supported event names. <!--CEXT-3671 -->
+
 ## Version 1.8.2
 
 ### Release date

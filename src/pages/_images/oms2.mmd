@@ -1,0 +1,14 @@
+---
+config:
+  theme: mc
+---
+flowchart LR
+    subgraph Box1[Adobe Commerce]
+        A1[New Order] --> A2[I/O Events to Adobe Commerce]
+        A3[Extension that adds custom data to GraphQL or performs custom calculations] --> A4[GraphQL]
+        end
+    subgraph Box2[Order Export Service]
+        B1[Transformation]
+    end
+    A4 --> Box2 --> Box3[Order Management System]
+    A2 --> Box2

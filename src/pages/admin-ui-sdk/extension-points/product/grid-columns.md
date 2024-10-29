@@ -18,27 +18,19 @@ You can use the [`aio api-mesh:describe` command](https://developer.adobe.com/gr
 
 ```javascript
 product: {
-    getGridColumns() {
-        return {
-            data:{
-                meshId:'MESH_ID',
-                apiKey: 'API_KEY'
-            },
-            properties:[
-                {
-                    label: 'First App Column',
-                    columnId: 'first_column',
-                    type: 'string',
-                    align: 'left'
-                },
-                {
-                    label: 'Second App Column',
-                    columnId: 'second_column',
-                    type: 'integer',
-                    align: 'left'
-                }
-            ]
-        }
+    gridColumns: {
+        data: {
+            meshId: 'MESH_ID',
+            apiKey: 'API_KEY'
+        },
+        properties:[
+            {
+                label: 'App Column',
+                columnId: 'first_column',
+                type: 'string',
+                align: 'left'
+            }
+        ]
     }
 }
 ```

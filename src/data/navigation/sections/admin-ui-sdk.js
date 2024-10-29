@@ -42,7 +42,7 @@ module.exports = [
           path: "/admin-ui-sdk/extension-points/order/index.md",
           pages: [
             {
-              title: "get custom fees",
+              title: "custom fees",
               path: "/admin-ui-sdk/extension-points/order/custom-fees.md"
             },
             {

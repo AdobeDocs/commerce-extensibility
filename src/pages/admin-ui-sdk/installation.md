@@ -43,7 +43,7 @@ This method installs the SDK on a cloud instance.
 1. Update your `composer.json` file:
 
    ```bash
-   composer require "magento/module-commerce-backend-uix": ">=1.0"
+   composer require "magento/commerce-backend-sdk": ">=1.0"
    ```
 
 1. Update dependencies and install the extension:
@@ -55,7 +55,7 @@ This method installs the SDK on a cloud instance.
    The `composer update` command updates all dependencies. If you do not want to update all dependencies at the same time, use this command instead:
 
    ```bash
-   composer update magento/module-commerce-backend-uix
+   composer update magento/commerce-backend-sdk
    ```
 
 1. Commit and push your changes.
@@ -67,7 +67,7 @@ This method installs the SDK on an On-premises instance.
 1. Add the SDK module to the `require` section of the `composer.json` file:
 
    ```bash
-   composer require "magento/module-commerce-backend-uix": ">=1.0"
+   composer require "magento/commerce-backend-sdk": ">=1.0"
    ```
 
 1. Update dependencies and install the extension:
@@ -79,13 +79,19 @@ This method installs the SDK on an On-premises instance.
    The `composer update` command updates all dependencies. If you do not want to update all dependencies at the same time, use this command instead:
 
    ```bash
-   composer update magento/module-commerce-backend-uix
+   composer update magento/commerce-backend-sdk
    ```
 
 1. Upgrade Adobe Commerce:
 
    ```bash
    bin/magento setup:upgrade
+   ```
+
+1. Refresh indexes:
+
+   ```bash
+   bin/magento indexer:reindex
    ```
 
 1. Clear the cache:
@@ -105,11 +111,13 @@ Use the following procedure to update patch versions of the SDK, such as from V1
 1. Run the following command to update the SDK:
 
    ```bash
-   composer update magento/module-commerce-backend-uix
+   composer update magento/commerce-backend-sdk
    ```
 
 1. Run the following commands to upgrade Adobe Commerce and clear the cache.
 
    ```bash
-   bin/magento setup:upgrade && bin/magento cache:clean
+   bin/magento setup:upgrade && bin/magento indexer:reindex && bin/magento cache:clean
    ```
+
+1. If you are updating from V1.x to V2.0, refer to [Migrate your extension point](./extension-points/index.md#migrate-your-extension-point-from-version-1x-to-20) for additional instructions.

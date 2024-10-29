@@ -18,27 +18,31 @@ You can use the [`aio api-mesh:describe` command](https://developer.adobe.com/gr
 
 ```javascript
 customer: {
-    getGridColumns() {
-        return {
-            data:{
-                meshId:'MESH_ID',
-                apiKey: 'API_KEY'
+    gridColumns: {
+        data: {
+            meshId: 'MESH_ID',
+            apiKey: 'API_KEY'
+        },
+        properties:[
+            {
+                label: 'First App Column',
+                columnId: 'first_column',
+                type: 'string',
+                align: 'left'
             },
-            properties:[
-                {
-                    label: 'First App Column',
-                    columnId: 'first_column',
-                    type: 'string',
-                    align: 'left'
-                },
-                {
-                    label: 'Second App Column',
-                    columnId: 'second_column',
-                    type: 'integer',
-                    align: 'left'
-                }
-            ]
-        }
+            {
+                label: 'Second App Column',
+                columnId: 'second_column',
+                type: 'integer',
+                align: 'left'
+            },
+            {
+                label: 'Third App Column',
+                columnId: 'third_column',
+                type: 'date',
+                align: 'left'
+            }
+        ]
     }
 }
 ```
@@ -118,3 +122,7 @@ This sample `schema.json` file is referenced in the mesh configuration file. It 
 | `properties.columnId` | string | Yes | The identifier used in the external dataset to identify the column. |
 | `properties.label` | string | Yes | The label of the column to display. |
 | `properties.type` | string | Yes | The data type of the values in the column. Supported values: `boolean`, `date`, `float`, `integer`, `string`. Date values must be ISO 8601-compliant. |
+
+## Sample code
+
+The Adobe Commerce Extensibility Code Samples repository demonstrates how to customize [customer grid columns](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/customer/custom-grid-columns).

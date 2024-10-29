@@ -38,6 +38,12 @@ In this comprehensive troubleshooting guide, we'll help you navigate through com
 
 *  **The latest changes are not correctly deployed and published.** Make sure you deploy the latest changes using  the `aio app deploy` command in the correct `org/project/workspace`.
 
+* Check the `system.log` file to ensure the issue related to the Admin UI SDK is detected. Run the following command to check the file:
+
+   ```bash
+   more var/log/system.log | grep -i "Admin UI SDK"
+   ```
+
 ## App menu is missing in the Commerce Admin
 
 It's common to have the App menu missing from the Commerce Admin menu when:

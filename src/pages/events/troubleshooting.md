@@ -12,8 +12,12 @@ This topic describes how to resolve frequently encountered issues with Adobe I/O
 
 ## Events are not showing in App Builder event registration
 
-If Commerce is correctly [configured](configure-commerce.md), but triggered events aren't being received, check if the events exist in the Commerce `event_data` table.
-The `event_data` table temporarily stores events before transforming them into Adobe I/O events. The table contains a status column that can have the following values:
+If Commerce is correctly [configured](configure-commerce.md), but triggered events aren't being received, check the the _Events Status_ grid, located at **System** > Events > **Events Status** in the Commerce Admin, to view the status of triggered events that are present in the Commerce `event_data` database table.
+
+![Events Status grid](../_images/events/event-status-grid.png)
+
+You can perform additional troubleshooting by retrieving the contents of the `event_data` table, which contains information that is not displayed in the grid.
+This table temporarily stores events before transforming them into Adobe I/O events. The table contains a status column that can have the following values:
 
 Status ID | Status
 --- | ---
@@ -25,10 +29,6 @@ Status ID | Status
 You can use the following SQL query to select all events from the `event_data` table:
 
 `SELECT * FROM event_data`
-
-Alternatively, the _Events Status_ grid, found by navigating to **System** > Events > **Events Status** in the Commerce admin, provides a way to view the status of triggered events contained in the `event_data` table through the UI.
-
-![Events Status grid](../_images/events/event-status-grid.png)
 
 Use the SQL query results or the content of the _Events Status_ grid to determine the next troubleshooting step.
 

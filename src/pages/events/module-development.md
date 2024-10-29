@@ -16,7 +16,7 @@ Adobe Commerce is capable of emitting thousands of different observer and plugin
 
 You can use the Commerce Admin or the command line to find supported events and their payloads:
 
-*  In the Admin, select **System** > Events > **Events** to display the _Events list_ page.
+*  In the Admin, select **System** > Events > **Events List** to display the _Events list_ page.
 
    ![Events list page](../_images/events/event-list.png)
 

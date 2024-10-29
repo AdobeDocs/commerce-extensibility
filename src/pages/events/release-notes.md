@@ -24,9 +24,9 @@ October 30, 2024
 
 * Added more detailed error messages for the **Execute Synchronization** and **Test Connection** buttons in the Adobe I/O Events configuration section of the Admin. <!--- CEXT-3594 -->
 
-* Renamed the **Events** item in the System menu of the Admin to **Events List**. <!--- CEXT-3658 -->
-
 * Added additional observer events to the list of supported event names. <!--CEXT-3671 -->
+
+* Renamed the **Events** item in the System menu of the Admin to **Events List**. <!--- CEXT-3658 -->
 
 ## Version 1.8.2
 

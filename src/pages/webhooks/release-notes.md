@@ -17,13 +17,13 @@ October 30, 2024
 
 ### Enhancements
 
-* Updated copyrights in the generated module files. <!--- CEXT-3508 -->
-
 * Added the **Webhooks Logs** grid to the Admin for viewing webhook execution information. <!--CEXT-3510 -->
 
 * Added additional debug logging related to webhooks response caching. <!--CEXT-3586 -->
 
 * Added additional observer events to the list of supported webhook event names. <!--CEXT-3671 -->
+
+* Updated copyrights in the generated module files. <!--- CEXT-3508 -->
 
 ## Bug fix
 

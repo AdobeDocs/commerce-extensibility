@@ -202,7 +202,6 @@ An optional hook is aborted due to reaching the hard timeout limit. | Add error 
 A required hook is aborted due to reaching the hard timeout limit. | Add error log entry<br/>Throw an exception
 The execution time of hook exceeds the soft timeout limit. | Add a notice to the error log
 
-
 ## Database logging
 
 You can enable database logging for debugging webhooks from the Admin. You should not enable database logging in production environments, as it can affect the performance.

@@ -86,3 +86,11 @@ Timeout errors can occur when a process or operation takes longer than the speci
 ## Failed requests for mass actions that are not sent to an iFrame
 
 Commerce logs failed mass action requests that are not sent to an iFrame. An App Builder application can access details of the failed request using the `GET V1/adminuisdk/massaction/<requestId>` REST API. The [authentication token](https://developer.adobe.com/commerce/webapi/get-started/authentication/gs-authentication-token/) must have access to the Admin UI SDK. The call returns an error message if the request ID was not found or if it associated with a successful action. [Connection interruption failures](./extension-points/index.md#connection-interruption-failures) provides additional information.
+
+## Issues accesing the latest Admin UI SDK version 
+
+You may encounter issues accesing the latest Admin UI SDK version (version 2.0), and we are currently working to ensure it is installed by default on the next Adobe Commerce release. However, if you're currently facing any issues, you may add the following line to the `composer.json` file in the `require` section:
+
+   ```bash
+   "magento/commerce-backend-sdk": "2.0.0 as 1.4"
+   ```

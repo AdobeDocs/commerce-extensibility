@@ -74,8 +74,8 @@ In the following example, the `TestProcessorOrderStatus` class adds the `order_s
 ```php
 <?php
 /**
- * Copyright &copy; Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Copyright Adobe
+ * All rights reserved.
  */
 declare(strict_types=1);
 ​

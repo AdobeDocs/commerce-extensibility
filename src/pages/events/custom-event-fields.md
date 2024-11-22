@@ -74,7 +74,7 @@ In the following example, the `TestProcessorOrderStatus` class adds the `order_s
 ```php
 <?php
 /**
- * Copyright Adobe
+ * Copyright [first year code created] Adobe
  * All rights reserved.
  */
 declare(strict_types=1);

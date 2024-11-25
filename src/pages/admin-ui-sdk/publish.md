@@ -26,7 +26,13 @@ During the testing phase, an administrator of your enterprise organization perfo
 
 ## Update an already published application
 
-To update an already published application, you must revoke it and go through the approval process again.
+To deploy code changes to an already published application, you can perform a force deploy:
+
+```bash
+aio app deploy --force-deploy
+```
+
+To update the credentials or services used by an already published application, you must revoke it and go through the approval process again.
 
 1. Ask an enterprise organization administrator to revoke your published application in the [Adobe Exchange Manage panel](https://exchange.adobe.com/manage). Note that once revoked, your application will no longer be public.
 

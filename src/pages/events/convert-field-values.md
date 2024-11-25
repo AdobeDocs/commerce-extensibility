@@ -42,7 +42,7 @@ In the following example, the `TestConverterVisibility` converter class updates 
 ```php
 <?php
 /**
- * Copyright Adobe
+ * Copyright [first year code created] Adobe
  * All rights reserved.
  */
 declare(strict_types=1);

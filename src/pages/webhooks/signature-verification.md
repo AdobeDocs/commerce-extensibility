@@ -109,7 +109,6 @@ PwIDAQAB
 
 More information on [.env file usage](https://developer.adobe.com/app-builder/docs/guides/configuration/#env).
 
-
 The following code example below shows how the signature can be verified in the App Builder action:
 
 ```javascript

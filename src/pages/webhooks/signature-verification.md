@@ -88,7 +88,7 @@ To verify the signature in the App Builder action, set the `raw-http` annotation
       raw-http: true
 ```
 
-Store the public key in the `PUBLIC_KEY` parameter in the `.env` file in the same format as provided in the Adobe Commerce admin UI:
+Store the public key in the `PUBLIC_KEY` parameter in the `.env` file using the same format as provided in the Adobe Commerce Admin:
 
 ```env
 # Other secrets and configuration
@@ -105,9 +105,9 @@ PwIDAQAB
 -----END PUBLIC KEY-----"
 ```
 
-**Note:** The `.env` file should not be committed to version control.
+**Note:** Do not commit the `.env` file to version control.
 
-More information on [.env file usage](https://developer.adobe.com/app-builder/docs/guides/configuration/#env).
+[App Builder Configuration Files](https://developer.adobe.com/app-builder/docs/guides/configuration/#env) describes `.env` file usage in detail.
 
 The following code example below shows how the signature can be verified in the App Builder action:
 

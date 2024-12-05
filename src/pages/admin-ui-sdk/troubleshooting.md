@@ -89,7 +89,13 @@ Commerce logs failed mass action requests that are not sent to an iFrame. An App
 
 ## Issues accesing the latest Admin UI SDK version 
 
-You may encounter issues accesing the latest Admin UI SDK version (version 2.0), and we are currently working to ensure it is installed by default on the next Adobe Commerce release. However, if you're currently facing any issues, you may add the following line to the `composer.json` file in the `require` section:
+You may encounter issues accesing the latest Admin UI SDK version (version 2.0.0) and see an error such as this when trying to update your `composer.json`:
+
+``` bash 
+Problem 1
+    - adobe-commerce/extensions-metapackage <> requires magento/commerce-backend-sdk ^1.3 -> found magento/commerce-backend-sdk[...] but it conflicts with your root composer.json require (2.*).
+```
+We are currently working to ensure the latest version is installed by default on the next Adobe Commerce release. However, if you're currently facing any issues, you may add the following line to the `composer.json` file in the `require` section to solve this issue:
 
    ```bash
    "magento/commerce-backend-sdk": "2.0.0 as 1.4"

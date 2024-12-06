@@ -12,7 +12,7 @@ jobs:
       branch_short_ref: ${{ steps.get_branch.outputs.branch }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Get pathPrefix
         uses: actions/github-script@v6
@@ -24,7 +24,7 @@ jobs:
           result-encoding: string
       - name: Get branch name
         shell: bash
-        run: echo "##[set-output name=branch;]${GITHUB_REF#refs/heads/}"
+        run: echo "branch=${GITHUB_REF#refs/heads/}" >> "$GITHUB_OUTPUT"
         id: get_branch
 
   echo-state:
@@ -55,31 +55,15 @@ jobs:
     needs: [set-state, pre-build]
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Setup Node v16 for Yarn v3
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - name: Use Setup Node and Install Dependencies Action
+        uses: commerce-docs/devsite-install-action@main
         with:
-          node-version: '16.15.0' # Current LTS version
-
-      - name: Enable Corepack for Yarn v3
-        run: corepack enable
-
-      - name: Install Yarn v3
-        uses: borales/actions-yarn@v3
-        with:
-          cmd: set version stable
-
-      - name: Install Dependencies
-        uses: borales/actions-yarn@v3
-        env:
-          YARN_ENABLE_IMMUTABLE_INSTALLS: false
-        with:
-          cmd: install
-
+          node-version-file: '.nvmrc'
+          cache-dependency-path: 'yarn.lock'
+  
       - name: Gatsby Cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3.3.2
         with:
           path: |
             public
@@ -89,11 +73,9 @@ jobs:
             ${{ needs.set-state.outputs.branch_short_ref }}-gatsby-cache-
 
       - name: Build site
-        uses: borales/actions-yarn@v3
-        with:
-          cmd: build
+        run: yarn build
         env:
-          NODE_OPTIONS: "--max_old_space_size=4096"
+          NODE_OPTIONS: "--max_old_space_size=8192"
           PREFIX_PATHS: true # equivalent to --prefix-paths flag for 'gatsby build'
           PATH_PREFIX: ${{ needs.set-state.outputs.path_prefix }}
           GATSBY_ADOBE_LAUNCH_SRC: ${{ secrets.AIO_ADOBE_LAUNCH_PROD_SRC }}
@@ -111,23 +93,21 @@ jobs:
           GATSBY_IMS_CONFIG: ${{ secrets.AIO_IMS_PROD_CONFIG }}
           GATSBY_ALGOLIA_APPLICATION_ID: ${{ secrets.AIO_ALGOLIA_APPLICATION_ID }}
           GATSBY_ALGOLIA_SEARCH_API_KEY: ${{ secrets.AIO_ALGOLIA_SEARCH_API_KEY }}
-          ALGOLIA_INDEXATION_MODE: skip
+          ALGOLIA_INDEXATION_MODE: index
+          ALGOLIA_WRITE_API_KEY: ${{ secrets.AIO_ALGOLIA_WRITE_API_KEY }}
           GATSBY_ALGOLIA_INDEX_NAME: ${{ secrets.ALGOLIA_INDEX_NAME || github.event.repository.name }}
           GATSBY_FEDS_PRIVACY_ID: ${{ secrets.AIO_FEDS_PRIVACY_ID }}
           GATSBY_SITE_DOMAIN_URL: https://developer.adobe.com
       - name: Deploy
-        uses: icaraps/static-website-deploy@master
+        uses: AdobeDocs/static-website-deploy@master
         with:
           enabled-static-website: 'true'
           source: 'public'
           target: ${{ needs.set-state.outputs.path_prefix }}
           connection-string: ${{ secrets.AIO_AZURE_PROD_CONNECTION_STRING }}
           remove-existing-files: 'true'
-      - name: Delay purge
-        run: sleep 60s
-        shell: bash
       - name: Purge Fastly Cache
-        uses: icaraps/gatsby-fastly-purge-action@master
+        uses: AdobeDocs/gatsby-fastly-purge-action@master
         with:
           fastly-token: ${{ secrets.AIO_FASTLY_TOKEN }}
           fastly-url: '${{ secrets.AIO_FASTLY_PROD_URL }}${{ needs.set-state.outputs.path_prefix }}'

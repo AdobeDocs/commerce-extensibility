@@ -12,6 +12,10 @@ module.exports = [
       path: "/webhooks/hooks.md"
     },
     {
+      title: "Create conditional webhooks",
+      path: "/webhooks/conditional-webhooks.md"
+    },
+    {
       title: "Testing webhooks",
       path: "/webhooks/testing.md"
     },
@@ -22,6 +26,10 @@ module.exports = [
     {
       title: "Configuration reference",
       path: "/webhooks/xml-schema.md"
+    },
+    {
+      title: "Signature Verification",
+      path: "/webhooks/signature-verification.md"
     },
     {
       title: "Command reference",

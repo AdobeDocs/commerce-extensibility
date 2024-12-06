@@ -1,8 +1,6 @@
 ---
 name: Indexing
 on:
-  schedule:
-    - cron: '42 20 1 * *'
   workflow_dispatch:
     inputs:
       mode:
@@ -18,33 +16,18 @@ jobs:
   build-and-index:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Setup Node v16 for Yarn v3
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - name: Use Setup Node and Install Dependencies Action
+        uses: commerce-docs/devsite-install-action@main
         with:
-          node-version: '16.15.0' # Current LTS version
-
-      - name: Enable Corepack for Yarn v3
-        run: corepack enable
-
-      - name: Install Yarn v3
-        uses: borales/actions-yarn@v4
-        with:
-          cmd: set version stable
-
-      - name: Install dependencies
-        uses: borales/actions-yarn@v4
-        with:
-          cmd: install
-        env:
-          YARN_ENABLE_IMMUTABLE_INSTALLS: false
+          node-version-file: '.nvmrc'
+          cache-dependency-path: 'yarn.lock'
 
       - name: Build site
-        uses: borales/actions-yarn@v4
-        with:
-          cmd: build
+        run: yarn build
+
         env:
+          NODE_OPTIONS: "--max_old_space_size=8192"
           PREFIX_PATHS: true # equivalent to --prefix-paths flag for 'gatsby build'
           REPO_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO_OWNER: ${{ github.repository_owner }}

@@ -24,8 +24,10 @@ properties:
         - Performance
         - REST
         - Security
+        - Starter Kit
         - Tools
         - Upgrade
+        - Webhooks
 
 required:
   - title

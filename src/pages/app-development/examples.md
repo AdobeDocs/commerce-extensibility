@@ -32,7 +32,7 @@ API Mesh has several features which allow for further extensibility:
 
 - `beforeAll` [Hooks](https://developer.adobe.com/graphql-mesh-gateway/gateway/hooks/) - Allow you to insert a function before the query takes place, which can be helpful for use cases like authenticating or checking for a header before making a request.
 
-- [Custom Resolvers](https://developer.adobe.com/graphql-mesh-gateway/gateway/extending-unified-schema/) - Allow you to upload a resolver to your mesh that uses JavaScript to modify data, insert custom logic, and return custom computed data. [This example](https://developer.adobe.com/graphql-mesh-gateway/gateway/extending-unified-schema/#programmatic-additionalresolvers) uses a discounts API to apply discounts to your products.
+- [Custom Resolvers](https://developer.adobe.com/graphql-mesh-gateway/mesh/advanced/extend/) - Allow you to upload a resolver to your mesh that uses JavaScript to modify data, insert custom logic, and return custom computed data. [This example](https://developer.adobe.com/graphql-mesh-gateway/mesh/advanced/extend/resolvers/programmatic-resolvers/#programmatic-additionalresolvers) uses a discounts API to apply discounts to your products.
 
 - [Transforms](https://developer.adobe.com/graphql-mesh-gateway/gateway/transforms/) - Allow you to modify the structure of an API's data without modifying the source itself.
 
@@ -46,7 +46,7 @@ In addition, [Conditional Events](../events/conditional-events.md) give you the 
 
 ### Adobe Commerce Admin UI SDK
 
-The [Adobe Commerce Admin UI SDK](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/) enables App Builder developers to extend the Commerce Admin to include custom menus and pages. The Admin UI SDK allows merchants to use the Admin to configure and interact with an app developed in App Builder.
+The [Adobe Commerce Admin UI SDK](../admin-ui-sdk/index.md) enables App Builder developers to extend the Commerce Admin to include custom menus and pages. The Admin UI SDK allows merchants to use the Admin to configure and interact with an app developed in App Builder.
 
 ## Combining extensibility components
 

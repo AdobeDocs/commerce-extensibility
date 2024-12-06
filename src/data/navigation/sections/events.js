@@ -28,8 +28,36 @@ module.exports = [
     path: "/events/custom-event-fields.md"
   },
   {
+    title: "Convert payload field values",
+    path: "/events/convert-field-values.md"
+  },
+  {
     title: "Command reference",
     path: "/events/commands.md",
+  },
+  {
+    title: "API reference",
+    path: "/events/api.md",
+  },
+  {
+    title: "Consume events",
+    path: "/events/consume-events.md",
+    pages: [
+      {
+        title: "Sample Code for Consuming Events",
+        path: "/events/consume-events-examples/index.md",
+        pages: [
+          {
+            title: "Runtime Action with a Callback to Commerce",
+            path: "/events/consume-events-examples/runtime-action-commerce-callback.md"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    title: "Troubleshooting",
+    path: "/events/troubleshooting.md",
   },
   {
     title: "Release notes",

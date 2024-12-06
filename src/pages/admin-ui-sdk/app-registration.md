@@ -45,7 +45,7 @@ Create or update your project `extension-manifest.json` file so that it is simil
 
 ## Add an `ExtensionRegistration` component
 
-Create an `ExtensionRegistration`  component that registers the menu configuration in the App Registry. Use the `adobe/uix-sdk` with the `adobe-uix-guest` dependency. The [UI Extensibility](https://developer.adobe.com/uix/docs/overview/design/) Guide describes this process further.
+Create an `ExtensionRegistration` React component that registers the menu configuration in the App Registry. Use the `adobe/uix-sdk` with the `adobe-uix-guest` dependency. The [UI Extensibility Getting Started](https://developer.adobe.com/uix/docs/getting-started/design/) guide describes this process further.
 
 1. Add the `uix-guest` dependency in the `package.json`.
 
@@ -75,14 +75,13 @@ Create an `ExtensionRegistration`  component that registers the menu configurati
       await register({
         id: extensionId,
         methods: {
-          ...
         }
       }
     )
    }
    ```
 
-You must populate the `methods` section with calls to fetch menus, pages, and other entities to be displayed in the Admin. [Extension Points](extension-points/index.md) provides reference information and examples.
+   The extension ID should be the same as the one defined in the `extension-manifest.json`.
 
 ## Update the `App.js` routing
 
@@ -96,16 +95,37 @@ Make sure that your main page is correctly routed to the index. Here is an examp
 
 ```javascript
 <ErrorBoundary onError={onError} FallbackComponent={fallbackComponent}>
-  <BrowserRouter>
+  <HashRouter>
       <Provider theme={lightTheme} colorScheme={'light'}>
           <Routes>
               <Route path={'index.html'} element={<ExtensionRegistration />} />
               <Route index element={<MainPage runtime={props.runtime} ims={props.ims} />} />
           </Routes>
       </Provider>
-  </BrowserRouter>
+  </HashRouter>
 </ErrorBoundary>
 ```
+
+## Create a registration runtime action
+
+Under the `actions` repository in the project, create a `registration` respository in which you create the `index.js` file with the following code:
+
+```javascript
+async function main() {
+
+    return {
+        statusCode: 200,
+        body: {
+            registration: {
+            }
+        }
+    }
+}
+
+exports.main = main
+```
+
+You must populate the `registration` section with calls to fetch menus, pages, and other entities to be displayed in the Admin. [Extension Points](extension-points/index.md) provides reference information and examples.
 
 ## Update the `app.config.yaml` file
 
@@ -132,9 +152,18 @@ actions: actions
 web: web-src
 runtimeManifest:
   packages:
-    SampleExtension:
+    admin-ui-sdk:
       license: Apache-2.0
       actions:
+        registration:
+          function: actions/registration/index.js
+          web: 'yes'
+          runtime: 'nodejs:18'
+          inputs:
+            LOG_LEVEL: debug
+          annotations:
+            require-adobe-auth: false
+            final: true
 ```
 
 Complete this file with the actions from your app.

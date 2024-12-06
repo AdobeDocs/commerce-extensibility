@@ -75,6 +75,8 @@ The `hook` element defines the HTTP request to the remote server.
 | `fallbackErrorMessage` | Int    | The error message to return when the hook fails. | false       | Not applicable     |
 | `remove` | Boolean   | Indicates whether to skip a removed hook during the batch execution. | false       | false   |
 | `ttl` | Int    | The cache time-to-live (in seconds) for requests with the same URL, body, and headers. If this attribute is not specified, or if the value set to `0`, the response is not cached. | false       | 0       |
+| `sslVerification` | Boolean | Specifies whether SSL certificate verification would be performed during request. Enabled by default. It's recommended to use this option only for development purposes. | false       | true        |
+| `sslCertificatePath` | String  | Specifies the path to a custom SSL certificate file to use for SSL verification. This option will be ignored if sslVerification is set to false. | false       | true        |
 | `headers` | Array  | A set of HTTP headers to send with the request. | false       | []      |
 | `fields` | Array  | A set of fields to include in the hook payload. If not set, the entire payload will be sent. | false       | []      |
 

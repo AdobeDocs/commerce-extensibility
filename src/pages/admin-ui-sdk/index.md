@@ -36,8 +36,6 @@ The [Adobe Commerce Samples repository](https://github.com/adobe/adobe-commerce-
 
 ## Admin UI SDK and Adobe Extensions
 
-[Extensions] (https://developer.adobe.com/app-builder/docs/guides/extensions/) are a new feature in Adobe App Builder that allows developers to integrate their applications with specific Adobe products in a more seamless and unified manner.
+Adobe App Builder supports [extensions](https://developer.adobe.com/app-builder/docs/guides/extensions/), which allow developers to integrate their applications with specific Adobe products, such as the Admin UI SDK. Extensions act as a bridge between Adobe products and the applications built using Adobe App Builder. As a result, these applications can be easily integrated and extended within Adobe's ecosystem.
 
-In essence, extensions act as a bridge between Adobe products and the applications built using Adobe App Builder, ensuring that these applications can be easily integrated and extended within Adobe's ecosystem.
-
-If you're [migrating] (https://developer.adobe.com/app-builder/docs/guides/extensions/extension_migration_guide/) an existing App Builder project that uses an `application` configuration in the `app.config.yaml` file to use an `extension` configuration, rest assured that this change will not cause any compatibility issues with your application and the Admin UI SDK. This switch is fully supported and will not affect your current application’s behavior.
+App Builder projects support `application` and `extension` configurations within the `app.config.yaml` file. The Admin UI SDK supports both of these types as well. The SDK is not affected if you [migrate](https://developer.adobe.com/app-builder/docs/guides/extensions/extension_migration_guide/) an existing App Builder project that uses an `application` configuration to use an `extension` configuration.

@@ -42,8 +42,8 @@ In the following example, the `TestConverterVisibility` converter class updates 
 ```php
 <?php
 /**
- * Copyright &copy; Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Copyright [first year code created] Adobe
+ * All rights reserved.
  */
 declare(strict_types=1);
 

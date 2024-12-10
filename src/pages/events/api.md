@@ -140,3 +140,35 @@ curl -i -X PUT \
 }' \
  '<ADOBE_COMMERCE_URL>/rest/all/V1/eventing/updateConfiguration'
  ```
+
+## Get configured event provider information
+
+The `GET /rest/<store_view_code>/V1/eventing/getEventProviders` endpoint returns information about the event provider configured for the Commerce instance.
+
+**Headers:**
+
+`Authorization: Bearer <administrator token>`
+
+The administrator must be granted access to the `Magento_AdobeIoEventsClient::event_provider_list` resource.
+
+**Example usage:**
+
+The following cURL command retrieves information about the configured event provider:
+
+```bash
+curl -H "Authorization:Bearer <AUTH_TOKEN>" \
+'<ADOBE_COMMERCE_URL>/rest/all/V1/eventing/getEventProviders' \
+```
+
+**Example response:**
+
+```json
+[
+  {
+    "provider_id": "ad667bc6-1678-49ff-99fc-215d71ebf82f",
+    "instance_id": "my_instance",
+    "label": "my_provider",
+    "description": "Provides out-of-process extensibility for Adobe Commerce"
+  }
+]
+```

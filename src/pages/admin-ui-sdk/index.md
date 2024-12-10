@@ -33,3 +33,11 @@ The following sequence diagram illustrates the authentication process.
 ## Code samples
 
 The [Adobe Commerce Samples repository](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk) contains samples for different extension points of the Adobe Commerce Admin UI SDK. Use these samples to gain insight on how the Admin SDK injects menus and pages into the Admin.
+
+## Admin UI SDK and Adobe Extensions
+
+[Extensions] (https://developer.adobe.com/app-builder/docs/guides/extensions/) are a new feature in Adobe App Builder that allows developers to integrate their applications with specific Adobe products in a more seamless and unified manner.
+
+In essence, extensions act as a bridge between Adobe products and the applications built using Adobe App Builder, ensuring that these applications can be easily integrated and extended within Adobe's ecosystem.
+
+If you're [migrating] (https://developer.adobe.com/app-builder/docs/guides/extensions/extension_migration_guide/) an existing App Builder project that uses an `application` configuration in the `app.config.yaml` file to use an `extension` configuration, rest assured that this change will not cause any compatibility issues with your application and the Admin UI SDK. This switch is fully supported and will not affect your current application’s behavior.

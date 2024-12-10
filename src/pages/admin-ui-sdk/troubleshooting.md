@@ -87,14 +87,15 @@ Timeout errors can occur when a process or operation takes longer than the speci
 
 Commerce logs failed mass action requests that are not sent to an iFrame. An App Builder application can access details of the failed request using the `GET V1/adminuisdk/massaction/<requestId>` REST API. The [authentication token](https://developer.adobe.com/commerce/webapi/get-started/authentication/gs-authentication-token/) must have access to the Admin UI SDK. The call returns an error message if the request ID was not found or if it associated with a successful action. [Connection interruption failures](./extension-points/index.md#connection-interruption-failures) provides additional information.
 
-## Issues accesing the latest Admin UI SDK version 
+## Issues accesing the latest Admin UI SDK version
 
 You may encounter issues accesing the latest Admin UI SDK version (version 2.0.0) and see an error such as this when trying to update your `composer.json`:
 
-``` bash 
+``` bash
 Problem 1
     - adobe-commerce/extensions-metapackage <> requires magento/commerce-backend-sdk ^1.3 -> found magento/commerce-backend-sdk[...] but it conflicts with your root composer.json require (2.*).
 ```
+
 We are currently working to ensure the latest version is installed by default on the next Adobe Commerce release. However, if you're currently facing any issues, add the following line to the `composer.json` file in the `require` section to solve this issue:
 
 `"magento/commerce-backend-sdk": "2.0.0 as 1.4"`

@@ -12,6 +12,16 @@ These release notes describe the latest version of Adobe I/O Events for Adobe Co
 
 See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io-events-for-adobe-commerce) for upgrade instructions.
 
+## Version 1.10.0
+
+### Release date
+
+December 10, 2024
+
+### Enhancements
+
+* Added the `GET /rest/<store_view_code>/V1/eventing/getEventProviders` REST endpoint for retrieving information about the configured event provider. <!---CEXT-3913 -->
+
 ## Version 1.9.0
 
 ### Release date

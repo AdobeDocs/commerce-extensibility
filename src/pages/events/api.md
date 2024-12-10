@@ -143,7 +143,7 @@ curl -i -X PUT \
 
 ## Get configured event provider information
 
-The `GET /rest/<store_view_code>/V1/eventing/getEventProviders` endpoint returns information about the event provider configured for the Commerce instance. 
+The `GET /rest/<store_view_code>/V1/eventing/getEventProviders` endpoint returns information about the event provider configured for the Commerce instance.
 
 **Headers:**
 

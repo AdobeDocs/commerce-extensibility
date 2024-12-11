@@ -88,6 +88,27 @@ To verify the signature in the App Builder action, set the `raw-http` annotation
       raw-http: true
 ```
 
+Store the public key in the `PUBLIC_KEY` parameter in the `.env` file using the same format as provided in the Adobe Commerce Admin:
+
+```env
+# Other secrets and configuration
+# ...............................
+
+PUBLIC_KEY="-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtglXYVz5pVn3HDluGG5T
+t9coO5NKSWjx3xCDMHVa3CEqVM76PKg8UJH9fQOA57xoNv7Llc916pF0UswtudQh
+Fyg+WQCFFadqGZOyL2nUKI9xWBiUi4dN8+9yMd3TE1fszVUBnk/XdLKNDQn4O6ic
+doQZi5arrjNjInkimtcT2jPXs34p9G9P5CvCubPUmbGsWDgwo5an9LEX/nJfnCdZ
+R10XPkRWzEM7o1OGzf7CYo06Xl+msGVM02Er265PsMAWB11cWwKmyg6dLPa8q+Qh
+KNXZiEMvdVusV8aA6EkCZYFdWSBXv+jltn6NnY5qvYcuQ3SujQ9xKEANjeMWcW90
+PwIDAQAB
+-----END PUBLIC KEY-----"
+```
+
+**Note:** Do not commit the `.env` file to version control.
+
+[App Builder Configuration Files](https://developer.adobe.com/app-builder/docs/guides/configuration/#env) describes `.env` file usage in detail.
+
 The following code example below shows how the signature can be verified in the App Builder action:
 
 ```javascript
@@ -109,9 +130,20 @@ async function main (params) {
     if (isSignatureValid) {
       logger.info('The signature is valid.');
       // Here will be performed real action logic
-      operations.push({
-        op: 'success'
-      });
+      // payload is base64 encoded, so we need to decode it before using   
+      const payload = JSON.parse(atob(params.__ow_body))
+
+      // a simple validation if the provided postcode from Commerce webhook is less than 50000  
+      if (payload.address.postcode > 50000) {
+        operations.push({
+            op: 'exception',
+            message: 'The postcode is not allowed. Provided postcode: ' + payload.address.postcode
+        });
+      } else {
+        operations.push({
+            op: 'success'
+        });
+      }
     } else {
       logger.info('The signature is invalid.');
       operations.push({

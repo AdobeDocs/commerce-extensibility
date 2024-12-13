@@ -87,11 +87,11 @@ After adding the required API, download the workspace configuration for your pro
 
 ### The status shows the events have been successfully sent, but they were not received in the event registration
 
-If events are not received, determine if you have a different value for the `Adobe Commerce Instance ID` configured in the Adobe Commerce environment that is used in the event registration of the Developer Console.
+If events are not received, determine if you have a different value for the `Adobe I/O Event Provider Instance ID` configured in the Adobe Commerce environment that is used in the event registration of the Developer Console.
 
 ![Choose your instance ](../_images/events/instance-name-developer-console.png)
 
-![Adobe Commerce instance ID](../_images/events/instance-name-developer-commerce.png)
+![Adobe I/O Event Provider Instance ID](../_images/events/instance-name-developer-commerce.png)
 
 ## Event subscribe CLI command error
 

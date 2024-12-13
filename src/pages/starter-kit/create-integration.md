@@ -256,7 +256,7 @@ You must configure Commerce to communicate with your project. Configuration incl
 
 1. Copy the contents of the `<workspace-name>.json` file into the **Adobe I/O Workspace Configuration** field.
 
-1. Enter a unique identifier in the **Adobe Commerce Instance ID** field. This unique value identifies your Commerce instance, which allows Commerce events to connect to the correct `Event Provider` in Adobe I/O. This ID corresponds to the **Provider** displayed when [subscribing to events](../events/configure-commerce.md#subscribe-and-register-events).
+1. Enter a unique identifier in the **Adobe I/O Event Provider Instance ID** field. This unique value identifies your Commerce instance, which allows Commerce events to connect to the correct `Event Provider` in Adobe I/O. This ID corresponds to the **Provider** displayed when [subscribing to events](../events/configure-commerce.md#subscribe-and-register-events).
 
    **Note**: This value must contain English alphanumeric characters, underscores (_), and hyphens (-) only.
 

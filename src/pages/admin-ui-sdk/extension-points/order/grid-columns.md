@@ -85,7 +85,7 @@ It leverages API Mesh [JSON Schemas handler](https://developer.adobe.com/graphql
 
 This sample `get-orders` runtime action is referenced in the mesh configuration file. It defines the path to the runtime action to retrieve the data of custom columns.
 
-It is important to add the `ids={args.ids}` as part of the query and handle this filtering in the runtime action. This will allow Admin UI SDK to load only necessary data needed to display in the grid columns in the Admin Panel of the Adobe Commerce instance.
+It is important to add `ids={args.ids}` to the query and handle this filtering in the runtime action. As a result, the Admin UI SDK loads only the data necessary to display in the grid columns of the Admin.
 
 ```javascript
 export async function main(props) {

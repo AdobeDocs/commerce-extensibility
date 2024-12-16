@@ -20,7 +20,7 @@ The **General configuration** section enables the Admin UI SDK and refreshes reg
 
 The Admin UI SDK is disabled by default. To enable it, set the **Enable Admin UI SDK** field to **Yes**.
 
-The `Refresh registrations` button reloads all registrations from the registries. It is typically used when changes are made to the registration on the app builder application side or when a new app is added and published, to reflect these changes in the Admin Panel.
+The `Refresh registrations` button reloads all registrations from the registries. It is typically used when changes are made to the registration on the app builder application side or when a new app is added and published, to reflect these changes in the Admin.
 
 ## Database logging configuration
 

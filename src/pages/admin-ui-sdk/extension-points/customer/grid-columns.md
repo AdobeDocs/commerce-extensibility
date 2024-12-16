@@ -77,9 +77,9 @@ It leverages API Mesh [JSON Schemas handler](https://developer.adobe.com/graphql
 
 ### Sample runtime action to retrieve data
 
-This sample `get-customers` runtime action is referenced in the mesh configuration file. It defines the path to the runtime action to retrieve the data of custom columns.
+The `get-customers` sample runtime action is referenced in the mesh configuration file. It defines the path to the runtime action that retrieves the data of custom columns.
 
-It is important to add the `ids={args.ids}` as part of the query and handle this filtering in the runtime action. This will allow Admin UI SDK to load only necessary data needed to display in the grid columns in the Admin Panel of the Adobe Commerce instance.
+It is important to add the `ids={args.ids}` as part of the query and handle this filtering in the runtime action. This allows Admin UI SDK to load only the necessary data needed to display in the grid columns in the Admin.
 
 ```javascript
 export async function main(props) {
@@ -125,7 +125,7 @@ export async function main(props) {
 
 ### Sample schema file
 
-This sample `schema.json` file is referenced in the mesh configuration file. It defines the response of the external `customerGridColumns` query that fetches column data.
+The  `schema.json` sample file, which is also referenced in the mesh configuration file, defines the response of the external `customerGridColumns` query that fetches column data.
 
 ```json
 {
@@ -155,9 +155,9 @@ This sample `schema.json` file is referenced in the mesh configuration file. It 
 }
 ```
 
-### Create or Update your mesh
+### Create or update your mesh
 
-Make sure to create or update your mesh, and to keep the mesh id provided.
+Use one of the following commands to create or update your mesh. Be sure to store the mesh ID provided.
 
 ```bash
 aio api-mesh:create mesh.json
@@ -169,17 +169,13 @@ aio api-mesh:update mesh.json
 
 ### Customer data matching
 
-#### Id matching
+The Admin UI SDK expects the customer ID in Adobe Commerce to correctly match the customer to the data and fill the correct cell.
 
-The Admin UI SDK expects the customer id in Adobe Commerce to correctly match the customer to the data and fill the correct cell.
+A default value can be provided to be added to unmatched IDs, or in case data doesn't match, the expected type of the column. If a value is not provided, the cell is left empty.
 
-#### Default value
+In case of error, check the Adobe Commerce logs.
 
-A default value can be provided to be added to unmatched ids, or in case data doesn't match the expected type of the column. If not provided, the cell is left empty.
-
-In case of error, more info can be found in the Adobe Commerce logs.
-
-##### Example of default value
+The following example provides a default value.
 
 ```javascript
 "*": {

@@ -45,7 +45,7 @@ export async function main(props) {
 
     const selectedIds = props.ids ? props.ids.split(',') : [];
 
-    const orderGridColumns = {
+    const productGridColumns = {
         "productGridColumns": {
             "product-1": {
                 "first_column": "value_1",

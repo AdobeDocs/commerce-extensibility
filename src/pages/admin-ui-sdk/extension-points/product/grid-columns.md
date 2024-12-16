@@ -36,9 +36,9 @@ product: {
 
 ### Sample runtime action to retrieve data
 
-This sample `get-products` runtime action is referenced in the mesh configuration file. It defines the path to the runtime action to retrieve the data of custom columns.
+The mesh configuration fule references the `get-products` sample runtime action. It defines the path to the runtime action to retrieve the data of custom columns.
 
-It is important to add the `ids={args.ids}` as part of the query and handle this filtering in the runtime action. This will allow Admin UI SDK to load only necessary data needed to display in the grid columns in the Admin Panel of the Adobe Commerce instance.
+It is important to add `ids={args.ids}` to the query and handle this filtering in the runtime action. As a result, the Admin UI SDK loads only the data necessary to display in the grid columns of the Adobe Commerce instance.
 
 ```javascript
 export async function main(props) {
@@ -149,9 +149,9 @@ This sample `schema.json` file is referenced in the mesh configuration file. It 
 }
 ```
 
-### Create or Update your mesh
+### Create or update your mesh
 
-Make sure to create or update your mesh, and to keep the mesh id provided.
+Use one of the following commands to create or update your mesh. Be sure to store the mesh ID provided.
 
 ```bash
 aio api-mesh:create mesh.json
@@ -163,17 +163,13 @@ aio api-mesh:update mesh.json
 
 ### Products data matching
 
-#### Id matching
+The Admin UI SDK expects the product SKU in Adobe Commerce to correctly match the product to the data and to fill the correct cell.
 
-The Admin UI SDK expects the product sku in Adobe Commerce to correctly match the product to the data and fill the correct cell.
+A default value can be provided to be added to unmatched IDs, or in case data doesn't match, the expected type of the column. If a value is not provided, the cell is left empty.
 
-#### Default value
+In case of error, check the Adobe Commerce logs.
 
-A default value can be provided to be added to unmatched ids, or in case data doesn't match the expected type of the column. If not provided, the cell is left empty.
-
-In case of error, more info can be found in the Adobe Commerce logs.
-
-##### Example of default value
+The following example provides a default value.
 
 ```javascript
 "*": {

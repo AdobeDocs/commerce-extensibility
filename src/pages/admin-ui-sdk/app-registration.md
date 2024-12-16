@@ -141,7 +141,7 @@ This file now declares extensions and redirects to an `ext.config.yaml` file.
 
 ## Add or update the `ext.config.yaml`
 
-Add or update the `ext.config.yaml` under `src/commerce-backend-ui-1`. This directory will contain the `actions` and `web-src` code.
+Add or update the `src/commerce-backend-ui-1/ext.config.yaml` file. The `commerce-backend-ui-1` directory contains the `actions` and `web-src` code.
 
 Your extension configuration file should look like this:
 
@@ -168,8 +168,8 @@ runtimeManifest:
             final: true
 ```
 
-The package should be called `admin-ui-sdk` and the action called `registration`. The function can point to any route that returns the registration in the correct expected format.
+The package name must be `admin-ui-sdk`, and the action must be `registration`. The `function` can point to any route that returns the registration in the correct expected format.
 
-It is recommended to secure the registration runtime action by setting `require-adobe-auth` to `true`. The Adobe Commerce instance will correctly load registrations securely based on the IMS credentials provided.
+We recommend securing the registration runtime action by setting `require-adobe-auth` to `true`. The Adobe Commerce instance will correctly load registrations securely based on the provided IMS credentials.
 
 Complete this file with the actions from your app.

@@ -16,19 +16,19 @@ December 17, 2024
 
 ### Enhancements
 
-* Added the ability to save Admin UI SDK logs to the database and access them in the Admin Panel.
+* Added the ability to save Admin UI SDK logs to the database and access them from the Admin.
 
 * Registrations can now be secured with Adobe IMS authentication.
 
-* Admin UI SDK is now compatible with API Edge; Legacy API Mesh is deprecated.
+* Admin UI SDK is now compatible with edge API Mesh. Legacy API Mesh is deprecated.
 
 * Custom columns can now send an optional default value for unmatched data instead of leaving the cell empty.
 
 * Custom columns data can now be secured with Adobe IMS authentication.
 
-* Enhanced loading of custom columns data by retrieving only the needed ones for display.
+* Enhanced loading of custom column data by retrieving only the necessary items for display.
 
-* Registrations automatically refresh when saving Admin UI SDK config.
+* Registrations automatically refresh when saving Admin UI SDK configurations.
 
 * Enhanced developer experience with the option to enable staging testing.
 

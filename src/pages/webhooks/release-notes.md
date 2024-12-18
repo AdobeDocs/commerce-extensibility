@@ -9,6 +9,18 @@ keywords:
 
 These release notes describe the latest version of Adobe Commerce Webhooks.
 
+## Version 1.7.0
+
+### Release date
+
+December 18, 2024
+
+### Enhancements
+
+* Added webhook options to skip SSL certificate validation and to set the path to the certificate file. <!--CEXT-3914 -->
+
+* Fixed resource name to access webhook logs admin UI page. <!--CEXT-3782 -->
+
 ## Version 1.6.0
 
 ### Release date

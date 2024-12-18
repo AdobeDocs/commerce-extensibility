@@ -12,6 +12,182 @@ These release notes describe the latest version of Adobe I/O Events for Adobe Co
 
 See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io-events-for-adobe-commerce) for upgrade instructions.
 
+## Version 1.9.0
+
+### Release date
+
+October 30, 2024
+
+### Enhancements
+
+* Added the **Events Status** grid to the Admin. This grid can be used to monitor the status of triggered events. <!--- CEXT-3593 -->
+
+* Added more detailed error messages for the **Execute Synchronization** and **Test Connection** buttons in the Adobe I/O Events configuration section of the Admin. <!--- CEXT-3594 -->
+
+* Added additional observer events to the list of supported event names. <!--CEXT-3671 -->
+
+* Renamed the **Events** item in the System menu of the Admin to **Events List**. <!--- CEXT-3658 -->
+
+## Version 1.8.2
+
+### Release date
+
+August 15, 2024
+
+### Enhancements
+
+* Minor code improvements.
+
+### Bug fixes
+
+* Fixed the test connection button handling of error status codes <!--- CEXT-3484 -->
+
+## Version 1.8.1
+
+### Release date
+
+August 6, 2024
+
+### Enhancements
+
+* Improved error handling while managing event metadata. <!--- CEXT-3430 -->
+
+## Version 1.8.0
+
+### Release date
+
+July 31, 2024
+
+### Enhancements
+
+* Added the **Execute Synchronization** button the eventing general configuration in the Admin. This button performs the same action as running the `bin/magento events:metadata:populate` command. <!--- CEXT-3337 -->
+
+* Added the **Create Event Provider** button, which replicates the function of the `bin/magento events:create-event-provider` command. <!--- CEXT-3336 -->
+
+* Updated copyrights in the generated module files. <!--- CEXT-3425 -->
+
+### Bug fixes
+
+* Improved the conversion of event payloads, which fixes an issue with missing data for some events. <!--- CEXT-3360 -->
+
+## Version 1.7.1
+
+### Release date
+
+June 21, 2024
+
+### Enhancements
+
+* Added additional validation on HIPAA customers. Events now contain the `cst:aio:x-event-phidata` header. <!--- CEXT-3322 -->
+
+## Version 1.7.0
+
+### Release date
+
+May 15, 2024
+
+### Enhancements
+
+* Added the `--hipaaAuditRequired` option to the `bin/magento events:subscribe` command. Use this command to indicate the event contains data that is subject to HIPAA auditing. <!--- CEXT-3129 -->
+
+* Added the ability to log data sent from Adobe Commerce to the Commerce Eventing Service. As a result, events are dispatched at the moment when data is sent. <!--- CEXT-3156 -->
+
+## Version 1.6.0
+
+### Release date
+
+April 3, 2024
+
+### Enhancements
+
+Added [REST endpoints](api.md) that perform the following operations:
+
+* Configure the eventing module. <!--- CEXT-2912 -->
+
+* Subscribe to events. <!--- CEXT-2911 -->
+
+## Version 1.5.1
+
+### Release date
+
+March 4, 2024
+
+### Enhancements
+
+* Changed the format of the event tracking ID to uuid4. <!--- CEXT-2853 -->
+
+* Added the `--destination` option to the `event:subscribe` command. <!--- CEXT-2895 -->
+
+* Fixed an issue that occurred when the event metadata was created for a configured event provider for events with a custom destination. <!--- CEXT-2857 -->
+
+## Version 1.5.0
+
+### Release date
+
+February 7, 2024
+
+### Enhancements
+
+* Added support for [field converters](convert-field-values.md). You can now create a converter class that changes the data type or value of fields in an event payload. <!--- CEXT-1699 -->
+
+* Added an event tracking ID field for better tracking of the event delivery process.  <!--- CEXT-2759 -->
+
+* Increased test coverage of eventing modules. <!--- CEXT-2640 -->
+
+## Version 1.4.1
+
+### Release date
+
+December 14, 2023
+
+### Bug fixes
+
+* Fixed an error that occurred when on-premise instances updated to version 1.4.0.  <!--- CEXT-2606 -->
+
+## Version 1.4.0
+
+### Release date
+
+November 30, 2023
+
+## Commerce Eventing modules updates
+
+### Enhancements
+
+* Events can now be defined in the Commerce `app/etc/io_events.xml` file. <!--- CEXT-2360 -->
+
+* Added support for using nested fields in the rules of conditional events. <!--- CEXT-2482 -->
+
+* Increased the default value of the **Maximum retries to send events** configuration field from three to seven. <!--- CEXT-2466 -->
+
+* Updated the conversion logic for child array elements in an event. <!--- CEXT-2245 -->
+
+* Added the ability to switch to a development environment when testing the transmission of events. <!--- CEXT-2121 -->
+
+* Common logic for data collecting has been moved to a new module, `OutOfProcessExtensibility`. This module must be enabled as described in the [update instructions](./installation.md#update-adobe-io-events-for-adobe-commerce). <!--- CEXT-2215, 2266, 2267, 2312, 2503-->
+
+### Bug fixes
+
+* Corrected a condition that caused the `bin/magento setup:upgrade` command to return an error when the eventing module has been disabled. <!--- CEXT-2569 -->
+
+* The **Test Connection** is now disabled when the provider ID is removed. <!--- CEXT-2216 -->
+
+## Adobe IO Events client module updates
+
+### Enhancements
+
+* Added validation to ensure the workspace configuration has the correct structure of project > workspace credentials. <!--- CEXT-2174 -->
+
+* Added the ability to switch to a development environment when testing the transmission of events. <!--- CEXT-2121 -->
+
+* The eventing template in App Builder works correctly when the Adobe I/O Authorization type is set to OAuth. <!--- CEXT-2254 -->
+
+* Updated an error message that occurred when eventing is not configured. <!--- CEXT-2568 -->
+
+### Bug fixes
+
+* Corrected an issue that caused the Adobe Services tab of the Admin to disappear. <!--- PR-50 -->
+
 ## Version 1.3.0
 
 ### Release date

@@ -12,7 +12,7 @@ Your custom module might generate data that would be useful to insert into an ex
 
 <InlineAlert variant="info" slots="text"/>
 
-You must configure a module's `io_events.xml` file to add custom fields. You cannot declare them in the system `config.php` file or add them using the CLI.
+You must configure a module's `io_events.xml` or root `app/etc/io_events.xml` file to add custom fields. You cannot declare them in the system `config.php` file or add them using the CLI.
 
 ## Configure the `io_events.xml` file
 

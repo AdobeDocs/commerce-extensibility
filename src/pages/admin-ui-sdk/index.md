@@ -29,3 +29,7 @@ The SDK contains two main components that are necessary for development:
 The following sequence diagram illustrates the authentication process.
 
 ![Sequence diagram](../_images/admin-ui-sequence-diagram.png)
+
+## Code samples
+
+The [Adobe Commerce Samples repository](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk) contains samples for different extension points of the Adobe Commerce Admin UI SDK. Use these samples to gain insight on how the Admin SDK injects menus and pages into the Admin.

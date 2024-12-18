@@ -16,7 +16,7 @@ December 18, 2024
 
 ### Bug fixes
 
-* Fix crash when accessing Admin UI SDK configuration in Commerce versions prior to 2.4.8-beta1.
+* Accessing the Admin UI SDK configuration in Commerce versions prior to 2.4.8-beta1 no longer causes crashes.
 
 ## Version 2.1.0
 

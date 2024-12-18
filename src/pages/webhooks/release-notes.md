@@ -19,7 +19,7 @@ December 18, 2024
 
 * Added webhook options to skip SSL certificate validation and to set the path to the certificate file. <!--CEXT-3914 -->
 
-* Fixed resource name to access webhook logs admin UI page. <!--CEXT-3782 -->
+* Fixed the resource name needed to access webhook logs in the Admin. <!--CEXT-3782 -->
 
 ## Version 1.6.0
 

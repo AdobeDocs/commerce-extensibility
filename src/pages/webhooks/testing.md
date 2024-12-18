@@ -53,7 +53,9 @@ bin/magento cache:clean webhooks_response
 
 ## Testing webhook endpoint with self-signed SSL certificate
 
-**NOTE**: These options are recommended to use only for development purposes. It's not secure to disable SSL verification in production environments.
+<InlineAlert variant="info" slots="text1" />
+
+SSL verification should be not be disabled in production environments. These options are recommended for development purposes only.
 
 If your webhook endpoint uses a self-signed SSL certificate, you can disable SSL verification for the webhook endpoint by setting the `sslVerification` attribute to `false` in the `hook` element.
 
@@ -75,7 +77,7 @@ If your webhook endpoint uses a self-signed SSL certificate, you can disable SSL
     </method>
 ```
 
-Or to specify path to the SSL certificate:
+Or, to specify the path to the SSL certificate:
 
 ```xml
     <method name="observer.checkout_cart_product_add_before" type="before">

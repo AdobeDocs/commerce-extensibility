@@ -8,6 +8,16 @@ keywords:
 
 # Adobe Commerce Admin UI SDK release notes
 
+## Version 2.1.1
+
+### Release date
+
+December 18, 2024
+
+### Bug fixes
+
+* Accessing the Admin UI SDK configuration in Commerce versions prior to 2.4.8-beta1 no longer causes crashes.
+
 ## Version 2.1.0
 
 ### Release date

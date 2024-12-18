@@ -1,6 +1,6 @@
 ---
 title: Admin configuration and testing
-description: Learn how to configure the Admin to enable local testing of your Admin customizations.
+description: Learn how to configure the Admin to enable testing of your Admin customizations.
 keywords:
   - App Builder
   - Extensibility
@@ -10,17 +10,51 @@ keywords:
 
 The Adobe Commerce Admin UI SDK allows you to use a local server to view and test your Admin customizations before you submit your app to the Adobe Marketplace.
 
-## Configure the Admin
+Navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Admin UI SDK** screen.
 
-Navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Admin UI SDK** and edit the **Local testing** screen. When you enable the local service, all calls are automatically redirected to the local server, instead of connecting to Adobe's App Registry. The values you specify must match the contents of your local `server.js` file.
+## General configuration
 
-[Test with a sample app](#test-with-a-sample-app) provides a sample `server.js` file.
+The **General configuration** section enables the Admin UI SDK and refreshes registrations when changes are made.
 
-![Local server configuration](../_images/sdk-config.png)
+![Admin UI SDK general configuration](../_images/admin-ui-sdk-general-config.png)
 
-1. Select **Yes** from the **Enable Admin UI SDK** menu.
+The Admin UI SDK is disabled by default. To enable it, set the **Enable Admin UI SDK** field to **Yes**.
 
-1. Select **Yes** from the **Enable Local Testing** menu.
+The `Refresh registrations` button reloads all registrations from the registries. It is typically used when changes are made to the registration on the app builder application side or when a new app is added and published, to reflect these changes in the Admin.
+
+## Database logging configuration
+
+The **Database logging configuration** section allows you to save Admin UI SDK log entries for the specified retention period.
+
+![Admin UI SDK database logging configuration](../_images/admin-ui-sdk-db-log-config.png)
+
+To save logs, set the **Enable Logs** field to **Yes**. By default, this field is set to **No**.
+
+Set the minimum log level to save. Any logs at this level or higher will be stored. By default, the minimum level is set to **Warning**.
+
+Set the retention period for logs to be cleaned from the database. This field specifies the number of days. By default, the retention period is set to 1 day.
+
+## Staging testing
+
+The staging testing option provides a sandbox environment to test your applications using the Admin UI SDK in a real-world setting. This environment can be shared with colleagues for collaborative testing before publishing and deploying to production.
+
+![Admin UI SDK staging testing configuration](../_images/admin-ui-sdk-stage-test-config.png)
+
+1. Select **Yes** from the **Enable testing** menu.
+
+1. Set the **Testing mode** to **Staging**.
+
+1. Select all app statuses to load.
+
+## Local testing
+
+When you enable the local service, all calls are automatically redirected to the local server, instead of connecting to Adobe's App Registry. The values you specify must match the contents of your local `server.js` file.
+
+![Admin UI SDK local testing configuration](../_images/admin-ui-sdk-local-test-config.png)
+
+1. Select **Yes** from the **Enable testing** menu.
+
+1. Set the **Testing mode** to `Local testing`.
 
 1. Set the **Local Server Base URL** that points to your localhost, including the port.
 
@@ -31,26 +65,6 @@ Navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **A
 1. Set the **Mock IMS Org ID**. In the sample `server.js` file, this value is set to `imsOrg`.
 
 1. Save your configuration.
-
-1. Clear the cache.
-
-   ```bash
-   bin/magento cache:flush
-   ```
-
-## Clean the Admin UI SDK cache
-
-The `admin_ui_sdk` cache type stores Admin customizations.  As you develop these customizations, run the following command to ensure you are seeing the latest changes:
-
-```bash
-bin/magento cache:clean admin_ui_sdk
-```
-
-## Test with a sample app
-
-### Prerequisites
-
-- An Adobe Commerce instance installed on the local machine.
 
 ### Configuration
 

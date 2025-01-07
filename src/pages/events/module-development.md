@@ -29,7 +29,7 @@ You can use the Commerce Admin or the command line to find supported events and 
 You can programmatically register events using the following methods:
 
 *  Create an `io_events.xml` file in your module or in the root `app/etc` directory
-*  Declare them in the system `env.php` of `config.php` files
+*  Declare them in the system `env.php` or `config.php` files
 
 For each event you register, you must define which fields to transmit to your App Builder application. The payload of an event can be massive. In addition, some events include sensitive or PCI compliance data by default. The payload of the `observer.catalog_product_save_after` event is similar to the following:
 

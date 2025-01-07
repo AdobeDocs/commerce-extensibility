@@ -36,7 +36,7 @@ You must configure Commerce to communicate with your project. Configuration incl
 
 1. Click **Save Config**, but do not leave the page. The next section creates an event provider, which is necessary to complete the configuration.
 
- The event provider will not appear in the Developer Console until after you subscribe to an event emitted by Commerce, such as `io_events.xml`, `env.php` or `config.php`.
+ The event provider will not appear in the Developer Console until after you subscribe to an event emitted by Commerce, such as `io_events.xml`, `env.php`, or `config.php`.
 
 ## Create an event provider
 

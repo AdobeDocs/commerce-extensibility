@@ -80,6 +80,39 @@ curl -i -X POST \
  '<ADOBE_COMMERCE_URL>/rest/all/V1/eventing/eventSubscribe'
 ```
 
+## Get a list of all subscribed events
+The `GET /rest/<store_view_code>/V1/events/list` endpoint returns a list of all subscribed events. The response body looks like below:
+```json
+[{
+  "name": "observer.catalog_product_save_after.price_check",
+  "parent": "observer.catalog_product_save_after",
+  "fields": [
+    "price",
+    "name",
+    "sku"
+  ],
+  "rules": [
+    {
+      "field": "price",
+      "operator": "lessThan",
+      "value": "300.00"
+    }
+  ],
+  "destination": "default",
+  "priority": false,
+  "hipaa_audit_required": false
+}]
+```
+
+**Example usage:**
+
+The following cURL command returns returns a list of all subscribed events.
+```bash
+curl --request GET \
+   --url http://<URL>/rest/all/V1/events/list \
+   --header 'Authorization: Bearer <TOKEN>'
+```
+
 ## Configure Commerce eventing
 
 The `PUT /rest/<store_view_code>/V1/eventing/updateConfiguration` endpoint updates the Adobe I/O [eventing configuration](configure-commerce.md) originally defined on the **Stores** > Settings > **Configuration** > **Adobe Services** > **Adobe I/O Events** > **General configuration** page of the Admin.

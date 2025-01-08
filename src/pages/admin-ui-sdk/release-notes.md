@@ -8,7 +8,41 @@ keywords:
 
 # Adobe Commerce Admin UI SDK release notes
 
-## Version 2.0
+## Version 2.1.1
+
+### Release date
+
+December 18, 2024
+
+### Bug fixes
+
+* Accessing the Admin UI SDK configuration in Commerce versions prior to 2.4.8-beta1 no longer causes crashes.
+
+## Version 2.1.0
+
+### Release date
+
+December 17, 2024
+
+### Enhancements
+
+* Added the ability to save Admin UI SDK logs to the database and access them from the Admin.
+
+* Registrations can now be secured with Adobe IMS authentication.
+
+* Admin UI SDK is now compatible with edge API Mesh. Legacy API Mesh is deprecated.
+
+* Custom columns can now send an optional default value for unmatched data instead of leaving the cell empty.
+
+* Custom columns data can now be secured with Adobe IMS authentication.
+
+* Enhanced loading of custom column data by retrieving only the necessary items for display.
+
+* Registrations automatically refresh when saving Admin UI SDK configurations.
+
+* Enhanced developer experience with the option to enable staging testing.
+
+## Version 2.0.0
 
 ### Release date
 
@@ -130,7 +164,7 @@ October 18, 2023
 
 * Created the [`order` extension point](extension-points/order/grid-columns.md), which adds columns to the order grid. <!-- CEXT-2272 -->
 
-* Added the [`admin_ui_sdk` cache type](configuration.md#clean-the-admin-ui-sdk-cache). When enabled, Commerce caches customizations to the Admin. <!-- CEXT-2377 -->
+* Added the `admin_ui_sdk` cache type. When enabled, Commerce caches customizations to the Admin. <!-- CEXT-2377 -->
 
 * Added the `isSection` and `sortOrder` parameters to the [`menu` extension point](extension-points/menu.md). The `isSection` parameter allows you to define a menu section, while `sortOrder` defines the placement of a menu item. <!-- CEXT 2249, CEXT-2289 -->
 

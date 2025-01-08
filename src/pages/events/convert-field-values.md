@@ -42,8 +42,8 @@ In the following example, the `TestConverterVisibility` converter class updates 
 ```php
 <?php
 /**
- * Copyright &copy; Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Copyright [first year code created] Adobe
+ * All rights reserved.
  */
 declare(strict_types=1);
 
@@ -101,7 +101,7 @@ The converter changes the payload to:
 
 ## Register the converter
 
-You must configure a module's `io_events.xml` or root `app/etc/io_events.xml` file to update the required fields. You can also declare them in the system `config.php` file or add them when using the CLI to subscribe to an event.
+You must configure a module's `io_events.xml` or root `app/etc/io_events.xml` file to update the required fields. You can also declare them in the system `env.php` or `config.php` files or add them when using the CLI to subscribe to an event.
 
 ### Command line
 

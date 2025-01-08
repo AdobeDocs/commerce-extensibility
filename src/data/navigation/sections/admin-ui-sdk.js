@@ -81,7 +81,7 @@ module.exports = [
       ]
     },
     {
-      title: "Admin configuration and local testing",
+      title: "Admin configuration and testing",
       path: "/admin-ui-sdk/configuration.md"
     },
     {

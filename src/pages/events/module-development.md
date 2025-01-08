@@ -16,9 +16,9 @@ Adobe Commerce is capable of emitting thousands of different observer and plugin
 
 You can use the Commerce Admin or the command line to find supported events and their payloads:
 
-*  In the Admin, select **System** > Events > **Events** to display the _Event list_ page.
+*  In the Admin, select **System** > Events > **Events List** to display the _Events list_ page.
 
-   ![Event list page](../_images/events/event-list.png)
+   ![Events list page](../_images/events/event-list.png)
 
    The left navigation contains a list of enabled modules on your system. Click on a module name to display a list of supported events. When you select an event, the main panel of the Admin displays the event's payload.
 
@@ -29,7 +29,7 @@ You can use the Commerce Admin or the command line to find supported events and 
 You can programmatically register events using the following methods:
 
 *  Create an `io_events.xml` file in your module or in the root `app/etc` directory
-*  Declare them in the system `config.php` file
+*  Declare them in the system `env.php` or `config.php` file
 
 For each event you register, you must define which fields to transmit to your App Builder application. The payload of an event can be massive. In addition, some events include sensitive or PCI compliance data by default. The payload of the `observer.catalog_product_save_after` event is similar to the following:
 

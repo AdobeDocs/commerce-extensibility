@@ -50,3 +50,49 @@ Responses for a webhook endpoint may be cached if the `ttl` attribute for a hook
 ```bash
 bin/magento cache:clean webhooks_response
 ```
+
+## Testing webhook endpoint with self-signed SSL certificate
+
+<InlineAlert variant="info" slots="text1" />
+
+SSL verification should be not be disabled in production environments. These options are recommended for development purposes only.
+
+If your webhook endpoint uses a self-signed SSL certificate, you can disable SSL verification for the webhook endpoint by setting the `sslVerification` attribute to `false` in the `hook` element.
+
+```xml
+    <method name="observer.checkout_cart_product_add_before" type="before">
+        <hooks>
+            <batch>
+                <hook name="validate_stock" 
+                      url="{env:APP_BUILDER_PROJECT_URL}/product-validate-stock" 
+                      sslVerification="false"
+                >
+                    <fields>
+                        <field name='product.name' source='data.product.name' />
+                        <field name='product.sku' source='data.product.sku' />
+                    </fields>
+                </hook>
+            </batch>
+        </hooks>
+    </method>
+```
+
+Or, to specify the path to the SSL certificate:
+
+```xml
+    <method name="observer.checkout_cart_product_add_before" type="before">
+        <hooks>
+            <batch>
+                <hook name="validate_stock" 
+                      url="{env:APP_BUILDER_PROJECT_URL}/product-validate-stock"
+                      sslCertificatePath="/path/to/ssl/certificate.pem"
+                >
+                    <fields>
+                        <field name='product.name' source='data.product.name' />
+                        <field name='product.sku' source='data.product.sku' />
+                    </fields>
+                </hook>
+            </batch>
+        </hooks>
+    </method>
+```

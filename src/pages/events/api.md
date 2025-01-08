@@ -104,6 +104,8 @@ The `GET /rest/all/V1/events/list` endpoint returns a list of all subscribed eve
 }]
 ```
 
+The administrator must be granted access to the `Magento_AdobeCommerceEventsClient::events_list` resource.
+
 **Example usage:**
 
 The following cURL command returns returns a list of all subscribed events.

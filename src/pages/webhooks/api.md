@@ -55,6 +55,8 @@ The `GET /rest/all/V1/webhooks/list` endpoint returns a list of all subscribed w
 ]
 ```
 
+The administrator must be granted access to the `Magento_AdobeCommerceWebhooks::webhooks_list` resource.
+
 **Example usage:**
 
 The following cURL command returns returns a list of all subscribed webhooks.

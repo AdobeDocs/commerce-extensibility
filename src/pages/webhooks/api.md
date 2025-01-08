@@ -1,8 +1,8 @@
 ---
-title: REST Endpoints for Eventing
-description: Provides details about the eventing API endpoints.
+title: REST Endpoints for Webhooks
+description: Provides details about the webhook API endpoints.
 keywords:
-  - Events
+  - Webhooks
   - Extensibility
 ---
 

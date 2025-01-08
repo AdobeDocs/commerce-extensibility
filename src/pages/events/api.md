@@ -81,7 +81,7 @@ curl -i -X POST \
 ```
 
 ## Get a list of all subscribed events
-The `GET /rest/<store_view_code>/V1/events/list` endpoint returns a list of all subscribed events. The response body looks like below:
+The `GET /rest/all/V1/events/list` endpoint returns a list of all subscribed events. The response body looks like below:
 ```json
 [{
   "name": "observer.catalog_product_save_after.price_check",
@@ -109,7 +109,7 @@ The `GET /rest/<store_view_code>/V1/events/list` endpoint returns a list of all 
 The following cURL command returns returns a list of all subscribed events.
 ```bash
 curl --request GET \
-   --url http://<URL>/rest/all/V1/events/list \
+   --url <ADOBE_COMMERCE_URL>/rest/all/V1/events/list \
    --header 'Authorization: Bearer <TOKEN>'
 ```
 

@@ -81,7 +81,7 @@ curl -i -X POST \
 ```
 
 ## Get a list of all subscribed events
-The `GET /rest/all/V1/events/list` endpoint returns a list of all subscribed events. The response body looks like below:
+The `GET /rest/all/V1/eventing/getEventSubscriptions` endpoint returns a list of all subscribed events. The response body looks like below:
 ```json
 [{
   "name": "observer.catalog_product_save_after.price_check",
@@ -104,14 +104,14 @@ The `GET /rest/all/V1/events/list` endpoint returns a list of all subscribed eve
 }]
 ```
 
-The administrator must be granted access to the `Magento_AdobeCommerceEventsClient::events_list` resource.
+The administrator must be granted access to the `Magento_AdobeCommerceEventsClient::event_subscriptions` resource.
 
 **Example usage:**
 
 The following cURL command returns returns a list of all subscribed events.
 ```bash
 curl --request GET \
-   --url <ADOBE_COMMERCE_URL>/rest/all/V1/events/list \
+   --url <ADOBE_COMMERCE_URL>/rest/all/V1/eventing/getEventSubscriptions \
    --header 'Authorization: Bearer <TOKEN>'
 ```
 

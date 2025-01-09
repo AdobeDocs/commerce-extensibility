@@ -8,49 +8,57 @@ keywords:
 
 # CI/CD
 
-## CI/CD
+Continuous Integration and Continuous Delivery (CI/CD) is a software development practice that enables developers to automate the process of building, testing, and deploying applications. This practice helps to deliver code changes more frequently and reliably, ensuring that the application is always in a deployable state.
 
-To read about continuous integration and continuous delivery for any application built using App builder visit [CI/CD for App Builder Applications](https://developer.adobe.com/app-builder/docs/guides/deployment/ci_cd_for_firefly_apps/).
+To learn more about CI/CD for App builder, refer to [CI/CD for App Builder Applications](https://developer.adobe.com/app-builder/docs/guides/deployment/ci_cd_for_firefly_apps/).
 
-In addition, to help with the implementation, workflow samples are also provided under `workflow-samples`. To understand these workflows, visit `CICD.md` file in this project.
-## Workflow Samples
+To assist with CI/CD implementation, review the following workflow examples.
 
-Three different workflow samples are provided to implement the continuous integration using the Github Actions feature.
+## Workflow Examples
 
-### [deploy_prod.yml](.github/workflows-samples/deploy_prod.yml)
+The following workflow examples implement the continuous integration using Github Actions.
 
-This workflow is triggered on a release event ([Github Events that trigger Workflows](https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows#release)), specifically when a release is marked as released and defines a single job called deploy, which performs the following steps sequentially to deploy the application to production.
+### Production deployment example
 
-1. Environment Setup:
-   - [Matrix Strategy](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/running-variations-of-jobs-in-a-workflow#about-matrix-strategies): The job runs on Ubuntu (ubuntu-latest) using Node.js version 20. It is configured to allow only one parallel execution (max-parallel: 1) and executes the following steps:
-     - Checkout Code: Retrieves the code from the repository using actions/checkout.
+The [deploy_prod.yml](https://github.com/adobe/commerce-checkout-starter-kit/tree/main/.github/workflows-samples/deploy_prod.yml) workflow triggers on a release event ([Github Events that trigger Workflows](https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows#release)), which is when a release is marked as released.  It also defines a single job called `deploy`, which performs the following steps sequentially to deploy the application to production.
+
+1. **Environment Setup** - Performs the following setup steps:
+   - [Matrix Strategy](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/running-variations-of-jobs-in-a-workflow#about-matrix-strategies): The job runs on Ubuntu (ubuntu-latest) using Node.js version 20. It only allows one parallel execution (`max-parallel: 1`) and executes the following steps:
+     - Checkout Code: Retrieves the code from the repository using `actions/checkout`.
      - Setup Node.js: Configures the specified Node.js version (20).
-2. npm Install: Installs the required dependencies for the application.
-3. CLI Setup:
-   Installs and configures the `Adobe I/O CLI` tool using the `adobe/aio-cli-setup-action` action.
-4. Authentication:
-   Authenticates with `Adobe I/O` using secure credentials stored as secrets (e.g., CLIENTID_PROD, CLIENTSECRET_PROD). Visit [Secrets in Github Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions#about-secrets) to configure the variables as secrets.
-5. Build Process:
-   Builds the application using the build command from the adobe/aio-apps-action.
-6. Deployment:
-   Deploys the application to production using the **deploy** command. Relevant credentials (e.g., AIO_RUNTIME_NAMESPACE, AIO_RUNTIME_AUTH) and project details (e.g., AIO_PROJECT_NAME, AIO_PROJECT_WORKSPACE_NAME) are securely provided as environment variables which need to be configured accordingly.
 
-### [deploy_stage.yml](.github/workflows-samples/deploy_stage.yml)
+1. **NPM Install** - Installs the required dependencies for the application, like Node Package manager.
 
-Overall this workflow is similar to the previous one. The key differences are:
+1. **CLI Setup** - Installs and configures the `Adobe I/O CLI` tool using the `adobe/aio-cli-setup-action` action.
 
-1. The workflow is triggered on a `push` to the `main` branch.
-2. Authentication and deployments secrets are staging-specific which means these need to be defined separately for this environment.
+1. **Authentication** - Authenticates with `Adobe I/O` using secure credentials stored as secrets (for example, `CLIENTID_PROD` and `CLIENTSECRET_PROD`). Refer to [Secrets in Github Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions#about-secrets) to configure variables as secrets.
 
-### [pr_test.yml](.github/workflows-samples/pr_test.yml)
+1. **Build Process** - Builds the application using the build command from `adobe/aio-apps-action`.
 
-This workflow is triggered when a pull request is opened, updated, or synchronized ([Pull request event](https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows#pull_request)) and is intended to test the changes in the pull request across multiple operating systems and Node.js versions before merging into the main branch.
+1. **Deployment** - Deploys the application to production using the `deploy` command. Relevant credentials, like `AIO_RUNTIME_NAMESPACE` and `AIO_RUNTIME_AUTH` and project details like `AIO_PROJECT_NAME` and `AIO_PROJECT_WORKSPACE_NAME`, are securely provided as environment variables. You must define these variables in the repository settings.
 
-During the testing Process it performs the following steps:
+### Stage deployment example
 
-1. Environment Setup: Checks out the code using actions/checkout and configures Node.js (actions/setup-node).
-2. Dependency Installation: Installs necessary dependencies with `npm i`.
-3. CLI Setup: Installs and configures the `Adobe I/O CLI` tool.
-4. Authentication: Authenticates using staging-specific credentials stored in GitHub secrets, ensuring secure access to `Adobe I/O` services.
-5. Build Process: Builds the application to ensure all components compile successfully.
-6. Testing: Runs the `test` command via `adobe/aio-apps-action` to validate functionality.
+The [deploy_stage.yml](https://github.com/adobe/commerce-checkout-starter-kit/tree/main/.github/workflows-samples/deploy_stage.yml) workflow is the same as the [Production deployment example](#production-deployment-example), with the following key differences:
+
+1. The workflow triggers on a push to the `main` branch.
+
+1. Authentication and deployment secrets are staging-specific which means you must define them separately for this environment.
+
+### Pull request testing example
+
+The [pr_test.yml](https://github.com/adobe/commerce-checkout-starter-kit/tree/main/.github/workflows-samples/pr_test.yml) workflow triggers when you open, update, or synchronize a pull request, which creates a [Pull request event](https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows#pull_request). This workflow allows you to test changes in the pull request across multiple operating systems and Node.js versions before merging it into the main branch.
+
+The testing workflow performs the following steps:
+
+1. **Environment Setup** - Checks out the code using the `checkout` action and configures Node.js using the `setup-node` action.
+
+1. **Dependency Installation** - Installs necessary dependencies with `npm i`.
+
+1. **CLI Setup** - Installs and configures the `Adobe I/O CLI` tool.
+
+1. **Authentication** - Authenticates using staging credentials stored in GitHub secrets, ensuring secure access to `Adobe I/O` services.
+
+1. **Build Process** - Builds the application to ensure all components compile successfully.
+
+1. **Testing** - Runs the `test` command via `adobe/aio-apps-action` to validate functionality.

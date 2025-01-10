@@ -56,6 +56,16 @@ September 4, 2024
 
 * Added a custom fee column to the invoice and credit memo grids.
 
+## Version 1.4.1
+
+### Release date
+
+January 10, 2025
+
+### Bug fixes
+
+Fixed an error with the missed class during dependency injection compilation in Adobe Commerce.  <!--- CEXT-4013  -->
+
 ## Version 1.4.0
 
 ### Release date

@@ -64,7 +64,7 @@ January 10, 2025
 
 ### Bug fixes
 
-Fixed an error with the missed class during dependency injection compilation in Adobe Commerce.  <!--- CEXT-4013  -->
+Fixed an error with a missed class during dependency injection compilation in Adobe Commerce.  <!--- CEXT-4013  -->
 
 ## Version 1.4.0
 

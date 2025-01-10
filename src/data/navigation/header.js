@@ -8,8 +8,17 @@ module.exports = [
       path: "/app-development"
     },
     {
-      title: "Starter Kit",
-      path: "/starter-kit/"
+      title: "Starter Kits",
+      menu: [
+        {
+          title: "Integration starter kit",
+          path: "/starter-kit/integration/"
+        },
+        {
+          title: "Checkout starter kit",
+          path: "/starter-kit/checkout/"
+        },
+      ],
     },
     {
       title: "Events",

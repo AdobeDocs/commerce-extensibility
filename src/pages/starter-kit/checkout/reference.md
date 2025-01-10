@@ -6,35 +6,37 @@ keywords:
   - Extensibility
 ---
 
-### Commerce API Methods
+# API reference
 
-To call the Commerce REST endpoints, initialize the Adobe Commerce Client as follows:
+To call the Commerce REST endpoints, initialize the Adobe Commerce Client:
 
 ```javascript
 const { getAdobeCommerceClient } = require('../lib/adobe-commerce');
 const commerceClient = await getAdobeCommerceClient(process.env);
 ```
 
-#### Create a new OOPE payment method
+## Create a new OOPE payment method
 
-`createOopePaymentMethod` creates a new out-of-process payment method with the necessary details such as code, title, and configuration.
+`createOopePaymentMethod` creates a new out-of-process payment method with the necessary details such as `code`, `title`, and `configuration`.
 
 **Payload parameters:**
 
-| Parameter                 | Type    | Description                                                                                                                                                                      |
+| Parameter                 | Type    | Description|
 | ------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `code`                    | String  | Unique identifier for the payment method.                                                                                                                                        |
-| `title`                   | String  | Display name of the payment method.                                                                                                                                              |
-| `description`             | String  | Description of the payment method.                                                                                                                                               |
-| `active`                  | Boolean | Status indicating if the method is active.                                                                                                                                       |
-| `backend_integration_url` | String  | URL for backend integration, which is an app builder URL                                                                                                                         |
-| `stores`                  | Array   | List of store codes that payment method is available                                                                                                                             |
-| `order_status`            | String  | Initial [order status](https://experienceleague.adobe.com/en/docs/commerce-admin/stores-sales/order-management/orders/order-status) when using this method. Default is `pending` |
-| `countries`               | Array   | List of countries where the method is available.                                                                                                                                 |
-| `currencies`              | Array   | Currencies supported by the payment method.                                                                                                                                      |
-| `custom_config`           | Array   | Custom configuration settings for payment methods                                                                                                                                |
+| `code`                    | String  | Unique identifier for the payment method.|
+| `title`                   | String  | Display name of the payment method.|
+| `description`             | String  | Description of the payment method.|
+| `active`                  | Boolean | Status indicating if the method is active.|
+| `backend_integration_url` | String  | URL for backend integration, which is an app builder URL.|
+| `stores`                  | Array   | List of store codes that payment method is available for.|
+| `order_status`            | String  | Initial [order status](https://experienceleague.adobe.com/en/docs/commerce-admin/stores-sales/order-management/orders/order-status) when using this method. Default is `pending`. |
+| `countries`               | Array   | List of countries where the method is available.|
+| `currencies`              | Array   | Currencies supported by the payment method.|
+| `custom_config`           | Array   | Custom configuration settings for payment methods.|
 
-**Example usage:**
+<CodeBlock slots="heading, code" repeat="2" languages="javascript, javascript" />
+
+#### Example usage
 
 ```javascript
 try {
@@ -61,7 +63,7 @@ try {
 }
 ```
 
-**Example response:**
+#### Example response
 
 ```json
 {
@@ -86,11 +88,13 @@ try {
 }
 ```
 
-#### List all payment methods
+## List all payment methods
 
-`getOopePaymentMethods` retrieves the list of all out of process payment methods in the Adobe Commerce instance.
+`getOopePaymentMethods` retrieves a list of all out-of-process payment methods in the Adobe Commerce instance.
 
-**Example usage:**
+<CodeBlock slots="heading, code" repeat="2" languages="javascript, javascript" />
+
+#### Example usage
 
 ```javascript
 try {
@@ -104,7 +108,7 @@ try {
 }
 ```
 
-**Example response:**
+#### Example response
 
 ```json
 {
@@ -126,9 +130,9 @@ try {
 }
 ```
 
-#### Get an OOPE payment method by code
+## Get an OOPE payment method by code
 
-`getOopePaymentMethod` retrieves one out of process payment method by code from the Adobe Commerce instance.
+`getOopePaymentMethod` retrieves one out-of-process payment method by code from the Adobe Commerce instance.
 
 **Payload parameters:**
 
@@ -136,7 +140,9 @@ try {
 | --------- | ------ | ----------------------------------------- |
 | `code`    | String | Unique identifier for the payment method. |
 
-**Example usage:**
+<CodeBlock slots="heading, code" repeat="2" languages="javascript, javascript" />
+
+#### Example usage
 
 ```javascript
 try {
@@ -150,7 +156,7 @@ try {
 }
 ```
 
-**Example response:**
+#### Example response
 
 ```json
 {
@@ -160,7 +166,7 @@ try {
     "code": "method-1",
     "title": "Method one",
     "active": true,
-    "backend_integration_url": "http://oope-payment-method.pay/event",
+    "backend_integration_url": "http://<oope-payment-method.pay>/event",
     "stores": ["default"],
     "order_status": "complete",
     "countries": ["ES", "US"],
@@ -175,9 +181,10 @@ try {
 }
 ```
 
-#### Retrieve an order by masked cart ID
+## Retrieve an order by masked cart ID
 
-`getOrderByMaskedCartId` retrieves order details from the Adobe Commerce instance using a masked cart ID. This is typically used when the app builder application receives a webhook or event from the payment gateway.
+`getOrderByMaskedCartId` retrieves order details from the Adobe Commerce instance using `maskedCartID`. This is typically used when the app builder application receives a webhook or event from the payment gateway.
+
 This method uses the Adobe Commerce API [order search criteria](https://developer.adobe.com/commerce/webapi/rest/use-rest/performing-searches/#other-search-criteria).
 
 **Payload parameters:**

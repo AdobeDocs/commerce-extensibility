@@ -15,17 +15,17 @@ Integrate your Out-of-Process Payment Extensions (OOPE) payment method with the 
 The following prerequisites are required to integrate your OOPE payment method with the EDS Storefront:
 
 - [Integrate EDS Storefront with Adobe Commerce](https://experienceleague.adobe.com/developer/commerce/storefront/).
-- Configure Storefront in EDS with the [checkout dropin](https://experienceleague.adobe.com/developer/commerce/storefront/dropins/checkout/).
+- Configure Storefront in EDS with the [checkout dropin component](https://experienceleague.adobe.com/developer/commerce/storefront/dropins/checkout/).
   - The checkout dropin component allows users to enter shipping and payment information, review their order details, and confirm their purchase.
-  - To access the latest EDS Storefront boilerplate with dropins, see [EDS Adobe Commerce Boilerplate](https://github.com/hlxsites/aem-boilerplate-commerce).
+  - To access the latest EDS Storefront boilerplate with dropin components, see [EDS Adobe Commerce Boilerplate](https://github.com/hlxsites/aem-boilerplate-commerce).
 
-## Integrate with Checkout dropins
+## Integrate with checkout drop-in components
 
-The payment gateway typically requires a session to start the payment process, and it provides a dropin UI to draw on the payment form using that session ID.
+The payment gateway typically requires a session to start the payment process, and it provides a dropin component UI to draw on the payment form using that session ID.
 
-The following example integrates the OOPE method with the checkout dropin by creating a session from the payment gateway action in App Builder and setting up the payment form based on the session response.
+The following example integrates the OOPE method with the checkout dropin component by creating a session from the payment gateway action in App Builder and setting up the payment form based on the session response.
 
-Integration methods can vary depending on your use case. Refer to the [checkout dropin](https://experienceleague.adobe.com/developer/commerce/storefront/dropins/checkout/) documentation and your payment gateway documentation for further information.
+Integration methods can vary depending on your use case. Refer to the [checkout dropin component](https://experienceleague.adobe.com/developer/commerce/storefront/dropins/checkout/) documentation and your payment gateway documentation for further information.
 
 1. Import your payment gateway SDK to your project.
 
@@ -49,7 +49,7 @@ Integration methods can vary depending on your use case. Refer to the [checkout 
   }
   ```
 
-1. Start payment in the checkout dropin. The following example starts the payment instead of placing the order when the user selects the OOPE payment method.
+1. Start payment in the checkout dropin component. The following example starts the payment instead of placing the order when the user selects the OOPE payment method.
 
   ```javascript
   export default async function decorate(block) {
@@ -112,12 +112,12 @@ Integration methods can vary depending on your use case. Refer to the [checkout 
       ...
     };
 
-    // Draw your payment gateway dropin UI on the page
+    // Draw your payment gateway dropin component UI on the page
     await mountPaymentDropin('#id-to-mount', configuration);
   }
   ```
 
-1. Mount the payment gateway dropin UI on the page using the session created through your OOPE gateway. The following example using the Adyen library draws the dropin UI on the page.
+1. Mount the payment gateway dropin component UI on the page using the session created through your OOPE gateway. The following example using the Adyen library draws the dropin componentUI on the page.
 
   ```javascript
   async function mountPaymentDropin(mountId, configuration) {
@@ -132,7 +132,7 @@ Integration methods can vary depending on your use case. Refer to the [checkout 
 
 ## Extend OOPE GraphQL Schema
 
-If you want to retrieve OOPE payment method information from the Commerce instance,you can extend the GraphQL query using dropins with the [GraphQL Extensibility API](https://experienceleague.adobe.com/developer/commerce/storefront/dropins/all/extending/).
+If you want to retrieve OOPE payment method information from the Commerce instance,you can extend the GraphQL query using dropin components with the [GraphQL Extensibility API](https://experienceleague.adobe.com/developer/commerce/storefront/dropins/all/extending/).
 
 1. In `build.mjs` of the boilerplate, add the following code to extend the OOPE GraphQL schema:
 
@@ -176,7 +176,7 @@ If you want to retrieve OOPE payment method information from the Commerce instan
   ]);
   ```
 
-1. Extend OOPE GraphQL schema in the checkout dropin initializer. It enables the dropin to retrieve the OOPE data.
+1. Extend OOPE GraphQL schema in the checkout dropin component initializer. It enables the dropin component to retrieve the OOPE data.
 
   ```javascript
   await initializeDropin(async () => {

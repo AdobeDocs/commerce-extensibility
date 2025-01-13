@@ -8,7 +8,7 @@ keywords:
 
 # Project structure
 
-This section provides an overview of the file structure necessary for developing an app using the Adobe Commerce checkout starter kit.
+This section provides an overview of the file structure necessary for developing an app using the Adobe Commerce checkout starter kit and provides an overview of the scripts available.
 
 All the configurations in your app must align with the [App Builder Configuration file guidelines](https://developer.adobe.com/app-builder/docs/guides/configuration/). In addition to the App Builder configuration, this starter kit requires the following additional configurations:
 

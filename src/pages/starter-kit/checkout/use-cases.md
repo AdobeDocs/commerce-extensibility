@@ -6,84 +6,83 @@ keywords:
   - Extensibility
 ---
 
-## Use cases
+# Use cases
 
-### 3rd party events processing
+This page explores different use cases and scenarios that can be implemented using the Adobe Commerce checkout starter kit.
 
-3rd party systems usually offer a way to subscribe to events that are emitted when certain actions are performed. For example, with a payment gateway we may subscribe to Authorization, Capture or Refund events.
+## Third-party events processing
 
-Adobe I/O Events can be used to offload the events processing which requires to configure an Event Provider. The
-`configure-events` script provided in this project can be used to manage the 3rd party event providers required for
-your integration. See the [Scripts/configure-events](#configure-events) section for more information.
+Third-party systems usually offer a way to subscribe to events that are emitted when certain actions are performed. For example, with a payment gateway we may subscribe to `Authorization`, `Capture` or `Refund` events.
 
-Once the event provider is configured, the 3rd party events can be published and a consumer can be registered to process them accordingly.
+Adobe I/O Events can offload the events processing which requires configuration an event provider. The
+[`configure-events`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/configure-events.js) script can manage third-party event providers required for your integration. Refer to [configure-events](./structure.md#configure-events) for more information.
 
-(3rd party system) > (Adobe I/O Events) > (App Builder app)
+After you configure the event provider, you can publish third-party events and register a consumer to process them accordingly.
 
-#### Publication
+![use case 1](../../_images/starterkit/use-case-1.png)
 
-There are different options on how to publish these events with an App Builder app, depending on the flexibility of the third-party system.
+### Publication
 
-The options are ordered by preference.
+You have the following options to publish events with an App Builder app, depending on the flexibility of the third-party system.
 
-##### Directly from 3rd party system
+#### Directly from 3rd party system (preferred)
 
-The best option is to ingest the events directly from the 3rd party system. This is the most efficient way to process events but the source system has to be adapted to send the events to Adobe I/O Events.
+We recommend ingesting events directly from the third-party system. This is the most efficient way to process events, but requires you to modify the source system to send the events to Adobe I/O Events.
 
-(3rd party system) > (Event provider) > (Consumer runtime action)
+![use case 2](../../_images/starterkit/use-case-2.png)
 
-The Events Publishing API is described in the [Adobe I/O Events documentation](https://developer.adobe.com/events/docs/guides/api/eventsingress_api/).
+Refer to the [Events Publishing API](https://developer.adobe.com/events/docs/guides/api/eventsingress_api/) for more information.
 
-Note this example is not exemplified in this project since it depends on source system details.
+<InlineAlert variant="info" slots="text"/>
 
-##### Publication using an action
+This example is not demonstrated in the GitHub project files, because it depends on source system details.
 
-If the 3rd party system does not support sending events to Adobe I/O Events, it usually supports registering a webhook that should be called when an event occurs. Additionally, the 3rd party system may be configured to use an
-authentication mechanism in the webhook (basic auth, OAuth, etc.) so that only authorized requests are accepted.
+#### Publication using an action
 
-(3rd party system) > (Consumer runtime action) > (Event provider) > (Consumer runtime action)
+![use case 3](../../_images/starterkit/use-case-3.png)
 
-This use case is implemented in the `actions/3rd-party-events/publish.js` action.
+If your third-party system does not support the preferred method of sending events to Adobe I/O Events, it should support registering a webhook that you can call when an event occurs. Additionally, the third party system may allow you to configure an authentication mechanism in the webhook (basic auth, OAuth) so that it only accepts authorized requests.
 
-Note that for implementing this use case correctly the action should receive the `OAUTH_*` environment variables to be able to retrieve an access token to publish in the event provider. This configuration is done by specifying the env vars in the `.env` file and setting them as `app.config.yaml`.
+The starter kit demonstrates this use case in the [`actions/3rd-party-events/publish.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/3rd-party-events/publish.js) action.
 
-#### Consumption
+<InlineAlert variant="info" slots="text"/>
 
-Consumption of events can be done using webhooks where the action is registered as a consumer of the event provider.
+To implement this use case, the action must receive the `OAUTH_*` environment variables that allow it to retrieve an access token to publish in the event provider. You can specify this configuration using the environment variables in the [`.env` file](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/env.dist), so that they match the authentication settings in your `app.config.yaml`.
 
-An example of a consumer is the `actions/3rd-party-events/consume.js` action which is registered declaratively as
-a Webhook in `app.config.yaml`. Note that in this config file, the value used in the `provider_metadata` field is
-specified in the `AIO_EVENTS_PROVIDERMETADATA_TO_PROVIDER_MAPPING` environment variable so the registration can know to which provider the action should be registered.
+### Consumption
 
-AIO cli provides an interactive command to register the webhook and the action as a consumer of the event provider:
+You can consume the events using webhooks after registering the action as a consumer of the event provider.
+
+The [`actions/3rd-party-events/consume.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/3rd-party-events/consume.js) action provides an example of an event consumer that is registered declaratively as a Webhook in `app.config.yaml`. The value provided in the `provider_metadata` field is also used as the `AIO_EVENTS_PROVIDERMETADATA_TO_PROVIDER_MAPPING` environment variable, which allows the registration to know which provider to register the action to.
+
+The AIO CLI provides an interactive command to register webhooks and actions as consumers of the event provider:
 
 ```shell
 aio app add event
 ```
 
-Extended documentation about how to implement a consumer action and register it as a webhook can be found in
-the [AppBuilder Applications with Adobe I/O Events documentation](https://developer.adobe.com/events/docs/guides/appbuilder/).
+For more information on how to implement a consumer action and register it as a webhook, refer to
+the [AppBuilder Applications with Adobe I/O Events](https://developer.adobe.com/events/docs/guides/appbuilder/) documentation.
 
-See also [Adobe I/O Events Webhook FAQ](https://developer.adobe.com/events/docs/support/faq/#webhook-faq) which
-contains interesting information about how to handle event consumption (state of registration, retries, debugging).
+You can also refer to the [Adobe I/O Events Webhook FAQ](https://developer.adobe.com/events/docs/support/faq/#webhook-faq) which contains information about how to handle event consumption, such as state of registration, retries, and debugging.
 
-### Payment flow: Obtain order details from Adobe Commerce using the masked cart id
+## Payment flow: Get order details from Adobe Commerce using the masked cart ID
 
-To understand the payment flow, we need to consider the following steps:
+The following steps demonstrate the payment flow:
 
-1. It all starts on the frontend. When checkout is completed, the frontend sends the masked cart ID to the payment gateway.
+1. The payment flow starts at the frontend. When checkout is completed, the frontend sends the masked cart ID to the payment gateway.
 
-1. The payment gateway then sends a request to the AppBuilder application with the masked cart ID, as this is the only information it has about the order. This request could be a webhook or an event.
+1. The payment gateway then sends a request to the App Builder application with the masked cart ID, as this is the only information it has about the order. This request could be a webhook or an event.
 
-1. The AppBuilder application uses the Adobe Commerce HTTP Client to retrieve the order details using the masked cart ID. To facilitate this, the starter kit provides the method `getOrderByMaskedCartId` in the Adobe Commerce HTTP Client.
+1. The App Builder application uses the Adobe Commerce HTTP Client to retrieve the order details using the masked cart ID. To facilitate this, the starter kit provides the method `getOrderByMaskedCartId` in the Adobe Commerce HTTP Client.
 
 ![sequence.png](../../_images/starterkit/sequence.png)
 
-### Payment methods: Validate payment info
+## Payment methods: Validate payment info
 
-Since the checkout process and the payment of the order is expected to be done in a headless way, the Commerce instance has to ensure that the payment has succeeded and the order can be placed.
+To perform a headless checkout and payment, the Commerce instance has to ensure that the payment has succeeded and the order can be placed.
 
-In order to ingest the payment gateway specific information in the payment process, it is expected that the checkout process uses [`setPaymentMethodOnCart` mutation](https://developer.adobe.com/commerce/webapi/graphql/schema/cart/mutations/set-payment-method/) in combination with `payment_method.additional_data` field in order to persist all the information required to validate later the payment once the order is placed.
+To ingest payment gateway specific information in the payment process, the checkout process must use the [`setPaymentMethodOnCart` mutation](https://developer.adobe.com/commerce/webapi/graphql/schema/cart/mutations/set-payment-method/) in combination with the `payment_method.additional_data` field to persist the information required to validate the payment once the order is placed.
 
 ```graphql
 setPaymentMethodOnCart(
@@ -94,7 +93,7 @@ setPaymentMethodOnCart(
       additional_data: [
         {
           key: 'sessionId',
-          value: '86A76C95-8F56-4922-B226-636533C06708',
+          value: '12A34B56-1A23-1234-A123-123456A78901',
         },
         {
           key: 'status',
@@ -113,9 +112,9 @@ setPaymentMethodOnCart(
 }
 ```
 
-With this information persisted, a webhook can be configured with the help of [Adobe Commerce Webhooks](https://developer.adobe.com/commerce/extensibility/webhooks) so every time there's an order placed a synchronous call is dispatched to the AppBuilder application implementing the payment method to validate the payment.
+With this information persisted, you can configure an [Adobe Commerce Webhook](../../webhooks/index.md) so that every time an order is placed, a synchronous call dispatches to the App Builder application implementing the payment method to validate the payment.
 
-In order to register a webhook, go to the **Adobe Commerce Admin > System > Webhooks** and create a new webhook with the following configuration:
+To register a webhook, navigate to **System > Webhooks** in the Adobe Commerce Admin and create a new webhook with the following configuration:
 
 ```javascript
 Hook Settings
@@ -123,7 +122,7 @@ Hook Settings
   Webhook Type: before
   Batch Name validate_payment
   Hook Name: oope_payment_methods_sales_order_place_before
-  URL: https://yourappbuilder.runtime.adobe.io/api/v1/web/commerce-checkout-starter-kit/validate-payment
+  URL: https://<yourappbuilder>.runtime.adobe.io/api/v1/web/commerce-checkout-starter-kit/validate-payment
   Active: Yes
   Method: POST
 
@@ -132,9 +131,9 @@ Hook Fields
   Field: payment_additional_information Source: order.payment.additional_information
 
 Hook Rules
-  Field: payment_method Value: yourpaymentmethodcode Operator: equal
+  Field: payment_method Value: <yourpaymentmethodcode> Operator: equal
 ```
 
-Additionally, you can enable webhook signature generation according to [Webhooks signature verification](https://developer.adobe.com/commerce/extensibility/webhooks/signature-verification/)
+You can also enable webhook signature generation by following the [webhooks signature verification](../../webhooks/signature-verification.md) instructions.
 
-See the action implemented in `actions/payment-methods/validate-payment.js` for an example of how to receive the request and validate the payment according to the payment gateway needs.
+Refer to [`actions/validate-payment.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/validate-payment/index.js) for an example of how to receive the request and validate the payment according to the payment gateway needs.

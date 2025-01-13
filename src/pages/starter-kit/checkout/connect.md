@@ -53,7 +53,7 @@ OAUTH_SCOPES=<scope>
 OAUTH_IMS_ORG_ID=<img org>
 ```
 
-### Configure Commerce the integration
+### Configure Commerce integration
 
 This option also allows communication between Commerce and App Builder.
 

@@ -71,9 +71,9 @@ It reads `dx_commerce_events` event provider specification from the [events.conf
 
 To run the script, ensure you have the following:
 
-1. Installs the [Commerce eventing module](#install-commerce-eventing-module-in-adobe-commerce) in your Commerce instance.
+1. Installs the [Commerce eventing module](./getting-started.md) in your Commerce instance.
 
-1. Sets up the [Adobe Commerce HTTP Client](#adobe-commerce-http-client) to authenticate the Commerce instance.
+1. Sets up the [Adobe Commerce HTTP Client](./connect.md#connect-to-adobe-commerce) to authenticate the Commerce instance.
 
 1. Configures your [events.config.yaml](#eventsconfigyaml) and `.env` files with the commerce event provider specification.
 
@@ -98,4 +98,4 @@ The `create-payment-methods` script creates payment methods in Adobe Commerce.
 
 It reads the payment methods configuration from the `payment-methods.yaml` file and creates the payment methods in Adobe Commerce.
 
-To run the `create-payment-methods` script, you must first configure the [Adobe Commerce HTTP Client](#adobe-commerce-http-client).
+To run the `create-payment-methods` script, you must first configure the [Adobe Commerce HTTP Client](./connect.md#connect-to-adobe-commerce).

@@ -34,9 +34,9 @@ Set the minimum log level to save. Any logs at this level or higher will be stor
 
 Set the retention period for logs to be cleaned from the database. This field specifies the number of days. By default, the retention period is set to 1 day.
 
-## Staging testing
+## Sandbox testing
 
-The staging testing option provides a sandbox environment to test your applications using the Admin UI SDK in a real-world setting. This environment can be shared with colleagues for collaborative testing before publishing and deploying to production.
+The sandbox testing option provides an environment to test your applications using the Admin UI SDK in a real-world setting. This option will retrieve Production workspace registrations that match the chosen statuses. This environment can be shared with colleagues for collaborative testing before [publishing the application](./publish.md).
 
 ![Admin UI SDK staging testing configuration](../_images/admin-ui-sdk-stage-test-config.png)
 

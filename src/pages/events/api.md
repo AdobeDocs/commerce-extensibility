@@ -33,7 +33,8 @@ The `POST /rest/<store_view_code>/V1/eventing/eventSubscribe` endpoint subscribe
       }
     ],
     "destination": "string",
-    "priority": true
+    "priority": true,
+    "hipaaAuditRequired": true
   },
   "force": true
 }
@@ -48,7 +49,7 @@ After you subscribe to a `plugin-type` event, you must manually generate the mod
 `Content-Type: application/json`
 `Authorization: Bearer <administrator token>`
 
-The administrator must be granted access to the `Magento_AdobeIoEventsClient::event_subscribe` resource.
+The administrator must be granted access to the `Magento_AdobeCommerceEventsClient::event_subscribe` resource.
 
 **Payload Parameters:**
 
@@ -78,6 +79,90 @@ curl -i -X POST \
   }
 }' \
  '<ADOBE_COMMERCE_URL>/rest/all/V1/eventing/eventSubscribe'
+```
+
+## Update event subscriptions
+
+The `PUT /rest/<store_view_code>/V1/eventing/eventSubscribe/<event_name>` endpoint updates an existing subscription to the specified event. The request body has the following format:
+
+```json
+{
+  "event": {
+    "parent": "string",
+    "fields": [
+      {
+        "name": "string",
+        "converter": "string"
+      }
+    ],
+    "rules": [
+      {
+        "field": "string",
+        "operator": "string",
+        "value": "string"
+      }
+    ],
+    "destination": "string",
+    "priority": true,
+    "hipaaAuditRequired": true
+  }
+}
+```
+
+Field and rule configurations provided in the request body are merged with the existing field and rule configurations set for the event subscription.
+
+**Headers:**
+
+`Content-Type: application/json`
+`Authorization: Bearer <administrator token>`
+
+The administrator must be granted access to the `Magento_AdobeCommerceEventsClient::event_subscribe` resource.
+
+**Payload Parameters:**
+
+Review the [`events:subscribe` command](./commands.md#subscribe-to-an-event) to understand the possible values for each item in the request body payload.
+
+**Example usage:**
+
+The following cURL command updates an `observer.catalog_category_save_after` event subscription. This update adds the `parent_id` field to the existing list of subscribed fields and sets standard priority for the event.
+
+```bash
+curl -i -X PUT \
+   -H "Content-Type:application/json" \
+   -H "Authorization:Bearer <AUTH_TOKEN>" \
+   -d \
+'{
+  "event": {
+    "name": "observer.catalog_category_save_after",
+    "fields": [
+      {
+        "name": "parent_id"
+      }
+    ],
+    "priority": false
+  }
+}' \
+ '<ADOBE_COMMERCE_URL>/rest/all/V1/eventing/eventSubscribe/observer.catalog_category_save_after'
+```
+
+## Unsubscribe from events
+
+The `POST /rest/<store_view_code>/V1/eventing/eventUnsubscribe/<event_name>` endpoint unsubscribes from the specified event.
+
+**Header:**
+
+`Authorization: Bearer <administrator token>`
+
+The administrator must be granted access to the `Magento_AdobeCommerceEventsClient::event_unsubscribe` resource.
+
+**Example usage:**
+
+The following cURL command unsubscribes from the `observer.catalog_category_save_after` event.
+
+```bash
+curl -i -X POST \
+   -H "Authorization:Bearer <AUTH_TOKEN>" \
+ '<ADOBE_COMMERCE_URL>/rest/all/V1/eventing/eventUnsubscribe/observer.catalog_category_save_after'
 ```
 
 ## Configure Commerce eventing

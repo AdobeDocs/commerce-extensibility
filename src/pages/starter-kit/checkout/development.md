@@ -10,47 +10,6 @@ keywords:
 
 This guide provides basic information for software development using the checkout starter kit.
 
-## Prerequisites
-
-You must install or have access to the following prerequisites to develop with the Adobe Commerce checkout starter kit:
-
-- [Node.js](https://nodejs.org/) version 22. If you have Node Version Manager (`nvm`) installed, you can run the following command to install and use the required version:
-
-  ```bash
-  cat .nvmrc | nvm install && nvm use
-  ```
-
-- [Adobe I/O CLI](https://developer.adobe.com/runtime/docs/guides/tools/cli_install/).
-
-- Access to the [Adobe Developer Console](https://console.adobe.io/) with an App
-  Builder license. If you do not have access to the Adobe Developer Console or App Builder, refer to [get access to App Builder](https://developer.adobe.com/app-builder/docs/overview/getting_access/#get-access-to-app-builder).
-
-## Initial configuration
-
-Use the following steps to configure your local environment:
-
-1. Create a folder for your project and navigate to it.
-
-1. Execute the following command to create an Adobe Developer Console project in your organization and using the Commerce checkout starter kit as a template:
-
-  ```bash
-  aio app init --repo adobe/commerce-checkout-starter-kit --github-pat $GITHUB_PAT
-  ```
-
-  Replace `$GITHUB_PAT` with your GitHub personal access token. For more information, refer to [managing your personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens).
-
-1. The starter kit requires you to add the following services in the console project:
-
-   - I/O Management API
-   - I/O Events
-   - Adobe I/O Events for Adobe Commerce
-
-  Execute the following command to add the services by selecting them from the list:
-
-  ```bash
-  aio app add service
-  ```
-
 ## Testing
 
 The testing framework is in [Jest](https://jestjs.io) and execution is based on the [`aio` CLI](https://developer.adobe.com/runtime/docs/guides/tools/cli_install/).

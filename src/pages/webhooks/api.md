@@ -11,7 +11,9 @@ keywords:
 Adobe Commerce provides several REST endpoints that interact with the webhooks processes. These endpoints require an [admin token](https://developer.adobe.com/commerce/webapi/rest/tutorials/prerequisite-tasks/).
 
 ## Get a list of all subscribed webhooks
+
 The `GET /rest/all/V1/webhooks/list` endpoint returns a list of all subscribed webhooks. The response body looks like below:
+
 ```json
 [
 	{

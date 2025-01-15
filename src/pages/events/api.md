@@ -81,6 +81,26 @@ curl -i -X POST \
  '<ADOBE_COMMERCE_URL>/rest/all/V1/eventing/eventSubscribe'
 ```
 
+## Unsubscribe from events
+
+The `POST /rest/<store_view_code>/V1/eventing/eventUnsubscribe/<event_name>` endpoint unsubscribes from the specified event.
+
+**Header:**
+
+`Authorization: Bearer <administrator token>`
+
+The administrator must be granted access to the `Magento_AdobeCommerceEventsClient::event_unsubscribe` resource.
+
+**Example usage:**
+
+The following cURL command unsubscribes from the `observer.catalog_category_save_after` event.
+
+```bash
+curl -i -X POST \
+   -H "Authorization:Bearer <AUTH_TOKEN>" \
+ '<ADOBE_COMMERCE_URL>/rest/all/V1/eventing/eventUnsubscribe/observer.catalog_category_save_after'
+```
+
 ## Get a list of all subscribed events
 
 The `GET /rest/all/V1/eventing/getEventSubscriptions` endpoint returns a list of all subscribed events which are enabled. The response body looks like below:
@@ -181,26 +201,6 @@ curl -i -X PUT \
   }
 }' \
  '<ADOBE_COMMERCE_URL>/rest/all/V1/eventing/eventSubscribe/observer.catalog_category_save_after'
-```
-
-## Unsubscribe from events
-
-The `POST /rest/<store_view_code>/V1/eventing/eventUnsubscribe/<event_name>` endpoint unsubscribes from the specified event.
-
-**Header:**
-
-`Authorization: Bearer <administrator token>`
-
-The administrator must be granted access to the `Magento_AdobeCommerceEventsClient::event_unsubscribe` resource.
-
-**Example usage:**
-
-The following cURL command unsubscribes from the `observer.catalog_category_save_after` event.
-
-```bash
-curl -i -X POST \
-   -H "Authorization:Bearer <AUTH_TOKEN>" \
- '<ADOBE_COMMERCE_URL>/rest/all/V1/eventing/eventUnsubscribe/observer.catalog_category_save_after'
 ```
 
 ## Configure Commerce eventing

@@ -12,7 +12,7 @@ Adobe Commerce provides several REST endpoints that interact with the webhooks p
 
 ## Get a list of all subscribed webhooks
 
-The `GET /rest/all/V1/webhooks/list` endpoint returns a list of all subscribed webhooks. The response body looks like below:
+The `GET /rest/all/V1/webhooks/list` endpoint returns a list of all subscribed webhooks. The response body is similar to the following:
 
 ```json
 [

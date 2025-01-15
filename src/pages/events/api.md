@@ -103,7 +103,7 @@ curl -i -X POST \
 
 ## Get a list of all subscribed events
 
-The `GET /rest/all/V1/eventing/getEventSubscriptions` endpoint returns a list of all subscribed events which are enabled. The response body looks like below:
+The `GET /rest/all/V1/eventing/getEventSubscriptions` endpoint returns a list of all subscribed events that are enabled. The response body is similar to the following:
 
 ```json
 [{
@@ -131,7 +131,7 @@ The administrator must be granted access to the `Magento_AdobeCommerceEventsClie
 
 **Example usage:**
 
-The following cURL command returns returns a list of all subscribed events which are enabled.
+The following cURL command returns returns a list of all subscribed events that are enabled.
 
 ```bash
 curl --request GET \

@@ -62,6 +62,7 @@ The administrator must be granted access to the `Magento_AdobeCommerceWebhooks::
 **Example usage:**
 
 The following cURL command returns returns a list of all subscribed webhooks.
+
 ```bash
 curl --request GET \
    --url <ADOBE_COMMERCE_URL>/rest/all/V1/webhooks/list \

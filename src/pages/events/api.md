@@ -110,17 +110,17 @@ The `GET /rest/all/V1/eventing/getEventSubscriptions` endpoint returns a list of
   "name": "observer.catalog_product_save_after.price_check",
   "parent": "observer.catalog_product_save_after",
   "fields": [
-		{
-			"name": "name",
-			"converter": "Magento\\CustomModule\\Model\\TestConverter"
-		},
-		{
-			"name": "price"
-		},
     {
-			"name": "sku"
-		}
-	],
+      "name": "name",
+      "converter": "Magento\\CustomModule\\Model\\TestConverter"
+    },
+    {
+      "name": "price"
+    },
+    {
+      "name": "sku"
+    }
+  ],
   "rules": [
     {
       "field": "price",

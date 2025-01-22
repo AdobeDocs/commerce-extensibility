@@ -169,7 +169,7 @@ The `PUT /rest/<store_view_code>/V1/eventing/eventSubscribe/<event_name>` endpoi
     ],
     "destination": "string",
     "priority": true,
-    "hipaaAuditRequired": true
+    "hipaa_audit_required": true
   }
 }
 ```

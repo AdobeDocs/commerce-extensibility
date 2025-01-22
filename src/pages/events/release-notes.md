@@ -12,6 +12,24 @@ These release notes describe the latest version of Adobe I/O Events for Adobe Co
 
 See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io-events-for-adobe-commerce) for upgrade instructions.
 
+## Version 1.11.0
+
+### Release date
+
+January TBD, 2025
+
+### Enhancements
+
+* Event subscriptions created/updated via API or CLI now get stored in `env.php`. These subscriptions were previously stored in `config.php`. Event subscriptions remaining in `config.php` continue to be read by the modules to preserve backward compatibility. <!-- CEXT-3459 -->
+
+* Added the `GET /rest/<store_view_code>/V1/eventing/getEventSubscriptions` REST endpoint for retrieving a list of enabled event subscriptions. <!-- CEXT-3925, CEXT-4055, CEXT-4066 -->
+
+* Added the `PUT /rest/<store_view_code>/V1/eventing/eventSubscribe/{name}` REST endpoint for updating event subscriptions. <!-- CEXT-3974 -->
+
+* Added the `POST /rest/<store_view_code>/V1/eventing/eventUnsubscribe/{name}` REST endpoint for unsubscribing from events. <!-- CEXT-3975 -->
+
+* Event name prefix validation is now skipped when subscribing to an event with a parent name. <!-- CEXT-3989 -->
+
 ## Version 1.10.0
 
 ### Release date

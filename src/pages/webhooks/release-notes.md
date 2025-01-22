@@ -9,6 +9,16 @@ keywords:
 
 These release notes describe the latest version of Adobe Commerce Webhooks.
 
+## Version 1.8.0
+
+### Release date
+
+January TBD, 2025
+
+### Enhancements
+
+* Added the `GET /rest/<store_view_code>/V1/webhooks/list` REST endpoint for retrieving a list of configured webhooks. <!-- CEXT-3925, CEXT-4068 -->
+
 ## Version 1.7.0
 
 ### Release date

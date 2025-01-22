@@ -1,14 +1,14 @@
 ---
-title: Explore the stucture
-description: Learn about the file structure used in the Adobe Commerce checkout starter kit.
+title: Configure Commerce
+description: Learn about how to configure Adobe Commerce to use it with the checkout starter kit.
 keywords:
   - App Builder
   - Extensibility
 ---
 
-# Project structure
+# Configure Commerce
 
-This section provides an overview of the file structure necessary for developing an app using the Adobe Commerce checkout starter kit and provides an overview of the scripts available.
+This section provides an overview on configuring Adobe Commerce for developing an app using the checkout starter kit and provides an overview of the scripts available.
 
 All the configurations in your app must align with the [App Builder Configuration file guidelines](https://developer.adobe.com/app-builder/docs/guides/configuration/). In addition to the App Builder configuration, this starter kit requires the following additional configurations:
 
@@ -65,17 +65,19 @@ It reads `dx_commerce_events` event provider specification from the [events.conf
 
 1. Configures Commerce eventing in the Commerce instance.
 
-   - If the Commerce instance is already configured with a different provider, the script will return an error to prevent overriding another project's configuration.
+  If the Commerce instance is already configured with a different provider, the script will return an error to prevent overriding another project's configuration.
 
 1. Subscribes to the required commerce events.
 
-To run the script, ensure you have the following:
+## Prerequisites
 
-1. Installs the [Commerce eventing module](./getting-started.md) in your Commerce instance.
+To run the script, ensure you have completed the following steps:
 
-1. Sets up the [Adobe Commerce HTTP Client](./connect.md#connect-to-adobe-commerce) to authenticate the Commerce instance.
+1. Install the [Commerce eventing module](./getting-started.md) in your Commerce instance.
 
-1. Configures your [events.config.yaml](#eventsconfigyaml) and `.env` files with the commerce event provider specification.
+1. Set up the [Adobe Commerce HTTP Client](./connect.md#connect-to-adobe-commerce) to authenticate the Commerce instance.
+
+1. Configure your [events.config.yaml](#eventsconfigyaml) and `.env` files with the commerce event provider specification.
 
    - Create the event provider in advance, by running the [configure-events](#configure-events) script.
 
@@ -94,7 +96,7 @@ This script must finish running before you deploy the application for event regi
 
 ### create-payment-methods
 
-The `create-payment-methods` script creates payment methods in Adobe Commerce.
+The [`create-payment-methods`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/create-payment-methods.js) script creates payment methods in Adobe Commerce.
 
 It reads the payment methods configuration from the `payment-methods.yaml` file and creates the payment methods in Adobe Commerce.
 

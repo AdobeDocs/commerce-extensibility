@@ -18,9 +18,9 @@ To use the Adobe Commerce HTTP Client, update `COMMERCE_BASE_URL=<commerce_insta
 
 Depending on your Adobe Commerce setup, there are two options to authenticate and communicate with App Builder:
 
-1. [Configure Adobe Identity Management Service (IMS)](#configure-adobe-identity-management-service-ims)
+- [Configure Adobe Identity Management Service (IMS)](#configure-adobe-identity-management-service-ims)
 
-1. [Configure Commerce Integration](#configure-commerce-integration)
+- [Configure Commerce Integration](#create-a-commerce-integration)
 
 If a Commerce integration is detected, it has precedence over IMS authentication. However, if neither option is detected or configured, than client instantiation will fail.
 
@@ -32,15 +32,13 @@ IMS authentication requires the following setup:
 
 1. Create new IMS credentials through the [Adobe Developer Console](https://developer.adobe.com/console). Add a new `API` service in the workspace. From the list of API's, select `I/O Management API` and follow the displayed steps. After adding the API, all credentials are generated.
 
-1. Add a Technical Account to the Commerce Admin:
-
 1. Add a technical account with server-to-server credentials to the Commerce Admin with the appropriate permissions using the [Admin User Creation Guide](https://experienceleague.adobe.com/en/docs/commerce-admin/systems/user-accounts/permissions-users-all#create-a-user). If a technical account with appropriate permissions already exists, you can use it instead.
 
-   1. When associating the user with the account, find your `Technical Account email` as a part of generated IMS credentials with following pattern: `<technical-account>@techacct.adobe.com` and use that value in the `Email` field during user creation:
+1. When associating the user with the account, find your `Technical Account email` as a part of generated IMS credentials with following pattern: `<technical-account>@techacct.adobe.com` and use that value in the `Email` field during user creation:
 
-      ![userCreation.png](../../_images/starterkit/userCreation.png)
+   ![userCreation.png](../../_images/starterkit/userCreation.png)
 
-   1. On the `User Role` tab, select the `Administrators` role to provide all necessary permissions.
+1. On the `User Role` tab, select the `Administrators` role to provide all necessary permissions.
 
 Copy the generated credentials (client ID, client secret, technical account ID, and technical account email) to the `.env` file in the root of the project:
 
@@ -55,7 +53,7 @@ OAUTH_IMS_ORG_ID=<img org>
 
 ### Create a Commerce integration
 
-This option also allows communication between Commerce and App Builder.
+This option allows communication between Commerce and App Builder.
 
 1. Create a new Adobe Commerce Integration by following the [systems integration](https://experienceleague.adobe.com/en/docs/commerce-admin/systems/integrations) guide.
 

@@ -13,7 +13,7 @@ module.exports = [
     },
     {
         title: 'Project structure',
-        path: '/starter-kit/checkout/structure/',
+        path: '/starter-kit/checkout/configure/',
     },
     {
         title: 'Connect to Adobe Commerce',

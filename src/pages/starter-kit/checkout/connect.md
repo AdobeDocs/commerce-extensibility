@@ -16,13 +16,13 @@ To use the Adobe Commerce HTTP Client, update `COMMERCE_BASE_URL=<commerce_insta
 
 ## Authentication
 
-Depending on your Adobe Commerce setup, there are 2 options to authenticate and communicate with App Builder:
+Depending on your Adobe Commerce setup, there are two options to authenticate and communicate with App Builder:
 
 1. [Configure Adobe Identity Management Service (IMS)](#configure-adobe-identity-management-service-ims)
 
 1. [Configure Commerce Integration](#configure-commerce-integration)
 
-If a commerce integration is detected, it has precedence over IMS authentication. However, if neither option is detected or configured, than client instantiation will fail.
+If a Commerce integration is detected, it has precedence over IMS authentication. However, if neither option is detected or configured, than client instantiation will fail.
 
 ### Configure Adobe Identity Management Service (IMS)
 
@@ -34,7 +34,7 @@ IMS authentication requires the following setup:
 
 1. Add a Technical Account to the Commerce Admin:
 
-   1. Add a technical account with server-to-server credentials to the Commerce Admin with the appropriate permissions using the [Admin User Creation Guide](https://experienceleague.adobe.com/en/docs/commerce-admin/systems/user-accounts/permissions-users-all#create-a-user). If a technical account with appropriate permissions already exists, you can use it instead.
+1. Add a technical account with server-to-server credentials to the Commerce Admin with the appropriate permissions using the [Admin User Creation Guide](https://experienceleague.adobe.com/en/docs/commerce-admin/systems/user-accounts/permissions-users-all#create-a-user). If a technical account with appropriate permissions already exists, you can use it instead.
 
    1. When associating the user with the account, find your `Technical Account email` as a part of generated IMS credentials with following pattern: `<technical-account>@techacct.adobe.com` and use that value in the `Email` field during user creation:
 
@@ -53,7 +53,7 @@ OAUTH_SCOPES=<scope>
 OAUTH_IMS_ORG_ID=<img org>
 ```
 
-### Configure Commerce integration
+### Create a Commerce integration
 
 This option also allows communication between Commerce and App Builder.
 

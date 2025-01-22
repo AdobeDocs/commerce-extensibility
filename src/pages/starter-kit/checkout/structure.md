@@ -87,8 +87,8 @@ To run the script, ensure you have the following:
 
 1. The script requires the following environment variables, which update the values in **Stores > Configuration > Adobe Services > Adobe I/O Events > Commerce events**:
 
-   - `COMMERCE_ADOBE_IO_EVENTS_MERCHANT_ID`: The merchant ID of the commerce instance.
-   - `COMMERCE_ADOBE_IO_EVENTS_ENVIRONMENT_ID`: The environment ID of the commerce instance.
+   - `COMMERCE_ADOBE_IO_EVENTS_MERCHANT_ID`: The merchant ID of the Commerce instance.
+   - `COMMERCE_ADOBE_IO_EVENTS_ENVIRONMENT_ID`: The environment ID of the Commerce instance.
 
 This script must finish running before you deploy the application for event registration.
 

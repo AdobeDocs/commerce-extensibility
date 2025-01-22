@@ -27,7 +27,7 @@ const commerceClient = await getAdobeCommerceClient(process.env);
 | `title`                   | String  | Display name of the payment method.|
 | `description`             | String  | Description of the payment method.|
 | `active`                  | Boolean | Status indicating if the method is active.|
-| `backend_integration_url` | String  | URL for backend integration, which is an app builder URL.|
+| `backend_integration_url` | String  | URL for backend integration, which is an App Builder URL.|
 | `stores`                  | Array   | List of store codes that payment method is available for.|
 | `order_status`            | String  | Initial [order status](https://experienceleague.adobe.com/en/docs/commerce-admin/stores-sales/order-management/orders/order-status) when using this method. Default is `pending`. |
 | `countries`               | Array   | List of countries where the method is available.|

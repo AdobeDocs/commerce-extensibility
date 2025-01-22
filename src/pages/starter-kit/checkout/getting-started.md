@@ -21,7 +21,7 @@ To begin using the checkout starter kit, ensure that your Adobe Commerce install
 
 - Install the Commerce Eventing Module
 
-    The [Commerce Eventing module](https://developer.adobe.com/commerce/extensibility/events/) is crucial for handling events within Adobe Commerce. The eventing module is available in Adobe Commerce version `2.4.6` and higher.
+    The [Commerce Eventing module](https://developer.adobe.com/commerce/extensibility/events/) is crucial for handling events within Adobe Commerce. The eventing module is installed automatically in Adobe Commerce version `2.4.6` and higher.
 
     This starter kit requires version `1.10.0` or higher of the Commerce Eventing module. To install this module, run the following command using Composer:
 

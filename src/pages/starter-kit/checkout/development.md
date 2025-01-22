@@ -54,7 +54,7 @@ Use the following links to configure formatting for your IDE:
 
 For debugging applications created with the starter kit, refer to the [App Builder debugging](https://developer.adobe.com/app-builder/docs/guides/development/#debugging) documentation.
 
-### Deploy & Cleanup
+### Deploy and cleanup
 
 The starter kit uses the Adobe I/O CLI to deploy and undeploy the application, using the following commands:
 

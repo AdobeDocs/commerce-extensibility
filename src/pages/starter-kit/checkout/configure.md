@@ -69,7 +69,7 @@ It reads `dx_commerce_events` event provider specification from the [events.conf
 
 1. Subscribes to the required commerce events.
 
-## Prerequisites
+#### Prerequisites
 
 To run the script, ensure you have completed the following steps:
 

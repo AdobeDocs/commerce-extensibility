@@ -15,7 +15,7 @@ This page explores different use cases and scenarios that can be implemented usi
 Third-party systems usually offer a way to subscribe to events that are emitted when certain actions are performed. For example, with a payment gateway we may subscribe to `Authorization`, `Capture` or `Refund` events.
 
 Adobe I/O Events can offload the events processing which requires configuring an event provider. The
-[`configure-events`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/configure-events.js) script can manage third-party event providers required for your integration. Refer to [configure-events](./structure.md#configure-events) for more information.
+[`configure-events`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/configure-events.js) script can manage third-party event providers required for your integration. Refer to [configure-events](./configure.md#configure-events) for more information.
 
 After you configure the event provider, you can publish third-party events and register a consumer to process them accordingly.
 

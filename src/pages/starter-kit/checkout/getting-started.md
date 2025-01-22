@@ -80,4 +80,4 @@ Use the following steps to configure your local environment:
 
 1. Copy the environment variables from the [`env.dist`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/env.dist) to a local `.env` file and enter the required values.
 
-After completing the previous steps you are ready to deploy the initial project in app builder. However, consider reviewing the scripts provided to configure the Commerce events provider, its subscriptions, any 3rd party events or an out-of-process payment method. We review these scripts in detail on the [Project structure](./structure.md) page.
+After completing the previous steps you are ready to deploy the initial project in app builder. However, consider reviewing the scripts provided to configure the Commerce events provider, its subscriptions, any 3rd party events or an out-of-process payment method. We review these scripts in detail on the [Project structure](./configure.md) page.

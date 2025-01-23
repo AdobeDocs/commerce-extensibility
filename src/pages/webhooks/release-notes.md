@@ -13,7 +13,7 @@ These release notes describe the latest version of Adobe Commerce Webhooks.
 
 ### Release date
 
-January TBD, 2025
+January 23, 2025
 
 ### Enhancements
 

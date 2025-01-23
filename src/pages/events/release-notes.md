@@ -16,7 +16,7 @@ See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io
 
 ### Release date
 
-January TBD, 2025
+January 23, 2025
 
 ### Enhancements
 

@@ -19,6 +19,10 @@ January TBD, 2025
 
 * Added the `GET /rest/<store_view_code>/V1/webhooks/list` REST endpoint for retrieving a list of configured webhooks. <!-- CEXT-3925, CEXT-4068 -->
 
+### Bug fix
+
+* Fixed an issue causing the `depth` option value to not impact the output of the `webhooks:info` command. <!-- CEXT-4102 --->
+
 ## Version 1.7.0
 
 ### Release date
@@ -47,7 +51,7 @@ October 30, 2024
 
 * Updated copyrights in the generated module files. <!--- CEXT-3508 -->
 
-## Bug fix
+### Bug fix
 
 * Fixed an issue causing `null` values to be returned in some payloads output by the `webhooks:info` command <!--CEXT-3608 -->
 

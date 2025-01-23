@@ -29,7 +29,7 @@ You can use the Commerce Admin or the command line to find supported events and 
 You can programmatically register events using the following methods:
 
 *  Create an `io_events.xml` file in your module or in the root `app/etc` directory
-*  Declare them in the system `config.php` file
+*  Declare them in the system `env.php` or `config.php` file
 
 For each event you register, you must define which fields to transmit to your App Builder application. The payload of an event can be massive. In addition, some events include sensitive or PCI compliance data by default. The payload of the `observer.catalog_product_save_after` event is similar to the following:
 
@@ -387,9 +387,9 @@ The contents of the event are similar to the following:
 }
 ```
 
-### config.php
+### config.php and env.php
 
-You can also create an `io_events` section in the Commerce [`app/etc/config.php file`](https://experienceleague.adobe.com/docs/commerce-operations/configuration-guide/files/deployment-files.html). Events registered using this mechanism can be disabled from the command line.
+You can also create an `io_events` section in the Commerce [`app/etc/config.php file`](https://experienceleague.adobe.com/docs/commerce-operations/configuration-guide/files/deployment-files.html). As of version of **1.11.0** of Adobe I/O Events for Adobe Commerce, you can also create an `io_events section` in the Commerce [`app/etc/env.php file`](https://experienceleague.adobe.com/en/docs/commerce-operations/configuration-guide/files/deployment-files). Events registered using this mechanism can be disabled from the command line.
 
 For example:
 

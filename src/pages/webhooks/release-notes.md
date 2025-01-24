@@ -21,7 +21,7 @@ January 23, 2025
 
 ### Bug fix
 
-* Fixed an issue causing the `depth` option value to not impact the output of the `webhooks:info` command. <!-- CEXT-4102 --->
+* Fixed an issue causing the `depth` option value to not impact the output of the `webhooks:info` command. <!-- CEXT-4102 -->
 
 ## Version 1.7.0
 

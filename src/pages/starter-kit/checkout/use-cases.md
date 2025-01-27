@@ -137,3 +137,196 @@ Hook Rules
 You can also enable webhook signature generation by following the [webhooks signature verification](../../webhooks/signature-verification.md) instructions.
 
 Refer to [`actions/validate-payment.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/validate-payment/index.js) for an example of how to receive the request and validate the payment according to the payment gateway needs.
+
+## Shipping methods
+
+The shipping methods can be added to the checkout process by using the [Adobe Commerce Webhook](../../webhooks/index.md) functionality.
+
+After the webhook is registered, every time a shopping cart is requested, a synchronous call is dispatched to the App Builder application implementing the shipping method to calculate the shipping cost and provide the available shipping methods.
+
+Refer to [`actions/shipping-methods.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/shipping-methods/index.js) for an example of how to process the request and return the list of available shipping methods.
+
+To register a webhook, you need to create a `webhooks.xml` [configuration file](../../webhooks/xml-schema.md) in your module or in the root app/etc directory.
+
+The following example demonstrates how to add a webhook to the `plugin.magento.out_of_process_shipping_methods.api.shipping_rate_repository.get_rates` method:
+
+```xml
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_AdobeCommerceWebhooks:etc/webhooks.xsd">
+    <method name="plugin.magento.out_of_process_shipping_methods.api.shipping_rate_repository.get_rates" type="after">
+        <hooks>
+            <batch name="dps">
+                <hook name="add_shipping_rates_dps" url="https://<yourappbuilder>.runtime.adobe.io/api/v1/web/commerce-checkout-starter-kit/shipping-methods" method="POST" timeout="5000" softTimeout="1000" priority="100" required="true">
+                    <fields>
+                        <field name="rateRequest" />
+                    </fields>
+                </hook>
+            </batch>
+        </hooks>
+    </method>
+</config>
+```
+
+Or to navigate to **System > Webhooks** in the Adobe Commerce Admin and create a new webhook with the following configuration:
+
+```
+Hook Settings
+  Webhook Method: plugin.magento.out_of_process_shipping_methods.api.shipping_rate_repository.get_rates
+  Webhook Type: after
+  Batch Name shipping_methods
+  Hook Name: oope_shipping_methods_carrier_one
+  URL: https://<yourappbuilder>.runtime.adobe.io/api/v1/web/commerce-checkout-starter-kit/shipping-methods
+  Active: Yes
+  Method: POST
+
+Hook Fields
+  Field: rateRequest
+```
+
+You can register multiple webhooks for different shipping methods or shipping carriers by adding them into the same batch to ensure they are executed in parallel or create multiple batches to execute them sequentially.
+
+## Shipping methods: GraphQL
+
+In the `setShippingAddressesOnCart` the available shipping methods that are returned by the webhook are appended to the `available_shipping_methods` field.
+
+You can use the `additional_data` field to pass additional information about the shipping method from the webhook. The `additional_data` field is an array of key-value pairs that can be useful for passing additional information about the shipping method.
+
+```json
+{
+  "data": {
+    "setShippingAddressesOnCart": {
+      "cart": {
+        "shipping_addresses": [
+          {
+            "firstname": "John",
+            "lastname": "Doe",
+            "company": "Company Name",
+            "street": [
+              "3320 N Crescent Dr",
+              "Beverly Hills"
+            ],
+            "city": "Los Angeles",
+            "region": {
+              "code": "CA",
+              "label": "California"
+            },
+            "postcode": "70210",
+            "telephone": "123-456-0000",
+            "country": {
+              "code": "US",
+              "label": "US"
+            },
+            "available_shipping_methods": [
+              {
+                "amount": {
+                  "currency": "USD",
+                  "value": 17
+                },
+                "available": true,
+                "carrier_code": "DPS",
+                "carrier_title": "Demo Postal Service",
+                "error_message": "",
+                "method_code": "dps_shipping_one",
+                "method_title": "Demo Custom Shipping One",
+                "price_excl_tax": {
+                  "currency": "USD",
+                  "value": 17
+                },
+                "price_incl_tax": {
+                  "currency": "USD",
+                  "value": 17
+                },
+                "additional_data": [
+                  {
+                    "key": "additional_data_key",
+                    "value": "additional_data_value"
+                  },
+                  {
+                    "key": "additional_data_key2",
+                    "value": "additional_data_value2"
+                  },
+                  {
+                    "key": "additional_data_key3",
+                    "value": "additional_data_value3"
+                  }
+                ]
+              },
+              {
+                "amount": {
+                  "currency": "USD",
+                  "value": 18
+                },
+                "available": true,
+                "carrier_code": "DPS",
+                "carrier_title": "Demo Postal Service",
+                "error_message": "",
+                "method_code": "dps_shipping_two",
+                "method_title": "Demo Custom Shipping Two",
+                "price_excl_tax": {
+                  "currency": "USD",
+                  "value": 18
+                },
+                "price_incl_tax": {
+                  "currency": "USD",
+                  "value": 18
+                },
+                "additional_data": []
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+In the `setShippingMethodsOnCart` mutation you can set the shipping method provided by webhook, it's information will be stored in the `selected_shipping_method` field with the `additional_data` if provided.
+
+```json
+{
+  "data": {
+    "setShippingMethodsOnCart": {
+      "cart": {
+        "shipping_addresses": [
+          {
+            "selected_shipping_method": {
+              "amount": {
+                "currency": "USD",
+                "value": 17
+              },
+              "carrier_code": "DPS",
+              "carrier_title": "Demo Postal Service",
+              "method_code": "dps_shipping_one",
+              "method_title": "Demo Custom Shipping One",
+              "price_excl_tax": {
+                "currency": "USD",
+                "value": 17
+              },
+              "price_incl_tax": {
+                "currency": "USD",
+                "value": 17
+              },
+              "additional_data": [
+                {
+                  "key": "additional_data_key",
+                  "value": "additional_data_value"
+                },
+                {
+                  "key": "additional_data_key2",
+                  "value": "additional_data_value2"
+                },
+                {
+                  "key": "additional_data_key3",
+                  "value": "additional_data_value3"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```

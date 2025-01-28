@@ -54,7 +54,11 @@ The script uses the following environment variables:
 - `AIO_EVENTS_PROVIDERMETADATA_TO_PROVIDER_MAPPING`: (Optional) Existing provider metadata to provider mapping.
 
 The script does not support deleting event providers. If you need to delete an event provider, you can do
-it through AIO CLI with the following command: `aio event provider delete <provider-id>`.
+it through AIO CLI with the following command:
+
+```bash
+`aio event provider delete <provider-id>`.
+```
 
 ### configure-commerce-events
 

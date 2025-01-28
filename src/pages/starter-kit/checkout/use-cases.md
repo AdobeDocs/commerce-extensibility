@@ -116,7 +116,7 @@ With this information persisted, you can configure an [Adobe Commerce Webhook](.
 
 To register a webhook, navigate to **System > Webhooks** in the Adobe Commerce Admin and create a new webhook with the following configuration:
 
-```javascript
+```yaml
 Hook Settings
   Webhook Method: observer.sales_order_place_before
   Webhook Type: before

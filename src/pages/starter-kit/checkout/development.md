@@ -14,11 +14,15 @@ This guide provides basic information for software development using the checkou
 
 The testing framework is in [Jest](https://jestjs.io) and execution is based on the [`aio` CLI](https://developer.adobe.com/runtime/docs/guides/tools/cli_install/).
 
-```bash
-# Run unit tests for ui and actions
-aio app test
+Run unit tests for the UI and actions:
 
-# Run e2e tests
+```bash
+aio app test
+```
+
+Run end-to-end tests:
+
+```bash
 aio app test --e2e
 ```
 
@@ -28,22 +32,41 @@ These are example tests and do not provide any relevant testing. These tests are
 
 The starter kit uses [Prettier](https://prettier.io) and [ESLint](https://eslint.org) to enforce code style and formatting. The following commands are available for linting and formatting:
 
-```bash
-# Check linting
-npm run lint:check
-# Fix linting
-npm run lint:fix
+- Check linting
 
-# Check format
-npm run format:check
-# Fix format
-npm run format:fix
+  ```bash
+  npm run lint:check
+  ```
 
-# Check both linting and format
-npm run code:check
-# Fix both linting and format
-npm run code:fix
-```
+- Fix linting
+
+  ```bash
+  npm run lint:fix
+  ```
+
+- Check format
+
+  ```bash
+  npm run format:check
+  ```
+
+- Fix format
+
+  ```bash
+  npm run format:fix
+  ```
+
+- Check both linting and format
+
+  ```bash
+  npm run code:check
+  ```
+
+- Fix both linting and format
+
+  ```bash
+  npm run code:fix
+  ```
 
 Use the following links to configure formatting for your IDE:
 

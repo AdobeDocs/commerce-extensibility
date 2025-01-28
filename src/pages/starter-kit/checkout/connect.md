@@ -42,14 +42,14 @@ IMS authentication requires the following setup:
 
 1. Copy the generated credentials (client ID, client secret, technical account ID, and technical account email) to the `.env` file in the root of the project:
 
-```js
-OAUTH_CLIENT_ID=<client id>
-OAUTH_CLIENT_SECRETS=<client secret>
-OAUTH_TECHNICAL_ACCOUNT_ID=<technical account id>
-OAUTH_TECHNICAL_ACCOUNT_EMAIL=<technical account email>
-OAUTH_SCOPES=<scope>
-OAUTH_IMS_ORG_ID=<img org>
-```
+   ```js
+   OAUTH_CLIENT_ID=<client id>
+   OAUTH_CLIENT_SECRETS=<client secret>
+   OAUTH_TECHNICAL_ACCOUNT_ID=<technical account id>
+   OAUTH_TECHNICAL_ACCOUNT_EMAIL=<technical account email>
+   OAUTH_SCOPES=<scope>
+   OAUTH_IMS_ORG_ID=<img org>
+   ```
 
 ### Create a Commerce integration
 

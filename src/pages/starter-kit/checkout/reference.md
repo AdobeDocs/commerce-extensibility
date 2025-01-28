@@ -221,15 +221,13 @@ try {
 | --------------------------- | ------- | ----------------------------------------------------------------------- |
 | `code`                      | String  | Unique identifier for the shipping carrier.                             |
 | `title`                     | String  | Display name of the shipping carrier.                                   |
-| `stores`                    | Array   | List of store codes that the shipping carrier is available              |
+| `stores`                    | Array   | List of store codes where the shipping carrier is available.              |
 | `countries`                 | Array   | List of countries where the shipping carrier is available.              |
 | `active`                    | Boolean | Status indicating if the shipping carrier is active.                    |
 | `sort_order`                | Integer | The sort order of shipping carriers.                                    |
 | `tracking_available`        | Boolean | Status indicating if the shipping carrier has available tracking.       |
-| `shipping_labels_available` | Boolean | Status indicating if the shipping carrier has available sipping labels. |
-
-
-<CodeBlock slots="heading, code" repeat="2" languages="javascript, javascript" />
+| `shipping_labels_available` | Boolean | Status indicating if the shipping carrier has available shipping labels. |
+<CodeBlock slots="heading, code" repeat="2" languages="javascript, json" />
 
 #### Example usage
 
@@ -255,8 +253,6 @@ try {
   return errorResponse(HTTP_INTERNAL_ERROR, 'Error occurred while creating shipping carrier');
 }
 ```
-
-
 #### Example response
 
 ```json
@@ -280,11 +276,9 @@ try {
 
 `getOopeShippingCarriers` retrieves a list of all out-of-process shipping carriers in the Adobe Commerce instance.
 
-<CodeBlock slots="heading, code" repeat="2" languages="javascript, javascript" />
+<CodeBlock slots="heading, code" repeat="2" languages="javascript, json" />
 
 #### Example usage
-
-
 ```javascript
 try {
   const listResponse = await commerceClient.getOopeShippingCarriers();
@@ -331,7 +325,7 @@ try {
 
 ## Get an OOPE shipping carrier by code
 
-`getOopeShippingCarrier` retrieves one out-of-process shipping carrier by code from the Adobe Commerce instance.
+`getOopeShippingCarrier` retrieves one out-of-process shipping carrier by `code` from the Adobe Commerce instance.
 
 **Payload parameters:**
 
@@ -339,7 +333,7 @@ try {
 | --------- | ------ | ------------------------------------------- |
 | `code`    | String | Unique identifier for the shipping carrier. |
 
-<CodeBlock slots="heading, code" repeat="2" languages="javascript, javascript" />
+<CodeBlock slots="heading, code" repeat="2" languages="javascript, json" />
 
 #### Example usage
 

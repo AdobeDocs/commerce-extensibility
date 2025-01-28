@@ -140,13 +140,13 @@ Refer to [`actions/validate-payment.js`](https://github.com/adobe/commerce-check
 
 ## Shipping methods
 
-The shipping methods can be added to the checkout process by using the [Adobe Commerce Webhook](../../webhooks/index.md) functionality.
+You can add shipping methods to the checkout process by using [webhooks](../../webhooks/index.md).
 
 After the webhook is registered, every time a shopping cart is requested, a synchronous call is dispatched to the App Builder application implementing the shipping method to calculate the shipping cost and provide the available shipping methods.
 
 Refer to [`actions/shipping-methods.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/shipping-methods/index.js) for an example of how to process the request and return the list of available shipping methods.
 
-To register a webhook, you need to create a `webhooks.xml` [configuration file](../../webhooks/xml-schema.md) in your module or in the root app/etc directory.
+To register a webhook, you need to create a `webhooks.xml` [configuration file](../../webhooks/xml-schema.md) in your module or in the root `app/etc` directory.
 
 The following example demonstrates how to add a webhook to the `plugin.magento.out_of_process_shipping_methods.api.shipping_rate_repository.get_rates` method:
 
@@ -168,7 +168,7 @@ The following example demonstrates how to add a webhook to the `plugin.magento.o
 </config>
 ```
 
-Or to navigate to **System > Webhooks** in the Adobe Commerce Admin and create a new webhook with the following configuration:
+Alternatively, you can navigate to **System > Webhooks** in the Adobe Commerce Admin and create a new webhook with the following configuration:
 
 ```
 Hook Settings
@@ -188,9 +188,9 @@ You can register multiple webhooks for different shipping methods or shipping ca
 
 ## Shipping methods: GraphQL
 
-In the `setShippingAddressesOnCart` the available shipping methods that are returned by the webhook are appended to the `available_shipping_methods` field.
+In `setShippingAddressesOnCart` available shipping methods that are returned by the webhook are appended to the `available_shipping_methods` field.
 
-You can use the `additional_data` field to pass additional information about the shipping method from the webhook. The `additional_data` field is an array of key-value pairs that can be useful for passing additional information about the shipping method.
+You can use the `additional_data` field to pass an array of key-value pairs to provide additional information about the shipping method from the webhook.```
 
 ```json
 {
@@ -282,7 +282,7 @@ You can use the `additional_data` field to pass additional information about the
 }
 ```
 
-In the `setShippingMethodsOnCart` mutation you can set the shipping method provided by webhook, it's information will be stored in the `selected_shipping_method` field with the `additional_data` if provided.
+In the `setShippingMethodsOnCart` mutation you can set the shipping method provided by webhook, its information is stored in the `selected_shipping_method` field with the `additional_data` if provided.
 
 ```json
 {

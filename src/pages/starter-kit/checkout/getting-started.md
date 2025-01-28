@@ -21,7 +21,8 @@ To begin using the checkout starter kit, ensure that your Adobe Commerce install
 
 - Install the Out-of-Process Shipping Extensions (OOPE) Module in Adobe Commerce
 
-  To enable out-of-process shipping methods in Adobe Commerce, install the `magento/module-out-of-process-shipping-methods`. This module enables out-of-process shipping methods functionalities.
+  To enable out-of-process shipping methods in Adobe Commerce, install the `magento/module-out-of-process-shipping-methods` module.
+
   To install the module, run the following command using Composer:
 
     ```bash

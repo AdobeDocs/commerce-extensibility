@@ -33,7 +33,7 @@ The starter kit provides set of [scripts](https://github.com/adobe/commerce-chec
 
 The [`configure-events`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/configure-events.js) script configures the Adobe I/O Events integration for your project with a single command.
 
-It performs the following actions:
+The script performs the following actions:
 
 1. It reads the event providers specification from the [events.config.yaml](#eventsconfigyaml) file and synchronizes the event providers and their metadata.
 
@@ -50,17 +50,17 @@ To run the `configure-events` script, ensure that your project configuration (`.
 
 The script uses the following environment variables:
 
-- `AIO_runtime_namespace`: The Adobe I/O Runtime namespace used as suffix for the Adobe I/O Events provider label.
+- `AIO_runtime_namespace`: The Adobe I/O Runtime namespace is used as the suffix for the Adobe I/O Events provider label.
 - `AIO_EVENTS_PROVIDERMETADATA_TO_PROVIDER_MAPPING`: (Optional) Existing provider metadata to provider mapping.
 
-Deleting event providers is not supported by the script. If you need to delete an event provider, you can do
+The script does not support deleting event providers. If you need to delete an event provider, you can do
 it through AIO CLI with the following command: `aio event provider delete <provider-id>`.
 
 ### configure-commerce-events
 
 The [`configure-commerce-events`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/configure-commerce-events.js) script configures the Commerce event provider for your Commerce instance.
 
-It reads `dx_commerce_events` event provider specification from the [events.config.yaml](#eventsconfigyaml) and `.env` files, and performs the following actions:
+It reads the `dx_commerce_events` event provider specification from the [events.config.yaml](#eventsconfigyaml) and `.env` files, and performs the following actions:
 
 1. Configures Commerce eventing in the Commerce instance.
 

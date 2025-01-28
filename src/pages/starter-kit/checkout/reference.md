@@ -24,8 +24,8 @@ const commerceClient = await getAdobeCommerceClient(process.env);
 | Parameter                 | Type     | Required | Description |
 | ------------------------- | ------- | ----- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `code`                    | String  | Yes | Unique identifier for the payment method.|
-| `title`                   | String  | No || Display name of the payment method.|
-| `description`             | String  | No| Description of the payment method.|
+| `title`                   | String  | No | Display name of the payment method.|
+| `description`             | String  | No | Description of the payment method.|
 | `active`                  | Boolean | Yes | Status indicating if the method is active.|
 | `backend_integration_url` | String  | No | URL for backend integration, which is an App Builder URL.|
 | `stores`                  | Array   | No | List of store codes that payment method is available for.|

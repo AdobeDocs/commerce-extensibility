@@ -10,7 +10,7 @@ keywords:
 
 To begin using the checkout starter kit, ensure that your Adobe Commerce installation meets the following prerequisites:
 
-- Install the Out-of-Process Payment Extensions (OOPE) Module in Adobe Commerce
+- Install the Out-of-Process Payment Extensions (OOPE) module on Adobe Commerce
 
     To enable out-of-process payment methods in Commerce, install the `magento/module-out-of-process-payment-methods`. This module enables out-of-process payment functionalities.
     To install the module, run the following command using Composer:
@@ -19,7 +19,7 @@ To begin using the checkout starter kit, ensure that your Adobe Commerce install
     composer require magento/module-out-of-process-payment-methods --with-dependencies
     ```
 
-- Install the Commerce Eventing Module
+- Install the Commerce Eventing module
 
     The [Commerce Eventing module](https://developer.adobe.com/commerce/extensibility/events/) is crucial for handling events within Adobe Commerce. The eventing module is installed automatically in Adobe Commerce version `2.4.6` and higher.
 

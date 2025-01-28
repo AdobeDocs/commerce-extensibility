@@ -254,6 +254,7 @@ try {
   return errorResponse(HTTP_INTERNAL_ERROR, 'Error occurred while creating shipping carrier');
 }
 ```
+
 #### Example response
 
 ```json
@@ -280,6 +281,7 @@ try {
 <CodeBlock slots="heading, code" repeat="2" languages="javascript, json" />
 
 #### Example usage
+
 ```javascript
 try {
   const listResponse = await commerceClient.getOopeShippingCarriers();

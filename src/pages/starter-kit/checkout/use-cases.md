@@ -114,7 +114,7 @@ setPaymentMethodOnCart(
 
 With this information persisted, you can configure an [Adobe Commerce Webhook](../../webhooks/index.md) so that every time an order is placed, a synchronous call dispatches to the App Builder application implementing the payment method to validate the payment.
 
-To register a webhook, navigate to **System > Webhooks** in the Adobe Commerce Admin and create a new webhook with the following configuration:
+To register a webhook, [modify the `webhooks.xml` file](../../webhooks/hooks.md) and create a new webhook with the following configuration:
 
 ```yaml
 Hook Settings

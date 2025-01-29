@@ -90,7 +90,7 @@ These fields are present and declared in the parent event.
 
 The `bin/magento events:subscribe <event_code> --force --fields=<name1> --fields=<name2>` command creates and registers custom and native Commerce events. When you also specify the `--parent <event_code>` and `--rules=<field-name>|<operator>|<value>` options, you create and register a conditional event.
 
-The following command creates and registers the same conditional event shown in the `io_events.xml` example. Running the command also updates the system `config.php` file. If you need to subsequently update or delete the event subscription, you can manually update the event there. The `bin/magento events:unsubscribe` command unsubscribes the event, but it does not remove the command from the `config.php` file.
+The following command creates and registers the same conditional event shown in the `io_events.xml` example. Running the command also updates the system `env.php` file. If you need to subsequently update or delete the event subscription, you can manually update the event there. The `bin/magento events:unsubscribe` command unsubscribes the event, but it does not remove the subscription from the `env.php` file.
 
 ```bash
 bin/magento events:subscribe plugin.magento.catalog.model.resource_model.product.save_low_stock_event \

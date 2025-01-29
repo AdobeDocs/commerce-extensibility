@@ -14,7 +14,7 @@ This page explores different use cases and scenarios that can be implemented usi
 
 Third-party systems usually offer a way to subscribe to events that are emitted when certain actions are performed. For example, with a payment gateway we may subscribe to `Authorization`, `Capture` or `Refund` events.
 
-Adobe I/O Events can offload the events processing which requires configuring an event provider. The
+Adobe I/O Events can offload the events processing, which requires configuring an event provider. The
 [`configure-events`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/configure-events.js) script can manage third-party event providers required for your integration. Refer to [configure-events](./configure.md#configure-events) for more information.
 
 After you configure the event provider, you can publish third-party events and register a consumer to process them accordingly.
@@ -80,7 +80,7 @@ The following steps demonstrate the payment flow:
 
 ## Payment methods: Validate payment info
 
-To perform a headless checkout and payment, the Commerce instance has to ensure that the payment has succeeded and the order can be placed.
+To perform a headless checkout and payment, the Commerce instance must ensure that the payment has succeeded and the order can be placed.
 
 To ingest payment gateway specific information in the payment process, the checkout process must use the [`setPaymentMethodOnCart` mutation](https://developer.adobe.com/commerce/webapi/graphql/schema/cart/mutations/set-payment-method/) in combination with the `payment_method.additional_data` field to persist the information required to validate the payment once the order is placed.
 
@@ -116,7 +116,7 @@ With this information persisted, you can configure an [Adobe Commerce Webhook](.
 
 To register a webhook, navigate to **System > Webhooks** in the Adobe Commerce Admin and create a new webhook with the following configuration:
 
-```javascript
+```yaml
 Hook Settings
   Webhook Method: observer.sales_order_place_before
   Webhook Type: before

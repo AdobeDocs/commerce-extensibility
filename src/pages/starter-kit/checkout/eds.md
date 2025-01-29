@@ -132,7 +132,7 @@ Integration methods can vary depending on your use case. Refer to the [checkout 
 
 ## Extend OOPE GraphQL Schema
 
-If you want to retrieve OOPE payment method information from the Commerce instance,you can extend the GraphQL query using dropin components with the [GraphQL Extensibility API](https://experienceleague.adobe.com/developer/commerce/storefront/dropins/all/extending/).
+If you want to retrieve OOPE payment method information from the Commerce instance, you can extend the GraphQL query using drop-in components with the [GraphQL Extensibility API](https://experienceleague.adobe.com/developer/commerce/storefront/dropins/all/extending/).
 
 1. In `build.mjs` of the boilerplate, add the following code to extend the OOPE GraphQL schema:
 
@@ -176,7 +176,7 @@ If you want to retrieve OOPE payment method information from the Commerce instan
   ]);
   ```
 
-1. Extend OOPE GraphQL schema in the checkout dropin component initializer. It enables the dropin component to retrieve the OOPE data.
+1. Extend the OOPE GraphQL schema in the checkout dropin component initializer. It enables the drop-in component to retrieve the OOPE data.
 
   ```javascript
   await initializeDropin(async () => {

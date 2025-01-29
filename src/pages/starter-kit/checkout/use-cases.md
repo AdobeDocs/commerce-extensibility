@@ -168,22 +168,6 @@ The following example demonstrates how to add a webhook to the `plugin.magento.o
 </config>
 ```
 
-Alternatively, you can navigate to **System > Webhooks** in the Adobe Commerce Admin and create a new webhook with the following configuration:
-
-```yaml
-Hook Settings:
-  Webhook Method: plugin.magento.out_of_process_shipping_methods.api.shipping_rate_repository.get_rates
-  Webhook Type: after
-  Batch Name: shipping_methods
-  Hook Name: oope_shipping_methods_carrier_one
-  URL: https://<yourappbuilder>.runtime.adobe.io/api/v1/web/commerce-checkout-starter-kit/shipping-methods
-  Active: Yes
-  Method: POST
-
-Hook Fields:
-  Field: rateRequest
-```
-
 You can register multiple webhooks for different shipping methods or shipping carriers by adding them into the same batch to ensure they are executed in parallel or create multiple batches to execute them sequentially.
 
 ## Shipping methods: GraphQL

@@ -1,6 +1,6 @@
 ---
-title: API method reference
-description: Learn about the API method available in the Adobe Commerce checkout starter kit.
+title: Payment API usage
+description: Learn how to use the Payment API in the Adobe Commerce checkout starter kit.
 keywords:
   - App Builder
   - Extensibility
@@ -15,7 +15,7 @@ const { getAdobeCommerceClient } = require('../lib/adobe-commerce');
 const commerceClient = await getAdobeCommerceClient(process.env);
 ```
 
-## Create a new OOPE payment method
+## Create a new payment method
 
 `createOopePaymentMethod` creates a new out-of-process payment method with the necessary details such as `code`, `title`, and `configuration`.
 

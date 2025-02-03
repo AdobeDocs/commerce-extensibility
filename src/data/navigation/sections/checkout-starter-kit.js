@@ -32,7 +32,15 @@ module.exports = [
         path: '/starter-kit/checkout/development/',
     },
     {
-        title: 'API reference',
-        path: '/starter-kit/checkout/reference/',
+        title: 'Payment API usage',
+        path: '/starter-kit/checkout/payment-usage/',
+    },
+    {
+        title: 'Payment API reference',
+        path: '/starter-kit/checkout/payment-reference/',
+    },
+    {
+        title: 'Shipping API reference',
+        path: '/starter-kit/checkout/shipping-reference/',
     },
 ];

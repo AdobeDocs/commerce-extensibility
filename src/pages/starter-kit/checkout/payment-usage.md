@@ -6,7 +6,7 @@ keywords:
   - Extensibility
 ---
 
-# API reference
+# Payment API usage
 
 To call the Commerce REST endpoints, initialize the Adobe Commerce Client:
 

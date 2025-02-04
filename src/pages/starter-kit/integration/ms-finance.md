@@ -20,7 +20,7 @@ This reference application provides a base implementation for the most common da
 
 ### Features
 
-![F&O diagram](../_images/starterkit/FO365.png)
+![F&O diagram](../../_images/starterkit/FO365.png)
 
 - **Out-of-the-Box Integration** - Leverage Adobe's serverless extensibility architecture to integrate data between Adobe Commerce and D365 F&O out-of-the-box.
 - **Sync common data types for ecommerce** - Sync customer, products, prices, and stock data from D365 F&O to Commerce.

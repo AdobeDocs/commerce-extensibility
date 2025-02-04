@@ -64,7 +64,7 @@ return {
 
 ## Webhooks example
 
-The Adobe Commerce integration starter kit can use the [Adobe Commerce webhook module](../webhooks/) to allow intercepting flows in Adobe Commerce.
+The Adobe Commerce integration starter kit can use the [Adobe Commerce webhook module](../../webhooks/) to allow intercepting flows in Adobe Commerce.
 
 This reference implementation makes a real-time query to a third-party system to determine whether the product a shopper placed in their cart is in stock.
 
@@ -86,7 +86,7 @@ You must implement the stock-checking logic on an external service.
 
 <InlineAlert variant="info" slots="text"/>
 
-Creating a webhook in the Admin configuration is temporarily disabled, due to changes in [Webhooks](../webhooks/release-notes.md#version-150). Instead, [create a webhook from an `xml` file](../webhooks/hooks.md).
+Creating a webhook in the Admin configuration is temporarily disabled, due to changes in [Webhooks](../../webhooks/release-notes.md#version-150). Instead, [create a webhook from an `xml` file](../../webhooks/hooks.md).
 
 Follow admin configuration to modify your webhook and define the connection between Adobe Commerce and your backoffice system using the `observer.checkout_cart_product_add_before` method.
 
@@ -171,4 +171,4 @@ return {
 
 <InlineAlert variant="info" slots="text"/>
 
-These responses are defined in `webhook\check-stock\index.js` and are adapted from the [Commerce webhook responses](../webhooks/responses.md#responses). You can modify the response implementation in your code as needed.
+These responses are defined in `webhook\check-stock\index.js` and are adapted from the [Commerce webhook responses](../../webhooks/responses.md#responses). You can modify the response implementation in your code as needed.

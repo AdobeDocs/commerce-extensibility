@@ -2,47 +2,47 @@ module.exports = [
     {
         title: "Create",
         header: true,
-        path: "/starter-kit/index.md",
+        path: "/starter-kit/integration/index.md",
         pages: [
             {
                 title: "Overview",
-                path: "/starter-kit/"
+                path: "/starter-kit/integration/"
             },
             {
                 title: "Installation",
-                path: "/starter-kit/create-integration.md"
+                path: "/starter-kit/integration/create-integration.md"
             },
             {
                 title: "Explore the structure",
-                path: "/starter-kit/structure.md"
+                path: "/starter-kit/integration/structure.md"
             },
         ],
     },
     {
         title: "Build & Customize",
         header: true,
-        path: "/starter-kit/events.md",
+        path: "/starter-kit/integration/events.md",
         pages: [
 
             {
                 title: "Event-based integrations",
-                path: "/starter-kit/events.md"   
+                path: "/starter-kit/integration/events.md"   
             },
             {
                 title: "Realtime integrations",
-                path: "/starter-kit/webhooks.md"
+                path: "/starter-kit/integration/webhooks.md"
             },
             {
                 title: "Expose Commerce data",
-                path: "/starter-kit/send-data.md"
+                path: "/starter-kit/integration/send-data.md"
             },
             {
                 title: "Enrich the shopping experience",
-                path: "/starter-kit/receive-data.md"
+                path: "/starter-kit/integration/receive-data.md"
             },
             {
                 title: "Developer tools",
-                path: "/starter-kit/developer-tools.md"
+                path: "/starter-kit/integration/developer-tools.md"
             },
         ],
     },
@@ -50,67 +50,67 @@ module.exports = [
     {
         title: "Collaborate & Launch",
         header: true,
-        path: "/starter-kit/best-practices.md"
+        path: "/starter-kit/integration/best-practices.md"
     },
     {
         title: "Best practices",
-        path: "/starter-kit/best-practices.md"
+        path: "/starter-kit/integration/best-practices.md"
     },
     {
         title: "Prepare for launch",
-        path: "/starter-kit/launch.md"
+        path: "/starter-kit/integration/launch.md"
     },
     */
     {
         title: "Data flows",
         header: true,
-        path: "/starter-kit/data-flows.md"
+        path: "/starter-kit/integration/data-flows.md"
     },
     {
         title: "Overview",
-        path: "/starter-kit/data-flows.md"
+        path: "/starter-kit/integration/data-flows.md"
     },
     {
         title: "Customers",
-        path: "/starter-kit/customers.md"
+        path: "/starter-kit/integration/customers.md"
     },
     {
         title: "Orders",
-        path: "/starter-kit/orders.md"
+        path: "/starter-kit/integration/orders.md"
     },
     {
         title: "Products",
-        path: "/starter-kit/products.md"
+        path: "/starter-kit/integration/products.md"
     },
     {
         title: "Shipments",
-        path: "/starter-kit/shipments.md"
+        path: "/starter-kit/integration/shipments.md"
     },
     {
         title: "Stock",
-        path: "/starter-kit/stock.md"
+        path: "/starter-kit/integration/stock.md"
     },
     /*
     {
         title: "Create a new data flow",
-        path: "/starter-kit/create-data-flow.md"
+        path: "/starter-kit/integration/create-data-flow.md"
     },
     */
     {
         title: "Reference applications",
         header: true,
-        path: "/starter-kit/ms-finance.md",
+        path: "/starter-kit/integration/ms-finance.md",
         pages: [
             {
                 title: "Microsoft Dynamics F&O Accelerator",
-                path: "/starter-kit/ms-finance.md"
+                path: "/starter-kit/integration/ms-finance.md"
             }
         ]
     },
     {
         title: "Additional resources",
         header: true,
-        path: "/starter-kit/contact-us.md",
+        path: "/starter-kit/integration/contact-us.md",
         pages: [
             {
                 title: "App Builder Tutorials",
@@ -127,7 +127,7 @@ module.exports = [
             /*
             {
                 title: "Contact us",
-                path: "/starter-kit/contact-us.md"
+                path: "/starter-kit/integration/contact-us.md"
             }
             */
         ]

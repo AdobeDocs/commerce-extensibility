@@ -1,0 +1,12 @@
+type SelectedShippingMethod {
+    additional_data: [ShippingAdditionalData] @resolver(class: "\\Magento\\OutOfProcessShippingMethods\\Model\\Resolver\\AdditionalData") @doc(description: "Additional data related to the shipping method.")
+}
+
+type AvailableShippingMethod {
+    additional_data: [ShippingAdditionalData] @resolver(class: "\\Magento\\OutOfProcessShippingMethods\\Model\\Resolver\\AdditionalData") @doc(description: "Additional data related to the shipping method.")
+}
+
+type ShippingAdditionalData @doc(description: "A simple key value object.") {
+    key: String
+    value: String
+}

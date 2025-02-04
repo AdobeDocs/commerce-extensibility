@@ -21,7 +21,7 @@ The `actionparams` object allows you to pass values from your environment variab
 
 `YOUR_PARAM=your_value`
 
-To pass the parameters to the action, add the parameter as an `input` under the corresponding action in the `actions/{entity}/../actions.config.yaml` file:
+To pass the parameters to the action, add the parameter as an `input` under the corresponding action in the `actions/{entity}/../../actions.config.yaml` file:
 
 ```yaml
 {action name}:

@@ -33,7 +33,7 @@ The following resources will help you get to know the extensibility options offe
 - Develop custom applications with Adobe Developer App Builder
   - [App Builder overview](https://developer.adobe.com/app-builder/docs/overview/) - An overview of the App Builder ecosystem. The App Builder documentation applies to all Adobe products that integrate with App Builder, including Adobe Commerce.
   - [Creating your first App Builder application](https://developer.adobe.com/app-builder/docs/getting_started/first_app/) - A generalized tutorial on creating your first App Builder app. If you are new to App Builder, Adobe recommends reviewing the App Builder overview before beginning this tutorial.
-  - [Building integrations with App Builder](../starter-kit/create-integration.md) - Accelerate building integrations with the integration starter kit for Adobe Commerce
+  - [Building integrations with App Builder](../starter-kit/integration/create-integration.md) - Accelerate building integrations with the integration starter kit for Adobe Commerce
 - Orchestration with API Mesh for Adobe Developer App Builder
   - [Getting started](https://developer.adobe.com/graphql-mesh-gateway/gateway/getting-started/) - Information on how to get started with API Mesh.
   - [Creating a mesh](https://developer.adobe.com/graphql-mesh-gateway/gateway/create-mesh/) - Developer documentation on creating a mesh.

@@ -27,7 +27,7 @@ To get started with Adobe Commerce integration starter kit:
 
 Integrating Adobe Commerce with your enterprise resource planning (ERP), order management system (OMS), or customer relationship management (CRM) is now easier with Adobe Commerce integration starter kit. The starter kit reduces the cost of integrating with ERP solutions and improves reliability of real-time connections. It includes reference integrations for commonly used commerce data like orders, products, and customers. It also includes onboarding scripts and a standardized architecture for developers to build while following best practices.
 
-![starter kit diagram](../_images/starterkit/starter-kit-diagram.png)
+![starter kit diagram](../../_images/starterkit/starter-kit-diagram.png)
 
 ## Create your integration (step-by-step)
 
@@ -45,21 +45,21 @@ Support services for the starter kit include the basic functionality and configu
 
 1. Click **Create new project from template**.
 
-   ![Create a project](../_images/common/create-project.png)
+   ![Create a project](../../_images/common/create-project.png)
 
    If the **Create project from template** option is not displayed, it might be because your request to access App Builder has not yet been approved.
 
 1. Select **App Builder**. The **Set up templated project** page displays.
 
-   ![Templated project](../_images/common/set-up-templated-project.png)
+   ![Templated project](../../_images/common/set-up-templated-project.png)
 
 1. Specify a project title and app name. Make sure the **Include Runtime with each workspace** checkbox is selected. You can optionally create a custom workspace other than the default **Stage** workspace. To create a custom workspace, click **Add Workspace**, and enter a name and description. Click **Save**. The Console creates a project and workspaces.
 
-   ![New workspace](../_images/common/workspaces.png)
+   ![New workspace](../../_images/common/workspaces.png)
 
 1. In your workspace, click the **Add service** pop-up menu and select **API**.
 
-   ![Add an API to your workspace](../_images/common/stage-add-api.png)
+   ![Add an API to your workspace](../../_images/common/stage-add-api.png)
 
 1. Add the following services to your workspace. Each service must be added individually. You cannot add multiple services simultaneously.
 
@@ -69,11 +69,11 @@ Support services for the starter kit include the basic functionality and configu
 
    Click one of these services, such as **I/O Management API**. Then click **Next**.
 
-   ![Add an API to your workspace](../_images/common/stage-add-api.png)
+   ![Add an API to your workspace](../../_images/common/stage-add-api.png)
 
 1. On the **Configure API** page, select the **OAuth Server-to-Server** option and click **Save configured API**.
 
-   ![generate a key pair](../_images/common/setup-api-oauth.png)
+   ![generate a key pair](../../_images/common/setup-api-oauth.png)
 
    **Note**: You can set up server-to-server authentication using JSON Web Tokens (JWT). However, this method has been deprecated in favor of OAuth and must be replaced no later than January 1, 2025. See [Service Account (JWT) Authentication](https://developer.adobe.com/developer-console/docs/guides/authentication/JWT/) for details on implementing this solution.
 
@@ -103,7 +103,7 @@ Use the following steps to create and activate an integration.
 
 1. Click **Add New Integration**. The **New Integration** page displays.
 
-   ![New integration](../_images/starterkit/add-integration.png)
+   ![New integration](../../_images/starterkit/add-integration.png)
 
 1. Enter a name for the integration in the **Name** field. Leave the other fields blank.
 
@@ -113,17 +113,17 @@ Use the following steps to create and activate an integration.
 
 1. Click the **Activate** link in the grid.
 
-  ![Activate link](../_images/starterkit/activate-integration.png)
+  ![Activate link](../../_images/starterkit/activate-integration.png)
 
 1. On the next page, click the **Allow** button to display the **Integration Tokens for Extensions** page.
 
-   ![Integration tokens](../_images/starterkit/secrets.png)
+   ![Integration tokens](../../_images/starterkit/secrets.png)
 
    You will need the integration details (consumer key, consumer secret, access token, and access token secret) to configure the starter kit. Copy these values to a safe place and click **Done**.
 
 #### Install Adobe I/O Events for Adobe Commerce (Commerce 2.4.4 and 2.4.5 only)
 
-If you are running Adobe Commerce 2.4.6 or higher, the modules that enable eventing are installed automatically. Skip to the next step. If you are running Commerce 2.4.4 or 2.4.5, you must install modules to enable eventing, as described in [Install Adobe I/O Events for Adobe Commerce](../events/installation.md).
+If you are running Adobe Commerce 2.4.6 or higher, the modules that enable eventing are installed automatically. Skip to the next step. If you are running Commerce 2.4.4 or 2.4.5, you must install modules to enable eventing, as described in [Install Adobe I/O Events for Adobe Commerce](../../events/installation.md).
 
 <InlineAlert variant="info" slots="text"/>
 
@@ -184,7 +184,7 @@ aio app deploy
 
 You can confirm the success of the deployment in the Adobe Developer Console by navigating to the Runtime section on your workspace.
 
-![Adobe I/O Runtime actions](../_images/starterkit/runtime-actions.png)
+![Adobe I/O Runtime actions](../../_images/starterkit/runtime-actions.png)
 
 #### Complete the configuration
 
@@ -236,7 +236,7 @@ Process of On-Boarding done successfully: [
 
 Check your App in the Developer Console to confirm the registrations were created.
 
-![Event registrations](../_images/starterkit/registrations.png)
+![Event registrations](../../_images/starterkit/registrations.png)
 
 **Complete the Adobe Commerce eventing configuration**
 
@@ -250,13 +250,13 @@ You must configure Commerce to communicate with your project. Configuration incl
 
 1. In the Commerce Admin, navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Adobe I/O Events** > **General configuration**. The following screen displays.
 
-   ![General configuration](../_images/events/general-configuration-updated.png)
+   ![General configuration](../../_images/events/general-configuration-updated.png)
 
 1. Select the server-to-server authorization method you implemented from the **Adobe I/O Authorization Type** menu. Adobe recommends using OAuth. JWT has been deprecated.
 
 1. Copy the contents of the `<workspace-name>.json` file into the **Adobe I/O Workspace Configuration** field.
 
-1. Enter a unique identifier in the **Adobe I/O Event Provider Instance ID** field. This unique value identifies your Commerce instance, which allows Commerce events to connect to the correct `Event Provider` in Adobe I/O. This ID corresponds to the **Provider** displayed when [subscribing to events](../events/configure-commerce.md#subscribe-and-register-events).
+1. Enter a unique identifier in the **Adobe I/O Event Provider Instance ID** field. This unique value identifies your Commerce instance, which allows Commerce events to connect to the correct `Event Provider` in Adobe I/O. This ID corresponds to the **Provider** displayed when [subscribing to events](../../events/configure-commerce.md#subscribe-and-register-events).
 
    **Note**: This value must contain English alphanumeric characters, underscores (_), and hyphens (-) only.
 
@@ -264,7 +264,7 @@ You must configure Commerce to communicate with your project. Configuration incl
 
 1. Enable Commerce Eventing by setting **Enabled** to `Yes`.
 
-   ![Commerce events configuration](../_images/events/commerce-events.png)
+   ![Commerce events configuration](../../_images/events/commerce-events.png)
 
    **Note**: You must enable cron to allow Commerce to send events to the endpoint.
 
@@ -292,7 +292,7 @@ npm run commerce-event-subscribe
 
 For earlier versions, follow the steps below to subscribe to the events manually.
 
-Use the `bin/magento events:subscribe` command to subscribe to events, as described in [Subscribe and register events](../events/configure-commerce.md#subscribe-and-register-events). The following table defines the events for each supported entity that you must subscribe to and lists the required fields, if applicable.
+Use the `bin/magento events:subscribe` command to subscribe to events, as described in [Subscribe and register events](../../events/configure-commerce.md#subscribe-and-register-events). The following table defines the events for each supported entity that you must subscribe to and lists the required fields, if applicable.
 
 Entity | Event | Required fields
 --- | --- | ---

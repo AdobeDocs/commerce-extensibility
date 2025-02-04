@@ -1,0 +1,12 @@
+---
+config:
+  theme: default
+---
+sequenceDiagram
+  participant A as Frontend Application
+  participant B as App Builder Extension
+  participant C as Payment Gateway
+  A ->>+ C: "Payment (maskedCartId)"
+  C ->>+ B: "paymentResult event or webhook"
+  B ->>+ A: "getOrderByMaskedCartId (maskedCartId)"
+  A ->>+ B: "OrderEntity"

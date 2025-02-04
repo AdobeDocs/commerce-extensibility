@@ -8,6 +8,16 @@ keywords:
 
 # Adobe Commerce Admin UI SDK release notes
 
+## Version 2.2.0
+
+### Release date
+
+February 4, 2025
+
+### Enhancements
+
+* Support PHP 8.4 version for Admin UI SDK.
+
 ## Version 2.1.1
 
 ### Release date

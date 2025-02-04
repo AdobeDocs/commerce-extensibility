@@ -16,7 +16,7 @@ February 4, 2025
 
 ### Enhancements
 
-* Support PHP 8.4 version for Admin UI SDK.
+* The Admin UI SDK supports PHP 8.4.
 
 ## Version 2.1.1
 

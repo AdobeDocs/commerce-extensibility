@@ -8,7 +8,26 @@ keywords:
 
 # Getting started
 
-To begin using the checkout starter kit, ensure that your Adobe Commerce installation meets the following prerequisites:
+To begin using the checkout starter kit, ensure that your Adobe Commerce installation meets the following prerequisites and then proceed with the installation and configuration.
+
+## Prerequisites
+
+You must install or have access to the following prerequisites to develop with the Adobe Commerce checkout starter kit:
+
+- Adobe Commerce version `2.4.4` or higher.
+
+- [Node.js](https://nodejs.org/) version 22. If you have Node Version Manager (`nvm`) installed, you can run the following command to install and use the required version:
+
+  ```bash
+  nvm install 22 && nvm use
+  ```
+
+- [Adobe I/O CLI](https://developer.adobe.com/runtime/docs/guides/tools/cli_install/).
+
+- Access to the [Adobe Developer Console](https://console.adobe.io/) with an App
+  Builder license. If you do not have access to the Adobe Developer Console or App Builder, refer to [get access to App Builder](https://developer.adobe.com/app-builder/docs/overview/getting_access/#get-access-to-app-builder).
+
+## Install Commerce modules
 
 - Install the Out-of-Process Payment Extensions (OOPE) module on Adobe Commerce
 
@@ -47,21 +66,6 @@ To begin using the checkout starter kit, ensure that your Adobe Commerce install
 
     For Adobe Commerce versions `2.4.4` or `2.4.5`, you must install the Adobe I/O Events for Adobe Commerce module manually. Follow the instructions provided in [Adobe I/O Events installation](https://developer.adobe.com/commerce/extensibility/events/installation/).
 
-## Prerequisites
-
-You must install or have access to the following prerequisites to develop with the Adobe Commerce checkout starter kit:
-
-- [Node.js](https://nodejs.org/) version 22. If you have Node Version Manager (`nvm`) installed, you can run the following command to install and use the required version:
-
-  ```bash
-  nvm install 22 && nvm use
-  ```
-
-- [Adobe I/O CLI](https://developer.adobe.com/runtime/docs/guides/tools/cli_install/).
-
-- Access to the [Adobe Developer Console](https://console.adobe.io/) with an App
-  Builder license. If you do not have access to the Adobe Developer Console or App Builder, refer to [get access to App Builder](https://developer.adobe.com/app-builder/docs/overview/getting_access/#get-access-to-app-builder).
-
 ## Initial configuration
 
 Use the following steps to configure your local environment:
@@ -90,4 +94,8 @@ Use the following steps to configure your local environment:
 
 1. Copy the environment variables from the [`env.dist`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/env.dist) to a local `.env` file and enter the required values.
 
-After completing the previous steps you are ready to deploy the initial project in App Builder. However, consider reviewing the scripts provided to configure the Commerce events provider, its subscriptions, any 3rd party events or an out-of-process payment method. We review these scripts in detail on the [Project structure](./configure.md) page.
+After completing the previous steps you can:
+
+- [Connect to Adobe Commerce](./connect.md)
+- [Configure the available scripts](./configure.md)
+- [Deploy your initial project in App Builder](./development.md#deploy-and-cleanup)

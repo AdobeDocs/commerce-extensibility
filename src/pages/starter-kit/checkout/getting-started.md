@@ -29,7 +29,7 @@ To begin using the checkout starter kit, ensure that your Adobe Commerce install
     composer require magento/module-out-of-process-shipping-methods --with-dependencies
     ```
 
-- Install the Commerce Eventing module
+- Install the Commerce Eventing module (Commerce 2.4.4 and 2.4.5 only)
 
     The [Commerce Eventing module](https://developer.adobe.com/commerce/extensibility/events/) is crucial for handling events within Adobe Commerce. The eventing module is installed automatically in Adobe Commerce version `2.4.6` and higher.
 
@@ -90,4 +90,4 @@ Use the following steps to configure your local environment:
 
 1. Copy the environment variables from the [`env.dist`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/env.dist) to a local `.env` file and enter the required values.
 
-After completing the previous steps you are ready to deploy the initial project in app builder. However, consider reviewing the scripts provided to configure the Commerce events provider, its subscriptions, any 3rd party events or an out-of-process payment method. We review these scripts in detail on the [Project structure](./configure.md) page.
+After completing the previous steps you are ready to deploy the initial project in App Builder. However, consider reviewing the scripts provided to configure the Commerce events provider, its subscriptions, any 3rd party events or an out-of-process payment method. We review these scripts in detail on the [Project structure](./configure.md) page.

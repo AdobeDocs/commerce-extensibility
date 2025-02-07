@@ -12,7 +12,7 @@ This page explores different use cases and scenarios that can be implemented usi
 
 ## Third-party events processing
 
-Third-party systems usually offer a way to subscribe to events that are emitted when certain actions are performed. For example, with a payment gateway we may subscribe to `Authorization`, `Capture` or `Refund` events.
+Third-party systems usually offer a way to subscribe to events that are emitted when certain actions are performed. For example, with a payment gateway, we could subscribe to `Authorization`, `Capture` or `Refund` events.
 
 Adobe I/O Events can offload the events processing, which requires configuring an event provider. The
 [`configure-events`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/configure-events.js) script can manage third-party event providers required for your integration. Refer to [configure-events](./configure.md#configure-events) for more information.
@@ -25,7 +25,7 @@ After you configure the event provider, you can publish third-party events and r
 
 You have the following options to publish events with an App Builder app, depending on the flexibility of the third-party system.
 
-#### Directly from 3rd party system (preferred)
+#### Directly from third-party system (preferred)
 
 We recommend ingesting events directly from the third-party system. This is the most efficient way to process events, but requires you to modify the source system to send the events to Adobe I/O Events.
 
@@ -172,9 +172,9 @@ You can register multiple webhooks for different shipping methods or shipping ca
 
 ## Shipping methods: GraphQL
 
-In `setShippingAddressesOnCart` available shipping methods that are returned by the webhook are appended to the `available_shipping_methods` field.
+In the `setShippingAddressesOnCart` mutation, available shipping methods that are returned by the webhook are appended to the `available_shipping_methods` field.
 
-You can use the `additional_data` field to pass an array of key-value pairs to provide additional information about the shipping method from the webhook.```
+You can use the `additional_data` field to pass an array of key-value pairs to provide additional information about the shipping method from the webhook.
 
 ```json
 {
@@ -266,7 +266,7 @@ You can use the `additional_data` field to pass an array of key-value pairs to p
 }
 ```
 
-In the `setShippingMethodsOnCart` mutation you can set the shipping method provided by webhook, its information is stored in the `selected_shipping_method` field with the `additional_data` if provided.
+In the `setShippingMethodsOnCart` mutation, you can set the shipping method provided by webhook. Its information is stored in the `selected_shipping_method` field with the `additional_data`, if provided.
 
 ```json
 {

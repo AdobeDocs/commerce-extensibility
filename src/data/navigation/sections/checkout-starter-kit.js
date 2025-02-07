@@ -12,7 +12,7 @@ module.exports = [
         path: '/starter-kit/checkout/getting-started.md',
     },
     {
-        title: 'Project structure',
+        title: 'Configure',
         path: '/starter-kit/checkout/configure/',
     },
     {

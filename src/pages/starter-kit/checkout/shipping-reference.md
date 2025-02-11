@@ -29,7 +29,7 @@ The raw Shipping REST schema is available [here](/shipping.xml).
 
 To register a new out-of-process carrier, make a POST request to `/V1/oope_shipping_carrier` with the carrier information, such as code and title:
 
-```json
+```bash
 curl --request POST \
 --url <ADOBE_COMMERCE_URL>/rest/all/V1/oope_shipping_carrier \
 --header 'Authorization: Bearer <TOKEN>' \
@@ -50,7 +50,7 @@ curl --request POST \
 
 Example of the update request:
 
-```json
+```bash
 curl --request PUT \
 --url <ADOBE_COMMERCE_URL>/rest/all/V1/oope_shipping_carrier \
 --header 'Authorization: Bearer <TOKEN>' \

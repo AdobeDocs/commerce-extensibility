@@ -25,7 +25,7 @@ The raw Payment GraphQL schema is available [here](/payment.xml).
 
 ## GraphQL
 
-The Shipping module's GraphQL schema for this is defined in `etc/schema.graphqls`.
+The Payment module's GraphQL schema for this is defined in `etc/schema.graphqls`.
 After creating out-of-process payment, you can access them using the `oopePaymentMethods` GraphQL query available in `available_payment_methods` or `selected_payment_method` of the cart API.
 
 The raw Payment GraphQL schema is available [here](/payment.graphqls).

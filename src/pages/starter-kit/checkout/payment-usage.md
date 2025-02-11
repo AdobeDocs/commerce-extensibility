@@ -1,12 +1,12 @@
 ---
-title: Payment API usage
+title: Payment API JavaScript usage
 description: Learn how to use the Payment API in the Adobe Commerce checkout starter kit.
 keywords:
   - App Builder
   - Extensibility
 ---
 
-# Payment API usage
+# Payment API JavaScript usage
 
 To call the Commerce REST endpoints, initialize the Adobe Commerce Client:
 

@@ -201,7 +201,10 @@ If you want to retrieve OOPE payment method information from the Commerce instan
 
   ```javascript
   events.on('checkout/initialized', handleCheckoutInitialized, { eager: true });
-2. Retrieve Cart information from the data coming from the event responses.
+  ```
 
-```javascript
-events.on('cart/data', handleCartData, { eager: true });
+1. Retrieve Cart information from the data coming from the event responses.
+
+  ```javascript
+  events.on('cart/data', handleCartData, { eager: true });
+  ```

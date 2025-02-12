@@ -1,0 +1,26 @@
+type CustomConfigKeyValue @doc(description: "A simple key value object.") {
+    key: String
+    value: String
+}
+
+type OopePaymentMethodConfig {
+    backend_integration_url: String! @doc(description: "The backend URL to dispatch requests related to the payment method.")
+    custom_config: [CustomConfigKeyValue]! @doc(description: "Custom config key values.")
+}
+
+type AvailablePaymentMethod @doc(description: "Describes a payment method that the shopper can use to pay for the order.") {
+    oope_payment_method_config: OopePaymentMethodConfig @doc(description: "Configuration for out of process payment methods") @resolver(class: "\\Magento\\OutOfProcessPaymentMethods\\Model\\Resolver\\OopePaymentMethodConfig")
+}
+
+type SelectedPaymentMethod @doc(description: "Describes the payment method selected by the shopper.") {
+    oope_payment_method_config: OopePaymentMethodConfig @doc(description: "Configuration for out of process payment methods") @resolver(class: "\\Magento\\OutOfProcessPaymentMethods\\Model\\Resolver\\OopePaymentMethodConfig")
+}
+
+input PaymentMethodInput @doc(description: "Defines the payment method.") {
+    additional_data: [PaymentAttributeInput] @doc(description:"Additional data related to the payment method.")
+}
+
+input PaymentAttributeInput @doc(description: "Defines the payment attribute.") {
+    key: String! @doc(description: "The code of the attribute.")
+    value: String! @doc(description: "The value of the attribute.")
+}

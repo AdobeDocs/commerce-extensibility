@@ -36,7 +36,7 @@ ingestion:
 
 ### Customizing ingest webhooks
 
-Data parameters contain the information of the [event](../events/) to publish. Each event must include an entity, `event`, and `value`. The value parameter contains the data to send through the event.
+Data parameters contain the information of the [event](../../events/) to publish. Each event must include an entity, `event`, and `value`. The value parameter contains the data to send through the event.
 
 The following entities and their corresponding events are currently available:
 

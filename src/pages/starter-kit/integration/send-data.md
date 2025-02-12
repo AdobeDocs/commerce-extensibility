@@ -21,9 +21,9 @@ This runtime action is responsible for notifying the external backoffice applica
 
 ## Incoming event payload
 
-The incoming event payload specified during [event registration](../events/configure-commerce.md#subscribe-and-register-events) determines the incoming information.
+The incoming event payload specified during [event registration](../../events/configure-commerce.md#subscribe-and-register-events) determines the incoming information.
 
-![publish info from commerce](../_images/starterkit/publish.png)
+![publish info from commerce](../../_images/starterkit/publish.png)
 
 The `order` runtime action requires the `created_at` and `updated_at` fields.
 

@@ -1,6 +1,6 @@
 module.exports = [
     {
-        title: "Create",
+        title: "Integration starter kit",
         header: true,
         path: "/starter-kit/integration/index.md",
         pages: [
@@ -8,6 +8,13 @@ module.exports = [
                 title: "Overview",
                 path: "/starter-kit/integration/"
             },
+        ],
+    },
+    {
+        title: "Create",
+        header: true,
+        path: "/starter-kit/integration/index.md",
+        pages: [
             {
                 title: "Installation",
                 path: "/starter-kit/integration/create-integration.md"
@@ -124,12 +131,6 @@ module.exports = [
                 title: "Code samples",
                 path: "https://github.com/adobe/adobe-commerce-samples/tree/main/starter-kit"
             },
-            /*
-            {
-                title: "Contact us",
-                path: "/starter-kit/integration/contact-us.md"
-            }
-            */
         ]
     }
 ];

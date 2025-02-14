@@ -13,6 +13,24 @@ These release notes describe the latest version of Adobe Commerce Webhooks.
 
 ### Release date
 
+February 14, 2025
+
+### Enhancements
+
+* Added the ability to configure the log grid message detail in the Admin configuration. <!-- CEXT-4126 -->
+
+* Improved the database logging to add logging in case of failed requests. <!-- CEXT-4084 -->
+
+* Updated php version requirement in the generated module. <!-- CEXT-4120 -->
+
+### Bug fix
+
+* Fixed the webhook data filtration logic when the source is an empty string. <!-- CEXT-4121 -->
+
+## Version 1.8.0
+
+### Release date
+
 January 23, 2025
 
 ### Enhancements

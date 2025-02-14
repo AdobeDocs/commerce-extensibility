@@ -212,6 +212,8 @@ To enable database logging, navigate to **Stores** > Settings > **Configuration*
 
 You can configure the minimum log level to store logs in the database and log retention time. The available log levels are `DEBUG`, `INFO`, `WARNING`, and `ERROR`.
 
+You can also configure if you want to log the full log message. In case of an unsuccessful request, the full log message might contain response data from the external endpoint used for the webhook.
+
 The logs are cleared once per day based on the retention time.
 
 When database logging is enabled, the webhook logs are stored in the `webhook_log` table. To check logs in the Admin, navigate to **System** > **Webhooks** > **Webhook Logs**.

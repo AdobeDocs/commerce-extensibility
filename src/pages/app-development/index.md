@@ -58,7 +58,7 @@ When choosing out-of-process extensibility, Adobe provides developers with serve
 
 The following use cases illustrate ideal candidates for out-of-process extensibility:
 
-* Integrating with third-party services, such as Customer Relationship Management (CEM) and marketing automation.
+* Integrating with third-party services, such as Customer Relationship Management (CRM) and marketing automation.
 
   Running integrations as separate processes allows for seamless communication with external systems like CRM or marketing automation tools. This approach enables efficient data exchange and synchronization without impacting the core application's performance.
 

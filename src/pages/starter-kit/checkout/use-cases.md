@@ -174,7 +174,7 @@ You can register multiple webhooks for different shipping methods or shipping ca
 
 The request payload contains information about all items in the cart, including product information, product attributes, shipping address, and customer information for logged-in customers.
 
-The example of payload:
+Payload example:
 
 ```json
 {

@@ -172,7 +172,7 @@ You can register multiple webhooks for different shipping methods or shipping ca
 
 ## Shipping methods: Payload
 
-The request payload contains information about all items in the cart, including product information and product attributes, shipping address, and customer information for logged-in customers.
+The request payload contains information about all items in the cart, including product information, product attributes, shipping address, and customer information for logged-in customers.
 
 The example of payload:
 
@@ -246,7 +246,7 @@ The example of payload:
 }
 ```
 
-You can find examples of how to use shipping addresses, customer data, or product attributes in your App Builder application here [`actions/shipping-methods.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/shipping-methods/index.js).
+You can find examples of how to use shipping addresses, customer data, and product attributes in your App Builder application in [`actions/shipping-methods.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/shipping-methods/index.js).
 
 ## Shipping methods: GraphQL
 

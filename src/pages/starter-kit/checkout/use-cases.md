@@ -170,6 +170,84 @@ The following example demonstrates how to add a webhook to the `plugin.magento.o
 
 You can register multiple webhooks for different shipping methods or shipping carriers by adding them into the same batch to ensure they are executed in parallel or create multiple batches to execute them sequentially.
 
+## Shipping methods: Payload
+
+The request payload contains information about all items in the cart, including product information and product attributes, shipping address, and customer information for logged-in customers.
+
+The example of payload:
+
+```json
+{
+    "rateRequest": {
+        "all_items": [
+            {
+                "item_id": "1",
+                "quote_id": "1",
+                "created_at": "2025-02-18 14:57:03",
+                "updated_at": "2025-02-24 03:44:49",
+                "product_id": "9",
+                "store_id": 1,
+                "parent_item_id": null,
+                "is_virtual": "0",
+                "sku": "simple-product-1",
+                "name": "Simple product 1",
+                "price": 500,
+                "base_price": 500,
+                ...
+                "product": {
+                    "entity_id": "9",
+                    "attribute_set_id": "4",
+                    "type_id": "simple",
+                    "sku": "simple-product-1",
+                    "price": "500.000000",
+                    ...
+                    "attributes": {
+                        "manufacturer": "Demo Company",
+                        "color": "Red",
+                        "country_origin": "Japan",
+                        ...
+                    }
+                }
+            }
+        ],
+        "dest_country_id": "US",
+        "dest_region_id": 12,
+        "dest_region_code": "CA",
+        "dest_street": "3320 N Crescent Dr\nBeverly Hills",
+        "dest_city": "Los Angeles",
+        "dest_postcode": "70210",
+        "package_value": 1100,
+        "package_value_with_discount": 1100,
+        "package_weight": 124,
+        "package_qty": 2,
+        "package_physical_value": 1100,
+        "free_method_weight": 124,
+        "store_id": 1,
+        "website_id": "1",
+        "free_shipping": 0,
+        "base_currency": {
+            "currency_code": "USD"
+        },
+        "package_currency": {
+            "currency_code": "USD"
+        },
+        ...
+        "customer": {
+            "entity_id": "1",
+            "website_id": "1",
+            "email": "test@example.com",
+            "group_id": "1",
+            "firstname": "John",
+            "middlename": null,
+            "lastname": "Doe",
+            ...
+        }
+    }
+}
+```
+
+You can find examples of how to use shipping addresses, customer data, or product attributes in your App Builder application here [`actions/shipping-methods.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/shipping-methods/index.js).
+
 ## Shipping methods: GraphQL
 
 In the `setShippingAddressesOnCart` mutation, available shipping methods that are returned by the webhook are appended to the `available_shipping_methods` field.

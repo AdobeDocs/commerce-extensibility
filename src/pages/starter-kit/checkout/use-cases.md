@@ -172,9 +172,9 @@ You can register multiple webhooks for different shipping methods or shipping ca
 
 ### Remove shipping method
 
-The `plugin.magento.out_of_process_shipping_methods.api.shipping_rate_repository.get_rates` webhook within adding shipping methods allows you to remove specific shipping methods from the list of available options
+The `plugin.magento.out_of_process_shipping_methods.api.shipping_rate_repository.get_rates` webhook allows you to remove specific shipping methods from the list of available options.
 
-For example, if you are using the `flatrate` shipping method but certain conditions require it to be disallowed, you need to update your webhook response to mark the shipping method as removed. You can find an example in [`actions/shipping-methods.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/shipping-methods/index.js).
+If you use the `flatrate` shipping method, but want to disable it, you must update your webhook response to mark the shipping method as removed. This example is demonstrated in [`actions/shipping-methods.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/shipping-methods/index.js).
 
 ## Shipping methods: Payload
 

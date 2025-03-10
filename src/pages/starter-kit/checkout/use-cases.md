@@ -138,6 +138,77 @@ You can also enable webhook signature generation by following the [webhooks sign
 
 Refer to [`actions/validate-payment.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/validate-payment/index.js) for an example of how to receive the request and validate the payment according to the payment gateway needs.
 
+## Payment methods: Filter out payment method
+
+In some cases, you may want to filter out a payment method based on the cart details or the customer's information. For example, you may want to disable a payment method based on customer group or product attributes in the cart.
+
+To filter out a payment method, you can use the `plugin.magento.out_of_process_payment_methods.api.payment_method_filter.get_list` webhook. This webhook is triggered every time the list of available payment methods is requested, allowing you to filter out the payment methods based on the cart details or customer information.
+
+The following example demonstrates how to add a webhook to the `plugin.magento.out_of_process_payment_methods.api.payment_method_filter.get_list` method:
+
+```xml
+<method name="plugin.magento.out_of_process_payment_methods.api.payment_method_filter.get_list" type="after">
+    <hooks>
+        <batch name="check_product_stock">
+            <hook name="check_product_stock" url="https://<yourappbuilder>.runtime.adobe.io/api/v1/web/commerce-checkout-starter-kit/filter-payment" method="POST" timeout="20000" softTimeout="0" sslVerification="false">
+                <fields>
+                    <field name="payload" />
+                </fields>
+            </hook>
+        </batch>
+    </hooks>
+</method>
+```
+
+Payload example:
+
+```json
+{
+    "payload": {
+        "cart": {
+            "entity_id": "1",
+            "store_id": 1,
+            "converted_at": null,
+            "is_active": "1",
+            ...
+            "items": [
+                {
+                    "item_id": "4",
+                    "quote_id": "1",
+                    "product_id": "10",
+                    "store_id": 1,
+                    "weight": "124.000000",
+                    "qty": 2,
+                    "price": "600.0000",
+                    "base_price": "600.0000",
+                    ...
+                    "product": {
+                        "entity_id": "10",
+                        ...
+                        "attributes": {
+                            "manufacturer": "Two",
+                            "color": "Yellow",
+                            "country_origin": "France",
+                            ...
+                        }
+                    },
+                },
+                ...
+            ],
+        },
+        "customer": {
+            "entity_id": "1",
+            "website_id": "1",
+            "email": "test@example.com",
+            "group_id": "1",
+            ...
+        }
+    }
+}
+```
+
+You can find examples of how to filter out payment methods using customer data or product attributes in your App Builder application in [`actions/filter-payment.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/filter-payment/index.js).
+
 ## Shipping methods
 
 You can add shipping methods to the checkout process by using [webhooks](../../webhooks/index.md).

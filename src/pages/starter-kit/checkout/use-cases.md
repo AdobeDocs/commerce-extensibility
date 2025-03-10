@@ -150,7 +150,7 @@ The following example demonstrates how to add a webhook to the `plugin.magento.o
 <method name="plugin.magento.out_of_process_payment_methods.api.payment_method_filter.get_list" type="after">
     <hooks>
         <batch name="check_product_stock">
-            <hook name="check_product_stock" url="https://<yourappbuilder>.runtime.adobe.io/api/v1/web/commerce-checkout-starter-kit/filter-payment" method="POST" timeout="20000" softTimeout="0" sslVerification="false">
+            <hook name="check_product_stock" url="https://<yourappbuilder>.runtime.adobe.io/api/v1/web/commerce-checkout-starter-kit/filter-payment" method="POST" timeout="20000" softTimeout="0">
                 <fields>
                     <field name="payload" />
                 </fields>

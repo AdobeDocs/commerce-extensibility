@@ -142,7 +142,7 @@ Refer to [`actions/validate-payment.js`](https://github.com/adobe/commerce-check
 
 In some cases, you may want to filter out a payment method based on the cart details or the customer's information. For example, you may want to disable a payment method based on customer group or product attributes in the cart.
 
-To filter out a payment method, you can use the `plugin.magento.out_of_process_payment_methods.api.payment_method_filter.get_list` webhook. This webhook is triggered every time the list of available payment methods is requested, allowing you to filter out the payment methods based on the cart details or customer information.
+You can use the `plugin.magento.out_of_process_payment_methods.api.payment_method_filter.get_list` webhook to filter out a payment method. This webhook is triggered every time the list of available payment methods is requested, allowing you to filter out the payment methods based on the cart details or customer information.
 
 The following example demonstrates how to add a webhook to the `plugin.magento.out_of_process_payment_methods.api.payment_method_filter.get_list` method:
 

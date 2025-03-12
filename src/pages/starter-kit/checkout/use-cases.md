@@ -211,7 +211,7 @@ You can find examples of how to filter out payment methods using customer data o
 
 ## Shipping methods
 
-You can add shipping methods to the checkout process by using [webhooks](../../webhooks/index.md). 
+You can add shipping methods to the checkout process by using [webhooks](../../webhooks/index.md).
 
 To be able to add shipping methods, you must first [run a script to automatically create shipping carriers](./configure.md#create-shipping-carriers) or [to create shipping carriers manually](./shipping-reference.md#shipping-api-reference) using REST Api. Only shipping methods with the registered carriers for them will be available in the checkout process.
 

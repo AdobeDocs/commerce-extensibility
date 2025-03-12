@@ -29,6 +29,8 @@ You must install or have access to the following prerequisites to develop with t
 
 ## Install Commerce modules
 
+Before installing modules ensure that you have the required credentials in your `auth.json` with [access to the Adobe Commerce repository](https://experienceleague.adobe.com/en/docs/commerce-operations/installation-guide/prerequisites/authentication-keys).
+
 - Install the Out-of-Process Payment Extensions (OOPE) module on Adobe Commerce
 
     To enable out-of-process payment methods in Commerce, install the `magento/module-out-of-process-payment-methods`. This module enables out-of-process payment functionalities.

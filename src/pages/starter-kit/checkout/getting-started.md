@@ -29,7 +29,7 @@ You must install or have access to the following prerequisites to develop with t
 
 ## Install Commerce modules
 
-Before installing modules ensure that you have the required credentials in your `auth.json` with [access to the Adobe Commerce repository](https://experienceleague.adobe.com/en/docs/commerce-operations/installation-guide/prerequisites/authentication-keys).
+Before installing Commerce modules, ensure that you have the required credentials in `auth.json` with [access to the Adobe Commerce repository](https://experienceleague.adobe.com/en/docs/commerce-operations/installation-guide/prerequisites/authentication-keys).
 
 - Install the Out-of-Process Payment Extensions (OOPE) module on Adobe Commerce
 

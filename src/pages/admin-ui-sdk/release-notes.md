@@ -8,6 +8,26 @@ keywords:
 
 # Adobe Commerce Admin UI SDK release notes
 
+## Version 2.3.0
+
+### Release date
+
+March 14, 2025
+
+### Enhancements
+
+* Rename Staging test mode to Sandbox. <!--- CEXT-4072  -->
+
+* Align statuses label with App Registry. <!--- CEXT-4071  -->
+
+* Add a tooltip to clarify the testing mode options. <!--- CEXT-4134  -->
+
+### Bug fixes
+
+* Fix REST API order retrieval error when Admin UI SDK custom fees module is enabled. <!--- CEXT-4348  -->
+
+* Fix issue with timeout when contacting App Registry. <!--- CEXT-4205  -->
+
 ## Version 2.2.0
 
 ### Release date

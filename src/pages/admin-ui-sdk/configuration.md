@@ -42,11 +42,11 @@ Navigate to **System** > Admin UI SDK > **Admin UI SDK Logs** to check the saved
 
 The sandbox testing option provides an environment to test your applications using the Admin UI SDK in a real-world setting. This option will retrieve Production workspace registrations that match the chosen statuses. This environment can be shared with colleagues for collaborative testing before [publishing the application](./publish.md).
 
-![Admin UI SDK staging testing configuration](../_images/admin-ui-sdk-stage-test-config.png)
+![Admin UI SDK staging testing configuration](../_images/admin-ui-sdk-sandbox-test-config.png)
 
 1. Select **Yes** from the **Enable testing** menu.
 
-1. Set the **Testing mode** to **Staging**.
+1. Set the **Testing mode** to **Sandbox**.
 
 1. Select all app statuses to load.
 

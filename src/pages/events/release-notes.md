@@ -12,6 +12,16 @@ These release notes describe the latest version of Adobe I/O Events for Adobe Co
 
 See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io-events-for-adobe-commerce) for upgrade instructions.
 
+## Version 1.11.1
+
+### Release date
+
+February 25, 2025
+
+### Enhancements
+
+* Removed the requirement for Merchant ID and Environment ID to start with letters. <!-- CEXT-4246 -->
+
 ## Version 1.11.0
 
 ### Release date

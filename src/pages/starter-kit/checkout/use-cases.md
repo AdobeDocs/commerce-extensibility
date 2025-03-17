@@ -138,9 +138,82 @@ You can also enable webhook signature generation by following the [webhooks sign
 
 Refer to [`actions/validate-payment.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/validate-payment/index.js) for an example of how to receive the request and validate the payment according to the payment gateway needs.
 
+## Payment methods: Filter out payment method
+
+In some cases, you may want to filter out a payment method based on the cart details or the customer's information. For example, you may want to disable a payment method based on customer group or product attributes in the cart.
+
+You can use the `plugin.magento.out_of_process_payment_methods.api.payment_method_filter.get_list` webhook to filter out a payment method. This webhook is triggered every time the list of available payment methods is requested, allowing you to filter out the payment methods based on the cart details or customer information.
+
+The following example demonstrates how to add a webhook to the `plugin.magento.out_of_process_payment_methods.api.payment_method_filter.get_list` method:
+
+```xml
+<method name="plugin.magento.out_of_process_payment_methods.api.payment_method_filter.get_list" type="after">
+    <hooks>
+        <batch name="check_product_stock">
+            <hook name="check_product_stock" url="https://<yourappbuilder>.runtime.adobe.io/api/v1/web/commerce-checkout-starter-kit/filter-payment" method="POST" timeout="20000" softTimeout="0">
+                <fields>
+                    <field name="payload" />
+                </fields>
+            </hook>
+        </batch>
+    </hooks>
+</method>
+```
+
+Payload example:
+
+```json
+{
+    "payload": {
+        "cart": {
+            "entity_id": "1",
+            "store_id": 1,
+            "converted_at": null,
+            "is_active": "1",
+            ...
+            "items": [
+                {
+                    "item_id": "4",
+                    "quote_id": "1",
+                    "product_id": "10",
+                    "store_id": 1,
+                    "weight": "124.000000",
+                    "qty": 2,
+                    "price": "600.0000",
+                    "base_price": "600.0000",
+                    ...
+                    "product": {
+                        "entity_id": "10",
+                        ...
+                        "attributes": {
+                            "manufacturer": "Two",
+                            "color": "Yellow",
+                            "country_origin": "France",
+                            ...
+                        }
+                    },
+                },
+                ...
+            ],
+        },
+        "customer": {
+            "entity_id": "1",
+            "website_id": "1",
+            "email": "test@example.com",
+            "group_id": "1",
+            ...
+        }
+    }
+}
+```
+
+You can find examples of how to filter out payment methods using customer data or product attributes in your App Builder application in [`actions/filter-payment.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/filter-payment/index.js).
+
 ## Shipping methods
 
 You can add shipping methods to the checkout process by using [webhooks](../../webhooks/index.md).
+
+To add shipping methods, you must [run a script to automatically create shipping carriers](./configure.md#create-shipping-carriers) or [create shipping carriers manually](./shipping-reference.md#shipping-api-reference) using the REST API. Only shipping methods with registered carriers are available in the checkout process.
 
 After the webhook is registered, every time a shopping cart is requested, a synchronous call is dispatched to the App Builder application implementing the shipping method to calculate the shipping cost and provide the available shipping methods.
 
@@ -169,6 +242,90 @@ The following example demonstrates how to add a webhook to the `plugin.magento.o
 ```
 
 You can register multiple webhooks for different shipping methods or shipping carriers by adding them into the same batch to ensure they are executed in parallel or create multiple batches to execute them sequentially.
+
+### Remove shipping method
+
+The `plugin.magento.out_of_process_shipping_methods.api.shipping_rate_repository.get_rates` webhook allows you to remove specific shipping methods from the list of available options.
+
+If you use the `flatrate` shipping method, but want to disable it, you must update your webhook response to mark the shipping method as removed. This example is demonstrated in [`actions/shipping-methods.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/shipping-methods/index.js).
+
+## Shipping methods: Payload
+
+The request payload contains information about all items in the cart, including product information, product attributes, shipping address, and customer information for logged-in customers.
+
+Payload example:
+
+```json
+{
+    "rateRequest": {
+        "all_items": [
+            {
+                "item_id": "1",
+                "quote_id": "1",
+                "created_at": "2025-02-18 14:57:03",
+                "updated_at": "2025-02-24 03:44:49",
+                "product_id": "9",
+                "store_id": 1,
+                "parent_item_id": null,
+                "is_virtual": "0",
+                "sku": "simple-product-1",
+                "name": "Simple product 1",
+                "price": 500,
+                "base_price": 500,
+                ...
+                "product": {
+                    "entity_id": "9",
+                    "attribute_set_id": "4",
+                    "type_id": "simple",
+                    "sku": "simple-product-1",
+                    "price": "500.000000",
+                    ...
+                    "attributes": {
+                        "manufacturer": "Demo Company",
+                        "color": "Red",
+                        "country_origin": "Japan",
+                        ...
+                    }
+                }
+            }
+        ],
+        "dest_country_id": "US",
+        "dest_region_id": 12,
+        "dest_region_code": "CA",
+        "dest_street": "3320 N Crescent Dr\nBeverly Hills",
+        "dest_city": "Los Angeles",
+        "dest_postcode": "70210",
+        "package_value": 1100,
+        "package_value_with_discount": 1100,
+        "package_weight": 124,
+        "package_qty": 2,
+        "package_physical_value": 1100,
+        "free_method_weight": 124,
+        "store_id": 1,
+        "website_id": "1",
+        "free_shipping": 0,
+        "base_currency": {
+            "currency_code": "USD"
+        },
+        "package_currency": {
+            "currency_code": "USD"
+        },
+        ...
+        "customer": {
+            "entity_id": "1",
+            "website_id": "1",
+            "email": "test@example.com",
+            "group_id": "1",
+            "firstname": "John",
+            "middlename": null,
+            "lastname": "Doe",
+            ...
+        }
+    }
+}
+```
+
+You can find examples of how to use shipping addresses, customer data, and product attributes in your App Builder application in [`actions/shipping-methods.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/shipping-methods/index.js).
 
 ## Shipping methods: GraphQL
 

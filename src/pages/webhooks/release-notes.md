@@ -9,7 +9,7 @@ keywords:
 
 These release notes describe the latest version of Adobe Commerce Webhooks.
 
-## Version 1.8.0
+## Version 1.9.0
 
 ### Release date
 

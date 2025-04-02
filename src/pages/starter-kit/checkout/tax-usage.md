@@ -1,6 +1,6 @@
 ---
-title: Payment API JavaScript usage
-description: Learn how to use the Payment API in the Adobe Commerce checkout starter kit.
+title: Tax API JavaScript usage
+description: Learn how to use the Tax API in the Adobe Commerce checkout starter kit.
 keywords:
   - App Builder
   - Extensibility

@@ -116,3 +116,9 @@ The [`create-shipping-carriers`](https://github.com/adobe/commerce-checkout-star
 ### get-shipping-carriers
 
 To retrieve shipping carriers from Commerce, use the [`get-shipping-carriers`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/get-shipping-carriers.js) script.
+
+### create-tax-integrations
+
+To create tax integrations in Adobe Commerce, use [`create-tax-integrations`](https://github.com/AdobeDocs/commerce-extensibility/blob/main/src/pages/starter-kit/checkout/configure.md) script.
+
+It reads the tax integrations configuration from the `tax-integrations.yaml` file and creates the tax integrations in Adobe Commerce.

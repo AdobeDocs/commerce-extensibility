@@ -14,7 +14,7 @@ const { getAdobeCommerceClient } = require('../lib/adobe-commerce');
 const commerceClient = await getAdobeCommerceClient(process.env);
 ```
 
-## Create/Modify a new OOPE tax integration
+## Create or modify a new OOPE tax integration
 
 `createOopeTaxIntegration` creates a new out-of-process tax integration:
 

@@ -7,7 +7,8 @@ keywords:
 ---
 # Tax API JavaScript usage
 
-To call the Commerce REST endpoints, initialize the Adobe Commerce Client:
+To manage OOP tax integrations, Adobe Commerce provides a set of REST endpoints. The following sections describe how to use these endpoints in your JavaScript code.
+First of all, to call the Commerce REST endpoints, initialize the Adobe Commerce Client:
 
 ```javascript
 const { getAdobeCommerceClient } = require('../lib/adobe-commerce');

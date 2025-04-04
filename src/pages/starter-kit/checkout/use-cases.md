@@ -471,11 +471,3 @@ In the `setShippingMethodsOnCart` mutation, you can set the shipping method prov
   }
 }
 ```
-
-## Tax Integration: Check taxes applied
-
-### Cart taxes
-To check the taxes applied to the cart, you can use the [`getCart`](https://developer.adobe.com/commerce/webapi/graphql/schema/cart/queries/cart/) query to retrieve the [`cart`](https://developer.adobe.com/commerce/webapi/graphql-api/index.html#definition-Cart)/[`prices`](https://developer.adobe.com/commerce/webapi/graphql-api/index.html#definition-CartPrices)/[`applied_taxes`](https://developer.adobe.com/commerce/webapi/graphql-api/index.html#definition-CartPrices) field. This field contains information about the taxes applied to the cart.
-
-### Order taxes
-To check the tax breakdown, you can use the [`customerOrders`](https://developer.adobe.com/commerce/webapi/graphql/schema/customer/queries/orders/) query to retrieve the [`CustomerOrder`](https://developer.adobe.com/commerce/webapi/graphql-api/index.html#definition-CustomerOrder)/[`total`](https://developer.adobe.com/commerce/webapi/graphql-api/index.html#definition-OrderTotal)/[`taxes`](https://developer.adobe.com/commerce/webapi/graphql-api/index.html#definition-TaxItem) field. This field contains information about the taxes breakdown applied to the order.

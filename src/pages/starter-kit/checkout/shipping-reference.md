@@ -28,9 +28,9 @@ The raw Shipping REST schema is available [here](/shipping.xml).
 | `/V1/oope_shipping_carrier/:code`   | DELETE     | Delete shipping carrier by code                |
 
 
-## Create a new OOPE shipping carrier
+### Create a new OOPE shipping carrier
 
-### POST `/V1/oope_shipping_carrier`
+POST `/V1/oope_shipping_carrier`
 
 **Payload parameters:**
 
@@ -86,9 +86,9 @@ curl --request POST \
 }
 ```
 
-## Update an existing OOPE shipping carrier
+### Update an existing OOPE shipping carrier
 
-### PUT `/V1/oope_shipping_carrier`
+PUT `/V1/oope_shipping_carrier`
 
 **Payload parameters:**
 
@@ -145,9 +145,9 @@ curl --request PUT \
 ```
 
 
-## Get an OOPE shipping carrier by code
+### Get an OOPE shipping carrier by code
 
-### GET `/V1/oope_shipping_carrier/:code`
+GET `/V1/oope_shipping_carrier/:code`
 
 **Payload parameters:**
 
@@ -176,9 +176,9 @@ curl --request PUT \
 }
 ```
 
-## List all shipping carriers
+### List all shipping carriers
 
-### GET `/V1/oope_shipping_carrier`
+GET `/V1/oope_shipping_carrier`
 
 <CodeBlock slots="heading, code" repeat="1" languages="json" />
 
@@ -214,97 +214,13 @@ curl --request PUT \
 }
 ````
 
-## Delete an OOPE shipping carrier
+### Delete an OOPE shipping carrier
 
-### DELETE `/V1/oope_shipping_carrier/:code`
+DELETE `/V1/oope_shipping_carrier/:code`
 
 | Parameter | Type   | Description                                 |
 | --------- | ------ | ------------------------------------------- |
 | `code`    | String | Unique identifier for the shipping carrier. |
-
-
-## GraphQL
-
-The Payment module's GraphQL schema for this is defined in `etc/schema.graphqls`.
-You can access details about out-of-process payment types by specifying the `oope_payment_method_config` field within the `available_payment_methods` or `selected_payment_method` field of the cart API.
-
-The raw Payment GraphQL schema is available [here](/payment.graphqls).
-
-For more information on extending the out-of-process GraphQL schema, refer to the [EDS Integration Guide](./eds.md).
-
-<CodeBlock slots="heading, code" repeat="2" languages="graphql, graphql" />
-
-#### Example query
-
-```graphql
-query getCart($cartId: String!) {
-  cart(cart_id: $cartId) {
-    ...CHECKOUT_DATA_FRAGMENT
-  }
-}
-
-fragment CHECKOUT_DATA_FRAGMENT on Cart {
-  id
-  available_payment_methods {
-    code
-    title
-    oope_payment_method_config {
-      backend_integration_url
-      custom_config {
-        ... on CustomConfigKeyValue {
-          key
-          value
-        }
-      }
-    }
-  }
-  selected_payment_method {
-    code
-    title
-    oope_payment_method_config {
-      backend_integration_url
-      custom_config {
-        ... on CustomConfigKeyValue {
-          key
-          value
-        }
-      }
-    }
-  }
-}
-```
-
-#### Example response
-
-```json
-{
-  "available_payment_methods": [
-    {
-      "code": "checkmo",
-      "title": "Check / Money order",
-      "oope_payment_method_config": null
-    },
-    {
-      "code": "oope_adyen",
-      "title": "OOPE Adyen",
-      "oope_payment_method_config": {
-        "backend_integration_url": "http://oope-payment-method.pay/event",
-        "custom_config": [
-          {
-            "key": "can_refund",
-            "value": "true"
-          }
-        ]
-      }
-    }
-  ],
-  "selected_payment_method": {
-    "code": "checkmo",
-    "title": "Check / Money order",
-    "oope_payment_method_config": null
-  }
-}
-```
 
 
 ## GraphQL

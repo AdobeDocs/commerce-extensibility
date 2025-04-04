@@ -21,9 +21,9 @@ The raw REST api schema is available [here](/tax.xml).
 | `/V1/oope_tax_management/tax_integration`                 | GET        | List all available tax integration info.     |
 | `/V1/oope_tax_management/tax_integration`         | POST       | Create or update an OOPE tax integration.     |
 
-## Create or modify a new OOPE tax integration
+### Create or modify a new OOPE tax integration
 
-### POST `/V1/oope_tax_management/tax_integration/:code`
+POST `/V1/oope_tax_management/tax_integration/:code`
 
 
 **Payload parameters:**
@@ -53,9 +53,9 @@ The raw REST api schema is available [here](/tax.xml).
 }
 ```
 
-## Get an OOPE tax integration by code
+### Get an OOPE tax integration by code
 
-### GET `/V1/oope_tax_management/tax_integration`
+GET `/V1/oope_tax_management/tax_integration`
 
 **Payload parameters:**
 
@@ -81,9 +81,11 @@ The raw REST api schema is available [here](/tax.xml).
 }
 ```
 
-## List all OOPE tax integrations
+### List all OOPE tax integrations
 
-### GET `/V1/oope_tax_management/tax_integration`
+GET `/V1/oope_tax_management/tax_integration`
+
+<CodeBlock slots="heading, code" repeat="1" languages="json" />
 
 #### Example response
 
@@ -101,3 +103,13 @@ The raw REST api schema is available [here](/tax.xml).
   ]
 }
 ```
+
+## GraphQL
+
+To check taxes applied by the tax integration, we have two GraphQl queries: `cart` and `customerOrders`.
+
+### Cart taxes
+To check the taxes applied to the cart, you can use the [`getCart`](https://developer.adobe.com/commerce/webapi/graphql/schema/cart/queries/cart/) query to retrieve the [`cart`](https://developer.adobe.com/commerce/webapi/graphql-api/index.html#definition-Cart)/[`prices`](https://developer.adobe.com/commerce/webapi/graphql-api/index.html#definition-CartPrices)/[`applied_taxes`](https://developer.adobe.com/commerce/webapi/graphql-api/index.html#definition-CartPrices) field. This field contains information about the taxes applied to the cart.
+
+### Order taxes
+To check the tax breakdown, you can use the [`customerOrders`](https://developer.adobe.com/commerce/webapi/graphql/schema/customer/queries/orders/) query to retrieve the [`CustomerOrder`](https://developer.adobe.com/commerce/webapi/graphql-api/index.html#definition-CustomerOrder)/[`total`](https://developer.adobe.com/commerce/webapi/graphql-api/index.html#definition-OrderTotal)/[`taxes`](https://developer.adobe.com/commerce/webapi/graphql-api/index.html#definition-TaxItem) field. This field contains information about the taxes breakdown applied to the order.

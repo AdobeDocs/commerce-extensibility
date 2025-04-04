@@ -23,9 +23,9 @@ The raw Payment REST ap schema is available [here](/payment.xml).
 | `/V1/oope_payment_method/:code` | GET        | Retrieve an out-of-process payment method by its code. |
 | `/V1/oope_payment_method`             | GET        | List all available out-of-process payment methods.     |
 
-## Create a new payment method
+### Create a new payment method
 
-### POST `/V1/oope_payment_method/:code`
+POST `/V1/oope_payment_method/:code`
 
 **Payload parameters:**
 
@@ -70,9 +70,9 @@ The raw Payment REST ap schema is available [here](/payment.xml).
 }
 ```
 
-## Get an OOPE payment method by code
+### Get an OOPE payment method by code
 
-### GET `/V1/oope_payment_method/:code`
+GET `/V1/oope_payment_method/:code`
 
 **Payload parameters:**
 
@@ -107,9 +107,9 @@ The raw Payment REST ap schema is available [here](/payment.xml).
 }
 ```
 
-## List all payment methods
+### List all payment methods
 
-### GET `/V1/oope_payment_method`
+GET `/V1/oope_payment_method`
 
 <CodeBlock slots="heading, code" repeat="1" languages="json" />
 
@@ -132,5 +132,88 @@ The raw Payment REST ap schema is available [here](/payment.xml).
       "custom_config": []
     }
   ]
+}
+```
+
+## GraphQL
+
+The Payment module's GraphQL schema for this is defined in `etc/schema.graphqls`.
+You can access details about out-of-process payment types by specifying the `oope_payment_method_config` field within the `available_payment_methods` or `selected_payment_method` field of the cart API.
+
+The raw Payment GraphQL schema is available [here](/payment.graphqls).
+
+For more information on extending the out-of-process GraphQL schema, refer to the [EDS Integration Guide](./eds.md).
+
+<CodeBlock slots="heading, code" repeat="2" languages="graphql, graphql" />
+
+#### Example query
+
+```graphql
+query getCart($cartId: String!) {
+  cart(cart_id: $cartId) {
+    ...CHECKOUT_DATA_FRAGMENT
+  }
+}
+
+fragment CHECKOUT_DATA_FRAGMENT on Cart {
+  id
+  available_payment_methods {
+    code
+    title
+    oope_payment_method_config {
+      backend_integration_url
+      custom_config {
+        ... on CustomConfigKeyValue {
+          key
+          value
+        }
+      }
+    }
+  }
+  selected_payment_method {
+    code
+    title
+    oope_payment_method_config {
+      backend_integration_url
+      custom_config {
+        ... on CustomConfigKeyValue {
+          key
+          value
+        }
+      }
+    }
+  }
+}
+```
+
+#### Example response
+
+```json
+{
+  "available_payment_methods": [
+    {
+      "code": "checkmo",
+      "title": "Check / Money order",
+      "oope_payment_method_config": null
+    },
+    {
+      "code": "oope_adyen",
+      "title": "OOPE Adyen",
+      "oope_payment_method_config": {
+        "backend_integration_url": "http://oope-payment-method.pay/event",
+        "custom_config": [
+          {
+            "key": "can_refund",
+            "value": "true"
+          }
+        ]
+      }
+    }
+  ],
+  "selected_payment_method": {
+    "code": "checkmo",
+    "title": "Check / Money order",
+    "oope_payment_method_config": null
+  }
 }
 ```

@@ -31,42 +31,64 @@ You must install or have access to the following prerequisites to develop with t
 
 Before installing Commerce modules, ensure that you have the required credentials in `auth.json` with [access to the Adobe Commerce repository](https://experienceleague.adobe.com/en/docs/commerce-operations/installation-guide/prerequisites/authentication-keys).
 
-- Install the Out-of-Process Payment Extensions (OOPE) module on Adobe Commerce
+### Install the Out-of-Process Payment Extensions (OOPE) module on Adobe Commerce
 
-    To enable out-of-process payment methods in Commerce, install the `magento/module-out-of-process-payment-methods`. This module enables out-of-process payment functionalities.
-    To install the module, run the following command using Composer:
+To enable out-of-process payment methods in Commerce, install the `magento/module-out-of-process-payment-methods`. This module enables out-of-process payment functionalities.
+To install the module, run the following command using Composer:
 
-    ```bash
-    composer require magento/module-out-of-process-payment-methods --with-dependencies
-    ```
+```bash
+  composer require magento/module-out-of-process-payment-methods --with-dependencies
+  ```
 
-- Install the Out-of-Process Shipping Extensions (OOPE) module in Adobe Commerce
+### Install the Out-of-Process Shipping Extensions (OOPE) module in Adobe Commerce
 
-  To enable out-of-process shipping methods in Adobe Commerce, install the `magento/module-out-of-process-shipping-methods` module.
+To enable out-of-process shipping methods in Adobe Commerce, install the `magento/module-out-of-process-shipping-methods` module.
+To install the module, run the following command using Composer:
 
-  To install the module, run the following command using Composer:
+```bash
+  composer require magento/module-out-of-process-shipping-methods --with-dependencies
+```
 
-    ```bash
-    composer require magento/module-out-of-process-shipping-methods --with-dependencies
-    ```
+### Install the Out-of-Process Tax Management (OOPE) module in Adobe Commerce
 
-- Install the Commerce Eventing module (Commerce 2.4.4 and 2.4.5 only)
+To enable out-of-process tax management in Adobe Commerce, install the `magento/module-out-of-process-tax-management` module.
+To install the module, run the following command using Composer:
+    
+```bash
+ composer require magento/module-out-of-process-tax-management --with-dependencies
+```
 
-    The [Commerce Eventing module](https://developer.adobe.com/commerce/extensibility/events/) is crucial for handling events within Adobe Commerce. The eventing module is installed automatically in Adobe Commerce version `2.4.6` and higher.
+#### Out-of-Process Tax Management Limitations
 
-    This starter kit requires version `1.10.0` or higher of the Commerce Eventing module. To view your installed version, run the following command:
+Due to this extension overrides the class `Magento\Tax\Model\Sales\Total\Quote\Tax` in `di.xml`
 
-    ```bash
-    composer show magento/commerce-eventing
-    ```
+```    
+<preference for="Magento\Tax\Model\Sales\Total\Quote\Tax"
+                type="Magento\OutOfProcessTaxManagement\Model\Tax\Sales\Total\Quote\Tax"/>
+```
 
-    To install this module, run the following command using Composer:
+As a result, this extension is not compatible with other tax extensions that also override this class, such as TaxJar or Avalara.
 
-    ```bash
-    composer update magento/commerce-eventing --with-dependencies
-    ```
+If you need to use another tax extension, it is recommended to disable this extension to prevent conflicts.
 
-    For Adobe Commerce versions `2.4.4` or `2.4.5`, you must install the Adobe I/O Events for Adobe Commerce module manually. Follow the instructions provided in [Adobe I/O Events installation](https://developer.adobe.com/commerce/extensibility/events/installation/).
+
+### Install the Commerce Eventing module (Commerce 2.4.4 and 2.4.5 only)
+
+The [Commerce Eventing module](https://developer.adobe.com/commerce/extensibility/events/) is crucial for handling events within Adobe Commerce. The eventing module is installed automatically in Adobe Commerce version `2.4.6` and higher.
+
+This starter kit requires version `1.10.0` or higher of the Commerce Eventing module. To view your installed version, run the following command:
+
+```bash
+composer show magento/commerce-eventing
+```
+
+To install this module, run the following command using Composer:
+
+```bash
+composer update magento/commerce-eventing --with-dependencies
+```
+
+For Adobe Commerce versions `2.4.4` or `2.4.5`, you must install the Adobe I/O Events for Adobe Commerce module manually. Follow the instructions provided in [Adobe I/O Events installation](https://developer.adobe.com/commerce/extensibility/events/installation/).
 
 ## Initial configuration
 

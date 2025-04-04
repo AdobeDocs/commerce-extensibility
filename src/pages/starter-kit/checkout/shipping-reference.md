@@ -21,17 +21,36 @@ The raw Shipping REST schema is available [here](/shipping.xml).
 
 | **Route URL**                     | **Method** | **Description**                                |
 |-----------------------------------|------------|------------------------------------------------|
-| `/V1/oope_shipping_carrier`       | GET        | Retrieve a list of all out-of-process shipping carriers  |
-| `/V1/oope_shipping_carrier/:code` | GET        | Retrieve an out-of-process shipping carrier by its code. |
 | `/V1/oope_shipping_carrier`       | POST       | Create a new shipping carrier.                 |
 | `/V1/oope_shipping_carrier`       | PUT        | Update a shipping carrier.                     |
+| `/V1/oope_shipping_carrier/:code` | GET        | Retrieve an out-of-process shipping carrier by its code. |
+| `/V1/oope_shipping_carrier`       | GET        | Retrieve a list of all out-of-process shipping carriers  |
 | `/V1/oope_shipping_carrier/:code`   | DELETE     | Delete shipping carrier by code                |
 
-To register a new out-of-process carrier, make a POST request to `/V1/oope_shipping_carrier` with the carrier information, such as code and title:
 
+### Create a new OOPE shipping carrier
+
+POST `/V1/oope_shipping_carrier`
+
+**Payload parameters:**
+
+| Parameter                   | Type    | Required | Description                                                              |
+|-----------------------------|---------|----------|--------------------------------------------------------------------------|
+| `code`                      | String  | Yes      | Unique identifier for the shipping carrier.                              |
+| `title`                     | String  | Yes      | Display name of the shipping carrier.                                    |
+| `stores`                    | Array   | No       | List of store codes where the shipping carrier is available.             |
+| `countries`                 | Array   | No       | List of countries where the shipping carrier is available.               |
+| `active`                    | Boolean | No       | Status indicating if the shipping carrier is active.                     |
+| `sort_order`                | Integer | No       | The sort order of shipping carriers.                                     |
+| `tracking_available`        | Boolean | No       | Status indicating if the shipping carrier has available tracking.        |
+| `shipping_labels_available` | Boolean | No       | Status indicating if the shipping carrier has available shipping labels. |
+
+<CodeBlock slots="heading, code" repeat="2" languages="bash, json" />
+
+#### Example request
 ```bash
 curl --request POST \
---url <ADOBE_COMMERCE_URL>/rest/all/V1/oope_shipping_carrier \
+--url <ADOBE_COMMERCE_API_URL>/V1/oope_shipping_carrier \
 --header 'Authorization: Bearer <TOKEN>' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -48,18 +67,55 @@ curl --request POST \
 }'
 ```
 
-Example of the update request:
+#### Example response
 
+```json
+{
+  "success": true,
+  "message": {
+    "id": 1,
+    "code": "DPS",
+    "title": "Demo Postal Service",
+    "stores": ["default"],
+    "countries": ["US", "CA"],
+    "active": true,
+    "sort_order": 10,
+    "tracking_available": true,
+    "shipping_labels_available": true
+  }
+}
+```
+
+### Update an existing OOPE shipping carrier
+
+PUT `/V1/oope_shipping_carrier`
+
+**Payload parameters:**
+
+| Parameter                   | Type    | Required | Description                                                              |
+|-----------------------------|---------|----------|--------------------------------------------------------------------------|
+| `code`                      | String  | Yes      | Unique identifier for the shipping carrier.                              |
+| `title`                     | String  | Yes      | Display name of the shipping carrier.                                    |
+| `stores`                    | Array   | No       | List of store codes where the shipping carrier is available.             |
+| `countries`                 | Array   | No       | List of countries where the shipping carrier is available.               |
+| `active`                    | Boolean | No       | Status indicating if the shipping carrier is active.                     |
+| `sort_order`                | Integer | No       | The sort order of shipping carriers.                                     |
+| `tracking_available`        | Boolean | No       | Status indicating if the shipping carrier has available tracking.        |
+| `shipping_labels_available` | Boolean | No       | Status indicating if the shipping carrier has available shipping labels. |
+
+<CodeBlock slots="heading, code" repeat="2" languages="bash, json" />
+
+#### Example request
 ```bash
 curl --request PUT \
---url <ADOBE_COMMERCE_URL>/rest/all/V1/oope_shipping_carrier \
+--url <ADOBE_COMMERCE_API_URL>/V1/oope_shipping_carrier \
 --header 'Authorization: Bearer <TOKEN>' \
 --header 'Content-Type: application/json' \
 --data '{
 "carrier": {
-"code": "DEPS",
-"title": "Demo postal service",
-"stores": ["default"],
+"code": "DPS",
+"title": "Detroit Postal Service"
+"stores": ["default", "custom"],
 "countries": ["DE","FR","CA"],
 "sort_order": 10000,
 "active": true,
@@ -67,6 +123,138 @@ curl --request PUT \
 "shipping_labels_available": false
 }
 }'
+```
+
+#### Example response
+
+```json
+{
+  "success": true,
+  "message": {
+    "id": 1,
+    "code": "DPS",
+    "title": "Demo Postal Service",
+    "stores": ["default"],
+    "countries": ["US", "CA"],
+    "active": true,
+    "sort_order": 10,
+    "tracking_available": true,
+    "shipping_labels_available": true
+  }
+}
+```
+
+
+### Get an OOPE shipping carrier by code
+
+GET `/V1/oope_shipping_carrier/:code`
+
+**Payload parameters:**
+
+| Parameter | Type   | Description                                 |
+| --------- | ------ | ------------------------------------------- |
+| `code`    | String | Unique identifier for the shipping carrier. |
+
+<CodeBlock slots="heading, code" repeat="2" languages="bash,json" />
+
+#### Example request
+```bash
+curl --request GET \
+--url <ADOBE_COMMERCE_API_URL>/V1/oope_shipping_carrier/:code' \
+--header 'Authorization: Bearer <TOKEN>' \
+--header 'Content-Type: application/json' \
+```
+
+#### Example response
+
+```json
+{
+  "success": true,
+  "message": {
+    "id": 1,
+    "code": "DPS",
+    "title": "Demo Postal Service",
+    "stores": ["default"],
+    "countries": ["US", "CA"],
+    "sort_order": 10,
+    "active": true,
+    "tracking_available": true,
+    "shipping_labels_available": true
+  }
+}
+```
+
+### List all shipping carriers
+
+GET `/V1/oope_shipping_carrier`
+
+<CodeBlock slots="heading, code" repeat="2" languages="bash,json" />
+
+#### Example request
+```bash
+curl --request GET \
+--url <ADOBE_COMMERCE_API_URL>/V1/oope_shipping_carrier' \
+--header 'Authorization: Bearer <TOKEN>' \
+--header 'Content-Type: application/json' \
+```
+
+#### Example response
+
+````json
+{
+  "success": true,
+  "message": [
+    {
+      "id": 1,
+      "code": "DPS",
+      "title": "Demo Postal Service",
+      "stores": ["default"],
+      "countries": ["US", "CA"],
+      "sort_order": 10,
+      "active": true,
+      "tracking_available": true,
+      "shipping_labels_available": true
+    },
+    {
+      "id": 2,
+      "code": "Fedex",
+      "title": "Fedex Service",
+      "stores": ["default"],
+      "countries": ["US"],
+      "sort_order": 50,
+      "active": true,
+      "tracking_available": false,
+      "shipping_labels_available": true
+    }
+  ]
+}
+````
+
+### Delete an OOPE shipping carrier
+
+DELETE `/V1/oope_shipping_carrier/:code`
+
+| Parameter | Type   | Description                                 |
+| --------- | ------ | ------------------------------------------- |
+| `code`    | String | Unique identifier for the shipping carrier. |
+
+<CodeBlock slots="heading, code" repeat="2" languages="bash,json" />
+
+#### Example request
+```bash
+curl --request DELETE \
+--url <ADOBE_COMMERCE_API_URL>/V1/oope_shipping_carrier/:code' \
+--header 'Authorization: Bearer <TOKEN>' \
+--header 'Content-Type: application/json' \
+```
+
+#### Example response
+
+```json
+{
+  "success": true,
+  "message": true
+}
 ```
 
 ## GraphQL

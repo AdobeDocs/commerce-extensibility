@@ -41,6 +41,10 @@ module.exports = [
                 path: '/starter-kit/checkout/payment-usage/',
             },
             {
+                title: 'Tax API Javascript usage',
+                path: '/starter-kit/checkout/tax-usage/',
+            },
+            {
                 title: 'Payment API reference',
                 path: '/starter-kit/checkout/payment-reference/',
             },

@@ -19,16 +19,9 @@ const commerceClient = await getAdobeCommerceClient(process.env);
 
 `createOopeTaxIntegration` creates a new out-of-process tax integration:
 
-**Payload parameters:**
+Check the [API reference](tax-reference/#create-or-modify-a-new-oope-tax-integration) for more details.
 
-| Parameter | Type   | Required | Description                               |
-| --------- | ------ | -------- | ----------------------------------------- |
-| `code`    | String | Yes      | Unique identifier for the tax integration. |
-| `title`   | String | Yes      | Display name of the tax integration.       |
-| `active`  | Boolean| No       | Status indicating if the tax integration is active. |
-| `stores`  | Array  | No       | List of store codes where the tax integration is available. |
-
-<CodeBlock slots="heading, code" repeat="2" languages="javascript, json" />
+<CodeBlock slots="heading, code" repeat="1" languages="javascript" />
 
 #### Example usage
 
@@ -51,32 +44,13 @@ try {
 }
 ```
 
-#### Example response
-
-```json
-{
-  "success": true,
-  "message": {
-    "id": 1,
-    "code": "tax-1",
-    "title": "Tax Integration 1",
-    "active": true,
-    "stores": ["store-1", "store-2"]
-  }
-}
-```
-
 ## Get an OOPE tax integration by code
 
 `getOopeTaxIntegration` retrieves one out-of-process tax integration by `code` from the Adobe Commerce instance.
 
-**Payload parameters:**
+Check the [API reference](tax-reference/#get-an-oope-tax-integration-by-code) for more details.
 
-| Parameter | Type   | Description                                 |
-| --------- | ------ | ------------------------------------------- |
-| `code`    | String | Unique identifier for the tax integration. |
-
-<CodeBlock slots="heading, code" repeat="2" languages="javascript, json" />
+<CodeBlock slots="heading, code" repeat="1" languages="javascript" />
 
 #### Example usage
 
@@ -92,24 +66,13 @@ try {
 }
 ```
 
-#### Example response
-
-```json
-{
-  "success": true,
-  "message": {
-    "id": 1,
-    "code": "tax-1",
-    "title": "Tax Integration 1",
-    "active": true,
-    "stores": ["store-1", "store-2"]
-  }
-}
-```
-
 ## List all OOPE tax integrations
 
 `getOopeTaxIntegrations` retrieves a list of all out-of-process tax integrations in the Adobe Commerce instance.
+
+Check the [API reference](tax-reference/#list-all-oope-tax-integrations) for more details.
+
+<CodeBlock slots="heading, code" repeat="1" languages="javascript" />
 
 #### Example usage
 
@@ -122,22 +85,5 @@ try {
   console.log('List of tax integrations:', listResponse.message);
 } catch (error) {
   return errorResponse(HTTP_INTERNAL_ERROR, 'Error occurred while listing tax integrations');
-}
-```
-
-#### Example response
-
-```json
-{
-  "success": true,
-  "message": [
-    {
-      "id": 1,
-      "code": "tax-1",
-      "title": "Tax Integration 1",
-      "active": true,
-      "stores": ["store-1", "store-2"]
-    }
-  ]
 }
 ```

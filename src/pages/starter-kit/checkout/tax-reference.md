@@ -35,8 +35,24 @@ POST `/V1/oope_tax_management/tax_integration/:code`
 | `active`  | Boolean| No       | Status indicating if the tax integration is active. |
 | `stores`  | Array  | No       | List of store codes where the tax integration is available. |
 
-<CodeBlock slots="heading, code" repeat="1" languages="json" />
+<CodeBlock slots="heading, code" repeat="2" languages="bash, json" />
 
+#### Example request
+
+```bash
+curl --request POST \
+--url <ADOBE_COMMERCE_API_URL>/V1/oope_tax_management/tax_integration \
+--header 'Authorization: Bearer <TOKEN>' \
+--header 'Content-Type: application/json' \
+--data '{
+"tax_integration": {
+    "code": "tax-1",
+    "title": "Tax Integration 1",
+    "active": true,
+    "stores": ["store-1", "store-2"]
+}
+}'
+```
 
 #### Example response
 
@@ -63,8 +79,17 @@ GET `/V1/oope_tax_management/tax_integration`
 | --------- | ------ | ------------------------------------------- |
 | `code`    | String | Unique identifier for the tax integration. |
 
-<CodeBlock slots="heading, code" repeat="1" languages="json" />
+<CodeBlock slots="heading, code" repeat="2" languages="bash, json" />
 
+#### Example request
+
+```bash 
+curl --request GET \
+--url <ADOBE_COMMERCE_API_URL>/V1/oope_tax_management/tax_integration/:code' \
+--header 'Authorization: Bearer <TOKEN>' \
+--header 'Content-Type: application/json' 
+```
+    
 
 #### Example response
 
@@ -85,7 +110,16 @@ GET `/V1/oope_tax_management/tax_integration`
 
 GET `/V1/oope_tax_management/tax_integration`
 
-<CodeBlock slots="heading, code" repeat="1" languages="json" />
+<CodeBlock slots="heading, code" repeat="2" languages="bash, json" />
+
+#### Example request 
+
+```bash 
+curl --request GET \
+--url <ADOBE_COMMERCE_API_URL>/V1/oope_tax_management/tax_integration' \
+--header 'Authorization: Bearer <TOKEN>' \
+--header 'Content-Type: application/json' 
+```
 
 #### Example response
 

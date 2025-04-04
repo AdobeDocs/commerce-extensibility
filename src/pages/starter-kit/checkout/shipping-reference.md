@@ -50,7 +50,7 @@ POST `/V1/oope_shipping_carrier`
 #### Example request
 ```bash
 curl --request POST \
---url <ADOBE_COMMERCE_URL>/rest/all/V1/oope_shipping_carrier \
+--url <ADOBE_COMMERCE_API_URL>/V1/oope_shipping_carrier \
 --header 'Authorization: Bearer <TOKEN>' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -108,7 +108,7 @@ PUT `/V1/oope_shipping_carrier`
 #### Example request
 ```bash
 curl --request PUT \
---url <ADOBE_COMMERCE_URL>/rest/all/V1/oope_shipping_carrier \
+--url <ADOBE_COMMERCE_API_URL>/V1/oope_shipping_carrier \
 --header 'Authorization: Bearer <TOKEN>' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -155,7 +155,15 @@ GET `/V1/oope_shipping_carrier/:code`
 | --------- | ------ | ------------------------------------------- |
 | `code`    | String | Unique identifier for the shipping carrier. |
 
-<CodeBlock slots="heading, code" repeat="1" languages="json" />
+<CodeBlock slots="heading, code" repeat="2" languages="bash,json" />
+
+#### Example request
+```bash
+curl --request GET \
+--url <ADOBE_COMMERCE_API_URL>/V1/oope_shipping_carrier/:code' \
+--header 'Authorization: Bearer <TOKEN>' \
+--header 'Content-Type: application/json' \
+```
 
 #### Example response
 
@@ -180,7 +188,15 @@ GET `/V1/oope_shipping_carrier/:code`
 
 GET `/V1/oope_shipping_carrier`
 
-<CodeBlock slots="heading, code" repeat="1" languages="json" />
+<CodeBlock slots="heading, code" repeat="2" languages="bash,json" />
+
+#### Example request
+```bash
+curl --request GET \
+--url <ADOBE_COMMERCE_API_URL>/V1/oope_shipping_carrier' \
+--header 'Authorization: Bearer <TOKEN>' \
+--header 'Content-Type: application/json' \
+```
 
 #### Example response
 
@@ -222,6 +238,24 @@ DELETE `/V1/oope_shipping_carrier/:code`
 | --------- | ------ | ------------------------------------------- |
 | `code`    | String | Unique identifier for the shipping carrier. |
 
+<CodeBlock slots="heading, code" repeat="2" languages="bash,json" />
+
+#### Example request
+```bash
+curl --request DELETE \
+--url <ADOBE_COMMERCE_API_URL>/V1/oope_shipping_carrier/:code' \
+--header 'Authorization: Bearer <TOKEN>' \
+--header 'Content-Type: application/json' \
+```
+
+#### Example response
+
+```json
+{
+  "success": true,
+  "message": true
+}
+```
 
 ## GraphQL
 

@@ -42,8 +42,34 @@ POST `/V1/oope_payment_method/:code`
 | `currencies`              | Array   | No | Currencies supported by the payment method.|
 | `custom_config`           | Array   | No | Custom configuration settings for payment methods.|
 
-<CodeBlock slots="heading, code" repeat="1" languages="JSON" />
+<CodeBlock slots="heading, code" repeat="2" languages="bash, json" />
 
+
+#### Example request
+```bash
+curl --request POST \
+--url <ADOBE_COMMERCE_API_URL>/V1/oope_payment_method \
+--header 'Authorization: Bearer <TOKEN>' \
+--header 'Content-Type: application/json' \
+--data '{
+  "payment_method": {
+    "code": "method-1",
+    "title": "Method 1",
+    "description": "Description for Method 1",
+    "active": true,
+    "backend_integration_url": "http://example.com",
+    "stores": ["store-1", "store-2"],
+    "order_status": "processing",
+    "countries": ["ES", "US"],
+    "currencies": ["EUR", "USD"],
+    "custom_config": [
+      {
+        "key1": "value1"
+      }
+    ]
+  }
+}'
+```
 
 #### Example response
 
@@ -80,7 +106,17 @@ GET `/V1/oope_payment_method/:code`
 | --------- | ------ | ----------------------------------------- |
 | `code`    | String | Unique identifier for the payment method. |
 
-<CodeBlock slots="heading, code" repeat="1" languages="json" />
+<CodeBlock slots="heading, code" repeat="2" languages="bash, json" />
+
+#### Example request
+
+```bash
+curl --request GET \
+--url <ADOBE_COMMERCE_API_URL>/V1/oope_payment_method/:code \
+--header 'Authorization: Bearer <TOKEN>' \
+--header 'Content-Type: application/json'
+```
+
 
 #### Example response
 
@@ -111,7 +147,16 @@ GET `/V1/oope_payment_method/:code`
 
 GET `/V1/oope_payment_method`
 
-<CodeBlock slots="heading, code" repeat="1" languages="json" />
+<CodeBlock slots="heading, code" repeat="2" languages="bash, json" />
+
+#### Example request
+
+```bash
+curl --request GET \
+--url <ADOBE_COMMERCE_API_URL>/V1/oope_payment_method \
+--header 'Authorization: Bearer <TOKEN>' \
+--header 'Content-Type: application/json'
+```
 
 #### Example response
 

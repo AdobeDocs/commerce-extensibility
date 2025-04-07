@@ -23,7 +23,7 @@ The raw REST api schema is available [here](/tax.xml).
 
 ### Create or modify a new OOPE tax integration
 
-POST `/V1/oope_tax_management/tax_integration/:code`
+The POST `/V1/oope_tax_management/tax_integration/:code` creates an out-of-process tax integration in the Adobe Commerce instance. Note that, currently, only one tax integration is allowed to be active. If you wish to change the active tax integration, you must first deactivate the current one.
 
 
 **Payload parameters:**
@@ -71,7 +71,7 @@ curl --request POST \
 
 ### Get an OOPE tax integration by code
 
-GET `/V1/oope_tax_management/tax_integration`
+The GET `/V1/oope_tax_management/tax_integration` retrieves one out-of-process tax integration by `code` from the Adobe Commerce instance.
 
 **Payload parameters:**
 
@@ -108,7 +108,7 @@ curl --request GET \
 
 ### List all OOPE tax integrations
 
-GET `/V1/oope_tax_management/tax_integration`
+The GET `/V1/oope_tax_management/tax_integration` retrieves a list of all out-of-process tax integrations from the Adobe Commerce instance.
 
 <CodeBlock slots="heading, code" repeat="2" languages="bash, json" />
 

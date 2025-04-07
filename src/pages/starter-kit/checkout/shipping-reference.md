@@ -30,7 +30,7 @@ The raw Shipping REST schema is available [here](/shipping.xml).
 
 ### Create a new OOPE shipping carrier
 
-POST `/V1/oope_shipping_carrier`
+The POST `/V1/oope_shipping_carrier` creates an out-of-process shipping carrier in the Adobe Commerce instance.
 
 **Payload parameters:**
 
@@ -88,7 +88,7 @@ curl --request POST \
 
 ### Update an existing OOPE shipping carrier
 
-PUT `/V1/oope_shipping_carrier`
+The PUT `/V1/oope_shipping_carrier` updates an out-of-process shipping carrier in the Adobe Commerce instance.
 
 **Payload parameters:**
 
@@ -147,7 +147,7 @@ curl --request PUT \
 
 ### Get an OOPE shipping carrier by code
 
-GET `/V1/oope_shipping_carrier/:code`
+The GET `/V1/oope_shipping_carrier/:code` retrieves one out-of-process shipping carrier by `code` from the Adobe Commerce instance.
 
 **Payload parameters:**
 
@@ -186,7 +186,7 @@ curl --request GET \
 
 ### List all shipping carriers
 
-GET `/V1/oope_shipping_carrier`
+The GET `/V1/oope_shipping_carrier` retrieves a list of all out-of-process shipping carriers from the Adobe Commerce instance.
 
 <CodeBlock slots="heading, code" repeat="2" languages="bash,json" />
 
@@ -232,7 +232,7 @@ curl --request GET \
 
 ### Delete an OOPE shipping carrier
 
-DELETE `/V1/oope_shipping_carrier/:code`
+The DELETE `/V1/oope_shipping_carrier/:code` deletes an out-of-process shipping carrier by `code` from the Adobe Commerce instance.
 
 | Parameter | Type   | Description                                 |
 | --------- | ------ | ------------------------------------------- |

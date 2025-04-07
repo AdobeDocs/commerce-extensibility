@@ -25,7 +25,7 @@ The raw Payment REST ap schema is available [here](/payment.xml).
 
 ### Create a new payment method
 
-POST `/V1/oope_payment_method/:code`
+The POST `/V1/oope_payment_method/:code` creates an out-of-process payment method in the Adobe Commerce instance.
 
 **Payload parameters:**
 
@@ -98,7 +98,7 @@ curl --request POST \
 
 ### Get an OOPE payment method by code
 
-GET `/V1/oope_payment_method/:code`
+The GET `/V1/oope_payment_method/:code` retrieves one out-of-process payment method by `code` from the Adobe Commerce instance.
 
 **Payload parameters:**
 
@@ -145,7 +145,7 @@ curl --request GET \
 
 ### List all payment methods
 
-GET `/V1/oope_payment_method`
+The GET `/V1/oope_payment_method` retrieves a list of all out-of-process payment methods from the Adobe Commerce instance.
 
 <CodeBlock slots="heading, code" repeat="2" languages="bash, json" />
 

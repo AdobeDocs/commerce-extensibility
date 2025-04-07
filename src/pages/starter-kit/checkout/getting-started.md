@@ -14,7 +14,10 @@ To begin using the checkout starter kit, ensure that your Adobe Commerce install
 
 You must install or have access to the following prerequisites to develop with the Adobe Commerce checkout starter kit:
 
-- Adobe Commerce version `2.4.4` or higher.
+- Adobe Commerce EE version `2.4.4` or higher.
+
+<InlineAlert variant="info" slots="text1" />
+Magento Open Source is not supported.
 
 - [Node.js](https://nodejs.org/) version 22. If you have Node Version Manager (`nvm`) installed, you can run the following command to install and use the required version:
 

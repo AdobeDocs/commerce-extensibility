@@ -39,7 +39,7 @@ Before installing Commerce modules, ensure that you have the required credential
 To enable out-of-process payment methods in Commerce, install the `magento/module-out-of-process-payment-methods`. This module enables out-of-process payment functionalities.
 To install the module, run the following command using Composer:
 
-```bash
+``` bash
   composer require magento/module-out-of-process-payment-methods --with-dependencies
   ```
 

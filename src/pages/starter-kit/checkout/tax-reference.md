@@ -1,6 +1,6 @@
 ---
-title: Payment API reference
-description: Learn about the available API endpoints for the payment module in the Adobe Commerce checkout starter kit.
+title: Tax API reference
+description: Learn about the available API endpoints for the tax module in the Adobe Commerce checkout starter kit.
 keywords:
   - App Builder
   - REST

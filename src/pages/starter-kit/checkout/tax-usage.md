@@ -21,7 +21,7 @@ const commerceClient = await getAdobeCommerceClient(process.env);
 
 `createOopeTaxIntegration` creates a new out-of-process tax integration:
 
-Check the [API reference](./tax-reference.md/#create-or-modify-a-new-oope-tax-integration) for more details.
+Check the [API reference](./tax-reference.md#create-or-modify-a-new-oope-tax-integration) for more details.
 
 <CodeBlock slots="heading, code" repeat="1" languages="javascript" />
 
@@ -56,7 +56,7 @@ try {
 
 `getOopeTaxIntegration` retrieves one out-of-process tax integration by `code` from the Adobe Commerce instance.
 
-Check the [API reference](./tax-reference.md/#get-an-oope-tax-integration-by-code) for more details.
+Check the [API reference](./tax-reference.md#get-an-oope-tax-integration-by-code) for more details.
 
 <CodeBlock slots="heading, code" repeat="1" languages="javascript" />
 
@@ -84,7 +84,7 @@ try {
 
 `getOopeTaxIntegrations` retrieves a list of all out-of-process tax integrations in the Adobe Commerce instance.
 
-Check the [API reference](./tax-reference.md/#list-all-oope-tax-integrations) for more details.
+Check the [API reference](./tax-reference.md#list-all-oope-tax-integrations) for more details.
 
 <CodeBlock slots="heading, code" repeat="1" languages="javascript" />
 

@@ -19,7 +19,7 @@ const commerceClient = await getAdobeCommerceClient(process.env);
 
 `createOopePaymentMethod` creates a new out-of-process payment method with the necessary details such as `code`, `title`, and `configuration`.
 
-Check the [API reference](payment-reference/#create-a-new-payment-method) for more details.
+Check the [API reference](payment-reference.md/#create-a-new-payment-method) for more details.
 
 <CodeBlock slots="heading, code" repeat="1" languages="javascript" />
 
@@ -60,7 +60,7 @@ try {
 
 `getOopePaymentMethods` retrieves a list of all out-of-process payment methods in the Adobe Commerce instance.
 
-Check the [API reference](payment-reference/#list-all-payment-methods) for more details.
+Check the [API reference](payment-reference.md/#list-all-payment-methods) for more details.
 
 <CodeBlock slots="heading, code" repeat="1" languages="javascript" />
 
@@ -88,7 +88,7 @@ try {
 
 `getOopePaymentMethod` retrieves one out-of-process payment method by code from the Adobe Commerce instance.
 
-Check the [API reference](payment-reference/#get-an-oope-payment-method-by-code) for more details.
+Check the [API reference](payment-reference.md/#get-an-oope-payment-method-by-code) for more details.
 
 <CodeBlock slots="heading, code" repeat="1" languages="javascript" />
 

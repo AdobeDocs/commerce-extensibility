@@ -57,7 +57,7 @@ To install the module, run the following command using Composer:
 To enable out-of-process tax management in Adobe Commerce, install the `magento/module-out-of-process-tax-management` module.
 To install the module, run the following command using Composer:
 
-```bash
+``` bash
  composer require magento/module-out-of-process-tax-management --with-dependencies
 ```
 
@@ -65,7 +65,7 @@ To install the module, run the following command using Composer:
 
 Due to this extension overrides the class `Magento\Tax\Model\Sales\Total\Quote\Tax` in `di.xml`
 
-```
+```xml
 <preference for="Magento\Tax\Model\Sales\Total\Quote\Tax"
                 type="Magento\OutOfProcessTaxManagement\Model\Tax\Sales\Total\Quote\Tax"/>
 ```

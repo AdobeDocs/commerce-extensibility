@@ -19,14 +19,13 @@ To configure out-of-process shipping methods, add shipping carriers using the RE
 
 The raw Shipping REST schema is available [here](/shipping.xml).
 
-| **Route URL**                     | **Method** | **Description**                                |
-|-----------------------------------|------------|------------------------------------------------|
-| `/V1/oope_shipping_carrier`       | POST       | Create a new shipping carrier.                 |
-| `/V1/oope_shipping_carrier`       | PUT        | Update a shipping carrier.                     |
+| **Route URL**                     | **Method** | **Description**                                          |
+| --------------------------------- | ---------- | -------------------------------------------------------- |
+| `/V1/oope_shipping_carrier`       | POST       | Create a new shipping carrier.                           |
+| `/V1/oope_shipping_carrier`       | PUT        | Update a shipping carrier.                               |
 | `/V1/oope_shipping_carrier/:code` | GET        | Retrieve an out-of-process shipping carrier by its code. |
 | `/V1/oope_shipping_carrier`       | GET        | Retrieve a list of all out-of-process shipping carriers  |
-| `/V1/oope_shipping_carrier/:code`   | DELETE     | Delete shipping carrier by code                |
-
+| `/V1/oope_shipping_carrier/:code` | DELETE     | Delete shipping carrier by code                          |
 
 ### Create a new OOPE shipping carrier
 
@@ -35,7 +34,7 @@ The POST `/V1/oope_shipping_carrier` creates an out-of-process shipping carrier 
 **Payload parameters:**
 
 | Parameter                   | Type    | Required | Description                                                              |
-|-----------------------------|---------|----------|--------------------------------------------------------------------------|
+| --------------------------- | ------- | -------- | ------------------------------------------------------------------------ |
 | `code`                      | String  | Yes      | Unique identifier for the shipping carrier.                              |
 | `title`                     | String  | Yes      | Display name of the shipping carrier.                                    |
 | `stores`                    | Array   | No       | List of store codes where the shipping carrier is available.             |
@@ -48,6 +47,7 @@ The POST `/V1/oope_shipping_carrier` creates an out-of-process shipping carrier 
 <CodeBlock slots="heading, code" repeat="2" languages="bash, json" />
 
 #### Example request
+
 ```bash
 curl --request POST \
 --url <ADOBE_COMMERCE_API_URL>/V1/oope_shipping_carrier \
@@ -93,7 +93,7 @@ The PUT `/V1/oope_shipping_carrier` updates an out-of-process shipping carrier i
 **Payload parameters:**
 
 | Parameter                   | Type    | Required | Description                                                              |
-|-----------------------------|---------|----------|--------------------------------------------------------------------------|
+| --------------------------- | ------- | -------- | ------------------------------------------------------------------------ |
 | `code`                      | String  | Yes      | Unique identifier for the shipping carrier.                              |
 | `title`                     | String  | Yes      | Display name of the shipping carrier.                                    |
 | `stores`                    | Array   | No       | List of store codes where the shipping carrier is available.             |
@@ -106,6 +106,7 @@ The PUT `/V1/oope_shipping_carrier` updates an out-of-process shipping carrier i
 <CodeBlock slots="heading, code" repeat="2" languages="bash, json" />
 
 #### Example request
+
 ```bash
 curl --request PUT \
 --url <ADOBE_COMMERCE_API_URL>/V1/oope_shipping_carrier \
@@ -144,7 +145,6 @@ curl --request PUT \
 }
 ```
 
-
 ### Get an OOPE shipping carrier by code
 
 The GET `/V1/oope_shipping_carrier/:code` retrieves one out-of-process shipping carrier by `code` from the Adobe Commerce instance.
@@ -158,6 +158,7 @@ The GET `/V1/oope_shipping_carrier/:code` retrieves one out-of-process shipping 
 <CodeBlock slots="heading, code" repeat="2" languages="bash,json" />
 
 #### Example request
+
 ```bash
 curl --request GET \
 --url <ADOBE_COMMERCE_API_URL>/V1/oope_shipping_carrier/:code' \
@@ -191,6 +192,7 @@ The GET `/V1/oope_shipping_carrier` retrieves a list of all out-of-process shipp
 <CodeBlock slots="heading, code" repeat="2" languages="bash,json" />
 
 #### Example request
+
 ```bash
 curl --request GET \
 --url <ADOBE_COMMERCE_API_URL>/V1/oope_shipping_carrier' \
@@ -200,7 +202,7 @@ curl --request GET \
 
 #### Example response
 
-````json
+```json
 {
   "success": true,
   "message": [
@@ -228,7 +230,7 @@ curl --request GET \
     }
   ]
 }
-````
+```
 
 ### Delete an OOPE shipping carrier
 
@@ -241,6 +243,7 @@ The DELETE `/V1/oope_shipping_carrier/:code` deletes an out-of-process shipping 
 <CodeBlock slots="heading, code" repeat="2" languages="bash,json" />
 
 #### Example request
+
 ```bash
 curl --request DELETE \
 --url <ADOBE_COMMERCE_API_URL>/V1/oope_shipping_carrier/:code' \
@@ -276,30 +279,29 @@ For example, when setting shipping methods on cart mutations:
 
 ```graphql
 mutation {
-  setShippingMethodsOnCart(input: {
-    cart_id: "<cart_id>"
-    shipping_methods: [
-      {
-        carrier_code: "EPS"
-        method_code: "eps_shipping_two"
-      }
-    ]
-  }) {
+  setShippingMethodsOnCart(
+    input: {
+      cart_id: "<cart_id>"
+      shipping_methods: [
+        { carrier_code: "EPS", method_code: "eps_shipping_two" }
+      ]
+    }
+  ) {
     cart {
       shipping_addresses {
         selected_shipping_method {
-            additional_data {
-                key
-                value
-            }
-            carrier_code
-            carrier_title
-            method_code
-            method_title
-            price_excl_tax {
-                currency
-                value
-            }
+          additional_data {
+            key
+            value
+          }
+          carrier_code
+          carrier_title
+          method_code
+          method_title
+          price_excl_tax {
+            currency
+            value
+          }
         }
       }
     }
@@ -348,14 +350,13 @@ Additionally, you can use `additional_data` in a query to get carts with availab
       }
     }
     itemsV2 {
-        items {
-            uid
-            product {
-                sku
-            }
-
-        } 
+      items {
+        uid
+        product {
+          sku
+        }
+      }
     }
-  } 
+  }
 }
 ```

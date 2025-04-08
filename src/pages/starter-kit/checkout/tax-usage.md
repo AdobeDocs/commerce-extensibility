@@ -5,6 +5,7 @@ keywords:
   - App Builder
   - Extensibility
 ---
+
 # Tax API JavaScript usage
 
 To manage OOP tax integrations, Adobe Commerce provides a set of REST endpoints. The following sections describe how to use these endpoints in your JavaScript code.
@@ -12,7 +13,7 @@ To manage OOP tax integrations, Adobe Commerce provides a set of REST endpoints.
 To call the Commerce REST endpoints, initialize the Adobe Commerce Client:
 
 ```javascript
-const { getAdobeCommerceClient } = require('../lib/adobe-commerce');
+const { getAdobeCommerceClient } = require("../lib/adobe-commerce");
 const commerceClient = await getAdobeCommerceClient(process.env);
 ```
 
@@ -29,19 +30,25 @@ Check the [API reference](tax-reference/#create-or-modify-a-new-oope-tax-integra
 ```javascript
 try {
   const createResponse = await commerceClient.createOopeTaxIntegration({
-    code: 'tax-1',
-    title: 'Tax Integration 1',
+    code: "tax-1",
+    title: "Tax Integration 1",
     active: true,
-    stores: ['store-1', 'store-2'],
+    stores: ["store-1", "store-2"],
   });
 
   if (!createResponse.success) {
-    return errorResponse(createResponse.statusCode, 'Failed to create tax integration');
+    return errorResponse(
+      createResponse.statusCode,
+      "Failed to create tax integration",
+    );
   }
 
-  console.log('Created tax integration:', createResponse.message);
+  console.log("Created tax integration:", createResponse.message);
 } catch (error) {
-  return errorResponse(HTTP_INTERNAL_ERROR, 'Error occurred while creating tax integration');
+  return errorResponse(
+    HTTP_INTERNAL_ERROR,
+    "Error occurred while creating tax integration",
+  );
 }
 ```
 
@@ -57,13 +64,19 @@ Check the [API reference](tax-reference/#get-an-oope-tax-integration-by-code) fo
 
 ```javascript
 try {
-  const getResponse = await commerceClient.getOopeTaxIntegration('tax-1');
+  const getResponse = await commerceClient.getOopeTaxIntegration("tax-1");
   if (!getResponse.success) {
-    return errorResponse(getResponse.statusCode, 'Failed to retrieve tax integration');
+    return errorResponse(
+      getResponse.statusCode,
+      "Failed to retrieve tax integration",
+    );
   }
-  consolejson('Retrieved tax integration details:', getResponse.message);
+  consolejson("Retrieved tax integration details:", getResponse.message);
 } catch (error) {
-  return errorResponse(HTTP_INTERNAL_ERROR, 'Error occurred while retrieving tax integration');
+  return errorResponse(
+    HTTP_INTERNAL_ERROR,
+    "Error occurred while retrieving tax integration",
+  );
 }
 ```
 
@@ -81,10 +94,16 @@ Check the [API reference](tax-reference/#list-all-oope-tax-integrations) for mor
 try {
   const listResponse = await commerceClient.getOopeTaxIntegrations();
   if (!listResponse.success) {
-    return errorResponse(listResponse.statusCode, 'Failed to list tax integrations');
+    return errorResponse(
+      listResponse.statusCode,
+      "Failed to list tax integrations",
+    );
   }
-  console.log('List of tax integrations:', listResponse.message);
+  console.log("List of tax integrations:", listResponse.message);
 } catch (error) {
-  return errorResponse(HTTP_INTERNAL_ERROR, 'Error occurred while listing tax integrations');
+  return errorResponse(
+    HTTP_INTERNAL_ERROR,
+    "Error occurred while listing tax integrations",
+  );
 }
 ```

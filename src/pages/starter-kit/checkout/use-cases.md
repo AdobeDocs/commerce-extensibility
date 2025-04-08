@@ -343,10 +343,7 @@ You can use the `additional_data` field to pass an array of key-value pairs to p
             "firstname": "John",
             "lastname": "Doe",
             "company": "Company Name",
-            "street": [
-              "3320 N Crescent Dr",
-              "Beverly Hills"
-            ],
+            "street": ["3320 N Crescent Dr", "Beverly Hills"],
             "city": "Los Angeles",
             "region": {
               "code": "CA",

@@ -39,9 +39,9 @@ Before installing Commerce modules, ensure that you have the required credential
 To enable out-of-process payment methods in Commerce, install the `magento/module-out-of-process-payment-methods`. This module enables out-of-process payment functionalities.
 To install the module, run the following command using Composer:
 
-``` bash
+```bash
   composer require magento/module-out-of-process-payment-methods --with-dependencies
-  ```
+```
 
 ### Install the Out-of-Process Shipping Extensions (OOPE) module in Adobe Commerce
 
@@ -56,7 +56,7 @@ To install the module, run the following command using Composer:
 
 To enable out-of-process tax management in Adobe Commerce, install the `magento/module-out-of-process-tax-management` module.
 To install the module, run the following command using Composer:
-    
+
 ```bash
  composer require magento/module-out-of-process-tax-management --with-dependencies
 ```
@@ -65,7 +65,7 @@ To install the module, run the following command using Composer:
 
 Due to this extension overrides the class `Magento\Tax\Model\Sales\Total\Quote\Tax` in `di.xml`
 
-```    
+```
 <preference for="Magento\Tax\Model\Sales\Total\Quote\Tax"
                 type="Magento\OutOfProcessTaxManagement\Model\Tax\Sales\Total\Quote\Tax"/>
 ```
@@ -73,7 +73,6 @@ Due to this extension overrides the class `Magento\Tax\Model\Sales\Total\Quote\T
 As a result, this extension is not compatible with other tax extensions that also override this class, such as TaxJar or Avalara.
 
 If you need to use another tax extension, it is recommended to disable this extension to prevent conflicts.
-
 
 ### Install the Commerce Eventing module (Commerce 2.4.4 and 2.4.5 only)
 
@@ -101,11 +100,11 @@ Use the following steps to configure your local environment:
 
 1. Execute the following command to create an Adobe Developer Console project in your organization and using the Commerce checkout starter kit as a template:
 
-  ```bash
-  aio app init --repo adobe/commerce-checkout-starter-kit --github-pat $GITHUB_PAT
-  ```
+```bash
+aio app init --repo adobe/commerce-checkout-starter-kit --github-pat $GITHUB_PAT
+```
 
-  Replace `$GITHUB_PAT` with your GitHub personal access token. For more information, refer to [managing your personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens).
+Replace `$GITHUB_PAT` with your GitHub personal access token. For more information, refer to [managing your personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens).
 
 1. The starter kit requires you to add the following services in the console project:
 
@@ -113,11 +112,11 @@ Use the following steps to configure your local environment:
    - I/O Events
    - Adobe I/O Events for Adobe Commerce
 
-  Execute the following command to add the services by selecting them from the list:
+Execute the following command to add the services by selecting them from the list:
 
-  ```bash
-  aio app add service
-  ```
+```bash
+aio app add service
+```
 
 1. Copy the environment variables from the [`env.dist`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/env.dist) to a local `.env` file and enter the required values.
 

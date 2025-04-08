@@ -17,11 +17,11 @@ For more information on the available endpoints, refer to [payment API usage](./
 
 The raw Payment REST API schema is available [here](/payment.xml).
 
-| **Route URL**| **Method** | **Description**|
-| ----------------------------------------------------------------------------------------------------------------------------------------- | ---------- | -------------------------------------------- |
-| `/V1/oope_payment_method`     | POST       | Create or update an out-of-process payment method.     |
+| **Route URL**                   | **Method** | **Description**                                        |
+| ------------------------------- | ---------- | ------------------------------------------------------ |
+| `/V1/oope_payment_method`       | POST       | Create or update an out-of-process payment method.     |
 | `/V1/oope_payment_method/:code` | GET        | Retrieve an out-of-process payment method by its code. |
-| `/V1/oope_payment_method`             | GET        | List all available out-of-process payment methods.     |
+| `/V1/oope_payment_method`       | GET        | List all available out-of-process payment methods.     |
 
 ### Create a new payment method
 
@@ -29,23 +29,23 @@ The POST `/V1/oope_payment_method/:code` creates an out-of-process payment metho
 
 **Payload parameters:**
 
-| Parameter                 | Type     | Required | Description |
-| ------------------------- | ------- | ----- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `code`                    | String  | Yes | Unique identifier for the payment method.|
-| `title`                   | String  | No | Display name of the payment method.|
-| `description`             | String  | No | Description of the payment method.|
-| `active`                  | Boolean | Yes | Status indicating if the method is active.|
-| `backend_integration_url` | String  | No | URL for backend integration, which is an App Builder URL.|
-| `stores`                  | Array   | No | List of store codes that payment method is available for.|
-| `order_status`            | String  | No | Initial [order status](https://experienceleague.adobe.com/en/docs/commerce-admin/stores-sales/order-management/orders/order-status) when using this method. Default is `pending`. |
-| `countries`               | Array   | No | List of countries where the method is available.|
-| `currencies`              | Array   | No | Currencies supported by the payment method.|
-| `custom_config`           | Array   | No | Custom configuration settings for payment methods.|
+| Parameter                 | Type    | Required | Description                                                                                                                                                                       |
+| ------------------------- | ------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `code`                    | String  | Yes      | Unique identifier for the payment method.                                                                                                                                         |
+| `title`                   | String  | No       | Display name of the payment method.                                                                                                                                               |
+| `description`             | String  | No       | Description of the payment method.                                                                                                                                                |
+| `active`                  | Boolean | Yes      | Status indicating if the method is active.                                                                                                                                        |
+| `backend_integration_url` | String  | No       | URL for backend integration, which is an App Builder URL.                                                                                                                         |
+| `stores`                  | Array   | No       | List of store codes that payment method is available for.                                                                                                                         |
+| `order_status`            | String  | No       | Initial [order status](https://experienceleague.adobe.com/en/docs/commerce-admin/stores-sales/order-management/orders/order-status) when using this method. Default is `pending`. |
+| `countries`               | Array   | No       | List of countries where the method is available.                                                                                                                                  |
+| `currencies`              | Array   | No       | Currencies supported by the payment method.                                                                                                                                       |
+| `custom_config`           | Array   | No       | Custom configuration settings for payment methods.                                                                                                                                |
 
 <CodeBlock slots="heading, code" repeat="2" languages="bash, json" />
 
-
 #### Example request
+
 ```bash
 curl --request POST \
 --url <ADOBE_COMMERCE_API_URL>/V1/oope_payment_method \
@@ -116,7 +116,6 @@ curl --request GET \
 --header 'Authorization: Bearer <TOKEN>' \
 --header 'Content-Type: application/json'
 ```
-
 
 #### Example response
 

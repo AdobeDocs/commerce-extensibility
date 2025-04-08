@@ -11,7 +11,7 @@ keywords:
 To call the Commerce REST endpoints, initialize the Adobe Commerce Client:
 
 ```javascript
-const { getAdobeCommerceClient } = require('../lib/adobe-commerce');
+const { getAdobeCommerceClient } = require("../lib/adobe-commerce");
 const commerceClient = await getAdobeCommerceClient(process.env);
 ```
 
@@ -28,25 +28,31 @@ Check the [API reference](payment-reference/#create-a-new-payment-method) for mo
 ```javascript
 try {
   const createResponse = await commerceClient.createOopePaymentMethod({
-    code: 'method-1',
-    title: 'Method 1',
-    description: 'Description for Method 1',
+    code: "method-1",
+    title: "Method 1",
+    description: "Description for Method 1",
     active: true,
-    backend_integration_url: 'https://example.com',
-    stores: ['store-1', 'store-2'],
-    order_status: 'processing',
-    countries: ['US', 'ES'],
-    currencies: ['USD', 'EUR'],
-    custom_config: [{ key: 'key1', value: 'value1' }],
+    backend_integration_url: "https://example.com",
+    stores: ["store-1", "store-2"],
+    order_status: "processing",
+    countries: ["US", "ES"],
+    currencies: ["USD", "EUR"],
+    custom_config: [{ key: "key1", value: "value1" }],
   });
 
   if (!createResponse.success) {
-    return errorResponse(createResponse.statusCode, 'Failed to create payment method');
+    return errorResponse(
+      createResponse.statusCode,
+      "Failed to create payment method",
+    );
   }
 
-  console.log('Created payment method:', createResponse.message);
+  console.log("Created payment method:", createResponse.message);
 } catch (error) {
-  return errorResponse(HTTP_INTERNAL_ERROR, 'Error occurred while creating payment method');
+  return errorResponse(
+    HTTP_INTERNAL_ERROR,
+    "Error occurred while creating payment method",
+  );
 }
 ```
 
@@ -64,11 +70,17 @@ Check the [API reference](payment-reference/#list-all-payment-methods) for more 
 try {
   const listResponse = await commerceClient.getOopePaymentMethods();
   if (!listResponse.success) {
-    return errorResponse(listResponse.statusCode, 'Failed to list payment methods');
+    return errorResponse(
+      listResponse.statusCode,
+      "Failed to list payment methods",
+    );
   }
-  console.log('List of payment methods:', listResponse.message);
+  console.log("List of payment methods:", listResponse.message);
 } catch (error) {
-  return errorResponse(HTTP_INTERNAL_ERROR, 'Error occurred while listing payment methods');
+  return errorResponse(
+    HTTP_INTERNAL_ERROR,
+    "Error occurred while listing payment methods",
+  );
 }
 ```
 
@@ -84,13 +96,19 @@ Check the [API reference](payment-reference/#get-an-oope-payment-method-by-code)
 
 ```javascript
 try {
-  const getResponse = await commerceClient.getOopePaymentMethod('method-1');
+  const getResponse = await commerceClient.getOopePaymentMethod("method-1");
   if (!getResponse.success) {
-    return errorResponse(getResponse.statusCode, 'Failed to retrieve payment method');
+    return errorResponse(
+      getResponse.statusCode,
+      "Failed to retrieve payment method",
+    );
   }
-  console.log('Retrieved payment method details:', getResponse.message);
+  console.log("Retrieved payment method details:", getResponse.message);
 } catch (error) {
-  return errorResponse(HTTP_INTERNAL_ERROR, 'Error occurred while retrieving payment method');
+  return errorResponse(
+    HTTP_INTERNAL_ERROR,
+    "Error occurred while retrieving payment method",
+  );
 }
 ```
 
@@ -110,16 +128,20 @@ This method uses the Adobe Commerce API [order search criteria](https://develope
 
 ```javascript
 try {
-  const orderResponse = await commerceClient.getOrderByMaskedCartId(maskedCartId);
+  const orderResponse =
+    await commerceClient.getOrderByMaskedCartId(maskedCartId);
   if (!orderResponse.success) {
     const errMsg =
       orderResponse.statusCode === HTTP_NOT_FOUND
-        ? 'Order not found for the given maskedCartId.'
-        : 'Unexpected error getting order by maskedCartId';
+        ? "Order not found for the given maskedCartId."
+        : "Unexpected error getting order by maskedCartId";
     return errorResponse(orderResponse.statusCode, errMsg);
   }
-  console.log('Order details:', orderResponse.message);
+  console.log("Order details:", orderResponse.message);
 } catch (error) {
-  return errorResponse(HTTP_INTERNAL_ERROR, 'Failed to fetch order due to an unexpected error');
+  return errorResponse(
+    HTTP_INTERNAL_ERROR,
+    "Failed to fetch order due to an unexpected error",
+  );
 }
 ```

@@ -15,7 +15,7 @@ The checkout module provides REST and GraphQL APIs to configure out-of-process p
 
 For more information on the available endpoints, refer to [payment API usage](./payment-usage.md#create-a-new-payment-method).
 
-The raw Payment REST ap schema is available [here](/payment.xml).
+The raw Payment REST API schema is available [here](/payment.xml).
 
 | **Route URL**| **Method** | **Description**|
 | ----------------------------------------------------------------------------------------------------------------------------------------- | ---------- | -------------------------------------------- |

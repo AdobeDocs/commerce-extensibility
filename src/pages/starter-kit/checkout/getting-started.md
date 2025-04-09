@@ -16,7 +16,8 @@ You must install or have access to the following prerequisites to develop with t
 
 - Adobe Commerce EE version `2.4.4` or higher.
 
-<InlineAlert variant="info" slots="text1" />
+<InlineAlert variant="info" slots="text" />
+
 Magento Open Source is not supported.
 
 - [Node.js](https://nodejs.org/) version 22. If you have Node Version Manager (`nvm`) installed, you can run the following command to install and use the required version:

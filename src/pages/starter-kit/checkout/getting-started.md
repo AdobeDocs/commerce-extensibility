@@ -37,7 +37,7 @@ Before installing Commerce modules, ensure that you have the required credential
 
 ### Install the Out-of-Process Payment Extensions (OOPE) module on Adobe Commerce
 
-To enable out-of-process payment methods in Commerce, install the `magento/module-out-of-process-payment-methods`. This module enables out-of-process payment functionalities.
+To enable out-of-process payment methods in Commerce, install the `magento/module-out-of-process-payment-methods` module. This module enables out-of-process payment functionalities.
 To install the module, run the following command using Composer:
 
 ```bash

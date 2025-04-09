@@ -74,7 +74,7 @@ This extension overrides the class `Magento\Tax\Model\Sales\Total\Quote\Tax` in 
 
 As a result, this extension is not compatible with other tax extensions that also override this class, such as TaxJar or Avalara.
 
-If you need to use another tax extension, it is recommended to disable this extension to prevent conflicts.
+If you need to use another tax extension, Adobe recommends disabling this extension to prevent conflicts.
 
 ### Install the Commerce Eventing module (Commerce 2.4.4 and 2.4.5 only)
 

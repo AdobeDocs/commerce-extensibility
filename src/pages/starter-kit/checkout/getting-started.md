@@ -65,7 +65,7 @@ To install the module, run the following command using Composer:
 
 #### Out-of-Process Tax Management Limitations
 
-Due to this extension overrides the class `Magento\Tax\Model\Sales\Total\Quote\Tax` in `di.xml`
+This extension overrides the class `Magento\Tax\Model\Sales\Total\Quote\Tax` in `di.xml`
 
 ```xml
 <preference for="Magento\Tax\Model\Sales\Total\Quote\Tax"

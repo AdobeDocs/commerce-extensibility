@@ -35,7 +35,7 @@ Magento Open Source is not supported.
 
 Before installing Commerce modules, ensure that you have the required credentials in `auth.json` with [access to the Adobe Commerce repository](https://experienceleague.adobe.com/en/docs/commerce-operations/installation-guide/prerequisites/authentication-keys).
 
-### Install the Out-of-Process Payment Extensions (OOPE) module on Adobe Commerce
+### Install the Out-of-Process Payment module
 
 To enable out-of-process payment methods in Commerce, install the `magento/module-out-of-process-payment-methods` module. This module enables out-of-process payment functionalities.
 
@@ -45,7 +45,7 @@ To install the module, run the following command using Composer:
   composer require magento/module-out-of-process-payment-methods --with-dependencies
 ```
 
-### Install the Out-of-Process Shipping Extensions (OOPE) module in Adobe Commerce
+### Install the Out-of-Process Shipping module
 
 To enable out-of-process shipping methods in Adobe Commerce, install the `magento/module-out-of-process-shipping-methods` module.
 To install the module, run the following command using Composer:
@@ -54,7 +54,7 @@ To install the module, run the following command using Composer:
   composer require magento/module-out-of-process-shipping-methods --with-dependencies
 ```
 
-### Install the Out-of-Process Tax Management (OOPE) module in Adobe Commerce
+### Install the Out-of-Process Tax module
 
 To enable out-of-process tax management in Adobe Commerce, install the `magento/module-out-of-process-tax-management` module.
 To install the module, run the following command using Composer:

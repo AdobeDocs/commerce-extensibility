@@ -140,6 +140,116 @@ curl --request GET \
 }
 ```
 
+### Create a tax class with custom attributes
+
+The out-of-process tax module extends the [`POST /V1/taxClasses`](https://adobe-commerce.redoc.ly/2.4.7-admin/tag/taxClasses/) endpoint to allow creating tax classes with custom attributes.
+
+<CodeBlock slots="heading, code" repeat="2" languages="bash, json" />
+
+#### Example request
+
+```bash
+curl --request POST \
+--url <ADOBE_COMMERCE_API_URL>/V1/taxClasses \
+--header 'Authorization: Bearer <TOKEN>' \
+--header 'Content-Type: application/json' \
+--data '{
+  "class_name": "Test Tax Class",
+  "class_type": "PRODUCT",
+  "custom_attributes": [
+    {
+      "attribute_code": "tax_code",
+      "value": "005"
+    }
+  ]
+}'
+```
+
+#### Example response
+
+```json
+"3"
+```
+
+### Update a tax class with custom attributes
+
+The out-of-process tax module extends the [`POST /V1/taxClasses/:classId`](https://adobe-commerce.redoc.ly/2.4.7-admin/tag/taxClassesclassId) endpoint to update an existing tax class with custom attributes.
+
+<CodeBlock slots="heading, code" repeat="2" languages="bash, json" />
+
+#### Example request
+
+```bash
+curl --request POST \
+--url <ADOBE_COMMERCE_API_URL>/V1/taxClasses/4 \
+--header 'Authorization: Bearer <TOKEN>' \
+--header 'Content-Type: application/json' \
+--data '{
+  "class_id": 4,
+  "class_name": "Updated Tax Class",
+  "class_type": "PRODUCT",
+  "custom_attributes": [
+    {
+      "attribute_code": "tax_code",
+      "value": "005"
+    }
+  ]
+}'
+```
+
+#### Example response
+
+```json
+"4"
+```
+
+### List all tax classes with custom attributes
+
+The out-of-process tax module extends the [`GET /V1/taxClasses/search`](https://adobe-commerce.redoc.ly/2.4.7-admin/tag/taxClassessearch#operation/GetV1TaxClassesSearch) endpoint to include custom attributes in the response when available.
+
+<CodeBlock slots="heading, code" repeat="2" languages="bash, json" />
+
+#### Example request
+
+```bash
+curl --request GET \
+--url '<ADOBE_COMMERCE_API_URL>/V1/taxClasses/search?searchCriteria[pageSize]=100' \
+--header 'Authorization: Bearer <TOKEN>' \
+--header 'Content-Type: application/json'
+```
+
+#### Example response
+
+```json
+{
+  "items": [
+    {
+      "class_id": 1,
+      "class_name": "Retail Tax Class",
+      "class_type": "CUSTOMER",
+      "extension_attributes": {},
+      "custom_attributes": [
+        {
+          "attribute_code": "tax_code",
+          "value": "005"
+        },
+        {
+          "attribute_code": "tax_label",
+          "value": "Retail"
+        }
+      ]
+    }
+  ],
+  "search_criteria": {
+    "filter_groups": [],
+    "sort_orders": [],
+    "page_size": 100,
+    "current_page": 1
+  },
+  "total_count": 1
+}
+```
+
 ## GraphQL
 
 There are two GraphQL queries to check taxes applied by the tax integration, `cart` and `customerOrders`.

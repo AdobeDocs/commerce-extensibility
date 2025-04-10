@@ -115,7 +115,7 @@ curl --request PUT \
 --data '{
 "carrier": {
 "code": "DPS",
-"title": "Detroit Postal Service"
+"title": "Demo Postal Service"
 "stores": ["default", "custom"],
 "countries": ["DE","FR","CA"],
 "sort_order": 10000,

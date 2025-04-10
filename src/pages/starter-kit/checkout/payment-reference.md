@@ -98,7 +98,7 @@ curl --request POST \
 
 ### Get an OOPE payment method by code
 
-The GET `/V1/oope_payment_method/:code` retrieves one out-of-process payment method by `code` from the Adobe Commerce instance.
+The GET `/V1/oope_payment_method/:code` endpoint retrieves one out-of-process payment method by `code` from the Adobe Commerce instance.
 
 **Payload parameters:**
 

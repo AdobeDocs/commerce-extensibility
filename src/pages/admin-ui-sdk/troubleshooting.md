@@ -10,7 +10,7 @@ keywords:
 
 In this comprehensive troubleshooting guide, we'll help you navigate through common challenges and provide solutions to get you back on track. We'll walk you through the troubleshooting process, empowering you to resolve problems efficiently and effectively.
 
-## Configured extension points are not displayed in Commerce Admin
+## Eligible extensions screens is empty
 
 *  **The `Magento_AdminAdobeIms` module has not been enabled.** Run the following command from the Adobe Commerce command line to check the status of this module.
 
@@ -22,7 +22,7 @@ In this comprehensive troubleshooting guide, we'll help you navigate through com
 
    [Configure the Commerce Admin Integration with Adobe ID](https://experienceleague.adobe.com/docs/commerce-admin/start/admin/ims/adobe-ims-config.html#) provides additional information about setting up Adobe Identity Management Service (IMS) on Adobe Commerce.
 
-* **The application is published in a different organization.** Run the following command from the Adobe Commerce command line to check the organization ID used to enable the `Magento_AdminAdobeIms` module.
+* **The application is deployed in a different organization.** Run the following command from the Adobe Commerce command line to check the organization ID used to enable the `Magento_AdminAdobeIms` module.
 
    `bin/magento admin:adobe-ims:info`
 
@@ -44,28 +44,25 @@ In this comprehensive troubleshooting guide, we'll help you navigate through com
    more var/log/system.log | grep -i "Admin UI SDK"
    ```
 
-## App menu is missing in the Commerce Admin
+   Alternatively, navigate to **System** > Admin UI SDK > **Admin UI SDK Logs** to check the saved logs if [**Database logging configuration**](./configuration.md#database-logging-configuration) is enabled.
 
-It's common to have the App menu missing from the Commerce Admin menu when:
+* Local testing mode is enabled. Make sure you disable local testing when `Magento_AdminAdobeIms` is enabled.
 
-*  **The registration of the menu is not correct.** Make sure that you defined the correct `menu` method with a `getItems` function that returns an array of the menus to register.
+## Extension point registration is missing in the Commerce Admin
 
-   *  To make sure your registration is correctly deployed, navigate in your browser to `<appURL>/index.html`. You can find your application URL in your project workspace in the Adobe developer console.
+* Make sure the extensions is eligible to the Commerce Admin and is selected in the [**Configure extensions**](./eligible-extensions-config.md) screen.
 
-   *  Check the elements in your browser developer tools and look for the script `src` in the body. It usually has the format `index.<random>.js`.
+* Check the `system.log` file to ensure the issue related to the Admin UI SDK is detected. Run the following command to check the file:
 
-      Replace in the URL the `index.html` with this javascript to access its content. Search for `getItems` for example and make sure the registration defined in your app is the same one you see deployed.
+   ```bash
+   more var/log/system.log | grep -i "Admin UI SDK"
+   ```
 
-## App page is not displayed when accessing the menu
+   Alternatively, navigate to **System** > Admin UI SDK > **Admin UI SDK Logs** to check the saved logs if [**Database logging configuration**](./configuration.md#database-logging-configuration) is enabled.
 
-An app page is not displayed when the `extensionId` specified doesn't match with the application or when the registration is missing mandatory methods.
+* Make sure the `/admin-ui-sdk/registration` runtime action is reachable.
 
-*  Check the app registration and make sure it contains the following:
-
-   *  `extension:getId` method that returns a string with the `extensionId`.
-   *  `page:getTitle` method that returns a string with the page title.
-
-*  Check the `extensionId` is the same used in the registration to identify correctly the application with a unique name.
+* Make sure registrations are correctly refreshed. Click on the [**Refresh registrations**](./configuration.md#general-configuration) button in the configuration or clear the backend cache.
 
 ## Timeout error
 
@@ -87,15 +84,28 @@ Timeout errors can occur when a process or operation takes longer than the speci
 
 Commerce logs failed mass action requests that are not sent to an iFrame. An App Builder application can access details of the failed request using the `GET V1/adminuisdk/massaction/<requestId>` REST API. The [authentication token](https://developer.adobe.com/commerce/webapi/get-started/authentication/gs-authentication-token/) must have access to the Admin UI SDK. The call returns an error message if the request ID was not found or if it associated with a successful action. [Connection interruption failures](./extension-points/index.md#connection-interruption-failures) provides additional information.
 
-## Issues accesing the latest Admin UI SDK version
+## Issues upgrading to major Admin UI SDK version
 
-You may encounter issues accesing the latest Admin UI SDK version (version 2.0.0) and see an error such as this when trying to update your `composer.json`:
+You may encounter issues upgrading the major Admin UI SDK version and see an error such as this when trying to update your `composer.json`:
 
 ``` bash
 Problem 1
-    - adobe-commerce/extensions-metapackage <> requires magento/commerce-backend-sdk ^1.3 -> found magento/commerce-backend-sdk[...] but it conflicts with your root composer.json require (2.*).
+    - adobe-commerce/extensions-metapackage <> requires magento/commerce-backend-sdk ^<required version> -> found magento/commerce-backend-sdk[...] but it conflicts with your root composer.json require (<target major version>).
 ```
 
-We are currently working to ensure the latest version is installed by default on the next Adobe Commerce release. However, if you're currently facing any issues, add the following line to the `composer.json` file in the `require` section to solve this issue:
+This issue happens when the Adobe Commerce version does not install the latest major release of Admin UI SDK by default.
+
+Add the following line to the `composer.json` file in the `require` section to solve this issue:
+
+`"magento/commerce-backend-sdk": "<target major version> as <required version>"`
+
+For example, a 2.4.7 Adobe Commerce instance that installs version 1.4 by default, upgrading Admin UI SDK to 2.3.0 will fail with the following error:
+
+``` bash
+Problem 1
+    - adobe-commerce/extensions-metapackage <> requires magento/commerce-backend-sdk ^1.4 -> found magento/commerce-backend-sdk[...] but it conflicts with your root composer.json require (2.x).
+```
+
+To solve the issue, add the following line to the `composer.json`:
 
 `"magento/commerce-backend-sdk": "2.0.0 as 1.4"`

@@ -45,6 +45,10 @@ module.exports = [
         path: "/starter-kit/checkout/payment-reference/",
       },
       {
+        title: "Shipping API Javascript usage",
+        path: "/starter-kit/checkout/shipping-usage/",
+      },
+      {
         title: "Shipping API reference",
         path: "/starter-kit/checkout/shipping-reference/",
       },

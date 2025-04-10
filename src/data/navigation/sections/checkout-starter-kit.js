@@ -21,6 +21,10 @@ module.exports = [
         path: "/starter-kit/checkout/configure/",
       },
       {
+        title: "Development",
+        path: "/starter-kit/checkout/development/",
+      },
+      {
         title: "Connect to Adobe Commerce",
         path: "/starter-kit/checkout/connect/",
       },
@@ -31,10 +35,6 @@ module.exports = [
       {
         title: "CI/CD",
         path: "/starter-kit/checkout/cicd/",
-      },
-      {
-        title: "Development",
-        path: "/starter-kit/checkout/development/",
       },
       {
         title: "Payment API Javascript usage",

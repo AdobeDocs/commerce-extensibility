@@ -22,6 +22,8 @@ const commerceClient = await getAdobeCommerceClient(process.env);
 
 Check the [API reference](./shipping-reference.md#create-a-new-oope-shipping-carrier) for more details.
 
+<CodeBlock slots="heading, code" repeat="1" languages="javascript" />
+
 #### Example usage
 
 ```javascript
@@ -47,30 +49,13 @@ try {
 }
 ```
 
-#### Example response
-
-```json
-{
-  "success": true,
-  "message": {
-    "id": 1,
-    "code": "DPS",
-    "title": "Demo Postal Service",
-    "stores": ["default"],
-    "countries": ["US", "CA"],
-    "active": true,
-    "sort_order": 10,
-    "tracking_available": true,
-    "shipping_labels_available": true
-  }
-}
-```
-
 ## List all shipping carriers
 
 `getOopeShippingCarriers` retrieves a list of all out-of-process shipping carriers in the Adobe Commerce instance.
 
 Check the [API reference](./shipping-reference.md#list-all-shipping-carriers) for more details.
+
+<CodeBlock slots="heading, code" repeat="1" languages="javascript" />
 
 #### Example usage
 
@@ -86,43 +71,14 @@ try {
 }
 ```
 
-#### Example response
-
-```json
-{
-  "success": true,
-  "message": [
-    {
-      "id": 1,
-      "code": "DPS",
-      "title": "Demo Postal Service",
-      "stores": ["default"],
-      "countries": ["US", "CA"],
-      "sort_order": 10,
-      "active": true,
-      "tracking_available": true,
-      "shipping_labels_available": true
-    },
-    {
-      "id": 2,
-      "code": "Fedex",
-      "title": "Fedex Service",
-      "stores": ["default"],
-      "countries": ["US"],
-      "sort_order": 50,
-      "active": true,
-      "tracking_available": false,
-      "shipping_labels_available": true
-    }
-  ]
-}
-```
 
 ## Get an OOPE shipping carrier by code
 
 `getOopeShippingCarrier` retrieves one out-of-process shipping carrier by `code` from the Adobe Commerce instance.
 
 Check the [API reference](./shipping-reference.md#get-an-oope-shipping-carrier-by-code) for more details.
+
+<CodeBlock slots="heading, code" repeat="1" languages="javascript" />
 
 #### Example usage
 
@@ -135,24 +91,5 @@ try {
   console.log('Retrieved shipping carrier details:', getResponse.message);
 } catch (error) {
   return errorResponse(HTTP_INTERNAL_ERROR, 'Error occurred while retrieving shipping carrier');
-}
-```
-
-#### Example response
-
-```json
-{
-  "success": true,
-  "message": {
-    "id": 1,
-    "code": "DPS",
-    "title": "Demo Postal Service",
-    "stores": ["default"],
-    "countries": ["US", "CA"],
-    "sort_order": 10,
-    "active": true,
-    "tracking_available": true,
-    "shipping_labels_available": true
-  }
 }
 ```

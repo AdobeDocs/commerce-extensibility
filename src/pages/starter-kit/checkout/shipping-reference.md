@@ -29,7 +29,7 @@ The raw Shipping REST schema is available [here](/shipping.xml).
 
 ### Create a new OOPE shipping carrier
 
-The POST `/V1/oope_shipping_carrier` creates an out-of-process shipping carrier in the Adobe Commerce instance.
+The POST `/V1/oope_shipping_carrier` endpoint creates an out-of-process shipping carrier in the Adobe Commerce instance.
 
 **Payload parameters:**
 

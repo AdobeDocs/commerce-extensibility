@@ -16,9 +16,11 @@ Navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **A
 
 The **General configuration** section enables the Admin UI SDK and refreshes registrations when changes are made.
 
-![Admin UI SDK general configuration](../_images/admin-ui-sdk-general-config.png)
+![Admin UI SDK general configuration](../_images/admin-ui-sdk/configuration/general.png)
 
 The Admin UI SDK is disabled by default. To enable it, set the **Enable Admin UI SDK** field to **Yes**.
+
+The [`Configure extensions`](./eligible-extensions-config.md) button allows to select the workspace and eligible extensions for the commerce instance.
 
 The `Refresh registrations` button reloads all registrations from the registries. It is typically used when changes are made to the registration on the app builder application side or when a new app is added and published, to reflect these changes in the Admin.
 
@@ -26,7 +28,7 @@ The `Refresh registrations` button reloads all registrations from the registries
 
 The **Database logging configuration** section allows you to save Admin UI SDK log entries for the specified retention period.
 
-![Admin UI SDK database logging configuration](../_images/admin-ui-sdk-db-log-config.png)
+![Admin UI SDK database logging configuration](../_images/admin-ui-sdk/configuration/database-logging.png)
 
 To save logs, set the **Enable Logs** field to **Yes**. By default, this field is set to **No**.
 
@@ -38,35 +40,15 @@ Navigate to **System** > Admin UI SDK > **Admin UI SDK Logs** to check the saved
 
 ![Admin UI SDK Logs screen](../_images/admin-ui-sdk-logs.png)
 
-## Sandbox testing
-
-The sandbox testing option provides an environment to test your applications using the Admin UI SDK in a real-world setting. This option will retrieve Production workspace registrations that match the chosen statuses. This environment can be shared with colleagues for collaborative testing before [publishing the application](./publish.md).
-
-![Admin UI SDK staging testing configuration](../_images/admin-ui-sdk-sandbox-test-config.png)
-
-1. Select **Yes** from the **Enable testing** menu.
-
-1. Set the **Testing mode** to **Sandbox**.
-
-1. Select all app statuses to load.
-
 ## Local testing
 
 When you enable the local service, all calls are automatically redirected to the local server, instead of connecting to Adobe's App Registry. The values you specify must match the contents of your local `server.js` file.
 
-![Admin UI SDK local testing configuration](../_images/admin-ui-sdk-local-test-config.png)
+![Admin UI SDK local testing configuration](../_images/admin-ui-sdk/configuration/local-testing.png)
 
-1. Select **Yes** from the **Enable testing** menu.
-
-1. Set the **Testing mode** to `Local testing`.
+1. Select **Yes** from the **Enable local testing** menu.
 
 1. Set the **Local Server Base URL** that points to your localhost, including the port.
-
-1. The **Mock Admin IMS Module** menu determines whether to send mock or real authentication credentials for the Adobe Identity Management Service (IMS). Ensure this value is set to **Yes** for early-stage testing. Set the value to **No** when you are ready to test with real credentials.
-
-1. Set the **Mock IMS Token**. In the sample `server.js` file, this value is set to `dummyToken`.
-
-1. Set the **Mock IMS Org ID**. In the sample `server.js` file, this value is set to `imsOrg`.
 
 1. Save your configuration.
 
@@ -215,7 +197,7 @@ You can download a sample app from the [Adobe Commerce Samples repository](https
 1. Run your custom menu extension locally.
 
    ```bash
-   aio app run
+   aio app dev
    ```
 
 1. Confirm that the **Apps** section appears on the main menu and the **First App on App Builder** option appears in the **Apps** menu in the Admin. Click **First App on App Builder** and confirm that the **Fetched orders from Adobe Commerce** page opens.
@@ -223,41 +205,3 @@ You can download a sample app from the [Adobe Commerce Samples repository](https
    ![Fetched orders from Adobe Commerce page](../_images/first-app.png)
 
    ![First App on App Builder menu](../_images/fetched-orders.png)
-
-### Test using project workspaces
-
-Use the following steps to test a specific workspace from your project:
-
-1. Deploy the app to the workspace.
-
-  ```bash
-  aio app deploy
-  ```
-
-  After deployment, the command displays the URL to your app workspace under `To view your deployed application:`
-
-1. Change the values of the `name` and `href` fields in the `json_response` section of the `server.js` file to point to your workspace.
-
-  ```json
-  {
-    "name": "app_name",
-    "title": "Test extension",
-    "description": "No",
-    "icon": "no",
-    "publisher": "aQQ6300000008LEGAY",
-    "endpoints": {
-      "commerce/backend-ui/1": {
-        "view": [{
-          "href": "https://<app_workspace_url>/index.html"
-        }]
-      }
-    },
-    "xrInfo": {
-      "supportEmail": "test@adobe.com",
-      "appId": "4a4c7cf8-bd64-4649-b8ed-662cd0d9c918"
-    },
-    "status": "PUBLISHED" 
-  }
-  ```
-
-  You can add multiple workspaces to the server to test several applications at once.

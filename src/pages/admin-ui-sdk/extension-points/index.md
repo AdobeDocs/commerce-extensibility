@@ -14,7 +14,7 @@ The [Adobe Commerce Samples repository](https://github.com/adobe/adobe-commerce-
 
 ## Shared contexts
 
-The `sharedContext` constant is available only when a mass action, menu, or order view button performs a redirection to an iFrame page. For mass actions, `sharedContext` contains a set of selected IDs, the Commerce base URL, the client ID, and an IMS token, as shown below. For menus and order view buttons, `sharedContext` contains only an IMS token.
+The `sharedContext` constant is available only when a mass action, menu, or order view button performs a redirection to an iFrame page. For mass actions, `sharedContext` contains a set of selected IDs, the Commerce base URL, the client ID, an IMS token, and the IMS org ID, as shown below.
 
 ```js
 const sharedContext = {
@@ -22,6 +22,15 @@ const sharedContext = {
   commerceBaseUrl: string,
   imsToken: string,
   clientId: string
+}
+```
+
+For menus and order view buttons, `sharedContext` contains only an IMS token of the logged in user in Commerce and the IMS org ID.
+
+```js
+const sharedContext = {
+  imsToken: string,
+  imsOrgId: string
 }
 ```
 

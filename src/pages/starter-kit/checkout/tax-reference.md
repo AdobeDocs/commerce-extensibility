@@ -15,15 +15,15 @@ The checkout module provides REST and GraphQL APIs to configure out-of-process t
 
 The REST API schema is available [here](/tax.xml).
 
-| **Route URL**                                   | **Method** | **Description**                                     |
-| ----------------------------------------------- | ---------- | --------------------------------------------------- |
-| `/V1/oope_tax_management/tax_integration/:code` | GET        | Retrieve an OOPE tax integration info by its code.
-| `/V1/oope_tax_management/tax_integration`       | GET        | List all available tax integration info.            |
-| `/V1/oope_tax_management/tax_integration`       | POST       | Create or update an OOPE tax integration.           |
+| **Route URL**                                   | **Method** | **Description**                                    |
+| ----------------------------------------------- | ---------- | -------------------------------------------------- |
+| `/V1/oope_tax_management/tax_integration/:code` | GET        | Retrieve an OOPE tax integration info by its code. |
+| `/V1/oope_tax_management/tax_integration`       | GET        | List all available tax integration info.           |
+| `/V1/oope_tax_management/tax_integration`       | POST       | Create or update an OOPE tax integration.          |
 
 ### Create or modify a new OOPE tax integration
 
-The POST `/V1/oope_tax_management/tax_integration/:code` endpoint creates an out-of-process tax integration in the Adobe Commerce instance. 
+The POST `/V1/oope_tax_management/tax_integration/:code` endpoint creates an out-of-process tax integration in the Adobe Commerce instance.
 
 <InlineAlert variant="info" slots="text"/>
 

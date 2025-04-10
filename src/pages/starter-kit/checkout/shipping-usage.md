@@ -5,6 +5,7 @@ keywords:
   - App Builder
   - Extensibility
 ---
+
 # Shipping API JavaScript reference
 
 To manage OOP shipping carriers, Adobe Commerce provides a set of REST endpoints. The following sections describe how to use these endpoints in your JavaScript code.
@@ -29,10 +30,10 @@ Check the [API reference](./shipping-reference.md#create-a-new-oope-shipping-car
 ```javascript
 try {
   const createResponse = await commerceClient.createOopeShippingCarrier({
-    code: 'DPS',
-    title: 'Demo Postal Service',
-    stores: ['default'],
-    countries: ['US', 'CA'],
+    code: "DPS",
+    title: "Demo Postal Service",
+    stores: ["default"],
+    countries: ["US", "CA"],
     active: true,
     sort_order: 10,
     tracking_available: true,
@@ -40,12 +41,18 @@ try {
   });
 
   if (!createResponse.success) {
-    return errorResponse(createResponse.statusCode, 'Failed to create shipping carrier');
+    return errorResponse(
+      createResponse.statusCode,
+      "Failed to create shipping carrier",
+    );
   }
 
-  console.log('Created shipping carrier:', createResponse.message);
+  console.log("Created shipping carrier:", createResponse.message);
 } catch (error) {
-  return errorResponse(HTTP_INTERNAL_ERROR, 'Error occurred while creating shipping carrier');
+  return errorResponse(
+    HTTP_INTERNAL_ERROR,
+    "Error occurred while creating shipping carrier",
+  );
 }
 ```
 
@@ -63,14 +70,19 @@ Check the [API reference](./shipping-reference.md#list-all-shipping-carriers) fo
 try {
   const listResponse = await commerceClient.getOopeShippingCarriers();
   if (!listResponse.success) {
-    return errorResponse(listResponse.statusCode, 'Failed to list shipping carriers');
+    return errorResponse(
+      listResponse.statusCode,
+      "Failed to list shipping carriers",
+    );
   }
-  console.log('List of shipping carriers:', listResponse.message);
+  console.log("List of shipping carriers:", listResponse.message);
 } catch (error) {
-  return errorResponse(HTTP_INTERNAL_ERROR, 'Error occurred while listing shipping carriers');
+  return errorResponse(
+    HTTP_INTERNAL_ERROR,
+    "Error occurred while listing shipping carriers",
+  );
 }
 ```
-
 
 ## Get an OOPE shipping carrier by code
 
@@ -84,12 +96,18 @@ Check the [API reference](./shipping-reference.md#get-an-oope-shipping-carrier-b
 
 ```javascript
 try {
-  const getResponse = await commerceClient.getOopeShippingCarrier('DPS');
+  const getResponse = await commerceClient.getOopeShippingCarrier("DPS");
   if (!getResponse.success) {
-    return errorResponse(getResponse.statusCode, 'Failed to retrieve shipping carrier');
+    return errorResponse(
+      getResponse.statusCode,
+      "Failed to retrieve shipping carrier",
+    );
   }
-  console.log('Retrieved shipping carrier details:', getResponse.message);
+  console.log("Retrieved shipping carrier details:", getResponse.message);
 } catch (error) {
-  return errorResponse(HTTP_INTERNAL_ERROR, 'Error occurred while retrieving shipping carrier');
+  return errorResponse(
+    HTTP_INTERNAL_ERROR,
+    "Error occurred while retrieving shipping carrier",
+  );
 }
 ```

@@ -16,9 +16,9 @@ April 15, 2025
 
 ### Enhancements
 
-* This release changes how extensions are integrated into the Adobe Commerce admin panel. Previously, published extensions were loaded directly into the admin panel. Now, extensions need to be selected in the **Configure extensions** screen, resulting in a better developer experience. The limitation on **Production**-only workspace has been resolved.
+* This release changes how extensions are integrated into the Adobe Commerce Admin. Previously, the Admin directly loaded published extensions. Now, extensions must be selected in the **Configure extensions** screen, resulting in a better developer experience. The limitation on **Production**-only workspaces has been resolved.
 
-* Added the IMS organization ID to the shared context when loading a menu, a mass action or an order view button in an iFrame. <!--- CEXT-4396  -->
+* Added the IMS organization ID to the shared context when loading a menu, a mass action, or an order view button in an iFrame. <!--- CEXT-4396  -->
 
 * Updated dependencies to ensure all resolved security issues are addressed and the system remains up-to-date. <!--- CEXT-4464  -->
 

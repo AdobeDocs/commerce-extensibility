@@ -126,4 +126,4 @@ After completing the previous steps you can:
 
 - [Connect to Adobe Commerce](./connect.md)
 - [Configure the available scripts](./configure.md)
-- [Deploy your initial project in App Builder](./development.md#deploy-and-cleanup)
+- [Deploy your initial project in App Builder](./development.md#deploy-the-application)

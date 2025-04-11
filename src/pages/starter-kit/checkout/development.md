@@ -13,7 +13,7 @@ This guide provides basic information for software development using the checkou
 ## Prerequisites
 
 Before you begin, make sure you've completed the initial setup of the starter kit.  
-See [Initial configuration](../getting-started/#initial-configuration) for more details.
+See [Initial configuration](./getting-started.md) for more details.
 
 ## Running locally
 

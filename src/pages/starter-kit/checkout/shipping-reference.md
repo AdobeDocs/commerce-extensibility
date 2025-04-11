@@ -248,7 +248,7 @@ The DELETE `/V1/oope_shipping_carrier/:code` deletes an out-of-process shipping 
 curl --request DELETE \
 --url <ADOBE_COMMERCE_API_URL>/V1/oope_shipping_carrier/:code' \
 --header 'Authorization: Bearer <TOKEN>' \
---header 'Content-Type: application/json' \
+--header 'Content-Type: application/json'
 ```
 
 #### Example response

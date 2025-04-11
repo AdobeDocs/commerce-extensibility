@@ -197,7 +197,7 @@ The GET `/V1/oope_shipping_carrier` retrieves a list of all out-of-process shipp
 curl --request GET \
 --url <ADOBE_COMMERCE_API_URL>/V1/oope_shipping_carrier' \
 --header 'Authorization: Bearer <TOKEN>' \
---header 'Content-Type: application/json' \
+--header 'Content-Type: application/json'
 ```
 
 #### Example response

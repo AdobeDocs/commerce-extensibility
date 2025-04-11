@@ -24,6 +24,8 @@ The [`Configure extensions`](./eligible-extensions-config.md) button allows to s
 
 The `Refresh registrations` button reloads all registrations from the registries. It is typically used when changes are made to the registration on the app builder application side or when a new app is added and published, to reflect these changes in the Admin.
 
+The `Refresh registrations on schedule` field allows to select the frequency to automatically refresh registrations.
+
 ## Database logging configuration
 
 The **Database logging configuration** section allows you to save Admin UI SDK log entries for the specified retention period.

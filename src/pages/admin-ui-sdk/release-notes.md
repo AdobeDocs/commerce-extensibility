@@ -22,6 +22,8 @@ April 15, 2025
 
 * Updated dependencies to ensure all resolved security issues are addressed and the system remains up-to-date. <!--- CEXT-4464  -->
 
+* Added **Refresh registrations on schedule** to automatically fetch registrations of selected extensions. <!-- CEXT-4258, CEXT-4402, CEXT-4493 -->
+
 ## Version 2.3.0
 
 ### Release date

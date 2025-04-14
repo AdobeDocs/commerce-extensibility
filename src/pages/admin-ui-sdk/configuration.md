@@ -24,7 +24,7 @@ The [**Configure extensions**](./eligible-extensions-config.md) button allows yo
 
 The **Refresh registrations** button reloads all registrations from the App Builder registry. It is typically used when changes are made to the registration on the App Builder application side or when a new app is added and published, to reflect these changes in the Admin.
 
-By default, registrations are not refreshed. You can optionally set the **Refresh registrations on schedule** menu to refresh registrations daily, weekly, or monthly.  Weekly refreshes are performed on Sundays, while month refreshes are performed on the first day of the month.
+By default, registrations are not refreshed. You can optionally set the **Refresh registrations on schedule** menu to refresh registrations daily, weekly, or monthly.  Weekly refreshes are performed on Sundays, while monthly refreshes are performed on the first day of the month.
 
 ## Database logging configuration
 

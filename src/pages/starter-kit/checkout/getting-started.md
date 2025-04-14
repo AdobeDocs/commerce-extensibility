@@ -14,7 +14,11 @@ To begin using the checkout starter kit, ensure that your Adobe Commerce install
 
 You must install or have access to the following prerequisites to develop with the Adobe Commerce checkout starter kit:
 
-- Adobe Commerce version `2.4.4` or higher.
+- Adobe Commerce EE version `2.4.4` or higher.
+
+<InlineAlert variant="info" slots="text" />
+
+Magento Open Source is not supported.
 
 - [Node.js](https://nodejs.org/) version 22. If you have Node Version Manager (`nvm`) installed, you can run the following command to install and use the required version:
 
@@ -31,42 +35,64 @@ You must install or have access to the following prerequisites to develop with t
 
 Before installing Commerce modules, ensure that you have the required credentials in `auth.json` with [access to the Adobe Commerce repository](https://experienceleague.adobe.com/en/docs/commerce-operations/installation-guide/prerequisites/authentication-keys).
 
-- Install the Out-of-Process Payment Extensions (OOPE) module on Adobe Commerce
+### Install the Out-of-Process Payment module
 
-    To enable out-of-process payment methods in Commerce, install the `magento/module-out-of-process-payment-methods`. This module enables out-of-process payment functionalities.
-    To install the module, run the following command using Composer:
+To enable out-of-process payment methods in Commerce, install the `magento/module-out-of-process-payment-methods` module. This module enables out-of-process payment functionalities.
 
-    ```bash
-    composer require magento/module-out-of-process-payment-methods --with-dependencies
-    ```
+To install the module, run the following command using Composer:
 
-- Install the Out-of-Process Shipping Extensions (OOPE) module in Adobe Commerce
+```bash
+  composer require magento/module-out-of-process-payment-methods --with-dependencies
+```
 
-  To enable out-of-process shipping methods in Adobe Commerce, install the `magento/module-out-of-process-shipping-methods` module.
+### Install the Out-of-Process Shipping module
 
-  To install the module, run the following command using Composer:
+To enable out-of-process shipping methods in Adobe Commerce, install the `magento/module-out-of-process-shipping-methods` module.
+To install the module, run the following command using Composer:
 
-    ```bash
-    composer require magento/module-out-of-process-shipping-methods --with-dependencies
-    ```
+```bash
+  composer require magento/module-out-of-process-shipping-methods --with-dependencies
+```
 
-- Install the Commerce Eventing module (Commerce 2.4.4 and 2.4.5 only)
+### Install the Out-of-Process Tax module
 
-    The [Commerce Eventing module](https://developer.adobe.com/commerce/extensibility/events/) is crucial for handling events within Adobe Commerce. The eventing module is installed automatically in Adobe Commerce version `2.4.6` and higher.
+To enable out-of-process tax management in Adobe Commerce, install the `magento/module-out-of-process-tax-management` module.
+To install the module, run the following command using Composer:
 
-    This starter kit requires version `1.10.0` or higher of the Commerce Eventing module. To view your installed version, run the following command:
+```bash
+ composer require magento/module-out-of-process-tax-management --with-dependencies
+```
 
-    ```bash
-    composer show magento/commerce-eventing
-    ```
+#### Out-of-Process Tax Management Limitations
 
-    To install this module, run the following command using Composer:
+This extension overrides the class `Magento\Tax\Model\Sales\Total\Quote\Tax` in the `di.xml` file
 
-    ```bash
-    composer update magento/commerce-eventing --with-dependencies
-    ```
+```xml
+<preference for="Magento\Tax\Model\Sales\Total\Quote\Tax"
+                type="Magento\OutOfProcessTaxManagement\Model\Tax\Sales\Total\Quote\Tax"/>
+```
 
-    For Adobe Commerce versions `2.4.4` or `2.4.5`, you must install the Adobe I/O Events for Adobe Commerce module manually. Follow the instructions provided in [Adobe I/O Events installation](https://developer.adobe.com/commerce/extensibility/events/installation/).
+As a result, this extension is not compatible with other tax extensions that also override this class, such as TaxJar or Avalara.
+
+If you need to use another tax extension, Adobe recommends disabling this extension to prevent conflicts.
+
+### Install the Commerce Eventing module (Commerce 2.4.4 and 2.4.5 only)
+
+The [Commerce Eventing module](https://developer.adobe.com/commerce/extensibility/events/) is crucial for handling events within Adobe Commerce. The eventing module is installed automatically in Adobe Commerce version `2.4.6` and higher.
+
+This starter kit requires version `1.10.0` or higher of the Commerce Eventing module. To view your installed version, run the following command:
+
+```bash
+composer show magento/commerce-eventing
+```
+
+To install this module, run the following command using Composer:
+
+```bash
+composer update magento/commerce-eventing --with-dependencies
+```
+
+For Adobe Commerce versions `2.4.4` or `2.4.5`, you must install the Adobe I/O Events for Adobe Commerce module manually. Follow the instructions provided in [Adobe I/O Events installation](https://developer.adobe.com/commerce/extensibility/events/installation/).
 
 ## Initial configuration
 
@@ -76,11 +102,11 @@ Use the following steps to configure your local environment:
 
 1. Execute the following command to create an Adobe Developer Console project in your organization and using the Commerce checkout starter kit as a template:
 
-  ```bash
-  aio app init --repo adobe/commerce-checkout-starter-kit --github-pat $GITHUB_PAT
-  ```
+```bash
+aio app init --repo adobe/commerce-checkout-starter-kit --github-pat $GITHUB_PAT
+```
 
-  Replace `$GITHUB_PAT` with your GitHub personal access token. For more information, refer to [managing your personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens).
+Replace `$GITHUB_PAT` with your GitHub personal access token. For more information, refer to [managing your personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens).
 
 1. The starter kit requires you to add the following services in the console project:
 
@@ -88,11 +114,11 @@ Use the following steps to configure your local environment:
    - I/O Events
    - Adobe I/O Events for Adobe Commerce
 
-  Execute the following command to add the services by selecting them from the list:
+Execute the following command to add the services by selecting them from the list:
 
-  ```bash
-  aio app add service
-  ```
+```bash
+aio app add service
+```
 
 1. Copy the environment variables from the [`env.dist`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/env.dist) to a local `.env` file and enter the required values.
 
@@ -100,4 +126,4 @@ After completing the previous steps you can:
 
 - [Connect to Adobe Commerce](./connect.md)
 - [Configure the available scripts](./configure.md)
-- [Deploy your initial project in App Builder](./development.md#deploy-and-cleanup)
+- [Deploy your initial project in App Builder](./development.md#deploy-the-application)

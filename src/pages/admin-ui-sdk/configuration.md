@@ -20,11 +20,11 @@ The **General configuration** section enables the Admin UI SDK and refreshes reg
 
 The Admin UI SDK is disabled by default. To enable it, set the **Enable Admin UI SDK** field to **Yes**.
 
-The [`Configure extensions`](./eligible-extensions-config.md) button allows to select the workspace and eligible extensions for the commerce instance.
+The [**Configure extensions**](./eligible-extensions-config.md) button allows you to select the workspace and eligible extensions for the Commerce instance.
 
-The `Refresh registrations` button reloads all registrations from the registries. It is typically used when changes are made to the registration on the app builder application side or when a new app is added and published, to reflect these changes in the Admin.
+The **Refresh registrations** button reloads all registrations from the App Builder registry. It is typically used when changes are made to the registration on the App Builder application side or when a new app is added and published, to reflect these changes in the Admin.
 
-The `Refresh registrations on schedule` field allows to select the frequency to automatically refresh registrations.
+By default, registrations are not refreshed. You can optionally set the **Refresh registrations on schedule** menu to refresh registrations daily, weekly, or monthly.  Weekly refreshes are performed on Sundays, while month refreshes are performed on the first day of the month.
 
 ## Database logging configuration
 

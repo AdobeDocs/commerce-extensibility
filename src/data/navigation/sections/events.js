@@ -16,6 +16,10 @@ module.exports = [
     path: "/events/configure-commerce.md",
   },
   {
+    title: "Configure Additional Event Providers",
+    path: "/events/configure-additional-event-providers.md",
+  },
+  {
     title: "Module development",
     path: "/events/module-development.md",
   },

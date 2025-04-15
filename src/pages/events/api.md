@@ -34,7 +34,8 @@ The `POST /rest/<store_view_code>/V1/eventing/eventSubscribe` endpoint subscribe
     ],
     "destination": "string",
     "priority": true,
-    "hipaaAuditRequired": true
+    "hipaa_audit_required": true,
+    "provider_id": "string"
   },
   "force": true
 }
@@ -130,7 +131,8 @@ The `GET /rest/all/V1/eventing/getEventSubscriptions` endpoint returns a list of
   ],
   "destination": "default",
   "priority": false,
-  "hipaa_audit_required": false
+  "hipaa_audit_required": false,
+  "provider_id": "default"
 }]
 ```
 
@@ -169,7 +171,8 @@ The `PUT /rest/<store_view_code>/V1/eventing/eventSubscribe/<event_name>` endpoi
     ],
     "destination": "string",
     "priority": true,
-    "hipaa_audit_required": true
+    "hipaa_audit_required": true,
+    "provider_id": "string"
   }
 }
 ```
@@ -271,9 +274,11 @@ curl -i -X PUT \
  '<ADOBE_COMMERCE_URL>/rest/all/V1/eventing/updateConfiguration'
  ```
 
-## Get configured event provider information
+## Event providers management
 
-The `GET /rest/<store_view_code>/V1/eventing/getEventProviders` endpoint returns information about the event provider configured for the Commerce instance.
+### Get list of all event providers
+
+The `GET /rest/<store_view_code>/V1/eventing/eventProvider` endpoint returns a list of all event providers configured for the Commerce instance.
 
 **Headers:**
 
@@ -283,11 +288,11 @@ The administrator must be granted access to the `Magento_AdobeIoEventsClient::ev
 
 **Example usage:**
 
-The following cURL command retrieves information about the configured event provider:
+The following cURL command retrieves information about all configured event providers:
 
 ```bash
 curl -H "Authorization:Bearer <AUTH_TOKEN>" \
-'<ADOBE_COMMERCE_URL>/rest/all/V1/eventing/getEventProviders' \
+'<ADOBE_COMMERCE_URL>/rest/all/V1/eventing/eventProvider'
 ```
 
 **Example response:**
@@ -298,7 +303,161 @@ curl -H "Authorization:Bearer <AUTH_TOKEN>" \
     "provider_id": "ad667bc6-1678-49ff-99fc-215d71ebf82f",
     "instance_id": "my_instance",
     "label": "my_provider",
-    "description": "Provides out-of-process extensibility for Adobe Commerce"
+    "description": "Provides out-of-process extensibility for Adobe Commerce",
+    "workspace_configuration": "******"
+  },
+  {
+    "provider_id": "1902bc50-12345-41e8-955b-af4a9667823f",
+    "instance_id": "my_instance_id",
+    "label": "my_provider_2",
+    "description": "Additional event provider",
+    "workspace_configuration": "******"
   }
 ]
 ```
+
+### Get event provider by ID
+
+The `GET /rest/<store_view_code>/V1/eventing/eventProvider/<provider_id>` endpoint returns the event provider with the specified ID. If the provider ID is not found, a 404 error is returned.
+
+**Headers:**
+
+`Authorization: Bearer <administrator token>`
+
+The administrator must be granted access to the `Magento_AdobeIoEventsClient::event_provider_list` resource.
+
+The following cURL command retrieves information about the configured event provider:
+
+```bash
+curl -H "Authorization:Bearer <AUTH_TOKEN>" \
+'<ADOBE_COMMERCE_URL>/rest/all/V1/eventing/eventProvider/1902bc50-12345-41e8-955b-af4a9667823f'
+```
+
+**Example response:**
+
+```json
+{
+  "provider_id": "1902bc50-12345-41e8-955b-af4a9667823f",
+  "instance_id": "my_instance_id",
+  "label": "my_provider_2",
+  "description": "Additional event provider",
+  "workspace_configuration": "******"
+}
+```
+
+### Create event provider
+
+The `POST /rest/<store_view_code>/V1/eventing/eventProvider` endpoint register a new event provider in Adobe Commerce. This endpoint is used to register the event provider in Adobe Commerce instance. The event provider must be created in the Adobe Developer Console before registering it in Adobe Commerce.
+
+**Headers:**
+
+`Authorization: Bearer <administrator token>`
+
+The administrator must be granted access to the `Magento_AdobeIoEventsClient::event_provider_edit` resource.
+
+**Payload Parameters:**
+
+Name | Format | Required | Description
+--- |--------| --- | ---
+`provider_id` | string | required | The event provider ID.
+`instance_id` | string | required | The instance ID of event provider.
+`label` | string | optional | A label of the event provider.
+`description` | string | optional | A description of the event provider.
+`workspace_configuration` | string | optional | The contents of the workspace configuration file downloaded from the Adobe Developer Console associated with the event provider.
+
+**Example usage:**
+
+The following cURL command registers a new event provider:
+
+```bash
+curl -i -X POST \
+   -H "Content-Type:application/json" \
+   -H "Authorization:Bearer <AUTH_TOKEN>" \
+   -d \
+'{
+  "eventProvider": {
+    "provider_id": "1902bc50-12345-41e8-955b-af4a9667823f",
+    "instance_id": "my_instance_id",
+    "label": "My provider",
+    "description": "Additional event provider",
+    "workspace_configuration": "{<WORKSPACE_CONFIGURATION_FROM_ADOBE_DEVELOPER_CONSOLE>}"
+  }
+}' \
+ '<ADOBE_COMMERCE_URL>/rest/all/V1/eventing/eventProvider'
+ ```
+
+**Example response:**
+
+```json
+{
+    "provider_id": "1902bc50-12345-41e8-955b-af4a9667823f",
+    "instance_id": "my_instance_id",
+    "label": "My provider",
+    "description": "Additional event provider",
+    "workspace_configuration": "****"
+  }
+```
+
+### Update event provider
+
+The `PUT /rest/<store_view_code>/V1/eventing/eventProvider/<provider_id>` endpoint updates the event provider with the specified ID. The request body has the same format as the `POST` request.
+
+**Headers:**
+
+`Authorization: Bearer <administrator token>`
+
+The administrator must be granted access to the `Magento_AdobeIoEventsClient::event_provider_edit` resource.
+
+**Example usage:**
+
+The following cURL command updates an event provider:
+
+```bash
+curl -i -X PUT \
+   -H "Content-Type:application/json" \
+   -H "Authorization:Bearer <AUTH_TOKEN>" \
+   -d \
+'{
+  "eventProvider": {
+    "provider_id": "1902bc50-12345-41e8-955b-af4a9667823f",
+    "instance_id": "my_instance_id",
+    "label": "My Updated provider",
+    "description": "Updated description of additional event provider"
+  }
+}' \
+ '<ADOBE_COMMERCE_URL>/rest/all/V1/eventing/eventProvider'
+ ```
+
+**Example response:**
+
+```json
+{
+    "provider_id": "1902bc50-12345-41e8-955b-af4a9667823f",
+    "instance_id": "my_instance_id",
+    "label": "My Updated provider",
+    "description": "Updated description of additional event provider",
+    "workspace_configuration": "****"
+  }
+```
+
+### Delete event provider
+
+The `DELETE /rest/<store_view_code>/V1/eventing/eventProvider/<provider_id>` endpoint deletes the event provider with the specified ID. The event provider would be removed only from the Adobe Commerce instance. If needed the event provider must be removed from the Adobe Developer Console separately.
+
+**Headers:**
+
+`Authorization: Bearer <administrator token>`
+
+The administrator must be granted access to the `Magento_AdobeIoEventsClient::event_provider_delete` resource.
+
+**Example usage:**
+
+The following cURL command deletes an event provider:
+
+```bash
+curl -i -X DELETE \
+-H "Authorization:Bearer <AUTH_TOKEN>" \
+'<ADOBE_COMMERCE_URL>/rest/all/V1/eventing/eventProvider/1902bc50-12345-41e8-955b-af4a9667823f'
+ ```
+
+The response will return a 200 status code if the event provider was deleted successfully. If the provider ID is not found, an appropriate error is returned.

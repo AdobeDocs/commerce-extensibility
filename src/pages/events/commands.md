@@ -38,11 +38,11 @@ If you decide to omit the arguments, the `event-types.json` file must have the f
 
 ```json
 {
- "provider": {
-     "label": "My Adobe Commerce Events",
-     "description": "Provides out-of-process extensibility for Adobe Commerce"
-     }
- }
+  "provider": {
+    "label": "My Adobe Commerce Events",
+    "description": "Provides out-of-process extensibility for Adobe Commerce"
+  }
+}
 ```
 
 As an alternative to above steps, you can click the [Create Event Provider](./configure-commerce.md#commerce-admin) button on the **General configuration** section of the Adobe I/O Events page in the Admin.
@@ -94,6 +94,12 @@ Configured event provider details:
 - description: testing local provider creation (Instance docs-stage-testing)
 ```
 
+In case you have configured additional event providers the `--provider-id` option can be used to get details about a specific event provider.
+
+```bash
+bin/magento events:provider:info --provider-id <provider-id>
+```
+
 ## Get details about configured event registrations in your App Builder application
 
 The `bin/magento events:registrations:list` command returns details about configured event registrations.
@@ -131,6 +137,8 @@ bin/magento events:registrations:list -vv
 |                      |                                      |         | ]                                                                                                                                                                               |
 +----------------------+--------------------------------------+---------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ```
+
+To show registrations only for a specific provider, use the `--provider-id <PROVIDER_ID>` option.
 
 ## Create event metadata in Adobe I/O
 
@@ -195,7 +203,7 @@ If you are implementing eventing in a performance testing environment, run the `
 
 ### Usage
 
-`bin/magento events:subscribe <event_code> --force --fields=<name1> --fields=<name2> --parent <event_code> --rules=<field-name>|<operator>|<value> --rules=<field-name2>|<operator>|<value2> --hipaaAuditRequired --priority --destination=<destination>`
+`bin/magento events:subscribe <event_code> --force --fields=<name1> --fields=<name2> --parent <event_code> --rules=<field-name>|<operator>|<value> --rules=<field-name2>|<operator>|<value2> --hipaaAuditRequired --priority --destination=<destination> --providerId=<provicerId>`
 
 ### Arguments
 
@@ -216,6 +224,8 @@ If you are implementing eventing in a performance testing environment, run the `
 `--fields='{"<name>":"<field-name>", "converter":"<path\to\converterclass>"}'` Applies the converter class to the given field.
 
 `--destination`, `-d` A custom destination for the event. This argument is used for SaaS integrations.
+
+`--providerId` The event provider to which events will be delivered. If not provided the default event provider will be used. To configure additional event providers refer to the [Configure additional event providers](./configure-commerce.md) section.
 
 `--hipaaAuditRequired` Indicates the event contains data that is subject to HIPAA auditing.`
 
@@ -288,6 +298,8 @@ bin/magento events:list
 observer.catalog_product_save_after
 observer.customer_login
 ```
+
+To return list of subscribed events with verbose output, use the `-v` or `-vv` option.
 
 ## List supported events
 

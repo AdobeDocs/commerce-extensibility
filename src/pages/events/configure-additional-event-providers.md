@@ -10,7 +10,7 @@ keywords:
 
 You might need to connect your Adobe Commerce instance to other event providers besides the [default Commerce event provider](configure-commerce.md#create-an-event-provider) registered in the system configuration.
 
-To link your event subscriptions to an additional event provider, the provider must be registered in the Adobe Commerce instance. You can configure the provider from the Adobe Commerce Admin or [through the API](api.md#event-providers-management).
+To link your event subscriptions to an additional event provider, the provider must be registered in the Adobe Commerce instance. You can configure the provider from the Adobe Commerce Admin or [through the API](api.md#event-provider-management).
 
 ## Configure event providers in the Admin
 

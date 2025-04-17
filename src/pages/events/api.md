@@ -337,6 +337,7 @@ curl -H "Authorization:Bearer <AUTH_TOKEN>" \
 
 ```json
 {
+  "id": "3",
   "provider_id": "1902bc50-12345-41e8-955b-af4a9667823f",
   "instance_id": "my_instance_id",
   "label": "my_provider_2",
@@ -390,6 +391,7 @@ curl -i -X POST \
 
 ```json
 {
+    "id": "3",
     "provider_id": "1902bc50-12345-41e8-955b-af4a9667823f",
     "instance_id": "my_instance_id",
     "label": "My provider",
@@ -400,7 +402,7 @@ curl -i -X POST \
 
 ### Update event provider
 
-The `PUT /rest/<store_view_code>/V1/eventing/eventProvider/<provider_id>` endpoint updates the event provider with the specified ID. The request body has the same format as the `POST` request.
+The `PUT /rest/<store_view_code>/V1/eventing/eventProvider/<provider_id>` endpoint updates the event provider with the specified ID. The request body has the same format as the `POST` request except that `id` must be provided.
 
 **Headers:**
 
@@ -419,6 +421,7 @@ curl -i -X PUT \
    -d \
 '{
   "eventProvider": {
+    "id": "3",
     "provider_id": "1902bc50-12345-41e8-955b-af4a9667823f",
     "instance_id": "my_instance_id",
     "label": "My Updated provider",
@@ -432,6 +435,7 @@ curl -i -X PUT \
 
 ```json
 {
+    "id": "3",
     "provider_id": "1902bc50-12345-41e8-955b-af4a9667823f",
     "instance_id": "my_instance_id",
     "label": "My Updated provider",

@@ -471,3 +471,199 @@ In the `setShippingMethodsOnCart` mutation, you can set the shipping method prov
   }
 }
 ```
+
+## Tax management
+
+You can calculate and apply taxes on shopping carts during checkout by using the collectTaxes webhook. See [webhooks](../../webhooks/index.md). to understand and setup a webhook.
+
+To register a webhook, you need to create a `webhooks.xml` [configuration file](../../webhooks/xml-schema.md) in your module or in the root `app/etc` directory.
+
+The following example demonstrates how to add a webhook to the `plugin.magento.out_of_process_tax_management.api.oop_tax_collection.collect_taxes` method:
+
+```xml
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_AdobeCommerceWebhooks:etc/webhooks.xsd">
+    <method name="plugin.magento.out_of_process_tax_management.api.oop_tax_collection.collect_taxes" type="before">
+        <hooks>
+            <batch name="collect_taxes">
+                <hook name="my_hook"
+                      url="AppBuilder Action URL"
+                method="POST" timeout="10000"
+                softTimeout="2000" priority="300" required="true"
+                fallbackErrorMessage="Error on validation"
+                ttl="0"
+                >
+                    <headers>
+                        <header name="x-gw-ims-org-id">{env:APP_BUILDER_IMS_ORG_ID}</header>
+                        <header name="Authorization">Bearer {env:APP_BUILDER_AUTH_TOKEN}</header>
+                    </headers>
+                </hook>
+            </batch>
+        </hooks>
+    </method>
+</config>
+```
+
+Once the webhook is registered, every time a shopping cart is requested, a synchronous call is dispatched to the App Builder application implementing the tax calculation and provide the response through an oopQuote object containing the tax fields.
+
+Please refer to [`actions/tax-calculation.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/tax-calculation/index.js) for an example of how to process the request and return the tax calculation to the commerce instance. This link can be served as a template to implement custom tax calculations.
+
+## Tax calculation: Payload
+
+The Appbuilder application receives the following payload as an oopQuote object that contains the necessary data for the tax calculation. Once the calculation is processed, the response will populate the "tax" and "tax_breakdown" fields under "items" and provide the response to the commerce instance.
+
+```json
+{
+    "oopQuote": {
+        "customer_tax_class": "string",
+        "items": [
+            {
+                "code": "sequence-1",
+                "type": "product",
+                "tax_class": "tax-1",
+                "unit_price": "60",
+                "quantity": "2",
+                "is_tax_included": false,
+                "discount_amount": 0,
+                "custom_attributes": [],
+                "sku": "SKU-1",
+                "name": "Product Name 01",
+                "tax": null,
+                "tax_breakdown": []
+            },
+                                {
+                "code": "sequence-1",
+                "type": "shipping",
+                "tax_class": "tax-1",
+                "unit_price": "10",
+                "quantity": "1",
+                "is_tax_included": false,
+                "discount_amount": 0,
+                "custom_attributes": [],
+                "sku": "SKU-1",
+                "name": "Product Name 01",
+                "tax": null,
+                "tax_breakdown": []
+            }
+        ],
+        "ship_from_address": {
+            "street": "Sesam Street",
+            "city": "City1",
+            "region": "Alhabama",
+            "region_code": "AL",
+            "country": "US",
+            "postcode": "12345"
+        },
+        "ship_to_address": {
+            "street": "Sesam Street",
+            "city": "City1",
+            "region": "California",
+            "region_code": "CA",
+            "country": "US",
+            "postcode": "12345"
+        },
+        "billing_address": {
+            "street": "Sesam Street",
+            "city": "City1",
+            "region": "California",
+            "region_code": "CA",
+            "country": "US",
+            "postcode": "12345"
+        },
+        "shipping": {
+            "shipping_method": "FREE",
+            "shipping_description": "FREE"
+        },
+        "custom_attributes": []
+    }
+}
+```
+
+## Tax calculation: App Builder Response
+
+Sample App builder response that will populate the "tax" and "tax_breakdown" attributes.
+
+```json
+[
+    {
+        "op": "add",
+        "path": "oopQuote/items/0/tax_breakdown",
+        "value": {
+            "data": {
+                "code": "state_tax",
+                "rate": 4.5,
+                "amount": 5.4,
+                "title": "State Tax",
+                "tax_rate_key": "state_tax-4.5"
+            }
+        },
+        "instance": "Magento\\OutOfProcessTaxManagement\\Api\\Data\\OopQuoteItemTaxBreakdownInterface"
+    },
+    {
+        "op": "add",
+        "path": "oopQuote/items/0/tax_breakdown",
+        "value": {
+            "data": {
+                "code": "county_tax",
+                "rate": 3.6,
+                "amount": 4.32,
+                "title": "County Tax",
+                "tax_rate_key": "county_tax-3.6"
+            }
+        },
+        "instance": "Magento\\OutOfProcessTaxManagement\\Api\\Data\\OopQuoteItemTaxBreakdownInterface"
+    },
+    {
+        "op": "replace",
+        "path": "oopQuote/items/0/tax",
+        "value": {
+            "data": {
+                "rate": 8.1,
+                "amount": 9.72,
+                "discount_compensation_amount": 0
+            }
+        },
+        "instance": "Magento\\OutOfProcessTaxManagement\\Api\\Data\\OopQuoteItemTaxInterface"
+    },
+    {
+        "op": "add",
+        "path": "oopQuote/items/1/tax_breakdown",
+        "value": {
+            "data": {
+                "code": "state_tax",
+                "rate": 4.5,
+                "amount": 0.45,
+                "title": "State Tax",
+                "tax_rate_key": "state_tax-4.5"
+            }
+        },
+        "instance": "Magento\\OutOfProcessTaxManagement\\Api\\Data\\OopQuoteItemTaxBreakdownInterface"
+    },
+    {
+        "op": "add",
+        "path": "oopQuote/items/1/tax_breakdown",
+        "value": {
+            "data": {
+                "code": "county_tax",
+                "rate": 3.6,
+                "amount": 0.36,
+                "title": "County Tax",
+                "tax_rate_key": "county_tax-3.6"
+            }
+        },
+        "instance": "Magento\\OutOfProcessTaxManagement\\Api\\Data\\OopQuoteItemTaxBreakdownInterface"
+    },
+    {
+        "op": "replace",
+        "path": "oopQuote/items/1/tax",
+        "value": {
+            "data": {
+                "rate": 8.1,
+                "amount": 0.81,
+                "discount_compensation_amount": 0
+            }
+        },
+        "instance": "Magento\\OutOfProcessTaxManagement\\Api\\Data\\OopQuoteItemTaxInterface"
+    }
+]
+```

@@ -77,7 +77,7 @@ The `events:provider:info` command returns details about a configured event prov
 
 ### Usage
 
-`events:provider:info` --provider-id <provider-id>`
+`events:provider:info --provider-id <provider-id>`
 
 ### Options
 

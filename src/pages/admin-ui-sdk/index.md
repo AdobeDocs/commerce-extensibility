@@ -16,7 +16,7 @@ Many types of apps will use this SDK. It represents a one-to-many approach for s
 
 The following diagram shows the architecture of the Admin UI SDK.
 
-![Architecture](../_images/admin-ui-sdk-architecture.svg)
+![Architecture](../_images/admin-ui-sdk/overview/architecture.svg)
 
 The SDK contains two main components that are necessary for development:
 
@@ -28,7 +28,7 @@ The SDK contains two main components that are necessary for development:
 
 The following sequence diagram illustrates the authentication process.
 
-![Sequence diagram](../_images/admin-ui-sequence-diagram.png)
+![Sequence diagram](../_images/admin-ui-sdk/overview/sequence-diagram.png)
 
 ## Code samples
 

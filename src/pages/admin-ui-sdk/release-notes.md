@@ -8,6 +8,22 @@ keywords:
 
 # Adobe Commerce Admin UI SDK release notes
 
+## Version 3.0.0
+
+### Release date
+
+April 15, 2025
+
+### Enhancements
+
+* This release changes how extensions are integrated into the Adobe Commerce Admin. Previously, the Admin directly loaded published extensions. Now, extensions must be selected in the **Configure extensions** screen, resulting in a better developer experience. The limitation on **Production**-only workspaces has been resolved.
+
+* Added the IMS organization ID to the shared context when loading a menu, a mass action, or an order view button in an iFrame. <!--- CEXT-4396  -->
+
+* Updated dependencies to ensure all resolved security issues are addressed and the system remains up-to-date. <!--- CEXT-4464  -->
+
+* Added **Refresh registrations on schedule** to automatically fetch registrations of selected extensions. <!-- CEXT-4258, CEXT-4402, CEXT-4493 -->
+
 ## Version 2.3.0
 
 ### Release date

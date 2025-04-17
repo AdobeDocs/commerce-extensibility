@@ -85,8 +85,8 @@ module.exports = [
       path: "/admin-ui-sdk/configuration.md"
     },
     {
-      title: "Prepare your app for production",
-      path: "admin-ui-sdk/publish.md"
+      title: "Eligible extensions configuration",
+      path: "/admin-ui-sdk/eligible-extensions-config.md"
     },
     {
       title: "Troubleshooting",

@@ -77,12 +77,18 @@ The `events:provider:info` command returns details about a configured event prov
 
 ### Usage
 
-`events:provider:info`
+`events:provider:info` --provider-id <provider-id>
+
+### Options
+
+`--provider-id` The ID of the event provider to query. If not provided, the command returns details about the default event provider.
 
 ### Example
 
+The following example returns details about the provider with the ID `abcdef12-e499-5a0a-a683-1234567890ab`.
+
 ```bash
-bin/magento events:provider:info
+bin/magento events:provider:info --provider-id abcdef12-e499-5a0a-a683-1234567890ab
 ```
 
 ### Response
@@ -92,12 +98,6 @@ Configured event provider details:
 - id: abcdef12-e499-5a0a-a683-1234567890ab
 - label: test provider
 - description: testing local provider creation (Instance docs-stage-testing)
-```
-
-In case you have configured additional event providers the `--provider-id` option can be used to get details about a specific event provider.
-
-```bash
-bin/magento events:provider:info --provider-id <provider-id>
 ```
 
 ## Get details about configured event registrations in your App Builder application

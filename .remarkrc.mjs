@@ -27,7 +27,7 @@ const remarkConfig = {
 				skipUrlPatterns: [
 					"https://www.php.net",
 					"https://helpx.adobe.com/enterprise/using/manage-developers.html",
-					'https://developer.adobe.com/developer-console/*'
+					"https://developer.adobe.com/developer-console/*"
 				]
 			}
 		]

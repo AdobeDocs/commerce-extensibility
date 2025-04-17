@@ -343,10 +343,7 @@ You can use the `additional_data` field to pass an array of key-value pairs to p
             "firstname": "John",
             "lastname": "Doe",
             "company": "Company Name",
-            "street": [
-              "3320 N Crescent Dr",
-              "Beverly Hills"
-            ],
+            "street": ["3320 N Crescent Dr", "Beverly Hills"],
             "city": "Los Angeles",
             "region": {
               "code": "CA",
@@ -471,6 +468,7 @@ In the `setShippingMethodsOnCart` mutation, you can set the shipping method prov
   }
 }
 ```
+
 
 ## Tax management
 
@@ -666,4 +664,41 @@ Sample App builder response that will populate the "tax" and "tax_breakdown" att
         "instance": "Magento\\OutOfProcessTaxManagement\\Api\\Data\\OopQuoteItemTaxInterface"
     }
 ]
+
+
+## Tax management: Update custom attributes on tax classes via Admin UI
+
+The out-of-process tax module allows you to add custom attributes to tax classes. These attributes are useful when integrating with third-party tax systems that require standardized identifiers or additional metadata.  
+For the relevant endpoints to update tax class custom attributes, see the [Tax API reference](./tax-reference.md).
+
+To simplify management, the starter kit includes a sample Admin UI application. This single-page application, located in the [`commerce-backend-ui-1`](https://github.com/adobe/commerce-checkout-starter-kit/tree/main/commerce-backend-ui-1), connects to your Commerce instance, retrieves tax classes, and allows you to add or edit their custom attributes directly from the UI.
+
+![Tax Management UI](../../_images/starterkit/tax-management-ui.png)
+
+To set up the Admin UI application in your Commerce environment, see the [Admin UI SDK documentation](../../admin-ui-sdk/index.md).
+
+Once custom attributes are assigned to tax classes, they are included in webhook requests during tax calculation.
+Here's an example payload showing how the custom attributes from tax classes appear in the webhook request:
+
+```json
+{
+  "oopQuote": {
+    "customer_tax_class": "Retail Customer",
+    "custom_attributes": {
+      "tax_code": "005",
+      "tax_label": "Retail"
+    },
+    ...
+    "items": [
+      {
+        "tax_class": "Taxable Goods",
+        "custom_attributes": {
+          "tax_code": "001",
+          "tax_label": "Textbook"
+        },
+        ...
+      }
+    ]
+  }
+}
 ```

@@ -10,33 +10,54 @@ keywords:
 
 This guide provides basic information for software development using the checkout starter kit.
 
-## Testing
+## Prerequisites
 
-The testing framework is in [Jest](https://jestjs.io) and execution is based on the [`aio` CLI](https://developer.adobe.com/runtime/docs/guides/tools/cli_install/).
+Before you begin, make sure you've completed the initial setup of the starter kit.  
+See [Initial configuration](./getting-started.md) for more details.
 
-Run unit tests for the UI and actions:
+## Running locally
+
+The starter kit consists of two main parts, as defined in [`app.config.yaml`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/app.config.yaml):
+
+- `application`: The main app builder actions and event handlers of the starter kit.
+- `commerce/backend-ui/1`: UI-specific components and related actions for the Adobe Commerce Admin UI.
+
+Note that only one extension can be run locally or deployed to a given runtime environment at a time.
+
+To run the project locally, use the following commands:
 
 ```bash
-aio app test
+# Run the project locally
+aio app dev -e application
+aio app dev -e commerce/backend-ui/1
+
+# Run the project locally but deploy to the runtime environment
+aio app run -e application
+aio app run -e commerce/backend-ui/1
 ```
 
-Run end-to-end tests:
+See [aio app dev vs. aio app run](https://developer.adobe.com/app-builder/docs/guides/development/#aio-app-dev-vs-aio-app-run) to understand the differences between the two modes.
+
+## Deploy the application
+
+To deploy the app using the Adobe I/O CLI, use the following commands:
 
 ```bash
-aio app test --e2e
+aio app deploy -e application --force-deploy
+aio app deploy -e commerce/backend-ui/1 --force-deploy
 ```
 
-These are example tests and do not provide any relevant testing. These tests are only examples of how to use the available tooling. Use the tests to create your own tests relevant to your implementation.
+## Undeploy the application
+
+To remove the app and clean up all deployed resources from Adobe I/O Runtime and web resources, use the following commands:
+
+```bash
+aio app undeploy
+```
 
 ## Linting and formatting
 
 The starter kit uses [Prettier](https://prettier.io) and [ESLint](https://eslint.org) to enforce code style and formatting. The following commands are available for linting and formatting:
-
-- Check linting
-
-  ```bash
-  npm run lint:check
-  ```
 
 - Fix linting
 
@@ -44,22 +65,10 @@ The starter kit uses [Prettier](https://prettier.io) and [ESLint](https://eslint
   npm run lint:fix
   ```
 
-- Check format
-
-  ```bash
-  npm run format:check
-  ```
-
 - Fix format
 
   ```bash
   npm run format:fix
-  ```
-
-- Check both linting and format
-
-  ```bash
-  npm run code:check
   ```
 
 - Fix both linting and format
@@ -77,14 +86,18 @@ Use the following links to configure formatting for your IDE:
 
 For debugging applications created with the starter kit, refer to the [App Builder debugging](https://developer.adobe.com/app-builder/docs/guides/development/#debugging) documentation.
 
-### Deploy and cleanup
+## Testing
 
-The starter kit uses the Adobe I/O CLI to deploy and undeploy the application, using the following commands:
+The testing framework is in [Jest](https://jestjs.io) and execution is based on the [`aio` CLI](https://developer.adobe.com/runtime/docs/guides/tools/cli_install/).
+
+Run unit tests for the UI and actions:
 
 ```bash
-aio app deploy
+aio app test
 ```
 
+Run end-to-end tests:
+
 ```bash
-aio app undeploy
+aio app test --e2e
 ```

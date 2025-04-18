@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!--
+/************************************************************************
+ *
+ * ADOBE CONFIDENTIAL
+ * ___________________
+ *
+ * Copyright 2025 Adobe
+ * All Rights Reserved.
+ *
+ * NOTICE: All information contained herein is, and remains
+ * the property of Adobe and its suppliers, if any. The intellectual
+ * and technical concepts contained herein are proprietary to Adobe
+ * and its suppliers and are protected by all applicable intellectual
+ * property laws, including trade secret and copyright laws.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from Adobe.
+ * ************************************************************************
+ */
+-->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/oope_tax_management/tax_integration/:code" method="GET">
+        <service
+                class="Magento\OutOfProcessTaxManagement\Api\OutOfProcessTaxIntegrationRepositoryInterface"
+                method="getByCode"/>
+        <resources>
+            <resource ref="Magento_OutOfProcessTaxManagement::oope_tax_integration_get"/>
+        </resources>
+    </route>
+    <route url="/V1/oope_tax_management/tax_integration" method="GET">
+        <service
+                class="Magento\OutOfProcessTaxManagement\Api\OutOfProcessTaxIntegrationRepositoryInterface"
+                method="getList"/>
+        <resources>
+            <resource ref="Magento_OutOfProcessTaxManagement::oope_tax_integration_get_list"/>
+        </resources>
+    </route>
+    <route url="/V1/oope_tax_management/tax_integration" method="POST">
+        <service
+                class="Magento\OutOfProcessTaxManagement\Api\OutOfProcessTaxIntegrationRepositoryInterface"
+                method="createOrUpdate"/>
+        <resources>
+            <resource ref="Magento_OutOfProcessTaxManagement::oope_tax_integration_create"/>
+        </resources>
+    </route>
+</routes>

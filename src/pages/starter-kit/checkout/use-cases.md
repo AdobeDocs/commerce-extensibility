@@ -504,7 +504,7 @@ The following example demonstrates how to add a webhook to the `plugin.magento.o
 
 Once the webhook is registered, every time a shopping cart is requested, a synchronous call is dispatched to the App Builder application implementing the tax calculation and providing the response through an `oopQuote` object containing the tax fields.
 
-Please refer to [`actions/tax-calculation.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/tax-calculation/index.js) for an example of how to process the request and return the tax calculation to the commerce instance. This link can be served as a template to implement custom tax calculations.
+Refer to [`actions/tax-calculation.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/tax-calculation/index.js) for an example of how to process the request and return the tax calculation to the commerce instance. This file can serve as a template to implement custom tax calculations.
 
 ## Tax calculation: Payload
 

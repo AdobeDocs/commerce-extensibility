@@ -579,7 +579,7 @@ The Appbuilder application receives the following payload as an `oopQuote` objec
 
 ## Tax calculation: App Builder response
 
-Sample App builder response that will populate the "tax" and "tax_breakdown" attributes.
+The following sample App Builder response populates the `tax` and `tax_breakdown` attributes.
 
 ```json
 [

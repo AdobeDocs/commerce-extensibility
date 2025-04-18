@@ -508,7 +508,7 @@ Refer to [`actions/tax-calculation.js`](https://github.com/adobe/commerce-checko
 
 ## Tax calculation: Payload
 
-The Appbuilder application receives the following payload as an oopQuote object that contains the necessary data for the tax calculation. Once the calculation is processed, the response will populate the "tax" and "tax_breakdown" fields under "items" and provide the response to the commerce instance.
+The Appbuilder application receives the following payload as an `oopQuote` object that contains the necessary data for the tax calculation. Once the calculation is processed, the response will populate the `tax` and `tax_breakdown` fields under the `items` array and provide the response to the commerce instance.
 
 ```json
 {

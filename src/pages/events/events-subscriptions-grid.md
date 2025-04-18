@@ -53,7 +53,6 @@ Field | Description
 
 Click **Select** > **Edit** in the **Action** column of an event subscription's row to display a form for editing the subscription.
 
-# TODO: replace image
 ![Edit event subscription](../_images/events/edit-event-subscription.png)
 
 Click **Select** > **Delete** in the **Action** column to delete an event subscription.

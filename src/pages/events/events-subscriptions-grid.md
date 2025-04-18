@@ -1,8 +1,7 @@
 ---
-title: Events Subscriptions grid for Adobe Commerce as a Cloud Service
+title: Events Subscriptions grid
 description: Learn about managing events subscriptions through the admin in Commerce Cloud Service.
 keywords:
-  - ACCS
   - Events
   - Extensibility
 ---

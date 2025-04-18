@@ -203,7 +203,7 @@ If you are implementing eventing in a performance testing environment, run the `
 
 ### Usage
 
-`bin/magento events:subscribe <event_code> --force --fields=<name1> --fields=<name2> --parent <event_code> --rules=<field-name>|<operator>|<value> --rules=<field-name2>|<operator>|<value2> --hipaaAuditRequired --priority --destination=<destination> --providerId=<provicerId>`
+`bin/magento events:subscribe <event_code> --force --fields=<name1> --fields=<name2> --parent <event_code> --rules=<field-name>|<operator>|<value> --rules=<field-name2>|<operator>|<value2> --hipaaAuditRequired --priority --destination=<destination> --providerId=<providerId>`
 
 ### Arguments
 

@@ -94,7 +94,7 @@ Point to the `AddProductToCartResolver` class in the `header.resolver` attribute
 
 The payload for a hook can be large, but in many cases you only need to transmit a few fields to perform the desired operation on the remote server.
 
-Defining the hook requires knowledge of the structure of the original event and the requirements of the remote call. You can use the `bin/magento [webhooks:info](commands.md#display-the-payload-of-a-webhook) <webhook-name>` command to return the default payload of a webhook.
+Defining the hook requires knowledge of the structure of the original event and the requirements of the remote call. You can use the `bin/magento webhooks:info <webhook-name>` [command](./commands.md#display-the-payload-of-a-webhook) to return the default payload of a webhook.
 
 Imagine that the command returned a Commerce webhook with the following structure:
 

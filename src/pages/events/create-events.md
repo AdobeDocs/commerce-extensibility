@@ -1,12 +1,16 @@
 ---
-title: Events Subscriptions grid
+title: Create events from the Admin
 description: Learn about managing events subscriptions through the admin in Commerce Cloud Service.
 keywords:
   - Events
   - Extensibility
 ---
 
-# Managing Events through the Admin in Adobe Commerce as a Cloud Service
+# Create events from the Admin
+
+<InlineAlert variant="info" slots="text1" />
+
+This feature is available only in Adobe Commerce as a Cloud Service (ACCS).
 
 In addition to the available [REST endpoints for event subscriptions](./api.md), Adobe Commerce as a Cloud Service also supports managing events through the Admin.
 
@@ -31,7 +35,7 @@ Field | Description
 **Event Name** | Select one of the supported Commerce event names from the dropdown.
 **Event Name Alias** | A unique alias name for the event. An alias is required for events that have rules configured.
 **Event Provider** | Select the event provider to which the event should be delivered. If a workspace configuration is set for the provider, event metadata will be created and linked to the provider when the event subscription is saved.
-**Is Enabled** | Indicates whether the event is enabled. Disabled events are not emitted from Commerce.
+**Is Enabled** | Indicates whether the event is enabled. Commerce does not emit disabled events.
 **Priority** | Indicates whether the event has priority status. Priority events are sent within a second, whereas non-priority events can take up to 59 seconds to send.
 
 ### Configure event subscription fields

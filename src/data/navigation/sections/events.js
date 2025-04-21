@@ -28,8 +28,8 @@ module.exports = [
     path: "/events/conditional-events.md",
   },
   {
-    title: "Events Subscriptions grid for Adobe Commerce as a Cloud Service",
-    path: "/events/events-subscriptions-grid.md",
+    title: "Create events from the Admin",
+    path: "/events/create-events.md",
   },
   {
     title: "Add custom fields",

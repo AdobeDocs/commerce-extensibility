@@ -28,6 +28,10 @@ module.exports = [
     path: "/events/conditional-events.md",
   },
   {
+    title: "Create events from the Admin",
+    path: "/events/create-events.md",
+  },
+  {
     title: "Add custom fields",
     path: "/events/custom-event-fields.md"
   },

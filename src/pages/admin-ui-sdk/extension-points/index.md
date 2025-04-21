@@ -21,6 +21,7 @@ const sharedContext = {
   selectedIds: array,
   commerceBaseUrl: string,
   imsToken: string,
+  imsOrgId: string,
   clientId: string
 }
 ```

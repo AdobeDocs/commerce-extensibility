@@ -84,7 +84,7 @@ Field | Description
 
 ### Configure hook rules
 
-The **Hook Rules** configuration panel allows you to define rules that trigger a webhook when certain conditions are met. [Create conditional webhooks](./conditional-webhooks/) describes how to configure hook rules.
+The **Hook Rules** configuration panel allows you to define rules that trigger a webhook when certain conditions are met. [Create conditional webhooks](./conditional-webhooks.md) describes how to configure hook rules.
 
 Field | Description
 --- | ---

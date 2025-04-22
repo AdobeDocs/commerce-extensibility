@@ -471,7 +471,7 @@ In the `setShippingMethodsOnCart` mutation, you can set the shipping method prov
 
 ## Tax management: Collect taxes
 
-You can calculate and apply taxes on shopping carts during checkout by using the `collectTaxes` webhook. See [webhooks](../../webhooks/index.md). to understand and setup a webhook.
+You can calculate and apply taxes on shopping carts during checkout by using the `collectTaxes` webhook. See [webhooks](../../webhooks/index.md) to understand and setup a webhook.
 
 To register a webhook, you need to create a `webhooks.xml` [configuration file](../../webhooks/xml-schema.md) in your module or in the root `app/etc` directory.
 

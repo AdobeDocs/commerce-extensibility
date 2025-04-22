@@ -469,6 +469,163 @@ In the `setShippingMethodsOnCart` mutation, you can set the shipping method prov
 }
 ```
 
+## Tax management: Collect taxes
+
+You can calculate and apply taxes on shopping carts during checkout by using the `collectTaxes` webhook. See [webhooks](../../webhooks/index.md) to understand and setup a webhook.
+
+To register a webhook, you need to create a `webhooks.xml` [configuration file](../../webhooks/xml-schema.md) in your module or in the root `app/etc` directory.
+
+The following example demonstrates how to add a webhook to the `plugin.magento.out_of_process_tax_management.api.oop_tax_collection.collect_taxes` method:
+
+```xml
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_AdobeCommerceWebhooks:etc/webhooks.xsd">
+    <method name="plugin.magento.out_of_process_tax_management.api.oop_tax_collection.collect_taxes" type="before">
+        <hooks>
+            <batch name="collect_taxes">
+                <hook 
+                    name="collect_taxes" 
+                    url="https://<yourappbuilder>.runtime.adobe.io/api/v1/web/commerce-checkout-starter-kit/tax-calculation"
+                    method="POST" timeout="10000" softTimeout="2000"
+                    priority="300" required="true" fallbackErrorMessage="Tax calculation failed. Please try again later."
+                    ttl="0"
+                >
+                </hook>
+            </batch>
+        </hooks>
+    </method>
+</config>
+```
+
+When the quote is recalculated, such as during a cart update or at checkout, a synchronous call is dispatched to the App Builder application that handles tax calculation. The response is returned through the oopQuote object, which includes the calculated tax fields. This webhook is only triggered when a shipping destination address is set, to avoid unnecessary calls during early cart interactions.
+
+Refer to [`actions/tax-calculation.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/tax-calculation/index.js) for an example of how to process the request and return the tax calculation to the commerce instance. This file can serve as a template to implement custom tax calculations.
+
+### Payload
+
+The Appbuilder application receives the following payload as an `oopQuote` object that contains the necessary data for the tax calculation. Once the calculation is processed, the response will populate the `tax` and `tax_breakdown` fields under the `items` array and provide the response to the commerce instance.
+
+```json
+{
+    "oopQuote": {
+        "customer_tax_class": "string",
+        "items": [
+            {
+                "code": "sequence-1",
+                "type": "product",
+                "tax_class": "tax-1",
+                "unit_price": 60,
+                "quantity": 2,
+                "is_tax_included": false,
+                "discount_amount": 0,
+                "custom_attributes": [],
+                "sku": "SKU-1",
+                "name": "Product Name 01",
+                "tax": null,
+                "tax_breakdown": []
+            },
+            {
+                "code": "shipping",
+                "type": "shipping",
+                "tax_class": "Shipping Tax",
+                "unit_price": 60,
+                "quantity": 1,
+                "is_tax_included": false,
+                "discount_amount": 0,
+                "custom_attributes": [],
+                "sku": null,
+                "name": null,
+                "tax": null,
+                "tax_breakdown": []
+            }
+        ],
+        "ship_from_address": {
+            "street": [],
+            "city": "City1",
+            "region": "Alhabama",
+            "region_code": "AL",
+            "country": "US",
+            "postcode": "12345"
+        },
+        "ship_to_address": {
+            "street": [
+              "address 1",
+              "address 2"
+            ],
+            "city": "City1",
+            "region": "California",
+            "region_code": "CA",
+            "country": "US",
+            "postcode": "12345"
+        },
+        "billing_address": {
+            "street": [
+              "address 1",
+              "address 2"
+            ],
+            "city": "City1",
+            "region": "California",
+            "region_code": "CA",
+            "country": "US",
+            "postcode": "12345"
+        },
+        "shipping": {
+            "shipping_method": "FREE",
+            "shipping_description": "FREE"
+        },
+        "custom_attributes": []
+    }
+}
+```
+
+Responses to commerce webhooks are expected to modify the original request body in various ways (see [`Webhook responses and logging`](https://developer.adobe.com/commerce/extensibility/webhooks/responses/)). The following response example uses the `replace` operation to set the tax field and the `add` operation to add different taxes to the `tax_breakdown` array.
+
+The key points for constructing the response are:
+
+- The `amount` in the `tax` object represents the actual tax applied to each line item.
+- The `rate` in both the `tax` and `tax_breakdown` objects is included for reference to indicate which tax rate was applied.
+- The `discount_compensation_amount` corresponds to the [`hidden tax`](https://experienceleague.adobe.com/en/docs/commerce-admin/stores-sales/site-store/taxes/hidden-tax-calculation), which accounts for the portion of tax adjusted by discounts.
+
+    {
+        "op": "add",
+        "path": "oopQuote/items/0/tax_breakdown",
+        "value": {
+            "data": {
+                "code": "state_tax",
+                "rate": 4.5,
+                "amount": 5.4,
+                "title": "State Tax",
+                "tax_rate_key": "state_tax-4.5"
+            }
+        }
+    },
+    {
+        "op": "add",
+        "path": "oopQuote/items/0/tax_breakdown",
+        "value": {
+            "data": {
+                "code": "county_tax",
+                "rate": 3.6,
+                "amount": 4.32,
+                "title": "County Tax",
+                "tax_rate_key": "county_tax-3.6"
+            }
+        }
+    },
+    {
+        "op": "replace",
+        "path": "oopQuote/items/0/tax",
+        "value": {
+            "data": {
+                "rate": 8.1,
+                "amount": 9.72,
+                "discount_compensation_amount": 0
+            }
+        }
+    }
+]
+```
+
 ## Tax management: Update custom attributes on tax classes via Admin UI
 
 The out-of-process tax module allows you to add custom attributes to tax classes. These attributes are useful when integrating with third-party tax systems that require standardized identifiers or additional metadata.  

@@ -68,7 +68,7 @@ You can also refer to the [Adobe I/O Events Webhook FAQ](https://developer.adobe
 
 ## Payment
 
-The checkout starter kit supports the following payments use cases:
+The checkout starter kit supports the following payments use cases. For more information, refer to [Payment methods](./configure.md#create-payment-methods) and the [Payment API reference](./payment-reference.md).
 
 ### Payment flow
 
@@ -82,11 +82,7 @@ The following steps demonstrate the payment flow for getting order details from 
 
 ![sequence.png](../../_images/starterkit/sequence.png)
 
-### Payment methods
-
-The checkout starter kit supports the following payment methods use cases:
-
-#### Validate payment info
+### Validate payment info
 
 To perform a headless checkout and payment, the Commerce instance must ensure that the payment has succeeded and the order can be placed.
 
@@ -146,7 +142,7 @@ You can also enable webhook signature generation by following the [webhooks sign
 
 Refer to [`actions/validate-payment.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/validate-payment/index.js) for an example of how to receive the request and validate the payment according to the payment gateway needs.
 
-#### Filter out payment method
+### Filter out payment method
 
 In some cases, you may want to filter out a payment method based on the cart details or the customer's information. For example, you may want to disable a payment method based on customer group or product attributes in the cart.
 

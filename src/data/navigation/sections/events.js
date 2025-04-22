@@ -16,12 +16,20 @@ module.exports = [
     path: "/events/configure-commerce.md",
   },
   {
+    title: "Configure additional event providers",
+    path: "/events/configure-additional-event-providers.md",
+  },
+  {
     title: "Module development",
     path: "/events/module-development.md",
   },
   {
     title: "Create conditional events",
     path: "/events/conditional-events.md",
+  },
+  {
+    title: "Create events from the Admin",
+    path: "/events/create-events.md",
   },
   {
     title: "Add custom fields",

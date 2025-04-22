@@ -583,8 +583,8 @@ Moreover, it is essential to note that the actual tax calculation is based solel
 
 The key points to understand when constructing the response are:
 
-- The amount in the tax object represents the actual tax applied to each line item.
-- The rate in both the tax and tax_breakdown objects is included for reference to indicate which tax rate was applied.
+- The `amount` in the `tax` object represents the actual tax applied to each line item.
+- The `rate` in both the `tax` and `tax_breakdown` objects is included for reference to indicate which tax rate was applied.
 - The `discount_compensation_amount` corresponds to the [`hidden tax`](https://experienceleague.adobe.com/en/docs/commerce-admin/stores-sales/site-store/taxes/hidden-tax-calculation), which accounts for the portion of tax adjusted by discounts.
 
 

@@ -483,17 +483,13 @@ The following example demonstrates how to add a webhook to the `plugin.magento.o
     <method name="plugin.magento.out_of_process_tax_management.api.oop_tax_collection.collect_taxes" type="before">
         <hooks>
             <batch name="collect_taxes">
-                <hook name="my_hook"
-                      url="AppBuilder Action URL"
-                method="POST" timeout="10000"
-                softTimeout="2000" priority="300" required="true"
-                fallbackErrorMessage="Error on validation"
-                ttl="0"
+                <hook 
+                    name="collect_taxes" 
+                    url="https://<yourappbuilder>.runtime.adobe.io/api/v1/web/commerce-checkout-starter-kit/tax-calculation"
+                    method="POST" timeout="10000" softTimeout="2000"
+                    priority="300" required="true" fallbackErrorMessage="Tax calculation failed. Please try again later."
+                    ttl="0"
                 >
-                    <headers>
-                        <header name="x-gw-ims-org-id">{env:APP_BUILDER_IMS_ORG_ID}</header>
-                        <header name="Authorization">Bearer {env:APP_BUILDER_AUTH_TOKEN}</header>
-                    </headers>
                 </hook>
             </batch>
         </hooks>

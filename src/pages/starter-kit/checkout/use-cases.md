@@ -586,8 +586,6 @@ The key points for constructing the response are:
 - The `rate` in both the `tax` and `tax_breakdown` objects is included for reference to indicate which tax rate was applied.
 - The `discount_compensation_amount` corresponds to the [`hidden tax`](https://experienceleague.adobe.com/en/docs/commerce-admin/stores-sales/site-store/taxes/hidden-tax-calculation), which accounts for the portion of tax adjusted by discounts.
 
-```json
-[
     {
         "op": "add",
         "path": "oopQuote/items/0/tax_breakdown",

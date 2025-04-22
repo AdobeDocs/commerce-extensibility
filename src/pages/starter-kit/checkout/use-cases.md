@@ -626,43 +626,6 @@ The key points for constructing the response are:
                 "discount_compensation_amount": 0
             }
         }
-    },
-    {
-        "op": "add",
-        "path": "oopQuote/items/1/tax_breakdown",
-        "value": {
-            "data": {
-                "code": "state_tax",
-                "rate": 4.5,
-                "amount": 0.45,
-                "title": "State Tax",
-                "tax_rate_key": "state_tax-4.5"
-            }
-        }
-    },
-    {
-        "op": "add",
-        "path": "oopQuote/items/1/tax_breakdown",
-        "value": {
-            "data": {
-                "code": "county_tax",
-                "rate": 3.6,
-                "amount": 0.36,
-                "title": "County Tax",
-                "tax_rate_key": "county_tax-3.6"
-            }
-        }
-    },
-    {
-        "op": "replace",
-        "path": "oopQuote/items/1/tax",
-        "value": {
-            "data": {
-                "rate": 8.1,
-                "amount": 0.81,
-                "discount_compensation_amount": 0
-            }
-        }
     }
 ]
 ```

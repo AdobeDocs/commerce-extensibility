@@ -93,9 +93,25 @@ To download a `.json` file containing your workspace configuration:
 
    The `<Workspace-name>.json` file downloads automatically. In this example, the file is named `977AmethystGazelle-1340225-Stage.json`. Rename the file `workspace.json` and save it in the `scripts/onboarding/config/` directory of the starter kit.  
 
-#### Create an integration in Adobe Commerce
+#### PaaS or SaaS
+
+The integration starter kit is designed to work with all Adobe Commerce versions, but only one at a time. This means that you can use either Adobe Commerce on Cloud / on Premises (PaaS) or Adobe Commerce as a Cloud Service (SaaS). By default, the starter kit will check for PaaS authentication first using **OAuth1**, before it checks for SaaS authentication using **IMS**.
+
+* For PaaS configurations, refer to [Create an integration in Adobe Commerce (PaaS only)](#create-an-integration-in-adobe-commerce-paas-only) and make sure your environment variables `COMMERCE_XXXX` are set correctly in the `.env` file.
+
+* For SaaS configurations, refer to [Create an integration in Adobe Commerce as a Cloud Service](#create-an-integration-in-adobe-commerce-as-a-cloud-service) and make sure the environment variables file does not contain `COMMERCE_XXXX` variables.
+
+<InlineAlert variant="info" slots="text"/>
+
+`app.config.yaml` has both sets of environment variables declared. These determine the runtime action context. This file works regardless of offering, so you do not need to modify it.
+
+#### Create an integration in Adobe Commerce (PaaS only)
 
 A Commerce integration generates the consumer key, consumer secret, access token, and access token secret that are required to connect to the starter kit. It also identifies the available API resources that are needed for the integration.
+
+<InlineAlert variant="info" slots="text"/>
+
+This section applies to **PaaS** customers only. For **SaaS** customers, see [Create an integration in Adobe Commerce as a Cloud Service](#create-an-integration-in-adobe-commerce-as-a-cloud-service).
 
 Use the following steps to create and activate an integration.
 
@@ -121,6 +137,34 @@ Use the following steps to create and activate an integration.
 
    You will need the integration details (consumer key, consumer secret, access token, and access token secret) to configure the starter kit. Copy these values to a safe place and click **Done**.
 
+#### Create an integration in Adobe Commerce as a Cloud Service
+
+To configure authentication for Adobe Commerce as a Cloud Service (SaaS), you need to add OAuth server-to-server credentials to your environment.
+
+<InlineAlert variant="info" slots="text"/>
+
+This section applies to **SaaS** customers only. For **PaaS** customers, see [Create an integration in Adobe Commerce](#create-an-integration-in-adobe-commerce-paas-only).
+
+1. In the [Adobe Developer Console](https://developer.adobe.com/console):
+
+   1. Navigate to your project or create a new one.
+
+   1. Add the **I/O Management API** to enable server-to-server authentication capabilities. For more information, refer to [server-to-server authentication](https://developer.adobe.com/developer-console/docs/guides/authentication/ServerToServerAuthentication/implementation#setting-up-the-oauth-server-to-server-credential/).
+
+1. Store the credentials from Adobe Developer Console in the integration starter kit's `.env` file. The following values are required:
+
+   ```text
+   OAUTH_CLIENT_ID=<string> # Your client ID
+   OAUTH_CLIENT_SECRET=<string> # Your client secret
+   OAUTH_SCOPES=<array> # ['scope1', 'scope2']
+   ```
+
+   The following values are optional:
+
+   ```text
+   OAUTH_HOST=<string> # default: https://ims-na1.adobelogin.com
+   ```
+
 #### Install Adobe I/O Events for Adobe Commerce (Commerce 2.4.4 and 2.4.5 only)
 
 If you are running Adobe Commerce 2.4.6 or higher, the modules that enable eventing are installed automatically. Skip to the next step. If you are running Commerce 2.4.4 or 2.4.5, you must install modules to enable eventing, as described in [Install Adobe I/O Events for Adobe Commerce](../../events/installation.md).
@@ -145,7 +189,28 @@ Use the following steps to download and configure the Adobe Commerce integration
    cd <download-directory> && cp env.dist .env
    ```
 
-1. Fill in the values in the `.env` file. The file describes where you can find the values for each environment variable.
+1. Fill in the values in the `.env` file. The file describes where you can find the values for each environment variable. The following values are required:
+
+   ```text
+   COMMERCE_CONSUMER_KEY=
+   COMMERCE_CONSUMER_SECRET=
+   COMMERCE_ACCESS_TOKEN=
+   COMMERCE_ACCESS_TOKEN_SECRET=
+   ```
+
+When configuring the `COMMERCE_BASE_URL` environment variable, the format differs between [PaaS and SaaS](#paas-or-saas):
+
+   For PaaS (On-Premise/Cloud):
+
+   * `COMMERCE_BASE_URL` must include your base site URL + `/rest/`
+   * Example: `https://<environment-name>.us-4.magentosite.cloud/rest/`
+
+   For SaaS (Adobe Commerce as a Cloud Service):
+
+   * `COMMERCE_BASE_URL` must be the REST API endpoint provided by Adobe Commerce
+   * Example: `https://na1-sandbox.api.commerce.adobe.com/<tenant-id>/`
+
+   Make sure to use your actual environment name or tenant ID in the URL. The examples above use placeholder values.
 
 #### Configure the starter kit
 

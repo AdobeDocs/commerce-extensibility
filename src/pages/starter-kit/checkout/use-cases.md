@@ -469,7 +469,7 @@ In the `setShippingMethodsOnCart` mutation, you can set the shipping method prov
 }
 ```
 
-## Tax management
+## Tax management: Collect taxes
 
 You can calculate and apply taxes on shopping carts during checkout by using the `collectTaxes` webhook. See [webhooks](../../webhooks/index.md). to understand and setup a webhook.
 
@@ -501,7 +501,7 @@ When the quote is recalculated, such as during a cart update or at checkout, a s
 
 Refer to [`actions/tax-calculation.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/tax-calculation/index.js) for an example of how to process the request and return the tax calculation to the commerce instance. This file can serve as a template to implement custom tax calculations.
 
-## Tax calculation: Payload
+### Payload
 
 The Appbuilder application receives the following payload as an `oopQuote` object that contains the necessary data for the tax calculation. Once the calculation is processed, the response will populate the `tax` and `tax_breakdown` fields under the `items` array and provide the response to the commerce instance.
 
@@ -572,7 +572,7 @@ The Appbuilder application receives the following payload as an `oopQuote` objec
 }
 ```
 
-## Tax calculation: App Builder response
+### Response
 
 The following sample App Builder response populates the `tax` and `tax_breakdown` attributes.
 

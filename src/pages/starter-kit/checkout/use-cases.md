@@ -540,7 +540,7 @@ The Appbuilder application receives the following payload as an `oopQuote` objec
             }
         ],
         "ship_from_address": {
-            "street": "Sesam Street",
+            "street": [],
             "city": "City1",
             "region": "Alhabama",
             "region_code": "AL",
@@ -548,7 +548,10 @@ The Appbuilder application receives the following payload as an `oopQuote` objec
             "postcode": "12345"
         },
         "ship_to_address": {
-            "street": "Sesam Street",
+            "street": [
+              "address 1",
+              "address 2"
+            ],
             "city": "City1",
             "region": "California",
             "region_code": "CA",
@@ -556,7 +559,10 @@ The Appbuilder application receives the following payload as an `oopQuote` objec
             "postcode": "12345"
         },
         "billing_address": {
-            "street": "Sesam Street",
+            "street": [
+              "address 1",
+              "address 2"
+            ],
             "city": "City1",
             "region": "California",
             "region_code": "CA",

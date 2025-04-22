@@ -579,9 +579,8 @@ The Appbuilder application receives the following payload as an `oopQuote` objec
 ```
 
 Responses to commerce webhooks are expected to modify the original request body in various ways (see [`Webhook responses and logging`](https://developer.adobe.com/commerce/extensibility/webhooks/responses/)). The following response example uses the `replace` operation to set the tax field and the `add` operation to add different taxes to the `tax_breakdown` array.
-Moreover, it is essential to note that the actual tax calculation is based solely on the `amount` field. The `rate` field is included only for informational purposes and should always be non-zero to ensure clarity in reporting
 
-The key points to understand when constructing the response are:
+The key points for constructing the response are:
 
 - The `amount` in the `tax` object represents the actual tax applied to each line item.
 - The `rate` in both the `tax` and `tax_breakdown` objects is included for reference to indicate which tax rate was applied.

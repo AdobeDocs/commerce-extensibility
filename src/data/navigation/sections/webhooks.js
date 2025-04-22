@@ -8,6 +8,10 @@ module.exports = [
       path: "webhooks/use-cases.md"
     },
     {
+      title: "Manage webhooks from the Admin",
+      path: "/webhooks/create-webhooks.md"
+    },
+    {
       title: "Configure hooks",
       path: "/webhooks/hooks.md"
     },

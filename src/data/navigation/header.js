@@ -18,10 +18,6 @@ module.exports = [
           title: "Checkout starter kit",
           path: "/starter-kit/checkout/"
         },
-        {
-          title: "Tax starter kit",
-          path: "/starter-kit/tax/"
-        },
       ],
     },
     {

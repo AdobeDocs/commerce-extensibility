@@ -111,7 +111,7 @@ A Commerce integration generates the consumer key, consumer secret, access token
 
 <InlineAlert variant="info" slots="text"/>
 
-This section applies to Adobe Commerce on-premises and Adobe Commerce on cloud infrastructure (PaaS) customers only. For Adobe Commerce as a Cloud Service (SaaS) customers, see [Create an integration in Adobe Commerce as a Cloud Service](#create-an-integration-in-adobe-commerce-as-a-cloud-service).
+This section applies to **PaaS** customers only. For **SaaS** customers, see [Create an integration in Adobe Commerce as a Cloud Service](#create-an-integration-in-adobe-commerce-as-a-cloud-service).
 
 Use the following steps to create and activate an integration.
 
@@ -143,13 +143,13 @@ To configure authentication for Adobe Commerce as a Cloud Service (SaaS), you ne
 
 <InlineAlert variant="info" slots="text"/>
 
-This section applies to Adobe Commerce as a Cloud Service (**SaaS**) customers only. For Adobe Commerce on-premises and Adobe Commerce on cloud infrastructure (**PaaS**) customers, see [Create an integration in Adobe Commerce](#create-an-integration-in-adobe-commerce-paas-only).
+This section applies to **SaaS** customers only. For **PaaS** customers, see [Create an integration in Adobe Commerce](#create-an-integration-in-adobe-commerce-paas-only).
 
 1. In the [Adobe Developer Console](https://developer.adobe.com/console):
 
    1. Navigate to your project or create a new one.
 
-   1. Add the **I/O Management API** t enable server-to-server authentication capabilities. For more information, refer to [server-to-server authentication](https://developer.adobe.com/developer-console/docs/guides/authentication/ServerToServerAuthentication/implementation#setting-up-the-oauth-server-to-server-credential/).
+   1. Add the **I/O Management API** to enable server-to-server authentication capabilities. For more information, refer to [server-to-server authentication](https://developer.adobe.com/developer-console/docs/guides/authentication/ServerToServerAuthentication/implementation#setting-up-the-oauth-server-to-server-credential/).
 
 1. Store the credentials from Adobe Developer Console in the integration starter kit's `.env` file. The following values are required:
 
@@ -161,7 +161,7 @@ This section applies to Adobe Commerce as a Cloud Service (**SaaS**) customers o
 
    The following values are optional:
 
-   ```dotenv
+   ```text
    OAUTH_HOST=<string> # default: https://ims-na1.adobelogin.com
    ```
 
@@ -191,7 +191,7 @@ Use the following steps to download and configure the Adobe Commerce integration
 
 1. Fill in the values in the `.env` file. The file describes where you can find the values for each environment variable. The following values are required:
 
-   ```terminal
+   ```text
    COMMERCE_CONSUMER_KEY=
    COMMERCE_CONSUMER_SECRET=
    COMMERCE_ACCESS_TOKEN=

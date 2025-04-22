@@ -524,17 +524,17 @@ The Appbuilder application receives the following payload as an `oopQuote` objec
                 "tax": null,
                 "tax_breakdown": []
             },
-                                {
-                "code": "sequence-1",
+            {
+                "code": "shipping",
                 "type": "shipping",
-                "tax_class": "tax-1",
-                "unit_price": "10",
-                "quantity": "1",
+                "tax_class": "Shipping Tax",
+                "unit_price": 60,
+                "quantity": 1,
                 "is_tax_included": false,
                 "discount_amount": 0,
                 "custom_attributes": [],
-                "sku": "SKU-1",
-                "name": "Product Name 01",
+                "sku": null,
+                "name": null,
                 "tax": null,
                 "tax_breakdown": []
             }

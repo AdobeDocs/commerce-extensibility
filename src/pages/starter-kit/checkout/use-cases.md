@@ -589,8 +589,7 @@ The following sample App Builder response populates the `tax` and `tax_breakdown
                 "title": "State Tax",
                 "tax_rate_key": "state_tax-4.5"
             }
-        },
-        "instance": "Magento\\OutOfProcessTaxManagement\\Api\\Data\\OopQuoteItemTaxBreakdownInterface"
+        }
     },
     {
         "op": "add",
@@ -603,8 +602,7 @@ The following sample App Builder response populates the `tax` and `tax_breakdown
                 "title": "County Tax",
                 "tax_rate_key": "county_tax-3.6"
             }
-        },
-        "instance": "Magento\\OutOfProcessTaxManagement\\Api\\Data\\OopQuoteItemTaxBreakdownInterface"
+        }
     },
     {
         "op": "replace",
@@ -615,8 +613,7 @@ The following sample App Builder response populates the `tax` and `tax_breakdown
                 "amount": 9.72,
                 "discount_compensation_amount": 0
             }
-        },
-        "instance": "Magento\\OutOfProcessTaxManagement\\Api\\Data\\OopQuoteItemTaxInterface"
+        }
     },
     {
         "op": "add",
@@ -629,8 +626,7 @@ The following sample App Builder response populates the `tax` and `tax_breakdown
                 "title": "State Tax",
                 "tax_rate_key": "state_tax-4.5"
             }
-        },
-        "instance": "Magento\\OutOfProcessTaxManagement\\Api\\Data\\OopQuoteItemTaxBreakdownInterface"
+        }
     },
     {
         "op": "add",
@@ -643,8 +639,7 @@ The following sample App Builder response populates the `tax` and `tax_breakdown
                 "title": "County Tax",
                 "tax_rate_key": "county_tax-3.6"
             }
-        },
-        "instance": "Magento\\OutOfProcessTaxManagement\\Api\\Data\\OopQuoteItemTaxBreakdownInterface"
+        }
     },
     {
         "op": "replace",
@@ -655,8 +650,7 @@ The following sample App Builder response populates the `tax` and `tax_breakdown
                 "amount": 0.81,
                 "discount_compensation_amount": 0
             }
-        },
-        "instance": "Magento\\OutOfProcessTaxManagement\\Api\\Data\\OopQuoteItemTaxInterface"
+        }
     }
 ]
 

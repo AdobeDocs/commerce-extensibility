@@ -23,11 +23,11 @@ To build the site locally:
 
 ## Components
 
-To achieve specific user experience goals for Commerce documentation, this repo shadows the [`Edition`](https://github.com/adobe/aio-theme/blob/main/packages/gatsby-theme-aio/src/components/Edition/index.js) original  component from the [`aio-theme`](https://github.com/adobe/aio-theme/) upstream repo.
+To achieve specific user experience goals for Commerce documentation, this repo overrides the original [`Edition`](https://github.com/adobe/aio-theme/blob/main/packages/gatsby-theme-aio/src/components/Edition/index.js) component from the upstream [`aio-theme`](https://github.com/adobe/aio-theme/) repo that we use as a dependency.
 
 ### Edition
 
-The `Edition` component displays a badge indicating whether a feature or functionality is available in specific Adobe Commerce environments. It has been customized to align with the badges that we use in Experience League docs.
+The custom `Edition` component in this repo displays a badge indicating whether a feature or functionality is available in specific Adobe Commerce environments. It has been customized to align with the badges that we use in Experience League docs.
 
 #### Usage
 
@@ -37,7 +37,7 @@ edition: saas # For SaaS-only features
 edition: paas # For PaaS-only features
 ```
 
-```mdx
+```md
 {/* Section-level (inline) */}
 <Edition name="paas" />  {/* For PaaS-only features */}
 <Edition name="saas" />  {/* For SaaS-only features */}

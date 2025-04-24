@@ -66,9 +66,13 @@ the [AppBuilder Applications with Adobe I/O Events](https://developer.adobe.com/
 
 You can also refer to the [Adobe I/O Events Webhook FAQ](https://developer.adobe.com/events/docs/support/faq/#webhook-faq) which contains information about how to handle event consumption, such as state of registration, retries, and debugging.
 
-## Payment flow: Get order details from Adobe Commerce using the masked cart ID
+## Payment
 
-The following steps demonstrate the payment flow:
+The checkout starter kit supports the following payments use cases. For more information, refer to [Payment methods](./configure.md#create-payment-methods) and the [Payment API reference](./payment-reference.md).
+
+### Get order details with masked cart ID
+
+The following steps demonstrate the payment flow for getting order details from Adobe Commerce using the masked cart ID:
 
 1. The payment flow starts at the frontend. When checkout is completed, the frontend sends the masked cart ID to the payment gateway.
 
@@ -78,7 +82,7 @@ The following steps demonstrate the payment flow:
 
 ![sequence.png](../../_images/starterkit/sequence.png)
 
-## Payment methods: Validate payment info
+### Validate payment info
 
 To perform a headless checkout and payment, the Commerce instance must ensure that the payment has succeeded and the order can be placed.
 
@@ -114,7 +118,9 @@ setPaymentMethodOnCart(
 
 With this information persisted, you can configure an [Adobe Commerce Webhook](../../webhooks/index.md) so that every time an order is placed, a synchronous call dispatches to the App Builder application implementing the payment method to validate the payment.
 
-To register a webhook, [modify the `webhooks.xml` file](../../webhooks/hooks.md) and create a new webhook with the following configuration:
+To register a webhook in Adobe Commerce on Cloud or on-premises, [modify the `webhooks.xml` file](../../webhooks/hooks.md) and create a new webhook with the following configuration.
+
+For Adobe Commerce as a Cloud Service, you can [create webhook in the Admin](../../webhooks/create-webhooks.md).
 
 ```yaml
 Hook Settings
@@ -138,7 +144,7 @@ You can also enable webhook signature generation by following the [webhooks sign
 
 Refer to [`actions/validate-payment.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/validate-payment/index.js) for an example of how to receive the request and validate the payment according to the payment gateway needs.
 
-## Payment methods: Filter out payment method
+### Filter out payment method
 
 In some cases, you may want to filter out a payment method based on the cart details or the customer's information. For example, you may want to disable a payment method based on customer group or product attributes in the cart.
 
@@ -209,7 +215,11 @@ Payload example:
 
 You can find examples of how to filter out payment methods using customer data or product attributes in your App Builder application in [`actions/filter-payment.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/filter-payment/index.js).
 
-## Shipping methods
+## Shipping
+
+The checkout starter kit supports the following shipping use cases:
+
+### Shipping methods
 
 You can add shipping methods to the checkout process by using [webhooks](../../webhooks/index.md).
 
@@ -219,7 +229,9 @@ After the webhook is registered, every time a shopping cart is requested, a sync
 
 Refer to [`actions/shipping-methods.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/shipping-methods/index.js) for an example of how to process the request and return the list of available shipping methods.
 
-To register a webhook, you need to create a `webhooks.xml` [configuration file](../../webhooks/xml-schema.md) in your module or in the root `app/etc` directory.
+To register a webhook in Adobe Commerce on Cloud or on-premises, you need to create a `webhooks.xml` [configuration file](../../webhooks/xml-schema.md) in your module or in the root `app/etc` directory.
+
+For Adobe Commerce as a Cloud Service, you can [create webhook in the Admin](../../webhooks/create-webhooks.md).
 
 The following example demonstrates how to add a webhook to the `plugin.magento.out_of_process_shipping_methods.api.shipping_rate_repository.get_rates` method:
 
@@ -243,13 +255,7 @@ The following example demonstrates how to add a webhook to the `plugin.magento.o
 
 You can register multiple webhooks for different shipping methods or shipping carriers by adding them into the same batch to ensure they are executed in parallel or create multiple batches to execute them sequentially.
 
-### Remove shipping method
-
-The `plugin.magento.out_of_process_shipping_methods.api.shipping_rate_repository.get_rates` webhook allows you to remove specific shipping methods from the list of available options.
-
-If you use the `flatrate` shipping method, but want to disable it, you must update your webhook response to mark the shipping method as removed. This example is demonstrated in [`actions/shipping-methods.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/shipping-methods/index.js).
-
-## Shipping methods: Payload
+#### Payload
 
 The request payload contains information about all items in the cart, including product information, product attributes, shipping address, and customer information for logged-in customers.
 
@@ -327,7 +333,7 @@ Payload example:
 
 You can find examples of how to use shipping addresses, customer data, and product attributes in your App Builder application in [`actions/shipping-methods.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/shipping-methods/index.js).
 
-## Shipping methods: GraphQL
+#### GraphQL
 
 In the `setShippingAddressesOnCart` mutation, available shipping methods that are returned by the webhook are appended to the `available_shipping_methods` field.
 
@@ -471,3 +477,9 @@ In the `setShippingMethodsOnCart` mutation, you can set the shipping method prov
   }
 }
 ```
+
+### Remove shipping method
+
+The `plugin.magento.out_of_process_shipping_methods.api.shipping_rate_repository.get_rates` webhook allows you to remove specific shipping methods from the list of available options.
+
+If you use the `flatrate` shipping method, but want to disable it, you must update your webhook response to mark the shipping method as removed. This example is demonstrated in [`actions/shipping-methods.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/shipping-methods/index.js).

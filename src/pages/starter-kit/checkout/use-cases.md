@@ -120,7 +120,7 @@ With this information persisted, you can configure an [Adobe Commerce Webhook](.
 
 To register a webhook in Adobe Commerce on Cloud or on-premises, [modify the `webhooks.xml` file](../../webhooks/hooks.md) and create a new webhook with the following configuration.
 
-For Adobe Commerce as a Cloud Service, you can [create webhook in the Admin](../../webhooks/create-webhooks.md#create-webhooks-from-the-admin).
+For Adobe Commerce as a Cloud Service, you can [create webhook in the Admin](../../webhooks/create-webhooks.md).
 
 ```yaml
 Hook Settings
@@ -231,7 +231,7 @@ Refer to [`actions/shipping-methods.js`](https://github.com/adobe/commerce-check
 
 To register a webhook in Adobe Commerce on Cloud or on-premises, you need to create a `webhooks.xml` [configuration file](../../webhooks/xml-schema.md) in your module or in the root `app/etc` directory.
 
-For Adobe Commerce as a Cloud Service, you can [create webhook in the Admin](../../webhooks/create-webhooks.md#create-webhooks-from-the-admin).
+For Adobe Commerce as a Cloud Service, you can [create webhook in the Admin](../../webhooks/create-webhooks.md).
 
 The following example demonstrates how to add a webhook to the `plugin.magento.out_of_process_shipping_methods.api.shipping_rate_repository.get_rates` method:
 

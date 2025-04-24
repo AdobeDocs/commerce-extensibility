@@ -38,9 +38,9 @@ edition: paas # For PaaS-only features
 ```
 
 ```md
-{/* Section-level (inline) */}
-<Edition name="paas" />  {/* For PaaS-only features */}
-<Edition name="saas" />  {/* For SaaS-only features */}
+<!-- Section-level (inline) -->
+<Edition name="paas" />  <!-- For PaaS-only features -->
+<Edition name="saas" />  <!-- For SaaS-only features -->
 ```
 
 ## Resources

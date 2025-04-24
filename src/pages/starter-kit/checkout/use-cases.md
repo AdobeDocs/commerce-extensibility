@@ -70,7 +70,7 @@ You can also refer to the [Adobe I/O Events Webhook FAQ](https://developer.adobe
 
 The checkout starter kit supports the following payments use cases. For more information, refer to [Payment methods](./configure.md#create-payment-methods) and the [Payment API reference](./payment-reference.md).
 
-### Payment flow
+### Get order details with masked cart ID
 
 The following steps demonstrate the payment flow for getting order details from Adobe Commerce using the masked cart ID:
 
@@ -118,7 +118,9 @@ setPaymentMethodOnCart(
 
 With this information persisted, you can configure an [Adobe Commerce Webhook](../../webhooks/index.md) so that every time an order is placed, a synchronous call dispatches to the App Builder application implementing the payment method to validate the payment.
 
-To register a webhook, [modify the `webhooks.xml` file](../../webhooks/hooks.md) and create a new webhook with the following configuration:
+To register a webhook in Adobe Commerce on Cloud or on-premises, [modify the `webhooks.xml` file](../../webhooks/hooks.md) and create a new webhook with the following configuration.
+
+For Adobe Commerce as a Cloud Service, you can [create webhook in the Admin](../../webhooks/create-webhooks.md#create-webhooks-from-the-admin).
 
 ```yaml
 Hook Settings
@@ -227,7 +229,9 @@ After the webhook is registered, every time a shopping cart is requested, a sync
 
 Refer to [`actions/shipping-methods.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/shipping-methods/index.js) for an example of how to process the request and return the list of available shipping methods.
 
-To register a webhook, you need to create a `webhooks.xml` [configuration file](../../webhooks/xml-schema.md) in your module or in the root `app/etc` directory.
+To register a webhook in Adobe Commerce on Cloud or on-premises, you need to create a `webhooks.xml` [configuration file](../../webhooks/xml-schema.md) in your module or in the root `app/etc` directory.
+
+For Adobe Commerce as a Cloud Service, you can [create webhook in the Admin](../../webhooks/create-webhooks.md#create-webhooks-from-the-admin).
 
 The following example demonstrates how to add a webhook to the `plugin.magento.out_of_process_shipping_methods.api.shipping_rate_repository.get_rates` method:
 

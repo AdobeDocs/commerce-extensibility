@@ -483,8 +483,8 @@ The following example demonstrates how to add a webhook to the `plugin.magento.o
     <method name="plugin.magento.out_of_process_tax_management.api.oop_tax_collection.collect_taxes" type="before">
         <hooks>
             <batch name="collect_taxes">
-                <hook 
-                    name="collect_taxes" 
+                <hook
+                    name="collect_taxes"
                     url="https://<yourappbuilder>.runtime.adobe.io/api/v1/web/commerce-checkout-starter-kit/tax-calculation"
                     method="POST" timeout="10000" softTimeout="2000"
                     priority="300" required="true" fallbackErrorMessage="Tax calculation failed. Please try again later."
@@ -507,74 +507,68 @@ The Appbuilder application receives the following payload as an `oopQuote` objec
 
 ```json
 {
-    "oopQuote": {
-        "customer_tax_class": "string",
-        "items": [
-            {
-                "code": "sequence-1",
-                "type": "product",
-                "tax_class": "tax-1",
-                "unit_price": 60,
-                "quantity": 2,
-                "is_tax_included": false,
-                "discount_amount": 0,
-                "custom_attributes": [],
-                "sku": "SKU-1",
-                "name": "Product Name 01",
-                "tax": null,
-                "tax_breakdown": []
-            },
-            {
-                "code": "shipping",
-                "type": "shipping",
-                "tax_class": "Shipping Tax",
-                "unit_price": 60,
-                "quantity": 1,
-                "is_tax_included": false,
-                "discount_amount": 0,
-                "custom_attributes": [],
-                "sku": null,
-                "name": null,
-                "tax": null,
-                "tax_breakdown": []
-            }
-        ],
-        "ship_from_address": {
-            "street": [],
-            "city": "City1",
-            "region": "Alhabama",
-            "region_code": "AL",
-            "country": "US",
-            "postcode": "12345"
-        },
-        "ship_to_address": {
-            "street": [
-              "address 1",
-              "address 2"
-            ],
-            "city": "City1",
-            "region": "California",
-            "region_code": "CA",
-            "country": "US",
-            "postcode": "12345"
-        },
-        "billing_address": {
-            "street": [
-              "address 1",
-              "address 2"
-            ],
-            "city": "City1",
-            "region": "California",
-            "region_code": "CA",
-            "country": "US",
-            "postcode": "12345"
-        },
-        "shipping": {
-            "shipping_method": "FREE",
-            "shipping_description": "FREE"
-        },
-        "custom_attributes": []
-    }
+  "oopQuote": {
+    "customer_tax_class": "string",
+    "items": [
+      {
+        "code": "sequence-1",
+        "type": "product",
+        "tax_class": "tax-1",
+        "unit_price": 60,
+        "quantity": 2,
+        "is_tax_included": false,
+        "discount_amount": 0,
+        "custom_attributes": [],
+        "sku": "SKU-1",
+        "name": "Product Name 01",
+        "tax": null,
+        "tax_breakdown": []
+      },
+      {
+        "code": "shipping",
+        "type": "shipping",
+        "tax_class": "Shipping Tax",
+        "unit_price": 60,
+        "quantity": 1,
+        "is_tax_included": false,
+        "discount_amount": 0,
+        "custom_attributes": [],
+        "sku": null,
+        "name": null,
+        "tax": null,
+        "tax_breakdown": []
+      }
+    ],
+    "ship_from_address": {
+      "street": [],
+      "city": "City1",
+      "region": "Alhabama",
+      "region_code": "AL",
+      "country": "US",
+      "postcode": "12345"
+    },
+    "ship_to_address": {
+      "street": ["address 1", "address 2"],
+      "city": "City1",
+      "region": "California",
+      "region_code": "CA",
+      "country": "US",
+      "postcode": "12345"
+    },
+    "billing_address": {
+      "street": ["address 1", "address 2"],
+      "city": "City1",
+      "region": "California",
+      "region_code": "CA",
+      "country": "US",
+      "postcode": "12345"
+    },
+    "shipping": {
+      "shipping_method": "FREE",
+      "shipping_description": "FREE"
+    },
+    "custom_attributes": []
+  }
 }
 ```
 
@@ -587,43 +581,47 @@ The key points for constructing the response are:
 - The `discount_compensation_amount` corresponds to the [`hidden tax`](https://experienceleague.adobe.com/en/docs/commerce-admin/stores-sales/site-store/taxes/hidden-tax-calculation), which accounts for the portion of tax adjusted by discounts.
 
 ```json
-    {
-        "op": "add",
-        "path": "oopQuote/items/0/tax_breakdown",
-        "value": {
-            "data": {
-                "code": "state_tax",
-                "rate": 4.5,
-                "amount": 5.4,
-                "title": "State Tax",
-                "tax_rate_key": "state_tax-4.5"
-            }
-        }
+[
+  {
+    "op": "add",
+    "path": "oopQuote/items/0/tax_breakdown",
+    "value": {
+      "data": {
+        "code": "state_tax",
+        "rate": 4.5,
+        "amount": 5.4,
+        "title": "State Tax",
+        "tax_rate_key": "state_tax-4.5"
+      }
     },
-    {
-        "op": "add",
-        "path": "oopQuote/items/0/tax_breakdown",
-        "value": {
-            "data": {
-                "code": "county_tax",
-                "rate": 3.6,
-                "amount": 4.32,
-                "title": "County Tax",
-                "tax_rate_key": "county_tax-3.6"
-            }
-        }
+    "instance": "Magento\\OutOfProcessTaxManagement\\Api\\Data\\OopQuoteItemTaxBreakdownInterface"
+  },
+  {
+    "op": "add",
+    "path": "oopQuote/items/0/tax_breakdown",
+    "value": {
+      "data": {
+        "code": "county_tax",
+        "rate": 3.6,
+        "amount": 4.32,
+        "title": "County Tax",
+        "tax_rate_key": "county_tax-3.6"
+      }
     },
-    {
-        "op": "replace",
-        "path": "oopQuote/items/0/tax",
-        "value": {
-            "data": {
-                "rate": 8.1,
-                "amount": 9.72,
-                "discount_compensation_amount": 0
-            }
-        }
-    }
+    "instance": "Magento\\OutOfProcessTaxManagement\\Api\\Data\\OopQuoteItemTaxBreakdownInterface"
+  },
+  {
+    "op": "replace",
+    "path": "oopQuote/items/0/tax",
+    "value": {
+      "data": {
+        "rate": 8.1,
+        "amount": 9.72,
+        "discount_compensation_amount": 0
+      }
+    },
+    "instance": "Magento\\OutOfProcessTaxManagement\\Api\\Data\\OopQuoteItemTaxInterface"
+  }
 ]
 ```
 

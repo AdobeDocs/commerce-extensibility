@@ -33,6 +33,8 @@ You must install or have access to the following prerequisites to develop with t
 
 Adobe Commerce as a Cloud Service is preconfigured with all the required modules for the checkout starter kit. Cloud Service users can proceed by [configuring their local environment](#initial-configuration) or [configuring Commerce](./configure.md).
 
+<Edition name="paas" />
+
 Before installing Commerce modules, ensure that you have the required credentials in `auth.json` with [access to the Adobe Commerce repository](https://experienceleague.adobe.com/en/docs/commerce-operations/installation-guide/prerequisites/authentication-keys).
 
 - Install the Out-of-Process Payment Extensions (OOPE) module on Adobe Commerce

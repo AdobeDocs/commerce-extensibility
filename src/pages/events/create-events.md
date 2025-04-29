@@ -4,6 +4,7 @@ description: Learn about managing events subscriptions through the admin in Comm
 keywords:
   - Events
   - Extensibility
+edition: saas
 ---
 
 # Create events from the Admin

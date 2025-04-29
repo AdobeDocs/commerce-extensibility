@@ -1,12 +1,13 @@
 ---
-title: Create events from the Admin
+title: Create webhooks from the Admin
 description: Learn about managing webhook subscriptions through the Admin in Adobe Commerce Cloud Service.
 keywords:
   - Extensibility
 noIndex: true
+edition: saas
 ---
 
-# Create events from the Admin
+# Create webhooks from the Admin
 
 <InlineAlert variant="info" slots="text1" />
 

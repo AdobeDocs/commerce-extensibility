@@ -69,5 +69,3 @@ This option allows communication between Commerce and App Builder.
 ## Debugging requests
 
 After following one of the connection options above, you can debug your application and access customized logs using the `LOG_LEVEL` environment variable. If this variable is set, logs from different phases of the commerce client display with detailed information.
-
-<!-- What are options for log level variable??? -->

@@ -132,7 +132,7 @@ The `GET /rest/all/V1/eventing/getEventSubscriptions` endpoint returns a list of
   "destination": "default",
   "priority": false,
   "hipaa_audit_required": false,
-  "provider_id": "default"
+  "provider_id": "1902bc50-12345-41e8-955b-af4a9667823f"
 }]
 ```
 
@@ -390,6 +390,8 @@ curl -i -X PUT \
 ### Delete event provider
 
 The `DELETE /rest/<store_view_code>/V1/eventing/eventProvider/<provider_id>` endpoint deletes the event provider with the specified ID from the Adobe Commerce instance. The event provider is not removed from the Adobe Developer Console.
+
+To delete an event provider, you must first delete all event subscriptions that use this provider. The event provider cannot be deleted if used in event subscriptions.
 
 **Headers:**
 

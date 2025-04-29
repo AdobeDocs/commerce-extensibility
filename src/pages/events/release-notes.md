@@ -12,6 +12,21 @@ These release notes describe the latest version of Adobe I/O Events for Adobe Co
 
 See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io-events-for-adobe-commerce) for upgrade instructions.
 
+## Version 1.12.1
+
+### Release date
+
+April 29, 2025
+
+### Enhancements
+
+* Returns the provider ID instead of "default" in the REST API. <!-- CEXT-4561 -->
+
+* Improves the message during the removal of providers with linked event subscriptions. <!-- CEXT-4577 -->
+
+* Allows the removal of event providers with inactive subscriptions. <!-- CEXT-4583 -->
+
+
 ## Version 1.12.0
 
 ### Release date

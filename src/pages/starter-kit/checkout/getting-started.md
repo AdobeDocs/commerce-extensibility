@@ -14,7 +14,7 @@ To begin using the checkout starter kit, ensure that your Adobe Commerce install
 
 You must install or have access to the following prerequisites to develop with the Adobe Commerce checkout starter kit:
 
-- Adobe Commerce version `2.4.4` or higher.
+- Adobe Commerce as a Cloud Service or Adobe Commerce version `2.4.4` or higher.
 
 - [Node.js](https://nodejs.org/) version 22. If you have Node Version Manager (`nvm`) installed, you can run the following command to install and use the required version:
 
@@ -28,6 +28,12 @@ You must install or have access to the following prerequisites to develop with t
   Builder license. If you do not have access to the Adobe Developer Console or App Builder, refer to [get access to App Builder](https://developer.adobe.com/app-builder/docs/overview/getting_access/#get-access-to-app-builder).
 
 ## Install Commerce modules
+
+<InlineAlert variant="info" slots="text"/>
+
+Adobe Commerce as a Cloud Service is preconfigured with all the required modules for the checkout starter kit. Cloud Service users can proceed by [configuring their local environment](#initial-configuration) or [configuring Commerce](./configure.md).
+
+<Edition name="paas" />
 
 Before installing Commerce modules, ensure that you have the required credentials in `auth.json` with [access to the Adobe Commerce repository](https://experienceleague.adobe.com/en/docs/commerce-operations/installation-guide/prerequisites/authentication-keys).
 

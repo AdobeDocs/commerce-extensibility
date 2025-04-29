@@ -5,7 +5,7 @@ keywords:
   - Extensibility
 ---
 
-# Webhook configuration reference
+# Webhooks configuration reference
 
 Webhooks are configured in a `webhooks.xml` file. This file can be placed in the system `<install_directory>/app/etc` directory or in the `etc` directory of an enabled Adobe Commerce module.
 

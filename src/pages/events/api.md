@@ -391,7 +391,7 @@ curl -i -X PUT \
 
 The `DELETE /rest/<store_view_code>/V1/eventing/eventProvider/<provider_id>` endpoint deletes the event provider with the specified ID from the Adobe Commerce instance. The event provider is not removed from the Adobe Developer Console.
 
-To delete an event provider, you must first delete all event subscriptions that use this provider. The event provider cannot be deleted if used in event subscriptions.
+To delete an event provider, you must first delete all event subscriptions that use this provider. An event provider cannot be deleted if it is used in any event subscriptions.
 
 **Headers:**
 

@@ -16,7 +16,7 @@ See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io
 
 ### Release date
 
-April 29, 2025
+April 30, 2025
 
 ### Enhancements
 
@@ -25,7 +25,6 @@ April 29, 2025
 * Improves the message during the removal of providers with linked event subscriptions. <!-- CEXT-4577 -->
 
 * Allows the removal of event providers with inactive subscriptions. <!-- CEXT-4583 -->
-
 
 ## Version 1.12.0
 

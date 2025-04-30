@@ -15,43 +15,9 @@ Before you create a webhook, you must resolve the following questions:
 
 * What data structure does the remote server require for incoming requests?
 
-Adobe Commerce Cloud Service (SaaS) developers can view the list supported webhook methods by going to **System** > Webhooks > **Webhooks List** in the Admin. Then click on a webhook method name to display its default contents. PaaS developers can accomplish this by running the [`bin/magento webhooks:list:all` command](./commands.md#return-a-list-of-supported-webhook-event-names) to return a list of all supported webhooks methods and the [`bin/magento webhooks:info <webhook-name>` command](./commands.md#display-the-payload-of-a-webhook) to return the payload of a specified webhook method.
-
-Make sure the webhook method you select contains the information you need. If your webhook needs to check product availability when a shopper attempts to add a product to their cart, you could use the `observer.sales_quote_add_item` webhook method as the foundation of your call. The default payload contains the following information:
-
-```json
-{
-    "eventName": "string",
-    "data": {
-        "quoteItem": {
-            "qty_options": "array",
-            "product_type": "string",
-            "real_product_type": "string",
-            "item_id": "int",
-            "sku": "string",
-            "qty": "float",
-            "name": "string",
-            "price": "float",
-            "quote_id": "string",
-            "product_option": {
-                "extension_attributes": "object{}"
-            },
-            "custom_attributes": [
-                {
-                    "attribute_code": "string",
-                    "value": "mixed"
-                }
-            ]
-        }
-    }
-}
-```
-
-At minimum, you need to transmit the `sku` and `qty` fields to check product availability. Other fields, such as `name` and `price`, might also be necessary, but others contain data that is outside the scope of your call. Your external source probably does not accept data as a `quoteItem` object. Your webhook will specify exactly which fields to include in the payload and how to transform them into a format that the external source accepts.
-
 A webhook subscription is a configuration that specifies the following sets of information:
 
-* The basic definition of the webhook. This includes the webhook name, the event (also known as a _webhook method_) to listen for, the URL to send the HTTP POST request to, timeout settings, fallback error messages, and more.
+* The basic definition of the webhook. This includes the webhook name, the event (webhook method) to listen for, the URL to send the HTTP POST request to, timeout settings, fallback error messages, and more.
 
 * Authentication information (Adobe Commerce Cloud Service only). You can configure the details of an OAuth credential defined the Adobe Developer Console.
 
@@ -116,28 +82,41 @@ You must define at least one hook field, and you will usually need to define req
 
 ### Configure hook fields
 
+Defining the hook requires knowledge of the structure of the original event and the requirements of the remote call. Adobe Commerce Cloud Service (SaaS) developers can view the list supported webhook methods by going to **System** > Webhooks > **Webhooks List** in the Admin. Then click on a webhook method name to display its default contents. PaaS developers can accomplish this by running the [`bin/magento webhooks:list:all` command](./commands.md#return-a-list-of-supported-webhook-event-names) to return a list of all supported webhooks methods and the [`bin/magento webhooks:info <webhook-name>` command](./commands.md#display-the-payload-of-a-webhook) to return the payload of a specified webhook method.
 
-SaaS developers can go to **System** > Webhooks > **Webhooks List** in the Admin
-You must understand the contents of the
-The payload for a hook can be large, but in many cases you only need to transmit a few fields to perform the desired operation on the remote server.
-
-Defining the hook requires knowledge of the structure of the original event and the requirements of the remote call. You can use the `bin/magento webhooks:info <webhook-name>` [command](./commands.md#display-the-payload-of-a-webhook) to return the default payload of a webhook.
-
-Imagine that the command returned a Commerce webhook with the following structure:
+Make sure the webhook method you select contains the information you need. If your webhook needs to check product availability when a shopper attempts to add a product to their cart, you could use the `observer.sales_quote_add_item` webhook method as the foundation of your call. The default payload contains the following information:
 
 ```json
 {
+    "eventName": "string",
     "data": {
-        "product": {
-            "name": "string",
+        "quoteItem": {
+            "qty_options": "array",
+            "product_type": "string",
+            "real_product_type": "string",
+            "item_id": "int",
             "sku": "string",
-            "qty": "float"
+            "qty": "float",
+            "name": "string",
+            "price": "float",
+            "quote_id": "string",
+            "product_option": {
+                "extension_attributes": "object{}"
+            },
+            "custom_attributes": [
+                {
+                    "attribute_code": "string",
+                    "value": "mixed"
+                }
+            ]
         }
     }
 }
 ```
 
-The webhook contains a top-level `data` object, and a second-level `product` object with several fields. However, your remote application expects a payload with the following structure:
+At minimum, you need to transmit the `sku` and `qty` fields to check product availability. Other fields, such as `name` and `price`, might also be necessary, but others fields contain data that is outside the scope of your call.
+
+Meanwhile, your external source probably does not accept data as a `quoteItem` object. Imagine that your remote application expects a payload with the following structure:
 
 ```json
 {
@@ -149,15 +128,16 @@ The webhook contains a top-level `data` object, and a second-level `product` obj
 }
 ```
 
-To transmit this object to the remote application, you will need to remove the `data` object from the payload and rename `qty` to `quantity`. The `source` configuration attribute specifies the full path of a Commerce webhook field, while the `name` attribute defines the full path of the field to transmit. If the two values are identical, then you can omit the `source` attribute.
+Your webhook will specify exactly which fields to include in the payload and how to transform them into a format that the external source accepts. To transmit this object to the remote application, you will need to remove the `data` and `quoteItem` objects and all unnecessary fields from the payload. In addition, you must rename the `qty` field to `quantity`. 
 
 The **Hook Fields** configuration panel defines the payload of a webhook request. [Define the hook body](./hooks.md#define-the-hook-body) describes how to construct the payload.
 
-Field | Description
---- | ---
-**Name** | The path to the field to include in the transmitted webhook, such as `product.sku`.
-**Source** | The path to the value in the default webhook. If not set, the **Name** value is used.
-**Active** | Indicates whether to include the field in the payload.
+Admin field | XML attribute | Description
+--- | --- | ---
+| **Name** | `field.name`| The path to the field to include in the transmitted webhook, such as `product.sku`. |
+| **Source** | `field.source`| The path to the value in the default webhook, such as `quoteItem.sku`. If not set, the **Name** value is used. |
+| **Active** | `field.remove` | Indicates whether to include the field in the payload. By default, all fields are included. If you are building a `webhooks.xml` file, set `field.remove` to `true` to remove the field from the payload. |
+| - | `field.converter` | A class that transforms the value of a field, such as from integer to string. This attribute is only available in `webhooks.xml` files. |
 
 ### Configure hook headers
 

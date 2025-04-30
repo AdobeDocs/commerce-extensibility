@@ -26,7 +26,6 @@ April 30, 2025
 
 * Allows the removal of event providers with inactive subscriptions. <!-- CEXT-4583 -->
 
-
 ## Version 1.12.0
 
 ### Release date

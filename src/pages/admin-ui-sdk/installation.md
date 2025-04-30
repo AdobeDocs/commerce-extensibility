@@ -8,33 +8,40 @@ keywords:
 
 # Install or update Adobe Commerce Admin UI SDK
 
-This topic describes the basic steps to install the Admin UI SDK on Adobe Commerce 2.4.5 - 2.4.7. It is installed automatically on version 2.4.8 and later.
-
-## Prerequisites
-
-### Adobe Commerce
-
-* Adobe Commerce on cloud infrastructure or on premises: 2.4.5+
-* PHP 8.1+
-* [Adobe Identity Management Service (IMS) for Adobe Commerce](https://experienceleague.adobe.com/docs/commerce-admin/start/admin/ims/adobe-ims-integration-overview.html)
+Adobe Commerce as a Cloud Service (SaaS) automatically includes the Adobe Commerce Admin UI SDK. All you need to do is enable it. For Adobe Commerce on Cloud and on-premises (PaaS) projects, the SDK is installed automatically on Adobe Commerce version 2.4.8 and later. You must install it manually on older versions.
 
 <InlineAlert variant="info" slots="text1" />
 
 Magento Open Source is not supported.
 
-### Adobe App Builder
+## Enable the Admin UI SDK on SaaS
+
+<Edition name="saas" />
+
+The Admin UI SDK is disabled by default. To enable it, login to the Adobe Commerce Admin and navigate to the  **Stores** > Settings > **Configuration** > **Adobe Services** > **Admin UI SDK** screen. Set the **Enable Admin UI SDK** field to **Yes** and click **Save Config**.
+
+![Admin UI SDK general configuration](../_images/admin-ui-sdk/configuration/general.png)
+
+
+## Install the Admin UI SDK on PaaS
+
+<Edition name="paas" />
+
+This section describes the basic steps to install the Admin UI SDK on Adobe Commerce 2.4.5 - 2.4.7. It is installed automatically on version 2.4.8 and later.
+
+Adobe Commerce has the following software requirements:
+
+* Adobe Commerce on cloud infrastructure or on premises: 2.4.5+
+* PHP 8.1+
+* [Adobe Identity Management Service (IMS) for Adobe Commerce](https://experienceleague.adobe.com/docs/commerce-admin/start/admin/ims/adobe-ims-integration-overview.html)
 
 The [Adobe App Builder _Getting Started_ guide](https://developer.adobe.com/app-builder/docs/getting_started/) lists the latest software requirements for creating App Builder apps.
-
-## Installation steps
-
-You can install the Admin UI SDK on Adobe Commerce on cloud infrastructure and on-premises instances.
 
 ### Enable Adobe IMS for Commerce
 
 You must implement Adobe Identity Management Service (IMS) for Adobe Commerce to use the Admin UI SDK. [Configure the Commerce Admin Integration with Adobe ID](https://experienceleague.adobe.com/docs/commerce-admin/start/admin/ims/adobe-ims-config.html?lang=en) describes this process.
 
-### Adobe Commerce on cloud infrastructure
+### Adobe Commerce on cloud infrastructure installation
 
 This method installs the SDK on a cloud instance.
 
@@ -60,7 +67,7 @@ This method installs the SDK on a cloud instance.
 
 1. Commit and push your changes.
 
-### On-premises
+### On-premises installation
 
 This method installs the SDK on an On-premises instance.
 
@@ -104,9 +111,17 @@ This method installs the SDK on an On-premises instance.
 
 1. Update your on-premises instance to ensure the committed code is deployed.
 
+### Enable the Admin UI SDK
+
+Login to the Adobe Commerce Admin and navigate to the  **Stores** > Settings > **Configuration** > **Adobe Services** > **Admin UI SDK** screen. Set the **Enable Admin UI SDK** field to **Yes** and click **Save Config**.
+
+![Admin UI SDK general configuration](../_images/admin-ui-sdk/configuration/general.png)
+
 ## Update the Commerce Admin UI SDK
 
-Use the following procedure to update patch versions of the SDK, such as from V1.0.0 to V1.1.0.
+<Edition name="paas" />
+
+The Admin UI SDK is updated automatically on SaaS projects. For PaaS project, use the following procedure to update patch versions of the SDK, such as from V1.0.0 to V1.1.0.
 
 1. Run the following command to update the SDK:
 

@@ -139,14 +139,44 @@ Admin field | XML attribute | Description
 | **Active** | `field.remove` | Indicates whether to include the field in the payload. By default, all fields are included. If you are building a `webhooks.xml` file, set `field.remove` to `true` to remove the field from the payload. |
 | - | `field.converter` | A class that transforms the value of a field, such as from integer to string. This attribute is only available in `webhooks.xml` files. |
 
+If the default payload of a webhook method contains an array of objects, use the following construction to select fields from that array:
+
+```text
+<object_name>[].<field_name>
+```
+
+The default `observer.sales_quote_add_item` webhook method contains an array of `custom_attributes` objects. To include the `attribute_code` and `value` fields in your webhook definition, use the following source name values:
+
+* `data.quoteItem.custom_attributes[].attribute_code`
+* `data.quoteItem.custom_attributes[].value`
+
+Commerce transmits an array containing all the attribute/value pairs to the remote system.
+
+The following XML fragment shows how to define the hook fields needed to transform the fields mentioned in this example:
+
+```xml
+<hook name="validate_stock" url="https://example.com/product-validate-stock" timeout="2000" softTimeout="200" required="true" fallbackErrorMessage="Can't add the product to the cart right now">
+    <fields>
+        <field name='product.name' source='data.product.name' />
+        <field name='product.sku' source='data.product.sku' />
+        <field name='product.quantity' source='data.product.qty' />
+        <field name='product.custom-attribute' source='data.product.custom_attributes[].attribute_code' />
+        <field name='product.custom-value' source='data.product.custom_attributes[].value' />
+    </fields>
+</hook>
+```
+
 ### Configure hook headers
 
-The **Hook Headers** configuration panel defines the headers of a webhook request. [Define request headers](./hooks.md#define-request-headers) describes how to send authorization tokens and other connection parameters.
+You will typically need to send authorization tokens and other connection parameters in the headers of your remote request. The **Hook Headers** configuration panel defines the headers of a webhook request.
 
-Field | Description
---- | ---
-**Name** | The header name, in the same form as it will be sent. For example, `Authorization`.
-**Value** | The value of the header, such as `Bearer: <token>`.
+Secrets and other sensitive data should not be stored in the `webhooks.xml` file. Instead, use environment or configuration variables to relay this information.
+[Define request headers](./hooks.md#define-request-headers) describes how to send authorization tokens and other connection parameters.
+
+Admin field | XML attribute | Description
+--- | --- | ---
+| **Name** | `header.name` | The header name, in the same form as it will be sent. For example, `Authorization`
+**Value** | | The value of the header, such as `Bearer: <token>`.
 **Active** | Set to **No** to remove the header from the request.
 
 ### Configure hook rules

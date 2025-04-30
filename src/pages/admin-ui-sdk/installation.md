@@ -22,12 +22,11 @@ The Admin UI SDK is disabled by default. To enable it, login to the Adobe Commer
 
 ![Admin UI SDK general configuration](../_images/admin-ui-sdk/configuration/general.png)
 
-
 ## Install the Admin UI SDK on PaaS
 
 <Edition name="paas" />
 
-This section describes the basic steps to install the Admin UI SDK on Adobe Commerce 2.4.5 - 2.4.7. It is installed automatically on version 2.4.8 and later.
+This section describes the basic steps to install the Admin UI SDK on Adobe Commerce 2.4.5 to 2.4.7. It is installed automatically on version 2.4.8 and later.
 
 Adobe Commerce has the following software requirements:
 
@@ -121,7 +120,7 @@ Login to the Adobe Commerce Admin and navigate to the  **Stores** > Settings > *
 
 <Edition name="paas" />
 
-The Admin UI SDK is updated automatically on SaaS projects. For PaaS project, use the following procedure to update patch versions of the SDK, such as from V1.0.0 to V1.1.0.
+The Admin UI SDK is automatically updated for SaaS projects. For PaaS projects, follow the procedure below to update patch versions of the SDK, such as upgrading from V2.x to V3.9.0.
 
 1. Run the following command to update the SDK:
 
@@ -129,12 +128,12 @@ The Admin UI SDK is updated automatically on SaaS projects. For PaaS project, us
    composer update magento/commerce-backend-sdk
    ```
 
-1. Run the following commands to upgrade Adobe Commerce and clear the cache.
+1. Run the following commands to upgrade Adobe Commerce, reindex data, and clear the cache.
 
    ```bash
    bin/magento setup:upgrade && bin/magento indexer:reindex && bin/magento cache:clean
    ```
 
-1. If you are updating from V1.x to V2.0, refer to [Migrate your extension point](./extension-points/index.md#migrate-your-extension-point-from-version-1x-to-20) for additional instructions.
+1. If you are upgrading from V1.x to V2.0, refer to [Migrate your extension point](./extension-points/index.md#migrate-your-extension-point-from-version-1x-to-20) for additional instructions.
 
-1. If you are updating from V2.x to V3.0, the published extensions won't be fetched automatically. Refer to [Eligible extensions configuration](./eligible-extensions-config.md) to select the needed extensions to display.
+1. If you are upgrading from V2.x to V3.0, the published extensions won't be fetched automatically. Refer to [Eligible extensions configuration](./eligible-extensions-config.md) to select the needed extensions to display.

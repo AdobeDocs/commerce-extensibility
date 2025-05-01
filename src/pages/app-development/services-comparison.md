@@ -66,7 +66,7 @@ Use cases:
 
 **Recommended method**
 
-[State Database](https://developer.adobe.com/app-builder/docs/guides/application_state/) is a key-value store provided by [Adobe I/O Runtime](https://developer.adobe.com/runtime/docs/guides/overview/) to store and manage stateful data.
+[State Database](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/application_state/) is a key-value store provided by [Adobe I/O Runtime](https://developer.adobe.com/runtime/docs/guides/overview/) to store and manage stateful data.
 
 Features:
 

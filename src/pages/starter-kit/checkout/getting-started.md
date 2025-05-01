@@ -31,51 +31,6 @@ Magento Open Source is not supported.
 - Access to the [Adobe Developer Console](https://console.adobe.io/) with an App
   Builder license. If you do not have access to the Adobe Developer Console or App Builder, refer to [get access to App Builder](https://developer.adobe.com/app-builder/docs/overview/getting_access/#get-access-to-app-builder).
 
-## Install Commerce modules
-
-Before installing Commerce modules, ensure that you have the required credentials in `auth.json` with [access to the Adobe Commerce repository](https://experienceleague.adobe.com/en/docs/commerce-operations/installation-guide/prerequisites/authentication-keys).
-
-### Install the Out-of-Process Payment module
-
-To enable out-of-process payment methods in Commerce, install the `magento/module-out-of-process-payment-methods` module. This module enables out-of-process payment functionalities.
-
-To install the module, run the following command using Composer:
-
-```bash
-  composer require magento/module-out-of-process-payment-methods --with-dependencies
-```
-
-### Install the Out-of-Process Shipping module
-
-To enable out-of-process shipping methods in Adobe Commerce, install the `magento/module-out-of-process-shipping-methods` module.
-To install the module, run the following command using Composer:
-
-```bash
-  composer require magento/module-out-of-process-shipping-methods --with-dependencies
-```
-
-### Install the Out-of-Process Tax module
-
-To enable out-of-process tax management in Adobe Commerce, install the `magento/module-out-of-process-tax-management` module.
-To install the module, run the following command using Composer:
-
-```bash
- composer require magento/module-out-of-process-tax-management --with-dependencies
-```
-
-#### Out-of-Process Tax Management Limitations
-
-This extension overrides the class `Magento\Tax\Model\Sales\Total\Quote\Tax` in the `di.xml` file
-
-```xml
-<preference for="Magento\Tax\Model\Sales\Total\Quote\Tax"
-                type="Magento\OutOfProcessTaxManagement\Model\Tax\Sales\Total\Quote\Tax"/>
-```
-
-As a result, this extension is not compatible with other tax extensions that also override this class, such as TaxJar or Avalara.
-
-If you need to use another tax extension, Adobe recommends disabling this extension to prevent conflicts.
-
 ### Install the Commerce Eventing module (Commerce 2.4.4 and 2.4.5 only)
 
 The [Commerce Eventing module](https://developer.adobe.com/commerce/extensibility/events/) is crucial for handling events within Adobe Commerce. The eventing module is installed automatically in Adobe Commerce version `2.4.6` and higher.

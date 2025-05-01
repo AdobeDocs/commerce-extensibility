@@ -90,7 +90,7 @@ These features allow for quick access and retrieval of data, making it an excell
 
 <InlineAlert variant="info" slots="text"/>
 
-The [maximum TTL](https://developer.adobe.com/app-builder/docs/guides/application_state/#feature-matrix) for all Application State entities is limited to 365 days.
+The [maximum TTL](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/application_state/#feature-matrix) for all Application State entities is limited to 365 days.
 
 #### External Databases for Complex Solutions
 

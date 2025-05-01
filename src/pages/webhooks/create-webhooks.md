@@ -4,6 +4,7 @@ description: Learn about managing webhook subscriptions through the Admin in Ado
 keywords:
   - Extensibility
 noIndex: true
+edition: saas
 ---
 
 # Create webhooks from the Admin

@@ -11,6 +11,7 @@ keywords:
 This page explores different use cases and scenarios for implementing shipping methods using the Adobe Commerce checkout starter kit.
 
 For more general use cases, refer to [use-cases](./use-cases.md).
+
 ## Shipping methods
 
 You can add shipping methods to the checkout process by using [webhooks](../../webhooks/index.md).
@@ -50,7 +51,6 @@ You can register multiple webhooks for different shipping methods or shipping ca
 The `plugin.magento.out_of_process_shipping_methods.api.shipping_rate_repository.get_rates` webhook allows you to remove specific shipping methods from the list of available options.
 
 If you use the `flatrate` shipping method, but want to disable it, you must update your webhook response to mark the shipping method as removed. This example is demonstrated in [`actions/shipping-methods.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/shipping-methods/index.js).
-
 
 ## Shipping methods: Payload
 

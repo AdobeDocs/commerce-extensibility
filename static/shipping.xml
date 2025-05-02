@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!--
+/************************************************************************
+ *
+ * ADOBE CONFIDENTIAL
+ * ___________________
+ *
+ * Copyright 2025 Adobe
+ * All Rights Reserved.
+ *
+ * NOTICE: All information contained herein is, and remains
+ * the property of Adobe and its suppliers, if any. The intellectual
+ * and technical concepts contained herein are proprietary to Adobe
+ * and its suppliers and are protected by all applicable intellectual
+ * property laws, including trade secret and copyright laws.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from Adobe.
+ * ************************************************************************
+ */
+-->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/oope_shipping_carrier" method="GET">
+        <service class="Magento\OutOfProcessShippingMethods\Api\OutOfProcessCarrierRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="Magento_OutOfProcessShippingMethods::oope_shipping_carrier_get_list"/>
+        </resources>
+    </route>
+    <route url="/V1/oope_shipping_carrier/:code" method="GET">
+        <service class="Magento\OutOfProcessShippingMethods\Api\OutOfProcessCarrierRepositoryInterface" method="getByCode"/>
+        <resources>
+            <resource ref="Magento_OutOfProcessShippingMethods::oope_shipping_carrier_get"/>
+        </resources>
+    </route>
+    <route url="/V1/oope_shipping_carrier" method="POST">
+        <service class="Magento\OutOfProcessShippingMethods\Api\OutOfProcessCarrierRepositoryInterface" method="create"/>
+        <resources>
+            <resource ref="Magento_OutOfProcessShippingMethods::oope_shipping_carrier_create"/>
+        </resources>
+    </route>
+    <route url="/V1/oope_shipping_carrier" method="PUT">
+        <service class="Magento\OutOfProcessShippingMethods\Api\OutOfProcessCarrierRepositoryInterface" method="create"/>
+        <resources>
+            <resource ref="Magento_OutOfProcessShippingMethods::oope_shipping_carrier_create"/>
+        </resources>
+    </route>
+    <route url="/V1/oope_shipping_carrier/:code" method="DELETE">
+        <service class="Magento\OutOfProcessShippingMethods\Api\OutOfProcessCarrierRepositoryInterface" method="deleteByCode"/>
+        <resources>
+            <resource ref="Magento_OutOfProcessShippingMethods::oope_shipping_carrier_delete"/>
+        </resources>
+    </route>
+</routes>

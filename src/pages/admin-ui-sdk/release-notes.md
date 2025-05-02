@@ -8,6 +8,110 @@ keywords:
 
 # Adobe Commerce Admin UI SDK release notes
 
+## Version 3.0.0
+
+### Release date
+
+April 15, 2025
+
+### Enhancements
+
+* This release changes how extensions are integrated into the Adobe Commerce Admin. Previously, the Admin directly loaded published extensions. Now, extensions must be selected in the **Configure extensions** screen, resulting in a better developer experience. The limitation on **Production**-only workspaces has been resolved.
+
+* Added the IMS organization ID to the [shared context](./extension-points/index.md#shared-contexts) when loading a menu, a mass action, or an order view button in an iFrame. <!--- CEXT-4396  -->
+
+* Updated dependencies to ensure all resolved security issues are addressed and the system remains up-to-date. <!--- CEXT-4464  -->
+
+* Added **Refresh registrations on schedule** to automatically fetch registrations of selected extensions. <!-- CEXT-4258, CEXT-4402, CEXT-4493 -->
+
+## Version 2.3.0
+
+### Release date
+
+March 14, 2025
+
+### Enhancements
+
+* Renamed Staging **Test mode** to Sandbox. <!--- CEXT-4072  -->
+
+* Aligned the **App Status** label with the App Registry. <!--- CEXT-4071  -->
+
+* Added a tooltip to clarify the **Test mode** options. <!--- CEXT-4134  -->
+
+### Bug fixes
+
+* Fixed a REST API order retrieval error that could occur when the Admin UI SDK custom fees module was enabled. <!--- CEXT-4348  -->
+
+* Fixed a timeout issue that could occur when contacting the App Registry. <!--- CEXT-4205  -->
+
+## Version 2.2.0
+
+### Release date
+
+February 4, 2025
+
+### Enhancements
+
+* The Admin UI SDK supports PHP 8.4.
+
+## Version 2.1.1
+
+### Release date
+
+December 18, 2024
+
+### Bug fixes
+
+* Accessing the Admin UI SDK configuration in Commerce versions prior to 2.4.8-beta1 no longer causes crashes.
+
+## Version 2.1.0
+
+### Release date
+
+December 17, 2024
+
+### Enhancements
+
+* Added the ability to save Admin UI SDK logs to the database and access them from the Admin.
+
+* Registrations can now be secured with Adobe IMS authentication.
+
+* Admin UI SDK is now compatible with edge API Mesh. Legacy API Mesh is deprecated.
+
+* Custom columns can now send an optional default value for unmatched data instead of leaving the cell empty.
+
+* Custom columns data can now be secured with Adobe IMS authentication.
+
+* Enhanced loading of custom column data by retrieving only the necessary items for display.
+
+* Registrations automatically refresh when saving Admin UI SDK configurations.
+
+* Enhanced developer experience with the option to enable staging testing.
+
+## Version 2.0.0
+
+### Release date
+
+September 4, 2024
+
+### Enhancements
+
+* This release changes how registrations are declared. Previously, calls were performed asynchronously. This could result with delayed retrieval and availability of registrations when loading pages in the Admin. Registrations are now loaded synchronously. resulting in a better merchant experience.
+
+  You must update any extension points developed with Admin UI SDK 1.x. [Migrate your extension point from 1.x to 2.0](./extension-points/index.md#migrate-your-extension-point-from-version-1x-to-20) describes how.
+
+* Added a custom fee column to the invoice and credit memo grids.
+
+## Version 1.4.1
+
+### Release date
+
+January 10, 2025
+
+### Bug fixes
+
+Fixed an error with a missed class during dependency injection compilation in Adobe Commerce.  <!--- CEXT-4013  -->
+
 ## Version 1.4.0
 
 ### Release date
@@ -116,7 +220,7 @@ October 18, 2023
 
 * Created the [`order` extension point](extension-points/order/grid-columns.md), which adds columns to the order grid. <!-- CEXT-2272 -->
 
-* Added the [`admin_ui_sdk` cache type](configuration.md#clean-the-admin-ui-sdk-cache). When enabled, Commerce caches customizations to the Admin. <!-- CEXT-2377 -->
+* Added the `admin_ui_sdk` cache type. When enabled, Commerce caches customizations to the Admin. <!-- CEXT-2377 -->
 
 * Added the `isSection` and `sortOrder` parameters to the [`menu` extension point](extension-points/menu.md). The `isSection` parameter allows you to define a menu section, while `sortOrder` defines the placement of a menu item. <!-- CEXT 2249, CEXT-2289 -->
 

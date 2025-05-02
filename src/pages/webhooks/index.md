@@ -27,7 +27,7 @@ The resolution of a remote call also determines whether you should implement a w
 
 Use these guidelines to develop your own webhooks:
 
-1. Identify the Adobe Commerce event that triggers a webhook. Adobe Commerce merchants can browse the available events from the Admin by selecting **System** > Events > **Events** to display the Event list page.
+1. Identify the Adobe Commerce event that triggers a webhook. Adobe Commerce merchants can browse the available events from the Admin by selecting **System** > Events > **Events List** to display the Events list page.
 
 1. Understand the default payload of the corresponding webhook by running the [`bin/magento webhooks:info` command](commands.md#display-the-payload-of-a-webhook).
 

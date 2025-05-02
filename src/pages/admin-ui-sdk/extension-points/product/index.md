@@ -10,5 +10,5 @@ keywords:
 
 The Adobe Commerce Admin UI SDK enables you make modifications to the following elements on the **Catalog** > **Products** page in the Adobe Commerce Admin:
 
-* Add custom [columns](grid-columns.md) to the product grid.
-* Create a custom [mass action](mass-action.md).
+* Add [custom columns](grid-columns.md) to the product grid.
+* Add [custom mass actions](mass-action.md) to the product grid.

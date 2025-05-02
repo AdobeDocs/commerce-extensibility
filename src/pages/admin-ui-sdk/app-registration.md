@@ -75,14 +75,13 @@ Create an `ExtensionRegistration` React component that registers the menu config
       await register({
         id: extensionId,
         methods: {
-          ...
         }
       }
     )
    }
    ```
 
-You must populate the `methods` section with calls to fetch menus, pages, and other entities to be displayed in the Admin. [Extension Points](extension-points/index.md) provides reference information and examples.
+   The extension ID should be the same as the one defined in the `extension-manifest.json`.
 
 ## Update the `App.js` routing
 
@@ -96,16 +95,37 @@ Make sure that your main page is correctly routed to the index. Here is an examp
 
 ```javascript
 <ErrorBoundary onError={onError} FallbackComponent={fallbackComponent}>
-  <BrowserRouter>
+  <HashRouter>
       <Provider theme={lightTheme} colorScheme={'light'}>
           <Routes>
               <Route path={'index.html'} element={<ExtensionRegistration />} />
               <Route index element={<MainPage runtime={props.runtime} ims={props.ims} />} />
           </Routes>
       </Provider>
-  </BrowserRouter>
+  </HashRouter>
 </ErrorBoundary>
 ```
+
+## Create a registration runtime action
+
+Under the `actions` repository in the project, create a `registration` respository in which you create the `index.js` file with the following code:
+
+```javascript
+async function main() {
+
+    return {
+        statusCode: 200,
+        body: {
+            registration: {
+            }
+        }
+    }
+}
+
+exports.main = main
+```
+
+You must populate the `registration` section with calls to fetch menus, pages, and other entities to be displayed in the Admin. [Extension Points](extension-points/index.md) provides reference information and examples.
 
 ## Update the `app.config.yaml` file
 
@@ -114,12 +134,14 @@ Update the `app.config.yaml` [configuration file](https://developer.adobe.com/ap
 ```yaml
 extensions:
   commerce/backend-ui/1:
-    $include: ext.config.yaml
+    $include: src/commerce-backend-ui-1/ext.config.yaml
 ```
 
 This file now declares extensions and redirects to an `ext.config.yaml` file.
 
 ## Add or update the `ext.config.yaml`
+
+Add or update the `src/commerce-backend-ui-1/ext.config.yaml` file. The `commerce-backend-ui-1` directory contains the `actions` and `web-src` code.
 
 Your extension configuration file should look like this:
 
@@ -132,9 +154,22 @@ actions: actions
 web: web-src
 runtimeManifest:
   packages:
-    SampleExtension:
+    admin-ui-sdk:
       license: Apache-2.0
       actions:
+        registration:
+          function: actions/registration/index.js
+          web: 'yes'
+          runtime: 'nodejs:18'
+          inputs:
+            LOG_LEVEL: debug
+          annotations:
+            require-adobe-auth: true
+            final: true
 ```
+
+The package name must be `admin-ui-sdk`, and the action must be `registration`. The `function` can point to any route that returns the registration in the correct expected format.
+
+We recommend securing the registration runtime action by setting `require-adobe-auth` to `true`. The Adobe Commerce instance will correctly load registrations securely based on the provided IMS credentials.
 
 Complete this file with the actions from your app.

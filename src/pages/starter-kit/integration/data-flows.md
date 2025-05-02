@@ -17,7 +17,7 @@ This page describes the data flows that are currently available for Adobe Commer
 
 The following image indicates the general path of data using the red boxes and lines. The term "Object" in this diagram refers to the objects in Adobe Commerce, for example, Products, Customers, or Orders.
 
-![data flow](../_images/starterkit/data-flow.png)
+![data flow](../../_images/starterkit/data-flow.png)
 
 <InlineAlert variant="info" slots="text"/>
 

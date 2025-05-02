@@ -8,6 +8,10 @@ module.exports = [
       path: "webhooks/use-cases.md"
     },
     {
+      title: "Manage webhooks from the Admin",
+      path: "/webhooks/create-webhooks.md"
+    },
+    {
       title: "Configure hooks",
       path: "/webhooks/hooks.md"
     },
@@ -30,6 +34,10 @@ module.exports = [
     {
       title: "Signature Verification",
       path: "/webhooks/signature-verification.md"
+    },
+    {
+      title: "API reference",
+      path: "/webhooks/api.md",
     },
     {
       title: "Command reference",

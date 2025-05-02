@@ -12,8 +12,12 @@ This topic describes how to resolve frequently encountered issues with Adobe I/O
 
 ## Events are not showing in App Builder event registration
 
-If Commerce is correctly [configured](configure-commerce.md), but triggered events aren't being received, check if the events exist in the Commerce `event_data` table.
-The `event_data` table temporarily stores events before transforming them into Adobe I/O events. The table contains a status column that can have the following values:
+If Commerce is correctly [configured](configure-commerce.md), but triggered events aren't being received, check the the _Events Status_ grid, located at **System** > Events > **Events Status** in the Commerce Admin, to view the status of triggered events that are present in the Commerce `event_data` database table.
+
+![Events Status grid](../_images/events/event-status-grid.png)
+
+You can perform additional troubleshooting by retrieving the contents of the `event_data` table, which contains information that is not displayed in the grid.
+This table temporarily stores events before transforming them into Adobe I/O events. The table contains a status column that can have the following values:
 
 Status ID | Status
 --- | ---
@@ -26,11 +30,11 @@ You can use the following SQL query to select all events from the `event_data` t
 
 `SELECT * FROM event_data`
 
-Use the query results to determine the next troubleshooting step.
+Use the SQL query results or the content of the _Events Status_ grid to determine the next troubleshooting step.
 
-### The table is empty
+### The table or grid is empty
 
-If the `event_data` table is empty, use the following procedure to diagnose the problem:
+If the `event_data` table or the _Events Status_ grid is empty, use the following procedure to diagnose the problem:
 
 1. Run `bin/magento events:list` to ensure that you have subscribed events.
 
@@ -48,14 +52,14 @@ If the `event_data` table is empty, use the following procedure to diagnose the 
          ENABLE_EVENTING: true
    ```
 
-### The event status is `0`
+### The event status is `0` or `Waiting`
 
-Events are sent by crons. If the status of an event in the `event_data` is still `0` after a long period, then the crons are not configured correctly.
+Events are sent by crons. If the status of an event is still `0` in the `event_data` table or `Waiting` in the _Events Status_ grid after a long period, then the crons are not configured correctly.
 In a Cloud environment, check the logs. Cron execution might have been killed due to lack of space in the environment or other reasons.
 
-### The event status is `2`
+### The event status is `2` or `Failure`
 
-The event status `2` indicates there was an error during transmission. Additional information can be found in the `info` column of the table or in the `system.log` file.
+An event status of `2` in the `event_data` table, or `Failure` in the _Events Status_ grid, indicates there was an error during transmission. Additional information can be found in the `info` column of the table or in the `system.log` file.
 The following CLI command can show only logs related to the event batch sending.
 
 ```bash
@@ -83,11 +87,11 @@ After adding the required API, download the workspace configuration for your pro
 
 ### The status shows the events have been successfully sent, but they were not received in the event registration
 
-If events are not received, determine if you have a different value for the `Adobe Commerce Instance ID` configured in the Adobe Commerce environment that is used in the event registration of the Developer Console.
+If events are not received, determine if you have a different value for the `Adobe I/O Event Provider Instance ID` configured in the Adobe Commerce environment that is used in the event registration of the Developer Console.
 
 ![Choose your instance ](../_images/events/instance-name-developer-console.png)
 
-![Adobe Commerce instance ID](../_images/events/instance-name-developer-commerce.png)
+![Adobe I/O Event Provider Instance ID](../_images/events/instance-name-developer-commerce.png)
 
 ## Event subscribe CLI command error
 

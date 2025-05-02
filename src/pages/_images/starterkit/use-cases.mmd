@@ -1,0 +1,30 @@
+---
+config:
+  theme: default
+---
+flowchart LR
+  A[Third-party system]
+  B[Adobe I/O Events]
+  C[App Builder application]
+  A --> B --> C
+
+
+---
+config:
+  theme: default
+---
+flowchart LR
+  A[Third-party system]
+  B[Event provider]
+  C[Consumer runtime action]
+  A --> B --> C
+
+---
+config:
+  theme: default
+  layout: fixed
+---
+flowchart LR
+    A["Third-party system"] --> C["Consumer runtime action"]
+    C --> B["Event provider"]
+    B --> C

@@ -18,32 +18,24 @@ The `path` parameter specifies where to redirect an action. The Admin UI SDK pro
 
 ```javascript
 customer: {
-    getMassActions() {
-        return [
-            {
-                actionId: `${extensionId}::first-mass-action`,
-                label: 'First App Mass Action',
-                confirm: {
-                    title: 'First App Mass Action',
-                    message: 'Are you sure your want to proceed with First App Mass Action on selected customers?'
-                },
-                path: '#/first-mass-action',
-                customerSelectLimit: 1
+    massActions: [
+        {
+            actionId: `${extensionId}::customer-mass-action`,
+            label: 'Customer Mass Action',
+            confirm: {
+                title: 'Mass Action',
+                message: 'Are you sure your want to proceed with Mass Action on selected customers?'
             },
-            {
-                actionId: `${extensionId}::another-first-mass-action`,
-                label: 'Another Mass Action',
-                title: 'Another Customers Mass Action',
-                path: '#/another-mass-action'
-            },
-            {
-              actionId: `${extensionId}::mass-action`,
-              label: 'Mass Action',
-              path: '#/mass-action',
-              displayIframe: false
-            }
-        ]
-    }
+            path: '#/customer-mass-action',
+            selectionLimit: 1
+        },
+        {
+            actionId: `${extensionId}::mass-action-with-redirect`,
+            label: 'Mass Action With Redirect',
+            title: 'Customer Mass Action With Redirect',
+            path: '#/mass-action-with-redirect'
+        }
+    ]
 }
 ```
 
@@ -60,3 +52,7 @@ customer: {
 | `customerSelectLimit` | integer | No | Set the maximum number of customers that can be selected for a mass action. By default, the number is unlimited. |
 | `displayIframe` | boolean | No | Indicates whether an iFrame will be displayed at the relative path. The default value is `true`. [Mass actions without iFrames](../../extension-points/index.md#mass-actions-without-iframes) provides additional details. |
 | `timeout` | integer | No | Only relevant when `displayIframe` is set to `false`. Timeout by seconds to the request sent to application. Default value is 10 seconds. |
+
+## Sample code
+
+The Adobe Commerce Extensibility Code Samples repository demonstrates how to customize [customer mass actions](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/customer/custom-mass-action).

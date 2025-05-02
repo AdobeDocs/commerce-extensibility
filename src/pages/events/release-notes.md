@@ -12,6 +12,86 @@ These release notes describe the latest version of Adobe I/O Events for Adobe Co
 
 See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io-events-for-adobe-commerce) for upgrade instructions.
 
+## Version 1.12.1
+
+### Release date
+
+April 30, 2025
+
+### Enhancements
+
+* Returns the provider ID instead of "default" in the REST API. <!-- CEXT-4561 -->
+
+* Improves the message during the removal of providers with linked event subscriptions. <!-- CEXT-4577 -->
+
+* Allows the removal of event providers with inactive subscriptions. <!-- CEXT-4583 -->
+
+## Version 1.12.0
+
+### Release date
+
+April 17, 2025
+
+### Enhancements
+
+* Added support of [multiple event providers](./configure-additional-event-providers.md) <!-- CEXT-4383 -->
+
+* Improved conversion of event payloads. In some cases payload of extension attributes was not converted correctly. <!-- CEXT-4487 -->
+
+## Version 1.11.1
+
+### Release date
+
+February 25, 2025
+
+### Enhancements
+
+* Removed the requirement for Merchant ID and Environment ID to start with letters. <!-- CEXT-4246 -->
+
+## Version 1.11.0
+
+### Release date
+
+January 23, 2025
+
+### Enhancements
+
+* Event subscriptions created/updated via API or CLI now get stored in `env.php`. These subscriptions were previously stored in `config.php`. Event subscriptions remaining in `config.php` continue to be read by the modules to preserve backward compatibility. <!-- CEXT-3459 -->
+
+* Added the `GET /rest/<store_view_code>/V1/eventing/getEventSubscriptions` REST endpoint for retrieving a list of enabled event subscriptions. <!-- CEXT-3925, CEXT-4055, CEXT-4066 -->
+
+* Added the `PUT /rest/<store_view_code>/V1/eventing/eventSubscribe/{name}` REST endpoint for updating event subscriptions. <!-- CEXT-3974 -->
+
+* Added the `POST /rest/<store_view_code>/V1/eventing/eventUnsubscribe/{name}` REST endpoint for unsubscribing from events. <!-- CEXT-3975 -->
+
+* Event name prefix validation is now skipped when subscribing to an event with a parent name. <!-- CEXT-3989 -->
+
+## Version 1.10.0
+
+### Release date
+
+December 10, 2024
+
+### Enhancements
+
+* Added the `GET /rest/<store_view_code>/V1/eventing/getEventProviders` REST endpoint for retrieving information about the configured event provider. <!---CEXT-3913 -->
+
+## Version 1.9.0
+
+### Release date
+
+October 30, 2024
+
+### Enhancements
+
+* Added the **Events Status** grid to the Admin. This grid can be used to monitor the status of triggered events. <!--- CEXT-3593 -->
+
+* Added more detailed error messages for the **Execute Synchronization** and **Test Connection** buttons in the Adobe I/O Events configuration section of the Admin. <!--- CEXT-3594 -->
+
+* Added additional observer events to the list of supported event names. <!--CEXT-3671 -->
+
+* Renamed the **Events** item in the System menu of the Admin to **Events List**. <!--- CEXT-3658 -->
+
 ## Version 1.8.2
 
 ### Release date

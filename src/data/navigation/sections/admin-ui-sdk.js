@@ -42,7 +42,7 @@ module.exports = [
           path: "/admin-ui-sdk/extension-points/order/index.md",
           pages: [
             {
-              title: "get custom fees",
+              title: "custom fees",
               path: "/admin-ui-sdk/extension-points/order/custom-fees.md"
             },
             {
@@ -81,12 +81,12 @@ module.exports = [
       ]
     },
     {
-      title: "Admin configuration and local testing",
+      title: "Admin configuration and testing",
       path: "/admin-ui-sdk/configuration.md"
     },
     {
-      title: "Prepare your app for production",
-      path: "admin-ui-sdk/publish.md"
+      title: "Eligible extensions configuration",
+      path: "/admin-ui-sdk/eligible-extensions-config.md"
     },
     {
       title: "Troubleshooting",

@@ -38,11 +38,11 @@ If you decide to omit the arguments, the `event-types.json` file must have the f
 
 ```json
 {
- "provider": {
-     "label": "My Adobe Commerce Events",
-     "description": "Provides out-of-process extensibility for Adobe Commerce"
-     }
- }
+  "provider": {
+    "label": "My Adobe Commerce Events",
+    "description": "Provides out-of-process extensibility for Adobe Commerce"
+  }
+}
 ```
 
 As an alternative to above steps, you can click the [Create Event Provider](./configure-commerce.md#commerce-admin) button on the **General configuration** section of the Adobe I/O Events page in the Admin.
@@ -77,12 +77,18 @@ The `events:provider:info` command returns details about a configured event prov
 
 ### Usage
 
-`events:provider:info`
+`events:provider:info --provider-id <provider-id>`
+
+### Options
+
+`--provider-id` The ID of the event provider to query. If not provided, the command returns details about the default event provider.
 
 ### Example
 
+The following example returns details about the provider with the ID `abcdef12-e499-5a0a-a683-1234567890ab`.
+
 ```bash
-bin/magento events:provider:info
+bin/magento events:provider:info --provider-id abcdef12-e499-5a0a-a683-1234567890ab
 ```
 
 ### Response
@@ -132,15 +138,17 @@ bin/magento events:registrations:list -vv
 +----------------------+--------------------------------------+---------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ```
 
+To show registrations only for a specific provider, use the `--provider-id <PROVIDER_ID>` option.
+
 ## Create event metadata in Adobe I/O
 
 The `events:metadata:populate` command creates event metadata based on XML and application configurations. This metadata gets linked to the configured event provider.
 
-Event metadata is automatically created for new event subscriptions when you run the [`events:subscribe` command](#subscribe-to-an-event) and synchronize events registered in `io_events.xml` files or `config.php` when the `setup:upgrade` command runs. In the following situations, we recommend creating event metadata using the `events:metadata:populate` command:
+Event metadata is automatically created for new event subscriptions when you run the [`events:subscribe` command](#subscribe-to-an-event) and synchronize events registered in `io_events.xml`, `config.php`, or `env.php` files when the `setup:upgrade` command runs. In the following situations, we recommend creating event metadata using the `events:metadata:populate` command:
 
 * You have configured an event provider after an `io_events.xml` file was pushed to your cloud instance and a redeployment has not occurred since this change.
 * You have not run `setup:upgrade` since adding an `io_events.xml` file to your on-premise instance.
-* You manually edited the event subscriptions configuration in `app/etc/config.php`.
+* You manually edited the event subscriptions configuration in `app/etc/config.php` or `app/etc/env.php`.
 
 As an alternative to running this command, you can click the **Execute Synchronization** button on the **General configuration** section of the Adobe I/O Events page in the Admin.
 
@@ -185,7 +193,7 @@ The command supports observer events by default. You must perform additional ste
 
 <InlineAlert variant="info" slots="text"/>
 
-You can also subscribe to a plugin event if it was registered in the `app/etc/config.php` file and subsequently unsubscribed with the [`events:unsubscribe` command](#unsubscribe-from-a-commerce-event). [Register events](./module-development.md#register-events) describes the format of these files.
+You can also subscribe to a plugin event if it was registered in the `app/etc/config.php` or `app/etc/env.php` file and subsequently unsubscribed with the [`events:unsubscribe` command](#unsubscribe-from-a-commerce-event). [Register events](./module-development.md#register-events) describes the format of these files.
 
 You can also create and subscribe to a conditional event. Conditional events allow you to determine the conditions that the Commerce events client module uses to emit native or custom events to your application. See [Create conditional events](./conditional-events.md) for detailed information and examples.
 
@@ -195,7 +203,7 @@ If you are implementing eventing in a performance testing environment, run the `
 
 ### Usage
 
-`bin/magento events:subscribe <event_code> --force --fields=<name1> --fields=<name2> --parent <event_code> --rules=<field-name>|<operator>|<value> --rules=<field-name2>|<operator>|<value2> --hipaaAuditRequired --priority --destination=<destination>`
+`bin/magento events:subscribe <event_code> --force --fields=<name1> --fields=<name2> --parent <event_code> --rules=<field-name>|<operator>|<value> --rules=<field-name2>|<operator>|<value2> --hipaaAuditRequired --priority --destination=<destination> --providerId=<providerId>`
 
 ### Arguments
 
@@ -216,6 +224,8 @@ If you are implementing eventing in a performance testing environment, run the `
 `--fields='{"<name>":"<field-name>", "converter":"<path\to\converterclass>"}'` Applies the converter class to the given field.
 
 `--destination`, `-d` A custom destination for the event. This argument is used for SaaS integrations.
+
+`--providerId` The event provider to which events will be delivered. If not provided the default event provider will be used. To configure additional event providers refer to the [Configure additional event providers](./configure-commerce.md) section.
 
 `--hipaaAuditRequired` Indicates the event contains data that is subject to HIPAA auditing.`
 
@@ -244,7 +254,7 @@ The subscription com.adobe.commerce.observer.catalog_product_save_after was succ
 
 ## Unsubscribe from a Commerce event
 
-The `events:unsubscribe` command causes the current provider to unsubscribe from the specified event. You cannot unsubscribe from events defined in a module's or root `etc/io_events.xml` file. However, you can unsubscribe events that were registered in the `app/etc/config.php` file or from the [`events:subscribe` command](#subscribe-to-an-event).
+The `events:unsubscribe` command causes the current provider to unsubscribe from the specified event. You cannot unsubscribe from events defined in a module's or root `etc/io_events.xml` file. However, you can unsubscribe events that were registered in the `app/etc/config.php` or `app/etc/env.php` file or from the [`events:subscribe` command](#subscribe-to-an-event).
 
 Use the [`events:list` command](#list-subscribed-commerce-events) to retrieve a list of subscribed events.
 
@@ -288,6 +298,8 @@ bin/magento events:list
 observer.catalog_product_save_after
 observer.customer_login
 ```
+
+To return list of subscribed events with verbose output, use the `-v` or `-vv` option.
 
 ## List supported events
 

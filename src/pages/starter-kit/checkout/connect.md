@@ -18,19 +18,23 @@ To use the Adobe Commerce HTTP Client, update `COMMERCE_BASE_URL=<commerce_insta
 
 Depending on your Adobe Commerce setup, there are two options to authenticate and communicate with App Builder:
 
-- [Configure Adobe Identity Management Service (IMS)](#configure-adobe-identity-management-service-ims)
-
 - [Configure Commerce Integration](#create-a-commerce-integration)
 
-If a Commerce integration is detected, it has precedence over IMS authentication. However, if neither option is detected or configured, than client instantiation will fail.
+- [Configure Adobe Identity Management Service (IMS)](#configure-ims)
 
-### Configure IMS for Commerce
+If a Commerce integration is detected, it has precedence over IMS authentication. However, if neither option is detected or configured, then client instantiation will fail.
+
+### Configure IMS
+
+The following sections describe how to configure IMS for Commerce and App Builder authentication.
+
+#### Configure IMS for Commerce
 
 The following steps are required if you intend to use the [Admin UI SDK](../../admin-ui-sdk/index.md) in your App Builder application:
 
 1. Configure IMS for Commerce following the steps in [Configure the Commerce Admin Integration with Adobe ID](https://experienceleague.adobe.com/en/docs/commerce-admin/start/admin/ims/adobe-ims-config).
 
-### App Builder authentication
+#### App Builder authentication
 
 Use the following steps to create OAuth credentials for App Builder authentication:
 

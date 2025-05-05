@@ -134,6 +134,6 @@ The Admin UI SDK is automatically updated for SaaS projects. For PaaS projects, 
    bin/magento setup:upgrade && bin/magento indexer:reindex && bin/magento cache:clean
    ```
 
-1. If you are upgrading from V1.x to V2.0, refer to [Migrate your extension point](./extension-points/index.md#migrate-your-extension-point-from-version-1x-to-20) for additional instructions.
+1. If you are updating from V1.x to V2.0, refer to [Migrate your extension point](./extension-points/index.md#migrate-your-extension-point-from-version-1x-to-20) for additional instructions.
 
-1. If you are upgrading from V2.x to V3.0, the published extensions won't be fetched automatically. Refer to [Eligible extensions configuration](./eligible-extensions-config.md) to select the needed extensions to display.
+1. If you are updating from V2.x to V3.0, the published extensions won't be fetched automatically. Refer to [Eligible extensions configuration](./eligible-extensions-config.md) to select the needed extensions to display.

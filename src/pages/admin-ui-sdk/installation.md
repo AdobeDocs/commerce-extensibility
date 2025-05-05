@@ -18,9 +18,15 @@ Magento Open Source is not supported.
 
 <Edition name="saas" />
 
-The Admin UI SDK is disabled by default. To enable it, login to the Adobe Commerce Admin and navigate to the  **Stores** > Settings > **Configuration** > **Adobe Services** > **Admin UI SDK** screen. Set the **Enable Admin UI SDK** field to **Yes** and click **Save Config**.
+The Admin UI SDK is disabled by default. To enable it, login to the Adobe Commerce Admin and navigate to the  **Stores** > Settings > **Configuration** > **Adobe Services** > **Admin UI SDK** screen. 
 
 ![Admin UI SDK general configuration](../_images/admin-ui-sdk/configuration/general.png)
+
+1. Set the **Enable Admin UI SDK** field to **Yes**. 
+
+1. In the **Testing** section, set the **Enable local testing** field to **No**.
+
+1. Click **Save Config**.
 
 ## Install the Admin UI SDK on PaaS
 
@@ -112,9 +118,15 @@ This method installs the SDK on an On-premises instance.
 
 ### Enable the Admin UI SDK
 
-Login to the Adobe Commerce Admin and navigate to the  **Stores** > Settings > **Configuration** > **Adobe Services** > **Admin UI SDK** screen. Set the **Enable Admin UI SDK** field to **Yes** and click **Save Config**.
+Login to the Adobe Commerce Admin and navigate to the  **Stores** > Settings > **Configuration** > **Adobe Services** > **Admin UI SDK** screen.
 
 ![Admin UI SDK general configuration](../_images/admin-ui-sdk/configuration/general.png)
+
+1. Set the **Enable Admin UI SDK** field to **Yes**. 
+
+1. (Optional) In the **Testing** section, set the **Enable local testing** field to **Yes**.
+
+1. Click **Save Config**.
 
 ## Update the Commerce Admin UI SDK
 

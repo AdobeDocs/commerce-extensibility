@@ -20,11 +20,11 @@ Depending on your Adobe Commerce setup, there are two options to authenticate an
 
 - [Configure Commerce Integration](#create-a-commerce-integration)
 
-- [Configure Adobe Identity Management Service (IMS)](#configure-ims)
+- [Configure Adobe Identity Management Service (IMS)](#app-builder-authentication-ims)
 
 If a Commerce integration is detected, it has precedence over IMS authentication. However, if neither option is detected or configured, then client instantiation will fail.
 
-### App Builder authentication
+### App Builder authentication (IMS)
 
 Use the following steps to create OAuth credentials for App Builder authentication:
 

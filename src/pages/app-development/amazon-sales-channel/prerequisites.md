@@ -14,9 +14,9 @@ To install the reference app, you must:
 
 *  Have an Adobe Developer account with System Administrator or Developer Role permissions. [Getting started with Adobe Developer Console](https://developer.adobe.com/developer-console/docs/guides/getting-started/) describes how to enroll in the Adobe developer program.
 
-*  Be familiar with [Adobe I/O Runtime](https://developer.adobe.com/runtime/docs/guides/getting-started/) and [Adobe IO Events](https://developer.adobe.com/runtime/docs/).
+*  Be familiar with [Adobe I/O Runtime](https://developer.adobe.com/app-builder/docs/get_started/runtime_getting_started/) and [Adobe IO Events](https://developer.adobe.com/runtime/docs/).
 
-*  Install the [`aio CLI`](https://developer.adobe.com/runtime/docs/guides/getting-started/setup/)
+*  Install the [`aio CLI`](https://developer.adobe.com/app-builder/docs/get_started/runtime_getting_started/setup/)
 
 *  Have access to an Adobe Commerce 2.4.5+ on cloud infrastructure or to an on-premises instance.
 

@@ -24,10 +24,6 @@ Depending on your Adobe Commerce setup, there are two options to authenticate an
 
 If a Commerce integration is detected, it has precedence over IMS authentication. However, if neither option is detected or configured, then client instantiation will fail.
 
-The following steps are required if you intend to use the [Admin UI SDK](../../admin-ui-sdk/index.md) in your App Builder application:
-
-1. Configure IMS for Commerce following the steps in [Configure the Commerce Admin Integration with Adobe ID](https://experienceleague.adobe.com/en/docs/commerce-admin/start/admin/ims/adobe-ims-config).
-
 ### App Builder authentication
 
 Use the following steps to create OAuth credentials for App Builder authentication:

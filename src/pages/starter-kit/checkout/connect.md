@@ -28,10 +28,6 @@ If a Commerce integration is detected, it has precedence over IMS authentication
 
 Use the following steps to create OAuth credentials for App Builder authentication:
 
-<InlineAlert variant="info" slots="text"/>
-
-If you intend to use the Admin UI SDK, you must also complete the [Admin UI SDK installation process](../../admin-ui-sdk/installation.md).
-
 1. Create new IMS credentials through the [Adobe Developer Console](https://developer.adobe.com/console). Add a new **API** service in the workspace. From the list of APIs, select **I/O Management API** and follow the displayed steps. After adding the API, all credentials are generated.
 
 1. Add a technical account with server-to-server credentials to the Commerce Admin with the appropriate permissions using the [Admin User Creation Guide](https://experienceleague.adobe.com/en/docs/commerce-admin/systems/user-accounts/permissions-users-all#create-a-user). If a technical account with appropriate permissions already exists, you can use it instead.

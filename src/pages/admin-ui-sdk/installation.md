@@ -18,7 +18,7 @@ Magento Open Source is not supported.
 
 <Edition name="saas" />
 
-The Admin UI SDK is disabled by default. To enable it, login to the Adobe Commerce Admin and navigate to the  **Stores** > Settings > **Configuration** > **Adobe Services** > **Admin UI SDK** screen. 
+The Admin UI SDK is disabled by default. To enable it, login to the Adobe Commerce Admin and navigate to the  **Stores** > Settings > **Configuration** > **Adobe Services** > **Admin UI SDK** screen.
 
 ![Admin UI SDK general configuration](../_images/admin-ui-sdk/configuration/general.png)
 

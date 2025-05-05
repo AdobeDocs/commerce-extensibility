@@ -22,7 +22,7 @@ The Admin UI SDK is disabled by default. To enable it, login to the Adobe Commer
 
 ![Admin UI SDK general configuration](../_images/admin-ui-sdk/configuration/general.png)
 
-1. Set the **Enable Admin UI SDK** field to **Yes**. 
+1. Set the **Enable Admin UI SDK** field to **Yes**.
 
 1. In the **Testing** section, set the **Enable local testing** field to **No**.
 
@@ -122,7 +122,7 @@ Login to the Adobe Commerce Admin and navigate to the  **Stores** > Settings > *
 
 ![Admin UI SDK general configuration](../_images/admin-ui-sdk/configuration/general.png)
 
-1. Set the **Enable Admin UI SDK** field to **Yes**. 
+1. Set the **Enable Admin UI SDK** field to **Yes**.
 
 1. (Optional) In the **Testing** section, set the **Enable local testing** field to **Yes**.
 

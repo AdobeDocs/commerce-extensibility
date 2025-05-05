@@ -120,7 +120,7 @@ Login to the Adobe Commerce Admin and navigate to the  **Stores** > Settings > *
 
 <Edition name="paas" />
 
-The Admin UI SDK is automatically updated for SaaS projects. For PaaS projects, follow the procedure below to update patch versions of the SDK, such as upgrading from V2.x to V3.9.0.
+The Admin UI SDK is automatically updated for SaaS projects. For PaaS projects, follow the procedure below to update patch versions of the SDK, such as upgrading from V2.x to V3.0.0.
 
 1. Run the following command to update the SDK:
 

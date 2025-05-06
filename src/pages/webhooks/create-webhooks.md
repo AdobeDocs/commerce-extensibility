@@ -168,17 +168,22 @@ The following XML fragment shows how to define the hook fields needed to transfo
 
 ### Configure hook headers
 
-You will typically need to send authorization tokens and other connection parameters in the headers of your remote request. The **Hook Headers** configuration panel defines the headers of a webhook request.
+You will typically need to send authorization tokens and other connection parameters in the headers of your remote request. 
 
-Secrets and other sensitive data should not be stored in the `webhooks.xml` file. Instead, use environment or configuration variables to relay this information.
+#### The **Hook Headers** configuration panel defines the headers of a webhook request.
+
+
 [Define request headers](./hooks.md#define-request-headers) describes how to send authorization tokens and other connection parameters.
 
 Admin field | XML attribute | Description
 --- | --- | ---
 | **Name** | `header.name` | The header name, in the same form as it will be sent. For example, `Authorization`
 **Value** | | The value of the header, such as `Bearer: <token>`.
-**Active** | Set to **No** to remove the header from the request.
+**Active** | |Set to **No** to remove the header from the request.
 
+<InlineAlert variant="info" slots="text"/>
+
+Secrets and other sensitive data should not be stored in the `webhooks.xml` file. Instead, use environment or configuration variables to relay this information.
 ### Configure hook rules
 
 The **Hook Rules** configuration panel allows you to define rules that trigger a webhook when certain conditions are met. [Create conditional webhooks](./conditional-webhooks.md) describes how to configure hook rules.

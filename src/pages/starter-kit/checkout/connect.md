@@ -22,7 +22,9 @@ To use the Adobe Commerce HTTP Client, the update `COMMERCE_BASE_URL` value in t
 
 `COMMERCE_BASE_URL=https://na1.api.commerce.adobe.com/<tenant_code>/`
 
-\*\* Ensure that url's should finish with slash '/'
+<InlineAlert variant="info" slots="text"/>
+
+The `COMMERCE_BASE_URL` must include the final slash '/'.
 
 ## Authentication
 

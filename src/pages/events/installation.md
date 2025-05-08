@@ -1,12 +1,17 @@
 ---
 title: Install Adobe I/O Events for Adobe Commerce
 description: Learn how to install the Commerce modules needed for Adobe I/O Events for Adobe Commerce.
+edition: paas
 keywords:
   - Events
   - Extensibility
 ---
 
 # Install Adobe I/O Events for Adobe Commerce
+
+Adobe Commerce as a Cloud Service (SaaS) automatically includes eventing functionality. For Adobe Commerce on Cloud and on-premises (PaaS) projects, eventing is installed automatically on Adobe Commerce version 2.4.6 and later. You must install it manually on older versions.
+
+<Edition name="paas" />
 
 Adobe I/O Events for Adobe Commerce requires Adobe Commerce 2.4.4 or higher.
 

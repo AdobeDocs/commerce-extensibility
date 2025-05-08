@@ -8,7 +8,7 @@ keywords:
 
 # Configure Adobe Commerce
 
-After you have created an [App Builder project](./project-setup.md) and [install the eventing modules](./installation.md), you must download several files from the App Builder project and configure eventing in the Commerce admin.
+After you have created an [App Builder project](./project-setup.md) and [installed the eventing modules](./installation.md) (Adobe Commerce on Cloud and on-premises (PaaS) projects only), you must download several files from the App Builder project and configure eventing in the Commerce admin.
 
 ## Configure the Adobe I/O connection
 
@@ -55,6 +55,8 @@ You cannot create an event provider until you have configured and saved instance
 You can create an event provider using either the [Command line](./configure-commerce.md#command-line) or [Commerce Admin](./configure-commerce.md#commerce-admin).
 
 ### Command line
+
+<Edition name="paas" />
 
 1. Run the following command to create an event provider:
 
@@ -107,9 +109,9 @@ You can create an event provider using either the [Command line](./configure-com
 
    **Note**: The **Merchant ID** and **Environment ID** fields only support alphanumeric characters and underscores.
 
-```javascript
-"source": "<merchant-id>.<environment-id>"
-```
+   ```javascript
+   "source": "<merchant-id>.<environment-id>"
+   ```
 
 1. (Optional) By default, if an error occurs when Adobe Commerce attempts to send an event to Adobe I/O, Commerce retries a maximum of seven times. To change this value, uncheck the **Use system value** checkbox and set a new value in the **Maximum retries to send events** field.
 
@@ -124,6 +126,8 @@ After you have completely configured and saved your Adobe I/O event connection a
 You must define which Commerce events to subscribe to, then register them in the project.
 
 Commerce provides two sources for events: observers and plugins. You must specify the source as part of the event name. See [Subscribe to a Commerce event](./commands.md) for details about the syntax of the `events:subscribe` command.
+
+<Edition name="paas" />
 
 1. If you don't have a module ready for integration with Adobe I/O Events, or you don't know exactly which events to register at this point, use the `events:subscribe` command to subscribe to some sample events, as shown in the following example commands:
 

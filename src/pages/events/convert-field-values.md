@@ -1,6 +1,7 @@
 ---
 title: Convert payload field values
 description: Learn how to convert a field value based on a condition
+edition: paas
 keywords:
   - Events
   - Extensibility

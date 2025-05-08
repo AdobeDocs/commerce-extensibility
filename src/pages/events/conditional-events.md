@@ -42,6 +42,8 @@ You can create conditional events within your module's or root `io_events.xml` f
 
 ## Define conditional events in `io_events.xml`
 
+<Edition name="paas" />
+
 The following example creates and registers a conditional event named `plugin.magento.catalog.model.resource_model.product.save_low_stock_event`. Its parent is `plugin.magento.catalog.model.resource_model.product.save`. It defines rules that trigger when all of the conditions are true:
 
 *  The value of `qty` is less than 20
@@ -87,6 +89,8 @@ These fields are present and declared in the parent event.
 ```
 
 ## Command line
+
+<Edition name="paas" />
 
 The `bin/magento events:subscribe <event_code> --force --fields=<name1> --fields=<name2>` command creates and registers custom and native Commerce events. When you also specify the `--parent <event_code>` and `--rules=<field-name>|<operator>|<value>` options, you create and register a conditional event.
 

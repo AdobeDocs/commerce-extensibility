@@ -16,7 +16,7 @@ To use the Adobe Commerce HTTP Client, the update `COMMERCE_BASE_URL` value in t
 
 - Commerce Admin REST endpoints:
 
-`COMMERCE_BASE_URL=https://{commerce_instance_url}/rest/{store_view_code}/`
+`COMMERCE_BASE_URL=https://<commerce_instance_url>/rest/<store_view_code>/`
 
 - Adobe Commerce Cloud as a Service:
 

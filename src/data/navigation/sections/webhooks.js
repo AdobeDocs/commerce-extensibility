@@ -4,8 +4,68 @@ module.exports = [
       path: "/webhooks/index.md"
     },
     {
-      title: "Use cases",
-      path: "webhooks/use-cases.md"
+        title: "Use cases",
+        path: "/webhooks/use-cases/index.md",
+        pages: [
+            {
+                title: "Checkout",
+                path: "/webhooks/use-cases/checkout/index.md",
+                pages: [
+                    {
+                        title: "Order placement validation",
+                        path: "/webhooks/use-cases/checkout/order-placement-validation.md"
+                    },
+                    {
+                        title: "Product price update",
+                        path: "/webhooks/use-cases/checkout/product-price-update.md"
+                    },
+                    {
+                        title: "Product stock validation",
+                        path: "/webhooks/use-cases/checkout/product-stock-validation.md"
+                    }
+                ]
+            },
+            {
+                title: "Customer",
+                path: "/webhooks/use-cases/customer/index.md",
+                pages: [
+                    {
+                        title: "Customer address modification",
+                        path: "/webhooks/use-cases/customer/customer-address-modification.md"
+                    },
+                    {
+                        title: "Customer address validation",
+                        path: "/webhooks/use-cases/customer/customer-address-validation.md"
+                    }
+                ]
+            },
+            {
+                title: "Product",
+                path: "/webhooks/use-cases/product/index.md",
+                pages: [
+                    {
+                        title: "Product validation",
+                        path: "/webhooks/use-cases/product/product-update-validation.md"
+                    },
+                    {
+                        title: "Generate content for products",
+                        path: "/webhooks/use-cases/product/product-generate-content.md"
+                    }
+                ]
+            },
+            {
+                title: "Check gift card balance",
+                path: "/webhooks/use-cases/check-gift-card-balance.md"
+            },
+            {
+                title: "Discount code validation",
+                path: "/webhooks/use-cases/discount-code-validation.md"
+            },
+            {
+                title: "Gift card Validation",
+                path: "/webhooks/use-cases/gift-card-validation.md"
+            }
+        ],
     },
     {
       title: "Manage webhooks from the Admin",

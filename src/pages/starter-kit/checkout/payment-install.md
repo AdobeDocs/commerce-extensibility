@@ -6,11 +6,17 @@ keywords:
   - Extensibility
 ---
 
+import Version from '/src/_includes/checkout-version.md'
+
 # Install the payment module
 
 To begin using the payment module with the checkout starter kit, ensure that you have completed the [getting started](./getting-started.md) and [configuration](./configure.md) steps.
 
 For more ideas on how you can use the payment module, refer to [payment use cases](./payment-use-cases.md).
+
+## Installation
+
+<Version />
 
 To enable out-of-process payment methods in Commerce, install the `magento/module-out-of-process-payment-methods` module using the following command:
 

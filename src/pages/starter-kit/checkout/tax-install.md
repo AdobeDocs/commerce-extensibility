@@ -6,11 +6,17 @@ keywords:
   - Extensibility
 ---
 
+import Version from '/src/_includes/checkout-version.md'
+
 # Install the tax module
 
 To begin using the checkout starter kit, ensure that you have completed the [getting started](./getting-started.md) and [configuration](./configure.md) steps.
 
 For more ideas on how you can use the tax module, refer to [tax use cases](./tax-use-cases.md).
+
+## Installation
+
+<Version />
 
 To enable out-of-process tax management in Adobe Commerce, install the `magento/module-out-of-process-tax-management` module using the following command:
 

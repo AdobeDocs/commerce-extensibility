@@ -6,11 +6,17 @@ keywords:
   - Extensibility
 ---
 
+import Version from '/src/_includes/checkout-version.md'
+
 # Install the shipping module
 
 To begin using the shipping module with the checkout starter kit, ensure that you have completed the [getting started](./getting-started.md) and [configuration](./configure.md) steps.
 
 For more ideas on how you can use the shipping module, refer to [shipping use cases](./shipping-use-cases.md).
+
+## Installation
+
+<Version />
 
 To enable out-of-process shipping methods in Adobe Commerce, install the `magento/module-out-of-process-shipping-methods` module using the following command:
 

@@ -17,11 +17,12 @@ To use the Adobe Commerce HTTP Client, update `COMMERCE_BASE_URL` in the `.env` 
 - Commerce Admin REST endpoints:
 
 `COMMERCE_BASE_URL=https://{commerce_instance_url}/rest/{store_view_code}/`
+
 - Adobe Commerce Cloud as a Service:
 
 `COMMERCE_BASE_URL=https://na1.api.commerce.adobe.com/{tenant_code}/`
 
-** Ensure that url's should finish with slash '/'
+\*\* Ensure that url's should finish with slash '/'
 
 ## Authentication
 

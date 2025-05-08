@@ -20,7 +20,7 @@ To use the Adobe Commerce HTTP Client, the update `COMMERCE_BASE_URL` value in t
 
 - Adobe Commerce Cloud as a Service:
 
-`COMMERCE_BASE_URL=https://na1.api.commerce.adobe.com/{tenant_code}/`
+`COMMERCE_BASE_URL=https://na1.api.commerce.adobe.com/<tenant_code>/`
 
 \*\* Ensure that url's should finish with slash '/'
 

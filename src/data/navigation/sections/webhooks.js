@@ -65,7 +65,7 @@ module.exports = [
                 title: "Gift card Validation",
                 path: "/webhooks/use-cases/gift-card-validation.md"
             }
-        ],
+        ]
     },
     {
       title: "Manage webhooks from the Admin",

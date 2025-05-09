@@ -23,13 +23,13 @@ import DataOrder from './code-samples/data-order.md';
 import DataProduct from './code-samples/data-product.md';
 import DataShipment from './code-samples/data-shipment.md';
 import DataStock from './code-samples/data-stock.md';
-import integration from '/src/_includes/integration.md'
+import Integration from '/src/_includes/integration.md'
 
 # Enrich the shopping experience
 
 This runtime action is responsible for notifying Adobe Commerce when an `<object>` is created, updated, or deleted in the external backoffice application.
 
-<integration />
+<Integration />
 
 ## Incoming information
 

@@ -18,17 +18,21 @@ To use the Adobe Commerce HTTP Client, update `COMMERCE_BASE_URL=<commerce_insta
 
 Depending on your Adobe Commerce setup, there are two options to authenticate and communicate with App Builder:
 
-- [Configure Commerce Integration](#create-a-commerce-integration)
+- [Configure Adobe Identity Management Service (IMS)](#adobe-identity-management-service-ims)
 
-- [Configure Adobe Identity Management Service (IMS)](#app-builder-authentication-ims)
+- [Configure Commerce Integration](#create-a-commerce-integration)
 
 If a Commerce integration is detected, it has precedence over IMS authentication. However, if neither option is detected or configured, then client instantiation will fail.
 
-### App Builder authentication (IMS)
+### Adobe Identity Management Service (IMS)
+
+<InlineAlert variant="info" slots="text1, text2"/>
+
+&#8203;<Edition name="paas" /> This process requires a Commerce instance with [Adobe Identity Management Service (IMS) for Adobe Commerce](https://experienceleague.adobe.com/docs/commerce-admin/start/admin/ims/adobe-ims-integration-overview.html) configured.
+
+SaaS instances already include IMS configuration.
 
 Use the following steps to create OAuth credentials for App Builder authentication:
-
-1. Create new IMS credentials through the [Adobe Developer Console](https://developer.adobe.com/console). Add a new **API** service in the workspace. From the list of APIs, select **I/O Management API** and follow the displayed steps. After adding the API, all credentials are generated.
 
 1. Add a technical account with server-to-server credentials to the Commerce Admin with the appropriate permissions using the [Admin User Creation Guide](https://experienceleague.adobe.com/en/docs/commerce-admin/systems/user-accounts/permissions-users-all#create-a-user). If a technical account with appropriate permissions already exists, you can use it instead.
 
@@ -37,6 +41,8 @@ Use the following steps to create OAuth credentials for App Builder authenticati
    ![userCreation.png](../../_images/starterkit/userCreation.png)
 
 1. On the **User Role** tab, select the Administrators role to provide all necessary permissions.
+
+1. Access your IMS credentials through the [Adobe Developer Console](https://developer.adobe.com/console). Select the project and workspace you set up during the [initial configuration](./getting-started.md#initial-configuration). Then click **OAuth Server-to-Server** in the side-navigation menu.
 
 1. Copy the generated credentials (client ID, client secret, technical account ID, and technical account email) to the `.env` file in the root of the project:
 

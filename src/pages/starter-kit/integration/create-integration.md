@@ -188,7 +188,7 @@ If you are running Adobe Commerce 2.4.6 or higher, the modules that enable event
 
 <InlineAlert variant="info" slots="text"/>
 
-Using Adobe I/O Events for Commerce `1.6.0` or later will automate some steps of the onboarding process detailed in the following section.
+Using Adobe I/O Events for Commerce `1.12.0` or later will automate some steps of the onboarding process detailed in the following section.
 
 ### Download and configure the starter kit
 
@@ -295,7 +295,7 @@ The Customize Registrations and Events [code sample](https://github.com/adobe/ad
 
 Run the following command to generate the IO Event providers and the registrations for your starter kit project.
 
-IO Event providers and registrations will be configured automatically if you are using Adobe I/O Events version is `1.6.0` or later.
+IO Event providers and registrations will be configured automatically and your commerce instance can connect to other event providers besides the default Commerce event provider registered in the system configuration if you are using Adobe I/O Events version `1.12.0` or later.
 
 ```bash
 npm run onboard
@@ -328,7 +328,7 @@ Check your App in the Developer Console to confirm the registrations were create
 
 <InlineAlert variant="info" slots="text"/>
 
-The following steps are not required when using Adobe I/O Events version `1.6.0` or later. The onboarding script will configure the Adobe Commerce instance automatically.
+The following steps are not required when using Adobe I/O Events version `1.12.0` or later. The onboarding script will configure the Adobe Commerce instance automatically.
 
 Proceed to the next section, or continue following the steps in this section to validate that the configuration is correct.
 
@@ -378,7 +378,7 @@ You must configure Commerce to communicate with your project. Configuration incl
 
 **Subscribe to events in Adobe Commerce**
 
-To automatically subscribe to Commerce events using Adobe I/O Events version `1.6.0` or later, run the `commerce-event-subscribe` script in the `scripts/commerce-event-subscribe/config/` directory.
+To automatically subscribe to Commerce events using Adobe I/O Events version `1.12.0` or later, run the `commerce-event-subscribe` script in the `scripts/commerce-event-subscribe/config/` directory.
 
 ```bash
 npm run commerce-event-subscribe

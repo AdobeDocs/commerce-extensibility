@@ -1,7 +1,6 @@
 module.exports = [
   {
     title: "Checkout starter kit",
-    header: true,
     path: "/starter-kit/checkout/index.md",
     pages: [
       {
@@ -36,6 +35,20 @@ module.exports = [
         title: "CI/CD",
         path: "/starter-kit/checkout/cicd/",
       },
+    ],
+  },
+  {
+    title: "Payment",
+    path: "/starter-kit/checkout/payment-install/",
+    pages: [
+      {
+        title: "Payment module installation",
+        path: "/starter-kit/checkout/payment-install/",
+      },
+      {
+        title: "Payment use cases",
+        path: "/starter-kit/checkout/payment-use-cases/",
+      },
       {
         title: "Payment API Javascript usage",
         path: "/starter-kit/checkout/payment-usage/",
@@ -44,6 +57,20 @@ module.exports = [
         title: "Payment API reference",
         path: "/starter-kit/checkout/payment-reference/",
       },
+    ],
+  },
+  {
+    title: "Shipping",
+    path: "/starter-kit/checkout/shipping-install/",
+    pages: [
+      {
+        title: "Shipping module installation",
+        path: "/starter-kit/checkout/shipping-install/",
+      },
+      {
+        title: "Shipping use cases",
+        path: "/starter-kit/checkout/shipping-use-cases/",
+      },
       {
         title: "Shipping API Javascript usage",
         path: "/starter-kit/checkout/shipping-usage/",
@@ -51,6 +78,20 @@ module.exports = [
       {
         title: "Shipping API reference",
         path: "/starter-kit/checkout/shipping-reference/",
+      },
+    ],
+  },
+  {
+    title: "Tax",
+    path: "/starter-kit/checkout/tax-install/",
+    pages: [
+      {
+        title: "Tax module installation",
+        path: "/starter-kit/checkout/tax-install/",
+      },
+      {
+        title: "Tax use cases",
+        path: "/starter-kit/checkout/tax-use-cases/",
       },
       {
         title: "Tax API Javascript usage",

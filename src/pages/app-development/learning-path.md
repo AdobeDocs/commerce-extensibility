@@ -64,7 +64,7 @@ The following resources will help you get to know the extensibility options offe
   - [Overview](https://developer.adobe.com/commerce/extensibility/webhooks/) - An architectural overview of webhooks.
   - [Setup and installation](../webhooks/installation.md) - Information on how to install Commerce modules necessary for implementing webhooks.
   - [Configuration](../webhooks/hooks.md) - Developer documentation on how to configure hooks for Adobe Commerce.
-  - [Common use cases](../webhooks/use-cases.md) - Descriptions of common Adobe Commerce use cases for webhooks.
+  - [Common use cases](../webhooks/use-cases/index.md) - Descriptions of common Adobe Commerce use cases for webhooks.
 
 ## Additional Resources
 

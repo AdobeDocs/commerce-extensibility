@@ -5,17 +5,24 @@ keywords:
   - Extensibility
 ---
 
+import ConfigXml from './code-samples/product-update-validation-xml.md';
+import ConfigAdmin from './code-samples/product-update-validation-admin.md';
+
 # Product update validation
 
 When an admin creates or updates a product, a third-party system is used to validate the product attributes. For example, a third-party system can validate the new product name.
 
-**Webhook:**
+## Webhook name
 
-observer.catalog_product_save_after
+`observer.catalog_product_save_after`
 
-**Default payload:**
+## Payloads
 
 The following `observer.catalog_product_save_after` payload was obtained from execution of the application code. Some data has been adjusted or deleted for brevity.
+
+<CodeBlock slots="heading, code" repeat="2" languages="JSON, JSON" />
+
+### Default payload
 
 ```json
 {
@@ -56,29 +63,7 @@ The following `observer.catalog_product_save_after` payload was obtained from ex
 }
 ```
 
-**webhook.xml configuration:**
-
-```xml
-<method name="observer.catalog_product_save_after" type="before">
-    <hooks>
-        <batch name="product_update">
-            <hook name="validate_name" url="{env:APP_BUILDER_URL}/validate-product-name" method="POST" timeout="5000" softTimeout="1000">
-                <headers>
-                    <header name="x-gw-ims-org-id">{env:APP_BUILDER_IMS_ORG_ID}</header>
-                    <header name="Authorization">Bearer {env:APP_BUILDER_AUTH_TOKEN}</header>
-                </headers>
-                <fields>
-                    <field name="product.name" source="data.product.name" />
-                </fields>
-            </hook>
-        </batch>
-    </hooks>
-</method>
-```
-
-**Configured payload:**
-
-The third-party endpoint receives the following payload, which is based on the configured field:
+### Configured payload
 
 ```json
 {
@@ -88,7 +73,29 @@ The third-party endpoint receives the following payload, which is based on the c
 }
 ```
 
-**Endpoint code example:**
+The third-party endpoint receives the following payload, which is based on the configured fields:
+
+```json
+{
+   "product": {
+        "name": "Product 1"
+    }
+}
+```
+
+## Configuration
+
+<TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" />
+
+### webhook.xml (PaaS)
+
+<ConfigXml/>
+
+### Admin (SaaS)
+
+<ConfigAdmin/>
+
+## Endpoint code example
 
 ```js
 const fetch = require('node-fetch')

@@ -5,17 +5,24 @@ keywords:
   - Extensibility
 ---
 
+import ConfigXml from './code-samples/product-generate-content-xml.md';
+import ConfigAdmin from './code-samples/product-generate-content-admin.md';
+
 # Generate content for products
 
 When an admin creates or updates a product, a third-party system is used to generate product description and metadata. For example, the AI system can generate product description based on the product name and other attributes.
 
-**Webhook:**
+## Webhook name
 
-observer.catalog_product_save_after
+`observer.catalog_product_save_after`
 
-**Default payload:**
+## Payloads
 
 The following `observer.catalog_product_save_after` payload was obtained from execution of the application code. Some data has been adjusted or deleted for brevity.
+
+<CodeBlock slots="heading, code" repeat="2" languages="JSON, JSON" />
+
+### Default payload
 
 ```json
 {
@@ -55,36 +62,7 @@ The following `observer.catalog_product_save_after` payload was obtained from ex
 }
 ```
 
-**webhook.xml configuration:**
-
-The following `webhook.xml` configuration contains rules to call the third-party endpoint only if the product full and short description are empty. It helps to avoid unnecessary calls to the third-party system if the required data is already present.
-
-```xml
-<method name="observer.catalog_product_save_before" type="before">
-   <hooks>
-       <batch name="product_generate_content">
-           <hook name="product_generate_content" url="{env:APP_BUILDER_URL}/product-description" timeout="50000" softTimeout="1000" priority="300" required="true" fallbackErrorMessage="The product could not be updated">
-               <headers>
-                   <header name="x-gw-ims-org-id">{env:APP_BUILDER_IMS_ORG_ID}</header>
-                   <header name="Authorization">Bearer {env:APP_BUILDER_AUTH_TOKEN}</header>
-               </headers>
-               <fields>
-                   <field name="product.name" source="data.product.name" />
-                   <field name="product.sku" source="data.product.sku" />
-               </fields>
-               <rules>
-                   <rule field="product.short_description" operator="isEmpty" />
-                   <rule field="product.description" operator="isEmpty" />
-               </rules>
-           </hook>
-       </batch>
-   </hooks>
-</method>
-```
-
-**Configured payload:**
-
-The third-party endpoint receives the following payload, which is based on the configured fields:
+### Configured payload
 
 ```json
 {
@@ -95,7 +73,23 @@ The third-party endpoint receives the following payload, which is based on the c
 }
 ```
 
-**Endpoint code example:**
+## Configuration
+
+The following configuration contains rules to call the third-party endpoint only if the product full and short description are empty. It helps to avoid unnecessary calls to the third-party system if the required data is already present.
+
+## Configuration
+
+<TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" />
+
+### webhook.xml (PaaS)
+
+<ConfigXml/>
+
+### Admin (SaaS)
+
+<ConfigAdmin/>
+
+## Endpoint code example
 
 ```js
 const axios = require('axios');

@@ -5,17 +5,24 @@ keywords:
   - Extensibility
 ---
 
+import ConfigXml from './code-samples/product-stock-validation-xml.md';
+import ConfigAdmin from './code-samples/product-stock-validation-admin.md';
+
 # Product stock validation
 
 When a shopper adds a product to the cart, a third-party inventory management system checks whether the item is in stock. If it is, allow the product to be added. Otherwise, display an error message.
 
-**Webhook:**
+## Webhook name
 
 `observer.checkout_cart_product_add_before`
 
-**Default payload:**
+## Payloads
 
-The following `observer.checkout_cart_product_add_before` payload was obtained from the code execution in the application. The `extension_attributes` section was deleted for brevity.
+The following `observer.checkout_cart_product_add_before` default payload was obtained from execution of the application code. The `extension_attributes` section was deleted for brevity.
+
+<CodeBlock slots="heading, code" repeat="2" languages="JSON, JSON" />
+
+### Default payload
 
 ```json
 {
@@ -90,29 +97,7 @@ The following `observer.checkout_cart_product_add_before` payload was obtained f
 }
 ```
 
-**webhook.xml configuration:**
-
-```xml
-<method name="observer.checkout_cart_product_add_before" type="before">
-    <hooks>
-        <batch name="validate_stock">
-            <hook name="validate_stock" url="{env:APP_BUILDER_URL}/product-validate-stock" timeout="5000"
-softTimeout="100" priority="100" required="true" fallbackErrorMessage="The product stock validation failed">
-                <headers>
-                    <header resolver="Magento\WebhookModule\Model\AddProductToCartResolver" />
-                </headers>
-                <fields>
-                    <field name='product.name' source='data.product.name' />
-                    <field name='product.category_ids' source='data.product.category_ids' />
-                    <field name='product.sku' source='data.product.sku' />
-                </fields>
-            </hook>
-        </batch>
-    </hooks>
-</method>
-```
-
-**Configured payload:**
+### Configured payload
 
 ```json
 {
@@ -124,75 +109,19 @@ softTimeout="100" priority="100" required="true" fallbackErrorMessage="The produ
 }
 ```
 
-Similarly, stock validation could be performed when adding a product to a quote using an `observer.sales_quote_add_item` webhook:
+## Configuration
 
-**Default payload:**
+<TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" />
 
-The following `observer.sales_quote_add_item` payload was obtained from execution of the application code. The majority of the values in the `product` object were deleted for brevity.
+### webhook.xml (PaaS)
 
-```json
-{
-    "eventName": "sales_quote_add_item",
-    "data": {
-        "quote_item": {
-            "store_id": 1,
-            "quote_id": "75",
-            "product": {
-              "store_id": 1,
-              "entity_id": "1",
-              "category_ids": ["3", "4"]
-              ...
-            }, 
-            "product_id": "8",
-            "product_type": "simple",
-            "sku": "Pr-1",
-            "name": "Product 1",
-            "weight": null,
-            "tax_class_id": 2,
-            "base_cost": null,
-            "is_qty_decimal": false
-        }
-    }
-}
-```
+<ConfigXml/>
 
-**webhook.xml configuration:**
+### Admin (SaaS)
 
-```xml
-<method name="observer.sales_quote_add_item" type="before">
-    <hooks>
-        <batch name="add_item">
-            <hook name="validate_stock_quote" url="{env:APP_BUILDER_URL}/validate-stock" method="POST" timeout="5000" softTimeout="1000">
-                <headers>
-                    <header name="x-gw-ims-org-id">{env:APP_BUILDER_IMS_ORG_ID}</header>
-                    <header name="Authorization">Bearer {env:APP_BUILDER_AUTH_TOKEN}</header>
-                </headers>
-                <fields>
-                    <field name="product.name" source="data.quote_item.name" />
-                    <field name="product.category_ids" source="data.quote_item.product.category_ids">
-                    <field name="product.sku" source="data.quote_item.sku" />
-                </fields>
-            </hook>
-        </batch>
-    </hooks>
-</method>
-```
+<ConfigAdmin/>
 
-**Configured payload:**
-
-The third-party endpoint receives the following payload, which is based on the configured list of fields:
-
-```json
-{
-   "product": {
-        "name": "Product 1",
-        "category_ids": ["3", "4"],
-        "sku": "Pr-1"
-    }
-}
-```
-
-**Endpoint code example:**
+## Endpoint code example
 
 ```js
 const fetch = require('node-fetch')

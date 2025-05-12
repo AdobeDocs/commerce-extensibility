@@ -5,19 +5,26 @@ keywords:
   - Extensibility
 ---
 
+import ConfigXml from './code-samples/discount-code-validation-xml.md';
+import ConfigAdmin from './code-samples/discount-code-validation-admin.md';
+
 # Discount code validation
 
 A merchant uses a third-party extension to create and manage discount codes. When a shopper applies a coupon code to their cart, the coupon code must be validated. The Commerce checkout process can continue if the code is valid. Otherwise, the following error message displays on the Payment Method checkout page:
 
-```text
-App Builder Webhook Response: The discount code "<code-value>" is not valid
-```
+`The discount code "<code-value>" is not valid`
 
-**Webhook name:**
+## Webhook name
 
-`plugin.magento.quote.api.guest_coupon_management.set`
+&#8203;<Edition name="paas" /> `plugin.magento.quote.api.guest_coupon_management.set`
 
-**Default payload:**
+&#8203;<Edition name="saas" /> `plugin.quote.api.guest_coupon_management.set`
+
+## Payloads
+
+<CodeBlock slots="heading, code" repeat="2" languages="JSON, JSON" />
+
+### Default payload
 
 ```json
 {
@@ -26,28 +33,7 @@ App Builder Webhook Response: The discount code "<code-value>" is not valid
 }
 ```
 
-**webhook.xml configuration:**
-
-```xml
-<method name="plugin.magento.quote.api.guest_coupon_management.set" type="before">
-    <hooks>
-        <batch name="add_coupon">
-            <hook name="validate_discount_code" url="{env:APP_BUILDER_URL}/validate-discount-code" method="POST" timeout="5000" softTimeout="1000" priority="300" required="true" fallbackErrorMessage="The discount code can not be validated">
-                <headers>
-                    <header name="x-gw-ims-org-id">{env:APP_BUILDER_IMS_ORG_ID}</header>
-                    <header name="Authorization">Bearer {env:APP_BUILDER_AUTH_TOKEN}</header>
-                </headers>
-                <fields>
-                    <field name="discountCode.cartId" source="cartId" />
-                    <field name="discountCode.couponCode" source="couponCode" />
-                </fields>
-            </hook>
-        </batch>
-    </hooks>
-</method>
-```
-
-**Configured payload:**
+### Configured payload
 
 ```json
 {
@@ -58,7 +44,19 @@ App Builder Webhook Response: The discount code "<code-value>" is not valid
 }
 ```
 
-**Endpoint code example:**
+## Configuration
+
+<TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" />
+
+### webhook.xml (PaaS)
+
+<ConfigXml/>
+
+### Admin (SaaS)
+
+<ConfigAdmin/>
+
+## Endpoint code example
 
 ```js
 const fetch = require('node-fetch')

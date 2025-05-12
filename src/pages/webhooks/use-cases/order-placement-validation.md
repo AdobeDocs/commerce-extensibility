@@ -5,17 +5,30 @@ keywords:
   - Extensibility
 ---
 
+import ConfigXml from './code-samples/order-placement-validation-xml.md';
+import ConfigAdmin from './code-samples/order-placement-validation-admin.md';
+
 # Order placement validation
 
 As a shopper places an order, a third-party system is used to confirm that the items added to the order can be shipped to the selected address.
 
-**Webhook:**
+## Webhook name
 
-`plugin.magento.sales.api.order_management.place` or `observer.sales_order_place_before`
+&#8203;<Edition name="paas" /> `plugin.magento.sales.api.order_management.place`
 
-**Default Payload:**
+&#8203;<Edition name="saas" /> `plugin.sales.api.order_management.place`
 
-Below is an example of the `plugin.magento.sales.api.order_management.place` payload structure obtained from execution of the application code. Some data has been removed for brevity.
+<InlineAlert variant="info" slots="text" />
+
+You can create a similar webhook with `observer.sales_order_place_before` (PaaS) or `observer.sales_order_place_before` (SaaS). It contains similar data described in this use case, but the placement of the `order` information within the payload structure differs.
+
+## Payloads
+
+In the following example default payload, some data has been removed for brevity.
+
+<CodeBlock slots="heading, code" repeat="2" languages="JSON, JSON" />
+
+### Default payload
 
 ```json
 {
@@ -73,45 +86,7 @@ Below is an example of the `plugin.magento.sales.api.order_management.place` pay
 }
 ```
 
-The payload for `observer.sales_order_place_before` contains similar data, but the placement of the `order` information within the payload structure differs:
-
-```json
-{
-    "eventName": "sales_order_place_before",
-    "data": {
-        "order" {
-            ...
-        }
-    }
-}
-```
-
-**webhook.xml configuration:**
-
-The XML below configures a webhook for `plugin.magento.sales.api.order_management.place`:
-
-```xml
-<method name="plugin.magento.sales.api.order_management.place" type="before">
-    <hooks>
-        <batch name="order_validation" order="200">
-            <hook name="validate_product_shipping_address" url="{env:APP_BUILDER_URL}/validate-order" priority="100">
-                <headers>
-                    <header name="x-gw-ims-org-id">{env:APP_BUILDER_IMS_ORG_ID}</header>
-                    <header name="Authorization">Bearer {env:APP_BUILDER_AUTH_TOKEN}</header>
-                </headers>
-                <fields>
-                    <field name="order.items[].sku"/>
-                    <field name="order.addresses"/>
-                </fields>
-            </hook>
-        </batch>
-    </hooks>
-</method>
-```
-
-**Configured payload:**
-
-The third-party endpoint receives the following payload, which is based on the configured fields:
+### Configured payload
 
 ```json
 {
@@ -144,7 +119,19 @@ The third-party endpoint receives the following payload, which is based on the c
 }
 ```
 
-**Endpoint code example:**
+## Configuration
+
+<TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" />
+
+### webhook.xml (PaaS)
+
+<ConfigXml/>
+
+### Admin (SaaS)
+
+<ConfigAdmin/>
+
+## Endpoint code example
 
 ```js
 const { Core } = require('@adobe/aio-sdk')

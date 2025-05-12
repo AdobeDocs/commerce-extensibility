@@ -5,15 +5,22 @@ keywords:
   - Extensibility
 ---
 
+import ConfigXml from './code-samples/customer-address-validation-xml.md';
+import ConfigAdmin from './code-samples/customer-address-validation-admin.md';
+
 # Customer address validation
 
 When a customer signs in and adds a new address, the address must be validated. Before the new address is saved, Commerce can call a third-party address system to validate the input information. If the address is not valid, an error message is displayed.
 
-**Webhook:**
+## Webhook names
 
-plugin.magento.customer.api.address_repository.save
+&#8203;<Edition name="paas" /> plugin.magento.customer.api.address_repository.save
 
-**Default payload:**
+&#8203;<Edition name="saas" /> plugin.customer.api.address_repository.save
+
+## Payloads
+
+In this example, the default payload is the same as the target payload.
 
 ```json
 {
@@ -47,30 +54,21 @@ plugin.magento.customer.api.address_repository.save
 }
 ```
 
-**webhook.xml configuration:**
+## Configuration
 
-```xml
-<method name="plugin.magento.customer.api.address_repository.save" type="before">
-    <hooks>
-        <batch name="save_address">
-            <hook name="validate_address" url="{env:APP_BUILDER_URL}/validate-address"
-method="POST" timeout="5000" softTimeout="1000" fallbackErrorMessage="The address can not be validated">
-                <headers>
-                    <header name="x-gw-ims-org-id">{env:APP_BUILDER_IMS_ORG_ID}</header>
-                    <header name="Authorization">Bearer {env:APP_BUILDER_AUTH_TOKEN}</header>
-                </headers>
-                <fields>
-                    <field name="address" />
-                </fields>
-            </hook>
-        </batch>
-    </hooks>
-</method>
-```
+The entirety of the `address` object in the payload will be sent to the configured endpoint.
 
-Using this webhook field configuration, the entirety of the address object in the payload will be sent to the configured endpoint.
+<TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" />
 
-**Endpoint code example:**
+### webhook.xml (PaaS)
+
+<ConfigXml/>
+
+### Admin (SaaS)
+
+<ConfigAdmin/>
+
+## Endpoint code example
 
 ```js
 const fetch = require('node-fetch')

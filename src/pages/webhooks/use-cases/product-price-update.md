@@ -5,17 +5,24 @@ keywords:
   - Extensibility
 ---
 
+import ConfigXml from './code-samples/product-price-update-xml.md';
+import ConfigAdmin from './code-samples/product-price-update-admin.md';
+
 # Product price update
 
 When a shopper adds a product to the cart, a third-party system is used to update the product price based on the shopper's information. For example, the price can be updated based on the shopper's location or the product's availability.
 
-**Webhook:**
+## Webhook name
 
-observer.sales_quote_item_set_product
+`observer.sales_quote_item_set_product`
 
-**Default payload:**
+## Payloads
 
-The following `observer.sales_quote_item_set_product` payload was obtained from execution of the application code. Some data has been adjusted or deleted for brevity.
+The following `observer.sales_quote_item_set_product` default payload was obtained from execution of the application code. Some data has been adjusted or deleted for brevity.
+
+<CodeBlock slots="heading, code" repeat="2" languages="JSON, JSON" />
+
+### Default payload
 
 ```json
 {
@@ -59,31 +66,7 @@ The following `observer.sales_quote_item_set_product` payload was obtained from 
 }
 ```
 
-**webhook.xml configuration:**
-
-```xml
-    <method name="observer.sales_quote_item_set_product" type="before">
-        <hooks>
-            <batch name="product_price_update">
-                <headers>
-                    <header name="x-gw-ims-org-id">{env:APP_BUILDER_IMS_ORG_ID}</header>
-                    <header name="Authorization">Bearer {env:APP_BUILDER_AUTH_TOKEN}</header>
-                </headers>
-                <hook name="sales_quote_item_update_product" url="{env:APP_BUILDER_URL}/validate-product-name" method="POST" timeout="5000" softTimeout="1000">
-                    <fields>
-                        <field name='product.name' source='data.product.name' />
-                        <field name='product.sku' source='data.product.sku' />
-                        <field name='product.price' source='data.product.price' />
-                    </fields>
-                </hook>
-            </batch>
-        </hooks>
-    </method>
-```
-
-**Configured payload:**
-
-The third-party endpoint receives the following payload, which is based on the configured field:
+### Configured payload
 
 ```json
 {
@@ -95,7 +78,19 @@ The third-party endpoint receives the following payload, which is based on the c
 }
 ```
 
-**Endpoint code example:**
+## Configuration
+
+<TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" />
+
+### webhook.xml (PaaS)
+
+<ConfigXml/>
+
+### Admin (SaaS)
+
+<ConfigAdmin/>
+
+## Endpoint code example
 
 ```js
 const fetch = require('node-fetch')

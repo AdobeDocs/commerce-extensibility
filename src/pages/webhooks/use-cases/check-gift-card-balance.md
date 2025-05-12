@@ -5,17 +5,26 @@ keywords:
   - Extensibility
 ---
 
+import ConfigXml from './code-samples/check-gift-card-balance-xml.md';
+import ConfigAdmin from './code-samples/check-gift-card-balance-admin.md';
+
 # Check gift card balance
 
 When a shopper is checking out and enters a gift card code to check its balance, a third-party system is used to get the current balance value.
 
-**Webhook:**
+This use case runs with a webhook of type `after`.
 
-plugin.magento.gift_card_account.api.gift_card_account_management.check_gift_card
+## Webhook name
 
-**Default payload:**
+&#8203;<Edition name="paas" /> plugin.magento.gift_card_account.api.gift_card_account_management.check_gift_card
 
-This use case will use a webhook with type `after`. Therefore, the default payload structure is:
+&#8203;<Edition name="saas" /> plugin.gift_card_account.api.gift_card_account_management.check_gift_card
+
+## Payloads
+
+<CodeBlock slots="heading, code" repeat="2" languages="JSON, JSON" />
+
+### Default payload
 
 ```json
 {
@@ -25,27 +34,7 @@ This use case will use a webhook with type `after`. Therefore, the default paylo
 }
 ```
 
-**webhook.xml configuration:**
-
-```xml
-<method name="plugin.magento.gift_card_account.api.gift_card_account_management.check_gift_card" type="after">
-    <hooks>
-        <batch name="check_gift_card">
-            <hook name="get_balance" url="{env:APP_BUILDER_URL}/get-gift-card-balance" timeout="5000" softTimeout="1000">
-                <headers>
-                    <header name="x-gw-ims-org-id">{env:APP_BUILDER_IMS_ORG_ID}</header>
-                    <header name="Authorization">Bearer {env:APP_BUILDER_AUTH_TOKEN}</header>
-                </headers>
-                <fields>
-                    <field name="giftCardCode"/>
-                </fields>
-            </hook>
-        </batch>
-    </hooks>
-</method>
-```
-
-**Configured payload:**
+### Configured payload
 
 ```json
 {
@@ -53,7 +42,19 @@ This use case will use a webhook with type `after`. Therefore, the default paylo
 }
 ```
 
-**Endpoint code example:**
+## Configuration
+
+<TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" />
+
+### webhook.xml (PaaS)
+
+<ConfigXml/>
+
+### Admin (SaaS)
+
+<ConfigAdmin/>
+
+## Endpoint code example
 
 ```js
 const fetch = require('node-fetch')

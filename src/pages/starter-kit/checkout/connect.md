@@ -34,6 +34,12 @@ SaaS instances already include IMS configuration.
 
 Use the following steps to create OAuth credentials for App Builder authentication:
 
+1. Access your IMS credentials through the [Adobe Developer Console](https://developer.adobe.com/console). Select the project and workspace you set up during the [initial configuration](./getting-started.md#initial-configuration). Then click **OAuth Server-to-Server** in the side-navigation menu.
+
+<InlineAlert variant="info" slots="text"/>
+
+The OAuth Server-to-Server option only displays if you have the Adobe I/O Management API enabled, which is done as part of the [initial configuration](./getting-started.md#initial-configuration).
+
 1. Add a technical account with server-to-server credentials to the Commerce Admin with the appropriate permissions using the [Admin User Creation Guide](https://experienceleague.adobe.com/en/docs/commerce-admin/systems/user-accounts/permissions-users-all#create-a-user). If a technical account with appropriate permissions already exists, you can use it instead.
 
 1. When associating the user with the account, find your `Technical Account email` as a part of generated IMS credentials with following pattern: `<technical-account>@techacct.adobe.com` and use that value in the **Email** field during user creation:
@@ -41,8 +47,6 @@ Use the following steps to create OAuth credentials for App Builder authenticati
    ![userCreation.png](../../_images/starterkit/userCreation.png)
 
 1. On the **User Role** tab, select the Administrators role to provide all necessary permissions.
-
-1. Access your IMS credentials through the [Adobe Developer Console](https://developer.adobe.com/console). Select the project and workspace you set up during the [initial configuration](./getting-started.md#initial-configuration). Then click **OAuth Server-to-Server** in the side-navigation menu.
 
 1. Copy the generated credentials (client ID, client secret, technical account ID, and technical account email) to the `.env` file in the root of the project:
 

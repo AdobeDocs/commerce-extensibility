@@ -27,6 +27,16 @@ You must install or have access to the following prerequisites to develop with t
 - Access to the [Adobe Developer Console](https://console.adobe.io/) with an App
   Builder license. If you do not have access to the Adobe Developer Console or App Builder, refer to [get access to App Builder](https://developer.adobe.com/app-builder/docs/overview/getting_access/#get-access-to-app-builder).
 
+- If you intend to use the Admin UI SDK (version `3.0` and higher), you must also complete the [Admin UI SDK installation process](../../admin-ui-sdk/installation.md).
+
+<InlineAlert variant="help" slots="text1, text2"/>
+
+When completing the steps to [install the Admin UI SDK](../../admin-ui-sdk/installation.md), use the following command to get a version compatible with the checkout starter kit:
+
+```bash
+composer require "magento/commerce-backend-sdk": ">=3.0"
+```
+
 ## Install Commerce modules
 
 <InlineAlert variant="info" slots="text"/>

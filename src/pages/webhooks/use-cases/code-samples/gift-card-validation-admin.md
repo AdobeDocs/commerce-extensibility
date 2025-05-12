@@ -5,13 +5,10 @@ Field | Value
 Webhook method | `plugin.gift_card_account.api.gift_card_account_management.save_by_quote_id`
 Webhook type | `before`
 Batch name | `apply_gift_card`
-Batch order | -
 Hook name | `validate_gift_card`
-Hook priority | -
 URL | `{env:APP_BUILDER_URL}/validate-gift-card`
 Timeout | `5000`
 Soft timeout | `1000`
-Cache TTL | -
 Fallback error message | `The gift card cannot be validated`
 Required | **Required**
 Active | **Yes**

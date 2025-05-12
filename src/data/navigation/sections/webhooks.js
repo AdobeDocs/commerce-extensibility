@@ -28,7 +28,7 @@ module.exports = [
             path: "/webhooks/use-cases/customer-address-validation.md"
           },
           {
-            title: "Products: Validate update",
+            title: "Products: Validate updates",
             path: "/webhooks/use-cases/product-update-validation.md"
           },
           {

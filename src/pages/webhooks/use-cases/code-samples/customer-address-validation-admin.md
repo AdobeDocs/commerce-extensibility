@@ -5,13 +5,10 @@ Field | Value
 Webhook method | `plugin.customer.api.address_repository.save`
 Webhook type | `before`
 Batch name | `save_address`
-Batch order | -
 Hook name | `validate_address`
-Hook priority | -
 URL | `{env:APP_BUILDER_URL}/validate-address`
 Timeout | `5000`
 Soft timeout | `1000`
-Cache TTL | -
 Fallback error message | `The address cannot be validated`
 Required | **Required**
 Active | **Yes**

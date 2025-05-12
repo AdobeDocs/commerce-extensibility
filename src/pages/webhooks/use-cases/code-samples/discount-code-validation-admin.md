@@ -5,13 +5,11 @@ Field | Value
 Webhook method | `plugin.quote.api.guest_coupon_management.set`
 Webhook type | `before`
 Batch name | `add_coupon`
-Batch order | -
 Hook name | `validate_discount_code`
 Hook priority | `300`
 URL | `{env:APP_BUILDER_URL}/validate-discount-code`
 Timeout | `5000`
 Soft timeout | `1000`
-Cache TTL | -
 Fallback error message | `The discount code can not be validated`
 Required | **Required**
 Active | **Yes**

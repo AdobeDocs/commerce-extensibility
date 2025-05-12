@@ -3,9 +3,10 @@
     <hooks>
         <batch name="validate_stock">
             <hook name="validate_stock" url="{env:APP_BUILDER_URL}/product-validate-stock" timeout="5000"
-softTimeout="100" priority="100" required="true" fallbackErrorMessage="The product stock validation failed">
+softTimeout="1000" priority="100" required="true" fallbackErrorMessage="The product stock validation failed">
                 <headers>
-                    <header resolver="Magento\WebhookModule\Model\AddProductToCartResolver" />
+                    <header name="x-gw-ims-org-id">{env:APP_BUILDER_IMS_ORG_ID}</header>
+                    <header name="Authorization">Bearer {env:APP_BUILDER_AUTH_TOKEN}</header>
                 </headers>
                 <fields>
                     <field name='product.name' source='data.product.name' />

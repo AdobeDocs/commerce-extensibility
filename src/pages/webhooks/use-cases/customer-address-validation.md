@@ -12,7 +12,7 @@ import ConfigAdmin from './code-samples/customer-address-validation-admin.md';
 
 When a customer signs in and adds a new address, the address must be validated. Before the new address is saved, Commerce can call a third-party address system to validate the input information. If the address is not valid, an error message is displayed.
 
-## Webhook names
+## Webhook name
 
 &#8203;<Edition name="paas" /> plugin.magento.customer.api.address_repository.save
 

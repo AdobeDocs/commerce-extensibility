@@ -9,10 +9,9 @@ Batch order | 200
 Hook name | `validate_product_shipping_address`
 Hook priority | 100
 URL | `{env:APP_BUILDER_URL}/validate-order`
-Timeout | -
-Soft timeout | -
-Cache TTL | -
-Fallback error message | -
+Timeout | 5000
+Soft timeout | 1000
+Fallback error message | `Could not validate the shipping address`
 Required | **Required**
 Active | **Yes**
 Method | **POST**

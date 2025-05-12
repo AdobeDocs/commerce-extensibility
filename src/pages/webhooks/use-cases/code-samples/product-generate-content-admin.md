@@ -5,13 +5,10 @@ Field | Value
 Webhook method | `observer.catalog_product_save_before`
 Webhook type | `before`
 Batch name | `product_generate_content`
-Batch order | -
 Hook name | `product_generate_content`
-Hook priority | 300
 URL | `{env:APP_BUILDER_URL}/product-description`
 Timeout | 1000
 Soft timeout | 5000
-Cache TTL | -
 Fallback error message | `The product could not be updated`
 Required | **Required**
 Active | **Yes**

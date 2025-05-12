@@ -92,6 +92,8 @@ The following `observer.sales_quote_item_set_product` default payload was obtain
 
 ## Endpoint code example
 
+The following code example shows how to implement the webhook on your custom endpoint.
+
 ```js
 const fetch = require('node-fetch')
 const { Core } = require('@adobe/aio-sdk')

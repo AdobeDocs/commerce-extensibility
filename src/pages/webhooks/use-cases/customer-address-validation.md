@@ -70,6 +70,8 @@ The entirety of the `address` object in the payload will be sent to the configur
 
 ## Endpoint code example
 
+The following code example shows how to implement the webhook on your custom endpoint.
+
 ```js
 const fetch = require('node-fetch')
 const { Core } = require('@adobe/aio-sdk')

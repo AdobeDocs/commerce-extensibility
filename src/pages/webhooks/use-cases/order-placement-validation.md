@@ -133,6 +133,8 @@ In the following example default payload, some data has been removed for brevity
 
 ## Endpoint code example
 
+The following code example shows how to implement the webhook on your custom endpoint.
+
 ```js
 const { Core } = require('@adobe/aio-sdk')
 const { errorResponse, stringParameters, checkMissingRequestInputs } = require('../utils')

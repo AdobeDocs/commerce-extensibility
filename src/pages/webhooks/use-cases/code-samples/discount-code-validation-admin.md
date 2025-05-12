@@ -15,16 +15,17 @@ Required | **Required**
 Active | **Yes**
 Method | **POST**
 
+**Developer Console OAuth**:
+
+Field | Value
+--- | ---
+Client ID | The client ID for the OAuth credential.
+Client Secret | The client secret for the OAuth credential.
+Organization ID | The organization ID for the OAuth credential.
+
 **Hook Fields**:
 
 Name | Source
 --- | ---
 `discountCode.cartId` | `cartId`
 `discountCode.couponCode` |`couponCode`
-
-**Hook Headers**:
-
-Name | Value
---- | ---
-`x-gw-ims-org-id` | `{env:APP_BUILDER_IMS_ORG_ID}`
-`Authorization` | `Bearer {env:APP_BUILDER_AUTH_TOKEN}`

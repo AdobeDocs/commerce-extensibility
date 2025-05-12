@@ -123,6 +123,8 @@ The following `observer.checkout_cart_product_add_before` default payload was ob
 
 ## Endpoint code example
 
+The following code example shows how to implement the webhook on your custom endpoint.
+
 ```js
 const fetch = require('node-fetch')
 const { Core } = require('@adobe/aio-sdk')

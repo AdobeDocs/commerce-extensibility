@@ -91,6 +91,8 @@ The following configuration contains rules to call the third-party endpoint only
 
 ## Endpoint code example
 
+The following code example shows how to implement the webhook on your custom endpoint.
+
 ```js
 const axios = require('axios');
 const fetch = require('node-fetch')

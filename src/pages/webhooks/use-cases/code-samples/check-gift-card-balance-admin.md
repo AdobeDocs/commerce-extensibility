@@ -6,7 +6,7 @@ Webhook method | `plugin.gift_card_account.api.gift_card_account_management.chec
 Webhook type | `after`
 Batch name | `check_gift_card`
 Hook name | `get_balance`
-URL | `{env:APP_BUILDER_URL}/get-gift-card-balance"`
+URL | `<Host>/get-gift-card-balance`
 Timeout | `5000`
 Soft timeout | `1000`
 Fallback error message | `Could not get the gift card balance`
@@ -14,15 +14,16 @@ Required | **Required**
 Active | **Yes**
 Method | **POST**
 
+**Developer Console OAuth**:
+
+Field | Value
+--- | ---
+Client ID | The client ID for the OAuth credential.
+Client Secret | The client secret for the OAuth credential.
+Organization ID | The organization ID for the OAuth credential.
+
 **Hook Fields**:
 
 Name | Source
 --- | ---
 `giftCardCode` | `giftCardCode`
-
-**Hook Headers**:
-
-Name | Value
---- | ---
-`x-gw-ims-org-id` | `{env:APP_BUILDER_IMS_ORG_ID}`
-`Authorization` | `Bearer {env:APP_BUILDER_AUTH_TOKEN}`

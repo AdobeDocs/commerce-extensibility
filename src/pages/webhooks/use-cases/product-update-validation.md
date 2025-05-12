@@ -97,6 +97,8 @@ The third-party endpoint receives the following payload, which is based on the c
 
 ## Endpoint code example
 
+The following code example shows how to implement the webhook on your custom endpoint.
+
 ```js
 const fetch = require('node-fetch')
 const { Core } = require('@adobe/aio-sdk')

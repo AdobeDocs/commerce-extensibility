@@ -63,6 +63,8 @@ In this example, Commerce calls a third-party gift card provider to validate the
 
 ## Endpoint code example
 
+The following code example shows how to implement the webhook on your custom endpoint.
+
 ```js
 const fetch = require('node-fetch')
 const { Core } = require('@adobe/aio-sdk')

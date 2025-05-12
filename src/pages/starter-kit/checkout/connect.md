@@ -36,7 +36,7 @@ Use the following steps to create OAuth credentials for App Builder authenticati
 
 1. Access your IMS credentials through the [Adobe Developer Console](https://developer.adobe.com/console). Select the project and workspace you set up during the [initial configuration](./getting-started.md#initial-configuration). Then click **OAuth Server-to-Server** in the side-navigation menu.
 
-   **NOTE**: The OAuth Server-to-Server option only displays if you add the Adobe I/O Management API to your workspace, which is done as part of the [initial configuration](./getting-started.md#initial-configuration).
+   **NOTE**: The OAuth Server-to-Server option only displays if you add the I/O Management API to your workspace, which is done as part of the [initial configuration](./getting-started.md#initial-configuration).
 
 1. Add a technical account with server-to-server credentials to the Commerce Admin with the appropriate permissions using the [Admin User Creation Guide](https://experienceleague.adobe.com/en/docs/commerce-admin/systems/user-accounts/permissions-users-all#create-a-user). If a technical account with appropriate permissions already exists, you can use it instead.
 

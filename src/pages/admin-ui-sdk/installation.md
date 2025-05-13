@@ -38,6 +38,14 @@ You must implement Adobe Identity Management Service (IMS) for Adobe Commerce to
 
 This method installs the SDK on a cloud instance.
 
+<InlineAlert variant="help" slots="text1, text2"/>
+
+Admin UI SDK version `3.0` or higher is required if you want to use the checkout starter kit.
+
+```bash
+composer require "magento/commerce-backend-sdk": ">=3.0"
+```
+
 1. On your local workstation, change to the Cloud project root directory.
 
 1. Update your `composer.json` file:

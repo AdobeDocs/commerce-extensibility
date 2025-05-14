@@ -21,7 +21,7 @@ The following prerequisites are required to integrate your OOPE integration with
 
 ## Integrate with checkout drop-in components
 
-Checkout drop-in component provide extensibility points to integrate with OOPE payment methods. 
+Checkout drop-in components provide extensibility points to integrate with OOPE payment methods. 
 See [Add a payment method](https://experienceleague.adobe.com/developer/commerce/storefront/dropins/checkout/tutorials/add-payment-method/) from Checkout drop-in documentation for integration details.
 
 ## Extend OOPE GraphQL Schema

@@ -260,7 +260,7 @@ To check the taxes applied to the cart, you can use the [`getCart`](https://deve
 
 >[!TIP]
 >
->To enable full tax breakdown, set `Stores > SETTINGS > Configuration > SALES > Tax > Shopping Cart Display Settings > Display Full Tax Summary` to `Yes`
+>To enable full tax breakdown, set **Stores** > Settings > **Configuration** > Sales > **Tax** > **Shopping Cart Display Settings** > **Display Full Tax Summary** to `Yes`
 
 ### Order taxes
 
@@ -268,4 +268,4 @@ To check the tax breakdown, you can use the [`customerOrders`](https://developer
 
 >[!TIP]
 >
->To enable full tax breakdown, set `Stores > SETTINGS > Configuration > SALES > Tax > Orders, Invoices, Credit Memos Display Settings > Display Full Tax Summary` to `Yes`
+>To enable full tax breakdown, set **Stores** > Settings > **Configuration** > Sales > **Tax** > **Orders, Invoices, Credit Memos Display Settings** > **Display Full Tax Summary** to `Yes`.

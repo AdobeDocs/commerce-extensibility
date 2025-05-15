@@ -163,7 +163,7 @@ Hook Settings
   Webhook Type: before
   Batch Name validate_payment
   Hook Name: oope_payment_methods_sales_order_place_before
-  URL: https://<yourappbuilder>.runtime.adobe.io/api/v1/web/commerce-checkout-starter-kit/validate-payment
+  URL: https://<your_app_builder>.runtime.adobe.io/api/v1/web/commerce-checkout-starter-kit/validate-payment
   Active: Yes
   Method: POST
 
@@ -191,7 +191,7 @@ The following example demonstrates how to add a webhook to the `plugin.magento.o
 <method name="plugin.magento.out_of_process_payment_methods.api.payment_method_filter.get_list" type="after">
     <hooks>
         <batch name="out_of_process_payment_methods">
-            <hook name="payment_method_filter" url="https://<yourappbuilder>.runtime.adobe.io/api/v1/web/commerce-checkout-starter-kit/filter-payment" method="POST" timeout="20000" softTimeout="0">
+            <hook name="payment_method_filter" url="https://<your_app_builder>.runtime.adobe.io/api/v1/web/commerce-checkout-starter-kit/filter-payment" method="POST" timeout="20000" softTimeout="0">
                 <fields>
                     <field name="payload" />
                 </fields>
@@ -277,7 +277,7 @@ The following example demonstrates how to add a webhook to the `plugin.magento.o
     <method name="plugin.magento.out_of_process_shipping_methods.api.shipping_rate_repository.get_rates" type="after">
         <hooks>
             <batch name="dps">
-                <hook name="add_shipping_rates_dps" url="https://<yourappbuilder>.runtime.adobe.io/api/v1/web/commerce-checkout-starter-kit/shipping-methods" method="POST" timeout="5000" softTimeout="1000" priority="100" required="true">
+                <hook name="add_shipping_rates_dps" url="https://<your_app_builder>.runtime.adobe.io/api/v1/web/commerce-checkout-starter-kit/shipping-methods" method="POST" timeout="5000" softTimeout="1000" priority="100" required="true">
                     <fields>
                         <field name="rateRequest" />
                     </fields>

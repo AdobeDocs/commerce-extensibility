@@ -16,7 +16,7 @@ For more general use cases, refer to [use-cases](./use-cases.md).
 
 You can add shipping methods to the checkout process by using [webhooks](../../webhooks/index.md).
 
-To add shipping methods, you must [run a script to automatically create shipping carriers](./shipping-install.md#create-shipping-carriers-script) or [create shipping carriers manually](./shipping-reference.md#shipping-api-reference) using the REST API. Only shipping methods with registered carriers are available in the checkout process.
+To add shipping methods, you must [run a script to automatically create shipping carriers](./shipping-install.md#configuration) or [create shipping carriers manually](./shipping-reference.md#shipping-api-reference) using the REST API. Only shipping methods with registered carriers are available in the checkout process.
 
 After the webhook is registered, every time a shopping cart is requested, a synchronous call is dispatched to the App Builder application implementing the shipping method to calculate the shipping cost and provide the available shipping methods.
 

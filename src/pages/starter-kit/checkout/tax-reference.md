@@ -142,7 +142,7 @@ curl --request GET \
 
 ### Create a tax class with custom attributes
 
-The out-of-process tax module extends the [`POST /V1/taxClasses`](https://adobe-commerce.redoc.ly/2.4.7-admin/tag/taxClasses/) endpoint to allow creating tax classes with custom attributes.
+The out-of-process tax module extends the [`POST /V1/taxClasses`](https://adobe-commerce.redoc.ly/2.4.8-admin/tag/taxClasses/) endpoint to allow creating tax classes with custom attributes.
 
 <CodeBlock slots="heading, code" repeat="2" languages="bash, json" />
 
@@ -173,7 +173,7 @@ curl --request POST \
 
 ### Update a tax class with custom attributes
 
-The out-of-process tax module extends the [`POST /V1/taxClasses/:classId`](https://adobe-commerce.redoc.ly/2.4.7-admin/tag/taxClassesclassId) endpoint to update an existing tax class with custom attributes.
+The out-of-process tax module extends the [`PUT /V1/taxClasses/:classId`](https://adobe-commerce.redoc.ly/2.4.8-admin/tag/taxClassesclassId) endpoint to update an existing tax class with custom attributes.
 
 <CodeBlock slots="heading, code" repeat="2" languages="bash, json" />
 
@@ -205,7 +205,7 @@ curl --request POST \
 
 ### List all tax classes with custom attributes
 
-The out-of-process tax module extends the [`GET /V1/taxClasses/search`](https://adobe-commerce.redoc.ly/2.4.7-admin/tag/taxClassessearch#operation/GetV1TaxClassesSearch) endpoint to include custom attributes in the response when available.
+The out-of-process tax module extends the [`GET /V1/taxClasses/search`](https://adobe-commerce.redoc.ly/2.4.8-admin/tag/taxClassessearch#operation/GetV1TaxClassesSearch) endpoint to include custom attributes in the response when available.
 
 <CodeBlock slots="heading, code" repeat="2" languages="bash, json" />
 
@@ -252,12 +252,8 @@ curl --request GET \
 
 ## GraphQL
 
-There are two GraphQL queries to check taxes applied by the tax integration, `cart` and `customerOrders`.
+There are two GraphQL queries to check taxes applied by the tax integration, `cart`.
 
 ### Cart taxes
 
 To check the taxes applied to the cart, you can use the [`cart`](https://developer.adobe.com/commerce/webapi/graphql/schema/cart/queries/cart/) query to retrieve the [`cart`](https://developer.adobe.com/commerce/webapi/graphql-api/index.html#definition-Cart)/[`prices`](https://developer.adobe.com/commerce/webapi/graphql-api/index.html#definition-CartPrices)/[`applied_taxes`](https://developer.adobe.com/commerce/webapi/graphql-api/index.html#definition-CartPrices) field. This field contains information about the taxes applied to the cart.
-
-### Order taxes
-
-To check the tax breakdown, you can use the [`customerOrders`](https://developer.adobe.com/commerce/webapi/graphql/schema/customer/queries/orders/) query to retrieve the [`CustomerOrder`](https://developer.adobe.com/commerce/webapi/graphql-api/index.html#definition-CustomerOrder)/[`total`](https://developer.adobe.com/commerce/webapi/graphql-api/index.html#definition-OrderTotal)/[`taxes`](https://developer.adobe.com/commerce/webapi/graphql-api/index.html#definition-TaxItem) field. This field contains information about the taxes breakdown applied to the order.

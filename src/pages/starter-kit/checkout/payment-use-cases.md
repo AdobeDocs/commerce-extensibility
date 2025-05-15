@@ -60,7 +60,7 @@ setPaymentMethodOnCart(
 
 With this information persisted, you can configure an [Adobe Commerce Webhook](../../webhooks/index.md) so that every time an order is placed, a synchronous call dispatches to the App Builder application implementing the payment method to validate the payment.
 
-To register a webhook, [modify the `webhooks.xml` file](../../webhooks/hooks.md) and create a new webhook with the following configuration:
+&#8203;<Edition name="paas" /> To register a webhook, [modify the `webhooks.xml` file](../../webhooks/hooks.md) and create a new webhook with the following configuration:
 
 ```yaml
 Hook Settings
@@ -77,7 +77,8 @@ Hook Fields
   Field: payment_additional_information Source: order.payment.additional_information
 
 Hook Rules
-  Field: payment_method Value: <yourpaymentmethodcode> Operator: equal
+  Field: payment_method Value: <yourpaymentmethodcode>
+  Operator: equal
 ```
 
 You can also enable webhook signature generation by following the [webhooks signature verification](../../webhooks/signature-verification.md) instructions.
@@ -90,7 +91,11 @@ In some cases, you may want to filter out a payment method based on the cart det
 
 You can use the `plugin.magento.out_of_process_payment_methods.api.payment_method_filter.get_list` webhook to filter out a payment method. This webhook is triggered every time the list of available payment methods is requested, allowing you to filter out the payment methods based on the cart details or customer information.
 
-The following example demonstrates how to add a webhook to the `plugin.magento.out_of_process_payment_methods.api.payment_method_filter.get_list` method:
+&#8203;<Edition name="paas" /> The following example demonstrates how to add a webhook to the `plugin.magento.out_of_process_payment_methods.api.payment_method_filter.get_list` method:
+
+<InlineAlert variant="info" slots="text"/>
+
+&#8203;<Edition name="saas" /> SaaS webhooks have slightly different naming conventions. For this example, use the `plugin.out_of_process_payment_methods.api.payment_method_filter.get_list` method.
 
 ```xml
 <method name="plugin.magento.out_of_process_payment_methods.api.payment_method_filter.get_list" type="after">

@@ -112,7 +112,7 @@ The GET `/V1/oope_payment_method/:code` endpoint retrieves one out-of-process pa
 
 ```bash
 curl --request GET \
---url <ADOBE_COMMERCE_API_URL>/V1/oope_payment_method/:code \
+--url <ADOBE_COMMERCE_API_URL>/V1/oope_payment_method/method-1 \
 --header 'Authorization: Bearer <TOKEN>' \
 --header 'Content-Type: application/json'
 ```
@@ -173,7 +173,11 @@ curl --request GET \
       "order_status": "complete",
       "countries": [],
       "currencies": [],
-      "custom_config": []
+      "custom_config": [
+        {
+          "key1": "value1"
+        }
+      ]
     }
   ]
 }

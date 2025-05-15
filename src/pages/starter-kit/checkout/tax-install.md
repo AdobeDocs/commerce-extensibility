@@ -39,10 +39,10 @@ If you need to use another tax extension, Adobe recommends disabling this extens
 
 ## Configuration
 
-The starter kit provides a script to help you create tax integrations for your project. Run this script by using the following format: `npm run <script-name>`.
+The starter kit provides the [`create-tax-integrations`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/create-tax-integrations.js) script to help configure Adobe Commerce. It reads the tax integrations configuration from the `tax-integrations.yaml` file and creates tax integrations in Adobe Commerce.
 
-### `create-tax-integrations` script
+To run this script, use the following command:
 
-To create tax integrations in Adobe Commerce, use the [`create-tax-integrations`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/create-tax-integrations.js) script.
-
-The script reads the tax integrations configuration from the `tax-integrations.yaml` file and creates tax integrations in Adobe Commerce.
+```bash
+npm run create-tax-integrations
+```

@@ -56,13 +56,13 @@ curl --request POST \
 --data '{
 "carrier": {
 "code": "DPS",
-"title": "Detroit Postal Service"
-"stores": ["default", "custom"],
-"countries": ["DE","FR","CA"],
-"sort_order": 10000,
+"title": "Demo Postal Service"
+"stores": ["default"],
+"countries": ["US","CA"],
+"sort_order": 10,
 "active": true,
-"tracking_available": false,
-"shipping_labels_available": false
+"tracking_available": true,
+"shipping_labels_available": true
 }
 }'
 ```
@@ -117,11 +117,11 @@ curl --request PUT \
 "code": "DPS",
 "title": "Demo Postal Service"
 "stores": ["default", "custom"],
-"countries": ["DE","FR","CA"],
-"sort_order": 10000,
+"countries": ["US","CA"],
+"sort_order": 10,
 "active": true,
-"tracking_available": false,
-"shipping_labels_available": false
+"tracking_available": true,
+"shipping_labels_available": true
 }
 }'
 ```
@@ -161,7 +161,7 @@ The GET `/V1/oope_shipping_carrier/:code` retrieves one out-of-process shipping 
 
 ```bash
 curl --request GET \
---url <ADOBE_COMMERCE_API_URL>/V1/oope_shipping_carrier/:code' \
+--url <ADOBE_COMMERCE_API_URL>/V1/oope_shipping_carrier/DPS' \
 --header 'Authorization: Bearer <TOKEN>' \
 --header 'Content-Type: application/json' 
 ```
@@ -246,7 +246,7 @@ The DELETE `/V1/oope_shipping_carrier/:code` deletes an out-of-process shipping 
 
 ```bash
 curl --request DELETE \
---url <ADOBE_COMMERCE_API_URL>/V1/oope_shipping_carrier/:code' \
+--url <ADOBE_COMMERCE_API_URL>/V1/oope_shipping_carrier/DPS' \
 --header 'Authorization: Bearer <TOKEN>' \
 --header 'Content-Type: application/json'
 ```

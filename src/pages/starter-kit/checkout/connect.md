@@ -16,11 +16,11 @@ To use the Adobe Commerce HTTP Client, update the `COMMERCE_BASE_URL` value in t
 
 - Commerce Admin REST endpoints:
 
-`COMMERCE_BASE_URL=https://<commerce_instance_url>/rest/<store_view_code>/`
+&#8203;<Edition name="paas" /> `COMMERCE_BASE_URL=https://<commerce_instance_url>/rest/<store_view_code>/`
 
 - Adobe Commerce Cloud as a Service:
 
-`COMMERCE_BASE_URL=https://na1.api.commerce.adobe.com/<tenant_code>/`
+&#8203;<Edition name="saas" /> `COMMERCE_BASE_URL=https://na1.api.commerce.adobe.com/<tenant_code>/`
 
 <InlineAlert variant="info" slots="text"/>
 

@@ -25,7 +25,7 @@ The raw Payment REST API schema is available [here](/payment.xml).
 
 ### Create a new payment method
 
-The POST `/V1/oope_payment_method/:code` creates an out-of-process payment method in the Adobe Commerce instance.
+The POST `/V1/oope_payment_method/` creates an out-of-process payment method in the Adobe Commerce instance.
 
 **Payload parameters:**
 

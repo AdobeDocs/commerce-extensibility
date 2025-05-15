@@ -136,7 +136,7 @@ To register a webhook in Adobe Commerce on Cloud or on-premises, [modify the `we
         <hooks>
             <batch name="out_of_process_payment_methods">
                 <hook name="validate_payment"
-                      url="https://<yourappbuilder>.adobeioruntime.net/api/v1/web/commerce-checkout-starter-kit/validate-payment"
+                      url="https://<your_app_builder>.adobeioruntime.net/api/v1/web/commerce-checkout-starter-kit/validate-payment"
                       method="POST" timeout="20000" softTimeout="0" priority="100" required="true"
                       fallbackErrorMessage="Error on validation">
                     <fields>

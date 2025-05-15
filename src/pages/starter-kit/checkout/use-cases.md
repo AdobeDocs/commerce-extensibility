@@ -86,7 +86,7 @@ The following steps demonstrate the payment flow for getting order details from 
 
 To perform a headless checkout and payment, the Commerce instance must ensure that the payment has succeeded and the order can be placed.
 
-#### Set the additional data to the payment method
+#### Set payment method additional data
 
 To ingest payment gateway specific information in the payment process, the checkout process must use the [`setPaymentMethodOnCart` mutation](https://developer.adobe.com/commerce/webapi/graphql/schema/cart/mutations/set-payment-method/) in combination with the `payment_method.additional_data` field to persist the information required to validate the payment once the order is placed.
 

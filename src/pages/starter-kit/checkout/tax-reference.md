@@ -256,4 +256,8 @@ There are two GraphQL queries to check taxes applied by the tax integration, `ca
 
 ### Cart taxes
 
-To check the taxes applied to the cart, you can use the [`cart`](https://developer.adobe.com/commerce/webapi/graphql/schema/cart/queries/cart/) query to retrieve the [`cart`](https://developer.adobe.com/commerce/webapi/graphql-api/index.html#definition-Cart)/[`prices`](https://developer.adobe.com/commerce/webapi/graphql-api/index.html#definition-CartPrices)/[`applied_taxes`](https://developer.adobe.com/commerce/webapi/graphql-api/index.html#definition-CartPrices) field. This field contains information about the taxes applied to the cart.
+To check the taxes applied to the cart, you can use the [`getCart`](https://developer.adobe.com/commerce/webapi/graphql/schema/cart/queries/cart/) query to retrieve the [`cart`](https://developer.adobe.com/commerce/webapi/graphql-api/index.html#definition-Cart)/[`prices`](https://developer.adobe.com/commerce/webapi/graphql-api/index.html#definition-CartPrices)/[`applied_taxes`](https://developer.adobe.com/commerce/webapi/graphql-api/index.html#definition-CartPrices) field. This field contains information about the taxes applied to the cart.
+
+<InlineAlert variant="info" slots="text"/>
+
+To enable full tax breakdown, which displays each tax separately instead of combining them, set **Stores** > Settings > **Configuration** > Sales > **Tax** > **Shopping Cart Display Settings** > **Display Full Tax Summary** to `Yes`

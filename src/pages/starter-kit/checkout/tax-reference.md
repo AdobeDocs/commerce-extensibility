@@ -252,7 +252,7 @@ curl --request GET \
 
 ## GraphQL
 
-There are two GraphQL queries to check taxes applied by the tax integration, `cart` and `customerOrders`.
+There are two GraphQL queries to check taxes applied by the tax integration, `cart`.
 
 ### Cart taxes
 
@@ -261,11 +261,3 @@ To check the taxes applied to the cart, you can use the [`getCart`](https://deve
 <InlineAlert variant="info" slots="text"/>
 
 To enable full tax breakdown, which displays each tax separately instead of combining them, set **Stores** > Settings > **Configuration** > Sales > **Tax** > **Shopping Cart Display Settings** > **Display Full Tax Summary** to `Yes`
-
-### Order taxes
-
-To check the tax breakdown, you can use the [`customerOrders`](https://developer.adobe.com/commerce/webapi/graphql/schema/customer/queries/orders/) query to retrieve the [`CustomerOrder`](https://developer.adobe.com/commerce/webapi/graphql-api/index.html#definition-CustomerOrder)/[`total`](https://developer.adobe.com/commerce/webapi/graphql-api/index.html#definition-OrderTotal)/[`taxes`](https://developer.adobe.com/commerce/webapi/graphql-api/index.html#definition-TaxItem) field. This field contains information about the taxes breakdown applied to the order.
-
-<InlineAlert variant="info" slots="text"/>
-
-To enable full tax breakdown, which displays each tax separately instead of combining them, set **Stores** > Settings > **Configuration** > Sales > **Tax** > **Orders, Invoices, Credit Memos Display Settings** > **Display Full Tax Summary** to `Yes`.

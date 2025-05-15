@@ -144,7 +144,7 @@ To register a webhook in Adobe Commerce on Cloud or on-premises, [modify the `we
                         <field name="payment_additional_information" source="data.order.payment.additional_information" />
                     </fields>
                     <rules>
-                        <rule field="data.order.payment.method" operator="equal" value="<yourpaymentmethodcode>" />
+                        <rule field="data.order.payment.method" operator="equal" value="<your_payment_method_code>" />
                     </rules>
                 </hook>
             </batch>

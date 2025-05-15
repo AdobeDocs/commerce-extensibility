@@ -67,7 +67,7 @@ Hook Settings
 
   Webhook Method: observer.sales_order_place_before
   Webhook Type: before
-  Batch Name validate_payment
+  Batch Name: validate_payment
   Hook Name: oope_payment_methods_sales_order_place_before
   URL: https://<yourappbuilder>.runtime.adobe.io/api/v1/web/commerce-checkout-starter-kit/validate-payment
   Active: Yes

@@ -118,7 +118,7 @@ setPaymentMethodOnCart(
 }
 ```
 
-#### Validate the payment via webhook
+#### Validate the payment with a webhook
 
 With this additional information saved, you can configure an [Adobe Commerce Webhook](../../webhooks/index.md) to validate the payment during order placement. This webhook triggers a synchronous call to your App Builder application, which is responsible for verifying payment details before the order is finalized.
 

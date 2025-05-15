@@ -12,7 +12,7 @@ Integrate your Out-of-Process Extensions (OOPE) with the Edge Delivery Service (
 
 ## Prerequisites
 
-The following prerequisites are required to integrate your OOPE integration with the EDS Storefront:
+The following prerequisites are required to enable your OOPE integration with the EDS Storefront:
 
 - [Integrate EDS Storefront with Adobe Commerce](https://experienceleague.adobe.com/developer/commerce/storefront/).
 - Configure Storefront in EDS with the [checkout drop-in component](https://experienceleague.adobe.com/developer/commerce/storefront/drop-ins/checkout/).

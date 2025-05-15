@@ -74,7 +74,7 @@ curl --request POST \
 
 ### Get an OOPE tax integration by code
 
-The GET `/V1/oope_tax_management/tax_integration` retrieves one out-of-process tax integration by `code` from the Adobe Commerce instance.
+The GET `/V1/oope_tax_management/tax_integration/:code` retrieves one out-of-process tax integration by `code` from the Adobe Commerce instance.
 
 **Payload parameters:**
 
@@ -142,7 +142,7 @@ curl --request GET \
 
 ### Create a tax class with custom attributes
 
-The out-of-process tax module extends the [`POST /V1/taxClasses`](https://adobe-commerce.redoc.ly/2.4.7-admin/tag/taxClasses/) endpoint to allow creating tax classes with custom attributes.
+The out-of-process tax module extends the [`POST /V1/taxClasses`](https://adobe-commerce.redoc.ly/2.4.8-admin/tag/taxClasses/) endpoint to allow creating tax classes with custom attributes.
 
 <CodeBlock slots="heading, code" repeat="2" languages="bash, json" />
 
@@ -173,7 +173,7 @@ curl --request POST \
 
 ### Update a tax class with custom attributes
 
-The out-of-process tax module extends the [`POST /V1/taxClasses/:classId`](https://adobe-commerce.redoc.ly/2.4.7-admin/tag/taxClassesclassId) endpoint to update an existing tax class with custom attributes.
+The out-of-process tax module extends the [`PUT /V1/taxClasses/:classId`](https://adobe-commerce.redoc.ly/2.4.8-admin/tag/taxClassesclassId) endpoint to update an existing tax class with custom attributes.
 
 <CodeBlock slots="heading, code" repeat="2" languages="bash, json" />
 
@@ -205,7 +205,7 @@ curl --request POST \
 
 ### List all tax classes with custom attributes
 
-The out-of-process tax module extends the [`GET /V1/taxClasses/search`](https://adobe-commerce.redoc.ly/2.4.7-admin/tag/taxClassessearch#operation/GetV1TaxClassesSearch) endpoint to include custom attributes in the response when available.
+The out-of-process tax module extends the [`GET /V1/taxClasses/search`](https://adobe-commerce.redoc.ly/2.4.8-admin/tag/taxClassessearch#operation/GetV1TaxClassesSearch) endpoint to include custom attributes in the response when available.
 
 <CodeBlock slots="heading, code" repeat="2" languages="bash, json" />
 

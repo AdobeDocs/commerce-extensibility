@@ -132,7 +132,7 @@ You can find examples of how to use shipping addresses, customer data, and produ
 
 ## Shipping methods: GraphQL
 
-In the `setShippingAddressesOnCart` mutation, available shipping methods that are returned by the webhook are appended to the `available_shipping_methods` field.
+In the [`setShippingAddressesOnCart` mutation](https://developer.adobe.com/commerce/webapi/graphql/schema/cart/mutations/set-shipping-address/), available shipping methods that are returned by the webhook are appended to the `available_shipping_methods` field.
 
 You can use the `additional_data` field to pass an array of key-value pairs to provide additional information about the shipping method from the webhook.
 
@@ -223,7 +223,7 @@ You can use the `additional_data` field to pass an array of key-value pairs to p
 }
 ```
 
-In the `setShippingMethodsOnCart` mutation, you can set the shipping method provided by webhook. Its information is stored in the `selected_shipping_method` field with the `additional_data`, if provided.
+In the [`setShippingMethodsOnCart` mutation](https://developer.adobe.com/commerce/webapi/graphql/schema/cart/mutations/set-shipping-method/), you can set the shipping method provided by webhook. Its information is stored in the `selected_shipping_method` field with the `additional_data`, if provided.
 
 ```json
 {

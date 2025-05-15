@@ -26,14 +26,16 @@ To enable out-of-process shipping methods in Adobe Commerce, install the `magent
 
 ## Configuration
 
-The starter kit provides scripts to help you create shipping carriers for your project. Run these scripts by using the following format: `npm run <script-name>`.
+The starter kit provides the [`create-shipping-carriers`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/create-shipping-carriers.js) script to help configure Adobe Commerce. It reads the shipping carriers configuration from the `shipping-carriers.yaml` file and creates the shipping carriers in Adobe Commerce.
 
-### `create-shipping-carriers` script
+To run this script, use the following command:
 
-To add shipping methods to the Adobe Commerce instance using webhooks, you must first create shipping carriers.
+```bash
+npm run create-shipping-carriers
+```
 
-The [`create-shipping-carriers`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/create-shipping-carriers.js) script creates shipping carriers in Adobe Commerce, by reading the shipping carriers configuration from `shipping-carriers.yaml`.
+To retrieve shipping carriers from Commerce, use the [`get-shipping-carriers`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/get-shipping-carriers.js) script:
 
-### `get-shipping-carriers` script
-
-To retrieve shipping carriers from Commerce, use the [`get-shipping-carriers`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/get-shipping-carriers.js) script.
+```bash
+npm run get-shipping-carriers
+```

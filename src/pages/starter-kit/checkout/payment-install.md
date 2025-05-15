@@ -26,10 +26,10 @@ To enable out-of-process payment methods in Commerce, install the `magento/modul
 
 ## Configuration
 
-The starter kit provides a script to help you create payment methods for your project. Run this script by using the following format: `npm run <script-name>`.
+The starter kit provides the [`create-payment-methods`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/create-payment-methods.js) script to help configure Adobe Commerce. It reads the payment methods configuration from the `payment-methods.yaml` file and creates the payment methods in Adobe Commerce.
 
-### create-payment-methods
+To run this script, use the following command:
 
-The [`create-payment-methods`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/create-payment-methods.js) script creates payment methods in Adobe Commerce.
-
-It reads the payment methods configuration from the `payment-methods.yaml` file and creates the payment methods in Adobe Commerce.
+```bash
+npm run create-payment-methods
+```

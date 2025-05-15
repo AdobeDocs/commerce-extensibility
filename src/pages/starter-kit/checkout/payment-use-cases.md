@@ -64,20 +64,27 @@ With this information persisted, you can configure an [Adobe Commerce Webhook](.
 
 ```yaml
 Hook Settings
+
   Webhook Method: observer.sales_order_place_before
   Webhook Type: before
-  Batch Name validate_payment
+  Batch Name: validate_payment
   Hook Name: oope_payment_methods_sales_order_place_before
   URL: https://<yourappbuilder>.runtime.adobe.io/api/v1/web/commerce-checkout-starter-kit/validate-payment
   Active: Yes
   Method: POST
 
 Hook Fields
-  Field: payment_method Source: order.payment.method
-  Field: payment_additional_information Source: order.payment.additional_information
+
+  Name: payment_method
+  Source: order.payment.method
+  
+  Name: payment_additional_information
+  Source: order.payment.additional_information
 
 Hook Rules
-  Field: payment_method Value: <yourpaymentmethodcode>
+
+  Name: payment_method 
+  Value: <yourpaymentmethodcode>
   Operator: equal
 ```
 

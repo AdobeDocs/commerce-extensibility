@@ -21,7 +21,7 @@ For more ideas on how you can use the shipping module, refer to [shipping use ca
 To enable out-of-process shipping methods in Adobe Commerce, install the `magento/module-out-of-process-shipping-methods` module using the following command:
 
 ```bash
-  composer require magento/module-out-of-process-shipping-methods --with-dependencies
+composer require magento/module-out-of-process-shipping-methods --with-dependencies
 ```
 
 ## Configuration

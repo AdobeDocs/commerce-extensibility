@@ -28,7 +28,7 @@ In the following example default payload, some data has been removed for brevity
 
 <CodeBlock slots="heading, code" repeat="2" languages="JSON, JSON" />
 
-### Default payload
+#### Default payload
 
 ```json
 {
@@ -86,7 +86,7 @@ In the following example default payload, some data has been removed for brevity
 }
 ```
 
-### Configured payload
+#### Configured payload
 
 ```json
 {
@@ -123,11 +123,11 @@ In the following example default payload, some data has been removed for brevity
 
 <TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" />
 
-### webhook.xml (PaaS)
+#### webhook.xml (PaaS)
 
 <ConfigXml/>
 
-### Admin (SaaS)
+#### Admin (SaaS)
 
 <ConfigAdmin/>
 

@@ -86,6 +86,8 @@ The following steps demonstrate the payment flow for getting order details from 
 
 To perform a headless checkout and payment, the Commerce instance must ensure that the payment has succeeded and the order can be placed.
 
+#### Set payment method additional data
+
 To ingest payment gateway specific information in the payment process, the checkout process must use the [`setPaymentMethodOnCart` mutation](https://developer.adobe.com/commerce/webapi/graphql/schema/cart/mutations/set-payment-method/) in combination with the `payment_method.additional_data` field to persist the information required to validate the payment once the order is placed.
 
 ```graphql
@@ -116,11 +118,40 @@ setPaymentMethodOnCart(
 }
 ```
 
-With this information persisted, you can configure an [Adobe Commerce Webhook](../../webhooks/index.md) so that every time an order is placed, a synchronous call dispatches to the App Builder application implementing the payment method to validate the payment.
+#### Validate the payment with a webhook
+
+With this additional information saved, you can configure an [Adobe Commerce Webhook](../../webhooks/index.md) to validate the payment during order placement. This webhook triggers a synchronous call to your App Builder application, which is responsible for verifying payment details before the order is finalized.
+
+The following example demonstrates how to add a webhook to the [`observer.sales_order_place_before`](../../webhooks/use-cases/order-placement-validation.md) method:
 
 <Edition name="paas" />
 
 To register a webhook in Adobe Commerce on Cloud or on-premises, [modify the `webhooks.xml` file](../../webhooks/hooks.md) and create a new webhook with the following configuration.
+
+```xml
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_AdobeCommerceWebhooks:etc/webhooks.xsd">
+    <method name="observer.sales_order_place_before" type="before">
+        <hooks>
+            <batch name="out_of_process_payment_methods">
+                <hook name="validate_payment"
+                      url="https://<your_app_builder>.adobeioruntime.net/api/v1/web/commerce-checkout-starter-kit/validate-payment"
+                      method="POST" timeout="20000" softTimeout="0" priority="100" required="true"
+                      fallbackErrorMessage="Error on validation">
+                    <fields>
+                        <field name="payment_method" source="data.order.payment.method" />
+                        <field name="payment_additional_information" source="data.order.payment.additional_information" />
+                    </fields>
+                    <rules>
+                        <rule field="data.order.payment.method" operator="equal" value="<your_payment_method_code>" />
+                    </rules>
+                </hook>
+            </batch>
+        </hooks>
+    </method>
+</config>
+```
 
 <Edition name="saas" />
 
@@ -132,21 +163,21 @@ Hook Settings
   Webhook Type: before
   Batch Name validate_payment
   Hook Name: oope_payment_methods_sales_order_place_before
-  URL: https://<yourappbuilder>.runtime.adobe.io/api/v1/web/commerce-checkout-starter-kit/validate-payment
+  URL: https://<your_app_builder>.runtime.adobe.io/api/v1/web/commerce-checkout-starter-kit/validate-payment
   Active: Yes
   Method: POST
 
 Hook Fields
-  Field: payment_method Source: order.payment.method
-  Field: payment_additional_information Source: order.payment.additional_information
+  Field: payment_method Source: data.order.payment.method
+  Field: payment_additional_information Source: data.order.payment.additional_information
 
 Hook Rules
   Field: payment_method Value: <yourpaymentmethodcode> Operator: equal
 ```
 
-You can also enable webhook signature generation by following the [webhooks signature verification](../../webhooks/signature-verification.md) instructions.
+To enhance security, enable webhook signature generation by following the [webhooks signature verification](../../webhooks/signature-verification.md) instructions.
 
-Refer to [`actions/validate-payment.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/validate-payment/index.js) for an example of how to receive the request and validate the payment according to the payment gateway needs.
+Refer to [`actions/validate-payment.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/validate-payment/index.js) for an example of how to validate the payment according to the payment gateway needs.
 
 ### Filter out payment method
 
@@ -159,8 +190,8 @@ The following example demonstrates how to add a webhook to the `plugin.magento.o
 ```xml
 <method name="plugin.magento.out_of_process_payment_methods.api.payment_method_filter.get_list" type="after">
     <hooks>
-        <batch name="check_product_stock">
-            <hook name="check_product_stock" url="https://<yourappbuilder>.runtime.adobe.io/api/v1/web/commerce-checkout-starter-kit/filter-payment" method="POST" timeout="20000" softTimeout="0">
+        <batch name="out_of_process_payment_methods">
+            <hook name="payment_method_filter" url="https://<your_app_builder>.runtime.adobe.io/api/v1/web/commerce-checkout-starter-kit/filter-payment" method="POST" timeout="20000" softTimeout="0">
                 <fields>
                     <field name="payload" />
                 </fields>
@@ -246,7 +277,7 @@ The following example demonstrates how to add a webhook to the `plugin.magento.o
     <method name="plugin.magento.out_of_process_shipping_methods.api.shipping_rate_repository.get_rates" type="after">
         <hooks>
             <batch name="dps">
-                <hook name="add_shipping_rates_dps" url="https://<yourappbuilder>.runtime.adobe.io/api/v1/web/commerce-checkout-starter-kit/shipping-methods" method="POST" timeout="5000" softTimeout="1000" priority="100" required="true">
+                <hook name="add_shipping_rates_dps" url="https://<your_app_builder>.runtime.adobe.io/api/v1/web/commerce-checkout-starter-kit/shipping-methods" method="POST" timeout="5000" softTimeout="1000" priority="100" required="true">
                     <fields>
                         <field name="rateRequest" />
                     </fields>

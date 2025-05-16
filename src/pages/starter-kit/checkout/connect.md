@@ -12,7 +12,19 @@ This guide explains how to integrate the checkout starter kit with Adobe Commerc
 
 The [`adobe-commerce.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/lib/adobe-commerce.js) file provides a set of methods to interact with the Adobe Commerce instance. The client uses the Adobe Commerce HTTP Client, which is a wrapper around the Adobe Commerce REST API.
 
-To use the Adobe Commerce HTTP Client, update `COMMERCE_BASE_URL=<commerce_instance_url>` in the `.env` file, and complete the authentication setup.
+To use the Adobe Commerce HTTP Client, update the `COMMERCE_BASE_URL` value in the `.env` file, and complete the authentication setup.
+
+- Commerce Admin REST endpoints:
+
+&#8203;<Edition name="paas" /> `COMMERCE_BASE_URL=https://<commerce_instance_url>/rest/<store_view_code>/`
+
+- Adobe Commerce Cloud as a Service:
+
+&#8203;<Edition name="saas" /> `COMMERCE_BASE_URL=https://na1.api.commerce.adobe.com/<tenant_code>/`
+
+<InlineAlert variant="info" slots="text"/>
+
+The `COMMERCE_BASE_URL` must include the final slash '/'.
 
 ## Authentication
 

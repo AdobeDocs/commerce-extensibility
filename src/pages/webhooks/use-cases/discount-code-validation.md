@@ -24,7 +24,7 @@ A merchant uses a third-party extension to create and manage discount codes. Whe
 
 <CodeBlock slots="heading, code" repeat="2" languages="JSON, JSON" />
 
-### Default payload
+#### Default payload
 
 ```json
 {
@@ -33,7 +33,7 @@ A merchant uses a third-party extension to create and manage discount codes. Whe
 }
 ```
 
-### Configured payload
+#### Configured payload
 
 ```json
 {
@@ -48,11 +48,11 @@ A merchant uses a third-party extension to create and manage discount codes. Whe
 
 <TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" />
 
-### webhook.xml (PaaS)
+#### webhook.xml (PaaS)
 
 <ConfigXml/>
 
-### Admin (SaaS)
+#### Admin (SaaS)
 
 <ConfigAdmin/>
 

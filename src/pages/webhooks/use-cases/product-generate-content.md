@@ -22,7 +22,7 @@ The following `observer.catalog_product_save_after` payload was obtained from ex
 
 <CodeBlock slots="heading, code" repeat="2" languages="JSON, JSON" />
 
-### Default payload
+#### Default payload
 
 ```json
 {
@@ -62,7 +62,7 @@ The following `observer.catalog_product_save_after` payload was obtained from ex
 }
 ```
 
-### Configured payload
+#### Configured payload
 
 ```json
 {
@@ -81,11 +81,11 @@ The following configuration contains rules to call the third-party endpoint only
 
 <TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" />
 
-### webhook.xml (PaaS)
+#### webhook.xml (PaaS)
 
 <ConfigXml/>
 
-### Admin (SaaS)
+#### Admin (SaaS)
 
 <ConfigAdmin/>
 

@@ -14,9 +14,9 @@ When a customer signs in and adds a new address, the address must be converted t
 
 ## Webhook name
 
-&#8203;<Edition name="paas" /> plugin.magento.customer.api.address_repository.save
+&#8203;<Edition name="paas" /> `plugin.magento.customer.api.address_repository.save`
 
-&#8203;<Edition name="saas" /> plugin.customer.api.address_repository.save
+&#8203;<Edition name="saas" /> `plugin.customer.api.address_repository.save`
 
 ## Payloads
 
@@ -60,11 +60,11 @@ The entirety of the `address` object in the payload will be sent to the configur
 
 <TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" />
 
-### webhook.xml (PaaS)
+#### webhook.xml (PaaS)
 
 <ConfigXml/>
 
-### Admin (SaaS)
+#### Admin (SaaS)
 
 <ConfigAdmin/>
 

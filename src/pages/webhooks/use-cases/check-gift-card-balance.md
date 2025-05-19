@@ -16,15 +16,15 @@ This use case runs with a webhook of type `after`.
 
 ## Webhook name
 
-&#8203;<Edition name="paas" /> plugin.magento.gift_card_account.api.gift_card_account_management.check_gift_card
+&#8203;<Edition name="paas" /> `plugin.magento.gift_card_account.api.gift_card_account_management.check_gift_card`
 
-&#8203;<Edition name="saas" /> plugin.gift_card_account.api.gift_card_account_management.check_gift_card
+&#8203;<Edition name="saas" /> `plugin.gift_card_account.api.gift_card_account_management.check_gift_card`
 
 ## Payloads
 
 <CodeBlock slots="heading, code" repeat="2" languages="JSON, JSON" />
 
-### Default payload
+#### Default payload
 
 ```json
 {
@@ -34,7 +34,7 @@ This use case runs with a webhook of type `after`.
 }
 ```
 
-### Configured payload
+#### Configured payload
 
 ```json
 {
@@ -46,11 +46,11 @@ This use case runs with a webhook of type `after`.
 
 <TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" />
 
-### webhook.xml (PaaS)
+#### webhook.xml (PaaS)
 
 <ConfigXml/>
 
-### Admin (SaaS)
+#### Admin (SaaS)
 
 <ConfigAdmin/>
 

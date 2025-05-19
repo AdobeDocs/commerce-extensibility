@@ -22,7 +22,7 @@ In this example, Commerce calls a third-party gift card provider to validate the
 
 <CodeBlock slots="heading, code" repeat="2" languages="JSON, JSON" />
 
-### Default payload
+#### Default payload
 
 ```json
 {
@@ -38,7 +38,7 @@ In this example, Commerce calls a third-party gift card provider to validate the
 }
 ```
 
-### Configured payload
+#### Configured payload
 
 ```json
 {
@@ -53,11 +53,11 @@ In this example, Commerce calls a third-party gift card provider to validate the
 
 <TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" />
 
-### webhook.xml (PaaS)
+#### webhook.xml (PaaS)
 
 <ConfigXml/>
 
-### Admin (SaaS)
+#### Admin (SaaS)
 
 <ConfigAdmin/>
 

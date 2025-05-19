@@ -22,7 +22,7 @@ The following `observer.sales_quote_item_set_product` default payload was obtain
 
 <CodeBlock slots="heading, code" repeat="2" languages="JSON, JSON" />
 
-### Default payload
+#### Default payload
 
 ```json
 {
@@ -66,7 +66,7 @@ The following `observer.sales_quote_item_set_product` default payload was obtain
 }
 ```
 
-### Configured payload
+#### Configured payload
 
 ```json
 {
@@ -82,11 +82,11 @@ The following `observer.sales_quote_item_set_product` default payload was obtain
 
 <TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" />
 
-### webhook.xml (PaaS)
+#### webhook.xml (PaaS)
 
 <ConfigXml/>
 
-### Admin (SaaS)
+#### Admin (SaaS)
 
 <ConfigAdmin/>
 

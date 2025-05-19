@@ -12,7 +12,7 @@ This page explores different use cases and scenarios for implementing tax integr
 
 For more general use cases, refer to [use-cases](./use-cases.md).
 
-## Tax management: Collect taxes
+## Collect taxes
 
 You can calculate and apply taxes on shopping carts during checkout by using the `collectTaxes` webhook. See [webhooks](../../webhooks/index.md) to understand and setup a webhook.
 
@@ -28,7 +28,7 @@ The following example demonstrates how to add a webhook to the `plugin.magento.o
             <batch name="collect_taxes">
                 <hook
                     name="collect_taxes"
-                    url="https://<yourappbuilder>.runtime.adobe.io/api/v1/web/commerce-checkout-starter-kit/tax-calculation"
+                    url="https://<your_app_builder>.runtime.adobe.io/api/v1/web/commerce-checkout-starter-kit/tax-calculation"
                     method="POST" timeout="10000" softTimeout="2000"
                     priority="300" required="true" fallbackErrorMessage="Tax calculation failed. Please try again later."
                     ttl="0"
@@ -168,7 +168,7 @@ The key points for constructing the response are:
 ]
 ```
 
-## Tax management: Update custom attributes on tax classes via Admin UI
+## Update custom attributes on tax classes via Admin UI
 
 The out-of-process tax module allows you to add custom attributes to tax classes. These attributes are useful when integrating with third-party tax systems that require standardized identifiers or additional metadata.  
 For the relevant endpoints to update tax class custom attributes, see the [Tax API reference](./tax-reference.md).

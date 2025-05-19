@@ -33,7 +33,7 @@ The following example demonstrates how to add a webhook to the `plugin.magento.o
     <method name="plugin.magento.out_of_process_shipping_methods.api.shipping_rate_repository.get_rates" type="after">
         <hooks>
             <batch name="dps">
-                <hook name="add_shipping_rates_dps" url="https://<yourappbuilder>.runtime.adobe.io/api/v1/web/commerce-checkout-starter-kit/shipping-methods" method="POST" timeout="5000" softTimeout="1000" priority="100" required="true">
+                <hook name="add_shipping_rates_dps" url="https://<your_app_builder>.runtime.adobe.io/api/v1/web/commerce-checkout-starter-kit/shipping-methods" method="POST" timeout="5000" softTimeout="1000" priority="100" required="true">
                     <fields>
                         <field name="rateRequest" />
                     </fields>
@@ -46,13 +46,7 @@ The following example demonstrates how to add a webhook to the `plugin.magento.o
 
 You can register multiple webhooks for different shipping methods or shipping carriers by adding them into the same batch to ensure they are executed in parallel or create multiple batches to execute them sequentially.
 
-## Remove shipping method
-
-The `plugin.magento.out_of_process_shipping_methods.api.shipping_rate_repository.get_rates` webhook allows you to remove specific shipping methods from the list of available options.
-
-If you use the `flatrate` shipping method, but want to disable it, you must update your webhook response to mark the shipping method as removed. This example is demonstrated in [`actions/shipping-methods.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/shipping-methods/index.js).
-
-## Shipping methods: Payload
+### Payload
 
 The request payload contains information about all items in the cart, including product information, product attributes, shipping address, and customer information for logged-in customers.
 
@@ -130,7 +124,7 @@ Payload example:
 
 You can find examples of how to use shipping addresses, customer data, and product attributes in your App Builder application in [`actions/shipping-methods.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/shipping-methods/index.js).
 
-## Shipping methods: GraphQL
+### GraphQL
 
 In the [`setShippingAddressesOnCart` mutation](https://developer.adobe.com/commerce/webapi/graphql/schema/cart/mutations/set-shipping-address/), available shipping methods that are returned by the webhook are appended to the `available_shipping_methods` field.
 
@@ -271,3 +265,9 @@ In the [`setShippingMethodsOnCart` mutation](https://developer.adobe.com/commerc
   }
 }
 ```
+
+## Remove shipping method
+
+The `plugin.magento.out_of_process_shipping_methods.api.shipping_rate_repository.get_rates` webhook allows you to remove specific shipping methods from the list of available options.
+
+If you use the `flatrate` shipping method, but want to disable it, you must update your webhook response to mark the shipping method as removed. This example is demonstrated in [`actions/shipping-methods.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/shipping-methods/index.js).

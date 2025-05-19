@@ -11,13 +11,13 @@ keywords:
  - Tools
 ---
 
-import integration from '/src/_includes/integration.md'
+import Integration from '/src/_includes/integration.md'
 
 # Expose Commerce data
 
 This runtime action is responsible for notifying the external backoffice application when an `<object>` is created, updated, or deleted in Adobe Commerce.
 
-<integration />
+<Integration />
 
 ## Incoming event payload
 

@@ -12,7 +12,7 @@ This page explores different use cases and scenarios for implementing payment me
 
 For more general use cases, refer to [use-cases](./use-cases.md).
 
-## Payment flow: Get order details from Adobe Commerce using the masked cart ID
+## Get order details from Adobe Commerce using the masked cart ID
 
 The following steps demonstrate the payment flow:
 
@@ -24,7 +24,7 @@ The following steps demonstrate the payment flow:
 
 ![sequence.png](../../_images/starterkit/sequence.png)
 
-## Payment methods: Validate payment info
+## Validate payment info
 
 To perform a headless checkout and payment, the Commerce instance must ensure that the payment has succeeded and the order can be placed.
 
@@ -126,7 +126,7 @@ To enhance security, enable webhook signature generation by following the [webho
 
 Refer to [`actions/validate-payment.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/validate-payment/index.js) for an example of how to validate the payment according to the payment gateway needs.
 
-## Payment methods: Filter out payment method
+## Filter out payment method
 
 In some cases, you may want to filter out a payment method based on the cart details or the customer's information. For example, you may want to disable a payment method based on customer group or product attributes in the cart.
 

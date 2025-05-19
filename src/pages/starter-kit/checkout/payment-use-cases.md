@@ -94,7 +94,7 @@ The following example demonstrates how to add a webhook to the [`observer.sales_
 ```
 
 &#8203;<Edition name="saas" />
-For Adobe Commerce as a Cloud Service, you can [create webhook in the Admin](../../webhooks/create-webhooks.md).
+For Adobe Commerce as a Cloud Service, you can [create webhooks in the Admin](../../webhooks/create-webhooks.md).
 
 ```yaml
 Hook Settings

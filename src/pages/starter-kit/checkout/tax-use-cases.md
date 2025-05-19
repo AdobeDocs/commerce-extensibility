@@ -12,7 +12,7 @@ This page explores different use cases and scenarios for implementing tax integr
 
 For more general use cases, refer to [use-cases](./use-cases.md).
 
-## Collect taxes 
+## Collect taxes
 
 You can calculate and apply taxes on shopping carts during checkout by using the `collectTaxes` webhook. See [webhooks](../../webhooks/index.md) to understand and setup a webhook.
 

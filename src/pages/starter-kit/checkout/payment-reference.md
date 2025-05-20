@@ -23,9 +23,11 @@ The raw Payment REST API schema is available [here](/payment.xml).
 | `/V1/oope_payment_method/:code` | GET        | Retrieve an out-of-process payment method by its code. |
 | `/V1/oope_payment_method`       | GET        | List all available out-of-process payment methods.     |
 
-### Create a new payment method
+### Create or update a payment method
 
-The POST `/V1/oope_payment_method/` creates an out-of-process payment method in the Adobe Commerce instance.
+The POST `/V1/oope_payment_method/` creates or updates an out-of-process payment method in the Adobe Commerce instance.
+The `code` parameter is used to identify the payment method. If a payment method with the same `code` already exists,
+it will be updated; otherwise, a new payment method will be created.
 
 **Payload parameters:**
 

@@ -126,7 +126,7 @@ Payload example:
 }
 ```
 
-The request payload also contains information about the selected shipping method if it was already selected before webhook execution. In case the shipping method is not selected yet, the `selected_shipping_method` field is `null`.
+The request payload also contains information about the selected shipping method, if it was already selected before webhook execution. When no shipping method has been selected yet, the `selected_shipping_method` field is `null`.
 
 You can find examples of how to use shipping addresses, customer data, and product attributes in your App Builder application in [`actions/shipping-methods.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/shipping-methods/index.js).
 

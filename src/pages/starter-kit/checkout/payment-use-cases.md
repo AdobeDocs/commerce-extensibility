@@ -117,7 +117,7 @@ Hook Fields
 
 Hook Rules
 
-  Name: payment_method
+  Name: data.order.payment.method
   Value: <your_payment_method_code>
   Operator: equal
 ```

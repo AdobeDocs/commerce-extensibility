@@ -186,10 +186,6 @@ This section applies to **SaaS** customers only. For **PaaS** customers, see [Cr
 
 If you are running Adobe Commerce 2.4.6 or higher, the modules that enable eventing are installed automatically. Skip to the next step. If you are running Commerce 2.4.4 or 2.4.5, you must install modules to enable eventing, as described in [Install Adobe I/O Events for Adobe Commerce](../../events/installation.md).
 
-<InlineAlert variant="info" slots="text"/>
-
-Using Adobe I/O Events for Commerce `1.12.0` or later will automate some steps of the onboarding process detailed in the following section.
-
 ### Download and configure the starter kit
 
 Use the following steps to download and configure the Adobe Commerce integration starter kit. The starter kit is located in a [public repository](https://github.com/adobe/commerce-integration-starter-kit).
@@ -214,6 +210,12 @@ Use the following steps to download and configure the Adobe Commerce integration
    COMMERCE_ACCESS_TOKEN=
    COMMERCE_ACCESS_TOKEN_SECRET=
    ```
+   Also set the value for`PROJECT_NAME` in the `.env` file. When multiple applications are involved each having their own event provider, `PROJECT_NAME` is used to distinguish between them during event subscription, ensuring each application subscribes to a same event with a unique alias.
+   ```text
+   PROJECT_NAME=
+   ```
+   * Example: `PROJECT_NAME='test_app'`
+   * Event Subscription - `test_app.observer.catalog_product_save_commit_after`
 
 When configuring the `COMMERCE_BASE_URL` environment variable, the format differs between [PaaS and SaaS](#paas-or-saas):
 

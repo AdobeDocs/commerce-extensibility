@@ -378,7 +378,7 @@ You must configure Commerce to communicate with your project. Configuration incl
 
 **Subscribe to events in Adobe Commerce**
 
-To automatically subscribe to Commerce events using Adobe I/O Events version `1.12.0` or later, run the `commerce-event-subscribe` script in the `scripts/commerce-event-subscribe/config/` directory.
+To automatically subscribe to Commerce events using Adobe I/O Events, run the `commerce-event-subscribe` script in the `scripts/commerce-event-subscribe/config/` directory.
 
 ```bash
 npm run commerce-event-subscribe

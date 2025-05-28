@@ -16,7 +16,7 @@ To begin using the checkout starter kit, ensure that your Adobe Commerce install
 
 You must install or have access to the following prerequisites to develop with the Adobe Commerce checkout starter kit:
 
-- Adobe Commerce as a Cloud Service or Adobe Commerce version `2.4.4` or higher.
+- Adobe Commerce as a Cloud Service or Adobe Commerce version `2.4.5` or higher.
 
 - [Node.js](https://nodejs.org/) version 22. If you have Node Version Manager (`nvm`) installed, you can run the following command to install and use the required version:
 
@@ -40,6 +40,20 @@ composer require "magento/commerce-backend-sdk": ">=3.0"
 ```
 
 ## Initial configuration
+
+### Create an App Builder project
+
+An App Builder project must be created before using the checkout starter kit.
+
+1. Log in to the Adobe Developer Console and select the desired organization from the dropdown menu in the top-right corner.
+
+1. Click **Create new project from template**. If the **Create project from template** option is not displayed, it might be because your request to access App Builder has not yet been approved.
+
+1. Select **App Builder**. The **Set up templated project** page displays.
+
+1. Specify a project title and app name. Make sure the **Include Runtime with each workspace** checkbox is selected. You can optionally create a custom workspace other than the default **Stage** workspace. To create a custom workspace, click **Add Workspace**, and enter a name and description. Click **Save**. The Console creates a project and workspaces.
+
+### Set up your local environment
 
 Use the following steps to configure your local environment:
 
@@ -85,7 +99,7 @@ To install the individual modules, refer to the following topics:
 - [Shipping](./shipping-install.md)
 - [Tax](./tax-install.md)
 
-### Install the Commerce Eventing module (Commerce 2.4.4 and 2.4.5 only)
+### Install the Commerce Eventing module (Commerce 2.4.5 only)
 
 The [Commerce Eventing module](https://developer.adobe.com/commerce/extensibility/events/) is crucial for handling events within Adobe Commerce. The eventing module is installed automatically in Adobe Commerce version `2.4.6` and higher.
 
@@ -101,4 +115,4 @@ To install this module, run the following command using Composer:
 composer update magento/commerce-eventing --with-dependencies
 ```
 
-For Adobe Commerce versions `2.4.4` or `2.4.5`, you must install the Adobe I/O Events for Adobe Commerce module manually. Follow the instructions provided in [Adobe I/O Events installation](https://developer.adobe.com/commerce/extensibility/events/installation/).
+For Adobe Commerce versions `2.4.5`, you must install the Adobe I/O Events for Adobe Commerce module manually. Follow the instructions provided in [Adobe I/O Events installation](https://developer.adobe.com/commerce/extensibility/events/installation/).

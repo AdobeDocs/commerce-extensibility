@@ -216,7 +216,7 @@ Use the following steps to download and configure the Adobe Commerce integration
    ```text
    PROJECT_NAME=
    ```
-   
+
    * Example: `PROJECT_NAME='test_app'`
    * Event Subscription - `test_app.observer.catalog_product_save_commit_after`
 

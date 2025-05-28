@@ -49,9 +49,8 @@ An App Builder project must be created before using the checkout starter kit.
 
 1. Click **Create new project from template**.
 
-<InlineAlert variant="info" slots="text"/>
 
-If the **Create project from template** option is not displayed, your request to access App Builder might not yet be approved.
+  **NOTE**: If the **Create project from template** option is not displayed, your request to access App Builder might not yet be approved.
 
 1. Select **App Builder**. The **Set up templated project** page displays.
 

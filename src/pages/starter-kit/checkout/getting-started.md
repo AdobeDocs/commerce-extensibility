@@ -51,7 +51,7 @@ An App Builder project must be created before using the checkout starter kit.
 
 1. Select **App Builder**. The **Set up templated project** page displays.
 
-1. Specify a project title and app name. Make sure the **Include Runtime with each workspace** checkbox is selected. You can optionally create a custom workspace other than the default **Stage** workspace. To create a custom workspace, click **Add Workspace**, and enter a name and description. Click **Save**. The Console creates a project and workspaces.
+1. Specify a project title and app name. Mark the **Include Runtime with each workspace** checkbox. Optionally, you can create a custom workspace other than the default **Stage** workspace, by clicking **Add Workspace**, and entering a name and description. Click **Save**. The Console creates a project and workspaces.
 
 ### Set up your local environment
 

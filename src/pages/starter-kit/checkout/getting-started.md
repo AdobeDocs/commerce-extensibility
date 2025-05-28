@@ -45,7 +45,7 @@ composer require "magento/commerce-backend-sdk": ">=3.0"
 
 An App Builder project must be created before using the checkout starter kit.
 
-1. Log in to the Adobe Developer Console and select the desired organization from the dropdown menu in the top-right corner.
+1. Log in to the [Adobe Developer Console](developer.adobe.com/console/) and select the desired organization from the dropdown menu in the top-right corner.
 
 1. Click **Create new project from template**. If the **Create project from template** option is not displayed, it might be because your request to access App Builder has not yet been approved.
 

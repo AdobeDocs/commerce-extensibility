@@ -101,18 +101,8 @@ This script must finish running before you deploy the application for event regi
 
 To run the following scripts, you must configure the [Adobe Commerce HTTP Client](./connect.md#connect-to-adobe-commerce).
 
-### create-payment-methods
+Select one of the following modules to learn about the available scripts:
 
-The [`create-payment-methods`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/create-payment-methods.js) script creates payment methods in Adobe Commerce.
-
-It reads the payment methods configuration from the `payment-methods.yaml` file and creates the payment methods in Adobe Commerce.
-
-### create-shipping-carriers
-
-To add shipping methods to the Adobe Commerce instance using webhooks, you must first create shipping carriers.
-
-The [`create-shipping-carriers`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/create-shipping-carriers.js) script creates shipping carriers in Adobe Commerce, by reading the shipping carriers configuration from `shipping-carriers.yaml`.
-
-### get-shipping-carriers
-
-To retrieve shipping carriers from Commerce, use the [`get-shipping-carriers`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/get-shipping-carriers.js) script.
+- [Payment](./payment-install.md#configuration)
+- [Shipping](./shipping-install.md#configuration)
+- [Tax](./tax-install.md#configuration)

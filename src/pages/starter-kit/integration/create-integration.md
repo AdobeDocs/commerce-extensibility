@@ -210,10 +210,13 @@ Use the following steps to download and configure the Adobe Commerce integration
    COMMERCE_ACCESS_TOKEN=
    COMMERCE_ACCESS_TOKEN_SECRET=
    ```
+
    Also set the value for`PROJECT_NAME` in the `.env` file. When multiple applications are involved each having their own event provider, `PROJECT_NAME` is used to distinguish between them during event subscription, ensuring each application subscribes to a same event with a unique alias.
+
    ```text
    PROJECT_NAME=
    ```
+   
    * Example: `PROJECT_NAME='test_app'`
    * Event Subscription - `test_app.observer.catalog_product_save_commit_after`
 

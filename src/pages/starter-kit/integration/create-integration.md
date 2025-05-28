@@ -295,7 +295,9 @@ The Customize Registrations and Events [code sample](https://github.com/adobe/ad
 
 Run the following command to generate the IO Event providers and the registrations for your starter kit project.
 
-IO Event providers and registrations will be configured automatically and your commerce instance can connect to other event providers besides the default Commerce event provider registered in the system configuration if you are using Adobe I/O Events version `1.12.0` or later.
+<InlineAlert variant="info" slots="text"/>
+
+As of version `1.12.0`, your Commerce instance can connect to additional event providers.
 
 ```bash
 npm run onboard

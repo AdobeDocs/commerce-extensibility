@@ -48,7 +48,8 @@ An App Builder project must be created before using the checkout starter kit.
 1. Log in to the [Adobe Developer Console](https://console.adobe.io/) and select the desired organization from the dropdown menu in the top-right corner.
 
 1. Click **Create new project from template**.
-   1. If the **Create project from template** option is not displayed, your request to access App Builder might not yet be approved.
+
+  **NOTE**: If the **Create project from template** option is not displayed, your request to access App Builder might not yet be approved.
 
 1. Select **App Builder**. The **Set up templated project** page displays.
 
@@ -62,11 +63,11 @@ Use the following steps to configure your local environment:
 
 1. Execute the following command to create an Adobe Developer Console project in your organization and using the Commerce checkout starter kit as a template:
 
-```bash
-aio app init --repo adobe/commerce-checkout-starter-kit --github-pat $GITHUB_PAT
-```
-
-Replace `$GITHUB_PAT` with your GitHub personal access token. For more information, refer to [managing your personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens).
+  ```bash
+  aio app init --repo adobe/commerce-checkout-starter-kit --github-pat $GITHUB_PAT
+  ```
+  
+  Replace `$GITHUB_PAT` with your GitHub personal access token. For more information, refer to [managing your personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens).
 
 1. The starter kit requires you to add the following services in the console project:
 
@@ -74,11 +75,11 @@ Replace `$GITHUB_PAT` with your GitHub personal access token. For more informati
    - I/O Events
    - Adobe I/O Events for Adobe Commerce
 
-Execute the following command to add the services by selecting them from the list:
-
-```bash
-aio app add service
-```
+  Execute the following command to add the services by selecting them from the list:
+  
+  ```bash
+  aio app add service
+  ```
 
 1. Copy the environment variables from the [`env.dist`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/env.dist) to a local `.env` file and enter the required values.
 

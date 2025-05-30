@@ -14,6 +14,12 @@ To begin using the payment module with the checkout starter kit, ensure that you
 
 For more ideas on how you can use the payment module, refer to [payment use cases](./payment-use-cases.md).
 
+## Prerequisites
+
+* Adobe Commerce on cloud infrastructure or on premises: 2.4.5+
+* PHP 8.1+
+* Magento Open Source is not supported.
+
 ## Installation
 
 <Version />

@@ -48,7 +48,7 @@ An App Builder project must be created before using the checkout starter kit.
 1. Log in to the [Adobe Developer Console](https://console.adobe.io/) and select the desired organization from the dropdown menu in the top-right corner.
 
 1. Click **Create new project from template**.
-  **NOTE**: If the **Create project from template** option is not displayed, your request to access App Builder might not yet be approved.
+    * If the **Create project from template** option is not displayed, your request to access App Builder might not yet be approved.
 
 1. Select **App Builder**. The **Set up templated project** page displays.
 

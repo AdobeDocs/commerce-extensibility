@@ -16,7 +16,7 @@ For more ideas on how you can use the payment module, refer to [payment use case
 
 ## Prerequisites
 
-* Adobe Commerce on cloud infrastructure or on premises: 2.4.5+
+* Adobe Commerce on cloud infrastructure or on-premises: 2.4.5+
 * PHP 8.1+
 * Magento Open Source is not supported.
 

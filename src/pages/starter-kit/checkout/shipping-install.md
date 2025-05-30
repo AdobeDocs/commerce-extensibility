@@ -17,7 +17,7 @@ For more ideas on how you can use the shipping module, refer to [shipping use ca
 ## Prerequisites
 
 * Adobe Commerce on cloud infrastructure or on premises: 2.4.5+
-* PHP 8.1+
+* PHP 8.2+
 * Magento Open Source is not supported.
 
 ## Installation

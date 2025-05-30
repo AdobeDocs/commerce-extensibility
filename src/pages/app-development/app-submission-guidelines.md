@@ -157,8 +157,8 @@ To facilitate proper testing during review, ensure you provide:
 ### Dependencies and maintenance
 
 - Version management
-  - **Package updates**: Check for up-to-date package versions using `npx npm-check` ("MAJOR UP" label).
-  - **Unused dependency check**: Check for unused dependencies using `npx npm-check` ("NOTUSED?" label).
+  - **Package updates**: Check for up-to-date package versions using `npx npm-check` (`MAJOR UP` label).
+  - **Unused dependency check**: Check for unused dependencies using `npx npm-check` (`NOTUSED?` label).
 
 - Code optimization
   - **Handler cleanup**: Clean up any unused handlers or unused code, such as empty `preProcess` or `transformData` functions.

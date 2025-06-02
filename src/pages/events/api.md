@@ -502,7 +502,7 @@ The `GET /V1/eventing/supportedList` endpoint returns the events supported in Ad
 ]
 ```
 
-The access token used in the request must have access to the Event List resource. See [REST authentication](https://developer.adobe.com/commerce/services/cloud/guides/rest/authentication/) for information on authentication for SaaS.
+The access token used in the request must have access to the `Eventing Framework > Event List` resource. See [REST authentication](https://developer.adobe.com/commerce/services/cloud/guides/rest/authentication/) for information on authentication for SaaS.
 
 **Example usage:**
 

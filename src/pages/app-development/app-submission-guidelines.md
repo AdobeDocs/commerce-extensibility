@@ -5,6 +5,8 @@ keywords:
   - Extensibility
 ---
 
+import Webhook from '/src/_includes/webhook-auth.md'
+
 # App submission guidelines
 
 This page provides a list of requirements and best practices for Adobe Commerce app developers to ensure your app is ready for submission. Following these guidelines will help reduce rejection rates and improve the quality of your app.
@@ -53,16 +55,16 @@ The following requirements must be met for your app to be accepted. If your app 
 ### Security
 
 - Authentication and authorization
-  - **Admin action security**: All admin-supporting actions must use `require-adobe-auth: true` in the action configuration.
-    - This requires that PaaS apps use Admin UI SDK 3.0 or later.
-  - **Webhook protection**: For webhooks, actions need to be protected by [signature verification](https://developer.adobe.com/commerce/extensibility/webhooks/signature-verification/).
+  - **Action security**: All runtime actions must use `require-adobe-auth: true` in the action configuration.
+    - This requires that PaaS apps use Admin UI SDK 3.0 or later. You can add the following to your `composer.json` file to avoid version restrictions:
 
-    ```yaml
-    inputs:
-        COMMERCE_WEBHOOKS_PUBLIC_KEY: $COMMERCE_WEBHOOKS_PUBLIC_KEY
-    annotations:
-        raw-http: true
-    ```
+      ```json
+      "magento/commerce-backend-sdk": "3.0.0 as 2.0.0"
+      ```
+
+  - **Webhook protection**: For webhooks, actions need to be protected by [signature verification](../webhooks/signature-verification.md) or by enabling the use of IMS authentication in your configuration file.
+
+    <Webhook />
 
 - Credential management
   - **Hardcoded secrets**: No hardcoded secrets (account IDs or tokens) in the code or configuration files.
@@ -158,7 +160,7 @@ To facilitate proper testing during review, ensure you provide:
 - Code quality
   - **Unused imports**: Remove any unused `imports` and validate with `npx npm-check`.
   - **Action consistency**: Ensure consistency and correctness in action names and routes.
-  - **SDK migration**: Fully migrate Admin UI SDK 1.x extension points to 2.x if applicable.
+  - **SDK migration**: Fully migrate Admin UI SDK 1.x extension points to 3.x if applicable.
   - **Hardcoded values**: Look for hardcoded values that should be configurable
   - **Duplicated logic**: Avoid duplicating SDK logic unnecessarily, such as OAuth or fetch wrappers.
   - **Action scoping**: All runtime actions must be scoped and documented, if they are exposed as webhooks.

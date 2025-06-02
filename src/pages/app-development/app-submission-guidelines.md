@@ -91,16 +91,13 @@ The following requirements must be met for your app to be accepted. If your app 
 ### Code review
 
 - Code quality
-  - **Unused imports**: Remove any unused `imports` and validate with `npx npm-check`.
-  - **Action consistency**: Ensure consistency and correctness in action names and routes.
-  - **SDK migration**: Fully migrate Admin UI SDK 1.x extension points to 2.x if applicable.
-  - **`state` usage**: Avoid inappropriate use of `state`. Instead, use more modern solutions, such as App Builder's [log forwarding](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/application_logging/logging#forwarding-application-logs) feature.
+  - **`state` usage**: Avoid inappropriate use of `state`. For example, when log forwarding instead of using `state`, use more modern solutions such as App Builder's [log forwarding](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/application_logging/logging#forwarding-application-logs) feature.
   - **Hardcoded values**: Look for hardcoded values that should be configurable
 
 - Commerce compatibility
   - **Multi-flavor support**: Ensure compatibility between commerce flavors (PaaS & SaaS):
-    - IMS Auth instead of OAuth1
-    - Base URL with tenantId and without "rest"
+    - &#8203;<Edition name="saas" /> IMS Auth instead of OAuth1
+    - &#8203;<Edition name="saas" /> Base URL with tenantId and without "rest"
   - **Action scoping**: All runtime actions must be scoped and documented, if they are exposed as webhooks.
 
 ### Dependencies
@@ -113,17 +110,13 @@ The following requirements must be met for your app to be accepted. If your app 
 ### Cleanup and quality assurance
 
 - Code cleanup
-  - **Development artifacts**: Remove `TODO` comments and unused scripts or handlers.
-  - **Test scripts**: Add or remove test scripts in `package.json` based on actual test coverage.
   - **Test suite**: Ensure tests all tests are passing. Run `npm test` to validate.
-  - **Development logs**: Remove unused development logs and console outputs.
 
 ### Configuration
 
 - Configuration best practices
-  - **Package-level inputs**: Use package-level inputs in YAML files instead of repeating environment variables.
-  - **Environment variables**: Avoid structured data in environment variables, unless necessary.
   - **Input validation**: Ensure that all inputs in YAML files are defined as variables in the `.env.dist` file.
+  - **Commerce product**: Define `commerce` as a required product in `app.config.yaml`. See [required products](https://developer.adobe.com/commerce/extensibility/app-development/required-products/) for more information.
 
 ## Best practices
 
@@ -154,6 +147,23 @@ To facilitate proper testing during review, ensure you provide:
 - Test credentials or demo environments (if applicable)
 - Documentation of any third-party service dependencies
 
+### Cleanup and quality assurance
+
+- Code cleanup
+  - **Development artifacts**: Remove `TODO` comments and unused scripts or handlers.
+  - **Test scripts**: Add or remove test scripts in `package.json` based on actual test coverage.
+  - **Development logs**: Remove unused development logs and console outputs.
+
+### Code review
+
+- Code quality
+  - **Unused imports**: Remove any unused `imports` and validate with `npx npm-check`.
+  - **Action consistency**: Ensure consistency and correctness in action names and routes.
+  - **SDK migration**: Fully migrate Admin UI SDK 1.x extension points to 2.x if applicable.
+  - **Hardcoded values**: Look for hardcoded values that should be configurable
+  - **Duplicated logic**: Avoid duplicating SDK logic unnecessarily, such as OAuth or fetch wrappers.
+  - **Action scoping**: All runtime actions must be scoped and documented, if they are exposed as webhooks.
+
 ### Dependencies and maintenance
 
 - Version management
@@ -164,3 +174,9 @@ To facilitate proper testing during review, ensure you provide:
   - **Handler cleanup**: Clean up any unused handlers or unused code, such as empty `preProcess` or `transformData` functions.
   - **Development cleanup**: Remove any unused logs that were during development.
   - **SDK logic**: Avoid duplicating SDK logic unnecessarily, such as OAuth or fetch wrappers.
+
+### Configuration
+
+- Configuration best practices
+  - **Package-level inputs**: Use package-level inputs in YAML files instead of repeating environment variables.
+  - **Environment variables**: Avoid structured data in environment variables, unless necessary.

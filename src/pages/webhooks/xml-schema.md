@@ -96,7 +96,7 @@ A `headers` element is optional and can contain one or more `header` elements. E
 
 ## `fields` and `field` elements
 
-A `fields` element is optional and can contain one or more `field` elements. The `fields` element provides the ability to limit the payload of a webhook to only those fields defined in the individual `field` definitions. [Define the hook body](hooks.md#define-the-hook-body) shows a fully-constructed hook.
+A `fields` element is optional and can contain one or more `field` elements. The `fields` element provides the ability to limit the payload of a webhook to only those fields defined in the individual `field` definitions. [Configure hook contents](./hooks.md) shows a fully-constructed hook.
 
 | Attribute | Type   | Description  | Is required | Default |
 |---|---|---|---|---|

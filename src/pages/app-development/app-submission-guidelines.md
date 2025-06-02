@@ -59,10 +59,9 @@ The following requirements must be met for your app to be accepted. If your app 
 
     ```yaml
     inputs:
-    COMMERCE_WEBHOOKS_PUBLIC_KEY: $COMMERCE_WEBHOOKS_PUBLIC_KEY
+        COMMERCE_WEBHOOKS_PUBLIC_KEY: $COMMERCE_WEBHOOKS_PUBLIC_KEY
     annotations:
-    require-adobe-auth: false
-    raw-http: true
+        raw-http: true
     ```
 
 - Credential management

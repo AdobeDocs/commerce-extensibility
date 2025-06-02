@@ -27,12 +27,10 @@ The resolution of a remote call also determines whether you should implement a w
 
 Use these guidelines to develop your own webhooks:
 
-1. Identify the Adobe Commerce event that triggers a webhook. Adobe Commerce merchants can browse the available events from the Admin by selecting **System** > Events > **Events List** to display the Events list page.
-
-1. Understand the default payload of the corresponding webhook by running the [`bin/magento webhooks:info` command](commands.md#display-the-payload-of-a-webhook).
+1. Identify the Adobe Commerce event that triggers a webhook. In Adobe Commerce Cloud Service (SaaS), you can browse the available events from the Admin by selecting **System** > Webhooks > **Webhooks List**. In Platform as a Service (PaaS) and on-premises environments, you can accomplish this by running the [`bin/magento webhooks:list:all` command](./commands.md#return-a-list-of-supported-webhook-event-names) to return a list of all supported webhooks methods and the [`bin/magento webhooks:info <webhook-name>` command](./commands.md#display-the-payload-of-a-webhook) to return the payload of a specified webhook method.
 
 1. Gather the requirements to make a web call to the external server. This includes the URL, connection information, headers, and the payload the server expects.
 
-1. Create a [`webhooks.xml` file](hooks.md). Review the sample [use cases](./use-cases/index.md) for ideas. Extension developers should place this file in the `etc` directory of their custom module. Merchants who want to implement their own webhooks can define them in the system `app/etc/webhooks.xml` file.
+1. Create your [webhook](hooks.md). Review the sample [use cases](./use-cases/index.md) for ideas. Extension developers should place this file in the `etc` directory of their custom module. Merchants who want to implement their own webhooks can define them in the system `app/etc/webhooks.xml` file.
 
-1. [Test](testing.md) your `webhooks.xml` file and interpret the [response](responses.md).
+1. [Test](testing.md) your webhook and interpret the [response](responses.md).

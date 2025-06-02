@@ -58,7 +58,7 @@ module.exports = [
       path: "/webhooks/hooks.md"
     },
     {
-      title: "Create conditional webhooks",
+      title: "Define conditional webhooks",
       path: "/webhooks/conditional-webhooks.md"
     },
     {

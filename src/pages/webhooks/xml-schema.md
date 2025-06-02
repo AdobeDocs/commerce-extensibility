@@ -1,6 +1,7 @@
 ---
 title: Webhooks configuration reference
 description: Provides reference information for constructing a webhooks.xml file.
+edition: paas
 keywords:
   - Extensibility
 ---

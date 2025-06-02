@@ -50,7 +50,7 @@ module.exports = [
       ]
     },
     {
-      title: "Manage webhooks from the Admin",
+      title: "Create a webhook",
       path: "/webhooks/create-webhooks.md"
     },
     {

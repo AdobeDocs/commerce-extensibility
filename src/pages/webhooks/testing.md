@@ -7,6 +7,22 @@ keywords:
 
 # Testing Webhooks
 
+The Commerce application provides a way to test webhooks before enabling them in production. Adobe Commerce as a Cloud Service (SaaS) developers can test webhooks in the Commerce Admin. In Platform as a Service (PaaS) and on-premises environments, developers use the [`webhooks:dev:run`](commands.md#emulate-webhook-execution) command in development mode to emulate webhook execution locally.
+
+## Testing webhooks in the Admin
+
+<Edition name="saas" />
+
+Click **Select** > **Test Webhook** in the **Action** column for a hook to open a page for testing execution of all hooks configured for the same webhook method and webhook type.
+
+![Test webhook](../_images/webhooks/test-webhook.png)
+
+In the **Request payload** text area, input a webhook request payload in JSON format. After clicking the **Run Webhook** button, a banner will show at the top of the page indicating if webhook execution was successful or if an exception occurred. In the **Resolved payload** section, a JSON object showing the payload returned by the webhook after processing hook response operations is displayed.
+
+## Testing webhooks in development mode
+
+<Edition name="paas" />
+
 Use the [`webhooks:dev:run <webhook-name> <webhook-arguments-payload>`](commands.md#emulate-webhook-execution) command in development mode to test your webhooks locally. It emulates the execution of your registered webhook, which contains a custom payload, without requiring changes to the Commerce application. Run this command after setting the initial webhook payload in a `webhooks.xml` file. Then run the command again any time you make subsequent modifications to the payload until you can confirm that the payload works as expected.
 
 In this example, the `webhooks.xml` file registered the following webhook:
@@ -52,6 +68,8 @@ bin/magento cache:clean webhooks_response
 ```
 
 ## Testing webhook endpoint with self-signed SSL certificate
+
+<Edition name="paas" />
 
 <InlineAlert variant="info" slots="text1" />
 

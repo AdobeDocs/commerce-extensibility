@@ -14,7 +14,8 @@ This guide outlines step-by-step instructions for setting up an App Builder proj
 
 # 2. Step-by-Step Guide and Sample Code
 
-Before we dive into the setup, let’s understand how this integration works end-to-end:
+Before we dive into the setup, let's understand how this integration works end-to-end:
+
 1. Adobe Commerce triggers a webhook when specific events occur.For example, when a new product is added or updated.
 
 1. This webhook sends the event payload (e.g., product name, SKU, price) to an Adobe App Builder runtime action.
@@ -30,7 +31,7 @@ This setup allows you to offload validation and custom logic from the Commerce c
 **Step 1: Create a New Project in Adobe Developer Console**
 
 1. This step is essential because the Adobe Developer Console provides the credentials and configuration needed to deploy your App Builder app and access Adobe services like I/O Runtime and Commerce APIs. Without it, your app cannot authenticate or run in the Adobe ecosystem.
-Follow Step 1: “Check your environment and tools” and Step 2: “Create a new project on Developer Console” from the [Adobe App Builder Getting Started guide](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app) to set up your development environment and project correctly.
+Follow Step 1: "Check your environment and tools" and Step 2: "Create a new project on Developer Console" from the [Adobe App Builder Getting Started guide](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app) to set up your development environment and project correctly.
 
 1. In your stage workspace, click the Add service pop-up menu and select API.
 Add the following services to your workspace. Each service must be added individually. You cannot add multiple services simultaneously.
@@ -40,11 +41,9 @@ Adobe I/O Events for Adobe Commerce
 Click one of these services, such as I/O Management API. Then click Next.
 On the Configure API page, select the OAuth Server-to-Server option and click Save configured API.
 
-
 **Step 2: Set Up Your Local App Builder Environment Using CLI**
 
 After creating your project in the Adobe Developer Console, the next step is to set up your development environment using Adobe I/O CLI tools. This enables you to run your App Builder application locally and deploy it to Stage or Production environments configured in your Developer Console project.
-
 
 **Prerequisites**
 
@@ -52,16 +51,18 @@ Ensure you have the following tools installed:
 Node.js (v16.x or later)
 npm
 VS Code (or any other code editor of your choice)
+
 1. Install Adobe I/O CLI
 
 ``` command to install aio sdk
  npm install -g @adobe/aio-cli
-``` 
+```
 
-1. Follow this step to login via CLI 
+1. Follow this step to login via CLI.
+
 [Sign in from the CLI – Adobe App Builder Getting Started Guide](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first_app/#3-sign-in-from-the-cli)
 
-1. Ensure you’re working in the correct Organization, Project, and Workspace within the Adobe Developer Console through the below command
+1. Ensure you're working in the correct Organization, Project, and Workspace within the Adobe Developer Console through the below command
 
 ``` aio command check current state
 
@@ -75,14 +76,15 @@ You are currently in:
 
 You can verify this by opening the Developer Console and checking the top-right corner, where your organization name and project are displayed. Confirm that you have selected the right project and environment (Stage or Production) that you created in the earlier step.
 
-1. Retrieve the JSON file from the Admin Console by following the steps outlined in the provided this  wiki link [Developer with a Console Config File – Adobe App Builder Guide](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first_app/#421-developer-with-a-console-config-file) You can ignore the remaining steps in the wiki.Note the location of the downloaded json file 
+1. Retrieve the JSON file from the Admin Console by following the steps outlined in the provided this  wiki link [Developer with a Console Config File – Adobe App Builder Guide](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first_app/#421-developer-with-a-console-config-file) You can ignore the remaining steps in the wiki.Note the location of the downloaded json file.
 
 1. Run the following command to initialize your project:
 When prompted, select the correct **Organization** and **Project** .
 Choose a template listed under **Supported by My Org** to ensure compatibility with your environment
 1. Choose All Templates and @adobe/generator-app-events-generic as templates to install, and choose Actions: Deploy Runtime actions for I/O App features, Generic for type of actions to generate, React Spectrum 3 for UI, and provide a name for the action.
 
-```Selections 
+```terminal
+
 ? Select Org: Early Access - Adobe Commerce as a Cloud Service
 ? Select a Project, or press + to create new: webhooktest
 ? What templates do you want to search for? All Templates
@@ -185,10 +187,11 @@ actions         e2e         node_modules        package.json        web-src
 ```
 
 ## B. Implement the Webhook Action
+
 1. Create a new File validateProductName.js under testwebhook folder  under actions folder.
 commappwebhook/actions/testwebhook and add the below code.  
 
-```validateProductName.js
+```js
 const { Core, Events } = require('@adobe/aio-sdk') // Adobe I/O SDK modules
 const { errorResponse, stringParameters, checkMissingRequestInputs } = require('../utils') // Utility functions
 
@@ -224,9 +227,10 @@ async function main(params) {
 
 exports.main = main
 ```
+
 Copy this utils.js under actions/ folder.
 
-``` utils.js
+```js
 /* 
 * <license header>
 */
@@ -365,13 +369,14 @@ module.exports = {
   checkMissingRequestInputs
 }
 ```
+
 ## C. Configure app.config.yaml
 
 You can find this file under project folder commappwebhook/app.config.yaml
 In app.config.yaml, change index.js reference to validateProductName.js
 **Please note its important to specify   web: 'yes' option.**
 
-``` app.config.yaml
+```yaml
 application:
   actions: actions
   web: web-src
@@ -398,7 +403,7 @@ productDependencies:
   
 ## D. Deploy and Test
 
-In the root folder of the project, you’ll find the .env file. Add the following entry to specify your Commerce instance URL:
+In the root folder of the project, you'll find the .env file. Add the following entry to specify your Commerce instance URL:
 
 COMMERCE_BASE_URL=[Base URL of your Commerce instance]
 
@@ -407,17 +412,17 @@ Run the following commands in your project directory:
 npm install – to install all project dependencies
 aio app deploy – to deploy the application to Adobe I/O Runtime
 
-``` aio app deploy output
+```terminal
 prutech@Prutech-ka-MacBook-Pro appbuilderforextensibility % aio app deploy
 ✔ Built 2 action(s) for 'application'
 ✔ Building web assets for 'application'
 ✔ Deployed 1 action(s) for 'application'
 ✔ Deploying web assets for 'application'
 ✔ All static assets for the App Builder application in workspace: application were successfully deployed to the CDN. Files deployed :
-  • 2 HTML page(s)
-  • 2 Javascript file(s)
-  • 3 .map file(s)
-  • 1 CSS file(s)
+  * 2 HTML page(s)
+  * 2 Javascript file(s)
+  * 3 .map file(s)
+  * 1 CSS file(s)
  
 Your deployed actions:
 web actions:
@@ -430,7 +435,8 @@ To view your deployed application in the Experience Cloud shell:
 skipping publish phase...
 Successful deployment 🏄
 ```
-Make a note of the Web Action URL — you’ll need to specify it in the next step within the Commerce configuration.
+
+Make a note of the Web Action URL — you'll need to specify it in the next step within the Commerce configuration.
 
 **Configure Webhooks in Adobe Commerce instance**
 
@@ -454,8 +460,7 @@ Upon saving, the webhook triggers the App Builder code, which validates the prod
 
 As per the App Builder code logic, if the product name does not contain the word "test", the product should save successfully without triggering an error.
 
-
-# 3. Debugging 
+# 3. Debugging
 
 ## A. Debug from Commerce
 
@@ -478,23 +483,24 @@ require-adobe-auth is set to false in your app-config.yaml file under webhook ac
 
 **2. Configuring Debugger**
 
-Create or Edit launch.json 
-in the root project folder, navigate to the .vscode folder. If it doesn’t exist, create .vscode folder. Inside .vscode folder, create or edit the launch.json file.
+Create or Edit launch.json
+in the root project folder, navigate to the .vscode folder. If it doesn't exist, create .vscode folder. Inside .vscode folder, create or edit the launch.json file.
 To configure it quickly, copy and paste the recommended content from the  App builder documentation:
 
  [Debugging with VS Code – Adobe App Builder Guide](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/development#debugging-with-vs-code)
- 
+
  This configuration sets up the VS Code debugger to work seamlessly with Adobe I/O App Builder projects.
 
 **3. Enable Source Maps**
 
 In the root folder of your project , create a file called webpack-config.js with the following content:
 
-```webpack-config.js
+```js
 module.exports = {
     devtool: 'inline-source-map'
   }
-  ```
+```
+
   **4. Rebuild the project**
 
   aio app build
@@ -508,7 +514,8 @@ Debug Actions (or a similar option), then click the Run button (▶️) or press
 ![Debug Action in VS](../_images/webhooks/tutorial/debug-actions-option.png)
 
 Starting the debugger using the App Builder: Debug Action profile should automatically run the app using the aio app dev command. You will see output in the terminal similar to the following:
-```command output
+
+```terminal
 prutech@Prutech-ka-MacBook-Pro commappwebhook % aio app dev
 Debugger attached.
 Building the app...
@@ -526,13 +533,14 @@ non-web actions:
 press CTRL+C to terminate the dev environment
 2025-05-22T06:41:55.969Z [watcher] info: watching action files at /Users/prutech/Documents/projects/devadvocate/appbuilderforextensibility/actions...
 ```
+
 **6. Web Action with a Sample Payload**
 
 Now that your local debugger is running, you can test your web action by sending a request to the local endpoint.
 Use tools like Postman, Post Buster, or any other API client to send a POST request to the above URL with the sample JSON payload.
 https://localhost:9080/api/v1/web/commappwebhook/webhook
 
-``` sample product payload
+```json
 {
   "product": {
     "_edit_mode": true,
@@ -548,11 +556,12 @@ https://localhost:9080/api/v1/web/commappwebhook/webhook
   }
 }
 ```
+
 The request should trigger the web action and hit the breakpoint you set earlier in your code, allowing you to inspect the incoming payload and debug the action logic.
 
 **Test using Curl**
 
-``` curl command output
+```bash
 prutech@Prutech-ka-MacBook-Pro devadvocate % sudo curl --insecure --request POST \
   --url https://localhost:9080/api/v1/web/appbuilderforextensibility/webhook \
   --header 'Content-Type: application/json' \
@@ -569,7 +578,6 @@ prutech@Prutech-ka-MacBook-Pro devadvocate % sudo curl --insecure --request POST
               "tax_class_id": "0",
               "description": "<p>Product 1 description</p>",
               "price": "10.00"
- 
           }
 }
 '
@@ -577,10 +585,11 @@ prutech@Prutech-ka-MacBook-Pro devadvocate % sudo curl --insecure --request POST
 ```
 
 # 4. Development Tips
+
 **1.Accessing the Developer Console**
 
 Ensure you have Developer Access to the Adobe Developer Console. This is required to create and manage projects.
- If you don’t have developer access, your role will be shown as “User” in the top right corner, and a blue box will highlight restricted access.
+ If you don't have developer access, your role will be shown as "User" in the top right corner, and a blue box will highlight restricted access.
 
  To proceed, request Developer Access from your organization admin.
 Below are screenshots showing both restricted and developer access views for quick reference.
@@ -591,26 +600,28 @@ Below are screenshots showing both restricted and developer access views for qui
 
 **2. Redeploying Changes**
 
-If you’ve made changes to the action code and they’re not reflecting, run:
-``` aio command
+If you've made changes to the action code and they're not reflecting, run:
+
+```bash
 aio app deploy --force-build --force-deploy
 ```
 
 This forces a full rebuild and redeployment of your application.
 If you have multiple actions in your project and want to deploy only a specific action you modified, run:
 
-``` aio command
+```bash
 aio app deploy --action=webhook/product-update --force-build --force-deploy
 ```
 
 This rebuilds and redeploys only the specified action.
 
 **3. Retrieving Action URL**
-To get the URL of an action you’ve created, run:
+To get the URL of an action you've created, run:
 
 ``` aio command
 aio runtime action get testwebhook --url
 ```
+
 **4. Webhook-Specific Notes**
 
 1. The command aio app run does not display info, debug, or error logs in the console.
@@ -619,7 +630,7 @@ aio runtime action get testwebhook --url
 
 For detailed webhook logs, navigate to **System** > **Webhook** Logs in the Commerce Admin panel.
 
-1. If there are configuration errors in the webhook setup for this specific use case, when a product is added to the catalog, the Commerce UI will display the message: **“Cannot perform the operation due to an error.”** For instance, if hook fields are configured wrongly, this can occur.
+1. If there are configuration errors in the webhook setup for this specific use case, when a product is added to the catalog, the Commerce UI will display the message: **"Cannot perform the operation due to an error."** For instance, if hook fields are configured wrongly, this can occur.
 To rule out an issue with the App Builder code, you can use the **aio app dev** command to generate the action URL, which should point to localhost. Then test the action code with the payload using Postman, Postbuster, or a curl command. If the action executes successfully outside of Commerce, the issue is likely a configuration error within the Commerce instance.
 
 **5. Appbuilder Configuration Considerations**
@@ -627,5 +638,5 @@ To rule out an issue with the App Builder code, you can use the **aio app dev** 
 If you set **web=no** in **app-config.yaml**, the action will be treated as a non-web action.
 Consequently, when attempting to add and save a product in Commerce, an error will occur, displaying:
 
-**“Cannot perform the operation due to an error.” in the Commerce UI.**
+**"Cannot perform the operation due to an error." in the Commerce UI.**
 So for webhooks, this value in app-config.yaml should always be **web=yes**

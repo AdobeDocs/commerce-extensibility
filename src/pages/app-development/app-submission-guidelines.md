@@ -13,6 +13,10 @@ This page provides a list of requirements and best practices for Adobe Commerce 
 
 The Adobe Commerce App Builder review process evaluates submissions across multiple criteria including documentation quality, security practices, code structure, and functionality.
 
+<InlineAlert variant="info" slots="text"/>
+
+For more general information on the application submission process, refer to the [App Builder distribution documentation](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/distribution).
+
 ## Review process
 
 When you submit your Commerce App Builder extension, our review team will evaluate your submission against the criteria outlined on this page.

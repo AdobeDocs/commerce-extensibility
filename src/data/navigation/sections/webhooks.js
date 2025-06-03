@@ -92,6 +92,10 @@ module.exports = [
     {
       title: "Release notes",
       path: "/webhooks/release-notes.md",
+    },
+    {
+      title: "Tutorial",
+      path: "/webhooks/code-webhooks-appbuilder.md"
     }
   ];
   

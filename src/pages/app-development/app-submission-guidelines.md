@@ -47,7 +47,7 @@ The following requirements must be met for your app to be accepted. If your app 
   - **Sensitive data**: Do not expose credentials or sensitive information in the documentation.
 
 - `README` content quality
-  - **Project-specific language**: Use project-specific language. Avoid generic references to "Adobe" or "starter kit".
+  - **Project-specific language**: Use project-specific language. Avoid generic references to "Adobe", "Magento" or "starter kit".
   - **Configuration details**: Clearly list the app configuration and any third-party service-specific setup steps.
   - **Usage instructions**: Add instructions on how to use the app post-installation.
   - **Professional writing**: Remove any placeholder content and fix any typos.

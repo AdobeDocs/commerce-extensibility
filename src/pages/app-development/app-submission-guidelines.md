@@ -59,7 +59,7 @@ The following requirements must be met for your app to be accepted. If your app 
 ### Security
 
 - Authentication and authorization
-  - **Action security**: All runtime actions must use `require-adobe-auth: true` in the action configuration.
+  - **Action security**: All runtime actions used by webhooks or admin apps must use `require-adobe-auth: true` in the action configuration.
     - This requires that PaaS apps use Admin UI SDK 3.0 or later. You can add the following to your `composer.json` file to avoid version restrictions:
 
       ```json

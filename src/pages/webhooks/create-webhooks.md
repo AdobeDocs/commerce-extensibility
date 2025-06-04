@@ -19,7 +19,7 @@ With this knowledge, you can create a webhook, which defines the following sets 
 
 * The basic definition of the webhook. This includes the webhook name, the event (webhook method) to listen for, the URL to send the HTTP POST request to, timeout settings, fallback error messages, and more.
 
-* Authentication information. In Adobe Commerce Cloud Service (SaaS), you can configure OAuth credentials from the Admin. In Platform as a Service (PaaS) and on-premises environments, you define authentication information within a custom module.
+* Authentication information. In Adobe Commerce Cloud Service (SaaS), you can configure OAuth credentials from the Admin. In Platform as a Service (PaaS) and on-premises environments, you define authentication information in auth headers using env and config variables in the hook headers section or as part as a custom module.
 
 * The definition of one or more hooks. Specify which fields of a webhook method to include in the payload and transform the payload into a format that is compatible with the external system.
 
@@ -27,7 +27,7 @@ With this knowledge, you can create a webhook, which defines the following sets 
 
 * Optional rules that trigger only when certain conditions are met, such as when a string matches a specific value.
 
-In Adobe Commerce Cloud Service, you can create a webhook subscription in the Admin or by using a REST endpoint. (See [Webhooks in Adobe Commerce as a Cloud Service](https://developer.adobe.com/commerce/services/cloud/guides/rest/webhooks/) for details on using REST.) In Platform as a Service (PaaS) and on-premises environments, you must create a custom module that includes a `webhooks.xml` file.
+In Adobe Commerce Cloud Service, you can create a webhook subscription in the Admin or by using a REST endpoint. (See [Webhooks in Adobe Commerce as a Cloud Service](https://developer.adobe.com/commerce/services/cloud/guides/rest/webhooks/) for details on using REST.) In Platform as a Service (PaaS) and on-premises environments, you must create an `app/etc/webhooks.xml` fil3 or create a custom module that includes a `webhooks.xml` file.
 
 ## Define webhook properties
 
@@ -67,7 +67,7 @@ Admin field | XML attribute | Description
 **Batch Order** | `batch.order` | An integer that sets the order in which multiple webhooks are executed. All hooks within a batch are sent in parallel. Therefore, as you add hooks to a batch, keep in mind what task each hook will perform. For example, since the hooks are executed in parallel, you should not place a hook that relies on a response from another hook in the same batch. A default value of 0 is saved if no value is set.
 **Hook Name** | `hook.name` | A name that must be unique within a batch. The name must contain English alphanumeric characters and underscores (_) only.
 **Hook Priority** | `hook.priority` | The priority of the merging hook results in the batch. The priority is treated as 0 if a value is not set.
-**URL** | `hook.url` | The HTTP endpoint to send the request for processing. The hook URL is formed by concatenating an environment variable and a partial path. This practice is useful for developing in different environments, such as those for staging and production, where the hook URLs are different.
+**URL** | `hook.url` | The HTTP endpoint to send the request for processing. The hook URL is formed by concatenating an environment variable and a partial path. This practice is useful for developing in different environments, such as those for staging and production, where the hook URLs are different. For PaaS, the hook URL can optionally be formed using an environment variable and partial path. For SaaS, you specify a full URL without environment variables.
 **Timeout** | `hook.timeout` | A hard timeout limit (milliseconds) for the request. Requests exceeding this timeout are aborted and logged. The default value of 0 indicates there is no timeout limit.
 **Soft timeout** | `hook.softTimeout` | A soft timeout limit (milliseconds) for the request. Requests exceeding this timeout are logged for debugging purposes.
 **Cache TTL** | `hook.ttl` | The cache time-to-live (in seconds) for requests with the same URL, body, and headers. If this attribute is not specified, or if the value set to `0`, the response is not cached.

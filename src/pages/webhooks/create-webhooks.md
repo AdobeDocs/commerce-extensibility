@@ -1,6 +1,6 @@
 ---
 title: Create a webhook 
-description: Learn about managing webhook subscriptions through the Admin in Adobe Commerce Cloud Service.
+description: Learn about managing webhook subscriptions through the Admin in Adobe Commerce as a Cloud Service.
 keywords:
   - Extensibility
 ---
@@ -19,7 +19,7 @@ With this knowledge, you can create a webhook, which defines the following sets 
 
 * The basic definition of the webhook. This includes the webhook name, the event (webhook method) to listen for, the URL to send the HTTP POST request to, timeout settings, fallback error messages, and more.
 
-* Authentication information. In Adobe Commerce Cloud Service (SaaS), you can configure OAuth credentials from the Admin. In Platform as a Service (PaaS) and on-premises environments, you define authentication information in auth headers using env and config variables in the hook headers section or as part as a custom module.
+* Authentication information. In Adobe Commerce as a Cloud Service (SaaS), you can configure OAuth credentials from the Admin. In Platform as a Service (PaaS) and on-premises environments, you define authentication information in auth headers using `env` and `config` variables in the hook headers section or as part as a custom module.
 
 * The definition of one or more hooks. Specify which fields of a webhook method to include in the payload and transform the payload into a format that is compatible with the external system.
 
@@ -27,11 +27,11 @@ With this knowledge, you can create a webhook, which defines the following sets 
 
 * Optional rules that trigger only when certain conditions are met, such as when a string matches a specific value.
 
-In Adobe Commerce Cloud Service, you can create a webhook subscription in the Admin or by using a REST endpoint. (See [Webhooks in Adobe Commerce as a Cloud Service](https://developer.adobe.com/commerce/services/cloud/guides/rest/webhooks/) for details on using REST.) In Platform as a Service (PaaS) and on-premises environments, you must create an `app/etc/webhooks.xml` fil3 or create a custom module that includes a `webhooks.xml` file.
+In Adobe Commerce as a Cloud Service, you can create a webhook subscription in the Admin or by using a REST endpoint. (See [Webhooks in Adobe Commerce as a Cloud Service](https://developer.adobe.com/commerce/services/cloud/guides/rest/webhooks/) for details on using REST.) In Platform as a Service (PaaS) and on-premises environments, you must create an `app/etc/webhooks.xml` file or create a custom module that includes a `webhooks.xml` file.
 
 ## Define webhook properties
 
-Adobe Commerce Cloud Service customers can select **System** > Webhooks > **Webhooks Subscriptions** in the Admin to display the _Webhooks_ grid page.
+Adobe Commerce as a Cloud Service customers can select **System** > Webhooks > **Webhooks Subscriptions** in the Admin to display the _Webhooks_ grid page.
 
 ![Webhooks grid page](../_images/webhooks/webhooks-subscriptions-grid.png)
 
@@ -41,7 +41,7 @@ Click **Add New Webhook** from the grid page to display the form for creating a 
 
 ![New webhook](../_images/webhooks/new-hook-settings.png)
 
-Developers creating apps for PaaS systems create a `webhooks.xml` file in the `etc` directory of their custom module. The XML file has the following structure:
+Developers creating apps for PaaS systems can create a `webhooks.xml` file in the `etc` directory of their custom module. The XML file has the following structure:
 
 ```tree
 |__ config
@@ -118,7 +118,7 @@ The **Hook Headers** configuration panel defines the headers of a webhook reques
 
 Admin field | XML attribute | Description
 --- | --- | ---
-| **Name** | `header.name` | The header name, in the same form as it will be sent. For example, `Authorization`
+| **Name** | `header.name` | The header name, in the same form as it will be sent. For example, `Authorization`.
 **Value** | - | The value of the header, such as `Bearer: <token>`.
 **Active** | - |Set to **No** to remove the header from the request.
 

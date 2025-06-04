@@ -68,7 +68,7 @@ The following example creates and registers a conditional webhook for the event 
 ```yaml
 Hook Settings
 
-Webhook method: observer.catalog_product_save_before
+Webhook method: plugin.magento.tax.api.tax_calculation.calculate_tax
 Webhook type: after
 Batch name: Order_Updates
 Hook name: update_order
@@ -83,11 +83,9 @@ Active: `true`
 Hook Fields
 
 Name: quoteDetails
-Source: quoteDetails
 Active: Yes
 
 Name: storeId
-Source: storeId
 Active: Yes
 
 Hook Rules

@@ -54,7 +54,7 @@ module.exports = [
       path: "/webhooks/create-webhooks.md"
     },
     {
-      title: "Configure hooks",
+      title: "Configure hook contents",
       path: "/webhooks/hooks.md"
     },
     {

@@ -9,7 +9,17 @@ keywords:
 
 The payload for a hook can be large, but in many cases you only need to transmit a few fields to perform the desired operation on the remote server.
 
-Defining the hook requires knowledge of the structure of the original event and the requirements of the remote call. Adobe Commerce Cloud Service (SaaS) developers can view the list supported webhook methods by going to **System** > Webhooks > **Webhooks List** in the Admin. Then click on a webhook method name to display its default contents. PaaS developers can accomplish this by running the [`bin/magento webhooks:list:all` command](./commands.md#return-a-list-of-supported-webhook-event-names) to return a list of all supported webhooks methods and the [`bin/magento webhooks:info <webhook-name>` command](./commands.md#display-the-payload-of-a-webhook) to return the payload of a specified webhook method.
+Defining the hook requires knowledge of the structure of the original event and the requirements of the remote call. You can use the following methods to determine the structure of the original event:
+
+* &#8203;<Edition name="paas" />
+
+   * Run the [`bin/magento webhooks:list:all` command](./commands.md#return-a-list-of-supported-webhook-event-names) to return a list of all supported webhooks methods. Then run the [`bin/magento webhooks:info <webhook-name>` command](./commands.md#display-the-payload-of-a-webhook) to return the payload of the specified webhook method.
+
+* &#8203;<Edition name="saas" />
+
+   * View the list supported webhook methods by going to **System** > Webhooks > **Webhooks List** in the Admin. Then click on a webhook method name to display its default contents.
+
+   * Run the `GET /V1/webhooks/supportedList` [REST endpoint](./api.md#get-supported-webhooks-for-saas).
 
 Imagine that a hypothetical webhook has the following structure:
 
@@ -78,6 +88,7 @@ Meanwhile, your external source probably does not accept data as a `quoteItem` o
     "product": {
         "name": "string",
         "sku": "string",
+        "price": "float",
         "quantity": "float"
     }
 }
@@ -94,6 +105,7 @@ The following example configures the webhook described above.
     <fields>
         <field name='product.name' source='data.product.name' />
         <field name='product.sku' source='data.product.sku' />
+        <field name='product.price' source='data.product.price' />
         <field name='product.quantity' source='data.product.qty' />
     </fields>
 </hook>
@@ -110,6 +122,10 @@ Active: Yes
 
 Name: product.sku
 Source: data.product.sku
+Active: Yes
+
+Name: product.price
+Source: data.product.price
 Active: Yes
 
 Name: product.quantity

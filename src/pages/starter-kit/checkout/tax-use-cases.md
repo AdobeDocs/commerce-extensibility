@@ -231,7 +231,7 @@ If the following is the tax class information where we'll mainly focus on the `c
 Any attributes from the field will be propagated to the `Quote_item` object as shows in the following simplified version of a `quote_item` object:
 
 ```json
-quote_id: 23 created_at: 2025-05-30 11:14:29 updated_at: 2025-06-04 09:07:24 product_id: 3 store_id: 1 parent_item_id: NULL is_virtual: 0 sku: 24-MB03 free_shipping: 0 custom_attributes_serializable: {"itemProduct_code":"item_product_code_updated","product_code_2":"product_quote_item_code_2"}
+{"quote_id: 23 created_at: 2025-05-30 11:14:29 updated_at: 2025-06-04 09:07:24 product_id: 3 store_id: 1 parent_item_id: NULL is_virtual: 0 sku: 24-MB03 free_shipping: 0 custom_attributes_serializable: {"itemProduct_code":"item_product_code_updated","product_code_2":"product_quote_item_code_2"}"}
 ```
 
 And subsequently this information will be propagate to `Order` and `Order_item` level once the order is placed.

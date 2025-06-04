@@ -68,3 +68,36 @@ curl --request GET \
    --url <ADOBE_COMMERCE_URL>/rest/all/V1/webhooks/list \
    --header 'Authorization: Bearer <TOKEN>'
 ```
+
+### Get supported webhooks for SaaS
+
+<Edition name="saas" />
+
+The `GET /V1/webhooks/supportedList` endpoint returns the events supported in Adobe Commerce as a Cloud Service (SaaS). The response body is similar to the following:
+
+```json
+[
+	{
+		"name": "observer.sales_quote_add_item"
+	},
+	{
+		"name": "observer.checkout_cart_product_add_before"
+	},
+	{
+		"name": "observer.catalog_product_save_after"
+	},
+  ...
+]
+```
+
+The access token used in the request must have access to the `Webhooks > Webhooks Management > Webhooks List` resource. See [REST authentication](https://developer.adobe.com/commerce/services/cloud/guides/rest/authentication/) for information on authentication for SaaS.
+
+**Example usage:**
+
+The following cURL command returns a list of all suported webhooks in SaaS.
+
+```bash
+curl --request GET \
+   --url <ADOBE_COMMERCE_SAAS_REST_ENDPOINT>/V1/webhooks/supportedList \
+   --header 'Authorization: Bearer <TOKEN>'
+```

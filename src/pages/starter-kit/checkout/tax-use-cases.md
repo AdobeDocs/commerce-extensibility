@@ -236,5 +236,5 @@ Any attributes from the field will be propagated to the `Quote_item` object as s
 }
 ```
 
-And subsequently this information will be propagate to `Order` and `Order_item` level once the order is placed.
+Once an order is placed, this information will propagate to the `Order` and `Order_item` level.
 

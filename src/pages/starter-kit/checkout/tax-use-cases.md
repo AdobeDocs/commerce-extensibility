@@ -204,8 +204,6 @@ Here's an example payload showing how the custom attributes from tax classes app
   }
 }
 ```
-
-
 ## Propagation of serialized custom attributes from Tax Class entities to Quote/QuoteItem entities
 
 This new feature populates the `custom_attributes` fields of the `Quote` and `Quote_item` entities as following:

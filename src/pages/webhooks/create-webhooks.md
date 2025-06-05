@@ -68,15 +68,15 @@ Admin field | XML attribute | Description
 **Hook Name** | `hook.name` | A name that must be unique within a batch. The name must contain English alphanumeric characters and underscores (_) only.
 **Hook Priority** | `hook.priority` | The priority of the merging hook results in the batch. The priority is treated as 0 if a value is not set.
 **URL** | `hook.url` | The HTTP endpoint to send the request for processing. The hook URL is formed by concatenating an environment variable and a partial path. This practice is useful for developing in different environments, such as those for staging and production, where the hook URLs are different. For PaaS, the hook URL can optionally be formed using an environment variable and partial path. For SaaS, you specify a full URL without environment variables.
-**Timeout** | `hook.timeout` | A hard timeout limit (milliseconds) for the request. Requests exceeding this timeout are aborted and logged. The default value of 0 indicates there is no timeout limit.
-**Soft timeout** | `hook.softTimeout` | A soft timeout limit (milliseconds) for the request. Requests exceeding this timeout are logged for debugging purposes.
+**Timeout** | `hook.timeout` | A hard timeout limit (in milliseconds) for the request. Requests exceeding this timeout are aborted and logged. The default value of 0 indicates there is no timeout limit.
+**Soft timeout** | `hook.softTimeout` | A soft timeout limit (in milliseconds) for the request. Requests exceeding this timeout are logged for debugging purposes.
 **Cache TTL** | `hook.ttl` | The cache time-to-live (in seconds) for requests with the same URL, body, and headers. If this attribute is not specified, or if the value set to `0`, the response is not cached.
 **Fallback error message** | `hook.fallbackErrorMessage` | The error message to display if the hook fails.
 **Required** | `hook.required` | Specifies whether hook execution is required or optional. When set to **Optional** (`false`), if the hook fails to execute, the failure is logged and subsequent hooks continue to be processed. When set to **Required** (`true`), a failure terminates the process.
-**Active** | `hook.remove` | Indicates whether to skip a removed hook during the batch execution.
+**Active** | `hook.remove` | Indicates whether to skip a removed hook during the batch execution. In the Admin, if you set this field to **No**, the hook is skipped. In a `webhooks.xml` file, if you set the value to `true`, the hook is skipped.
 **Method** | `hook.method` | The HTTP method (POST, PUT, GET, or DELETE) used to invoke the hook.
 
-You must define at least one hook field, and you will usually need to define authentication information. You can also optionally define rules that allow the webhook to run when the event payload contains configured values.
+Unless you want to send the entire default payload, unedited, you must define at least one hook field. You will usually need to define authentication information. You can also optionally define rules that allow the webhook to run when the event payload contains configured values.
 
 [Webhooks configuration reference](./xml-schema.md) describes the XML schema in further detail.
 

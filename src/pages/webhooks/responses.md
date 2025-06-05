@@ -12,7 +12,7 @@ Each operation must contain some required fields based on the desired operation.
 
 &#8203;<Edition name="paas" /> Exceptions and notices are logged in the `<installation_directory>/var/log/system.log` file.
 
-&#8203;<Edition name="saas" /> On the Webhooks Subscriptions page, click **Select** > **Show Logs** in the **Action** column to display a new page that displays logging activity for a specific webhook. The grid resembles the [Webhook Logs grid](./responses.md#database-logging), but displays activity for the one specific hook only.
+&#8203;<Edition name="saas" /> On the Webhooks Subscriptions page, click **Select** > **Show Logs** in the **Action** column to display a new page that displays logging activity for that webhook. The grid resembles the [Webhook Logs grid](./responses.md#database-logging), but displays activity for the selected hook only.
 
 ## Responses
 

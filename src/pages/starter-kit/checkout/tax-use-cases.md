@@ -208,8 +208,8 @@ Here's an example payload showing how the custom attributes from tax classes app
 
 This new feature populates the `custom_attributes` fields of the `Quote` and `Quote_item` entities as following:
 
-- `Quote`: Any serialized custom attributes from the customer tax class are populated into the `custom_attributes` field of this `Quote` object.
-- `Quote_item`: Any serialized custom attributes from the tax class of the product assocaited to an item` are set as `custom_attributes` of this `Quote_item` object.
+- `Quote` - Any serialized custom attributes from the customer tax class are populated into the `custom_attributes` field of this `Quote` object.
+- `Quote_item` - Any serialized custom attributes from the tax class of the product associated to an item are set as `custom_attributes` of this `Quote_item` object.
 
 Once `custom_attributes` are populated, these are subsequently propagated to the `Order` and `Order_item` entities as per correspondance.
 

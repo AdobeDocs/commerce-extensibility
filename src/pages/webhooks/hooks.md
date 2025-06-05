@@ -19,7 +19,7 @@ Defining the hook requires knowledge of the structure of the original event and 
 
    * View the list supported webhook methods by going to **System** > Webhooks > **Webhooks List** in the Admin. Then click on a webhook method name to display its default contents.
 
-   * Run the `GET /V1/webhooks/supportedList` [REST endpoint](./api.md#get-supported-webhooks-for-saas).
+   * Call the `GET /V1/webhooks/supportedList` [REST endpoint](./api.md#get-supported-webhooks-for-saas).
 
 Imagine that a hypothetical webhook has the following structure:
 
@@ -103,10 +103,10 @@ The following example configures the webhook described above.
 ```xml
 <hook name="validate_stock" url="https://example.com/product-validate-stock" timeout="2000" softTimeout="200" required="true" fallbackErrorMessage="Can't add the product to the cart right now">
     <fields>
-        <field name='product.name' source='data.product.name' />
-        <field name='product.sku' source='data.product.sku' />
-        <field name='product.price' source='data.product.price' />
-        <field name='product.quantity' source='data.product.qty' />
+        <field name='product.name' source='data.quoteItem.name' />
+        <field name='product.sku' source='data.quoteItem.sku' />
+        <field name='product.price' source='data.quoteItem.price' />
+        <field name='product.quantity' source='data.quoteItem.qty' />
     </fields>
 </hook>
 ```
@@ -117,19 +117,19 @@ The following example configures the webhook described above.
 Hook Fields
 
 Name: product.name
-Source: data.product.name
+Source: data.quoteItem.name
 Active: Yes
 
 Name: product.sku
-Source: data.product.sku
+Source: data.quoteItem.sku
 Active: Yes
 
 Name: product.price
-Source: data.product.price
+Source: data.quoteItem.price
 Active: Yes
 
 Name: product.quantity
-Source: data.product.qty
+Source: data.quoteItem.qty
 Active: Yes
 ```
 

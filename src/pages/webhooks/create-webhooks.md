@@ -41,7 +41,7 @@ Click **Add New Webhook** from the grid page to display the form for creating a 
 
 ![New webhook](../_images/webhooks/new-hook-settings.png)
 
-Developers creating apps for PaaS systems can create a `webhooks.xml` file in the `etc` directory of their custom module. The XML file has the following structure:
+On PaaS systems, you can create a `webhooks.xml` file in the `etc` directory of a custom module or in the Commerce `app/etc/webhooks.xml` file. The XML file has the following structure:
 
 ```tree
 |__ config
@@ -120,7 +120,7 @@ Admin field | XML attribute | Description
 --- | --- | ---
 | **Name** | `header.name` | The header name, in the same form as it will be sent. For example, `Authorization`.
 **Value** | - | The value of the header, such as `Bearer: <token>`.
-**Active** | - |Set to **No** to remove the header from the request.
+**Active** | header.remove | Set to **No** (SaaS) or `true` (PaaS) to remove the header from the request.
 
 The `x-adobe-commerce-request-id` is added automatically to each request and is used to track the request in the system. You can filter logs by this ID to find all logs related to a specific request.
 
@@ -128,7 +128,7 @@ The `x-adobe-commerce-request-id` is added automatically to each request and is 
 
 Secrets and other sensitive data should not be stored in the `webhooks.xml` file. Instead, use environment or configuration variables to relay this information.
 
-### Dynamic header resolvers
+#### Dynamic header resolvers
 
 <Edition name="paas" />
 
@@ -180,9 +180,9 @@ Point to the `AddProductToCartResolver` class in the `header.resolver` attribute
 
 The **Hook Rules** configuration panel or `rules` element allows you to define rules that trigger a webhook when certain conditions are met. [Create conditional webhooks](./conditional-webhooks.md) describes how to configure hook rules.
 
-Field | Description
---- | ---
-**Field** | The event field to be evaluated. For nested fields, use the dot-separated format, such as `data.order.product.id`.
-**Value** | The value to be compared.
-**Operator** | Defines which comparison operator to use. Examples include `equal`, `notEqual`, and `regex`.
-**Active** | Set to **No** to remove the rule from the request.
+Admin field | XML attribute | Description
+--- | --- | ---
+**Field** | `rule.field` | The event field to be evaluated. For nested fields, use the dot-separated format, such as `data.order.product.id`.
+**Value** | `rule.value` | The value to be compared.
+**Operator** | `rule.operator` | Defines which comparison operator to use. Examples include `equal`, `notEqual`, and `regex`.
+**Active** | `rule.remove` | Set to **No** (SaaS) or `true` (PaaS) to remove the rule from the request.

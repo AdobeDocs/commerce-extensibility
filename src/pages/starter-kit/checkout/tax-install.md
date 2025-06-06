@@ -16,8 +16,8 @@ For more ideas on how you can use the tax module, refer to [tax use cases](./tax
 
 ## Prerequisites
 
-* Adobe Commerce on cloud infrastructure or on-premises: 2.4.6+
-* PHP 8.2+
+* Adobe Commerce on cloud infrastructure or on-premises: 2.4.5+
+* PHP 8.1+
 * Magento Open Source is not supported.
 
 ## Installation
@@ -27,8 +27,14 @@ For more ideas on how you can use the tax module, refer to [tax use cases](./tax
 To enable out-of-process tax management in Adobe Commerce, install the `magento/module-out-of-process-tax-management` module using the following command:
 
 ```bash
- composer require magento/module-out-of-process-tax-management --with-dependencies
+composer require magento/module-out-of-process-tax-management --with-dependencies
 ```
+
+For Adobe Commerce version 2.4.5, run the following command if you encounter any issues during `magento setup:install` process:
+
+```bash
+magento setup:di:compile
+````
 
 ## Configuration
 

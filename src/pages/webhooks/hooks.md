@@ -1,102 +1,27 @@
 ---
-title: Configure hooks
+title: Configure hook contents
 description: Learn how to configure hooks.
 keywords:
   - Extensibility
 ---
 
-# Configure hooks
-
-A hook defines a request to a remote server. The `hook` element of the `webhooks.xml` file describes the communication parameters, including the URL of the remote service to execute, HTTP method, and timeout information. Additional configuration occurs within the `headers` and `fields` elements. Each individual `header` element defines an HTTP header key/value pair, while the individual `field` elements define what data is transmitted to the external server.
-
-The [webhook configuration reference](xml-schema.md) describes each element in detail.
-
-## Define the connection
-
-The following hook definition includes the hook name, the destination URL, and timeout information. The `fallbackErrorMessage` will be written to the error log and can be displayed on the storefront.
-
-```xml
-<hook name="validate_stock" url="{env:APP_VALIDATE_STOCK_URL}/product-validate-stock"
-timeout="2000" softTimeout="200" fallbackErrorMessage="Can't add the product to the cart right now">`
-```
-
-The hook URL is formed by concatenating the `APP_VALIDATE_STOCK_URL` environment variable and the partial path `/product-validate-stock`. This practice is useful for developing in different environments, such as those for staging and production, where the hook URLs are different.
-
-## Define request headers
-
-You will typically need to send authorization tokens and other connection parameters in the headers of your remote request. Secrets and other sensitive data should not be stored in the `webhooks.xml` file. Instead, use environment or configuration variables to relay this information.
-
-```xml
-<hook name="validate_stock" url="{env:APP_VALIDATE_STOCK_URL}/product-validate-stock" timeout="2000" softTimeout="200" required="true" fallbackErrorMessage="Can't add the product to the cart right now">
-    <headers>
-        <header name="Authorization">Bearer: {env:APP_VALIDATE_STOCK_AUTHORIZATION_TOKEN}</header>
-        <header name="api-key">{config:path/to/api-key}</header>
-    </headers>
-</hook>
-```
-
-The `x-adobe-commerce-request-id` is added automatically to each request and is used to track the request in the system. You can filter logs by this ID to find all logs related to a specific request.
-
-This example defines two headers:
-
-Name | Value
---- | ---
-`Authorization` | `Bearer:` and the value of the `APP_VALIDATE_STOCK_AUTHORIZATION_TOKEN` environment variable.
-`api-key` | Value from the Adobe Commerce configuration to the file containing the key (`path/to/api-key`).
-
-### Dynamic header resolvers
-
-Instead of storing secrets that expire in environment variables, you can create a dynamic header resolver to manage these values. To create your own resolver, define a new class that implements `Magento\AdobeCommerceWebhooks\Model\HeaderResolverInterface`, as shown below.
-
-```php
-<?php
-declare(strict_types=1);
- 
-namespace Magento\WebhookModule\Model;
-
-...
- 
-class AddProductToCartResolver implements HeaderResolverInterface
-{
-    public function __construct(
-        private TokenGenerator $tokenGenerator,
-        private CustomConfig $customConfig,
-    ) {
-    }
- 
-    /**
-     *  Returns an array of custom headers
-     * 
-     * @return array
-     */
-    public function getHeaders(): array
-    {
-        return [
-            'Authorization' => 'Bearer ' . $this->tokenGenerator->getToken(),
-            'Api-key' => $this->customConfig->getApiKey(),
-            'secret-key' => $this->customConfig->getSecretKey(),
-        ];    
-    }
-}
-```
-
-Point to the `AddProductToCartResolver` class in the `header.resolver` attribute.
-
-```xml
-<hook name="validate_stock" url="{env:APP_VALIDATE_STOCK_URL}/product-validate-stock" timeout="2000" softTimeout="200" required="true" fallbackErrorMessage="Can't add the product to the cart right now">
-    <headers>
-        <header resolver="Magento\WebhookModule\Model\AddProductToCartResolver" />
-    </headers>
-</hook>
-```
-
-## Define the hook body
+# Configure hook contents
 
 The payload for a hook can be large, but in many cases you only need to transmit a few fields to perform the desired operation on the remote server.
 
-Defining the hook requires knowledge of the structure of the original event and the requirements of the remote call. You can use the `bin/magento webhooks:info <webhook-name>` [command](./commands.md#display-the-payload-of-a-webhook) to return the default payload of a webhook.
+Defining the hook requires knowledge of the structure of the original event and the requirements of the remote call. You can use the following methods to determine the structure of the original event:
 
-Imagine that the command returned a Commerce webhook with the following structure:
+* &#8203;<Edition name="paas" />
+
+   * Run the [`bin/magento webhooks:list:all` command](./commands.md#return-a-list-of-supported-webhook-event-names) to return a list of all supported webhooks methods. Then run the [`bin/magento webhooks:info <webhook-name>` command](./commands.md#display-the-payload-of-a-webhook) to return the payload of the specified webhook method.
+
+* &#8203;<Edition name="saas" />
+
+   * View the list supported webhook methods by going to **System** > Webhooks > **Webhooks List** in the Admin. Then click on a webhook method name to display its default contents.
+
+   * Call the `GET /V1/webhooks/supportedList` [REST endpoint](./api.md#get-supported-webhooks-for-saas).
+
+Imagine that a hypothetical webhook has the following structure:
 
 ```json
 {
@@ -124,6 +49,51 @@ The webhook contains a top-level `data` object, and a second-level `product` obj
 
 To transmit this object to the remote application, you will need to remove the `data` object from the payload and rename `qty` to `quantity`. The `source` configuration attribute specifies the full path of a Commerce webhook field, while the `name` attribute defines the full path of the field to transmit. If the two values are identical, then you can omit the `source` attribute.
 
+Make sure the webhook method you select contains the information you need. Now, let's look at an actual webhook. If your webhook needs to check product availability when a shopper attempts to add a product to their cart, you could use the `observer.sales_quote_add_item` webhook method as the foundation of your call. The default payload contains the following information:
+
+```json
+{
+    "eventName": "string",
+    "data": {
+        "quoteItem": {
+            "qty_options": "array",
+            "product_type": "string",
+            "real_product_type": "string",
+            "item_id": "int",
+            "sku": "string",
+            "qty": "float",
+            "name": "string",
+            "price": "float",
+            "quote_id": "string",
+            "product_option": {
+                "extension_attributes": "object{}"
+            },
+            "custom_attributes": [
+                {
+                    "attribute_code": "string",
+                    "value": "mixed"
+                }
+            ]
+        }
+    }
+}
+```
+
+At minimum, you need to transmit the `sku` and `qty` fields to check product availability. Other fields, such as `name` and `price`, might also be necessary. However, there are many other fields that contain data that is outside the scope of your call.
+
+Meanwhile, your external source probably does not accept data as a `quoteItem` object. Imagine that your remote application expects a payload with the following structure:
+
+```json
+{
+    "product": {
+        "name": "string",
+        "sku": "string",
+        "price": "float",
+        "quantity": "float"
+    }
+}
+```
+
 The following example configures the webhook described above.
 
 <CodeBlock slots="heading, code" repeat="2" languages="XML, YAML" />
@@ -133,9 +103,10 @@ The following example configures the webhook described above.
 ```xml
 <hook name="validate_stock" url="https://example.com/product-validate-stock" timeout="2000" softTimeout="200" required="true" fallbackErrorMessage="Can't add the product to the cart right now">
     <fields>
-        <field name='product.name' source='data.product.name' />
-        <field name='product.sku' source='data.product.sku' />
-        <field name='product.quantity' source='data.product.qty' />
+        <field name='product.name' source='data.quoteItem.name' />
+        <field name='product.sku' source='data.quoteItem.sku' />
+        <field name='product.price' source='data.quoteItem.price' />
+        <field name='product.quantity' source='data.quoteItem.qty' />
     </fields>
 </hook>
 ```
@@ -146,15 +117,19 @@ The following example configures the webhook described above.
 Hook Fields
 
 Name: product.name
-Source: data.product.name
+Source: data.quoteItem.name
 Active: Yes
 
 Name: product.sku
-Source: data.product.sku
+Source: data.quoteItem.sku
+Active: Yes
+
+Name: product.price
+Source: data.quoteItem.price
 Active: Yes
 
 Name: product.quantity
-Source: data.product.qty
+Source: data.quoteItem.qty
 Active: Yes
 ```
 
@@ -275,7 +250,7 @@ Commerce sends the following object to the remote application:
 
 Some sensitive data, such as passwords, can be sanitized in the webhook payload due to security concerns.
 
-### Field converters
+## Field converters
 
 You can implement a converter class to convert a field to a different data type. For example, Commerce stores order IDs as numeric values. If the hook endpoint expects order IDs to be text values, you must convert the numeric value to a string representation before sending the payload.
 
@@ -292,7 +267,7 @@ A converter class can also convert the value in a hook endpoint response object 
 
 For example, given the above hook field configuration, conversion occurs only if a `replace` response object specifies a path of `data/order/status`. In this case, the `fromExternalFormat` method of the configured converter class will be called to convert the value in the response object.
 
-### Context fields
+## Context fields
 
 You can add to the webhook payload values from the application context:
 
@@ -379,7 +354,7 @@ Supported contexts:
 | `context_http_request`      | Magento\Framework\App\Request\Http                |
 | `context_staging`           | Magento\Staging\Model\VersionManager              |
 
-#### Checkout session context
+### Checkout session context
 
 The `context_checkout_session` context retrieves information about the current checkout session. You can use this context to access the information about the current quote.
 
@@ -427,7 +402,7 @@ This hook sends the following JSON object to the webhook endpoint:
 
 If the quote does not exist in the current session, the values will be set to `null`.
 
-#### Customer session context
+### Customer session context
 
 The `context_customer_session` retrieves information about the current customer session. You can use this context to access the information about the current customer.
 
@@ -475,7 +450,7 @@ This hook sends the following JSON object to the webhook endpoint:
 
 If the customer is not logged in, the values will be set to `null`.
 
-#### Application state context
+### Application state context
 
 The `context_application_state` context retrieves information about the current application state.
 
@@ -515,7 +490,7 @@ The `context_application_state.get_area_code` field returns the area code of the
 
 The `context_application_state.get_mode` field returns the current application mode. The possible values are `default`, `developer`, and `production`.
 
-#### Scope config context
+### Scope config context
 
 The `context_scope_config` context retrieves information from the configuration scope. If your webhook logic depends on a specific configuration value, you can use this context to retrieve the value from the configuration.
 
@@ -557,7 +532,7 @@ This hook sends the following JSON object to the webhook endpoint:
 }
 ```
 
-#### HTTP request context
+### HTTP request context
 
 The `context_http_request` context retrieves information about the current HTTP request.
 
@@ -603,7 +578,7 @@ This hook sends the following JSON object to the webhook endpoint:
 }
 ```
 
-#### Staging context
+### Staging context
 
 The `context_staging` context retrieves information about the current staging version.
 

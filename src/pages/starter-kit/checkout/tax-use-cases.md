@@ -204,3 +204,37 @@ Here's an example payload showing how the custom attributes from tax classes app
   }
 }
 ```
+## Propagate serialized custom attributes
+
+The following example describes how you can populate  the `custom_attributes` fields of the `Quote` and `Quote_item` entities by using custom attributes.
+
+- `Quote` - Any serialized custom attributes from the customer tax class are populated into the `custom_attributes` field of this `Quote` object.
+- `Quote_item` - Any serialized custom attributes from the tax class of the product associated to an item are set as `custom_attributes` of this `Quote_item` object.
+
+Once `custom_attributes` are populated, these are subsequently propagated to the `Order` and `Order_item` entities as per correspondance.
+
+In the case of `Quote_item` currently only serialized custom attributes from the tax class of the `product`are being propagated but there are other types of items as well such as `shipping`or `giftwrap` which will be considered for future enhancements.
+
+### Example
+
+Here's an example of how this looks like in case of a `Quote_item` but it's similar for 'quote':
+
+If the following is the tax class information where we'll mainly focus on the `custom_attributes_serializable` field for now:
+
+```json
+{
+"class_id":"2","class_name":"Taxable Goods UPDATED","class_type":"PRODUCT","custom_attributes_serializable":"{\"itemProduct_code\":\"item_product_code_updated\",\"product_code_2\":\"product_quote_item_code_2\"}"
+}
+
+```
+ 
+Any attributes from the field will be propagated to the `Quote_item` object as shows in the following simplified version of a `quote_item` object:
+
+```json
+{
+"quote_id: 23 created_at: 2025-05-30 11:14:29 updated_at: 2025-06-04 09:07:24 product_id: 3 store_id: 1 parent_item_id: NULL is_virtual: 0 sku: 24-MB03 free_shipping: 0 "custom_attributes_serializable": {"itemProduct_code": "item_product_code_updated","product_code_2": "product_quote_item_code_2"}
+}
+```
+
+Once an order is placed, this information will propagate to the `Order` and `Order_item` level.
+

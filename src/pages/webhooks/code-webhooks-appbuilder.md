@@ -1,15 +1,15 @@
 ---
 title: Extend Adobe Commerce with Webhooks and Adobe App Builder
-description: This guide outlines step-by-step instructions for setting up an App Builder project.
+description: Learn how to set up, build, and troubleshoot Commerce Webhooks integration using App Builder.
 keywords:
   - Extensibility
 noIndex: true
 
 ---
 
-# Extend Adobe Commerce with webhooks and Adobe App Builder
+# Extend Adobe Commerce Webhooks and App Builder
 
-Earlier, adding custom validations or services in Adobe Commerce needed complex in-process code that was hard to manage. Now, with Adobe App Builder, developers can build scalable, event-driven integrations using webhooks and runtime actions. For example, you can use App Builder to validate data like product names in real time through synchronous webhook integrations in Adobe Commerce SaaS (ACCS).
+Earlier, adding custom validations or services in Adobe Commerce needed complex in-process code that was hard to manage. Now, with App Builder, developers can build scalable, event-driven integrations using webhooks and runtime actions. For example, you can use App Builder to validate data like product names in real time through synchronous webhook integrations in Adobe Commerce SaaS (ACCS).
 
 This guide outlines step-by-step instructions for setting up an App Builder project . It covers writing simple action code, configuring webhook subscriptions in Adobe Commerce, debugging App Builder code using a debugger.
 
@@ -30,9 +30,8 @@ This setup allows you to offload validation and custom logic from the Commerce c
 ### Set up the Adobe Developer console and App Builder project locally
 
 #### Create a new project in Adobe Developer Console
-
-1. This step is essential because the Adobe Developer Console provides the credentials and configuration needed to deploy your App Builder app and access Adobe services like I/O Runtime and Commerce APIs. Without it, your app cannot authenticate or run in the Adobe ecosystem.
-Follow Step 1: "Check your environment and tools" and Step 2: "Create a new project on Developer Console" from the [Adobe App Builder Getting Started guide](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app) to set up your development environment and project correctly.
+1. Refer to the  [Adobe App Builder Getting Started guide](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app) and complete Step 1: "Check your environment and tools" and Step 2: "Create a new project on Developer Console" before proceeding.
+These steps are essential because the Adobe Developer Console provides the credentials and configuration required to deploy your App Builder app and access Adobe services like I/O Runtime and Commerce APIs. Without completing these steps, your app will not be able to authenticate or run within the Adobe ecosystem.
 
 1. In your stage workspace, click the Add service pop-up menu and select API.
 Add the following services to your workspace. Each service must be added individually. You cannot add multiple services simultaneously.
@@ -61,10 +60,20 @@ Ensure you have the following tools installed:
    npm install -g @adobe/aio-cli
    ```
 
-1. Follow this step to login via CLI.
+1. Follow this step from the document to login via CLI.
 
 [Sign in from the CLI – Adobe App Builder Getting Started Guide](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first_app/#3-sign-in-from-the-cli)
 
+1. Retrieve the JSON file from the Admin Console by following the steps outlined in the provided this document [Developer with a Console Config File – Adobe App Builder Guide](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first_app/#421-developer-with-a-console-config-file) You can ignore the remaining steps in the document.Note the location of the downloaded json file.
+
+1. Run this command to use the downloaded JSON file for your project.
+```bash
+prutech@Prutech-ka-MacBook-Pro devadvocate % aio app use /Users/prutech/Downloads/webhooktest-1244026-Stage.json
+You are currently in:
+1. Org: Early Access - Adobe Commerce as a Cloud Service
+2. Project: rekevent
+3. Workspace: Stage
+```
 1. Ensure you're working in the correct Organization, Project, and Workspace within the Adobe Developer Console through the below command
 
 ```bash
@@ -77,18 +86,16 @@ You are currently in:
 2. Project: appbuilderforextensibility
 3. Workspace: Stage
 ```
-
-## View registered hooks
-
-You can verify this by opening the Developer Console and checking the top-right corner, where your organization name and project are displayed. Confirm that you have selected the right project and environment (Stage or Production) that you created in the earlier step.
-
-1. Retrieve the JSON file from the Admin Console by following the steps outlined in the provided this  wiki link [Developer with a Console Config File – Adobe App Builder Guide](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first_app/#421-developer-with-a-console-config-file) You can ignore the remaining steps in the wiki.Note the location of the downloaded json file.
+You can verify org and project details by opening the Developer Console and checking the top-right corner, where your organization name and project are displayed. 
 
 1. Run the following command to initialize your project:
-When prompted, select the correct **Organization** and **Project** .
+```bash
+aio app init projectname
+```
+When prompted, select the correct **Organization** and For **Project**, select the one you created earlier using the Developer Console.
 Choose a template listed under **Supported by My Org** to ensure compatibility with your environment.
 
-1. Choose All Templates and @adobe/generator-app-events-generic as templates to install, and choose Actions: Deploy Runtime actions for I/O App features, Generic for type of actions to generate, React Spectrum 3 for UI, and provide a name for the action.
+1. Next choose All Templates and @adobe/generator-app-events-generic as templates to install, and choose Actions: Deploy Runtime actions for I/O App features, Generic for type of actions to generate, React Spectrum 3 for UI, and provide a name for the action.Below is the CLI output showing the configuration steps.
 
 ```terminal
 ? Select Org: Early Access - Adobe Commerce as a Cloud Service
@@ -400,11 +407,6 @@ application:
             annotations:
               require-adobe-auth: false
               final: true
-        
-productDependencies:
-  - code: COMMC
-    minVersion: 2.4.4
-
   ```
   
 ### Deploy and Test
@@ -468,7 +470,7 @@ As per the App Builder code logic, if the product name does not contain the word
 
 ## Debugging
 
-### Debug from Commerce
+### Debug from Commerce ACCS Instance
 
 1. Viewing Logs from the Commerce Side[ACCS Specific]
 Log into your ACCS instance, navigate to Admin UI → **System** → **Webhook Logs**.
@@ -593,6 +595,28 @@ prutech@Prutech-ka-MacBook-Pro devadvocate % sudo curl --insecure --request POST
 
 ## Development tips
 
+### Securing Webhook Communication Using OAuth Credentials
+
+Since the webhook URL is easily accessible, it's important to secure it. The following steps outline recommended best practices for secure communication between App Builder and Adobe Commerce:
+From the **Developer Console**:
+
+1. Navigate to your project and select Stage.
+1. On the left-hand menu, go to Credentials and click on OAuth Server-to-Server.
+1. Here, you will find the Client ID and Organization ID.Click on Retrieve Client Secret and make a note of the Client Secret — this will only be displayed once.
+These credentials will be required in the next step when configuring the integration on the Commerce side.
+
+From the **Commerce side**, navigate to the Admin UI → Webhook Subscriptions and select the webhook you want to configure.
+Expand the Developer Console OAuth section, enable it, and enter the required credentials: Client ID, Client Secret, and Organization ID.
+
+![oAuth Section in Webhooks Subccription](../_images/webhooks/tutorial/developer-console-oauth-commerce.png)
+
+In your App Builder project code, open the app.config.yaml file and set require-adobe-auth to true.
+Then, rebuild and deploy the project using the command:
+```bash
+aio app deploy
+```
+You can now test the webhook from Adobe Commerce by adding a product. The calls will be securely authenticated using the configured OAuth credentials.
+
 ### Access the Developer Console
 
 Ensure you have Developer Access to the Adobe Developer Console. This is required to create and manage projects.
@@ -649,3 +673,5 @@ Consequently, when attempting to add and save a product in Commerce, an error wi
 **"Cannot perform the operation due to an error." in the Commerce UI.**
 
 So for webhooks, this value in `app-config.yaml` should always be **web=yes**
+
+For any queries, feel free to reach out on #app-builder-community.

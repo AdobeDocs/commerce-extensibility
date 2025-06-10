@@ -213,7 +213,7 @@ The out-of-process tax module introduces support for assigning serialized custom
 - **Customer Tax Class > Quote**:  
   When a customer creates a shopping cart, any serialized custom attributes associated with the customer's tax class are copied to the `Quote` entity.
 
-- **Product Tax Class → Quote Item**:  
+- **Product Tax Class > Quote Item**:  
   When a product is added to the cart, serialized custom attributes from the product's tax class are copied to the corresponding `Quote Item`.
 
 This ensures that both the `Quote` and each `Quote Item` contain tax-relevant custom data for further processing or integration.

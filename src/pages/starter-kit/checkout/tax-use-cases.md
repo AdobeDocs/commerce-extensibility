@@ -204,11 +204,9 @@ Here's an example payload showing how the custom attributes from tax classes app
   }
 }
 ```
-## Propagate serialized custom attributes
+## Propagate custom attributes of tax classes
 
-### Tax class custom attributes available in Quote
-
-The `oope-tax-management` module introduces support for assigning serialized custom attributes to tax classes. These attributes are then automatically associated with shopping cart data during cart creation and product addition. This allows for tax-related metadata to be included early in the checkout process and carried forward into subsequent operations.
+The out-of-process tax module introduces support for assigning serialized custom attributes to tax classes. These attributes are then automatically associated with shopping cart data during cart creation and product addition. This allows for tax-related metadata to be included early in the checkout process and carried forward into subsequent operations.
 
 ### How it works
 
@@ -220,15 +218,13 @@ The `oope-tax-management` module introduces support for assigning serialized cus
 
 This ensures that both the `Quote` and each `Quote Item` contain tax-relevant custom data for further processing or integration.
 
----
-
 ### Quote to Order propagation
 
 Once the customer places an order, all serialized custom attributes already present in the `Quote` and `Quote Item` entities are automatically propagated to the `Order` and `Order Item` entities, respectively.
 
-> This behavior was implemented previously as part of the custom attributes module and does not require additional setup from the tax module.
+> This propagation is an existing behavior implemented previously as part of the custom attributes module and does not require additional setup from the tax module.
 
-The purpose of this propagation is to ensure that tax class metadata—initially attached via customer and product associations—is consistently preserved throughout the entire checkout lifecycle. This allows external systems (such as tax calculation services or order analytics platforms) to access the tax class and its serialized custom attributes via:
+The purpose of this propagation is to ensure that tax class metadata—initially attached via customer and product associations—is consistently preserved throughout the entire checkout lifecycle. This allows external systems (such as tax calculation services) to access the tax class and its serialized custom attributes via:
 
 - REST APIs
 - GraphQL queries

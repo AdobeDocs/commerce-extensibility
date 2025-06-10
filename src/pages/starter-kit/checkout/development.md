@@ -88,7 +88,7 @@ For debugging applications created with the starter kit, refer to the [App Build
 
 ## Testing
 
-The testing framework is in [Jest](https://jestjs.io) and execution is based on the [`aio` CLI](https://developer.adobe.com/runtime/docs/guides/tools/cli_install/).
+The testing framework is in [Jest](https://jestjs.io) and execution is based on the [`aio` CLI](https://developer.adobe.com/app-builder/docs/guides/runtime_guides/tools/cli-install).
 
 Run unit tests for the UI and actions:
 

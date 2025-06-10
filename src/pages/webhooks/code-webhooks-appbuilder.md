@@ -1,5 +1,5 @@
 ---
-title: Extend Adobe Commerce with Webhooks and Adobe App Builder
+title: Extend Adobe Commerce with Webhooks and App Builder
 description: Learn how to set up, build, and troubleshoot Commerce Webhooks integration using App Builder.
 keywords:
   - Extensibility
@@ -30,6 +30,7 @@ This setup allows you to offload validation and custom logic from the Commerce c
 ### Set up the Adobe Developer Console and App Builder project locally
 
 #### Create a new project in Adobe Developer Console
+
 1. Refer to the  [Adobe App Builder Getting Started guide](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app) and complete Step 1: "Check your environment and tools" and Step 2: "Create a new project on Developer Console" before proceeding.
 These steps are essential because the Adobe Developer Console provides the credentials and configuration required to deploy your App Builder app and access Adobe services like I/O Runtime and Commerce APIs. Without completing these steps, your app will not be able to authenticate or run within the Adobe ecosystem.
 
@@ -66,14 +67,15 @@ Ensure you have the following tools installed:
 
 1. Retrieve the JSON file from the Admin Console by following the steps outlined in the provided this document [Developer with a Console Config File – Adobe App Builder Guide](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first_app/#421-developer-with-a-console-config-file) You can ignore the remaining steps in the document.Note the location of the downloaded json file.
 
-1. Run this command to use the downloaded JSON file for your project.
-```bash
-prutech@Prutech-ka-MacBook-Pro devadvocate % aio app use /Users/prutech/Downloads/webhooktest-1244026-Stage.json
+1. Run `aio app use /Users/prutech/Downloads/webhooktest-1244026-Stage.json` command to use the downloaded JSON file for your project.
+
+```terminal
 You are currently in:
 1. Org: Early Access - Adobe Commerce as a Cloud Service
 2. Project: rekevent
 3. Workspace: Stage
 ```
+
 1. Ensure you're working in the correct Organization, Project, and Workspace within the Adobe Developer Console through the below command
 
 ```bash
@@ -86,12 +88,15 @@ You are currently in:
 2. Project: appbuilderforextensibility
 3. Workspace: Stage
 ```
-You can verify org and project details by opening the Developer Console and checking the top-right corner, where your organization name and project are displayed. 
+
+You can verify org and project details by opening the Developer Console and checking the top-right corner, where your organization name and project are displayed.
 
 1. Run the following command to initialize your project:
+
 ```bash
 aio app init projectname
 ```
+
 When prompted, select the correct **Organization** and For **Project**, select the one you created earlier using the Developer Console.
 Choose a template listed under **Supported by My Org** to ensure compatibility with your environment.
 
@@ -612,9 +617,11 @@ Expand the Developer Console OAuth section, enable it, and enter the required cr
 
 In your App Builder project code, open the app.config.yaml file and set require-adobe-auth to true.
 Then, rebuild and deploy the project using the command:
+
 ```bash
 aio app deploy
 ```
+
 You can now test the webhook from Adobe Commerce by adding a product. The calls will be securely authenticated using the configured OAuth credentials.
 
 ### Access the Developer Console

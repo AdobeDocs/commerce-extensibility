@@ -27,7 +27,7 @@ Based on the logic, the action returns either a success or an error message.
 1. Adobe Commerce uses this response for example in this case while saving the product
 This setup allows you to offload validation and custom logic from the Commerce codebase to the scalable, serverless infrastructure of Adobe App Builder
 
-### Set up the Adobe Developer console and App Builder project locally
+### Set up the Adobe Developer Console and App Builder project locally
 
 #### Create a new project in Adobe Developer Console
 1. Refer to the  [Adobe App Builder Getting Started guide](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app) and complete Step 1: "Check your environment and tools" and Step 2: "Create a new project on Developer Console" before proceeding.

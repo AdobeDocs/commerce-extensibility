@@ -204,3 +204,29 @@ Here's an example payload showing how the custom attributes from tax classes app
   }
 }
 ```
+
+## Propagate custom attributes of tax classes
+
+The out-of-process tax module introduces support for assigning serialized custom attributes to tax classes. These attributes are then automatically associated with shopping cart data during cart creation and product addition. This allows for tax-related metadata to be included early in the checkout process and carried forward into subsequent operations.
+
+### How it works
+
+- **Customer Tax Class > Quote**:  
+  When a customer creates a shopping cart, any serialized custom attributes associated with the customer's tax class are copied to the `Quote` entity.
+
+- **Product Tax Class > Quote Item**:  
+  When a product is added to the cart, serialized custom attributes from the product's tax class are copied to the corresponding `Quote Item`.
+
+This ensures that both the `Quote` and each `Quote Item` contain tax-relevant custom data for further processing or integration.
+
+### Quote to Order propagation
+
+Once the customer places an order, all serialized custom attributes already present in the `Quote` and `Quote Item` entities are automatically propagated to the `Order` and `Order Item` entities, respectively.
+
+This propagation ensures that tax class metadata—initially attached by customer and product associations—is consistently preserved throughout the entire checkout lifecycle. This allows external systems (such as tax calculation services) to access the tax class and its serialized custom attributes using:
+
+- REST APIs
+- GraphQL queries
+- Event-driven integrations using Adobe Commerce Eventing
+
+This consistency is critical for third-party integrations that rely on tax classification metadata for compliance, reporting, or invoicing purposes.

@@ -204,6 +204,7 @@ Here's an example payload showing how the custom attributes from tax classes app
   }
 }
 ```
+
 ## Propagate custom attributes of tax classes
 
 The out-of-process tax module introduces support for assigning serialized custom attributes to tax classes. These attributes are then automatically associated with shopping cart data during cart creation and product addition. This allows for tax-related metadata to be included early in the checkout process and carried forward into subsequent operations.
@@ -229,4 +230,3 @@ This propagation ensures that tax class metadata—initially attached by custome
 - Event-driven integrations using Adobe Commerce Eventing
 
 This consistency is critical for third-party integrations that rely on tax classification metadata for compliance, reporting, or invoicing purposes.
-

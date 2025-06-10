@@ -50,15 +50,15 @@ module.exports = [
       ]
     },
     {
-      title: "Manage webhooks from the Admin",
+      title: "Create a webhook",
       path: "/webhooks/create-webhooks.md"
     },
     {
-      title: "Configure hooks",
+      title: "Configure hook contents",
       path: "/webhooks/hooks.md"
     },
     {
-      title: "Create conditional webhooks",
+      title: "Define conditional webhooks",
       path: "/webhooks/conditional-webhooks.md"
     },
     {

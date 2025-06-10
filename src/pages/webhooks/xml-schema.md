@@ -1,11 +1,12 @@
 ---
 title: Webhooks configuration reference
 description: Provides reference information for constructing a webhooks.xml file.
+edition: paas
 keywords:
   - Extensibility
 ---
 
-# Webhook configuration reference
+# Webhooks configuration reference
 
 Webhooks are configured in a `webhooks.xml` file. This file can be placed in the system `<install_directory>/app/etc` directory or in the `etc` directory of an enabled Adobe Commerce module.
 
@@ -95,7 +96,7 @@ A `headers` element is optional and can contain one or more `header` elements. E
 
 ## `fields` and `field` elements
 
-A `fields` element is optional and can contain one or more `field` elements. The `fields` element provides the ability to limit the payload of a webhook to only those fields defined in the individual `field` definitions. [Define the hook body](hooks.md#define-the-hook-body) shows a fully-constructed hook.
+A `fields` element is optional and can contain one or more `field` elements. The `fields` element provides the ability to limit the payload of a webhook to only those fields defined in the individual `field` definitions. [Configure hook contents](./hooks.md) shows a fully-constructed hook.
 
 | Attribute | Type   | Description  | Is required | Default |
 |---|---|---|---|---|

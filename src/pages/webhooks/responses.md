@@ -10,7 +10,9 @@ keywords:
 Currently, Adobe Commerce webhooks support responses in JSON format only. The response may be a single operation or an array of operations to be executed afterward.
 Each operation must contain some required fields based on the desired operation.
 
-Exceptions and notices are logged in the `<installation_directory>/var/log/system.log` file.
+&#8203;<Edition name="paas" /> Exceptions and notices are logged in the `<installation_directory>/var/log/system.log` file.
+
+&#8203;<Edition name="saas" /> On the Webhooks Subscriptions page, click **Select** > **Show Logs** in the **Action** column to display a new page that displays logging activity for that webhook. The grid resembles the [Webhook Logs grid](./responses.md#database-logging), but displays activity for the selected hook only.
 
 ## Responses
 

@@ -224,7 +224,7 @@ Once the customer places an order, all serialized custom attributes already pres
 
 > This propagation is an existing behavior implemented previously as part of the custom attributes module and does not require additional setup from the tax module.
 
-The purpose of this propagation is to ensure that tax class metadata—initially attached via customer and product associations—is consistently preserved throughout the entire checkout lifecycle. This allows external systems (such as tax calculation services) to access the tax class and its serialized custom attributes via:
+This propagation ensures that tax class metadata—initially attached by customer and product associations—is consistently preserved throughout the entire checkout lifecycle. This allows external systems (such as tax calculation services) to access the tax class and its serialized custom attributes using:
 
 - REST APIs
 - GraphQL queries

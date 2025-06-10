@@ -222,8 +222,6 @@ This ensures that both the `Quote` and each `Quote Item` contain tax-relevant cu
 
 Once the customer places an order, all serialized custom attributes already present in the `Quote` and `Quote Item` entities are automatically propagated to the `Order` and `Order Item` entities, respectively.
 
-> This propagation is an existing behavior implemented previously as part of the custom attributes module and does not require additional setup from the tax module.
-
 This propagation ensures that tax class metadata—initially attached by customer and product associations—is consistently preserved throughout the entire checkout lifecycle. This allows external systems (such as tax calculation services) to access the tax class and its serialized custom attributes using:
 
 - REST APIs

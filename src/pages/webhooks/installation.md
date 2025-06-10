@@ -1,6 +1,7 @@
 ---
 title: Install Adobe Commerce Webhooks
 description: Learn how to install the Commerce modules needed to implement webhooks.
+edition: paas
 keywords:
   - Extensibility
 ---

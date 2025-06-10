@@ -43,26 +43,30 @@ module.exports = [
         title: "Reference App",
         path: "/app-development/amazon-sales-channel/index.md",
         pages: [
-        {
-            title: "Overview",
-            path: "/app-development/amazon-sales-channel/index.md",
-        },
-        {
-            title: "Prerequisites",
-            path: "/app-development/amazon-sales-channel/prerequisites.md",
-        },
-        {
-            title: "Installation",
-            path: "/app-development/amazon-sales-channel/installation.md",
-        },
-        {
-            title: "Release Notes",
-            path: "/app-development/amazon-sales-channel/release-notes.md"
-        }
-    ]
-  },
-  {
-    title: "Learning path",
-    path: "/app-development/learning-path.md"   
-},
+            {
+                title: "Overview",
+                path: "/app-development/amazon-sales-channel/index.md",
+            },
+            {
+                title: "Prerequisites",
+                path: "/app-development/amazon-sales-channel/prerequisites.md",
+            },
+            {
+                title: "Installation",
+                path: "/app-development/amazon-sales-channel/installation.md",
+            },
+            {
+                title: "Release Notes",
+                path: "/app-development/amazon-sales-channel/release-notes.md"
+            }
+        ]
+    },
+    {
+        title: "App submission guidelines",
+        path: "/app-development/app-submission-guidelines.md"
+    },
+    {
+        title: "Learning path",
+        path: "/app-development/learning-path.md"   
+    },
 ];

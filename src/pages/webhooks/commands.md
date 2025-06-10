@@ -1,6 +1,7 @@
 ---
 title: Webhooks commands
 description: Provides details about the commands needed to use Adobe Commerce webhooks.
+edition: paas
 keywords:
   - Extensibility
 ---

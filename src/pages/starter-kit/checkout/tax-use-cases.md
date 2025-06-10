@@ -228,7 +228,7 @@ The purpose of this propagation is to ensure that tax class metadata—initially
 
 - REST APIs
 - GraphQL queries
-- Event-driven integrations (via Adobe Commerce Eventing)
+- Event-driven integrations using Adobe Commerce Eventing
 
 This consistency is critical for third-party integrations that rely on tax classification metadata for compliance, reporting, or invoicing purposes.
 

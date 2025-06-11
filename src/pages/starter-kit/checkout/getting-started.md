@@ -24,7 +24,7 @@ You must install or have access to the following prerequisites to develop with t
   nvm install 22 && nvm use
   ```
 
-- [Adobe I/O CLI](https://developer.adobe.com/runtime/docs/guides/tools/cli_install/).
+- [Adobe I/O CLI](https://developer.adobe.com/app-builder/docs/guides/runtime_guides/tools/cli-install).
 
 - Access to the [Adobe Developer Console](https://console.adobe.io/) with an App
   Builder license. If you do not have access to the Adobe Developer Console or App Builder, refer to [get access to App Builder](https://developer.adobe.com/app-builder/docs/overview/getting_access/#get-access-to-app-builder).

@@ -18,6 +18,6 @@ For more information on other technologies relevant to this project, see the fol
 
 - Adobe Developer Console [documentation](https://developer.adobe.com/developer-console/docs/guides/)
 - App Builder [documentation](https://developer.adobe.com/app-builder/docs/overview)
-- Adobe I/O Runtime [documentation](https://developer.adobe.com/runtime/docs)
+- Adobe I/O Runtime [documentation](https://developer.adobe.com/runtime)
 - Adobe I/O Events [documentation](https://developer.adobe.com/events/docs)
 - Adobe Commerce extensibility [documentation](https://developer.adobe.com/commerce/extensibility)

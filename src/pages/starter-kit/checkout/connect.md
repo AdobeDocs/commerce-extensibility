@@ -14,16 +14,15 @@ The [`adobe-commerce.js`](https://github.com/adobe/commerce-checkout-starter-kit
 
 To use the Adobe Commerce HTTP Client, update the `COMMERCE_BASE_URL` value in the `.env` file, and complete the authentication setup.
 
-* &#8203;<Edition name="paas" />For PaaS (On-Premise/Cloud):
+- &#8203;<Edition name="paas" />For PaaS (On-Premise/Cloud):
 
-   * `COMMERCE_BASE_URL` includes your base site URL + `/rest/<store_view_code>/`
-   * Example: `https://<commerce_instance_url>/rest/<store_view_code>/`
+  - `COMMERCE_BASE_URL` includes your base site URL + `/rest/<store_view_code>/`
+  - Example: `https://<commerce_instance_url>/rest/<store_view_code>/`
 
-* &#8203;<Edition name="saas" />For SaaS (Adobe Commerce as a Cloud Service):
+- &#8203;<Edition name="saas" />For SaaS (Adobe Commerce as a Cloud Service):
 
-   * `COMMERCE_BASE_URL` must be the REST API endpoint provided by Adobe Commerce
-   * Example: `https://na1.api.commerce.adobe.com/<tenant_id>/`
-
+  - `COMMERCE_BASE_URL` must be the REST API endpoint provided by Adobe Commerce
+  - Example: `https://na1.api.commerce.adobe.com/<tenant_id>/`
 
 ## Authentication
 

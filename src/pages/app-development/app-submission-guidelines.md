@@ -88,11 +88,13 @@ The following requirements must be met for your app to be accepted. If your app 
   - **Package metadata**: Ensure `package.json` is updated with an app-specific `name`, `version`, and `author`.
   - **YAML configuration**: Review `deploy.yaml` and `app.config.yaml` for accurate app IDs, event configs, and scopes.
   - **Commerce product**: Define `commerce` as a required product in `app.config.yaml`. See [required products](https://developer.adobe.com/commerce/extensibility/app-development/required-products/) for more information.
-    ```yaml
-    productDependencies:
-      - code: COMMC
-        minVersion: 2.4.5
-    ```
+
+      ```yaml
+      productDependencies:
+        - code: COMMC
+          minVersion: 2.4.5
+      ```
+    
   - **Events configuration**: Review `events.config.yaml` to verify event providers and registrations, document usage, and prefix events with your app's scope to avoid collisions.
 
 - Project cleanup

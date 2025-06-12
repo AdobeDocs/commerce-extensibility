@@ -152,6 +152,16 @@ To facilitate proper testing during review, ensure you provide:
 - Test credentials or demo environments (if applicable)
 - Documentation of any third-party service dependencies
 
+<InlineAlert variant="help" slots="header, text1, text2, text3" />
+
+Alternative options
+
+In cases where it is not possible to provide test credentials or a demo environment, such as when access restrictions or security concerns apply, consider the following options:
+
+**Option 1**: Coordinate a live demo with the Adobe review team
+
+**Option 2**: Submit a recorded video demonstrating the app's functionality to the Adobe review team
+
 ### Cleanup and quality assurance
 
 - Code cleanup

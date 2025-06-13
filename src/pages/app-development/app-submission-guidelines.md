@@ -87,7 +87,7 @@ The following requirements must be met for your app to be accepted. If your app 
   - **Environment variables**: Provide a clear `.env.dist` file containing all needed keys used by YAML files. Remove any unused keys.
   - **Package metadata**: Ensure `package.json` is updated with an app-specific `name`, `version`, and `author`.
   - **YAML configuration**: Review `deploy.yaml` and `app.config.yaml` for accurate app IDs, event configs, and scopes.
-  - **Commerce product**: Define `commerce` as a required product in `app.config.yaml`. See [required products](https://developer.adobe.com/commerce/extensibility/app-development/required-products/) for more information.
+  - **Commerce product**: Define `commerce` as a required product in `app.config.yaml`. See [required products](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/distribution#required-products) for more information.
 
       ```yaml
       productDependencies:

@@ -45,7 +45,7 @@ Add the following services to your workspace. Each service must be added individ
 
 #### Set up your local App Builder environment using the CLI
 
-After creating your project in the Adobe Developer Console, the next step is to set up your development environment using Adobe I/O CLI tools. This enables you to run your App Builder application locally and deploy it to Stage or Production environments configured in your Developer Console project.
+After creating your project in the Adobe Developer Console, the next step is to set up your development environment using Adobe I/O CLI tools. This enables you to run your App Builder application locally and deploy it to Stage or Production workspaces configured in your Developer Console project.
 
 **Prerequisites:**
 

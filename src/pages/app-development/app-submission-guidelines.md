@@ -45,6 +45,7 @@ The following requirements must be met for your app to be accepted. If your app 
   - **Developer documentation**: Include links to relevant Adobe developer documentation (example: App Builder [getting started guide](https://developer.adobe.com/app-builder/docs/get_started/)).
   - **Environment setup**: Provide a `.env.dist` file with all required environment variables, clearly labeled with guidance.
   - **PaaS support**: Documentation must include installation steps for PaaS merchants. This means if you are submitting an app for Adobe Commerce as a Cloud Service (SaaS), you also need to support Adobe Commerce on cloud infrastructure (PaaS) and Adobe Commerce on-premises (on-prem).
+  - **Action scoping**: All runtime actions must be scoped and documented, if they are exposed as webhooks.
 
 - Security awareness
   - **Screenshot security**: Ensure no screenshots contain access tokens, secrets, or API keys.
@@ -83,10 +84,18 @@ The following requirements must be met for your app to be accepted. If your app 
 ### Project structure
 
 - Configuration files
-  - **Environment variables**: Provide a clear `.env.dist` file containing all needed keys. Remove any unused keys.
-  - **YAML configuration**: Review `deploy.yaml` and `app.config.yaml` for accurate app IDs, event configs, and scopes.
-  - **Commerce product**: Define `commerce` as a required product in `app.config.yaml`. See [required products](https://developer.adobe.com/commerce/extensibility/app-development/required-products/) for more information.
+  - **Environment variables**: Provide a clear `.env.dist` file containing all needed keys used by YAML files. Remove any unused keys.
   - **Package metadata**: Ensure `package.json` is updated with an app-specific `name`, `version`, and `author`.
+  - **YAML configuration**: Review `deploy.yaml` and `app.config.yaml` for accurate app IDs, event configs, and scopes.
+  - **Commerce product**: Define `commerce` as a required product in `app.config.yaml`. See [required products](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/distribution#required-products) for more information.
+
+      ```yaml
+      productDependencies:
+        - code: COMMC
+          minVersion: 2.4.5
+      ```
+
+  - **Events configuration**: Review [`events.config.yaml`](/starter-kit/checkout/configure/#eventsconfigyaml) to verify event providers and registrations, document usage, and prefix events with your app's scope to avoid collisions. Remove this file if your app does not use events.
 
 - Project cleanup
   - **Unused folders**: Remove any unused or unnecessary folders.
@@ -101,27 +110,17 @@ The following requirements must be met for your app to be accepted. If your app 
 
 - Commerce compatibility
   - **Multi-flavor support**: Ensure compatibility between commerce flavors (PaaS & SaaS):
-    - &#8203;<Edition name="saas" /> IMS Auth instead of OAuth1
-    - &#8203;<Edition name="saas" /> Base URL with tenantId and without "rest"
-  - **Action scoping**: All runtime actions must be scoped and documented, if they are exposed as webhooks.
+    - &#8203;<Edition name="saas" /> Use [IMS](/starter-kit/checkout/connect/#adobe-identity-management-service-ims) for authentication instead of [Commerce integrations (OAuth1)](/starter-kit/checkout/connect/#create-a-commerce-integration).
+    - &#8203;<Edition name="saas" /> Configure [the Commerce Base URL](/starter-kit/checkout/connect/) to include tenantId without `/rest`.
 
-### Dependencies
-
-- Dependency management
-  - **Unused dependencies**: Remove any unused dependencies reported by `npx npm-check`.
-  - **Direct dependencies**: Ensure all direct dependencies are declared in `package.json`.
-  - **Version updates**: Update major versions of critical packages.
-
-### Cleanup and quality assurance
-
-- Code cleanup
+- Quality assurance
   - **Test suite**: Ensure tests all tests are passing. Run `npm test` to validate.
 
-### Configuration
+### Dependency management
 
-- Configuration best practices
-  - **Input validation**: Ensure that all inputs in YAML files are defined as variables in the `.env.dist` file.
-  - **Commerce product**: Define `commerce` as a required product in `app.config.yaml`. See [required products](https://developer.adobe.com/commerce/extensibility/app-development/required-products/) for more information.
+- Version management
+  - **Direct dependencies**: Check for missing dependencies using `npx npm-check` (`PKG ERR` label).
+  - **SDK migration**: Fully migrate Admin UI SDK 1.x extension points to 3.x if applicable.
 
 ## Best practices
 
@@ -162,36 +161,24 @@ In cases where it is not possible to provide test credentials or a demo environm
 
 **Option 2**: Submit a recorded video demonstrating the app's functionality to the Adobe review team
 
-### Cleanup and quality assurance
+### Code review
 
 - Code cleanup
   - **Development artifacts**: Remove `TODO` comments and unused scripts or handlers.
   - **Test scripts**: Add or remove test scripts in `package.json` based on actual test coverage.
   - **Development logs**: Remove unused development logs and console outputs.
-
-### Code review
+  - **Handler cleanup**: Clean up any unused handlers or unused code, such as empty `preProcess` or `transformData` functions.
 
 - Code quality
-  - **Unused imports**: Remove any unused `imports` and validate with `npx npm-check`.
   - **Action consistency**: Ensure consistency and correctness in action names and routes.
-  - **SDK migration**: Fully migrate Admin UI SDK 1.x extension points to 3.x if applicable.
-  - **Hardcoded values**: Look for hardcoded values that should be configurable
   - **Duplicated logic**: Avoid duplicating SDK logic unnecessarily, such as OAuth or fetch wrappers.
-  - **Action scoping**: All runtime actions must be scoped and documented, if they are exposed as webhooks.
-
-### Dependencies and maintenance
-
-- Version management
-  - **Package updates**: Check for up-to-date package versions using `npx npm-check` (`MAJOR UP` label).
-  - **Unused dependency check**: Check for unused dependencies using `npx npm-check` (`NOTUSED?` label).
-
-- Code optimization
-  - **Handler cleanup**: Clean up any unused handlers or unused code, such as empty `preProcess` or `transformData` functions.
-  - **Development cleanup**: Remove any unused logs that were during development.
-  - **SDK logic**: Avoid duplicating SDK logic unnecessarily, such as OAuth or fetch wrappers.
-
-### Configuration
 
 - Configuration best practices
   - **Package-level inputs**: Use package-level inputs in YAML files instead of repeating environment variables.
   - **Environment variables**: Avoid structured data in environment variables, unless necessary.
+
+### Dependency management
+
+- Version management
+  - **Package updates**: Check for up-to-date package versions using `npx npm-check` (`MAJOR UP` label).
+  - **Unused dependency check**: Check for unused dependencies using `npx npm-check` (`NOTUSED?` label).

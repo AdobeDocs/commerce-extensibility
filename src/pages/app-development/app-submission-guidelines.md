@@ -95,7 +95,7 @@ The following requirements must be met for your app to be accepted. If your app 
           minVersion: 2.4.5
       ```
 
-  - **Events configuration**: Review [`events.config.yaml`](/starter-kit/checkout/configure/#eventsconfigyaml) to verify event providers and registrations, document usage, and prefix events with your app's scope to avoid collisions.
+  - **Events configuration**: Review [`events.config.yaml`](/starter-kit/checkout/configure/#eventsconfigyaml) to verify event providers and registrations, document usage, and prefix events with your app's scope to avoid collisions. Remove this file if your app does not use events.
 
 - Project cleanup
   - **Unused folders**: Remove any unused or unnecessary folders.
@@ -110,7 +110,7 @@ The following requirements must be met for your app to be accepted. If your app 
 
 - Commerce compatibility
   - **Multi-flavor support**: Ensure compatibility between commerce flavors (PaaS & SaaS):
-    - &#8203;<Edition name="saas" /> Use [IMS for authentication](/starter-kit/checkout/connect/#adobe-identity-management-service-ims) instead of Commerce Integration Authentication (OAuth1).
+    - &#8203;<Edition name="saas" /> Use [IMS](/starter-kit/checkout/connect/#adobe-identity-management-service-ims) for authentication instead of [Commerce integrations (OAuth1)](/starter-kit/checkout/connect/#create-a-commerce-integration).
     - &#8203;<Edition name="saas" /> Configure [the Commerce Base URL](/starter-kit/checkout/connect/) to include tenantId without `/rest`.
 
 - Quality assurance

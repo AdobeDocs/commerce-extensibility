@@ -94,8 +94,8 @@ The following requirements must be met for your app to be accepted. If your app 
         - code: COMMC
           minVersion: 2.4.5
       ```
-    
-  - **Events configuration**: Review `events.config.yaml` to verify event providers and registrations, document usage, and prefix events with your app's scope to avoid collisions.
+
+  - **Events configuration**: Review [`events.config.yaml`](/starter-kit/checkout/configure/#eventsconfigyaml) to verify event providers and registrations, document usage, and prefix events with your app's scope to avoid collisions.
 
 - Project cleanup
   - **Unused folders**: Remove any unused or unnecessary folders.
@@ -116,7 +116,7 @@ The following requirements must be met for your app to be accepted. If your app 
 - Quality assurance
   - **Test suite**: Ensure tests all tests are passing. Run `npm test` to validate.
 
-### Dependencies and maintenance
+### Dependency management
 
 - Version management
   - **Direct dependencies**: Check for missing dependencies using `npx npm-check` (`PKG ERR` label).
@@ -173,14 +173,12 @@ In cases where it is not possible to provide test credentials or a demo environm
   - **Action consistency**: Ensure consistency and correctness in action names and routes.
   - **Duplicated logic**: Avoid duplicating SDK logic unnecessarily, such as OAuth or fetch wrappers.
 
-### Dependencies and maintenance
+- Configuration best practices
+  - **Package-level inputs**: Use package-level inputs in YAML files instead of repeating environment variables.
+  - **Environment variables**: Avoid structured data in environment variables, unless necessary.
+
+### Dependency management
 
 - Version management
   - **Package updates**: Check for up-to-date package versions using `npx npm-check` (`MAJOR UP` label).
   - **Unused dependency check**: Check for unused dependencies using `npx npm-check` (`NOTUSED?` label).
-
-### Configuration
-
-- Configuration best practices
-  - **Package-level inputs**: Use package-level inputs in YAML files instead of repeating environment variables.
-  - **Environment variables**: Avoid structured data in environment variables, unless necessary.

@@ -55,24 +55,24 @@ Ensure you have the following tools installed:
 * npm
 * VS Code (or any other code editor of your choice)
 
+**Steps**
+
 1. Install Adobe I/O CLI
 
    ```bash
    npm install -g @adobe/aio-cli
    ```
 
-1. Follow this step from the document to login via CLI.
-
-[Sign in from the CLI – Adobe App Builder Getting Started Guide](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first_app/#3-sign-in-from-the-cli)
+1. Follow this step from the document to login via CLI. [Sign in from the CLI – Adobe App Builder Getting Started Guide](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first_app/#3-sign-in-from-the-cli)
 
 1. Retrieve the JSON file from the Admin Console by following the steps outlined in the provided this document [Developer with a Console Config File – Adobe App Builder Guide](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first_app/#421-developer-with-a-console-config-file) You can ignore the remaining steps in the document.Note the location of the downloaded json file.
 
-1. Run `aio app use /Users/prutech/Downloads/webhooktest-1244026-Stage.json` command to use the downloaded JSON file for your project.
+1. Run `aio app use [location to the downloaded json file] command to use the downloaded JSON file for your project.
 
 ```terminal
 You are currently in:
-1. Org: Early Access - Adobe Commerce as a Cloud Service
-2. Project: rekevent
+1. Org: <org name>
+2. Project: <project name specified in development console>
 3. Workspace: Stage
 ```
 
@@ -94,17 +94,24 @@ You can verify org and project details by opening the Developer Console and chec
 1. Run the following command to initialize your project:
 
 ```bash
-aio app init projectname
+aio app init < your projectname >
 ```
 
-When prompted, select the correct **Organization** and For **Project**, select the one you created earlier using the Developer Console.
-Choose a template listed under **Supported by My Org** to ensure compatibility with your environment.
-
-1. Next choose All Templates and @adobe/generator-app-events-generic as templates to install, and choose Actions: Deploy Runtime actions for I/O App features, Generic for type of actions to generate, React Spectrum 3 for UI, and provide a name for the action.Below is the CLI output showing the configuration steps.
+* When prompted, select the correct **Organization** and For **Project**, select the one you created earlier using the Developer Console.
+* Choose a template listed under **Supported by My Org** to ensure compatibility with your environment.
+* When prompted to **Select a template**, choose:
+**All Templates → @adobe/generator-app-events-generic**
+* When prompted to **Which Adobe I/O App features do you want to use?**, select:
+**Actions: Deploy Runtime actions for I/O App features**
+* When prompted to **Which type of actions do you want to generate?**, select:
+**Generic**
+* When prompted to **Which UI framework do you want to use?**, select:
+**React Spectrum 3**
+* When prompted to **Provide a name for the action**, enter your preferred action name
 
 ```terminal
-? Select Org: Early Access - Adobe Commerce as a Cloud Service
-? Select a Project, or press + to create new: webhooktest
+? Select Org: <Select your Organization Name>
+? Select a Project, or press + to create new: <Select project name created in development console>
 ? What templates do you want to search for? All Templates
 ✔ Downloaded the list of templates
 ? Choose the template(s) to install:
@@ -147,7 +154,7 @@ KND content.           │ N/A                                    │ ui        
 └──────┴─────────────────────────────────────────────────────────────┴──────────────────────────────────────
 ───────────────────────┴────────────────────────────────────────┴────────────────────────────────────────┘
 * = recommended by Adobe; to learn more about the templates, go to https://a
-Bootstrapping code in: /Users/prutech/Documents/projects/devadvocate/webhooktest
+Bootstrapping code in: your project directory/commappwebhook
    create package.json
    create README.md
    create jest.setup.js
@@ -198,11 +205,7 @@ Project initialized for Workspace Stage, you can run 'aio app use -w <workspace>
 
 Folder structure after `app init`:
 
-```terminal
-prutech@Prutech-ka-MacBook-Pro commappwebhook % ls
-README.md       app.config.yaml     jest.setup.js       package-lock.json   test
-actions         e2e         node_modules        package.json        web-src
-```
+![Folder Structure after app init](../_images/webhooks/tutorial/appbuilder-project-filestructure.png)
 
 ### Implement the webhook action
 
@@ -246,7 +249,7 @@ async function main(params) {
 exports.main = main
 ```
 
-1. Copy this utils.js under actions/ folder.
+1. Copy the contents of the utils.js file provided below into the utils.js file located under the actions/ folder.
 
 ```js
 /* 
@@ -265,93 +268,6 @@ exports.main = main
  * @returns {string}
  *
  */
-function stringParameters (params) {
-  // hide authorization token without overriding params
-  let headers = params.__ow_headers || {}
-  if (headers.authorization) {
-    headers = { ...headers, authorization: '<hidden>' }
-  }
-  return JSON.stringify({ ...params, __ow_headers: headers })
-}
-
-/**
- *
- * Returns the list of missing keys giving an object and its required keys.
- * A parameter is missing if its value is undefined or ''.
- * A value of 0 or null is not considered as missing.
- *
- * @param {object} obj object to check.
- * @param {array} required list of required keys.
- *        Each element can be multi level deep using a '.' separator e.g. 'myRequiredObj.myRequiredKey'
- *
- * @returns {array}
- * @private
- */
-function getMissingKeys (obj, required) {
-  return required.filter(r => {
-    const splits = r.split('.')
-    const last = splits[splits.length - 1]
-    const traverse = splits.slice(0, -1).reduce((tObj, split) => { tObj = (tObj[split] || {}); return tObj }, obj)
-    return traverse[last] === undefined || traverse[last] === '' // missing default params are empty string
-  })
-}
-
-/**
- *
- * Returns the list of missing keys giving an object and its required keys.
- * A parameter is missing if its value is undefined or ''.
- * A value of 0 or null is not considered as missing.
- *
- * @param {object} params action input parameters.
- * @param {array} requiredHeaders list of required input headers.
- * @param {array} requiredParams list of required input parameters.
- *        Each element can be multi level deep using a '.' separator e.g. 'myRequiredObj.myRequiredKey'.
- *
- * @returns {string} if the return value is not null, then it holds an error message describing the missing inputs.
- *
- */
-function checkMissingRequestInputs (params, requiredParams = [], requiredHeaders = []) {
-  let errorMessage = null
-
-  // input headers are always lowercase
-  requiredHeaders = requiredHeaders.map(h => h.toLowerCase())
-  // check for missing headers
-  const missingHeaders = getMissingKeys(params.__ow_headers || {}, requiredHeaders)
-  if (missingHeaders.length > 0) {
-    errorMessage = `missing header(s) '${missingHeaders}'`
-  }
-
-  // check for missing parameters
-  const missingParams = getMissingKeys(params, requiredParams)
-  if (missingParams.length > 0) {
-    if (errorMessage) {
-      errorMessage += ' and '
-    } else {
-      errorMessage = ''
-    }
-    errorMessage += `missing parameter(s) '${missingParams}'`
-  }
-
-  return errorMessage
-}
-
-/**
- *
- * Extracts the bearer token string from the Authorization header in the request parameters.
- *
- * @param {object} params action input parameters.
- *
- * @returns {string|undefined} the token string or undefined if not set in request headers.
- *
- */
-function getBearerToken (params) {
-  if (params.__ow_headers &&
-      params.__ow_headers.authorization &&
-      params.__ow_headers.authorization.startsWith('Bearer ')) {
-    return params.__ow_headers.authorization.substring('Bearer '.length)
-  }
-  return undefined
-}
 /**
  *
  * Returns an error response object and attempts to log.info the status code and error message
@@ -381,10 +297,7 @@ function errorResponse (statusCode, message, logger) {
 }
 
 module.exports = {
-  errorResponse,
-  getBearerToken,
-  stringParameters,
-  checkMissingRequestInputs
+  errorResponse
 }
 ```
 
@@ -416,11 +329,6 @@ application:
   
 ### Deploy and Test
 
-In the root folder of the project, you'll find the .env file. Add the following entry to specify your Commerce instance URL:
-
-COMMERCE_BASE_URL=[Base URL of your Commerce instance]
-
-Save the changes
 Run the following commands in your project directory:
 npm install – to install all project dependencies
 aio app deploy – to deploy the application to Adobe I/O Runtime
@@ -492,7 +400,7 @@ Note that debugging web actions via ACCS or a deployed instance is not supported
 
 Ensure the following before you start debugging:
 
-require-adobe-auth is set to false in your app-config.yaml file under webhook action.
+**require-adobe-auth** is set to **false** in your app-config.yaml file under webhook action.
 
 #### Configuring Debugger
 
@@ -551,7 +459,7 @@ press CTRL+C to terminate the dev environment
 #### Web action with a sample payload
 
 Now that your local debugger is running, you can test your web action by sending a request to the local endpoint.
-Use tools like Postman, Post Buster, or any other API client to send a POST request to the above URL with the sample JSON payload.
+Use tools like Postman or any other API client to send a POST request to the above URL with the sample JSON payload.
 https://localhost:9080/api/v1/web/commappwebhook/webhook
 
 ```json
@@ -576,7 +484,7 @@ The request should trigger the web action and hit the breakpoint you set earlier
 **Test using curl**
 
 ```bash
-prutech@Prutech-ka-MacBook-Pro devadvocate % sudo curl --insecure --request POST \
+your-project-directory  % sudo curl --insecure --request POST \
   --url https://localhost:9080/api/v1/web/appbuilderforextensibility/webhook \
   --header 'Content-Type: application/json' \
   --header 'User-Agent: insomnia/10.1.1-adobe' \
@@ -663,10 +571,6 @@ aio runtime action get testwebhook --url
 
 ### Webhook notes
 
-1. The command `aio app run` does not display info, debug, or error logs in the console.
-
-1. By default, Adobe I/O Runtime retains application logs only if the action was invoked asynchronously or if the action activation failed.
-
 For detailed webhook logs, navigate to **System** > **Webhook** Logs in the Admin.
 
 1. If there are configuration errors in the webhook setup for this specific use case, when a product is added to the catalog, the Commerce UI will display the message: **"Cannot perform the operation due to an error."** For instance, if hook fields are configured wrongly, this can occur.
@@ -674,11 +578,24 @@ To rule out an issue with the App Builder code, you can use the **aio app dev** 
 
 ### App Builder configuration considerations
 
-If you set **web=no** in **app-config.yaml**, the action will be treated as a non-web action.
-Consequently, when attempting to add and save a product in Commerce, an error will occur, displaying:
+If you set **web: 'no'** in **app-config.yaml**, the action will be treated as a non-web action.
 
-**"Cannot perform the operation due to an error." in the Commerce UI.**
+This means:
 
-So for webhooks, this value in `app-config.yaml` should always be **web=yes**
+* The action will not have a public HTTP endpoint.
+* It cannot be invoked directly by external systems (such as Adobe Commerce).
+* It is only accessible internally within Adobe I/O Runtime, such as through events or other actions.
 
-For any queries, feel free to reach out on #app-builder-community.
+#### Impact on Commerce Integration
+
+ If a webhook in Adobe Commerce is configured to call this non-web action, it will fail silently or throw a generic error.
+ For example, when trying to add and save a product in the Commerce Admin UI, you will see the following error message:
+ **Cannot perform the operation due to an error.**
+ This happens because Commerce cannot reach the non-web action endpoint.
+
+#### Recommended Practice for Webhooks
+
+For any action meant to be triggered by a Commerce webhook, make sure to define it as a web action by setting set **web: 'yes'** in **app-config.yaml**
+This ensures the action is exposed via a public URL and can be properly invoked by Adobe Commerce.
+
+For any queries, feel free to reach out to slack on [#app-builder-community](https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fmagentocommeng.slack.com%2Farchives%2FC0717RYNWTB&data=05%7C02%7Cpru46423%40adobe.com%7Cd2b1b761873249f0d45d08dd83e20f1e%7Cfa7b1b5a7b34438794aed2c178decee1%7C0%7C0%7C638811729113568413%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=b5Zb7LyzCnJbJ20odxbTEwOT1H2ijxe9YzNIUPqVyaY%3D&reserved=0).

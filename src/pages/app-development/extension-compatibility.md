@@ -37,9 +37,7 @@ Verify that your Commerce APIs are compatible with both environments by checking
 - &#8203;<Edition name="paas" /> [PaaS REST API specification](https://developer.adobe.com/commerce/webapi/rest/quick-reference/).
 - &#8203;<Edition name="saas" /> [SaaS REST API specification](https://developer.adobe.com/commerce/services/reference/cloud/rest/).
 
-**Adapt REST endpoint for older starter kit versions**
-
-<Edition name="paas" />
+&#8203;<Edition name="paas" /> **Adapt REST endpoint for older starter kit versions**
 
 For older versions of the starter kit, check if your code is adapted as follows:
 
@@ -90,8 +88,8 @@ For older versions of the starter kit, check if your code is adapted as follows:
 
 ## Out-of-process extensibility modules
 
-- &#8203;<Edition name="saas" /> Modules are pre-installed.
 - &#8203;<Edition name="paas" /> Requires composer installation.
+- &#8203;<Edition name="saas" /> Modules are pre-installed.
 - APIs function the same way in both environments:
   - [custom attributes](https://developer.adobe.com/commerce/services/cloud/guides/custom-attributes/)
   - [payment](../starter-kit/checkout/payment-reference.md)

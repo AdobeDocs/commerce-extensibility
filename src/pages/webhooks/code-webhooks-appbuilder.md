@@ -27,14 +27,21 @@ Based on the logic, the action returns either a success or an error message.
 1. Adobe Commerce uses this response for example in this case while saving the product
 This setup allows you to offload validation and custom logic from the Commerce codebase to the scalable, serverless infrastructure of Adobe App Builder
 
+### Prerequisites
+
+* Adobe Commerce ACCS Instance
+* Access to [Adobe Developer Console](https://developer.adobe.com/console)
+* Access to [Adobe Developer App Builder](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/set-up#access-and-credentials)
+* [AIO CLI](https://developer.adobe.com/app-builder/docs/guides/runtime_guides/tools/cli-install) (required to run commands)
+
 ### Set up the Adobe Developer Console and App Builder project locally
 
 #### Create a new project in Adobe Developer Console
 
-1. Refer to the  [Adobe App Builder Getting Started guide](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app) and complete Step 1: "Check your environment and tools" and Step 2: "Create a new project on Developer Console" before proceeding.
+1. To add new project in developer console, Refer to the  [Adobe App Builder Getting Started guide](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app) and complete Step 1: "Check your environment and tools" and Step 2: "Create a new project on Developer Console" before proceeding.
 These steps are essential because the Adobe Developer Console provides the credentials and configuration required to deploy your App Builder app and access Adobe services like I/O Runtime and Commerce APIs. Without completing these steps, your app will not be able to authenticate or run within the Adobe ecosystem.
 
-1. In your stage workspace, click the Add service pop-up menu and select API.
+1. In your **stage** workspace, click the Add service pop-up menu and select API.
 Add the following services to your workspace. Each service must be added individually. You cannot add multiple services simultaneously.
 
    * I/O Management API
@@ -51,8 +58,8 @@ After creating your project in the Adobe Developer Console, the next step is to 
 
 Ensure you have the following tools installed:
 
-* Node.js (v16.x or later)
 * npm
+* Node.js (v16.x or later)
 * VS Code (or any other code editor of your choice)
 
 **Steps**
@@ -391,7 +398,7 @@ The logs will appear as shown in the screenshot below.
 
 ![WebHook Logs](../_images/webhooks/tutorial/webhook-logs-adminui-accs.png)
 
-### Debug from App Builder
+### Debug from App Builder Code Locally
 
 Follow these steps to effectively debug your Adobe I/O app on your local environment.
 Note that debugging web actions via ACCS or a deployed instance is not supported; they can only be simulated locally.
@@ -546,13 +553,12 @@ Below are screenshots showing both restricted and developer access views for qui
 
 ### Redeploy changes
 
-If you've made changes to the action code and they're not reflecting, run:
+If you've made changes to the action code, run the below commands:
 
 ```bash
-aio app deploy --force-build --force-deploy
+aio app build 
 ```
 
-This forces a full rebuild and redeployment of your application.
 If you have multiple actions in your project and want to deploy only a specific action you modified, run:
 
 ```bash
@@ -586,14 +592,12 @@ This means:
 * It cannot be invoked directly by external systems (such as Adobe Commerce).
 * It is only accessible internally within Adobe I/O Runtime, such as through events or other actions.
 
-#### Impact on Commerce Integration
-
- If a webhook in Adobe Commerce is configured to call this non-web action, it will fail silently or throw a generic error.
+If a webhook in Adobe Commerce is configured to call this non-web action, it will fail silently or throw a generic error.
  For example, when trying to add and save a product in the Commerce Admin UI, you will see the following error message:
  **Cannot perform the operation due to an error.**
  This happens because Commerce cannot reach the non-web action endpoint.
 
-#### Recommended Practice for Webhooks
+### Recommended Practice for Webhooks
 
 For any action meant to be triggered by a Commerce webhook, make sure to define it as a web action by setting set **web: 'yes'** in **app-config.yaml**
 This ensures the action is exposed via a public URL and can be properly invoked by Adobe Commerce.

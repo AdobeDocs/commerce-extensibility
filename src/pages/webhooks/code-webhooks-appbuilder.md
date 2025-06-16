@@ -595,7 +595,8 @@ This means:
 If a webhook in Adobe Commerce is configured to call this non-web action, it will fail silently or throw a generic error.
  For example, when trying to add and save a product in the Commerce Admin UI, you will see the following error message:
  **Cannot perform the operation due to an error.**
- This happens because Commerce cannot reach the non-web action endpoint.
+
+ This error occurs because Commerce cannot reach the non-web action endpoint.
 
 ### Recommended Practice for Webhooks
 

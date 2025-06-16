@@ -489,15 +489,15 @@ The `GET /V1/eventing/supportedList` endpoint returns the events supported in Ad
 
 ```json
 [
-	{
-		"name": "observer.customer_login"
-	},
-	{
-		"name": "observer.customer_register_success"
-	},
-	{
-		"name": "observer.customer_save_after"
-	},
+    {
+        "name": "observer.customer_login"
+    },
+    {
+        "name": "observer.customer_register_success"
+    },
+    {
+        "name": "observer.customer_save_after"
+    },
   ...
 ]
 ```

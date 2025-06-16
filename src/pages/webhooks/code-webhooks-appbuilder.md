@@ -602,4 +602,4 @@ If a webhook in Adobe Commerce is configured to call this non-web action, it wil
 For any action meant to be triggered by a Commerce webhook, make sure to define it as a web action by setting set **web: 'yes'** in **app-config.yaml**
 This ensures the action is exposed via a public URL and can be properly invoked by Adobe Commerce.
 
-For any queries, feel free to reach out to slack on [#app-builder-community](https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fmagentocommeng.slack.com%2Farchives%2FC0717RYNWTB&data=05%7C02%7Cpru46423%40adobe.com%7Cd2b1b761873249f0d45d08dd83e20f1e%7Cfa7b1b5a7b34438794aed2c178decee1%7C0%7C0%7C638811729113568413%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=b5Zb7LyzCnJbJ20odxbTEwOT1H2ijxe9YzNIUPqVyaY%3D&reserved=0).
+For further assistance or inquiries, please post your question in the [#app-builder-community](hhttps://magentocommeng.slack.com/).

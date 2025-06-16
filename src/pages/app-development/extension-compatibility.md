@@ -67,7 +67,7 @@ For older versions of the starter kit, check if your code is adapted as follows:
     "magento/commerce-backend-sdk": "3.0.0 as 2.0.0"
     ```
 
-- &#8203;<Edition name="saas" /> The Admin UI SDK and IMS modules are already configured. The [Admin interface](../admin-ui-sdk/configuration.md) works the same as it does in PaaS. To enable Adobe authentication for actions called by the SPA, you can obtain IMS tokens that work in both PaaS and SaaS by using the following. 
+- &#8203;<Edition name="saas" /> The Admin UI SDK and IMS modules are already configured. The [Admin interface](../admin-ui-sdk/configuration.md) works the same as it does in PaaS. To enable Adobe authentication for actions called by the SPA, you can obtain IMS tokens that work in both PaaS and SaaS by using the following.
 
     ```javascript
     if (props.ims?.token) {

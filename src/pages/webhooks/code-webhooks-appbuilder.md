@@ -310,9 +310,11 @@ module.exports = {
 
 ### Configure app.config.yaml
 
-You can find this file under project folder commappwebhook/app.config.yaml
-In app.config.yaml, change index.js reference to validateProductName.js
-**Please note its important to specify   web: 'yes' option.**
+The config file is available in the following location: `commappwebhook/app.config.yaml`. In `app.config.yaml`, change the `index.js` reference to `validateProductName.js`.
+
+<InlineAlert variant="info" slots="text"/>
+
+You must specify `web: 'yes'` in the config.
 
 ```yaml
 application:

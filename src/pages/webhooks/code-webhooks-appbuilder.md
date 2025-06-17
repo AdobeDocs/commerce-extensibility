@@ -212,12 +212,32 @@ Project initialized for Workspace Stage, you can run 'aio app use -w <workspace>
 
 Folder structure after `app init`:
 
+```terminal
+commappwebhook/
+├── README.md
+├── app.config.yaml
+├── dist/
+├── e2e/
+├── jest.setup.js
+├── node_modules/
+├── package-lock.json
+├── package.json
+├── test/
+├── web-src/
+└── actions/
+    ├── constants.js
+    ├── responses.js
+    ├── testwebhook/
+    │   └── index.js
+    └── utils.js
+```
+
 ![Folder Structure after app init](../_images/webhooks/tutorial/appbuilder-project-filestructure.png)
 
 ### Implement the webhook action
 
 1. Create a new File validateProductName.js under testwebhook folder under actions folder.
-commappwebhook/actions/testwebhook and add the below code.  
+commappwebhook/actions/testwebhook and add the below code. This file defines a function that runs as an action in Adobe App Builder. In App Builder, every action must have a function named main, as this is the entry point that gets called when the action is triggered. The function should accept input in JSON format and return a response in JSON as well. In this case, the action checks if the product name received from the Adobe Commerce webhook contains the word "test". If it does, the action passes validation; otherwise, it returns an error message.
 
 ```js
 const { Core, Events } = require('@adobe/aio-sdk') // Adobe I/O SDK modules
@@ -256,7 +276,7 @@ async function main(params) {
 exports.main = main
 ```
 
-1. Copy the contents of the utils.js file provided below into the utils.js file located under the actions/ folder.
+1. Copy the contents of the utils.js file provided below into the utils.js file located under the actions/ folder.The utils.js file  provides common utility functions used by actions. One of its main functions, errorResponse, helps create a consistent error response and optionally logs the error details. This utility is useful when validating input or handling failures in actions.
 
 ```js
 /* 
@@ -310,7 +330,7 @@ module.exports = {
 
 ### Configure app.config.yaml
 
-The config file is available in the following location: `commappwebhook/app.config.yaml`. In `app.config.yaml`, change the `index.js` reference to `validateProductName.js`.
+The app.config.yaml file is used to configure your Adobe App Builder project. It defines project metadata, runtime actions, web assets, and settings like which file to use as the entry point for each action.This config file is available in the following location: `commappwebhook/app.config.yaml`. In `app.config.yaml`, change the `index.js` reference to `validateProductName.js`.
 
 <InlineAlert variant="info" slots="text"/>
 
@@ -520,28 +540,34 @@ your-project-directory  % sudo curl --insecure --request POST \
 ### Securing Webhook Communication Using OAuth Credentials
 
 Since the webhook URL is easily accessible, it's important to secure it. The following steps outline recommended best practices for secure communication between App Builder and Adobe Commerce:
-From the **Developer Console**:
+
+##### Step 1: Generate OAuth Credentials from Developer Console
 
 1. Navigate to your project and select Stage.
 1. On the left-hand menu, go to Credentials and click on OAuth Server-to-Server.
 1. Here, you will find the Client ID and Organization ID.Click on Retrieve Client Secret and make a note of the Client Secret — this will only be displayed once.
 These credentials will be required in the next step when configuring the integration on the Commerce side.
 
-From the **Commerce side**, navigate to the Admin UI → Webhook Subscriptions and select the webhook you want to configure.
+##### Step 2: Configure OAuth in Adobe Commerce
+
+1. Navigate to the Admin UI in Commerce Instance → Webhook Subscriptions and select the webhook you want to configure.
 Expand the Developer Console OAuth section, enable it, and enter the required credentials: Client ID, Client Secret, and Organization ID.
 
 ![oAuth Section in Webhooks Subccription](../_images/webhooks/tutorial/developer-console-oauth-commerce.png)
 
-In your App Builder project code, open the app.config.yaml file and set require-adobe-auth to true.
-Then, rebuild and deploy the project using the command:
+##### Step 3: Enable Adobe Authentication in App Builder
 
-```bash
-aio app deploy
-```
+1. In your App Builder project code, open the app.config.yaml file and set require-adobe-auth to true.Then, rebuild and deploy the project using the command:
+
+  ```bash
+      aio app deploy
+  ```
+
+##### Step 4: Test Secure Webhook Call
 
 You can now test the webhook from Adobe Commerce by adding a product. The calls will be securely authenticated using the configured OAuth credentials.
 
-### Access the Developer Console
+### Accessing the Developer Console
 
 Ensure you have Developer Access to the Adobe Developer Console. This is required to create and manage projects.
  If you don't have developer access, your role will be shown as "User" in the top right corner, and a blue box will highlight restricted access.
@@ -555,19 +581,19 @@ Below are screenshots showing both restricted and developer access views for qui
 
 ### Redeploy changes
 
-If you've made changes to the action code, run the below commands:
+1. If you've made changes to the action code, run the below commands:
 
 ```bash
 aio app build 
 ```
 
-If you have multiple actions in your project and want to deploy only a specific action you modified, run:
+1. If you have multiple actions in your project and want to deploy only a specific action you modified, run:
 
 ```bash
-aio app deploy --action=webhook/product-update --force-build --force-deploy
+aio app deploy --action=webhook/product-update
 ```
 
-This rebuilds and redeploys only the specified action.
+1. The above command rebuilds and redeploys only the specified action.
 
 ### Retrieve an action URL
 

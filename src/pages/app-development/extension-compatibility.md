@@ -29,7 +29,7 @@ Verify that your Commerce APIs are compatible with both environments by checking
 
 **GraphQL API**
 
-- &#8203;<Edition name="paas" /> For PaaS, there are separate Core and Catalog GraphQL endpoints.
+- &#8203;<Edition name="paas" /> For PaaS, there are separate core and catalog services GraphQL endpoints.
 - &#8203;<Edition name="saas" /> For SaaS, a single GraphQL URL is used, see the [GraphQL API specification](https://developer.adobe.com/commerce/services/reference/cloud/graphql/).
 
 **REST API**

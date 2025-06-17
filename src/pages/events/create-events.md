@@ -7,6 +7,10 @@ keywords:
 edition: saas
 ---
 
+import SampleEvent from '/src/_includes/sample-event.md'
+import NestedEvent from '/src/_includes/nested-event.md'
+import ConditionalEvents from '/src/_includes/conditional-event.md'
+
 # Create events from the Admin
 
 <InlineAlert variant="info" slots="text1" />
@@ -41,17 +45,83 @@ Field | Description
 
 ### Configure event subscription fields
 
-The **Event Subscription Fields** configuration panel allows you to define the fields of the event payload to transmit from Commerce. The name provides the path to the field in the event payload. See [Register events](./module-development.md#register-events) for details on specifying event field names.
+The **Event Subscription Fields** configuration panel allows you to define the fields of the event payload to transmit from Commerce. The name provides the path to the field in the event payload.
+
+<SampleEvent />
+
+<InlineAlert variant="info" slots="text" />
+
+If you do not specify any fields, Commerce sends the entire event payload. Adobe recommends sending a limited number of fields per event. If you send all fields, you increase the risk of including sensitive or PCI compliance data in the event. In addition, specifying only the fields that are applicable to your business case is recommended for optimal performance and cost effectiveness.
+
+The following example shows how three fields can be configured for the `observer.catalog_product_save_after` event:
+
+```yaml
+Name: entity_id
+Name: sku
+Name: is_new
+```
+
+The contents of an `observer.catalog_product_save_after` event are similar to the following:
+
+```json
+{
+    "entity_id": "3",
+    "sku": "test2",
+    "is_new": "0"
+}
+```
+
+#### Array of nested objects
+
+<NestedEvent />
+
+```yaml
+Name: order_id
+Name: items[].sku
+Name: items[].qty
+```
+
+The contents of the transmitted event are similar to the following:
+
+```json
+{
+   "order_id": "8",
+   "items": [
+      {
+         "sku": "simple-product-2",
+         "qty": "3.000000"
+      },
+      {
+         "sku": "simple-product-1",
+         "qty": "5.000000"
+      }
+   ]
+}
+```
 
 ### Configure event subscription rules
 
-The **Event Subscription Rules** configuration panel allows you to define rules that determine when an event with a name alias is triggered. [Create conditional events](./conditional-events.md) describes how to configure rules.
+<ConditionalEvents />
 
-Field | Description
---- | ---
-**Field** | The name of the event field to be evaluated.
-**Value** | The value to be compared.
-**Operator** | Defines which comparison operator to use. Examples include `lessThan`, `regex`, and `equal`.
+#### Example
+
+```yaml
+Field: qty
+Operator: lessThan
+Value: 20
+
+Field: category_id
+Operator: in
+Value: 3,4,5
+
+Field: name
+Operator: regex
+Value: /^TV .*/i
+
+Field: category.store_id
+Operator: in
+Value: 1,2
+```
 
 ## Events Subscriptions grid actions
 

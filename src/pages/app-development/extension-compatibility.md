@@ -99,5 +99,5 @@ For older versions of the starter kit, check if your code is adapted as follows:
 
 ## Storefront integration and testing
 
-- &#8203;<Edition name="paas" /> [EDS Storefronts](https://experienceleague.adobe.com/developer/commerce/storefront/get-started/) require additional configuration, such as the Catalog and Storefront Compatibility Package. PaaS also provides the [Luma Storefront](https://experienceleague.adobe.com/docs/commerce/frontend/guide/storefront/luma.html), which is not available in SaaS.
+- &#8203;<Edition name="paas" /> EDS Storefronts require additional configuration, such as the Catalog and [Storefront Compatibility Package](https://experienceleague.adobe.com/developer/commerce/storefront/setup/configuration/storefront-compatibility/install/). PaaS also provides the [Luma Storefront](https://experienceleague.adobe.com/docs/commerce/frontend/guide/storefront/luma.html), which is not available in SaaS.
 - &#8203;<Edition name="saas" /> You can use the [EDS Storefront to connect to your Commerce instance](https://experienceleague.adobe.com/en/docs/commerce/cloud-service/storefront) without installing any modules. SaaS environments do not have access to the Luma Storefront.

@@ -211,13 +211,13 @@ Use the following steps to download and configure the Adobe Commerce integration
    COMMERCE_ACCESS_TOKEN_SECRET=
    ```
 
-   Also set the value for `PROJECT_NAME` in the `.env` file. When multiple applications are involved, each having their own event provider, the `PROJECT_NAME` variable distinguishes between them during event subscription. This allows each application to subscribe to the same event using a unique alias.
+   Also set the value for `EVENT_PREFIX` in the `.env` file. When multiple applications are involved, each having their own event provider, the `EVENT_PREFIX` variable distinguishes between them during event subscription. This allows each application to subscribe to the same event using a unique alias.
 
    ```text
-   PROJECT_NAME=
+   EVENT_PREFIX=
    ```
 
-   * Example: `PROJECT_NAME='test_app'`
+   * Example: `EVENT_PREFIX='test_app'`
    * Event Subscription: `test_app.observer.catalog_product_save_commit_after`
 
 When configuring the `COMMERCE_BASE_URL` environment variable, the format differs between [PaaS and SaaS](#paas-or-saas):

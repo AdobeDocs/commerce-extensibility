@@ -37,7 +37,7 @@ Verify that your Commerce APIs are compatible with both environments by checking
 - &#8203;<Edition name="paas" /> [PaaS REST API specification](https://developer.adobe.com/commerce/webapi/rest/quick-reference/).
 - &#8203;<Edition name="saas" /> [SaaS REST API specification](https://developer.adobe.com/commerce/services/reference/cloud/rest/).
 
-&#8203;<Edition name="paas" /> **Adapt REST endpoint for older starter kit versions**
+**Adapt REST endpoint for older starter kit versions**
 
 For older versions of the starter kit, check if your code is adapted as follows:
 
@@ -56,7 +56,7 @@ For older versions of the starter kit, check if your code is adapted as follows:
 
 ## Commerce eventing
 
-- &#8203;<Edition name="paas" /> You can register events through [XML files](../events/module-development.md#register-events) or REST endpoints. However, for plugin-type events, you may need to redeploy to generate plugins.
+- &#8203;<Edition name="paas" /> You can register events through [XML files](../events/module-development.md#register-events) or [REST endpoints](../events/api.md). However, for plugin-type events, you may need to redeploy to generate plugins.
 - &#8203;<Edition name="saas" /> SaaS supports a predefined list of events. You can manage events through the [Admin interface](../events/create-events.md) or [REST endpoints](../events/api.md).
 
 ## Admin UI SDK
@@ -71,16 +71,16 @@ For older versions of the starter kit, check if your code is adapted as follows:
 
     ```javascript
     if (props.ims?.token) {
-    // When running inside Experience Cloud Shell, IMS token and orgId can be accessed via props.ims.
-    setImsToken(props.ims.token);
-    setImsOrgId(props.ims.org);
+        // When running inside Experience Cloud Shell, IMS token and orgId can be accessed via props.ims.
+        setImsToken(props.ims.token);
+        setImsOrgId(props.ims.org);
     } else {
-    // Commerce PaaS & SaaS retrieves IMS token via sharedContext from Admin UI SDK v3.0+
-    // See https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/extension-points/#shared-contexts
-    const guestConnection = await attach({ id: extensionId });
-    const context = guestConnection?.sharedContext;
-    setImsToken(context?.get('imsToken'));
-    setImsOrgId(context?.get('imsOrgId'));
+        // Commerce PaaS & SaaS retrieves IMS token via sharedContext from Admin UI SDK v3.0+
+        // See https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/extension-points/#shared-contexts
+        const guestConnection = await attach({ id: extensionId });
+        const context = guestConnection?.sharedContext;
+        setImsToken(context?.get('imsToken'));
+        setImsOrgId(context?.get('imsOrgId'));
     }
     ```
 

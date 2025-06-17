@@ -65,15 +65,13 @@ The contents of an `observer.catalog_product_save_after` event are similar to th
 
 ```json
 {
-    "value": {
     "entity_id": "3",
     "sku": "test2",
     "is_new": "0"
-  }
 }
 ```
 
-### Array of nested objects
+#### Array of nested objects
 
 <NestedEvent />
 
@@ -105,7 +103,7 @@ The contents of the transmitted event are similar to the following:
 
 <ConditionalEvents />
 
-### Example
+#### Example
 
 ```yaml
 Field: qty

@@ -1,7 +1,6 @@
 ---
 title: Configure Additional Event Providers
 description: Learn how to configure additional event providers in Adobe Commerce.
-edition: saas
 keywords:
   - Events
   - Extensibility

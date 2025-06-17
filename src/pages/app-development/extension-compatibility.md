@@ -67,7 +67,8 @@ For older versions of the starter kit, check if your code is adapted as follows:
     "magento/commerce-backend-sdk": "3.0.0 as 2.0.0"
     ```
 
-- &#8203;<Edition name="saas" /> The Admin UI SDK and IMS modules are already configured. The [Admin interface](../admin-ui-sdk/configuration.md) works the same as it does in PaaS. To enable Adobe authentication for actions called by the SPA, you can obtain IMS tokens that work in both PaaS and SaaS by using the following.
+- &#8203;<Edition name="saas" /> The Admin UI SDK and IMS modules are already configured. The [Admin interface](../admin-ui-sdk/configuration.md) works the same as it does in PaaS.
+- To enable Adobe authentication for actions called by the SPA, you can obtain IMS tokens that work in both PaaS and SaaS by using the following:
 
     ```javascript
     if (props.ims?.token) {
@@ -98,5 +99,5 @@ For older versions of the starter kit, check if your code is adapted as follows:
 
 ## Storefront integration and testing
 
-- &#8203;<Edition name="paas" /> Requires additional configuration for [EDS Storefront](https://experienceleague.adobe.com/developer/commerce/storefront/get-started/), such as the Catalog and Storefront Compatibility Package.
-- &#8203;<Edition name="saas" /> Does not provide the Luma Storefront but offers Admin and APIs. Instead, you can use the [EDS Storefront to connect to your Commerce instance](https://experienceleague.adobe.com/en/docs/commerce/cloud-service/storefront).
+- &#8203;<Edition name="paas" /> [EDS Storefronts](https://experienceleague.adobe.com/developer/commerce/storefront/get-started/) require additional configuration, such as the Catalog and Storefront Compatibility Package. PaaS also provides the [Luma Storefront](https://experienceleague.adobe.com/docs/commerce/frontend/guide/storefront/luma.html), which is not available in SaaS.
+- &#8203;<Edition name="saas" /> You can use the [EDS Storefront to connect to your Commerce instance](https://experienceleague.adobe.com/en/docs/commerce/cloud-service/storefront) without installing any modules. SaaS environments do not have access to the Luma Storefront.

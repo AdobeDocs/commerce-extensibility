@@ -23,7 +23,7 @@ Each rule contains the following:
    | `greaterThan` | Checks whether the value supplied in the payload of the event is greater than a specified value. Applicable for integer and float data types. |
    | `lessThan`    | Checks whether the payload value is less than a specified value. Applicable for integer and float data types. |
    | `equal`       | Checks whether the payload value matches the specified value. For Boolean data types, use `1` to compare to `true` and `0` to compare to `false`. |
-   | `regex`       | A regular expression that checks for matches. The specified value must be compatible with the [regular expression match](https://www.php.net/manual/en/function.preg-match.php) |
+   | `regex`       | A regular expression that checks for matches. The specified value must be compatible with the [regular expression match](https://www.php.net/manual/en/function.preg-match.php). |
    | `in`          | Checks whether the payload value is one of multiple specified values. The value must be a comma-separated list. You do not need to provide additional escape characters. |
 
 *  The value to compare against. When you assign the `regex` operator, you must delimit the regular expression value with valid characters, such as forward slashes (/). For example, `/^TV .*/i`, which checks whether the string starts with the string `TV`, ignoring the case of the letters.

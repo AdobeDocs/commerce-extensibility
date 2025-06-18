@@ -28,14 +28,13 @@ The OAuth credentials are available after completing the [initial configuration]
 
 The [`sync-oauth-credentials`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/sync-oauth-credentials.js) script ensures that the OAuth credentials are available for interacting with AIO, such as creating an event provider. It synchronizes the OAuth credentials from Adobe Developer Console with your local App Builder project configuration, located in `.env`:
 
-   ```js
-   OAUTH_CLIENT_ID=<client id>
-   OAUTH_CLIENT_SECRETS=<client secret>
-   OAUTH_TECHNICAL_ACCOUNT_ID=<technical account id>
-   OAUTH_TECHNICAL_ACCOUNT_EMAIL=<technical account email>
-   OAUTH_SCOPES=<scope>
-   OAUTH_IMS_ORG_ID=<img org>
-   ```
+ ```js
+ OAUTH_CLIENT_ID=<client id>
+ OAUTH_CLIENT_SECRETS=<client secret>
+ OAUTH_TECHNICAL_ACCOUNT_ID=<technical account id>
+ OAUTH_TECHNICAL_ACCOUNT_EMAIL=<technical account email>
+ OAUTH_SCOPES=<scope>
+ OAUTH_IMS_ORG_ID=<img org>
 
 Note that this script is included as part of the `pre-app-build` hook in [app.config.yaml](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/app.config.yaml). When the app build is triggered, the script runs automatically to synchronize the OAuth credentials with the Commerce instance.
 

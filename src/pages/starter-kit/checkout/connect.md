@@ -32,7 +32,7 @@ Depending on your Adobe Commerce setup, there are two options to authenticate an
 
 - &#8203;<Edition name="paas" /> [Commerce Integration](#create-a-commerce-integration)
 
-If IMS authentication is detected, it has precedence over Commerce integration. However, if neither option is detected or configured, then client instantiation will fail.
+If IMS authentication is detected, it has precedence over Commerce integration authentication. However, if neither option is detected or configured, then client instantiation will fail.
 
 ### Adobe Identity Management Service (IMS)
 

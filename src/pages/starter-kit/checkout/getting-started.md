@@ -68,6 +68,7 @@ Use the following steps to configure your local environment:
   ? Title: <your-project-title>
   ? Description: <your-project-description>
   ```
+
   This creates a new project using **App Builder** as a template, including **runtime environment with each workspace**.
 
 1. The starter kit requires you to add the following services in the console project:

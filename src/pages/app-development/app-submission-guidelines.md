@@ -112,6 +112,7 @@ The following requirements must be met for your app to be accepted. If your app 
   - **Multi-flavor support**: Ensure compatibility between commerce flavors (PaaS & SaaS):
     - &#8203;<Edition name="saas" /> Use [IMS](/starter-kit/checkout/connect/#adobe-identity-management-service-ims) for authentication instead of [Commerce integrations (OAuth1)](/starter-kit/checkout/connect/#create-a-commerce-integration).
     - &#8203;<Edition name="saas" /> Configure [the Commerce Base URL](/starter-kit/checkout/connect/) to include tenantId without `/rest`.
+  - For detailed guidelines on supporting both SaaS and PaaS, see [Extension Compatibility](./extension-compatibility.md).
 
 - Quality assurance
   - **Test suite**: Ensure tests all tests are passing. Run `npm test` to validate.

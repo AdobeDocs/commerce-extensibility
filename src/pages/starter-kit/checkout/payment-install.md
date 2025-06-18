@@ -6,6 +6,7 @@ keywords:
   - Extensibility
 ---
 
+import Configuration from '/src/_includes/checkout-configuration.md'
 import Version from '/src/_includes/checkout-version.md'
 
 # Install the payment module
@@ -32,9 +33,7 @@ composer require magento/module-out-of-process-payment-methods --with-dependenci
 
 ## Configuration
 
-<InlineAlert variant="info" slots="text"/>
-
-This step requires [Adobe Commerce HTTP Client](./connect.md#connect-to-adobe-commerce) to authenticate the Commerce instance.
+<Configuration />
 
 The starter kit provides the [`create-payment-methods`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/create-payment-methods.js) script to help configure Adobe Commerce. It reads the payment methods configuration from the `payment-methods.yaml` file and creates the payment methods in Adobe Commerce.
 

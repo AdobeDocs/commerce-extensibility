@@ -6,6 +6,8 @@ keywords:
   - Extensibility
 ---
 
+import Configuration from '/src/_includes/checkout-configuration.md'
+
 # Configure Commerce
 
 This section provides an overview of configuring out-of-process extensibility on Adobe Commerce for developing an app using the checkout starter kit.
@@ -124,9 +126,7 @@ aio event provider delete <provider-id>
 
 ### configure-commerce-events
 
-<InlineAlert variant="info" slots="text"/>
-
-This step requires [Adobe Commerce HTTP Client](./connect.md#connect-to-adobe-commerce) to authenticate the Commerce instance.
+<Configuration />
 
 The [`configure-commerce-events`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/configure-commerce-events.js) script configures the Commerce event provider for your Commerce instance.
 

@@ -32,6 +32,10 @@ composer require magento/module-out-of-process-shipping-methods --with-dependenc
 
 ## Configuration
 
+<InlineAlert variant="info" slots="text"/>
+
+This step requires [Adobe Commerce HTTP Client](./connect.md#connect-to-adobe-commerce) to authenticate the Commerce instance.
+
 The starter kit provides the [`create-shipping-carriers`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/create-shipping-carriers.js) script to help configure Adobe Commerce. It reads the shipping carriers configuration from the `shipping-carriers.yaml` file and creates the shipping carriers in Adobe Commerce.
 
 To run this script, use the following command:

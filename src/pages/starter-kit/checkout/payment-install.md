@@ -27,10 +27,14 @@ For more ideas on how you can use the payment module, refer to [payment use case
 To enable out-of-process payment methods in Commerce, install the `magento/module-out-of-process-payment-methods` module using the following command:
 
 ```bash
-  composer require magento/module-out-of-process-payment-methods --with-dependencies
+composer require magento/module-out-of-process-payment-methods --with-dependencies
 ```
 
 ## Configuration
+
+<InlineAlert variant="info" slots="text"/>
+
+This step requires [Adobe Commerce HTTP Client](./connect.md#connect-to-adobe-commerce) to authenticate the Commerce instance.
 
 The starter kit provides the [`create-payment-methods`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/create-payment-methods.js) script to help configure Adobe Commerce. It reads the payment methods configuration from the `payment-methods.yaml` file and creates the payment methods in Adobe Commerce.
 

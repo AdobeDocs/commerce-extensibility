@@ -48,7 +48,7 @@ Use the following steps to create OAuth credentials for App Builder authenticati
 
    Copy the IMS credentials to the `.env` file in the root of the project.
 
-   **NOTE**: These credentials are automatically filled out in [Configure OAuth Server-to-Server Credential](./configure#configure-oauth-server-to-server-credential).
+   **NOTE**: These credentials are automatically filled out in [Configure OAuth Server-to-Server Credential](./configure.md#configure-oauth-server-to-server-credential).
 
    ```js
    OAUTH_CLIENT_ID=<client id>

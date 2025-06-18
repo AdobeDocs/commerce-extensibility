@@ -38,6 +38,10 @@ magento setup:di:compile
 
 ## Configuration
 
+<InlineAlert variant="info" slots="text"/>
+
+This step requires [Adobe Commerce HTTP Client](./connect.md#connect-to-adobe-commerce) to authenticate the Commerce instance.
+
 The checkout starter kit provides the [`create-tax-integrations`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/create-tax-integrations.js) script to help configure Adobe Commerce. It reads the tax integrations configuration from the `tax-integrations.yaml` file and creates tax integrations in Adobe Commerce.
 
 To run this script, use the following command:

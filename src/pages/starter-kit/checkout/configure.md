@@ -20,7 +20,7 @@ Select one of the following modules to learn about the available scripts:
 - [Shipping](./shipping-install.md#configuration)
 - [Tax](./tax-install.md#configuration)
 
-## Configure OAuth Server-to-Server credential
+## Configure OAuth Server-to-Server Credential
 
 <InlineAlert variant="info" slots="text"/>
 

@@ -59,7 +59,7 @@ Use the following steps to create OAuth credentials for App Builder authenticati
    OAUTH_IMS_ORG_ID=<img org>
    ```
 
-1. Add a technical account with server-to-server credentials to the Commerce Admin with the appropriate permissions using the [Admin User Creation Guide](https://experienceleague.adobe.com/en/docs/commerce-admin/systems/user-accounts/permissions-users-all#create-a-user). If a technical account with appropriate permissions already exists, you can use it instead.
+1. Add a technical account with server-to-server credentials to the Commerce Admin with the appropriate permissions using the [Admin User Creation Guide](https://experienceleague.adobe.com/en/docs/commerce-admin/systems/user-accounts/permissions-users-all#create-a-user).
 
 1. When associating the user with the account, find your `Technical Account email` as a part of generated IMS credentials with following pattern: `<technical-account>@techacct.adobe.com` and use that value in the **Email** field during user creation:
 

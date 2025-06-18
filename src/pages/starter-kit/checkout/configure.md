@@ -40,11 +40,11 @@ The [`sync-oauth-credentials`](https://github.com/adobe/commerce-checkout-starte
 
 This script is included as part of the `pre-app-build` hook in [app.config.yaml](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/app.config.yaml). When the app build is triggered, the script runs automatically to synchronize the OAuth credentials with the Commerce instance.
 
-   ```yaml
-   application:
-     hooks:
-       pre-app-build: ./hooks/pre-app-build.js
-   ```
+```yaml
+application:
+  hooks:
+    pre-app-build: ./hooks/pre-app-build.js
+```
 
 ## Configure Eventing
 

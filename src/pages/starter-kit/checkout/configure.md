@@ -116,8 +116,7 @@ To run this script, use the following command:
 npm run configure-events
 ```
 
-The script does not support deleting event providers. If you need to delete an event provider, you can do
-it through AIO CLI with the following command:
+The script does not support deleting event providers. If you need to delete an event provider, you can do it through AIO CLI with the following command:
 
 ```bash
 aio event provider delete <provider-id>

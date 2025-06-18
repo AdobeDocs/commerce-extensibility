@@ -46,7 +46,7 @@ Use the following steps to create OAuth credentials for App Builder authenticati
 
 1. Access your IMS credentials through the [Adobe Developer Console](https://developer.adobe.com/console). Select the project and workspace you set up during the [initial configuration](./getting-started.md#initial-configuration). Then click **OAuth Server-to-Server** in the side-navigation menu.
 
-   Copy the IMS credentials to the `.env` file in the root of the project.
+1. Copy the IMS credentials to the `.env` file in the root of the project.
 
    **NOTE**: These credentials are automatically populated in [Configure OAuth Server-to-Server Credential](./configure.md#configure-oauth-server-to-server-credential).
 

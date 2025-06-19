@@ -47,7 +47,7 @@ application:
     pre-app-build: ./hooks/pre-app-build.js
 ```
 
-If OAuth credentials are still missing, review the section [Verify your application is initialized](./development.md#verify-your-application-is-initialized).
+If OAuth credentials are still missing, review [Verify your application is initialized](./development.md#verify-your-application-is-initialized).
 
 ## Configure Eventing
 

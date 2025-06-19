@@ -1,12 +1,12 @@
 ---
-title: REST Endpoints for Webhooks
+title: REST Endpoints for webhooks
 description: Provides details about the webhook API endpoints.
 keywords:
   - Webhooks
   - Extensibility
 ---
 
-# REST endpoints for webhook.
+# REST endpoints for webhooks
 
 Adobe Commerce provides several REST endpoints that interact with the webhooks processes. These endpoints require an [admin token](https://developer.adobe.com/commerce/webapi/rest/tutorials/prerequisite-tasks/).
 

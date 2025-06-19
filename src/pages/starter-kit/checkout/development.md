@@ -119,7 +119,7 @@ aio app test --e2e
 
 #### AioCoreSDKError 403 Forbidden
 
-If you encounter the error `AioCoreSDKError [EventsSDKError]: [EventsSDK:ERROR_GET_ALL_PROVIDERS] Error: 403 - Forbidden` when creating an event provider, please follow these steps:
+If you encounter the error `AioCoreSDKError [EventsSDKError]: [EventsSDK:ERROR_GET_ALL_PROVIDERS] Error: 403 - Forbidden` when creating an event provider, perform the following steps:
 
 1. Select the project and workspace you set up during the [initial configuration](./getting-started.md#initial-configuration).
 1. Ensure you have added the [I/O Management API](./getting-started.md#initial-configuration)

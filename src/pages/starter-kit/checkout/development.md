@@ -15,7 +15,7 @@ This guide provides basic information for software development using the checkou
 Before you begin, make sure you've completed the initial setup of the starter kit.  
 See [Initial configuration](./getting-started.md) for more details.
 
-### Verify your application is initialized
+#### Verify your application is initialized
 
 When the App Builder application is initialized, you should see the following:
 

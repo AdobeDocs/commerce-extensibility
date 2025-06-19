@@ -37,6 +37,7 @@ The [`sync-oauth-credentials`](https://github.com/adobe/commerce-checkout-starte
  OAUTH_TECHNICAL_ACCOUNT_EMAIL=<technical account email>
  OAUTH_SCOPES=<scope>
  OAUTH_IMS_ORG_ID=<img org>
+```
 
 This script is included as part of the `pre-app-build` hook in [app.config.yaml](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/app.config.yaml). When the app build is triggered, the script runs automatically to synchronize the OAuth credentials with the Commerce instance.
 
@@ -45,6 +46,8 @@ application:
   hooks:
     pre-app-build: ./hooks/pre-app-build.js
 ```
+
+If OAuth credentials are still missing, review [Verify your application is initialized](./development.md#verify-your-application-is-initialized).
 
 ## Configure Eventing
 

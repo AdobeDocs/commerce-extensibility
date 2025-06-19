@@ -19,4 +19,5 @@ For more information on other technologies relevant to this project, see the fol
 - Adobe Developer Console [documentation](https://developer.adobe.com/developer-console/docs/guides/)
 - App Builder [documentation](https://developer.adobe.com/app-builder/docs/intro_and_overview/)
 - Adobe I/O Events [documentation](https://developer.adobe.com/events/docs)
-- Adobe Commerce extensibility [documentation](https://developer.adobe.com/commerce/extensibility)
+- App Builder Extension Compatibility for PaaS and SaaS [documentation](../../app-development/extension-compatibility.md)
+- App submission guidelines [documentation](../../app-development/app-submission-guidelines.md)

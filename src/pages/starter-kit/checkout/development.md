@@ -122,8 +122,8 @@ aio app test --e2e
 If you encounter the error `AioCoreSDKError [EventsSDKError]: [EventsSDK:ERROR_GET_ALL_PROVIDERS] Error: 403 - Forbidden` when creating an event provider, perform the following steps:
 
 1. Select the project and workspace you set up during the [initial configuration](./getting-started.md#initial-configuration).
-1. Ensure you have added the [I/O Management API](./getting-started.md#initial-configuration)
-1. Verify that you have the required permissions in the [Adobe Developer Console](https://developer.adobe.com/console) > **OAuth Server-to-Server** in the side-navigation menu > **Scope**:
+1. Ensure you have added the [I/O Management API](./getting-started.md#initial-configuration).
+1. Verify that you have the required permissions in the [Adobe Developer Console](https://developer.adobe.com/console) in the side-navigation menu under **OAuth Server-to-Server** > **Scope**:
 
   ```bash
   ["AdobeID","openid","read_organizations","additional_info.projectedProductContext","additional_info.roles","adobeio_api","read_client_secret","manage_client_secrets","event_receiver_api"]

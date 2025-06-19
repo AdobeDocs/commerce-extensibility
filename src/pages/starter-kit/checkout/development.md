@@ -15,7 +15,7 @@ This guide provides basic information for software development using the checkou
 Before you begin, make sure you've completed the initial setup of the starter kit.  
 See [Initial configuration](./getting-started.md) for more details.
 
-#### Verify your application is initialized
+### Verify your application is initialized
 
 When the App Builder application is initialized, you should see the following:
 
@@ -117,13 +117,14 @@ aio app test --e2e
 
 ## Troubleshooting
 
-#### AioCoreSDKError 403 Forbidden
+This section provides solutions to common issues you may encounter while developing with the checkout starter kit.
+
+### AioCoreSDKError 403 Forbidden
 
 If you encounter the error `AioCoreSDKError [EventsSDKError]: [EventsSDK:ERROR_GET_ALL_PROVIDERS] Error: 403 - Forbidden` when creating an event provider, perform the following steps:
 
-1. Select the project and workspace you set up during the [initial configuration](./getting-started.md#initial-configuration).
-1. Ensure you have added the [I/O Management API](./getting-started.md#initial-configuration).
-1. Verify that you have the required permissions in the [Adobe Developer Console](https://developer.adobe.com/console) in the side-navigation menu under **OAuth Server-to-Server** > **Scope**:
+1. Ensure you have added the [I/O Management API](./getting-started.md#initial-configuration) during the [initial configuration](./getting-started.md#initial-configuration).
+1. Verify that you have the following permissions in the [Adobe Developer Console](https://developer.adobe.com/console) in the side-navigation menu under **OAuth Server-to-Server** > **Scope**:
 
   ```bash
   ["AdobeID","openid","read_organizations","additional_info.projectedProductContext","additional_info.roles","adobeio_api","read_client_secret","manage_client_secrets","event_receiver_api"]

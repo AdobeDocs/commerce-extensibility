@@ -545,9 +545,10 @@ Why Use ngrok?
 * Inspect real payloads in your local aio app runtime.
 * Troubleshoot and validate your code before deploying to the cloud.
 
-Steps to set and use ngrok
+**Steps to set and use ngrok**
 
-1. Modify your action code to log incoming payloads.Open the file validateProductName.js and ensure it includes the following line to print the incoming webhook payload.`logger.info('Calling main with params: ' + JSON.stringify(params, null, 2));`.Updated validateProductName.js below:
+1. Modify your action code to log incoming payloads.Open the file validateProductName.js and ensure it includes the following line to print the incoming webhook payload.`logger.info('Calling main with params: ' + JSON.stringify(params, null, 2));`.
+Updated validateProductName.js below:
 
 ```js
 ```js
@@ -588,14 +589,19 @@ async function main(params) {
 exports.main = main
 ```
 
-1. Then build your AppBuilder project by running `aio app build`
-1. Start your App Builder app locallyFrom your project root, run:
+1. Then build your AppBuilder project. From your project root, run:
+
+``` terminal
+aio app build
+```
+
+1. Start your App Builder app locally. From your project root, run:
 
 ``` terminal
 aio app dev 
 ```
 
-1. Install ngrok: Follow the instructions on the official ngrok documentation to install it for your operating system.
+1. Now Install ngrok. Follow the instructions on the official ngrok documentation to install it for your operating system.
 
 1. Start ngrok to expose your local endpoint. In a new terminal window, Run the command `ngrok http https://localhost:9080`.This will start a secure tunnel to your local app running on https://localhost:9080. You will see output similar to the following:
 

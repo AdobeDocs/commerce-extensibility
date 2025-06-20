@@ -480,3 +480,36 @@ curl -H "Authorization:Bearer <AUTH_TOKEN>" \
   "workspace_configuration": "******"
 }
 ```
+
+### Get supported events for SaaS
+
+<Edition name="saas" />
+
+The `GET /V1/eventing/supportedList` endpoint returns the events supported in Adobe Commerce as a Cloud Service (SaaS). The response body is similar to the following:
+
+```json
+[
+    {
+        "name": "observer.customer_login"
+    },
+    {
+        "name": "observer.customer_register_success"
+    },
+    {
+        "name": "observer.customer_save_after"
+    },
+  ...
+]
+```
+
+The access token used in the request must have access to the `Eventing Framework > Event List` resource. See [REST authentication](https://developer.adobe.com/commerce/services/cloud/guides/rest/authentication/) for information on authentication for SaaS.
+
+**Example usage:**
+
+The following cURL command returns a list of all suported events in SaaS.
+
+```bash
+curl --request GET \
+   --url <ADOBE_COMMERCE_SAAS_REST_ENDPOINT>/V1/eventing/supportedList \
+   --header 'Authorization: Bearer <TOKEN>'
+```

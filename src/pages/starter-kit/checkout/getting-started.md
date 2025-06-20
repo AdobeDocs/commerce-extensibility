@@ -6,6 +6,8 @@ keywords:
   - Extensibility
 ---
 
+import Version from '/src/_includes/checkout-version.md'
+
 # Getting started
 
 To begin using the checkout starter kit, ensure that your Adobe Commerce installation meets the following prerequisites and then proceed with the installation and configuration.
@@ -14,7 +16,7 @@ To begin using the checkout starter kit, ensure that your Adobe Commerce install
 
 You must install or have access to the following prerequisites to develop with the Adobe Commerce checkout starter kit:
 
-- Adobe Commerce as a Cloud Service or Adobe Commerce version `2.4.4` or higher.
+- Adobe Commerce as a Cloud Service or Adobe Commerce version `2.4.5` or higher.
 
 - [Node.js](https://nodejs.org/) version 22. If you have Node Version Manager (`nvm`) installed, you can run the following command to install and use the required version:
 
@@ -22,57 +24,20 @@ You must install or have access to the following prerequisites to develop with t
   nvm install 22 && nvm use
   ```
 
-- [Adobe I/O CLI](https://developer.adobe.com/runtime/docs/guides/tools/cli_install/).
+- [Adobe I/O CLI](https://developer.adobe.com/app-builder/docs/guides/runtime_guides/tools/cli-install).
 
 - Access to the [Adobe Developer Console](https://console.adobe.io/) with an App
   Builder license. If you do not have access to the Adobe Developer Console or App Builder, refer to [get access to App Builder](https://developer.adobe.com/app-builder/docs/overview/getting_access/#get-access-to-app-builder).
 
-## Install Commerce modules
+- If you intend to use the Admin UI SDK (version `3.0` and higher), you must also complete the [Admin UI SDK installation process](../../admin-ui-sdk/installation.md).
 
-<InlineAlert variant="info" slots="text"/>
+<InlineAlert variant="help" slots="text1, text2"/>
 
-Adobe Commerce as a Cloud Service is preconfigured with all the required modules for the checkout starter kit. Cloud Service users can proceed by [configuring their local environment](#initial-configuration) or [configuring Commerce](./configure.md).
+When completing the steps to [install the Admin UI SDK](../../admin-ui-sdk/installation.md), use the following command to get a version compatible with the checkout starter kit:
 
-<Edition name="paas" />
-
-Before installing Commerce modules, ensure that you have the required credentials in `auth.json` with [access to the Adobe Commerce repository](https://experienceleague.adobe.com/en/docs/commerce-operations/installation-guide/prerequisites/authentication-keys).
-
-- Install the Out-of-Process Payment Extensions (OOPE) module on Adobe Commerce
-
-    To enable out-of-process payment methods in Commerce, install the `magento/module-out-of-process-payment-methods`. This module enables out-of-process payment functionalities.
-    To install the module, run the following command using Composer:
-
-    ```bash
-    composer require magento/module-out-of-process-payment-methods --with-dependencies
-    ```
-
-- Install the Out-of-Process Shipping Extensions (OOPE) module in Adobe Commerce
-
-  To enable out-of-process shipping methods in Adobe Commerce, install the `magento/module-out-of-process-shipping-methods` module.
-
-  To install the module, run the following command using Composer:
-
-    ```bash
-    composer require magento/module-out-of-process-shipping-methods --with-dependencies
-    ```
-
-- Install the Commerce Eventing module (Commerce 2.4.4 and 2.4.5 only)
-
-    The [Commerce Eventing module](https://developer.adobe.com/commerce/extensibility/events/) is crucial for handling events within Adobe Commerce. The eventing module is installed automatically in Adobe Commerce version `2.4.6` and higher.
-
-    This starter kit requires version `1.10.0` or higher of the Commerce Eventing module. To view your installed version, run the following command:
-
-    ```bash
-    composer show magento/commerce-eventing
-    ```
-
-    To install this module, run the following command using Composer:
-
-    ```bash
-    composer update magento/commerce-eventing --with-dependencies
-    ```
-
-    For Adobe Commerce versions `2.4.4` or `2.4.5`, you must install the Adobe I/O Events for Adobe Commerce module manually. Follow the instructions provided in [Adobe I/O Events installation](https://developer.adobe.com/commerce/extensibility/events/installation/).
+```bash
+composer require "magento/commerce-backend-sdk": ">=3.0"
+```
 
 ## Initial configuration
 
@@ -80,13 +45,31 @@ Use the following steps to configure your local environment:
 
 1. Create a folder for your project and navigate to it.
 
+  ```bash
+  mkdir <your-project-name> && cd <your-project-name>
+  ```
+
 1. Execute the following command to create an Adobe Developer Console project in your organization and using the Commerce checkout starter kit as a template:
 
   ```bash
   aio app init --repo adobe/commerce-checkout-starter-kit --github-pat $GITHUB_PAT
   ```
-
+  
   Replace `$GITHUB_PAT` with your GitHub personal access token. For more information, refer to [managing your personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens).
+
+1. You can create an app builder project, or select the existing one, while initializing the starter kit. The created project can be found in the [Adobe Developer Console](https://console.adobe.io/).
+
+  ```bash
+  ? Select Org: <your-ims-org>
+  ? Select a Project, or press + to create new:
+  ?   > do you wish to create a new Project? Yes
+  Enter Project details:
+  ? Name: <your-project-name>
+  ? Title: <your-project-title>
+  ? Description: <your-project-description>
+  ```
+
+  This creates a new project using **App Builder** as a template, including **runtime environment with each workspace**.
 
 1. The starter kit requires you to add the following services in the console project:
 
@@ -95,7 +78,7 @@ Use the following steps to configure your local environment:
    - Adobe I/O Events for Adobe Commerce
 
   Execute the following command to add the services by selecting them from the list:
-
+  
   ```bash
   aio app add service
   ```
@@ -106,4 +89,34 @@ After completing the previous steps you can:
 
 - [Connect to Adobe Commerce](./connect.md)
 - [Configure the available scripts](./configure.md)
-- [Deploy your initial project in App Builder](./development.md#deploy-and-cleanup)
+- [Deploy your initial project in App Builder](./development.md#deploy-the-application)
+
+## Install Commerce modules
+
+<Version />
+
+### Install the Payment, Shipping, or Tax modules
+
+To install the individual modules, refer to the following topics:
+
+- [Payment](./payment-install.md)
+- [Shipping](./shipping-install.md)
+- [Tax](./tax-install.md)
+
+### Install the Commerce Eventing module (Commerce 2.4.5 only)
+
+The [Commerce Eventing module](https://developer.adobe.com/commerce/extensibility/events/) is crucial for handling events within Adobe Commerce. The eventing module is installed automatically in Adobe Commerce version `2.4.6` and higher.
+
+This starter kit requires version `1.10.0` or higher of the Commerce Eventing module. To view your installed version, run the following command:
+
+```bash
+composer show magento/commerce-eventing
+```
+
+To install this module, run the following command using Composer:
+
+```bash
+composer update magento/commerce-eventing --with-dependencies
+```
+
+For Adobe Commerce versions `2.4.5`, you must install the Adobe I/O Events for Adobe Commerce module manually. Follow the instructions provided in [Adobe I/O Events installation](https://developer.adobe.com/commerce/extensibility/events/installation/).

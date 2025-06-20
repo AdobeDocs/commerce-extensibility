@@ -11,7 +11,7 @@ keywords:
  - Tools
 ---
 
-import actions from '/src/_includes/actions.md'
+import Actions from '/src/_includes/actions.md'
 
 # Real-time integrations
 
@@ -19,7 +19,7 @@ The following sections demonstrate all the real-time integrations that Adobe Com
 
 ## Synchronous webhook action
 
-<actions />
+<Actions />
 
 The contents of the `./actions/webhook` directory expose a webhook that can be invoked synchronously from Commerce to affect the behavior of a particular business flow.
 

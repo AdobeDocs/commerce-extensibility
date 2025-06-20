@@ -202,6 +202,8 @@ You can download a sample app from the [Adobe Commerce Samples repository](https
    aio app dev
    ```
 
+1. Select the application in the **Configure extensions** screen.
+
 1. Confirm that the **Apps** section appears on the main menu and the **First App on App Builder** option appears in the **Apps** menu in the Admin. Click **First App on App Builder** and confirm that the **Fetched orders from Adobe Commerce** page opens.
 
    ![Fetched orders from Adobe Commerce page](../_images/first-app.png)

@@ -12,7 +12,7 @@ Your app must be correctly configured with Adobe App Registry to use the Admin U
 
 ## Code layout best practices
 
-It's recommended to have the following code layout for your project:
+We recommend using the following code layout for your project:
 
 - src
   - commerce-backend-ui-1

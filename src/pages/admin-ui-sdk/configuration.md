@@ -10,15 +10,13 @@ keywords:
 
 The Adobe Commerce Admin UI SDK allows you to use a local server to view and test your Admin customizations before you submit your app to the Adobe Marketplace.
 
-Navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Admin UI SDK** screen.
-
 ## General configuration
 
-The **General configuration** section enables the Admin UI SDK and refreshes registrations when changes are made.
+Navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Admin UI SDK** screen. The Admin UI SDK is disabled by default. To enable it, set the **Enable Admin UI SDK** field to **Yes**.
 
 ![Admin UI SDK general configuration](../_images/admin-ui-sdk/configuration/general.png)
 
-The Admin UI SDK is disabled by default. To enable it, set the **Enable Admin UI SDK** field to **Yes**.
+The **General configuration** section enables the Admin UI SDK and refreshes registrations when changes are made.
 
 The [**Configure extensions**](./eligible-extensions-config.md) button allows you to select the workspace and eligible extensions for the Commerce instance.
 
@@ -43,6 +41,12 @@ Navigate to **System** > Admin UI SDK > **Admin UI SDK Logs** to check the saved
 ![Admin UI SDK Logs screen](../_images/admin-ui-sdk-logs.png)
 
 ## Local testing
+
+<Edition name="paas" />
+
+<InlineAlert type="info" title="Note" />
+
+The local testing feature is available only for PaaS versions of Adobe Commerce. On Adobe Commerce as a Cloud Service, you must ensure the **Enable local testing** field is set to **No**.
 
 When you enable the local service, all calls are automatically redirected to the local server, instead of connecting to Adobe's App Registry. The values you specify must match the contents of your local `server.js` file.
 

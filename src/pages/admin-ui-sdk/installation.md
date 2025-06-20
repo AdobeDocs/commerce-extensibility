@@ -19,8 +19,6 @@ Magento Open Source is not supported.
 
 ## Install the Admin UI SDK
 
-<Edition name="paas" />
-
 This section describes the basic steps to install the Admin UI SDK on Adobe Commerce 2.4.5 to 2.4.7. It is installed automatically on version 2.4.8 and later.
 
 Adobe Commerce has the following software requirements:
@@ -113,23 +111,7 @@ This method installs the SDK on an On-premises instance.
 
 1. Update your on-premises instance to ensure the committed code is deployed.
 
-## Enable the Admin UI SDK
-
-Login to the Adobe Commerce Admin and navigate to the  **Stores** > Settings > **Configuration** > **Adobe Services** > **Admin UI SDK** screen.
-
-![Admin UI SDK general configuration](../_images/admin-ui-sdk/configuration/general.png)
-
-1. Set the **Enable Admin UI SDK** field to **Yes**.
-
-1. &#8203;<Edition name="paas" /> Optionally set the **Enable local testing** field to **Yes**.
-
-   &#8203;<Edition name="saas" /> Set the **Enable local testing** field to **No**.
-
-1. Click **Save Config**.
-
 ## Update the Commerce Admin UI SDK
-
-<Edition name="paas" />
 
 The Admin UI SDK is automatically updated for SaaS projects. For PaaS projects, follow the procedure below to update patch versions of the SDK, such as upgrading from V2.x to V3.0.0.
 

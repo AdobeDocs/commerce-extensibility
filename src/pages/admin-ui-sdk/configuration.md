@@ -10,15 +10,13 @@ keywords:
 
 The Adobe Commerce Admin UI SDK allows you to use a local server to view and test your Admin customizations before you submit your app to the Adobe Marketplace.
 
-Navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Admin UI SDK** screen.
-
 ## General configuration
 
-The **General configuration** section enables the Admin UI SDK and refreshes registrations when changes are made.
-
-The Admin UI SDK is disabled by default. To enable it, set the **Enable Admin UI SDK** field to **Yes**.
+Navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Admin UI SDK** screen. The Admin UI SDK is disabled by default. To enable it, set the **Enable Admin UI SDK** field to **Yes**.
 
 ![Admin UI SDK general configuration](../_images/admin-ui-sdk/configuration/general.png)
+
+The **General configuration** section enables the Admin UI SDK and refreshes registrations when changes are made.
 
 The [**Configure extensions**](./eligible-extensions-config.md) button allows you to select the workspace and eligible extensions for the Commerce instance.
 

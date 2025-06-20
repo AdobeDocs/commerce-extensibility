@@ -15,9 +15,7 @@ import ConditionalEvents from '/src/_includes/conditional-event.md'
 
 <InlineAlert variant="info" slots="text1" />
 
-This feature is available only in Adobe Commerce as a Cloud Service (ACCS).
-
-In addition to the available [REST endpoints for event subscriptions](./api.md), Adobe Commerce as a Cloud Service also supports managing events through the Admin.
+Creating events from the Admin can only be performed in Adobe Commerce as a Cloud Service (SaaS). SaaS customers can also use [REST](./api.md) to create event subscriptions.
 
 ## View event subscriptions
 
@@ -37,7 +35,7 @@ The **Event subscription settings** configuration panel contains the following f
 
 Field | Description
 --- | ---
-**Event Name** | Select one of the supported Commerce event names from the dropdown.
+**Event Name** | Select one of the supported Commerce event names from the dropdown. Adobe Commerce as a Cloud Service does not support all possible events. Open a support ticket to request additional events.
 **Event Name Alias** | A unique alias name for the event. An alias is required for events that have rules configured.
 **Event Provider** | Select the event provider to which the event should be delivered. If a workspace configuration is set for the provider, event metadata will be created and linked to the provider when the event subscription is saved.
 **Is Enabled** | Indicates whether the event is enabled. Commerce does not emit disabled events.

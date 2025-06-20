@@ -1,6 +1,7 @@
 ---
 title: Install or update Adobe Commerce Admin UI SDK
 description: Learn how to install or update the Adobe Commerce Admin UI SDK.
+edition: paas
 keywords:
   - App Builder
   - Extensibility
@@ -14,21 +15,9 @@ Adobe Commerce as a Cloud Service (SaaS) automatically includes the Adobe Commer
 
 Magento Open Source is not supported.
 
-## Enable the Admin UI SDK on SaaS
+[Admin configuration and testing](./configuration.md) describes how to enable and configure the Admin UI SDK.
 
-<Edition name="saas" />
-
-The Admin UI SDK is disabled by default. To enable it, login to the Adobe Commerce Admin and navigate to the  **Stores** > Settings > **Configuration** > **Adobe Services** > **Admin UI SDK** screen.
-
-![Admin UI SDK general configuration](../_images/admin-ui-sdk/configuration/general.png)
-
-1. Set the **Enable Admin UI SDK** field to **Yes**.
-
-1. In the **Testing** section, set the **Enable local testing** field to **No**.
-
-1. Click **Save Config**.
-
-## Install the Admin UI SDK on PaaS
+## Install the Admin UI SDK
 
 <Edition name="paas" />
 
@@ -124,7 +113,7 @@ This method installs the SDK on an On-premises instance.
 
 1. Update your on-premises instance to ensure the committed code is deployed.
 
-### Enable the Admin UI SDK
+## Enable the Admin UI SDK
 
 Login to the Adobe Commerce Admin and navigate to the  **Stores** > Settings > **Configuration** > **Adobe Services** > **Admin UI SDK** screen.
 
@@ -132,7 +121,9 @@ Login to the Adobe Commerce Admin and navigate to the  **Stores** > Settings > *
 
 1. Set the **Enable Admin UI SDK** field to **Yes**.
 
-1. (Optional) In the **Testing** section, set the **Enable local testing** field to **Yes**.
+1. &#8203;<Edition name="paas" /> Optionally set the **Enable local testing** field to **Yes**.
+
+   &#8203;<Edition name="saas" /> Set the **Enable local testing** field to **No**.
 
 1. Click **Save Config**.
 

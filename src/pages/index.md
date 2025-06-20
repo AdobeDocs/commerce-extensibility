@@ -54,6 +54,8 @@ Adobe Commerce offers the following out-of-process development tools:
 
 - [Admin UI SDK](./admin-ui-sdk/index.md) - Customize and enhance the Commerce Admin with new pages and features for your merchants.
 
+- Custom attributes - Use [GraphQL](https://developer.adobe.com/commerce/webapi/graphql/schema/attributes/mutations/) and [REST](https://developer.adobe.com/commerce/webapi/rest/modules/custom-attributes/) APIs to create custom attributes for carts, credit memos, and invoices and items in those objects. B2B developers can also create custom attributes for companies and negotiable quotes.
+
 Additionally, [Marketplace Apps](./app-development/index.md) allow you to create and sell custom single-page applications on the [Adobe Commerce Marketplace](https://commercemarketplace.adobe.com).
 
 <InlineAlert variant="info" slots="text"/>

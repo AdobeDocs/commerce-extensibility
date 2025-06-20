@@ -14,16 +14,18 @@ Your app must be correctly configured with Adobe App Registry to use the Admin U
 
 We recommend using the following code layout for your project:
 
-- src
-  - commerce-backend-ui-1
-    - actions
-    - web-src
-    - ext.config.yaml
-- install.yaml
-- extension-manifest.json
-- package.json
-- .env
-- app.config.yaml
+```text
+├── src/
+│   └── commerce-backend-ui-1/
+│       ├── actions/
+│       ├── web-src/
+│       └── ext.config.yaml
+├── install.yaml
+├── extension-manifest.json
+├── package.json
+├── .env
+└── app.config.yaml
+```
 
 ## Add or update the `install.yml` file
 

@@ -232,8 +232,6 @@ commappwebhook/
     └── utils.js
 ```
 
-![Folder Structure after app init](../_images/webhooks/tutorial/appbuilder-project-filestructure.png)
-
 ### Implement the webhook action
 
 1. Create a new File validateProductName.js under testwebhook folder under actions folder.

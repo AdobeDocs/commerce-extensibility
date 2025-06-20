@@ -431,7 +431,7 @@ Ensure the following before you start debugging:
 
 **require-adobe-auth** is set to **false** in your app-config.yaml file under webhook action.
 
-#### Configuring Debugger
+#### Step 1: Configuring Debugger
 
 Create or Edit launch.json
 in the root project folder, navigate to the .vscode folder. If it doesn't exist, create .vscode folder. Inside .vscode folder, create or edit the launch.json file.
@@ -441,7 +441,7 @@ To configure it quickly, copy and paste the recommended content from the  App bu
 
  This configuration sets up the VS Code debugger to work seamlessly with Adobe I/O App Builder projects.
 
-#### Enable source maps
+#### Step 2: Enable source maps
 
 In the root folder of your project , create a file called webpack-config.js with the following content:
 
@@ -451,13 +451,13 @@ module.exports = {
   }
 ```
 
-#### Rebuild the project
+#### Step 3: Rebuild the project
 
 ```bash
   aio app build
 ```
 
-#### Start Debugging
+#### Step 4: Start Debugging
 
 Go to the Run and Debug tab in VS Code (🪲 icon on the left sidebar).
 From the dropdown at the top, select the launch profile App Builder:
@@ -485,7 +485,7 @@ press CTRL+C to terminate the dev environment
 2025-05-22T06:41:55.969Z [watcher] info: watching action files at /Users/prutech/Documents/projects/devadvocate/appbuilderforextensibility/actions...
 ```
 
-#### Web action with a sample payload
+#### Step 5: Web action with a sample payload
 
 Now that your local debugger is running, you can test your web action by sending a request to the local endpoint.
 Use tools like Postman or any other API client to send a POST request to the above URL with the sample JSON payload.
@@ -534,6 +534,92 @@ your-project-directory  % sudo curl --insecure --request POST \
 '
 {"op":"exception","message":"Invalid product name >> abc1test"}%
 ```
+
+### Debug using ngrok
+
+You can test real webhook triggers from your Adobe Commerce  instance and debug them locally using ngrok. This setup allows requests from Adobe Commerce to be forwarded securely to your local App Builder environment.
+
+Why Use ngrok?
+
+* Test and debug live webhooks from Adobe Commerce.
+* Inspect real payloads in your local aio app runtime.
+* Troubleshoot and validate your code before deploying to the cloud.
+
+Steps to set and use ngrok
+
+1. Modify your action code to log incoming payloads.Open the file validateProductName.js and ensure it includes the following line to print the incoming webhook payload.`logger.info('Calling main with params: ' + JSON.stringify(params, null, 2));`.Updated validateProductName.js below:
+
+```js
+```js
+const { Core, Events } = require('@adobe/aio-sdk') // Adobe I/O SDK modules
+const { errorResponse, stringParameters, checkMissingRequestInputs } = require('../utils') // Utility functions
+
+// Main function executed by Adobe I/O Runtime
+async function main(params) {
+  // Create a logger instance
+  const logger = Core.Logger('main', { level: params.LOG_LEVEL || 'info' })
+  //Call to print payload
+ logger.info('Calling main with params: ' + JSON.stringify(params, null, 2));
+
+  try {
+    const response = { statusCode: 200 }
+
+    // Check if product name contains 'test'; return error response if true
+    if (/test/.test(params.product.name.toLowerCase())) {
+      response.body = JSON.stringify({
+        op: "exception",
+        message: "Invalid product name >> " + params.product.name
+      })
+    } else {
+      // Success response
+      response.body = JSON.stringify({
+        op: "success"
+      })
+    }
+
+    return response
+  } catch (error) {
+    // Log error and return a 500 server error response
+    logger.error(error)
+    return errorResponse(500, 'server error ' + JSON.stringify(params), logger)
+  }
+}
+
+exports.main = main
+```
+
+1. Then build your AppBuilder project by running `aio app build`
+1. Start your App Builder app locallyFrom your project root, run:
+
+``` terminal
+aio app dev 
+```
+
+1. Install ngrok: Follow the instructions on the official ngrok documentation to install it for your operating system.
+
+1. Start ngrok to expose your local endpoint. In a new terminal window, Run the command `ngrok http https://localhost:9080`.This will start a secure tunnel to your local app running on https://localhost:9080. You will see output similar to the following:
+
+```terminal
+Session Status                online                                                                                                               
+Account                       Rekha (Plan: Free)                                                                                                   
+Version                       3.23.1                                                                                                               
+Region                        India (in)                                                                                                           
+Latency                       79ms                                                                                                                 
+Web Interface                 http://127.0.0.1:4040                                                                                                
+Forwarding                    https://6d3c-130-248-127-xx.ngrok-free.app -> https://localhost:9080                                                 
+                                                                                                                                                   
+Connections                   ttl     opn     rt1     rt5     p50     p90                                                                          
+                              25      0       0.00    0.00    11.45   64.75     
+
+```
+
+Note the "Forwarding" URL – in this example, it is `https://6d3c-130-248-127-xx.ngrok-free.app`
+This is your public URL that exposes your local AppBuilder app to the internet.
+
+1. Go to your Adobe Commerce admin panel and update the webhook configuration with this ngrok forwarding URL. The final URL should look like this:
+`https://6d3c-130-248-127-xx.ngrok-free.app/api/v1/web/appbuilderforextensibility/webhook`
+
+1. When the webhook is triggered from the live Adobe Commerce instance(in this case when a product is newly added or modified from Admin), the request will hit your local code, allowing you to inspect the payload in the terminal where `aio app dev` was issued.
 
 ## Development tips
 

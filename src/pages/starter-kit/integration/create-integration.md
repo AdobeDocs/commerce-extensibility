@@ -188,6 +188,8 @@ If you are running Adobe Commerce 2.4.6 or higher, the modules that enable event
 
 ### Download and configure the starter kit
 
+Integration Starter Kit version v2.0.0 and higher requires Commerce Eventing version 1.12.1 or higher. The Starter Kit is not backward compatible with older versions of Commerce Eventing.
+
 Use the following steps to download and configure the Adobe Commerce integration starter kit. The starter kit is located in a [public repository](https://github.com/adobe/commerce-integration-starter-kit).
 
 1. Clone the repo using SSH:

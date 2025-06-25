@@ -1,6 +1,7 @@
 ---
 title: Install Adobe I/O Events for Adobe Commerce
 description: Learn how to install the Commerce modules needed for Adobe I/O Events for Adobe Commerce.
+edition: paas
 keywords:
   - Events
   - Extensibility

@@ -11,13 +11,13 @@ keywords:
  - Tools
 ---
 
-import actions from '/src/_includes/actions.md'
+import Actions from '/src/_includes/actions.md'
 
 # Event-based integrations
 
 The following sections demonstrate all the event-based integrations that Adobe Commerce integration starter kit has to offer, including webhook ingestion, event handler actions and event ingestion actions.
 
-<actions />
+<Actions />
 
 ## Ingestion webhook
 

@@ -14,27 +14,25 @@ The [`adobe-commerce.js`](https://github.com/adobe/commerce-checkout-starter-kit
 
 To use the Adobe Commerce HTTP Client, update the `COMMERCE_BASE_URL` value in the `.env` file, and complete the authentication setup.
 
-- Commerce Admin REST endpoints:
+- &#8203;<Edition name="paas" />For PaaS (On-Premise/Cloud):
 
-&#8203;<Edition name="paas" /> `COMMERCE_BASE_URL=https://<commerce_instance_url>/rest/<store_view_code>/`
+  - `COMMERCE_BASE_URL` includes your base site URL + `/rest/<store_view_code>/`
+  - Example: `https://<commerce_instance_url>/rest/<store_view_code>/`
 
-- Adobe Commerce Cloud as a Service:
+- &#8203;<Edition name="saas" />For SaaS (Adobe Commerce as a Cloud Service):
 
-&#8203;<Edition name="saas" /> `COMMERCE_BASE_URL=https://na1.api.commerce.adobe.com/<tenant_code>/`
-
-<InlineAlert variant="info" slots="text"/>
-
-The `COMMERCE_BASE_URL` must include the final slash '/'.
+  - `COMMERCE_BASE_URL` must be the REST API endpoint provided by Adobe Commerce
+  - Example: `https://na1.api.commerce.adobe.com/<tenant_id>/`
 
 ## Authentication
 
 Depending on your Adobe Commerce setup, there are two options to authenticate and communicate with App Builder:
 
-- [Configure Adobe Identity Management Service (IMS)](#adobe-identity-management-service-ims)
+- [Adobe Identity Management Service (IMS)](#adobe-identity-management-service-ims)
 
-- [Configure Commerce Integration](#create-a-commerce-integration)
+- &#8203;<Edition name="paas" /> [Commerce Integration](#create-a-commerce-integration)
 
-If a Commerce integration is detected, it has precedence over IMS authentication. However, if neither option is detected or configured, then client instantiation will fail.
+If IMS authentication is detected, it has precedence over Commerce integration authentication. However, if neither option is detected or configured, then client instantiation will fail.
 
 ### Adobe Identity Management Service (IMS)
 
@@ -48,17 +46,9 @@ Use the following steps to create OAuth credentials for App Builder authenticati
 
 1. Access your IMS credentials through the [Adobe Developer Console](https://developer.adobe.com/console). Select the project and workspace you set up during the [initial configuration](./getting-started.md#initial-configuration). Then click **OAuth Server-to-Server** in the side-navigation menu.
 
-   **NOTE**: The OAuth Server-to-Server option only displays if you add the I/O Management API to your workspace, which is done as part of the [initial configuration](./getting-started.md#initial-configuration).
+1. Copy the IMS credentials to the `.env` file in the root of the project.
 
-1. Add a technical account with server-to-server credentials to the Commerce Admin with the appropriate permissions using the [Admin User Creation Guide](https://experienceleague.adobe.com/en/docs/commerce-admin/systems/user-accounts/permissions-users-all#create-a-user). If a technical account with appropriate permissions already exists, you can use it instead.
-
-1. When associating the user with the account, find your `Technical Account email` as a part of generated IMS credentials with following pattern: `<technical-account>@techacct.adobe.com` and use that value in the **Email** field during user creation:
-
-   ![userCreation.png](../../_images/starterkit/userCreation.png)
-
-1. On the **User Role** tab, select the Administrators role to provide all necessary permissions.
-
-1. Copy the generated credentials (client ID, client secret, technical account ID, and technical account email) to the `.env` file in the root of the project:
+   **NOTE**: These credentials are automatically populated in [Configure OAuth Server-to-Server Credential](./configure.md#configure-oauth-server-to-server-credential).
 
    ```js
    OAUTH_CLIENT_ID=<client id>
@@ -69,9 +59,19 @@ Use the following steps to create OAuth credentials for App Builder authenticati
    OAUTH_IMS_ORG_ID=<img org>
    ```
 
+1. Add a technical account with server-to-server credentials to the Commerce Admin with the appropriate permissions using the [Admin User Creation Guide](https://experienceleague.adobe.com/en/docs/commerce-admin/systems/user-accounts/permissions-users-all#create-a-user).
+
+1. When associating the user with the account, find your **Technical Account email** as a part of generated IMS credentials with following pattern: `<technical-account>@techacct.adobe.com` and use that value in the **Email** field during user creation:
+
+   ![ims-user-creation.png](../../_images/starterkit/ims-user-creation.png)
+
+1. On the **User Role** tab, select the role that provides all necessary permissions for API integrations.
+
+   ![ims-user-role.png](../../_images/starterkit/ims-user-role.png)
+
 ### Create a Commerce integration
 
-This option allows communication between Commerce and App Builder.
+&#8203;<Edition name="paas" /> This option allows communication between Commerce and App Builder.
 
 1. Create a new Adobe Commerce Integration by following the [systems integration](https://experienceleague.adobe.com/en/docs/commerce-admin/systems/integrations) guide.
 

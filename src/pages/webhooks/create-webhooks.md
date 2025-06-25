@@ -27,7 +27,9 @@ With this knowledge, you can create a webhook, which defines the following sets 
 
 * Optional rules that trigger only when certain conditions are met, such as when a string matches a specific value.
 
-In Adobe Commerce as a Cloud Service, you can create a webhook subscription in the Admin or by using a REST endpoint. (See [Webhooks in Adobe Commerce as a Cloud Service](https://developer.adobe.com/commerce/services/cloud/guides/rest/webhooks/) for details on using REST.) In Platform as a Service (PaaS) and on-premises environments, you must create an `app/etc/webhooks.xml` file or create a custom module that includes a `<custom-module-root>/etc/webhooks.xml` file.
+&#8203;<Edition name="saas" /> In Adobe Commerce as a Cloud Service, you can create a webhook subscription in the Admin or by using a REST endpoint. (See [Subscribe a webhook](./api.md#subscribe-a-webhook) for details on using REST.) Adobe Commerce as a Cloud Service does not support all possible webhook methods. Open a support ticket to request additional webhook methods.
+
+&#8203;<Edition name="paas" /> In Platform as a Service (PaaS) and on-premises environments, you must create an `app/etc/webhooks.xml` file or create a custom module that includes a `<custom-module-root>/etc/webhooks.xml` file.
 
 ## Define webhook properties
 
@@ -61,7 +63,7 @@ The following table describes the properties of a webhook subscription. The **Ad
 
 Admin field | XML attribute | Description
 --- | --- | ---
-**Webhook Method** | `method.name` | If using the Admin, select one of the supported Commerce webhook names from the dropdown. Otherwise, The value of the webhook method name must be in the form `<event_type>.<webhook_name>`, where `event_type` is either `observer` or `plugin`, and `webhook_name` matches a valid Commerce event name. In PaaS environments, use the `bin/magento webhooks:list:all` command to display a list of possible webhooks.
+**Webhook Method** | `method.name` | If using the Admin, select one of the supported Commerce webhook names from the dropdown. Otherwise, the value of the webhook method name must be in the form `<event_type>.<webhook_name>`, where `event_type` is either `observer` or `plugin`, and `webhook_name` matches a valid Commerce event name. In PaaS environments, use the `bin/magento webhooks:list:all` command to display a list of possible webhooks.
 **Webhook Type** | `method.type` | Specify whether to run the webhook `before` or `after` the original action.
 **Batch Name** | `batch.name` | A unique name for the batch. Use a descriptive name that encompasses all the hooks in the batch. The name must contain English alphanumeric characters and underscores (_) only.
 **Batch Order** | `batch.order` | An integer that sets the order in which multiple webhooks are executed. All hooks within a batch are sent in parallel. Therefore, as you add hooks to a batch, keep in mind what task each hook will perform. For example, since the hooks are executed in parallel, you should not place a hook that relies on a response from another hook in the same batch. A default value of 0 is saved if no value is set.

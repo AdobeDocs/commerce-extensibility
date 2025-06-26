@@ -40,15 +40,17 @@ import ProjectRequirements from '/src/_includes/project-requirements.md'
 
    ![Add an API to your workspace](../_images/events/stage-add-api.png)
 
-1. On the **Add an API** page, filter on **Adobe Services** and select **I/O Management API**. Then click **Next**.
+1. On the **Add an API** page, filter on **Adobe Services** and select one of the following options. These APIs provide authentication and authorization for your project.
+
+   &#8203;<Edition name="paas" /> **I/O Management API**
+   &#8203;<Edition name="paas" /> **Adobe Commerce as a Cloud Service**
+   Then click **Next**.
 
    ![Select IO events](../_images/events/add-io-management.png)
 
 1. On the **Configure API** page, select the **OAuth Server-to-Server** option and click **Save configured API**.
 
    ![generate a key pair](../_images/events/setup-api-oauth.png)
-
-   **Note**: You can set up server-to-server authentication using JSON Web Tokens (JWT). However, this method has been deprecated in favor of OAuth and must be replaced no later than January 1, 2025. See [Service Account (JWT) Authentication](https://developer.adobe.com/developer-console/docs/guides/authentication/JWT/) for details on implementing this solution.
 
 1. On the front page of your workspace, click the **Add service** pop-up menu and select **API**.
 
@@ -57,8 +59,6 @@ import ProjectRequirements from '/src/_includes/project-requirements.md'
 1. On the **Add an API** page, filter by **Experience Cloud** and select **Adobe I/O Events for Adobe Commerce**. Then click **Next**.
 
 1. On the **Configure API** page, click **Save configured API**.
-
-1. If you are using JWT authentication, unzip the downloaded `config.zip` file. The extracted `config` directory should contain a `certificate_pub.crt` and a `private.key` file. The `private.key` file is required to configure the Commerce Admin.
 
 ## Download the workspace configuration file
 

@@ -252,7 +252,7 @@ curl --request GET \
 
 ## GraphQL
 
-There are two GraphQL queries to check taxes applied by the tax integration, `cart`.
+The following are GraphQL query examples to check the taxes applied by the tax integration.
 
 ### Cart taxes
 

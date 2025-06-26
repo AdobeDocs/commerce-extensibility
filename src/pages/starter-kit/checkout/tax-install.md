@@ -6,6 +6,7 @@ keywords:
   - Extensibility
 ---
 
+import Configuration from '/src/_includes/checkout-configuration.md'
 import Version from '/src/_includes/checkout-version.md'
 
 # Install the tax module
@@ -37,6 +38,8 @@ magento setup:di:compile
 ````
 
 ## Configuration
+
+<Configuration />
 
 The checkout starter kit provides the [`create-tax-integrations`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/create-tax-integrations.js) script to help configure Adobe Commerce. It reads the tax integrations configuration from the `tax-integrations.yaml` file and creates tax integrations in Adobe Commerce.
 

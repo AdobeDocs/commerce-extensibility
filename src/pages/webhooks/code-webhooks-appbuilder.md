@@ -7,25 +7,29 @@ noIndex: true
 
 ---
 
-# Extend Adobe Commerce Webhooks and App Builder
+# Extend Adobe Commerce with webhooks and App Builder
 
-Earlier, adding custom validations or services in Adobe Commerce needed complex in-process code that was hard to manage. Now, with App Builder, developers can build scalable, event-driven integrations using webhooks and runtime actions. For example, you can use App Builder to validate data like product names in real time through synchronous webhook integrations in Adobe Commerce SaaS (ACCS).
+With Adobe App Builder, you can build scalable, event-driven integrations using webhooks and runtime actions. These integrations allow you to extend Adobe Commerce capabilities without modifying the core codebase, making it easier to maintain and scale your applications. For example, you can use App Builder to validate data, such as product names, in real time through synchronous webhook integrations in Adobe Commerce as a Cloud Service (SaaS).
 
-This guide outlines step-by-step instructions for setting up an App Builder project . It covers writing simple action code, configuring webhook subscriptions in Adobe Commerce, debugging App Builder code using a debugger.
+This tutorial outlines step-by-step instructions for setting up an App Builder project. It covers writing simple action code, configuring webhook subscriptions in Adobe Commerce, and debugging App Builder code using a debugger.
 
-## Step-by-step guide and sample code
+## How it works
 
-Before we dive into the setup, let's understand how this integration works end-to-end:
+This tutorial demonstrates how to extend Adobe Commerce using webhooks and Adobe App Builder. The integration allows you to validate product names in real time when products are added or updated in Adobe Commerce. Before we dive into the setup, let's understand how this integration works end-to-end:
 
-1. Adobe Commerce triggers a webhook when specific events occur. For example, when a new product is added or updated.
+1. Adobe Commerce triggers a webhook when specific events occur, such as when a new product is added or updated.
 
-1. This webhook sends the event payload (e.g., product name, SKU, price) to an Adobe App Builder runtime action.
+1. This webhook sends the relevant event payload (the product name, in this case) to an Adobe App Builder runtime action.
 
-1. The App Builder action processes the payload and applies custom business logic (e.g., validating that the product name doesn't include restricted terms like "test").
-Based on the logic, the action returns either a success or an error message.
+1. The App Builder action processes the payload and applies custom business logic. You might want to validate that the product name doesn't include restricted terms like "test" or "example". Based on the logic, the action returns either a success or an error message.
 
-1. Adobe Commerce uses this response for example in this case while saving the product
-This setup allows you to offload validation and custom logic from the Commerce codebase to the scalable, serverless infrastructure of Adobe App Builder
+1. Adobe Commerce uses this response to determine whether to save changes to the product.
+
+This setup allows you to offload validation and custom logic from the Commerce codebase to the scalable, serverless infrastructure of Adobe App Builder.
+
+## Set up the Adobe Developer Console and App Builder project locally
+
+Before you can start building your App Builder application, you need to set up your development environment and create a project in the Adobe Developer Console. This process involves installing the necessary tools, configuring your workspace, and creating a new project that will host your App Builder application.
 
 ### Prerequisites
 
@@ -212,7 +216,7 @@ Project initialized for Workspace Stage, you can run 'aio app use -w <workspace>
 
 Folder structure after `app init`:
 
-```terminal
+```tree
 commappwebhook/
 ├── README.md
 ├── app.config.yaml
@@ -234,8 +238,7 @@ commappwebhook/
 
 ### Implement the webhook action
 
-1. Create a new File validateProductName.js under testwebhook folder under actions folder.
-commappwebhook/actions/testwebhook and add the below code. This file defines a function that runs as an action in Adobe App Builder. In App Builder, every action must have a function named main, as this is the entry point that gets called when the action is triggered. The function should accept input in JSON format and return a response in JSON as well. In this case, the action checks if the product name received from the Adobe Commerce webhook contains the word "test". If it does, the action passes validation; otherwise, it returns an error message.
+1. Create a `commappwebhook/actions/testwebhook/validateProductName.js` file and add the following code. This file defines a function that runs as an action in Adobe App Builder. In App Builder, every action must have a function named main, as this is the entry point that gets called when the action is triggered. The function should accept input in JSON format and return a response in JSON as well. In this case, the action checks if the product name received from the Adobe Commerce webhook contains the word "test". If it does, the action passes validation. Otherwise, it returns an error message.
 
 ```js
 const { Core, Events } = require('@adobe/aio-sdk') // Adobe I/O SDK modules
@@ -328,7 +331,7 @@ module.exports = {
 
 ### Configure app.config.yaml
 
-The app.config.yaml file is used to configure your Adobe App Builder project. It defines project metadata, runtime actions, web assets, and settings like which file to use as the entry point for each action.This config file is available in the following location: `commappwebhook/app.config.yaml`. In `app.config.yaml`, change the `index.js` reference to `validateProductName.js`.
+The `app.config.yaml` file is used to configure your Adobe App Builder project. It defines project metadata, runtime actions, web assets, and settings like which file to use as the entry point for each action.This config file is available in the following location: `commappwebhook/app.config.yaml`. In `app.config.yaml`, change the `index.js` reference to `validateProductName.js`.
 
 <InlineAlert variant="info" slots="text"/>
 
@@ -354,11 +357,23 @@ application:
               final: true
   ```
   
-### Deploy and Test
+### Deploy and test
 
 Run the following commands in your project directory:
-npm install – to install all project dependencies
-aio app deploy – to deploy the application to Adobe I/O Runtime
+
+1. To install all project dependencies:
+
+   ```bash
+   npm install
+   ```
+
+1. To deploy the application to Adobe I/O Runtime:
+
+   ```bash
+   aio app deploy
+   ```
+  
+   The command builds the application, deploys the action, and uploads web assets to the CDN. The output is similar to the following, showing the deployed action URL and the URL to access your application.
 
 ```terminal
 prutech@Prutech-ka-MacBook-Pro appbuilderforextensibility % aio app deploy
@@ -386,7 +401,7 @@ Successful deployment 🏄
 
 Make a note of the Web Action URL — you'll need to specify it in the next step within the Commerce configuration.
 
-#### Configure Webhooks in Adobe Commerce instance
+#### Configure webhooks on the Adobe Commerce instance
 
 In the Admin panel, navigate to **System**> **Webhooks** > **Webhook Subscriptions** to open the Webhooks grid page. Click the **Add New Webhook** button.
 
@@ -402,7 +417,7 @@ Below, you'll find the hook fields section. Here, you can specify the payload fi
 
 You now have App Builder code set up to validate the product name received from Commerce. Whenever a new product is added in Commerce, the webhook triggers and synchronously invokes the App Builder code to perform the validation.
 
-From the Commerce Admin panel, navigate to **Catalog** > **Add New Product**. Enter the product details such as Name, SKU, and Price. Set the Name as "testproduct", then click Save.
+From the Commerce Admin panel, navigate to **Catalog** > **Add New Product**. Enter the product details such as name, SKU, and price. Set the name as "testproduct", then click **Save**.
 
 Upon saving, the webhook triggers the App Builder code, which validates the product name and returns an error message. The error **Invalid product name >>** will be displayed in the Commerce UI, confirming that the integration is working as expected.
 
@@ -410,15 +425,14 @@ As per the App Builder code logic, if the product name does not contain the word
 
 ## Debugging
 
-### Debug from Commerce ACCS Instance
+### Debug from the Commerce ACCS instance
 
-1. Viewing Logs from the Commerce Side[ACCS Specific]
-Log into your ACCS instance, navigate to Admin UI → **System** → **Webhook Logs**.
+1. To view logs from the Admin, log into your Commerce instance and navigate to **System** > **Webhook Logs**.
 The logs will appear as shown in the screenshot below.
 
 ![WebHook Logs](../_images/webhooks/tutorial/webhook-logs-adminui-accs.png)
 
-### Debug from App Builder Code Locally
+### Debug from App Builder Code locally
 
 Follow these steps to effectively debug your Adobe I/O app on your local environment.
 Note that debugging web actions via ACCS or a deployed instance is not supported; they can only be simulated locally.
@@ -432,10 +446,10 @@ Ensure the following before you start debugging:
 #### Step 1: Configuring Debugger
 
 Create or Edit launch.json
-in the root project folder, navigate to the .vscode folder. If it doesn't exist, create .vscode folder. Inside .vscode folder, create or edit the launch.json file.
+in the root project folder, navigate to the `.vscode` folder. If it doesn't exist, create `.vscode` folder. Inside this folder, create or edit the `launch.json` file.
 To configure it quickly, copy and paste the recommended content from the  App builder documentation:
 
- [Debugging with VS Code – Adobe App Builder Guide](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/development#debugging-with-vs-code)
+[Debugging with VS Code – Adobe App Builder Guide](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/development#debugging-with-vs-code)
 
  This configuration sets up the VS Code debugger to work seamlessly with Adobe I/O App Builder projects.
 
@@ -545,10 +559,10 @@ Why Use ngrok?
 
 **Steps to set and use ngrok**
 
-1. Modify your action code to log incoming payloads.Open the file validateProductName.js and ensure it includes the following line to print the incoming webhook payload.`logger.info('Calling main with params: ' + JSON.stringify(params, null, 2));`.
-Updated validateProductName.js below:
+1. Modify your action code to log incoming payloads. Open the file `validateProductName.js` and ensure it includes the following line to print the incoming webhook payload.`logger.info('Calling main with params: ' + JSON.stringify(params, null, 2));`.
 
-```js
+  The updated `validateProductName.js` below:
+
 ```js
 const { Core, Events } = require('@adobe/aio-sdk') // Adobe I/O SDK modules
 const { errorResponse, stringParameters, checkMissingRequestInputs } = require('../utils') // Utility functions
@@ -589,17 +603,17 @@ exports.main = main
 
 1. Then build your AppBuilder project. From your project root, run:
 
-``` terminal
-aio app build
-```
+   ```bash
+   aio app build
+   ```
 
 1. Start your App Builder app locally. From your project root, run:
 
-``` terminal
-aio app dev 
-```
+   ```bash
+   aio app dev
+   ```
 
-1. Now Install ngrok. Follow the instructions on the official ngrok documentation to install it for your operating system.
+1. Now install ngrok. Follow the instructions on the official ngrok documentation to install it for your operating system.
 
 1. Start ngrok to expose your local endpoint. In a new terminal window, Run the command `ngrok http https://localhost:9080`.This will start a secure tunnel to your local app running on https://localhost:9080. You will see output similar to the following:
 
@@ -627,20 +641,19 @@ This is your public URL that exposes your local AppBuilder app to the internet.
 
 ## Development tips
 
-### Securing Webhook Communication Using OAuth Credentials
+### Secure webhook communication using OAuth credentials
 
 Since the webhook URL is easily accessible, it's important to secure it. The following steps outline recommended best practices for secure communication between App Builder and Adobe Commerce:
 
-##### Step 1: Generate OAuth Credentials from Developer Console
+##### Step 1: Generate OAuth credentials from Developer Console
 
-1. Navigate to your project and select Stage.
-1. On the left-hand menu, go to Credentials and click on OAuth Server-to-Server.
-1. Here, you will find the Client ID and Organization ID.Click on Retrieve Client Secret and make a note of the Client Secret — this will only be displayed once.
-These credentials will be required in the next step when configuring the integration on the Commerce side.
+1. Navigate to your project and select **Stage**.
+1. On the left-hand menu, go to **Credentials** and click on **OAuth Server-to-Server**.
+1. Here, you will find the Client ID and Organization ID. Click on **Retrieve Client Secret** and make a note of the client secret. This will only be displayed once. These credentials will be required in the next step when configuring the integration on the Commerce side.
 
 ##### Step 2: Configure OAuth in Adobe Commerce
 
-1. Navigate to the Admin UI in Commerce Instance → Webhook Subscriptions and select the webhook you want to configure.
+Navigate to the Admin UI in Commerce Instance → Webhook Subscriptions and select the webhook you want to configure.
 Expand the Developer Console OAuth section, enable it, and enter the required credentials: Client ID, Client Secret, and Organization ID.
 
 ![oAuth Section in Webhooks Subccription](../_images/webhooks/tutorial/developer-console-oauth-commerce.png)
@@ -650,19 +663,20 @@ Expand the Developer Console OAuth section, enable it, and enter the required cr
 1. In your App Builder project code, open the app.config.yaml file and set require-adobe-auth to true.Then, rebuild and deploy the project using the command:
 
   ```bash
-      aio app deploy
+  aio app deploy
   ```
 
-##### Step 4: Test Secure Webhook Call
+##### Step 4: Test the secure webhook call
 
 You can now test the webhook from Adobe Commerce by adding a product. The calls will be securely authenticated using the configured OAuth credentials.
 
 ### Accessing the Developer Console
 
 Ensure you have Developer Access to the Adobe Developer Console. This is required to create and manage projects.
- If you don't have developer access, your role will be shown as "User" in the top right corner, and a blue box will highlight restricted access.
 
- To proceed, request Developer Access from your organization admin.
+If you don't have developer access, your role will be shown as "User" in the top right corner, and a blue box will highlight restricted access.
+
+To proceed, request Developer Access from your organization admin.
 Below are screenshots showing both restricted and developer access views for quick reference.
 
 ![Without Developer Access:](../_images/webhooks/tutorial/restrcited-access-developer-console.png)
@@ -673,15 +687,15 @@ Below are screenshots showing both restricted and developer access views for qui
 
 1. If you've made changes to the action code, run the below commands:
 
-```bash
-aio app build 
-```
+   ```bash
+   aio app build
+   ```
 
 1. If you have multiple actions in your project and want to deploy only a specific action you modified, run:
 
-```bash
-aio app deploy --action=webhook/product-update
-```
+   ```bash
+   aio app deploy --action=webhook/product-update
+   ```
 
 1. The above command rebuilds and redeploys only the specified action.
 
@@ -697,7 +711,8 @@ aio runtime action get testwebhook --url
 
 For detailed webhook logs, navigate to **System** > **Webhook** Logs in the Admin.
 
-1. If there are configuration errors in the webhook setup for this specific use case, when a product is added to the catalog, the Commerce UI will display the message: **"Cannot perform the operation due to an error."** For instance, if hook fields are configured wrongly, this can occur.
+If there are configuration errors in the webhook setup for this specific use case, when a product is added to the catalog, the Commerce UI will display the message: **"Cannot perform the operation due to an error."** For instance, if hook fields are configured wrongly, this can occur.
+
 To rule out an issue with the App Builder code, you can use the **aio app dev** command to generate the action URL, which should point to localhost. Then test the action code with the payload using Postman, Postbuster, or a curl command. If the action executes successfully outside of Commerce, the issue is likely a configuration error within the Commerce instance.
 
 ### App Builder configuration considerations
@@ -710,11 +725,11 @@ This means:
 * It cannot be invoked directly by external systems (such as Adobe Commerce).
 * It is only accessible internally within Adobe I/O Runtime, such as through events or other actions.
 
-If a webhook in Adobe Commerce is configured to call this non-web action, it will fail silently or throw a generic error.
- For example, when trying to add and save a product in the Commerce Admin UI, you will see the following error message:
- **Cannot perform the operation due to an error.**
+If a webhook in Adobe Commerce is configured to call this non-web action, it will fail silently or throw a generic error. For example, when trying to add and save a product in the Commerce Admin UI, you will see the following error message:
 
- This error occurs because Commerce cannot reach the non-web action endpoint.
+`Cannot perform the operation due to an error.`
+
+This error occurs because Commerce cannot reach the non-web action endpoint.
 
 ### Recommended Practice for Webhooks
 

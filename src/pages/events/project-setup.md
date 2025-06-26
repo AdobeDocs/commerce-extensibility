@@ -40,10 +40,11 @@ import ProjectRequirements from '/src/_includes/project-requirements.md'
 
    ![Add an API to your workspace](../_images/events/stage-add-api.png)
 
-1. On the **Add an API** page, filter on **Adobe Services** and select one of the following options. These APIs provide authentication and authorization for your project.
+1. On the **Add an API** page, filter on **Adobe Services** and select one of the following options. These APIs provide authentication and authorization services for your project.
 
    &#8203;<Edition name="paas" /> **I/O Management API**
-   &#8203;<Edition name="paas" /> **Adobe Commerce as a Cloud Service**
+   &#8203;<Edition name="saas" /> **Adobe Commerce as a Cloud Service**
+
    Then click **Next**.
 
    ![Select IO events](../_images/events/add-io-management.png)

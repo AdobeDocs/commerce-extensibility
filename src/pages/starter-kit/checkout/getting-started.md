@@ -76,12 +76,28 @@ Use the following steps to configure your local environment:
    - I/O Management API
    - I/O Events
    - Adobe I/O Events for Adobe Commerce
+   - &#8203;<Edition name="saas" /> Adobe Commerce as a Cloud Service. When asked to select a product profile, choose **Default - Cloud Manager**.
 
-  Execute the following command to add the services by selecting them from the list:
-  
-  ```bash
-  aio app add service
-  ```
+   Execute the following command to add the services by selecting them from the list:
+
+   ```bash
+   aio app add service
+   ```
+
+   The variable `AIO_ims_contexts_{credential}_scopes` will be automatically populated but may need to be updated with the scopes required for your project.
+   The scopes depend on the services you selected in the previous step. If you included all the specified services, the set of scopes should look like this:
+
+   - &#8203;<Edition name="paas" />
+
+      ```env
+      ["AdobeID","openid","read_organizations","additional_info.projectedProductContext","additional_info.roles","adobeio_api","read_client_secret","manage_client_secrets","event_receiver_api"]
+      ```
+
+   - &#8203;<Edition name="saas" />
+
+      ```env
+      ["AdobeID","openid","read_organizations","additional_info.projectedProductContext","additional_info.roles","adobeio_api","read_client_secret","manage_client_secrets","event_receiver_api","profile","email","org.read","commerce.accs"]
+      ```
 
 1. Copy the environment variables from the [`env.dist`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/env.dist) to a local `.env` file and enter the required values.
 

@@ -59,15 +59,17 @@ Use the following steps to create OAuth credentials for App Builder authenticati
    OAUTH_IMS_ORG_ID=<img org>
    ```
 
-1. Add a technical account with server-to-server credentials to the Commerce Admin with the appropriate permissions using the [Admin User Creation Guide](https://experienceleague.adobe.com/en/docs/commerce-admin/systems/user-accounts/permissions-users-all#create-a-user).
+1. Provide the technical account with access to the Commerce instance:
+   - &#8203;<Edition name="saas" /> The technical account is automatically created and associated with the Commerce instance once the first request is made using the OAuth credentials.
+   - &#8203;<Edition name="paas" /> Add a technical account with server-to-server credentials to the Commerce Admin with the appropriate permissions using the [Admin User Creation Guide](https://experienceleague.adobe.com/en/docs/commerce-admin/systems/user-accounts/permissions-users-all#create-a-user).
 
-1. When associating the user with the account, find your **Technical Account email** as a part of generated IMS credentials with following pattern: `<technical-account>@techacct.adobe.com` and use that value in the **Email** field during user creation:
+      - When associating the user with the account, find your **Technical Account email** as a part of generated IMS credentials with following pattern: `<technical-account>@techacct.adobe.com` and use that value in the **Email** field during user creation:
 
-   ![ims-user-creation.png](../../_images/starterkit/ims-user-creation.png)
+         ![ims-user-creation.png](../../_images/starterkit/ims-user-creation.png)
 
-1. On the **User Role** tab, select the role that provides all necessary permissions for API integrations.
+      - On the **User Role** tab, select the role that provides all necessary permissions for API integrations.
 
-   ![ims-user-role.png](../../_images/starterkit/ims-user-role.png)
+         ![ims-user-role.png](../../_images/starterkit/ims-user-role.png)
 
 ### Create a Commerce integration
 

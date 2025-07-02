@@ -76,7 +76,7 @@ Use the following steps to configure your local environment:
    - I/O Management API
    - I/O Events
    - Adobe I/O Events for Adobe Commerce
-   - &#8203;<Edition name="saas" /> Adobe Commerce as a Cloud Service. This service will require to select Product Profiles, use "Default - Cloud Manager" profile.
+   - &#8203;<Edition name="saas" /> Adobe Commerce as a Cloud Service. When asked to select a product profile, choose **Default - Cloud Manager**.
 
    Execute the following command to add the services by selecting them from the list:
 

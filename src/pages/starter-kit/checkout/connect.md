@@ -52,10 +52,10 @@ Use the following steps to create OAuth credentials for App Builder authenticati
 
    ```js
    OAUTH_CLIENT_ID=<client id>
-   OAUTH_CLIENT_SECRETS=<client secret>
+   OAUTH_CLIENT_SECRETS=<client secrets>
    OAUTH_TECHNICAL_ACCOUNT_ID=<technical account id>
    OAUTH_TECHNICAL_ACCOUNT_EMAIL=<technical account email>
-   OAUTH_SCOPES=<scope>
+   OAUTH_SCOPES=<scopes>
    OAUTH_IMS_ORG_ID=<img org>
    ```
 

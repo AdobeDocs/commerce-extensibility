@@ -70,13 +70,13 @@ Create an `ExtensionRegistration` React component that registers the menu config
    "@adobe/uix-guest": "^0.8.3"
    ```
 
-2. Run `npm install`.
+1. Run `npm install`.
 
    ```bash
    npm install
    ```
 
-3. Create an `ExtensionRegistration` React component to register the application with a unique `extensionId` and that optionally returns your main page if any. Here is an example of an `ExtensionRegistration.jsx` file:
+1. Create an `ExtensionRegistration` React component to register the application with a unique `extensionId`, as shown in the following sample `ExtensionRegistration.jsx` file. The component can optionally return your main page, if any.
 
    ```javascript
    import { register } from '@adobe/uix-guest'

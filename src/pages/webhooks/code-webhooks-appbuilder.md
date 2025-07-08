@@ -9,7 +9,7 @@ noIndex: true
 
 # Extend Adobe Commerce Webhooks and App Builder
 
-Earlier, adding custom validations or services in Adobe Commerce needed complex in-process code that was hard to manage. Now, with App Builder, developers can build scalable, event-driven integrations using webhooks and runtime actions. For example, you can use App Builder to validate data like product names in real time through synchronous webhook integrations in Adobe Commerce SaaS (ACCS).
+Previously, adding custom validations or services in Adobe Commerce needed complex in-process code that was hard to manage. Now, with App Builder, developers can build scalable, event-driven integrations using webhooks and runtime actions. For example, you can use App Builder to validate data like product names in real time through synchronous webhook integrations in Adobe Commerce SaaS (ACCS).
 
 This guide outlines step-by-step instructions for setting up an App Builder project . It covers writing simple action code, configuring webhook subscriptions in Adobe Commerce, debugging App Builder code using a debugger.
 
@@ -29,7 +29,7 @@ This setup allows you to offload validation and custom logic from the Commerce c
 
 ### Prerequisites
 
-* Adobe Commerce ACCS Instance
+* Adobe Commerce SaaS Instance
 * Access to [Adobe Developer Console](https://developer.adobe.com/console)
 * Access to [Adobe Developer App Builder](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/set-up#access-and-credentials)
 * [AIO CLI](https://developer.adobe.com/app-builder/docs/guides/runtime_guides/tools/cli-install) (required to run commands)
@@ -233,6 +233,8 @@ commappwebhook/
 ```
 
 ### Implement the webhook action
+
+This step is where the code logic for validating the product name is written in the action file in the App Builder project.
 
 1. Create a new File validateProductName.js under testwebhook folder under actions folder.
 commappwebhook/actions/testwebhook and add the below code. This file defines a function that runs as an action in Adobe App Builder. In App Builder, every action must have a function named main, as this is the entry point that gets called when the action is triggered. The function should accept input in JSON format and return a response in JSON as well. In this case, the action checks if the product name received from the Adobe Commerce webhook contains the word "test". If it does, the action passes validation; otherwise, it returns an error message.

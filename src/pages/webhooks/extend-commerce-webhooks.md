@@ -1,5 +1,5 @@
 ---
-title: Extend Adobe Commerce with Webhooks and App Builder
+title: Extend Adobe Commerce with webhooks and App Builder
 description: Learn how to set up, build, and troubleshoot Commerce Webhooks integration using App Builder.
 keywords:
   - Extensibility
@@ -7,34 +7,42 @@ noIndex: true
 
 ---
 
-# Extend Adobe Commerce Webhooks and App Builder
+# Extend Adobe Commerce with webhooks and App Builder
+
+With Adobe App Builder, you can build scalable, event-driven integrations using webhooks and runtime actions. These integrations allow you to extend Adobe Commerce capabilities without modifying the core codebase, making it easier to maintain and scale your applications. For example, you can use App Builder to validate data, such as product names, in real time through synchronous webhook integrations in Adobe Commerce as a Cloud Service (SaaS).
+
+This tutorial outlines step-by-step instructions for setting up an App Builder project. It covers writing simple action code, configuring webhook subscriptions in Adobe Commerce, and using a debugger to debug App Builder.
 
 Previously, adding custom validations or services in Adobe Commerce needed complex in-process code that was hard to manage. Now, with App Builder, developers can build scalable, event-driven integrations using webhooks and runtime actions. For example, you can use App Builder to validate data like product names in real time through synchronous webhook integrations in Adobe Commerce SaaS (ACCS).
 
-This guide outlines step-by-step instructions for setting up an App Builder project . It covers writing simple action code, configuring webhook subscriptions in Adobe Commerce, debugging App Builder code using a debugger.
+## How it works
 
-## Step-by-step guide and sample code
+This tutorial demonstrates how to extend Adobe Commerce using webhooks and Adobe App Builder. The integration allows you to validate product names in real time when products are added or updated in Adobe Commerce. Before we dive into the setup, let's understand how this integration works end-to-end:
 
-Before we dive into the setup, let's understand how this integration works end-to-end:
+1. Adobe Commerce triggers a webhook when specific events occur, such as when a new product is added or updated.
 
-1. Adobe Commerce triggers a webhook when specific events occur. For example, when a new product is added or updated.
+1. This webhook sends the relevant event payload (the product name, in this case) to an Adobe App Builder runtime action.
 
-1. This webhook sends the event payload (e.g., product name, SKU, price) to an Adobe App Builder runtime action.
+1. The App Builder action processes the payload and applies custom business logic. You might want to validate that the product name doesn't include restricted terms like "test" or "example". Based on the logic, the action returns either a success or an error message.
 
-1. The App Builder action processes the payload and applies custom business logic (e.g., validating that the product name doesn't include restricted terms like "test").
-Based on the logic, the action returns either a success or an error message.
+1. Adobe Commerce uses this response to determine whether to save changes to the product.
 
-1. Adobe Commerce uses this response for example in this case while saving the product
-This setup allows you to offload validation and custom logic from the Commerce codebase to the scalable, serverless infrastructure of Adobe App Builder
+This setup allows you to offload validation and custom logic from the Commerce codebase to the scalable, serverless infrastructure of Adobe App Builder.
+
+## Set up the Adobe Developer Console and App Builder project locally
+
+Before you can start building your App Builder application, you need to set up your development environment and create a project in the Adobe Developer Console. This process involves installing the necessary tools, configuring your workspace, and creating a new project that will host your App Builder application.
 
 ### Prerequisites
 
-* Adobe Commerce SaaS Instance
+* [Adobe Commerce as a Cloud Service](https://experienceleague.adobe.com/en/docs/commerce/cloud-service/overview) instance
 * Access to [Adobe Developer Console](https://developer.adobe.com/console)
 * Access to [Adobe Developer App Builder](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/set-up#access-and-credentials)
 * [AIO CLI](https://developer.adobe.com/app-builder/docs/guides/runtime_guides/tools/cli-install) (required to run commands)
 
 ### Set up the Adobe Developer Console and App Builder project locally
+
+<!-- This section will be removed in the near future. -->
 
 #### Create a new project in Adobe Developer Console
 

@@ -563,45 +563,45 @@ Why Use ngrok?
 
 1. Modify your action code to log incoming payloads. Open the file `validateProductName.js` and ensure it includes the following line to print the incoming webhook payload.`logger.info('Calling main with params: ' + JSON.stringify(params, null, 2));`.
 
-  The updated `validateProductName.js` below:
+   The updated `validateProductName.js` below:
+  
+   ```js
+   const { Core, Events } = require('@adobe/aio-sdk') // Adobe I/O SDK modules
+   const { errorResponse, stringParameters, checkMissingRequestInputs } = require('../utils') // Utility functions
 
-```js
-const { Core, Events } = require('@adobe/aio-sdk') // Adobe I/O SDK modules
-const { errorResponse, stringParameters, checkMissingRequestInputs } = require('../utils') // Utility functions
+   // Main function executed by Adobe I/O Runtime
+   async function main(params) {
+     // Create a logger instance
+     const logger = Core.Logger('main', { level: params.LOG_LEVEL || 'info' })
+     //Call to print payload
+     logger.info('Calling main with params: ' + JSON.stringify(params, null, 2));
 
-// Main function executed by Adobe I/O Runtime
-async function main(params) {
-  // Create a logger instance
-  const logger = Core.Logger('main', { level: params.LOG_LEVEL || 'info' })
-  //Call to print payload
- logger.info('Calling main with params: ' + JSON.stringify(params, null, 2));
+     try {
+       const response = { statusCode: 200 }
 
-  try {
-    const response = { statusCode: 200 }
+       // Check if product name contains 'test'; return error response if true
+       if (/test/.test(params.product.name.toLowerCase())) {
+         response.body = JSON.stringify({
+           op: "exception",
+           message: "Invalid product name >> " + params.product.name
+         })
+       } else {
+         // Success response
+         response.body = JSON.stringify({
+           op: "success"
+         })
+       }
 
-    // Check if product name contains 'test'; return error response if true
-    if (/test/.test(params.product.name.toLowerCase())) {
-      response.body = JSON.stringify({
-        op: "exception",
-        message: "Invalid product name >> " + params.product.name
-      })
-    } else {
-      // Success response
-      response.body = JSON.stringify({
-        op: "success"
-      })
-    }
+       return response
+     } catch (error) {
+        // Log error and return a 500 server error response
+        logger.error(error)
+        return errorResponse(500, 'server error ' + JSON.stringify(params), logger)
+     }
+   }
 
-    return response
-  } catch (error) {
-    // Log error and return a 500 server error response
-    logger.error(error)
-    return errorResponse(500, 'server error ' + JSON.stringify(params), logger)
-  }
-}
-
-exports.main = main
-```
+   exports.main = main
+   ```
 
 1. Then build your AppBuilder project. From your project root, run:
 

@@ -394,11 +394,11 @@ In the Admin panel, navigate to **System**> **Webhooks** > **Webhook Subscriptio
 
 Fill in the fields as shown in the screenshot below. You can choose any values for the Hook Name and Batch Name, but ensure **Hook Fields** match the screenshot exactly. In the URLfield, enter the Web Action URL you noted in the previous step.Save the Webhook.
 
-![WebHook Configuration](../_images/webhooks/tutorial/webhookconfig.png)
+![WebHook Configuration](../_images/webhooks/tutorial/webhook-config.png)
 
 Below, you'll find the hook fields section. Here, you can specify the payload fields you want to send to App Builder.
 
-![WebHook Configuration](../_images/webhooks/tutorial/webhooks-hookfields-config.png)
+![WebHook Configuration](../_images/webhooks/tutorial/hookfields-config.png)
 
 #### Testing the integration using webhooks
 
@@ -675,17 +675,15 @@ Below are screenshots showing both restricted and developer access views for qui
 
 1. If you've made changes to the action code, run the below commands:
 
-```bash
-aio app build 
-```
+   ```bash
+   aio app build 
+   ```
 
-1. If you have multiple actions in your project and want to deploy only a specific action you modified, run:
+1. If you have multiple actions in your project and want to deploy only a specific action you modified, run the following command to rebuild and redeploy only the specified action.
 
-```bash
-aio app deploy --action=webhook/product-update
-```
-
-1. The above command rebuilds and redeploys only the specified action.
+   ```bash
+   aio app deploy --action=webhook/product-update
+   ```
 
 ### Retrieve an action URL
 
@@ -695,11 +693,13 @@ To get the URL of an action you've created, run:
 aio runtime action get testwebhook --url
 ```
 
-### Webhook notes
+### Webhook Troubleshooting & Debugging Tips
 
 For detailed webhook logs, navigate to **System** > **Webhook** Logs in the Admin.
 
-1. If there are configuration errors in the webhook setup for this specific use case, when a product is added to the catalog, the Commerce UI will display the message: **"Cannot perform the operation due to an error."** For instance, if hook fields are configured wrongly, this can occur.
+**"Cannot perform the operation due to an error."**  
+This message may appear in the Commerce UI when a product is added to the catalog, typically due to issues like incorrectly configured webhook fields.
+
 To rule out an issue with the App Builder code, you can use the **aio app dev** command to generate the action URL, which should point to localhost. Then test the action code with the payload using Postman, Postbuster, or a curl command. If the action executes successfully outside of Commerce, the issue is likely a configuration error within the Commerce instance.
 
 ### App Builder configuration considerations
@@ -720,7 +720,7 @@ If a webhook in Adobe Commerce is configured to call this non-web action, it wil
 
 ### Recommended Practice for Webhooks
 
-For any action meant to be triggered by a Commerce webhook, make sure to define it as a web action by setting set **web: 'yes'** in **app-config.yaml**
+For any action meant to be triggered by a Commerce webhook, make sure to define it as a web action by setting set **web: 'yes'** in **app-config.yaml**.
 This ensures the action is exposed via a public URL and can be properly invoked by Adobe Commerce.
 
 For further assistance or inquiries, please post your question in the [#app-builder-community](hhttps://magentocommeng.slack.com/).

@@ -70,31 +70,32 @@ Create an `ExtensionRegistration` React component that registers the menu config
    "@adobe/uix-guest": "^0.8.3"
    ```
 
-2. Run `npm install`.
+1. Run `npm install`.
 
    ```bash
    npm install
    ```
 
-3. Create an `ExtensionRegistration.js` file as follows:
+1. Create an `ExtensionRegistration` React component to register the application with a unique `extensionId`, as shown in the following sample `ExtensionRegistration.jsx` file. The component can optionally return your main page, if any.
 
    ```javascript
-   import { register } from '@adobe/uix-guest';
+   import { register } from '@adobe/uix-guest'
+   import { MainPage } from './MainPage'
+   import { useEffect } from 'react'
+   import { extensionId } from './Constants'
 
-   export default function ExtensionRegistration() {
-     init().catch(console.error);
-     return <></>;
-    }
+   export default function ExtensionRegistration(props) {
+     useEffect(() => {
+       (async () => {
+         await register({
+           id: extensionId,
+           methods: {
+           }
+         })
+       })()
+     }, [])
 
-    const extensionId = 'commerce-first-app'
-    
-    const init = async () => {
-      await register({
-        id: extensionId,
-        methods: {
-        }
-      }
-    )
+     return <MainPage ims={props.ims} runtime={props.runtime} />
    }
    ```
 
@@ -102,21 +103,14 @@ Create an `ExtensionRegistration` React component that registers the menu config
 
 ## Update the `App.js` routing
 
-Add the following route to your `App.js` file to define the correct routing to your app:
-
-```javascript
-<Route path={'index.html'} element={<ExtensionRegistration />} />
-```
-
-Make sure that your main page is correctly routed to the index. Here is an example of the first app routing in the `App.js` component:
+Update the application routing to have the `ExtensionRegistration` component correctly routed to the index. Here is an example of the first app routing in the `App.js` component:
 
 ```javascript
 <ErrorBoundary onError={onError} FallbackComponent={fallbackComponent}>
   <HashRouter>
       <Provider theme={lightTheme} colorScheme={'light'}>
           <Routes>
-              <Route path={'index.html'} element={<ExtensionRegistration />} />
-              <Route index element={<MainPage runtime={props.runtime} ims={props.ims} />} />
+              <Route index element={<ExtensionRegistration runtime={props.runtime} ims={props.ims} />} />
           </Routes>
       </Provider>
   </HashRouter>

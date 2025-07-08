@@ -28,7 +28,7 @@ The following example demonstrates how to add a webhook to the `plugin.magento.o
             <batch name="collect_taxes">
                 <hook
                     name="collect_taxes"
-                    url="https://<your_app_builder>.runtime.adobe.io/api/v1/web/commerce-checkout-starter-kit/tax-calculation"
+                    url="https://<your_app_builder>.runtime.adobe.io/api/v1/web/commerce-checkout-starter-kit/collect-taxes"
                     method="POST" timeout="10000" softTimeout="2000"
                     priority="300" required="true" fallbackErrorMessage="Tax calculation failed. Please try again later."
                     ttl="0"
@@ -42,7 +42,7 @@ The following example demonstrates how to add a webhook to the `plugin.magento.o
 
 When the quote is recalculated, such as during a cart update or at checkout, a synchronous call is dispatched to the App Builder application that handles tax calculation. The response is returned through the oopQuote object, which includes the calculated tax fields. This webhook is only triggered when a shipping destination address is set, to avoid unnecessary calls during early cart interactions.
 
-Refer to [`actions/tax-calculation.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/tax-calculation/index.js) for an example of how to process the request and return the tax calculation to the commerce instance. This file can serve as a template to implement custom tax calculations.
+Refer to [`actions/collect-taxes.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/collect-taxes/index.js) for an example of how to process the request and return the tax calculation to the commerce instance. This file can serve as a template to implement custom tax calculations.
 
 ### Payload
 

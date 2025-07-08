@@ -15,6 +15,19 @@ This guide provides basic information for software development using the checkou
 Before you begin, make sure you've completed the initial setup of the starter kit.  
 See [Initial configuration](./getting-started.md) for more details.
 
+### Verify your application is initialized
+
+When the App Builder application is initialized, you should see the following:
+
+- The project and workspace information is generated in `.aio`. You can verify your current location by running `aio where`.
+- Your `.env` is updated with App Builder credentials.
+
+If any configuration is missing or outdated, run the following command to sync with the [Adobe Developer Console project](https://developer.adobe.com/console):
+
+```bash
+aio app use --merge
+```
+
 ## Running locally
 
 The starter kit consists of two main parts, as defined in [`app.config.yaml`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/app.config.yaml):
@@ -101,3 +114,26 @@ Run end-to-end tests:
 ```bash
 aio app test --e2e
 ```
+
+## Troubleshooting
+
+This section provides solutions to common issues you may encounter while developing with the checkout starter kit.
+
+### AioCoreSDKError 403 Forbidden
+
+If you encounter the error `AioCoreSDKError [EventsSDKError]: [EventsSDK:ERROR_GET_ALL_PROVIDERS] Error: 403 - Forbidden` when creating an event provider, perform the following steps:
+
+1. Ensure you have added the [I/O Management API](./getting-started.md#initial-configuration) during the [initial configuration](./getting-started.md#initial-configuration).
+1. Verify that you have the following permissions in the [Adobe Developer Console](https://developer.adobe.com/console) in the side-navigation menu under **OAuth Server-to-Server** > **Scope**:
+
+  ```bash
+  ["AdobeID","openid","read_organizations","additional_info.projectedProductContext","additional_info.roles","adobeio_api","read_client_secret","manage_client_secrets","event_receiver_api"]
+  ```
+
+1. If any permissions are missing, update your [Adobe I/O CLI](https://developer.adobe.com/app-builder/docs/guides/runtime_guides/tools/cli-install) to the latest version. Then delete and re-add the I/O Management API service:
+
+  ```bash
+  npm install -g @adobe/aio-cli
+  aio app delete service # Delete I/O Management API
+  aio app add service # Add I/O Management API again
+  ```

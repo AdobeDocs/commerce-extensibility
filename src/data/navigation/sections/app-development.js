@@ -66,6 +66,10 @@ module.exports = [
         path: "/app-development/app-submission-guidelines.md"
     },
     {
+        title: "Extension compatibility",
+        path: "/app-development/extension-compatibility.md"
+    },
+    {
         title: "Learning path",
         path: "/app-development/learning-path.md"   
     },

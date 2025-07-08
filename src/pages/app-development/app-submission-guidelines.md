@@ -77,6 +77,8 @@ The following requirements must be met for your app to be accepted. If your app 
   - See [Best Practices for Credentials](https://developer.adobe.com/commerce/extensibility/app-development/best-practices/credentials/).
   - **No logging of secrets**: No logging of sensitive credentials or tokens in any runtime action.
 
+- **Publication**: If your app is hosted on GitHub or other platforms for collaboration or other reasons, the repository should be private.
+
 - Vulnerability assessment
   - **Security audit**: Run `npm audit` to ensure there are no `critical` or `high` vulnerabilities.
   - **Dependency check**: Review all dependencies for known security issues.

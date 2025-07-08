@@ -166,6 +166,24 @@ You can download a sample app from the [Adobe Commerce Samples repository](https
     ]
    ```
 
+1. Modify the Admin UI SDK registration runtime action to not require authentication by setting `require-adobe-auth` to `false`. We recommend securing the registration runtime action by setting back `require-adobe-auth` to `true` in a production-like environment.
+
+  ```yaml
+    packages:
+      admin-ui-sdk:
+        license: Apache-2.0
+        actions:
+          registration:
+            function: actions/registration/index.js
+            web: 'yes'
+            runtime: 'nodejs:20'
+            inputs:
+              LOG_LEVEL: debug
+            annotations:
+              require-adobe-auth: false
+              final: true
+  ```
+
 ### Custom menu example
 
 1. Change directories to `<repoRootDir>/admin-ui-sdk/menu/custom-menu`.

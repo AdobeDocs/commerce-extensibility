@@ -669,7 +669,7 @@ Below are screenshots showing both restricted and developer access views for qui
 
 ![Without Developer Access:](../_images/webhooks/tutorial/restrcited-access-developer-console.png)
 
-![With Developer Access:](../_images/webhooks/tutorial/developer-access-devconsole.png)
+![With Developer Access:](../_images/webhooks/tutorial/developer-access-dev-console.png)
 
 ### Redeploy changes
 

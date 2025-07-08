@@ -1,5 +1,5 @@
 ---
-title: Extend Adobe Commerce with Webhooks and App Builder
+title: Extend Adobe Commerce with webhooks and App Builder
 description: Learn how to set up, build, and troubleshoot Commerce Webhooks integration using App Builder.
 keywords:
   - Extensibility
@@ -33,12 +33,14 @@ Before you can start building your App Builder application, you need to set up y
 
 ### Prerequisites
 
-* Adobe Commerce ACCS Instance
+* [Adobe Commerce as a Cloud Service](https://experienceleague.adobe.com/en/docs/commerce/cloud-service/overview) instance
 * Access to [Adobe Developer Console](https://developer.adobe.com/console)
 * Access to [Adobe Developer App Builder](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/set-up#access-and-credentials)
 * [AIO CLI](https://developer.adobe.com/app-builder/docs/guides/runtime_guides/tools/cli-install) (required to run commands)
 
 ### Set up the Adobe Developer Console and App Builder project locally
+
+<!-- This section will be removed in the near future. -->
 
 #### Create a new project in Adobe Developer Console
 
@@ -407,11 +409,11 @@ In the Admin panel, navigate to **System**> **Webhooks** > **Webhook Subscriptio
 
 Fill in the fields as shown in the screenshot below. You can choose any values for the Hook Name and Batch Name, but ensure **Hook Fields** match the screenshot exactly. In the URLfield, enter the Web Action URL you noted in the previous step.Save the Webhook.
 
-![WebHook Configuration](../_images/webhooks/tutorial/webhookconfig.png)
+![WebHook Configuration](../_images/webhooks/tutorial/webhook-config.png)
 
 Below, you'll find the hook fields section. Here, you can specify the payload fields you want to send to App Builder.
 
-![WebHook Configuration](../_images/webhooks/tutorial/webhooks-hookfields-config.png)
+![WebHook Configuration](../_images/webhooks/tutorial/hookfields-config.png)
 
 #### Testing the integration using webhooks
 
@@ -681,7 +683,7 @@ Below are screenshots showing both restricted and developer access views for qui
 
 ![Without Developer Access:](../_images/webhooks/tutorial/restrcited-access-developer-console.png)
 
-![With Developer Access:](../_images/webhooks/tutorial/developer-access-devconsole.png)
+![With Developer Access:](../_images/webhooks/tutorial/developer-access-dev-console.png)
 
 ### Redeploy changes
 
@@ -691,13 +693,11 @@ Below are screenshots showing both restricted and developer access views for qui
    aio app build
    ```
 
-1. If you have multiple actions in your project and want to deploy only a specific action you modified, run:
+1. If you have multiple actions in your project and want to deploy only a specific action you modified, run the following command to rebuild and redeploy only the specified action.
 
    ```bash
    aio app deploy --action=webhook/product-update
    ```
-
-1. The above command rebuilds and redeploys only the specified action.
 
 ### Retrieve an action URL
 
@@ -707,7 +707,7 @@ To get the URL of an action you've created, run:
 aio runtime action get testwebhook --url
 ```
 
-### Webhook notes
+### Webhook Troubleshooting & Debugging Tips
 
 For detailed webhook logs, navigate to **System** > **Webhook** Logs in the Admin.
 
@@ -733,7 +733,7 @@ This error occurs because Commerce cannot reach the non-web action endpoint.
 
 ### Recommended Practice for Webhooks
 
-For any action meant to be triggered by a Commerce webhook, make sure to define it as a web action by setting set **web: 'yes'** in **app-config.yaml**
+For any action meant to be triggered by a Commerce webhook, make sure to define it as a web action by setting set **web: 'yes'** in **app-config.yaml**.
 This ensures the action is exposed via a public URL and can be properly invoked by Adobe Commerce.
 
 For further assistance or inquiries, please post your question in the [#app-builder-community](hhttps://magentocommeng.slack.com/).

@@ -95,7 +95,7 @@ module.exports = [
     },
     {
       title: "Tutorial",
-      path: "/webhooks/code-webhooks-appbuilder.md"
+      path: "/webhooks/extend-commerce-webhooks.md"
     }
   ];
   

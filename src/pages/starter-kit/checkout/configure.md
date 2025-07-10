@@ -51,10 +51,10 @@ If OAuth credentials are still missing, review [Verify your application is initi
 
 ## Configure Eventing
 
-<InlineAlert variant="info" slots="text"/>
+<InlineAlert variant="info" slots="text, text1"/>
 
-This step is required only if you want to use the [Eventing feature](https://developer.adobe.com/commerce/extensibility/events/). Skip this step if you do not plan to use the Eventing feature.
-For the use case of third-party events processing, refer to [Third-party events processing](./use-cases.md#third-party-events-processing)
+The following configuration is required if you want to use the [Eventing feature](https://developer.adobe.com/commerce/extensibility/events/). Skip this process if you do not plan to use the Eventing feature.
+For third-party events processing, refer to [Third-party events processing](./use-cases.md#third-party-events-processing)
 
 To configure eventing, follow these steps:
 

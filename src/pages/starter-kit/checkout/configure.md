@@ -79,8 +79,8 @@ To configure eventing, follow these steps:
 
 1. Configure your [app.config.yaml](#appconfigyaml) file to register the events to consume by the app.
 
-    - Update `events_of_interest` field with the events that your app is interested in.
-    - Update `runtime_action` field with the action that will consume the events.
+    - Update the `events_of_interest` field with the events that your app requires.
+    - Update the `runtime_action` field with the action that will consume the events.
 
 This process must be completed before deploying the application for event registration.
 

@@ -82,7 +82,7 @@ To configure eventing, follow these steps:
     - Update `events_of_interest` field with the events that your app is interested in.
     - Update `runtime_action` field with the action that will consume the events.
 
-This step must be completed before deploying the application for event registration.
+This process must be completed before deploying the application for event registration.
 
 ### events.config.yaml
 

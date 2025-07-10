@@ -77,7 +77,7 @@ To configure eventing, follow these steps:
     - `COMMERCE_ADOBE_IO_EVENTS_MERCHANT_ID`: The merchant ID of the Commerce instance.
     - `COMMERCE_ADOBE_IO_EVENTS_ENVIRONMENT_ID`: The environment ID of the Commerce instance.
 
-1. Configure your [app.config.yaml](#appconfigyaml) file to register the events to consume by the app.
+1. Configure your [`app.config.yaml`](#appconfigyaml) file to register the events for the app to consume.
 
     - Update the `events_of_interest` field with the events that your app requires.
     - Update the `runtime_action` field with the action that will consume the events.

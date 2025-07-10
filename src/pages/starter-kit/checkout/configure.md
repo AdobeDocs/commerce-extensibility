@@ -51,6 +51,11 @@ If OAuth credentials are still missing, review [Verify your application is initi
 
 ## Configure Eventing
 
+<InlineAlert variant="info" slots="text"/>
+
+This step is required only if you want to use the [Eventing feature](https://developer.adobe.com/commerce/extensibility/events/). Skip this step if you do not plan to use the Eventing feature.
+For the use case of third-party events processing, refer to [Third-party events processing](./use-cases.md#third-party-events-processing)
+
 To configure eventing, follow these steps:
 
 1. Install the [Commerce eventing module](./getting-started.md) in your Commerce instance.
@@ -72,7 +77,12 @@ To configure eventing, follow these steps:
     - `COMMERCE_ADOBE_IO_EVENTS_MERCHANT_ID`: The merchant ID of the Commerce instance.
     - `COMMERCE_ADOBE_IO_EVENTS_ENVIRONMENT_ID`: The environment ID of the Commerce instance.
 
-This script must finish running before you deploy the application for event registration.
+1. Configure your [app.config.yaml](#appconfigyaml) file to register the events to consume by the app.
+
+    - Update `events_of_interest` field with the events that your app is interested in.
+    - Update `runtime_action` field with the action that will consume the events.
+
+This step must be completed before deploying the application for event registration.
 
 ### events.config.yaml
 
@@ -86,6 +96,24 @@ The [`events.config.yaml`](https://github.com/adobe/commerce-checkout-starter-ki
 | `docs_url`          | Documentation URL for the event provider.|
 | `events_metadata`   | List of event metadata to register. (This is not required for the Commerce event provider, since it uses event subscriptions.)|
 | `subscription`      | Only required for the Commerce event provider. List of Commerce events to subscribe to. For payload specifications, refer to [Subscribe to events](../../events/api.md#subscribe-to-events).|
+
+### app.config.yaml
+
+The [`app.config.yaml`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/app.config.yaml) file defines the events of interest for your app. The events will be registered during [app deployment](./development.md#deploy-the-application).
+
+```yaml
+  events:
+    registrations:
+      Commerce events consumer:
+        description: Consumes events from Adobe Commerce
+        events_of_interest:
+          - provider_metadata: dx_commerce_events
+            event_codes:
+              - com.adobe.commerce.observer.sales_order_creditmemo_save_after
+        runtime_action: commerce-checkout-starter-kit/consume
+```
+
+Check out the [App Builder with I/O events](https://developer.adobe.com/events/docs/guides/appbuilder/) guide for more information on how the events are registered in the app.
 
 ### configure-events
 

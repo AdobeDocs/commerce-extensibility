@@ -113,7 +113,7 @@ The [`app.config.yaml`](https://github.com/adobe/commerce-checkout-starter-kit/b
         runtime_action: commerce-checkout-starter-kit/consume
 ```
 
-Check out the [App Builder with I/O events](https://developer.adobe.com/events/docs/guides/appbuilder/) guide for more information on how the events are registered in the app.
+Refer to the [App Builder with I/O events](https://developer.adobe.com/events/docs/guides/appbuilder/) guide for more information on how to register events in the app.
 
 ### configure-events
 

@@ -51,43 +51,6 @@ getGuestConnection().then((guestConnection) => {
 
 The `path` parameter for a `productMassAction` specifies where to redirect the mass action UI.
 
-## Mass actions without iFrames
-
-When a mass action `displayIframe` parameter is set to `false`, you must account for additional factors.
-
-### Mass action request headers
-
-Use the following request headers when you perform a mass action without implementing an iFrame.
-
-| Header | Description |
-| --- | --- |
-| `X-Request-ID` | A unique UUID v4 generated when the request is sent as a unique identifier. |
-| `Content-Type` | The request content type is `application/json`. |
-| `Accept` | The request accepts a response type of `application/json`. |
-| `Authorization` | The request is authenticated using an IMS token generated for the organization attached to the Commerce instance. |
-| `x-gw-ims-org-id` | The organization ID. |
-
-### Application failures
-
-Commerce expects application responses to contain the error status and message.
-Commerce logs the error and displays an error banner notification to the user.
-
-### Connection interruption failures
-
-By default, Commerce waits 10 seconds for a response, though the extension point can customize this value.
-When the timeout is reached, Commerce:
-
-- Logs a 408 timeout status and error message.
-- Displays an error banner notification.
-- Sends the `admin_ui_sdk_mass_action_request_failed` event. The application can subscribe to this event to take action, such as rolling back updates in Commerce.
-
-The application can access details of the failed request using the `GET V1/adminuisdk/massaction/<requestId>` REST API. The token used to authenticate the request must have access to the Admin UI SDK. The call returns an error message if the request ID was not found or if it associated with a successful action.
-
-### Recommendations
-
-- Use bulk update in Commerce to avoid inconsistency issues in case of failures.
-- Event and REST API responses contain the list of selected IDs for a request. It is the application's responsibility to monitor updates or failures in Commerce.
-
 ## Migrate your extension point from version 1.x to 2.0
 
 Perform the following steps to update your extension points from Admin UI SDK 1.x to 2.0.

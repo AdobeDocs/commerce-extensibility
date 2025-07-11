@@ -8,6 +8,32 @@ keywords:
 
 # Adobe Commerce Admin UI SDK release notes
 
+## Version 3.1.0
+
+### Release date
+
+July 11, 2025
+
+### Enhancements
+
+* Added new ACL resources for Admin UI SDK. <!--- CEXT-4581 -->
+
+* Removed `Refresh registrations on schedule` feature. <!--- CEXT-4819 -->
+
+* Added sandbox attribute to iFrame extension points to allow flexibility. <!--- CEXT-4659 -->
+
+* Added a blocking spinner when clicking on `Refresh Registrations` button. <!--- CEXT-4846 -->
+
+* Order view button can now be implemented [without an iFrame](./api.md#order-view-button-without-iframes). <!-- CEXT-4885 -->
+
+### Bug fixes
+
+* Fixed incorrect debug logs caused by incorrect object mapping. <!--- CEXT-4886 -->
+
+* Fixed log cleaning based on log retention period. <!--- CEXT-4573 -->
+
+* Fixed potential Commerce instance crash if same section/menu id is found. <!--- CEXT-4811 -->
+
 ## Version 3.0.0
 
 ### Release date
@@ -127,9 +153,9 @@ June 28, 2024
   * [`customer mass action`](./extension-points/customer/mass-action.md)
   * [`order get custom fees`](./extension-points/order/custom-fees.md)  <!--- CEXT-2733  -->
 
-* Mass actions can now be implemented [without an iFrame](./extension-points/index.md#mass-actions-without-iframes). <!--- CEXT-2590, CEXT-2825, CEXT-2932, CEXT-2903 -->
+* Mass actions can now be implemented [without an iFrame](./api.md#mass-actions-without-iframes). <!--- CEXT-2590, CEXT-2825, CEXT-2932, CEXT-2903 -->
 
-* Added the `GET V1/adminuisdk/massaction/<requestId>` [REST API](./extension-points/index.md#connection-interruption-failures) to debug mass action failures.
+* Added the `GET V1/adminuisdk/massaction/<requestId>` [REST API](./api.md#additional-details-throught-rest-api) to debug mass action failures.
 
 * Added the **Refresh registrations** button to the configuration page. This button allows the administrator to  refresh the `admin_ui_sdk` cache and reload all extensions. <!--- CEXT-2642 -->
 

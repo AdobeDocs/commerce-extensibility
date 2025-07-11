@@ -11,7 +11,7 @@ keywords:
   - Tools
 ---
 
-# Telemetry API Interfaces
+# Telemetry API interfaces
 
 - [EntrypointInstrumentationConfig](#entrypointinstrumentationconfig)
 - [InstrumentationConfig](#instrumentationconfig)
@@ -21,18 +21,15 @@ keywords:
 - [TelemetryDiagnosticsConfig](#telemetrydiagnosticsconfig)
 - [TelemetryPropagationConfig](#telemetrypropagationconfig)
 
----
-
 ## EntrypointInstrumentationConfig
 
 `EntrypointInstrumentationConfig`
 
-Configuration options for entrypoint instrumentation in telemetry.
+Configuration options for entry point instrumentation in telemetry.
 
 **Properties:**
-- See API source for detailed property list.
 
----
+- See API source for detailed property list.
 
 ## InstrumentationConfig
 
@@ -41,9 +38,8 @@ Configuration options for entrypoint instrumentation in telemetry.
 Configuration options for general instrumentation in telemetry.
 
 **Properties:**
-- See API source for detailed property list.
 
----
+- See API source for detailed property list.
 
 ## InstrumentationContext
 
@@ -52,9 +48,8 @@ Configuration options for general instrumentation in telemetry.
 Context object for telemetry instrumentation.
 
 **Properties:**
-- See API source for detailed property list.
 
----
+- See API source for detailed property list.
 
 ## TelemetryApi
 
@@ -63,9 +58,8 @@ Context object for telemetry instrumentation.
 Main API interface for telemetry operations.
 
 **Properties:**
-- See API source for detailed property list.
 
----
+- See API source for detailed property list.
 
 ## TelemetryConfig
 
@@ -74,9 +68,8 @@ Main API interface for telemetry operations.
 Configuration options for telemetry setup and export.
 
 **Properties:**
-- See API source for detailed property list.
 
----
+- See API source for detailed property list.
 
 ## TelemetryDiagnosticsConfig
 
@@ -85,9 +78,8 @@ Configuration options for telemetry setup and export.
 Configuration options for telemetry diagnostics and logging.
 
 **Properties:**
-- See API source for detailed property list.
 
----
+- See API source for detailed property list.
 
 ## TelemetryPropagationConfig
 
@@ -96,4 +88,5 @@ Configuration options for telemetry diagnostics and logging.
 Configuration options for telemetry context propagation.
 
 **Properties:**
+
 - See API source for detailed property list.

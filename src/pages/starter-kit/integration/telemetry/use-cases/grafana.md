@@ -1,5 +1,5 @@
 ---
-title: OpenTelemetry Instrumentation with Grafana
+title: Instrumentation with Grafana
 description: Configure Grafana with App Builder runtime actions for both local development and deployed scenarios using a complete observability stack.
 keywords:
   - Extensibility
@@ -7,43 +7,28 @@ keywords:
   - API Mesh
   - Events
   - REST
-  - Starter Kit
+  - Starter Ki
   - Tools
 ---
 
-# OpenTelemetry Instrumentation with Grafana
+# Instrumentation with Grafana
 
-![Grafana Logo](../../../../_images/telemetry/grafana/logo.png)
-
-This guide demonstrates how to configure Grafana with App Builder runtime actions for both local development and deployed scenarios. We'll use a complete observability stack with Tempo (traces), Prometheus (metrics), and Loki (logs), all integrated through an OpenTelemetry Collector.
+This guide demonstrates how to configure Grafana with App Builder runtime actions for both local development and deployed scenarios. We will use a complete observability stack with Tempo (traces), Prometheus (metrics), and Loki (logs), all integrated through an OpenTelemetry Collector.
 
 <InlineAlert variant="warning" slots="text" />
 
-This guide showcases how to leverage tunneling to forward telemetry data from a remote/deployed App Builder action to a local observability stack. This is **not recommended for production environments**, and is only intended for local development, while you're testing your App Builder actions.
-
-- [OpenTelemetry Instrumentation with Grafana](#opentelemetry-instrumentation-with-grafana)
-  - [Prerequisites](#prerequisites)
-  - [Local Development](#local-development)
-    - [Docker Compose Configuration](#docker-compose-configuration)
-    - [OpenTelemetry Collector Configuration](#opentelemetry-collector-configuration)
-    - [Tempo Configuration](#tempo-configuration)
-    - [Prometheus Configuration](#prometheus-configuration)
-    - [Telemetry Configuration](#telemetry-configuration)
-    - [Visualize the Data](#visualize-the-data)
-  - [App Builder](#app-builder)
-    - [Tunneling Setup](#tunneling-setup)
-    - [Updated Telemetry Configuration](#updated-telemetry-configuration)
+This guide showcases how to leverage tunneling to forward telemetry data from a remote/deployed App Builder action to a local observability stack. Adobe does not recommend this approach for production environments. It is only intended for local development, while you are testing your App Builder actions.
 
 ## Prerequisites
 
 - Docker and Docker Compose
-- An App Builder project with OpenTelemetry instrumentation.
-- A tunneling tool for App Builder (see [Tunneling Guide](../tunnel-forwarding.md) for setup instructions). 
-  - We'll be using Cloudflare Tunnel (cloudflared) for this example.
+- An App Builder project with OpenTelemetry instrumentation
+- A [tunneling](../tunnel-forwarding.md) tool for App Builder
+  - This example uses Cloudflare Tunnel (cloudflared).
 
-## Local Development
+## Local developmen
 
-This section covers the complete setup for local development where both your actions and observability tools run locally.
+The following sections cover the complete setup for local development where both actions and observability tools run locally.
 
 ### Architecture
 
@@ -52,60 +37,60 @@ This section covers the complete setup for local development where both your act
 - Full observability stack (Grafana, Tempo, Prometheus, Loki) runs in Docker
 - All telemetry data flows through the collector for consistent processing
 
-### Docker Compose Configuration
+### Docker Compose configuration
 
 Create a `docker-compose.yaml` file to run the complete observability stack:
 
 ```yaml
 services:
   otel-collector:
-    image: otel/opentelemetry-collector-contrib:latest
+    image: otel/opentelemetry-collector-contrib:lates
     container_name: otel-collector
     restart: unless-stopped
     volumes:
       - "./otel-collector-config.yaml:/etc/otelcol-contrib/config.yaml"
-    ports: 
+    ports:
       - "4317:4317"
       - "4318:4318"
     networks: [telemetry]
     depends_on: [tempo, loki]
 
   tempo:
-    image: grafana/tempo:latest
+    image: grafana/tempo:lates
     container_name: tempo
     restart: unless-stopped
-    volumes: 
+    volumes:
       - "./tempo.yaml:/etc/tempo.yaml"
     networks: [telemetry]
-    command: 
+    command:
       - "-config.file=/etc/tempo.yaml"
 
   prometheus:
-    image: prom/prometheus:latest
+    image: prom/prometheus:lates
     container_name: prometheus
     restart: unless-stopped
-    volumes: 
+    volumes:
       - "./prometheus.yaml:/etc/prometheus/prometheus.yml"
-    ports: 
+    ports:
       - "9090:9090" # Prometheus UI
     networks: [telemetry]
     depends_on: [otel-collector]
 
   loki:
-    image: grafana/loki:latest
+    image: grafana/loki:lates
     container_name: loki
     restart: unless-stopped
     networks: [telemetry]
-    command: 
+    command:
       - "-config.file=/etc/loki/local-config.yaml"
 
   grafana:
-    image: grafana/grafana:latest
+    image: grafana/grafana:lates
     container_name: grafana
     restart: unless-stopped
-    ports: 
+    ports:
       - "3000:3000"
-    volumes: 
+    volumes:
       - "grafana-storage:/var/lib/grafana"
     networks: [telemetry]
     depends_on: [loki, prometheus, tempo]
@@ -118,9 +103,9 @@ volumes:
   grafana-storage:
 ```
 
-### OpenTelemetry Collector Configuration
+### OpenTelemetry collector configuration
 
-Create an `otel-collector-config.yaml` file to configure how the collector processes and exports telemetry data:
+Create an [`otel-collector-config.yaml`](https://github.com/adobe/commerce-integration-starter-kit/blob/main/otel-collector-config.yaml) file to configure how the collector processes and exports telemetry data:
 
 ```yaml
 receivers:
@@ -131,7 +116,7 @@ receivers:
 
       # Uncomment this if you want to use the gRPC protocol
       # grpc:
-        # endpoint: 0.0.0.0:4317 
+        # endpoint: 0.0.0.0:4317
 
 processors:
   batch:
@@ -155,21 +140,21 @@ service:
       receivers: [otlp]
       processors: [batch]
       exporters: [otlphttp/tempo]
-    
+
     metrics:
       receivers: [otlp]
       processors: [batch]
       exporters: [prometheus]
-    
+
     logs:
       receivers: [otlp]
       processors: [batch]
       exporters: [loki]
 ```
 
-### Tempo Configuration
+### Tempo configuration
 
-Create a `tempo.yaml` file for trace storage configuration:
+Create a [`tempo.yaml`](https://github.com/adobe/commerce-integration-starter-kit/blob/main/tempo.yaml) file for trace storage configuration:
 
 ```yaml
 server:
@@ -200,9 +185,9 @@ storage:
       path: /tmp/tempo/wal
 ```
 
-### Prometheus Configuration
+### Prometheus configuration
 
-Create a `prometheus.yaml` file to scrape metrics from the collector:
+Create a [`prometheus.yaml`](https://github.com/adobe/commerce-integration-starter-kit/blob/main/prometheus.yaml) file to scrape metrics from the collector:
 
 ```yaml
 global:
@@ -214,7 +199,7 @@ scrape_configs:
       - targets: ['otel-collector:8889']
 ```
 
-### Telemetry Configuration
+### Telemetry configuration
 
 Configure your App Builder actions to send telemetry to the local collector:
 
@@ -241,7 +226,7 @@ function localCollectorConfig(isDev: boolean) {
     metricReader: new PeriodicExportingMetricReader({
       exporter: new OTLPMetricExporterProto(),
     }),
-    
+
     logRecordProcessors: [
       new SimpleLogRecordProcessor(new OTLPLogExporterProto()),
     ]
@@ -250,37 +235,55 @@ function localCollectorConfig(isDev: boolean) {
 
 export const telemetryConfig = defineTelemetryConfig((params, isDev) => {
   // Direct connection to local OpenTelemetry Collector
-  return {
-    sdkConfig: {
-      serviceName: "my-app-builder-app",
-      instrumentations: getPresetInstrumentations("simple"),
-      resource: getAioRuntimeResource(),
+  const sdkConfig = {
+    serviceName: "my-app-builder-app",
+    instrumentations: getPresetInstrumentations("simple"),
+    resource: getAioRuntimeResource(),
 
-      ...localCollectorConfig(isDev),
+    ...localCollectorConfig(isDev),
+  };
+
+  return {
+    sdkConfig,
+    diagnostics: {
+      logLevel: isDev ? "debug" : "info",
     },
   };
 });
 ```
 
-## Visualize the Data
+## Visualize the data
 
-Start your observability stack with `docker compose up -d` and access Grafana at `http://localhost:3000`.
+After running your actions, you can view the collected telemetry data in Grafana:
+
+1. Open [http://localhost:3000](http://localhost:3000) in your browser
+2. Navigate to the data sources and explore your traces, metrics, and logs
+3. Create custom dashboards to visualize your telemetry data
+
+Start the stack:
+
+```bash
+docker-compose up -d
+```
+
+This will start all the services and you can then access Grafana at http://localhost:3000 to view your telemetry data.
 
 <InlineAlert variant="info" slots="text" />
 
-By default, the Grafana docker image will be protected with a username and password defaulting to `admin` for both fields. You'll need to change it upon first login. 
+By default, the Grafana docker image is protected with a username and password, which defaults to `admin` for both fields. You will need to change it when you first log in.
 
 You can also disable authentication (not recommended), by specifying the following environment variables (in the `grafana` service):
+
 ```yaml
 environment:
   - GF_AUTH_DISABLE_LOGIN_FORM=true
   - GF_AUTH_ANONYMOUS_ENABLED=true
-  - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin 
+  - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
 ```
 
-### Configure Data Sources
+### Configure data sources
 
-Go to **Configuration** → **Data Sources**, and for each of the components, click on  **Add data source**:
+Go to **Configuration** > **Data Sources**, and click on **Add data source** for each of the components:
 
 - **Tempo (Traces)**:
    1. Select **Tempo**
@@ -298,45 +301,46 @@ Go to **Configuration** → **Data Sources**, and for each of the components, cl
 
 ### Traces
 
-Go to **Drilldown** and click on the **Traces** tab in the left sidebar. Initially, you may see an error message - this is normal since the default Grafana queries won't find any data yet. Ensure **Tempo** is selected as your data source. In the dashboard, look for the **Traces** tab where you'll find your different traces listed.
+Go to **Drilldown** and select the **Traces** tab in the left sidebar. Initially, you might see an error message - this is normal since the default Grafana queries will not find any data yet. Ensure **Tempo** is selected as your data source. In the dashboard, look for the **Traces** tab where you will find your different traces listed.
 
 ![Grafana Traces](../../../../_images/telemetry/grafana/traces-view.png)
 
-If you click on a trace, you'll see the details of the trace, including the spans that make up the trace and all the associated attributes. You can also copy the trace ID (in the top right corner) and use it to search the associated logs and metrics.
+If you select a trace, you will see the details of the trace, including the spans that make up the trace and all the associated attributes. You can also copy the trace ID (in the top-right corner) and use it to search the associated logs and metrics.
 
 ![Grafana Trace Details](../../../../_images/telemetry/grafana/trace-span-view.png)
 
 ### Metrics
 
-Navigate to **Drilldown** and select the **Metrics** tab from the left sidebar. Ensure **Prometheus** is selected as your data source. You'll likely see pre-configured visualizations displaying the metrics that Grafana has detected.
+Navigate to **Drilldown** and select the **Metrics** tab from the left sidebar. Ensure **Prometheus** is selected as your data source. You will likely see pre-configured visualizations displaying the metrics that Grafana has detected.
 
 ![Grafana Metrics](../../../../_images/telemetry/grafana/metrics-view.png)
 
 ### Logs
 
-Go to **Drilldown** and select the **Logs** tab from the left sidebar. Make sure **Loki** is set as your data source. Initially, you'll see a basic log preview interface. To access the full-featured log viewer with better navigation and configuration options, locate and click the "**Show Logs**" button.
+Go to **Drilldown** and select the **Logs** tab from the left sidebar. Make sure **Loki** is set as your data source. Initially, you will see a basic log preview interface. To access the full-featured log viewer with better navigation and configuration options, click the **Show Logs** button.
 
 ![Grafana Logs](../../../../_images/telemetry/grafana/logs-view.png)
 
 ## App Builder
 
-For deployed App Builder actions, the setup is identical to Local Development with one key difference: **tunneling**. You'll use the same Docker stack locally, but expose the OpenTelemetry Collector through a tunnel so your deployed actions can reach it.
+For deployed App Builder actions, the setup is identical to [local development](#local-development), but with one key difference: **tunneling**. You will use the same Docker stack locally, but expose the OpenTelemetry Collector through a tunnel so your deployed actions can reach it.
 
 <InlineAlert variant="warning" slots="text" />
 
-**Hybrid Development Solution**: This section describes a hybrid "dev-in-prod" approach where you test deployed App Builder actions while keeping your observability tools local for easier debugging and development.
+**Hybrid Development Solution**: Describes a hybrid "dev-in-prod" approach where you test deployed App Builder actions while keeping your observability tools local for easier debugging and development.
 
-**For real production deployments**, you would host your OpenTelemetry Collector and observability stack (Grafana, Tempo, Prometheus, Loki) on proper cloud infrastructure (AWS, Azure, GCP, and others) and configure your App Builder actions to send telemetry directly to those hosted endpoints - no tunneling required.
+**Production deployments**: For real production deployments, you should host your OpenTelemetry Collector and observability stack (Grafana, Tempo, Prometheus, Loki) on proper cloud infrastructure (AWS, Azure, GCP, and others) and configure your App Builder actions to send telemetry directly to those hosted endpoints, which does not require any tunneling.
 
-### Tunneling Setup
+### Tunneling setup
 
-For complete tunneling setup instructions, including tool comparisons and detailed configuration steps, see our dedicated [Tunneling Guide](../tunnel-forwarding.md).
+See the [tunneling setup](../tunnel-forwarding.md) instructions, which includes tool comparisons and detailed configuration steps.
 
 The key steps are:
 
-1. **Start your local stack** using the same Docker Compose configuration from the Local Development section
+1. **Start your local stack** using the same Docker Compose configuration from the Local Development section.
 
-2. **Choose and start a tunnel** pointing to your OpenTelemetry Collector:
+1. **Choose and start a tunnel** pointing to your OpenTelemetry Collector:
+
    ```bash
    # Example with Cloudflare Tunnel (Linux only)
    docker run --rm -it --net=host cloudflare/cloudflared:latest tunnel --url http://localhost:4318
@@ -345,38 +349,41 @@ The key steps are:
    docker run --rm -it cloudflare/cloudflared:latest tunnel --url http://host.docker.internal:4318
    ```
 
-3. **Note the tunnel URL** that gets generated (for example, `https://abc123-def456-ghi789.trycloudflare.com`)
+1. **Note the tunnel URL** for example, `https://abc123-def456-ghi789.trycloudflare.com`.
 
-#### Alternative: Add Tunneling to Docker Compose
+#### Add tunneling to Docker Compose (alternative)
 
 If you prefer to manage everything through Docker Compose, add this service to your existing `docker-compose.yaml`:
 
 ```yaml
   # Add this service to your existing docker-compose.yaml
   cloudflared:
-    image: cloudflare/cloudflared:latest
+    image: cloudflare/cloudflared:lates
     container_name: cloudflared
     restart: unless-stopped
     networks: [telemetry]
     depends_on: [otel-collector]
-    command: 
+    command:
       - "tunnel"
       - "--url"
       - "http://otel-collector:4318"
 ```
 
 Then start the new container:
+
 ```bash
 docker compose up
 ```
 
 Check the `cloudflared` container logs to get your tunnel URL:
+
 ```bash
 docker logs cloudflared
 ```
-Look for a line like: `https://abc123-def456-ghi789.trycloudflare.com` - this is the URL you'll use in your telemetry configuration.
 
-### Updated Telemetry Configuration
+Look for a URL like: `https://abc123-def456-ghi789.trycloudflare.com`, which is the URL you will use in your telemetry configuration.
+
+### Updated telemetry configuration
 
 Replace the default localhost collector configuration with the tunnel URL in your telemetry setup:
 
@@ -415,7 +422,7 @@ function localCollectorConfig(exportUrl: string) {
 }
 
 export const telemetryConfig = defineTelemetryConfig((params, isDev) => {
-  // Use the tunnel URL instead of localhost
+  // Use the tunnel URL instead of localhos
   const exportUrl = "https://abc123-def456-ghi789.trycloudflare.com";
 
   return {
@@ -423,11 +430,11 @@ export const telemetryConfig = defineTelemetryConfig((params, isDev) => {
       serviceName: "my-app-builder-app",
       instrumentations: getPresetInstrumentations("simple"),
       resource: getAioRuntimeResource(),
-      
+
       ...localCollectorConfig(exportUrl),
     },
   };
 });
 ```
 
-That's it! Your deployed App Builder actions will now send telemetry through the tunnel to your local observability stack, where you can analyze traces, metrics, and logs using the same Grafana interface you set up for local development.
+Your deployed App Builder actions will now send telemetry through the tunnel to your local observability stack, where you can analyze traces, metrics, and logs using the same Grafana interface you set up for local development.

@@ -15,7 +15,7 @@ keywords:
 
 The API provided by the `@aio-lib-telemetry` library allows you to instrument your code, collect metrics and traces, and export telemetry data to your preferred observability platform.
 
-## Available Imports
+## Available imports
 
 These are all the imports you can get from this library when importing from `@adobe/aio-lib-telemetry`.
 
@@ -53,19 +53,24 @@ import {
 
 ### OpenTelemetry API
 
-OpenTelemetry features a modular architecture consisting of over 25 packages, which can make importing specific APIs rather complex. To streamline this process, our library offers a convenient "meta-package" import path. This allows you to import all the necessary OpenTelemetry APIs from a single source, simplifying the setup.
+OpenTelemetry features a modular architecture consisting of over 25 packages, which can make importing specific APIs rather complex. To streamline this process, our library offers a convenient metapackage import path, which allows you to import all the necessary OpenTelemetry APIs from a single source, simplifying the setup.
 
-While this does not include every OpenTelemetry API, it covers the most common ones you will need in your code. If you find any essential APIs missing, feel free to open an issue or submit a PR. You can also import the APIs you need from the individual OpenTelemetry packages, but this is a convenient way to import all the APIs you need in a single import.
+While this does not include every OpenTelemetry API, it covers the most common ones you will need in your code. If you find any essential APIs missing, open an issue or submit a PR in the [starter kit repository](https://github.com/adobe/commerce-integration-starter-kit). You can also import the APIs you need from the individual OpenTelemetry packages, but this is a convenient way to import all the APIs you need in a single import.
 
 <InlineAlert variant="info" slots="text" />
 
 When working with OpenTelemetry exporters, you have three protocols to choose from:
-- **OTLP/GRPC**, **OTLP/HTTP**, and **OTLP/Proto**
 
-The official packages use the same class name for exporters across all protocols, which can make it tricky to pick the right one or get reliable auto-completion. To help with this, our library re-exports them with clear protocol suffixes, for example:
-- `OTLPTraceExporter` from `@opentelemetry/exporter-trace-otlp-http` -> `OTLPTraceExporterHttp`
-- `OTLPTraceExporter` from `@opentelemetry/exporter-trace-otlp-grpc` -> `OTLPTraceExporterGrpc`
-- `OTLPTraceExporter` from `@opentelemetry/exporter-trace-otlp-proto` -> `OTLPTraceExporterProto`
+- OTLP/GRPC
+- OTLP/HTTP
+- OTLP/Proto
+
+The official packages use the same class name for exporters across all protocols, which can make it difficult to pick the right one or get reliable auto-completion. To help with this, our library re-exports them with clear protocol suffixes, for example:
+
+- `OTLPTraceExporter`
+  - `@opentelemetry/exporter-trace-otlp-http` is now `OTLPTraceExporterHttp`
+  - `@opentelemetry/exporter-trace-otlp-grpc` is now `OTLPTraceExporterGrpc`
+  - `@opentelemetry/exporter-trace-otlp-proto` is now `OTLPTraceExporterProto`
 
 Using them is the same as using the original class, but with a more predictable and consistent naming convention.
 
@@ -85,7 +90,7 @@ import {
 
 | Interface                        | Description                                                                       |
 | -------------------------------- | --------------------------------------------------------------------------------- |
-| EntrypointInstrumentationConfig  | The configuration for entrypoint instrumentation.                                 |
+| EntrypointInstrumentationConfig  | The configuration for entry point instrumentation.                                 |
 | InstrumentationConfig            | The configuration for instrumentation.                                            |
 | InstrumentationContext           | The context for the current operation.                                            |
 | TelemetryApi                     | Defines the global telemetry API. These items should be set once per-application. |
@@ -93,7 +98,7 @@ import {
 | TelemetryDiagnosticsConfig       | The configuration for the telemetry diagnostics.                                  |
 | TelemetryPropagationConfig       | Configuration related to context propagation (for distributed tracing).           |
 
-## Type Aliases
+## Type aliases
 
 | Type Alias                      | Description                                             |
 | ------------------------------- | ------------------------------------------------------- |
@@ -106,7 +111,7 @@ import {
 | --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | addEventToActiveSpan                    | Adds an event to the given span.                                                                                                                                                                                                               |
 | defineMetrics                           | Helper to define a record of metrics.                                                                                                                                                                                                          |
-| defineTelemetryConfig                   | Helper to define the telemetry config for an entrypoint.                                                                                                                                                                                       |
+| defineTelemetryConfig                   | Helper to define the telemetry config for an entry point.                                                                                                                                                                                       |
 | deserializeContextFromCarrier           | Deserializes the context from a carrier and augments the given base context with it.                                                                                                                                                           |
 | getActiveSpan                           | Gets the active span from the given context.                                                                                                                                                                                                   |
 | getAioRuntimeAttributes                 | Infers some useful attributes for the current action from the Adobe I/O Runtime and returns them as a record of key-value pairs.                                                                                                               |

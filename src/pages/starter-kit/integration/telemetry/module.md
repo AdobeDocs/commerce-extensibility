@@ -11,43 +11,43 @@ keywords:
   - Tools
 ---
 
-# Telemetry Module for App Builder Actions
+# Telemetry module for App Builder actions
 
 This module contains a set of utilities for integrating observability into App Builder actions. It leverages OpenTelemetry to enable developers to capture, export, and analyze traces, metrics and logs. You can use these tools to monitor action performance, diagnose issues, and gain insights into application behavior, without significant changes to your codebase.
 
 <InlineAlert variant="info" slots="text" />
 
-Keep in mind that this is only a thin wrapper around the [OpenTelemetry SDK](https://opentelemetry.io/docs/languages/js/) for Node.js. It's not intended to be a full-fledged observability solution, but rather a tool to help you get started with OpenTelemetry and collect telemetry data in the context of Adobe App Builder runtime actions. It doesn't cover all the features of OpenTelemetry, but rather provides a simple and easy to use interface to get you started. For advanced use cases you'll need to use the configuration options provided by this module to directly configure the underlying OpenTelemetry SDK, or use the OpenTelemetry SDK directly.
+Keep in mind that this is only a thin wrapper around the [OpenTelemetry SDK](https://opentelemetry.io/docs/languages/js/) for Node.js. It is not intended to be a full-fledged observability solution, but rather a tool to help you get started with OpenTelemetry and collect telemetry data in the context of Adobe App Builder runtime actions. It does not cover all the features of OpenTelemetry, but rather provides a simple and easy to use interface to get you started. For advanced use cases you will need to use the configuration options provided by this module to directly configure the underlying OpenTelemetry SDK, or use the OpenTelemetry SDK directly.
 
 ## Introduction
 
-This guide assumes you have a basic understanding of OpenTelemetry and are familiar with its core concepts, as we will be referencing them throughout this document without detailed explanation. If you're not familiar with OpenTelemetry yet, don't worry, we've put together a general overview to help you get started. It introduces the fundamental concepts and provides the context you need to begin understanding how OpenTelemetry (and this module) works.
+This guide assumes you have a basic understanding of OpenTelemetry and are familiar with its core concepts, as we will be referencing them throughout this document without detailed explanation. If you are not familiar with OpenTelemetry yet, do not worry, we have put together a general overview to help you get started. It introduces the fundamental concepts and provides the context you need to begin understanding how OpenTelemetry (and this module) works.
 
-The overview distills the most important OpenTelemetry concepts and patterns from the (quite extensive) official documentation. For topics not covered in the overview, you'll find links throughout this guide that point directly to relevant sections of the official OpenTelemetry documentation. Use these links to explore details or advanced topics as needed.
+The overview distills the most important OpenTelemetry concepts and patterns from the (quite extensive) official documentation. For topics not covered in the overview, you will find links throughout this guide that point directly to relevant sections of the official OpenTelemetry documentation. Use these links to explore details or advanced topics as needed.
 
 Find it here: [OpenTelemetry General Overview](open-telemetry.md)
 
 <InlineAlert variant="info" slots="text" />
 
-To understand how this library works (and the reasoning behind some of its design decisions) it's important to first grasp the core concepts of OpenTelemetry. If you're new to the framework, we highly recommend reading the overview before continuing.
+To understand how this library works (and the reasoning behind some of its design decisions) it is important to first grasp the core concepts of OpenTelemetry. If you are new to the framework, we highly recommend reading the overview before continuing.
 
-## Installation and Setup
+## Installation and setup
 
 This library is written in TypeScript and distributed as a JavaScript bundle compatible with both ESM and CJS.
 
 ### Prerequisites
 
-This library is designed for use within an [Adobe App Builder](https://developer.adobe.com/app-builder/docs/intro_and_overview/) runtime action, as it expects to find relevant information in the environment. You'll need:
+This library is designed for use within an [Adobe App Builder](https://developer.adobe.com/app-builder/docs/intro_and_overview/) runtime action, as it expects to find relevant information in the environment. You will need:
 
 - An [Adobe App Builder](https://developer.adobe.com/app-builder/docs/intro_and_overview/) project
-- A package manager of your choice (we'll use `npm` in our code examples)
-- A destination for your telemetry signals (we'll guide you through available options and setup)
+- A package manager of your choice (we will use `npm` in our code examples)
+- A destination for your telemetry signals (we will guide you through available options and setup)
 
 <InlineAlert variant="info" slots="text" />
 
-Throughout this guide, we will occasionally distinguish between `development` and `production` environments. For context, deployed App Builder runtime actions do not differentiate between these environments (a deployed runtime action is always considered to be in `production`, regardless of the namespace). When we refer to the `development` environment, we are specifically referring to when you're **running your runtime actions locally** through `aio app dev`.
+Throughout this guide, we will occasionally distinguish between `development` and `production` environments. For context, deployed App Builder runtime actions do not differentiate between these environments (a deployed runtime action is always considered to be in `production`, regardless of the namespace). When we refer to the `development` environment, we are specifically referring to when you are **running your runtime actions locally** through `aio app dev`.
 
-### Installing the Module
+### Installing the module
 
 <InlineAlert variant="warning" slots="text" />
 
@@ -65,38 +65,38 @@ This library uses the [Open Telemetry Node SDK](https://github.com/open-telemetr
 
 The Open Telemetry Node SDK remains experimental and under active development. Despite this status, it has proven reliable and complete for our production use cases. Across our integration and testing in App Builder actions, we have not observed any major gaps or operational issues affecting standard observability workflows.
 
-The library is designed to configure OpenTelemetry on a **per-action basis**, but don't worry, you won't need to write your configuration multiple times (though you can if you need different telemetry configurations for specific actions).
+The library is designed to configure OpenTelemetry on a **per-action basis**, but do not worry, you will not need to write your configuration multiple times (though you can if you need different telemetry configurations for specific actions).
 
-### Open Telemetry Configuration
+### OpenTelemetry configuration
 
 There are 2 different ways to configure Open Telemetry in Node.js:
 
 - [Using environment variables](https://opentelemetry.io/docs/languages/sdk-configuration/) (currently not supported)
 - At runtime, through the [Node SDK configuration](https://open-telemetry.github.io/opentelemetry-js/modules/_opentelemetry_sdk-node.html#configuration) object
 
-#### Environment Variables
+#### Environment variables
 
 <InlineAlert variant="warning" slots="text" />
 
-This method is currently not supported. When searching for OpenTelemetry usage examples, you'll find numerous tutorials demonstrating how to configure the SDK using environment variables. These variables are automatically processed by the SDK to configure its behavior. However, these variables need to be present in `process.env`, and due to how App Builder handles environment variables (fed through `params`), this configuration method is currently not supported.
+This method is currently not supported. When searching for OpenTelemetry usage examples, you will find numerous tutorials demonstrating how to configure the SDK using environment variables. These variables are automatically processed by the SDK to configure its behavior. However, these variables need to be present in `process.env`, and due to how App Builder handles environment variables (fed through `params`), this configuration method is currently not supported.
 
-#### Node SDK Configuration
+#### Node SDK configuration
 
-This is the currently supported method for configuring OpenTelemetry with this library. You'll need to provide a NodeSDK configuration object that will be passed directly to the `NodeSDK` constructor.
+This is the currently supported method for configuring OpenTelemetry with this library. You will need to provide a NodeSDK configuration object that will be passed directly to the `NodeSDK` constructor.
 
 For detailed information about each configuration option, please refer to the [official OpenTelemetry documentation](https://opentelemetry.io/docs/languages/js/instrumentation/#initialize-the-sdk).
 
-### Writing your Telemetry Configuration
+### Writing your telemetry configuration
 
 Before you start using this library you need to configure it.
 
 <InlineAlert variant="info" slots="text" />
 
-This section focuses on general telemetry configuration rather than backend-specific setup. Since observability backends require different configurations, we've created dedicated guides for popular options. See the [use cases](use-cases/) section for links to detailed backend setup instructions.
+This section focuses on general telemetry configuration rather than backend-specific setup. Since observability backends require different configurations, we have created dedicated guides for popular options. See the [use cases](use-cases/) section for links to detailed backend setup instructions.
 
 Begin by creating a `telemetry.js` file (or `telemetry.ts` if using TypeScript). This file will export your global telemetry configuration, which will be shared across all instrumented runtime actions.
 
-If a single configuration doesn't meet your requirements, you can export multiple configurations from this file (or create separate configuration files) and use them as needed.
+If a single configuration does not meet your requirements, you can export multiple configurations from this file (or create separate configuration files) and use them as needed.
 
 ```js
 // telemetry.{js|ts}
@@ -118,7 +118,7 @@ const telemetryConfig = defineTelemetryConfig((params, isDev) => {
 export { telemetryConfig }
 ```
 
-## How to Use
+## How to use
 
 ### Setup
 
@@ -200,7 +200,7 @@ const instrumentedFunction = instrument(myFunction, (helpers) => {
 });
 ```
 
-### Instrumentation Helpers
+### Instrumentation helpers
 
 The instrumentation callback receives several helpers:
 
@@ -210,9 +210,9 @@ The instrumentation callback receives several helpers:
 - `meter`: The global meter instance for creating metrics
 - `logger`: An auto-configured logger for the current operation
 
-## Advanced Usage
+## Advanced usage
 
-### Configuring a Custom Tracer and Meter
+### Configuring a custom tracer and meter
 
 The library automatically creates a default tracer and meter if none are provided alongside the `sdkConfig`. However, you can supply your own custom implementations if you need more specific functionality.
 
@@ -237,7 +237,7 @@ const telemetryConfig = defineTelemetryConfig((params, isDev) => {
 export { telemetryConfig }
 ```
 
-### Instrumentation Configuration
+### Instrumentation configuration
 
 In most cases, instrumenting your functions works seamlessly without additional configuration. However, certain scenarios may require further customization.
 
@@ -257,9 +257,9 @@ instrument(externalApiRequest, {
 
 ## Troubleshooting
 
-### Enabling OpenTelemetry Diagnostics
+### Enabling OpenTelemetry diagnostics
 
-OpenTelemetry includes an internal diagnostic logging API for troubleshooting configuration and instrumentation issues. When your OpenTelemetry setup isn't behaving as expected, you can enable these `diagnostics` through your telemetry configuration:
+OpenTelemetry includes an internal diagnostic logging API for troubleshooting configuration and instrumentation issues. When your OpenTelemetry setup is not behaving as expected, you can enable these `diagnostics` through your telemetry configuration:
 
 ```js
 import { defineTelemetryConfig } from "@adobe/aio-lib-telemetry"
@@ -281,15 +281,15 @@ const telemetryConfig = defineTelemetryConfig((params, isDev) => {
 export { telemetryConfig }
 ```
 
-### Known Issues
+### Known issues
 
-#### Hot Reloading
+#### Hot reloading
 
-OpenTelemetry uses global state to manage its internal components. When developing locally with `aio app dev`, your code is hot-reloaded as you make changes. While this module handles the underlying OpenTelemetry SDK to work smoothly with hot-reloading, there might be some edge cases we haven't encountered or tested yet.
+OpenTelemetry uses global state to manage its internal components. When developing locally with `aio app dev`, your code is hot-reloaded as you make changes. While this module handles the underlying OpenTelemetry SDK to work smoothly with hot-reloading, there might be some edge cases we have not encountered or tested yet.
 
 If you notice any unexpected behavior, please file a GitHub issue with reproduction steps so we can investigate and improve the module. As a temporary solution, you can restart the development server to start fresh.
 
-#### Telemetry Signals Not Being Exported
+#### Telemetry signals not being exported
 
 Due to the ephemeral nature of runtime actions, telemetry signals may occasionally fail to export before the container shuts down. While the module attempts to flush all signals when an action completes, certain edge cases can prevent this from occurring.
 
@@ -301,4 +301,4 @@ If you experience this issue, please file a GitHub issue with reproduction steps
 - [Use Cases](use-cases/)
 - [Reference Documentation](reference/index.md)
 
-*Source: [Adobe Commerce Integration Starter Kit Telemetry Module](https://github.com/adobe/commerce-integration-starter-kit/blob/main/packages/aio-lib-telemetry/README.md)* 
+*Source: [Adobe Commerce Integration Starter Kit Telemetry Module](https://github.com/adobe/commerce-integration-starter-kit/blob/main/packages/aio-lib-telemetry/README.md)*

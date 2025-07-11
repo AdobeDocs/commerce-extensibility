@@ -11,11 +11,11 @@ keywords:
   - Tools
 ---
 
-# OpenTelemetry Instrumentation with New Relic
+# OpenTelemetry instrumentation with New Relic
 
 ![New Relic Logo](../../../../_images/telemetry/new-relic/logo.png)
 
-This guide demonstrates how to configure runtime actions to send telemetry signals directly to New Relic. Since we'll send signals without an OpenTelemetry Collector intermediary, this approach works seamlessly in both **development** (`aio app dev`) and **production** (`aio app deploy`) environments.
+This guide demonstrates how to configure runtime actions to send telemetry signals directly to New Relic. Since we will send signals without an OpenTelemetry Collector intermediary, this approach works seamlessly in both **development** (`aio app dev`) and **production** (`aio app deploy`) environments.
 
 - [OpenTelemetry Instrumentation with New Relic](#opentelemetry-instrumentation-with-new-relic)
   - [Prerequisites](#prerequisites)
@@ -34,19 +34,19 @@ This guide demonstrates how to configure runtime actions to send telemetry signa
 
 ## Setup
 
-In order for our runtime actions to send telemetry signals to New Relic, we need to configure our telemetry exporters to send them to the [OTLP ingestion endpoint](https://docs.newrelic.com/docs/opentelemetry/best-practices/opentelemetry-otlp/) provided by the platform. 
+In order for our runtime actions to send telemetry signals to New Relic, we need to configure our telemetry exporters to send them to the [OTLP ingestion endpoint](https://docs.newrelic.com/docs/opentelemetry/best-practices/opentelemetry-otlp/) provided by the platform.
 
 <InlineAlert variant="info" slots="text" />
 
-The OTLP endpoint URL varies based on your New Relic account's region. Additionally, New Relic requires or recommends specific configuration parameters for optimal signal ingestion. 
+The OTLP endpoint URL varies based on your New Relic account's region. Additionally, New Relic requires or recommends specific configuration parameters for optimal signal ingestion.
 
-For detailed configuration requirements, refer to the "**Config**" sections in the OTLP ingestion endpoint documentation linked above. The below configuration will not set any of those parameters, as it's intended to be a starting point for your own configuration.
+For detailed configuration requirements, refer to the "**Config**" sections in the OTLP ingestion endpoint documentation linked above. The below configuration will not set any of those parameters, as it is intended to be a starting point for your own configuration.
 
 ### Configuration
 
-#### Environment Variables
+#### Environment variables
 
-Go to New Relic's [API Keys page](https://one.eu.newrelic.com/admin-portal/api-keys/home) and create/retrieve an ingestion **license** key. Copy that key and set it as an environment variable in your `.env` file. Make sure you're also declaring that same variable as an input in your runtime actions configuration file (`app.config.yaml`).
+Go to New Relic's [API Keys page](https://one.eu.newrelic.com/admin-portal/api-keys/home) and create/retrieve an ingestion **license** key. Copy that key and set it as an environment variable in your `.env` file. Make sure you are also declaring that same variable as an input in your runtime actions configuration file (`app.config.yaml`).
 
 Assuming your environment variable is called `NEW_RELIC_LICENSE_KEY`:
 
@@ -60,7 +60,7 @@ my-action:
   # ...other configuration options
 ```
 
-#### SDK Configuration
+#### SDK configuration
 
 This configuration uses the HTTP/Protobuf exporter, as per New Relic's [documentation recommendations](https://docs.newrelic.com/docs/opentelemetry/best-practices/opentelemetry-otlp/#configure-endpoint-port-protocol).
 
@@ -142,11 +142,11 @@ export const telemetryConfig = defineTelemetryConfig((params, isDev) => {
 });
 ```
 
-### How to Use
+### How to use
 
 Exporting directly to New Relic will seamlessly work in both development and production environments (no configuration changes required). Follow the [library documentation](../module.md#how-to-use) to instrument your runtime actions.
 
-## Visualize the Data
+## Visualize the data
 
 Your OpenTelemetry instrumented service should appear under the [All Entities](https://one.eu.newrelic.com/nr1-core?filters=(domain%20IN%20('APM',%20'EXT')%20AND%20type%20IN%20('APPLICATION',%20'SERVICE'))) section or under the **APM & Services** menu, under a **Services - OpenTelemetry** dashboard.
 
@@ -166,17 +166,17 @@ Click on a trace to see its constituent spans, and also additional details, like
 
 You can configure span attributes at two levels: globally for all signals through the `resource` property in `sdkConfig`, or individually per span using the optional `attributes` property in the `spanConfig` object passed to `instrument` function helpers.
 
-![Trace Details](../../../../_images/telemetry/new-relic/trace-span-view.png) 
+![Trace Details](../../../../_images/telemetry/new-relic/trace-span-view.png)
 
 The example trace above begins with an Adobe App Builder `consumer` runtime action serving as a router. This action then triggers another runtime action that handles customer creation, with its workflow steps (`validate`, `transform`, and others) clearly visible in the trace.
 
 <InlineAlert variant="info" slots="text" />
 
-New Relic may display ghost spans for uninstrumented periods within a trace. While it sometimes correctly identifies these periods, in the example above, the majority of uninstrumented time represents the duration taken by the Adobe I/O Runtime to invoke the `created` runtime action, which we can't do anything about.
+New Relic may display ghost spans for uninstrumented periods within a trace. While it sometimes correctly identifies these periods, in the example above, the majority of uninstrumented time represents the duration taken by the Adobe I/O Runtime to invoke the `created` runtime action, which we cannot do anything about.
 
 ### Metrics
 
-Use the [Query Bar of New Relic](https://docs.newrelic.com/docs/data-apis/understand-data/metric-data/query-metric-data-type) to query and visualize your metrics. The code that reported the trace in the example above, had a metric named `customer.commerce.consumer.success_count`, which represents the successful invocations of the `consumer` runtime action. 
+Use the [Query Bar of New Relic](https://docs.newrelic.com/docs/data-apis/understand-data/metric-data/query-metric-data-type) to query and visualize your metrics. The code that reported the trace in the example above, had a metric named `customer.commerce.consumer.success_count`, which represents the successful invocations of the `consumer` runtime action.
 
 See below the [NRQL](https://docs.newrelic.com/docs/nrql/get-started/introduction-nrql-new-relics-query-language/) query we used to visualize that metric.
 
@@ -191,4 +191,3 @@ Access your service logs through the **Logs** tab in the service UI (located und
 When logging within a trace, the trace ID is automatically included, enabling log-trace correlation. New Relic simplifies this further by automatically linking logs to their corresponding traces. To view logs for a specific trace, click on the trace in the **Distributed Tracing** tab and navigate to the **Logs** tab (see the green square in the [traces section](#traces) second image).
 
 ![Logs](../../../../_images/telemetry/new-relic/logs-view.png)
-

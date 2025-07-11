@@ -7,11 +7,11 @@ keywords:
  - API Mesh
  - Events
  - REST
- - Starter Kit
+ - Starter Ki
  - Tools
 ---
 
-# Telemetry API Functions
+# Telemetry API functions
 
 - [addEventToActiveSpan](#addeventtoactivespan)
 - [defineMetrics](#definemetrics)
@@ -37,13 +37,13 @@ keywords:
 Adds a custom event to the currently active span in the telemetry trace.
 
 **Parameters:**
+
 - `eventName` (string): The name of the event.
 - `attributes` (object): Key-value pairs of event attributes.
 
 **Returns:**
-- void
 
----
+- void
 
 ## defineMetrics
 
@@ -52,12 +52,12 @@ Adds a custom event to the currently active span in the telemetry trace.
 Defines custom metrics for telemetry collection.
 
 **Parameters:**
+
 - `metricsConfig` (object): Configuration object for metrics.
 
 **Returns:**
-- void
 
----
+- void
 
 ## defineTelemetryConfig
 
@@ -66,12 +66,12 @@ Defines custom metrics for telemetry collection.
 Defines the configuration for telemetry instrumentation and export.
 
 **Parameters:**
+
 - `config` (object): Telemetry configuration object.
 
 **Returns:**
-- void
 
----
+- void
 
 ## deserializeContextFromCarrier
 
@@ -80,12 +80,12 @@ Defines the configuration for telemetry instrumentation and export.
 Deserializes a telemetry context from a carrier object (such as HTTP headers).
 
 **Parameters:**
+
 - `carrier` (object): The carrier containing serialized context.
 
 **Returns:**
-- `context` (object): The deserialized telemetry context.
 
----
+- `context` (object): The deserialized telemetry context.
 
 ## getActiveSpan
 
@@ -94,9 +94,8 @@ Deserializes a telemetry context from a carrier object (such as HTTP headers).
 Returns the currently active telemetry span, if any.
 
 **Returns:**
-- `span` (object | undefined): The active span object, or undefined if none is active.
 
----
+- `span` (object | undefined): The active span object, or undefined if none is active.
 
 ## getAioRuntimeAttributes
 
@@ -105,9 +104,8 @@ Returns the currently active telemetry span, if any.
 Returns runtime attributes for the current Adobe I/O Runtime environment.
 
 **Returns:**
-- `attributes` (object): Key-value pairs of runtime attributes.
 
----
+- `attributes` (object): Key-value pairs of runtime attributes.
 
 ## getAioRuntimeResource
 
@@ -116,9 +114,8 @@ Returns runtime attributes for the current Adobe I/O Runtime environment.
 Returns the resource descriptor for the current Adobe I/O Runtime environment.
 
 **Returns:**
-- `resource` (object): The resource descriptor object.
 
----
+- `resource` (object): The resource descriptor object.
 
 ## getAioRuntimeResourceWithAttributes
 
@@ -127,9 +124,8 @@ Returns the resource descriptor for the current Adobe I/O Runtime environment.
 Returns the resource descriptor with additional runtime attributes for the current Adobe I/O Runtime environment.
 
 **Returns:**
-- `resource` (object): The resource descriptor object with attributes.
 
----
+- `resource` (object): The resource descriptor object with attributes.
 
 ## getGlobalTelemetryApi
 
@@ -138,9 +134,8 @@ Returns the resource descriptor with additional runtime attributes for the curre
 Returns the global telemetry API instance.
 
 **Returns:**
-- `api` (object): The global telemetry API instance.
 
----
+- `api` (object): The global telemetry API instance.
 
 ## getInstrumentationHelpers
 
@@ -149,9 +144,8 @@ Returns the global telemetry API instance.
 Returns helper functions for telemetry instrumentation.
 
 **Returns:**
-- `helpers` (object): Helper functions for instrumentation.
 
----
+- `helpers` (object): Helper functions for instrumentation.
 
 ## getLogger
 
@@ -160,9 +154,8 @@ Returns helper functions for telemetry instrumentation.
 Returns a logger instance for telemetry diagnostics.
 
 **Returns:**
-- `logger` (object): Logger instance for diagnostics.
 
----
+- `logger` (object): Logger instance for diagnostics.
 
 ## getPresetInstrumentations
 
@@ -171,39 +164,38 @@ Returns a logger instance for telemetry diagnostics.
 Returns a list of preset instrumentations for telemetry.
 
 **Returns:**
+
 - `instrumentations` (array): List of preset instrumentations.
 
----
-
-## instrument
+## instrumen
 
 `instrument(target, options)`
 
 Instruments a target (function, module, and more) for telemetry collection.
 
 **Parameters:**
+
 - `target` (any): The target to instrument.
 - `options` (object): Instrumentation options.
 
 **Returns:**
+
 - void
 
----
-
-## instrumentEntrypoint
+## instrumentEntrypoin
 
 `instrumentEntrypoint(entrypoint, options)`
 
-Instruments an entrypoint (main function, handler, and more) for telemetry collection.
+Instruments an entry point (main function, handler, and more) for telemetry collection.
 
 **Parameters:**
-- `entrypoint` (function): The entrypoint function to instrument.
+
+- `entrypoint` (function): The entry point function to instrument.
 - `options` (object): Instrumentation options.
 
 **Returns:**
-- void
 
----
+- void
 
 ## serializeContextIntoCarrier
 
@@ -212,13 +204,13 @@ Instruments an entrypoint (main function, handler, and more) for telemetry colle
 Serializes a telemetry context into a carrier object (such as HTTP headers).
 
 **Parameters:**
+
 - `context` (object): The telemetry context to serialize.
 - `carrier` (object): The carrier to receive the serialized context.
 
 **Returns:**
-- void
 
----
+- void
 
 ## tryGetActiveSpan
 
@@ -227,4 +219,5 @@ Serializes a telemetry context into a carrier object (such as HTTP headers).
 Attempts to return the currently active telemetry span, if any.
 
 **Returns:**
-- `span` (object | undefined): The active span object, or undefined if none is active. 
+
+- `span` (object | undefined): The active span object, or undefined if none is active.

@@ -11,20 +11,16 @@ keywords:
   - Tools
 ---
 
-# Telemetry API Type Aliases
+# Telemetry API type aliases
 
 - [DiagnosticsLogLevel](#diagnosticsloglevel)
 - [TelemetryInstrumentationPreset](#telemetryinstrumentationpreset)
-
----
 
 ## DiagnosticsLogLevel
 
 `DiagnosticsLogLevel`
 
 Type alias for log level options in telemetry diagnostics.
-
----
 
 ## TelemetryInstrumentationPreset
 

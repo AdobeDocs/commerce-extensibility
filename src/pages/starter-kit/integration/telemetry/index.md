@@ -32,12 +32,13 @@ The integration starter kit provides built-in support for telemetry and observab
 ## Why use telemetry?
 
 Telemetry provides visibility into your integration flows, helping you:
+
 - Detect and diagnose issues quickly
 - Measure performance and reliability
 - Gain insights into business processes
 - Meet compliance and operational requirements
 
-For more details, see the API reference and use case documentation in this section. 
+For more details, see the API reference and use case documentation in this section.
 
 ## Integrating OpenTelemetry
 
@@ -49,7 +50,7 @@ The integration starter kit comes with the `@adobe/aio-lib-telemetry` package pr
 
 For detailed guides and examples, see the [telemetry module documentation](./module.md).
 
-### Example Integration
+### Example integration
 
 <InlineAlert variant="info" slots="text" />
 
@@ -71,6 +72,10 @@ The starter kit demonstrates telemetry integration in the `actions/customer/comm
 
 The provided integration supports all three OpenTelemetry signals—**traces**, **metrics**, and **logs**—and enables automatic context propagation. For example, triggering the `consumer` action will generate a unified trace that spans the entire execution flow, including any instrumented downstream actions like `created`.
 
-### Running a Local Telemetry Stack
+### Running a local telemetry stack
 
 A ready-to-use Docker Compose setup is included for running a local telemetry stack, following the [Grafana use case](https://github.com/adobe/commerce-integration-starter-kit/blob/main/packages/aio-lib-telemetry/docs/use-cases/grafana.md). To start the stack, run:
+
+```bash
+docker-compose up
+```

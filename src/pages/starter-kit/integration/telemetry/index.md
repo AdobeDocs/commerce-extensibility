@@ -19,15 +19,15 @@ The integration starter kit provides built-in support for telemetry and observab
 
 - **Automatic instrumentation** for serverless actions
 - **Custom metrics and traces** for business and technical events
-- **Pluggable exporters** (for example, Grafana, New Relic)
+- **Pluggable exporters** such as Grafana, New Relic
 - **Context propagation** across distributed systems
 - **Developer-friendly API** for adding custom telemetry
 
 ## Getting started
 
 1. Review the [API reference](./reference/index.md) for available telemetry functions.
-2. See [use cases](./use-cases/) for practical examples (Grafana, New Relic, and more).
-3. Explore the [OpenTelemetry concepts](./open-telemetry.md) for background and best practices.
+1. See [use cases](./use-cases/) for practical examples, such as Grafana and New Relic instrumentation.
+1. Explore [OpenTelemetry concepts](./open-telemetry.md) for background and best practices.
 
 ## Why use telemetry?
 
@@ -38,11 +38,9 @@ Telemetry provides visibility into your integration flows, helping you:
 - Gain insights into business processes
 - Meet compliance and operational requirements
 
-For more details, see the API reference and use case documentation in this section.
-
 ## Integrating OpenTelemetry
 
-The integration starter kit comes with the `@adobe/aio-lib-telemetry` package pre-installed (as a local, non-published dependency in the `packages` folder). This library makes it easy to instrument your App Builder actions using OpenTelemetry, enabling you to collect and export:
+The integration starter kit has the `@adobe/aio-lib-telemetry` package pre-installed as a local, non-published dependency in the `packages` folder. This library makes it easy to instrument your App Builder actions using OpenTelemetry, enabling you to collect and export:
 
 - **Traces** (with distributed tracing support)
 - **Metrics** (for monitoring)
@@ -54,7 +52,7 @@ For detailed guides and examples, see the [telemetry module documentation](./mod
 
 <InlineAlert variant="info" slots="text" />
 
-For step-by-step integration instructions, refer to the [How To Use](./module.md#how-to-use) section in the module documentation.
+For detailed integration instructions, refer to the [Using the telemetry module](./module.md#using-the-telemetry-module) section in the module documentation.
 
 The starter kit demonstrates telemetry integration in the `actions/customer/commerce` workflow, specifically in the `consumer` and `created` actions. These examples use:
 
@@ -70,11 +68,13 @@ The starter kit demonstrates telemetry integration in the `actions/customer/comm
   - Set the `ENABLE_TELEMETRY` environment variable to `true` in each action's `inputs` section.
 - To fully enable telemetry, complete your configuration in [`telemetry.js`](https://github.com/adobe/commerce-integration-starter-kit/blob/main/actions/telemetry.js).
 
-The provided integration supports all three OpenTelemetry signals—**traces**, **metrics**, and **logs**—and enables automatic context propagation. For example, triggering the `consumer` action will generate a unified trace that spans the entire execution flow, including any instrumented downstream actions like `created`.
+The provided integration supports all three OpenTelemetry signals, **traces**, **metrics**, and **logs**, and enables automatic context propagation. For example, triggering the `consumer` action will generate a unified trace that spans the entire execution flow, including any instrumented downstream actions like `created`.
 
 ### Running a local telemetry stack
 
-A ready-to-use Docker Compose setup is included for running a local telemetry stack, following the [Grafana use case](https://github.com/adobe/commerce-integration-starter-kit/blob/main/packages/aio-lib-telemetry/docs/use-cases/grafana.md). To start the stack, run:
+A ready-to-use Docker Compose setup is included for running a local telemetry stack, refer to the [Grafana use case](https://github.com/adobe/commerce-integration-starter-kit/blob/main/packages/aio-lib-telemetry/docs/use-cases/grafana.md) for more information.
+
+To start the stack, run:
 
 ```bash
 docker-compose up

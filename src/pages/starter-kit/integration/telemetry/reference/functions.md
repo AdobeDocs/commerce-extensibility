@@ -2,13 +2,13 @@
 title: Telemetry API Reference Functions
 description: Comprehensive reference for all telemetry API functions in the integration starter kit.
 keywords:
- - Extensibility
- - App Builder
- - API Mesh
- - Events
- - REST
- - Starter Ki
- - Tools
+  - Extensibility
+  - App Builder
+  - API Mesh
+  - Events
+  - REST
+  - Starter Kit
+  - Tools
 ---
 
 # Telemetry API functions
@@ -167,7 +167,7 @@ Returns a list of preset instrumentations for telemetry.
 
 - `instrumentations` (array): List of preset instrumentations.
 
-## instrumen
+## instrument
 
 `instrument(target, options)`
 
@@ -182,7 +182,7 @@ Instruments a target (function, module, and more) for telemetry collection.
 
 - void
 
-## instrumentEntrypoin
+## instrumentEntrypoint
 
 `instrumentEntrypoint(entrypoint, options)`
 

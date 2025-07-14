@@ -1,5 +1,5 @@
 ---
-title: Introduction to OpenTelemetry
+title: OpenTelemetry overview
 description: A curated collection of the most important OpenTelemetry concepts and patterns for App Builder applications.
 keywords:
   - Extensibility
@@ -7,42 +7,23 @@ keywords:
   - API Mesh
   - Events
   - REST
-  - Starter Ki
+  - Starter Kit
   - Tools
 ---
 
-# 🔭 Introduction to OpenTelemetry
+# OpenTelemetry overview
 
-This overview serves as a curated collection of the most important concepts and patterns from the extensive official OpenTelemetry documentation. For any topics not included here, you will find links throughout the guide that direct you to the relevant sections of the official documentation. Use these links to explore further or clarify details as you work with OpenTelemetry in practice.
-
-![OpenTelemetry Logo](../../../_images/telemetry/open-telemetry.png)
-
-- [🔭 Introduction to OpenTelemetry](#-introduction-to-opentelemetry)
-  - [What is OpenTelemetry?](#what-is-opentelemetry)
-  - [OTLP Protocol](#otlp-protocol)
-    - [Supported Transmission Protocols](#supported-transmission-protocols)
-    - [Default Ports](#default-ports)
-  - [Usage Patterns](#usage-patterns)
-    - [Application-Level Export](#application-level-export)
-    - [Collector-Based Export](#collector-based-export)
-      - [Architecture: Receivers, Processors, Exporters](#architecture-receivers-processors-exporters)
-  - [Supported Services and Backends](#supported-services-and-backends)
-  - [What does _instrumentation_ mean?](#what-does-instrumentation-mean)
-    - [Automatic Instrumentation](#automatic-instrumentation)
-    - [Manual Instrumentation](#manual-instrumentation)
-  - [Next Up](#next-up)
+This overview serves as a curated collection of the most important concepts and patterns from the official [OpenTelemetry documentation](https://opentelemetry.io/docs/).
 
 ## What is OpenTelemetry?
 
 OpenTelemetry is an open-source framework for collecting, processing, and exporting telemetry data from applications, such as traces, metrics, and logs. It provides standardized APIs and SDKs that enable consistent observability across distributed systems, regardless of language or platform.
 
-<InlineAlert variant="info" slots="text" />
-
 The framework is governed by a comprehensive specification that defines the behavior and requirements for all OpenTelemetry components, ensuring interoperability and consistency across different implementations.
 
-## OTLP Protocol
+## OpenTelemetry Protocol (OTLP)
 
-The OpenTelemetry Protocol (OTLP) is the default, vendor-neutral protocol for transmitting telemetry data between components such as SDKs, collectors, and backends. OTLP supports traces, metrics, and logs, and enables efficient, standardized communication across the observability pipeline. ([Learn more](https://opentelemetry.io/docs/specs/otlp/))
+The [OpenTelemetry Protocol (OTLP)](https://opentelemetry.io/docs/specs/otlp/) is the default, vendor-neutral protocol for transmitting telemetry data between components such as SDKs, collectors, and backends. OTLP supports traces, metrics, and logs, and enables efficient, standardized communication across the observability pipeline.
 
 ### Supported transmission protocols
 
@@ -56,71 +37,69 @@ OTLP supports multiple transmission protocols and encodings to accommodate diffe
 
 ### Default ports
 
-- **OTLP/gRPC** uses port `4317` by default.
-- **OTLP/HTTP** (both Protobuf and JSON) uses port `4318` by default.
+- **OTLP/gRPC** - Uses port `4317` by default.
+- **OTLP/HTTP** - Both Protobuf and JSON use port `4318` by default.
 
 ## Usage patterns
 
-### Application-level expor
+OpenTelemetry supports exporting telemetry data either directly from your application or through a Collector service, each suited to different deployment needs.
+
+### Application-level export
 
 The simplest pattern is to export your telemetry signals directly to an observability backend. This is usually done through a language-specific OpenTelemetry SDK. It is the easiest to setup and requires no intermediate infrastructure, which makes it suitable for development/test environments, but not for production use cases.
 
 ![OpenTelemetry Direct Export](../../../_images/telemetry/no-collector.png)
 
-### Collector-based expor
+### Collector-based export
 
 The OpenTelemetry Collector is a standalone service designed to receive, process, and export telemetry data from multiple sources. It acts as an intermediary between instrumented applications and observability backends, providing a flexible and scalable way to manage telemetry pipelines.
 
 When using a Collector, your application sends telemetry data to the Collector endpoint instead of directly to the backend. The Collector receives this data (through its receivers), applies optional processing (such as batching, filtering, or transformation), and then exports it to one or more destinations using its configured exporters. This architecture decouples your application from backend-specific exporters and allows you to centralize telemetry management, transformation, and routing.
 
-Collectors are commonly deployed in two patterns:
+[Collectors](https://opentelemetry.io/docs/collector/) are commonly deployed in two patterns:
 
-- **Agent:** Runs as a sidecar or daemon on the same host as your application, collecting telemetry locally before forwarding it to a central Collector or backend. ([Learn more](https://opentelemetry.io/docs/collector/deployment/agent/))
+- **[Agent](ttps://opentelemetry.io/docs/collector/deployment/agent/):** Runs as a sidecar or daemon on the same host as your application, collecting telemetry locally before forwarding it to a central Collector or backend.
 
-- **Gateway:** Runs as a remote service, aggregating telemetry from multiple sources before exporting to observability platforms. ([Learn more](https://opentelemetry.io/docs/collector/deployment/gateway/))
+- **[Gateway](https://opentelemetry.io/docs/collector/deployment/gateway/):** Runs as a remote service, aggregating telemetry from multiple sources before exporting to observability platforms.
 
-This approach is recommended for production environments, as it enables advanced features like multi-destination export, data enrichment, and dynamic configuration without modifying application code. ([Learn more](https://opentelemetry.io/docs/collector/))
+This approach is recommended for production environments, as it enables advanced features like multi-destination export, data enrichment, and dynamic configuration without modifying application code.
 
 <InlineAlert variant="info" slots="text" />
 
-When exporting [telemetry directly from the application](#application-level-export), the pipeline model described above does not fully apply. There are no receivers involved; the SDK sends data directly to the backend using an exporter (with optional, in-code processing).
+When exporting [telemetry directly from the application](#application-level-export), the pipeline model described above does not fully apply. There are no receivers involved. The SDK sends data directly to the backend using an exporter (with optional, in-code processing).
 
 ![OpenTelemetry Collector Architecture](../../../_images/telemetry/with-collector.png)
 
 #### Architecture: Receivers, processors, exporters
 
-The OpenTelemetry Collector follows a pipeline model consisting of three key components, **receivers**, **processors**, and **exporters**.
+The OpenTelemetry Collector follows a pipeline model consisting of three key components: **receivers**, **processors**, and **exporters**.
 
 1. Telemetry data is first collected by receivers, which ingest data from instrumented applications or external sources.
-2. The data then passes through processors, which can modify, batch, or filter the telemetry before it is sent to exporters.
-3. Exporters are responsible for delivering the processed data to external observability platforms or storage systems.
+1. The data then passes through processors, which can modify, batch, or filter the telemetry data before it is sent to exporters.
+1. Exporters are responsible for delivering the processed data to external observability platforms or storage systems.
 
 ![OpenTelemetry Pipeline Architecture](../../../_images/telemetry/otel-architecture.png)
 
 ## Supported services and backends
 
-OpenTelemetry is highly versatile and is rapidly becoming the standard for observability across the industry. It is supported by a wide range of cloud providers, monitoring platforms, and open source tools, enabling you to export telemetry data to systems like AWS X-Ray, Google Cloud Operations, Azure Monitor, Datadog, New Relic, Jaeger, Zipkin, Prometheus, and many others.
+OpenTelemetry is highly versatile and is rapidly becoming the standard for observability across the industry. It is supported by a wide range of cloud providers, monitoring platforms, and open source tools, enabling you to export telemetry data to systems like: AWS X-Ray, Google Cloud Operations, Azure Monitor, Datadog, New Relic, Jaeger, Zipkin, Prometheus, and many others.
 
 ## What does _instrumentation_ mean?
 
-For a system to be [observable](https://opentelemetry.io/docs/concepts/observability-primer/#what-is-observability), it must be instrumented: that is, code from the system's components must emit [signals](https://opentelemetry.io/docs/concepts/signals/traces/), such as [traces](https://opentelemetry.io/docs/concepts/signals/), [metrics](https://opentelemetry.io/docs/concepts/signals/metrics/), and [logs](https://opentelemetry.io/docs/concepts/signals/logs/). Using OpenTelemetry, you can instrument your code in two primary ways:
+For a system to be [observable](https://opentelemetry.io/docs/concepts/observability-primer/#what-is-observability), it must be instrumented: that is, code from the system's components must emit [signals](https://opentelemetry.io/docs/concepts/signals/traces/), such as [traces](https://opentelemetry.io/docs/concepts/signals/), [metrics](https://opentelemetry.io/docs/concepts/signals/metrics/), and [logs](https://opentelemetry.io/docs/concepts/signals/logs/). Using OpenTelemetry, you can instrument your code automatically or manually.
 
 ### Automatic instrumentation
 
-Automatic instrumentation in OpenTelemetry comes in two main forms: zero-code and native instrumentation.
+Automatic instrumentation in OpenTelemetry comes in two main forms:
 
-**Zero-code instrumentation** enables you to collect telemetry from your application without changing its source code. This is typically achieved by using agents, environment variables, or runtime hooks that automatically instrument supported libraries and frameworks. Zero-code is ideal for quickly adding observability, especially when you cannot or do not want to modify application code. It provides visibility into what is happening at the edges of your application and is a fast way to get started. ([Learn more](https://opentelemetry.io/docs/concepts/instrumentation/zero-code/))
+**[Zero-code instrumentation](https://opentelemetry.io/docs/concepts/instrumentation/zero-code/)** enables you to collect telemetry from your application without changing its source code. This is typically achieved by using agents, environment variables, or runtime hooks that automatically instrument supported libraries and frameworks. Zero-code is ideal for quickly adding observability, especially when you cannot or do not want to modify application code. It provides visibility into what is happening at the edges of your application and is a fast way to get started.
 
-**Native instrumentation** refers to libraries and platforms that have OpenTelemetry support built in. When you use these libraries, they emit telemetry data automatically, providing deep and reliable observability. OpenTelemetry recommends native instrumentation as the most robust approach, since it is directly maintained by library authors and ensures consistent, high-quality telemetry. ([Learn more](https://opentelemetry.io/docs/concepts/instrumentation/libraries/))
+**[Native instrumentation](https://opentelemetry.io/docs/concepts/instrumentation/libraries/)** refers to libraries and platforms that have OpenTelemetry support built in. When you use these libraries, they emit telemetry data automatically, providing deep and reliable observability. OpenTelemetry recommends native instrumentation as the most robust approach, since it is directly maintained by library authors and ensures consistent, high-quality telemetry.
 
 ### Manual instrumentation
 
-Manual (code-based) instrumentation involves explicitly adding OpenTelemetry API calls to your application code. This approach gives you full control to create custom spans, metrics, and logs that reflect your business logic and critical operations. Manual instrumentation is essential for capturing deep, application-specific insights that automatic or zero-code instrumentation cannot provide.
+Manual, code-based instrumentation involves explicitly adding OpenTelemetry API calls to your application code. This approach gives you full control to create custom spans, metrics, and logs that reflect your business logic and critical operations. Manual instrumentation is essential for capturing deep, application-specific insights that automatic or zero-code instrumentation cannot provide.
 
 You can use manual instrumentation alongside automatic and native approaches for the most complete observability. It is especially valuable for tracking custom workflows, business transactions, or any logic not covered by existing libraries or frameworks.
 
 For details and examples, see the [OpenTelemetry code-based instrumentation guide](https://opentelemetry.io/docs/concepts/instrumentation/code-based/).
-
-## Next up
-
-For more comprehensive information and advanced topics, refer to the [official OpenTelemetry documentation](https://opentelemetry.io/docs/). This overview introduces core concepts but does not cover every aspect or advanced feature of the OpenTelemetry ecosystem.

@@ -1,5 +1,5 @@
 ---
-title: Forwarding Telemetry Signals to Local Observability Backends
+title: Forwarding telemetry signals
 description: Set up tunneling services to forward telemetry signals from deployed App Builder actions to local observability tools.
 keywords:
   - Extensibility
@@ -7,25 +7,25 @@ keywords:
   - API Mesh
   - Events
   - REST
-  - Starter Ki
+  - Starter Kit
   - Tools
 ---
 
-# Forwarding telemetry signals to local observability backends
+# Forwarding telemetry signals
+
+This guide demonstrates how to set up tunneling services to forward telemetry signals from deployed App Builder runtime actions to fully-local observability tools. This approach enables you to develop and test with local backends while your actions run in production environments.
 
 <InlineAlert variant="warning" slots="text" />
 
 **Development Only**: This approach is intended solely for development and testing purposes. Never use tunneling services to expose production telemetry data or local services in production environments due to security and reliability concerns.
 
-This guide demonstrates how you can set up tunneling services to forward telemetry signals from deployed App Builder runtime actions to fully-local observability tools. This approach enables you to develop and test with local backends while your actions run in production environments.
-
 ## Prerequisites
 
 - Docker (for running local observability backends and tunnel tools)
-- A local observability backend (for example, Grafana, Jaeger, Prometheus, OpenTelemetry Collector)
+- A local observability backend, such as Grafana, Jaeger, Prometheus, or OpenTelemetry Collector
 - An App Builder project using OpenTelemetry
 
-## Why use tunneling?
+## Why tunneling?
 
 When developing App Builder applications, you often want to send telemetry data to local observability tools for easier debugging and development. However, deployed runtime actions cannot directly access localhost services. Tunneling tools solve this by creating public URLs that proxy requests to your local services.
 
@@ -33,13 +33,15 @@ When developing App Builder applications, you often want to send telemetry data 
 
 Rather than exposing multiple local services individually, the recommended approach is to run a **single OpenTelemetry Collector locally** and expose only that collector through the tunnel. The collector can then:
 
-- Receive all telemetry signals through one endpoin
+- Receive all telemetry signals through one endpoint
 - Export to multiple local backends simultaneously
 - Provide a single point of configuration
 - Reduce tunnel complexity and costs
 - Enable easy switching between different local tool combinations
 
 ## Tunneling tools comparison
+
+The following sections compare the most popular tunneling tools for App Builder actions.
 
 ### ngrok
 
@@ -50,7 +52,7 @@ Rather than exposing multiple local services individually, the recommended appro
 | **Supports both HTTP and TCP tunneling** | URLs change on free tier restarts           |
 | Authentication and security features     | Can be expensive for heavy usage            |
 
-**Manual Installation:**
+**Manual installation:**
 
 ```bash
 # Using Homebrew (macOS)
@@ -59,16 +61,13 @@ brew install ngrok
 # Or download from https://ngrok.com/
 ```
 
-**Docker Usage:**
-
 For advanced usage, see [Ngrok's documentation](https://ngrok.com/docs/using-ngrok-with/docker/).
 
 <InlineAlert variant="info" slots="text" />
 
-You need to set the `NGROK_AUTHTOKEN` environment variable. DON'T write the auth token raw, otherwise it will be visible in the shell history.
+You need to set the `NGROK_AUTHTOKEN` environment variable. Do not write the auth token raw, otherwise it will be visible in the shell history.
 
-<details open>
-<summary>MacOS/Windows</summary>
+#### MacOS/Windows
 
 In MacOS/Windows, the `--net=host` flag is not supported. You need to use the `host.docker.internal` hostname to access the host network.
 
@@ -76,14 +75,11 @@ In MacOS/Windows, the `--net=host` flag is not supported. You need to use the `h
 # Run ngrok with HTTP.
 docker run -it -e NGROK_AUTHTOKEN=$NGROK_AUTH_TOKEN ngrok/ngrok:latest http host.docker.internal:4318
 
-# Run ngrok with TCP for gRPC suppor
+# Run ngrok with TCP for gRPC support.
 docker run -it -e NGROK_AUTHTOKEN=$NGROK_AUTH_TOKEN ngrok/ngrok:latest tcp host.docker.internal:4317
 ```
 
-</details>
-
-<details>
-<summary>Linux</summary>
+#### Linux
 
 For Linux, you can use the `--net=host` flag to access the host network.
 
@@ -91,11 +87,9 @@ For Linux, you can use the `--net=host` flag to access the host network.
 # Run ngrok with HTTP.
 docker run --net=host -it -e NGROK_AUTHTOKEN=xyz ngrok/ngrok:latest http 4318
 
-# Run ngrok with TCP for gRPC suppor
+# Run ngrok with TCP for gRPC support.
 docker run --net=host -it -e NGROK_AUTHTOKEN=xyz ngrok/ngrok:latest tcp 4317
 ```
-
-</details>
 
 ### Cloudflare Tunnel (cloudflared)
 
@@ -109,39 +103,31 @@ docker run --net=host -it -e NGROK_AUTHTOKEN=xyz ngrok/ngrok:latest tcp 4317
 **Manual Installation:**
 
 ```bash
-# Using Homebrew (macOS)
+# Using Homebrew (macOS).
 brew install cloudflared
 ```
 
-**Docker Usage:**
-
-<details open>
-<summary>MacOS/Windows</summary>
+#### MacOS/Windows
 
 In MacOS/Windows, the `--net=host` flag is not supported. You need to use the `host.docker.internal` hostname to access the host network.
 
 ```bash
-# Quick temporary tunnel (HTTP only)
+# Quick temporary tunnel (HTTP only).
 docker run --rm -it cloudflare/cloudflared:latest tunnel --url http://host.docker.internal:4318
 
 # For persistent tunnels, you will need to login, best to use the Cloudflare CLI.
 ```
 
-</details>
-
-<details>
-<summary>Linux</summary>
+#### Linux
 
 For Linux, you can use the `--net=host` flag to access the host network.
 
 ```bash
-# Quick temporary tunnel (HTTP only)
+# Quick temporary tunnel (HTTP only).
 docker run --rm -it --net=host cloudflare/cloudflared:latest tunnel --url http://localhost:4318
 
 # For persistent tunnels, you will need to login, best to use the Cloudflare CLI.
 ```
-
-</details>
 
 ### LocalTunnel
 
@@ -160,7 +146,7 @@ npm install -g localtunnel
 
 <InlineAlert variant="info" slots="text" />
 
-LocalTunnel does not have official Docker images, and community images have not been maintained since a while ago.
+LocalTunnel does not have official Docker images, and community images have not been updated recently.
 
 ## Configuration
 
@@ -170,9 +156,9 @@ Once you have your tunnel running and exposing your local OpenTelemetry Collecto
 
 For HTTP tunneling (works with all tunnel tools), configure your exporters with path suffixes:
 
-- **Traces**: Use `https://your-tunnel-url.com/v1/traces`
-- **Metrics**: Use `https://your-tunnel-url.com/v1/metrics`
-- **Logs**: Use `https://your-tunnel-url.com/v1/logs`
+- **Traces**: `https://your-tunnel-url.com/v1/traces`
+- **Metrics**: `https://your-tunnel-url.com/v1/metrics`
+- **Logs**: `https://your-tunnel-url.com/v1/logs`
 
 The tunnel URL can be hardcoded directly in your configuration since it is not sensitive information. However, if you prefer to use environment variables for easier management across different environments, you can set `OTEL_COLLECTOR_TUNNEL_URL` in your `.env` file and reference it in your `app.config.yaml`:
 
@@ -190,48 +176,48 @@ my-action:
 
 For most development scenarios, HTTP tunneling is sufficient and simpler to set up. Consider gRPC only if you are experiencing performance issues or need to test gRPC-specific functionality.
 
-OpenTelemetry supports both HTTP and gRPC protocols for OTLP (OpenTelemetry Protocol). While HTTP works with all tunneling tools, **gRPC requires TCP tunneling support**, which is only available with ngrok. For gRPC tunneling use just the base endpoint without path suffixes:
+OpenTelemetry supports both HTTP and gRPC protocols for OpenTelemetry Protocol (OTLP). While HTTP works with all tunneling tools, **gRPC requires TCP tunneling support**, which is only available with ngrok. For gRPC tunneling use just the base endpoint without path suffixes:
 
 #### Setting up gRPC tunneling with ngrok
 
 ```bash
-# Tunnel the gRPC port (4317)
+# Tunnel the gRPC port (4317).
 ngrok tcp 4317
 ```
 
 Then configure your telemetry to use the gRPC exporter with the TCP tunnel URL:
 
 ```ts
-// Replace with your ngrok TCP URL
+// Replace with your ngrok TCP URL.
 const grpcEndpoint = "tcp://0.tcp.ngrok.io:12345";
 
-// Use gRPC exporters instead of HTTP
+// Use gRPC exporters instead of HTTP.
 import {
   OTLPTraceExporterGrpc,
   OTLPMetricExporterGrpc,
   OTLPLogExporterGrpc
 } from "@adobe/aio-lib-telemetry/otel";
 
-// For tunneling, you may need insecure credentials
+// For tunneling, you may need insecure credentials.
 import { credentials } from "@grpc/grpc-js";
 
-// Configure with gRPC endpoint - NO path suffixes needed!
+// Configure with gRPC endpoint - no path suffixes needed.
 traceExporter: new OTLPTraceExporterGrpc({
   url: grpcEndpoint,
   credentials: credentials.createInsecure()
 })
 ```
 
-<InlineAlert variant="info" slots="text" />
-
 **gRPC vs HTTP path differences:**
 
-- **HTTP**: Requires path suffixes like `/v1/traces`, `/v1/metrics`, `/v1/logs`
-- **gRPC**: Uses only the base endpoint - service definitions are built into the protocol
+- **HTTP**: Requires path suffixes like `/v1/traces`, `/v1/metrics`, `/v1/logs`.
+- **gRPC**: Uses only the base endpoint, service definitions are built into the protocol.
 
-Do **NOT** add `/v1/traces` and other paths to gRPC endpoints!
+<InlineAlert variant="warning" slots="text" />
 
-**About insecure credentials:** When tunneling gRPC traffic, you may need to use `credentials.createInsecure()` since tunnel connections do not typically provide proper TLS certificates. This is acceptable for development/testing scenarios.
+Do **NOT** add `/v1/traces` and other paths to gRPC endpoints.
+
+**About insecure credentials:** When tunneling gRPC traffic, you may need to use `credentials.createInsecure()` since tunnel connections do not typically provide proper TLS certificates. This is acceptable for development and testing scenarios.
 
 #### When to use gRPC vs HTTP
 
@@ -247,18 +233,18 @@ Do **NOT** add `/v1/traces` and other paths to gRPC endpoints!
 
 ## Important considerations
 
-### Security
+**Security**
 
-- **Never use in production**: Tunneling exposes local services to the interne
-- Use authentication headers when the tunnel service supports i
-- Rotate tunnel URLs regularly for temporary development setups
-- Be mindful of what data you are sending through public tunnels
+- **Never use tunneling in production**: Tunneling exposes local services to the internet.
+- Use authentication headers when the tunnel service supports them.
+- Rotate tunnel URLs regularly for temporary development setups.
+- Consider what data you are sending through public tunnels.
 
-### Performance
+**Performance**
 
-- Tunneling adds network latency to your telemetry exports
-- Monitor tunnel bandwidth limits with free tier services
-- Consider using gRPC instead of HTTP for better performance when supported
-- Adjust OpenTelemetry batch sizes if you experience timeout issues
+- Tunneling adds network latency to your telemetry exports.
+- Monitor tunnel bandwidth limits with free tier services.
+- Consider using gRPC instead of HTTP for better performance when supported.
+- Adjust OpenTelemetry batch sizes if you experience timeout issues.
 
 This approach is ideal for development and testing scenarios where you need the flexibility of local observability tools while working with deployed App Builder actions.

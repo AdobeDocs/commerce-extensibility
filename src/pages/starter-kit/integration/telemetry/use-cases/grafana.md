@@ -1,5 +1,5 @@
 ---
-title: Instrumentation with Grafana
+title: Grafana instrumentation
 description: Configure Grafana with App Builder runtime actions for both local development and deployed scenarios using a complete observability stack.
 keywords:
   - Extensibility
@@ -7,11 +7,11 @@ keywords:
   - API Mesh
   - Events
   - REST
-  - Starter Ki
+  - Starter Kit
   - Tools
 ---
 
-# Instrumentation with Grafana
+# Grafana instrumentation
 
 This guide demonstrates how to configure Grafana with App Builder runtime actions for both local development and deployed scenarios. We will use a complete observability stack with Tempo (traces), Prometheus (metrics), and Loki (logs), all integrated through an OpenTelemetry Collector.
 
@@ -26,7 +26,7 @@ This guide showcases how to leverage tunneling to forward telemetry data from a 
 - A [tunneling](../tunnel-forwarding.md) tool for App Builder
   - This example uses Cloudflare Tunnel (cloudflared).
 
-## Local developmen
+## Local development
 
 The following sections cover the complete setup for local development where both actions and observability tools run locally.
 
@@ -257,8 +257,8 @@ export const telemetryConfig = defineTelemetryConfig((params, isDev) => {
 After running your actions, you can view the collected telemetry data in Grafana:
 
 1. Open [http://localhost:3000](http://localhost:3000) in your browser
-2. Navigate to the data sources and explore your traces, metrics, and logs
-3. Create custom dashboards to visualize your telemetry data
+1. Navigate to the data sources and explore your traces, metrics, and logs
+1. Create custom dashboards to visualize your telemetry data
 
 Start the stack:
 
@@ -287,15 +287,15 @@ Go to **Configuration** > **Data Sources**, and click on **Add data source** for
 
 - **Tempo (Traces)**:
    1. Select **Tempo**
-   2. Set URL to `http://tempo:3200`
+   1. Set URL to `http://tempo:3200`
 
 - **Prometheus (Metrics)**:
    1. Select **Prometheus**
-   2. Set URL to `http://prometheus:9090`
+   1. Set URL to `http://prometheus:9090`
 
 - **Loki (Logs)**:
    1. Select **Loki**
-   2. Set URL to `http://loki:3100`
+   1. Set URL to `http://loki:3100`
 
 ![Grafana Data Source](../../../../_images/telemetry/grafana/data-sources.png)
 
@@ -422,7 +422,7 @@ function localCollectorConfig(exportUrl: string) {
 }
 
 export const telemetryConfig = defineTelemetryConfig((params, isDev) => {
-  // Use the tunnel URL instead of localhos
+  // Use the tunnel URL instead of localhost
   const exportUrl = "https://abc123-def456-ghi789.trycloudflare.com";
 
   return {

@@ -49,7 +49,7 @@ For older versions of the starter kit, check if your code is adapted as follows:
     + commerceGot(`V1/oope_payment_method/`, {
     ```
 
-- Ensure that store view codes are no longer included URLs. Instead, you need to specify the store views in the `Store` header of the request.
+- Ensure that store view codes are no longer included in URLs. Instead, you must specify store views in the `Store` header of the request.
 
 <InlineAlert variant="info" slots="text" />
 

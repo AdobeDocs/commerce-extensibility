@@ -70,7 +70,7 @@ Support services for the starter kit include the basic functionality and configu
        - Check the `.env` file to ensure that the `commerce.accs` scope is added to OAUTH_SCOPES.
        - [Download the workspace configuration](#download-the-workspace-configuration-file) and run `aio app use` again.
 
-   <InlineAlert variant="[info]" slots="Tip, Adobe Commerce as a Cloud Service API is only required when accessing Adobe Commerce as a Cloud Service." 
+   <InlineAlert variant="[info]" slots="Tip, Adobe Commerce as a Cloud Service API is only required when accessing Adobe Commerce as a Cloud Service."/>
 
    Click one of these services, such as **I/O Management API**. Then click **Next**.
 
@@ -80,7 +80,7 @@ Support services for the starter kit include the basic functionality and configu
 
    ![generate a key pair](../../_images/common/setup-api-oauth.png)
 
-   **Note**: You can set up server-to-server authentication using JSON Web Tokens (JWT). However, this method has been deprecated in favor of OAuth and must be replaced no later than January 1, 2025. See [Service Account (JWT) Authentication](https://developer.adobe.com/developer-console/docs/guides/authentication/JWT/) for details on implementing this solution.
+   <InlineAlert variant="[info]" slots="Tip, You can set up server-to-server authentication using JSON Web Tokens (JWT). However, this method has been deprecated in favor of OAuth and must be replaced no later than January 1, 2025. See [Service Account (JWT) Authentication](https://developer.adobe.com/developer-console/docs/guides/authentication/JWT/) for details on implementing this solution."/>
 
 1. Use the **Add service** pop-up menu to select and add the other required services.
 
@@ -246,7 +246,7 @@ Make sure to use your actual environment name or tenant ID in the URL. The examp
 
 1. The `app.config.yaml` file in the repo's root directory defines which packages to deploy. The Integration Starter Kit provides packages for Commerce products, customers, orders, shipments, and stocks and their external back office counterparts. Comment out any unneeded packages that are not applicable to your project.
 
-   **Note:** The `info` action is enabled by default. This action is reserved for future use. Do not disable or delete the `info` action.
+   <InlineAlert variant="[info]" slots="Tip,The `info` action is enabled by default. This action is reserved for future use. Do not disable or delete the `info` action."/>
 
 #### Deploy the project
 
@@ -332,7 +332,7 @@ You must configure Commerce to communicate with your project. Configuration incl
 
 1. Enter a unique identifier in the **Adobe I/O Event Provider Instance ID** field. This unique value identifies your Commerce instance, which allows Commerce events to connect to the correct `Event Provider` in Adobe I/O. This ID corresponds to the **Provider** displayed when [subscribing to events](../../events/configure-commerce.md#subscribe-and-register-events).
 
-   **Note**: This value must contain English alphanumeric characters, underscores (_), and hyphens (-) only.
+      <InlineAlert variant="[info]" slots="Tip, This value must contain English alphanumeric characters, underscores (_), and hyphens (-) only."/>
 
 1. Click **Save Config**, but do not leave the page. The next section creates an event provider, which is necessary to complete the configuration.
 
@@ -344,7 +344,7 @@ You must configure Commerce to communicate with your project. Configuration incl
 
 1. Enter the merchant's company name in the **Merchant ID** and the environment name in the **Environment ID** field. The values of these fields will be combined and added as a `source` attribute to your event data to identify the source of the events. It can be useful for event filtration or other logic if you are using the same event provider for several environments or projects.
 
-   **Note**: The **Merchant ID** and **Environment ID** fields only support alphanumeric characters and underscores.
+   <InlineAlert variant="[info]" slots="Tip, The **Merchant ID** and **Environment ID** fields only support alphanumeric characters and underscores."/>
 
    ```javascript
    "source": "<merchant-id>.<environment-id>"

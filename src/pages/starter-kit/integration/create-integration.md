@@ -67,12 +67,11 @@ Support services for the starter kit include the basic functionality and configu
    - I/O Management API
    - Adobe I/O Events for Adobe Commerce
    - Adobe Commerce as a Cloud Service
-    - If upgrading from previous versions without Adobe Commerce as a Cloud Service API:
-     - Check ```.env``` to ensure that ```commerce.accs``` scope has been added to OAUTH_SCOPES
-     - Download again the workspace configuration as explained below and execute ```aio app use``` again.
+     - If upgrading from previous versions without Adobe Commerce as a Cloud Service API:
+       - Check `.env` to ensure that `commerce.accs` scope has been added to OAUTH_SCOPES
+       - Download the workspace configuration again as explained below and execute `aio app use` again.
 
-> [!TIP]
-> Adobe Commerce as a Cloud Service API is only required when accessing Adobe Commerce as a Cloud Service.
+   **Tip:**: Adobe Commerce as a Cloud Service API is only required when accessing Adobe Commerce as a Cloud Service.
 
    Click one of these services, such as **I/O Management API**. Then click **Next**.
 

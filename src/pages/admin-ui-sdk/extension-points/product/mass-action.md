@@ -51,7 +51,7 @@ product: {
 | `productSelectLimit` | integer | No | Set the maximum number products that can be selected for a mass action. By default, the number is unlimited. |
 | `displayIframe` | boolean | No | Indicates whether an iFrame will be displayed at the relative path. The default value is `true`. [Mass actions without iFrames](../../api.md#mass-actions-without-iframes) provides additional details. |
 | `timeout` | integer | No | Only relevant when `displayIframe` is set to `false`. The number of seconds to wait for a response to a request sent to the application. Default value is 10 seconds. |
-| `sandbox` | string | No | Only relevant when `displayIframe` is set to `true`. The sandbox attribute applies additional restrictions to the content within an iFrame. Allowed values: `allow-downloads`, `allow-popups` and `allow-forms`. Multiple values should be separated by a single space (" "). |
+| `sandbox` | string | No | Only relevant when `displayIframe` is set to `true`. The sandbox attribute applies additional restrictions to the content within an iFrame. Allowed values are `allow-downloads`, `allow-popups` and `allow-forms`. Separate multiple values with a single space (" "). |
 
 ## Sample code
 

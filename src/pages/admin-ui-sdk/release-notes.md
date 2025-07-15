@@ -12,19 +12,19 @@ keywords:
 
 ### Release date
 
-July 11, 2025
+July 15, 2025
 
 ### Enhancements
 
 * Added new ACL resources for Admin UI SDK. <!--- CEXT-4581 -->
 
-* Removed `Refresh registrations on schedule` feature. <!--- CEXT-4819 -->
+* Removed the "Refresh registrations on schedule" feature. <!--- CEXT-4819 -->
 
-* Added sandbox attribute to iFrame extension points to allow flexibility. <!--- CEXT-4659 -->
+* Added the `sandbox` attribute to iFrame extension points to allow flexibility. <!--- CEXT-4659 -->
 
-* Added a blocking spinner when clicking on `Refresh Registrations` button. <!--- CEXT-4846 -->
+* Added a blocking spinner when clicking on **Refresh Registrations** button. <!--- CEXT-4846 -->
 
-* Order view button can now be implemented [without an iFrame](./api.md#order-view-button-without-iframes). <!-- CEXT-4885 -->
+* The order view button can now be implemented [without an iFrame](./api.md#order-view-button-without-iframes). <!-- CEXT-4885 -->
 
 ### Bug fixes
 
@@ -32,7 +32,7 @@ July 11, 2025
 
 * Fixed log cleaning based on log retention period. <!--- CEXT-4573 -->
 
-* Fixed potential Commerce instance crash if same section/menu id is found. <!--- CEXT-4811 -->
+* Fixed potential Commerce instance crash if same section/menu ID is found. <!--- CEXT-4811 -->
 
 ## Version 3.0.0
 
@@ -155,7 +155,7 @@ June 28, 2024
 
 * Mass actions can now be implemented [without an iFrame](./api.md#mass-actions-without-iframes). <!--- CEXT-2590, CEXT-2825, CEXT-2932, CEXT-2903 -->
 
-* Added the `GET V1/adminuisdk/massaction/<requestId>` [REST API](./api.md#additional-details-throught-rest-api) to debug mass action failures.
+* Added the `GET V1/adminuisdk/massaction/<requestId>` [REST API](./api.md) to debug mass action failures.
 
 * Added the **Refresh registrations** button to the configuration page. This button allows the administrator to  refresh the `admin_ui_sdk` cache and reload all extensions. <!--- CEXT-2642 -->
 

@@ -34,7 +34,6 @@ For detailed configuration requirements, refer to the **Config** sections in the
 
 The following sections cover configuring your App Builder actions to export traces, metrics, and logs directly to New Relic using the OpenTelemetry SDK and the appropriate OTLP exporters.
 
-
 #### Environment variables
 
 On New Relic's [API Keys page](https://one.eu.newrelic.com/admin-portal/api-keys/home), create or retrieve an ingestion **license** key. Copy that key and set it as an environment variable in your `.env` file. Make sure you are also declaring that same variable as an input in your runtime actions configuration file (`app.config.yaml`).

@@ -70,7 +70,7 @@ Support services for the starter kit include the basic functionality and configu
        - Check the `.env` file to ensure that the `commerce.accs` scope is added to OAUTH_SCOPES.
        - [Download the workspace configuration](#download-the-workspace-configuration-file) and run `aio app use` again.
 
-   **Tip:**: Adobe Commerce as a Cloud Service API is only required when accessing Adobe Commerce as a Cloud Service.
+   <InlineAlert variant="[info]" slots="Tip, Adobe Commerce as a Cloud Service API is only required when accessing Adobe Commerce as a Cloud Service." 
 
    Click one of these services, such as **I/O Management API**. Then click **Next**.
 

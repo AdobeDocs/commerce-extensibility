@@ -8,18 +8,18 @@ keywords:
 
 # REST endpoints for Admin UI SDK
 
-Adobe Commerce provides several REST endpoints that interact with the Admin UI SDK processes. These endpoints require an [admin token](https://developer.adobe.com/commerce/webapi/rest/tutorials/prerequisite-tasks/).
+Adobe Commerce provides several REST endpoints that interact with the Admin UI SDK processes. These endpoints require an [admin token](https://developer.adobe.com/commerce/webapi/get-started/authentication/gs-authentication-token/) on PaaS systems or a token using [Adobe's Identity Management System (IMS)](https://developer.adobe.com/commerce/webapi/rest/authentication/user/) on SaaS systems.
 
 ## Mass actions without iFrames
 
-When a mass action displayIframe parameter is set to false, you must account for additional factors.
+When a mass action `displayIframe` parameter is set to false, you must account for additional factors.
 
-### Application failures
+**Application failures**:
 
-Commerce expects application responses to contain the error status and message.
-Commerce logs the error and displays an error banner notification to the user.
+- Commerce expects application responses to contain the error status and message.
+- Commerce logs the error and displays an error banner notification to the user.
 
-### Connection interruption failures
+**Connection interruption failures**:
 
 By default, Commerce waits 10 seconds for a response, though the extension point can customize this value.
 When the timeout is reached, Commerce:
@@ -28,18 +28,18 @@ When the timeout is reached, Commerce:
 - Displays an error banner notification.
 - Sends the `admin_ui_sdk_mass_action_request_failed` event. The application can subscribe to this event to take action, such as rolling back updates in Commerce.
 
-### Additional details throught REST API
+**Additional details through REST API**:
 
-The `GET V1/adminuisdk/massaction/<requestId>` endpoint returns details of the failed request when a mass action without iFrame fails to execute.
+The `GET V1/adminuisdk/massaction/<requestId>` endpoint returns details of the failed request when a mass action without an iFrame fails to execute.
 
-**Headers:**
+**Headers**:
 
 | Header | Value |
 | --- | --- |
 | `Authorization` | Bearer `<Token>` |
 | `Content-Type` | application/json |
 
-**Responses:**
+**Responses**:
 
 - **200**: Successful response with the following response payload:
 
@@ -56,7 +56,7 @@ The `GET V1/adminuisdk/massaction/<requestId>` endpoint returns details of the f
     }
     ```
 
-**Example usage:**
+**Example usage**:
 
 ```bash
 curl -X GET \
@@ -65,21 +65,21 @@ curl -X GET \
     '<ADOBE_COMMERCE_URL>/rest/V1/adminuisdk/massaction/<REQUEST_ID>'
 ```
 
-### Recommendations
+**Recommendations**:
 
 - Use bulk update in Commerce to avoid inconsistency issues in case of failures.
 - Event and REST API responses contain the list of selected IDs for a request. It is the application's responsibility to monitor updates or failures in Commerce.
 
 ## Order view button without iFrames
 
-When an order view button displayIframe parameter is set to false, you must account for additional factors.
+When an order view button `displayIframe` parameter is set to false, you must account for additional factors.
 
-### Application failures
+**Application failures**:
 
-Commerce expects application responses to contain the error status and message.
-Commerce logs the error and displays an error banner notification to the user.
+- Commerce expects application responses to contain the error status and message.
+- Commerce logs the error and displays an error banner notification to the user.
 
-### Connection interruption failures
+**Connection interruption failures**:
 
 By default, Commerce waits 10 seconds for a response, though the extension point can customize this value.
 When the timeout is reached, Commerce:
@@ -88,7 +88,7 @@ When the timeout is reached, Commerce:
 - Displays an error banner notification.
 - Sends the `admin_ui_sdk_order_view_button_request_failed` event. The application can subscribe to this event to take action, such as rolling back updates in Commerce.
 
-### Additional details throught REST API
+**Additional details through REST API**:
 
 The `GET V1/adminuisdk/orderviewbutton/<requestId>` endpoint returns details of the failed request when an order view button without iFrame fails to execute.
 

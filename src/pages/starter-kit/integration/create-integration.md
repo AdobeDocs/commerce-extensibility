@@ -210,15 +210,15 @@ Use the following steps to download and configure the Adobe Commerce integration
 
 When configuring the `COMMERCE_BASE_URL` environment variable, the format differs between [PaaS and SaaS](#paas-or-saas):
 
-* &#8203;<Edition name="paas" />For PaaS (On-Premise/Cloud):
+- &#8203;<Edition name="paas" />For PaaS (On-Premise/Cloud):
 
-   * `COMMERCE_BASE_URL` must include your base site URL + `/rest/`
-   * Example: `https://<environment-name>.us-4.magentosite.cloud/rest/`
+   - `COMMERCE_BASE_URL` must include your base site URL + `/rest/`
+   - Example: `https://<environment-name>.us-4.magentosite.cloud/rest/`
 
-* &#8203;<Edition name="saas" />For SaaS (Adobe Commerce as a Cloud Service):
+- &#8203;<Edition name="saas" />For SaaS (Adobe Commerce as a Cloud Service):
 
-   * `COMMERCE_BASE_URL` must be the REST API endpoint provided by Adobe Commerce
-   * Example: `https://na1-sandbox.api.commerce.adobe.com/<tenant-id>/`
+   - `COMMERCE_BASE_URL` must be the REST API endpoint provided by Adobe Commerce
+   - Example: `https://na1-sandbox.api.commerce.adobe.com/<tenant-id>/`
 
 Make sure to use your actual environment name or tenant ID in the URL. The examples above use placeholder values.
 

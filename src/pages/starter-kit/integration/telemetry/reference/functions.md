@@ -18,9 +18,9 @@ keywords:
 - [defineTelemetryConfig](#definetelemetryconfig)
 - [deserializeContextFromCarrier](#deserializecontextfromcarrier)
 - [getActiveSpan](#getactivespan)
-- [getAioRuntimeAttributes](#getaioRuntimeattributes)
-- [getAioRuntimeResource](#getaioRuntimeresource)
-- [getAioRuntimeResourceWithAttributes](#getaioRuntimeresourcewithattributes)
+- [getAioRuntimeAttributes](#getaioruntimeattributes)
+- [getAioRuntimeResource](#getaioruntimeresource)
+- [getAioRuntimeResourceWithAttributes](#getaioruntimeresourcewithattributes)
 - [getGlobalTelemetryApi](#getglobaltelemetryapi)
 - [getInstrumentationHelpers](#getinstrumentationhelpers)
 - [getLogger](#getlogger)
@@ -32,192 +32,558 @@ keywords:
 
 ## addEventToActiveSpan
 
-`addEventToActiveSpan(eventName, attributes)`
+```ts
+function addEventToActiveSpan(event: string, attributes?: Attributes): void;
+```
 
-Adds a custom event to the currently active span in the telemetry trace.
+Adds an event to the given span.
 
 **Parameters:**
 
-- `eventName` (string): The name of the event.
-- `attributes` (object): Key-value pairs of event attributes.
+| Parameter     | Type         | Description                         |
+| ------------- | ------------ | ----------------------------------- |
+| `event`       | `string`     | The event name to add.              |
+| `attributes?` | `Attributes` | The attributes to add to the event. |
 
 **Returns:**
 
-- void
+`void`
+
+**Example:**
+
+```ts
+addEventToActiveSpan("my-event", { foo: "bar" });
+```
+
+**Defined in:** [api/global.ts:66](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/api/global.ts#L66)
 
 ## defineMetrics
 
-`defineMetrics(metricsConfig)`
+```ts
+function defineMetrics<T>(createMetrics: (meter: Meter) => T): T;
+```
 
-Defines custom metrics for telemetry collection.
+Helper to define a record of metrics.
+
+**Type Parameters:**
+
+| Type Parameter                                    |
+| ------------------------------------------------- |
+| `T` _extends_ `Record`\<`string`, `MetricTypes`\> |
 
 **Parameters:**
 
-- `metricsConfig` (object): Configuration object for metrics.
+| Parameter       | Type                      | Description                                                               |
+| --------------- | ------------------------- | ------------------------------------------------------------------------- |
+| `createMetrics` | (`meter`: `Meter`) => `T` | A function that receives a meter which can be used to create the metrics. |
 
 **Returns:**
 
-- void
+`T`
+
+**Example:**
+
+```ts
+const metrics = defineMetrics((meter) => {
+  return {
+    myMetric: meter.createCounter("my-metric", { description: "My metric" }),
+  };
+});
+```
+
+**See:** https://opentelemetry.io/docs/concepts/signals/metrics/
+
+**Defined in:** [core/config.ts:44](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/core/config.ts#L44)
 
 ## defineTelemetryConfig
 
-`defineTelemetryConfig(config)`
+```ts
+function defineTelemetryConfig(
+  init: (
+    params: RecursiveStringRecord,
+    isDevelopment: boolean,
+  ) => TelemetryConfig,
+): {
+  initializeTelemetry: (
+    params: RecursiveStringRecord,
+    isDevelopment: boolean,
+  ) => TelemetryConfig;
+};
+```
 
-Defines the configuration for telemetry instrumentation and export.
+Helper to define the telemetry config for an entrypoint.
 
 **Parameters:**
 
-- `config` (object): Telemetry configuration object.
+| Parameter | Type                                                                                                                     | Description                               |
+| --------- | ------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------- |
+| `init`    | (`params`: `RecursiveStringRecord`, `isDevelopment`: `boolean`) => [`TelemetryConfig`](../interfaces/TelemetryConfig.md) | The function to initialize the telemetry. |
 
 **Returns:**
 
-- void
+```ts
+{
+  initializeTelemetry: (
+    params: RecursiveStringRecord,
+    isDevelopment: boolean,
+  ) => TelemetryConfig;
+}
+```
+
+**Defined in:** [core/config.ts:22](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/core/config.ts#L22)
 
 ## deserializeContextFromCarrier
 
-`deserializeContextFromCarrier(carrier)`
+```ts
+function deserializeContextFromCarrier<Carrier>(
+  carrier: Carrier,
+  baseCtx: Context,
+): Context;
+```
 
-Deserializes a telemetry context from a carrier object (such as HTTP headers).
+Deserializes the context from a carrier and augments the given base context with it.
+
+**Type Parameters:**
+
+| Type Parameter                                     |
+| -------------------------------------------------- |
+| `Carrier` _extends_ `Record`\<`string`, `string`\> |
 
 **Parameters:**
 
-- `carrier` (object): The carrier containing serialized context.
+| Parameter | Type      | Description                                                  |
+| --------- | --------- | ------------------------------------------------------------ |
+| `carrier` | `Carrier` | The carrier object to extract the context from.              |
+| `baseCtx` | `Context` | The base context to augment. Defaults to the active context. |
 
 **Returns:**
 
-- `context` (object): The deserialized telemetry context.
+`Context`
+
+**Example:**
+
+```ts
+const carrier = { traceparent: "...00-069ea333a3d430..." };
+const ctx = deserializeContextFromCarrier(carrier);
+// ctx now contains the context data from the carrier
+```
+
+**Defined in:** [api/propagation.ts:55](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/api/propagation.ts#L55)
 
 ## getActiveSpan
 
-`getActiveSpan()`
+```ts
+function getActiveSpan(ctx: Context): Span;
+```
 
-Returns the currently active telemetry span, if any.
+Gets the active span from the given context.
+
+**Parameters:**
+
+| Parameter | Type      | Description                       |
+| --------- | --------- | --------------------------------- |
+| `ctx`     | `Context` | The context to get the span from. |
 
 **Returns:**
 
-- `span` (object | undefined): The active span object, or undefined if none is active.
+`Span`
+
+**Throws:**
+
+An error if no span is found.
+
+**Example:**
+
+```ts
+const span = getActiveSpan();
+span.addEvent("my-event", { foo: "bar" });
+```
+
+**Defined in:** [api/global.ts:26](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/api/global.ts#L26)
 
 ## getAioRuntimeAttributes
 
-`getAioRuntimeAttributes()`
+```ts
+function getAioRuntimeAttributes(): {
+  action.activation_id: string;
+  action.deadline?: string;
+  action.namespace: string;
+  action.package_name: string;
+  action.transaction_id: string;
+  deployment.cloud: string;
+  deployment.environment: string;
+  deployment.region: string;
+  service.name: string;
+  service.version: string;
+};
+```
 
-Returns runtime attributes for the current Adobe I/O Runtime environment.
+Infers some useful attributes for the current action from the Adobe I/O Runtime and returns them as a record of key-value pairs.
 
 **Returns:**
 
-- `attributes` (object): Key-value pairs of runtime attributes.
+```ts
+{
+  action.activation_id: string;
+  action.deadline?: string;
+  action.namespace: string;
+  action.package_name: string;
+  action.transaction_id: string;
+  deployment.cloud: string;
+  deployment.environment: string;
+  deployment.region: string;
+  service.name: string;
+  service.version: string;
+}
+```
+
+**Example:**
+
+```ts
+const attributes = getAioRuntimeAttributes();
+// attributes = { action.namespace: "my-namespace", action.name: "my-action", ... }
+```
+
+**Defined in:** [api/attributes.ts:26](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/api/attributes.ts#L26)
 
 ## getAioRuntimeResource
 
-`getAioRuntimeResource()`
+```ts
+function getAioRuntimeResource(): Resource;
+```
 
-Returns the resource descriptor for the current Adobe I/O Runtime environment.
+Creates a [resource](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk-node.resources.Resource.html) from the attributes inferred from the Adobe I/O Runtime and returns it as an OpenTelemetry Resource object.
 
 **Returns:**
 
-- `resource` (object): The resource descriptor object.
+`Resource`
+
+**Example:**
+
+```ts
+const resource = getAioRuntimeResource();
+// use this resource in your OpenTelemetry configuration
+```
+
+**See:** https://opentelemetry.io/docs/languages/js/resources/
+
+**Defined in:** [api/attributes.ts:41](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/api/attributes.ts#L41)
 
 ## getAioRuntimeResourceWithAttributes
 
-`getAioRuntimeResourceWithAttributes()`
+```ts
+function getAioRuntimeResourceWithAttributes(
+  attributes: Record<string, string>,
+): Resource;
+```
 
-Returns the resource descriptor with additional runtime attributes for the current Adobe I/O Runtime environment.
+Creates a [resource](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk-node.resources.Resource.html) that combines the attributes inferred from the Adobe I/O Runtime with the provided attributes.
+
+**Parameters:**
+
+| Parameter    | Type                           | Description                                                                        |
+| ------------ | ------------------------------ | ---------------------------------------------------------------------------------- |
+| `attributes` | `Record`\<`string`, `string`\> | The attributes to combine with the attributes inferred from the Adobe I/O Runtime. |
 
 **Returns:**
 
-- `resource` (object): The resource descriptor object with attributes.
+`Resource`
+
+**Example:**
+
+```ts
+const resource = getAioRuntimeResourceWithAttributes({ foo: "bar" });
+// resource = { action.namespace: "my-namespace", action.name: "my-action", foo: "bar", ... }
+// use this resource in your OpenTelemetry configuration
+```
+
+**See:** https://opentelemetry.io/docs/languages/js/resources/
+
+**Defined in:** [api/attributes.ts:58](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/api/attributes.ts#L58)
 
 ## getGlobalTelemetryApi
 
-`getGlobalTelemetryApi()`
+```ts
+function getGlobalTelemetryApi(): TelemetryApi;
+```
 
-Returns the global telemetry API instance.
+Gets the global telemetry API.
 
 **Returns:**
 
-- `api` (object): The global telemetry API instance.
+[`TelemetryApi`](../interfaces/TelemetryApi.md)
+
+**Throws:**
+
+If the telemetry API is not initialized.
+
+**Example:**
+
+```ts
+function someNonAutoInstrumentedFunction() {
+  const { tracer } = getGlobalTelemetryApi();
+  return tracer.startActiveSpan("some-span", (span) => {
+    // ...
+  });
+}
+```
+
+**Defined in:** [core/telemetry-api.ts:32](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/core/telemetry-api.ts#L32)
 
 ## getInstrumentationHelpers
 
-`getInstrumentationHelpers()`
+```ts
+function getInstrumentationHelpers(): InstrumentationContext;
+```
 
-Returns helper functions for telemetry instrumentation.
+Access helpers for the current instrumented operation.
 
 **Returns:**
 
-- `helpers` (object): Helper functions for instrumentation.
+[`InstrumentationContext`](../interfaces/InstrumentationContext.md)
+
+**Defined in:** [core/instrumentation.ts:61](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/core/instrumentation.ts#L61)
 
 ## getLogger
 
-`getLogger()`
+```ts
+function getLogger(name: string, config?: AioLoggerConfig): AioLogger;
+```
 
-Returns a logger instance for telemetry diagnostics.
+Get a logger instance.
+
+**Parameters:**
+
+| Parameter | Type              | Description                      |
+| --------- | ----------------- | -------------------------------- |
+| `name`    | `string`          | The name of the logger           |
+| `config?` | `AioLoggerConfig` | The configuration for the logger |
 
 **Returns:**
 
-- `logger` (object): Logger instance for diagnostics.
+`AioLogger`
+
+**Example:**
+
+```ts
+const logger = getLogger("my-logger", { level: "debug" });
+logger.debug("Hello, world!");
+```
+
+**Defined in:** [core/logging.ts:81](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/core/logging.ts#L81)
 
 ## getPresetInstrumentations
 
-`getPresetInstrumentations()`
+```ts
+function getPresetInstrumentations(
+  preset: TelemetryInstrumentationPreset,
+):
+  | (
+      | HttpInstrumentation
+      | GraphQLInstrumentation
+      | UndiciInstrumentation
+      | WinstonInstrumentation
+    )[]
+  | Instrumentation<InstrumentationConfig>[];
+```
 
-Returns a list of preset instrumentations for telemetry.
+Get the instrumentations for a given preset.
+
+**Parameters:**
+
+| Parameter | Type                                                                                  | Description                                 |
+| --------- | ------------------------------------------------------------------------------------- | ------------------------------------------- |
+| `preset`  | [`TelemetryInstrumentationPreset`](../type-aliases/TelemetryInstrumentationPreset.md) | The preset to get the instrumentations for. |
 
 **Returns:**
 
-- `instrumentations` (array): List of preset instrumentations.
+| (
+| `HttpInstrumentation`
+| `GraphQLInstrumentation`
+| `UndiciInstrumentation`
+| `WinstonInstrumentation`)[]
+| `Instrumentation`\<`InstrumentationConfig`\>[]
+
+The instrumentations for the given preset:
+
+- `full`: All the Node.js [auto-instrumentations](https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-node)
+- `simple`: Instrumentations for:
+  [Http](https://www.npmjs.com/package/@opentelemetry/instrumentation-http),
+  [GraphQL](https://www.npmjs.com/package/@opentelemetry/instrumentation-graphql),
+  [Undici](https://www.npmjs.com/package/@opentelemetry/instrumentation-undici), and
+  [Winston](https://www.npmjs.com/package/@opentelemetry/instrumentation-winston)
+
+**Example:**
+
+```ts
+const instrumentations = getPresetInstrumentations("simple");
+// instrumentations = [HttpInstrumentation, GraphQLInstrumentation, UndiciInstrumentation, WinstonInstrumentation]
+```
+
+**Defined in:** [api/presets.ts:57](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/api/presets.ts#L57)
 
 ## instrument
 
-`instrument(target, options)`
+```ts
+function instrument<T>(
+  fn: T,
+  config: InstrumentationConfig<T>,
+): (...args: Parameters<T>) => ReturnType<T>;
+```
 
-Instruments a target (function, module, and more) for telemetry collection.
+Instruments a function.
+
+**Type Parameters:**
+
+| Type Parameter              |
+| --------------------------- |
+| `T` _extends_ `AnyFunction` |
 
 **Parameters:**
 
-- `target` (any): The target to instrument.
-- `options` (object): Instrumentation options.
+| Parameter | Type                                                                     | Description                                |
+| --------- | ------------------------------------------------------------------------ | ------------------------------------------ |
+| `fn`      | `T`                                                                      | The function to instrument.                |
+| `config`  | [`InstrumentationConfig`](../interfaces/InstrumentationConfig.md)\<`T`\> | The configuration for the instrumentation. |
 
 **Returns:**
 
-- void
+A wrapped function with the same signature as the original function, but with telemetry instrumentation.
+
+```ts
+(...args: Parameters<T>): ReturnType<T>;
+```
+
+**Example:**
+
+```ts
+const instrumentedFn = instrument(someFunction, {
+  // Optional configuration
+  spanConfig: {
+    spanName: "some-span",
+    attributes: {
+      "some-attribute": "some-value",
+    },
+  },
+});
+```
+
+**Defined in:** [core/instrumentation.ts:91](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/core/instrumentation.ts#L91)
 
 ## instrumentEntrypoint
 
-`instrumentEntrypoint(entrypoint, options)`
+```ts
+function instrumentEntrypoint<T>(
+  fn: T,
+  config: EntrypointInstrumentationConfig<T>,
+): (params: RecursiveStringRecord) => Promise<Awaited<ReturnType<T>>>;
+```
 
-Instruments an entry point (main function, handler, and more) for telemetry collection.
+Instruments the entrypoint of a runtime action. Needs to be used ONLY with the `main` function of a runtime action.
+
+**Type Parameters:**
+
+| Type Parameter                                             |
+| ---------------------------------------------------------- |
+| `T` _extends_ (`params`: `RecursiveStringRecord`) => `any` |
 
 **Parameters:**
 
-- `entrypoint` (function): The entry point function to instrument.
-- `options` (object): Instrumentation options.
+| Parameter | Type                                                                                         | Description                                           |
+| --------- | -------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| `fn`      | `T`                                                                                          | The entrypoint function to instrument.                |
+| `config`  | [`EntrypointInstrumentationConfig`](../interfaces/EntrypointInstrumentationConfig.md)\<`T`\> | The configuration for the entrypoint instrumentation. |
 
 **Returns:**
 
-- void
+A wrapped function with the same signature as the original function, but with telemetry instrumentation.
+
+```ts
+(params: RecursiveStringRecord): Promise<Awaited<ReturnType<T>>>;
+```
+
+**Example:**
+
+```ts
+import { telemetryConfig } from "../telemetry";
+
+const instrumentedEntrypoint = instrumentEntrypoint(main, {
+  ...telemetryConfig,
+  // Optional configuration
+});
+```
+
+**Defined in:** [core/instrumentation.ts:249](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/core/instrumentation.ts#L249)
 
 ## serializeContextIntoCarrier
 
-`serializeContextIntoCarrier(context, carrier)`
+```ts
+function serializeContextIntoCarrier<Carrier>(
+  carrier?: Carrier,
+  ctx?: Context,
+): Carrier;
+```
 
-Serializes a telemetry context into a carrier object (such as HTTP headers).
+Serializes the current context into a carrier.
+
+**Type Parameters:**
+
+| Type Parameter                                     |
+| -------------------------------------------------- |
+| `Carrier` _extends_ `Record`\<`string`, `string`\> |
 
 **Parameters:**
 
-- `context` (object): The telemetry context to serialize.
-- `carrier` (object): The carrier to receive the serialized context.
+| Parameter  | Type      | Description                                               |
+| ---------- | --------- | --------------------------------------------------------- |
+| `carrier?` | `Carrier` | The carrier object to inject the context into.            |
+| `ctx?`     | `Context` | The context to serialize. Defaults to the active context. |
 
 **Returns:**
 
-- void
+`Carrier`
+
+**Examples:**
+
+```ts
+const carrier = serializeContextIntoCarrier();
+// carrier is now a record with the context data
+```
+
+```ts
+const myCarrier = { more: "data" };
+const carrier = serializeContextIntoCarrier(myCarrier);
+// carrier now contains both the existing data and the context data
+// carrier = { more: 'data', ...contextData }
+```
+
+**Defined in:** [api/propagation.ts:34](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/api/propagation.ts#L34)
 
 ## tryGetActiveSpan
 
-`tryGetActiveSpan()`
+```ts
+function tryGetActiveSpan(ctx: Context): null | Span;
+```
 
-Attempts to return the currently active telemetry span, if any.
+Tries to get the active span from the given context.
+
+**Parameters:**
+
+| Parameter | Type      | Description                       |
+| --------- | --------- | --------------------------------- |
+| `ctx`     | `Context` | The context to get the span from. |
 
 **Returns:**
 
-- `span` (object | undefined): The active span object, or undefined if none is active.
+`null` \| `Span`
+
+**Example:**
+
+```ts
+const span = tryGetActiveSpan();
+if (span) {
+  span.addEvent("my-event", { foo: "bar" });
+}
+```
+
+**Defined in:** [api/global.ts:47](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/api/global.ts#L47)

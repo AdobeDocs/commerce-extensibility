@@ -17,8 +17,9 @@ This guide demonstrates how to configure runtime actions to send telemetry signa
 
 ## Prerequisites
 
+In addition to the module [prerequisites](../module.md#prerequisites), you need:
+
 - A [New Relic](https://newrelic.com/) account with a [license key](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/).
-- An App Builder project with OpenTelemetry instrumentation.
 
 ## Setup
 

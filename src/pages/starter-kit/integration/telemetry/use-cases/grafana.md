@@ -21,8 +21,9 @@ This guide showcases how to leverage tunneling to forward telemetry data from a 
 
 ## Prerequisites
 
+In addition to the module [prerequisites](../module.md#prerequisites), you need:
+
 - Docker and Docker Compose
-- An App Builder project with OpenTelemetry instrumentation
 - A [tunneling](../tunnel-forwarding.md) tool for App Builder
   - This example uses Cloudflare Tunnel (cloudflared).
 
@@ -333,32 +334,18 @@ For deployed App Builder actions, the setup is identical to [local development](
 
 ### Tunneling setup
 
-See the [tunneling setup](../tunnel-forwarding.md) instructions, which includes tool comparisons and detailed configuration steps.
+Follow the complete [tunneling setup guide](../tunnel-forwarding.md) for detailed tool comparisons and setup instructions. For the Grafana stack specifically:
 
-The key steps are:
+1. **Start your local stack** using the same Docker Compose configuration from the [Local Development](#local-development) section.
 
-1. **Start your local stack** using the same Docker Compose configuration from the Local Development section.
+2. **Set up your tunnel** by following the [Cloudflare Tunnel section](../tunnel-forwarding.md#cloudflare-tunnel-cloudflared) in the tunneling guide. Target your OpenTelemetry Collector at `localhost:4318` (or `host.docker.internal:4318` for macOS/Windows).
 
-1. **Choose and start a tunnel** pointing to your OpenTelemetry Collector:
-
-   ```bash
-   # Example with Cloudflare Tunnel (Linux only)
-   docker run --rm -it --net=host cloudflare/cloudflared:latest tunnel --url http://localhost:4318
-
-   # Example with Cloudflare Tunnel (MacOS/Windows)
-   docker run --rm -it cloudflare/cloudflared:latest tunnel --url http://host.docker.internal:4318
-   ```
-
-1. **Note the tunnel URL** for example, `https://abc123-def456-ghi789.trycloudflare.com`.
-
-#### Add tunneling to Docker Compose (alternative)
-
-If you prefer to manage everything through Docker Compose, add this service to your existing `docker-compose.yaml`:
+3. **Docker Compose integration** (optional): To manage the tunnel within your existing Grafana stack, add this service to your `docker-compose.yaml`:
 
 ```yaml
   # Add this service to your existing docker-compose.yaml
   cloudflared:
-    image: cloudflare/cloudflared:lates
+    image: cloudflare/cloudflared:latest
     container_name: cloudflared
     restart: unless-stopped
     networks: [telemetry]
@@ -369,23 +356,11 @@ If you prefer to manage everything through Docker Compose, add this service to y
       - "http://otel-collector:4318"
 ```
 
-Then start the new container:
-
-```bash
-docker compose up
-```
-
-Check the `cloudflared` container logs to get your tunnel URL:
-
-```bash
-docker logs cloudflared
-```
-
-Look for a URL like: `https://abc123-def456-ghi789.trycloudflare.com`, which is the URL you will use in your telemetry configuration.
+Then check the container logs for your tunnel URL: `docker logs cloudflared`
 
 ### Updated telemetry configuration
 
-Replace the default localhost collector configuration with the tunnel URL in your telemetry setup:
+Follow the [HTTP configuration section](../tunnel-forwarding.md#http-configuration-most-common) in the tunneling guide to configure your exporters. For the Grafana stack, update your telemetry configuration to use your tunnel URL:
 
 ```ts
 // telemetry.{ts,js}
@@ -422,8 +397,8 @@ function localCollectorConfig(exportUrl: string) {
 }
 
 export const telemetryConfig = defineTelemetryConfig((params, isDev) => {
-  // Use the tunnel URL instead of localhost
-  const exportUrl = "https://abc123-def456-ghi789.trycloudflare.com";
+  // Use your tunnel URL (example: https://abc123-def456-ghi789.trycloudflare.com)
+  const exportUrl = "https://your-tunnel-url.trycloudflare.com";
 
   return {
     sdkConfig: {

@@ -18,12 +18,25 @@ keywords:
 
 ## DiagnosticsLogLevel
 
-`DiagnosticsLogLevel`
+```ts
+type DiagnosticsLogLevel = Lowercase<keyof typeof DiagLogLevel>;
+```
 
-Type alias for log level options in telemetry diagnostics.
+Available log levels for the OpenTelemetry DiagLogger.
+
+**Defined in:** [types.ts:30](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/types.ts#L30)
 
 ## TelemetryInstrumentationPreset
 
-`TelemetryInstrumentationPreset`
+```ts
+type TelemetryInstrumentationPreset = "simple" | "full";
+```
 
-Type alias for preset names used in telemetry instrumentation.
+Defines the names of available instrumentation presets.
+
+**Available Options:**
+
+- `"simple"` - Basic instrumentations for HTTP, GraphQL, Undici, and Winston
+- `"full"` - All Node.js auto-instrumentations
+
+**Defined in:** [types.ts:33](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/types.ts#L33)

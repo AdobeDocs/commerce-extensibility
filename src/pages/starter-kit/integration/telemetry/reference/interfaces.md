@@ -23,70 +23,382 @@ keywords:
 
 ## EntrypointInstrumentationConfig
 
-`EntrypointInstrumentationConfig`
+The configuration for entrypoint instrumentation.
 
-Configuration options for entry point instrumentation in telemetry.
+**Extends:** [`InstrumentationConfig`](#instrumentationconfig)\<`T`\>
+
+**Type Parameters:**
+
+| Type Parameter              | Default type  |
+| --------------------------- | ------------- |
+| `T` _extends_ `AnyFunction` | `AnyFunction` |
 
 **Properties:**
 
-- See API source for detailed property list.
+### initializeTelemetry()
+
+```ts
+initializeTelemetry: (params: RecursiveStringRecord, isDevelopment: boolean) =>
+  TelemetryConfig;
+```
+
+This function is called at the start of the action.
+
+**Parameters:**
+
+| Parameter       | Type                    | Description                                        |
+| --------------- | ----------------------- | -------------------------------------------------- |
+| `params`        | `RecursiveStringRecord` | The parameters of the action.                      |
+| `isDevelopment` | `boolean`               | Whether the action is running in development mode. |
+
+**Returns:** [`TelemetryConfig`](#telemetryconfig)
+
+### propagation?
+
+```ts
+optional propagation: TelemetryPropagationConfig<T>;
+```
+
+Configuration options related to context propagation.
+See the [TelemetryPropagationConfig](#telemetrypropagationconfig) for the interface.
+
+**Defined in:** [types.ts:143](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/types.ts#L143)
 
 ## InstrumentationConfig
 
-`InstrumentationConfig`
+The configuration for instrumentation.
 
-Configuration options for general instrumentation in telemetry.
+**Extended by:** [`EntrypointInstrumentationConfig`](#entrypointinstrumentationconfig)
+
+**Type Parameters:**
+
+| Type Parameter              |
+| --------------------------- |
+| `T` _extends_ `AnyFunction` |
 
 **Properties:**
 
-- See API source for detailed property list.
+### hooks?
+
+```ts
+optional hooks: {
+  onError?: (error: unknown, span: Span) => undefined | Error;
+  onResult?: (result: ReturnType<T>, span: Span) => void;
+};
+```
+
+Hooks that can be used to act on a span depending on the result of the function.
+
+#### onError()?
+
+```ts
+optional onError: (error: unknown, span: Span) => undefined | Error;
+```
+
+A function that will be called when the instrumented function fails.
+You can use it to do something with the Span.
+
+**Parameters:**
+
+| Parameter | Type      | Description                                      |
+| --------- | --------- | ------------------------------------------------ |
+| `error`   | `unknown` | The error produced by the instrumented function. |
+| `span`    | `Span`    | The span of the instrumented function.           |
+
+**Returns:** `undefined` \| `Error`
+
+#### onResult()?
+
+```ts
+optional onResult: (result: ReturnType<T>, span: Span) => void;
+```
+
+A function that will be called with the result of the instrumented function (if any, and no error was thrown).
+You can use it to do something with the Span.
+
+**Parameters:**
+
+| Parameter | Type                | Description                              |
+| --------- | ------------------- | ---------------------------------------- |
+| `result`  | `ReturnType`\<`T`\> | The result of the instrumented function. |
+| `span`    | `Span`              | The span of the instrumented function.   |
+
+**Returns:** `void`
+
+### isSuccessful()?
+
+```ts
+optional isSuccessful: (result: ReturnType<T>) => boolean;
+```
+
+A function that will be called to determine if the instrumented function was successful.
+By default, the function is considered successful if it doesn't throw an error.
+
+**Parameters:**
+
+| Parameter | Type                | Description                              |
+| --------- | ------------------- | ---------------------------------------- |
+| `result`  | `ReturnType`\<`T`\> | The result of the instrumented function. |
+
+**Returns:** `boolean` - Whether the instrumented function was successful.
+
+### spanConfig?
+
+```ts
+optional spanConfig: SpanOptions & {
+  getBaseContext?: (...args: Parameters<T>) => Context;
+  spanName?: string;
+};
+```
+
+Configuration options related to the span started by the instrumented function.
+See also the [SpanOptions](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api._opentelemetry_api.SpanOptions.html) interface.
+
+#### getBaseContext()?
+
+```ts
+optional getBaseContext: (...args: Parameters<T>) => Context;
+```
+
+The base context to use for the started span.
+
+**Parameters:**
+
+| Parameter | Type                | Description                                 |
+| --------- | ------------------- | ------------------------------------------- |
+| ...`args` | `Parameters`\<`T`\> | The arguments of the instrumented function. |
+
+**Returns:** `Context` - The base context to use for the started span.
+
+#### spanName?
+
+```ts
+optional spanName: string;
+```
+
+The name of the span. Defaults to the name of given function.
+You must use a named function or a provide a name here.
+
+**Defined in:** [types.ts:78](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/types.ts#L78)
 
 ## InstrumentationContext
 
-`InstrumentationContext`
-
-Context object for telemetry instrumentation.
+The context for the current operation.
 
 **Properties:**
 
-- See API source for detailed property list.
+### contextCarrier
+
+```ts
+contextCarrier: Record<string, string>;
+```
+
+Holds a carrier that can be used to propagate the active context.
+
+### currentSpan
+
+```ts
+currentSpan: Span;
+```
+
+The span of the current operation.
+
+### logger
+
+```ts
+logger: AioLogger;
+```
+
+The logger for the current operation.
+
+### meter
+
+```ts
+meter: Meter;
+```
+
+The global (managed by the library) meter instance used to create metrics.
+
+### tracer
+
+```ts
+tracer: Tracer;
+```
+
+The global (managed by the library) tracer instance used to create spans.
+
+**Defined in:** [types.ts:175](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/types.ts#L175)
 
 ## TelemetryApi
 
-`TelemetryApi`
-
-Main API interface for telemetry operations.
+Defines the global telemetry API. These items should be set once per-application.
 
 **Properties:**
 
-- See API source for detailed property list.
+### meter
+
+```ts
+meter: Meter;
+```
+
+The meter used to create metrics.
+
+### tracer
+
+```ts
+tracer: Tracer;
+```
+
+The tracer used to create spans.
+
+**Defined in:** [types.ts:166](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/types.ts#L166)
 
 ## TelemetryConfig
 
-`TelemetryConfig`
+The configuration options for the telemetry module.
 
-Configuration options for telemetry setup and export.
+**Extends:** `Partial`\<[`TelemetryApi`](#telemetryapi)\>
 
 **Properties:**
 
-- See API source for detailed property list.
+### diagnostics?
+
+```ts
+optional diagnostics: false | TelemetryDiagnosticsConfig;
+```
+
+The configuration options for the telemetry diagnostics.
+
+### meter?
+
+```ts
+optional meter: Meter;
+```
+
+The meter used to create metrics.
+
+**Inherited from:** `Partial.meter`
+
+### sdkConfig
+
+```ts
+sdkConfig: Partial<NodeSDKConfiguration>;
+```
+
+The configuration options for the OpenTelemetry SDK.
+See the [NodeSDKConfiguration](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk-node.NodeSDKConfiguration.html) interface.
+
+### tracer?
+
+```ts
+optional tracer: Tracer;
+```
+
+The tracer used to create spans.
+
+**Inherited from:** `Partial.tracer`
+
+**Defined in:** [types.ts:131](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/types.ts#L131)
 
 ## TelemetryDiagnosticsConfig
 
-`TelemetryDiagnosticsConfig`
-
-Configuration options for telemetry diagnostics and logging.
+The configuration for the telemetry diagnostics.
 
 **Properties:**
 
-- See API source for detailed property list.
+### exportLogs?
+
+```ts
+optional exportLogs: boolean;
+```
+
+Whether to make OpenTelemetry also export the diagnostic logs to the configured exporters.
+Set to `false` if you don't want to see diagnostic logs in your observability platform.
+
+**Default:** `true`
+
+### loggerName?
+
+```ts
+optional loggerName: string;
+```
+
+The name of the logger to use for the diagnostics.
+
+**Default:** `${actionName}/otel-diagnostics`
+
+### logLevel
+
+```ts
+logLevel: "info" | "error" | "none" | "warn" | "debug" | "verbose" | "all";
+```
+
+The log level to use for the diagnostics.
+
+**Defined in:** [types.ts:36](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/types.ts#L36)
 
 ## TelemetryPropagationConfig
 
-`TelemetryPropagationConfig`
+Configuration related to context propagation (for distributed tracing).
 
-Configuration options for telemetry context propagation.
+**Type Parameters:**
+
+| Type Parameter              |
+| --------------------------- |
+| `T` _extends_ `AnyFunction` |
 
 **Properties:**
 
-- See API source for detailed property list.
+### getContextCarrier()?
+
+```ts
+optional getContextCarrier: (...args: Parameters<T>) => {
+  baseCtx?: Context;
+  carrier: Record<string, string>;
+};
+```
+
+A function that returns the carrier for the current context.
+Use it to specify where your carrier is located in the incoming parameters, when it's not one of the defaults.
+
+**Parameters:**
+
+| Parameter | Type                | Description                                 |
+| --------- | ------------------- | ------------------------------------------- |
+| ...`args` | `Parameters`\<`T`\> | The arguments of the instrumented function. |
+
+**Returns:**
+
+```ts
+{
+  baseCtx?: Context;
+  carrier: Record<string, string>;
+}
+```
+
+The carrier of the context to retrieve and an optional base context to use for the started span (defaults to the active context).
+
+#### baseCtx?
+
+```ts
+optional baseCtx: Context;
+```
+
+#### carrier
+
+```ts
+carrier: Record<string, string>;
+```
+
+### skip?
+
+```ts
+optional skip: boolean;
+```
+
+By default, an instrumented entrypoint will try to automatically read (and use) the context from the incoming request.
+Set to `true` if you want to skip this automatic context propagation.
+
+**Default:** `false`
+
+**Defined in:** [types.ts:55](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/types.ts#L55)

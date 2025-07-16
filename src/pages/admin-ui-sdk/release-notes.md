@@ -12,7 +12,7 @@ keywords:
 
 ### Release date
 
-July 15, 2025
+July 17, 2025
 
 ### Enhancements
 

@@ -117,7 +117,7 @@ Helper to define the telemetry config for an entrypoint.
 
 | Parameter | Type                                                                                                                     | Description                               |
 | --------- | ------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------- |
-| `init`    | (`params`: `RecursiveStringRecord`, `isDevelopment`: `boolean`) => [`TelemetryConfig`](../interfaces/TelemetryConfig.md) | The function to initialize the telemetry. |
+| `init`    | (`params`: `RecursiveStringRecord`, `isDevelopment`: `boolean`) => [`TelemetryConfig`](./interfaces.md#telemetryconfig) | The function to initialize the telemetry. |
 
 **Returns:**
 
@@ -311,7 +311,7 @@ Gets the global telemetry API.
 
 **Returns:**
 
-[`TelemetryApi`](../interfaces/TelemetryApi.md)
+[`TelemetryApi`](./interfaces.md#telemetryapi)
 
 **Throws:**
 
@@ -340,7 +340,7 @@ Access helpers for the current instrumented operation.
 
 **Returns:**
 
-[`InstrumentationContext`](../interfaces/InstrumentationContext.md)
+[`InstrumentationContext`](./interfaces.md#instrumentationcontext)
 
 **Defined in:** [core/instrumentation.ts:61](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/core/instrumentation.ts#L61)
 
@@ -393,7 +393,7 @@ Get the instrumentations for a given preset.
 
 | Parameter | Type                                                                                  | Description                                 |
 | --------- | ------------------------------------------------------------------------------------- | ------------------------------------------- |
-| `preset`  | [`TelemetryInstrumentationPreset`](../type-aliases/TelemetryInstrumentationPreset.md) | The preset to get the instrumentations for. |
+| `preset`  | [`TelemetryInstrumentationPreset`](./aliases.md#telemetryinstrumentationpreset) | The preset to get the instrumentations for. |
 
 **Returns:**
 
@@ -444,7 +444,7 @@ Instruments a function.
 | Parameter | Type                                                                     | Description                                |
 | --------- | ------------------------------------------------------------------------ | ------------------------------------------ |
 | `fn`      | `T`                                                                      | The function to instrument.                |
-| `config`  | [`InstrumentationConfig`](../interfaces/InstrumentationConfig.md)\<`T`\> | The configuration for the instrumentation. |
+| `config`  | [`InstrumentationConfig`](./interfaces.md#instrumentationconfig)\<`T`\> | The configuration for the instrumentation. |
 
 **Returns:**
 
@@ -492,7 +492,7 @@ Instruments the entrypoint of a runtime action. Needs to be used ONLY with the `
 | Parameter | Type                                                                                         | Description                                           |
 | --------- | -------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
 | `fn`      | `T`                                                                                          | The entrypoint function to instrument.                |
-| `config`  | [`EntrypointInstrumentationConfig`](../interfaces/EntrypointInstrumentationConfig.md)\<`T`\> | The configuration for the entrypoint instrumentation. |
+| `config`  | [`EntrypointInstrumentationConfig`](./interfaces.md#entrypointinstrumentationconfig)\<`T`\> | The configuration for the entrypoint instrumentation. |
 
 **Returns:**
 

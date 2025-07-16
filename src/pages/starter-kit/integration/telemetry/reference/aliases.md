@@ -36,7 +36,7 @@ Defines the names of available instrumentation presets.
 
 **Available Options:**
 
-- `"simple"` - Basic instrumentations for HTTP, GraphQL, Undici, and Winston
-- `"full"` - All Node.js auto-instrumentations
+- `"simple"` - Basic instrumentations for HTTP, GraphQL, Undici, and Winston.
+- `"full"` - All Node.js auto-instrumentations.
 
 **Defined in:** [types.ts:33](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/types.ts#L33)

@@ -188,9 +188,7 @@ Gets the active span from the given context.
 
 `Span`
 
-**Throws:**
-
-An error if no span is found.
+Returns an error, if no span is found.
 
 **Example:**
 
@@ -313,9 +311,7 @@ Gets the global telemetry API.
 
 [`TelemetryApi`](./interfaces.md#telemetryapi)
 
-**Throws:**
-
-If the telemetry API is not initialized.
+Returns an error, if the telemetry API is not initialized.
 
 **Example:**
 
@@ -356,8 +352,8 @@ Get a logger instance.
 
 | Parameter | Type              | Description                      |
 | --------- | ----------------- | -------------------------------- |
-| `name`    | `string`          | The name of the logger           |
-| `config?` | `AioLoggerConfig` | The configuration for the logger |
+| `name`    | `string`          | The name of the logger.           |
+| `config?` | `AioLoggerConfig` | The configuration for the logger. |
 
 **Returns:**
 
@@ -393,7 +389,7 @@ Get the instrumentations for a given preset.
 
 | Parameter | Type                                                                                  | Description                                 |
 | --------- | ------------------------------------------------------------------------------------- | ------------------------------------------- |
-| `preset`  | [`TelemetryInstrumentationPreset`](./aliases.md#telemetryinstrumentationpreset) | The preset to get the instrumentations for. |
+| `preset`  | [`TelemetryInstrumentationPreset`](./aliases.md#telemetryinstrumentationpreset) | The preset to get instrumentations for. |
 
 **Returns:**
 
@@ -479,7 +475,7 @@ function instrumentEntrypoint<T>(
 ): (params: RecursiveStringRecord) => Promise<Awaited<ReturnType<T>>>;
 ```
 
-Instruments the entrypoint of a runtime action. Needs to be used ONLY with the `main` function of a runtime action.
+Instruments the entrypoint of a runtime action. Only use with the `main` function of a runtime action.
 
 **Type Parameters:**
 

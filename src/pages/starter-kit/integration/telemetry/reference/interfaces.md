@@ -59,8 +59,7 @@ This function is called at the start of the action.
 optional propagation: TelemetryPropagationConfig<T>;
 ```
 
-Configuration options related to context propagation.
-See the [TelemetryPropagationConfig](#telemetrypropagationconfig) for the interface.
+Configuration options related to context propagation. Refer to the [TelemetryPropagationConfig](#telemetrypropagationconfig) for the interface.
 
 **Defined in:** [types.ts:143](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/types.ts#L143)
 
@@ -87,7 +86,7 @@ optional hooks: {
 };
 ```
 
-Hooks that can be used to act on a span depending on the result of the function.
+Hooks that can act on a span depending on the result of the function.
 
 #### onError()?
 
@@ -95,8 +94,7 @@ Hooks that can be used to act on a span depending on the result of the function.
 optional onError: (error: unknown, span: Span) => undefined | Error;
 ```
 
-A function that will be called when the instrumented function fails.
-You can use it to do something with the Span.
+A function that is called if the instrumented function fails. You can use it to do something with the span.
 
 **Parameters:**
 
@@ -113,8 +111,7 @@ You can use it to do something with the Span.
 optional onResult: (result: ReturnType<T>, span: Span) => void;
 ```
 
-A function that will be called with the result of the instrumented function (if any, and no error was thrown).
-You can use it to do something with the Span.
+A function that is called with any result of the instrumented function, if there is no error. You can use it to do something with the span.
 
 **Parameters:**
 
@@ -131,8 +128,7 @@ You can use it to do something with the Span.
 optional isSuccessful: (result: ReturnType<T>) => boolean;
 ```
 
-A function that will be called to determine if the instrumented function was successful.
-By default, the function is considered successful if it doesn't throw an error.
+A function that determines if the instrumented function was successful. By default, the function is considered successful if it does not throw an error.
 
 **Parameters:**
 
@@ -151,8 +147,7 @@ optional spanConfig: SpanOptions & {
 };
 ```
 
-Configuration options related to the span started by the instrumented function.
-See also the [SpanOptions](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api._opentelemetry_api.SpanOptions.html) interface.
+Configuration options related to the span started by the instrumented function. Refer to the [SpanOptions](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api._opentelemetry_api.SpanOptions.html) interface for more details.
 
 #### getBaseContext()?
 
@@ -176,8 +171,7 @@ The base context to use for the started span.
 optional spanName: string;
 ```
 
-The name of the span. Defaults to the name of given function.
-You must use a named function or a provide a name here.
+The name of the span. Defaults to the name of given function. You must use a named function or a provide a name here.
 
 **Defined in:** [types.ts:78](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/types.ts#L78)
 
@@ -193,7 +187,7 @@ The context for the current operation.
 contextCarrier: Record<string, string>;
 ```
 
-Holds a carrier that can be used to propagate the active context.
+Holds a carrier that can propagate the active context.
 
 ### currentSpan
 
@@ -285,8 +279,7 @@ The meter used to create metrics.
 sdkConfig: Partial<NodeSDKConfiguration>;
 ```
 
-The configuration options for the OpenTelemetry SDK.
-See the [NodeSDKConfiguration](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk-node.NodeSDKConfiguration.html) interface.
+The configuration options for the OpenTelemetry SDK. Refer to the [NodeSDKConfiguration](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk-node.NodeSDKConfiguration.html) interface for more details.
 
 ### tracer?
 
@@ -312,8 +305,7 @@ The configuration for the telemetry diagnostics.
 optional exportLogs: boolean;
 ```
 
-Whether to make OpenTelemetry also export the diagnostic logs to the configured exporters.
-Set to `false` if you don't want to see diagnostic logs in your observability platform.
+Whether to make OpenTelemetry also export the diagnostic logs to the configured exporters. Set to `false` if you do not want to see diagnostic logs in your observability platform.
 
 **Default:** `true`
 
@@ -339,7 +331,7 @@ The log level to use for the diagnostics.
 
 ## TelemetryPropagationConfig
 
-Configuration related to context propagation (for distributed tracing).
+Configuration related to context propagation for distributed tracing.
 
 **Type Parameters:**
 
@@ -358,8 +350,7 @@ optional getContextCarrier: (...args: Parameters<T>) => {
 };
 ```
 
-A function that returns the carrier for the current context.
-Use it to specify where your carrier is located in the incoming parameters, when it's not one of the defaults.
+A function that returns the carrier for the current context. Use it to specify where your carrier is located in the incoming parameters, when it is not one of the defaults.
 
 **Parameters:**
 
@@ -396,8 +387,7 @@ carrier: Record<string, string>;
 optional skip: boolean;
 ```
 
-By default, an instrumented entrypoint will try to automatically read (and use) the context from the incoming request.
-Set to `true` if you want to skip this automatic context propagation.
+By default, an instrumented entrypoint will try to automatically read and use the context from the incoming request. Set to `true` if you want to skip this automatic context propagation.
 
 **Default:** `false`
 

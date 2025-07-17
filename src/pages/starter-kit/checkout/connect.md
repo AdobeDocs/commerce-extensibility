@@ -79,8 +79,7 @@ Use the following steps to create OAuth credentials for App Builder authenticati
 
 1. Make sure your API integration has the necessary permissions to access the Commerce REST API.
 
-   To check this, go to **System** > **Extensions** > **Integrations**.
-   Click **API** under the Basic Settings menu to display the **Available APIs** screen, then set the **Resource Access** drop-down to **All**.
+   To confirm that you have access, in the Commerce Admin, navigate to **System** > **Extensions** > **Integrations**. Under the Basic Settings menu, click **API** to view the Available APIs. Then select **All** in the **Resource Access** field.
 
 1. Copy the integration details (consumer key, consumer secret, access token, and access token secret) to the `.env` file in the root of the project.
 

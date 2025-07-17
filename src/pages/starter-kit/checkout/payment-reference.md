@@ -35,7 +35,6 @@ it will be updated; otherwise, a new payment method will be created.
 | ------------------------- | ------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `code`                    | String  | Yes      | Unique identifier for the payment method.                                                                                                                  |
 | `title`                   | String  | No       | Display name of the payment method.                                                                                                                        |
-| `description`             | String  | No       | Description of the payment method.                                                                                                                         |
 | `active`                  | Boolean | Yes      | Status indicating if the method is active.                                                                                                                 |
 | `backend_integration_url` | String  | No       | URL for backend integration, which is an App Builder URL.                                                                                                  |
 | `stores`                  | Array   | No       | List of store codes that payment method is available for.                                                                                                  |
@@ -57,7 +56,6 @@ curl --request POST \
   "payment_method": {
     "code": "method-1",
     "title": "Method 1",
-    "description": "Description for Method 1",
     "active": true,
     "backend_integration_url": "http://example.com",
     "stores": ["store-1", "store-2"],
@@ -82,7 +80,6 @@ curl --request POST \
     "id": 3,
     "code": "method-1",
     "title": "Method 1",
-    "description": "Description for Method 1",
     "active": true,
     "backend_integration_url": "http://example.com",
     "stores": ["store-1", "store-2"],

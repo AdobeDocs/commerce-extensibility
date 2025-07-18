@@ -104,6 +104,63 @@ module.exports = [
     },
     */
     {
+        title: "Monitoring",
+        header: true,
+        path: "/starter-kit/integration/telemetry/",
+        pages: [
+            {
+                title: "Telemetry",
+                path: "/starter-kit/integration/telemetry/",
+                pages: [
+            {
+                title: "Module",
+                path: "/starter-kit/integration/telemetry/module.md"
+            },
+            {
+                title: "Open telemetry",
+                path: "/starter-kit/integration/telemetry/open-telemetry.md"
+            },
+            {
+                title: "Tunnel forwarding",
+                path: "/starter-kit/integration/telemetry/tunnel-forwarding.md"
+            },
+            {
+                title: "Use cases",
+                path: "/starter-kit/integration/telemetry/use-cases/",
+                pages: [
+                    {
+                        title: "Grafana",
+                        path: "/starter-kit/integration/telemetry/use-cases/grafana.md"
+                    },
+                    {
+                        title: "New Relic",
+                        path: "/starter-kit/integration/telemetry/use-cases/new-relic.md"
+                    },
+                ]
+            },
+            {
+                title: "Reference",
+                path: "/starter-kit/integration/telemetry/reference/",
+                pages: [
+                    {
+                        title: "Functions",
+                        path: "/starter-kit/integration/telemetry/reference/functions.md"
+                    },
+                    {
+                        title: "Interfaces",
+                        path: "/starter-kit/integration/telemetry/reference/interfaces.md"
+                    },
+                    {
+                        title: "Aliases",
+                        path: "/starter-kit/integration/telemetry/reference/aliases.md"
+                    },
+                ]
+            },
+        ],
+    },
+    ],
+    },
+    {
         title: "Reference applications",
         header: true,
         path: "/starter-kit/integration/ms-finance.md",

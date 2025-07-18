@@ -50,6 +50,24 @@ module.exports = [
       ]
     },
     {
+      title: "Tutorial",
+      path: "/webhooks/tutorial/index.md",
+      pages: [
+          {
+            title: "Overview",
+            path: "/webhooks/tutorial/index.md"
+          },
+          {
+            title: "Debugging",
+            path: "/webhooks/tutorial/debug.md"
+          },
+          {
+            title: "Best practices",
+            path: "/webhooks/tutorial/best-practices.md"
+          }
+        ]
+    },
+    {
       title: "Create a webhook",
       path: "/webhooks/create-webhooks.md"
     },

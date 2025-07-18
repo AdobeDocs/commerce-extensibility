@@ -48,6 +48,9 @@ order: {
 | `path` | string | Yes | The relative path to the button page in the App. The order ID will be sent as part of the query. |
 | `level` | integer | No |  The position in which a set of buttons are placed in the toolbar. The possible values are `-1` (left), `0` (center), and `1` (right). |
 | `sortOrder` | integer | No | The order in which the button is placed inside the level. |
+| `displayIframe` | boolean | No | Indicates whether an iFrame will be displayed at the relative path. The default value is `true`. [Order view button without iFrames](../../api.md#order-view-button-without-iframes) provides additional details. |
+| `timeout` | integer | No | Only relevant when `displayIframe` is set to `false`. Timeout by seconds to the request sent to application. Default value is 10 seconds. |
+| `sandbox` | string | No | Only relevant when `displayIframe` is set to `true`. The sandbox attribute applies additional restrictions to the content within an iFrame. Allowed values are `allow-downloads` and `allow-popups`. Separate multiple values with a single space (" "). |
 
 ## Sample code
 

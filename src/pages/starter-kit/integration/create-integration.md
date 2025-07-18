@@ -188,7 +188,14 @@ If you are running Adobe Commerce 2.4.6 or higher, the modules that enable event
 
 ### Download and configure the starter kit
 
-Integration Starter Kit version v2.0.0 and higher requires Commerce Eventing version 1.12.1 or higher. The Starter Kit is not backward compatible with older versions of Commerce Eventing.
+Starter Kit versions earlier than v3.0.0 are compatible with Commerce Eventing versions earlier than 1.12.1.
+Starting with version v3.0.0, the Integration Starter Kit requires Commerce Eventing version 1.12.1 or higher and is not backward compatible with older versions of Commerce Eventing.
+
+We are introducing this backward-incompatible change to support multi-event-provider functionality. This enables multiple App Builder based Commerce extensions to connect to the same Adobe Commerce instance using isolated event providers. This isolation:
+
+1. Prevents one application from overriding the event provider registered by another application.
+
+1. Ensures that event subscriptions created by one application do not interfere with those created by another.
 
 Use the following steps to download and configure the Adobe Commerce integration starter kit. The starter kit is located in a [public repository](https://github.com/adobe/commerce-integration-starter-kit).
 

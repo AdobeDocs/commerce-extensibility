@@ -193,9 +193,9 @@ Starting with version v3.0.0, the integration starter kit requires Commerce Even
 
 We are introducing this backward-incompatible change to support multi-event-provider functionality. This enables multiple App Builder based Commerce extensions to connect to the same Adobe Commerce instance using isolated event providers. This isolation:
 
-* Prevents one application from overriding the event provider registered by another application.
+- Prevents one application from overriding the event provider registered by another application.
 
-* Ensures that event subscriptions created by one application do not interfere with those created by another.
+- Ensures that event subscriptions created by one application do not interfere with those created by another.
 
 Use the following steps to download and configure the Adobe Commerce integration starter kit. The starter kit is located in a [public repository](https://github.com/adobe/commerce-integration-starter-kit).
 
@@ -226,8 +226,8 @@ Use the following steps to download and configure the Adobe Commerce integration
    EVENT_PREFIX=
    ```
 
-   * Example: `EVENT_PREFIX='test_app'`
-   * Event Subscription: `test_app.observer.catalog_product_save_commit_after`
+   - Example: `EVENT_PREFIX='test_app'`
+   - Event Subscription: `test_app.observer.catalog_product_save_commit_after`
 
 When configuring the `COMMERCE_BASE_URL` environment variable, the format differs between [PaaS and SaaS](#paas-or-saas):
 

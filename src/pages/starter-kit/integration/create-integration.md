@@ -186,11 +186,16 @@ This section applies to **SaaS** customers only. For **PaaS** customers, see [Cr
 
 If you are running Adobe Commerce 2.4.6 or higher, the modules that enable eventing are installed automatically. Skip to the next step. If you are running Commerce 2.4.4 or 2.4.5, you must install modules to enable eventing, as described in [Install Adobe I/O Events for Adobe Commerce](../../events/installation.md).
 
-<InlineAlert variant="info" slots="text"/>
+### Download and configure the integration starter kit
 
-Using Adobe I/O Events for Commerce `1.6.0` or later will automate some steps of the onboarding process detailed in the following section.
+Integration starter Kit versions earlier than v3.0.0 are compatible with Commerce Eventing versions earlier than 1.12.1.
+Starting with version v3.0.0, the integration starter kit requires Commerce Eventing version 1.12.1 or higher and is not backward compatible with older versions of Commerce Eventing.
 
-### Download and configure the starter kit
+We are introducing this backward-incompatible change to support multi-event-provider functionality. This enables multiple App Builder based Commerce extensions to connect to the same Adobe Commerce instance using isolated event providers. This isolation:
+
+- Prevents one application from overriding the event provider registered by another application.
+
+- Ensures that event subscriptions created by one application do not interfere with those created by another.
 
 Use the following steps to download and configure the Adobe Commerce integration starter kit. The starter kit is located in a [public repository](https://github.com/adobe/commerce-integration-starter-kit).
 
@@ -214,6 +219,15 @@ Use the following steps to download and configure the Adobe Commerce integration
    COMMERCE_ACCESS_TOKEN=
    COMMERCE_ACCESS_TOKEN_SECRET=
    ```
+
+   Also set the value for `EVENT_PREFIX` in the `.env` file. When multiple applications are involved, each having their own event provider, the `EVENT_PREFIX` variable distinguishes between them during event subscription. This allows each application to subscribe to the same event using a unique alias.
+
+   ```text
+   EVENT_PREFIX=
+   ```
+
+   - Example: `EVENT_PREFIX='test_app'`
+   - Event Subscription: `test_app.observer.catalog_product_save_commit_after`
 
 When configuring the `COMMERCE_BASE_URL` environment variable, the format differs between [PaaS and SaaS](#paas-or-saas):
 
@@ -295,7 +309,9 @@ The Customize Registrations and Events [code sample](https://github.com/adobe/ad
 
 Run the following command to generate the IO Event providers and the registrations for your starter kit project.
 
-IO Event providers and registrations will be configured automatically if you are using Adobe I/O Events version is `1.6.0` or later.
+<InlineAlert variant="info" slots="text"/>
+
+As of version `1.12.0`, your Commerce instance can connect to multiple event providers.
 
 ```bash
 npm run onboard
@@ -328,7 +344,7 @@ Check your App in the Developer Console to confirm the registrations were create
 
 <InlineAlert variant="info" slots="text"/>
 
-The following steps are not required when using Adobe I/O Events version `1.6.0` or later. The onboarding script will configure the Adobe Commerce instance automatically.
+The following steps are not required when using Adobe I/O Events version `1.12.0` or later. The onboarding script will configure the Adobe Commerce instance automatically.
 
 Proceed to the next section, or continue following the steps in this section to validate that the configuration is correct.
 
@@ -378,7 +394,7 @@ You must configure Commerce to communicate with your project. Configuration incl
 
 **Subscribe to events in Adobe Commerce**
 
-To automatically subscribe to Commerce events using Adobe I/O Events version `1.6.0` or later, run the `commerce-event-subscribe` script in the `scripts/commerce-event-subscribe/config/` directory.
+To automatically subscribe to Commerce events using Adobe I/O Events, run the `commerce-event-subscribe` script in the `scripts/commerce-event-subscribe/config/` directory.
 
 ```bash
 npm run commerce-event-subscribe

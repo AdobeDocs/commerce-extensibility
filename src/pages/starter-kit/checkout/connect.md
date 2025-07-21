@@ -32,7 +32,7 @@ Depending on your Adobe Commerce setup, there are two options to authenticate an
 
 - &#8203;<Edition name="paas" /> [Commerce Integration](#create-a-commerce-integration)
 
-If IMS authentication is detected, it has precedence over Commerce integration authentication. However, if neither option is detected or configured, then client instantiation will fail.
+If Commerce integration authentication is detected, it has precedence over IMS authentication. However, if neither option is detected or configured, then client instantiation will fail.
 
 ### Adobe Identity Management Service (IMS)
 
@@ -76,6 +76,10 @@ Use the following steps to create OAuth credentials for App Builder authenticati
 &#8203;<Edition name="paas" /> This option allows communication between Commerce and App Builder.
 
 1. Create a new Adobe Commerce Integration by following the [systems integration](https://experienceleague.adobe.com/en/docs/commerce-admin/systems/integrations) guide.
+
+1. Make sure your API integration has the necessary permissions to access the Commerce REST API.
+
+   To confirm that you have access, in the Commerce Admin, navigate to **System** > **Extensions** > **Integrations**. Under the Basic Settings menu, click **API** to view the Available APIs. Then select **All** in the **Resource Access** field.
 
 1. Copy the integration details (consumer key, consumer secret, access token, and access token secret) to the `.env` file in the root of the project.
 

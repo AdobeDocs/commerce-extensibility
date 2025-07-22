@@ -34,8 +34,8 @@ Verify that your Commerce APIs are compatible with both environments by checking
 
 **REST API**
 
-- &#8203;<Edition name="paas" /> [PaaS REST API specification](https://developer.adobe.com/commerce/webapi/rest/quick-reference/) - The [**I/O Management API**](#developer-console) is required to connect a PaaS instance with your app builder application.
-- &#8203;<Edition name="saas" /> [SaaS REST API specification](https://developer.adobe.com/commerce/services/reference/cloud/rest/) - The [**Adobe Commerce as a Cloud Service API**](#developer-console) is required to connect a SaaS instance with your app builder application.
+- &#8203;<Edition name="paas" /> [PaaS REST API specification](https://developer.adobe.com/commerce/webapi/rest/quick-reference/) - The [**I/O Management API**](../starter-kit/checkout/getting-started.md#initial-configuration) is required to connect a PaaS instance with your app builder application.
+- &#8203;<Edition name="saas" /> [SaaS REST API specification](https://developer.adobe.com/commerce/services/reference/cloud/rest/) - The [**Adobe Commerce as a Cloud Service API**](../starter-kit/checkout/getting-started.md#initial-configuration) is required to connect a SaaS instance with your app builder application.
 
 **Adapt REST endpoint for older starter kit versions**
 
@@ -54,18 +54,6 @@ For older versions of the starter kit, check if your code is adapted as follows:
 <InlineAlert variant="info" slots="text" />
 
 Refer to [URL structure](https://developer.adobe.com/commerce/webapi/rest/#url-structure-1) for more information.
-
-### Developer console
-
-The Adobe Commerce as a Cloud Service (SaaS) API is now available in the Developer Console, replacing the **I/O Management API** for [SaaS REST integrations](https://developer.adobe.com/commerce/webapi/rest/authentication/user/#implementation-steps) and is only available for organizations with Cloud Service product entitlement.
-
-- The `commerce.accs` scope is required for SaaS REST API access.
-
-- Existing integrations must add the Adobe Commerce as a Cloud Service API in addition to the I/O Management API to extend scopes to include `commerce.accs`. Refer to the [checkout starter kit](../starter-kit/integration/create-integration.md#onboarding) for detailed instructions on how to add this API:
-
-1. Add **Adobe Commerce as a Cloud Service** to your project for your SaaS integration. When asked to select a product profile, choose **Default - Cloud Manager**. If this option is not available, make sure you have developer permissions for `Adobe Commerce as a Cloud Service - Backend - Commerce Cloud Manager`.
-
-1. Include this information to your submission if applicable as this example.
 
 ## Commerce webhook
 

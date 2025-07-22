@@ -39,6 +39,10 @@ Support services for the starter kit include the basic functionality and configu
 
 ### Onboarding
 
+<InlineAlert variant="info" slots="text"/>
+
+If you cannot access the Adobe Developer Console, or if some APIs or services listed below are not available, make sure you have [developer permissions](https://experienceleague.adobe.com/en/docs/commerce/cloud-service/user-management#add-users-developers-and-product-profile-admins) for the organization.
+
 [Projects Overview](https://developer.adobe.com/developer-console/docs/guides/projects/) describes the different types of projects and how to manage them. Here, we'll create a templated project.
 
 1. Log in to the Adobe Developer Console and select the desired organization from the dropdown menu in the top-right corner.

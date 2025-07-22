@@ -34,8 +34,10 @@ Verify that your Commerce APIs are compatible with both environments by checking
 
 **REST API**
 
-- &#8203;<Edition name="paas" /> [PaaS REST API specification](https://developer.adobe.com/commerce/webapi/rest/quick-reference/) - The [**I/O Management API**](../starter-kit/checkout/getting-started.md#initial-configuration) is required to connect a PaaS instance with your app builder application.
-- &#8203;<Edition name="saas" /> [SaaS REST API specification](https://developer.adobe.com/commerce/services/reference/cloud/rest/) - The [**Adobe Commerce as a Cloud Service API**](../starter-kit/checkout/getting-started.md#initial-configuration) is required to connect a SaaS instance with your app builder application.
+- &#8203;<Edition name="paas" /> [PaaS REST API specification](https://developer.adobe.com/commerce/webapi/rest/quick-reference/) - The **I/O Management API** is required to connect a PaaS instance with your app builder application.
+- &#8203;<Edition name="saas" /> [SaaS REST API specification](https://developer.adobe.com/commerce/services/reference/cloud/rest/) - The **Adobe Commerce as a Cloud Service API** is required to connect a SaaS instance with your app builder application.
+
+For more information on REST API access, refer to the [Developer Console configuration](../starter-kit/integration/create-integration.md#onboarding) in the integration starter kit, or the [CLI configuration](../starter-kit/checkout/getting-started.md#initial-configuration) in the checkout starter kit.
 
 **Adapt REST endpoint for older starter kit versions**
 

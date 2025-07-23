@@ -35,18 +35,14 @@ The starter kit consists of two main parts, as defined in [`app.config.yaml`](ht
 - `application`: The main app builder actions and event handlers of the starter kit.
 - `commerce/backend-ui/1`: UI-specific components and related actions for the Adobe Commerce Admin UI.
 
-Note that only one extension can be run locally or deployed to a given runtime environment at a time.
-
 To run the project locally, use the following commands:
 
 ```bash
 # Run the project locally
-aio app dev -e application
-aio app dev -e commerce/backend-ui/1
+aio app dev
 
 # Run the project locally but deploy to the runtime environment
-aio app run -e application
-aio app run -e commerce/backend-ui/1
+aio app run
 ```
 
 See [aio app dev vs. aio app run](https://developer.adobe.com/app-builder/docs/guides/development/#aio-app-dev-vs-aio-app-run) to understand the differences between the two modes.
@@ -56,8 +52,7 @@ See [aio app dev vs. aio app run](https://developer.adobe.com/app-builder/docs/g
 To deploy the app using the Adobe I/O CLI, use the following commands:
 
 ```bash
-aio app deploy -e application --force-deploy
-aio app deploy -e commerce/backend-ui/1 --force-deploy
+aio app deploy --force-build --force-deploy
 ```
 
 ## Undeploy the application

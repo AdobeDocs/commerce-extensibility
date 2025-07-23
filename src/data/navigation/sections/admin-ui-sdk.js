@@ -89,6 +89,10 @@ module.exports = [
       path: "/admin-ui-sdk/eligible-extensions-config.md"
     },
     {
+      title: "API Reference",
+      path: "/admin-ui-sdk/api.md",
+    },
+    {
       title: "Troubleshooting",
       path: "/admin-ui-sdk/troubleshooting.md"
     },

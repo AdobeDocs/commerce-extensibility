@@ -49,6 +49,12 @@ For older versions of the starter kit, check if your code is adapted as follows:
     + commerceGot(`V1/oope_payment_method/`, {
     ```
 
+- Ensure that store view codes are no longer included in URLs. Instead, you must specify store views in the `Store` header of the request.
+
+<InlineAlert variant="info" slots="text" />
+
+Refer to [URL structure](https://developer.adobe.com/commerce/webapi/rest/#url-structure-1) for more information.
+
 ## Commerce webhook
 
 - &#8203;<Edition name="paas" /> Webhooks are created with [XML files](../webhooks/create-webhooks.md).

@@ -63,9 +63,18 @@ Support services for the starter kit include the basic functionality and configu
 
 1. Add the following services to your workspace. Each service must be added individually. You cannot add multiple services simultaneously.
 
-   * I/O Management API
-   * I/O Events
-   * Adobe I/O Events for Adobe Commerce
+   - I/O Events
+   - I/O Management API
+   - Adobe I/O Events for Adobe Commerce
+   - Adobe Commerce as a Cloud Service - If you are adding the Adobe Commerce as a Cloud Service API for the first time:
+       - Check the `.env` file to ensure that the `commerce.accs` scope is added to OAUTH_SCOPES.
+       - [Download the workspace configuration](#download-the-workspace-configuration-file) and run `aio app use` again.
+
+   <InlineNestedAlert variant="info" header="true" iconPosition="right">
+
+   Adobe Commerce as a Cloud Service API is only required when accessing Adobe Commerce as a Cloud Service.
+
+   </InlineNestedAlert>
 
    Click one of these services, such as **I/O Management API**. Then click **Next**.
 
@@ -75,7 +84,11 @@ Support services for the starter kit include the basic functionality and configu
 
    ![generate a key pair](../../_images/common/setup-api-oauth.png)
 
-   **Note**: You can set up server-to-server authentication using JSON Web Tokens (JWT). However, this method has been deprecated in favor of OAuth and must be replaced no later than January 1, 2025. See [Service Account (JWT) Authentication](https://developer.adobe.com/developer-console/docs/guides/authentication/JWT/) for details on implementing this solution.
+   <InlineNestedAlert variant="info" header="true" iconPosition="right">
+
+   You can set up server-to-server authentication using JSON Web Tokens (JWT). However, this method has been deprecated in favor of OAuth and must be replaced no later than January 1, 2025. See [Service Account Authentication](https://developer.adobe.com/developer-console/docs/guides/authentication/JWT/) for details on implementing this solution.
+
+   </InlineNestedAlert>
 
 1. Use the **Add service** pop-up menu to select and add the other required services.
 
@@ -173,11 +186,16 @@ This section applies to **SaaS** customers only. For **PaaS** customers, see [Cr
 
 If you are running Adobe Commerce 2.4.6 or higher, the modules that enable eventing are installed automatically. Skip to the next step. If you are running Commerce 2.4.4 or 2.4.5, you must install modules to enable eventing, as described in [Install Adobe I/O Events for Adobe Commerce](../../events/installation.md).
 
-<InlineAlert variant="info" slots="text"/>
+### Download and configure the integration starter kit
 
-Using Adobe I/O Events for Commerce `1.6.0` or later will automate some steps of the onboarding process detailed in the following section.
+Integration starter Kit versions earlier than v3.0.0 are compatible with Commerce Eventing versions earlier than 1.12.1.
+Starting with version v3.0.0, the integration starter kit requires Commerce Eventing version 1.12.1 or higher and is not backward compatible with older versions of Commerce Eventing.
 
-### Download and configure the starter kit
+We are introducing this backward-incompatible change to support multi-event-provider functionality. This enables multiple App Builder based Commerce extensions to connect to the same Adobe Commerce instance using isolated event providers. This isolation:
+
+- Prevents one application from overriding the event provider registered by another application.
+
+- Ensures that event subscriptions created by one application do not interfere with those created by another.
 
 Use the following steps to download and configure the Adobe Commerce integration starter kit. The starter kit is located in a [public repository](https://github.com/adobe/commerce-integration-starter-kit).
 
@@ -202,17 +220,26 @@ Use the following steps to download and configure the Adobe Commerce integration
    COMMERCE_ACCESS_TOKEN_SECRET=
    ```
 
+   Also set the value for `EVENT_PREFIX` in the `.env` file. When multiple applications are involved, each having their own event provider, the `EVENT_PREFIX` variable distinguishes between them during event subscription. This allows each application to subscribe to the same event using a unique alias.
+
+   ```text
+   EVENT_PREFIX=
+   ```
+
+   - Example: `EVENT_PREFIX='test_app'`
+   - Event Subscription: `test_app.observer.catalog_product_save_commit_after`
+
 When configuring the `COMMERCE_BASE_URL` environment variable, the format differs between [PaaS and SaaS](#paas-or-saas):
 
-* &#8203;<Edition name="paas" />For PaaS (On-Premise/Cloud):
+- &#8203;<Edition name="paas" />For PaaS (On-Premise/Cloud):
 
-   * `COMMERCE_BASE_URL` must include your base site URL + `/rest/`
-   * Example: `https://<environment-name>.us-4.magentosite.cloud/rest/`
+   - `COMMERCE_BASE_URL` must include your base site URL + `/rest/`
+   - Example: `https://<environment-name>.us-4.magentosite.cloud/rest/`
 
-* &#8203;<Edition name="saas" />For SaaS (Adobe Commerce as a Cloud Service):
+- &#8203;<Edition name="saas" />For SaaS (Adobe Commerce as a Cloud Service):
 
-   * `COMMERCE_BASE_URL` must be the REST API endpoint provided by Adobe Commerce
-   * Example: `https://na1-sandbox.api.commerce.adobe.com/<tenant-id>/`
+   - `COMMERCE_BASE_URL` must be the REST API endpoint provided by Adobe Commerce
+   - Example: `https://na1-sandbox.api.commerce.adobe.com/<tenant-id>/`
 
 Make sure to use your actual environment name or tenant ID in the URL. The examples above use placeholder values.
 
@@ -241,7 +268,11 @@ Make sure to use your actual environment name or tenant ID in the URL. The examp
 
 1. The `app.config.yaml` file in the repo's root directory defines which packages to deploy. The Integration Starter Kit provides packages for Commerce products, customers, orders, shipments, and stocks and their external back office counterparts. Comment out any unneeded packages that are not applicable to your project.
 
-   **Note:** The `info` action is enabled by default. This action is reserved for future use. Do not disable or delete the `info` action.
+   <InlineNestedAlert variant="info" header="true" iconPosition="right">
+
+   The `info` action is enabled by default. This action is reserved for future use. Do not disable or delete the `info` action.
+
+   </InlineNestedAlert>
 
 #### Deploy the project
 
@@ -278,7 +309,9 @@ The Customize Registrations and Events [code sample](https://github.com/adobe/ad
 
 Run the following command to generate the IO Event providers and the registrations for your starter kit project.
 
-IO Event providers and registrations will be configured automatically if you are using Adobe I/O Events version is `1.6.0` or later.
+<InlineAlert variant="info" slots="text"/>
+
+As of version `1.12.0`, your Commerce instance can connect to multiple event providers.
 
 ```bash
 npm run onboard
@@ -311,7 +344,7 @@ Check your App in the Developer Console to confirm the registrations were create
 
 <InlineAlert variant="info" slots="text"/>
 
-The following steps are not required when using Adobe I/O Events version `1.6.0` or later. The onboarding script will configure the Adobe Commerce instance automatically.
+The following steps are not required when using Adobe I/O Events version `1.12.0` or later. The onboarding script will configure the Adobe Commerce instance automatically.
 
 Proceed to the next section, or continue following the steps in this section to validate that the configuration is correct.
 
@@ -327,7 +360,11 @@ You must configure Commerce to communicate with your project. Configuration incl
 
 1. Enter a unique identifier in the **Adobe I/O Event Provider Instance ID** field. This unique value identifies your Commerce instance, which allows Commerce events to connect to the correct `Event Provider` in Adobe I/O. This ID corresponds to the **Provider** displayed when [subscribing to events](../../events/configure-commerce.md#subscribe-and-register-events).
 
-   **Note**: This value must contain English alphanumeric characters, underscores (_), and hyphens (-) only.
+   <InlineNestedAlert variant="info" header="true" iconPosition="right">
+
+   This value must contain English alphanumeric characters, underscores (_), and hyphens (-) only.
+
+   </InlineNestedAlert>
 
 1. Click **Save Config**, but do not leave the page. The next section creates an event provider, which is necessary to complete the configuration.
 
@@ -339,7 +376,11 @@ You must configure Commerce to communicate with your project. Configuration incl
 
 1. Enter the merchant's company name in the **Merchant ID** and the environment name in the **Environment ID** field. The values of these fields will be combined and added as a `source` attribute to your event data to identify the source of the events. It can be useful for event filtration or other logic if you are using the same event provider for several environments or projects.
 
-   **Note**: The **Merchant ID** and **Environment ID** fields only support alphanumeric characters and underscores.
+   <InlineNestedAlert variant="info" header="true" iconPosition="right">
+
+   The **Merchant ID** and **Environment ID** fields only support alphanumeric characters and underscores.
+
+   </InlineNestedAlert>
 
    ```javascript
    "source": "<merchant-id>.<environment-id>"
@@ -353,7 +394,7 @@ You must configure Commerce to communicate with your project. Configuration incl
 
 **Subscribe to events in Adobe Commerce**
 
-To automatically subscribe to Commerce events using Adobe I/O Events version `1.6.0` or later, run the `commerce-event-subscribe` script in the `scripts/commerce-event-subscribe/config/` directory.
+To automatically subscribe to Commerce events using Adobe I/O Events, run the `commerce-event-subscribe` script in the `scripts/commerce-event-subscribe/config/` directory.
 
 ```bash
 npm run commerce-event-subscribe

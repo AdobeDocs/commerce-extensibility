@@ -24,6 +24,10 @@ The following prerequisites are required to enable your OOPE integration with th
 Checkout drop-in components provide extensibility points to integrate with OOPE payment methods.
 See [Add a payment method](https://experienceleague.adobe.com/developer/commerce/storefront/dropins/checkout/tutorials/add-payment-method/) from the Checkout drop-in documentation for integration details.
 
+The following image indicates the location of the checkout drop-in component in the EDS Storefront:
+
+![checkout-drop-in-component.png](../../_images/starterkit/eds-components.png)
+
 ## Extend OOPE GraphQL Schema
 
 If you want to retrieve OOPE payment method information from the Commerce instance, you can extend the GraphQL query using drop-in components with the [GraphQL Extensibility API](https://experienceleague.adobe.com/developer/commerce/storefront/dropins/all/extending/).

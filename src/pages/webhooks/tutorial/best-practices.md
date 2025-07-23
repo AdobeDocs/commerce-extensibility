@@ -15,20 +15,25 @@ Since the webhook URL is easily accessible, it's important to secure it. The fol
 
 ### Step 1: Generate OAuth credentials from Developer Console
 
+You will need retrieve the client secret, client ID, and organization ID from the Adobe Developer Console to authenticate the webhook calls from Adobe Commerce to your App Builder application.
+
 1. Navigate to your project and select **Stage**.
-1. On the left-hand menu, go to **Credentials** and click on **OAuth Server-to-Server**.
-1. Here, you will find the Client ID and Organization ID. Click on **Retrieve Client Secret** and make a note of the client secret. This will only be displayed once. These credentials will be required in the next step when configuring the integration on the Commerce side.
+
+1. On the left menu, go to **Credentials** and click on **OAuth Server-to-Server**. The client and organization IDs are displayed.
+
+1. Click on **Retrieve Client Secret** and make a note of the client secret. This will only be displayed once. These credentials will be required in the next step when configuring the integration on the Commerce side.
 
 ### Step 2: Configure OAuth in Adobe Commerce
 
-Log in to the Commerce Admin in Commerce Instance > Webhook Subscriptions and select the webhook you want to configure.
-Expand the Developer Console OAuth section, enable it, and enter the required credentials: Client ID, Client Secret, and Organization ID.
+1. Log in to the Commerce Admin and navigate to **System** > **Webhook Subscriptions**. Select the webhook you want to configure.
 
-![oAuth Section in Webhooks Subscription](../../_images/webhooks/tutorial/developer-console-oauth-commerce.png)
+   Expand the **Developer Console OAuth** section, enable it, and enter the values for the **Client ID**, **Client Secret**, and **Organization ID** fields. These values must match the credentials you retrieved from the Developer Console in Step 1.
+
+   ![oAuth Section in Webhooks Subscription](../../_images/webhooks/tutorial/developer-console-oauth-commerce.png)
 
 ### Step 3: Enable Adobe Authentication in App Builder
 
-1. In your App Builder project code, open the `app.config.yaml` file and set `require-adobe-auth` to `true`. Then, rebuild and deploy the project using the command:
+1. In your App Builder project code, open the `app.config.yaml` file and set `require-adobe-auth` to `true`. Then, rebuild and deploy the project using the following command:
 
   ```bash
   aio app deploy
@@ -38,32 +43,21 @@ Expand the Developer Console OAuth section, enable it, and enter the required cr
 
 You can now test the webhook from Adobe Commerce by adding a product. The calls will be securely authenticated using the configured OAuth credentials.
 
-## Accessing the Developer Console
-
-Ensure you have Developer Access to the Adobe Developer Console. This is required to create and manage projects.
-
-If you don't have developer access, your role will be shown as "User" in the top right corner, and a blue box will highlight restricted access.
-
-To proceed, request Developer Access from your organization admin.
-Below are screenshots showing both restricted and developer access views for quick reference.
-
-![Without Developer Access:](../../_images/webhooks/tutorial/restrcited-access-developer-console.png)
-
-![With Developer Access:](../../_images/webhooks/tutorial/developer-access-dev-console.png)
-
 ## Redeploy changes
 
-1. If you've made changes to the action code, run the below commands:
+After making changes to your App Builder project, you need to redeploy the application to ensure that the changes take effect. Follow these steps:
 
-   ```bash
-   aio app build
-   ```
+If you've made changes to the action code, run the following commands:
 
-1. If you have multiple actions in your project and want to deploy only a specific action you modified, run the following command to rebuild and redeploy only the specified action.
+```bash
+aio app build
+```
 
-   ```bash
-   aio app deploy --action=webhook/product-update
-   ```
+If you have multiple actions in your project and want to deploy only a specific action you modified, run the following command to rebuild and redeploy only the specified action.
+
+```bash
+aio app deploy --action=webhook/product-update
+```
 
 ## Retrieve an action URL
 
@@ -75,15 +69,15 @@ aio runtime action get testwebhook --url
 
 ## Webhook troubleshooting and debugging tips
 
-For detailed webhook logs, navigate to **System** > **Webhook** Logs in the Admin.
+For detailed webhook logs, navigate to **System** > **Webhook Logs** in the Admin.
 
-If there are configuration errors in the webhook setup for this specific use case, when a product is added to the catalog, the Commerce UI will display the message: **"Cannot perform the operation due to an error."** For instance, if hook fields are configured wrongly, this can occur.
+If there are configuration errors in the webhook setup for this specific use case, when a product is added to the catalog, the Commerce UI will display the message `Cannot perform the operation due to an error.` This can occur, for instance, if hook fields are configured incorrectly.
 
-To rule out an issue with the App Builder code, you can use the **aio app dev** command to generate the action URL, which should point to localhost. Then test the action code with the payload using Postman, Postbuster, or a curl command. If the action executes successfully outside of Commerce, the issue is likely a configuration error within the Commerce instance.
+To rule out an issue with the App Builder code, you can use the `aio app dev` command to generate the action URL, which should point to localhost. Then test the action code with the payload using the `curl` command or a REST API testing tool such as Postman or Postbuster. If the action executes successfully outside of Commerce, the issue is likely a configuration error within the Commerce instance.
 
 ## App Builder configuration considerations
 
-If you set **web: 'no'** in **app-config.yaml**, the action will be treated as a non-web action.
+If you set `web: no` in the  `app-config.yaml` file, the action will be treated as a non-web action.
 
 This means:
 
@@ -97,9 +91,6 @@ If a webhook in Adobe Commerce is configured to call this non-web action, it wil
 
 This error occurs because Commerce cannot reach the non-web action endpoint.
 
-## Recommended practice for webhooks
-
-For any action meant to be triggered by a Commerce webhook, make sure to define it as a web action by setting set **web: 'yes'** in **app-config.yaml**.
-This ensures the action is exposed via a public URL and can be properly invoked by Adobe Commerce.
+Therefore, for any action meant to be triggered by a Commerce webhook, make sure to define it as a web action by setting `web: yes`. This ensures the action is exposed via a public URL and can be properly invoked by Adobe Commerce.
 
 For further assistance or inquiries, please post your question in the [#app-builder-community](https://magentocommeng.slack.com/).

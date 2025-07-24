@@ -17,13 +17,13 @@ July 24, 2025
 
 ### Enhancements
 
-* Added store context to retrieve information about the store in the webhook payload. <!-- CEXT-4973 -->
+* Added a store context to retrieve information about the store in the webhook payload. <!-- CEXT-4973 -->
 
 * Added the ability to retrieve object values from the context. <!-- CEXT-4973 -->
 
-* Added a "copy" button to the public key in the webhook digital signature. <!-- CEXT-4631 -->
+* Added a **Copy public key** button to the webhook Digital Signature configuration panel. <!-- CEXT-4631 -->
 
-* Logging improvements. <!-- CEXT-4801 -->
+* Added logging improvements. <!-- CEXT-4801 -->
 
 ## Version 1.9.0
 

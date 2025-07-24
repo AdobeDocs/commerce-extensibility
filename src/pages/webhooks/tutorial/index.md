@@ -284,13 +284,10 @@ application:
 
 Run the following commands in your project directory:
 
-1. To install all project dependencies:
+1. Install all project dependencies:
 
    ```bash
    npm install
-   ```
-
-1. To deploy the application to Adobe I/O Runtime:
 
    ```bash
    aio app deploy

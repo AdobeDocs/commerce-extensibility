@@ -221,16 +221,16 @@ To set and use ngrok:
    Region                    India (in)
    Latency                   79ms
    Web Interface             http://127.0.0.1:4040
-   Forwarding                https://6d3c-130-248-127-xx.ngrok-free.app -> https://localhost:9080
+   Forwarding                https://1a2b-123-456-127-xx.ngrok-free.app -> https://localhost:9080
 
   Connections                ttl     opn     rt1     rt5     p50     p90
                              25      0       0.00    0.00    11.45   64.75
   ```
 
-  The forwarding URL in this example is `https://6d3c-130-248-127-xx.ngrok-free.app`. This is your public URL that exposes your local AppBuilder app to the internet.
+  The forwarding URL in this example is `https://1a2b-123-456-127-xx.ngrok-free.app`. This is your public URL that exposes your local app to the internet.
 
 1. Go to the Commerce Admin and update the webhook configuration with this ngrok forwarding URL. The final URL should look like this:
 
-  `https://6d3c-130-248-127-xx.ngrok-free.app/api/v1/web/appbuilderforextensibility/webhook`
+  `https://1a2b-123-456-127-xx.ngrok-free.app/api/v1/web/appbuilderforextensibility/webhook`
 
 1. When the webhook is triggered from the live Adobe Commerce instance (in this case when a product is added or modified from the Admin), the request will hit your local code, allowing you to inspect the payload in the terminal where `aio app dev` was issued.

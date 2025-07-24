@@ -54,7 +54,7 @@ module.exports = [
       path: "/webhooks/tutorial/index.md",
       pages: [
           {
-            title: "Overview",
+            title: "Extend Commerce with webhooks",
             path: "/webhooks/tutorial/index.md"
           },
           {

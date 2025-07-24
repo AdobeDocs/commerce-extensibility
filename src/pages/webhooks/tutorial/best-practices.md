@@ -7,21 +7,21 @@ keywords:
 
 # Development best practices
 
-This section provides best practices for developing extensibility applications in Adobe Commerce, focusing on webhooks and secure communication.
+This following best practices, which, focus on webhooks and secure communication, help developers create extensibility applications in Adobe Commerce.
 
 ## Secure webhook communication using OAuth credentials
 
-Since the webhook URL is easily accessible, it's important to secure it. The following steps outline recommended best practices for secure communication between App Builder and Adobe Commerce:
+Since the webhook URL is easily accessible, it is important to secure it. The following steps outline recommended best practices for secure communication between App Builder and Adobe Commerce:
 
 ### Step 1: Generate OAuth credentials from Developer Console
 
-You will need retrieve the client secret, client ID, and organization ID from the Adobe Developer Console to authenticate the webhook calls from Adobe Commerce to your App Builder application.
+Retrieve the client secret, client ID, and organization ID from the Adobe Developer Console to authenticate the webhook calls from Adobe Commerce to your App Builder application.
 
 1. Navigate to your project and select **Stage**.
 
-1. On the left menu, go to **Credentials** and click on **OAuth Server-to-Server**. The client and organization IDs are displayed.
+1. In the **Credentials** section of the left-navigation pane, select **OAuth Server-to-Server**. The client and organization IDs are displayed.
 
-1. Click on **Retrieve Client Secret** and make a note of the client secret. This will only be displayed once. These credentials will be required in the next step when configuring the integration on the Commerce side.
+1. Click **Retrieve Client Secret** and make a note of the client secret. This will only be displayed once. These credentials are required when configuring the integration in Commerce.
 
 ### Step 2: Configure OAuth in Adobe Commerce
 
@@ -41,13 +41,13 @@ You will need retrieve the client secret, client ID, and organization ID from th
 
 ### Step 4: Test the secure webhook call
 
-You can now test the webhook from Adobe Commerce by adding a product. The calls will be securely authenticated using the configured OAuth credentials.
+You can now test the webhook from Adobe Commerce by adding a product. The calls are securely authenticated using the configured OAuth credentials.
 
 ## Redeploy changes
 
-After making changes to your App Builder project, you need to redeploy the application to ensure that the changes take effect. Follow these steps:
+After making changes to your App Builder project, you need to redeploy the application using the following steps to ensure that the changes take effect:
 
-If you've made changes to the action code, run the following commands:
+If you have made changes to the action code, run the following commands:
 
 ```bash
 aio app build
@@ -61,7 +61,7 @@ aio app deploy --action=webhook/product-update
 
 ## Retrieve an action URL
 
-To get the URL of an action you've created, run:
+To get the URL of an action you created, run:
 
 ```bash
 aio runtime action get testwebhook --url
@@ -77,9 +77,7 @@ To rule out an issue with the App Builder code, you can use the `aio app dev` co
 
 ## App Builder configuration considerations
 
-If you set `web: no` in the  `app-config.yaml` file, the action will be treated as a non-web action.
-
-This means:
+If you set `web: no` in the  `app-config.yaml` file, the action will be treated as a non-web action, which means:
 
 * The action will not have a public HTTP endpoint.
 * It cannot be invoked directly by external systems (such as Adobe Commerce).
@@ -91,6 +89,6 @@ If a webhook in Adobe Commerce is configured to call this non-web action, it wil
 
 This error occurs because Commerce cannot reach the non-web action endpoint.
 
-Therefore, for any action meant to be triggered by a Commerce webhook, make sure to define it as a web action by setting `web: yes`. This ensures the action is exposed via a public URL and can be properly invoked by Adobe Commerce.
+To resolve this error for any action triggered by a Commerce webhook, make sure to define it as a web action by setting `web: yes`. This ensures the action is exposed via a public URL and can be properly invoked by Adobe Commerce.
 
 For further assistance or inquiries, please post your question in the [#app-builder-community](https://magentocommeng.slack.com/).

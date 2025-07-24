@@ -10,17 +10,17 @@ keywords:
 
 With Adobe App Builder, you can build scalable, event-driven integrations using webhooks and runtime actions. These integrations allow you to extend Adobe Commerce capabilities without modifying the core codebase, making it easier to maintain and scale your applications. For example, you can use App Builder to validate data, such as product names, in real time through synchronous webhook integrations in Adobe Commerce as a Cloud Service (SaaS).
 
-This tutorial outlines step-by-step instructions for setting up an App Builder project. It covers writing simple action code, configuring webhook subscriptions in Adobe Commerce, and debugging App Builder code using a debugger.
+This tutorial provides instructions for setting up an App Builder project. It covers writing simple action code, configuring webhook subscriptions in Adobe Commerce, and debugging App Builder code using a debugger.
 
 ## How it works
 
-This tutorial demonstrates how to extend Adobe Commerce using webhooks and Adobe App Builder. The integration allows you to validate product names in real time when products are added or updated in Adobe Commerce. Before we dive into the setup, let's understand how this integration works end-to-end:
+This tutorial demonstrates how to extend Adobe Commerce using webhooks and Adobe App Builder. The integration allows you to validate product names in real time when products are added or updated in Adobe Commerce. The following provides an overview of how this example works:
 
 1. Adobe Commerce triggers a webhook when specific events occur, such as when a new product is added or updated.
 
 1. This webhook sends the relevant event payload (the product name, in this case) to an Adobe App Builder runtime action.
 
-1. The App Builder action processes the payload and applies custom business logic. You might want to validate that the product name doesn't include restricted terms like "test" or "example". Based on the logic, the action returns either a success or an error message.
+1. The App Builder action processes the payload and applies custom business logic. Validate that the product name does not include restricted terms like "test" or "example". Based on the logic, the action returns either a success or an error message.
 
 1. Adobe Commerce uses this response to determine whether to save changes to the product.
 
@@ -32,18 +32,19 @@ Before you can start building your App Builder application, you need to set up y
 
 ### Prerequisites
 
-* [Adobe Commerce as a Cloud Service](https://experienceleague.adobe.com/en/docs/commerce/cloud-service/overview) instance
+* An [Adobe Commerce as a Cloud Service](https://experienceleague.adobe.com/en/docs/commerce/cloud-service/overview) instance
 * Access to [Adobe Developer Console](https://developer.adobe.com/console)
 * Access to [Adobe Developer App Builder](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/set-up#access-and-credentials)
 
 ### Accessing the Developer Console
 
-Ensure you have Developer Access to the Adobe Developer Console. This is required to create and manage projects.
+Ensure you have Developer access to the Adobe Developer Console. This is required to create and manage projects.
 
-If you don't have developer access, your role will be shown as "User" in the top right corner, and a blue box will highlight restricted access.
+If you do not have developer access, your role displays as "User" in the top-right corner, and you will see a restricted access message on the Developer Console home page.
 
 To proceed, request Developer Access from your organization admin.
-Below are screenshots showing both restricted and developer access views for quick reference.
+
+The following images indicate both restricted and developer access views.
 
 ![Without Developer Access:](../../_images/webhooks/tutorial/restrcited-access-developer-console.png)
 
@@ -73,7 +74,7 @@ For more information about these APIs, refer to the [Adobe Commerce Extensibilit
 
 ### Set up your local App Builder environment using the CLI
 
-After creating your project in the Adobe Developer Console, the next step is to set up your development environment using Adobe I/O CLI tools. This enables you to run your App Builder application locally and deploy it to Stage or Production workspaces configured in your Developer Console project.
+After creating your project in the Adobe Developer Console, set up your development environment using Adobe I/O CLI tools. This enables you to run your App Builder application locally and deploy it to Stage or Production workspaces configured in your Developer Console project.
 
 The following software is required to set up your App Builder project:
 
@@ -87,7 +88,7 @@ The following software is required to set up your App Builder project:
    npm install -g @adobe/aio-cli
    ```
 
-1. Login to the Developer Console using the CLI.
+1. Log in to the Developer Console using the CLI.
 
    ```bash
     aio login
@@ -101,14 +102,14 @@ The following software is required to set up your App Builder project:
 
    ```terminal
    You are currently in:
-   1. Org: Early Access - Adobe Commerce as a Cloud Service
+   1. Org: Adobe Commerce as a Cloud Service
    2. Project: appbuilderforextensibility
    3. Workspace: Stage
    ```
 
-   You can also verify organization and project details in the Developer Console UI and checking the top-right corner, where your organization name and project are displayed.
+   You can also verify organization and project details in the Developer Console UI by checking the top-right corner, where your organization name and project are displayed.
 
-1. Run `aio app use <path-to-json-config-file>` command to use the downloaded JSON file for your project.
+1. Run the `aio app use <path-to-json-config-file>` command to use the downloaded JSON file for your project.
 
    ```terminal
    You are currently in:
@@ -120,17 +121,18 @@ The following software is required to set up your App Builder project:
 1. Run the following command to initialize your project:
 
    ```bash
-   aio app init < your projectname >
+   aio app init <your project name>
    ```
 
    The command displays multiple prompts to configure your App Builder project. Follow these steps:
    * Select the correct **Organization** and **Project**.
    * Choose a template listed under **Supported by My Org** to ensure compatibility with your environment.
-   * For the **Select a template** prompt, choose **All Templates → @adobe/generator-app-events-generic**.
-   * For the **Which Adobe I/O App features do you want to use?** prompt, select: **Actions: Deploy Runtime actions for I/O App features**
-   * For the **Which type of actions do you want to generate?** prompt, select: **Generic**.
-   * For the **Which UI framework do you want to use?** prompt, select: **React Spectrum 3**.
-   * For the **Provide a name for the action** prompt, enter your preferred action name, such as `testwebhook`.
+   * For the following prompts, make the corresponding selection:
+     * **Select a template** - **All Templates → @adobe/generator-app-events-generic**.
+     * **Which Adobe I/O App features do you want to use?** - **Actions: Deploy Runtime actions for I/O App features**
+     * **Which type of actions do you want to generate?** - **Generic**.
+     * **Which UI framework do you want to use?** - **React Spectrum 3**.
+     * **Provide a name for the action** -  Enter your preferred action name, such as `testwebhook`.
 
 After the command completes, the folder structure is similar to the following:
 
@@ -156,7 +158,7 @@ commappwebhook/
 
 ### Implement the webhook action
 
-1. Create a `actions/<action-name>/validateProductName.js` file in the project directory (such as `commappwebhook/actions/testwebhook/validateProductName.js`) and add the following code
+1. Create an `actions/<action-name>/validateProductName.js` file in the project directory (such as `commappwebhook/actions/testwebhook/validateProductName.js`) and add the following code.
 
    This file defines a function that runs as an action in Adobe App Builder. In App Builder, every action must have a function named main, as this is the entry point that gets called when the action is triggered. The function must accept input in JSON format and return a response in JSON as well. In this case, the action checks if the product name received from the Adobe Commerce webhook contains the word `test`. If it does not, the action passes validation. Otherwise, it returns an error message.
 
@@ -196,7 +198,7 @@ commappwebhook/
     exports.main = main
     ```
 
-1. Copy the contents of the `utils.js` file provided below into the utils.js file located under the actions/ folder.The utils.js file  provides common utility functions used by actions. One of its main functions, errorResponse, helps create a consistent error response and optionally logs the error details. This utility is useful when validating input or handling failures in actions.
+1. Copy the contents of the `utils.js` file provided below into the `utils.js` file located under the `actions` folder. The `utils.js` file  provides common utility functions used by actions. One of its main functions, `errorResponse`, helps create a consistent error response and optionally logs the error details. This utility is useful when validating input or handling failures in actions.
 
    ```js
    /* 
@@ -248,15 +250,15 @@ commappwebhook/
     }
    ```
 
-### Configure the app.config.yaml file
+### Configure the `app.config.yaml` file
 
 The `app.config.yaml` file, located in the root of your project, configures your Adobe App Builder project. It defines project metadata, runtime actions, web assets, and settings like which file to use as the entry point for each action.
 
-Change the value of the `function` line from  `index.js` reference to the location of your `validateProductName.js` file.
+Change the value of the `function` line from `index.js` reference to the location of your `validateProductName.js` file.
 
 <InlineAlert variant="info" slots="text"/>
 
-You must specify `web: 'yes'` in the config.
+You must specify `web: 'yes'` in the config. This ensures the action is exposed via a public URL and can be properly invoked by Adobe Commerce.
 
 ```yaml
 application:
@@ -294,7 +296,7 @@ Run the following commands in your project directory:
    aio app deploy
    ```
   
-   The command builds the application, deploys the action, and uploads web assets to the CDN. The output is similar to the following, showing the deployed action URL and the URL to access your application.
+   The deploy command builds the application, deploys the action, and uploads web assets to the CDN. The output is similar to the following, showing the deployed action URL and the URL to access your application.
 
    ```terminal
    ✔ Built 2 action(s) for 'application'
@@ -321,14 +323,14 @@ Run the following commands in your project directory:
    -> https://experience.adobe.com/?devMode=true#/custom-apps/?localDevUrl=https://1244026-appbuilderforextens-stage.adobeio-static.net/index.html
    
    skipping publish phase...
-   Successful deployment 🏄
+   Successful deployment
    ```
 
 Make a note of the Web Action URL. You will need to specify it in the next step within the Commerce configuration.
 
-#### Configure the webhook in the Admin
+#### Configure a webhook in the Admin
 
-In the Admin, navigate to **System**> **Webhooks** > **Webhook Subscriptions** to display the Webhooks grid page. Click the **Add New Webhook** button.
+In the Commerce Admin, navigate to **System**> **Webhooks** > **Webhook Subscriptions** to display the Webhooks grid page. Click the **Add New Webhook** button.
 
 1. Define the webhook settings as follows. The batch name and hook name can be any value. You can leave unlisted fields blank.
 
@@ -340,7 +342,7 @@ In the Admin, navigate to **System**> **Webhooks** > **Webhook Subscriptions** t
    **Hook Name** | `checkproductName`
    **URL** | The URL you noted in the previous step, such as `https://1244026-appbuilderforextens-stage.adobeio-static.net/api/v1/web/appbuilderforextensibility/testwebhook`
 
-1. Define a hook field to specify the payload you want to send to App Builder. Click the **Add Hook Field** button and fill in the following fields:
+1. Define a hook field to specify the payload you want to send to App Builder. Click the **Add Hook Field** button and enter the following information:
 
    Field | Value
    --- | ---
@@ -348,14 +350,6 @@ In the Admin, navigate to **System**> **Webhooks** > **Webhook Subscriptions** t
    **Source** | `data.product`
    **Active** | `Yes`
   
-Fill in the fields as shown in the screenshot below. You can choose any values for the Hook Name and Batch Name, but ensure **Hook Fields** match the screenshot exactly. In the URLfield, enter the Web Action URL you noted in the previous step.Save the Webhook.
-
-![WebHook Configuration](../../_images/webhooks/tutorial/webhook-config.png)
-
-Below, you'll find the hook fields section. Here, you can specify the payload fields you want to send to App Builder.
-
-![WebHook Configuration](../../_images/webhooks/tutorial/hookfields-config.png)
-
 #### Testing the integration using webhooks
 
 You now have App Builder code set up to validate the product name received from Commerce. Whenever a product is added or edited in Commerce, the webhook triggers and synchronously invokes the App Builder code to perform the validation.
@@ -364,4 +358,4 @@ From the Commerce Admin panel, navigate to **Catalog** > **Add New Product**. En
 
 Upon saving, the webhook triggers the App Builder code, which validates the product name and possibly returns an error message. The error **Invalid product name >>** will be displayed in the Commerce UI, confirming that the integration is working as expected.
 
-As per the App Builder code logic, if the product name does not contain the word `test`, the product should save successfully without triggering an error.
+As configured, if the product name does not contain the word `test`, the product should save successfully without triggering an error.

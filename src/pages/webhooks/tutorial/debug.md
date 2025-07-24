@@ -7,7 +7,7 @@ keywords:
 
 # Debugging your project
 
-This section provides tips for debugging your Adobe Commerce App Builder project, focusing on webhooks and actions. It covers debugging from the Commerce instance, local development environment, and using ngrok for real-time testing.
+The following tips provide assistance for debugging your Adobe Commerce App Builder project, focusing on webhooks and actions. It covers debugging from the Commerce instance, local development environment, and using ngrok for real-time testing.
 
 ## Debug from the Commerce Admin
 
@@ -17,29 +17,29 @@ You can view logs from the Admin to debug your webhooks and actions. This is use
 
 [Logging](../responses.md#logging) describes some
 
-## Debug from App Builder Code locally
+## Debug from App Builder code locally
 
-Debugging web actions using Adobe Commerce as a Cloud Service or a deployed instance is not supported; they can only be simulated locally.
+Debugging web actions using Adobe Commerce as a Cloud Service or a deployed instance is not supported; web actions can only be simulated locally.
 
 Follow these steps to effectively debug your Adobe I/O app on your local environment.
 
 ### Prerequisite
 
-Ensure the following line in your `app.config.yaml` file is set to `false`:
+Ensure the `require-adobe-auth` setting in your `app.config.yaml` file is set to `false`:
 
 `require-adobe-auth: false`
 
 ### Step 1: Configure your debugger
 
-To debug your Adobe I/O App Builder project in Visual Studio Code (VS Code), you need to set up a launch configuration. This allows you to run and debug your app directly from VS Code, making it easier to inspect code, set breakpoints, and view logs.
+To debug your Adobe I/O App Builder project in Visual Studio Code (VS Code), set up a launch configuration. This allows you to run and debug your app directly from VS Code, making it easier to inspect code, set breakpoints, and view logs.
 
-1. Create a `.vscode` folder in the root of your project if it doesn't already exist. Inside this folder, create or edit the `launch.json` file.
+1. Create a `.vscode` folder in the root of your project if one does not already exist. Inside this folder, create or edit the `launch.json` file.
 
-1. Copy and paste the recommended content from [Debugging with VS Code – Adobe App Builder Guide](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/development#debugging-with-vs-code).
+1. Copy and paste the recommended content from [debugging with VS Code](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/development#debugging-with-vs-code).
 
 1. Save your changes.
 
-This configuration sets up the VS Code debugger to work seamlessly with Adobe I/O App Builder projects.
+This configuration sets up the VS Code debugger to work with Adobe I/O App Builder projects.
 
 ### Step 2: Enable source maps
 
@@ -61,7 +61,7 @@ aio app build
 
 ### Step 4: Start debugging
 
-In VS Code, go to the **Run and Debug** tab and select the launch configuration you created in Step 1 (`App Builder: debug actions`). This will allow you to run your app in debug mode.
+In VS Code, on the **Run and Debug** tab, select the launch configuration you created in Step 1. This will allow you to run your app in debug mode.
 
 ![Debug Action in VS](../../_images/webhooks/tutorial/debug-actions-option.png)
 
@@ -140,7 +140,7 @@ sudo curl --insecure --request POST \
 
 You can test real webhook triggers from your Adobe Commerce instance and debug them locally using [ngrok](https://ngrok.com/). This setup allows requests from Adobe Commerce to be forwarded securely to your local App Builder environment.
 
-Why Use ngrok?
+Reasons to use ngrok:
 
 * Test and debug live webhooks from Adobe Commerce.
 * Inspect real payloads in your local aio app runtime.
@@ -192,19 +192,19 @@ To set and use ngrok:
    exports.main = main
    ```
 
-1. Rebuild your AppBuilder project.
+1. Rebuild your App Builder project.
 
    ```bash
    aio app build
    ```
 
-1. Start your App Builder app locally in development mode. This command starts the app and listens for incoming requests on port 9080.
+1. Start your app locally in development mode. This command starts the app and listens for incoming requests on port `9080`.
 
    ```bash
    aio app dev
    ```
 
-1. Install ngrok. Follow the instructions on the official ngrok documentation to install it for your operating system.
+1. Install ngrok. Follow the instructions in the official ngrok documentation to install it for your operating system.
 
 1. Start ngrok to expose your local endpoint. In a new terminal window, run the following command:
 
@@ -216,7 +216,7 @@ To set and use ngrok:
 
   ```terminal
    Session Status            online
-   Account                   Rekha (Plan: Free)
+   Account                   User (Plan: Free)
    Version                   3.23.
    Region                    India (in)
    Latency                   79ms
@@ -233,4 +233,4 @@ To set and use ngrok:
 
   `https://6d3c-130-248-127-xx.ngrok-free.app/api/v1/web/appbuilderforextensibility/webhook`
 
-1. When the webhook is triggered from the live Adobe Commerce instance (in this case when a product is newly added or modified from Admin), the request will hit your local code, allowing you to inspect the payload in the terminal where `aio app dev` was issued.
+1. When the webhook is triggered from the live Adobe Commerce instance (in this case when a product is added or modified from the Admin), the request will hit your local code, allowing you to inspect the payload in the terminal where `aio app dev` was issued.

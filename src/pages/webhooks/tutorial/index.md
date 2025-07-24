@@ -289,6 +289,8 @@ Run the following commands in your project directory:
    ```bash
    npm install
 
+1. Build the web assets:
+
    ```bash
    aio app deploy
    ```
@@ -327,7 +329,7 @@ Make a note of the Web Action URL. You will need to specify it in the next step 
 
 #### Configure a webhook in the Admin
 
-In the Commerce Admin, navigate to **System**> **Webhooks** > **Webhook Subscriptions** to display the Webhooks grid page. Click the **Add New Webhook** button.
+In the Commerce Admin, navigate to **System** > **Webhooks** > **Webhook Subscriptions** to display the Webhooks grid page. Click the **Add New Webhook** button.
 
 1. Define the webhook settings as follows. The batch name and hook name can be any value. You can leave unlisted fields blank.
 

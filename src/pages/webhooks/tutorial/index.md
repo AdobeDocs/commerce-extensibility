@@ -20,11 +20,11 @@ This tutorial demonstrates how to extend Adobe Commerce using webhooks and Adobe
 
 1. This webhook sends the relevant event payload (the product name, in this case) to an Adobe App Builder runtime action.
 
-1. The App Builder action processes the payload and applies custom business logic. Validate that the product name does not include restricted terms like "test" or "example". Based on the logic, the action returns either a success or an error message.
+1. The App Builder action processes the payload and applies custom business logic and validates that the product name does not include restricted terms like "test" or "example". Based on the logic, the action returns either a success or an error message.
 
 1. Adobe Commerce uses this response to determine whether to save changes to the product.
 
-This setup allows you to offload validation and custom logic from the Commerce codebase to the scalable, serverless infrastructure of Adobe App Builder.
+This example allows you to offload validation and custom logic from the Commerce codebase to the scalable, serverless infrastructure of Adobe App Builder.
 
 ## Set up the Adobe Developer Console and App Builder project locally
 
@@ -44,7 +44,7 @@ If you do not have developer access, your role displays as "User" in the top-rig
 
 To proceed, request Developer Access from your organization admin.
 
-The following images indicate both restricted and developer access views.
+The following images contrast what you will see with and without developer access.
 
 ![Without Developer Access:](../../_images/webhooks/tutorial/restrcited-access-developer-console.png)
 
@@ -132,7 +132,7 @@ The following software is required to set up your App Builder project:
      * **Which Adobe I/O App features do you want to use?** - **Actions: Deploy Runtime actions for I/O App features**
      * **Which type of actions do you want to generate?** - **Generic**.
      * **Which UI framework do you want to use?** - **React Spectrum 3**.
-     * **Provide a name for the action** -  Enter your preferred action name, such as `testwebhook`.
+     * **Provide a name for the action** - Enter your preferred action name, such as `testwebhook`.
 
 After the command completes, the folder structure is similar to the following:
 
@@ -258,7 +258,7 @@ Change the value of the `function` line from `index.js` reference to the locatio
 
 <InlineAlert variant="info" slots="text"/>
 
-You must specify `web: 'yes'` in the config. This ensures the action is exposed via a public URL and can be properly invoked by Adobe Commerce.
+You must specify `web: 'yes'` in the config. This ensures the action is exposed through a public URL and can be properly invoked by Adobe Commerce.
 
 ```yaml
 application:
@@ -312,14 +312,14 @@ Run the following commands in your project directory:
    Your deployed actions:
    
    web actions:
-   -> https://1244026-appbuilderforextens-stage.adobeio-static.net/api/v1/web/appbuilderforextensibility/testwebhook
+   -> https://1234567-appbuilderforextens-stage.adobeio-static.net/api/v1/web/appbuilderforextensibility/testwebhook
    
    To view your deployed application:
-   -> https://1244026-appbuilderforextens-stage.adobeio-static.net/index.html
+   -> https://1234567-appbuilderforextens-stage.adobeio-static.net/index.html
    
    To view your deployed application in the Experience Cloud shell:
    
-   -> https://experience.adobe.com/?devMode=true#/custom-apps/?localDevUrl=https://1244026-appbuilderforextens-stage.adobeio-static.net/index.html
+   -> https://experience.adobe.com/?devMode=true#/custom-apps/?localDevUrl=https://1234567-appbuilderforextens-stage.adobeio-static.net/index.html
    
    skipping publish phase...
    Successful deployment
@@ -339,7 +339,7 @@ In the Commerce Admin, navigate to **System** > **Webhooks** > **Webhook Subscri
    **Webhook Type** | `after`
    **Batch Name** | `checkproductName`
    **Hook Name** | `checkproductName`
-   **URL** | The URL you noted in the previous step, such as `https://1244026-appbuilderforextens-stage.adobeio-static.net/api/v1/web/appbuilderforextensibility/testwebhook`
+   **URL** | The URL you noted in the previous step, such as `https://1234567-appbuilderforextens-stage.adobeio-static.net/api/v1/web/appbuilderforextensibility/testwebhook`
 
 1. Define a hook field to specify the payload you want to send to App Builder. Click the **Add Hook Field** button and enter the following information:
 

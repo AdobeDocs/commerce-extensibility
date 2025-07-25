@@ -7,7 +7,7 @@ keywords:
 
 # Debugging your project
 
-The following tips provide assistance for debugging your Adobe Commerce App Builder project, focusing on webhooks and actions. It covers debugging from the Commerce instance, local development environment, and using ngrok for real-time testing.
+The following tips provide assistance for debugging your Adobe Commerce App Builder project, focusing on webhooks and actions. These best practices cover debugging from the Commerce instance, local development environment, and using ngrok for real-time testing.
 
 ## Debug from the Commerce Admin
 
@@ -65,7 +65,7 @@ In VS Code, on the **Run and Debug** tab, select the launch configuration you cr
 
 ![Debug Action in VS](../../_images/webhooks/tutorial/debug-actions-option.png)
 
-Click the Run button (▶️) or press F5 to start the debugger. This starts the app using the `aio app dev` command. Output similar to the following is displayed in the terminal:
+Click the Run button or press **F5** to start the debugger. This starts the app using the `aio app dev` command. Output similar to the following is displayed in the terminal:
 
 ```terminal
 Debugger attached.

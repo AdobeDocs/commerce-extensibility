@@ -7,7 +7,7 @@ keywords:
 
 # Development best practices
 
-This following best practices, which, focus on webhooks and secure communication, help developers create extensibility applications in Adobe Commerce.
+The following best practices, which, focus on webhooks and secure communication, help developers create extensibility applications in Adobe Commerce.
 
 ## Secure webhook communication using OAuth credentials
 
@@ -71,13 +71,13 @@ aio runtime action get testwebhook --url
 
 For detailed webhook logs, navigate to **System** > **Webhook Logs** in the Admin.
 
-If there are configuration errors in the webhook setup for this specific use case, when a product is added to the catalog, the Commerce UI will display the message `Cannot perform the operation due to an error.` This can occur, for instance, if hook fields are configured incorrectly.
+If there are configuration errors in the webhook setup for this specific use case, when a product is added to the catalog, the Commerce UI will display the message `Cannot perform the operation due to an error.` This can occur if hook fields are configured incorrectly.
 
-To rule out an issue with the App Builder code, you can use the `aio app dev` command to generate the action URL, which should point to localhost. Then test the action code with the payload using the `curl` command or a REST API testing tool such as Postman or Postbuster. If the action executes successfully outside of Commerce, the issue is likely a configuration error within the Commerce instance.
+To rule out an issue with the App Builder code, you can use the `aio app dev` command to generate the action URL, which should point to localhost. Then test the action code with the payload using the `curl` command or a REST API testing tool, such as Postman. If the action executes successfully outside of Commerce, the issue is likely a configuration error within the Commerce instance.
 
 ## App Builder configuration considerations
 
-If you set `web: no` in the  `app-config.yaml` file, the action will be treated as a non-web action, which means:
+If you set `web: no` in the `app-config.yaml` file, the action will be treated as a non-web action, which means:
 
 * The action will not have a public HTTP endpoint.
 * It cannot be invoked directly by external systems (such as Adobe Commerce).

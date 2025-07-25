@@ -77,7 +77,7 @@ To rule out an issue with the App Builder code, you can use the `aio app dev` co
 
 ## App Builder configuration considerations
 
-If you set `web: no` in the `app-config.yaml` file, the action will be treated as a non-web action, which means:
+If you set `web: 'no'` in the `app-config.yaml` file, the action will be treated as a non-web action, which means:
 
 * The action will not have a public HTTP endpoint.
 * It cannot be invoked directly by external systems (such as Adobe Commerce).
@@ -89,6 +89,6 @@ If a webhook in Adobe Commerce is configured to call this non-web action, it wil
 
 This error occurs because Commerce cannot reach the non-web action endpoint.
 
-To resolve this error for any action triggered by a Commerce webhook, make sure to define it as a web action by setting `web: yes`. This ensures the action is exposed via a public URL and can be properly invoked by Adobe Commerce.
+To resolve this error for any action triggered by a Commerce webhook, make sure to define it as a web action by setting `web: 'yes'` in the `app-config.yaml` file. This ensures the action is exposed through a public URL and can be properly invoked by Adobe Commerce.
 
 For further assistance or inquiries, please post your question in the [#app-builder-community](https://magentocommeng.slack.com/).

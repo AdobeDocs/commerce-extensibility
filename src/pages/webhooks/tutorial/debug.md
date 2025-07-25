@@ -15,7 +15,7 @@ You can view logs from the Admin to debug your webhooks and actions. This is use
 
 ![WebHook Logs](../../_images/webhooks/tutorial/webhook-logs-adminui-accs.png)
 
-[Logging](../responses.md#logging) describes some
+[Logging](../responses.md#logging) describes webhooks logging in more detail.
 
 ## Debug from App Builder code locally
 

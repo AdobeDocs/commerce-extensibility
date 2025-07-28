@@ -9,6 +9,22 @@ keywords:
 
 These release notes describe the latest version of Adobe Commerce Webhooks.
 
+## Version 1.10.0
+
+### Release date
+
+July 28, 2025
+
+### Enhancements
+
+* Added a store context to retrieve information about the store in the webhook payload. <!-- CEXT-4973 -->
+
+* Added the ability to retrieve object values from the context. <!-- CEXT-4973 -->
+
+* Added a **Copy public key** button to the webhook Digital Signature configuration panel. <!-- CEXT-4631 -->
+
+* Added logging improvements. <!-- CEXT-4801 -->
+
 ## Version 1.9.0
 
 ### Release date

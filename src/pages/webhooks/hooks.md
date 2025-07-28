@@ -279,6 +279,7 @@ You can add to the webhook payload values from the application context:
 <fields>
     <field name="customer.entity_id" source="data.customer.entity_id" />
     <field name="customer.customer_email" source="context_customer_session.get_customer.get_email" />
+    <field name="store.store_id" source="context_store.get_store.get_id" />
 </fields>
 ```
 
@@ -322,7 +323,26 @@ Active: Yes
 
 In this example, the value of `config_value` will be set to the value of `Magento\Framework\App\Config\ScopeConfigInterface::getValue('value/path', 'default')`. If the value does not exist or cannot be processed, the appropriate message will be logged, and the hook execution will not be interrupted.
 
-The return value must be a scalar value or an array. Context fields do not support returned objects.  For example, if you want to get the value of `Magento\Checkout\Model\Session::getQuote()::getSubtotal()`, you can use the following configuration:
+If the return type of the method is an object, the value will be converted to an array. For example, if you want to get the value of `Magento\Checkout\Model\Session::getQuote()`, you can use the following configuration:
+
+##### webhooks.xml (PaaS)
+
+```xml
+<fields>
+    <field name="quote.data" source="context_checkout_session.get_quote" />
+</fields>
+```
+
+##### Admin (SaaS)
+
+```yaml
+Hook Fields
+Name: quote.data
+Source: context_checkout_session.get_quote
+Active: Yes
+```
+
+To get a value of the specific field of an object, you can use the `get_<field_name>` method of the object. The following example retrieves the `subtotal` value from the quote object by calling `Magento\Checkout\Model\Session::getQuote()::getSubtotal()`:
 
 <CodeBlock slots="heading, code" repeat="2" languages="XML, YAML" />
 
@@ -353,6 +373,7 @@ Supported contexts:
 | `context_scope_config`      | Magento\Framework\App\Config\ScopeConfigInterface |
 | `context_http_request`      | Magento\Framework\App\Request\Http                |
 | `context_staging`           | Magento\Staging\Model\VersionManager              |
+| `context_store`             | Magento\Store\Model\StoreManagerInterface         |
 
 ### Checkout session context
 
@@ -615,6 +636,83 @@ This hook sends the following JSON object to the webhook endpoint:
         },
         "current_version": {
             "id": 1
+        }
+    }
+}
+```
+
+### Store context
+
+The `context_store` context retrieves information about the current store.
+
+#### webhooks.xml (PaaS)
+
+```xml
+<fields>
+  <field name="store.store_id" source="context_store.get_store.get_id" />
+  <field name="store.store_data" source="context_store.get_store" />
+  <field name="store.website_data" source="context_store.get_website" />
+  <field name="store.store_group_data" source="context_store.get_group" />
+</fields>
+```
+
+#### Admin (SaaS)
+
+```yaml
+Hook Fields
+Name: store.store_id
+Source: context_store.get_store.get_id
+Active: Yes
+Name: store.store_data
+Source: context_store.get_store
+Active: Yes
+Name: store.website_data
+Source: context_store.get_website
+Active: Yes
+Name: store.store_group_data
+Source: context_store.get_group
+Active: Yes
+```
+
+This hook sends the following JSON object to the webhook endpoint:
+
+```json
+{
+    "store": {
+        "store_id": "1",
+        "store_data": {
+          "store_id": "1",
+          "code": "default",
+          "website_id": "1",
+          "group_id": "1",
+          "name": "Default Store View",
+          "sort_order": "0",
+          "is_active": "1",
+          "available_currency_codes": [
+              "USD"
+          ],
+          "base_currency": {
+              "currency_code": "USD"
+          },
+          "current_currency": {
+              "currency_code": "USD"
+          }
+        },
+        "website_data": {
+          "website_id": "1",
+          "code": "base",
+          "name": "Main Website",
+          "sort_order": "0",
+          "default_group_id": "1",
+          "is_default": "1"
+        },
+        "store_group_data": {
+          "group_id": "1",
+          "website_id": "1",
+          "name": "Main Website Store",
+          "root_category_id": "2",
+          "default_store_id": "1",
+          "code": "main_website_store"
         }
     }
 }

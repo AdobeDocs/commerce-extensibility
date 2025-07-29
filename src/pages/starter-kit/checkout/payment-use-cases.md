@@ -12,6 +12,35 @@ This page explores different use cases and scenarios for implementing payment me
 
 For more general use cases, refer to [use-cases](./use-cases.md).
 
+## Integration strategy
+
+The Adobe Commerce checkout starter kit supports two main integration patterns for payment gateways:
+
+## Checkout session pattern
+
+- A checkout session is established with the payment gateway before starting the client-side payment process.
+- Payment is completed during the client-side process.
+- The order can be placed immediately after payment completion.
+- Payment validation webhooks are optional since the payment is already confirmed.
+
+## Client-side nonce pattern
+
+- The client-side process generates a payment nonce (a secure, one-time-use reference).
+- The actual payment transaction is created server-side using the nonce.
+- A payment validation webhook is typically required to complete the payment before order placement.
+- Orders may start with **Pending** status until payment is confirmed.
+
+### Key components
+
+The client-side nonce pattern's architecture allows merchants to integrate with virtually any payment gateway.
+
+This strategy consists of the following components:
+
+1. **OOPE Payment Method** - Database-persisted configuration managed with the Admin REST APIs.
+1. **Cart GraphQL Extensions** - `configurable_attributes` field provides payment form configuration.
+1. **Client-Side Gateway Integration** - Lightweight widget using gateway SDKs in EDS checkout drop-in.
+1. **Server-Side Gateway Integration** - App Builder application handling gateway communication.
+
 ## Get order details from Adobe Commerce using the masked cart ID
 
 The following steps demonstrate the payment flow:

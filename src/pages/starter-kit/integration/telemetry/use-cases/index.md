@@ -4,9 +4,7 @@ description: Documentation providing guides for setting up observability for you
 keywords:
   - Extensibility
   - App Builder
-  - API Mesh
   - Events
-  - REST
   - Starter Kit
   - Tools
 ---
@@ -34,10 +32,6 @@ The preceding table uses the following key terms:
 - `In Cloud`: Runtime actions deployed to the cloud through `aio app deploy`
   - `Through Tunneling` indicates that the guide demonstrates forwarding telemetry from deployed actions to a local observability stack. This is one possible approach. You are not required to use tunneling, which is not recommended in production. For example, with hosted solutions like Grafana, you can configure direct data transmission instead.
 
-## Supporting guides
+## Related information
 
-For more information on ancillary topics to complement your observability configuration, see the following:
-
-| Guide | Purpose | Use Case |
-|-------|---------|----------|
-| [**Tunneling for Local Observability**](../tunnel-forwarding.md) | Forward telemetry from deployed actions to local tools | Development/Testing ⚠️ |
+- Refer to [**tunneling for local observability**](../tunnel-forwarding.md) to learn how to forward telemetry from deployed actions to local tools.

@@ -4,9 +4,7 @@ description: Comprehensive reference for all telemetry API interfaces in the int
 keywords:
   - Extensibility
   - App Builder
-  - API Mesh
   - Events
-  - REST
   - Starter Kit
   - Tools
 ---
@@ -61,7 +59,7 @@ optional propagation: TelemetryPropagationConfig<T>;
 
 Configuration options related to context propagation. Refer to the [TelemetryPropagationConfig](#telemetrypropagationconfig) for the interface.
 
-**Defined in:** [types.ts:143](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/types.ts#L143)
+**Defined in:** [types.ts](https://github.com/adobe/commerce-integration-starter-kit/blob/main/packages/aio-lib-telemetry/source/types.ts)
 
 ## InstrumentationConfig
 
@@ -173,7 +171,7 @@ optional spanName: string;
 
 The name of the span. Defaults to the name of given function. You must use a named function or a provide a name here.
 
-**Defined in:** [types.ts:78](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/types.ts#L78)
+**Defined in:** [types.ts](https://github.com/adobe/commerce-integration-starter-kit/blob/main/packages/aio-lib-telemetry/source/types.ts)
 
 ## InstrumentationContext
 
@@ -221,7 +219,7 @@ tracer: Tracer;
 
 The global (managed by the library) tracer instance used to create spans.
 
-**Defined in:** [types.ts:175](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/types.ts#L175)
+**Defined in:** [types.ts](https://github.com/adobe/commerce-integration-starter-kit/blob/main/packages/aio-lib-telemetry/source/types.ts)
 
 ## TelemetryApi
 
@@ -245,7 +243,7 @@ tracer: Tracer;
 
 The tracer used to create spans.
 
-**Defined in:** [types.ts:166](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/types.ts#L166)
+**Defined in:** [types.ts](https://github.com/adobe/commerce-integration-starter-kit/blob/main/packages/aio-lib-telemetry/source/types.ts)
 
 ## TelemetryConfig
 
@@ -291,7 +289,7 @@ The tracer used to create spans.
 
 **Inherited from:** `Partial.tracer`
 
-**Defined in:** [types.ts:131](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/types.ts#L131)
+**Defined in:** [types.ts](https://github.com/adobe/commerce-integration-starter-kit/blob/main/packages/aio-lib-telemetry/source/types.ts)
 
 ## TelemetryDiagnosticsConfig
 
@@ -327,7 +325,7 @@ logLevel: "info" | "error" | "none" | "warn" | "debug" | "verbose" | "all";
 
 The log level to use for the diagnostics.
 
-**Defined in:** [types.ts:36](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/types.ts#L36)
+**Defined in:** [types.ts](https://github.com/adobe/commerce-integration-starter-kit/blob/main/packages/aio-lib-telemetry/source/types.ts)
 
 ## TelemetryPropagationConfig
 
@@ -391,4 +389,4 @@ By default, an instrumented entrypoint will try to automatically read and use th
 
 **Default:** `false`
 
-**Defined in:** [types.ts:55](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/types.ts#L55)
+**Defined in:** [types.ts](https://github.com/adobe/commerce-integration-starter-kit/blob/main/packages/aio-lib-telemetry/source/types.ts)

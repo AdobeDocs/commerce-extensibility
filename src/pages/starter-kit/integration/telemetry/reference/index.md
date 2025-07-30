@@ -2,13 +2,11 @@
 title: Telemetry API reference
 description: Reference for telemetry and observability functions in the integration starter kit.
 keywords:
- - Extensibility
- - App Builder
- - API Mesh
- - Events
- - REST
- - Starter Kit
- - Tools
+  - Extensibility
+  - App Builder
+  - Events
+  - Starter Kit
+  - Tools
 ---
 
 # Telemetry API reference

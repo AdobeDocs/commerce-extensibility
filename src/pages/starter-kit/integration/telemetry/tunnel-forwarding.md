@@ -4,9 +4,7 @@ description: Set up tunneling services to forward telemetry signals from deploye
 keywords:
   - Extensibility
   - App Builder
-  - API Mesh
   - Events
-  - REST
   - Starter Kit
   - Tools
 ---
@@ -54,14 +52,9 @@ The following sections compare the most popular tunneling tools for App Builder 
 
 **Manual installation:**
 
-```bash
-# Using Homebrew (macOS)
-brew install ngrok
+To install ngrok, refer to their [installation instructions](https://ngrok.com/docs/getting-started/#2-install-the-ngrok-agent-cli).
 
-# Or download from https://ngrok.com/
-```
-
-For advanced usage, see [Ngrok's documentation](https://ngrok.com/docs/using-ngrok-with/docker/).
+For advanced usage, see [ngrok's Docker documentation](https://ngrok.com/docs/using-ngrok-with/docker/).
 
 <InlineAlert variant="info" slots="text" />
 
@@ -102,31 +95,22 @@ docker run --net=host -it -e NGROK_AUTHTOKEN=xyz ngrok/ngrok:latest tcp 4317
 
 **Manual Installation:**
 
-```bash
-# Using Homebrew (macOS).
-brew install cloudflared
-```
+To install cloudflared manually, refer to their [installation instructions](https://github.com/cloudflare/cloudflared?tab=readme-ov-file#installing-cloudflared).
 
 #### MacOS/Windows
 
-In MacOS/Windows, the `--net=host` flag is not supported. You need to use the `host.docker.internal` hostname to access the host network.
+In MacOS/Windows, the `--net=host` flag is not supported. You need to use the `host.docker.internal` hostname to access the host network. This provides a quick, temporary tunnel (HTTP only). For persistent tunnels, you will need to log in and use the Cloudflare CLI.
 
 ```bash
-# Quick temporary tunnel (HTTP only).
 docker run --rm -it cloudflare/cloudflared:latest tunnel --url http://host.docker.internal:4318
-
-# For persistent tunnels, you will need to login, best to use the Cloudflare CLI.
 ```
 
 #### Linux
 
-For Linux, you can use the `--net=host` flag to access the host network.
+For Linux, you can use the `--net=host` flag to access the host network. This provides a quick, temporary tunnel (HTTP only). For persistent tunnels, you will need to log in and use the Cloudflare CLI.
 
 ```bash
-# Quick temporary tunnel (HTTP only).
 docker run --rm -it --net=host cloudflare/cloudflared:latest tunnel --url http://localhost:4318
-
-# For persistent tunnels, you will need to login, best to use the Cloudflare CLI.
 ```
 
 ### LocalTunnel

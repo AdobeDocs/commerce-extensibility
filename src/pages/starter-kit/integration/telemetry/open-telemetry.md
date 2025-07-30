@@ -4,9 +4,7 @@ description: A curated collection of the most important OpenTelemetry concepts a
 keywords:
   - Extensibility
   - App Builder
-  - API Mesh
   - Events
-  - REST
   - Starter Kit
   - Tools
 ---
@@ -82,7 +80,7 @@ The OpenTelemetry Collector follows a pipeline model consisting of three key com
 
 ## Supported services and backends
 
-OpenTelemetry is highly versatile and is rapidly becoming the standard for observability across the industry. It is supported by a wide range of cloud providers, monitoring platforms, and open source tools, enabling you to export telemetry data to systems like: AWS X-Ray, Google Cloud Operations, Azure Monitor, Datadog, New Relic, Jaeger, Zipkin, Prometheus, and many others.
+OpenTelemetry is becoming the standard for observability across the industry, because it is supported by many cloud providers, monitoring platforms, and open source tools. This means you can export telemetry data to systems like: AWS X-Ray, Google Cloud Operations, Azure Monitor, Datadog, New Relic, Jaeger, Zipkin, Prometheus, and others.
 
 ## What does _instrumentation_ mean?
 

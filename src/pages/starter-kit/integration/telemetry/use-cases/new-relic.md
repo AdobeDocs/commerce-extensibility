@@ -4,9 +4,7 @@ description: Configure runtime actions to send telemetry signals directly to New
 keywords:
   - Extensibility
   - App Builder
-  - API Mesh
   - Events
-  - REST
   - Starter Kit
   - Tools
 ---

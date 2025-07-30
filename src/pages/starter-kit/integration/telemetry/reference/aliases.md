@@ -4,9 +4,7 @@ description: Comprehensive reference for all telemetry API type aliases in the i
 keywords:
   - Extensibility
   - App Builder
-  - API Mesh
   - Events
-  - REST
   - Starter Kit
   - Tools
 ---
@@ -15,6 +13,7 @@ keywords:
 
 - [DiagnosticsLogLevel](#diagnosticsloglevel)
 - [TelemetryInstrumentationPreset](#telemetryinstrumentationpreset)
+- [types.ts](https://github.com/adobe/commerce-integration-starter-kit/blob/main/packages/aio-lib-telemetry/source/types.ts)
 
 ## DiagnosticsLogLevel
 
@@ -24,7 +23,7 @@ type DiagnosticsLogLevel = Lowercase<keyof typeof DiagLogLevel>;
 
 Available log levels for the OpenTelemetry DiagLogger.
 
-**Defined in:** [types.ts:30](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/types.ts#L30)
+**Defined in:** [types.ts](https://github.com/adobe/commerce-integration-starter-kit/blob/main/packages/aio-lib-telemetry/source/types.ts)
 
 ## TelemetryInstrumentationPreset
 
@@ -39,4 +38,4 @@ Defines the names of available instrumentation presets.
 - `"simple"` - Basic instrumentations for HTTP, GraphQL, Undici, and Winston.
 - `"full"` - All Node.js auto-instrumentations.
 
-**Defined in:** [types.ts:33](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/types.ts#L33)
+**Defined in:** [types.ts](https://github.com/adobe/commerce-integration-starter-kit/blob/main/packages/aio-lib-telemetry/source/types.ts)

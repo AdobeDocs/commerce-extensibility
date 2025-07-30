@@ -4,9 +4,7 @@ description: Learn about the telemetry and observability features in the integra
 keywords:
   - Extensibility
   - App Builder
-  - API Mesh
   - Events
-  - REST
   - Starter Kit
   - Tools
 ---
@@ -25,9 +23,9 @@ The integration starter kit provides built-in support for telemetry and observab
 
 ## Getting started
 
-1. Review the [API reference](./reference/index.md) for available telemetry functions.
-1. See [use cases](./use-cases/) for practical examples, such as Grafana and New Relic instrumentation.
-1. Explore [OpenTelemetry concepts](./open-telemetry.md) for background and best practices.
+- Explore [OpenTelemetry concepts](./open-telemetry.md) for background and best practices.
+- See [use cases](./use-cases/) for practical examples, such as Grafana and New Relic instrumentation.
+- Review the [API reference](./reference/index.md) for available telemetry functions.
 
 ## Why use telemetry?
 

@@ -4,9 +4,7 @@ description: Configure Grafana with App Builder runtime actions for both local d
 keywords:
   - Extensibility
   - App Builder
-  - API Mesh
   - Events
-  - REST
   - Starter Kit
   - Tools
 ---
@@ -24,8 +22,7 @@ This guide showcases how to leverage tunneling to forward telemetry data from a 
 In addition to the module [prerequisites](../module.md#prerequisites), you need:
 
 - Docker and Docker Compose
-- A [tunneling](../tunnel-forwarding.md) tool for App Builder
-  - This example uses Cloudflare Tunnel (cloudflared).
+- A [tunneling](../tunnel-forwarding.md) tool for App Builder. This example uses Cloudflare Tunnel (cloudflared).
 
 ## Local development
 
@@ -287,16 +284,16 @@ environment:
 Go to **Configuration** > **Data Sources**, and click on **Add data source** for each of the components:
 
 - **Tempo (Traces)**:
-   1. Select **Tempo**
-   1. Set URL to `http://tempo:3200`
+   1. Select **Tempo**.
+   1. Set URL to `http://tempo:3200`.
 
 - **Prometheus (Metrics)**:
-   1. Select **Prometheus**
-   1. Set URL to `http://prometheus:9090`
+   1. Select **Prometheus**.
+   1. Set URL to `http://prometheus:9090`.
 
 - **Loki (Logs)**:
-   1. Select **Loki**
-   1. Set URL to `http://loki:3100`
+   1. Select **Loki**.
+   1. Set URL to `http://loki:3100`.
 
 ![Grafana Data Source](../../../../_images/telemetry/grafana/data-sources.png)
 
@@ -326,7 +323,7 @@ Go to **Drilldown** and select the **Logs** tab from the left sidebar. Make sure
 
 For deployed App Builder actions, the setup is identical to [local development](#local-development), but with one key difference: **tunneling**. You will use the same Docker stack locally, but expose the OpenTelemetry Collector through a tunnel so your deployed actions can reach it.
 
-<InlineAlert variant="warning" slots="text" />
+<InlineAlert variant="warning" slots="text, text1" />
 
 **Hybrid Development Solution**: Describes a hybrid "dev-in-prod" approach where you test deployed App Builder actions while keeping your observability tools local for easier debugging and development.
 
@@ -342,19 +339,19 @@ Follow the complete [tunneling setup guide](../tunnel-forwarding.md) for detaile
 
 1. **Docker Compose integration** (optional): To manage the tunnel within your existing Grafana stack, add this service to your `docker-compose.yaml`:
 
-```yaml
-  # Add this service to your existing docker-compose.yaml
-  cloudflared:
-    image: cloudflare/cloudflared:latest
-    container_name: cloudflared
-    restart: unless-stopped
-    networks: [telemetry]
-    depends_on: [otel-collector]
-    command:
-      - "tunnel"
-      - "--url"
-      - "http://otel-collector:4318"
-```
+  ```yaml
+    # Add this service to your existing docker-compose.yaml
+    cloudflared:
+      image: cloudflare/cloudflared:latest
+      container_name: cloudflared
+      restart: unless-stopped
+      networks: [telemetry]
+      depends_on: [otel-collector]
+      command:
+        - "tunnel"
+        - "--url"
+        - "http://otel-collector:4318"
+  ```
 
 Then check the container logs for your tunnel URL: `docker logs cloudflared`
 

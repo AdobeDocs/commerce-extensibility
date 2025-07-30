@@ -4,9 +4,7 @@ description: Learn how to integrate observability into App Builder actions using
 keywords:
   - Extensibility
   - App Builder
-  - API Mesh
   - Events
-  - REST
   - Starter Kit
   - Tools
 ---
@@ -22,10 +20,6 @@ The telemetry module serves as a wrapper around the [OpenTelemetry SDK](https://
 ## Introduction
 
 This guide assumes you have a basic understanding of OpenTelemetry and are familiar with its core concepts. If you are not familiar with OpenTelemetry yet, refer to the [OpenTelemetry general overview](open-telemetry.md), which introduces the fundamental concepts and provides the context you need to begin understanding how OpenTelemetry (and this module) works.
-
-<InlineAlert variant="info" slots="text" />
-
-To understand how this library works, and the reasoning behind some of its design decisions, you must first understand the core concepts of OpenTelemetry. If you are new to the framework, we highly recommend reading the overview before continuing.
 
 ## Installation and setup
 
@@ -47,7 +41,7 @@ Throughout this guide, we will distinguish between `development` and `production
 
 <InlineAlert variant="warning" slots="text" />
 
-The telemetry package is not yet published to the NPM Registry. After running `npm run build` in it, you can either copy the minified files from `dist/` and import them directly in your project, or install it as a [workspace package](https://docs.npmjs.com/cli/v11/using-npm/workspaces) in a monorepo using `npm install` as you would with any other package.
+The telemetry package is not yet published to the NPM Registry. After running `npm run build`, you can either copy the minified files from `dist/` and import them directly in your project, or install it as a [workspace package](https://docs.npmjs.com/cli/v11/using-npm/workspaces) in a monorepo using `npm install` as you would with any other package.
 
 ```bash
 npm install @adobe/aio-lib-telemetry
@@ -55,11 +49,9 @@ npm install @adobe/aio-lib-telemetry
 
 ## Configuration
 
-This library uses the [Open Telemetry Node SDK](https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-sdk-node).
-
 <InlineAlert variant="info" slots="text" />
 
-The Open Telemetry Node SDK remains experimental and under active development. Despite this status, it has proven reliable and complete for our production use cases. Across our integration and testing in App Builder actions, we have not observed any major gaps or operational issues affecting standard observability workflows.
+This library uses the [Open Telemetry Node SDK](https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-sdk-node). The Open Telemetry Node SDK remains experimental and under active development. Despite this status, it has proven reliable and complete for our production use cases. Across our integration and testing in App Builder actions, we have not observed any major gaps or operational issues affecting standard observability workflows.
 
 The library is designed to configure OpenTelemetry on a **per-action basis**. You will not need to write your configuration multiple times, but you can if you need different telemetry configurations for specific actions.
 
@@ -74,7 +66,7 @@ There are two ways to configure Open Telemetry in Node.js:
 
 <InlineAlert variant="warning" slots="text" />
 
-This method is currently not supported. When searching for OpenTelemetry usage examples, you will find numerous tutorials demonstrating how to configure the SDK using environment variables. These variables are automatically processed by the SDK to configure its behavior. However, these variables need to be present in `process.env`, and due to how App Builder handles environment variables, which are fed through `params`.
+When searching for OpenTelemetry usage examples, you will find numerous tutorials demonstrating how to configure the SDK using environment variables. These variables are automatically processed by the SDK to configure its behavior. However, these variables need to be present in `process.env`, and due to how App Builder handles environment variables, which are fed through `params` this configuration method is currently not supported.
 
 #### Node SDK configuration
 

@@ -4,9 +4,7 @@ description: Comprehensive reference for all telemetry API functions in the inte
 keywords:
   - Extensibility
   - App Builder
-  - API Mesh
   - Events
-  - REST
   - Starter Kit
   - Tools
 ---
@@ -32,11 +30,11 @@ keywords:
 
 ## addEventToActiveSpan
 
+Adds an event to the given span.
+
 ```ts
 function addEventToActiveSpan(event: string, attributes?: Attributes): void;
 ```
-
-Adds an event to the given span.
 
 **Parameters:**
 
@@ -55,15 +53,15 @@ Adds an event to the given span.
 addEventToActiveSpan("my-event", { foo: "bar" });
 ```
 
-**Defined in:** [api/global.ts:66](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/api/global.ts#L66)
+**Defined in:** [api/global.ts](https://github.com/adobe/commerce-integration-starter-kit/blob/main/packages/aio-lib-telemetry/source/api/global.ts)
 
 ## defineMetrics
+
+Helper to define a record of metrics.
 
 ```ts
 function defineMetrics<T>(createMetrics: (meter: Meter) => T): T;
 ```
-
-Helper to define a record of metrics.
 
 **Type Parameters:**
 
@@ -75,7 +73,7 @@ Helper to define a record of metrics.
 
 | Parameter       | Type                      | Description                                                               |
 | --------------- | ------------------------- | ------------------------------------------------------------------------- |
-| `createMetrics` | (`meter`: `Meter`) => `T` | A function that receives a meter which can be used to create the metrics. |
+| `createMetrics` | (`meter`: `Meter`) => `T` | A function which receives a meter that can be used to create the metrics. |
 
 **Returns:**
 
@@ -93,9 +91,11 @@ const metrics = defineMetrics((meter) => {
 
 **See:** https://opentelemetry.io/docs/concepts/signals/metrics/
 
-**Defined in:** [core/config.ts:44](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/core/config.ts#L44)
+**Defined in:** [core/config.ts](https://github.com/adobe/commerce-integration-starter-kit/blob/main/packages/aio-lib-telemetry/source/core/config.ts)
 
 ## defineTelemetryConfig
+
+Helper to define the telemetry configuration for an entrypoint.
 
 ```ts
 function defineTelemetryConfig(
@@ -110,8 +110,6 @@ function defineTelemetryConfig(
   ) => TelemetryConfig;
 };
 ```
-
-Helper to define the telemetry configuration for an entrypoint.
 
 **Parameters:**
 
@@ -130,9 +128,11 @@ Helper to define the telemetry configuration for an entrypoint.
 }
 ```
 
-**Defined in:** [core/config.ts:22](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/core/config.ts#L22)
+**Defined in:** [core/config.ts](https://github.com/adobe/commerce-integration-starter-kit/blob/main/packages/aio-lib-telemetry/source/core/config.ts)
 
 ## deserializeContextFromCarrier
+
+Deserializes the context from a carrier and augments the given base context with it.
 
 ```ts
 function deserializeContextFromCarrier<Carrier>(
@@ -140,8 +140,6 @@ function deserializeContextFromCarrier<Carrier>(
   baseCtx: Context,
 ): Context;
 ```
-
-Deserializes the context from a carrier and augments the given base context with it.
 
 **Type Parameters:**
 
@@ -168,15 +166,15 @@ const ctx = deserializeContextFromCarrier(carrier);
 // ctx now contains the context data from the carrier
 ```
 
-**Defined in:** [api/propagation.ts:55](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/api/propagation.ts#L55)
+**Defined in:** [api/propagation.ts](https://github.com/adobe/commerce-integration-starter-kit/blob/main/packages/aio-lib-telemetry/source/api/propagation.ts)
 
 ## getActiveSpan
+
+Gets the active span from the given context.
 
 ```ts
 function getActiveSpan(ctx: Context): Span;
 ```
-
-Gets the active span from the given context.
 
 **Parameters:**
 
@@ -197,9 +195,11 @@ const span = getActiveSpan();
 span.addEvent("my-event", { foo: "bar" });
 ```
 
-**Defined in:** [api/global.ts:26](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/api/global.ts#L26)
+**Defined in:** [api/global.ts](https://github.com/adobe/commerce-integration-starter-kit/blob/main/packages/aio-lib-telemetry/source/api/global.ts)
 
 ## getAioRuntimeAttributes
+
+Infers some useful attributes for the current action from the Adobe I/O Runtime and returns them as a record of key-value pairs.
 
 ```ts
 function getAioRuntimeAttributes(): {
@@ -215,8 +215,6 @@ function getAioRuntimeAttributes(): {
   service.version: string;
 };
 ```
-
-Infers some useful attributes for the current action from the Adobe I/O Runtime and returns them as a record of key-value pairs.
 
 **Returns:**
 
@@ -242,15 +240,15 @@ const attributes = getAioRuntimeAttributes();
 // attributes = { action.namespace: "my-namespace", action.name: "my-action", ... }
 ```
 
-**Defined in:** [api/attributes.ts:26](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/api/attributes.ts#L26)
+**Defined in:** [api/attributes.ts](https://github.com/adobe/commerce-integration-starter-kit/blob/main/packages/aio-lib-telemetry/source/api/attributes.ts)
 
 ## getAioRuntimeResource
+
+Creates a [resource](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk-node.resources.Resource.html) from the attributes inferred from the Adobe I/O Runtime and returns it as an OpenTelemetry Resource object.
 
 ```ts
 function getAioRuntimeResource(): Resource;
 ```
-
-Creates a [resource](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk-node.resources.Resource.html) from the attributes inferred from the Adobe I/O Runtime and returns it as an OpenTelemetry Resource object.
 
 **Returns:**
 
@@ -265,17 +263,17 @@ const resource = getAioRuntimeResource();
 
 **See:** https://opentelemetry.io/docs/languages/js/resources/
 
-**Defined in:** [api/attributes.ts:41](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/api/attributes.ts#L41)
+**Defined in:** [api/attributes.ts](https://github.com/adobe/commerce-integration-starter-kit/blob/main/packages/aio-lib-telemetry/source/api/attributes.ts)
 
 ## getAioRuntimeResourceWithAttributes
+
+Creates a [resource](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk-node.resources.Resource.html) that combines the attributes inferred from the Adobe I/O Runtime with the provided attributes.
 
 ```ts
 function getAioRuntimeResourceWithAttributes(
   attributes: Record<string, string>,
 ): Resource;
 ```
-
-Creates a [resource](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk-node.resources.Resource.html) that combines the attributes inferred from the Adobe I/O Runtime with the provided attributes.
 
 **Parameters:**
 
@@ -297,15 +295,15 @@ const resource = getAioRuntimeResourceWithAttributes({ foo: "bar" });
 
 **See:** https://opentelemetry.io/docs/languages/js/resources/
 
-**Defined in:** [api/attributes.ts:58](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/api/attributes.ts#L58)
+**Defined in:** [api/attributes.ts](https://github.com/adobe/commerce-integration-starter-kit/blob/main/packages/aio-lib-telemetry/source/api/attributes.ts)
 
 ## getGlobalTelemetryApi
+
+Gets the global telemetry API.
 
 ```ts
 function getGlobalTelemetryApi(): TelemetryApi;
 ```
-
-Gets the global telemetry API.
 
 **Returns:**
 
@@ -324,29 +322,29 @@ function someNonAutoInstrumentedFunction() {
 }
 ```
 
-**Defined in:** [core/telemetry-api.ts:32](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/core/telemetry-api.ts#L32)
+**Defined in:** [core/telemetry-api.ts](https://github.com/adobe/commerce-integration-starter-kit/blob/main/packages/aio-lib-telemetry/source/core/telemetry-api.ts)
 
 ## getInstrumentationHelpers
+
+Access helpers for the current instrumented operation.
 
 ```ts
 function getInstrumentationHelpers(): InstrumentationContext;
 ```
 
-Access helpers for the current instrumented operation.
-
 **Returns:**
 
 [`InstrumentationContext`](./interfaces.md#instrumentationcontext)
 
-**Defined in:** [core/instrumentation.ts:61](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/core/instrumentation.ts#L61)
+**Defined in:** [core/instrumentation.ts](https://github.com/adobe/commerce-integration-starter-kit/blob/main/packages/aio-lib-telemetry/source/core/instrumentation.ts)
 
 ## getLogger
+
+Get a logger instance.
 
 ```ts
 function getLogger(name: string, config?: AioLoggerConfig): AioLogger;
 ```
-
-Get a logger instance.
 
 **Parameters:**
 
@@ -366,9 +364,11 @@ const logger = getLogger("my-logger", { level: "debug" });
 logger.debug("Hello, world!");
 ```
 
-**Defined in:** [core/logging.ts:81](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/core/logging.ts#L81)
+**Defined in:** [core/logging.ts](https://github.com/adobe/commerce-integration-starter-kit/blob/main/packages/aio-lib-telemetry/source/core/logging.ts)
 
 ## getPresetInstrumentations
+
+Get the instrumentations for a given preset.
 
 ```ts
 function getPresetInstrumentations(
@@ -382,8 +382,6 @@ function getPresetInstrumentations(
     )[]
   | Instrumentation<InstrumentationConfig>[];
 ```
-
-Get the instrumentations for a given preset.
 
 **Parameters:**
 
@@ -404,10 +402,10 @@ The instrumentations for the given preset:
 
 - `full`: All the Node.js [auto-instrumentations](https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-node)
 - `simple`: Instrumentations for:
-  [Http](https://www.npmjs.com/package/@opentelemetry/instrumentation-http),
-  [GraphQL](https://www.npmjs.com/package/@opentelemetry/instrumentation-graphql),
-  [Undici](https://www.npmjs.com/package/@opentelemetry/instrumentation-undici), and
-  [Winston](https://www.npmjs.com/package/@opentelemetry/instrumentation-winston)
+  - [Http](https://www.npmjs.com/package/@opentelemetry/instrumentation-http)
+  - [GraphQL](https://www.npmjs.com/package/@opentelemetry/instrumentation-graphql)
+  - [Undici](https://www.npmjs.com/package/@opentelemetry/instrumentation-undici)
+  - [Winston](https://www.npmjs.com/package/@opentelemetry/instrumentation-winston)
 
 **Example:**
 
@@ -416,9 +414,11 @@ const instrumentations = getPresetInstrumentations("simple");
 // instrumentations = [HttpInstrumentation, GraphQLInstrumentation, UndiciInstrumentation, WinstonInstrumentation]
 ```
 
-**Defined in:** [api/presets.ts:57](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/api/presets.ts#L57)
+**Defined in:** [api/presets.ts](https://github.com/adobe/commerce-integration-starter-kit/blob/main/packages/aio-lib-telemetry/source/api/presets.ts)
 
 ## instrument
+
+Instruments a function.
 
 ```ts
 function instrument<T>(
@@ -426,8 +426,6 @@ function instrument<T>(
   config: InstrumentationConfig<T>,
 ): (...args: Parameters<T>) => ReturnType<T>;
 ```
-
-Instruments a function.
 
 **Type Parameters:**
 
@@ -464,9 +462,11 @@ const instrumentedFn = instrument(someFunction, {
 });
 ```
 
-**Defined in:** [core/instrumentation.ts:91](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/core/instrumentation.ts#L91)
+**Defined in:** [core/instrumentation.ts](https://github.com/adobe/commerce-integration-starter-kit/blob/main/packages/aio-lib-telemetry/source/core/instrumentation.ts)
 
 ## instrumentEntrypoint
+
+Instruments the entrypoint of a runtime action. Only use with the `main` function of a runtime action.
 
 ```ts
 function instrumentEntrypoint<T>(
@@ -474,8 +474,6 @@ function instrumentEntrypoint<T>(
   config: EntrypointInstrumentationConfig<T>,
 ): (params: RecursiveStringRecord) => Promise<Awaited<ReturnType<T>>>;
 ```
-
-Instruments the entrypoint of a runtime action. Only use with the `main` function of a runtime action.
 
 **Type Parameters:**
 
@@ -509,9 +507,11 @@ const instrumentedEntrypoint = instrumentEntrypoint(main, {
 });
 ```
 
-**Defined in:** [core/instrumentation.ts:249](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/core/instrumentation.ts#L249)
+**Defined in:** [core/instrumentation.ts](https://github.com/adobe/commerce-integration-starter-kit/blob/main/packages/aio-lib-telemetry/source/core/instrumentation.ts)
 
 ## serializeContextIntoCarrier
+
+Serializes the current context into a carrier.
 
 ```ts
 function serializeContextIntoCarrier<Carrier>(
@@ -519,8 +519,6 @@ function serializeContextIntoCarrier<Carrier>(
   ctx?: Context,
 ): Carrier;
 ```
-
-Serializes the current context into a carrier.
 
 **Type Parameters:**
 
@@ -553,15 +551,15 @@ const carrier = serializeContextIntoCarrier(myCarrier);
 // carrier = { more: 'data', ...contextData }
 ```
 
-**Defined in:** [api/propagation.ts:34](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/api/propagation.ts#L34)
+**Defined in:** [api/propagation.ts](https://github.com/adobe/commerce-integration-starter-kit/blob/main/packages/aio-lib-telemetry/source/api/propagation.ts)
 
 ## tryGetActiveSpan
+
+Tries to get the active span from the given context.
 
 ```ts
 function tryGetActiveSpan(ctx: Context): null | Span;
 ```
-
-Tries to get the active span from the given context.
 
 **Parameters:**
 
@@ -582,4 +580,4 @@ if (span) {
 }
 ```
 
-**Defined in:** [api/global.ts:47](https://github.com/adobe/commerce-integration-starter-kit/blob/6d4d9f7c629d2abc0e81fce4567de926c2bddb60/packages/aio-lib-telemetry/source/api/global.ts#L47)
+**Defined in:** [api/global.ts](https://github.com/adobe/commerce-integration-starter-kit/blob/main/packages/aio-lib-telemetry/source/api/global.ts)

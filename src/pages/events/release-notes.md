@@ -20,7 +20,7 @@ July 30, 2025
 
 ### Enhancements
 
-* Updated logic for the send test event button to support multiple event providers. <!-- CEXT-4651 -->
+* Updated logic for the **Send Test Event** button to support multiple event providers. <!-- CEXT-4651 -->
 
 * Added logging improvements. <!-- CEXT-4803 -->
 

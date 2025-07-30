@@ -46,6 +46,7 @@ The following requirements must be met for your app to be accepted. If your app 
   - **Environment setup**: Provide a `.env.dist` file with all required environment variables, clearly labeled with guidance.
   - **PaaS support**: Documentation must include installation steps for PaaS merchants. This means if you are submitting an app for Adobe Commerce as a Cloud Service (SaaS), you also need to support Adobe Commerce on cloud infrastructure (PaaS) and Adobe Commerce on-premises (on-prem).
   - **Action scoping**: All runtime actions must be scoped and documented, if they are exposed as webhooks.
+  - **API requirements**: List the required services for your application following [this template](https://github.com/adobe/commerce-checkout-starter-kit?tab=readme-ov-file#initialize-app-builder-project).
 
 - Security awareness
   - **Screenshot security**: Ensure no screenshots contain access tokens, secrets, or API keys.

@@ -12,6 +12,22 @@ These release notes describe the latest version of Adobe I/O Events for Adobe Co
 
 See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io-events-for-adobe-commerce) for upgrade instructions.
 
+## Version 1.13.0
+
+### Release date
+
+July 30, 2025
+
+### Enhancements
+
+* Updated logic for the **Send Test Event** button to support multiple event providers. <!-- CEXT-4651 -->
+
+* Added logging improvements. <!-- CEXT-4803 -->
+
+### Bug fixes
+
+* Fixed validation of supported plugin-type events with empty parent code. <!-- CEXT-4911 -->
+
 ## Version 1.12.1
 
 ### Release date

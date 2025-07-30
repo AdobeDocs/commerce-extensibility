@@ -93,7 +93,7 @@ import {
 | [EntrypointInstrumentationConfig](./interfaces.md#entrypointinstrumentationconfig)  | The configuration for entry point instrumentation.                                 |
 | [InstrumentationConfig](./interfaces.md#instrumentationconfig)            | The configuration for instrumentation.                                            |
 | [InstrumentationContext](./interfaces.md#instrumentationcontext)           | The context for the current operation.                                            |
-| [TelemetryApi](./interfaces.md#telemetryapi)                     | Defines the global telemetry API. These items should be set once per-application. |
+| [TelemetryApi](./interfaces.md#telemetryapi)                     | Defines the global telemetry API. These items should be set once per application. |
 | [TelemetryConfig](./interfaces.md#telemetryconfig)                  | The configuration options for the telemetry module.                               |
 | [TelemetryDiagnosticsConfig](./interfaces.md#telemetrydiagnosticsconfig)       | The configuration for the telemetry diagnostics.                                  |
 | [TelemetryPropagationConfig](./interfaces.md#telemetrypropagationconfig)       | Configuration related to context propagation (for distributed tracing).           |
@@ -102,7 +102,7 @@ import {
 
 | Type Alias                      | Description                                             |
 | ------------------------------- | ------------------------------------------------------- |
-| [DiagnosticsLogLevel](./aliases.md#diagnosticsloglevel)             | Available log levels for the OpenTelemetry DiagLogger.  |
+| [DiagnosticsLogLevel](./aliases.md#diagnosticsloglevel)             | Available log levels for the OpenTelemetry `DiagLogger`.  |
 | [TelemetryInstrumentationPreset](./aliases.md#telemetryinstrumentationpreset)  | Defines the names of available instrumentation presets. |
 
 ## Functions
@@ -119,8 +119,8 @@ import {
 | [getAioRuntimeResourceWithAttributes](./functions.md#getaioruntimeresourcewithattributes)     | Creates a [resource](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk-node.resources.Resource.html) that combines the attributes inferred from the Adobe I/O Runtime with the provided attributes.              |
 | [getGlobalTelemetryApi](./functions.md#getglobaltelemetryapi)                   | Gets the global telemetry API.                                                                                                                                                                                                                 |
 | [getInstrumentationHelpers](./functions.md#getinstrumentationhelpers)               | Access helpers for the current instrumented operation.                                                                                                                                                                                         |
-| [getLogger](./functions.md#getlogger)                               | Get a logger instance.                                                                                                                                                                                                                         |
-| [getPresetInstrumentations](./functions.md#getpresetinstrumentations)               | Get the instrumentations for a given preset.                                                                                                                                                                                                   |
+| [getLogger](./functions.md#getlogger)                               | Gets a logger instance.                                                                                                                                                                                                                         |
+| [getPresetInstrumentations](./functions.md#getpresetinstrumentations)               | Gets the instrumentations for a given preset.                                                                                                                                                                                                   |
 | [instrument](./functions.md#instrument)                              | Instruments a function.                                                                                                                                                                                                                        |
 | [instrumentEntrypoint](./functions.md#instrumententrypoint)                    | Instruments the entrypoint of a runtime action. Needs to be used ONLY with the `main` function of a runtime action.                                                                                                                            |
 | [serializeContextIntoCarrier](./functions.md#serializecontextintocarrier)             | Serializes the current context into a carrier.                                                                                                                                                                                                 |

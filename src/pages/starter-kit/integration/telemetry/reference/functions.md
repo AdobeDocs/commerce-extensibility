@@ -111,7 +111,7 @@ function defineTelemetryConfig(
 };
 ```
 
-Helper to define the telemetry config for an entrypoint.
+Helper to define the telemetry configuration for an entrypoint.
 
 **Parameters:**
 
@@ -188,7 +188,7 @@ Gets the active span from the given context.
 
 `Span`
 
-Returns an error, if no span is found.
+Returns an error if no span is found.
 
 **Example:**
 

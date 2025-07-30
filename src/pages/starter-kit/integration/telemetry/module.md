@@ -1,5 +1,5 @@
 ---
-title: Telemetry Module
+title: Telemetry module
 description: Learn how to integrate observability into App Builder actions using the Adobe Commerce Integration Starter Kit telemetry module.
 keywords:
   - Extensibility
@@ -17,11 +17,11 @@ This module contains a set of utilities for integrating observability into App B
 
 <InlineAlert variant="info" slots="text" />
 
-This module serves as a wrapper around the [OpenTelemetry SDK](https://opentelemetry.io/docs/languages/js/) for Node.js. It is not intended to be a full-fledged observability solution, but rather a tool to help you get started with OpenTelemetry and collect telemetry data in the context of Adobe App Builder runtime actions. It does not cover all the features of OpenTelemetry, but rather provides a simple and easy to use interface to get you started. For advanced use cases you will need to use the configuration options provided by this module to directly configure the underlying OpenTelemetry SDK, or use the OpenTelemetry SDK directly.
+The telemetry module serves as a wrapper around the [OpenTelemetry SDK](https://opentelemetry.io/docs/languages/js/) for Node.js. It is not intended to be a full-fledged observability solution, but rather a tool to help you get started with OpenTelemetry and collect telemetry data in the context of Adobe App Builder runtime actions. It does not cover all the features of OpenTelemetry. Instead, it provides a simple and easy to use interface to get you started. For advanced use cases, you will need to use the configuration options provided by this module to directly configure the underlying OpenTelemetry SDK, or use the OpenTelemetry SDK directly.
 
 ## Introduction
 
-This guide assumes you have a basic understanding of OpenTelemetry and are familiar with its core concepts, as we will be referencing them throughout this document without detailed explanation. If you are not familiar with OpenTelemetry yet, refer to the [OpenTelemetry general overview](open-telemetry.md), which introduces the fundamental concepts and provides the context you need to begin understanding how OpenTelemetry (and this module) works.
+This guide assumes you have a basic understanding of OpenTelemetry and are familiar with its core concepts. If you are not familiar with OpenTelemetry yet, refer to the [OpenTelemetry general overview](open-telemetry.md), which introduces the fundamental concepts and provides the context you need to begin understanding how OpenTelemetry (and this module) works.
 
 <InlineAlert variant="info" slots="text" />
 
@@ -29,7 +29,7 @@ To understand how this library works, and the reasoning behind some of its desig
 
 ## Installation and setup
 
-This library is written in TypeScript and distributed as a JavaScript bundle compatible with both CommonJS (CJS) and ECMAScript Modules (ESM) formats.
+The `aio-lib-telemetry` library is written in TypeScript and distributed as a JavaScript bundle compatible with both CommonJS (CJS) and ECMAScript Modules (ESM) formats.
 
 ### Prerequisites
 
@@ -47,7 +47,7 @@ Throughout this guide, we will distinguish between `development` and `production
 
 <InlineAlert variant="warning" slots="text" />
 
-This package is not yet published to the NPM Registry. After running `npm run build` in it, you can either: Copy the minified files from `dist/` and import them directly in your project, or install it as a [workspace package](https://docs.npmjs.com/cli/v11/using-npm/workspaces) in a monorepo using `npm install` as you would with any other package.
+The telemetry package is not yet published to the NPM Registry. After running `npm run build` in it, you can either copy the minified files from `dist/` and import them directly in your project, or install it as a [workspace package](https://docs.npmjs.com/cli/v11/using-npm/workspaces) in a monorepo using `npm install` as you would with any other package.
 
 ```bash
 npm install @adobe/aio-lib-telemetry
@@ -65,9 +65,9 @@ The library is designed to configure OpenTelemetry on a **per-action basis**. Yo
 
 ### OpenTelemetry configuration
 
-There are 2 different ways to configure Open Telemetry in Node.js:
+There are two ways to configure Open Telemetry in Node.js:
 
-- [Using environment variables](https://opentelemetry.io/docs/languages/sdk-configuration/) is currently not supported.
+- [With environment variables](https://opentelemetry.io/docs/languages/sdk-configuration/) (not currently supported).
 - At runtime, through the [Node SDK configuration](https://open-telemetry.github.io/opentelemetry-js/modules/_opentelemetry_sdk-node.html#configuration) object
 
 #### Environment variables

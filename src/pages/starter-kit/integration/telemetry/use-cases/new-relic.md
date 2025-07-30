@@ -23,7 +23,7 @@ In addition to the module [prerequisites](../module.md#prerequisites), you need:
 
 ## Setup
 
-In order for Adobe Commerce runtime actions to send telemetry signals to New Relic, you must configure the telemetry exporters to send data to the Open Telemetry Protocol (OTLP) ingestion endpoint provided by the platform.
+For Adobe Commerce runtime actions to send telemetry signals to New Relic, you must configure the telemetry exporters to send data to the Open Telemetry Protocol (OTLP) ingestion endpoint provided by the platform.
 
 <InlineAlert variant="info" slots="text" />
 
@@ -132,7 +132,7 @@ export const telemetryConfig = defineTelemetryConfig((params, isDev) => {
 });
 ```
 
-Exporting directly to New Relic will seamlessly work in both development and production environments (no configuration changes required). Follow the [library documentation](../module.md#using-the-telemetry-module) to instrument your runtime actions.
+Exporting directly to New Relic works in both development and production environments (no configuration changes required). Follow the [library documentation](../module.md#using-the-telemetry-module) to instrument your runtime actions.
 
 ## Visualize the data
 

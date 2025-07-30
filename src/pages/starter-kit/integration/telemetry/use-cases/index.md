@@ -32,7 +32,7 @@ The preceding table uses the following key terms:
 
 - `Local Development`: Runtime actions executed locally using `aio app dev`
 - `In Cloud`: Runtime actions deployed to the cloud through `aio app deploy`
-  - `Through Tunneling` indicates that the guide demonstrates forwarding telemetry from deployed actions to a local observability stack. This is one possible approach, you are not required to use tunneling, which is not recommended in production. For example, with hosted solutions like Grafana, you can configure direct data transmission instead.
+  - `Through Tunneling` indicates that the guide demonstrates forwarding telemetry from deployed actions to a local observability stack. This is one possible approach. You are not required to use tunneling, which is not recommended in production. For example, with hosted solutions like Grafana, you can configure direct data transmission instead.
 
 ## Supporting guides
 

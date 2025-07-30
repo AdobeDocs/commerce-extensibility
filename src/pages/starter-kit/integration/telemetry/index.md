@@ -19,7 +19,7 @@ The integration starter kit provides built-in support for telemetry and observab
 
 - **Automatic instrumentation** for serverless actions
 - **Custom metrics and traces** for business and technical events
-- **Pluggable exporters** such as Grafana, New Relic
+- **Pluggable exporters** such as Grafana and New Relic
 - **Context propagation** across distributed systems
 - **Developer-friendly API** for adding custom telemetry
 

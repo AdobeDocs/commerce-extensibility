@@ -257,9 +257,9 @@ export const telemetryConfig = defineTelemetryConfig((params, isDev) => {
 
 After running your actions, you can view the collected telemetry data in Grafana:
 
-1. Open [http://localhost:3000](http://localhost:3000) in your browser
-1. Navigate to the data sources and explore your traces, metrics, and logs
-1. Create custom dashboards to visualize your telemetry data
+1. Open `http://localhost:3000` in your browser.
+1. Navigate to the data sources and explore your traces, metrics, and logs.
+1. Create custom dashboards to visualize your telemetry data.
 
 Start the stack:
 
@@ -267,7 +267,7 @@ Start the stack:
 docker-compose up -d
 ```
 
-This will start all the services and you can then access Grafana at http://localhost:3000 to view your telemetry data.
+This will start all the services and you can then access Grafana at `http://localhost:3000` to view your telemetry data.
 
 <InlineAlert variant="info" slots="text" />
 
@@ -338,9 +338,9 @@ Follow the complete [tunneling setup guide](../tunnel-forwarding.md) for detaile
 
 1. **Start your local stack** using the same Docker Compose configuration from the [Local Development](#local-development) section.
 
-2. **Set up your tunnel** by following the [Cloudflare Tunnel section](../tunnel-forwarding.md#cloudflare-tunnel-cloudflared) in the tunneling guide. Target your OpenTelemetry Collector at `localhost:4318` (or `host.docker.internal:4318` for macOS/Windows).
+1. **Set up your tunnel** by following the [Cloudflare Tunnel section](../tunnel-forwarding.md#cloudflare-tunnel-cloudflared) in the tunneling guide. Target your OpenTelemetry Collector at `localhost:4318` (or `host.docker.internal:4318` for macOS/Windows).
 
-3. **Docker Compose integration** (optional): To manage the tunnel within your existing Grafana stack, add this service to your `docker-compose.yaml`:
+1. **Docker Compose integration** (optional): To manage the tunnel within your existing Grafana stack, add this service to your `docker-compose.yaml`:
 
 ```yaml
   # Add this service to your existing docker-compose.yaml

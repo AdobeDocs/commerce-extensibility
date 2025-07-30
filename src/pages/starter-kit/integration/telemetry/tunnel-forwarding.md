@@ -176,7 +176,7 @@ my-action:
 
 For most development scenarios, HTTP tunneling is sufficient and simpler to set up. Consider gRPC only if you are experiencing performance issues or need to test gRPC-specific functionality.
 
-OpenTelemetry supports both HTTP and gRPC protocols for OpenTelemetry Protocol (OTLP). While HTTP works with all tunneling tools, **gRPC requires TCP tunneling support**, which is only available with ngrok. For gRPC tunneling use just the base endpoint without path suffixes:
+OpenTelemetry supports both HTTP and gRPC protocols for OpenTelemetry Protocol (OTLP). While HTTP works with all tunneling tools, **gRPC requires TCP tunneling support**, which is only available with ngrok. For gRPC tunneling, use just the base endpoint without path suffixes:
 
 #### Setting up gRPC tunneling with ngrok
 
@@ -231,7 +231,7 @@ Do **NOT** add `/v1/traces` and other paths to gRPC endpoints.
 | **Firewall/Proxy**   | Better compatibility                       | May have issues                     |
 | **Use Cases**        | Most development scenarios                 | High-performance requirements       |
 
-## Important considerations
+## Best practices
 
 **Security**
 

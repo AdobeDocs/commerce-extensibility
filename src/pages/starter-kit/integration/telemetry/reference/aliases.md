@@ -1,5 +1,5 @@
 ---
-title: Telemetry API Reference Type Aliases
+title: Telemetry API reference type aliases
 description: Comprehensive reference for all telemetry API type aliases in the integration starter kit.
 keywords:
   - Extensibility

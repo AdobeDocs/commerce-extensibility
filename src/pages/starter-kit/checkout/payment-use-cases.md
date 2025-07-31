@@ -16,20 +16,6 @@ For more general use cases, refer to [use-cases](./use-cases.md).
 
 The Adobe Commerce checkout starter kit supports two main integration patterns for payment gateways:
 
-## Checkout session pattern
-
-- A checkout session is established with the payment gateway before starting the client-side payment process.
-- Payment is completed during the client-side process.
-- The order can be placed immediately after payment completion.
-- Payment validation webhooks are optional since the payment is already confirmed.
-
-## Client-side nonce pattern
-
-- The client-side process generates a payment nonce (a secure, one-time-use reference).
-- The actual payment transaction is created server-side using the nonce.
-- A payment validation webhook is typically required to complete the payment before order placement.
-- Orders may start with **Pending** status until payment is confirmed.
-
 ### Key components
 
 The client-side nonce pattern's architecture allows merchants to integrate with virtually any payment gateway.
@@ -40,6 +26,62 @@ This strategy consists of the following components:
 1. **Cart GraphQL Extensions** - `configurable_attributes` field provides payment form configuration.
 1. **Client-Side Gateway Integration** - Lightweight widget using gateway SDKs in EDS checkout drop-in.
 1. **Server-Side Gateway Integration** - App Builder application handling gateway communication.
+
+![oope-payment-components-with-actors](../../_images/starterkit/oope-payment-components-with-actors.png)
+
+### Checkout flow
+
+Payment collection during checkout is the core requirement for any payment gateway integration. While refunds and other operations can be handled directly by merchants through their payment provider, checkout payment processing is essential.
+
+The starter kit supports multiple checkout flow patterns. The following flow represents the standard approach used by Adobe Commerce Payment Services and most payment gateways:
+
+![checkout-flow](../../_images/starterkit/basic-checkout-flow.png)
+
+For alternative checkout flow patterns, see [Checkout session](#checkout-session-pattern) and [Client-side nonce](#client-side-nonce-pattern).
+
+### Post-checkout patterns
+
+Payment gateways often provide user interfaces where merchants can view and manage customer payments.
+
+Using asynchronous communication patterns common in the [integration starter kit](../integration/index.md), invoices and credit memos and their corresponding captures and refunds can be synchronized as detailed in the following image:
+
+Recommended events: `observer.sales_order_invoice_save_after` and `observer.sales_order_creditmemo_save_after`.
+
+![non-blocking-invoice-creation](../../_images/starterkit/non-blocking-invoice-creation.png)
+
+Alternatively, you can use webhooks to make invoice and credit memo creation dependent on successful payment operations.
+
+Recommended webhook events: `plugin.magento.sales.api.invoice_repository.create` and `plugin.magento.sales.api.creditmemo_repository.create`.
+
+![blocking-invoice-creation](../../_images/starterkit/blocking-invoice-creation.png)
+
+Payment gateway captures and refunds synchronized through the Commerce Admin REST API with App Builder runtime actions:
+
+![incoming-captures-and-refunds](../../_images/starterkit/incoming-captures-and-refunds.png)
+
+
+
+### Checkout session pattern
+
+In a minimal checkout flow, a checkout session is created with the payment gateway before starting the client-side payment process. Once payment is completed, the process with the gateway is effectively completed, and the only thing remaining is to find out the result and update the order:
+
+- A checkout session is established with the payment gateway before starting the client-side payment process.
+- Payment is completed during the client-side process.
+- The order can be placed immediately after payment completion.
+- Payment validation webhooks are optional since the payment is already confirmed.
+
+![basic-checkout-flow-annotated](../../_images/starterkit/basic-checkout-flow-annotated.png)
+
+### Client-side nonce pattern
+
+When using a payment method nonce (a secure, single-use reference to payment information), the payment is not completed with the client-side process. Instead, if payment is accepted, the client side is granted a payment nonce that can subsequently be used to create a payment transaction at the gateway.
+
+- The client-side process generates a payment nonce.
+- The actual payment transaction is created server-side using the nonce.
+- A payment validation webhook is typically required to complete the payment before order placement.
+- Orders may start with **Pending** status until payment is confirmed.
+
+![basic-checkout-flow-nonce-annotated](../../_images/starterkit/basic-checkout-flow-with-nonce-annotated.png)
 
 ## Get order details from Adobe Commerce using the masked cart ID
 

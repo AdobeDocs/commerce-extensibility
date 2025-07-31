@@ -59,8 +59,6 @@ Payment gateway captures and refunds synchronized through the Commerce Admin RES
 
 ![incoming-captures-and-refunds](../../_images/starterkit/incoming-captures-and-refunds.png)
 
-
-
 ### Checkout session pattern
 
 In a minimal checkout flow, a checkout session is created with the payment gateway before starting the client-side payment process. Once payment is completed, the process with the gateway is effectively completed, and the only thing remaining is to find out the result and update the order:

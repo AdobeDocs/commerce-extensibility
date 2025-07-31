@@ -125,7 +125,7 @@ The following requirements must be met for your app to be accepted. If your app 
 - Version management
   - **Direct dependencies**: Check for missing dependencies using `npx npm-check` (`PKG ERR` label).
   - **SDK migration**: Fully migrate Admin UI SDK 1.x extension points to 3.x if applicable.
-  - **Node.js version**: Use an actively supported version of Node.js, including all security updates. Adobe recommends the latest long-term support (LTS) version (currently Node.js 22).
+  - **Node.js version**: Use an actively supported version of Node.js to ensure you get the latest security updates. Adobe recommends the latest [long-term support (LTS) version](https://nodejs.org/en/about/previous-releases).
 
 ## Best practices
 

@@ -12,13 +12,10 @@ This page explores different use cases and scenarios for implementing payment me
 
 For more general use cases, refer to [use-cases](./use-cases.md).
 
-## Integration strategy
+## Integration strategies
 
-The Adobe Commerce checkout starter kit supports two main integration patterns for payment gateways:
-
+The Adobe Commerce checkout starter kit supports several integration patterns with payments gateways based on a few key components that can be combined and adapted as needed.
 ### Key components
-
-The client-side nonce pattern's architecture allows merchants to integrate with virtually any payment gateway.
 
 This strategy consists of the following components:
 
@@ -33,7 +30,7 @@ This strategy consists of the following components:
 
 Payment collection during checkout is the core requirement for any payment gateway integration. While refunds and other operations can be handled directly by merchants through their payment provider, checkout payment processing is essential.
 
-The starter kit supports multiple checkout flow patterns. The following flow represents the standard approach used by Adobe Commerce Payment Services and most payment gateways:
+The starter kit supports multiple checkout flow patterns. The following flow represents the standard approach used by Adobe Commerce Payment Services and many payment gateways:
 
 ![checkout-flow](../../_images/starterkit/basic-checkout-flow.png)
 

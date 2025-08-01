@@ -123,7 +123,9 @@ To install the individual modules, refer to the following topics:
 
 The [Commerce Eventing module](https://developer.adobe.com/commerce/extensibility/events/) is crucial for handling events within Adobe Commerce. The eventing module is installed automatically in Adobe Commerce version `2.4.6` and higher.
 
-This starter kit requires version `1.10.0` or higher of the Commerce Eventing module. To view your installed version, run the following command:
+This starter kit requires the **Commerce Eventing** module version `1.12.1` or higher, which introduces support for multi-event-provider functionality. It allows multiple App Builder extensions to connect to the same Adobe Commerce instance using isolated event providers.
+
+To view your installed version, run the following command:
 
 ```bash
 composer show magento/commerce-eventing

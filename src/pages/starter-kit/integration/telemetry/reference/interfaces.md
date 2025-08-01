@@ -131,7 +131,7 @@ By default, the function is considered successful if it doesn't throw an error.
 
 Whether the instrumented function was successful.
 
-**Inherits from:** 
+**Inherits from:**
 
 [`InstrumentationConfig`](#instrumentationconfig).[`isSuccessful`](#instrumentationconfig)
 

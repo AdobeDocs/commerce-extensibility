@@ -242,7 +242,6 @@ function getAioRuntimeAttributes(): {
 }
 ```
 
-
 #### action.activation_id
 
 ```ts

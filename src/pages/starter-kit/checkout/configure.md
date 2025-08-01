@@ -82,6 +82,40 @@ To configure eventing, follow these steps:
     - Update the `events_of_interest` field with the events that your app requires.
     - Update the `runtime_action` field with the action that will consume the events.
 
+1. To configure multiple Commerce event providers, update your configuration as follows:
+
+    -  In both `events.config.yaml` and `app.config.yaml`, set a unique prefix using your application name (lowercase, alphanumeric, underscores allowed). This prefix helps isolate event providers per extension.
+
+   **Example prefix usage:**
+      - `test_app.observer.checkout_oope.sales_order_creditmemo_save_after`
+      - `testapp.observer.checkout_oope.sales_order_creditmemo_save_after`
+      - `testapp123.observer.checkout_oope.sales_order_creditmemo_save_after`
+
+      **Example:** `events.config.yaml`
+
+     ```yaml
+     label: Commerce events provider
+     subscription:
+       - event:
+           # Set the prefix to your application name (lowercase, alphanumeric, underscores allowed).
+           # This prefix must match the one used in app.config.yaml to ensure uniqueness across providers.
+           name: <your_application_name>.observer.checkout_oope.sales_order_creditmemo_save_after
+           parent: observer.sales_order_creditmemo_save_after
+     ```
+
+      **Example:** `app.config.yaml`
+
+     ```yaml
+     Commerce events consumer:
+       description: Consumes events from Adobe Commerce
+       events_of_interest:
+         - provider_metadata: dx_commerce_events
+           event_codes:
+             # com.adobe.commerce.<your-application-name>.<commerce-event-code>
+             - com.adobe.commerce.<your-application-name>.observer.checkout_oope sales_order_creditmemo_save_after
+       runtime_action: commerce-checkout
+     ```
+
 This process must be completed before deploying the application for event registration.
 
 ### events.config.yaml
@@ -109,6 +143,7 @@ The [`app.config.yaml`](https://github.com/adobe/commerce-checkout-starter-kit/b
         events_of_interest:
           - provider_metadata: dx_commerce_events
             event_codes:
+               #com.adobe.commerce.<your-application-name>.<commerce-event-code>
               - com.adobe.commerce.observer.sales_order_creditmemo_save_after
         runtime_action: commerce-checkout-starter-kit/consume
 ```

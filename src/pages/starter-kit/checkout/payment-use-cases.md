@@ -15,6 +15,7 @@ For more general use cases, refer to [use-cases](./use-cases.md).
 ## Integration strategies
 
 The Adobe Commerce checkout starter kit supports several integration patterns with payments gateways based on a few key components that can be combined and adapted as needed.
+
 ### Key components
 
 This strategy consists of the following components:

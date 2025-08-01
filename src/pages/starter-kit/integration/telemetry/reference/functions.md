@@ -67,7 +67,7 @@ function defineMetrics<T>(createMetrics: (meter: Meter) => T): T;
 
 | Type Parameter                                    |
 | ------------------------------------------------- |
-| `T` _extends_ `Record`\<`string`, `MetricTypes`\> |
+| `T` _extends_ `Record`\<`PropertyKey`, `MetricTypes`\> |
 
 **Parameters:**
 
@@ -100,12 +100,12 @@ Helper to define the telemetry configuration for an entrypoint.
 ```ts
 function defineTelemetryConfig(
   init: (
-    params: RecursiveStringRecord,
+    params: Record<string, unknown>,
     isDevelopment: boolean,
   ) => TelemetryConfig,
 ): {
   initializeTelemetry: (
-    params: RecursiveStringRecord,
+    params: Record<string, unknown>,
     isDevelopment: boolean,
   ) => TelemetryConfig;
 };
@@ -115,18 +115,37 @@ function defineTelemetryConfig(
 
 | Parameter | Type                                                                                                                     | Description                               |
 | --------- | ------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------- |
-| `init`    | (`params`: `RecursiveStringRecord`, `isDevelopment`: `boolean`) => [`TelemetryConfig`](./interfaces.md#telemetryconfig) | The function to initialize the telemetry. |
+| `init`    | (`params`: `Record`\<`string`, `unknown`\>, `isDevelopment`: `boolean`) => [`TelemetryConfig`](../interfaces.md#telemetryconfig) | The function to initialize the telemetry. |
 
 **Returns:**
 
 ```ts
 {
   initializeTelemetry: (
-    params: RecursiveStringRecord,
+    params: Record<string, unknown>,
     isDevelopment: boolean,
   ) => TelemetryConfig;
 }
 ```
+
+**Parameters:**
+
+### `initializeTelemetry()`
+
+```ts
+initializeTelemetry: (
+  params: Record<string, unknown>,
+  isDevelopment: boolean,
+) => (TelemetryConfig = init);
+```
+
+| Parameter | Type                                                                                                                             | Description                               |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
+| `init`    | (`params`: `Record`\<`string`, `unknown`\>, `isDevelopment`: `boolean`) => [`TelemetryConfig`](./interfaces.md#telemetryconfig) | The function to initialize the telemetry. |
+
+**Returns:**
+
+[`TelemetryConfig`](./interfaces.md#telemetryconfig)
 
 **Defined in:** [core/config.ts](https://github.com/adobe/commerce-integration-starter-kit/blob/main/packages/aio-lib-telemetry/source/core/config.ts)
 
@@ -145,7 +164,7 @@ function deserializeContextFromCarrier<Carrier>(
 
 | Type Parameter                                     |
 | -------------------------------------------------- |
-| `Carrier` _extends_ `Record`\<`string`, `string`\> |
+| `Carrier` _extends_ `Record`\<`PropertyKey`, `string`\> |
 
 **Parameters:**
 
@@ -204,15 +223,10 @@ Infers some useful attributes for the current action from the Adobe I/O Runtime 
 ```ts
 function getAioRuntimeAttributes(): {
   action.activation_id: string;
-  action.deadline?: string;
+  action.name: string;
   action.namespace: string;
-  action.package_name: string;
-  action.transaction_id: string;
-  deployment.cloud: string;
-  deployment.environment: string;
-  deployment.region: string;
+  environment: string;
   service.name: string;
-  service.version: string;
 };
 ```
 
@@ -221,16 +235,42 @@ function getAioRuntimeAttributes(): {
 ```ts
 {
   action.activation_id: string;
-  action.deadline?: string;
+  action.name: string;
   action.namespace: string;
-  action.package_name: string;
-  action.transaction_id: string;
-  deployment.cloud: string;
-  deployment.environment: string;
-  deployment.region: string;
+  environment: string;
   service.name: string;
-  service.version: string;
 }
+```
+
+
+#### action.activation_id
+
+```ts
+action.activation_id: string = meta.activationId;
+```
+
+#### action.name
+
+```ts
+action.name: string = meta.actionName;
+```
+
+#### action.namespace
+
+```ts
+action.namespace: string = meta.namespace;
+```
+
+### environment
+
+```ts
+environment: string;
+```
+
+#### service.name
+
+```ts
+service.name: string;
 ```
 
 **Example:**
@@ -374,12 +414,7 @@ Get the instrumentations for a given preset.
 function getPresetInstrumentations(
   preset: TelemetryInstrumentationPreset,
 ):
-  | (
-      | HttpInstrumentation
-      | GraphQLInstrumentation
-      | UndiciInstrumentation
-      | WinstonInstrumentation
-    )[]
+  | (HttpInstrumentation | GraphQLInstrumentation | UndiciInstrumentation)[]
   | Instrumentation<InstrumentationConfig>[];
 ```
 
@@ -391,12 +426,10 @@ function getPresetInstrumentations(
 
 **Returns:**
 
-| (
-| `HttpInstrumentation`
-| `GraphQLInstrumentation`
-| `UndiciInstrumentation`
-| `WinstonInstrumentation`)[]
+```ts
+| (`HttpInstrumentation` \| `GraphQLInstrumentation` \| `UndiciInstrumentation`)[]
 | `Instrumentation`\<`InstrumentationConfig`\>[]
+```
 
 The instrumentations for the given preset:
 
@@ -407,11 +440,15 @@ The instrumentations for the given preset:
   - [Undici](https://www.npmjs.com/package/@opentelemetry/instrumentation-undici)
   - [Winston](https://www.npmjs.com/package/@opentelemetry/instrumentation-winston)
 
+**Throws:**
+
+If the preset is unknown.
+
 **Example:**
 
 ```ts
 const instrumentations = getPresetInstrumentations("simple");
-// instrumentations = [HttpInstrumentation, GraphQLInstrumentation, UndiciInstrumentation, WinstonInstrumentation]
+// instrumentations = [HttpInstrumentation, GraphQLInstrumentation, UndiciInstrumentation]
 ```
 
 **Defined in:** [api/presets.ts](https://github.com/adobe/commerce-integration-starter-kit/blob/main/packages/aio-lib-telemetry/source/api/presets.ts)
@@ -448,6 +485,20 @@ A wrapped function with the same signature as the original function, but with te
 (...args: Parameters<T>): ReturnType<T>;
 ```
 
+### Parameters
+
+| Parameter | Type                |
+| --------- | ------------------- |
+| ...`args` | `Parameters`\<`T`\> |
+
+**Returns**
+
+`ReturnType`\<`T`\>
+
+**Throws:**
+
+If the span name is not provided and the function is not named.
+
 **Example:**
 
 ```ts
@@ -472,14 +523,14 @@ Instruments the entrypoint of a runtime action. Only use with the `main` functio
 function instrumentEntrypoint<T>(
   fn: T,
   config: EntrypointInstrumentationConfig<T>,
-): (params: RecursiveStringRecord) => Promise<Awaited<ReturnType<T>>>;
+): (params: Record<string, unknown>) => ReturnType<T>;
 ```
 
 **Type Parameters:**
 
 | Type Parameter                                             |
 | ---------------------------------------------------------- |
-| `T` _extends_ (`params`: `RecursiveStringRecord`) => `any` |
+| `T` _extends_ (`params`: `Record`\<`string`, `unknown`\>) => `any` |
 
 **Parameters:**
 
@@ -493,8 +544,22 @@ function instrumentEntrypoint<T>(
 A wrapped function with the same signature as the original function, but with telemetry instrumentation.
 
 ```ts
-(params: RecursiveStringRecord): Promise<Awaited<ReturnType<T>>>;
+(params: Record<string, unknown>): ReturnType<T>;
 ```
+
+### Parameters
+
+| Parameter | Type                            |
+| --------- | ------------------------------- |
+| `params`  | `Record`\<`string`, `unknown`\> |
+
+**Returns**
+
+`ReturnType`\<`T`\>
+
+**Throws:**
+
+If the instrumentation or the execution of the entrypoint fails.
 
 **Example:**
 
@@ -524,7 +589,7 @@ function serializeContextIntoCarrier<Carrier>(
 
 | Type Parameter                                     |
 | -------------------------------------------------- |
-| `Carrier` _extends_ `Record`\<`string`, `string`\> |
+| `Carrier` _extends_ `Record`\<`PropertyKey`, `string`\> |
 
 **Parameters:**
 

@@ -72,6 +72,8 @@ To configure eventing, follow these steps:
 
         - The environment variable `AIO_EVENTS_PROVIDERMETADATA_TO_PROVIDER_MAPPING` contains the Commerce event provider ID.
 
+    - Update `<your_application_name>` as a prefix in both `events.config.yaml` and `app.config.yaml` to isolate [event providers](https://developer.adobe.com/commerce/extensibility/events/configure-additional-event-providers/) per application.
+
 1. The script requires the following environment variables, which update the values in **Stores > Configuration > Adobe Services > Adobe I/O Events > Commerce events**:
 
     - `COMMERCE_ADOBE_IO_EVENTS_MERCHANT_ID`: The merchant ID of the Commerce instance.
@@ -109,7 +111,9 @@ The [`app.config.yaml`](https://github.com/adobe/commerce-checkout-starter-kit/b
         events_of_interest:
           - provider_metadata: dx_commerce_events
             event_codes:
-              - com.adobe.commerce.observer.sales_order_creditmemo_save_after
+               # Set the prefix to your application name (lowercase, alphanumeric, underscores allowed).
+               #com.adobe.commerce.<your-application-name>.<commerce-event-code>
+              - com.adobe.commerce.checkout_starter_kit.observer.sales_order_creditmemo_save_after
         runtime_action: commerce-checkout-starter-kit/consume
 ```
 

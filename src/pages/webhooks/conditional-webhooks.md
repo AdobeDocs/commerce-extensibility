@@ -36,7 +36,9 @@ Conditional webhook can have one or more rules. The webhook will be only trigger
 
 *  `Value` - The value to compare against. When you assign the `regex` operator, you must delimit the regular expression value with valid characters, such as forward slashes (/). For example, `/^TV .*/i`, which checks whether the string starts with `TV`, ignoring the case of the letters.
 
-![Conditional webhooks](../_images/webhooks/webhooks-rule.png)
+* &#8203;<Edition name="saas" />
+
+   ![Conditional webhooks](../_images/webhooks/webhooks-rule.png)
 
 ## Example: Calculate tax
 

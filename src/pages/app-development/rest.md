@@ -8,4 +8,4 @@ keywords:
 
 # Extensibility REST Reference
 
-<RedoclyAPIBlock src="./extensibility.json" />
+<RedoclyAPIBlock src="./extensibility.yaml" />

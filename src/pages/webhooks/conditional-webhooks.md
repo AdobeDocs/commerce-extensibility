@@ -12,11 +12,14 @@ You may decide that you want to trigger a webhook only if its payload meets cert
 
 A conditional webhook can significantly reduce the number of API calls, which reduces the waiting time for clients.
 
-Conditional webhook can have one or more rules. The webhook will be only triggered when all of the rule conditions are true. Each rule contains the following:
+Conditional webhook can have one or more rules. The webhook will be only triggered when all of the rule conditions are true. Each rule contains the following attributes:
 
-*  The field to be evaluated. For nested fields, use the dot-separated format, such as `data.order.product.id`.
+*  `field` - The field to be evaluated. For nested fields, use the dot-separated format, such as `data.order.product.id`.
+      
+      - The field attribute used in the `rule` element must reference the actual path in the initial webhook payload, not the `name` value defined in the hook `field` mapping.
+      - Rule field values should directly refer to the `source` paths defined in the hook's field elements, such as `data.product.name` or `context_customer_session.get_customer.get_email`.
 
-*  An operator, which is represented as a comparison statement between the value supplied in the webhook payload and the threshold value.
+*  `operator` - An operator, which is represented as a comparison statement between the value supplied in the webhook payload and the threshold value.
 
    The operator must be one of the following:
 
@@ -31,7 +34,9 @@ Conditional webhook can have one or more rules. The webhook will be only trigger
    `isEmpty` | Checks whether the payload value is empty.
    `notEmpty` | Checks whether the payload value is not empty.
 
-*  The value to compare against. When you assign the `regex` operator, you must delimit the regular expression value with valid characters, such as forward slashes (/). For example, `/^TV .*/i`, which checks whether the string starts with `TV`, ignoring the case of the letters.
+*  `Value` - The value to compare against. When you assign the `regex` operator, you must delimit the regular expression value with valid characters, such as forward slashes (/). For example, `/^TV .*/i`, which checks whether the string starts with `TV`, ignoring the case of the letters.
+
+![Conditional webhooks](../_images/webhooks/webhooks-rule.png)
 
 ## Example: Calculate tax
 
@@ -120,7 +125,7 @@ The following example sends a webhook to a third-party service when the product 
                        <field name="product.sku" source="data.product.sku" />
                    </fields>
                    <rules>
-                       <rule field="product.short_description" operation="isEmpty" />
+                       <rule field="data.product.description" operation="isEmpty" />
                    </rules>
                </hook>
            </batch>
@@ -161,74 +166,8 @@ Active: Yes
 
 Hook Rules
 
-Name: product.short_description
+Name: data.product.description
 Operation: isEmpty
-Active: Yes
-```
-
-## Example: Use of context fields in the rules.
-
-We can also add the context fields to the rule field. Following are few examples
-
-<CodeBlock slots="heading, code" repeat="2" languages="XML, YAML" />
-
-#### webhooks.xml (PaaS)
-
-```xml
-       <method name="observer.checkout_cart_product_add_before" type="before">
-       <hooks>
-           <batch name ="Checkout_Product">
-               <hook name="add_product" url="{env:APP_URL}/checkout-cart-product-add-before" timeout="5000" softTimeout="1000" priority="300" required="true" fallbackErrorMessage="Product cannot be added to cart">
-                   <fields>
-                       <field name="product.name" source="data.product.name" />
-                       <field name="product.category_ids" source="data.product.category_ids" />
-                       <field name="product.sku" source="data.product.sku" />
-                   </fields>
-                   <rules>
-                       <rule field="context_customer_session.get_customer.get_email" operator="equal" value="test@abc.com" />
-                   </rules>
-               </hook>
-           </batch>
-       </hooks>
-   </method>
-```
-
-#### Admin (SaaS)
-
-```yaml
-Hook Settings
-
-Webhook method: observer.checkout_cart_product_add_before
-Webhook type: before
-Batch name: Checkout_Product
-Hook name: add_product
-Hook priority: 300
-URL: <Host>/checkout-cart-product-add-before
-Timeout: 5000
-Soft timeout: 1000
-Fallback Error Message: Product cannot be added to cart
-Required: `true`
-Active: `true`
-
-Hook Fields
-
-Name: product.name
-Source: data.product.name
-Active: Yes
-
-Name: product.category_ids
-Source: data.product.category_ids
-Active: Yes
-
-Name: product.sku
-Source: data.product.sku
-Active: Yes
-
-Hook Rules
-
-Name: context_customer_session.get_customer.get_email
-Operation: equals
-Value: test@abc.com
 Active: Yes
 ```
 

@@ -16,8 +16,8 @@ Conditional webhook can have one or more rules. The webhook will be only trigger
 
 *  `field` - The field to be evaluated. For nested fields, use the dot-separated format, such as `data.order.product.id`.
       
-      - The field attribute used in the `rule` element must reference the actual path in the initial webhook payload, not the `name` value defined in the hook `field` mapping.
-      - Rule field values should directly refer to the `source` paths defined in the hook's field elements, such as `data.product.name` or `context_customer_session.get_customer.get_email`.
+   - The field attribute value used in the hook `rule` refers to the actual path in the initial webhook payload, not the `name` attribute value defined in the hook `field` mapping.
+   - Rule field attribute value should directly refer to the `source` attribute value defined in the hook's field such as `data.product.name` or `context_customer_session.get_customer.get_email` also mentioned in the below snippet.
 
 *  `operator` - An operator, which is represented as a comparison statement between the value supplied in the webhook payload and the threshold value.
 

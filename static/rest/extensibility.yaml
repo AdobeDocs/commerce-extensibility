@@ -1,0 +1,932 @@
+openapi: 3.0.3
+info:
+  title: Out-of-Process Extensions API
+  description: |
+    Comprehensive REST API documentation for Adobe Commerce Out-of-Process Extensions, including:
+    - **Observability Management**: Manage logging and monitoring subscriptions
+    - **Shipping Methods**: Configure external shipping carriers
+    - **Payment Methods**: Manage out-of-process payment integrations
+    - **Tax Management**: Configure external tax calculation services
+    
+    These APIs enable external systems to integrate with Adobe Commerce for extended functionality.
+  version: 1.0.0
+  contact:
+    name: Adobe Commerce
+  license:
+    name: Adobe Proprietary
+servers:
+  - url: https://{commerce_base_url}/rest/{store-view-code}/
+    description: Adobe Commerce REST API Base URL (PaaS)
+    variables:
+      commerce_base_url:
+        default: example.com
+        description: Your Adobe Commerce instance base URL
+  - url: https://{location}.api.commerce.adobe.com/{tenant-id}/
+    description: Adobe Commerce REST API Base URL (SaaS)
+security:
+  - bearerAuth: []
+
+paths:
+  # Observability APIs
+  /V1/oope_observability/subscription:
+    get:
+      summary: Get observability subscriptions
+      description: Retrieve a list of all observability subscriptions
+      tags:
+        - Observability Management
+      responses:
+        '200':
+          description: List of subscriptions retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Subscription'
+                  search_criteria:
+                    $ref: '#/components/schemas/SearchCriteria'
+                  total_count:
+                    type: integer
+                    description: Total number of subscriptions
+              example:
+                items:
+                  - id: 1
+                    type: "logs"
+                    destination: "newrelic"
+                    destination_endpoint: "https://log-api.newrelic.com/log/v1"
+                    destination_api_key: "YOUR_API_KEY"
+                    component: ["webhook", "event"]
+                    is_active: true
+                total_count: 1
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+    post:
+      summary: Create observability subscription
+      description: Create a new observability subscription
+      tags:
+        - Observability Management
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubscriptionRequest'
+            example:
+              subscription:
+                type: "logs"
+                destination: "newrelic"
+                destination_endpoint: "https://log-api.newrelic.com/log/v1"
+                destination_api_key: "YOUR_API_KEY"
+                component: ["webhook", "event"]
+                is_active: true
+      responses:
+        '200':
+          description: Subscription created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+
+    put:
+      summary: Update observability subscription
+      description: Update an existing observability subscription
+      tags:
+        - Observability Management
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubscriptionRequest'
+      responses:
+        '200':
+          description: Subscription updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+
+  /V1/oope_observability/subscription/{subscriptionId}:
+    get:
+      summary: Get observability subscription by ID
+      description: Retrieve a specific observability subscription by its ID
+      tags:
+        - Observability Management
+      parameters:
+        - name: subscriptionId
+          in: path
+          required: true
+          description: Unique identifier of the subscription
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: Subscription found successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      summary: Delete observability subscription
+      description: Delete an observability subscription by its ID
+      tags:
+        - Observability Management
+      parameters:
+        - name: subscriptionId
+          in: path
+          required: true
+          description: Unique identifier of the subscription
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: Subscription deleted successfully
+          content:
+            application/json:
+              schema:
+                type: boolean
+                example: true
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # Shipping Methods APIs
+  /V1/oope_shipping_carrier:
+    get:
+      summary: Get shipping carriers
+      description: Retrieve a list of all out-of-process shipping carriers
+      tags:
+        - Shipping Methods
+      responses:
+        '200':
+          description: List of shipping carriers retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/OutOfProcessCarrier'
+                  search_criteria:
+                    $ref: '#/components/schemas/SearchCriteria'
+                  total_count:
+                    type: integer
+              example:
+                items:
+                  - id: 1
+                    code: "external_shipping"
+                    title: "External Shipping Service"
+                    stores: ["default"]
+                    countries: ["US", "CA"]
+                    sort_order: 10
+                    is_active: true
+                    is_tracking_available: true
+                    is_shipping_labels_available: false
+                total_count: 1
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+    post:
+      summary: Create shipping carrier
+      description: Create a new out-of-process shipping carrier
+      tags:
+        - Shipping Methods
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OutOfProcessCarrierRequest'
+            example:
+              carrier:
+                code: "external_shipping"
+                title: "External Shipping Service"
+                stores: ["default"]
+                countries: ["US", "CA"]
+                sort_order: 10
+                is_active: true
+                is_tracking_available: true
+                is_shipping_labels_available: false
+      responses:
+        '200':
+          description: Carrier created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OutOfProcessCarrier'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+
+    put:
+      summary: Update shipping carrier
+      description: Update an existing out-of-process shipping carrier
+      tags:
+        - Shipping Methods
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OutOfProcessCarrierRequest'
+      responses:
+        '200':
+          description: Carrier updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OutOfProcessCarrier'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+
+  /V1/oope_shipping_carrier/{code}:
+    get:
+      summary: Get shipping carrier by code
+      description: Retrieve a specific shipping carrier by its code
+      tags:
+        - Shipping Methods
+      parameters:
+        - name: code
+          in: path
+          required: true
+          description: Unique code of the shipping carrier
+          schema:
+            type: string
+            example: "external_shipping"
+      responses:
+        '200':
+          description: Carrier found successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OutOfProcessCarrier'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      summary: Delete shipping carrier
+      description: Delete a shipping carrier by its code
+      tags:
+        - Shipping Methods
+      parameters:
+        - name: code
+          in: path
+          required: true
+          description: Unique code of the shipping carrier
+          schema:
+            type: string
+            example: "external_shipping"
+      responses:
+        '200':
+          description: Carrier deleted successfully
+          content:
+            application/json:
+              schema:
+                type: boolean
+                example: true
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # Payment Methods APIs
+  /V1/oope_payment_method:
+    get:
+      summary: Get payment methods
+      description: Retrieve a list of all out-of-process payment methods
+      tags:
+        - Payment Methods
+      responses:
+        '200':
+          description: List of payment methods retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/OutOfProcessPaymentMethod'
+                  search_criteria:
+                    $ref: '#/components/schemas/SearchCriteria'
+                  total_count:
+                    type: integer
+              example:
+                items:
+                  - id: 1
+                    code: "external_payment"
+                    title: "External Payment Gateway"
+                    active: true
+                    backend_integration_url: "https://payment-service.example.com"
+                    stores: ["default"]
+                    order_status: "pending"
+                    countries: ["US", "CA"]
+                    currencies: ["USD", "CAD"]
+                    custom_config: []
+                total_count: 1
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+    post:
+      summary: Create or update payment method
+      description: Create a new payment method or update an existing one
+      tags:
+        - Payment Methods
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OutOfProcessPaymentMethodRequest'
+            example:
+              payment_method:
+                code: "external_payment"
+                title: "External Payment Gateway"
+                active: true
+                backend_integration_url: "https://payment-service.example.com"
+                stores: ["default"]
+                order_status: "pending"
+                countries: ["US", "CA"]
+                currencies: ["USD", "CAD"]
+                custom_config: []
+      responses:
+        '200':
+          description: Payment method created or updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OutOfProcessPaymentMethod'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+
+  /V1/oope_payment_method/{code}:
+    get:
+      summary: Get payment method by code
+      description: Retrieve a specific payment method by its code
+      tags:
+        - Payment Methods
+      parameters:
+        - name: code
+          in: path
+          required: true
+          description: Unique code of the payment method
+          schema:
+            type: string
+            example: "external_payment"
+      responses:
+        '200':
+          description: Payment method found successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OutOfProcessPaymentMethod'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # Tax Management APIs
+  /V1/oope_tax_management/tax_integration:
+    get:
+      summary: Get tax integrations
+      description: Retrieve a list of all configured tax integrations
+      tags:
+        - Tax Management
+      responses:
+        '200':
+          description: List of tax integrations retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OutOfProcessTaxIntegration'
+              example:
+                - code: "oope-tax"
+                  title: "Out of Process Tax Integration"
+                  active: true
+                  stores: ["default"]
+                - code: "external-tax"
+                  title: "External Tax Service"
+                  active: false
+                  stores: ["store1", "store2"]
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+    post:
+      summary: Create or update tax integration
+      description: |
+        Create a new tax integration or update an existing one. The operation is determined by the code field:
+        - If a tax integration with the given code exists, it will be updated
+        - If no tax integration with the given code exists, a new one will be created
+      tags:
+        - Tax Management
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaxIntegrationRequest'
+            example:
+              tax_integration:
+                code: "oope-tax"
+                title: "Out of Process Tax Integration"
+                active: true
+                stores: ["default"]
+      responses:
+        '200':
+          description: Tax integration created or updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OutOfProcessTaxIntegration'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+
+  /V1/oope_tax_management/tax_integration/{code}:
+    get:
+      summary: Get tax integration by code
+      description: Retrieve a specific tax integration configuration by its unique code
+      tags:
+        - Tax Management
+      parameters:
+        - name: code
+          in: path
+          required: true
+          description: Unique code identifying the tax integration
+          schema:
+            type: string
+            example: "oope-tax"
+      responses:
+        '200':
+          description: Tax integration found successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OutOfProcessTaxIntegration'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Admin authentication token obtained from /rest/all/V1/integration/admin/token
+
+  schemas:
+    # Observability Schemas
+    Subscription:
+      type: object
+      description: Observability subscription configuration
+      required:
+        - type
+        - destination
+        - destination_endpoint
+        - destination_api_key
+        - component
+        - is_active
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the subscription
+          example: 1
+        type:
+          type: string
+          description: Type of subscription (logs, metrics)
+          enum: ["logs", "metrics"]
+          example: "logs"
+        destination:
+          type: string
+          description: Destination service for the subscription
+          example: "newrelic"
+        destination_endpoint:
+          type: string
+          description: Endpoint URL for the destination service
+          example: "https://log-api.newrelic.com/log/v1"
+        destination_api_key:
+          type: string
+          description: API key for the destination service
+          example: "YOUR_API_KEY"
+        component:
+          type: array
+          description: List of component types to monitor
+          items:
+            type: string
+            enum: ["event", "webhook", "admin-ui-sdk"]
+          example: ["webhook", "event"]
+        is_active:
+          type: boolean
+          description: Whether the subscription is active
+          example: true
+
+    SubscriptionRequest:
+      type: object
+      description: Request wrapper for subscription operations
+      required:
+        - subscription
+      properties:
+        subscription:
+          $ref: '#/components/schemas/Subscription'
+
+    # Shipping Methods Schemas
+    OutOfProcessCarrier:
+      type: object
+      description: Out-of-process shipping carrier configuration
+      required:
+        - code
+        - title
+        - is_active
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the carrier
+          example: 1
+        code:
+          type: string
+          description: Unique code for the carrier
+          example: "external_shipping"
+          minLength: 1
+          maxLength: 255
+        title:
+          type: string
+          description: Display title for the carrier
+          example: "External Shipping Service"
+          minLength: 1
+          maxLength: 255
+        stores:
+          type: array
+          description: List of store codes where this carrier is available
+          items:
+            type: string
+          example: ["default"]
+        countries:
+          type: array
+          description: List of country codes where this carrier is available
+          items:
+            type: string
+            pattern: "^[A-Z]{2}$"
+          example: ["US", "CA"]
+        sort_order:
+          type: integer
+          description: Sort order for carrier display
+          example: 10
+          minimum: 0
+        is_active:
+          type: boolean
+          description: Whether the carrier is active
+          example: true
+        is_tracking_available:
+          type: boolean
+          description: Whether tracking is available for this carrier
+          example: true
+        is_shipping_labels_available:
+          type: boolean
+          description: Whether shipping labels are available for this carrier
+          example: false
+
+    OutOfProcessCarrierRequest:
+      type: object
+      description: Request wrapper for carrier operations
+      required:
+        - carrier
+      properties:
+        carrier:
+          $ref: '#/components/schemas/OutOfProcessCarrier'
+
+    # Payment Methods Schemas
+    OutOfProcessPaymentMethod:
+      type: object
+      description: Out-of-process payment method configuration
+      required:
+        - code
+        - title
+        - active
+        - backend_integration_url
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the payment method
+          example: 1
+        code:
+          type: string
+          description: Unique code for the payment method
+          example: "external_payment"
+          minLength: 1
+          maxLength: 255
+        title:
+          type: string
+          description: Display title for the payment method
+          example: "External Payment Gateway"
+          minLength: 1
+          maxLength: 255
+        active:
+          type: boolean
+          description: Whether the payment method is active
+          example: true
+        backend_integration_url:
+          type: string
+          description: Backend URL for payment processing
+          example: "https://payment-service.example.com"
+          format: uri
+        stores:
+          type: array
+          description: List of store codes where this payment method is available
+          items:
+            type: string
+          example: ["default"]
+        order_status:
+          type: string
+          description: Initial order status for this payment method
+          example: "pending"
+          nullable: true
+        countries:
+          type: array
+          description: List of country codes where this payment method is available
+          items:
+            type: string
+            pattern: "^[A-Z]{2}$"
+          example: ["US", "CA"]
+        currencies:
+          type: array
+          description: List of currency codes supported by this payment method
+          items:
+            type: string
+            pattern: "^[A-Z]{3}$"
+          example: ["USD", "CAD"]
+        custom_config:
+          type: array
+          description: Custom configuration key-value pairs
+          items:
+            $ref: '#/components/schemas/CustomConfigKeyValue'
+          example: []
+
+    OutOfProcessPaymentMethodRequest:
+      type: object
+      description: Request wrapper for payment method operations
+      required:
+        - payment_method
+      properties:
+        payment_method:
+          $ref: '#/components/schemas/OutOfProcessPaymentMethod'
+
+    CustomConfigKeyValue:
+      type: object
+      description: Custom configuration key-value pair
+      required:
+        - key
+        - value
+      properties:
+        key:
+          type: string
+          description: Configuration key
+          example: "api_version"
+        value:
+          type: string
+          description: Configuration value
+          example: "v2"
+
+    # Tax Management Schemas
+    OutOfProcessTaxIntegration:
+      type: object
+      description: Tax integration configuration
+      required:
+        - code
+        - title
+        - active
+      properties:
+        code:
+          type: string
+          description: Unique identifier for the tax integration
+          example: "oope-tax"
+          minLength: 1
+          maxLength: 255
+        title:
+          type: string
+          description: Display title for the tax integration
+          example: "Out of Process Tax Integration"
+          minLength: 1
+          maxLength: 255
+        active:
+          type: boolean
+          description: Whether the tax integration is currently active
+          example: true
+        stores:
+          type: array
+          description: List of store codes where this tax integration is active
+          items:
+            type: string
+          example: ["default", "store1"]
+
+    TaxIntegrationRequest:
+      type: object
+      description: Request wrapper for tax integration operations
+      required:
+        - tax_integration
+      properties:
+        tax_integration:
+          $ref: '#/components/schemas/OutOfProcessTaxIntegration'
+
+    # Common Schemas
+    SearchCriteria:
+      type: object
+      description: Search criteria for filtering results
+      properties:
+        filter_groups:
+          type: array
+          items:
+            type: object
+        sort_orders:
+          type: array
+          items:
+            type: object
+        page_size:
+          type: integer
+          example: 20
+        current_page:
+          type: integer
+          example: 1
+
+    Error:
+      type: object
+      description: Standard error response
+      required:
+        - message
+      properties:
+        message:
+          type: string
+          description: Error message
+          example: "An error occurred"
+        parameters:
+          type: array
+          description: Additional error parameters
+          items:
+            type: string
+        trace:
+          type: string
+          description: Error trace (only in development mode)
+
+    ValidationError:
+      type: object
+      description: Validation error response
+      required:
+        - message
+      properties:
+        message:
+          type: string
+          description: Validation error message
+          example: "Invalid field value provided"
+        errors:
+          type: array
+          description: Field-specific validation errors
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+                description: Field name with validation error
+              message:
+                type: string
+                description: Field-specific error message
+
+  responses:
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: "Consumer is not authorized to access %resources"
+
+    Forbidden:
+      description: Access denied - insufficient permissions
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: "Access denied"
+
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: "No such entity"
+
+    BadRequest:
+      description: Bad request - invalid parameters or request format
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: "Invalid request parameters"
+
+    ValidationError:
+      description: Unprocessable entity - validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ValidationError'
+
+tags:
+  - name: Observability Management
+    description: Operations for managing observability subscriptions and monitoring configurations
+  - name: Shipping Methods
+    description: Operations for managing out-of-process shipping carrier configurations
+  - name: Payment Methods
+    description: Operations for managing out-of-process payment method configurations
+  - name: Tax Management
+    description: Operations for managing out-of-process tax integration configurations
+
+externalDocs:
+  description: Adobe Commerce Web API Documentation
+  url: https://developer.adobe.com/commerce/webapi/ 
+  

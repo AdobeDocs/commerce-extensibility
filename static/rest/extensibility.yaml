@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: Out-of-Process Extensions API
+  title: Adobe Commerce Extensibility REST APIs
   description: |
     Comprehensive REST API documentation for Adobe Commerce Out-of-Process Extensions, including:
     - **Observability Management**: Manage logging and monitoring subscriptions

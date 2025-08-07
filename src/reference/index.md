@@ -4,6 +4,7 @@ description: Provides a reference for the REST APIs available in Adobe Commerce 
 keywords:
   - App Builder
   - Extensibility
+layout: none
 ---
 
 # Extensibility REST Reference

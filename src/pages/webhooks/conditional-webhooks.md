@@ -12,12 +12,13 @@ You may decide that you want to trigger a webhook only if its payload meets cert
 
 A conditional webhook can significantly reduce the number of API calls, which reduces the waiting time for clients.
 
-Conditional webhook can have one or more rules. The webhook will be only triggered when all of the rule conditions are true. Each rule contains the following attributes:
+Conditional webhooks can have one or more rules. The webhook triggers only when all of the rule conditions are true. Each rule contains the following attributes:
 
 *  `field` - The field to be evaluated. For nested fields, use the dot-separated format, such as `data.order.product.id`.
   
    * The field attribute value used in the hook `rule` refers to the actual path in the initial webhook payload, not the `name` attribute value defined in the hook `field` mapping.
-   * Rule field attribute value should directly refer to the `source` attribute value defined in the hook's field such as `data.product.name` or `context_customer_session.get_customer.get_email` also mentioned in the below snippet.
+
+   * The rule field attribute value must directly refer to the `source` attribute value defined in the hook's field, such as `data.product.name` or `context_customer_session.get_customer.get_email`, which are shown in the configuration screen below.
 
 *  `operator` - An operator, which is represented as a comparison statement between the value supplied in the webhook payload and the threshold value.
 

@@ -1,15 +1,18 @@
 openapi: 3.0.3
 info:
-  title: Out-of-Process Extensions API
+  title: Adobe Commerce Extensions API
   description: |
-    Comprehensive REST API documentation for Adobe Commerce Out-of-Process Extensions, including:
+    Comprehensive REST API documentation for Adobe Commerce Extensions, including:
     - **Observability Management**: Manage logging and monitoring subscriptions
     - **Shipping Methods**: Configure external shipping carriers
     - **Payment Methods**: Manage out-of-process payment integrations
     - **Tax Management**: Configure external tax calculation services
+    - **Commerce Eventing**: Manage event subscriptions and providers
+    - **Commerce Webhooks**: Manage webhook subscriptions
+    - **Backend UI Extensions**: Manage UI component integrations
+    - **Custom Attributes B2B**: Manage B2B custom attributes for quotes and companies
     
     These APIs enable external systems to integrate with Adobe Commerce for extended functionality.
-  version: 1.0.0
   contact:
     name: Adobe Commerce
   license:
@@ -46,17 +49,6 @@ paths:
                     $ref: '#/components/schemas/SearchCriteria'
                   total_count:
                     type: integer
-                    description: Total number of subscriptions
-              example:
-                items:
-                  - id: 1
-                    type: "logs"
-                    destination: "newrelic"
-                    destination_endpoint: "https://log-api.newrelic.com/log/v1"
-                    destination_api_key: "YOUR_API_KEY"
-                    component: ["webhook", "event"]
-                    is_active: true
-                total_count: 1
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
@@ -73,14 +65,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SubscriptionRequest'
-            example:
-              subscription:
-                type: "logs"
-                destination: "newrelic"
-                destination_endpoint: "https://log-api.newrelic.com/log/v1"
-                destination_api_key: "YOUR_API_KEY"
-                component: ["webhook", "event"]
-                is_active: true
       responses:
         '200':
           description: Subscription created successfully
@@ -90,10 +74,6 @@ paths:
                 $ref: '#/components/schemas/Subscription'
         '400':
           $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
         '422':
           $ref: '#/components/responses/ValidationError'
 
@@ -115,16 +95,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Subscription'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '422':
-          $ref: '#/components/responses/ValidationError'
 
   /V1/oope_observability/subscription/{subscriptionId}:
     get:
@@ -139,7 +109,6 @@ paths:
           description: Unique identifier of the subscription
           schema:
             type: integer
-            example: 1
       responses:
         '200':
           description: Subscription found successfully
@@ -147,10 +116,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Subscription'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
 
@@ -166,7 +131,6 @@ paths:
           description: Unique identifier of the subscription
           schema:
             type: integer
-            example: 1
       responses:
         '200':
           description: Subscription deleted successfully
@@ -174,13 +138,6 @@ paths:
             application/json:
               schema:
                 type: boolean
-                example: true
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
 
   # Shipping Methods APIs
   /V1/oope_shipping_carrier:
@@ -205,22 +162,6 @@ paths:
                     $ref: '#/components/schemas/SearchCriteria'
                   total_count:
                     type: integer
-              example:
-                items:
-                  - id: 1
-                    code: "external_shipping"
-                    title: "External Shipping Service"
-                    stores: ["default"]
-                    countries: ["US", "CA"]
-                    sort_order: 10
-                    is_active: true
-                    is_tracking_available: true
-                    is_shipping_labels_available: false
-                total_count: 1
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
 
     post:
       summary: Create shipping carrier
@@ -233,16 +174,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/OutOfProcessCarrierRequest'
-            example:
-              carrier:
-                code: "external_shipping"
-                title: "External Shipping Service"
-                stores: ["default"]
-                countries: ["US", "CA"]
-                sort_order: 10
-                is_active: true
-                is_tracking_available: true
-                is_shipping_labels_available: false
       responses:
         '200':
           description: Carrier created successfully
@@ -250,14 +181,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/OutOfProcessCarrier'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '422':
-          $ref: '#/components/responses/ValidationError'
 
     put:
       summary: Update shipping carrier
@@ -277,16 +200,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/OutOfProcessCarrier'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '422':
-          $ref: '#/components/responses/ValidationError'
 
   /V1/oope_shipping_carrier/{code}:
     get:
@@ -301,7 +214,6 @@ paths:
           description: Unique code of the shipping carrier
           schema:
             type: string
-            example: "external_shipping"
       responses:
         '200':
           description: Carrier found successfully
@@ -309,12 +221,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/OutOfProcessCarrier'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
 
     delete:
       summary: Delete shipping carrier
@@ -328,7 +234,6 @@ paths:
           description: Unique code of the shipping carrier
           schema:
             type: string
-            example: "external_shipping"
       responses:
         '200':
           description: Carrier deleted successfully
@@ -336,13 +241,6 @@ paths:
             application/json:
               schema:
                 type: boolean
-                example: true
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
 
   # Payment Methods APIs
   /V1/oope_payment_method:
@@ -367,23 +265,6 @@ paths:
                     $ref: '#/components/schemas/SearchCriteria'
                   total_count:
                     type: integer
-              example:
-                items:
-                  - id: 1
-                    code: "external_payment"
-                    title: "External Payment Gateway"
-                    active: true
-                    backend_integration_url: "https://payment-service.example.com"
-                    stores: ["default"]
-                    order_status: "pending"
-                    countries: ["US", "CA"]
-                    currencies: ["USD", "CAD"]
-                    custom_config: []
-                total_count: 1
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
 
     post:
       summary: Create or update payment method
@@ -396,17 +277,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/OutOfProcessPaymentMethodRequest'
-            example:
-              payment_method:
-                code: "external_payment"
-                title: "External Payment Gateway"
-                active: true
-                backend_integration_url: "https://payment-service.example.com"
-                stores: ["default"]
-                order_status: "pending"
-                countries: ["US", "CA"]
-                currencies: ["USD", "CAD"]
-                custom_config: []
       responses:
         '200':
           description: Payment method created or updated successfully
@@ -414,14 +284,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/OutOfProcessPaymentMethod'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '422':
-          $ref: '#/components/responses/ValidationError'
 
   /V1/oope_payment_method/{code}:
     get:
@@ -436,7 +298,6 @@ paths:
           description: Unique code of the payment method
           schema:
             type: string
-            example: "external_payment"
       responses:
         '200':
           description: Payment method found successfully
@@ -444,12 +305,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/OutOfProcessPaymentMethod'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
 
   # Tax Management APIs
   /V1/oope_tax_management/tax_integration:
@@ -467,26 +322,10 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/OutOfProcessTaxIntegration'
-              example:
-                - code: "oope-tax"
-                  title: "Out of Process Tax Integration"
-                  active: true
-                  stores: ["default"]
-                - code: "external-tax"
-                  title: "External Tax Service"
-                  active: false
-                  stores: ["store1", "store2"]
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
 
     post:
       summary: Create or update tax integration
-      description: |
-        Create a new tax integration or update an existing one. The operation is determined by the code field:
-        - If a tax integration with the given code exists, it will be updated
-        - If no tax integration with the given code exists, a new one will be created
+      description: Create a new tax integration or update an existing one
       tags:
         - Tax Management
       requestBody:
@@ -495,12 +334,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/TaxIntegrationRequest'
-            example:
-              tax_integration:
-                code: "oope-tax"
-                title: "Out of Process Tax Integration"
-                active: true
-                stores: ["default"]
       responses:
         '200':
           description: Tax integration created or updated successfully
@@ -508,14 +341,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/OutOfProcessTaxIntegration'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '422':
-          $ref: '#/components/responses/ValidationError'
 
   /V1/oope_tax_management/tax_integration/{code}:
     get:
@@ -530,7 +355,6 @@ paths:
           description: Unique code identifying the tax integration
           schema:
             type: string
-            example: "oope-tax"
       responses:
         '200':
           description: Tax integration found successfully
@@ -538,12 +362,357 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/OutOfProcessTaxIntegration'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
+
+  # Commerce Eventing APIs
+  /V1/eventing/eventSubscribe:
+    post:
+      summary: Subscribe to event
+      description: Create a new event subscription
+      tags:
+        - Commerce Eventing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventDataRequest'
+      responses:
+        '200':
+          description: Event subscription created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+
+  /V1/eventing/eventSubscribe/{name}:
+    put:
+      summary: Update event subscription
+      description: Update an existing event subscription
+      tags:
+        - Commerce Eventing
+      parameters:
+        - name: name
+          in: path
+          required: true
+          description: Event name to update
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventDataRequest'
+      responses:
+        '200':
+          description: Event subscription updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+
+  /V1/eventing/eventUnsubscribe/{name}:
+    post:
+      summary: Unsubscribe from event
+      description: Remove an event subscription
+      tags:
+        - Commerce Eventing
+      parameters:
+        - name: name
+          in: path
+          required: true
+          description: Event name to unsubscribe from
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Event subscription removed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+
+  /V1/eventing/updateConfiguration:
+    put:
+      summary: Update eventing configuration
+      description: Update the eventing system configuration
+      tags:
+        - Commerce Eventing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                configuration:
+                  type: object
+                  additionalProperties: true
+      responses:
+        '200':
+          description: Configuration updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+
+  /V1/eventing/getEventProviders:
+    get:
+      summary: Get event providers
+      description: Retrieve a list of all event providers
+      tags:
+        - Commerce Eventing
+      responses:
+        '200':
+          description: List of event providers retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventProvider'
+
+  /V1/eventing/eventProvider:
+    get:
+      summary: Get event providers (alternative endpoint)
+      description: Retrieve a list of all event providers
+      tags:
+        - Commerce Eventing
+      responses:
+        '200':
+          description: List of event providers retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventProvider'
+
+    post:
+      summary: Create event provider
+      description: Create a new event provider
+      tags:
+        - Commerce Eventing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventProviderRequest'
+      responses:
+        '200':
+          description: Event provider created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventProvider'
+
+    put:
+      summary: Update event provider
+      description: Update an existing event provider
+      tags:
+        - Commerce Eventing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventProviderRequest'
+      responses:
+        '200':
+          description: Event provider updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventProvider'
+
+  /V1/eventing/eventProvider/{providerId}:
+    get:
+      summary: Get event provider by ID
+      description: Retrieve a specific event provider by its provider ID
+      tags:
+        - Commerce Eventing
+      parameters:
+        - name: providerId
+          in: path
+          required: true
+          description: Unique provider ID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Event provider found successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventProvider'
+
+    delete:
+      summary: Delete event provider
+      description: Delete an event provider by its provider ID
+      tags:
+        - Commerce Eventing
+      parameters:
+        - name: providerId
+          in: path
+          required: true
+          description: Unique provider ID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Event provider deleted successfully
+          content:
+            application/json:
+              schema:
+                type: boolean
+
+  /V1/eventing/getEventSubscriptions:
+    get:
+      summary: Get event subscriptions
+      description: Retrieve a list of all event subscriptions
+      tags:
+        - Commerce Eventing
+      responses:
+        '200':
+          description: List of event subscriptions retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventData'
+
+  # Commerce Webhooks APIs
+  /V1/webhooks/list:
+    get:
+      summary: Get webhook subscriptions
+      description: Retrieve a list of all webhook subscriptions
+      tags:
+        - Commerce Webhooks
+      responses:
+        '200':
+          description: List of webhook subscriptions retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WebhookData'
+
+  # Backend UI Extensions APIs
+  /V1/adminuisdk/massaction/{request_id}:
+    get:
+      summary: Get mass action failed request
+      description: Retrieve details of a failed mass action request
+      tags:
+        - Backend UI Extensions
+      parameters:
+        - name: request_id
+          in: path
+          required: true
+          description: Unique request ID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Mass action request details retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MassActionFailedRequest'
+
+  /V1/adminuisdk/orderviewbutton/{request_id}:
+    get:
+      summary: Get order view button failed request
+      description: Retrieve details of a failed order view button request
+      tags:
+        - Backend UI Extensions
+      parameters:
+        - name: request_id
+          in: path
+          required: true
+          description: Unique request ID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Order view button request details retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderViewButtonFailedRequest'
+
+  # Custom Attributes B2B APIs
+  /V1/negotiableQuote/setCustomAttributes:
+    post:
+      summary: Set custom attributes on negotiable quote
+      description: Set custom attributes for a negotiable quote
+      tags:
+        - Custom Attributes B2B
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                quoteId:
+                  type: integer
+                  description: Negotiable quote ID
+                customAttributes:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/AttributeInterface'
+                  description: Custom attributes to set
+      responses:
+        '200':
+          description: Custom attributes set successfully
+          content:
+            application/json:
+              schema:
+                type: boolean
+
+  /V1/company/setCustomAttributes:
+    post:
+      summary: Set custom attributes on company
+      description: Set custom attributes for a company
+      tags:
+        - Custom Attributes B2B
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                companyId:
+                  type: integer
+                  description: Company ID
+                customAttributes:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/AttributeInterface'
+                  description: Custom attributes to set
+      responses:
+        '200':
+          description: Custom attributes set successfully
+          content:
+            application/json:
+              schema:
+                type: boolean
 
 components:
   schemas:
@@ -562,39 +731,31 @@ components:
         id:
           type: integer
           description: Unique identifier for the subscription
-          example: 1
         type:
           type: string
           description: Type of subscription (logs, metrics)
           enum: ["logs", "metrics"]
-          example: "logs"
         destination:
           type: string
           description: Destination service for the subscription
-          example: "newrelic"
         destination_endpoint:
           type: string
           description: Endpoint URL for the destination service
-          example: "https://log-api.newrelic.com/log/v1"
         destination_api_key:
           type: string
           description: API key for the destination service
-          example: "YOUR_API_KEY"
         component:
           type: array
           description: List of component types to monitor
           items:
             type: string
             enum: ["event", "webhook", "admin-ui-sdk"]
-          example: ["webhook", "event"]
         is_active:
           type: boolean
           description: Whether the subscription is active
-          example: true
 
     SubscriptionRequest:
       type: object
-      description: Request wrapper for subscription operations
       required:
         - subscription
       properties:
@@ -613,53 +774,37 @@ components:
         id:
           type: integer
           description: Unique identifier for the carrier
-          example: 1
         code:
           type: string
           description: Unique code for the carrier
-          example: "external_shipping"
-          minLength: 1
-          maxLength: 255
         title:
           type: string
           description: Display title for the carrier
-          example: "External Shipping Service"
-          minLength: 1
-          maxLength: 255
         stores:
           type: array
           description: List of store codes where this carrier is available
           items:
             type: string
-          example: ["default"]
         countries:
           type: array
           description: List of country codes where this carrier is available
           items:
             type: string
-            pattern: "^[A-Z]{2}$"
-          example: ["US", "CA"]
         sort_order:
           type: integer
           description: Sort order for carrier display
-          example: 10
-          minimum: 0
         is_active:
           type: boolean
           description: Whether the carrier is active
-          example: true
         is_tracking_available:
           type: boolean
           description: Whether tracking is available for this carrier
-          example: true
         is_shipping_labels_available:
           type: boolean
           description: Whether shipping labels are available for this carrier
-          example: false
 
     OutOfProcessCarrierRequest:
       type: object
-      description: Request wrapper for carrier operations
       required:
         - carrier
       properties:
@@ -679,63 +824,46 @@ components:
         id:
           type: integer
           description: Unique identifier for the payment method
-          example: 1
         code:
           type: string
           description: Unique code for the payment method
-          example: "external_payment"
-          minLength: 1
-          maxLength: 255
         title:
           type: string
           description: Display title for the payment method
-          example: "External Payment Gateway"
-          minLength: 1
-          maxLength: 255
         active:
           type: boolean
           description: Whether the payment method is active
-          example: true
         backend_integration_url:
           type: string
           description: Backend URL for payment processing
-          example: "https://payment-service.example.com"
           format: uri
         stores:
           type: array
           description: List of store codes where this payment method is available
           items:
             type: string
-          example: ["default"]
         order_status:
           type: string
           description: Initial order status for this payment method
-          example: "pending"
           nullable: true
         countries:
           type: array
           description: List of country codes where this payment method is available
           items:
             type: string
-            pattern: "^[A-Z]{2}$"
-          example: ["US", "CA"]
         currencies:
           type: array
           description: List of currency codes supported by this payment method
           items:
             type: string
-            pattern: "^[A-Z]{3}$"
-          example: ["USD", "CAD"]
         custom_config:
           type: array
           description: Custom configuration key-value pairs
           items:
             $ref: '#/components/schemas/CustomConfigKeyValue'
-          example: []
 
     OutOfProcessPaymentMethodRequest:
       type: object
-      description: Request wrapper for payment method operations
       required:
         - payment_method
       properties:
@@ -752,11 +880,9 @@ components:
         key:
           type: string
           description: Configuration key
-          example: "api_version"
         value:
           type: string
           description: Configuration value
-          example: "v2"
 
     # Tax Management Schemas
     OutOfProcessTaxIntegration:
@@ -770,34 +896,287 @@ components:
         code:
           type: string
           description: Unique identifier for the tax integration
-          example: "oope-tax"
-          minLength: 1
-          maxLength: 255
         title:
           type: string
           description: Display title for the tax integration
-          example: "Out of Process Tax Integration"
-          minLength: 1
-          maxLength: 255
         active:
           type: boolean
           description: Whether the tax integration is currently active
-          example: true
         stores:
           type: array
           description: List of store codes where this tax integration is active
           items:
             type: string
-          example: ["default", "store1"]
 
     TaxIntegrationRequest:
       type: object
-      description: Request wrapper for tax integration operations
       required:
         - tax_integration
       properties:
         tax_integration:
           $ref: '#/components/schemas/OutOfProcessTaxIntegration'
+
+    # Commerce Eventing Schemas
+    EventData:
+      type: object
+      description: Event subscription data
+      required:
+        - name
+        - parent
+        - destination
+        - provider_id
+      properties:
+        name:
+          type: string
+          description: Event name
+        parent:
+          type: string
+          description: Event parent name
+        fields:
+          type: array
+          description: Event fields
+          items:
+            $ref: '#/components/schemas/EventField'
+        rules:
+          type: array
+          description: Event rules
+          items:
+            $ref: '#/components/schemas/EventRule'
+        destination:
+          type: string
+          description: Event destination
+        priority:
+          type: boolean
+          description: Event priority
+        hipaa_audit_required:
+          type: boolean
+          description: Whether HIPAA audit is required
+        provider_id:
+          type: string
+          description: Event provider ID
+
+    EventDataRequest:
+      type: object
+      required:
+        - event
+      properties:
+        event:
+          $ref: '#/components/schemas/EventData'
+        force:
+          type: boolean
+          description: Force subscription even if validation fails
+          default: false
+
+    EventField:
+      type: object
+      description: Event field definition
+      properties:
+        name:
+          type: string
+          description: Field name
+        type:
+          type: string
+          description: Field type
+
+    EventRule:
+      type: object
+      description: Event rule definition
+      properties:
+        field:
+          type: string
+          description: Field to apply rule to
+        operator:
+          type: string
+          description: Rule operator
+        value:
+          type: string
+          description: Rule value
+
+    EventProvider:
+      type: object
+      description: Event provider configuration
+      properties:
+        provider_id:
+          type: string
+          description: Unique provider identifier
+        name:
+          type: string
+          description: Provider name
+        active:
+          type: boolean
+          description: Whether the provider is active
+
+    EventProviderRequest:
+      type: object
+      required:
+        - provider
+      properties:
+        provider:
+          $ref: '#/components/schemas/EventProvider'
+
+    # Commerce Webhooks Schemas
+    WebhookData:
+      type: object
+      description: Webhook subscription data
+      properties:
+        webhook_method:
+          type: string
+          description: Webhook method name
+        webhook_type:
+          type: string
+          description: Webhook type
+        batch_name:
+          type: string
+          description: Webhook batch name
+        batch_order:
+          type: integer
+          description: Webhook batch order
+        hook_name:
+          type: string
+          description: Hook name
+        url:
+          type: string
+          description: Hook URL
+          format: uri
+        priority:
+          type: integer
+          description: Hook priority
+        required:
+          type: boolean
+          description: Whether hook is required
+        soft_timeout:
+          type: integer
+          description: Hook soft timeout in seconds
+        timeout:
+          type: integer
+          description: Hook timeout in seconds
+        method:
+          type: string
+          description: HTTP method for the webhook
+          enum: ["GET", "POST", "PUT", "DELETE", "PATCH"]
+        fallback_error_message:
+          type: string
+          description: Fallback error message
+        ttl:
+          type: integer
+          description: Time to live in seconds
+        fields:
+          type: array
+          description: Webhook fields
+          items:
+            $ref: '#/components/schemas/HookField'
+        rules:
+          type: array
+          description: Webhook rules
+          items:
+            $ref: '#/components/schemas/HookRule'
+        headers:
+          type: array
+          description: Webhook headers
+          items:
+            $ref: '#/components/schemas/HookHeader'
+
+    HookField:
+      type: object
+      description: Webhook field definition
+      properties:
+        name:
+          type: string
+          description: Field name
+        value:
+          type: string
+          description: Field value
+
+    HookRule:
+      type: object
+      description: Webhook rule definition
+      properties:
+        field:
+          type: string
+          description: Field to apply rule to
+        operator:
+          type: string
+          description: Rule operator
+        value:
+          type: string
+          description: Rule value
+
+    HookHeader:
+      type: object
+      description: Webhook header definition
+      properties:
+        name:
+          type: string
+          description: Header name
+        value:
+          type: string
+          description: Header value
+
+    # Backend UI Extensions Schemas
+    MassActionFailedRequest:
+      type: object
+      description: Mass action failed request details
+      properties:
+        id:
+          type: string
+          description: Internal ID
+        request_id:
+          type: string
+          description: Request ID
+        action_id:
+          type: string
+          description: Action ID
+        grid_type:
+          type: string
+          description: UI grid type
+        error_status:
+          type: string
+          description: Error status
+        error_message:
+          type: string
+          description: Error message
+        request_timestamp:
+          type: string
+          description: Request timestamp
+          format: date-time
+        selected_ids:
+          type: string
+          description: Selected IDs as string
+
+    OrderViewButtonFailedRequest:
+      type: object
+      description: Order view button failed request details
+      properties:
+        id:
+          type: string
+          description: Internal ID
+        request_id:
+          type: string
+          description: Request ID
+        error_status:
+          type: string
+          description: Error status
+        error_message:
+          type: string
+          description: Error message
+        request_timestamp:
+          type: string
+          description: Request timestamp
+          format: date-time
+
+    # Custom Attributes B2B Schemas
+    AttributeInterface:
+      type: object
+      description: Custom attribute interface
+      required:
+        - attribute_code
+        - value
+      properties:
+        attribute_code:
+          type: string
+          description: Attribute code
+        value:
+          description: Attribute value (can be any type)
 
     # Common Schemas
     SearchCriteria:
@@ -814,10 +1193,8 @@ components:
             type: object
         page_size:
           type: integer
-          example: 20
         current_page:
           type: integer
-          example: 1
 
     Error:
       type: object
@@ -828,7 +1205,6 @@ components:
         message:
           type: string
           description: Error message
-          example: "An error occurred"
         parameters:
           type: array
           description: Additional error parameters
@@ -847,7 +1223,6 @@ components:
         message:
           type: string
           description: Validation error message
-          example: "Invalid field value provided"
         errors:
           type: array
           description: Field-specific validation errors
@@ -868,8 +1243,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-          example:
-            message: "Consumer is not authorized to access %resources"
 
     Forbidden:
       description: Access denied - insufficient permissions
@@ -877,8 +1250,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-          example:
-            message: "Access denied"
 
     NotFound:
       description: Resource not found
@@ -886,8 +1257,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-          example:
-            message: "No such entity"
 
     BadRequest:
       description: Bad request - invalid parameters or request format
@@ -895,8 +1264,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-          example:
-            message: "Invalid request parameters"
 
     ValidationError:
       description: Unprocessable entity - validation error
@@ -914,7 +1281,15 @@ tags:
     description: Operations for managing out-of-process payment method configurations
   - name: Tax Management
     description: Operations for managing out-of-process tax integration configurations
+  - name: Commerce Eventing
+    description: Operations for managing event subscriptions and providers
+  - name: Commerce Webhooks
+    description: Operations for managing webhook subscriptions
+  - name: Backend UI Extensions
+    description: Operations for managing backend UI component integrations
+  - name: Custom Attributes B2B
+    description: Operations for managing B2B custom attributes
 
 externalDocs:
   description: Adobe Commerce Web API Documentation
-  url: https://developer.adobe.com/commerce/webapi/ 
+  url: https://developer.adobe.com/commerce/webapi/

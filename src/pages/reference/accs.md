@@ -9,4 +9,4 @@ layout: none
 
 # Extensibility REST Reference
 
-<RedoclyAPIBlock src="/commerce/extensibility/rest/accs-schema.yaml" hideTryItPanel />
+<RedoclyAPIBlock src="/commerce/extensibility/rest/accs-schema.yaml" hideTryItPanel scrollYOffset={64} />

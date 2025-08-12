@@ -18,7 +18,7 @@ produces:
 
 paths:
   # Commerce Eventing Endpoints
-  /eventing/eventSubscribe:
+  /V1/eventing/eventSubscribe:
     post:
       tags:
         - eventing
@@ -39,7 +39,7 @@ paths:
           schema:
             $ref: '#/definitions/ErrorResponse'
 
-  /eventing/eventSubscribe/{name}:
+  /V1/eventing/eventSubscribe/{name}:
     put:
       tags:
         - eventing
@@ -65,7 +65,7 @@ paths:
           schema:
             $ref: '#/definitions/ErrorResponse'
 
-  /eventing/eventUnsubscribe/{name}:
+  /V1/eventing/eventUnsubscribe/{name}:
     post:
       tags:
         - eventing
@@ -86,7 +86,7 @@ paths:
           schema:
             $ref: '#/definitions/ErrorResponse'
 
-  /eventing/updateConfiguration:
+  /V1/eventing/updateConfiguration:
     put:
       tags:
         - eventing
@@ -109,7 +109,7 @@ paths:
           schema:
             $ref: '#/definitions/ErrorResponse'
 
-  /eventing/getEventProviders:
+  /V1/eventing/getEventProviders:
     get:
       tags:
         - eventing
@@ -124,7 +124,7 @@ paths:
             items:
               $ref: '#/definitions/EventProvider'
 
-  /eventing/eventProvider:
+  /V1/eventing/eventProvider:
     get:
       tags:
         - eventing
@@ -173,7 +173,7 @@ paths:
           schema:
             $ref: '#/definitions/EventProvider'
 
-  /eventing/eventProvider/{providerId}:
+  /V1/eventing/eventProvider/{providerId}:
     get:
       tags:
         - eventing
@@ -217,7 +217,7 @@ paths:
           schema:
             $ref: '#/definitions/ErrorResponse'
 
-  /eventing/getEventSubscriptions:
+  /V1/eventing/getEventSubscriptions:
     get:
       tags:
         - eventing
@@ -233,7 +233,7 @@ paths:
               $ref: '#/definitions/EventSubscription'
 
   # Backend UI Extensions Endpoints
-  /adminuisdk/massaction/{request_id}:
+  /V1/adminuisdk/massaction/{request_id}:
     get:
       tags:
         - backend-ui
@@ -261,7 +261,7 @@ paths:
           schema:
             $ref: '#/definitions/ErrorResponse'
 
-  /adminuisdk/orderviewbutton/{request_id}:
+  /V1/adminuisdk/orderviewbutton/{request_id}:
     get:
       tags:
         - backend-ui
@@ -285,7 +285,7 @@ paths:
             $ref: '#/definitions/ErrorResponse'
 
   # Commerce Webhooks Endpoints
-  /webhooks/list:
+  /V1/webhooks/list:
     get:
       tags:
         - webhooks
@@ -301,7 +301,7 @@ paths:
               $ref: '#/definitions/WebhookSubscription'
 
   # Custom Attributes B2B Endpoints
-  /negotiableQuote/setCustomAttributes:
+  /V1/negotiableQuote/setCustomAttributes:
     post:
       tags:
         - custom-attributes
@@ -320,7 +320,7 @@ paths:
           schema:
             type: boolean
 
-  /company/setCustomAttributes:
+  /V1/company/setCustomAttributes:
     post:
       tags:
         - custom-attributes
@@ -340,7 +340,7 @@ paths:
             type: boolean
 
   # Payment Methods Endpoints
-  /oope_payment_method/{code}:
+  /V1/oope_payment_method/{code}:
     get:
       tags:
         - payment-methods
@@ -363,7 +363,7 @@ paths:
           schema:
             $ref: '#/definitions/ErrorResponse'
 
-  /oope_payment_method:
+  /V1/oope_payment_method:
     get:
       tags:
         - payment-methods
@@ -396,7 +396,7 @@ paths:
             $ref: '#/definitions/PaymentMethod'
 
   # Shipping Methods Endpoints
-  /oope_shipping_carrier:
+  /V1/oope_shipping_carrier:
     get:
       tags:
         - shipping-methods
@@ -445,7 +445,7 @@ paths:
           schema:
             $ref: '#/definitions/ShippingCarrier'
 
-  /oope_shipping_carrier/{code}:
+  /V1/oope_shipping_carrier/{code}:
     get:
       tags:
         - shipping-methods
@@ -490,7 +490,7 @@ paths:
             $ref: '#/definitions/ErrorResponse'
 
   # Observability Endpoints
-  /oope_observability/subscription:
+  /V1/oope_observability/subscription:
     get:
       tags:
         - observability
@@ -539,7 +539,7 @@ paths:
           schema:
             $ref: '#/definitions/ObservabilitySubscription'
 
-  /oope_observability/subscription/{subscriptionId}:
+  /V1/oope_observability/subscription/{subscriptionId}:
     get:
       tags:
         - observability
@@ -584,7 +584,7 @@ paths:
             $ref: '#/definitions/ErrorResponse'
 
   # Tax Management Endpoints
-  /oope_tax_management/tax_integration/{code}:
+  /V1/oope_tax_management/tax_integration/{code}:
     get:
       tags:
         - tax-management
@@ -607,7 +607,7 @@ paths:
           schema:
             $ref: '#/definitions/ErrorResponse'
 
-  /oope_tax_management/tax_integration:
+  /V1/oope_tax_management/tax_integration:
     get:
       tags:
         - tax-management

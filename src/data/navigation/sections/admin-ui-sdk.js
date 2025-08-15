@@ -97,6 +97,10 @@ module.exports = [
       path: "/admin-ui-sdk/troubleshooting.md"
     },
     {
+      title: "App review checklist",
+      path: "/admin-ui-sdk/app-review-checklist.md"
+    },
+    {
       title: "Release notes",
       path: "/admin-ui-sdk/release-notes.md"
     }

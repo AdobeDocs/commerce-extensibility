@@ -38,7 +38,7 @@ Set the retention period for logs to be cleaned from the database. This field sp
 
 Navigate to **System** > Admin UI SDK > **Admin UI SDK Logs** to check the saved logs.
 
-![Admin UI SDK Logs screen](../_images/admin-ui-sdk-logs.png)
+![Admin UI SDK Logs screen](../_images/admin-ui-sdk/admin-ui-sdk-logs.png)
 
 ## Local testing
 

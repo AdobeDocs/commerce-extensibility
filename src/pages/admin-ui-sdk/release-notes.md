@@ -8,6 +8,22 @@ keywords:
 
 # Adobe Commerce Admin UI SDK release notes
 
+## Version 3.2.0
+
+### Release date
+
+July 18, 2025
+
+### Enhancements
+
+* Updated dependencies to ensure all resolved security issues are addressed and the system remains up-to-date. <!--- CEXT-5049 -->
+
+* Added request ID to logs when database logging is enabled. <!-- CEXT-4848, CEXT-5056 -->
+
+### Bug fixes
+
+* Fixed mapping of API Mesh for applications deployed on non-Production workspace. <!-- CEXT-5052 -->
+
 ## Version 3.1.0
 
 ### Release date

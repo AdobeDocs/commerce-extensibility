@@ -22,7 +22,6 @@ The [**Configure extensions**](./eligible-extensions-config.md) button allows yo
 
 The **Refresh registrations** button reloads all registrations from the App Builder registry. It is typically used when changes are made to the registration on the App Builder application side or when a new app is added and published, to reflect these changes in the Admin.
 
-
 ## Database logging configuration
 
 The **Database logging configuration** section allows you to save Admin UI SDK log entries for the specified retention period.

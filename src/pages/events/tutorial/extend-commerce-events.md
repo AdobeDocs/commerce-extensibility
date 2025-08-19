@@ -44,7 +44,6 @@ The function can also be extended to trigger alerts, update external systems, or
 
 This tutorial specifically covers event registration using a Runtime action in Adobe App Builder. Please note that this applies only to SaaS deployments. We will also discuss its limitations, including execution time constraints, in later sections.
 
-
 ### Setting up event provider and event metadata in Adobe Commerce
 
 This section covers creating and configuring an event provider in Adobe Commerce, which is then registered in the Adobe Developer Console as part of the App Builder project setup.To enable this flow:
@@ -57,12 +56,12 @@ This section covers creating and configuring an event provider in Adobe Commerce
 
 1. The configured provider is finally registered in the Adobe Developer Console during event registration for the App Builder project.
 
-
 ### Setting up event provider and event metadata in Adobe Commerce
 
 This section covers creating and configuring an **Event Provider** in Adobe Commerce and registering it with the Adobe Developer Console, as well as creating **Event Metadata** for specific events.
 
 #### Parameters and authentication for Adobe I/O Events API
+
 These parameters are used for **both** Event Provider creation and Event Metadata creation. Values are obtained from the App Builder project’s configuration JSON file, which can be downloaded from the Adobe Developer Console:
 
 1. Go to [Adobe Developer Console](https://developer.adobe.com/console).  
@@ -91,7 +90,6 @@ These parameters are used for **both** Event Provider creation and Event Metadat
 | `Authorization` | Generated from Adobe Developer Console (OAuth Server-to-Server) | Used for authenticating API calls. |
 | `x-api-key`     | `project.workspace.details.credentials[0].oauth_server_to_server.client_id` | Client ID for authentication. |
 
-
 ### Create an Adobe I/O event provider
 
 The Event Provider acts as a bridge between Adobe Commerce and Adobe's event-driven ecosystem. It enables Adobe Commerce to emit system events (such as product updates or order placements) to external systems or applications through Adobe I/O.
@@ -102,7 +100,6 @@ Before configuring the event provider in Adobe Commerce, Adobe I/O Event Provide
 - The interface will allow you to enter the required provider details and send the payload directly to the Adobe I/O API.
 
 ### Key fields to include in the API body
-
 
 | Field Name        | Description |
 |-------------------|-------------|
@@ -142,10 +139,10 @@ Once all required fields are completed and Click **Send** button, the Event Prov
   "publisher": "YourPublisher@AdobeOrg"
 }
 ```
+
 This response confirms that the Event Provider has been registered successfully in Adobe I/O.Make sure to note down the **id**, **label**, **description**, and **instance_id** values from the response, as these will needed in the next step.
 
 ## Create event metadata
-
 
 Event Metadata defines the individual events that your Event Provider can emit. Each metadata entry includes a label, description, instance identifier, provider metadata, and a unique event code.To do this:
 
@@ -154,7 +151,6 @@ Event Metadata defines the individual events that your Event Provider can emit. 
 - The interface will allow you to enter the required provider details and send the payload directly to the Adobe I/O API.
 
 ### Key fields to include in the API body
-
 
 | Field Name         | Description |
 |--------------------|-------------|
@@ -190,7 +186,8 @@ Once all required fields are completed and Click **Send** button, the Event Prov
   "label": "Adobe Commerce *************",
   "event_code": "observer.*****************_after"
 }
-```
+
+
 ## Create and configure an event provider in Adobe Commerce
 
 Event Providers act as connectors that enable Adobe Commerce to send system events (like order creation or product updates) to Adobe I/O. They define the source of events and ensure that events are delivered securely and in the correct format to subscribed applications. After noting down the values from the API call, to add a new Event Provider in Adobe Commerce, navigate to **System** > **Events** > **Event Providers**. Then click **Add New Event Provider** and provide the required details. These fields are essential for establishing the connection between Adobe Commerce and the newly created Event Provider.

@@ -38,6 +38,7 @@ menuItems: [
 | `parent` | string | No | The parent menu. |
 | `sortOrder` | integer | No | The position of the menu, relative to other menus in the section. A value of `1` indicates the menu will be listed first. If this parameter is not specified, it will be placed randomly.
 | `title`  | string | No | The title to display in the menu bar. For the page title of the menu, check the [page extension point](./page.md). |
+| `sandbox` | string | No | The sandbox attribute applies additional restrictions to the content within an iFrame. Allowed values are `allow-downloads` and `allow-popups`. Separate multiple values with a single space (" "). |
 
 ## Sample code
 

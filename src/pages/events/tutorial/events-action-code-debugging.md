@@ -158,6 +158,7 @@ When an App Builder action fails, you can debug it using either the **Debug Trac
 3. Trigger your action (e.g., `aio app deploy` or `aio runtime action invoke <namespace>/<package>/<actionName>`).
 
 If the action fails, Debug Tracer shows:
+
 - The **Activation ID** (unique execution ID)
 - The **Error response** from the runtime (e.g., `application error`, `server error`, `401 unauthorized`, `403 forbidden`, etc.)
 - Any `logger.info` / `logger.error` messages the code emitted
@@ -170,6 +171,7 @@ application error
 "error": "server error"
 }
 ```
+
 You can copy the **Activation ID** directly from Debug Tracer to investigate further using the CLI.
 
 ### Option 2: CLI
@@ -183,20 +185,21 @@ Datetime        Status    Kind      Version    Activation ID
 ─────────────── ───────── ───────── ───────── ────────────────────────────────
 08/13 20:32:24  app error sequence  0.0.1     7d2470aa1bc84bc6a470aa1bc85bc67c journalevent/eventjournal
 ```
+
 The last column shows the Activation ID.
 
 **To get logs explicitly**
+
 ```terminal
 aio rt activation logs <ACTIVATION_ID>
 ```
+
 <InlineAlert variant="info" slots="text"/>
 
 **Tip:** Start with **Debug Tracer** for quick troubleshooting.  
 If you need more details (like raw JSON response, timing, annotations, logs), switch to the **CLI** with the Activation ID.
 
-
 ## Interpreting event delivery logs in Adobe I/O Events
-
 
 When an event is triggered and delivered through Adobe I/O Events, you can inspect the delivery status using the Debug Tracer in the Adobe Developer Console. The delivery record contains the following fields:
 

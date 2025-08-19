@@ -28,7 +28,6 @@ Before you can start building your App Builder application, you need to set up y
 
 #### Create a new project in Adobe Developer Console
 
-
 1. To add new project in developer console, Refer to the  [Adobe App Builder Getting Started guide](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app) and complete Step 1: "Check your environment and tools" and Step 2: "Create a new project on Developer Console" before proceeding.
 These steps are essential because the Adobe Developer Console provides the credentials and configuration required to deploy your App Builder app and access Adobe services like I/O Runtime and Commerce APIs. Without completing these steps, your app will not be able to authenticate or run within the Adobe ecosystem.
 
@@ -222,7 +221,6 @@ Folder structure after `app init`:
 ```
 
 ### Implement runtime action
-
 
 This section explains how to write a runtime action that processes product event data from Adobe Commerce. The action is triggered when product-related events such as stock or price updates occur.The files for this runtime action are located under the actions/`<name of action created during app init>` directory. When the app init command is run, it creates an initial index.js file as the starting point for the runtime action code.
 Following this, the folder structure described below shows the organization and contents of each file involved.
@@ -573,13 +571,11 @@ We need to define which Commerce events to subscribe to and register them within
 
 ### Testing the integration
 
-
 - After `aio app deploy`, create or update a product in Adobe Commerce Admin (**Catalog > Product**).
 - Go to **System > Event Status** to verify event triggered with status "Success".
 - Check Developer Console > Project > Workspace > Event Registration > Debug Tracing for event delivery and HTTP 200 response.
 
 #### Verifying event delivery in Developer Console
-
 
 After deploying your app and triggering the event by creating a new product in Commerce Admin, go to your **Adobe Developer Console** > **Project** > **Workspace** > **Event Registration** > **Debug Tracing**. You should see an entry with your event code (e.g., com.adobe.commerce.`provider name`) and response code 200, confirming successful delivery to your App Builder action.
 To learn more about using the debug tracer feature, refer to Adobe’s documentation: Debug tracing in [Adobe Developer Console](https://developer.adobe.com/events/docs/support/tracing).
@@ -599,7 +595,6 @@ aio app dev
 The commannd also outputs a URL like `https://localhost:9080/api/v1/web/<your-project-name>/<action-name>`
 
 ### Send a test payload
-
 
 - Use Postman or curl to POST a sample event payload to the local endpoint with `Content-Type: application/json`.
 - Check logs in terminal to validate business logic.

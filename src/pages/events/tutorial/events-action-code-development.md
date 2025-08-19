@@ -3,11 +3,11 @@ title: Extend Adobe Commerce with Events and App Builder
 description: Learn how to configure and build event-driven integrations between Adobe Commerce and Adobe App Builder using asynchronous events.
 keywords:
   - Extensibility
-noIndex: true
-
+  - Events
 ---
 
-## App Development and Deployment
+
+## App development and deployment
 
 This section Covers the detailed steps for Project creation, Event Registration, App development and Deployment
 
@@ -27,6 +27,7 @@ Before you can start building your App Builder application, you need to set up y
 <!-- This section will be removed in the near future. -->
 
 #### Create a new project in Adobe Developer Console
+
 
 1. To add new project in developer console, Refer to the  [Adobe App Builder Getting Started guide](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app) and complete Step 1: "Check your environment and tools" and Step 2: "Create a new project on Developer Console" before proceeding.
 These steps are essential because the Adobe Developer Console provides the credentials and configuration required to deploy your App Builder app and access Adobe services like I/O Runtime and Commerce APIs. Without completing these steps, your app will not be able to authenticate or run within the Adobe ecosystem.
@@ -220,7 +221,8 @@ Folder structure after `app init`:
     └── utils.js
 ```
 
-### Implement Run time Action
+### Implement runtime action
+
 
 This section explains how to write a runtime action that processes product event data from Adobe Commerce. The action is triggered when product-related events such as stock or price updates occur.The files for this runtime action are located under the actions/`<name of action created during app init>` directory. When the app init command is run, it creates an initial index.js file as the starting point for the runtime action code.
 Following this, the folder structure described below shows the organization and contents of each file involved.
@@ -243,111 +245,87 @@ Following this, the folder structure described below shows the organization and 
 - Returns a success or error response based on the outcome of processing.
 
 ```js
-// Import required modules from Adobe I/O SDK and local utilities
 const { Core } = require('@adobe/aio-sdk')
 const { stringParameters, checkMissingRequestInputs } = require('../utils.js')
-const { HTTP_BAD_REQUEST, HTTP_OK, HTTP_INTERNAL_ERROR } = require('../constants')
-const { errorResponse, successResponse } = require('../responses.js')
- 
-// Main action function
+const { HTTP_BAD_REQUEST, HTTP_INTERNAL_ERROR } = require('../constants.js')
+const { errorResponse, successResponse } = require('../response.js')
+
+/**
+ * Main function that processes the incoming request params.
+ * @param {object} params - Input parameters containing product data and request info.
+ * @returns {object} - Success or error response based on processing.
+ */
 async function main(params) {
-  // Initialize logger with a custom label and log level
+  // Initialize logger with a custom label and log level (default to 'info' if none provided)
   const logger = Core.Logger('product-commerce-consumer', { level: params.LOG_LEVEL || 'info' })
- 
+
   logger.info('Start processing request')
   logger.info(`Consumer main params: ${stringParameters(params)}`)
- 
-  // Define required parameters and validate input
+
+  // List of required parameters to validate input
   const requiredParams = ['type', 'data.value.sku', 'data.value.stock_data.qty']
+
+  // Check if any required parameters are missing from the input
   const errorMessage = checkMissingRequestInputs(params, requiredParams, [])
- 
+
   if (errorMessage) {
-    // Log and return error if required params are missing
+    // Log error and return HTTP 400 Bad Request if validation fails
     logger.error(`Invalid request parameters: ${stringParameters(params)}`)
     return errorResponse(HTTP_BAD_REQUEST, `Invalid request parameters: ${errorMessage}`)
   }
- 
+
   try {
-    // Destructure relevant input data
+    // Extract relevant data from params for easier access
     const { type, data } = params
     const product = data.value
     const sku = product.sku
-    const name = product.name || 'Unknown'
-    const price = parseFloat(product.price || 0)
-    const qty = parseInt(product.stock_data.qty || product.stock || 0)
- 
+    const name = product.name || 'Unknown'  // Fallback name if missing
+    const price = parseFloat(product.price || 0)  // Convert price to float, default 0
+    const qty = parseInt(product.stock_data.qty || product.stock || 0)  // Parse quantity, fallback to 0
+
     logger.info(`Processing product: ${sku}`)
- 
-    // Log detailed product information
-    logger.info(`Resumed after sleep for SKU: ${sku}`)
+
     logger.info(`Product Name: ${name}, Price: ${price}, Qty: ${qty}`)
- 
-    // Check for low stock and log alert
+
+    // Check if stock quantity is low, log a stock alert if so
     if (qty < 5) {
       logger.info(`Stock Alert: Product ${sku} has low stock (${qty})`)
     }
- 
-    // Log if price has changed
+
+    // Detect and log if product price has changed
     if (product.original_price && product.original_price !== product.price) {
       logger.info(`Price changed: ${product.original_price} → ${product.price}`)
     }
- 
-    // Return a successful response after processing
+
+    // Return a success response indicating product was processed successfully
     return successResponse(type, `Processed product ${sku}`)
   } catch (error) {
-    // Log and return error if exception occurs
+    // Log any unexpected errors during processing and return HTTP 500 Internal Server Error
     logger.error(`Processing error: ${error.message}`)
     return errorResponse(HTTP_INTERNAL_ERROR, error.message)
   }
 }
- 
-// Export main function as the entry point
-exports.main = main
-```
+
+// Export main function as the module's entry point
+exports.main = main```
 
 **response.js**: This file contains helper functions to send consistent success or error responses from your action. It uses the status codes defined in constants.js to ensure all responses follow the same format. This keeps your main logic cleaner and more organized.
 
 ```js
 
-const { HTTP_OK } = require('./constants')
+/*Copyright 2022 Adobe. All rights reserved.
+This file is licensed to you under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License. You may obtain a copy
+of the License at http://www.apache.org/licenses/LICENSE-2.0
  
-/**
- *
- * Returns a success response object, this method should be called on the handlers actions
- *
- * @param {string} message a descriptive message of the result
- *        e.g. 'missing xyz parameter'
- * @returns {object} the response object, ready to be returned from the action main's function.
- */
-function actionSuccessResponse (message) {
-  return {
-    statusCode: HTTP_OK,
-    body: {
-      success: true,
-      message
-    }
-  }
-}
+Unless required by applicable law or agreed to in writing, software distributed under
+the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
+OF ANY KIND, either express or implied. See the License for the specific language
+governing permissions and limitations under the License.
+*/
  
-/**
- *
- * Returns a success response object, this method should be called on the handlers actions
- *
- * @param {number} statusCode the status code.
- *        e.g. 400
- * @param {string} error a descriptive message of the result
- *        e.g. 'missing xyz parameter'
- * @returns {object} the response object, ready to be returned from the action main's function.
- */
-function actionErrorResponse (statusCode, error) {
-  return {
-    statusCode,
-    body: {
-      success: false,
-      error
-    }
-  }
-}
+const { HTTP_OK } = require('./constants.js')
+ 
  
 /**
  *
@@ -359,13 +337,11 @@ function actionErrorResponse (statusCode, error) {
  *        e.g. 'missing xyz parameter'
  * @returns {object} the error object, ready to be returned from the action main's function.
  */
-function errorResponse (statusCode, message) {
+function errorResponse(statusCode, message) {
   return {
-    error: {
-      statusCode,
-      body: {
-        error: message
-      }
+    statusCode,
+    body: {
+      error: message
     }
   }
 }
@@ -389,12 +365,10 @@ function successResponse (type, response) {
     }
   }
 }
- 
+
 module.exports = {
   successResponse,
-  errorResponse,
-  actionErrorResponse,
-  actionSuccessResponse
+  errorResponse
 }
 ```
 
@@ -521,6 +495,37 @@ module.exports = {
 }
 ```
 
+**constants.js:** This file has Centralized constants for action logic
+This file stores commonly used values like HTTP status codes and event type identifiers (e.g., for stock or price updates). Keeping them in one place helps avoid repetition and makes the code easier to maintain.
+
+```js
+/*
+Copyright 2022 Adobe. All rights reserved.
+This file is licensed to you under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License. You may obtain a copy
+of the License at http://www.apache.org/licenses/LICENSE-2.0
+ 
+Unless required by applicable law or agreed to in writing, software distributed under
+the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
+OF ANY KIND, either express or implied. See the License for the specific language
+governing permissions and limitations under the License.
+*/
+
+// Define standard HTTP status codes used for API responses
+const HTTP_OK = 200                 // Request was successful
+const HTTP_BAD_REQUEST = 400        // Client-side error: invalid request parameters
+const HTTP_NOT_FOUND = 404          // Resource not found on the server
+const HTTP_INTERNAL_ERROR = 500     // Server-side error: unexpected failure
+
+// Export the constants so they can be reused in other modules/files
+module.exports = {
+  HTTP_OK,
+  HTTP_BAD_REQUEST,
+  HTTP_NOT_FOUND,
+  HTTP_INTERNAL_ERROR
+} 
+```
+
 **Changes to app.config.yaml**
 
 The app.config.yaml file defines how your Adobe App Builder project is structured and deployed. It includes information about where the code lives and how it should behave in the cloud environment.
@@ -554,32 +559,34 @@ application:
               final: true
 ```
 
-**Build Project**
+**Build project**
 
 ```bash
 aio app deploy
 ```
 
-## Register Commerce Events in Adobe Developer Console
+## Register Commerce events in Adobe Developer Console
 
 We need to define which Commerce events to subscribe to and register them within your Adobe Developer Console project. Return to your project workspace in the Developer Console, click the **Add Service** menu, and select **Event**. On the **Add Events** page, choose **Commerce Events**, then click **Next**. In the Configure Event Registration step, select the event provider that was created earlier in Adobe Commerce. Click **Next**, select the specific events to subscribe to, and continue. On the next screen, update the Event Registration **Name** and **Description** fields, then choose the **Runtime Action** that should handle the events and save the configuration.
 
 ![Developer Console Event Registration](../../_images/events/tutorial/adobe-console-event-registration-action.png)
 
-### Testing the Integration
+### Testing the integration
+
 
 - After `aio app deploy`, create or update a product in Adobe Commerce Admin (**Catalog > Product**).
 - Go to **System > Event Status** to verify event triggered with status "Success".
 - Check Developer Console > Project > Workspace > Event Registration > Debug Tracing for event delivery and HTTP 200 response.
 
-#### Verifying Event Delivery in Developer Console
+#### Verifying event delivery in Developer Console
+
 
 After deploying your app and triggering the event by creating a new product in Commerce Admin, go to your **Adobe Developer Console** > **Project** > **Workspace** > **Event Registration** > **Debug Tracing**. You should see an entry with your event code (e.g., com.adobe.commerce.`provider name`) and response code 200, confirming successful delivery to your App Builder action.
 To learn more about using the debug tracer feature, refer to Adobe’s documentation: Debug tracing in [Adobe Developer Console](https://developer.adobe.com/events/docs/support/tracing).
 
 ![Developer Console Debug Tracer](../../_images/events/tutorial/adobe-console-events-debug-tracer.png)
 
-## Invoking Action Code Locally and Testing
+## Invoking action code locally and testing
 
 To invoke the Runtime action locally during development, follow these steps:
 
@@ -591,7 +598,8 @@ aio app dev
 
 The commannd also outputs a URL like `https://localhost:9080/api/v1/web/<your-project-name>/<action-name>`
 
-### Send a Test Payload
+### Send a test payload
+
 
 - Use Postman or curl to POST a sample event payload to the local endpoint with `Content-Type: application/json`.
 - Check logs in terminal to validate business logic.

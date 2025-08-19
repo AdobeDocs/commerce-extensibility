@@ -1,23 +1,24 @@
 ---
-title: Extend Adobe Commerce with Events and App Builder
+title: Extend Adobe Commerce with events and App Builder
 description: Learn how to configure and build event-driven integrations between Adobe Commerce and Adobe App Builder using asynchronous events.
 keywords:
   - Extensibility
-noIndex: true
+  - Events
 
 ---
 
-## Limitation of Configuring via Event Registration as Runtime Action
+
+## Limitation of configuring via event registration as runtime action
 
 When configuring an event registration to invoke a Runtime action in Adobe App Builder, be aware of the following key limitation:
 
-### Execution Timeout Constraint
+### Execution timeout constraint
 
 The registered Runtime action **must complete within 60 seconds**. If the action does not return a response within this period, it will be **terminated by the Adobe I/O Runtime Platform**.This makes it unsuitable for long-running operations in action code.
 
-### Suggested Alternatives
+### Suggested alternatives
 
-#### 1. Asynchronous Processing
+#### 1. Asynchronous processing
 
 Modify the Runtime action to **immediately acknowledge the event** and offload the actual processing to:
 
@@ -27,12 +28,12 @@ Modify the Runtime action to **immediately acknowledge the event** and offload t
 
 This approach helps ensure a **fast response** to the event system while managing heavier workloads efficiently.
 
-**Important Notes:**
+**Important notes:**
 
  - Debug Tracing might not capture full details if something goes wrong during the offloaded processing.
  - I/O Events will not retry the event if the processing fails after it has been acknowledged.
 
-#### 2. Journaling-Based Event Registration
+#### 2. Journaling-based event registration
 
 Instead of directly triggering a Runtime action, configure **Journaling** through Adobe’s event registration system.
 

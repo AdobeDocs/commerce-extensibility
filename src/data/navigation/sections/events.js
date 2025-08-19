@@ -8,19 +8,19 @@ module.exports = [
     path: "/events/extend-commerce-events.md",
     pages: [
       {
-        title: "Event-Driven Integration Setup with App Builder",
+        title: "Event-driven integration setup with App Builder",
         path: "/events/tutorial/extend-commerce-events.md",
       },  
       {
-        title: "App Development Event Registration and Deployment",
+        title: "App development event registration and deployment",
         path: "/events/tutorial/events-action-code-development.md"
       },
       {
-        title: "Debugging and Development Tips",
+        title: "Debugging and development tips",
         path: "/events/tutorial/events-action-code-debugging.md"
       },
       {
-        title: "Limitations of Runtime Action and Alternatives",
+        title: "Limitations of runtime action and alternatives",
         path: "/events/tutorial/events-runtime-action-limitation.md"
       }
       

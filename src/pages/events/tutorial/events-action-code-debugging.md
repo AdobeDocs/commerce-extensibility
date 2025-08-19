@@ -1,12 +1,12 @@
 ---
-title: Extend Adobe Commerce with Events and App Builder
+title: Extend Adobe Commerce with events and App Builder
 description: Learn how to configure and build event-driven integrations between Adobe Commerce and Adobe App Builder using asynchronous events.
 keywords:
   - Extensibility
-noIndex: true
-
+  - Events
 ---
-## Debugging Code in App Builder Project
+
+## Debugging code in App Builder project
 
 Use the local environment to simulate and troubleshoot your Adobe I/O App Builder code before deploying.
 <InlineAlert variant="info" slots="text"/>
@@ -16,7 +16,7 @@ Note that debugging web actions via ACCS or a deployed instance is not supported
 
 Make sure to set `require-adobe-auth: false` and `web: 'yes'` in the app-config.yaml file when debugging runtime actions.
 
-### Configure your debugger
+### Configure  debugger
 
 To debug your Adobe I/O App Builder project in Visual Studio Code (VS Code), set up a launch configuration. This allows you to run and debug your app directly from VS Code, making it easier to inspect code, set breakpoints, and view logs.
 
@@ -147,7 +147,56 @@ These tips will help you streamline development and improve reliability while bu
    aio app deploy --action=testevent
    ```
 
-## Interpreting Event Delivery Logs in Adobe I/O Events
+## Debugging action failures
+
+When an App Builder action fails, you can debug it using either the **Debug Tracer** in Developer Console or the **CLI activation commands**.
+
+### Option 1: Debug tracer (UI)
+
+1. Open the project in [Adobe Developer Console](https://developer.adobe.com/console/).
+2. Go to the **Debug Tracer** tab.
+3. Trigger your action (e.g., `aio app deploy` or `aio runtime action invoke <namespace>/<package>/<actionName>`).
+
+If the action fails, Debug Tracer shows:
+- The **Activation ID** (unique execution ID)
+- The **Error response** from the runtime (e.g., `application error`, `server error`, `401 unauthorized`, `403 forbidden`, etc.)
+- Any `logger.info` / `logger.error` messages the code emitted
+
+**Example Debug tracer error:**
+
+``` json
+application error
+{
+"error": "server error"
+}
+```
+You can copy the **Activation ID** directly from Debug Tracer to investigate further using the CLI.
+
+### Option 2: CLI
+
+To get more details, activation commands can be used.
+
+``` terminal
+aio rt activation list
+
+Datetime        Status    Kind      Version    Activation ID
+─────────────── ───────── ───────── ───────── ────────────────────────────────
+08/13 20:32:24  app error sequence  0.0.1     7d2470aa1bc84bc6a470aa1bc85bc67c journalevent/eventjournal
+```
+The last column shows the Activation ID.
+
+**To get logs explicitly**
+```terminal
+aio rt activation logs <ACTIVATION_ID>
+```
+<InlineAlert variant="info" slots="text"/>
+
+**Tip:** Start with **Debug Tracer** for quick troubleshooting.  
+If you need more details (like raw JSON response, timing, annotations, logs), switch to the **CLI** with the Activation ID.
+
+
+## Interpreting event delivery logs in Adobe I/O Events
+
 
 When an event is triggered and delivered through Adobe I/O Events, you can inspect the delivery status using the Debug Tracer in the Adobe Developer Console. The delivery record contains the following fields:
 

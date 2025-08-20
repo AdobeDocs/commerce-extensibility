@@ -42,7 +42,7 @@ The function can also be extended to trigger alerts, update external systems, or
 
 <InlineAlert variant="info" slots="text"/>
 
-This tutorial specifically covers event registration using a Runtime action in Adobe App Builder. Please note that this applies only to SaaS deployments. We will also discuss its limitations, including execution time constraints, in later sections.
+This tutorial specifically covers event registration using a runtime action in Adobe App Builder. This only applies to Adobe Commerce as a Cloud Service (SaaS) deployments. This tutorial also covers the limitations of this method, including execution time constraints, in later sections.
 
 ### Setting up event provider and event metadata in Adobe Commerce
 

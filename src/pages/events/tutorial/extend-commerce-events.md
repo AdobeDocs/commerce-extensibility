@@ -50,7 +50,7 @@ To create and configure an event provider in Adobe Commerce, which is then regis
 
 1. An Adobe I/O Event Provider and Event Metadata must first be created using the Adobe Event Provider API. Inputs such as the label, description, and instanceId are provided during this step.
 
-1. Once Event Provider and Event Metadata is created, the provider ID from the response should be noted.
+1. Take note of the provider ID from the response for future use.
 
 1. Using these details, a corresponding event provider is then created in the Adobe Commerce Admin. The instanceId input from the API request is used here to establish the link between Adobe Commerce and Adobe I/O Events.
 

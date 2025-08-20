@@ -46,7 +46,7 @@ This tutorial specifically covers event registration using a runtime action in A
 
 ### Setting up event provider and event metadata in Adobe Commerce
 
-This section covers creating and configuring an event provider in Adobe Commerce, which is then registered in the Adobe Developer Console as part of the App Builder project setup.To enable this flow:
+To create and configure an event provider in Adobe Commerce, which is then registered in the Adobe Developer Console as part of the App Builder project:
 
 1. An Adobe I/O Event Provider and Event Metadata must first be created using the Adobe Event Provider API. Inputs such as the label, description, and instanceId are provided during this step.
 

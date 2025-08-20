@@ -28,7 +28,7 @@ This guide walks you through a typical event-driven integration using Adobe Comm
 
 ![Event-driven integration](../../_images/events/tutorial/adobe-io-events-integration-architecture.png)
 
-Consider a use case where a product is saved or updated in Adobe Commerce. At this point, an asynchronous event is emitted. For this event to reach Adobe App Builder, an event provider must first be created in Adobe I/O Events. This provider defines the types of events that can be emitted, such as product updates, and ensures that Adobe I/O Events can receive and route them correctly.The event provider is then configured in Adobe Commerce using the Adobe I/O Events for Adobe Commerce module. This setup allows Adobe Commerce to emit specific events to Adobe I/O Events.
+Consider a use case where you are saving or updating in Adobe Commerce, which causes an asynchronous event to be emitted. For this event to reach Adobe App Builder, an event provider must first be created in Adobe I/O Events. This provider defines the types of events that can be emitted, such as product updates, and ensures that Adobe I/O Events can receive and route them correctly. The event provider is then configured in Adobe Commerce using the Adobe I/O Events for Adobe Commerce module. This setup allows Adobe Commerce to emit specific events to Adobe I/O Events.
 
 The provider is then linked during event registration in App Builder. Event registration specifies how and where the event should is delivered, such as to a Runtime action. To explore this and other supported registration types, refer to event registration in Adobe I/O Events.
 

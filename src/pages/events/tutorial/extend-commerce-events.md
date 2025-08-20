@@ -34,7 +34,7 @@ The provider is then linked during event registration in App Builder. Event regi
 
 Events emitted from Adobe Commerce are routed through Adobe I/O Events. This routing is enabled by the event provider configuration and the corresponding registration. Based on the registration setup, Adobe I/O Events invokes the appropriate consumer. In this case, the consumer is a Runtime action deployed as part of an App Builder app.
 
-The Runtime action receives the event payload and processes it. In this use case, it checks whether there is a price change or if the stock falls below a defined threshold.
+The runtime action receives the event payload and processes it. In this use case, it checks whether there is a price change or if the stock falls below a defined threshold.
 
 If either condition is met, the function logs the details using App Builder’s built-in logger. These logs help trace the flow of events and verify that the logic is executing correctly.
 

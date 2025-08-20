@@ -38,7 +38,7 @@ The runtime action receives the event payload and processes it. In this use case
 
 If either condition is met, the function logs the details using App Builder’s built-in logger. These logs help trace the flow of events and verify that the logic is executing correctly.
 
-The function can also be extended to trigger alerts, update external systems, or launch downstream workflows, all without modifying the Commerce runtime
+The function can also be extended to trigger alerts, update external systems, or launch downstream workflows, all without modifying the Commerce runtime.
 
 <InlineAlert variant="info" slots="text"/>
 

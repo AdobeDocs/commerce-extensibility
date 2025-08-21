@@ -44,7 +44,118 @@ To create a new subscription, click the **Add New Subscription** button. Fill in
 ![Observability New Subscription Admin UI](../_images/observability/create-subscription-admin-ui.png)
 
 
+### Rest API
 
+To manage subscriptions using the REST API, you can use the following endpoints:
+
+| **Route URL**                             | **Method** | **Description**                                          |
+|-------------------------------------------| ---------- |----------------------------------------------------------|
+| `/V1/oope_observability/subscription/:id` | GET        | Retrieve an observability subscriptions                  |
+| `/V1/oope_observability/subscription?searchCriteria[pageSize]=100`     | GET        | Retrieve a list of all observability subscriptions       |
+| `/V1/oope_observability/subscription`     | POST       | Create a new observability subscription                  |
+| `/V1/oope_observability/subscription`     | PUT        | Update an observability subscription                   |
+| `/V1/oope_observability/subscription/:id` | DELETE     | Delete observability subscription by ID                  |
+
+#### Create a new subscription
+
+The `POST` request to `/V1/oope_observability/subscription` requires a JSON payload with the subscription information. Here is an example of the request body to create a new subscription:
+
+```json
+{
+	"subscription": {
+		"type": "logs",
+		"destination": "OpenTelemetry",
+		"destination_endpoint": "https://otlp.nr-data.net:4318/v1/logs",
+		"component": [
+			"webhooks",
+			"eventing"
+		],
+		"headers": [
+			{
+				"name": "api-key",
+				"value": "asdf24b2hk-adfasf-afs",
+				"secret": true
+			}
+		],
+		"log_message_settings": [
+			"log_webhook_request_body"
+		],
+		"is_active": "true"
+	}
+}
+```
+
+#### Update an existing subscription
+
+To update an existing subscription, you can use the `PUT` request to `/V1/oope_observability/subscription`. The request body should contain the updated subscription information, including the subscription ID. Here is an example of the request body to update a subscription:
+
+```json
+{
+  "subscription": {
+    "id": 3,
+    "type": "logs",
+    "destination": "NewRelic",
+    "destination_endpoint": "https://log-api.newrelic.com/log/v1",
+    "component": [
+      "webhooks",
+      "eventing",
+      "admin-ui-sdk"
+    ],
+    "is_active": "true"
+  }
+}
+```
+
+#### Retrieve a list of subscriptions
+
+To retrieve a list of all observability subscriptions, you can use the `GET` request to `/V1/oope_observability/subscription?searchCriteria[pageSize]=100`. This will return a paginated list of subscriptions, with a maximum of 100 subscriptions per page.
+
+```json
+{
+  "items": [
+    {
+      "id": 1,
+      "type": "logs",
+      "destination": "OpenTelemetry",
+      "destination_endpoint": "https:\/\/ab34c78214c7.ngrok-free.app\/v1\/logs",
+      "destination_api_key": "",
+      "component": [
+        "webhooks",
+        "eventing",
+        "admin-ui-sdk"
+      ],
+      "headers": [],
+      "service_name": "my-app-builder-app",
+      "is_active": true,
+      "log_message_settings": [
+        "log_webhook_request_headers",
+        "log_webhook_request_body",
+        "log_webhook_response_body"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "logs",
+      "destination": "NewRelic",
+      "destination_endpoint": "https:\/\/log-api.newrelic.com\/log\/v1 ",
+      "destination_api_key": "********",
+      "component": [
+        "webhooks",
+        "eventing",
+        "admin-ui-sdk"
+      ],
+      "headers": [],
+      "service_name": "",
+      "is_active": false,
+      "log_message_settings": [
+        "log_webhook_request_headers",
+        "log_webhook_request_body",
+        "log_webhook_response_body"
+      ]
+    }
+  ]
+}
+```
 
 ## Install observability module
 

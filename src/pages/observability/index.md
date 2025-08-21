@@ -33,6 +33,13 @@ To start using observability, you need to configure Adobe Commerce by creating a
 - **Headers**: Additional headers that will be sent with the logs to the destination. This is useful for adding custom metadata or authentication information. You can specify if header has secret value or not to hide in the Admin UI or Rest API response.
 - **Log message configuration**: Enables or disables the additional data in the log message. This includes such options as the request headers and payload, and response payloads for webhooks.
 
+Available log destinations are:
+
+- **OpenTelemetry**: Logs can be sent to any OpenTelemetry-compatible endpoint, allowing for flexible integration with various observability tools.
+- **NewRelic**: Logs will be sent to NewRelic using the NewRelic Logs API.
+- **Datadog**: Logs will be sent to Datadog using the Datadog Logs API.
+- **Splunk**: Logs will be sent to Splunk using the Splunk HTTP Event Collector (HEC).
+
 ### Configuration Admin UI
 
 To configure observability in the Admin UI, navigate to `System > Observability > Subscription List`. Here you can create, update, and delete subscriptions.
@@ -42,7 +49,6 @@ To configure observability in the Admin UI, navigate to `System > Observability 
 To create a new subscription, click the **Add New Subscription** button. Fill in the required fields and click **Save Subscription**. The new subscription will be added to the list.
 
 ![Observability New Subscription Admin UI](../_images/observability/create-subscription-admin-ui.png)
-
 
 ### Rest API
 
@@ -117,7 +123,7 @@ To retrieve a list of all observability subscriptions, you can use the `GET` req
       "id": 1,
       "type": "logs",
       "destination": "OpenTelemetry",
-      "destination_endpoint": "https:\/\/ab34c78214c7.ngrok-free.app\/v1\/logs",
+      "destination_endpoint": "https:\/\/xxx.ngrok-free.app\/v1\/logs",
       "destination_api_key": "",
       "component": [
         "webhooks",

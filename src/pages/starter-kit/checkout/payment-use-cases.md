@@ -58,25 +58,27 @@ Payment gateways often provide user interfaces where merchants can view and mana
 
 These patterns provide flexibility in how payment operations are integrated with order management, allowing developers to choose between asynchronous event-driven approaches or synchronous webhook-based validation depending on their specific requirements.
 
-- **Non-blocking invoice creation** - Payment gateway events (capture, refund, cancellation) flow asynchronously through the merchant server to update Adobe Commerce, allowing the system to continue processing without waiting for payment confirmation.
-- **Blocking invoice creation** - Invoice and credit memo creation is synchronized with payment operations using webhooks, ensuring payment success before completing the financial document creation.
-- **Incoming payment synchronization** - Payment gateway captures and refunds are synchronized bidirectionally with Adobe Commerce through the Admin REST API, enabling real-time updates between the payment system and commerce platform.
+- [Non-blocking invoice creation](#non-blocking-invoice-creation)
+- [Blocking invoice creation](#blocking-invoice-creation)
+- [Incoming payment synchronization](#incoming-payment-synchronization)
 
-**Non-blocking invoice creation**
+#### Non-blocking invoice creation
+
+Payment gateway events (capture, refund, cancellation) flow asynchronously through the merchant server to update Adobe Commerce, allowing the system to continue processing without waiting for payment confirmation.
 
 The `observer.sales_order_invoice_save_after` and `observer.sales_order_creditmemo_save_after` events are implemented in the following diagram:
 
 ![non-blocking-invoice-creation](../../_images/starterkit/non-blocking-invoice-creation.png)
 
-**Blocking invoice creation**
+#### Blocking invoice creation
 
-Alternatively, you can use the `plugin.magento.sales.api.invoice_repository.create` and `plugin.magento.sales.api.creditmemo_repository.create` webhooks to make invoice and credit memo creation dependent on successful payment operations.
+Alternatively, you can use the `plugin.magento.sales.api.invoice_repository.create` and `plugin.magento.sales.api.creditmemo_repository.create` webhooks to make invoice and credit memo creation dependent on successful payment operations, ensuring payment success before completing the financial document creation.
 
 ![blocking-invoice-creation](../../_images/starterkit/blocking-invoice-creation.png)
 
-**Incoming payment synchronization**
+#### Incoming payment synchronization
 
-Payment gateway captures and refunds synchronized through the Commerce Admin REST API with App Builder runtime actions:
+Payment gateway captures and refunds are synchronized bidirectionally with Adobe Commerce through the Admin REST API, enabling real-time updates between the payment system and commerce platform.
 
 ![incoming-captures-and-refunds](../../_images/starterkit/incoming-captures-and-refunds.png)
 

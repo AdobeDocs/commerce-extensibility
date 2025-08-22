@@ -20,38 +20,61 @@ The Adobe Commerce checkout starter kit supports several integration patterns wi
 
 This strategy consists of the following components:
 
-1. **OOPE Payment Method** - Database-persisted configuration managed with the Admin REST APIs.
-1. **Cart GraphQL Extensions** - `configurable_attributes` field provides payment form configuration.
-1. **Client-Side Gateway Integration** - Lightweight widget using gateway SDKs in EDS checkout drop-in.
+1. **OOPE Payment Method** - Database-persisted configuration managed with the [Admin REST APIs](https://developer.adobe.com/commerce/webapi/rest) based on [Commerce offline payment methods](https://experienceleague.adobe.com/en/docs/commerce-admin/stores-sales/payments/payments#offline-payment-methods).
+1. **Cart GraphQL Extensions** - An enhanced that accommodates OOPE workflows.
+1. **Client-Side Gateway Integration** - Lightweight widget using gateway SDKs in the [Adobe Commerce storefront checkout drop-in](https://experienceleague.adobe.com/developer/commerce/storefront/dropins/checkout).
 1. **Server-Side Gateway Integration** - App Builder application handling gateway communication.
+
+### Component flow
+
+The following diagram shows a complete payment integration where the frontend handles user interactions, the backend manages business logic and data synchronization, and the external payment gateway processes the actual financial transactions. This architecture separates concerns between client-side user experience and server-side security and processing.
 
 ![oope-payment-components-with-actors](../../_images/starterkit/oope-payment-components-with-actors.png)
 
-### Checkout flow
+1. **Admin REST API connection** - The merchant connects to Adobe Commerce as a Cloud Service (SaaS) through the Admin REST API, allowing them to manage and configure the payment system from the backend.
+1. **GraphQL API** - The Storefront Checkout communicates with Commerce SaaS using the GraphQL API, enabling the frontend to fetch and submit payment-related data during the checkout process.
+1. **Client-side gateway integration** - The Payment Form Widget (embedded within the Storefront Checkout) handles the client-side integration with the external Payment Gateway. This allows shoppers to input payment information directly through the gateway's interface.
+1. **Server-side gateway integration** - The AIO Runtime Action serves as the server-side integration point, handling backend communication between Adobe Commerce SaaS and the payment gateway. It processes events and webhooks from Commerce, makes admin REST API calls back to Commerce, and communicates with the gateway using server-side APIs.
+
+### Standard checkout flow
 
 Payment collection during checkout is the core requirement for any payment gateway integration. While refunds and other operations can be handled directly by merchants through their payment provider, checkout payment processing is essential.
 
-The starter kit supports multiple checkout flow patterns. The following flow represents the standard approach used by Adobe Commerce Payment Services and many payment gateways:
-
-![checkout-flow](../../_images/starterkit/basic-checkout-flow.png)
+The starter kit supports multiple checkout flow patterns. The following flow represents the standard approach used by Adobe Commerce Payment Services and many payment gateways, demonstrating a complete checkout process from cart initialization through payment processing to order completion and invoicing, with proper validation and status management at each step.
 
 For alternative checkout flow patterns, see [Checkout session](#checkout-session-pattern) and [Client-side nonce](#client-side-nonce-pattern).
 
+![checkout-flow](../../_images/starterkit/basic-checkout-flow.png)
+
+1. **Initialize cart and fetch payment methods** - The merchant client loads a shopping cart and requests cart details from Adobe Commerce. Adobe Commerce responds with available payment methods, including codes, titles, backend URLs, and configuration details for offline payment methods.
+1. **Create payment session** - The merchant client initiates a payment session with the merchant server using a cart ID as reference. The merchant server then creates a payment session with the payment gateway, exchanging session data that gets relayed back to the merchant client.
+1. **Render checkout and payment form** - The merchant client renders the cart and payment form. During checkout, the payment details form is presented to the user, who interacts directly with the payment gateway.
+1. **Place order and validate payment** - After payment completion (`onPaymentCompleted`), the merchant client sends a `place order` request to Adobe Commerce. Adobe Commerce triggers a `validate payment` webhook to the merchant server, which queries the payment gateway for session results and status. The merchant server responds with a success or failure status to Adobe Commerce, which updates the order status to `PENDING` and confirms completion to the merchant client.
+1. **Authorization and invoicing** - The payment gateway sends an `authorization` webhook to the merchant server. The merchant server acknowledges receipt and attempts to `invoice order` with Adobe Commerce, retrying until successful. Upon successful invoicing, Adobe Commerce responds with a success or failure status and updates the order status to `processing`.
+
 ### Post-checkout patterns
 
-Payment gateways often provide user interfaces where merchants can view and manage customer payments.
+Payment gateways often provide user interfaces where merchants can view and manage customer payments. You can use asynchronous communication patterns common in the [integration starter kit](../integration/index.md), to synchronize invoices and credit memos and their corresponding captures and refunds.
 
-Using asynchronous communication patterns common in the [integration starter kit](../integration/index.md), invoices and credit memos and their corresponding captures and refunds can be synchronized as detailed in the following image:
+These patterns provide flexibility in how payment operations are integrated with order management, allowing developers to choose between asynchronous event-driven approaches or synchronous webhook-based validation depending on their specific requirements.
 
-Recommended events: `observer.sales_order_invoice_save_after` and `observer.sales_order_creditmemo_save_after`.
+- **Non-blocking invoice creation** - Payment gateway events (capture, refund, cancellation) flow asynchronously through the merchant server to update Adobe Commerce, allowing the system to continue processing without waiting for payment confirmation.
+- **Blocking invoice creation** - Invoice and credit memo creation is synchronized with payment operations using webhooks, ensuring payment success before completing the financial document creation.
+- **Incoming payment synchronization** - Payment gateway captures and refunds are synchronized bidirectionally with Adobe Commerce through the Admin REST API, enabling real-time updates between the payment system and commerce platform.
+
+**Non-blocking invoice creation**
+
+The `observer.sales_order_invoice_save_after` and `observer.sales_order_creditmemo_save_after` events are implemented in the following diagram:
 
 ![non-blocking-invoice-creation](../../_images/starterkit/non-blocking-invoice-creation.png)
 
-Alternatively, you can use webhooks to make invoice and credit memo creation dependent on successful payment operations.
+**Blocking invoice creation**
 
-Recommended webhook events: `plugin.magento.sales.api.invoice_repository.create` and `plugin.magento.sales.api.creditmemo_repository.create`.
+Alternatively, you can use the `plugin.magento.sales.api.invoice_repository.create` and `plugin.magento.sales.api.creditmemo_repository.create` webhooks to make invoice and credit memo creation dependent on successful payment operations.
 
 ![blocking-invoice-creation](../../_images/starterkit/blocking-invoice-creation.png)
+
+**Incoming payment synchronization**
 
 Payment gateway captures and refunds synchronized through the Commerce Admin REST API with App Builder runtime actions:
 
@@ -59,25 +82,38 @@ Payment gateway captures and refunds synchronized through the Commerce Admin RES
 
 ### Checkout session pattern
 
-In a minimal checkout flow, a checkout session is created with the payment gateway before starting the client-side payment process. Once payment is completed, the process with the gateway is effectively completed, and the only thing remaining is to find out the result and update the order:
+In a minimal checkout flow, a checkout session is created with the payment gateway before starting the client-side payment process. Once payment is completed, the process with the gateway is effectively completed, and the only thing remaining is to find out the result and update the order.
 
-- A checkout session is established with the payment gateway before starting the client-side payment process.
-- Payment is completed during the client-side process.
-- The order can be placed immediately after payment completion.
-- Payment validation webhooks are optional since the payment is already confirmed.
+This pattern represents a streamlined approach where the payment gateway handles the complete payment lifecycle upfront, allowing for faster order completion and reduced complexity in the checkout flow.
 
 ![basic-checkout-flow-annotated](../../_images/starterkit/basic-checkout-flow-annotated.png)
+
+1. **Establish payment session** - Create a checkout session with the payment gateway before starting any client-side payment processing, establishing the foundation for the payment transaction.
+1. **Complete payment client-side** - Handle the entire payment transaction through the client-side payment form, with the payment gateway processing the transaction and providing immediate confirmation.
+1. **Place order immediately** - Once payment is confirmed by the gateway, place the order without waiting for additional validation, since the payment gateway has already processed and confirmed the transaction.
+1. **Skip validation webhooks** - Since payment is already confirmed, payment validation webhooks become optional rather than required, streamlining the checkout process.
+1. **Update order status** - The order can be finalized immediately since payment confirmation is already complete, allowing for faster order processing and customer satisfaction.
 
 ### Client-side nonce pattern
 
 When using a payment method nonce (a secure, single-use reference to payment information), the payment is not completed with the client-side process. Instead, if payment is accepted, the client side is granted a payment nonce that can subsequently be used to create a payment transaction at the gateway.
 
-- The client-side process generates a payment nonce.
-- The actual payment transaction is created server-side using the nonce.
-- A payment validation webhook is typically required to complete the payment before order placement.
-- Orders may start with **Pending** status until payment is confirmed.
+Unlike the checkout session pattern where payment is completed client-side, the nonce pattern defers actual payment processing until the server-side validation step. This provides enhanced security by ensuring sensitive payment information is never processed directly on the client side, while still allowing for immediate order placement with the understanding that payment confirmation happens asynchronously.
 
 ![basic-checkout-flow-nonce-annotated](../../_images/starterkit/basic-checkout-flow-with-nonce-annotated.png)
+
+1. **Load shopping cart** - The merchant client initiates the checkout process by loading the shopping cart.
+1. **Generate client token** - The merchant client requests a client token from the merchant server, which then obtains it from the payment gateway.
+1. **Render payment form** - Using the received token, the merchant client renders the checkout form with a payment details form.
+1. **Generate payment nonce** - The customer enters payment information, which generates a secure, single-use nonce representing the payment details.
+1. **Place order with nonce** - The merchant client sends the order request to Adobe Commerce, including the payment nonce.
+1. **Validate payment webhook** - Adobe Commerce triggers a payment validation webhook to the merchant server, passing the nonce.
+1. **Create transaction server-side** - The merchant server uses the nonce to create the actual payment transaction with the payment gateway.
+1. **Process transaction response** - The payment gateway responds with success/failure status, which flows back through the merchant server to Adobe Commerce.
+1. **Determine order status** - The order status is set based on the webhook type:
+   - **PROCESSING** for blocking webhooks (immediate confirmation)
+   - **PENDING** for non-blocking webhooks (awaiting confirmation)
+1. **Optional authorization flow** - An asynchronous process handles payment authorization and order invoicing through additional webhooks.
 
 ## Get order details from Adobe Commerce using the masked cart ID
 

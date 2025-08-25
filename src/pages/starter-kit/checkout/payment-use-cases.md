@@ -14,7 +14,7 @@ For more general use cases, refer to [use-cases](./use-cases.md).
 
 ## Integration strategies
 
-The Adobe Commerce checkout starter kit supports several integration patterns with payments gateways based on a few key components that can be combined and adapted as needed.
+The Adobe Commerce checkout starter kit supports several integration patterns with payment gateways based on a few key components that can be combined and adapted as needed.
 
 ### Key components
 
@@ -49,8 +49,8 @@ For alternative checkout flow patterns, see [Checkout session](#checkout-session
 1. **Initialize cart and fetch payment methods** - The merchant client loads a shopping cart and requests cart details from Adobe Commerce. Adobe Commerce responds with available payment methods, including codes, titles, backend URLs, and configuration details for offline payment methods.
 1. **Create payment session** - The merchant client initiates a payment session with the merchant server using a cart ID as reference. The merchant server then creates a payment session with the payment gateway, exchanging session data that gets relayed back to the merchant client.
 1. **Render checkout and payment form** - The merchant client renders the cart and payment form. During checkout, the payment details form is presented to the user, who interacts directly with the payment gateway.
-1. **Place order and validate payment** - After payment completion (`onPaymentCompleted`), the merchant client sends a `place order` request to Adobe Commerce. Adobe Commerce triggers a `validate payment` webhook to the merchant server, which queries the payment gateway for session results and status. The merchant server responds with a success or failure status to Adobe Commerce, which updates the order status to `PENDING` and confirms completion to the merchant client.
-1. **Authorization and invoicing** - The payment gateway sends an `authorization` webhook to the merchant server. The merchant server acknowledges receipt and attempts to `invoice order` with Adobe Commerce, retrying until successful. Upon successful invoicing, Adobe Commerce responds with a success or failure status and updates the order status to `processing`.
+1. **Place order and validate payment** - After payment completion (`onPaymentCompleted`), the merchant client sends a `placeOrder` request to Adobe Commerce. Adobe Commerce triggers a `validate payment` webhook to the merchant server, which queries the payment gateway for session results and status. The merchant server responds with a success or failure status to Adobe Commerce, which updates the order status to `PENDING` and confirms completion to the merchant client.
+1. **Authorization and invoicing** - The payment gateway sends an `authorization` webhook to the merchant server. The merchant server acknowledges receipt and attempts to `invoice order` with Adobe Commerce, retrying until successful. Upon successful invoicing, Adobe Commerce responds with a success or failure status and updates the order status to `PROCESSING`.
 
 ### Post-checkout patterns
 

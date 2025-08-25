@@ -16,9 +16,9 @@ August 25, 2025
 
 ### Bug fixes
 
-* Fixed spinner not stopping when an error occurs during refresh registrations. <!-- CEXT-5111 -->
+* Fixed spinner behavior when an error occurs while refreshing registrations. <!-- CEXT-5111 -->
 
-* Fixed a crash in the Admin Panel when multiple applications defined sections within the same organization. <!-- CEXT-5106 -->
+* Fixed a crash in the Admin Panel when multiple applications define sections within the same organization. <!-- CEXT-5106 -->
 
 ## Version 3.2.0
 

@@ -8,6 +8,18 @@ keywords:
 
 # Adobe Commerce Admin UI SDK release notes
 
+## Version 3.2.1
+
+### Release date
+
+August 22, 2025
+
+### Bug fixes
+
+* Fixed spinner not stopping when an error occurs during refresh registrations. <!-- CEXT-5111 -->
+
+* Fixed a crash in the Admin Panel when multiple applications defined sections within the same organization. <!-- CEXT-5106 -->
+
 ## Version 3.2.0
 
 ### Release date

@@ -6,17 +6,19 @@ keywords:
   - Events
 ---
 
-## Debugging code in App Builder project
+# Debugging code in App Builder project
 
 Use the local environment to simulate and troubleshoot your Adobe I/O App Builder code before deploying.
+
 <InlineAlert variant="info" slots="text"/>
-Note that debugging web actions via ACCS or a deployed instance is not supported. They can only be simulated locally.
 
-### Prerequisites
+Debugging web actions with Adobe Commerce as a Cloud Service or a deployed instance is not supported. They can only be simulated locally.
 
-Make sure to set `require-adobe-auth: false` and `web: 'yes'` in the app-config.yaml file when debugging runtime actions.
+## Prerequisites
 
-### Configure  debugger
+Set `require-adobe-auth: false` and `web: 'yes'` in the `app-config.yaml` file when debugging runtime actions.
+
+## Configure the debugger
 
 To debug your Adobe I/O App Builder project in Visual Studio Code (VS Code), set up a launch configuration. This allows you to run and debug your app directly from VS Code, making it easier to inspect code, set breakpoints, and view logs.
 
@@ -28,7 +30,7 @@ To debug your Adobe I/O App Builder project in Visual Studio Code (VS Code), set
 
 This configuration sets up the VS Code debugger to work with Adobe I/O App Builder projects.
 
-### Enable source maps
+## Enable source maps
 
 In the root folder of your project, create a `webpack-config.js` file with the following content:
 
@@ -38,7 +40,7 @@ module.exports = {
   }
 ```
 
-### Rebuild the project
+## Rebuild the project
 
 Use the following command to rebuild your project to apply the changes.
 
@@ -48,13 +50,15 @@ aio app build
 
 ### Start debugging
 
-In VS Code, on the **Run and Debug** tab, select the launch configuration you created in Step 1. This will allow you to run your app in debug mode.
+To start debugging your action code:
 
-![Debug Action in VS](../../_images/webhooks/tutorial/debug-actions-option.png)
+1. In VS Code, on the **Run and Debug** tab, select the launch configuration you created in "Configure the debugger". This will allow you to run your app in debug mode.
 
-Click the Run button or press **F5** to start the debugger. This starts the app using the `aio app dev` command. Output similar to the following is displayed in the terminal:
+   ![Debug Action in VS](../../_images/webhooks/tutorial/debug-actions-option.png)
 
-```terminal
+1. Click the Run button or press **F5** to start the debugger. This starts the app using the `aio app dev` command. Output similar to the following is displayed in the terminal:
+
+   ```terminal
 Debugger attached.
 Building the app...
 To view your local application:

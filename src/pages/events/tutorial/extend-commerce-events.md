@@ -36,7 +36,7 @@ Events emitted from Adobe Commerce are routed through Adobe I/O Events. This rou
 
 The runtime action receives the event payload and processes it. In this use case, it checks whether there is a price change or if the stock falls below a defined threshold.
 
-If either condition is met, the function logs the details using App Builder’s built-in logger. These logs help trace the flow of events and verify that the logic is executing correctly.
+If either condition is met, the function logs the details using App Builder's built-in logger. These logs help trace the flow of events and verify that the logic is executing correctly.
 
 The function can also be extended to trigger alerts, update external systems, or launch downstream workflows, all without modifying the Commerce runtime.
 
@@ -62,7 +62,7 @@ This section covers creating and configuring an **Event Provider** in Adobe Comm
 
 #### Parameters and authentication for Adobe I/O Events API
 
-These parameters are used for **both** Event Provider creation and Event Metadata creation. Values are obtained from the App Builder project’s configuration JSON file, which can be downloaded from the Adobe Developer Console:
+These parameters are used for **both** Event Provider creation and Event Metadata creation. Values are obtained from the App Builder project's configuration JSON file, which can be downloaded from the Adobe Developer Console:
 
 1. Go to [Adobe Developer Console](https://developer.adobe.com/console).  
 2. Select your project.  
@@ -186,7 +186,7 @@ Once all required fields are completed and Click **Send** button, the Event Prov
   "label": "Adobe Commerce *************",
   "event_code": "observer.*****************_after"
 }
-
+```
 
 ## Create and configure an event provider in Adobe Commerce
 

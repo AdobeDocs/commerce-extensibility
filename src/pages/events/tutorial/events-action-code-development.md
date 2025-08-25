@@ -7,7 +7,7 @@ keywords:
 ---
 
 
-## App development and deployment
+# App development and deployment
 
 This section Covers the detailed steps for Project creation, Event Registration, App development and Deployment
 
@@ -26,7 +26,7 @@ Before you can start building your App Builder application, you need to set up y
 
 <!-- This section will be removed in the near future. -->
 
-#### Create a new project in Adobe Developer Console
+### Create a new project in Adobe Developer Console
 
 1. To add new project in developer console, Refer to the  [Adobe App Builder Getting Started guide](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app) and complete Step 1: "Check your environment and tools" and Step 2: "Create a new project on Developer Console" before proceeding.
 These steps are essential because the Adobe Developer Console provides the credentials and configuration required to deploy your App Builder app and access Adobe services like I/O Runtime and Commerce APIs. Without completing these steps, your app will not be able to authenticate or run within the Adobe ecosystem.
@@ -38,7 +38,7 @@ Add the following services to your workspace. Each service must be added individ
 
 Click on I/O Management API service. Then click Next. On the Configure API page, select the OAuth Server-to-Server option and click Save configured API.
 
-#### Set up your local App Builder environment using the CLI
+### Set up your local App Builder environment using the CLI
 
 After creating your project in the Adobe Developer Console, the next step is to set up your development environment using Adobe I/O CLI tools. This enables you to run your App Builder application locally and deploy it to Stage or Production workspaces configured in your Developer Console project.
 
@@ -220,9 +220,10 @@ Folder structure after `app init`:
     └── utils.js
 ```
 
-### Implement runtime action
+### Implement runtime actions
 
 This section explains how to write a runtime action that processes product event data from Adobe Commerce. The action is triggered when product-related events such as stock or price updates occur.The files for this runtime action are located under the actions/`<name of action created during app init>` directory. When the app init command is run, it creates an initial index.js file as the starting point for the runtime action code.
+
 Following this, the folder structure described below shows the organization and contents of each file involved.
 
 ```tree
@@ -530,7 +531,7 @@ The app.config.yaml file defines how your Adobe App Builder project is structure
 
 In this example, under the runtimeManifest section, a package named after the project name created earlier is defined. Inside it, there's an action called testevent, which points to the JavaScript file `actions/testevent/index.js` This action is configured to run on Node.js 22 and accepts an environment variable LOG_LEVEL set to info for controlling log verbosity.
 
-A key setting here is `web: 'no'`, which means the action is not exposed as a public web endpoint. Instead, it's intended to be triggered internally by Adobe I/O Events. Since event-based actions don’t need a public URL, this setting helps keep the action private and secure.
+A key setting here is `web: 'no'`, which means the action is not exposed as a public web endpoint. Instead, it's intended to be triggered internally by Adobe I/O Events. Since event-based actions don't need a public URL, this setting helps keep the action private and secure.
 
 Other annotations like `require-adobe-auth: false`(indicating no Adobe authentication is required) and final: true(marking the action as finalized) provide additional metadata for execution.
 
@@ -578,7 +579,7 @@ We need to define which Commerce events to subscribe to and register them within
 #### Verifying event delivery in Developer Console
 
 After deploying your app and triggering the event by creating a new product in Commerce Admin, go to your **Adobe Developer Console** > **Project** > **Workspace** > **Event Registration** > **Debug Tracing**. You should see an entry with your event code (e.g., com.adobe.commerce.`provider name`) and response code 200, confirming successful delivery to your App Builder action.
-To learn more about using the debug tracer feature, refer to Adobe’s documentation: Debug tracing in [Adobe Developer Console](https://developer.adobe.com/events/docs/support/tracing).
+To learn more about using the debug tracer feature, refer to Adobe's documentation: Debug tracing in [Adobe Developer Console](https://developer.adobe.com/events/docs/support/tracing).
 
 ![Developer Console Debug Tracer](../../_images/events/tutorial/adobe-console-events-debug-tracer.png)
 

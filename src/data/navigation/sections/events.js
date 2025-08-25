@@ -5,7 +5,7 @@ module.exports = [
   },
   {
     title: "Tutorial",
-    path: "/events/extend-commerce-events.md",
+    path: "/events/tutorial/extend-commerce-events.md",
     pages: [
       {
         title: "Event-driven integration setup with App Builder",
@@ -23,9 +23,7 @@ module.exports = [
         title: "Limitations of runtime action and alternatives",
         path: "/events/tutorial/events-runtime-action-limitation.md"
       }
-      
-        ]
-    
+    ]
   },
   {
     title: "Create an App Builder project",

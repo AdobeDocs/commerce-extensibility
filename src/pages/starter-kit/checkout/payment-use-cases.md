@@ -21,7 +21,7 @@ The Adobe Commerce checkout starter kit supports several integration patterns wi
 This strategy consists of the following components:
 
 1. **OOPE Payment Method** - Database-persisted configuration managed with the [Admin REST APIs](https://developer.adobe.com/commerce/webapi/rest) based on [Commerce offline payment methods](https://experienceleague.adobe.com/en/docs/commerce-admin/stores-sales/payments/payments#offline-payment-methods).
-1. **Cart GraphQL Extensions** - An enhanced that accommodates OOPE workflows.
+1. **Cart GraphQL Extensions** - An enhanced GraphQL API that accommodates OOPE workflows.
 1. **Client-Side Gateway Integration** - Lightweight widget using gateway SDKs in the [Adobe Commerce storefront checkout drop-in](https://experienceleague.adobe.com/developer/commerce/storefront/dropins/checkout).
 1. **Server-Side Gateway Integration** - App Builder application handling gateway communication.
 

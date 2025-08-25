@@ -4,6 +4,28 @@ module.exports = [
     path: "/events/index.md"
   },
   {
+    title: "Tutorial",
+    path: "/events/tutorial/extend-commerce-events.md",
+    pages: [
+      {
+        title: "Event-driven integration setup with App Builder",
+        path: "/events/tutorial/extend-commerce-events.md",
+      },  
+      {
+        title: "App development event registration and deployment",
+        path: "/events/tutorial/events-action-code-development.md"
+      },
+      {
+        title: "Debugging and development tips",
+        path: "/events/tutorial/events-action-code-debugging.md"
+      },
+      {
+        title: "Limitations of runtime action and alternatives",
+        path: "/events/tutorial/events-runtime-action-limitation.md"
+      }
+    ]
+  },
+  {
     title: "Create an App Builder project",
     path: "/events/project-setup.md",
   },
@@ -72,3 +94,4 @@ module.exports = [
     path: "/events/release-notes.md",
   }
 ];
+

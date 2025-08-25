@@ -12,7 +12,7 @@ keywords:
 
 ### Release date
 
-August 22, 2025
+August 25, 2025
 
 ### Bug fixes
 

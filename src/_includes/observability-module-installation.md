@@ -2,21 +2,25 @@
 
 ### Prerequisites
 
-* Adobe Commerce on cloud infrastructure or on-premises: 2.4.5+
+* Adobe Commerce on Cloud Infrastructure or on-premises: 2.4.5+
 * PHP 8.1+
 * Magento Open Source is not supported.
 
+<InlineAlert variant="info" slots="text"/>
+
+Adobe Commerce as a Cloud Service (SaaS) has the observability module pre-installed and does not require any additional installation.
+
 ### Installation
 
-To install observability module in Adobe Commerce:
+To install the observability module in Adobe Commerce:
 
-1. Run the following command to install the modules:
+1. Install the module:
 
    ```bash
    composer require magento/module-out-of-process-observability=^1.0.0 --with-dependencies
    ```
 
-1. Enable the new module:
+1. Enable the installed module:
 
    ```bash
    bin/magento module:enable Magento_OutOfProcessObservability

@@ -44,11 +44,11 @@ Available log destinations are:
 
 To configure observability in the Admin UI, navigate to `System > Observability > Subscription List`. Here you can create, update, and delete subscriptions.
 
-![Observability Admin UI](../_images/observability/list-of-subscriptions-admin-ui.png)
+![Observability Admin UI](../../_images/observability/list-of-subscriptions-admin-ui.png)
 
 To create a new subscription, click the **Add New Subscription** button. Fill in the required fields and click **Save Subscription**. The new subscription will be added to the list.
 
-![Observability New Subscription Admin UI](../_images/observability/create-subscription-admin-ui.png)
+![Observability New Subscription Admin UI](../../_images/observability/create-subscription-admin-ui.png)
 
 ### Rest API
 

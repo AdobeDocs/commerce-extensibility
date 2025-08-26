@@ -42,7 +42,7 @@ Navigate to **System** > Admin UI SDK > **Admin UI SDK Logs** to check the saved
 
 <Edition name="paas" />
 
-<InlineAlert type="info" title="Note" />
+<InlineAlert variant="info" slots="text" />
 
 The local testing feature is available only for PaaS versions of Adobe Commerce. On Adobe Commerce as a Cloud Service, you must ensure the **Enable local testing** field is set to **No**.
 

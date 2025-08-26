@@ -64,6 +64,8 @@ To manage subscriptions using the REST API, you can use the following endpoints:
 
 The `POST` request to `/V1/oope_observability/subscription` requires a JSON payload. The following example shows a request body to create a new subscription:
 
+**Request**:
+
 ```json
 {
     "subscription": {
@@ -93,6 +95,8 @@ The `POST` request to `/V1/oope_observability/subscription` requires a JSON payl
 
 To update an existing subscription, make a `PUT` request to the `/V1/oope_observability/subscription` endpoint. The request body should contain the updated subscription information, including the subscription `id`. The following example shows a request body to update a subscription:
 
+**Request**:
+
 ```json
 {
   "subscription": {
@@ -114,6 +118,8 @@ To update an existing subscription, make a `PUT` request to the `/V1/oope_observ
 
 To retrieve a list of all observability subscriptions, make a `GET` request to `/V1/oope_observability/subscription?searchCriteria[pageSize]=100`. This returns a paginated list of subscriptions, with a maximum of 100 subscriptions per page.
 
+**Response**:
+
 ```json
 {
   "items": [
@@ -122,7 +128,7 @@ To retrieve a list of all observability subscriptions, make a `GET` request to `
       "type": "logs",
       "destination": "OpenTelemetry",
       "destination_endpoint": "https:\/\/<abc>.ngrok-free.app\/v1\/logs",
-      "destination_api_key": "",
+      "destination_api_key": "abcd1234-abcdabc-afs",
       "component": [
         "webhooks",
         "eventing",
@@ -142,7 +148,7 @@ To retrieve a list of all observability subscriptions, make a `GET` request to `
       "type": "logs",
       "destination": "NewRelic",
       "destination_endpoint": "https:\/\/log-api.newrelic.com\/log\/v1 ",
-      "destination_api_key": "abcd1234-abcdabc-afs",
+      "destination_api_key": "********",
       "component": [
         "webhooks",
         "eventing",

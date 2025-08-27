@@ -8,29 +8,23 @@ keywords:
 
 # Extend Adobe Commerce with events and App Builder
 
-This guide explains how to create and configure an end-to-end event-driven integration using Adobe App Builder and Adobe Commerce asynchronous events. Whether the goal is to capture product updates, send order confirmation data to external systems, or trigger downstream workflows, Adobe Commerce asynchronous events and Adobe App Builder offer a scalable way to extend platform functionality.
-
-The guide covers:
-
-- Creating an Adobe I/O Event Provider using API
-- Configuring Adobe Commerce to emit events using the event provider
-- Setting up an Adobe App Builder project and writing action code to handle events
-- Registering Event Provider and Consumer for the Event
-- Viewing event payloads and logs to validate the integration
-- Debugging Code and Development Tips
-- Understanding limitations of Runtime actions and alternatives
+This tutorial explains how to create and configure an end-to-end event-driven integration using Adobe App Builder and Adobe Commerce asynchronous events. Whether the goal is to capture product updates, send order confirmation data to external systems, or trigger downstream workflows, Adobe Commerce asynchronous events and Adobe App Builder offer a scalable way to extend platform functionality.
 
 A simple use case involving product updates is used to illustrate these steps and demonstrate event-based communication between Adobe Commerce and App Builder.
 
+<InlineAlert variant="info" slots="text"/>
+
+This tutorial specifically covers event registration using a runtime action in Adobe App Builder. This only applies to Adobe Commerce as a Cloud Service (SaaS) deployments. This tutorial also covers the limitations of this method, including execution time constraints, in later sections.
+
 ## How it works
 
-This guide walks you through a typical event-driven integration using Adobe Commerce and Adobe App Builder. For an overview of Adobe I/O Events and how they facilitate building reactive applications across various Adobe services, see the [Adobe I/O Events Overview](https://developer.adobe.com/events/docs). **Figure 1** illustrates how events triggered within Adobe Commerce flow through to Adobe App Builder, enabling responsive downstream processing.
+This guide walks you through a typical event-driven integration using Adobe Commerce and Adobe App Builder. For an overview of Adobe I/O Events and how they facilitate building reactive applications across various Adobe services, see the [Adobe I/O Events Overview](https://developer.adobe.com/events/docs). The following diagram illustrates how events triggered within Adobe Commerce flow through to Adobe App Builder, enabling responsive downstream processing.
 
 ![Event-driven integration](../../_images/events/tutorial/adobe-io-events-integration-architecture.png)
 
-Consider a use case where you are saving or updating in Adobe Commerce, which causes an asynchronous event to be emitted. For this event to reach Adobe App Builder, an event provider must first be created in Adobe I/O Events. This provider defines the types of events that can be emitted, such as product updates, and ensures that Adobe I/O Events can receive and route them correctly. The event provider is then configured in Adobe Commerce using the Adobe I/O Events for Adobe Commerce module. This setup allows Adobe Commerce to emit specific events to Adobe I/O Events.
+Consider a use case where you are saving or updating an object in Adobe Commerce that causes an asynchronous event to be emitted. For this event to reach Adobe App Builder, you must define an event provider in Adobe I/O Events. This provider defines the types of events that can be sent to Adobe I/O, such as product updates. It also ensures that Adobe I/O Events can receive and route them correctly. Adobe Commerce provideThe event provider is then configured in Adobe Commerce using the Adobe I/O Events for Adobe Commerce module. This setup allows Adobe Commerce to emit specific events to Adobe I/O Events.
 
-The provider is then linked during event registration in App Builder. Event registration specifies how and where the event should is delivered, such as to a Runtime action. To explore this and other supported registration types, refer to event registration in Adobe I/O Events.
+The provider is then linked during event registration in App Builder. Event registration specifies how and where the event should be delivered, such as to a Runtime action. To explore this and other supported registration types, refer to event registration in Adobe I/O Events.
 
 Events emitted from Adobe Commerce are routed through Adobe I/O Events. This routing is enabled by the event provider configuration and the corresponding registration. Based on the registration setup, Adobe I/O Events invokes the appropriate consumer. In this case, the consumer is a Runtime action deployed as part of an App Builder app.
 
@@ -40,11 +34,7 @@ If either condition is met, the function logs the details using App Builder's bu
 
 The function can also be extended to trigger alerts, update external systems, or launch downstream workflows, all without modifying the Commerce runtime.
 
-<InlineAlert variant="info" slots="text"/>
-
-This tutorial specifically covers event registration using a runtime action in Adobe App Builder. This only applies to Adobe Commerce as a Cloud Service (SaaS) deployments. This tutorial also covers the limitations of this method, including execution time constraints, in later sections.
-
-### Setting up event provider and event metadata in Adobe Commerce
+## Set up an event provider and event metadata in Adobe Commerce
 
 To create and configure an event provider in Adobe Commerce, which is then registered in the Adobe Developer Console as part of the App Builder project:
 
@@ -203,7 +193,6 @@ In the **Event Subscription Fields** section, enter the specific fields to inclu
 - The **Workspace Configuration** value must come from the same Adobe Developer Console workspace where the event provider was originally created. You can download this configuration file directly from the Developer Console.
 
 ## Configure subscriber for event provider in Adobe Commerce
-
 
 This step links a specific Adobe Commerce event to the Event Provider created earlier. It defines which events should be sent, how they should be identified, and what data should be included in the payload.  To create an Event Subscriber in Adobe Commerce, go to **System** > **Event Subscriptions** and click **Add New Subscription**. In this tutorial example, select **observer.catalog_product_save_commit_after** as the event to subscribe to.After filling in all the details, click Save to create the subscription.
 

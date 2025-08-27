@@ -19,6 +19,10 @@ Observability allows you to monitor and understand the behavior of extensibility
 
 ## Configure observability
 
+<InlineAlert variant="info" slots="text"/>
+
+For [storefront](https://experienceleague.adobe.com/developer/commerce/storefront) observability, refer to [Operational Telemetry](https://www.aem.live/docs/rum-explorer#user-interface-overview).
+
 To start using the observability module, you need to configure Adobe Commerce by creating a new subscription. You can create a subscription in two ways: in the Admin UI or through the Rest API. You can create multiple subscriptions, each with its own configuration. The subscription configuration includes the following parameters:
 
 - **Type**: The type of subscription. Currently only `logs` is supported.

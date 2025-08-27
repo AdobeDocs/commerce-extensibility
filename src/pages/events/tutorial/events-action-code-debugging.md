@@ -59,26 +59,27 @@ To start debugging your action code:
 1. Click the Run button or press **F5** to start the debugger. This starts the app using the `aio app dev` command. Output similar to the following is displayed in the terminal:
 
    ```terminal
-   Debugger attached.
-   Building the app...
-   To view your local application:
-     -> https://localhost:9080
-   To view your deployed application in the Experience Cloud shell:
-     -> https://experience.adobe.com/?devMode=true#/custom-apps/?localDevUrl=https://localhost:9080
-
-   Your actions:
-   web actions:
-     -> https://https://localhost:9080/api/v1/web/{your-project-name}/{name-of-your-action}
-
-   non-web actions:
-
-   press CTRL+C to terminate the dev environment
-   2025-05-22T06:41:55.969Z [watcher] info: watching action files at...
-   ```
+Debugger attached.
+Building the app...
+To view your local application:
+  -> https://localhost:9080
+To view your deployed application in the Experience Cloud shell:
+  -> https://experience.adobe.com/?devMode=true#/custom-apps/?localDevUrl=https://localhost:9080
+ 
+Your actions:
+web actions:
+  -> https://https://localhost:9080/api/v1/web/{your-project-name}/{name-of-your-action}`
+  
+non-web actions:
+ 
+press CTRL+C to terminate the dev environment
+2025-05-22T06:41:55.969Z [watcher] info: watching action files at...
+```
 
 ### Invoke Action with a sample payload
 
-Now that your local debugger is running, you can test your web action by sending a request to the local endpoint. Use tools like Postman or any other API client to send a POST request to the listed URL, such as `https://localhost:9080/api/v1/web/{your-project-name}/{name-of-your-action}`, with the sample JSON payload.
+Now that your local debugger is running, you can test your web action by sending a request to the local endpoint.
+Use tools like Postman or any other API client to send a POST request to the listed URL, such as `https://localhost:9080/api/v1/web/{your-project-name}/{name-of-your-action}`, with the sample JSON payload.
 
 ```json
 {
@@ -124,12 +125,13 @@ The request should trigger the web action and hit the breakpoint you set earlier
 You can also test your web action using `curl` from the command line. Use the following command, replacing the URL with your local endpoint:
 
 ```bash
+
 curl --insecure --request POST \
   --url https://localhost:9080/api/v1/web/<your-project-name>/{name-of-your-action}} \
   --header 'Content-Type: application/json' \
   --header 'User-Agent: insomnia/10.1.1-adobe' \
   --data '{"specversion":"1.0","id":"23f76cef-9f14-44b1-bbd0-29995789c98e","source":"urn:uuid:fb58963f-d2e7-4ab4-83da-b6ff15b8ebc0","type":"com.adobe.commerce.observer.catalog_product_save_commit_after","datacontenttype":"application/json","time":"2025-07-17T15:48:42.436Z","eventid":"b0f2b088-5490-4d16-9ce9-0cb1fb3e5ed0","event_id":"b0f2b088-5490-4d16-9ce9-0cb1fb3e5ed0","recipient_client_id":"ca7b36f23be94dcb9d2ebb97f0276e3f","recipientclientid":"ca7b36f23be94dcb9d2ebb97f0276e3f","data":{"key":"31a86bbd-e51d-4b58-9f5a-34ec8df263c9","value":{"sku":"eventtest1","name":"eventtest r","created_at":"2025-06-20 15:32:20","updated_at":"2025-07-17 15:48:41","stock_data":{"qty":"65"},"price":"32444.000000"},"source":"eventprovider","_metadata":{"commerceEdition":"Adobe Commerce","commerceVersion":"1.0.0-beta","eventsClientVersion":"1.12.1","storeId":"0","websiteId":"0","storeGroupId":"0"}}}'
-```
+  ```
 
 ## Development Tips For App Development
 
@@ -153,15 +155,11 @@ These tips will help you streamline development and improve reliability while bu
 
 When an App Builder action fails, you can debug it using either the **Debug Tracer** in Developer Console or the **CLI activation commands**.
 
-### Using a debug tracer (UI)
-
-You can use the Debug Tracer in the Adobe Developer Console to quickly identify issues with your action code.
+### Option 1: Debug tracer (UI)
 
 1. Open the project in [Adobe Developer Console](https://developer.adobe.com/console/).
-
-1. Go to the **Debug Tracer** tab.
-
-1. Trigger your action (e.g., `aio app deploy` or `aio runtime action invoke <namespace>/<package>/<actionName>`).
+2. Go to the **Debug Tracer** tab.
+3. Trigger your action (e.g., `aio app deploy` or `aio runtime action invoke <namespace>/<package>/<actionName>`).
 
 If the action fails, Debug Tracer shows:
 
@@ -171,7 +169,7 @@ If the action fails, Debug Tracer shows:
 
 **Example Debug tracer error:**
 
-```json
+``` json
 application error
 {
 "error": "server error"
@@ -180,7 +178,7 @@ application error
 
 You can copy the **Activation ID** directly from Debug Tracer to investigate further using the CLI.
 
-### Using the CLI
+### Option 2: CLI
 
 To get more details, activation commands can be used.
 
@@ -196,13 +194,13 @@ The last column shows the Activation ID.
 
 **To get logs explicitly**
 
-```bash
+```terminal
 aio rt activation logs <ACTIVATION_ID>
 ```
 
 <InlineAlert variant="info" slots="text"/>
 
-Start with **Debug Tracer** for quick troubleshooting.  
+**Tip:** Start with **Debug Tracer** for quick troubleshooting.  
 If you need more details (like raw JSON response, timing, annotations, logs), switch to the **CLI** with the Activation ID.
 
 ## Interpreting event delivery logs in Adobe I/O Events

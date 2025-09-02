@@ -24,7 +24,6 @@ Sep 2, 2025
 
 * Improved error responses for multiple event providers management. <!-- CEXT-5008 -->
 
-
 ### Bug fixes
 
 * Updated the plugin generation to handle the case when API interface methods return a scalar type. <!-- CEXT-5174 -->

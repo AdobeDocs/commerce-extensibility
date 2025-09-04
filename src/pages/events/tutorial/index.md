@@ -192,14 +192,33 @@ In the **Event Subscription Fields** section, enter the specific fields to inclu
 
 - The **Workspace Configuration** value must come from the same Adobe Developer Console workspace where the event provider was originally created. You can download this configuration file directly from the Developer Console.
 
-## Configure subscriber for event provider in Adobe Commerce
+## Create a subscription in Adobe Commerce
 
-This step links a specific Adobe Commerce event to the Event Provider created earlier. It defines which events should be sent, how they should be identified, and what data should be included in the payload.  To create an Event Subscriber in Adobe Commerce, go to **System** > **Event Subscriptions** and click **Add New Subscription**. In this tutorial example, select **observer.catalog_product_save_commit_after** as the event to subscribe to.After filling in all the details, click Save to create the subscription.
+This step links a specific Adobe Commerce event to the event provider created earlier. It defines which events should be sent, how they should be identified, and what data should be included in the payload.
 
-![Add-New-Event Subscription](../../_images/events/tutorial/adobe-commerce-create-subscription.png)
+To create an Event Subscriber in Adobe Commerce, go to **System** > **Event Subscriptions** and click **Add New Subscription**. In this tutorial example, select **observer.catalog_product_save_commit_after** as the event to subscribe to. Complete the **Event subscription settings** section with the following values:
 
-![Configure-Subscription-Fields](../../_images/events/tutorial/adobe-commerce-configure-subscription-fields.png)
+Field | Value
+--- | ---
+**Event Name** | `observer.catalog_product_save_commit_after`
+**Event Name Alias** | Optional. Any user-friendly name.
+**Event Provider** | Select the Event Provider created in the previous step.
+**Is Enabled** | Yes
+**Priority** | Yes
 
-## Syncing event metadata with App Builder
+In the **Event Subscription Fields** section, specify the following fields to be included in the event payload. This limits the payload to only the selected fields rather than sending the full event data, improving efficiency.
 
-After creating the event provider, you need to sync the workspace details, subscription, and event provider configuration so that it becomes available during the event registration step in your App Builder project. To do, in the Commerce instance Admin UI, navigate to **Admin** > **Stores** > **Configuration**, then navigate to **Adobe I/O** > **Adobe I/O Events** under **Adobe Services**. In the **General Configuration** section, click **Execute Synchronization**. This ensures that the event provider is registered and can be selected while setting up event registration in the App Builder project.
+- `id`
+- `sku`
+- `name`
+- `created_at`
+- `updated_at`
+- `description`
+- `stock_data.qty`
+- `price`
+
+After filling in all the details, click **Save** to create the subscription.
+
+## Sync event metadata with App Builder
+
+The next step is to sync the workspace details, subscription, and event provider configuration so that it becomes available during the event registration step in your App Builder project. Click **Stores** > Configuration, **Adobe I/O** > **Adobe I/O Events**. In the **General Configuration** section, click **Execute Synchronization**. This ensures that the event provider is registered and can be selected while setting up event registration in the App Builder project.

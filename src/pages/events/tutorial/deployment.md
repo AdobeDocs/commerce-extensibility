@@ -1,5 +1,5 @@
 ---
-title: App development and deployment
+title: Project setup and deployment
 description: Learn how to configure and build event-driven integrations between Adobe Commerce and Adobe App Builder using asynchronous events.
 edition: saas
 keywords:
@@ -8,7 +8,7 @@ keywords:
 ---
 
 
-# App development and deployment
+# Project setup and deployment
 
 This topic explains how to perform the following tasks:
 
@@ -95,7 +95,7 @@ Use the following steps to set up your local App Builder environment:
    ```
 
    The command prompts you to select a template and choose the features you want to include in your project. Follow these guidelines when making your selections:
-   
+
    - Select the **Organization** and **Project** you created earlier using the Developer Console.
    - Choose a template listed under **Supported by My Org** to ensure compatibility with your environment.
    - At the **Select a template** prompt, choose **All Templates → @adobe/generator-app-events-generic**
@@ -119,21 +119,21 @@ When the command completes, the folder structure in your project directory shoul
 ├── test/
 ├── web-src/
 └── actions/
+    |__ <action-name>/
+        └── index.js
     ├── constants.js
     ├── responses.js
-    ├── testevent/
-    │   └── index.js
     └── utils.js
 ```
 
 ### Implement runtime actions
 
-This section explains how to write a runtime action that processes product event data from Adobe Commerce. The action is triggered when product-related events such as stock or price updates occur. The files for this runtime action are located under the `actions/<action-name>` directory. When the `app init` command is run, it creates an initial index.js file as the starting point for the runtime action code.
+This section describes how to write a runtime action that processes product event data from Adobe Commerce. The action is triggered when product-related events such as stock or price updates occur. The `aio app init` command generates an `index.js` file under the `actions/<action-name>` directory. You must edit this file to support our use case. You must create additional files to support your action and handle responses.
 
-Following this, the folder structure described below shows the organization and contents of each file involved.
+Upon complete these tasks, the `actions` directory will contain the following files:
 
 ```tree
-── actions/
+── actions
     ├── constants.js
     ├── responses.js
     ├── testevent/
@@ -141,13 +141,17 @@ Following this, the folder structure described below shows the organization and 
     └── utils.js
 ```
 
-`index.js`: Acts as the main entry point for the runtime action. It implements key functionalities such as:
+#### `index.js` file
 
-- Logs the incoming request using Adobe I/O Core Logger.
-- Validates required parameters like type, sku, and stock_data.qty
-- Extracts product details such as SKU, name, price, and quantity from the event payload
-- Checks for conditions, such as low stock or a price change, and logs them for debugging or alerting purposes
-- Returns a success or error response based on the outcome of processing.
+The `index.js` file acts as the main entry point for the runtime action. It performs key functionalities such as:
+
+- Log the incoming request using Adobe I/O Core Logger.
+- Validate required parameters like type, sku, and stock_data.qty
+- Extract product details such as SKU, name, price, and quantity from the event payload
+- Check for conditions, such as low stock or a price change, and logs them for debugging or alerting purposes
+- Return a success or error response based on the outcome of processing.
+
+Update the `index.js` file with the following code:
 
 ```js
 const { Core } = require('@adobe/aio-sdk')
@@ -215,11 +219,14 @@ async function main(params) {
 exports.main = main
 ```
 
-`response.js`: This file contains helper functions to send consistent success or error responses from your action. It uses the status codes defined in `constants.js` to ensure all responses follow the same format. This keeps your main logic cleaner and more organized.
+#### `,responses.js` file
+
+The `response.js`contains helper functions to send consistent success or error responses from your action. It uses the status codes defined in `constants.js` to ensure all responses follow the same format. This keeps your main logic cleaner and more organized.
+
+Add the following code to create the `responses.js` file:
 
 ```js
 const { HTTP_OK } = require('./constants.js')
- 
  
 /**
  *
@@ -266,7 +273,11 @@ module.exports = {
 }
 ```
 
-`utils.js`: This file provides helper functions used across the app for common tasks such as masking sensitive data in logs, validating required inputs, extracting bearer tokens from headers, and formatting standardized error responses.
+#### `utils.js` file
+
+The `utils.js` file provides helper functions used across the app for common tasks such as masking sensitive data in logs, validating required inputs, extracting bearer tokens from headers, and formatting standardized error responses.
+
+Add the following code to create the `utils.js` file:
 
 ```js
 /**
@@ -383,7 +394,11 @@ module.exports = {
 }
 ```
 
-`constants.js`: This file has centralized constants for action logic. It stores commonly used values like HTTP status codes and event type identifiers (such as those for stock or price updates). Keeping them in one place helps avoid repetition and makes the code easier to maintain.
+#### `constants.js` file
+
+The `constants.js` file has centralized constants for action logic. It stores commonly used values like HTTP status codes and event type identifiers (such as those for stock or price updates). Keeping them in one place helps avoid repetition and makes the code easier to maintain.
+
+Add the following code to create the `constants.js` file:
 
 ```js
 // Define standard HTTP status codes used for API responses
@@ -401,7 +416,7 @@ module.exports = {
 } 
 ```
 
-#### Changes to `app.config.yaml`
+#### Update the `app.config.yaml`
 
 The `app.config.yaml` file defines how your Adobe App Builder project is structured and deployed. It includes information about where the code lives and how it should behave in the cloud environment.
 
@@ -444,7 +459,8 @@ aio app deploy
 
 ## Register Commerce events in Adobe Developer Console
 
-We need to define which Commerce events to subscribe to and register them within your Adobe Developer Console project. 
+We need to define which Commerce events to subscribe to and register them within your Adobe Developer Console project.
+
 1. Return to your project workspace in the Developer Console, click the **Add Service** menu, and select **Event**.
 
 1. On the **Add Events** page, choose **Commerce Events**, then click **Next**.
@@ -463,9 +479,9 @@ To test the end-to-end integration, follow these steps:
 
 1. After `aio app deploy`, create or update a product in Adobe Commerce Admin (**Catalog > Product**).
 
-1. Go to **System > Event Status** to verify event triggered with status "Success".
+1. Go to **System** > **Event Status** to verify an event triggered with status "Success".
 
-1. Check Developer Console > Project > Workspace > Event Registration > Debug Tracing for event delivery and HTTP 200 response.
+1. In the Developer Console, go to **Project** > **Workspace** > **Event Registration** > **Debug Tracing** and check for event delivery and an HTTP 200 response.
 
 #### Verify event delivery in Developer Console
 

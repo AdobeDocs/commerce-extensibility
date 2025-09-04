@@ -12,7 +12,7 @@ module.exports = [
         path: "/events/tutorial/index.md",
       },  
       {
-        title: "App development and deployment",
+        title: "Project setup and deployment",
         path: "/events/tutorial/deployment.md"
       },
       {

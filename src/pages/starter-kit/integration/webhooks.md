@@ -97,7 +97,7 @@ Follow admin configuration to modify your webhook and define the connection betw
     "items": [
       {
         "item_id": 1,
-        "sku": "Product SKU",
+        "sku": "Product-SKU",
         "qty": "Cart item qty"
       }
     ]

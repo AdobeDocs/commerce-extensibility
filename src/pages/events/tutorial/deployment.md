@@ -128,7 +128,7 @@ When the command completes, the folder structure in your project directory shoul
 
 ### Implement runtime actions
 
-This section describes how to write a runtime action that processes product event data from Adobe Commerce. The action is triggered when product-related events such as stock or price updates occur. The `aio app init` command generates an `index.js` file under the `actions/<action-name>` directory. You must edit this file to support our use case. You must create additional files to support your action and handle responses.
+This section describes how to write a runtime action that processes product event data from Adobe Commerce. An action is triggered when product-related events such as stock or price updates occur. The `aio app init` command generates an `index.js` file under the `actions/<action-name>` directory. You must edit this file to support our use case. You must create additional files to support your action and handle responses.
 
 Upon complete these tasks, the `actions` directory will contain the following files:
 
@@ -219,7 +219,7 @@ async function main(params) {
 exports.main = main
 ```
 
-#### `,responses.js` file
+#### `responses.js` file
 
 The `response.js`contains helper functions to send consistent success or error responses from your action. It uses the status codes defined in `constants.js` to ensure all responses follow the same format. This keeps your main logic cleaner and more organized.
 

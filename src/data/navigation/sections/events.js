@@ -16,12 +16,12 @@ module.exports = [
         path: "/events/tutorial/deployment.md"
       },
       {
-        title: "Debugging and development tips",
-        path: "/events/tutorial/debugging.md"
+        title: "Set up event providers",
+        path: "/events/tutorial/event-providers.md"
       },
       {
-        title: "Limitations of runtime action and alternatives",
-        path: "/events/tutorial/events-runtime-action-limitation.md"
+        title: "Debugging and development tips",
+        path: "/events/tutorial/debugging.md"
       }
     ]
   },

@@ -42,11 +42,11 @@ module.exports = [
     path: "/events/configure-additional-event-providers.md",
   },
   {
-    title: "Create events from the Admin",
+    title: "Create event subscriptions from the Admin",
     path: "/events/create-events.md",
   },
   {
-    title: "Create events",
+    title: "Create event subscriptions in a module",
     path: "/events/module-development.md",
   },
   {

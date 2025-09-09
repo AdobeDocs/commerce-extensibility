@@ -1,6 +1,6 @@
 ---
 title: Create event subscriptions from the Admin
-description: Learn about managing events subscriptions through the admin in Commerce Cloud Service.
+description: Learn about managing event subscriptions through the admin in Commerce Cloud Service.
 keywords:
   - Events
   - Extensibility

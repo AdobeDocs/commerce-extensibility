@@ -35,7 +35,7 @@ The **Event subscription settings** configuration panel contains the following f
 
 Field | Description
 --- | ---
-**Event Name** | Select one of the supported Commerce event names from the dropdown. ACCS does not support all possible events. Open a support ticket to request additional events.
+**Event Name** | Select one of the supported Commerce event names from the dropdown. SaaS does not support all possible events. Open a support ticket to request additional events.
 **Event Name Alias** | A unique alias name for the event. An alias is required for events that have rules configured.
 **Event Provider** | Select the event provider to which the event should be delivered. If a workspace configuration is set for the provider, event metadata will be created and linked to the provider when the event subscription is saved.
 **Is Enabled** | Indicates whether the event is enabled. Commerce does not emit disabled events.

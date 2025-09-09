@@ -12,21 +12,11 @@ After you have created an [App Builder project](./project-setup.md) and [install
 
 ## Configure the Adobe I/O connection
 
-You must configure Commerce to communicate with your project. Configuration includes copying and pasting the contents of the [workspace configuration file](./project-setup.md#download-the-workspace-configuration-file) that you downloaded from the Adobe Developer Console. If you decided to use JSON Web Tokens (JWT) as your server-to server authentication method, you must also upload a private key.
+You must configure Commerce to communicate with your project. Configuration includes copying and pasting the contents of the [workspace configuration file](./project-setup.md#download-the-workspace-configuration-file) that you downloaded from the Adobe Developer Console.
 
 1. In the Commerce Admin, navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Adobe I/O Events** > **General configuration**. The following screen displays.
 
    ![General configuration](../_images/events/general-configuration-empty.png)
-
-1. Select the server-to-server authorization method you implemented from the **Adobe I/O Authorization Type** menu. Adobe recommends using OAuth. JWT has been deprecated.
-
-1. (JWT only) Copy and paste the contents of your `private.key` file into the **Service Account Private Key** field. Use the following command to copy the contents.
-
-   ```bash
-   cat config/private.key | pbcopy
-   ```
-
-   See [Service Account (JWT) Authentication](https://developer.adobe.com/developer-console/docs/guides/authentication/JWT/) for more information about the `private.key` file.
 
 1. Copy the entire contents of the `<workspace-name>.json` file into the **Adobe I/O Workspace Configuration** field.
 
@@ -58,7 +48,7 @@ You can also use the `aio` CLI tool to manage providers. See [Provider Commands]
 
 <InlineAlert variant="info" slots="text"/>
 
-You cannot create an event provider until you have configured and saved instance ID values and a workspace file. If you are using JWT for server-to-server authentication, you must have previously specified the private key.
+You cannot create an event provider until you have configured and saved instance ID values and a workspace file.
 
 You can create an event provider using either the [Command line](./configure-commerce.md#command-line) or [Commerce Admin](./configure-commerce.md#commerce-admin).
 
@@ -165,7 +155,7 @@ Commerce provides two sources for events: observers and plugins. You must specif
 
    ![Select the events to subscribe to](../_images/events/config-event-registration.png)
 
-1. Optionally create a new OAuth or JWT credential. Then click **Next**.
+1. Optionally create a new OAuth credential. Then click **Next**.
 
 1. Update the **Event registration name** and **Event registration description** fields. The Journaling API can consume your events by default. You can optionally select other consumption methods during this step. Learn more about your options in [Consuming Events](./consume-events.md).
 

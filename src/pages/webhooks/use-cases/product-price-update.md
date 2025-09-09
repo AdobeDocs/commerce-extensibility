@@ -34,7 +34,7 @@ The following `observer.sales_quote_item_set_product` default payload was obtain
       "entity_id": "11",
       "attribute_set_id": "4",
       "type_id": "simple",
-      "sku": "Simple product 3",
+      "sku": "Simple-product-3",
       ...
       "extension_attributes": {
         ...
@@ -49,13 +49,13 @@ The following `observer.sales_quote_item_set_product` default payload was obtain
         "entity_id": "11",
         "attribute_set_id": "4",
         "type_id": "simple",
-        "sku": "Simple product 3",
+        "sku": "Simple-product-3",
         "has_options": "0",
         ....
       },
       "product_id": "11",
       "product_type": "simple",
-      "sku": "Simple product 3",
+      "sku": "Simple-product-3",
       "name": "Simple product 3",
       "weight": "10.000000",
       "tax_class_id": "2",
@@ -72,7 +72,7 @@ The following `observer.sales_quote_item_set_product` default payload was obtain
 {
    "product": {
       "name": "Simple product 3",
-      "sku": "Simple product 3",
+      "sku": "Simple-product-3",
       "price": "10.000000"
     }
 }

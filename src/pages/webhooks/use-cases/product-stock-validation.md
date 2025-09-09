@@ -43,7 +43,7 @@ The following `observer.checkout_cart_product_add_before` default payload was ob
             "entity_id": "23",
             "attribute_set_id": "4",
             "type_id": "simple",
-            "sku": "Product 1",
+            "sku": "Product-1",
             "has_options": "0",
             "required_options": "0",
             "created_at": "2023-08-22 14:14:20",

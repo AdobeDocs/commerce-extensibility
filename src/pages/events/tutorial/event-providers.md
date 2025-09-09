@@ -1,6 +1,7 @@
 ---
 title: Set up event providers and metadata in Adobe Commerce
 description: Learn how to set up your Adobe Commerce instance as an event provider and create event metadata for asynchronous events.
+edition: saas
 keywords:
   - Extensibility
   - Events

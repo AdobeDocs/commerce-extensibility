@@ -1,6 +1,7 @@
 ---
 title: Extend Adobe Commerce with events and App Builder
 description: Learn how to configure and build event-driven integrations between Adobe Commerce and Adobe App Builder using asynchronous events.
+edition: saas
 keywords:
   - Extensibility
   - Events

@@ -8,7 +8,7 @@ module.exports = [
     path: "/events/tutorial/index.md",
     pages: [
       {
-        title: "Event-driven integration setup with App Builder",
+        title: "Use events and App Builder to extend Adobe Commerce",
         path: "/events/tutorial/index.md",
       },  
       {

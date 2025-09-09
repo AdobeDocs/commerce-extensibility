@@ -1,12 +1,13 @@
 ---
-title: Extend Adobe Commerce with events and App Builder
+title: Use Events and App Builder to Extend Adobe Commerce
 description: Learn how to configure and build event-driven integrations between Adobe Commerce and Adobe App Builder using asynchronous events.
+edition: saas
 keywords:
   - Extensibility
   - Events
 ---
 
-# Extend Adobe Commerce with events and App Builder
+# Use events and App Builder to extend Adobe Commerce
 
 This tutorial explains how to create and configure an end-to-end event-driven integration using Adobe App Builder and Adobe Commerce asynchronous events. Whether the goal is to capture product updates, send order confirmation data to external systems, or trigger downstream workflows, Adobe Commerce asynchronous events and Adobe App Builder offer a scalable way to extend platform functionality.
 

@@ -35,7 +35,7 @@ The following `observer.catalog_product_save_after` payload was obtained from ex
               "attribute_set_id": "16",
               "type_id": "simple",
               "sku": "Pr-1",
-              "name": "Product 1",
+              "name": "Product-1",
               "tax_class_id": "0",
               "description": "<p>Product 1 description</p>",
               "price": "10.00",
@@ -68,7 +68,7 @@ The following `observer.catalog_product_save_after` payload was obtained from ex
 ```json
 {
    "product": {
-        "name": "Product 1"
+        "name": "Product-1"
     }
 }
 ```

@@ -4,6 +4,28 @@ module.exports = [
     path: "/events/index.md"
   },
   {
+    title: "Tutorial",
+    path: "/events/tutorial/index.md",
+    pages: [
+      {
+        title: "Use events and App Builder to extend Adobe Commerce",
+        path: "/events/tutorial/index.md",
+      },  
+      {
+        title: "Project setup and deployment",
+        path: "/events/tutorial/deployment.md"
+      },
+      {
+        title: "Set up event providers",
+        path: "/events/tutorial/event-providers.md"
+      },
+      {
+        title: "Debugging and development tips",
+        path: "/events/tutorial/debugging.md"
+      }
+    ]
+  },
+  {
     title: "Create an App Builder project",
     path: "/events/project-setup.md",
   },
@@ -20,11 +42,11 @@ module.exports = [
     path: "/events/configure-additional-event-providers.md",
   },
   {
-    title: "Create events from the Admin",
+    title: "Create event subscriptions from the Admin",
     path: "/events/create-events.md",
   },
   {
-    title: "Create events",
+    title: "Create event subscriptions in a module",
     path: "/events/module-development.md",
   },
   {
@@ -66,3 +88,4 @@ module.exports = [
     path: "/events/release-notes.md",
   }
 ];
+

@@ -21,7 +21,7 @@ September 11, 2025
 
 ### Bug fix
 
-* Fixed an issue causing an error during the installation of some versions of Adobe Commerce. <!-- CEXT-5116 -->
+* Fixed an issue that caused an error during the installation of some versions of Adobe Commerce. <!-- CEXT-5116 -->
 
 ## Version 1.10.0
 

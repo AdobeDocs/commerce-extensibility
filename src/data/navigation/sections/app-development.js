@@ -22,6 +22,20 @@ module.exports = [
         ]
     },
     {
+        title: "Observability",
+        path: "/app-development/observability/index.md",
+        pages: [
+            {
+                title: "Overview",
+                path: "/app-development/observability/index.md"
+            },
+            {
+                title: "App Builder",
+                path: "/app-development/observability/app-builder.md"   
+            },
+        ]
+    },
+    {
         title: "Best practices",
         path: "/app-development/best-practices/index.md",
         pages: [

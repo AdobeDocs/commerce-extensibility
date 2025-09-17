@@ -115,7 +115,7 @@ function defineTelemetryConfig(
 
 | Parameter | Type                                                                                                                     | Description                               |
 | --------- | ------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------- |
-| `init`    | (`params`: `Record`\<`string`, `unknown`\>, `isDevelopment`: `boolean`) => [`TelemetryConfig`](../interfaces.md#telemetryconfig) | The function to initialize the telemetry. |
+| `init`    | (`params`: `Record`\<`string`, `unknown`\>, `isDevelopment`: `boolean`) => [`TelemetryConfig`](./interfaces.md#telemetryconfig) | The function to initialize the telemetry. |
 
 **Returns:**
 

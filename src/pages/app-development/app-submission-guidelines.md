@@ -13,9 +13,11 @@ This page provides a list of requirements and best practices for Adobe Commerce 
 
 The Adobe Commerce App Builder review process evaluates submissions across multiple criteria including documentation quality, security practices, code structure, and functionality.
 
-<InlineAlert variant="info" slots="text"/>
+<InlineAlert variant="info" slots="text, text1"/>
 
 For more general information on the application submission process, refer to the [App Builder distribution documentation](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/distribution).
+
+If your app implements the Admin UI SDK, refer to the [Admin UI SDK App review checklist](../admin-ui-sdk/app-review-checklist.md) for additional requirements and best practices.
 
 ## Review process
 
@@ -125,6 +127,7 @@ The following requirements must be met for your app to be accepted. If your app 
 - Version management
   - **Direct dependencies**: Check for missing dependencies using `npx npm-check` (`PKG ERR` label).
   - **SDK migration**: Fully migrate Admin UI SDK 1.x extension points to 3.x if applicable.
+  - **Node.js version**: Use an actively supported version of Node.js to ensure you get the latest security updates. Adobe recommends the latest [long-term support (LTS) version](https://nodejs.org/en/about/previous-releases).
 
 ## Best practices
 

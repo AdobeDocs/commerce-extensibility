@@ -12,6 +12,22 @@ These release notes describe the latest version of Adobe I/O Events for Adobe Co
 
 See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io-events-for-adobe-commerce) for upgrade instructions.
 
+## Version 1.13.1
+
+### Release date
+
+Sep 2, 2025
+
+### Enhancements
+
+* Added validation to check the request format of the event subscribe API. <!-- CEXT-4823 -->
+
+* Improved error responses for multiple event providers management. <!-- CEXT-5008 -->
+
+### Bug fixes
+
+* Updated the plugin generation to handle the case when API interface methods return a scalar type. <!-- CEXT-5174 -->
+
 ## Version 1.13.0
 
 ### Release date

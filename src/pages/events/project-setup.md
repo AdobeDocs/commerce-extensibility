@@ -42,8 +42,10 @@ import ProjectRequirements from '/src/_includes/project-requirements.md'
 
 1. On the **Add an API** page, filter on **Adobe Services** and select one of the following options. These APIs provide authentication and authorization services for your project.
 
-   &#8203;<Edition name="paas" /> **I/O Management API**
-   &#8203;<Edition name="saas" /> **Adobe Commerce as a Cloud Service**
+   - I/O Management API
+   - I/O Events
+   - Adobe I/O Events for Adobe Commerce
+   - <Edition name="saas" /> Adobe Commerce as a Cloud Service
 
    Then click **Next**.
 

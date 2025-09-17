@@ -33,9 +33,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@adobe/gatsby-theme-aio@npm:4.15.2":
-  version: 4.15.2
-  resolution: "@adobe/gatsby-theme-aio@npm:4.15.2"
+"@adobe/gatsby-theme-aio@npm:4.15.3":
+  version: 4.15.3
+  resolution: "@adobe/gatsby-theme-aio@npm:4.15.3"
   dependencies:
     "@adobe/focus-ring-polyfill": ^0.1.5
     "@adobe/gatsby-source-github-file-contributors": ^0.3.1
@@ -131,7 +131,7 @@ __metadata:
     gatsby: ^4.22.0
     react: ^17.0.2
     react-dom: ^17.0.2
-  checksum: 2d488ffae7452b92ff6dceb1906bdaea5c4b23c85dd519384d78ae5256dec3f6101a340eec24d11dde7b185ac276ce9c15091f3b672a31169394a819e64a83b7
+  checksum: b3d3ba8960bb3516bedd56f5da82a7d7f3b7b693496294ce914a32691c3c29b3036c415a1f03475b794172fb907f3a44565ffce27975bbc3c351b6bd8defee6c
   languageName: node
   linkType: hard
 
@@ -7151,12 +7151,12 @@ __metadata:
   linkType: hard
 
 "cipher-base@npm:^1.0.0, cipher-base@npm:^1.0.1, cipher-base@npm:^1.0.3":
-  version: 1.0.4
-  resolution: "cipher-base@npm:1.0.4"
+  version: 1.0.6
+  resolution: "cipher-base@npm:1.0.6"
   dependencies:
-    inherits: ^2.0.1
-    safe-buffer: ^5.0.1
-  checksum: 47d3568dbc17431a339bad1fe7dff83ac0891be8206911ace3d3b818fc695f376df809bea406e759cdea07fff4b454fa25f1013e648851bec790c1d75763032e
+    inherits: ^2.0.4
+    safe-buffer: ^5.2.1
+  checksum: 64a1738a8583163cf096bc85321a69ef3075bb0873f34cf89dc705e62b9eee058dd6b2e5c672f774ede0b6bdbe56fe7b710e0d38c4f08a2f355d8ab828f05c6f
   languageName: node
   linkType: hard
 
@@ -7401,7 +7401,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "commerce-extensibility@workspace:."
   dependencies:
-    "@adobe/gatsby-theme-aio": 4.15.2
+    "@adobe/gatsby-theme-aio": 4.15.3
     gatsby: 4.22.0
     react: ^17.0.2
     react-dom: ^17.0.2
@@ -19223,14 +19223,15 @@ __metadata:
   linkType: hard
 
 "sha.js@npm:^2.4.0, sha.js@npm:^2.4.11, sha.js@npm:^2.4.8":
-  version: 2.4.11
-  resolution: "sha.js@npm:2.4.11"
+  version: 2.4.12
+  resolution: "sha.js@npm:2.4.12"
   dependencies:
-    inherits: ^2.0.1
-    safe-buffer: ^5.0.1
+    inherits: ^2.0.4
+    safe-buffer: ^5.2.1
+    to-buffer: ^1.2.0
   bin:
-    sha.js: ./bin.js
-  checksum: ebd3f59d4b799000699097dadb831c8e3da3eb579144fd7eb7a19484cbcbb7aca3c68ba2bb362242eb09e33217de3b4ea56e4678184c334323eca24a58e3ad07
+    sha.js: bin.js
+  checksum: 9ec0fe39cc402acb33ffb18d261b52013485a2a9569a1873ff1861510a67b9ea2b3ccc78ab8aa09c34e1e85a5f06e18ab83637715509c6153ba8d537bbd2c29d
   languageName: node
   linkType: hard
 

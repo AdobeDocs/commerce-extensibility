@@ -67,7 +67,7 @@ Create an `ExtensionRegistration` React component that registers the menu config
 1. Add the `uix-guest` dependency in the `package.json`.
 
    ```json
-   "@adobe/uix-guest": "^0.8.3"
+   "@adobe/uix-guest": "^1.0.3"
    ```
 
 1. Run `npm install`.

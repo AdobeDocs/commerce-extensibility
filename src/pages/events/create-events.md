@@ -1,6 +1,6 @@
 ---
-title: Create events from the Admin
-description: Learn about managing events subscriptions through the admin in Commerce Cloud Service.
+title: Create event subscriptions from the Admin
+description: Learn about managing event subscriptions through the admin in Commerce Cloud Service.
 keywords:
   - Events
   - Extensibility
@@ -11,15 +11,15 @@ import SampleEvent from '/src/_includes/sample-event.md'
 import NestedEvent from '/src/_includes/nested-event.md'
 import ConditionalEvents from '/src/_includes/conditional-event.md'
 
-# Create events from the Admin
+# Create event subscriptions from the Admin
 
 <InlineAlert variant="info" slots="text1" />
 
-Creating events from the Admin can only be performed in Adobe Commerce as a Cloud Service (SaaS). SaaS customers can also use [REST](./api.md) to create event subscriptions.
+Adobe Commerce as a Cloud Service (SaaS) customers can create event subscriptions from the Admin or by using [REST](./api.md) calls. (Platform as a Service (PaaS) customers must either use REST or create a custom module.) SaaS does not support all possible events. To view the list of supported events, select **System** > Events > **Events List**. Contact Customer Support if you would like to implement other events.
 
 ## View event subscriptions
 
-In the Admin, select **System** > **Events** > **Events Subscriptions** to display the _Events Subscriptions_ grid page.
+In the Admin, select **System** > Events > **Events Subscriptions** to display the _Events Subscriptions_ grid page.
 
 ![Events Subscriptions grid page](../_images/events/events-subscriptions-grid.png)
 
@@ -35,7 +35,7 @@ The **Event subscription settings** configuration panel contains the following f
 
 Field | Description
 --- | ---
-**Event Name** | Select one of the supported Commerce event names from the dropdown. Adobe Commerce as a Cloud Service does not support all possible events. Open a support ticket to request additional events.
+**Event Name** | Select one of the supported Commerce event names from the dropdown. SaaS does not support all possible events. Open a support ticket to request additional events.
 **Event Name Alias** | A unique alias name for the event. An alias is required for events that have rules configured.
 **Event Provider** | Select the event provider to which the event should be delivered. If a workspace configuration is set for the provider, event metadata will be created and linked to the provider when the event subscription is saved.
 **Is Enabled** | Indicates whether the event is enabled. Commerce does not emit disabled events.

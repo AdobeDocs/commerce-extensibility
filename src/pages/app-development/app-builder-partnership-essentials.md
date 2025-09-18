@@ -31,7 +31,7 @@ If you are a Solution Partner Program (SPP) partner, you will need to create a T
 
 1. [Join the Technology Partner Program (TPP)](https://partners.adobe.com/technologyprogram/experiencecloud/registration.html) by using your personal corporate email address. Each registrant will need to use an Adobe ID. After joining, Adobe will assign an Independent Software Vendor (ISV), a TPP organization, and an App Builder sandbox associated with that organization.
 
-1. **Additional users** - The first TPP registrant using their AdobeID email is assoicated with the TPP org. Any additional users who need to submit or manage App Builder listings need to have their AdobeID email added to the TPP org. You can do so by creating a case ticket with [TPP Support](https://partners.adobe.com/ec/cform/case).
+1. **Additional users** - The first TPP registrant using their Adobe ID email is associated with the TPP organization. Any additional users who need to submit or manage App Builder listings need to have their Adobe ID email added to the TPP organization. You can do so by creating a case ticket with [TPP Support](https://partners.adobe.com/ec/cform/case).
 
 1. **Submission review** - After registration, Adobe will review your submission and notify you upon approval or rejection. If Adobe rejects your submission, you will be provided with next steps.
 
@@ -98,14 +98,14 @@ Here are the distribution steps with use case for Commerce Solution Implementers
 
 ## Variations
 
-- Independent Software Vendors (ISVs) can publish the listing under their name, if they have an AdobeID associated with a TPP org.
+- Independent Software Vendors (ISVs) can publish the listing under their name, if they have an Adobe ID associated with a TPP organization.
 - Solution Implementers (SIs) can:
-  - Publish the listing under their name, if they have joined the Technology Partner Program (TPP) with their AdobeID associated with a TPP org.
-  - Publish on behalf of an ISV, if they are added to the TPP org of the ISV. Provide evidence that ISV approves of SI publishing on their behalf by submitting a [TPP Support ticket](https://partners.adobe.com/ec/cform/case) and Adobe will provide the name of the organization to SI user to ensure they sign in to Developer Distribution (DD) under the correct organization.
+  - Publish the listing under their name, if they have joined the Technology Partner Program (TPP) with their Adobe ID associated with a TPP organization.
+  - Publish on behalf of an ISV, if they are added to the TPP organization of the ISV. Provide evidence that ISV approves of SI publishing on their behalf by submitting a [TPP Support ticket](https://partners.adobe.com/ec/cform/case) and Adobe will provide the name of the organization to SI user to ensure they sign in to Developer Distribution (DD) under the correct organization.
 
 <InlineAlert variant="info" slots="text, text1"/>
 
-Any user with an Adobe ID associated with the TPP publishing org can submit, manage, and retract an App Builder Listing in Developer Distribution.
+Any user with an Adobe ID associated with the TPP publishing organization can submit, manage, and retract an App Builder Listing in Developer Distribution.
 
 Users updating or revising the App Builder App itself require Commerce and App Builder sandboxes in their organization.
 

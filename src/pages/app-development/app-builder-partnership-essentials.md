@@ -87,7 +87,7 @@ Here are the distribution steps with use case for Commerce Solution Implementers
 
 1. **Create an App Builder listing:**
 
-   - Sign into [Developer Distribution (DD)](https://developer.adobe.com/distribute) and confirm that your approved TPP organization appears in the upper right org switcher. If the organization name looks like your email address without the `@` sign, you are not in the TPP organization and will get an error when trying to create a listing.
+   - Sign into [Developer Distribution (DD)](https://developer.adobe.com/distribute) and confirm that your approved TPP organization appears in the upper-right organization switcher. If the organization name looks like your email address without the `@` sign, you are not in the TPP organization and will get an error when trying to create a listing.
    - [Create an App Builder listing](https://developer.adobe.com/developer-distribution/experience-cloud/docs/guides/submission/app-builder-submission#creating-a-listing) using the zip file you created when building your App Builder app.
    - Then create a public profile before submitting your first App Builder listing.
 

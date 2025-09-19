@@ -61,9 +61,7 @@ After partners get sandbox access, the Adobe Commerce engineering team will ask 
 
 1. Read the [App Submission guidelines](../app-development/app-submission-guidelines.md).
 
-1. Understand the [Adobe Exchange Marketplace publishing requirements](https://developer.adobe.com/developer-distribution/experience-cloud/docs/guides/submission/app-builder-submission) to guide development.
-
-1. Review the [developer guides for out-of-process apps and app distribution](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/).
+1. Review the [developer guides](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/) for [out-of-process apps](index.md) and [app distribution](https://developer.adobe.com/developer-distribution/experience-cloud/docs/guides/discoverAndManage/app-builder-discover).
 
 **Support resources:**
 
@@ -75,7 +73,7 @@ After partners get sandbox access, the Adobe Commerce engineering team will ask 
 
 1. [Package and configure the app overview](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/distribution/).
 
-1. Internal publishing: Publish within the partner's organization.
+1. Internal publishing: Publish within the [partner's organization](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/publish-app).
 
 1. External publishing: Publish on the Adobe Exchange Marketplace. Read the following [distribution](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/publish-app) section.
 

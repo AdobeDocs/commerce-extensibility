@@ -16,7 +16,7 @@ September 19, 2025
 
 ### Bug fixes
 
-* Fixed a crash when trying to place an order with payment method configuration set to **Authorize and Capture** and Admin UI SDK enabled. <!-- CCSAAS-3449 -->
+* Fixed a crash that occurred when placing an order with payment method configuration set to **Authorize and Capture** while the Admin UI SDK is enabled. <!-- CCSAAS-3449 -->
 
 ## Version 3.2.1
 

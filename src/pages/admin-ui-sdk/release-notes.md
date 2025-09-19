@@ -8,6 +8,16 @@ keywords:
 
 # Adobe Commerce Admin UI SDK release notes
 
+## Version 3.2.2
+
+### Release date
+
+September 19, 2025
+
+### Bug fixes
+
+* Fixed a crash when trying to place an order with payment method configuration set to **Authorize and Capture** and Admin UI SDK enabled. <!-- CCSAAS-3449 -->
+
 ## Version 3.2.1
 
 ### Release date

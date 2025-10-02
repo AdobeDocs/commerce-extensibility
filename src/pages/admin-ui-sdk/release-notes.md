@@ -8,6 +8,18 @@ keywords:
 
 # Adobe Commerce Admin UI SDK release notes
 
+## Version 3.2.3
+
+### Release date
+
+October 2, 2025
+
+### Bug fixes
+
+* Fixed error when placing an order with custom fees. <!-- CEXT-5312 -->
+
+* Fixed an issue where custom menu items would disappear in SaaS after a period of inactivity, requiring a refresh of registrations to restore them. <!-- CCSAAS-3696 -->
+
 ## Version 3.2.2
 
 ### Release date

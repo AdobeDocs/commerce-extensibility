@@ -26,6 +26,30 @@ module.exports = [
     ]
   },
   {
+    title: "Journaling Tutorial",
+    path: "/events/journaling-tutorial/index.md",
+    pages: [
+      {
+        title: "How it works",
+        path: "/events/journaling-tutorial/index.md"
+      },
+   
+      {
+        title: "Register Commerce Events in Adobe Developer Console for Journaling",
+        path: "/events/journaling-tutorial/registration-jounrnaling-events.md"
+      },
+       {
+        title: "Code Development Using Journaling API and Deployment",
+        path: "/events/journaling-tutorial/runtime-action-code-journaling-api.md"
+      },
+      {
+        title: "Validating Journalling Events Processing",
+        path: "/events/journaling-tutorial/validating-journaling-integration.md"
+      }
+      
+    ]
+  },
+  {
     title: "Create an App Builder project",
     path: "/events/project-setup.md",
   },

@@ -19,11 +19,10 @@ To address this, Adobe IO Events provides event journaling as an alternative. Jo
 
 ## How it works
 
-Adobe I/O Events Journaling provides a reliable way to consume events asynchronously without requiring direct delivery to a webhook or runtime action. Journaling stores events temporarily in a dedicated endpoint, allowing applications to pull events at their own pace. This approach supports batch processing, error recovery, and ensures that events are not lost when a consumer is temporarily unavailable. [Adobe I/O Events Journaling Guide](https://developer.adobe.com/events/docs/guides/journaling-intro) provides an overview of journaling concepts and benefits.
+Adobe I/O Events Journaling provides a reliable way to consume events asynchronously. Journaling stores events temporarily in a dedicated endpoint, allowing applications to pull events at their own pace. You can read in detail here:[Adobe I/O Events Journaling Guide](https://developer.adobe.com/events/docs/guides/journaling-intro)
 
-Consider a use case where a product is deleted from the Adobe Commerce catalog. At that point, an event is emitted asynchronously and sent to Adobe I/O Events. An event provider must first be created. The provider defines the supported event types, such as product deletions or inventory changes, and ensures proper routing. The Adobe I/O Events for Adobe Commerce module enables Adobe Commerce to subscribe to this provider.
-
-When a product deletion event is emitted, Adobe I/O Events stores it in a journaling endpoint. The endpoint holds events for a period of seven days. making them available for consumption. Consumers gain access to the journal URL during event registration.
+Consider a Commerce use case where an event is triggered when a product is deleted from the catalog. If the project uses event registration through a journaling endpoint, the event is sent asynchronously to Adobe I/O Events. Adobe I/O Events stores these events in the journaling endpoint for 7 days, making them available for consumption. Developers receive the journal URL during event registration.
+The App Builder app is then set up with this journal URL. A Runtime action uses the Events SDK to poll the journal and fetch new events. Each time it runs, it reads and processes the available events.Every time. the App runs, the program:
 
 In this integration, an events registration is created with the provider, which returns a journal URL. The App Builder application is then configured with this journal URL so that a runtime action can use the Events SDK to poll and retrieve events from the journal. A runtime action then uses the Events SDK to poll the journal. During each execution, the action:
 

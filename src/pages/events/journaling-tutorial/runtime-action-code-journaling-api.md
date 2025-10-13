@@ -27,7 +27,6 @@ The `index.js` file implements an Adobe I/O Runtime action that consumes events 
 - **Fetch New Events** → Calls the Journaling API to retrieve only the latest events since the last position.
 - **Process and Log Events** → Iterates over the events, extracts key details (e.g., SKU, product name, price, stock quantity), and logs them.
 - **Update State** → Saves the newest journal position in the state store for the next invocation.
-- **Return Response** → Sends back a structured response containing the number of events processed and their details, or an error message if something fails.
 
 ``` js
 const { Core, Events } = require('@adobe/aio-sdk')
@@ -310,7 +309,7 @@ AIO_ims_contexts_Credential__in__MyEventsApp__-__Stage_client__secrets
 AIO_ims_contexts_Credential__in__MyEventsApp__-__Stage_technical__account__email
 AIO_ims_contexts_Credential__in__MyEventsApp__-__Stage_technical__account__id
 AIO_ims_contexts_Credential__in__MyEventsApp__-__Stage_scopes
-AIO_ims_contexts_Credential__in__MyEventsApp__-__Stage_ims__org__id
+AIO_ims_contexts_Credential__in__MyEventsApp__-__Stage_ims__org__id 
 ```
 
 Sometimes referencing these names in `appconfig.yaml` causes errors when generating tokens.  In these cases, simplify the contents.
@@ -391,6 +390,8 @@ application:
             annotations:
               require-adobe-auth: false
               final: true
+            limits:
+              timeout: 70000  
         triggers:
           everyMin:
             feed: /whisk.system/alarms/interval
@@ -400,6 +401,7 @@ application:
           everyMinToEventjournal:
             trigger: everyMin
             action: <Name of the action>
+
 ```
 
 A trigger in Adobe I/O Runtime (built on Apache OpenWhisk) represents an event source. Triggers can fire on a schedule, in response to external events, or based on system activity. They do not execute code by themselves but are linked to actions through rules.
@@ -413,7 +415,8 @@ This trigger acts as a scheduler for invoking actions at regular intervals.
 A rule links a trigger to an action. When the trigger fires, the associated action is automatically executed.
 In this example, the rule `everyMinToEventjournal` connects the `everyMin` trigger to the `eventjournal` action. The flow works as follows:
 
-- The `everyMin` trigger fires every minute.
+- The limits.timeout parameter defines how long (in milliseconds) the action can run before it is terminated automatically by Adobe I/O Runtime
+- The everyMin trigger fires every minute.
 - The rule detects that the trigger has fired.
 - The linked `eventjournal` action is invoked automatically.
 - The `eventjournal` action is expected to contain the logic for reading events from the Adobe I/O Events Journaling API. By wiring the rule this way, the journaling action runs once per minute, polling the journal for any new events and processing them.

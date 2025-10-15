@@ -119,7 +119,7 @@ async function fetchEvent(params, accessToken, sincePosition) {
   if (sincePosition) {
     options.since = sincePosition
   }
-  options.limit = 100 // Fetch up to 100 events in one call
+  options.limit = 10 // Fetch up to 100 events in one call
  
   // Fetch events from journal
   const journalling = await eventsClient.getEventsFromJournal(journalling_url, options)

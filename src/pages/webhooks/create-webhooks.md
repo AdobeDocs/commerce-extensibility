@@ -178,6 +178,10 @@ Point to the `AddProductToCartResolver` class in the `header.resolver` attribute
 </hook>
 ```
 
+#### Application context header values
+
+You can create hook headers with values from the application context. See [Context fields](./hooks.md#context-values) for details.
+
 ### Configure hook rules
 
 The **Hook Rules** configuration panel or `rules` element allows you to define rules that trigger a webhook when certain conditions are met. [Create conditional webhooks](./conditional-webhooks.md) describes how to configure hook rules.

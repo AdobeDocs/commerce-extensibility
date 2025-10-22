@@ -391,7 +391,7 @@ Value: context_http_request.get_header{X-Custom-Header}
 Active: Yes
 ```
 
-In this example, the `X-Custom-Header` from the incoming HTTP request to Commerce will be forwarded as a header in the webhook's request to the external system.
+In this example, the `X-Custom-Header` from an incoming HTTP request to Commerce will be forwarded as a header in the request sent by the webhook. This approach can be used to pass Authorization headers required by an external system.
 
 ### Supported contexts
 

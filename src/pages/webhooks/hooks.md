@@ -377,7 +377,7 @@ You can use the same syntax and features available for context values in fields 
 
 ```xml
 <headers>
-    <header name="X-Custom-Header">context_http_request.get_header{X-Custom-Header}</>
+    <header name="X-Custom-Header">context_http_request.get_header{X-Custom-Header}</header>
 </headers>
 ```
 

@@ -1,22 +1,24 @@
 ---
-title: Use Events and App Builder to Extend Adobe Commerce
-description: Learn how to configure and build event-driven integrations between Adobe Commerce and Adobe App Builder using Journaling API.
+title: Code development and deployment
+description: Learn how to write, deploy, and manage runtime action code in an Adobe App Builder project that processes events from Adobe Commerce using the Adobe I/O Events Journaling API.
 edition: saas
 keywords:
   - Extensibility
   - Events
 ---
 
-# Code Development and Deployment
+# Code development and deployment
 
-## Writing Run time Action code in App Builder project
+This topic explains how to write, deploy, and manage runtime action code in an Adobe App Builder project that processes events from Adobe Commerce using the Adobe I/O Events Journaling API.
+
+## Writing runtime action code in App Builder project
 
 Create a runtime action that processes product event data from Adobe Commerce. The runtime action invokes when product-related events such as product deletions are captured and delivered through Adobe I/O Events Journaling.
-When initializing an App Builder project using the app init command, a default folder structure generates under actions/**action-name**. The folder includes an initial index.js file, which serves as the entry point for the runtime action.
+When initializing an App Builder project using the app init command, a default folder structure generates under `actions/<action-name>`. The folder includes an initial `index.js` file, which serves as the entry point for the runtime action.
 
-### index.js
+### `index.js` file
 
-index.js file implements an Adobe I/O Runtime action that consumes events from the Adobe I/O Events Journaling API. Its primary role is to continuously fetch product-related events from Adobe Commerce (such as stock updates, price changes, or deletions), process them, and maintain state for seamless event consumption.
+The `index.js` file implements an Adobe I/O Runtime action that consumes events from the Adobe I/O Events Journaling API. Its primary role is to continuously fetch product-related events from Adobe Commerce (such as stock updates, price changes, or deletions), process them, and maintain state for seamless event consumption.
 
 ### High-Level Flow
 
@@ -92,15 +94,15 @@ function parseScopes(scopesParam) {
 }
  
 /**
- * Fetches events from the Adobe I/O Journalling API.
+ * Fetches events from the Adobe I/O Journaling API.
  *
- * @param {Object} params - Action parameters containing IMS and Journalling details.
+ * @param {Object} params - Action parameters containing IMS and Journaling details.
  * @param {string} params.ims_org_id - Adobe IMS organization ID.
  * @param {string} params.apiKey - Adobe API key.
- * @param {string} params.journalling_url - Journalling endpoint URL.
+ * @param {string} params.journalling_url - Journaling endpoint URL.
  * @param {string} accessToken - Adobe IMS access token.
  * @param {string} [sincePosition] - Optional position marker to fetch events since last processed position.
- * @returns {Promise<Object[]>} - Array of event objects fetched from Journalling API.
+ * @returns {Promise<Object[]>} - Array of event objects fetched from Journaling API.
  * @throws {Error} If required parameters are missing or request fails.
  */
 async function fetchEvent(params, accessToken, sincePosition) {
@@ -134,7 +136,7 @@ async function fetchEvent(params, accessToken, sincePosition) {
  */
 async function main(params) {
   const logger = Core.Logger('main', { level: params.LOG_LEVEL || 'info' })
-  logger.info('Fetching events from journalling endpoint...')
+  logger.info('Fetching events from journaling endpoint...')
  
   try {
     // Retrieve access token
@@ -151,7 +153,7 @@ async function main(params) {
     const lastPosition = lastPositionRes ? lastPositionRes.value : undefined
     logger.info(`Last Position >>> ${lastPosition}`)
  
-    // Fetch events from Adobe Journalling API
+    // Fetch events from Adobe Journaling API
     const events = await fetchEvent(params, accessToken, lastPosition)
     logger.info(`Fetched ${events.length} new event(s).`)
  
@@ -195,26 +197,27 @@ async function main(params) {
 exports.main = main
 ```
 
-## Reading Through Adobe I/O Journals
+## Reading through Adobe I/O journals
 
-Adobe I/O Journaling API acts as a queue that holds events temporarily. Each event has a position marker that serves as a cursor. The fetchEvent() function retrieves events from the journaling URL provided in the parameters.
-If a previous position exists, the function fetches events starting from that position so only new events are processed. A maximum of 100 events are retrieved per call. After processing, the newest position from the last event is saved in the state store.
-This ensures that events are read sequentially and not re-processed.
+Adobe I/O Journaling API acts as a queue that holds events temporarily. Each event has a position marker that serves as a cursor. The `fetchEvent()` function retrieves events from the journaling URL provided in the parameters.
+If a previous position exists, the function fetches events starting from that position so only new events are processed. A maximum of 100 events are retrieved per call.
+
+After processing, the newest position from the last event is saved in the state store. This ensures that events are read sequentially and not re-processed.
 
 ## StateLib Variable (aio-lib-state)
 
-**aio-lib-state** is a key-value store used to persist metadata across function executions. In this code, it stores the last journal position.
+`aio-lib-state` is a key-value store that persists metadata across function executions. In this code, it stores the last journal position.
 
-- state.get('last_journal_position') retrieves the saved position from the previous run.
+- `state.get('last_journal_position')` retrieves the saved position from the previous run.
 
-- state.put('last_journal_position', newestPosition) updates the stored position with the latest marker after events are processed.
+- `state.put('last_journal_position', newestPosition)` updates the stored position with the latest marker after events are processed.
 
 This persistence enables the function to resume from the correct point in the journal even after restarts or failures.
 
 ## Getting IMS Access Token in Detail
 
-Adobe APIs require an IMS (Identity Management System) access token for authentication. The code uses **aio-lib-ims** to generate this token.
-parseScopes() converts the scopes parameter into an array, either by parsing a JSON array string or splitting by spaces/commas.
+Adobe APIs require an IMS (Identity Management System) access token for authentication. The code uses `aio-lib-ims` to generate this token. The `parseScopes()`1 function converts the scopes parameter into an array, either by parsing a JSON array string or splitting by spaces/commas.
+
 A configuration object is created with:
 
 - client_id
@@ -223,16 +226,16 @@ A configuration object is created with:
 - technical_account_id
 - technical_account_email
 - scopes
-The configuration is stored in context under the key my_event_provider and set as the current provider.The **getToken()** uses the configuration to generate an IMS access token.The resulting access token is then used by the Events SDK to authenticate calls to the journaling API.
 
-### Utils.js
+The configuration is stored in context under the key `my_event_provider` and set as the current provider. The `getToken()` call uses the configuration to generate an IMS access token. The resulting access token is then used by the Events SDK to authenticate calls to the journaling API.
 
-This file contains helper functions used by the runtime action:
+### `utils.js` file
 
-- **stringParameters** → Formats parameters into a string (mainly for logging/debugging).
-- **fetchEvent** → Makes a simple HTTP request to the journaling endpoint using an access token.
-- **errorResponse** → Returns a consistent error response object and logs the error if a logger is provided.
-In short, utils.js provides reusable utilities to keep the main action (index.js) clean and focused.
+The `utils.js` file provides reusable utilities to keep the main action (`index.js`) clean and focused. It contains helper functions used by the runtime action:
+
+- `stringParameters` - Formats parameters into a string (mainly for logging/debugging).
+- `fetchEvent` - Makes a simple HTTP request to the journaling endpoint using an access token.
+- `errorResponse` Returns a consistent error response object and logs the error if a logger is provided.
 
 ``` js
 const fetch = require('node-fetch'); // Import fetch for Node.js (<18). For Node 18+, global fetch is available.
@@ -250,11 +253,11 @@ function stringParameters(params) {
 }
  
 /**
- * Fetches events from the journalling endpoint.
+ * Fetches events from the journaling endpoint.
  *
  * @async
  * @param {Object} params - Configuration for the fetch request.
- * @param {string} params.journalling_url - URL of the journalling endpoint.
+ * @param {string} params.journalling_url - URL of the journaling endpoint.
  * @param {string} params.access_token - Access token used for authorization.
  * @returns {Promise<Object>} JSON response body containing events.
  * @throws {Error} If the request fails or the response is not OK (non-200).
@@ -295,13 +298,11 @@ module.exports = {
   }
 ```
 
-### Changes to .env file
+### Changes to the `.env` file
 
-A .env file is an environment file that stores sensitive values like API keys, client secrets, and org IDs required by your Adobe App Builder app. It is auto-generated by the Adobe Developer CLI (aio) when you bootstrap a project, using the json configuration file you download from the Adobe Developer Console.
+A `.env` file is an environment file that stores sensitive values such as API keys, client secrets, and org IDs required by your Adobe App Builder app. It is auto-generated by the Adobe Developer CLI (aio) when you bootstrap a project, using the json configuration file you download from the Adobe Developer Console.
 
-**Environment Variable Mapping**
-When a new Adobe I/O Runtime project is created, .env variables are generated with long names tied to the project and workspace.
-For example, for a project named journalTest1 in the Stage workspace, you will see entries like :
+When a new Adobe I/O Runtime project is created, .env variables are generated with long names tied to the project and workspace. For example, for a project named journalTest1 in the Stage workspace, you will see entries like:
 
 ``` js
 AIO_ims_contexts_Credential__in__MyEventsApp__-__Stage_client__id
@@ -312,9 +313,9 @@ AIO_ims_contexts_Credential__in__MyEventsApp__-__Stage_scopes
 AIO_ims_contexts_Credential__in__MyEventsApp__-__Stage_ims__org__id
 ```
 
-Sometimes referencing these names  in appconfig.yaml may cause errors when generating tokens.So it needs to be simplified.
+Sometimes referencing these names in `appconfig.yaml` causes errors when generating tokens.  In these cases, simplify the contents.
 
-```bash
+```js
 ### Adobe I/O Console service account credentials
 
 CLIENT_ID=***************
@@ -339,31 +340,31 @@ AIO_IMS_SCOPES=["AdobeID","openid","read_organizations",
 | `AIO_ims_contexts_Credential__in__journalTest1__-__Stage_scopes`                | `AIO_IMS_SCOPES`      |
 | `AIO_ims_contexts_Credential__in__journalTest1__-__Stage_ims__org__id`          | `IMS_ORG_ID`          |
 
-All other credentials (such as CLIENT_ID, CLIENT_SECRET, TECH_ACCOUNT_ID, IMS_ORG_ID, and AIO_IMS_SCOPES) are auto-generated by the Adobe Developer CLI when you set up your project using the downloaded **json** configuration file from the Adobe Developer Console. These values should not be edited manually.
+All other credentials (such as CLIENT_ID, CLIENT_SECRET, TECH_ACCOUNT_ID, IMS_ORG_ID, and AIO_IMS_SCOPES) are auto-generated by the Adobe Developer CLI when you set up your project using the downloaded json configuration file from the Adobe Developer Console. These values should not be edited manually.
 Two inputs must always be provided explicitly by the developer:
 
-- JOURNALLING_URL : Obtain this from Developer Console > [Your Project] > journalSep Stage > Event Registration > Event Delivery Method by copying the Journaling Unique API Endpoint.
+- JOURNALLING_URL: Obtain this from **Developer Console** > [Your Project] > **journalSep Stage** > **Event Registration** > **Event Delivery Method** by copying the Journaling Unique API Endpoint.
 
-- DB_EVENT_KEY : Define any string key (e.g., journalposition1). This key is used by the App Builder State Library to persist the last processed journaling position.
+- DB_EVENT_KEY: Define any string key (such as `journalposition1`). This key is used by the App Builder State Library to persist the last processed journaling position.
 
 When setting your environment variables, ensure that values like CLIENT_SECRET are provided without quotes if they are specified as strings.
 
-### How to get the JOURNALLING_URL
+### How to get the JOURNALLING_URL value
 
 You can fetch the Journaling Unique API Endpoint from the Adobe Developer Console:
 
-- Navigate to your project > journalSep (Stage).
-- Go to Event Registration.
-- Under Event Delivery Method, select Journaling.
-- Copy the JOURNALING UNIQUE API ENDPOINT.
-- Paste it into your .env file as the value of JOURNALLING_URL.
+1. Navigate to your project > journalSep (Stage).
+1. Go to **Event Registration**.
+1. Under **Event Delivery Method**, select **Journaling**.
+1. Copy the **JOURNALING UNIQUE API ENDPOINT**.
+1. Paste it into your `.env` file as the value of `JOURNALLING_URL`.
 
-### Changes to Appconfig.yaml
+### Changes to `appconfig.yaml`
 
-The appconfig.yaml describes your Adobe App Builder project’s runtime actions.
-It pulls inputs dynamically from .env using $VARIABLE_NAME. To do this, copy the variable names from .env and place them under the inputs section of the runtime action in appconfig.yaml. This way, developers don’t manually copy-paste secrets into the YAML, deployments can update credentials by simply changing .env, and secrets stay out of source code while remaining easy to rotate.
+The `appconfig.yaml` describes your Adobe App Builder project's runtime actions.
+It pulls inputs dynamically from `.env` using `$VARIABLE_NAME`. To do this, copy the variable names from `.env` and place them under the inputs section of the runtime action in `appconfig.yaml`. This way, developers don't manually copy-paste secrets into the YAML, deployments can update credentials by simply changing `.env`, and secrets stay out of source code while remaining easy to rotate.
 
-``` yaml
+```yaml
 application:
   actions: actions
   web: web-src
@@ -402,19 +403,20 @@ application:
 ```
 
 A trigger in Adobe I/O Runtime (built on Apache OpenWhisk) represents an event source. Triggers can fire on a schedule, in response to external events, or based on system activity. They do not execute code by themselves but are linked to actions through rules.
-In this example, the trigger everyMin is created using the system-provided alarm feed/whisk.system/alarms/interval. The alarm feed generates periodic events at a defined interval. The inputs specify the interval configuration.
 
-- minutes: 1 means the trigger will fire every one minute.
+In this example, the trigger `everyMin` is created using the system-provided alarm `feed/whisk.system/alarms/interval`. The alarm feed generates periodic events at a defined interval. The inputs specify the interval configuration.
+
+- Minutes: 1 means the trigger will fire every one minute.
 - Each time the trigger fires, it produces an event document that can be consumed by one or more rules.
 
 This trigger acts as a scheduler for invoking actions at regular intervals.
 A rule links a trigger to an action. When the trigger fires, the associated action is automatically executed.
-In this example, the rule everyMinToEventjournal connects the everyMin trigger to the eventjournal action. The flow works as follows:
+In this example, the rule `everyMinToEventjournal` connects the `everyMin` trigger to the `eventjournal` action. The flow works as follows:
 
-- The everyMin trigger fires every minute.
+- The `everyMin` trigger fires every minute.
 - The rule detects that the trigger has fired.
-- The linked eventjournal action is invoked automatically.
-- The eventjournal action is expected to contain the logic for reading events from the Adobe I/O Events Journaling API. By wiring the rule this way, the journaling action runs once per minute, polling the journal for any new events and processing them.
+- The linked `eventjournal` action is invoked automatically.
+- The `eventjournal` action is expected to contain the logic for reading events from the Adobe I/O Events Journaling API. By wiring the rule this way, the journaling action runs once per minute, polling the journal for any new events and processing them.
 
 ## Building and deploying application
 

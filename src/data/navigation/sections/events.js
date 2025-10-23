@@ -4,7 +4,7 @@ module.exports = [
     path: "/events/index.md"
   },
   {
-    title: "Tutorial",
+    title: "Eventing tutorial",
     path: "/events/tutorial/index.md",
     pages: [
       {
@@ -26,27 +26,25 @@ module.exports = [
     ]
   },
   {
-    title: "Journaling Tutorial",
+    title: "Journaling tutorial",
     path: "/events/journaling-tutorial/index.md",
     pages: [
       {
-        title: "How it works",
+        title: "Integrate with Adobe I/O Events Journaling API",
         path: "/events/journaling-tutorial/index.md"
       },
-   
       {
-        title: "Register Commerce Events in Adobe Developer Console for Journaling",
-        path: "/events/journaling-tutorial/registration-jounrnaling-events.md"
+        title: "Register Commerce events for journaling",
+        path: "/events/journaling-tutorial/registration-journaling-events.md"
       },
-       {
-        title: "Code Development Using Journaling API and Deployment",
+      {
+        title: "Code development and deployment using the Journaling API",
         path: "/events/journaling-tutorial/runtime-action-code-journaling-api.md"
       },
       {
-        title: "Validating Journalling Events Processing",
+        title: "Validate journaling events processing",
         path: "/events/journaling-tutorial/validating-journaling-integration.md"
       }
-      
     ]
   },
   {

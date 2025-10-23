@@ -1,5 +1,5 @@
 ---
-title: Use Events and App Builder to Extend Adobe Commerce
+title: Register and validate your integration with the Journaling API
 description: Learn how to register Adobe Commerce events for journaling and validate that the integration is functioning correctly.
 edition: saas
 keywords:
@@ -7,7 +7,7 @@ keywords:
   - Events
 ---
 
-# Registering and Validating Integration with the Journaling API
+# Register and validate your integration with the Journaling API
 
 This topic guides you through registering Adobe Commerce events for journaling and validating that the integration is functioning correctly.
 
@@ -31,7 +31,7 @@ In the Configure Event Registration step, select the event provider created earl
 
 On the final screen, update the **Event Registration Name** and **Description** fields. Save the configuration. After saving, the journaling endpoint (journal URL) generates automatically and becomes available for the App Builder application to poll events at its own pace.
 
-## Validate Integration
+## Validate your integration
 
 Validate that events from Adobe Commerce reach the journaling endpoint.
 

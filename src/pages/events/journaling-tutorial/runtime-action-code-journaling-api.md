@@ -292,6 +292,7 @@ module.exports = {
   stringParameters,
   fetchEvent,
   errorResponse
+  }
 ```
 
 ### Changes to .env file
@@ -308,7 +309,7 @@ AIO_ims_contexts_Credential__in__MyEventsApp__-__Stage_client__secrets
 AIO_ims_contexts_Credential__in__MyEventsApp__-__Stage_technical__account__email
 AIO_ims_contexts_Credential__in__MyEventsApp__-__Stage_technical__account__id
 AIO_ims_contexts_Credential__in__MyEventsApp__-__Stage_scopes
-AIO_ims_contexts_Credential__in__MyEventsApp__-__Stage_ims__org__id ```
+AIO_ims_contexts_Credential__in__MyEventsApp__-__Stage_ims__org__id
 ```
 
 Sometimes referencing these names  in appconfig.yaml may cause errors when generating tokens.So it needs to be simplified.

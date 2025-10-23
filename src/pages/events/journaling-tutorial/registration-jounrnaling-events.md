@@ -14,10 +14,10 @@ keywords:
 Create and Configure an Event Provider in Adobe Commerce.Follow the steps in the.
 Before configuring journaling, ensure that you’ve completed the standard setup for Adobe Commerce Events and App Builder.
 
-- To create and configure an Event Provider in Adobe Commerce, follow the steps outlined in (Setting up Event Provider in Adobe Commerce) [https://developer.adobe.com/commerce/extensibility/events/tutorial/event-providers/#set-up-event-providers] up to the section
+- To create and configure an Event Provider in Adobe Commerce, follow the steps outlined in [Setting up Event Provider in Adobe Commerce](https://developer.adobe.com/commerce/extensibility/events/tutorial/event-providers/#set-up-event-providers) up to the section
 **Sync event metadata with App Builder**
 
-- To set up your App Builder project, follow the steps in (Set up the Adobe Developer Console and App Builder project locally) https://developer.adobe.com/commerce/extensibility/events/tutorial/deployment/#set-up-the-adobe-developer-console-and-app-builder-project-locally up to the section **Set up your local App Builder environment using the CLI**.
+- To set up your App Builder project, follow the steps in [Set up the Adobe Developer Console and App Builder project locally](https://developer.adobe.com/commerce/extensibility/events/tutorial/deployment/#set-up-the-adobe-developer-console-and-app-builder-project-locally) up to the section **Set up your local App Builder environment using the CLI**.
 
 ## Register Commerce Events in Adobe Developer Console for Journaling
 

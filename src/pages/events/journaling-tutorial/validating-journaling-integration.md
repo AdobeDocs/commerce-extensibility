@@ -11,7 +11,7 @@ keywords:
 
 ## List Recent Activations:
 
-Run the follwing command:
+Run the following command:
 
 ```bash
  aio rt activations list --limit 10

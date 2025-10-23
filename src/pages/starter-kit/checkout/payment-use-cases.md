@@ -169,23 +169,24 @@ setPaymentMethodOnCart(
 
 #### Using REST API
 
-Use the endpoint `/V1/carts/{cartId}/selected-payment-method` (or `/V1/guest-carts/{cartId}/selected-payment-method` for guest carts). The REST format differs from GraphQL: provide an array of `key=value` strings.
+Use the endpoint `/V1/carts/{cartId}/selected-payment-method` to set the payment method. For guest carts use `/V1/guest-carts/{maskedCartId}/selected-payment-method` (same payload). The REST format differs from GraphQL: provide an array of `key=value` strings.
 
 ```bash
-PUT /rest/default/V1/guest-carts/{cartId}/selected-payment-method
-Accept: application/json
-Content-Type: application/json
-
-{
-  "method": {
-    "method": "your_payment_method_code",
-    "additional_data": [
-      "sessionId=12A34B56-1A23-1234-A123-123456A78901",
-      "status=DONE"
-    ]
-  }
-}
- ```
+curl -X PUT \
+  -H "Accept: application/json" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer {token_if_customer_or_admin}" \
+  "https://{base_url}/rest/default/V1/carts/{cartId}/selected-payment-method" \
+  -d '{
+    "method": {
+      "method": "your_payment_method_code",
+      "additional_data": [
+        "sessionId=12A34B56-1A23-1234-A123-123456A78901",
+        "status=DONE"
+      ]
+    }
+  }'
+```
 
 ### Validate the payment with a webhook
 

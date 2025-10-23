@@ -139,6 +139,8 @@ To ingest payment gateway specific information in the payment process, the check
 
 #### Using GraphQL
 
+Use GraphQL in storefront or headless implementations where you already have the masked cart ID (from `createEmptyCart` or `customerCart`). The mutation accepts a structured array of `{ key, value }` objects, which become entries in the order payment's `additional_information`.
+
 ```graphql
 setPaymentMethodOnCart(
   input: {

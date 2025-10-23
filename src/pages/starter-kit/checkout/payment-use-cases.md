@@ -169,7 +169,7 @@ setPaymentMethodOnCart(
 
 #### Using REST API
 
-Use the endpoint `/V1/carts/{cartId}/selected-payment-method` to set the payment method. For guest carts use `/V1/guest-carts/{maskedCartId}/selected-payment-method` (same payload). The REST format differs from GraphQL: provide an array of `key=value` strings.
+Use the endpoint `/V1/carts/{cartId}/selected-payment-method` to set the payment method. For guest carts use `/V1/guest-carts/{maskedCartId}/selected-payment-method`. Unlike the GraphQL format, the REST format requires an array of `key=value` strings.
 
 ```bash
 curl -X PUT \

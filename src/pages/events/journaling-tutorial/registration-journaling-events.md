@@ -1,5 +1,5 @@
 ---
-title: Register and validate your integration with the Journaling API
+title: Register your integration with the Journaling API
 description: Learn how to register Adobe Commerce events for journaling and validate that the integration is functioning correctly.
 edition: saas
 keywords:

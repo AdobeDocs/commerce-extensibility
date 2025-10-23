@@ -1,6 +1,6 @@
 ---
 title: Code development and deployment
-description: Learn how to write, deploy, and manage runtime action code in an Adobe App Builder project that processes events from Adobe Commerce using the Adobe I/O Events Journaling API.
+description: Learn how to write, deploy, and manage runtime action code that processes events from Adobe Commerce using the Adobe I/O Events Journaling API.
 edition: saas
 keywords:
   - Extensibility

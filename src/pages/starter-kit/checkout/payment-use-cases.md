@@ -137,6 +137,10 @@ To perform a headless checkout and payment, the Commerce instance must ensure th
 
 To ingest payment gateway specific information in the payment process, the checkout process must use the [`setPaymentMethodOnCart` mutation](https://developer.adobe.com/commerce/webapi/graphql/schema/cart/mutations/set-payment-method/) in combination with the `payment_method.additional_data` field to persist the information required to validate the payment once the order is placed.
 
+#### Using GraphQL
+
+Use GraphQL in storefront or headless implementations where you already have the masked cart ID (from `createEmptyCart` or `customerCart`). The mutation accepts a structured array of `{ key, value }` objects, which become entries in the order payment's `additional_information`.
+
 ```graphql
 setPaymentMethodOnCart(
   input: {
@@ -163,6 +167,26 @@ setPaymentMethodOnCart(
     }
   }
 }
+```
+
+#### Using REST API
+
+Use the endpoint `/V1/carts/{cartId}/selected-payment-method` to set the payment method. For guest carts use `/V1/guest-carts/{maskedCartId}/selected-payment-method`. Unlike the GraphQL format, the REST format requires an array of `key=value` strings.
+
+```bash
+curl -X PUT \
+  --url <ADOBE_COMMERCE_API_URL>/V1/carts/{cartId}/selected-payment-method \
+  --header "Authorization: Bearer <TOKEN>" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "method": {
+      "method": "your_payment_method_code",
+      "additional_data": [
+        "sessionId=12A34B56-1A23-1234-A123-123456A78901",
+        "status=DONE"
+      ]
+    }
+  }'
 ```
 
 ### Validate the payment with a webhook

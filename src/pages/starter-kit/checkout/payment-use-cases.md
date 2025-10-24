@@ -175,11 +175,10 @@ Use the endpoint `/V1/carts/{cartId}/selected-payment-method` to set the payment
 
 ```bash
 curl -X PUT \
-  -H "Accept: application/json" \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer {token_if_customer_or_admin}" \
-  "https://{base_url}/rest/default/V1/carts/{cartId}/selected-payment-method" \
-  -d '{
+  --url <ADOBE_COMMERCE_API_URL>/V1/carts/{cartId}/selected-payment-method \
+  --header "Authorization: Bearer <TOKEN>" \
+  --header "Content-Type: application/json" \
+  --data '{
     "method": {
       "method": "your_payment_method_code",
       "additional_data": [

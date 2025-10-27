@@ -119,6 +119,10 @@ Value: /^TV .*/i
 Field: category.store_id
 Operator: in
 Value: 1,2
+
+Field: quantity_and_stock_status.qty
+Operator: onChange
+Value:
 ```
 
 ## Events Subscriptions grid actions

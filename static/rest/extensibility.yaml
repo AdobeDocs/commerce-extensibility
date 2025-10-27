@@ -7,22 +7,18 @@ info:
     This reference provides endpoints for managing:
     - **Admin UI SDK**: Admin UI SDK component integrations
     - **Custom Attributes**: Custom attributes for carts, quotes, and other objects that don't support EAV (Entity-Attribute-Value) attributes
-    - **Custom Attributes B2B**: Custom attributes for B2B quotes and companies,
-    - **Eventing**: Event subscriptions, providers, and configuration.
+    - **Custom Attributes B2B**: Custom attributes for B2B quotes and companies
+    - **Eventing**: Event subscriptions, providers, and configuration
     - **Observability**: Monitoring subscriptions and logging
     - **Payment Methods**: Out-of-process payment integrations
     - **Shipping Methods**: Out-of-process shipping carriers
     - **Tax Management**: External tax calculation services
     - **Webhooks**: Webhook subscription management
-  
+
+    On PaaS systems, the URL to these endpoints is https://{host}/rest/{store-view-code}/. On SaaS, the path is https://{server}.api.commerce.adobe.com/{tenant-id}/.
+
   license:
     name: Adobe Proprietary
-
-servers:
-  - url: https://{server}/rest/{store-view-code}/
-    description: Adobe Commerce REST API (PaaS)
-  - url: https://<server>.api.commerce.adobe.com/{tenant-id}/
-    description: Adobe Commerce REST API (SaaS)
 
 paths:
   # Backend UI Extensions
@@ -72,7 +68,7 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 
-  # Custom Attributes (Cart)
+  # Custom Attributes
   /carts/{cartId}/customAttributes:
     post:
       summary: Save custom attributes for cart
@@ -166,13 +162,13 @@ paths:
               schema:
                 type: boolean
 
-  # Commerce Eventing
+  # Eventing
   /eventing/eventSubscribe:
     post:
       summary: Subscribe to event
       description: Create a new event subscription
       tags:
-        - Commerce Eventing
+        - Eventing
       requestBody:
         required: true
         content:
@@ -195,7 +191,7 @@ paths:
       summary: Update event subscription
       description: Update an existing event subscription
       tags:
-        - Commerce Eventing
+        - Eventing
       parameters:
         - name: name
           in: path
@@ -225,7 +221,7 @@ paths:
       summary: Unsubscribe from event
       description: Remove an event subscription
       tags:
-        - Commerce Eventing
+        - Eventing
       parameters:
         - name: name
           in: path
@@ -249,7 +245,7 @@ paths:
       summary: Update eventing configuration
       description: Update the eventing system configuration
       tags:
-        - Commerce Eventing
+        - Eventing
       requestBody:
         required: true
         content:
@@ -269,7 +265,7 @@ paths:
       summary: Get event providers
       description: Retrieve list of event providers
       tags:
-        - Commerce Eventing
+        - Eventing
       responses:
         '200':
           description: List of event providers
@@ -285,7 +281,7 @@ paths:
       summary: Get event providers (alternative)
       description: Alternative endpoint to retrieve list of event providers
       tags:
-        - Commerce Eventing
+        - Eventing
       responses:
         '200':
           description: List of event providers
@@ -300,7 +296,7 @@ paths:
       summary: Create event provider
       description: Create a new event provider
       tags:
-        - Commerce Eventing
+        - Eventing
       requestBody:
         required: true
         content:
@@ -319,7 +315,7 @@ paths:
       summary: Update event provider
       description: Update an existing event provider
       tags:
-        - Commerce Eventing
+        - Eventing
       requestBody:
         required: true
         content:
@@ -339,7 +335,7 @@ paths:
       summary: Get event provider by ID
       description: Retrieve a specific event provider by its ID
       tags:
-        - Commerce Eventing
+        - Eventing
       parameters:
         - name: providerId
           in: path
@@ -361,7 +357,7 @@ paths:
       summary: Delete event provider
       description: Delete an event provider by its ID
       tags:
-        - Commerce Eventing
+        - Eventing
       parameters:
         - name: providerId
           in: path
@@ -382,7 +378,7 @@ paths:
       summary: Get event subscriptions
       description: Retrieve list of all event subscriptions
       tags:
-        - Commerce Eventing
+        - Eventing
       responses:
         '200':
           description: List of event subscriptions
@@ -393,7 +389,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/EventSubscription'
 
-  # Out-of-Process Observability
+  # Observability
   /oope_observability/subscription:
     get:
       summary: Get observability subscriptions
@@ -498,7 +494,7 @@ paths:
               schema:
                 type: boolean
 
-  # Out-of-Process Payment Methods
+  # Payment Methods
   /oope_payment_method:
     get:
       summary: Get payment methods
@@ -557,7 +553,7 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 
-  # Out-of-Process Shipping Methods
+  # Shipping Methods
   /oope_shipping_carrier:
     get:
       summary: Get shipping carriers
@@ -655,7 +651,7 @@ paths:
               schema:
                 type: boolean
 
-  # Out-of-Process Tax Management
+  # Tax Management
   /oope_tax_management/tax_integration:
     get:
       summary: Get tax integrations
@@ -714,13 +710,13 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 
-  # Commerce Webhooks
+  # Webhooks
   /webhooks/list:
     get:
       summary: Get webhook subscriptions
       description: Retrieve list of all webhook subscriptions
       tags:
-        - Commerce Webhooks
+        - Webhooks
       responses:
         '200':
           description: List of webhook subscriptions
@@ -733,6 +729,54 @@ paths:
 
 components:
   schemas:
+    # Backend UI Extensions
+    MassActionFailedRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Internal ID
+        request_id:
+          type: string
+          description: Request ID
+        action_id:
+          type: string
+          description: Action ID
+        grid_type:
+          type: string
+          description: Grid type
+        error_status:
+          type: string
+          description: Error status
+        error_message:
+          type: string
+          description: Error message
+        request_timestamp:
+          type: string
+          format: date-time
+        selected_ids:
+          type: string
+          description: Selected IDs
+
+    OrderViewButtonFailedRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Internal ID
+        request_id:
+          type: string
+          description: Request ID
+        error_status:
+          type: string
+          description: Error status
+        error_message:
+          type: string
+          description: Error message
+        request_timestamp:
+          type: string
+          format: date-time
+
     # Custom Attributes
     CustomAttribute:
       type: object
@@ -748,7 +792,7 @@ components:
           description: Attribute value
           example: "custom_value"
 
-    # Commerce Eventing
+    # Eventing
     EventSubscriptionRequest:
       type: object
       required:
@@ -872,81 +916,49 @@ components:
           type: string
           description: Application ID
 
-    # Backend UI Extensions
-    MassActionFailedRequest:
+    # Observability
+    ObservabilitySubscription:
       type: object
+      required:
+        - type
+        - destination
+        - destination_endpoint
+        - is_active
       properties:
         id:
+          type: integer
+          description: Subscription ID
+        type:
           type: string
-          description: Internal ID
-        request_id:
+          enum: ["logs", "metrics"]
+          description: Subscription type
+        destination:
           type: string
-          description: Request ID
-        action_id:
-          type: string
-          description: Action ID
-        grid_type:
-          type: string
-          description: Grid type
-        error_status:
-          type: string
-          description: Error status
-        error_message:
-          type: string
-          description: Error message
-        request_timestamp:
-          type: string
-          format: date-time
-        selected_ids:
-          type: string
-          description: Selected IDs
-
-    OrderViewButtonFailedRequest:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Internal ID
-        request_id:
-          type: string
-          description: Request ID
-        error_status:
-          type: string
-          description: Error status
-        error_message:
-          type: string
-          description: Error message
-        request_timestamp:
-          type: string
-          format: date-time
-
-    # Commerce Webhooks
-    WebhookSubscription:
-      type: object
-      properties:
-        webhook_method:
-          type: string
-          example: "order.created"
-        webhook_type:
-          type: string
-          example: "order"
-        url:
+          description: Destination service
+          example: "newrelic"
+        destination_endpoint:
           type: string
           format: uri
-          example: "https://webhook.example.com/order"
-        method:
+          description: Destination endpoint
+        destination_api_key:
           type: string
-          enum: ["GET", "POST", "PUT", "DELETE"]
-          example: "POST"
-        priority:
-          type: integer
-          example: 1
-        required:
+          description: API key
+        component:
+          type: array
+          items:
+            type: string
+          description: Components to monitor
+        is_active:
           type: boolean
-          example: true
-        timeout:
-          type: integer
-          example: 30
+          description: Whether active
+
+    ObservabilitySubscriptionRequest:
+      type: object
+      required:
+        - subscription
+      properties:
+        subscription:
+          $ref: '#/components/schemas/ObservabilitySubscription'
 
     # Payment Methods
     PaymentMethod:
@@ -1056,50 +1068,6 @@ components:
         carrier:
           $ref: '#/components/schemas/ShippingCarrier'
 
-    # Observability
-    ObservabilitySubscription:
-      type: object
-      required:
-        - type
-        - destination
-        - destination_endpoint
-        - is_active
-      properties:
-        id:
-          type: integer
-          description: Subscription ID
-        type:
-          type: string
-          enum: ["logs", "metrics"]
-          description: Subscription type
-        destination:
-          type: string
-          description: Destination service
-          example: "newrelic"
-        destination_endpoint:
-          type: string
-          format: uri
-          description: Destination endpoint
-        destination_api_key:
-          type: string
-          description: API key
-        component:
-          type: array
-          items:
-            type: string
-          description: Components to monitor
-        is_active:
-          type: boolean
-          description: Whether active
-
-    ObservabilitySubscriptionRequest:
-      type: object
-      required:
-        - subscription
-      properties:
-        subscription:
-          $ref: '#/components/schemas/ObservabilitySubscription'
-
     # Tax Management
     TaxIntegration:
       type: object
@@ -1132,6 +1100,34 @@ components:
       properties:
         tax_integration:
           $ref: '#/components/schemas/TaxIntegration'
+
+    # Webhooks
+    WebhookSubscription:
+      type: object
+      properties:
+        webhook_method:
+          type: string
+          example: "order.created"
+        webhook_type:
+          type: string
+          example: "order"
+        url:
+          type: string
+          format: uri
+          example: "https://webhook.example.com/order"
+        method:
+          type: string
+          enum: ["GET", "POST", "PUT", "DELETE"]
+          example: "POST"
+        priority:
+          type: integer
+          example: 1
+        required:
+          type: boolean
+          example: true
+        timeout:
+          type: integer
+          example: 30
 
     # Common
     KeyValuePair:
@@ -1204,24 +1200,24 @@ components:
             $ref: '#/components/schemas/Error'
 
 tags:
-  - name: Custom Attributes
-    description: Cart custom attributes management
-  - name: Commerce Eventing
-    description: Event subscription and provider management
   - name: Backend UI Extensions
     description: Admin UI component integrations
-  - name: Commerce Webhooks
-    description: Webhook subscription management
+  - name: Custom Attributes
+    description: Cart custom attributes management
   - name: Custom Attributes B2B
     description: B2B custom attributes for quotes and companies
+  - name: Eventing
+    description: Event subscription and provider management
+  - name: Observability
+    description: Observability subscription management
   - name: Payment Methods
     description: Out-of-process payment method management
   - name: Shipping Methods
     description: Out-of-process shipping carrier management
-  - name: Observability
-    description: Observability subscription management
   - name: Tax Management
     description: Tax integration management
+  - name: Webhooks
+    description: Webhook subscription management
 
 externalDocs:
   description: Adobe Commerce Web API Documentation

@@ -8,14 +8,16 @@ info:
     - **Admin UI SDK**: Admin UI SDK component integrations
     - **Custom Attributes**: Custom attributes for carts, quotes, and other objects that don't support EAV (Entity-Attribute-Value) attributes
     - **Custom Attributes B2B**: Custom attributes for B2B quotes and companies
-    - **Eventing**: Event subscriptions, providers, and configuration
+    - **Events**: Event subscriptions, providers, and configuration
     - **Observability**: Monitoring subscriptions and logging
     - **Payment Methods**: Out-of-process payment integrations
     - **Shipping Methods**: Out-of-process shipping carriers
     - **Tax Management**: External tax calculation services
     - **Webhooks**: Webhook subscription management
 
-    On PaaS systems, the URL to these endpoints is https://{host}/rest/{store-view-code}/. On SaaS, the path is https://{server}.api.commerce.adobe.com/{tenant-id}/.
+    On PaaS systems, the URL to these endpoints is https://{host}/rest/{store-view-code}/.
+    
+    On SaaS, the path is https://{server}.api.commerce.adobe.com/{tenant-id}/.
 
   license:
     name: Adobe Proprietary
@@ -1200,13 +1202,13 @@ components:
             $ref: '#/components/schemas/Error'
 
 tags:
-  - name: Backend UI Extensions
+  - name: Admin UI SDK
     description: Admin UI component integrations
   - name: Custom Attributes
     description: Cart custom attributes management
-  - name: Custom Attributes B2B
+  - name: Custom Attributes for B2B
     description: B2B custom attributes for quotes and companies
-  - name: Eventing
+  - name: Events
     description: Event subscription and provider management
   - name: Observability
     description: Observability subscription management
@@ -1215,10 +1217,10 @@ tags:
   - name: Shipping Methods
     description: Out-of-process shipping carrier management
   - name: Tax Management
-    description: Tax integration management
+    description: Out-of-process tax integration management
   - name: Webhooks
     description: Webhook subscription management
 
 externalDocs:
   description: Adobe Commerce Web API Documentation
-  url: https://developer.adobe.com/commerce/extensibility/
+  url: https://developer.adobe.com/commerce/webapi/

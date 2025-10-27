@@ -52,7 +52,7 @@ paths:
       summary: Get order view button failed request
       description: Retrieve details of a failed order view button request
       tags:
-        - Backend UI Extensions
+        - Admin UI SDK
       parameters:
         - name: request_id
           in: path
@@ -113,7 +113,7 @@ paths:
       summary: Set custom attributes on negotiable quote
       description: Set custom attributes for a negotiable quote
       tags:
-        - Custom Attributes B2B
+        - Custom Attributes for B2B
       requestBody:
         required: true
         content:
@@ -141,7 +141,7 @@ paths:
       summary: Set custom attributes on company
       description: Set custom attributes for a company
       tags:
-        - Custom Attributes B2B
+        - Custom Attributes for B2B
       requestBody:
         required: true
         content:
@@ -170,7 +170,7 @@ paths:
       summary: Subscribe to event
       description: Create a new event subscription
       tags:
-        - Eventing
+        - Events
       requestBody:
         required: true
         content:
@@ -193,7 +193,7 @@ paths:
       summary: Update event subscription
       description: Update an existing event subscription
       tags:
-        - Eventing
+        - Events
       parameters:
         - name: name
           in: path
@@ -223,7 +223,7 @@ paths:
       summary: Unsubscribe from event
       description: Remove an event subscription
       tags:
-        - Eventing
+        - Events
       parameters:
         - name: name
           in: path
@@ -247,7 +247,7 @@ paths:
       summary: Update eventing configuration
       description: Update the eventing system configuration
       tags:
-        - Eventing
+        - Events
       requestBody:
         required: true
         content:
@@ -267,7 +267,7 @@ paths:
       summary: Get event providers
       description: Retrieve list of event providers
       tags:
-        - Eventing
+        - Events
       responses:
         '200':
           description: List of event providers
@@ -283,7 +283,7 @@ paths:
       summary: Get event providers (alternative)
       description: Alternative endpoint to retrieve list of event providers
       tags:
-        - Eventing
+        - Events
       responses:
         '200':
           description: List of event providers
@@ -298,7 +298,7 @@ paths:
       summary: Create event provider
       description: Create a new event provider
       tags:
-        - Eventing
+        - Events
       requestBody:
         required: true
         content:
@@ -317,7 +317,7 @@ paths:
       summary: Update event provider
       description: Update an existing event provider
       tags:
-        - Eventing
+        - Events
       requestBody:
         required: true
         content:
@@ -337,7 +337,7 @@ paths:
       summary: Get event provider by ID
       description: Retrieve a specific event provider by its ID
       tags:
-        - Eventing
+        - Events
       parameters:
         - name: providerId
           in: path
@@ -359,7 +359,7 @@ paths:
       summary: Delete event provider
       description: Delete an event provider by its ID
       tags:
-        - Eventing
+        - Events
       parameters:
         - name: providerId
           in: path
@@ -380,7 +380,7 @@ paths:
       summary: Get event subscriptions
       description: Retrieve list of all event subscriptions
       tags:
-        - Eventing
+        - Events
       responses:
         '200':
           description: List of event subscriptions

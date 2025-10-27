@@ -29,7 +29,7 @@ paths:
       summary: Get mass action failed request
       description: Retrieve details of a failed mass action request
       tags:
-        - Backend UI Extensions
+        - Admin UI SDK
       parameters:
         - name: request_id
           in: path

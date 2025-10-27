@@ -19,7 +19,7 @@ Each rule contains the following:
    The operator must be one of the following:
 
    | Operator      | Description |
-   |---------------|----------- |
+   | -----------   | ----------- |
    | `greaterThan` | Checks whether the value supplied in the payload of the event is greater than a specified value. Applicable for integer and float data types. |
    | `lessThan`    | Checks whether the payload value is less than a specified value. Applicable for integer and float data types. |
    | `equal`       | Checks whether the payload value matches the specified value. For Boolean data types, use `1` to compare to `true` and `0` to compare to `false`. |

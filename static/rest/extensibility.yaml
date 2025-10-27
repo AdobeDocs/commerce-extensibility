@@ -5,27 +5,73 @@ info:
     Complete REST API reference documentation for Adobe Commerce extensibility projects.
     
     This reference provides endpoints for managing:
-    - **Commerce Eventing**: Event subscriptions, providers, and configuration
-    - **Webhooks**: Webhook subscription management
-    - **Backend UI Extensions**: Admin UI component integrations
+    - **Admin UI SDK**: Admin UI SDK component integrations
+    - **Custom Attributes**: Custom attributes for carts, quotes, and other objects that don't support EAV (Entity-Attribute-Value) attributes
+    - **Custom Attributes B2B**: Custom attributes for B2B quotes and companies,
+    - **Eventing**: Event subscriptions, providers, and configuration.
     - **Observability**: Monitoring subscriptions and logging
     - **Payment Methods**: Out-of-process payment integrations
     - **Shipping Methods**: Out-of-process shipping carriers
     - **Tax Management**: External tax calculation services
-    - **Custom Attributes**: Custom attributes for carts, quotes, and companies and other objects that don't supportEAV (Entity-Attribute-Value) attributes,
-    This reference providees 
+    - **Webhooks**: Webhook subscription management
+  
   license:
     name: Adobe Proprietary
 
 servers:
-  - url: https://{domain}/rest/all/V1
-    description: Adobe Commerce REST API
-    variables:
-      domain:
-        default: example.commerce.adobe.com
-        description: Your Adobe Commerce domain
+  - url: https://{server}/rest/{store-view-code}/
+    description: Adobe Commerce REST API (PaaS)
+  - url: https://<server>.api.commerce.adobe.com/{tenant-id}/
+    description: Adobe Commerce REST API (SaaS)
 
 paths:
+  # Backend UI Extensions
+  /adminuisdk/massaction/{request_id}:
+    get:
+      summary: Get mass action failed request
+      description: Retrieve details of a failed mass action request
+      tags:
+        - Backend UI Extensions
+      parameters:
+        - name: request_id
+          in: path
+          required: true
+          description: Request ID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Mass action request details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MassActionFailedRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /adminuisdk/orderviewbutton/{request_id}:
+    get:
+      summary: Get order view button failed request
+      description: Retrieve details of a failed order view button request
+      tags:
+        - Backend UI Extensions
+      parameters:
+        - name: request_id
+          in: path
+          required: true
+          description: Request ID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Order view button request details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderViewButtonFailedRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
   # Custom Attributes (Cart)
   /carts/{cartId}/customAttributes:
     post:
@@ -62,6 +108,63 @@ paths:
           $ref: '#/components/responses/BadRequest'
         '404':
           $ref: '#/components/responses/NotFound'
+
+  # Custom Attributes B2B
+  /negotiableQuote/setCustomAttributes:
+    post:
+      summary: Set custom attributes on negotiable quote
+      description: Set custom attributes for a negotiable quote
+      tags:
+        - Custom Attributes B2B
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                quoteId:
+                  type: integer
+                  description: Negotiable quote ID
+                customAttributes:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/CustomAttribute'
+      responses:
+        '200':
+          description: Custom attributes set successfully
+          content:
+            application/json:
+              schema:
+                type: boolean
+
+  /company/setCustomAttributes:
+    post:
+      summary: Set custom attributes on company
+      description: Set custom attributes for a company
+      tags:
+        - Custom Attributes B2B
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                companyId:
+                  type: integer
+                  description: Company ID
+                customAttributes:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/CustomAttribute'
+      responses:
+        '200':
+          description: Custom attributes set successfully
+          content:
+            application/json:
+              schema:
+                type: boolean
 
   # Commerce Eventing
   /eventing/eventSubscribe:
@@ -290,122 +393,106 @@ paths:
                 items:
                   $ref: '#/components/schemas/EventSubscription'
 
-  # Backend UI Extensions
-  /adminuisdk/massaction/{request_id}:
+  # Out-of-Process Observability
+  /oope_observability/subscription:
     get:
-      summary: Get mass action failed request
-      description: Retrieve details of a failed mass action request
+      summary: Get observability subscriptions
+      description: Retrieve list of all observability subscriptions
       tags:
-        - Backend UI Extensions
-      parameters:
-        - name: request_id
-          in: path
-          required: true
-          description: Request ID
-          schema:
-            type: string
+        - Observability
       responses:
         '200':
-          description: Mass action request details
+          description: List of observability subscriptions
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MassActionFailedRequest'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ObservabilitySubscription'
+                  search_criteria:
+                    $ref: '#/components/schemas/SearchCriteria'
+                  total_count:
+                    type: integer
 
-  /adminuisdk/orderviewbutton/{request_id}:
-    get:
-      summary: Get order view button failed request
-      description: Retrieve details of a failed order view button request
-      tags:
-        - Backend UI Extensions
-      parameters:
-        - name: request_id
-          in: path
-          required: true
-          description: Request ID
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Order view button request details
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/OrderViewButtonFailedRequest'
-        '404':
-          $ref: '#/components/responses/NotFound'
-
-  # Commerce Webhooks
-  /webhooks/list:
-    get:
-      summary: Get webhook subscriptions
-      description: Retrieve list of all webhook subscriptions
-      tags:
-        - Commerce Webhooks
-      responses:
-        '200':
-          description: List of webhook subscriptions
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/WebhookSubscription'
-
-  # Custom Attributes B2B
-  /negotiableQuote/setCustomAttributes:
     post:
-      summary: Set custom attributes on negotiable quote
-      description: Set custom attributes for a negotiable quote
+      summary: Create observability subscription
+      description: Create a new observability subscription
       tags:
-        - Custom Attributes B2B
+        - Observability
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                quoteId:
-                  type: integer
-                  description: Negotiable quote ID
-                customAttributes:
-                  type: array
-                  items:
-                    $ref: '#/components/schemas/CustomAttribute'
+              $ref: '#/components/schemas/ObservabilitySubscriptionRequest'
       responses:
         '200':
-          description: Custom attributes set successfully
+          description: Subscription created successfully
           content:
             application/json:
               schema:
-                type: boolean
+                $ref: '#/components/schemas/ObservabilitySubscription'
 
-  /company/setCustomAttributes:
-    post:
-      summary: Set custom attributes on company
-      description: Set custom attributes for a company
+    put:
+      summary: Update observability subscription
+      description: Update an existing observability subscription
       tags:
-        - Custom Attributes B2B
+        - Observability
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                companyId:
-                  type: integer
-                  description: Company ID
-                customAttributes:
-                  type: array
-                  items:
-                    $ref: '#/components/schemas/CustomAttribute'
+              $ref: '#/components/schemas/ObservabilitySubscriptionRequest'
       responses:
         '200':
-          description: Custom attributes set successfully
+          description: Subscription updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObservabilitySubscription'
+
+  /oope_observability/subscription/{subscriptionId}:
+    get:
+      summary: Get observability subscription by ID
+      description: Retrieve a specific observability subscription by its ID
+      tags:
+        - Observability
+      parameters:
+        - name: subscriptionId
+          in: path
+          required: true
+          description: Subscription ID
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Subscription details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObservabilitySubscription'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      summary: Delete observability subscription
+      description: Delete an observability subscription by its ID
+      tags:
+        - Observability
+      parameters:
+        - name: subscriptionId
+          in: path
+          required: true
+          description: Subscription ID
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Subscription deleted successfully
           content:
             application/json:
               schema:
@@ -568,111 +655,6 @@ paths:
               schema:
                 type: boolean
 
-  # Out-of-Process Observability
-  /oope_observability/subscription:
-    get:
-      summary: Get observability subscriptions
-      description: Retrieve list of all observability subscriptions
-      tags:
-        - Observability
-      responses:
-        '200':
-          description: List of observability subscriptions
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  items:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/ObservabilitySubscription'
-                  search_criteria:
-                    $ref: '#/components/schemas/SearchCriteria'
-                  total_count:
-                    type: integer
-
-    post:
-      summary: Create observability subscription
-      description: Create a new observability subscription
-      tags:
-        - Observability
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ObservabilitySubscriptionRequest'
-      responses:
-        '200':
-          description: Subscription created successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ObservabilitySubscription'
-
-    put:
-      summary: Update observability subscription
-      description: Update an existing observability subscription
-      tags:
-        - Observability
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ObservabilitySubscriptionRequest'
-      responses:
-        '200':
-          description: Subscription updated successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ObservabilitySubscription'
-
-  /oope_observability/subscription/{subscriptionId}:
-    get:
-      summary: Get observability subscription by ID
-      description: Retrieve a specific observability subscription by its ID
-      tags:
-        - Observability
-      parameters:
-        - name: subscriptionId
-          in: path
-          required: true
-          description: Subscription ID
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: Subscription details
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ObservabilitySubscription'
-        '404':
-          $ref: '#/components/responses/NotFound'
-
-    delete:
-      summary: Delete observability subscription
-      description: Delete an observability subscription by its ID
-      tags:
-        - Observability
-      parameters:
-        - name: subscriptionId
-          in: path
-          required: true
-          description: Subscription ID
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: Subscription deleted successfully
-          content:
-            application/json:
-              schema:
-                type: boolean
-
   # Out-of-Process Tax Management
   /oope_tax_management/tax_integration:
     get:
@@ -731,6 +713,23 @@ paths:
                 $ref: '#/components/schemas/TaxIntegration'
         '404':
           $ref: '#/components/responses/NotFound'
+
+  # Commerce Webhooks
+  /webhooks/list:
+    get:
+      summary: Get webhook subscriptions
+      description: Retrieve list of all webhook subscriptions
+      tags:
+        - Commerce Webhooks
+      responses:
+        '200':
+          description: List of webhook subscriptions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WebhookSubscription'
 
 components:
   schemas:
@@ -1226,4 +1225,4 @@ tags:
 
 externalDocs:
   description: Adobe Commerce Web API Documentation
-  url: https://developer.adobe.com/commerce/webapi/
+  url: https://developer.adobe.com/commerce/extensibility/

@@ -68,7 +68,7 @@ Some requirements will differ based on whether you indicated the app was non-dow
   - For downloadable apps:
     - **Environment setup**: Label all required environment variables in an `.env.dist` file with clear guidance. Add a setup instruction to create an `.env` file from `.env.dist`.
     - **API requirements**: List the required services for your application following [this template](https://github.com/adobe/commerce-checkout-starter-kit?tab=readme-ov-file#initialize-app-builder-project).
-    - **Project creation**: 
+    - **Project creation**:
         - Document how to create a project and workspaces for deploying the app. Please consider linking to [Create your First App Builder Application](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app)
         - Document CLI commands for installing dependencies and connecting to the created project, which are mentioned in [Configure the starter kit](https://developer.adobe.com/commerce/extensibility/starter-kit/integration/create-integration/#configure-the-starter-kit)
 - For non-downloadable apps:
@@ -112,7 +112,7 @@ Some requirements will differ based on whether you indicated the app was non-dow
 ### Project structure
 
 - Configuration files
-  - **Environment variables**: 
+  - **Environment variables**:
       - For downloadable apps:
           - Provide a clear `.env.dist` file containing all needed keys used by YAML files. Remove any unused keys.
       - For non-downloadable apps:

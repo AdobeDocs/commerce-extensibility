@@ -107,7 +107,7 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 
-  # Custom Attributes B2B
+  # Custom Attributes for B2B
   /negotiableQuote/setCustomAttributes:
     post:
       summary: Set custom attributes on negotiable quote
@@ -164,7 +164,7 @@ paths:
               schema:
                 type: boolean
 
-  # Eventing
+  # Events
   /eventing/eventSubscribe:
     post:
       summary: Subscribe to event
@@ -731,7 +731,7 @@ paths:
 
 components:
   schemas:
-    # Backend UI Extensions
+    # Admin UI SDK
     MassActionFailedRequest:
       type: object
       properties:

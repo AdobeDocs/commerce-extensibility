@@ -30,39 +30,29 @@ module.exports = [
         ]
       },
       {
-        title: "Set up event providers",
-        path: "/events/tutorial/event-providers.md"
-      },
-      {
-        title: "Debugging and development tips",
-        path: "/events/tutorial/debugging.md"
-      }
-    ]
-  },
-  {
-    title: "Journaling Tutorial",
-    path: "/events/journaling-tutorial/index.md",
-    pages: [
-      {
-        title: "How it works",
-        path: "/events/journaling-tutorial/index.md"
-      },
-   
-      {
-        title: "Register Commerce Events in Adobe Developer Console for Journaling",
-        path: "/events/journaling-tutorial/registration-jounrnaling-events.md"
-      },
-       {
-        title: "Code Development Using Journaling API and Deployment",
-        path: "/events/journaling-tutorial/runtime-action-code-journaling-api.md"
-      },
-      {
-        title: "Validating Journaling Events Processing",
-        path: "/events/journaling-tutorial/validating-journaling-integration.md"
-      }
-      
-    ]
-  },
+      title: "Journaling",
+      path: "/events/journaling-tutorial/index.md",
+      pages: [
+        {
+          title: "Integrate with Adobe I/O Events Journaling API",
+          path: "/events/journaling-tutorial/index.md"
+        },
+        {
+          title: "Register and validate your journaling integration",
+          path: "/events/journaling-tutorial/registration-journaling-events.md"
+        },
+        {
+          title: "Code development and deployment",
+          path: "/events/journaling-tutorial/runtime-action-code-journaling-api.md"
+        },
+        {
+          title: "Validate journaling events processing",
+          path: "/events/journaling-tutorial/validating-journaling-integration.md"
+        }
+      ]
+    }
+  ]
+},
   {
     title: "Create an App Builder project",
     path: "/events/project-setup.md",

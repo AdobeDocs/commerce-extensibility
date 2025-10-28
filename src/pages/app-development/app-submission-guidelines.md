@@ -71,8 +71,7 @@ Some requirements will differ based on whether you indicated the app was non-dow
     - **Project creation**:
         - Document how to create a project and workspaces for deploying the app. Please consider linking to [Create your First App Builder Application](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app)
         - Document CLI commands for installing dependencies and connecting to the created project, which are mentioned in [Configure the starter kit](https://developer.adobe.com/commerce/extensibility/starter-kit/integration/create-integration/#configure-the-starter-kit)
-- For non-downloadable apps:
-    - **API requirements**: Required APIs should be included in `deploy.yaml`.
+  - For non-downloadable apps:
     - **Environment creation**: Add documentation on how an environment gets created when installing the app from the app page on Adobe Exchange. Please consider linking to the [Discover and Manage](https://developer.adobe.com/developer-distribution/experience-cloud/docs/guides/discoverAndManage/app-builder-discover) documentation for App Builder apps.
     - **Required credentials**: Provide an explanation of the credentials to fill out in the Exchange configuration page.
     - **Please do not mention the following**:
@@ -118,6 +117,7 @@ Some requirements will differ based on whether you indicated the app was non-dow
       - For non-downloadable apps:
           - An `.env.dist` file is optional.
           - All environment variables must be listed under `configSchema` in `app.config.yaml`. See [Customer configuration](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/distribution#customer-configuration) for more information on defining configuration options.
+          - All required APIs should be included in `deploy.yaml`.
   - **Package metadata**: Ensure `package.json` is updated with an app-specific `name`, `version`, and `author`.
   - **YAML configuration**: Review `deploy.yaml` and `app.config.yaml` for accurate app IDs, event configs, and scopes.
   - **Commerce product**: Define `commerce` as a required product in `app.config.yaml`. See [required products](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/distribution#required-products) for more information.

@@ -12,7 +12,7 @@ import OrderViewConfigAdmin from './code-samples/order-view-custom-attributes-va
 
 # Order custom attribute validation
 
-When order and its custom attributes are saved in the Commerce Admin, a third-party system checks whether the sales representative custom attribute has a valid value. If valid, allow the order to be saved. Otherwise, display an error message.
+When an order and its custom attributes are saved in the Commerce Admin, a third-party system checks whether the sales representative custom attribute has a valid value. If valid, allow the order to be saved. Otherwise, display an error message.
 
 ## Webhook names
 
@@ -223,9 +223,9 @@ The following `observer.sales_order_view_custom_attributes_update_before` defaul
 
 ## Configuration
 
-The following configurations define conditional webhooks. As a result of the specified rule in each example, these webhooks will only make requests to external systems when they are triggered from the Commerce Admin.
-
 ### observer.sales_order_place_before
+
+The following configurations define a conditional webhook. As a result of the specified rule in the examples, the webhook will only make requests to external systems when it is triggered from the Commerce Admin.
 
 <TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" />
 

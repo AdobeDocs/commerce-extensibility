@@ -30,11 +30,4 @@ Active: Yes
 Name: order
 Source: data.order
 Active: Yes
-
-Hook Rules
-
-Field: context_application_state.get_area_code
-Value: adminhtml
-Operator: equal
-Active: Yes
 ```

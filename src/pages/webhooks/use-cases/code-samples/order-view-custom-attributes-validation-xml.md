@@ -11,9 +11,6 @@
                     <field name="custom_attributes" source="data.custom_attributes" />
                     <field name="order" source="data.order" />
                 </fields>
-                <rules>
-                    <rule field="context_application_state.get_area_code" operator="equal" value="adminhtml" />
-                </rules>
             </hook>
         </batch>
     </hooks>

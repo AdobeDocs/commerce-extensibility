@@ -66,9 +66,9 @@ You can create conditional events within your module's or root `io_events.xml` f
 
 This rule is available only for events that include original data [`_origData`](./events-original-data.md) in the payload. If the event does not include original data, the `onChange` operator cannot be used, and such an event will not be triggered.
 
-For events that contain original data [`_origData`](./events-original-data.md) within the payload you can create conditional events that trigger only when specific fields change. It can reduce the number of events sent to your application when only specific field changes are relevant.
+For events that contain original data [`_origData`](./events-original-data.md) within the payload, you can create conditional events that trigger only when specific fields change. It can reduce the number of events sent to your application when only specific field changes are relevant.
 
-To check if event payload contains original data you can visit **System** > Events > **Events List** page or to use the [`bin/magento events:info <event_code>`](./commands.md#return-event-details).
+To check if the event payload contains original data, you can visit **System** > Events > **Events List** page or use the [`bin/magento events:info <event_code>`](./commands.md#return-event-details).
 
 For example, you want to trigger an event only when the product stock quantity changes:
 

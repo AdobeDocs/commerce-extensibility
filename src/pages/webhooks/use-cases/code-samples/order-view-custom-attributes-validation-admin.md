@@ -8,7 +8,6 @@ Batch order: 100
 Hook name: order_custom_attributes_validation
 Hook priority: 100
 URL: <Host>/validate-order-attributes
-Timeout: 5000
 Soft timeout: 1000
 Fallback Error Message: Could not validate the order's attributes
 Required: Required

@@ -68,7 +68,7 @@ Some requirements will differ based on whether you indicated the app was non-dow
     - **Environment setup**: Label all required environment variables in an `.env.dist` file with clear guidance. Add a setup instruction to create an `.env` file from `.env.dist`.
     - **API requirements**: List the required services for your application following [this template](https://github.com/adobe/commerce-checkout-starter-kit?tab=readme-ov-file#initialize-app-builder-project).
     - **Project creation**:
-        - Document how to create a project and workspaces for deploying the app. Please consider linking to [Create your First App Builder Application](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app)
+        - Document how to create a project and workspaces for deploying the app. Consider linking to [Create your First App Builder Application](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app)
         - Document CLI commands for installing dependencies and connecting to the created project, which are mentioned in [Configure the starter kit](https://developer.adobe.com/commerce/extensibility/starter-kit/integration/create-integration/#configure-the-starter-kit)
   - For non-downloadable apps:
     - **Environment creation**: Add documentation on how an environment gets created when installing the app from the app page on Adobe Exchange. Please consider linking to the [Discover and Manage](https://developer.adobe.com/developer-distribution/experience-cloud/docs/guides/discoverAndManage/app-builder-discover) documentation for App Builder apps.

@@ -72,7 +72,7 @@ For some events with a complex payload structure, the original data might not be
 </config>
 ```
 
-You can select only specific fields to be included in the event payload, along with the specific fields from the original data. For example, if you want to include only the `sku` and `quantity_and_stock_status.qty` fields along with their original values, you can configure the event as follows:
+You can define specific original and new fields to be included in the event payload. For example, if you want to include only the `sku` and `quantity_and_stock_status.qty` fields, along with their original values, configure the event as follows:
 
 ```xml
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module-commerce-events-client/etc/io_events.xsd">

@@ -143,7 +143,7 @@ Some requirements will differ based on whether you indicated the app was non-dow
   - **Hardcoded values**: Look for hardcoded values that should be configurable
 
 - Commerce compatibility
-  - **Multi-flavor support**: Ensure compatibility between commerce flavors (PaaS & SaaS):
+  - **Multi-flavor support**: Ensure compatibility between Commerce flavors (PaaS and SaaS):
     - &#8203;<Edition name="saas" /> Use [IMS](/starter-kit/checkout/connect/#adobe-identity-management-service-ims) for authentication instead of [Commerce integrations (OAuth1)](/starter-kit/checkout/connect/#create-a-commerce-integration).
   - For detailed guidelines on supporting both SaaS and PaaS, see [Extension Compatibility](./extension-compatibility.md).
 

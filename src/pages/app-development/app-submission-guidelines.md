@@ -49,7 +49,7 @@ Some requirements will differ based on whether you indicated the app was non-dow
   - **Clear summary**: Provide a compact description that captures the app’s purpose and primary use cases.
   - **Usage instructions**: Add instructions on how to use the app post-installation.
   - For non-downloadable apps:
-      - All installation steps and usage instructions need to be included outside of the app submission's files at the application documentation URL provided in Exchange. Documentation within the app's files will not be accessible to users.
+      - All installation steps and usage instructions must be posted at the application documentation URL provided in Exchange. Because the app is not downloadable, README files and similar documents will not be accessible to customers.
       - `README` documentation is a best practice.
 - Installation guide clarity
   - **Prerequisites**: Add clear prerequisites (example: Admin UI SDK must be enabled and configured, as described in [the Admin UI SDK documentation](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/configuration/#general-configuration)).

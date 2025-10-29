@@ -1,7 +1,6 @@
 ---
 title: Create conditional events
 description: Create custom Adobe Commerce conditional events using declarative configuration.
-edition: paas
 keywords:
   - Events
   - Extensibility

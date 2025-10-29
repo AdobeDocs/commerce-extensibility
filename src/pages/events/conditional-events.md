@@ -66,7 +66,7 @@ You can create conditional events within your module's or root `io_events.xml` f
 
 <InlineAlert variant="warning" slots="text"/>
 
-This rule is available only for events that include original data [`_origData`](./events-original-data.md) in the payload. If the event does not include original data, the `onChange` operator cannot be used, and such an event will not be triggered.
+This rule is possible only for events that include original data [`_origData`](./events-original-data.md) in the payload. If an event does not include original data, the `onChange` operator cannot be used, and such an event will not be triggered.
 
 For events that contain original data [`_origData`](./events-original-data.md) within the payload, you can create conditional events that trigger only when specific fields change. It can reduce the number of events sent to your application when only specific field changes are relevant.
 

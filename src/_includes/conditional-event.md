@@ -28,4 +28,5 @@ Each rule contains the following:
    | `onChange`    | Checks whether the provided field's value has changed compared to its previous value. The value attribute is optional. If provided, the operator checks whether the field's new value is equal to the specified value field. |
 
 *  The value to compare against. When you assign the `regex` operator, you must delimit the regular expression value with valid characters, such as forward slashes (/). For example, `/^TV .*/i`, which checks whether the string starts with the string `TV`, ignoring the case of the letters.
-*  The value in the `onChange` operator is a path to a field to compare against. By default, comparison is done against `field` and `_origData.field` values. In cases, the event payload has a different structure, you can provide a custom path to compare against.
+
+*  The value in the `onChange` operator is a path to a field to compare against. By default, comparison is done against `field` and `_origData.field` values. In cases where the event payload has a different structure, you can provide a custom path to compare against.

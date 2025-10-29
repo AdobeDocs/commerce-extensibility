@@ -13,7 +13,7 @@ Events that are based on objects that implement a specific interface in Adobe Co
 
 If the object is new (such as when a new product is created), the original data will be empty. Events that support original data also include an `_isNew` field in the payload, which indicates whether the object is new or existing.
 
-To check if an event includes original data in its payload, you can visit **System** > Events > **Events List** page or use the following command [`bin/magento events:info <event_code>`](./commands.md#return-event-details). Keep in mind that for some events, it may return not full details about the event payload especially for some dynamically defined events.
+To check if an event includes original data in its payload, you can visit **System** > Events > **Events List** page or use the following command [`bin/magento events:info <event_code>`](./commands.md#return-event-details). Keep in mind that that the returned payload for some events, especially those that are dynamically defined, might not include full details.
 
 To include original data in the event payload, the event must be configured to include the `_origData` field even if the wildcard `*` is used to include all fields. For example, if you want to receive the whole payload including original data for the `observer.catalog_product_save_after` event, you can configure it as follows:
 

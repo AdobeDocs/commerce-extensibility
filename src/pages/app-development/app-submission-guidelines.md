@@ -73,7 +73,7 @@ Some requirements will differ based on whether you indicated the app was non-dow
   - For non-downloadable apps:
     - **Environment creation**: Add documentation on how an environment gets created when installing the app from the app page on Adobe Exchange. Please consider linking to the [Discover and Manage](https://developer.adobe.com/developer-distribution/experience-cloud/docs/guides/discoverAndManage/app-builder-discover) documentation for App Builder apps.
     - **Required credentials**: Provide an explanation of the credentials to fill out in the Exchange configuration page.
-    - **Please do not mention the following**:
+    - **Do not mention the following**:
         - Making modifications to an `.env` file
         - Adding files to the app filesystem
         - Running `aio` or `npm` commands from the CLI

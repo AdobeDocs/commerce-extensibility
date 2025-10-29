@@ -5,7 +5,6 @@ edition: paas
 keywords:
   - Events
   - Extensibility
-  - Original Data
 ---
 
 ## Original data in the event payload

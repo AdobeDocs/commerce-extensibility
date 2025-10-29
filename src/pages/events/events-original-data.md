@@ -7,7 +7,7 @@ keywords:
   - Extensibility
 ---
 
-## Original data in the event payload
+# Create event subscriptions with original data
 
 Events that are based on objects that implement a specific interface in Adobe Commerce can include the original data of the object in the event payload. The original data represents the state of the object before any changes were made. This is particularly useful for events that are triggered by updates to objects, as it allows you to compare the previous state with the new state.
 

@@ -121,6 +121,12 @@ Operator: in
 Value: 1,2
 ```
 
+<!--
+Field: quantity_and_stock_status.qty
+Operator: onChange
+Value:
+-->
+
 ## Events Subscriptions grid actions
 
 Click **Select** > **Edit** in the **Action** column of an event subscription's row to display a form for editing the subscription.

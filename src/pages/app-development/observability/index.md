@@ -67,7 +67,7 @@ The `POST` request to `/V1/oope_observability/subscription` requires a JSON payl
 {
     "subscription": {
         "type": "logs",
-        "endpoint": "https://<abc>.ngrok-free.app/v1/logs",
+        "destination_endpoint": "https://<abc>.ngrok-free.app/v1/logs",
         "component": [
             "webhooks",
             "eventing"
@@ -98,7 +98,7 @@ To update an existing subscription, make a `PUT` request to the `/V1/oope_observ
   "subscription": {
     "id": 3,
     "type": "logs",
-    "endpoint": "https://<abc>.ngrok-free.app/v1/logs",
+    "destination_endpoint": "https://<abc>.ngrok-free.app/v1/logs",
     "component": [
       "webhooks",
       "eventing",
@@ -121,7 +121,7 @@ To retrieve a list of all observability subscriptions, make a `GET` request to `
     {
       "id": 1,
       "type": "logs",
-      "endpoint": "https://<abc>.ngrok-free.app/v1/logs",
+      "destination_endpoint": "https://<abc>.ngrok-free.app/v1/logs",
       "component": [
         "webhooks",
         "eventing",

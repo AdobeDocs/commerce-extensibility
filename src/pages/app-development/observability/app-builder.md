@@ -7,7 +7,7 @@ keywords:
 
 # Adobe Commerce observability with App Builder
 
-Context propagation can align logs from Commerce and App Builder. The context propagates automatically from Adobe Commerce to App Builder as webhooks headers or as a part of an event payload. This allows you to correlate logs from both systems and get a complete picture of the request flow.
+Context propagation can align observability data from Commerce and App Builder. The context propagates automatically from Adobe Commerce to App Builder as webhooks headers or as a part of an event payload. This allows you to correlate observability data from both systems and get a complete picture of the request flow.
 
 If your App Builder app makes requests to other services, you can also propagate the context to those services, which allows you to trace the request flow across multiple systems and get a complete picture of the request flow.
 

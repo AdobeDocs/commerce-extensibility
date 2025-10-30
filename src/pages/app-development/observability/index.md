@@ -11,11 +11,11 @@ keywords:
 
 This functionality is automatically available on [Adobe Commerce as a Cloud Service](https://experienceleague.adobe.com/en/docs/commerce/cloud-service/overview) (SaaS) projects. Adobe Commerce on-premises and Cloud infrastructure (PaaS) projects can [install separate modules](#install-observability-module) to provide this functionality.
 
-Observability allows you to monitor and understand the behavior of extensibility tools such as [webhooks](../../webhooks/index.md), [events](../../events/index.md), and the [Admin UI SDK](../../admin-ui-sdk/index.md). This module allows you to forward logs from Adobe Commerce and connect them with App Builder logs using context propagation. This enables tracing the flow of requests and responses across different components of your application, providing a comprehensive view of your system's performance and behavior.
+Observability allows you to monitor and understand the behavior of extensibility tools such as [webhooks](../../webhooks/index.md), [events](../../events/index.md), and the [Admin UI SDK](../../admin-ui-sdk/index.md). This module allows you to forward logs, traces and metrics from Adobe Commerce and connect them with App Builder using context propagation. This enables tracing the flow of requests and responses across different components of your application, providing a comprehensive view of your system's performance and behavior.
 
 <Edition name="paas" />
 
-**Note:** The message queue must be configured and running to use observability. The message queue is used to send logs asynchronously, ensuring that the main application flow is not blocked by logging operations. Consumers must be configured to run by cron jobs or as workers.
+**Note:** The message queue must be configured and running to use observability. The message queue is used to send observability data asynchronously, ensuring that the main application flow is not blocked by observability operations. Consumers can be configured to run by cron jobs or as workers.
 
 ## Configure observability
 
@@ -25,22 +25,15 @@ For [storefront](https://experienceleague.adobe.com/developer/commerce/storefron
 
 To start using the observability module, you need to configure Adobe Commerce by creating a new subscription. You can create a subscription in two ways: in the Admin UI or through the Rest API. You can create multiple subscriptions, each with its own configuration. The subscription configuration includes the following parameters:
 
-- **Type**: The type of subscription. Currently only `logs` is supported.
-- **Destination**: The type of destination where the logs will be sent. Supported values are `NewRelic`, `Datadog`, `Splunk`, and `OpenTelemetry`.
-- **Destination endpoint**: The endpoint of the destination where the logs will be sent.
-- **Destination API key**: The API key for the destination, if required.
-- **Component**: The component the subscription is created for. Supported values are `Webhooks`, `Eventing`, and `Admin UI SDK`. You can select one or more components to monitor.
+- **Type**: The type of subscription: `logs`, `metrics`, or `traces`.
+- **Endpoint**: The endpoint where observability data will be sent.
+- **Component**: The component the subscription is created for. Supported values are `Webhooks`, `Eventing`, and `Admin UI SDK` depends on selected type. You can select one or more components to monitor.
 - **Service name**: The name of the service that will be used to identify the logs in the destination.
 - **Is active**: A flag that indicates whether the subscription is active or not.
 - **Headers**: Additional headers that will be sent with the logs to the destination. This is useful for adding custom metadata or authentication information. You can specify if header has secret values to hide in the Admin UI or Rest API response.
 - **Log message configuration**: Enables or disables the additional data in the log message. This includes the request headers, payload, and response payloads for webhooks.
 
-Available log destinations:
-
-- **OpenTelemetry**: Logs can be sent to any OpenTelemetry-compatible endpoint, allowing for flexible integration with various additional observability tools.
-- **NewRelic**: Logs will be sent to NewRelic using the NewRelic Logs API.
-- **Datadog**: Logs will be sent to Datadog using the Datadog Logs API.
-- **Splunk**: Logs will be sent to Splunk using the Splunk HTTP Event Collector (HEC).
+All data will be sent in the OpenTelemetry format.
 
 ### Configuration (Admin UI)
 
@@ -74,8 +67,7 @@ The `POST` request to `/V1/oope_observability/subscription` requires a JSON payl
 {
     "subscription": {
         "type": "logs",
-        "destination": "OpenTelemetry",
-        "destination_endpoint": "https://otlp.nr-data.net:4318/v1/logs",
+        "endpoint": "https://<abc>.ngrok-free.app/v1/logs",
         "component": [
             "webhooks",
             "eventing"
@@ -106,8 +98,7 @@ To update an existing subscription, make a `PUT` request to the `/V1/oope_observ
   "subscription": {
     "id": 3,
     "type": "logs",
-    "destination": "NewRelic",
-    "destination_endpoint": "https://log-api.newrelic.com/log/v1",
+    "endpoint": "https://<abc>.ngrok-free.app/v1/logs",
     "component": [
       "webhooks",
       "eventing",
@@ -130,9 +121,7 @@ To retrieve a list of all observability subscriptions, make a `GET` request to `
     {
       "id": 1,
       "type": "logs",
-      "destination": "OpenTelemetry",
-      "destination_endpoint": "https:\/\/<abc>.ngrok-free.app\/v1\/logs",
-      "destination_api_key": "abcd1234-abcdabc-afs",
+      "endpoint": "https://<abc>.ngrok-free.app/v1/logs",
       "component": [
         "webhooks",
         "eventing",
@@ -148,15 +137,12 @@ To retrieve a list of all observability subscriptions, make a `GET` request to `
       ]
     },
     {
-      "id": 3,
-      "type": "logs",
-      "destination": "NewRelic",
-      "destination_endpoint": "https:\/\/log-api.newrelic.com\/log\/v1 ",
-      "destination_api_key": "********",
+      "id": 2,
+      "type": "metrics",
+      "destination_endpoint": "https://<abc>.ngrok-free.app/v1/metrics",
       "component": [
         "webhooks",
-        "eventing",
-        "admin-ui-sdk"
+        "eventing"
       ],
       "headers": [],
       "service_name": "",

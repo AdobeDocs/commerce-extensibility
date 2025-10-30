@@ -1,5 +1,5 @@
 ---
-title: Use Events and App Builder to Extend Adobe Commerce
+title: Register and validate your journaling integration
 description: Learn how to configure and build event-driven integrations between Adobe Commerce and Adobe App Builder using Journaling API.
 edition: saas
 keywords:

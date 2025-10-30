@@ -36,6 +36,10 @@ module.exports = [
             path: "/webhooks/use-cases/product-generate-content.md"
           },
           {
+            title: "Orders: Validate attributes",
+            path: "/webhooks/use-cases/order-custom-attributes-validation.md"
+          },
+          {
             title: "Gift cards: Check balance",
             path: "/webhooks/use-cases/check-gift-card-balance.md"
           },

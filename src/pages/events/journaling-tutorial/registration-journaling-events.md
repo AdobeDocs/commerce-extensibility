@@ -7,7 +7,7 @@ keywords:
   - Events
 ---
 
-# Registering and Validating Integration with the Journaling API
+# Registering and Validating Integration with the journaling APIx
 
 ## Prerequisite Setup
 
@@ -24,12 +24,13 @@ Before configuring journaling, ensure that you have completed the standard setup
 - Open your Adobe Developer Console project workspace.
 - From the Add Service menu, select Event.
 - On the Add Events page, choose Commerce Events, then click Next.
+![Event Selection in developer console Project](../../_images/events/journalingtutorial/developer-console-jouralling-selection.png)
 - In the Configure Event Registration step:
     - Select the event provider that you created earlier in Adobe Commerce.
     - Click Next to review the list of available events from that provider.
 - For Journaling, do not select any specific Delivery Method or Runtime Action.
 - The Journaling API is automatically enabled for this integration.
-![Jouranling selection in Event registration Selection](../../_images/events/journalingtutorial/developer-console-jouralling-selection.png)
+![Journaling selection in Event registration Selection](../../_images/events/journalingtutorial/developer-console-jouralling-selection.png)
 
 ## Validate Integration
 

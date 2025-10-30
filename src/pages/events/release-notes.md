@@ -20,9 +20,9 @@ Oct 30, 2025
 
 ### Enhancements
 
-* Added original data to the event payload. <!-- CEXT-5400 -->
+* Added [original data](./events-original-data.md) to the event payload. <!-- CEXT-5400 -->
 
-* Added on change rule for event subscriptions. <!-- CEXT-5400 -->
+* Added [on-change rules](./conditional-events.md#trigger-events-on-specific-field-changes) for event subscriptions. <!-- CEXT-5400 -->
 
 * Added event size validation. <!-- CEXT-5229 -->
 

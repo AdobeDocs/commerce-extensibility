@@ -47,7 +47,7 @@ You can transmit all the fields within an event by setting the value of the `fie
 
 <InlineAlert variant="warning" slots="text"/>
 
-Adobe recommends sending a limited number of fields per event. If you send all fields, you increase the risk of including sensitive or PCI compliance data in the event. In addition, specifying only the fields that are applicable to your business case is recommended for optimal performance and cost effectiveness. Also, including all fields may lead to larger payloads that could exceed size limit of 64 KB and as a result the event will not be created.
+Adobe recommends sending a limited number of fields per event. If you send all fields, you increase the risk of including sensitive or PCI compliance data in the event. In addition, specifying only the fields that are applicable to your business case is recommended for optimal performance and cost effectiveness. Including all fields might lead to larger payloads that exceed the size limit of 64 KB, and as a result, the event will not be created.
 
 [Add custom fields to an event](custom-event-fields.md) describes how to enhance the payload of pre-defined events.
 

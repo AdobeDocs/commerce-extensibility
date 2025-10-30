@@ -275,7 +275,7 @@ You can add to the webhook payload values from the application context.
 
 ### Context fields
 
-You can set webhook payload field values from the application context using a field configuration like the following:
+To set webhook payload field values from the application context, use a field configuration like the following:
 
 <CodeBlock slots="heading, code" repeat="2" languages="XML, YAML" />
 

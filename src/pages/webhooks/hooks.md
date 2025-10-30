@@ -331,6 +331,8 @@ In this example, the value of `config_value` will be set to the value of `Magent
 
 If the return type of the method is an object, the value will be converted to an array. For example, if you want to get the value of `Magento\Checkout\Model\Session::getQuote()`, you can use the following configuration:
 
+<CodeBlock slots="heading, code" repeat="2" languages="XML, YAML" />
+
 ##### webhooks.xml (PaaS)
 
 ```xml
@@ -375,7 +377,7 @@ Active: Yes
 
 You can use the same syntax and features available for context values in fields to set hook headers.
 
-<CodeBlock slots="heading, code" repeat="2" languages="XML, YAML" />
+<CodeBlock slots="heading, code" repeat="1" languages="XML, YAML" />
 
 ##### webhooks.xml (PaaS)
 
@@ -384,6 +386,10 @@ You can use the same syntax and features available for context values in fields 
     <header name="X-Custom-Header">context_http_request.get_header{X-Custom-Header}</header>
 </headers>
 ```
+
+<!--
+
+When uncommenting the SaaS example, change the "repeat" attribute to "2" to show both code blocks.
 
 ##### Admin (SaaS)
 
@@ -394,6 +400,7 @@ Name: X-Custom-Header
 Value: context_http_request.get_header{X-Custom-Header}
 Active: Yes
 ```
+-->
 
 In this example, the `X-Custom-Header` from an incoming HTTP request to Commerce will be forwarded as a header in the request sent by the webhook. This approach can be used to pass Authorization headers required by an external system.
 

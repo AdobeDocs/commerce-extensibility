@@ -84,6 +84,10 @@ module.exports = [
         path: "/app-development/extension-compatibility.md"
     },
     {
+        title: "App Builder partnership essentials",
+        path: "/app-development/app-builder-partnership-essentials.md"
+    },
+    {
         title: "Learning path",
         path: "/app-development/learning-path.md"   
     },

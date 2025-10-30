@@ -30,11 +30,11 @@ Follow these steps to register Commerce events in the Adobe Developer Console:
 
 1. On the Add Events page, choose **Commerce Events**, then click **Next**.
 
-   ![Event Selection in developer console Project](../../_images/events/journalingtutorial/developer-console-jouralling-selection.png)
+   ![Event Selection in developer console Project](../../_images/events/journaling/developer-console-adding-event.png)
 
 1. In the Configure Event Registration step, select the event provider that you created earlier in Adobe Commerce and click **Next** to review the list of available events from that provider. For Journaling, do not select any specific delivery method or runtime action. The Journaling API is automatically enabled for this integration.
 
-   ![Journaling selection in Event registration Selection](../../_images/events/journalingtutorial/developer-console-jouralling-selection.png)
+   ![Journaling selection in Event registration Selection](../../_images/events/journaling/developer-console-journaling-selection.png)
 
 ## Validate your integration
 

@@ -267,9 +267,15 @@ A converter class can also convert the value in a hook endpoint response object 
 
 For example, given the above hook field configuration, conversion occurs only if a `replace` response object specifies a path of `data/order/status`. In this case, the `fromExternalFormat` method of the configured converter class will be called to convert the value in the response object.
 
-## Context fields
+## Context values
 
-You can add to the webhook payload values from the application context:
+You can add to the webhook payload values from the application context.
+
+&#8203;<Edition name="paas" /> Creating header values using the application context is also supported.
+
+### Context fields
+
+To set webhook payload field values from the application context, use a field configuration like the following:
 
 <CodeBlock slots="heading, code" repeat="2" languages="XML, YAML" />
 
@@ -363,7 +369,37 @@ Source: context_checkout_session.get_quote.get_sub_total
 Active: Yes
 ```
 
-Supported contexts:
+### Context headers
+
+<Edition name="paas" />
+
+You can use the same syntax and features available for context values in fields to set hook headers.
+
+<CodeBlock slots="heading, code" repeat="2" languages="XML, YAML" />
+
+##### webhooks.xml (PaaS)
+
+```xml
+<headers>
+    <header name="X-Custom-Header">context_http_request.get_header{X-Custom-Header}</header>
+</headers>
+```
+
+##### Admin (SaaS)
+
+```yaml
+Hook Headers
+
+Name: X-Custom-Header
+Value: context_http_request.get_header{X-Custom-Header}
+Active: Yes
+```
+
+In this example, the `X-Custom-Header` from an incoming HTTP request to Commerce will be forwarded as a header in the request sent by the webhook. This approach can be used to pass Authorization headers required by an external system.
+
+### Supported contexts
+
+The following contexts are supported:
 
 | Context                     | Context class                                     |
 |-----------------------------|---------------------------------------------------|
@@ -375,7 +411,7 @@ Supported contexts:
 | `context_staging`           | Magento\Staging\Model\VersionManager              |
 | `context_store`             | Magento\Store\Model\StoreManagerInterface         |
 
-### Checkout session context
+#### Checkout session context
 
 The `context_checkout_session` context retrieves information about the current checkout session. You can use this context to access the information about the current quote.
 
@@ -423,7 +459,7 @@ This hook sends the following JSON object to the webhook endpoint:
 
 If the quote does not exist in the current session, the values will be set to `null`.
 
-### Customer session context
+#### Customer session context
 
 The `context_customer_session` retrieves information about the current customer session. You can use this context to access the information about the current customer.
 
@@ -471,7 +507,7 @@ This hook sends the following JSON object to the webhook endpoint:
 
 If the customer is not logged in, the values will be set to `null`.
 
-### Application state context
+#### Application state context
 
 The `context_application_state` context retrieves information about the current application state.
 
@@ -511,7 +547,7 @@ The `context_application_state.get_area_code` field returns the area code of the
 
 The `context_application_state.get_mode` field returns the current application mode. The possible values are `default`, `developer`, and `production`.
 
-### Scope config context
+#### Scope config context
 
 The `context_scope_config` context retrieves information from the configuration scope. If your webhook logic depends on a specific configuration value, you can use this context to retrieve the value from the configuration.
 
@@ -553,7 +589,7 @@ This hook sends the following JSON object to the webhook endpoint:
 }
 ```
 
-### HTTP request context
+#### HTTP request context
 
 The `context_http_request` context retrieves information about the current HTTP request.
 
@@ -599,7 +635,7 @@ This hook sends the following JSON object to the webhook endpoint:
 }
 ```
 
-### Staging context
+#### Staging context
 
 The `context_staging` context retrieves information about the current staging version.
 
@@ -641,7 +677,7 @@ This hook sends the following JSON object to the webhook endpoint:
 }
 ```
 
-### Store context
+#### Store context
 
 The `context_store` context retrieves information about the current store.
 

@@ -9,6 +9,8 @@ keywords:
 
 # Register and Validate your Journaling Integration
 
+In this section, you will register your Commerce events in the Adobe Developer Console to enable journaling and then validate that events are correctly recorded and accessible. This ensures your integration is properly configured before building event-driven extensions.
+
 ## Prerequisite Setup
 
 Before configuring journaling, ensure that you have completed the standard setup for Adobe Commerce Events and App Builder.

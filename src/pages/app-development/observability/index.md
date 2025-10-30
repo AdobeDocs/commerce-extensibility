@@ -26,7 +26,7 @@ For [storefront](https://experienceleague.adobe.com/developer/commerce/storefron
 To start using the observability module, you need to configure Adobe Commerce by creating a new subscription. You can create a subscription in two ways: in the Admin UI or through the Rest API. You can create multiple subscriptions, each with its own configuration. The subscription configuration includes the following parameters:
 
 - **Type**: The type of subscription: `logs`, `metrics`, or `traces`.
-- **Endpoint**: The endpoint where observability data will be sent.
+- **Endpoint**: The endpoint where observability data will be sent. This is the URL of observability collector that supports OpenTelemetry protocol such as New Relic, Datadog, or a custom collector.
 - **Component**: The component the subscription is created for. Supported values are `Webhooks`, `Eventing`, and `Admin UI SDK` depends on selected type. You can select one or more components to monitor.
 - **Service name**: The name of the service that will be used to identify the logs in the destination.
 - **Is active**: A flag that indicates whether the subscription is active or not.
@@ -156,6 +156,14 @@ To retrieve a list of all observability subscriptions, make a `GET` request to `
   ]
 }
 ```
+
+## Connect with Observability platform
+
+You can connect Adobe Commerce observability data with various observability platforms that support the OpenTelemetry protocol, such as New Relic, Datadog, Splunk, or a custom collector. To do this, you need to configure the endpoint URL and any required headers in the observability subscription.
+
+- [New Relic OTLP](https://docs.newrelic.com/docs/opentelemetry/best-practices/opentelemetry-otlp/)
+- [Datadog OTLP](https://docs.datadoghq.com/opentelemetry/setup/otlp_ingest/)
+- [Splunk OTLP](https://help.splunk.com/en/splunk-observability-cloud/manage-data/splunk-distribution-of-the-opentelemetry-collector/get-started-with-the-splunk-distribution-of-the-opentelemetry-collector/collector-components/exporters/splunk-hec-exporter)
 
 ## Install observability module
 

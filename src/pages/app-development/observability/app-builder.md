@@ -11,7 +11,7 @@ Context propagation can align observability data from Commerce and App Builder. 
 
 If your App Builder app makes requests to other services, you can also propagate the context to those services, which allows you to trace the request flow across multiple systems and get a complete picture of the request flow.
 
-To forward logs from App Builder, use the [`@adobe/aio-lib-telemetry` package](https://github.com/adobe/aio-lib-telemetry/blob/main/docs/usage.md).
+To forward observability data from App Builder, use the [`@adobe/aio-lib-telemetry` package](https://github.com/adobe/aio-lib-telemetry/blob/main/docs/usage.md).
 
 ## Example
 
@@ -26,6 +26,7 @@ const {
 
 const {
     OTLPLogExporterHttp,
+    OTLPTraceExporterHttp,
     SimpleLogRecordProcessor
 } = require("@adobe/aio-lib-telemetry/otel");
 
@@ -40,6 +41,7 @@ function localCollectorConfig(exportUrl) {
                 new OTLPLogExporterHttp(makeExporterConfig("v1/logs"))
             ),
         ],
+        traceExporter: new OTLPTraceExporterHttp(makeExporterConfig("v1/traces")),
     };
 }
 
@@ -49,7 +51,7 @@ const telemetryConfig = defineTelemetryConfig((params, isDev) => {
 
     return {
         sdkConfig: {
-            serviceName: "<YOUR_SERVICE>", // Use the name in the observability subscription to match the logs
+            serviceName: "<YOUR_SERVICE>", // Use the name in the observability subscription to match the observability data
             instrumentations: getPresetInstrumentations("simple"),
             resource: getAioRuntimeResource(),
 
@@ -183,7 +185,7 @@ exports.main = instrumentedMain
 
 You can run observability locally to test Commerce extensibility tools and their connection to App Builder. Refer to the [how to run Grafana locally](https://github.com/adobe/aio-lib-telemetry/blob/main/docs/use-cases/grafana.md#local-development) example for more information.
 
-You can use a tunneling service to forward logs to your local development machine from the Commerce instance and deployed App Builder action. For example, you can use [Ngrok](https://ngrok.com/) to expose your local development environment to the internet. For more information, refer to [tunnel forwarding](https://github.com/adobe/aio-lib-telemetry/blob/main/docs/use-cases/support/tunnel-forwarding.md).
+You can use a tunneling service to forward observability data to your local development machine from the Commerce instance and deployed App Builder action. For example, you can use [Ngrok](https://ngrok.com/) to expose your local development environment to the internet. For more information, refer to [tunnel forwarding](https://github.com/adobe/aio-lib-telemetry/blob/main/docs/use-cases/support/tunnel-forwarding.md).
 
 ![Grafana logs](../../_images/observability/grafana-all-logs.png)
 

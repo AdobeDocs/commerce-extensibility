@@ -180,6 +180,8 @@ Point to the `AddProductToCartResolver` class in the `header.resolver` attribute
 
 #### Application context header values
 
+<Edition name="paas" />
+
 You can create hook headers with values from the application context. See [Context fields](./hooks.md#context-values) for details.
 
 ### Configure hook rules

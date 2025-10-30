@@ -7,7 +7,7 @@ keywords:
   - Events
 ---
 
-# Registering and Validating Integration with the journaling APIx
+# Register and Validate your Journaling Integration
 
 ## Prerequisite Setup
 

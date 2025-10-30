@@ -186,7 +186,7 @@ To install the observability module in Adobe Commerce:
 1. Install the module:
 
    ```bash
-   composer require magento/module-out-of-process-observability=^1.0.0 --with-dependencies
+   composer require magento/module-out-of-process-observability=^1.1.0 --with-dependencies
    ```
 
 1. Enable the installed module:

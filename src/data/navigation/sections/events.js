@@ -50,6 +50,10 @@ module.exports = [
     path: "/events/module-development.md",
   },
   {
+    title: "Create event subscriptions with original data",
+    path: "/events/events-original-data.md",
+  },
+  {
     title: "Create conditional events",
     path: "/events/conditional-events.md",
   },

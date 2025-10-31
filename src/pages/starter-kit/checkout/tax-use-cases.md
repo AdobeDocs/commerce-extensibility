@@ -110,7 +110,16 @@ The Appbuilder application receives the following payload as an `oopQuote` objec
       "shipping_method": "FREE",
       "shipping_description": "FREE"
     },
-    "custom_attributes": []
+    "custom_attributes": [],
+    "quote_id": 1234,
+    "customer": {
+      "entity_id": 123,
+      "website_id": 1,
+      "group_id": 1,
+      "email": "customer@example.com",
+      "firstname": "John",
+      "lastname": "Doe"
+    }
   }
 }
 ```

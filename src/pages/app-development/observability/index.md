@@ -15,7 +15,9 @@ Observability allows you to monitor and understand the behavior of extensibility
 
 <Edition name="paas" />
 
-**Note:** The message queue must be configured and running to use observability. The message queue is used to send observability data asynchronously, ensuring that the main application flow is not blocked by observability operations. Consumers can be configured to run by cron jobs or as workers.
+<InlineAlert variant="info" slots="text"/>
+
+The message queue must be configured and running to use observability. The message queue is used to send observability data asynchronously, ensuring that the main application flow is not blocked by observability operations. Consumers can be configured to run by cron jobs or as workers.
 
 ## Configure observability
 
@@ -23,21 +25,21 @@ Observability allows you to monitor and understand the behavior of extensibility
 
 For [storefront](https://experienceleague.adobe.com/developer/commerce/storefront) observability, refer to [Operational Telemetry](https://www.aem.live/docs/rum-explorer#user-interface-overview).
 
-To start using the observability module, you need to configure Adobe Commerce by creating a new subscription. You can create a subscription in two ways: in the Admin UI or through the Rest API. You can create multiple subscriptions, each with its own configuration. The subscription configuration includes the following parameters:
+To start using the observability module, you need to configure Adobe Commerce by creating a new subscription. You can create a subscription in two ways: in the Admin UI or through the REST API. You can create multiple subscriptions, each with its own configuration. The subscription configuration includes the following parameters:
 
 - **Type**: The type of subscription: `logs`, `metrics`, or `traces`.
-- **Endpoint**: The endpoint where observability data will be sent. This is the URL of observability collector that supports OpenTelemetry protocol such as New Relic, Datadog, or a custom collector.
-- **Component**: The component the subscription is created for. Supported values are `Webhooks`, `Eventing`, and `Admin UI SDK` depends on selected type. You can select one or more components to monitor.
+- **Endpoint**: The endpoint where observability data will be sent. This is the URL of an observability collector that supports OpenTelemetry protocol such as New Relic, Datadog, or a custom collector.
+- **Component**: The component the subscription is created for. Supported values are `Webhooks`, `Eventing`, and `Admin UI SDK`, depending on the selected type. You can select one or more components to monitor.
 - **Service name**: The name of the service that will be used to identify the logs in the destination.
-- **Is active**: A flag that indicates whether the subscription is active or not.
-- **Headers**: Additional headers that will be sent with the logs to the destination. This is useful for adding custom metadata or authentication information. You can specify if header has secret values to hide in the Admin UI or Rest API response.
-- **Log message configuration**: Enables or disables the additional data in the log message. This includes the request headers, payload, and response payloads for webhooks.
+- **Is active**: A flag that indicates whether the subscription is active.
+- **Headers**: Additional headers that will be sent with the logs to the destination. They are useful for adding custom metadata or authentication information. You can specify if a header has secret values to hide in the Admin UI or REST response.
+- **Log message configuration**: Enables or disables the additional data in the log message. This data includes the request headers, payload, and response payloads for webhooks.
 
-All data will be sent in the OpenTelemetry format.
+Commerce sends all data in the OpenTelemetry format.
 
-### Configuration (Admin UI)
+### Configure from the Admin
 
-To configure observability in the Admin UI, navigate to **System > Observability > Subscription List**. Here you can create, update, and delete subscriptions.
+To configure observability in the Admin UI, navigate to **System** > Observability > **Subscription List**. Here you can create, update, and delete subscriptions.
 
 ![Observability Admin UI](../../_images/observability/list-of-subscriptions-admin-ui.png)
 
@@ -45,9 +47,9 @@ To create a new subscription, click the **Add New Subscription** button. Enter t
 
 ![Observability New Subscription Admin UI](../../_images/observability/create-subscription-admin-ui.png)
 
-### Configuration (Rest API)
+### Configure using REST
 
-To manage subscriptions using the REST API, you can use the following endpoints:
+You can use the following endpoints to manage subscriptions using the REST API, you can use the following endpoints:
 
 | **Route URL**                             | **Method** | **Description**                                          |
 |-------------------------------------------| ---------- |----------------------------------------------------------|
@@ -89,7 +91,7 @@ The `POST` request to `/V1/oope_observability/subscription` requires a JSON payl
 
 #### Update an existing subscription
 
-To update an existing subscription, make a `PUT` request to the `/V1/oope_observability/subscription` endpoint. The request body should contain the updated subscription information, including the subscription `id`. The following example shows a request body to update a subscription:
+To update an existing subscription, make a `PUT` request to the `/V1/oope_observability/subscription` endpoint. The request body must contain the updated subscription information, including the subscription `id`. The following example shows a request body to update a subscription:
 
 **Request**:
 
@@ -157,9 +159,9 @@ To retrieve a list of all observability subscriptions, make a `GET` request to `
 }
 ```
 
-## Connect with Observability platform
+## Connect with an Observability platform
 
-You can connect Adobe Commerce observability data with various observability platforms that support the OpenTelemetry protocol, such as New Relic, Datadog, Splunk, or a custom collector. To do this, you need to configure the endpoint URL and any required headers in the observability subscription.
+You can connect Adobe Commerce observability data with various observability platforms that support the OpenTelemetry protocol, such as New Relic, Datadog, Splunk, or a custom collector. To do this, you must configure the endpoint URL and any required headers in the observability subscription.
 
 - [New Relic OTLP](https://docs.newrelic.com/docs/opentelemetry/best-practices/opentelemetry-otlp/)
 - [Datadog OTLP](https://docs.datadoghq.com/opentelemetry/setup/otlp_ingest/)

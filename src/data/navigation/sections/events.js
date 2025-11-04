@@ -4,27 +4,55 @@ module.exports = [
     path: "/events/index.md"
   },
   {
-    title: "Tutorial",
+    title: "Tutorials",
     path: "/events/tutorial/index.md",
     pages: [
       {
-        title: "Use events and App Builder to extend Adobe Commerce",
+        title: "Eventing",
         path: "/events/tutorial/index.md",
-      },  
-      {
-        title: "Project setup and deployment",
-        path: "/events/tutorial/deployment.md"
+        pages: [
+          {
+            title: "Use events and App Builder to extend Adobe Commerce",
+            path: "/events/tutorial/index.md"
+          },  
+          {
+            title: "Project setup and deployment",
+            path: "/events/tutorial/deployment.md"
+          },
+          {
+            title: "Set up event providers",
+            path: "/events/tutorial/event-providers.md"
+          },
+          {
+            title: "Debugging and development tips",
+            path: "/events/tutorial/debugging.md"
+          }
+        ]
       },
       {
-        title: "Set up event providers",
-        path: "/events/tutorial/event-providers.md"
-      },
-      {
-        title: "Debugging and development tips",
-        path: "/events/tutorial/debugging.md"
-      }
-    ]
-  },
+      title: "Journaling",
+      path: "/events/journaling-tutorial/index.md",
+      pages: [
+        {
+          title: "Integrate with Adobe I/O Events Journaling API",
+          path: "/events/journaling-tutorial/index.md"
+        },
+        {
+          title: "Register and validate your journaling integration",
+          path: "/events/journaling-tutorial/registration-journaling-events.md"
+        },
+        {
+          title: "Code development and deployment",
+          path: "/events/journaling-tutorial/runtime-action-code-journaling-api.md"
+        },
+        {
+          title: "Validate journaling events processing",
+          path: "/events/journaling-tutorial/validating-journaling-integration.md"
+        }
+      ]
+    }
+  ]
+},
   {
     title: "Create an App Builder project",
     path: "/events/project-setup.md",

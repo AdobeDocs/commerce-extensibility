@@ -131,6 +131,7 @@ The key points for constructing the response are:
 - The `amount` in the `tax` object represents the actual tax applied to each line item.
 - The `rate` in both the `tax` and `tax_breakdown` objects is included for reference to indicate which tax rate was applied.
 - The `discount_compensation_amount` corresponds to the [`hidden tax`](https://experienceleague.adobe.com/en/docs/commerce-admin/stores-sales/site-store/taxes/hidden-tax-calculation), which accounts for the portion of tax adjusted by discounts.
+- In case of guest user, `customer` field won't be set in the request payload.
 
 ```json
 [

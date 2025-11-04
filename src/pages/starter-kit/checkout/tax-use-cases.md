@@ -118,6 +118,7 @@ The Appbuilder application receives the following payload as an `oopQuote` objec
       "group_id": 1,
       "email": "customer@example.com",
       "firstname": "John",
+      "middlename": "",
       "lastname": "Doe"
     }
   }

@@ -29,6 +29,10 @@ module.exports = [
       path: "/webhooks/"
     },
     {
+      title: "Observability",
+      path: "/observability/"
+    },
+    {
       title: "Admin UI SDK",
       path: "/admin-ui-sdk/",
     },

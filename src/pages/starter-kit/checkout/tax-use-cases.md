@@ -122,7 +122,7 @@ Adobe Commerce supports two pricing models for tax calculation: tax-inclusive an
 - `is_tax_included: true` - The line item's `unit_price` already includes the full tax amount, which means that the [App Builder webhook](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/collect-taxes/index.js#L84) must avoid re‑adding the same tax.
 - `is_tax_included: false` - The line item's `unit_price` is net and does not include tax, which means that the [App Builder webhook](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/collect-taxes/index.js#L84)  must add tax in addition to the net price.
 
-#### How to configure tax-inclusive pricing in Adobe Commerce Admin
+#### Configure tax-inclusive pricing in Adobe Commerce
 
 This configuration is set in the Adobe Commerce Admin under Stores > Configuration > Sales > Tax > Calculation Settings`
 

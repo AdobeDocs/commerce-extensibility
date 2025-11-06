@@ -115,6 +115,25 @@ The Appbuilder application receives the following payload as an `oopQuote` objec
 }
 ```
 
+### Tax inclusive vs tax exclusive pricing
+
+Adobe Commerce supports two pricing models for tax calculation: tax-inclusive and tax-exclusive pricing. The `is_tax_included` flag in the webhook payload indicates which model is being used for each line item:
+
+- `is_tax_included: true` means the line item's `unit_price` already includes the full tax amount. [App Builder webhook](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/collect-taxes/index.js#L84) must avoid re‑adding the same tax.
+- `is_tax_included: false` means the line item's `unit_price` is net, does not include tax. [App Builder webhook](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/collect-taxes/index.js#L84)  must add tax on top of the net price.
+
+#### How to configure tax-inclusive pricing in Adobe Commerce Admin
+
+This configuration is set in the Adobe Commerce Admin under Stores > Configuration > Sales > Tax > Calculation Settings`
+
+![System > Sales > Tax > Calculation Settings](../../_images/system_sales_tax_calculation-settings.png) 
+
+#### Calculation examples:
+* Example (inclusive): Gross price 120.00, VAT 20% → Net = 120 / 1.2 = 100.00, Tax = 20.00
+* Example (exclusive): Net price 100.00, VAT 20% → Tax = 20.00, Gross = 120.00
+
+See the example in the [Adobe Commerce checkout starter kit](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/collect-taxes/index.js#L85)
+
 Responses to commerce webhooks are expected to modify the original request body in various ways (see [`Webhook responses and logging`](https://developer.adobe.com/commerce/extensibility/webhooks/responses/)). The following response example uses the `replace` operation to set the tax field and the `add` operation to add different taxes to the `tax_breakdown` array.
 
 The key points for constructing the response are:

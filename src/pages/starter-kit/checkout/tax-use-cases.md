@@ -129,6 +129,7 @@ This configuration is set in the Adobe Commerce Admin under **Stores** > **Confi
 ![System > Sales > Tax > Calculation Settings](../../_images/system_sales_tax_calculation-settings.png) 
 
 #### Calculation examples:
+
 The following examples illustrate how tax should be calculated in both pricing models:
 * Example (inclusive): Gross price 120.00, VAT 20% → Net = 120 / 1.2 = 100.00, Tax = 20.00
 * Example (exclusive): Net price 100.00, VAT 20% → Tax = 20.00, Gross = 120.00

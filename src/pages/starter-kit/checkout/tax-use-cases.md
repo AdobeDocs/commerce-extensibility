@@ -124,7 +124,7 @@ Adobe Commerce supports two pricing models for tax calculation: tax-inclusive an
 
 #### Configure tax-inclusive pricing in Adobe Commerce
 
-This configuration is set in the Adobe Commerce Admin under Stores > Configuration > Sales > Tax > Calculation Settings`
+This configuration is set in the Adobe Commerce Admin under **Stores** > **Configuration** > **Sales** > **Tax** > **Calculation Settings**`
 
 ![System > Sales > Tax > Calculation Settings](../../_images/system_sales_tax_calculation-settings.png) 
 

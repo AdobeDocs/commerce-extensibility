@@ -69,42 +69,7 @@ curl --request GET \
    --header 'Authorization: Bearer <TOKEN>'
 ```
 
-## Get supported webhooks for SaaS
-
-<Edition name="saas" />
-
-The `GET /V1/webhooks/supportedList` endpoint returns the events supported in Adobe Commerce as a Cloud Service (SaaS). The response body is similar to the following:
-
-```json
-[
-    {
-        "name": "observer.sales_quote_add_item"
-    },
-    {
-        "name": "observer.checkout_cart_product_add_before"
-    },
-    {
-        "name": "observer.catalog_product_save_after"
-    },
-  ...
-]
-```
-
-The access token used in the request must have access to the `Webhooks > Webhooks Management > Webhooks List` resource. See [REST authentication](https://developer.adobe.com/commerce/services/cloud/guides/rest/authentication/) for information on authentication for SaaS.
-
-**Example usage:**
-
-The following cURL command returns a list of all supported webhooks in SaaS.
-
-```bash
-curl --request GET \
-   --url <ADOBE_COMMERCE_SAAS_REST_ENDPOINT>/V1/webhooks/supportedList \
-   --header 'Authorization: Bearer <TOKEN>'
-```
-
 ## Subscribe a webhook
-
-<Edition name="saas" />
 
 To subscribe a webhook, make a `POST` request to the `/V1/webhooks/subscribe` endpoint. [Create a webhook](./conditional-webhooks.md) provides details about the contents of a webhook.
 
@@ -118,6 +83,7 @@ The following restrictions apply to the webhook request:
 - Any `headers` must have a `name` and `value`.
   - `name` and `value` cannot be null.
 - `timeout`, `ttl`, and `soft_timeout` must be non-negative integers.
+- `developer_console_oauth` section is optional. If provided, the [authorization headers](./tutorial/best-practices.md#secure-webhook-communication-using-oauth-credentials) will be automatically added to the webhook request based on your credentials.
 
 The request body must include the following attributes:
 
@@ -168,14 +134,21 @@ The request body must include the following attributes:
         "name": "CLIENT_ID",
         "value": "abcasdf-12abcd3-45efabc4"
       }
-    ]
+    ],
+    "developer_console_oauth": {
+      "client_id": "3117813-735byzantiumduck-stage",
+      "client_secret": "p8e-12345",
+      "org_id": "12345@AdobeOrg"
+    }
   }
 }
 ```
 
-## Unsubscribe a webhook
+<InlineAlert variant="warning" slots="text" />
 
-<Edition name="saas" />
+In PaaS the webhooks configuration will be stored in the `webhooks` section of the `app/etc/env.php` file. If you are subscribing to a `plugin-type` webhooks the redeployment would be required to generate the necessary plugin classes.
+
+## Unsubscribe a webhook
 
 The unsubscribe endpoint allows you to delete an existing webhook subscription. To delete a webhook, make a `POST` request to the `/V1/webhooks/unsubscribe` endpoint. The request body must include the following attributes from the existing webhook:
 
@@ -195,4 +168,37 @@ The unsubscribe endpoint allows you to delete an existing webhook subscription. 
     "hook_name": "validate_product"
   }
 }
+```
+
+## Get supported webhooks for SaaS
+
+<Edition name="saas" />
+
+The `GET /V1/webhooks/supportedList` endpoint returns the events supported in Adobe Commerce as a Cloud Service (SaaS). The response body is similar to the following:
+
+```json
+[
+    {
+        "name": "observer.sales_quote_add_item"
+    },
+    {
+        "name": "observer.checkout_cart_product_add_before"
+    },
+    {
+        "name": "observer.catalog_product_save_after"
+    },
+  ...
+]
+```
+
+The access token used in the request must have access to the `Webhooks > Webhooks Management > Webhooks List` resource. See [REST authentication](https://developer.adobe.com/commerce/services/cloud/guides/rest/authentication/) for information on authentication for SaaS.
+
+**Example usage:**
+
+The following cURL command returns a list of all supported webhooks in SaaS.
+
+```bash
+curl --request GET \
+   --url <ADOBE_COMMERCE_SAAS_REST_ENDPOINT>/V1/webhooks/supportedList \
+   --header 'Authorization: Bearer <TOKEN>'
 ```

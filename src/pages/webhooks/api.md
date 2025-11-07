@@ -146,7 +146,7 @@ The request body must include the following attributes:
 
 <InlineAlert variant="warning" slots="text" />
 
-In PaaS the webhooks configuration will be stored in the `webhooks` section of the `app/etc/env.php` file. If you are subscribing to a `plugin-type` webhooks the redeployment would be required to generate the necessary plugin classes.
+The module `Magento_AdobeCommerceWebhooksSubscriber` must be enabled to use this endpoint. In PaaS the webhooks configuration will be stored in the `webhooks` section of the `app/etc/env.php` file. If you are subscribing to a `plugin-type` webhooks the redeployment would be required to generate the necessary plugin classes.
 
 ## Unsubscribe a webhook
 

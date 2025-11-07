@@ -67,22 +67,22 @@ The `batch` element sets the order in which multiple webhooks are executed. All 
 
 The `hook` element defines the HTTP request to the remote server.
 
-| Attribute | Type   | Description                                                                                                                                                                                                                                 | Is required | Default |
-|---|---|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---|---|
-| `name` | String | A hook name that is unique within a batch.                                                                                                                                                                                                  | true        | Not applicable     |
-| `url` | String | The HTTP endpoint to send the request for processing.                                                                                                                                                                                       | true        | Not applicable     |
-| `method` | String | The HTTP method, such as POST or PUT, that invokes the hook.                                                                                                                                                                                | false       | POST    |
-| `priority` | Int    | The priority of the merging hook results in the batch.                                                                                                                                                                                      | false       | 0       |
+| Attribute | Type   | Description  | Is required | Default |
+|---|---|---|---|---|
+| `name` | String | A hook name that is unique within a batch. | true        | Not applicable     |
+| `url` | String | The HTTP endpoint to send the request for processing. | true        | Not applicable     |
+| `method` | String | The HTTP method, such as POST or PUT, that invokes the hook. | false       | POST    |
+| `priority` | Int    | The priority of the merging hook results in the batch.  | false       | 0       |
 | `required` | Boolean   | Specifies whether hook execution is required or optional. When set to `false` (optional), if the hook fails to execute, the failure is logged and subsequent hooks continue to be processed. When `true`, a failure terminates the process. | false       | true    |
-| `timeout` | Int    | A hard timeout limit (milliseconds) for the request. Requests exceeding this timeout are aborted and logged. The default value of 0 indicates there is no timeout limit.                                                                    | false       | 0       |
-| `softTimeout`| Int    | A soft timeout limit (milliseconds) for the request. Requests exceeding this timeout are logged for debugging purposes.                                                                                                                     | false       | Not applicable     |
-| `fallbackErrorMessage` | Int    | The error message to return when the hook fails.                                                                                                                                                                                            | false       | Not applicable     |
-| `remove` | Boolean   | Indicates whether to skip a removed hook during the batch execution.                                                                                                                                                                        | false       | false   |
-| `ttl` | Int    | The cache time-to-live (in seconds) for requests with the same URL, body, and headers. If this attribute is not specified, or if the value set to `0`, the response is not cached.                                                          | false       | 0       |
-| `sslVerification` | Boolean | Specifies whether SSL certificate verification would be performed during request. Enabled by default. This option should only be used for development purposes.                                                                             | false       | true        |
-| `sslCertificatePath` | String  | Specifies the path to a custom SSL certificate file to use for SSL verification. This option will be ignored if `sslVerification` is set to false.                                                                                          | false       | Not applicable        |
-| `headers` | Array  | A set of HTTP headers to send with the request.                                                                                                                                                                                             | false       | []      |
-| `fields` | Array  | A set of fields to include in the hook payload. If not set, the entire payload will be sent.                                                                                                                                                | false       | []      |
+| `timeout` | Int    | A hard timeout limit (milliseconds) for the request. Requests exceeding this timeout are aborted and logged. The default value of 0 indicates there is no timeout limit. | false       | 0       |
+| `softTimeout`| Int    | A soft timeout limit (milliseconds) for the request. Requests exceeding this timeout are logged for debugging purposes. | false       | Not applicable     |
+| `fallbackErrorMessage` | Int    | The error message to return when the hook fails. | false       | Not applicable     |
+| `remove` | Boolean   | Indicates whether to skip a removed hook during the batch execution. | false       | false   |
+| `ttl` | Int    | The cache time-to-live (in seconds) for requests with the same URL, body, and headers. If this attribute is not specified, or if the value set to `0`, the response is not cached. | false       | 0       |
+| `sslVerification` | Boolean | Specifies whether SSL certificate verification would be performed during request. Enabled by default. This option should only be used for development purposes. | false       | true        |
+| `sslCertificatePath` | String  | Specifies the path to a custom SSL certificate file to use for SSL verification. This option will be ignored if `sslVerification` is set to false. | false       | Not applicable        |
+| `headers` | Array  | A set of HTTP headers to send with the request. | false       | []      |
+| `fields` | Array  | A set of fields to include in the hook payload. If not set, the entire payload will be sent. | false       | []      |
 | `developerConsoleOauth` | Array | A set of OAuth credentials to use for generating authorization headers for the request | false | Not applicable |
 
 ### `headers` and `header` elements

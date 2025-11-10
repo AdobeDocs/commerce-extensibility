@@ -64,7 +64,8 @@ curl --request POST \
     "currencies": ["EUR", "USD"],
     "custom_config": [
       {
-        "key1": "value1"
+        "key": "key1",
+        "value": "value1"
       }
     ]
   }

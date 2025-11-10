@@ -83,6 +83,7 @@ The `hook` element defines the HTTP request to the remote server.
 | `sslCertificatePath` | String  | Specifies the path to a custom SSL certificate file to use for SSL verification. This option will be ignored if `sslVerification` is set to false. | false       | Not applicable        |
 | `headers` | Array  | A set of HTTP headers to send with the request. | false       | []      |
 | `fields` | Array  | A set of fields to include in the hook payload. If not set, the entire payload will be sent. | false       | []      |
+| `developerConsoleOauth` | Array | A set of OAuth credentials to use for generating authorization headers for the request | false | Not applicable |
 
 ### `headers` and `header` elements
 
@@ -115,3 +116,13 @@ A `rules` element is optional and can contain one or more `rule` elements. Each 
 | `operator` | String | A string that defines which comparison operator to use. Examples include `equal`, `notEqual`, and `regex`. | true | Not applicable
 | `value` | String | The value to be compared. | true | Not applicable
 | `remove` | Boolean | Indicates whether the rule is active. The default value of `true` indicates the rule is active. | false | false
+
+## `developerConsoleOauth` element
+
+The `developerConsoleOauth` element is optional. If provided must contain the following elements to generate OAuth authorization headers for the request:
+
+| Element       | Type   | Description                     | Is required | Default |
+|---------------|--------|---------------------------------|-------------|---------|
+| `clientId`    | String | The OAuth client ID.            | true        | Not applicable     |
+| `clientSecret`| String | The OAuth client secret.        | true        | Not applicable     |
+| `orgId`       | String | The OAuth organization ID.      | true        | Not applicable     |

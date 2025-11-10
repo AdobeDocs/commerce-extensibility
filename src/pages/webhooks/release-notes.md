@@ -13,13 +13,15 @@ These release notes describe the latest version of Adobe Commerce Webhooks.
 
 ### Release date
 
-Nov __, 2025
+Nov 10, 2025
 
 ### Enhancements
 
 * Added API endpoints to subscribe and unsubscribe from webhooks. <!-- CEXT-5434 -->
 
 * Added the XML configuration options to set Adobe Developer Console credentials for webhooks. <!-- CEXT-5434 -->
+
+* Added the exception message to the log context in webhook plugins. <!-- CEXT-5273 -->
 
 ## Version 1.12.0
 

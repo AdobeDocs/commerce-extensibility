@@ -1,5 +1,5 @@
 ---
-title: Install Adobe Commerce Webhooks
+title: Install Adobe Commerce observability modules
 description: Learn how to install the Commerce modules needed to implement webhooks.
 edition: paas
 keywords:

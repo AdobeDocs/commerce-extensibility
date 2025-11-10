@@ -1,5 +1,5 @@
 ---
-title: Adobe Commerce observability
+title: Adobe Commerce observability with App Builder
 description: Adobe Commerce observability
 keywords:
   - Extensibility

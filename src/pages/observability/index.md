@@ -1,56 +1,103 @@
 ---
-title: Adobe Commerce Observability
-description: Adobe Commerce Observability
+title: OpenTelemetry overview
+description: A curated collection of the most important OpenTelemetry concepts and patterns for App Builder applications.
 keywords:
   - Extensibility
+  - App Builder
+  - Events
+  - Starter Kit
+  - Tools
 ---
 
-# Adobe Commerce observability overview
+# OpenTelemetry overview
 
-<InlineAlert variant="important" slots="text" />
+This overview serves as a curated collection of the most important concepts and patterns from the official [OpenTelemetry documentation](https://opentelemetry.io/docs/).
 
-This functionality is automatically available on [Adobe Commerce as a Cloud Service](https://experienceleague.adobe.com/en/docs/commerce/cloud-service/overview) (SaaS) projects. Adobe Commerce on-premises and Cloud infrastructure (PaaS) projects can [install separate modules](./installation.md) to provide this functionality.
+## What is OpenTelemetry?
 
-Observability allows you to monitor and understand the behavior of extensibility tools such as [webhooks](../webhooks/index.md), [events](../events/index.md), and the [Admin UI SDK](../admin-ui-sdk/index.md). This module allows you to forward logs, traces and metrics from Adobe Commerce and connect them with App Builder using context propagation. This enables tracing the flow of requests and responses across different components of your application, providing a comprehensive view of your system's performance and behavior.
+OpenTelemetry is an open-source framework for collecting, processing, and exporting telemetry data from applications, such as traces, metrics, and logs. It provides standardized APIs and SDKs that enable consistent observability across distributed systems, regardless of language or platform.
 
-<Edition name="paas" />
+The framework is governed by a comprehensive specification that defines the behavior and requirements for all OpenTelemetry components, ensuring interoperability and consistency across different implementations.
 
-<InlineAlert variant="info" slots="text"/>
+## OpenTelemetry Protocol (OTLP)
 
-The message queue must be configured and running to use observability. The message queue is used to send observability data asynchronously, ensuring that the main application flow is not blocked by observability operations. Consumers can be configured to run by cron jobs or as workers.
+The [OpenTelemetry Protocol (OTLP)](https://opentelemetry.io/docs/specs/otlp/) is the default, vendor-neutral protocol for transmitting telemetry data between components such as SDKs, collectors, and backends. OTLP supports traces, metrics, and logs, and enables efficient, standardized communication across the observability pipeline.
 
-## Configure observability
+### Supported transmission protocols
 
-<InlineAlert variant="info" slots="text"/>
+OTLP supports multiple transmission protocols and encodings to accommodate different environments and performance requirements:
 
-For [storefront](https://experienceleague.adobe.com/developer/commerce/storefront) observability, refer to [Operational Telemetry](https://www.aem.live/docs/rum-explorer#user-interface-overview).
+- **gRPC (Protobuf)** is the primary protocol for OTLP, offering efficient, bi-directional streaming and low-latency communication between components. All data is encoded using Protobuf.
 
-To start using the observability module, you need to configure Adobe Commerce by creating a new subscription. You can create a subscription in two ways: in the Admin UI or through the REST API. You can create multiple subscriptions, each with its own configuration. The subscription configuration includes the following parameters:
+- **HTTP/Protobuf** uses HTTP as the transport protocol with Protobuf-encoded payloads (`Content-Type: application/x-protobuf`). This is widely supported and efficient for most production use cases.
 
-- **Type**: The type of subscription: `logs`, `metrics`, or `traces`.
-- **Endpoint**: The endpoint where observability data will be sent. This is the URL of an observability collector that supports OpenTelemetry protocol such as New Relic, Datadog, or a custom collector.
-- **Component**: The component the subscription is created for. Supported values are `Webhooks`, `Eventing`, and `Admin UI SDK`, depending on the selected type. You can select one or more components to monitor.
-- **Service name**: The name of the service that will be used to identify the logs in the destination.
-- **Is active**: A flag that indicates whether the subscription is active.
-- **Headers**: Additional headers that will be sent with the logs to the destination. They are useful for adding custom metadata or authentication information. You can specify if a header has secret values to hide in the Admin UI or REST response.
-- **Log message configuration**: Enables or disables the additional data in the log message. This data includes the request headers, payload, and response payloads for webhooks.
+- **HTTP/JSON** uses HTTP as the transport protocol with JSON-encoded payloads (`Content-Type: application/json`). The JSON encoding follows the Protobuf-to-JSON mapping defined by the OTLP spec, making it suitable for environments where Protobuf is not practical or for easier debugging and interoperability. Not all backends support JSON yet, but it is part of the official specification.
 
-Commerce sends all data in the OpenTelemetry format.
+### Default ports
 
-### Configure from the Admin
+- **OTLP/gRPC** - Uses port `4317` by default.
+- **OTLP/HTTP** - Both Protobuf and JSON use port `4318` by default.
 
-To configure observability in the Admin UI, navigate to **System** > Observability > **Subscription List**. Here you can create, update, and delete subscriptions.
+## Usage patterns
 
-![Observability Admin UI](../_images/observability/list-of-subscriptions-admin-ui.png)
+OpenTelemetry supports exporting telemetry data either directly from your application or through a Collector service, each suited to different deployment needs.
 
-To create a new subscription, click the **Add New Subscription** button. Enter the required information and click **Save Subscription**. The new subscription is added to the list.
+### Application-level export
 
-![Observability New Subscription Admin UI](../_images/observability/create-subscription-admin-ui.png)
+The simplest pattern is to export your telemetry signals directly to an observability backend. This is usually done through a language-specific OpenTelemetry SDK. It is the easiest to setup and requires no intermediate infrastructure, which makes it suitable for development/test environments, but not for production use cases.
 
-## Connect with an Observability platform
+![OpenTelemetry Direct Export](../_images/observability/no-collector.png)
 
-You can connect Adobe Commerce observability data with various observability platforms that support the OpenTelemetry protocol, such as New Relic, Datadog, Splunk, or a custom collector. To do this, you must configure the endpoint URL and any required headers in the observability subscription.
+### Collector-based export
 
-- [New Relic OTLP](https://docs.newrelic.com/docs/opentelemetry/best-practices/opentelemetry-otlp/)
-- [Datadog OTLP](https://docs.datadoghq.com/opentelemetry/setup/otlp_ingest/)
-- [Splunk OTLP](https://help.splunk.com/en/splunk-observability-cloud/manage-data/splunk-distribution-of-the-opentelemetry-collector/get-started-with-the-splunk-distribution-of-the-opentelemetry-collector/collector-components/exporters/splunk-hec-exporter)
+The OpenTelemetry Collector is a standalone service designed to receive, process, and export telemetry data from multiple sources. It acts as an intermediary between instrumented applications and observability backends, providing a flexible and scalable way to manage telemetry pipelines.
+
+When using a Collector, your application sends telemetry data to the Collector endpoint instead of directly to the backend. The Collector receives this data (through its receivers), applies optional processing (such as batching, filtering, or transformation), and then exports it to one or more destinations using its configured exporters. This architecture decouples your application from backend-specific exporters and allows you to centralize telemetry management, transformation, and routing.
+
+[Collectors](https://opentelemetry.io/docs/collector/) are commonly deployed in two patterns:
+
+- **[Agent](ttps://opentelemetry.io/docs/collector/deployment/agent/):** Runs as a sidecar or daemon on the same host as your application, collecting telemetry locally before forwarding it to a central Collector or backend.
+
+- **[Gateway](https://opentelemetry.io/docs/collector/deployment/gateway/):** Runs as a remote service, aggregating telemetry from multiple sources before exporting to observability platforms.
+
+This approach is recommended for production environments, as it enables advanced features like multi-destination export, data enrichment, and dynamic configuration without modifying application code.
+
+<InlineAlert variant="info" slots="text" />
+
+When exporting [telemetry directly from the application](#application-level-export), the pipeline model described above does not fully apply. There are no receivers involved. The SDK sends data directly to the backend using an exporter (with optional, in-code processing).
+
+![OpenTelemetry Collector Architecture](../_images/observability/with-collector.png)
+
+#### Architecture: Receivers, processors, exporters
+
+The OpenTelemetry Collector follows a pipeline model consisting of three key components: **receivers**, **processors**, and **exporters**.
+
+1. Telemetry data is first collected by receivers, which ingest data from instrumented applications or external sources.
+1. The data then passes through processors, which can modify, batch, or filter the telemetry data before it is sent to exporters.
+1. Exporters are responsible for delivering the processed data to external observability platforms or storage systems.
+
+![OpenTelemetry Pipeline Architecture](../_images/observability/otel-architecture.png)
+
+## Supported services and backends
+
+OpenTelemetry is becoming the standard for observability across the industry, because it is supported by many cloud providers, monitoring platforms, and open source tools. This means you can export telemetry data to systems like: AWS X-Ray, Google Cloud Operations, Azure Monitor, Datadog, New Relic, Jaeger, Zipkin, Prometheus, and others.
+
+## What does _instrumentation_ mean?
+
+For a system to be [observable](https://opentelemetry.io/docs/concepts/observability-primer/#what-is-observability), it must be instrumented: that is, code from the system's components must emit [signals](https://opentelemetry.io/docs/concepts/signals/traces/), such as [traces](https://opentelemetry.io/docs/concepts/signals/), [metrics](https://opentelemetry.io/docs/concepts/signals/metrics/), and [logs](https://opentelemetry.io/docs/concepts/signals/logs/). Using OpenTelemetry, you can instrument your code automatically or manually.
+
+### Automatic instrumentation
+
+Automatic instrumentation in OpenTelemetry comes in two main forms:
+
+**[Zero-code instrumentation](https://opentelemetry.io/docs/concepts/instrumentation/zero-code/)** enables you to collect telemetry from your application without changing its source code. This is typically achieved by using agents, environment variables, or runtime hooks that automatically instrument supported libraries and frameworks. Zero-code is ideal for quickly adding observability, especially when you cannot or do not want to modify application code. It provides visibility into what is happening at the edges of your application and is a fast way to get started.
+
+**[Native instrumentation](https://opentelemetry.io/docs/concepts/instrumentation/libraries/)** refers to libraries and platforms that have OpenTelemetry support built in. When you use these libraries, they emit telemetry data automatically, providing deep and reliable observability. OpenTelemetry recommends native instrumentation as the most robust approach, since it is directly maintained by library authors and ensures consistent, high-quality telemetry.
+
+### Manual instrumentation
+
+Manual, code-based instrumentation involves explicitly adding OpenTelemetry API calls to your application code. This approach gives you full control to create custom spans, metrics, and logs that reflect your business logic and critical operations. Manual instrumentation is essential for capturing deep, application-specific insights that automatic or zero-code instrumentation cannot provide.
+
+You can use manual instrumentation alongside automatic and native approaches for the most complete observability. It is especially valuable for tracking custom workflows, business transactions, or any logic not covered by existing libraries or frameworks.
+
+For details and examples, see the [OpenTelemetry code-based instrumentation guide](https://opentelemetry.io/docs/concepts/instrumentation/code-based/).

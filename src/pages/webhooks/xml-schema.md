@@ -121,8 +121,8 @@ A `rules` element is optional and can contain one or more `rule` elements. Each 
 
 The `developerConsoleOauth` element is optional. If provided must contain the following elements to generate OAuth authorization headers for the request:
 
-| Element      | Type   | Description                     | Is required | Default |
-|--------------|--------|---------------------------------|-------------|---------|
-| `clientId`     | String | The OAuth client ID.             | true        | Not applicable     |
-| `clientSecret` | String | The OAuth client secret.         | true        | Not applicable     |
-| `orgId`        | String | The OAuth organization ID. | true        | Not applicable     |
+| Element       | Type   | Description                     | Is required | Default |
+|---------------|--------|---------------------------------|-------------|---------|
+| `clientId`    | String | The OAuth client ID.            | true        | Not applicable     |
+| `clientSecret`| String | The OAuth client secret.        | true        | Not applicable     |
+| `orgId`       | String | The OAuth organization ID.      | true        | Not applicable     |

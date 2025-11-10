@@ -31,24 +31,24 @@ Retrieve the client secret, client ID, and organization ID from the Adobe Develo
 
 <Edition name="paas" />
 
-1. Add `developerConsoleOauth` to your hook configuration in webhooks.xml file
+Add `developerConsoleOauth` to your hook configuration in the `webhooks.xml` file.
 
 ```xml
 <method name="plugin.magento.out_of_process_shipping_methods.api.shipping_rate_repository.get_rates" type="after">
-    <hooks>
-        <batch name="one">
-            <hook name="add_shipping_rates" url="{env:APP_BUILDER_URL}/add-shipping-rates-dps" method="POST" timeout="5000" softTimeout="1" priority="300" required="true">
-                <developerConsoleOauth>
-                    <clientId>52625ea6402148d0be11989c7024de84</clientId>
-                    <clientSecret>p8e-12345-678910</clientSecret>
-                    <orgId>12345@AdobeOrg</orgId>
-                </developerConsoleOauth>
-                <fields>
-                    <field name="rateRequest" />
-                </fields>
-            </hook>
-        </batch>    
-    </hooks>
+  <hooks>
+    <batch name="one">
+      <hook name="add_shipping_rates" url="{env:APP_BUILDER_URL}/add-shipping-rates-dps" method="POST" timeout="5000" softTimeout="1" priority="300" required="true">
+        <developerConsoleOauth>
+          <clientId>52625ea6402148d0be11989c7024de84</clientId>
+          <clientSecret>p8e-12345-678910</clientSecret>
+          <orgId>12345@AdobeOrg</orgId>
+        </developerConsoleOauth>
+        <fields>
+          <field name="rateRequest" />
+        </fields>
+      </hook>
+    </batch>    
+  </hooks>
 </method>
 ```
 
@@ -56,9 +56,9 @@ Instead of hardcoding the OAuth credentials in the `webhooks.xml` file, you can 
 
 ```xml
 <developerConsoleOauth>
-    <clientId>{env:CLIENT_ID}</clientId>
-    <clientSecret>{env:CLIENT_SECRET}</clientSecret>
-    <orgId>{env:ORG_ID}</orgId>
+  <clientId>{env:CLIENT_ID}</clientId>
+  <clientSecret>{env:CLIENT_SECRET}</clientSecret>
+  <orgId>{env:ORG_ID}</orgId>
 </developerConsoleOauth>
 ```
 
@@ -73,8 +73,6 @@ Instead of hardcoding the OAuth credentials in the `webhooks.xml` file, you can 
    ![oAuth Section in Webhooks Subscription](../../_images/webhooks/tutorial/developer-console-oauth-commerce.png)
 
 #### Configure OAuth through API
-
-<Edition name="paas, saas" />
 
 You can provide OAuth credentials when subscribing to a webhook through the API. For more information, see the `developerConsoleOauth` field in the [Subscribe to a webhook](../api.md#subscribe-a-webhook) endpoint.
 
@@ -93,11 +91,11 @@ You can provide OAuth credentials when subscribing to a webhook through the API.
 
 ### Step 3: Enable Adobe Authentication in App Builder
 
-1. In your App Builder project code, open the `app.config.yaml` file and set `require-adobe-auth` to `true`. Then, rebuild and deploy the project using the following command:
+In your App Builder project code, open the `app.config.yaml` file and set `require-adobe-auth` to `true`. Then, rebuild and deploy the project using the following command:
 
-  ```bash
-  aio app deploy
-  ```
+```bash
+aio app deploy
+```
 
 ### Step 4: Test the secure webhook call
 

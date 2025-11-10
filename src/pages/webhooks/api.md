@@ -83,7 +83,7 @@ The following restrictions apply to the webhook request:
 - Any `headers` must have a `name` and `value`.
   - `name` and `value` cannot be null.
 - `timeout`, `ttl`, and `soft_timeout` must be non-negative integers.
-- `developer_console_oauth` section is optional. If provided, the [authorization headers](./tutorial/best-practices.md#secure-webhook-communication-using-oauth-credentials) will be automatically added to the webhook request based on your credentials.
+- The `developer_console_oauth` section is optional. If provided, the [authorization headers](./tutorial/best-practices.md#secure-webhook-communication-using-oauth-credentials) will be automatically added to the webhook request based on your credentials.
 
 The request body must include the following attributes:
 
@@ -146,7 +146,7 @@ The request body must include the following attributes:
 
 <InlineAlert variant="warning" slots="text" />
 
-The module `Magento_AdobeCommerceWebhooksSubscriber` must be enabled to use this endpoint. In PaaS the webhooks configuration will be stored in the `webhooks` section of the `app/etc/env.php` file. If you are subscribing to a `plugin-type` webhooks the redeployment would be required to generate the necessary plugin classes.
+The module `Magento_AdobeCommerceWebhooksSubscriber` must be enabled to use this endpoint. In PaaS, the webhooks configuration will be stored in the `webhooks` section of the `app/etc/env.php` file. If you are subscribing to a `plugin-type` webhooks the redeployment would be required to generate the necessary plugin classes.
 
 ## Unsubscribe a webhook
 

@@ -7,6 +7,7 @@ keywords:
 ---
 
 import Configuration from '/src/_includes/checkout-configuration.md'
+import OAuthMigrationNotice from '/src/_includes/oauth-migration-notice.md'
 
 # Configure Commerce
 
@@ -28,15 +29,17 @@ Select one of the following modules to learn about the available scripts:
 
 The OAuth credentials are available after completing the [initial configuration](./getting-started.md#initial-configuration).
 
+<OAuthMigrationNotice />
+
 The [`sync-oauth-credentials`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/sync-oauth-credentials.js) script ensures that the OAuth credentials are available for interacting with AIO, such as creating an event provider. This script synchronizes the OAuth credentials from Adobe Developer Console with your local App Builder project configuration, located in `.env`:
 
  ```js
- OAUTH_CLIENT_ID=<client id>
- OAUTH_CLIENT_SECRETS=<client secret>
- OAUTH_TECHNICAL_ACCOUNT_ID=<technical account id>
- OAUTH_TECHNICAL_ACCOUNT_EMAIL=<technical account email>
- OAUTH_SCOPES=<scope>
- OAUTH_IMS_ORG_ID=<img org>
+ AIO_COMMERCE_AUTH_IMS_CLIENT_ID=<client id>
+ AIO_COMMERCE_AUTH_IMS_CLIENT_SECRETS=<client secrets>
+ AIO_COMMERCE_AUTH_IMS_TECHNICAL_ACCOUNT_ID=<technical account id>
+ AIO_COMMERCE_AUTH_IMS_TECHNICAL_ACCOUNT_EMAIL=<technical account email>
+ AIO_COMMERCE_AUTH_IMS_SCOPES=<scope>
+ AIO_COMMERCE_AUTH_IMS_ORG_ID=<IMS org>
 ```
 
 This script is included as part of the `pre-app-build` hook in [app.config.yaml](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/app.config.yaml). When the app build is triggered, the script runs automatically to synchronize the OAuth credentials with the Commerce instance.

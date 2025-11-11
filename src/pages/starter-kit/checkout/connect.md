@@ -6,22 +6,24 @@ keywords:
   - Extensibility
 ---
 
+import OAuthMigrationNotice from '/src/_includes/oauth-migration-notice.md'
+
 # Connect to Adobe Commerce
 
 This guide explains how to integrate the checkout starter kit with Adobe Commerce.
 
 The [`adobe-commerce.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/lib/adobe-commerce.js) file provides a set of methods to interact with the Adobe Commerce instance. The client uses the Adobe Commerce HTTP Client, which is a wrapper around the Adobe Commerce REST API.
 
-To use the Adobe Commerce HTTP Client, update the `COMMERCE_BASE_URL` value in the `.env` file, and complete the authentication setup.
+To use the Adobe Commerce HTTP Client, update the `AIO_COMMERCE_API_BASE_URL` value in the `.env` file, and complete the authentication setup.
 
 - &#8203;<Edition name="paas" />For PaaS (On-Premise/Cloud):
 
-  - `COMMERCE_BASE_URL` includes your base site URL + `/rest/<store_view_code>/`
+  - `AIO_COMMERCE_API_BASE_URL` includes your base site URL + `/rest/<store_view_code>/`
   - Example: `https://<commerce_instance_url>/rest/<store_view_code>/`
 
 - &#8203;<Edition name="saas" />For SaaS (Adobe Commerce as a Cloud Service):
 
-  - `COMMERCE_BASE_URL` must be the REST API endpoint provided by Adobe Commerce
+  - `AIO_COMMERCE_API_BASE_URL` must be the REST API endpoint provided by Adobe Commerce
   - Example: `https://na1.api.commerce.adobe.com/<tenant_id>/`
 
 ## Authentication
@@ -50,13 +52,15 @@ Use the following steps to create OAuth credentials for App Builder authenticati
 
    **NOTE**: These credentials are automatically populated in [Configure OAuth Server-to-Server Credential](./configure.md#configure-oauth-server-to-server-credential).
 
+   <OAuthMigrationNotice />
+
    ```js
-   OAUTH_CLIENT_ID=<client id>
-   OAUTH_CLIENT_SECRETS=<client secrets>
-   OAUTH_TECHNICAL_ACCOUNT_ID=<technical account id>
-   OAUTH_TECHNICAL_ACCOUNT_EMAIL=<technical account email>
-   OAUTH_SCOPES=<scopes>
-   OAUTH_IMS_ORG_ID=<img org>
+   AIO_COMMERCE_AUTH_IMS_CLIENT_ID=<client id>
+   AIO_COMMERCE_AUTH_IMS_CLIENT_SECRETS=<client secrets>
+   AIO_COMMERCE_AUTH_IMS_TECHNICAL_ACCOUNT_ID=<technical account id>
+   AIO_COMMERCE_AUTH_IMS_TECHNICAL_ACCOUNT_EMAIL=<technical account email>
+   AIO_COMMERCE_AUTH_IMS_SCOPES=<scopes>
+   AIO_COMMERCE_AUTH_IMS_ORG_ID=<IMS org>
    ```
 
 1. Provide the technical account with access to the Commerce instance:
@@ -84,10 +88,10 @@ Use the following steps to create OAuth credentials for App Builder authenticati
 1. Copy the integration details (consumer key, consumer secret, access token, and access token secret) to the `.env` file in the root of the project.
 
    ```js
-   COMMERCE_CONSUMER_KEY=<key>
-   COMMERCE_CONSUMER_SECRET=<secret>
-   COMMERCE_ACCESS_TOKEN=<access token>
-   COMMERCE_ACCESS_TOKEN_SECRET=<access token secret>
+   AIO_COMMERCE_AUTH_INTEGRATION_CONSUMER_KEY=<key>
+   AIO_COMMERCE_AUTH_INTEGRATION_CONSUMER_SECRET=<secret>
+   AIO_COMMERCE_AUTH_INTEGRATION_ACCESS_TOKEN=<access token>
+   AIO_COMMERCE_AUTH_INTEGRATION_ACCESS_TOKEN_SECRET=<access token secret>
    ```
 
 ## Debugging requests

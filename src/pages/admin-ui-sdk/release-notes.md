@@ -18,7 +18,7 @@ November 11, 2025
 
 * Fixed handling of invalid extension ID characters for menu extensions to avoid error screens in Adobe Commerce as a Cloud Service. <!-- CEXT-5299 -->
 
-* Fixed the "Refresh Registrations" button by adding registration cache invalidation before reloading. <!-- CEXT-5414 -->
+* Fixed the **Refresh Registrations** button by adding registration cache invalidation before reloading. <!-- CEXT-5414 -->
 
 ## Version 3.2.3
 

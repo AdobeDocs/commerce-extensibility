@@ -58,7 +58,13 @@ Follow these steps to migrate your existing project:
 
    - Update `COMMERCE_BASE_URL` to `AIO_COMMERCE_API_BASE_URL` in your `.env` file.
 
-   - Depending on your authentication method, you must either update the [IMS authorization](./connect.md#adobe-identity-management-service-ims) environment variables or the [Commerce integration](./connect.md#create-a-commerce-integration) environment variables:
+   - Depending on your authentication method, you must update one of the following:
+      - Checkout starter kit:
+         - [IMS environment variables](./checkout/connect.md#adobe-identity-management-service-ims)
+         - [Commerce integration environment variables](./checkout/connect.md#create-a-commerce-integration)
+      - Integration starter kit:
+         - [IMS environment variables](./integration/create-integration.md#create-an-integration-in-adobe-commerce-as-a-cloud-service)
+         - [Commerce integration environment variables](./integration/create-integration.md#create-an-integration-in-adobe-commerce-paas-only)
 
       - IMS environment variables:
 

@@ -18,6 +18,10 @@ module.exports = [
           title: "Checkout starter kit",
           path: "/starter-kit/checkout/"
         },
+        {
+          title: "Credential migration",
+          path: "/starter-kit/migration/",
+        },
       ],
     },
     {

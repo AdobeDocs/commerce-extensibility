@@ -6,7 +6,7 @@ keywords:
   - Extensibility
 ---
 
-import OAuthMigrationNotice from '/src/_includes/migration-notice.md'
+import MigrationNotice from '/src/_includes/migration-notice.md'
 
 # Adobe Commerce checkout starter kit
 
@@ -14,7 +14,7 @@ The checkout starter kit helps you get started building custom checkout experien
 
 Refer to the [Getting Started](./getting-started.md) page to learn how to set up the starter kit.
 
-<OAuthMigrationNotice />
+<MigrationNotice />
 
 ## Resources
 

@@ -1,6 +1,6 @@
 ---
 title: Credential migration guide
-description: Learn about credential updates and how to migrate your Adobe Commerce checkout starter kit application.
+description: Learn about credential updates and how to migrate your Adobe Commerce starter kit applications.
 keywords:
   - App Builder
   - Extensibility
@@ -8,7 +8,7 @@ keywords:
 
 # Credential migration
 
-The checkout starter kit has integrated the `@adobe/aio-commerce-lib-config` library to provide unified business configuration management. As part of this integration, several credential environment variables have been renamed to follow a standardized naming convention.
+The [integration starter kit](./integration/index.md) and [checkout starter kit](./checkout/index.md) have integrated the `@adobe/aio-commerce-lib-config` library to provide unified business configuration management. As part of this integration, several credential environment variables have been renamed to follow a standardized naming convention.
 
 - The Commerce base URL environment variable was changed from `COMMERCE_BASE_URL` to `AIO_COMMERCE_API_BASE_URL`.
 - The IMS authorization credentials prefix was changed from `OAUTH_*` to `AIO_COMMERCE_AUTH_IMS_*`.

@@ -6,7 +6,7 @@ keywords:
   - Extensibility
 ---
 
-import OAuthMigrationNotice from '/src/_includes/migration-notice.md'
+import MigrationNotice from '/src/_includes/migration-notice.md'
 
 # Connect to Adobe Commerce
 
@@ -52,7 +52,7 @@ Use the following steps to create OAuth credentials for App Builder authenticati
 
    **NOTE**: These credentials are automatically populated in [Configure OAuth Server-to-Server Credential](./configure.md#configure-oauth-server-to-server-credential).
 
-   <OAuthMigrationNotice />
+   <MigrationNotice />
 
    ```js
    AIO_COMMERCE_AUTH_IMS_CLIENT_ID=<client id>

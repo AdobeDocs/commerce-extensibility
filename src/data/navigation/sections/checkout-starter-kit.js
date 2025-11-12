@@ -35,10 +35,6 @@ module.exports = [
         title: "CI/CD",
         path: "/starter-kit/checkout/cicd/",
       },
-      {
-        title: "OAuth credential migration",
-        path: "/starter-kit/checkout/migration/",
-      },
     ],
   },
   {

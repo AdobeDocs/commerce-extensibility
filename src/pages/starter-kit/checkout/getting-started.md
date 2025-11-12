@@ -7,13 +7,13 @@ keywords:
 ---
 
 import Version from '/src/_includes/checkout-version.md'
-import OAuthMigrationNotice from '/src/_includes/migration-notice.md'
+import MigrationNotice from '/src/_includes/migration-notice.md'
 
 # Getting started
 
 To begin using the checkout starter kit, ensure that your Adobe Commerce installation meets the following prerequisites and then proceed with the installation and configuration.
 
-<OAuthMigrationNotice />
+<MigrationNotice />
 
 ## Prerequisites
 

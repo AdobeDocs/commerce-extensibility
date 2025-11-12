@@ -6,7 +6,7 @@ keywords:
   - Extensibility
 ---
 
-import OAuthMigrationNotice from '/src/_includes/oauth-migration-notice.md'
+import OAuthMigrationNotice from '/src/_includes/migration-notice.md'
 
 # Connect to Adobe Commerce
 

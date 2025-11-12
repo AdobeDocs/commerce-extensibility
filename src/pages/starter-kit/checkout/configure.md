@@ -7,7 +7,7 @@ keywords:
 ---
 
 import Configuration from '/src/_includes/checkout-configuration.md'
-import OAuthMigrationNotice from '/src/_includes/oauth-migration-notice.md'
+import OAuthMigrationNotice from '/src/_includes/migration-notice.md'
 
 # Configure Commerce
 

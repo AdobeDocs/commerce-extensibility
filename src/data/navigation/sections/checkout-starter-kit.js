@@ -37,7 +37,7 @@ module.exports = [
       },
       {
         title: "OAuth credential migration",
-        path: "/starter-kit/checkout/oauth-migration/",
+        path: "/starter-kit/checkout/migration/",
       },
     ],
   },

@@ -7,7 +7,7 @@ keywords:
 ---
 
 import Version from '/src/_includes/checkout-version.md'
-import OAuthMigrationNotice from '/src/_includes/oauth-migration-notice.md'
+import OAuthMigrationNotice from '/src/_includes/migration-notice.md'
 
 # Getting started
 

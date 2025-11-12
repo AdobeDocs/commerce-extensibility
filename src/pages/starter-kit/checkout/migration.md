@@ -1,12 +1,12 @@
 ---
-title: OAuth credential migration guide
-description: Learn about OAuth credential updates and how to migrate your Adobe Commerce checkout starter kit application.
+title: Credential migration guide
+description: Learn about credential updates and how to migrate your Adobe Commerce checkout starter kit application.
 keywords:
   - App Builder
   - Extensibility
 ---
 
-# OAuth credential migration
+# Credential migration
 
 The checkout starter kit has integrated the `@adobe/aio-commerce-lib-config` library to provide unified business configuration management. As part of this integration, several credential environment variables have been renamed to follow a standardized naming convention.
 

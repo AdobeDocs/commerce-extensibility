@@ -54,7 +54,7 @@ Follow these steps to migrate your existing project:
    cp .env .env.backup
    ```
 
-1. Open your `.env` file and update the following variables: 
+1. Open your `.env` file and update the following variables:
 
    - Update `COMMERCE_BASE_URL` to `AIO_COMMERCE_API_BASE_URL` in your `.env` file.
 
@@ -70,7 +70,7 @@ Follow these steps to migrate your existing project:
          AIO_COMMERCE_AUTH_IMS_SCOPES=["scope1","scope2","scope3"]
          AIO_COMMERCE_AUTH_IMS_ORG_ID=your_ims_org_id
          ```
-      
+
       - Commerce integration environment variables:
 
          ```bash

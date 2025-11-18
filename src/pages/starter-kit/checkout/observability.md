@@ -45,46 +45,81 @@ The telemetry behavior and settings are configured in the [`actions/telemetry.js
 
 #### Viewing Telemetry Data
 
-By default, diagnostics logging is disabled in the starter kit (`diagnostics: false` in [`actions/telemetry.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/telemetry.js)). This means telemetry data is collected but not automatically forwarded to an external collector.
+By default, diagnostics logging is disabled in the starter kit (`diagnostics: false` in [[`actions/telemetry.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/telemetry.js)]). This setting only suppresses internal OpenTelemetry diagnostic output (SDK self‑logs). It does not control or forward your actual telemetry signals (logs, traces, metrics). Signals remain local until you configure exporters.
 
-If you want to view and analyze telemetry data, you'll need to configure a telemetry exporter and collector.
+**Diagnostics configuration (optional):** Provide an object instead of `false` to enable and tune internal OpenTelemetry logs. Example:
+
+```javascript
+{
+  // It's an object, this will enable OpenTelemetry internal logs
+  diagnostics: {
+    // Will only show warning logs and above
+    logLevel: "warning",
+    // The internal logs of OpenTelemetry will not get exported, only printed.
+    // This means you won't see them in your observability backend, but you will
+    // in the Adobe I/O Runtime logs (queryable via `aio rt activation logs <id>`)
+    exportLogs: false
+  }
+}
+```
+
+Set back to `false` to silence these internal logs:
+
+```javascript
+diagnostics: false
+```
 
 ##### Exporting telemetry data (cloud or local)
 
 To forward telemetry (logs, traces, metrics) to any OTLP‑compatible service (collector, Grafana, DataDog, New Relic, etc.), you only need to adjust two places:
 
-1. `actions/telemetry.js` – add exporter wiring
+1. [`actions/telemetry.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/telemetry.js) – add exporter wiring
 2. [`app.config.yaml`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/app.config.yaml) – surface endpoint / auth values as action inputs (or use secrets)
 
-Template (`actions/telemetry.js`):
+Template ([`actions/telemetry.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/telemetry.js)):
 
 ```javascript
 // actions/telemetry.js (template)
-const {
+
+import {
   defineTelemetryConfig,
   getAioRuntimeResource,
   getPresetInstrumentations,
   // localCollectorConfig, // optional helper if you want a local collector
-  // other helpers from @adobe/aio-lib-telemetry as needed
-} = require('@adobe/aio-lib-telemetry');
+  // other helpers from '@adobe/aio-lib-telemetry' as needed
+} from '@adobe/aio-lib-telemetry';
 
-module.exports.telemetryConfig = defineTelemetryConfig((params, isDev) => ({
+// Exporter wiring helper (keep minimal – replace stubs with real exporters per use case docs)
+function buildExporters(params) {
+  return {
+    // Logs: add your log record processor + exporter instance here
+    // logRecordProcessors: params.OTLP_ENDPOINT ? [ buildYourLogExporter(params) ] : [],
+
+    // Traces: uncomment and provide span processor/exporter if you enable tracing
+    // spanProcessors: params.OTLP_TRACES_ENDPOINT ? [ buildYourTraceExporter(params) ] : [],
+
+    // Metrics: provide metrics exporters if metrics collection is enabled
+    // metricsExporters: [],
+  };
+}
+
+const telemetryConfig = defineTelemetryConfig((params, isDev) => ({
   sdkConfig: {
     serviceName: 'commerce-checkout-starter-kit',
     instrumentations: getPresetInstrumentations('simple'),
     resource: getAioRuntimeResource(),
-    // Exporter configuration placeholder:
-    // Insert log / trace / metric exporter objects here following service/provider examples.
-    // Example placeholder (replace with actual service configuration):
-    // logRecordProcessors: params.OTLP_ENDPOINT ? [ buildYourLogExporter(params) ] : []
-    // spanProcessors: params.OTLP_TRACES_ENDPOINT ? [ buildYourTraceExporter(params) ] : []
-    // metricsExporters: [] // if metrics are enabled
 
-    // For a local collector you could uncomment:
+    // Optional: uncomment for local collector convenience
     // ...localCollectorConfig(),
-  },
-  diagnostics: false // set true only when debugging telemetry setup
+
+    // Insert log / trace / metric exporter objects via helper
+    ...buildExporters(params),
+  }, 
+  // set true only when debugging telemetry setup
+  diagnostics: false,
 }));
+
+export { telemetryConfig };
 ```
 
 Surface endpoint / auth inputs ([`app.config.yaml`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/app.config.yaml) excerpt):
@@ -94,9 +129,8 @@ actions:
   collect-taxes:
     inputs:
       ENABLE_TELEMETRY: true
-      OTLP_ENDPOINT: ${OTLP_ENDPOINT}        # e.g. https://otel.example.com/v1/logs
-      OTLP_TRACES_ENDPOINT: ${OTLP_TRACES_ENDPOINT} # optional distinct traces URL
-      OTLP_API_KEY: ${OTLP_API_KEY}          # token/key if service requires
+      OTLP_ENDPOINT: $OTLP_ENDPOINT        # e.g. https://otel.example.com/v1/logs
+      OTLP_API_KEY: $OTLP_API_KEY          # token/key if service requires
   # repeat for other actions or centralize pattern
 ```
 
@@ -104,14 +138,7 @@ Local development `.env` example:
 
 ```bash
 OTLP_ENDPOINT=http://localhost:4318
-OTLP_TRACES_ENDPOINT=http://localhost:4318
 OTLP_API_KEY=LOCAL_DEV_KEY_OR_EMPTY
-```
-
-Deploy after changes:
-
-```bash
-aio app deploy
 ```
 
 For concrete exporter code (constructing OTLP exporters, using batch processors, service specific headers, etc.), refer to:
@@ -122,7 +149,8 @@ For concrete exporter code (constructing OTLP exporters, using batch processors,
 ### Additional References
 
 - OpenTelemetry Collector documentation: https://opentelemetry.io/docs/collector/
-- `@adobe/aio-lib-telemetry` API reference: https://github.com/adobe/aio-lib-telemetry/blob/main/docs/usage.md
+- Usage guide: https://github.com/adobe/aio-lib-telemetry/blob/main/docs/usage.md
+- [`@adobe/aio-lib-telemetry`](https://github.com/adobe/aio-lib-telemetry) API reference: https://github.com/adobe/aio-lib-telemetry/tree/main/docs/api-reference
 - OpenTelemetry core concepts: https://opentelemetry.io/docs/concepts/
 
 ## Troubleshooting
@@ -135,8 +163,14 @@ If you enable diagnostics logging and encounter connection errors like:
 error: {"stack":"AggregateError [ECONNREFUSED]: ...","errors":"Error: connect ECONNREFUSED ::1:4318,Error: connect ECONNREFUSED 127.0.0.1:4318","code":"ECONNREFUSED","name":"AggregateError"}
 ```
 
-These errors occur when any of the configured endpoints (such as Grafana, DataDog, New Relic, or an OpenTelemetry collector) cannot be reached during the export of telemetry data. For configuration examples, see the [use cases documentation](https://github.com/adobe/aio-lib-telemetry/tree/main/docs/use-cases). To resolve this:
+These errors occur when any of the configured endpoints (such as Grafana, DataDog, New Relic, or an OpenTelemetry collector) cannot be reached during the export of telemetry data. For configuration examples, see the [use cases documentation](https://github.com/adobe/aio-lib-telemetry/tree/main/docs/use-cases).
 
-- **Option 1**: Set `diagnostics: false` in [`actions/telemetry.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/telemetry.js) to disable diagnostic logging
-- **Option 2**: Set up and run your OTLP-compatible service at the expected endpoint
-- **Option 3**: Disable telemetry entirely by setting `ENABLE_TELEMETRY: false` in [`app.config.yaml`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/app.config.yaml) for specific action.
+> Warning: Completely disabling telemetry (`ENABLE_TELEMETRY: false`) removes instrumentation setup. If your custom code directly invokes telemetry APIs or relies on context propagation, this may cause runtime errors or lost diagnostics until a planned no‑op implementation/shim is provided. Prefer keeping telemetry enabled with minimal/no exporters instead of disabling, unless you have verified no such dependencies.
+
+To resolve this:
+
+- **Option 1**: Set `diagnostics: false` in [`actions/telemetry.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/telemetry.js) to silence internal SDK diagnostics while keeping signal collection.
+- **Option 2**: Verify exporter configuration (endpoints, auth headers, ports) and ensure the destination is reachable; retry after confirming network/firewall and credentials.
+- **Option 3**: Temporarily remove exporter wiring (leave telemetry enabled but with empty processors) to stop external forwarding without impacting instrumentation.
+- **Option 4**: As a last resort, disable telemetry (`ENABLE_TELEMETRY: false`) in [`app.config.yaml`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/app.config.yaml) for a specific action—only after confirming your code does not require telemetry initialization.
+- **Option 5**: Implement (or await) a no‑op shim that safely replaces exporter initialization to avoid code changes when disabling forwarding.

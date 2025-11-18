@@ -157,7 +157,7 @@ If you enable diagnostics logging and encounter connection errors like:
 error: {"stack":"AggregateError [ECONNREFUSED]: ...","errors":"Error: connect ECONNREFUSED ::1:4318,Error: connect ECONNREFUSED 127.0.0.1:4318","code":"ECONNREFUSED","name":"AggregateError"}
 ```
 
-These errors occur when the telemetry export cannot reach the configured OTLP-compatible endpoint (such as Grafana, DataDog, New Relic, or an OpenTelemetry collector). For configuration examples, see the [use cases documentation](https://github.com/adobe/aio-lib-telemetry/tree/main/docs/use-cases). To resolve this:
+These errors occur when any of the configured endpoints (such as Grafana, DataDog, New Relic, or an OpenTelemetry collector) cannot be reached during the export of telemetry data. For configuration examples, see the [use cases documentation](https://github.com/adobe/aio-lib-telemetry/tree/main/docs/use-cases). To resolve this:
 
 - **Option 1**: Set `diagnostics: false` in [`actions/telemetry.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/telemetry.js) to disable diagnostic logging
 - **Option 2**: Set up and run your OTLP-compatible service at the expected endpoint

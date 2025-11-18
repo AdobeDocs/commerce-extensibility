@@ -24,6 +24,10 @@ module.exports = [
         path: "/starter-kit/checkout/development/",
       },
       {
+        title: "Observability",
+        path: "/starter-kit/checkout/observability/",
+      },
+      {
         title: "Connect to Adobe Commerce",
         path: "/starter-kit/checkout/connect/",
       },

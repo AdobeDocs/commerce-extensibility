@@ -102,8 +102,8 @@ If you enable diagnostics logging and encounter connection errors like:
 error: {"stack":"AggregateError [ECONNREFUSED]: ...","errors":"Error: connect ECONNREFUSED ::1:4318,Error: connect ECONNREFUSED 127.0.0.1:4318","code":"ECONNREFUSED","name":"AggregateError"}
 ```
 
-This means the diagnostics feature is attempting to forward logs to a collector (typically at `localhost:4318`), but no collector is configured or running. To resolve this:
+These errors occur when diagnostics tries to forward logs to an OTLP-compatible service (such as Grafana, DataDog, New Relic, or an OpenTelemetry collector), but cannot reach the configured endpoint. For configuration examples, see the [use-cases documentation](https://github.com/adobe/aio-lib-telemetry/tree/main/docs/use-cases). To resolve this:
 
 - **Option 1**: Set `diagnostics: false` in `actions/telemetry.js` to disable diagnostic logging
-- **Option 2**: Set up and run a local OpenTelemetry collector at the expected endpoint
+- **Option 2**: Set up and run your OTLP-compatible service at the expected endpoint
 - **Option 3**: Disable telemetry entirely by setting `ENABLE_TELEMETRY: false` in `app.config.yaml` for specific action.

@@ -13,11 +13,12 @@ keywords:
 
 Observability is a critical aspect of modern application development and operations, enabling merchants to monitor, analyze, and optimize the performance and reliability of Adobe Commerce and all installed App Builder apps. Observability encompasses the collection, processing, and visualization of telemetry data, including:
 
-* **Metrics**: Track real-time and historical performance data (e.g., API response times, throughput, SLOs).
+**Metrics**: Metrics provide insight to system health. They track quantitative data that measure real-time and historical performance data of applications and infrastructure, allowing for trend analysis and forecasting. Examples include API response times, request and error rates, and resource utilization.
 
-* **Logging**: Centralized collection of logs from application, infrastructure, CDN, and integrations.
+**Logging**: The centralized collection of logs from application, infrastructure, CDN, and integrations.
 
-* **Tracing**: Distributed traceability of requests across services to pinpoint bottlenecks or failures.
+**Tracing**: Traces can track the flow of a request from the frontend to Commerce and the apps installed on the system. They help pinpoint bottlenecks and failures.
+Traces help in understanding the path and performance of requests, identifying bottlenecks, and diagnosing latency issues. For example, a trace might show how a user request travels through different microservices.
 
 By implementing robust observability practices, developers and operators can gain deep insights into application behavior, quickly identify and resolve issues, and ensure optimal user experiences.
 
@@ -25,9 +26,9 @@ In traditional in-process implementations of Adobe Commerce, merchants automatic
 
 However, Adobe Commerce as a Cloud Service introduces additional complexity through its composable architecture and out-of-process extensibility model:
 
-1. **Distributed architecture**: With App Builder applications running as separate microservices, telemetry data is now scattered across multiple systems and endpoints rather than centralized within Commerce.
+* **Distributed architecture**: With App Builder applications running as separate microservices, telemetry data is now scattered across multiple systems and endpoints rather than centralized within Commerce.
 
-1. **Multiple data sources**: Merchants must collect and correlate observability data from:
+* **Multiple data sources**: Merchants must collect and correlate observability data from:
 
    * The core Commerce application
    * Multiple App Builder applications
@@ -35,21 +36,16 @@ However, Adobe Commerce as a Cloud Service introduces additional complexity thro
    * API Mesh (if implemented)
    * Event-driven workflows
 
-1. **Cross-service tracing**: Understanding the full request flow requires distributed tracing capabilities to follow requests as they traverse from Commerce through various App Builder applications and back.
+* **Cross-service tracing**: Understanding the full request flow requires distributed tracing capabilities to follow requests as they traverse from Commerce through various App Builder applications and back.
 
-1. **Varied technology stacks**: Different App Builder applications may use different runtime environments, programming languages, and logging frameworks, requiring a standardized approach to telemetry collection.
+* **Varied technology stacks**: Different App Builder applications may use different runtime environments, programming languages, and logging frameworks, requiring a standardized approach to telemetry collection.
 
-1. **Independent deployment cycles**: Since App Builder applications are deployed independently from Commerce, monitoring and debugging issues requires visibility across separately managed systems.
+* **Independent deployment cycles**: Since App Builder applications are deployed independently from Commerce, monitoring and debugging issues requires visibility across separately managed systems.
 
-To handle this complexity, Adobe Commerce as a Cloud Service leverages OpenTelemetry, an open-source observability framework that provides standardized APIs and SDKs for collecting telemetry data across distributed systems. OpenTelemetry enables consistent observability practices across all components of the Adobe Commerce ecosystem, regardless of language or platform.
+To handle this complexity, Adobe Commerce as a Cloud Service leverages [OpenTelemetry](https://opentelemetry.io/docs/), an open-source observability framework that provides standardized APIs and SDKs for collecting telemetry data across distributed systems. OpenTelemetry enables consistent observability practices across all components of the Adobe Commerce ecosystem, regardless of language or platform.
 
 ## OpenTelemetry overview
 
+OpenTelemetry is a vendor-neutral open-source observability framework that provides standardized APIs, libraries, agents, and instrumentation to collect telemetry data (metrics, logs, and traces) from applications and their supporting infrastructure. It is a collaborative project under the Cloud Native Computing Foundation (CNCF) and is widely adopted across the industry.
+
 ![Flowchart](../_images/observability/observability-flow.svg)
-
-This overview serves as a curated collection of the most important concepts and patterns from the official [OpenTelemetry documentation](https://opentelemetry.io/docs/) to help you understand how to implement observability in your App Builder applications.
-
- achieved through various tools and techniques, including:
-When issues arise, it can be time-consuming to pinpoint where the issue is rooted and have the knowledge to fix it. The Adobe support organization has accumulated tribal knowledge built on years of looking at logs and command line outputs while troubleshooting issues. The tool leverages such knowledge to identify important signals against a common timeline. The timeline can be expanded or contracted, allowing you to visualize your log data to help with performance management and issue resolution.
-
-Using Observation for Adobe Commerce, you can analyze complex problems encountered by support to help identify root causes. Instead of tracking disparate data, you can spend your time correlating events and errors to gain deep insights into the causes of performance bottlenecks. The tool is intended to give a clearer view of some of the problems experienced by sites to help you identify potential root causes of problems and keep your sites performing optimally. This includes identifying if and what bots are causing site problems.

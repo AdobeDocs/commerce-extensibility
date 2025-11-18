@@ -119,7 +119,6 @@ For concrete exporter code (constructing OTLP exporters, using batch processors,
 - Use cases (configuration examples): https://github.com/adobe/aio-lib-telemetry/tree/main/docs/use-cases
 - Exporting data guide: https://github.com/adobe/aio-lib-telemetry/blob/main/docs/usage.md#exporting-data
 
-
 ### Additional References
 
 - OpenTelemetry Collector documentation: https://opentelemetry.io/docs/collector/

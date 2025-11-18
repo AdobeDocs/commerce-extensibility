@@ -1,5 +1,5 @@
 ---
-title: OpenTelemetry overview
+title: Observability overview
 description: A curated collection of the most important OpenTelemetry concepts and patterns for App Builder applications.
 keywords:
   - Extensibility
@@ -9,95 +9,47 @@ keywords:
   - Tools
 ---
 
-# OpenTelemetry overview
+# Observability overview
 
-This overview serves as a curated collection of the most important concepts and patterns from the official [OpenTelemetry documentation](https://opentelemetry.io/docs/).
+Observability is a critical aspect of modern application development and operations, enabling merchants to monitor, analyze, and optimize the performance and reliability of Adobe Commerce and all installed App Builder apps. Observability encompasses the collection, processing, and visualization of telemetry data, including:
 
-## What is OpenTelemetry?
+* **Metrics**: Track real-time and historical performance data (e.g., API response times, throughput, SLOs).
 
-OpenTelemetry is an open-source framework for collecting, processing, and exporting telemetry data from applications, such as traces, metrics, and logs. It provides standardized APIs and SDKs that enable consistent observability across distributed systems, regardless of language or platform.
+* **Logging**: Centralized collection of logs from application, infrastructure, CDN, and integrations.
 
-The framework is governed by a comprehensive specification that defines the behavior and requirements for all OpenTelemetry components, ensuring interoperability and consistency across different implementations.
+* **Tracing**: Distributed traceability of requests across services to pinpoint bottlenecks or failures.
 
-## OpenTelemetry Protocol (OTLP)
+By implementing robust observability practices, developers and operators can gain deep insights into application behavior, quickly identify and resolve issues, and ensure optimal user experiences.
 
-The [OpenTelemetry Protocol (OTLP)](https://opentelemetry.io/docs/specs/otlp/) is the default, vendor-neutral protocol for transmitting telemetry data between components such as SDKs, collectors, and backends. OTLP supports traces, metrics, and logs, and enables efficient, standardized communication across the observability pipeline.
+In traditional in-process implementations of Adobe Commerce, merchants automatically have access to New Relic, and merchants can [configure observability](https://experienceleague.adobe.com/en/docs/commerce-operations/tools/observation-for-adobe-commerce/intro) to monitor all types of Commerce processes. This is possible because all processes are executing within Commerce.
 
-### Supported transmission protocols
+However, Adobe Commerce as a Cloud Service introduces additional complexity through its composable architecture and out-of-process extensibility model:
 
-OTLP supports multiple transmission protocols and encodings to accommodate different environments and performance requirements:
+1. **Distributed architecture**: With App Builder applications running as separate microservices, telemetry data is now scattered across multiple systems and endpoints rather than centralized within Commerce.
 
-- **gRPC (Protobuf)** is the primary protocol for OTLP, offering efficient, bi-directional streaming and low-latency communication between components. All data is encoded using Protobuf.
+1. **Multiple data sources**: Merchants must collect and correlate observability data from:
 
-- **HTTP/Protobuf** uses HTTP as the transport protocol with Protobuf-encoded payloads (`Content-Type: application/x-protobuf`). This is widely supported and efficient for most production use cases.
+   * The core Commerce application
+   * Multiple App Builder applications
+   * Third-party integrations
+   * API Mesh (if implemented)
+   * Event-driven workflows
 
-- **HTTP/JSON** uses HTTP as the transport protocol with JSON-encoded payloads (`Content-Type: application/json`). The JSON encoding follows the Protobuf-to-JSON mapping defined by the OTLP spec, making it suitable for environments where Protobuf is not practical or for easier debugging and interoperability. Not all backends support JSON yet, but it is part of the official specification.
+1. **Cross-service tracing**: Understanding the full request flow requires distributed tracing capabilities to follow requests as they traverse from Commerce through various App Builder applications and back.
 
-### Default ports
+1. **Varied technology stacks**: Different App Builder applications may use different runtime environments, programming languages, and logging frameworks, requiring a standardized approach to telemetry collection.
 
-- **OTLP/gRPC** - Uses port `4317` by default.
-- **OTLP/HTTP** - Both Protobuf and JSON use port `4318` by default.
+1. **Independent deployment cycles**: Since App Builder applications are deployed independently from Commerce, monitoring and debugging issues requires visibility across separately managed systems.
 
-## Usage patterns
+To handle this complexity, Adobe Commerce as a Cloud Service leverages OpenTelemetry, an open-source observability framework that provides standardized APIs and SDKs for collecting telemetry data across distributed systems. OpenTelemetry enables consistent observability practices across all components of the Adobe Commerce ecosystem, regardless of language or platform.
 
-OpenTelemetry supports exporting telemetry data either directly from your application or through a Collector service, each suited to different deployment needs.
+## OpenTelemetry overview
 
-### Application-level export
+![Flowchart](../_images/observability/observability-flow.svg)
 
-The simplest pattern is to export your telemetry signals directly to an observability backend. This is usually done through a language-specific OpenTelemetry SDK. It is the easiest to setup and requires no intermediate infrastructure, which makes it suitable for development/test environments, but not for production use cases.
+This overview serves as a curated collection of the most important concepts and patterns from the official [OpenTelemetry documentation](https://opentelemetry.io/docs/) to help you understand how to implement observability in your App Builder applications.
 
-![OpenTelemetry Direct Export](../_images/observability/no-collector.png)
+ achieved through various tools and techniques, including:
+When issues arise, it can be time-consuming to pinpoint where the issue is rooted and have the knowledge to fix it. The Adobe support organization has accumulated tribal knowledge built on years of looking at logs and command line outputs while troubleshooting issues. The tool leverages such knowledge to identify important signals against a common timeline. The timeline can be expanded or contracted, allowing you to visualize your log data to help with performance management and issue resolution.
 
-### Collector-based export
-
-The OpenTelemetry Collector is a standalone service designed to receive, process, and export telemetry data from multiple sources. It acts as an intermediary between instrumented applications and observability backends, providing a flexible and scalable way to manage telemetry pipelines.
-
-When using a Collector, your application sends telemetry data to the Collector endpoint instead of directly to the backend. The Collector receives this data (through its receivers), applies optional processing (such as batching, filtering, or transformation), and then exports it to one or more destinations using its configured exporters. This architecture decouples your application from backend-specific exporters and allows you to centralize telemetry management, transformation, and routing.
-
-[Collectors](https://opentelemetry.io/docs/collector/) are commonly deployed in two patterns:
-
-- **[Agent](ttps://opentelemetry.io/docs/collector/deployment/agent/):** Runs as a sidecar or daemon on the same host as your application, collecting telemetry locally before forwarding it to a central Collector or backend.
-
-- **[Gateway](https://opentelemetry.io/docs/collector/deployment/gateway/):** Runs as a remote service, aggregating telemetry from multiple sources before exporting to observability platforms.
-
-This approach is recommended for production environments, as it enables advanced features like multi-destination export, data enrichment, and dynamic configuration without modifying application code.
-
-<InlineAlert variant="info" slots="text" />
-
-When exporting [telemetry directly from the application](#application-level-export), the pipeline model described above does not fully apply. There are no receivers involved. The SDK sends data directly to the backend using an exporter (with optional, in-code processing).
-
-![OpenTelemetry Collector Architecture](../_images/observability/with-collector.png)
-
-#### Architecture: Receivers, processors, exporters
-
-The OpenTelemetry Collector follows a pipeline model consisting of three key components: **receivers**, **processors**, and **exporters**.
-
-1. Telemetry data is first collected by receivers, which ingest data from instrumented applications or external sources.
-1. The data then passes through processors, which can modify, batch, or filter the telemetry data before it is sent to exporters.
-1. Exporters are responsible for delivering the processed data to external observability platforms or storage systems.
-
-![OpenTelemetry Pipeline Architecture](../_images/observability/otel-architecture.png)
-
-## Supported services and backends
-
-OpenTelemetry is becoming the standard for observability across the industry, because it is supported by many cloud providers, monitoring platforms, and open source tools. This means you can export telemetry data to systems like: AWS X-Ray, Google Cloud Operations, Azure Monitor, Datadog, New Relic, Jaeger, Zipkin, Prometheus, and others.
-
-## What does _instrumentation_ mean?
-
-For a system to be [observable](https://opentelemetry.io/docs/concepts/observability-primer/#what-is-observability), it must be instrumented: that is, code from the system's components must emit [signals](https://opentelemetry.io/docs/concepts/signals/traces/), such as [traces](https://opentelemetry.io/docs/concepts/signals/), [metrics](https://opentelemetry.io/docs/concepts/signals/metrics/), and [logs](https://opentelemetry.io/docs/concepts/signals/logs/). Using OpenTelemetry, you can instrument your code automatically or manually.
-
-### Automatic instrumentation
-
-Automatic instrumentation in OpenTelemetry comes in two main forms:
-
-**[Zero-code instrumentation](https://opentelemetry.io/docs/concepts/instrumentation/zero-code/)** enables you to collect telemetry from your application without changing its source code. This is typically achieved by using agents, environment variables, or runtime hooks that automatically instrument supported libraries and frameworks. Zero-code is ideal for quickly adding observability, especially when you cannot or do not want to modify application code. It provides visibility into what is happening at the edges of your application and is a fast way to get started.
-
-**[Native instrumentation](https://opentelemetry.io/docs/concepts/instrumentation/libraries/)** refers to libraries and platforms that have OpenTelemetry support built in. When you use these libraries, they emit telemetry data automatically, providing deep and reliable observability. OpenTelemetry recommends native instrumentation as the most robust approach, since it is directly maintained by library authors and ensures consistent, high-quality telemetry.
-
-### Manual instrumentation
-
-Manual, code-based instrumentation involves explicitly adding OpenTelemetry API calls to your application code. This approach gives you full control to create custom spans, metrics, and logs that reflect your business logic and critical operations. Manual instrumentation is essential for capturing deep, application-specific insights that automatic or zero-code instrumentation cannot provide.
-
-You can use manual instrumentation alongside automatic and native approaches for the most complete observability. It is especially valuable for tracking custom workflows, business transactions, or any logic not covered by existing libraries or frameworks.
-
-For details and examples, see the [OpenTelemetry code-based instrumentation guide](https://opentelemetry.io/docs/concepts/instrumentation/code-based/).
+Using Observation for Adobe Commerce, you can analyze complex problems encountered by support to help identify root causes. Instead of tracking disparate data, you can spend your time correlating events and errors to gain deep insights into the causes of performance bottlenecks. The tool is intended to give a clearer view of some of the problems experienced by sites to help you identify potential root causes of problems and keep your sites performing optimally. This includes identifying if and what bots are causing site problems.

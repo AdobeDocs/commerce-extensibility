@@ -37,3 +37,27 @@ To install the observability module in Adobe Commerce:
    ```bash
    bin/magento setup:upgrade && bin/magento cache:clean
    ```
+
+## Set up the message queue
+
+The message queue must be configured and running to use observability. The message queue is used to send observability data asynchronously, ensuring that the main application flow is not blocked by observability operations. Consumers can be configured to run by cron jobs or as workers.
+
+You cOr it will be starter automatically by the cron job. Run the following command to trigger the cron job manually:
+
+bin/magento cron:run
+
+You can start the consumer to process logs by running the following command:
+
+```bash
+bin/magento queue:consumers:start commerce.observability.log --single-thread
+```
+
+Or for metrics:
+
+```bash
+bin/magento queue:consumers:start commerce.observability.metrics --single-thread
+```
+
+Or it will be starter automatically by the cron job. Run the following command to trigger the cron job manually:
+
+bin/magento cron:run

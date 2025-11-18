@@ -1,5 +1,5 @@
 ---
-title: Observability
+title: OpenTelemetry integration
 description: Monitor and trace your checkout application with built-in observability tools
 keywords:
   - Starter Kit
@@ -7,19 +7,13 @@ keywords:
   - App Builder
 ---
 
-# Observability
-
-Monitor and trace your checkout application with built-in observability tools.
-
-## OpenTelemetry Integration
-
-This starter kit includes built-in observability using [`@adobe/aio-lib-telemetry`](https://github.com/adobe/aio-lib-telemetry), which provides OpenTelemetry instrumentation for App Builder actions.
-
-### Overview
+# OpenTelemetry integration
 
 OpenTelemetry enables you to monitor and trace your checkout application's performance, helping you identify bottlenecks, debug issues, and understand how your actions interact with Adobe Commerce. The integration automatically collects metrics and traces for key checkout operations without requiring manual instrumentation.
 
-### What's Included
+This starter kit includes built-in observability using [`@adobe/aio-lib-telemetry`](https://github.com/adobe/aio-lib-telemetry), which provides OpenTelemetry instrumentation for App Builder actions.
+
+## What's included
 
 The starter kit demonstrates telemetry instrumentation on webhook actions used in the checkout process. The following actions are instrumented:
 
@@ -30,7 +24,7 @@ The starter kit demonstrates telemetry instrumentation on webhook actions used i
 
 These webhook actions serve as examples of how to implement telemetry in your own custom actions.
 
-### Configuration
+## Configuration
 
 Telemetry is an optional feature controlled via the `ENABLE_TELEMETRY` environment variable in [`app.config.yaml`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/app.config.yaml). It's enabled by default for all checkout actions:
 
@@ -43,13 +37,13 @@ actions:
 
 The telemetry behavior and settings are configured in the [`actions/telemetry.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/telemetry.js) file, which provides centralized control over instrumentation, diagnostics, and export options. For more information about the `ENABLE_TELEMETRY` configuration, see the [OpenTelemetry configuration documentation](https://github.com/adobe/aio-lib-telemetry/blob/main/docs/usage.md#configuration).
 
-#### Viewing Telemetry Data
+### Viewing telemetry data
 
 By default, diagnostics logging is disabled in the starter kit (`diagnostics: false` in [`actions/telemetry.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/telemetry.js)). This means telemetry data is collected but not automatically forwarded to an external collector.
 
 If you want to view and analyze telemetry data, you'll need to configure a telemetry exporter and collector.
 
-##### Exporting telemetry data (cloud or local)
+#### Exporting telemetry data (cloud or local)
 
 To forward telemetry (logs, traces, metrics) to any OTLP‑compatible service (collector, Grafana, DataDog, New Relic, etc.), you only need to adjust two places:
 
@@ -119,15 +113,13 @@ For concrete exporter code (constructing OTLP exporters, using batch processors,
 - Use cases (configuration examples): https://github.com/adobe/aio-lib-telemetry/tree/main/docs/use-cases
 - Exporting data guide: https://github.com/adobe/aio-lib-telemetry/blob/main/docs/usage.md#exporting-data
 
-### Additional References
+## Additional References
 
-- OpenTelemetry Collector documentation: https://opentelemetry.io/docs/collector/
-- `@adobe/aio-lib-telemetry` API reference: https://github.com/adobe/aio-lib-telemetry/blob/main/docs/usage.md
-- OpenTelemetry core concepts: https://opentelemetry.io/docs/concepts/
+- [OpenTelemetry Collector documentation](https://opentelemetry.io/docs/collector/)
+- [`@adobe/aio-lib-telemetry` API reference](https://github.com/adobe/aio-lib-telemetry/blob/main/docs/usage.md)
+- [OpenTelemetry core concepts](https://opentelemetry.io/docs/concepts/)
 
 ## Troubleshooting
-
-### Connection Errors When Diagnostics Are Enabled
 
 If you enable diagnostics logging and encounter connection errors like:
 

@@ -119,30 +119,9 @@ For concrete exporter code (constructing OTLP exporters, using batch processors,
 - Use cases (configuration examples): https://github.com/adobe/aio-lib-telemetry/tree/main/docs/use-cases
 - Exporting data guide: https://github.com/adobe/aio-lib-telemetry/blob/main/docs/usage.md#exporting-data
 
-##### Forward Logs to Other Services
-
-The starter kit includes a commented-out example configuration in [`actions/telemetry.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/telemetry.js) for other OTLP-compatible services:
-
-```javascript
-const telemetryConfig = defineTelemetryConfig((params, isDev) => {
-  return {
-    sdkConfig: {
-      serviceName: 'commerce-checkout-starter-kit',
-      instrumentations: getPresetInstrumentations('simple'),
-      resource: getAioRuntimeResource(),
-      // ...localCollectorConfig(), // Uncomment and configure to export telemetry data
-    },
-    diagnostics: false, // Set to true if you want to enable diagnostic logs
-  };
-});
-```
 
 ### Additional References
 
-Use these resources to implement concrete exporters, tune performance, and extend instrumentation:
-
-- Use cases (configuration examples): https://github.com/adobe/aio-lib-telemetry/tree/main/docs/use-cases
-- Exporting data guide: https://github.com/adobe/aio-lib-telemetry/blob/main/docs/usage.md#exporting-data
 - OpenTelemetry Collector documentation: https://opentelemetry.io/docs/collector/
 - `@adobe/aio-lib-telemetry` API reference: https://github.com/adobe/aio-lib-telemetry/blob/main/docs/usage.md
 - OpenTelemetry core concepts: https://opentelemetry.io/docs/concepts/

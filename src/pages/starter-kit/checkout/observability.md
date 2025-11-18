@@ -47,8 +47,8 @@ If you want to view and analyze telemetry data, you'll need to configure a telem
 
 To forward telemetry (logs, traces, metrics) to any OTLP‑compatible service (including collectors, Grafana, DataDog, and New Relic), you only need to adjust two places:
 
-1. `actions/telemetry.js` – add exporter wiring
-2. [`app.config.yaml`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/app.config.yaml) – surface endpoint / auth values as action inputs (or use secrets)
+- `actions/telemetry.js` – add exporter wiring
+- [`app.config.yaml`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/app.config.yaml) – surface endpoint / auth values as action inputs (or use secrets)
 
 Template (`actions/telemetry.js`):
 

@@ -36,7 +36,7 @@ module.exports = [
         path: "/starter-kit/checkout/cicd/",
       },
       {
-        title: "Observability",
+        title: "OpenTelemetry integration",
         path: "/starter-kit/checkout/observability/",
       },
     ],

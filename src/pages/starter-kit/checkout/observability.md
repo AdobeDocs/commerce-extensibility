@@ -2,10 +2,9 @@
 title: Observability
 description: Monitor and trace your checkout application with built-in observability tools
 keywords:
-  - Checkout
-  - OpenTelemetry
-  - Monitoring
-  - Observability
+  - Starter Kit
+  - Extensibility
+  - App Builder
 ---
 
 # Observability

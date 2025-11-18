@@ -98,7 +98,7 @@ The current telemetry configuration is centralized in `actions/telemetry.js` and
 
 If you enable diagnostics logging and encounter connection errors like:
 
-```
+```text
 error: {"stack":"AggregateError [ECONNREFUSED]: ...","errors":"Error: connect ECONNREFUSED ::1:4318,Error: connect ECONNREFUSED 127.0.0.1:4318","code":"ECONNREFUSED","name":"AggregateError"}
 ```
 
@@ -107,4 +107,3 @@ This means the diagnostics feature is attempting to forward logs to a collector 
 - **Option 1**: Set `diagnostics: false` in `actions/telemetry.js` to disable diagnostic logging
 - **Option 2**: Set up and run a local OpenTelemetry collector at the expected endpoint
 - **Option 3**: Disable telemetry entirely by setting `ENABLE_TELEMETRY: false` in `app.config.yaml` for specific action.
-

@@ -71,6 +71,7 @@ To enable telemetry data export and viewing:
 
 For detailed instructions on configuring exporters and collectors, refer to the official documentation:
 
+- [Use Cases Documentation](https://github.com/adobe/aio-lib-telemetry/tree/main/docs/use-cases) - Practical examples for configuring OTLP-compatible services (Grafana, DataDog, New Relic, etc.)
 - [Export Data Guide](https://github.com/adobe/aio-lib-telemetry/blob/main/docs/usage.md#exporting-data)
 - [OpenTelemetry Collector Documentation](https://opentelemetry.io/docs/collector/)
 

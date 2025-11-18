@@ -43,9 +43,9 @@ By default, diagnostics logging is disabled in the starter kit (`diagnostics: fa
 
 If you want to view and analyze telemetry data, you'll need to configure a telemetry exporter and collector.
 
-#### Exporting telemetry data (cloud or local)
+#### Export telemetry data (cloud or local)
 
-To forward telemetry (logs, traces, metrics) to any OTLP‑compatible service (collector, Grafana, DataDog, New Relic, etc.), you only need to adjust two places:
+To forward telemetry (logs, traces, metrics) to any OTLP‑compatible service (including collectors, Grafana, DataDog, and New Relic), you only need to adjust two places:
 
 1. `actions/telemetry.js` – add exporter wiring
 2. [`app.config.yaml`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/app.config.yaml) – surface endpoint / auth values as action inputs (or use secrets)
@@ -96,24 +96,24 @@ actions:
 
 Local development `.env` example:
 
-```bash
+```text
 OTLP_ENDPOINT=http://localhost:4318
 OTLP_TRACES_ENDPOINT=http://localhost:4318
 OTLP_API_KEY=LOCAL_DEV_KEY_OR_EMPTY
 ```
 
-Deploy after changes:
+Deploy your changes:
 
 ```bash
 aio app deploy
 ```
 
-For concrete exporter code (constructing OTLP exporters, using batch processors, service specific headers, etc.), refer to:
+For concrete exporter code (constructing OTLP exporters, using batch processors, service specific headers), refer to:
 
-- Use cases (configuration examples): https://github.com/adobe/aio-lib-telemetry/tree/main/docs/use-cases
-- Exporting data guide: https://github.com/adobe/aio-lib-telemetry/blob/main/docs/usage.md#exporting-data
+- [Use cases (configuration examples)](https://github.com/adobe/aio-lib-telemetry/tree/main/docs/use-cases)
+- [Exporting data guide](https://github.com/adobe/aio-lib-telemetry/blob/main/docs/usage.md#exporting-data)
 
-## Additional References
+## Additional information
 
 - [OpenTelemetry Collector documentation](https://opentelemetry.io/docs/collector/)
 - [`@adobe/aio-lib-telemetry` API reference](https://github.com/adobe/aio-lib-telemetry/blob/main/docs/usage.md)

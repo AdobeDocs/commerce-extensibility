@@ -47,7 +47,81 @@ The telemetry behavior and settings are configured in the [`actions/telemetry.js
 
 By default, diagnostics logging is disabled in the starter kit (`diagnostics: false` in [`actions/telemetry.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/telemetry.js)). This means telemetry data is collected but not automatically forwarded to an external collector.
 
-If you want to view and analyze telemetry data, you'll need to configure a telemetry exporter and collector. The starter kit includes a commented-out example configuration in [`actions/telemetry.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/telemetry.js):
+If you want to view and analyze telemetry data, you'll need to configure a telemetry exporter and collector.
+
+##### Exporting telemetry data (cloud or local)
+
+To forward telemetry (logs, traces, metrics) to any OTLP‑compatible service (collector, Grafana, DataDog, New Relic, etc.), you only need to adjust two places:
+
+1. `actions/telemetry.js` – add exporter wiring
+2. [`app.config.yaml`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/app.config.yaml) – surface endpoint / auth values as action inputs (or use secrets)
+
+Template (`actions/telemetry.js`):
+
+```javascript
+// actions/telemetry.js (template)
+const {
+  defineTelemetryConfig,
+  getAioRuntimeResource,
+  getPresetInstrumentations,
+  // localCollectorConfig, // optional helper if you want a local collector
+  // other helpers from @adobe/aio-lib-telemetry as needed
+} = require('@adobe/aio-lib-telemetry');
+
+module.exports.telemetryConfig = defineTelemetryConfig((params, isDev) => ({
+  sdkConfig: {
+    serviceName: 'commerce-checkout-starter-kit',
+    instrumentations: getPresetInstrumentations('simple'),
+    resource: getAioRuntimeResource(),
+    // Exporter configuration placeholder:
+    // Insert log / trace / metric exporter objects here following service/provider examples.
+    // Example placeholder (replace with actual service configuration):
+    // logRecordProcessors: params.OTLP_ENDPOINT ? [ buildYourLogExporter(params) ] : []
+    // spanProcessors: params.OTLP_TRACES_ENDPOINT ? [ buildYourTraceExporter(params) ] : []
+    // metricsExporters: [] // if metrics are enabled
+
+    // For a local collector you could uncomment:
+    // ...localCollectorConfig(),
+  },
+  diagnostics: false // set true only when debugging telemetry setup
+}));
+```
+
+Surface endpoint / auth inputs ([`app.config.yaml`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/app.config.yaml) excerpt):
+
+```yaml
+actions:
+  collect-taxes:
+    inputs:
+      ENABLE_TELEMETRY: true
+      OTLP_ENDPOINT: ${OTLP_ENDPOINT}        # e.g. https://otel.example.com/v1/logs
+      OTLP_TRACES_ENDPOINT: ${OTLP_TRACES_ENDPOINT} # optional distinct traces URL
+      OTLP_API_KEY: ${OTLP_API_KEY}          # token/key if service requires
+  # repeat for other actions or centralize pattern
+```
+
+Local development `.env` example:
+
+```bash
+OTLP_ENDPOINT=http://localhost:4318
+OTLP_TRACES_ENDPOINT=http://localhost:4318
+OTLP_API_KEY=LOCAL_DEV_KEY_OR_EMPTY
+```
+
+Deploy after changes:
+
+```bash
+aio app deploy
+```
+
+For concrete exporter code (constructing OTLP exporters, using batch processors, service specific headers, etc.), refer to:
+
+- Use cases (configuration examples): https://github.com/adobe/aio-lib-telemetry/tree/main/docs/use-cases
+- Exporting data guide: https://github.com/adobe/aio-lib-telemetry/blob/main/docs/usage.md#exporting-data
+
+##### Forward Logs to Other Services
+
+The starter kit includes a commented-out example configuration in [`actions/telemetry.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/telemetry.js) for other OTLP-compatible services:
 
 ```javascript
 const telemetryConfig = defineTelemetryConfig((params, isDev) => {
@@ -63,26 +137,15 @@ const telemetryConfig = defineTelemetryConfig((params, isDev) => {
 });
 ```
 
-To enable telemetry data export and viewing:
+### Additional References
 
-1. Configure your preferred telemetry exporter in `actions/telemetry.js`
-2. Set up a local or remote OpenTelemetry collector
-3. Optionally enable diagnostics logging by setting `diagnostics: true` or providing detailed diagnostics configuration
+Use these resources to implement concrete exporters, tune performance, and extend instrumentation:
 
-For detailed instructions on configuring exporters and collectors, refer to the official documentation:
-
-- [Use Cases Documentation](https://github.com/adobe/aio-lib-telemetry/tree/main/docs/use-cases) - Practical examples for configuring OTLP-compatible services (Grafana, DataDog, New Relic, etc.)
-- [Export Data Guide](https://github.com/adobe/aio-lib-telemetry/blob/main/docs/usage.md#exporting-data)
-- [OpenTelemetry Collector Documentation](https://opentelemetry.io/docs/collector/)
-
-### Advanced Configuration
-
-The current telemetry configuration is centralized in `actions/telemetry.js` and serves as a sample implementation. For advanced use cases such as exporting collected data or additional configuration customizations, please refer to the official documentation:
-
-- [OpenTelemetry Usage Guide](https://github.com/adobe/aio-lib-telemetry/blob/main/docs/usage.md)
-- [`@adobe/aio-lib-telemetry` API Reference](https://github.com/adobe/aio-lib-telemetry/blob/main/docs/api.md)
-- [OpenTelemetry Concepts](https://opentelemetry.io/docs/concepts/)
-- [Export Data Guide](https://github.com/adobe/aio-lib-telemetry/blob/main/docs/usage.md#exporting-data)
+- Use cases (configuration examples): https://github.com/adobe/aio-lib-telemetry/tree/main/docs/use-cases
+- Exporting data guide: https://github.com/adobe/aio-lib-telemetry/blob/main/docs/usage.md#exporting-data
+- OpenTelemetry Collector documentation: https://opentelemetry.io/docs/collector/
+- `@adobe/aio-lib-telemetry` API reference: https://github.com/adobe/aio-lib-telemetry/blob/main/docs/usage.md
+- OpenTelemetry core concepts: https://opentelemetry.io/docs/concepts/
 
 ## Troubleshooting
 

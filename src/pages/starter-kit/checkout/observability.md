@@ -57,12 +57,6 @@ By default, diagnostics logging is disabled in the starter kit (`diagnostics: fa
 }
 ```
 
-Set back to `false` to silence these internal logs:
-
-```javascript
-diagnostics: false
-```
-
 ### Export telemetry data (cloud or local)
 
 To forward telemetry (logs, traces, metrics) to any OTLP‑compatible service (such as collectors, Grafana, DataDog, or New Relic), you only need to adjust these places:
@@ -140,6 +134,8 @@ For concrete exporter code (such as constructing OTLP exporters, using batch pro
 
 ## Troubleshooting
 
+### Connection errors when exporting telemetry
+
 If you encounter connection errors when exporting telemetry data, such as: `error: {"stack":"AggregateError [ECONNREFUSED]: ...","errors":"Error: connect ECONNREFUSED ::1:4318,Error: connect ECONNREFUSED 127.0.0.1:4318","code":"ECONNREFUSED","name":"AggregateError"}`, the configured OTLP endpoint cannot be reached during export.
 
 The root cause is typically one of the following:
@@ -154,6 +150,12 @@ The root cause is typically one of the following:
 1. Confirm the destination endpoint is reachable and properly configured
 1. Refer to the [use cases documentation](https://github.com/adobe/aio-lib-telemetry/tree/main/docs/use-cases) for service-specific configuration examples
 
+### Completely disabling telemetry
+
 <InlineAlert variant="warning" slots="text" />
 
-Completely disabling telemetry (`ENABLE_TELEMETRY: false`) removes instrumentation setup. If your custom code directly invokes telemetry APIs or relies on context propagation, this may cause runtime errors. Only disable telemetry after confirming your code has no such dependencies.
+Setting `ENABLE_TELEMETRY: false` in [`app.config.yaml`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/app.config.yaml) completely disables telemetry and removes instrumentation setup. If your custom code directly invokes telemetry APIs (such as `getInstrumentationHelpers()`) or relies on context propagation, you will encounter runtime errors like:
+
+`Error: getInstrumentationHelpers has been called in a runtime action that has not telemetry enabled. Ensure the ENABLE_TELEMETRY environment variable is set to true. Otherwise, instrumentation will not work.`
+
+To resolve this error, use the core logging utilities from [`@adobe/aio-sdk`](https://github.com/adobe/aio-sdk) instead.

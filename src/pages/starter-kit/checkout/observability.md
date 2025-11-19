@@ -73,8 +73,6 @@ To forward telemetry (logs, traces, metrics) to any OTLP‑compatible service (s
 1. Update the telemetry template ([`actions/telemetry.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/telemetry.js)) to wire in the appropriate exporters for your use case. A minimal template is provided below:
 
    ```javascript
-   // actions/telemetry.js (template)
-   
    import {
      defineTelemetryConfig,
      getAioRuntimeResource,
@@ -83,7 +81,7 @@ To forward telemetry (logs, traces, metrics) to any OTLP‑compatible service (s
      // other helpers from '@adobe/aio-lib-telemetry' as needed
    } from '@adobe/aio-lib-telemetry';
    
-   // Exporter wiring helper (keep minimal – replace stubs with real exporters per use case docs)
+   // Exporter wiring helper (replace with your service-specific config; refer to use cases documentation)
    function buildExporters(params) {
      return {
        // Logs: add your log record processor + exporter instance here
@@ -142,25 +140,29 @@ For concrete exporter code (such as constructing OTLP exporters, using batch pro
 
 ## Troubleshooting
 
-If you enable diagnostics logging and encounter connection errors like:
+If you encounter connection errors when exporting telemetry data:
 
 ```text
 error: {"stack":"AggregateError [ECONNREFUSED]: ...","errors":"Error: connect ECONNREFUSED ::1:4318,Error: connect ECONNREFUSED 127.0.0.1:4318","code":"ECONNREFUSED","name":"AggregateError"}
 ```
 
-These errors occur when any of the configured endpoints (such as Grafana, DataDog, New Relic, or an OpenTelemetry collector) cannot be reached during the export of telemetry data. For configuration examples, see the [use cases documentation](https://github.com/adobe/aio-lib-telemetry/tree/main/docs/use-cases).
+These errors indicate that the configured OTLP endpoint cannot be reached during export. The root cause is typically one of the following:
 
-To resolve this:
+- **Incorrect endpoint configuration**: Check that URLs, ports, and paths in your exporter configuration match your observability service requirements
+- **Network connectivity issues**: Ensure the destination service is running and accessible from your runtime environment
+- **Authentication problems**: Verify that API keys, tokens, or other credentials are correct and have proper permissions
 
-- **Option 1**: Set `diagnostics: false` in [`actions/telemetry.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/telemetry.js) to silence internal SDK diagnostics while keeping signal collection.
-- **Option 2**: Verify exporter configuration (endpoints, auth headers, ports) and ensure the destination is reachable; retry after confirming network/firewall and credentials.
-- **Option 3**: Temporarily remove exporter wiring (leave telemetry enabled but with empty processors) to stop external forwarding without impacting instrumentation.
-- **Option 4**: As a last resort, disable telemetry (`ENABLE_TELEMETRY: false`) in [`app.config.yaml`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/app.config.yaml) for a specific action—only after confirming your code does not require telemetry initialization.
-- **Option 5**: Implement (or await) a no‑op shim that safely replaces exporter initialization to avoid code changes when disabling forwarding.
+**To resolve:**
+
+1. Review your exporter configuration in [`actions/telemetry.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/telemetry.js) and [`app.config.yaml`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/app.config.yaml)
+1. Confirm the destination endpoint is reachable and properly configured
+1. Refer to the [use cases documentation](https://github.com/adobe/aio-lib-telemetry/tree/main/docs/use-cases) for service-specific configuration examples
+
+**If you only want to develop locally without forwarding telemetry:** Remove or comment out exporter configuration in `actions/telemetry.js`, leaving telemetry enabled but with no external forwarding.
 
 <InlineAlert variant="warning" slots="text" />
 
-Completely disabling telemetry (`ENABLE_TELEMETRY: false`) removes instrumentation setup. If your custom code directly invokes telemetry APIs or relies on context propagation, this may cause runtime errors or lost diagnostics until a planned no‑op implementation/shim is provided. Prefer keeping telemetry enabled with minimal/no exporters instead of disabling, unless you have verified no such dependencies.
+Completely disabling telemetry (`ENABLE_TELEMETRY: false`) removes instrumentation setup. If your custom code directly invokes telemetry APIs or relies on context propagation, this may cause runtime errors. Only disable telemetry after confirming your code has no such dependencies.
 
 ## Additional information
 

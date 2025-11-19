@@ -134,6 +134,8 @@ For concrete exporter code (such as constructing OTLP exporters, using batch pro
 
 ## Troubleshooting
 
+Use the following guidance to troubleshoot common telemetry issues.
+
 ### Connection errors when exporting telemetry
 
 If you encounter connection errors when exporting telemetry data, such as: `error: {"stack":"AggregateError [ECONNREFUSED]: ...","errors":"Error: connect ECONNREFUSED ::1:4318,Error: connect ECONNREFUSED 127.0.0.1:4318","code":"ECONNREFUSED","name":"AggregateError"}`, the configured OTLP endpoint cannot be reached during export.
@@ -146,11 +148,11 @@ The root cause is typically one of the following:
 
 **To resolve:**
 
-1. Review your exporter configuration in [`actions/telemetry.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/telemetry.js) and [`app.config.yaml`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/app.config.yaml)
-1. Confirm the destination endpoint is reachable and properly configured
-1. Refer to the [use cases documentation](https://github.com/adobe/aio-lib-telemetry/tree/main/docs/use-cases) for service-specific configuration examples
+1. Review your exporter configuration in [`actions/telemetry.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/telemetry.js) and [`app.config.yaml`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/app.config.yaml).
+1. Confirm the destination endpoint is reachable and properly configured.
+1. Refer to the [use cases documentation](https://github.com/adobe/aio-lib-telemetry/tree/main/docs/use-cases) for service-specific configuration examples.
 
-### Completely disabling telemetry
+### Completely disable telemetry
 
 <InlineAlert variant="warning" slots="text" />
 

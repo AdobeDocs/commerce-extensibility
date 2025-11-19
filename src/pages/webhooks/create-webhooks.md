@@ -84,6 +84,10 @@ Unless you want to send the entire default payload, unedited, you must define at
 
 ### Configure developer console OAuth
 
+<Edition name="paas" />
+
+In PaaS environments, you can define OAuth credentials in the `developerConsoleOauth` element of a `webhooks.xml` file. See [Best practices for webhook development](./tutorial/best-practices.md#configure-oauth-in-paas) for details.
+
 <Edition name="saas" />
 
 The **Developer Console OAuth** configuration panel provides the ability to configure the details of an OAuth credential from the Adobe Developer Console. If configured and enabled, an IMS token will be generated using the credential details and passed in an Authorization header with the hook request.

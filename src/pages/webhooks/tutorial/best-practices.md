@@ -11,7 +11,9 @@ The following best practices, which, focus on webhooks and secure communication,
 
 ## Secure webhook communication using OAuth credentials
 
-Since the webhook URL is easily accessible, it is important to secure it. The following steps outline recommended best practices for secure communication between App Builder and Adobe Commerce:
+Since the webhook URL is easily accessible, it is important to secure it. The following steps outline recommended best practices for secure communication between App Builder and Adobe Commerce.
+
+After configuring OAuth credentials in Adobe Commerce webhooks subscription, the required headers `Authorization` and `x-gw-ims-org-id` for OAuth authentication are automatically added to the webhook calls from Adobe Commerce to your App Builder application. The Bearer token in the `Authorization` header is generated and cached so it can be reused for subsequent calls until it expires.
 
 ### Step 1: Generate OAuth credentials from Developer Console
 
@@ -25,19 +27,75 @@ Retrieve the client secret, client ID, and organization ID from the Adobe Develo
 
 ### Step 2: Configure OAuth in Adobe Commerce
 
+#### Configure OAuth in PaaS
+
+<Edition name="paas" />
+
+Add `developerConsoleOauth` to your hook configuration in the `webhooks.xml` file.
+
+```xml
+<method name="plugin.magento.out_of_process_shipping_methods.api.shipping_rate_repository.get_rates" type="after">
+  <hooks>
+    <batch name="one">
+      <hook name="add_shipping_rates" url="{env:APP_BUILDER_URL}/add-shipping-rates-dps" method="POST" timeout="5000" softTimeout="1" priority="300" required="true">
+        <developerConsoleOauth>
+          <clientId>52625ea6402148d0be11989c7024de84</clientId>
+          <clientSecret>p8e-12345-678910</clientSecret>
+          <orgId>12345@AdobeOrg</orgId>
+        </developerConsoleOauth>
+        <fields>
+          <field name="rateRequest" />
+        </fields>
+      </hook>
+    </batch>    
+  </hooks>
+</method>
+```
+
+Instead of hardcoding the OAuth credentials in the `webhooks.xml` file, you can also use environment variables to enhance security. Use the following syntax to reference environment variables:
+
+```xml
+<developerConsoleOauth>
+  <clientId>{env:CLIENT_ID}</clientId>
+  <clientSecret>{env:CLIENT_SECRET}</clientSecret>
+  <orgId>{env:ORG_ID}</orgId>
+</developerConsoleOauth>
+```
+
+#### Configure OAuth in ACCS
+
+<Edition name="saas" />
+
 1. Log in to the Commerce Admin and navigate to **System** > **Webhook Subscriptions**. Select the webhook you want to configure.
 
    Expand the **Developer Console OAuth** section, enable it, and enter the values for the **Client ID**, **Client Secret**, and **Organization ID** fields. These values must match the credentials you retrieved from the Developer Console in Step 1.
 
    ![oAuth Section in Webhooks Subscription](../../_images/webhooks/tutorial/developer-console-oauth-commerce.png)
 
+#### Configure OAuth through API
+
+You can provide OAuth credentials when subscribing to a webhook through the API. For more information, see the `developerConsoleOauth` field in the [Subscribe to a webhook](../api.md#subscribe-a-webhook) endpoint.
+
+```json
+{
+  "webhook": {
+    ....,
+    "developer_console_oauth": {
+      "client_id": "3117813-735byzantiumduck-stage",
+      "client_secret": "p8e-12345",
+      "org_id": "12345@AdobeOrg"
+    }
+  }
+}
+```
+
 ### Step 3: Enable Adobe Authentication in App Builder
 
-1. In your App Builder project code, open the `app.config.yaml` file and set `require-adobe-auth` to `true`. Then, rebuild and deploy the project using the following command:
+In your App Builder project code, open the `app.config.yaml` file and set `require-adobe-auth` to `true`. Then, rebuild and deploy the project using the following command:
 
-  ```bash
-  aio app deploy
-  ```
+```bash
+aio app deploy
+```
 
 ### Step 4: Test the secure webhook call
 

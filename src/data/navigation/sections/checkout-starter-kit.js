@@ -35,6 +35,10 @@ module.exports = [
         title: "CI/CD",
         path: "/starter-kit/checkout/cicd/",
       },
+      {
+        title: "OpenTelemetry integration",
+        path: "/starter-kit/checkout/observability/",
+      },
     ],
   },
   {

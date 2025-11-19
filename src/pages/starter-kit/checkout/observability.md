@@ -154,8 +154,6 @@ The root cause is typically one of the following:
 1. Confirm the destination endpoint is reachable and properly configured
 1. Refer to the [use cases documentation](https://github.com/adobe/aio-lib-telemetry/tree/main/docs/use-cases) for service-specific configuration examples
 
-**If you only want to develop without forwarding telemetry:** Don't configure any exporters in `buildExporters()` within [`actions/telemetry.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/telemetry.js). This keeps telemetry instrumentation active (so your code doesn't break) but prevents data from being sent to external services. If you want to see internal OpenTelemetry SDK logs locally without exporting them, enable diagnostics with `exportLogs: false` (as shown in the [diagnostics configuration example](#viewing-telemetry-data) above).
-
 <InlineAlert variant="warning" slots="text" />
 
 Completely disabling telemetry (`ENABLE_TELEMETRY: false`) removes instrumentation setup. If your custom code directly invokes telemetry APIs or relies on context propagation, this may cause runtime errors. Only disable telemetry after confirming your code has no such dependencies.

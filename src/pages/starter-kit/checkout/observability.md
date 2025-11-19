@@ -144,7 +144,6 @@ If you encounter connection errors when exporting telemetry data, such as: `erro
 
 The root cause is typically one of the following:
 
-
 - **Incorrect endpoint configuration**: Check that URLs, ports, and paths in your exporter configuration match your observability service requirements
 - **Network connectivity issues**: Ensure the destination service is running and accessible from your runtime environment
 - **Authentication problems**: Verify that API keys, tokens, or other credentials are correct and have proper permissions

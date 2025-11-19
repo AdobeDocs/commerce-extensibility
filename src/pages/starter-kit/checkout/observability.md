@@ -154,7 +154,7 @@ The root cause is typically one of the following:
 1. Confirm the destination endpoint is reachable and properly configured
 1. Refer to the [use cases documentation](https://github.com/adobe/aio-lib-telemetry/tree/main/docs/use-cases) for service-specific configuration examples
 
-**If you only want to develop without forwarding telemetry:** Remove or comment out exporter configuration in [`actions/telemetry.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/telemetry.js), leaving telemetry enabled but with no external forwarding.
+**If you only want to develop without forwarding telemetry:** Don't configure any exporters in `buildExporters()` within [`actions/telemetry.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/telemetry.js). This keeps telemetry instrumentation active (so your code doesn't break) but prevents data from being sent to external services. If you want to see internal OpenTelemetry SDK logs locally without exporting them, enable diagnostics with `exportLogs: false` (as shown in the [diagnostics configuration example](#viewing-telemetry-data) above).
 
 <InlineAlert variant="warning" slots="text" />
 

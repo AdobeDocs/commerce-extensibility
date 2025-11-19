@@ -81,17 +81,17 @@ To forward telemetry (logs, traces, metrics) to any OTLP‑compatible service (s
      // other helpers from '@adobe/aio-lib-telemetry' as needed
    } from '@adobe/aio-lib-telemetry';
    
-   // Exporter wiring helper (replace with your service-specific config; refer to use cases documentation)
+   // Exporter wiring helper (replace with your service-specific config)
    function buildExporters(params) {
      return {
-       // Logs: add your log record processor + exporter instance here
-       // logRecordProcessors: params.OTLP_ENDPOINT ? [buildYourLogExporter(params)] : [],
+       // Logs: replace buildYourLogExporter with your actual log exporter (e.g., OTLPLogExporter)
+       logRecordProcessors: params.OTLP_ENDPOINT ? [buildYourLogExporter(params)] : [],
    
-       // Traces: uncomment and provide span processor/exporter if you enable tracing
-       // spanProcessors: params.OTLP_TRACES_ENDPOINT ? [buildYourTraceExporter(params)] : [],
+       // Traces: replace buildYourTraceExporter with your actual trace exporter (e.g., OTLPTraceExporter)
+       spanProcessors: params.OTLP_TRACES_ENDPOINT ? [buildYourTraceExporter(params)] : [],
    
-       // Metrics: provide metrics exporters if metrics collection is enabled
-       // metricsExporters: [],
+       // Metrics: replace with your actual metrics exporters array
+       metricsExporters: [],
      };
    }
    
@@ -140,13 +140,8 @@ For concrete exporter code (such as constructing OTLP exporters, using batch pro
 
 ## Troubleshooting
 
-If you encounter connection errors when exporting telemetry data:
+If you encounter connection errors when exporting telemetry data, such as: `error: {"stack":"AggregateError [ECONNREFUSED]: ...","errors":"Error: connect ECONNREFUSED ::1:4318,Error: connect ECONNREFUSED 127.0.0.1:4318","code":"ECONNREFUSED","name":"AggregateError"}`, the configured OTLP endpoint cannot be reached during export. The root cause is typically one of the following:
 
-```text
-error: {"stack":"AggregateError [ECONNREFUSED]: ...","errors":"Error: connect ECONNREFUSED ::1:4318,Error: connect ECONNREFUSED 127.0.0.1:4318","code":"ECONNREFUSED","name":"AggregateError"}
-```
-
-These errors indicate that the configured OTLP endpoint cannot be reached during export. The root cause is typically one of the following:
 
 - **Incorrect endpoint configuration**: Check that URLs, ports, and paths in your exporter configuration match your observability service requirements
 - **Network connectivity issues**: Ensure the destination service is running and accessible from your runtime environment
@@ -158,16 +153,8 @@ These errors indicate that the configured OTLP endpoint cannot be reached during
 1. Confirm the destination endpoint is reachable and properly configured
 1. Refer to the [use cases documentation](https://github.com/adobe/aio-lib-telemetry/tree/main/docs/use-cases) for service-specific configuration examples
 
-**If you only want to develop locally without forwarding telemetry:** Remove or comment out exporter configuration in `actions/telemetry.js`, leaving telemetry enabled but with no external forwarding.
+**If you only want to develop without forwarding telemetry:** Remove or comment out exporter configuration in [`actions/telemetry.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/telemetry.js), leaving telemetry enabled but with no external forwarding.
 
 <InlineAlert variant="warning" slots="text" />
 
 Completely disabling telemetry (`ENABLE_TELEMETRY: false`) removes instrumentation setup. If your custom code directly invokes telemetry APIs or relies on context propagation, this may cause runtime errors. Only disable telemetry after confirming your code has no such dependencies.
-
-## Additional information
-
-[OpenTelemetry Collector documentation](https://opentelemetry.io/docs/collector/)
-[Usage guide](https://github.com/adobe/aio-lib-telemetry/blob/main/docs/usage.md)
-[`@adobe/aio-lib-telemetry`](https://github.com/adobe/aio-lib-telemetry)
-[API reference](https://github.com/adobe/aio-lib-telemetry/tree/main/docs/api-reference)
-[OpenTelemetry core concepts](https://opentelemetry.io/docs/concepts/)

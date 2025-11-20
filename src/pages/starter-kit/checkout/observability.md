@@ -67,11 +67,11 @@ To forward telemetry (logs, traces, metrics) to any OTLP‑compatible service (s
    // Exporter wiring helper (replace with your service-specific config)
    function buildExporters(params) {
      return {
-       // Logs: replace buildYourLogExporter with your actual log exporter (e.g., OTLPLogExporter)
+       // Logs: replace buildYourLogExporter with your actual log exporter
        // Use params.OTLP_ENDPOINT + '/v1/logs' for the exporter URL
        logRecordProcessors: params.OTLP_ENDPOINT ? [buildYourLogExporter(params)] : [],
 
-       // Traces: replace buildYourTraceExporter with your actual trace exporter (e.g., OTLPTraceExporter)
+       // Traces: replace buildYourTraceExporter with your actual trace exporter
        // Use params.OTLP_ENDPOINT + '/v1/traces' for the exporter URL
        spanProcessors: params.OTLP_ENDPOINT ? [buildYourTraceExporter(params)] : [],
 

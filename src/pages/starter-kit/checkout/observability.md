@@ -61,7 +61,6 @@ To forward telemetry (logs, traces, metrics) to any OTLP‑compatible service (s
    } from '@adobe/aio-lib-telemetry';
 
    // Import exporters and processors from '@adobe/aio-lib-telemetry/otel'
-   // For example: OTLPLogExporter, OTLPTraceExporter, BatchLogRecordProcessor, etc.
    // See API Reference: https://github.com/adobe/aio-lib-telemetry/blob/main/docs/api-reference/README.md
 
    // Exporter wiring helper (replace with your service-specific config)

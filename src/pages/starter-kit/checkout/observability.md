@@ -39,26 +39,9 @@ The telemetry behavior and settings are configured in the [`actions/telemetry.js
 
 ### Viewing telemetry data
 
-By default, diagnostics logging is disabled in the starter kit (`diagnostics: false` in [[`actions/telemetry.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/telemetry.js)]). This setting only suppresses internal OpenTelemetry diagnostic output (SDK self‑logs). It does not control or forward your actual telemetry signals (logs, traces, metrics). Signals remain local until you configure exporters.
+By default, no telemetry data (logs/traces/metrics) is forwarded externally until you configure exporters. Instrumentation still runs and can be activated for any action with `ENABLE_TELEMETRY: true`.
 
-**Diagnostics configuration (optional):** Provide an object instead of `false` to enable and tune internal OpenTelemetry logs. Example:
-
-```javascript
-// Example diagnostics configuration object
-const telemetryConfig = defineTelemetryConfig((params, isDev) => ({
-  sdkConfig: {
-    // ... other config
-  },
-  diagnostics: {
-    // Will only show warning logs and above
-    logLevel: "warning",
-    // The internal logs of OpenTelemetry will not get exported, only printed.
-    // This means you won't see them in your observability backend, but you will
-    // in the Adobe I/O Runtime logs (queryable via `aio rt activation logs <id>`)
-    exportLogs: false
-  }
-}));
-```
+For internal OpenTelemetry SDK logs (diagnostics), see the dedicated [Diagnostics section](#diagnostics-internal-sdk-logs) below.
 
 ### Export telemetry data (cloud or local)
 
@@ -76,45 +59,44 @@ To forward telemetry (logs, traces, metrics) to any OTLP‑compatible service (s
      getPresetInstrumentations,
      // other helpers from '@adobe/aio-lib-telemetry' as needed
    } from '@adobe/aio-lib-telemetry';
-   
+
    // Import exporters and processors from '@adobe/aio-lib-telemetry/otel'
    // For example: OTLPLogExporter, OTLPTraceExporter, BatchLogRecordProcessor, etc.
    // See API Reference: https://github.com/adobe/aio-lib-telemetry/blob/main/docs/api-reference/README.md
-   
+
    // Exporter wiring helper (replace with your service-specific config)
    function buildExporters(params) {
      return {
        // Logs: replace buildYourLogExporter with your actual log exporter (e.g., OTLPLogExporter)
        // Use params.OTLP_ENDPOINT + '/v1/logs' for the exporter URL
        logRecordProcessors: params.OTLP_ENDPOINT ? [buildYourLogExporter(params)] : [],
-   
+
        // Traces: replace buildYourTraceExporter with your actual trace exporter (e.g., OTLPTraceExporter)
        // Use params.OTLP_ENDPOINT + '/v1/traces' for the exporter URL
        spanProcessors: params.OTLP_ENDPOINT ? [buildYourTraceExporter(params)] : [],
-   
+
        // Metrics: replace with your actual metrics exporters array
        // Use params.OTLP_ENDPOINT + '/v1/metrics' for the exporter URL
        metricsExporters: [],
      };
    }
-   
+
    const telemetryConfig = defineTelemetryConfig((params, isDev) => ({
      sdkConfig: {
        serviceName: 'commerce-checkout-starter-kit',
        instrumentations: getPresetInstrumentations('simple'),
        resource: getAioRuntimeResource(),
-   
        // Insert log / trace / metric exporter objects via helper
        ...buildExporters(params),
      },
      // Set true only when debugging telemetry setup
      diagnostics: false,
    }));
-   
+
    export { telemetryConfig };
    ```
 
-1. Surface endpoint and auth inputs in [`app.config.yaml`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/app.config.yaml), as shown in the following excerpt. (You can also use secrets.)
+2. Surface endpoint and auth inputs in [`app.config.yaml`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/app.config.yaml), as shown in the following excerpt. (You can also use secrets.)
 
    ```yaml
    actions:
@@ -126,7 +108,7 @@ To forward telemetry (logs, traces, metrics) to any OTLP‑compatible service (s
          # repeat for other actions or centralize pattern
    ```
 
-1. Update your local development `.env` file with the appropriate endpoint and auth values. Example for a local OpenTelemetry collector:
+3. Update your local development `.env` file with the appropriate endpoint and auth values. Example for a local OpenTelemetry collector:
 
    ```text
    OTLP_ENDPOINT=http://localhost:4318
@@ -138,6 +120,28 @@ For concrete exporter code (such as constructing OTLP exporters, using batch pro
 - [API reference for `@adobe/aio-lib-telemetry`](https://github.com/adobe/aio-lib-telemetry/blob/main/docs/api-reference/README.md)
 - [Use cases (configuration examples)](https://github.com/adobe/aio-lib-telemetry/tree/main/docs/use-cases)
 - [Exporting data guide](https://github.com/adobe/aio-lib-telemetry/blob/main/docs/usage.md#exporting-data)
+
+## Diagnostics (internal SDK logs)
+
+Diagnostics are internal OpenTelemetry SDK logs (not your application’s exported telemetry signals). They are disabled by default in the starter kit (`diagnostics: false` in `actions/telemetry.js`). Enable them only when investigating configuration or export issues.
+
+> **Note:** Diagnostics are optional. If you are not debugging telemetry setup or exporter connectivity, you can safely leave `diagnostics: false`.
+
+**Enable diagnostics example:**
+```javascript
+const telemetryConfig = defineTelemetryConfig((params, isDev) => ({
+  sdkConfig: { /* ... */ },
+  diagnostics: {
+    logLevel: 'warning',    // minimum level printed
+    exportLogs: false       // print only; do not export internal SDK logs
+  }
+}));
+```
+
+Key points:
+- Set `diagnostics: false` to silence internal SDK logs entirely.
+- Provide an object to enable them and control verbosity.
+- These logs appear in Adobe I/O Runtime activation logs; they are not exported unless you also configure log exporters.
 
 ## Troubleshooting
 
@@ -156,12 +160,10 @@ The root cause is typically one of the following:
 **To resolve:**
 
 1. Review your exporter configuration in [`actions/telemetry.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/telemetry.js) and [`app.config.yaml`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/app.config.yaml).
-1. Confirm the destination endpoint is reachable and properly configured.
-1. Refer to the [use cases documentation](https://github.com/adobe/aio-lib-telemetry/tree/main/docs/use-cases) for service-specific configuration examples.
+2. Confirm the destination endpoint is reachable and properly configured.
+3. Refer to the [use cases documentation](https://github.com/adobe/aio-lib-telemetry/tree/main/docs/use-cases) for service-specific configuration examples.
 
 ### Completely disable telemetry
-
-<InlineAlert variant="warning" slots="text" />
 
 Setting `ENABLE_TELEMETRY: false` in [`app.config.yaml`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/app.config.yaml) completely disables telemetry and removes instrumentation setup. If your custom code directly invokes telemetry APIs (such as `getInstrumentationHelpers()`) or relies on context propagation, you will encounter runtime errors like:
 

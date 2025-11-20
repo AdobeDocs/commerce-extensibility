@@ -61,8 +61,6 @@ You can create conditional events within your module's or root `io_events.xml` f
 
 ## Trigger events on specific field changes
 
-<Edition name="paas" />
-
 <InlineAlert variant="warning" slots="text"/>
 
 This rule is possible only for events that include original data [`_origData`](./events-original-data.md) in the payload. If an event does not include original data, the `onChange` operator cannot be used, and such an event will not be triggered.

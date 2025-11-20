@@ -71,7 +71,6 @@ To forward telemetry (logs, traces, metrics) to any OTLP‑compatible service (s
      defineTelemetryConfig,
      getAioRuntimeResource,
      getPresetInstrumentations,
-     // localCollectorConfig, // optional helper if you want a local collector
      // other helpers from '@adobe/aio-lib-telemetry' as needed
    } from '@adobe/aio-lib-telemetry';
    
@@ -94,9 +93,6 @@ To forward telemetry (logs, traces, metrics) to any OTLP‑compatible service (s
        serviceName: 'commerce-checkout-starter-kit',
        instrumentations: getPresetInstrumentations('simple'),
        resource: getAioRuntimeResource(),
-   
-       // Optional: uncomment for local collector convenience
-       // ...localCollectorConfig(),
    
        // Insert log / trace / metric exporter objects via helper
        ...buildExporters(params),
@@ -161,3 +157,4 @@ Setting `ENABLE_TELEMETRY: false` in [`app.config.yaml`](https://github.com/adob
 `Error: getInstrumentationHelpers has been called in a runtime action that has not telemetry enabled. Ensure the ENABLE_TELEMETRY environment variable is set to true. Otherwise, instrumentation will not work.`
 
 To resolve this error, use the core logging utilities from [`@adobe/aio-sdk`](https://github.com/adobe/aio-sdk) instead.
+

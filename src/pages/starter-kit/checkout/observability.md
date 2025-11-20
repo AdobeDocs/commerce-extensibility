@@ -44,8 +44,11 @@ By default, diagnostics logging is disabled in the starter kit (`diagnostics: fa
 **Diagnostics configuration (optional):** Provide an object instead of `false` to enable and tune internal OpenTelemetry logs. Example:
 
 ```javascript
-{
-  // It's an object, this will enable OpenTelemetry internal logs
+// Example diagnostics configuration object
+const telemetryConfig = defineTelemetryConfig((params, isDev) => ({
+  sdkConfig: {
+    // ... other config
+  },
   diagnostics: {
     // Will only show warning logs and above
     logLevel: "warning",
@@ -54,7 +57,7 @@ By default, diagnostics logging is disabled in the starter kit (`diagnostics: fa
     // in the Adobe I/O Runtime logs (queryable via `aio rt activation logs <id>`)
     exportLogs: false
   }
-}
+}));
 ```
 
 ### Export telemetry data (cloud or local)
@@ -74,16 +77,23 @@ To forward telemetry (logs, traces, metrics) to any OTLP‑compatible service (s
      // other helpers from '@adobe/aio-lib-telemetry' as needed
    } from '@adobe/aio-lib-telemetry';
    
+   // Import exporters and processors from '@adobe/aio-lib-telemetry/otel'
+   // For example: OTLPLogExporter, OTLPTraceExporter, BatchLogRecordProcessor, etc.
+   // See API Reference: https://github.com/adobe/aio-lib-telemetry/blob/main/docs/api-reference/README.md
+   
    // Exporter wiring helper (replace with your service-specific config)
    function buildExporters(params) {
      return {
        // Logs: replace buildYourLogExporter with your actual log exporter (e.g., OTLPLogExporter)
+       // Use params.OTLP_ENDPOINT + '/v1/logs' for the exporter URL
        logRecordProcessors: params.OTLP_ENDPOINT ? [buildYourLogExporter(params)] : [],
    
        // Traces: replace buildYourTraceExporter with your actual trace exporter (e.g., OTLPTraceExporter)
-       spanProcessors: params.OTLP_TRACES_ENDPOINT ? [buildYourTraceExporter(params)] : [],
+       // Use params.OTLP_ENDPOINT + '/v1/traces' for the exporter URL
+       spanProcessors: params.OTLP_ENDPOINT ? [buildYourTraceExporter(params)] : [],
    
        // Metrics: replace with your actual metrics exporters array
+       // Use params.OTLP_ENDPOINT + '/v1/metrics' for the exporter URL
        metricsExporters: [],
      };
    }
@@ -109,11 +119,11 @@ To forward telemetry (logs, traces, metrics) to any OTLP‑compatible service (s
    ```yaml
    actions:
      collect-taxes:
-     inputs:
-        ENABLE_TELEMETRY: true
-        OTLP_ENDPOINT: $OTLP_ENDPOINT        # e.g. https://otel.example.com/v1/logs
-        OTLP_API_KEY: $OTLP_API_KEY          # token/key if service requires
-        # repeat for other actions or centralize pattern
+       inputs:
+         ENABLE_TELEMETRY: true
+         OTLP_ENDPOINT: $OTLP_ENDPOINT        # Base URL, e.g. https://otel.example.com
+         OTLP_API_KEY: $OTLP_API_KEY          # token/key if service requires
+         # repeat for other actions or centralize pattern
    ```
 
 1. Update your local development `.env` file with the appropriate endpoint and auth values. Example for a local OpenTelemetry collector:
@@ -125,6 +135,7 @@ To forward telemetry (logs, traces, metrics) to any OTLP‑compatible service (s
 
 For concrete exporter code (such as constructing OTLP exporters, using batch processors, service specific headers), refer to:
 
+- [API reference for `@adobe/aio-lib-telemetry`](https://github.com/adobe/aio-lib-telemetry/blob/main/docs/api-reference/README.md)
 - [Use cases (configuration examples)](https://github.com/adobe/aio-lib-telemetry/tree/main/docs/use-cases)
 - [Exporting data guide](https://github.com/adobe/aio-lib-telemetry/blob/main/docs/usage.md#exporting-data)
 
@@ -156,5 +167,4 @@ Setting `ENABLE_TELEMETRY: false` in [`app.config.yaml`](https://github.com/adob
 
 `Error: getInstrumentationHelpers has been called in a runtime action that has not telemetry enabled. Ensure the ENABLE_TELEMETRY environment variable is set to true. Otherwise, instrumentation will not work.`
 
-To resolve this error, use the core logging utilities from [`@adobe/aio-sdk`](https://github.com/adobe/aio-sdk) instead.
-
+To resolve this error, you must remove those calls and use alternative core logging utilities from [`@adobe/aio-sdk`](https://github.com/adobe/aio-sdk) instead.

@@ -128,6 +128,7 @@ Diagnostics are internal OpenTelemetry SDK logs (not your application’s export
 > **Note:** Diagnostics are optional. If you are not debugging telemetry setup or exporter connectivity, you can safely leave `diagnostics: false`.
 
 **Enable diagnostics example:**
+
 ```javascript
 const telemetryConfig = defineTelemetryConfig((params, isDev) => ({
   sdkConfig: { /* ... */ },
@@ -139,6 +140,7 @@ const telemetryConfig = defineTelemetryConfig((params, isDev) => ({
 ```
 
 Key points:
+
 - Set `diagnostics: false` to silence internal SDK logs entirely.
 - Provide an object to enable them and control verbosity.
 - These logs appear in Adobe I/O Runtime activation logs; they are not exported unless you also configure log exporters.

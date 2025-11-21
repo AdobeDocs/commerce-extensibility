@@ -95,7 +95,7 @@ To forward telemetry (logs, traces, metrics) to any OTLP‑compatible service (s
    export { telemetryConfig };
    ```
 
-1. Surface endpoint and auth inputs in [`app.config.yaml`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/app.config.yaml), as shown in the following excerpt. (You can also use secrets.)
+2. Surface endpoint and auth inputs in [`app.config.yaml`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/app.config.yaml), as shown in the following excerpt. (You can also use secrets.)
 
    ```yaml
    actions:
@@ -107,7 +107,7 @@ To forward telemetry (logs, traces, metrics) to any OTLP‑compatible service (s
          # repeat for other actions or centralize pattern
    ```
 
-1. Update your local development `.env` file with the appropriate endpoint and auth values. Example for a local OpenTelemetry collector:
+3. Update your local development `.env` file with the appropriate endpoint and auth values. Example for a local OpenTelemetry collector:
 
    ```text
    OTLP_ENDPOINT=http://localhost:4318
@@ -124,15 +124,7 @@ For concrete exporter code (such as constructing OTLP exporters, using batch pro
 
 Diagnostics are internal OpenTelemetry SDK logs (not your application’s exported telemetry signals). They are disabled by default in the starter kit (`diagnostics: false` in `actions/telemetry.js`). Enable them only when investigating configuration or export issues.
 
-<InlineAlert variant="info" slots="text" />
-
-Diagnostics are optional. If you are not debugging telemetry setup or exporter connectivity, you can safely leave `diagnostics: false`.
-
-Keep the following in mind when running diagnostics:
-
-- Set `diagnostics: false` to silence internal SDK logs entirely.
-- Provide an object to enable them and control verbosity.
-- These logs appear in Adobe I/O Runtime activation logs; they are not exported unless you also configure log exporters.
+> **Note:** Diagnostics are optional. If you are not debugging telemetry setup or exporter connectivity, you can safely leave `diagnostics: false`.
 
 **Enable diagnostics example:**
 
@@ -145,6 +137,12 @@ const telemetryConfig = defineTelemetryConfig((params, isDev) => ({
   }
 }));
 ```
+
+Key points:
+
+- Set `diagnostics: false` to silence internal SDK logs entirely.
+- Provide an object to enable them and control verbosity.
+- These logs appear in Adobe I/O Runtime activation logs; they are not exported unless you also configure log exporters.
 
 ## Troubleshooting
 
@@ -163,8 +161,8 @@ The root cause is typically one of the following:
 **To resolve:**
 
 1. Review your exporter configuration in [`actions/telemetry.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/telemetry.js) and [`app.config.yaml`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/app.config.yaml).
-1. Confirm the destination endpoint is reachable and properly configured.
-1. Refer to the [use cases documentation](https://github.com/adobe/aio-lib-telemetry/tree/main/docs/use-cases) for service-specific configuration examples.
+2. Confirm the destination endpoint is reachable and properly configured.
+3. Refer to the [use cases documentation](https://github.com/adobe/aio-lib-telemetry/tree/main/docs/use-cases) for service-specific configuration examples.
 
 ### Completely disable telemetry
 

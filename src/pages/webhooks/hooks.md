@@ -269,9 +269,7 @@ For example, given the above hook field configuration, conversion occurs only if
 
 ## Context values
 
-You can add to the webhook payload values from the application context.
-
-&#8203;<Edition name="paas" /> Creating header values using the application context is also supported.
+You can add to the webhook payload values or webhook header values from the application context.
 
 ### Context fields
 
@@ -372,8 +370,6 @@ Active: Yes
 ```
 
 ### Context headers
-
-<Edition name="paas" />
 
 You can use the same syntax and features available for context values in fields to set hook headers.
 

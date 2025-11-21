@@ -90,7 +90,7 @@ To forward telemetry (logs, traces, metrics) to any OTLP‑compatible service (s
    export { telemetryConfig };
    ```
 
-2. Surface endpoint and auth inputs in [`app.config.yaml`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/app.config.yaml), as shown in the following excerpt. (You can also use secrets.)
+1. Surface endpoint and auth inputs in [`app.config.yaml`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/app.config.yaml), as shown in the following excerpt. (You can also use secrets.)
 
    ```yaml
    actions:
@@ -102,7 +102,7 @@ To forward telemetry (logs, traces, metrics) to any OTLP‑compatible service (s
          # repeat for other actions or centralize pattern
    ```
 
-3. Update your local development `.env` file with the appropriate endpoint and auth values. Example for a local OpenTelemetry collector:
+1. Update your local development `.env` file with the appropriate endpoint and auth values. Example for a local OpenTelemetry collector:
 
    ```text
    OTLP_ENDPOINT=http://localhost:4318

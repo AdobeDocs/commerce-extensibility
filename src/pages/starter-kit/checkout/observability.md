@@ -39,7 +39,7 @@ The telemetry behavior and settings are configured in the [`actions/telemetry.js
 
 ### Viewing telemetry data
 
-By default, no telemetry data (logs/traces/metrics) is forwarded externally until you configure exporters. If exporters are not configured, collected telemetry data is discarded. Instrumentation still runs because `ENABLE_TELEMETRY` is set to `true`, but can be disabled at any time by setting it to `false` for specific actions.
+By default, no telemetry data (logs/traces/metrics) is forwarded externally until you configure exporters. If exporters are not configured, collected telemetry data is discarded. Instrumentation still runs because `ENABLE_TELEMETRY` is set to `true` in each runtime action's inputs section, but can be disabled at any time by setting it to `false`.
 
 ### Export telemetry data (cloud or local)
 

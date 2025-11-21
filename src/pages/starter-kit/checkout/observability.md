@@ -39,9 +39,7 @@ The telemetry behavior and settings are configured in the [`actions/telemetry.js
 
 ### Viewing telemetry data
 
-By default, no telemetry data (logs/traces/metrics) is forwarded externally until you configure exporters. Instrumentation still runs and can be activated for any action with `ENABLE_TELEMETRY: true`.
-
-For internal OpenTelemetry SDK logs (diagnostics), see the dedicated [Diagnostics section](#diagnostics-internal-sdk-logs) below.
+By default, no telemetry data (logs/traces/metrics) is forwarded externally until you configure exporters. If exporters are not configured, collected telemetry data is discarded. Instrumentation still runs because `ENABLE_TELEMETRY` is set to `true`, but can be disabled at any time by setting it to `false` for specific actions.
 
 ### Export telemetry data (cloud or local)
 
@@ -67,15 +65,12 @@ To forward telemetry (logs, traces, metrics) to any OTLP‑compatible service (s
    function buildExporters(params) {
      return {
        // Logs: replace buildYourLogExporter with your actual log exporter
-       // Use params.OTLP_ENDPOINT + '/v1/logs' for the exporter URL
        logRecordProcessors: params.OTLP_ENDPOINT ? [buildYourLogExporter(params)] : [],
 
        // Traces: replace buildYourTraceExporter with your actual trace exporter
-       // Use params.OTLP_ENDPOINT + '/v1/traces' for the exporter URL
        spanProcessors: params.OTLP_ENDPOINT ? [buildYourTraceExporter(params)] : [],
 
        // Metrics: replace with your actual metrics exporters array
-       // Use params.OTLP_ENDPOINT + '/v1/metrics' for the exporter URL
        metricsExporters: [],
      };
    }
@@ -120,29 +115,6 @@ For concrete exporter code (such as constructing OTLP exporters, using batch pro
 - [Use cases (configuration examples)](https://github.com/adobe/aio-lib-telemetry/tree/main/docs/use-cases)
 - [Exporting data guide](https://github.com/adobe/aio-lib-telemetry/blob/main/docs/usage.md#exporting-data)
 
-## Diagnostics (internal SDK logs)
-
-Diagnostics are internal OpenTelemetry SDK logs (not your application’s exported telemetry signals). They are disabled by default in the starter kit (`diagnostics: false` in `actions/telemetry.js`). Enable them only when investigating configuration or export issues.
-
-> **Note:** Diagnostics are optional. If you are not debugging telemetry setup or exporter connectivity, you can safely leave `diagnostics: false`.
-
-**Enable diagnostics example:**
-
-```javascript
-const telemetryConfig = defineTelemetryConfig((params, isDev) => ({
-  sdkConfig: { /* ... */ },
-  diagnostics: {
-    logLevel: 'warning',    // minimum level printed
-    exportLogs: false       // print only; do not export internal SDK logs
-  }
-}));
-```
-
-Key points:
-
-- Set `diagnostics: false` to silence internal SDK logs entirely.
-- Provide an object to enable them and control verbosity.
-- These logs appear in Adobe I/O Runtime activation logs; they are not exported unless you also configure log exporters.
 
 ## Troubleshooting
 
@@ -163,6 +135,29 @@ The root cause is typically one of the following:
 1. Review your exporter configuration in [`actions/telemetry.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/telemetry.js) and [`app.config.yaml`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/app.config.yaml).
 2. Confirm the destination endpoint is reachable and properly configured.
 3. Refer to the [use cases documentation](https://github.com/adobe/aio-lib-telemetry/tree/main/docs/use-cases) for service-specific configuration examples.
+
+### Diagnostics (internal SDK logs)
+
+Diagnostics are an optional feature of the [`@adobe/aio-lib-telemetry`](https://github.com/adobe/aio-lib-telemetry) library. They can be used to enable and configure internal OpenTelemetry SDK logs (not your application's), which you may need when troubleshooting your telemetry setup, in case it's not working as expected. By default, they are disabled (`diagnostics: false` in [`actions/telemetry.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/telemetry.js)).
+
+**Enable diagnostics example:**
+
+```javascript
+const telemetryConfig = defineTelemetryConfig((params, isDev) => ({
+  sdkConfig: { /* ... */ },
+  diagnostics: {
+    logLevel: 'warning',    // minimum level printed
+    exportLogs: false       // print only; do not export internal SDK logs
+  }
+}));
+```
+
+Key points:
+
+- Set `diagnostics: false` to silence internal SDK logs entirely.
+- If you want them enabled, configure them by setting an object implementing the [`TelemetryDiagnosticsConfig`](https://github.com/adobe/aio-lib-telemetry/blob/main/docs/api-reference/type-aliases/TelemetryDiagnosticsConfig.md) interface.
+- These logs appear in Adobe I/O Runtime activation logs (accessible via `aio rt activation logs <activation-id>` or visible in `aio app dev` output), filtered by the configured `logLevel`. They are not exported unless you also configure log exporters.
+
 
 ### Completely disable telemetry
 

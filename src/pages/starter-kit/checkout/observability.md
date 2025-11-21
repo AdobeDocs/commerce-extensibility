@@ -115,7 +115,6 @@ For concrete exporter code (such as constructing OTLP exporters, using batch pro
 - [Use cases (configuration examples)](https://github.com/adobe/aio-lib-telemetry/tree/main/docs/use-cases)
 - [Exporting data guide](https://github.com/adobe/aio-lib-telemetry/blob/main/docs/usage.md#exporting-data)
 
-
 ## Troubleshooting
 
 Use the following guidance to troubleshoot common telemetry issues.
@@ -157,7 +156,6 @@ Key points:
 - Set `diagnostics: false` to silence internal SDK logs entirely.
 - If you want them enabled, configure them by setting an object implementing the [`TelemetryDiagnosticsConfig`](https://github.com/adobe/aio-lib-telemetry/blob/main/docs/api-reference/type-aliases/TelemetryDiagnosticsConfig.md) interface.
 - These logs appear in Adobe I/O Runtime activation logs (accessible via `aio rt activation logs <activation-id>` or visible in `aio app dev` output), filtered by the configured `logLevel`. They are not exported unless you also configure log exporters.
-
 
 ### Completely disable telemetry
 

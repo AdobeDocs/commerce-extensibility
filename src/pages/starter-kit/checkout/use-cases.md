@@ -53,7 +53,7 @@ The starter kit demonstrates this use case in the [`actions/3rd-party-events/pub
 
 <InlineAlert variant="info" slots="text"/>
 
-To implement this use case, the action must receive the `OAUTH_*` environment variables that allow it to retrieve an access token to publish in the event provider. You can specify this configuration using the environment variables in the [`.env` file](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/env.dist), so that they match the authentication settings in your `app.config.yaml`.
+To implement this use case, the action must receive the `AIO_COMMERCE_AUTH_IMS_*` environment variables that allow it to retrieve an access token to publish in the event provider. You can specify this configuration using the environment variables in the [`.env` file](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/env.dist), so that they match the authentication settings in your `app.config.yaml`.
 
 ### Consumption
 

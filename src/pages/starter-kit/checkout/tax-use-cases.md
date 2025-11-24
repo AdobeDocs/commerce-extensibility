@@ -179,6 +179,34 @@ The key points for constructing the response are:
 ]
 ```
 
+## Tax inclusive vs tax exclusive pricing
+
+Adobe Commerce supports two pricing models for tax calculation: tax-inclusive and tax-exclusive pricing. The `is_tax_included` flag in the webhook payload indicates the model used for each line item:
+
+- Tax-Inclusive Pricing (`is_tax_included: true`)
+  - The line item's `unit_price` already includes the full tax amount.
+  - The out-of-process tax module will not add the tax amount again to the row total or grand total.
+  - The App Builder webhook must still set the tax amount correctly so it appears properly in the order summary.
+- Tax-Exclusive Pricing (`is_tax_included: false`)
+  - The line item's `unit_price` does not include tax.
+  - The out-of-process tax module will add the tax amount to the row total and grand total.
+  - The App Builder webhook must calculate and set the tax amount.
+
+### Configure tax-inclusive pricing in Adobe Commerce
+
+This configuration is set in the Adobe Commerce Admin under **Stores** > **Configuration** > **Sales** > **Tax** > **Calculation Settings**
+
+![System > Sales > Tax > Calculation Settings](../../_images/system_sales_tax_calculation-settings.png)
+
+### Calculation examples
+
+The following examples illustrate how tax should be calculated in both pricing models:
+
+- Example (inclusive): Gross price 120.00, tax rate 20% → Net = 120 / 1.2 = 100.00, Tax = 20.00
+- Example (exclusive): Net price 100.00, tax rate 20% → Tax = 20.00, Gross = 120.00
+
+In the [Adobe Commerce checkout starter kit](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/collect-taxes/index.js#L85) you can find an implementation of both pricing models.
+
 ## Update custom attributes on tax classes via Admin UI
 
 The out-of-process tax module allows you to add custom attributes to tax classes. These attributes are useful when integrating with third-party tax systems that require standardized identifiers or additional metadata.  

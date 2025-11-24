@@ -110,7 +110,17 @@ The Appbuilder application receives the following payload as an `oopQuote` objec
       "shipping_method": "FREE",
       "shipping_description": "FREE"
     },
-    "custom_attributes": []
+    "custom_attributes": [],
+    "quote_id": 1234,
+    "customer": {
+      "entity_id": 123,
+      "website_id": 1,
+      "group_id": 1,
+      "email": "customer@example.com",
+      "firstname": "John",
+      "middlename": "",
+      "lastname": "Doe"
+    }
   }
 }
 ```
@@ -122,6 +132,7 @@ The key points for constructing the response are:
 - The `amount` in the `tax` object represents the actual tax applied to each line item.
 - The `rate` in both the `tax` and `tax_breakdown` objects is included for reference to indicate which tax rate was applied.
 - The `discount_compensation_amount` corresponds to the [`hidden tax`](https://experienceleague.adobe.com/en/docs/commerce-admin/stores-sales/site-store/taxes/hidden-tax-calculation), which accounts for the portion of tax adjusted by discounts.
+- The `customer` field will not be sent in the request payload for guest users.
 
 ```json
 [

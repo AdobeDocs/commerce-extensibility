@@ -213,7 +213,7 @@ To register a webhook, create a `webhooks.xml` [configuration file](../../webhoo
 
 ### Payload
 
-The Appbuilder application receives the following payload as an `oopCreditMemo` object, which contains the necessary data for the adjustment tax calculation. When action calculates the taxes, the response populates the `refund_tax` and `fee_tax` fields under the `adjustment` object and returns the result to the commerce instance.
+The App Builder application receives the following payload as an `oopCreditMemo` object, which contains the necessary data for the adjustment tax calculation. When action calculates the taxes, the response populates the `refund_tax` and `fee_tax` fields under the `adjustment` object and returns the result to the commerce instance.
 
 ```json
 {

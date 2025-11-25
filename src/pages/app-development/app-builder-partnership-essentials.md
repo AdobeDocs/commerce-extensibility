@@ -1,53 +1,80 @@
 ---
-title: Adobe Developer App Builder partnership essentials
+title: Adobe Developer App Builder Kit for Developers
 description: A guide to get you started with App Builder development and publishing.
 keywords:
   - App Builder
   - Extensibility
 ---
 
-# Adobe Developer App Builder partnership essentials
+# Adobe Developer App Builder Kit for Developers
 
-When a new collaboration starts between Adobe and our partners, one of the first steps is getting to know more about you as a partner. When you reach out to Adobe, sharing your interest in app building, Adobe will ask the following questions:
+Adobe believes that strong partnerships result in powerful results. Whether you are a **Solution Implementer (SI)**, or an **Independent Software Vendor (ISV)** who wants to build App Builder apps, Adobe is committed to supporting you at every step: from onboarding and sandbox access, to app development and distribution.
 
-- Will you publish an application as an individual or on behalf of a company?
-- Whose name will you publish the application under?
-- What is your area of expertise (for example, payments, checkout, marketing, social, or tax)?
-- Who will own and maintain the application?
-- Are you committed to building and publishing the application?
-- How much time or resources are you able to devote to this application development?
+Through the **Technology Partner Program (or TPP)**, you will receive access to the tools and resources you will need. Adobe is committed to helping you navigate challenges and complete your apps successfully.
+
+Together, we can create solutions that deliver real value to you, your customers, and the broader Adobe ecosystem.
 
 ## Requirements to access App Builder
 
+Access to App Builder requires the following conditions:
+
 - **Membership requirements** - To build and publish an application, you must have a Silver tier membership or higher, which gives you sandbox access and the possibility to publish on the Adobe Exchange Marketplace. Start with your membership and reach out to Adobe to share your objectives on app building and start a collaboration between your team and ours. We commit to our partners and will support you if you have questions or need help during the development stage.
 
-- **Account requirements** (Technology Partner Program) - The next step is to [create a Technology Partner Program (TPP) account](https://partners.adobe.com/technologyprogram/experiencecloud/registration.html), which is required to access App Builder, the Adobe Commerce as a Cloud Service sandbox and the App Builder sandbox, whether you are a Solution Implementer (SI) or Tech partner.
+- **Account requirements** - A [TPP account](https://partners.adobe.com/technologyprogram/experiencecloud/registration.html) is required to access all sandboxes (App Builder, the Adobe Commerce as a Cloud Service SaaS sandbox, and the PaaS sandbox), whether you are a Solution Implementer (SI) or an Independent Software Vendor.
 
 <InlineAlert variant="info" slots="text"/>
 
-If you are a Solution Partner Program (SPP) partner, you will need to create a Technology Partner Program (TPP) account to access these environments.
+If you are a **Solution Partner Program (SPP)** partner, you will need to create a TPP account to access these environments.
 
-### Request a Technology Partner Program (TPP) account
+### How to set up your account
 
-1. [Join the Technology Partner Program (TPP)](https://partners.adobe.com/technologyprogram/experiencecloud/registration.html) by using your personal corporate email address. Each registrant will need to use an Adobe ID. After joining, Adobe will assign an Independent Software Vendor (ISV), a TPP organization, and an App Builder sandbox associated with that organization.
+#### Step 1: Request a TPP account
 
-1. **Additional users** - The first TPP registrant using their Adobe ID email is associated with the TPP organization. Any additional users who need to submit or manage App Builder listings need to have their Adobe ID email added to the TPP organization. You can do so by creating a case ticket with [TPP Support](https://partners.adobe.com/ec/cform/case).
+[Create a Silver-level (or higher) TPP account](https://partners.adobe.com/technologyprogram/experiencecloud/registration.html) by using a personal corporate email address, and a valid company website. Follow the steps described [here](https://partners.adobe.com/technologyprogram/experiencecloud/knowledgebase/a96d596f933f8214fbe77b847aba101c.html) to Register for the Program.
 
-1. **Submission review** - After registration, Adobe will review your submission and notify you upon approval or rejection. If Adobe rejects your submission, you will be provided with next steps.
+   ![Register to the TPP program](../_images/register_tpp_adobe.png)
 
-   Estimated waiting time for acceptance to the Technology Partner Program and access to the sandbox could be up to one week.
+An IMS org will be created for you by Adobe Support, or after you have requested sandbox access in [Step 3](app-builder-partnership-essentials.md#step-3-request-sandbox-access). Each registrant will need to use an Adobe ID. 
 
-1. **Status check** - You can create additional tickets to check on your organization or sandbox enablement. Specify the name of your assigned TPP organization and ensure you sign in with the correct organization.
+**Additional users** - The first TPP registrant using their Adobe ID email is associated with the TPP organization. Any additional users who need to submit or manage App Builder listings need to have their Adobe ID email added to the TPP organization. You can do so by creating a case ticket with [TPP Support](https://partners.adobe.com/ec/cform/case).
 
-### Sandbox access
+Once you have joined, Adobe will assign an ISV, a TPP organization, and an App Builder sandbox associated to that organization.
 
-Once you are a Silver+ member and have set up your TPP account, you will need access to the following environments:
+   <InlineAlert variant="info" slots="text"/>
 
-- **App Builder Sandbox** - automatically associated with a TPP organization (for newly provisioned TPP organizations). Older organizations without permission should request a sandbox through [TPP Support](https://partners.adobe.com/ec/cform/sandbox) and request access to the following Commerce Sandboxes on the same ticket (if needed).
+    You require a Silver membership (or higher) within a TPP account to access App Builder, or public app listing. 
 
-- **Commerce PaaS Sandbox** – Account Managers should request Composer entitlements for Adobe Commerce EE/B2B Access through [TPP Support](https://partners.adobe.com/ec/cform/sandbox).
+#### Step 2: Submission review
 
-- **Commerce SaaS Sandbox** - access follows the same process as PaaS. Please file a ticket to [TPP Support](https://partners.adobe.com/ec/cform/sandbox).
+**Adobe will review your application and process your membership order**. You will be notified by e-mail upon approval, or rejection, within a few days of your request. If you are rejected, our team will inform you of what else is needed.
+
+#### Step 3: Request Sandbox access
+
+After your Silver membership is processed, you can request sandbox access, which will be provisioned within 5 days of your request:
+
+- **App Builder Sandbox** - automatically associated with a TPP organization (for newly provisioned TPP organizations). Older organizations without permission should request access to all three sandboxes (App Builder, PaaS and ACCS/SaaS) through [TPP Support](https://partners.adobe.com/ec/cform/sandbox) on the same ticket (if needed).
+
+- **Commerce PaaS Sandbox** – Account Managers should request both Composer entitlements for Adobe Commerce EE/B2B Access and PaaS sandbox through [TPP Support](https://partners.adobe.com/ec/cform/sandbox).
+
+- **Commerce SaaS Sandbox** - File a ticket to [TPP Support](https://partners.adobe.com/ec/cform/sandbox). Once received, you can add additional users that will need sandbox access in your Admin Console. See Step 6 to manually assign users as Admins or Developers (check step 6).
+
+<InlineAlert variant="info" slots="text"/>
+
+You can create a ticket to check the status of your organization, or sandbox enablement, specifying the name of your assigned TPP organization.
+
+#### Step 4: Log into your IMS organization
+
+Verify you are logged into your IMS organization by checking the top-right corner of Adobe Experience Cloud or Developer Console. If it displays your organization name, you're ready to use App Builder. If it shows an email address, you're signed into a personal account instead of your IMS organization.
+
+#### Step 5: Create Project from template
+
+1. Navigate to the Developer Console to access App Builder.
+
+1. Select **Create Project from template**.
+
+   ![Create project from template](../_images/developer_console_template.png)
+
+1. Follow steps described in the [Create your First App Builder Application](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app) topic.  
 
 ### Integrations
 

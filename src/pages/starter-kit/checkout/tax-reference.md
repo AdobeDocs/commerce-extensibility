@@ -36,8 +36,8 @@ Only one tax integration can be active at a time. If you want to change the acti
 | `code`                    | String  | Yes      | Unique identifier for the tax integration.                                                                                                                                                             |
 | `title`                   | String  | Yes      | Display name of the tax integration.                                                                                                                                                                   |
 | `active`                  | Boolean | No       | Indicates whether the tax integration is active. Triggers [tax calculation](./tax-use-cases.md#collect-taxes) when an address is set on the Cart.                                                      |
-| `credit_memo_tax_enabled` | Boolean | No       | Indicates whether [credit memo tax collection](./tax-use-cases.md#collect-adjustment-taxes-for-credit-memo) is active. Recalculation occurs when the credit memo adjustment refund or fee is non-zero. |
 | `stores`                  | Array   | No       | List of store codes where the tax integration is available.                                                                                                                                            |
+| `credit_memo_tax_enabled` | Boolean | No       | Indicates whether [credit memo tax collection](./tax-use-cases.md#collect-adjustment-taxes-for-credit-memo) is active. Recalculation occurs when the credit memo adjustment refund or fee is non-zero. |
 
 <CodeBlock slots="heading, code" repeat="2" languages="bash, json" />
 
@@ -53,8 +53,8 @@ curl --request POST \
     "code": "tax-1",
     "title": "Tax Integration 1",
     "active": true,
-    "credit_memo_tax_enabled": false,
-    "stores": ["store-1", "store-2"]
+    "stores": ["store-1", "store-2"],
+    "credit_memo_tax_enabled": false
 }
 }'
 ```

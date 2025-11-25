@@ -34,13 +34,13 @@ If you are a **Solution Partner Program (SPP)** partner, you will need to create
 
    ![Register to the TPP program](../_images/register_tpp_adobe.png)
 
-An IMS org will be created for you by Adobe Support, or after you have requested sandbox access in [Step 3](app-builder-partnership-essentials.md#step-3-request-sandbox-access). Each registrant will need to use an Adobe ID. 
+An IMS org will be created for you by Adobe Support, or after you have requested sandbox access in [Step 3](app-builder-partnership-essentials.md#step-3-request-sandbox-access). Each registrant will need to use an Adobe ID.
 
 Once you have joined, Adobe will assign an ISV, a TPP organization, and an App Builder sandbox associated to that organization.
 
    <InlineAlert variant="info" slots="text"/>
 
-   You require a Silver membership (or higher) within a TPP account to access App Builder, or public app listing. 
+   You require a Silver membership (or higher) within a TPP account to access App Builder, or public app listing.
 
 #### Step 2: Submission review
 
@@ -72,11 +72,11 @@ Verify you are logged into your IMS organization by checking the top-right corne
 
    ![Create project from template](../_images/developer_console_template.png)
 
-1. Follow steps described in the [Create your First App Builder Application](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app) topic.  
+1. Follow steps described in the [Create your First App Builder Application](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app) topic.
 
 #### Step 6: Manage your team
 
-**Admin Console** is a hub for accessing services, managing user access, product entitlements, or roles for all Adobe Experience Cloud products. 
+**Admin Console** is a hub for accessing services, managing user access, product entitlements, or roles for all Adobe Experience Cloud products.
 
 **Admin Console** allows admins to manage their team members. Any additional users who need to submit, or manage App Builder listings, need to have their Adobe ID email added to the IMS organization.
 
@@ -84,7 +84,7 @@ If you are an admin of your IMS organization, you can add other users, admins or
 
 <InlineAlert variant="info" slots="text"/>
 
-Only Developer or Admin status will allow them to manage App Builder listings; User status will not do that. 
+Only Developer or Admin status will allow them to manage App Builder listings; User status will not do that.
 
 ### Integrations
 
@@ -118,11 +118,11 @@ After partners get sandbox access, the Adobe Commerce engineering team will ask 
 
 ## Distribution
 
-Before you distribute, you must be part of the [Technology Partner Program](#request-a-technology-partner-program-tpp-account).
+Before you distribute, you must be part of the [Technology Partner Program](#step-1-request-a-tpp-account).
 
 Here are the distribution steps with use case for Commerce SIs and ISVs:
 
-#### Step 1: Create an App Builder listing
+### Step 1: Create an App Builder listing
 
 - Sign into [Developer Distribution (DD)](https://developer.adobe.com/distribute) and confirm that your approved IMS organization appears in the upper-right organization switcher. If the organization name looks like your email address, you are not in the TPP organization, and will get an error when trying to create a listing.
 
@@ -132,11 +132,11 @@ Here are the distribution steps with use case for Commerce SIs and ISVs:
 
    ![Listing types](../_images/listing_type.png)
 
-#### Step 2: Submit a listing for Review
+### Step 2: Submit a listing for Review
 
 - Review the [Adobe Exchange Marketplace publishing requirements](./app-submission-guidelines.md) to ensure your submission meets the requirements and to avoid delaying approval of your listing due to unmet criteria.
 
-- Adobe brand and code reviewers will [review the App Builder listing](https://developer.adobe.com/developer-distribution/experience-cloud/docs/guides/submission/app-builder-submission#reviewing-a-submission) and provide confirmation upon approval by e-mail. If it is incomplete, Adobe will provide you with feedback. You can also see the status on your page as **Approved**, or **Published**. 
+- Adobe brand and code reviewers will [review the App Builder listing](https://developer.adobe.com/developer-distribution/experience-cloud/docs/guides/submission/app-builder-submission#reviewing-a-submission) and provide confirmation upon approval by e-mail. If it is incomplete, Adobe will provide you with feedback. You can also see the status on your page as **Approved**, or **Published**.
 
 ## Variations
 

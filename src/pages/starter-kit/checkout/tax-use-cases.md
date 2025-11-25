@@ -18,7 +18,7 @@ You can calculate and apply taxes on shopping carts during checkout by using the
 
 To enable this webhook, set [`active`](./tax-reference.md#create-or-modify-a-new-oope-tax-integration) to `true` in the tax integration configuration.
 
-When the quote is recalculated, such as during a cart update or at checkout, a synchronous call is dispatched to the App Builder application that handles tax calculation. The response is returned through the oopQuote object, which includes the calculated tax fields. This webhook is triggered only when a shipping destination address is set, to avoid unnecessary calls during early cart interactions.
+When the quote is recalculated, such as during a cart update or at checkout, a synchronous call is dispatched to the App Builder application that handles tax calculation. The response is returned through the `oopQuote` object, which includes the calculated tax fields. This webhook is triggered only when a shipping destination address is set, to avoid unnecessary calls during early cart interactions.
 
 Refer to [`actions/collect-taxes.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/collect-taxes/index.js) for an example of how to process the request and return the tax calculation to the commerce instance. This file can serve as a template to implement custom tax calculations.
 

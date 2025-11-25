@@ -36,13 +36,11 @@ If you are a **Solution Partner Program (SPP)** partner, you will need to create
 
 An IMS org will be created for you by Adobe Support, or after you have requested sandbox access in [Step 3](app-builder-partnership-essentials.md#step-3-request-sandbox-access). Each registrant will need to use an Adobe ID. 
 
-**Additional users** - The first TPP registrant using their Adobe ID email is associated with the TPP organization. Any additional users who need to submit or manage App Builder listings need to have their Adobe ID email added to the TPP organization. You can do so by creating a case ticket with [TPP Support](https://partners.adobe.com/ec/cform/case).
-
 Once you have joined, Adobe will assign an ISV, a TPP organization, and an App Builder sandbox associated to that organization.
 
    <InlineAlert variant="info" slots="text"/>
 
-    You require a Silver membership (or higher) within a TPP account to access App Builder, or public app listing. 
+   You require a Silver membership (or higher) within a TPP account to access App Builder, or public app listing. 
 
 #### Step 2: Submission review
 
@@ -76,6 +74,18 @@ Verify you are logged into your IMS organization by checking the top-right corne
 
 1. Follow steps described in the [Create your First App Builder Application](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app) topic.  
 
+#### Step 6: Manage your team
+
+**Admin Console** is a hub for accessing services, managing user access, product entitlements, or roles for all Adobe Experience Cloud products. 
+
+**Admin Console** allows admins to manage their team members. Any additional users who need to submit, or manage App Builder listings, need to have their Adobe ID email added to the IMS organization.
+
+If you are an admin of your IMS organization, you can add other users, admins or developers through the **Admin Console**.
+
+<InlineAlert variant="info" slots="text"/>
+
+Only Developer or Admin status will allow them to manage App Builder listings; User status will not do that. 
+
 ### Integrations
 
 After partners get sandbox access, the Adobe Commerce engineering team will ask developers to extend the integration starter kit when getting started with App Builder development.
@@ -93,7 +103,9 @@ After partners get sandbox access, the Adobe Commerce engineering team will ask 
 **Support resources:**
 
 - [Common issues](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/troubleshoot).
+
 - [Experience League forum](https://experienceleaguecommunities.adobe.com/t5/app-builder/ct-p/adobe-app-builder).
+
 - Slack support channel in the [Magento Open Source Workspace](https://developer.adobe.com/open/magento/slack): `#app-builder-community`
 
 ## How to package your app
@@ -108,25 +120,33 @@ After partners get sandbox access, the Adobe Commerce engineering team will ask 
 
 Before you distribute, you must be part of the [Technology Partner Program](#request-a-technology-partner-program-tpp-account).
 
-Here are the distribution steps with use case for Commerce Solution Implementers and Independent Software Vendors:
+Here are the distribution steps with use case for Commerce SIs and ISVs:
 
-1. **Create an App Builder listing:**
+#### Step 1: Create an App Builder listing
 
-   - Sign into [Developer Distribution (DD)](https://developer.adobe.com/distribute) and confirm that your approved TPP organization appears in the upper-right organization switcher. If the organization name looks like your email address without the `@` sign, you are not in the TPP organization and will get an error when trying to create a listing.
-   - [Create an App Builder listing](https://developer.adobe.com/developer-distribution/experience-cloud/docs/guides/submission/app-builder-submission#creating-a-listing) using the zip file you created when building your App Builder app.
-   - Then create a public profile before submitting your first App Builder listing.
+- Sign into [Developer Distribution (DD)](https://developer.adobe.com/distribute) and confirm that your approved IMS organization appears in the upper-right organization switcher. If the organization name looks like your email address, you are not in the TPP organization, and will get an error when trying to create a listing.
 
-1. **Submit a listing for Review:**
+- Create a public profile before submitting your first App Builder listing.
 
-   - Review the [Adobe Exchange Marketplace publishing requirements](./app-submission-guidelines.md) to ensure your submission is correct to avoid delaying approval of your listing.
-   - Adobe brand and code reviewers will [review the App Builder listing](https://developer.adobe.com/developer-distribution/experience-cloud/docs/guides/submission/app-builder-submission#reviewing-a-submission) and provide confirmation upon approval. If it is incomplete, Adobe will provide you with feedback.
+- [Create an App Builder listing](https://developer.adobe.com/developer-distribution/experience-cloud/docs/guides/submission/app-builder-submission#creating-a-listing) using the zip file you created when building your App Builder app. After creating your listing, you will be able to see it on the **Listing Overview** page.
+
+   ![Listing types](../_images/listing_type.png)
+
+#### Step 2: Submit a listing for Review
+
+- Review the [Adobe Exchange Marketplace publishing requirements](./app-submission-guidelines.md) to ensure your submission meets the requirements and to avoid delaying approval of your listing due to unmet criteria.
+
+- Adobe brand and code reviewers will [review the App Builder listing](https://developer.adobe.com/developer-distribution/experience-cloud/docs/guides/submission/app-builder-submission#reviewing-a-submission) and provide confirmation upon approval by e-mail. If it is incomplete, Adobe will provide you with feedback. You can also see the status on your page as **Approved**, or **Published**. 
 
 ## Variations
 
-- Independent Software Vendors (ISVs) can publish the listing under their name, if they have an Adobe ID associated with a TPP organization.
-- Solution Implementers (SIs) can:
-  - Publish the listing under their name, if they have joined the Technology Partner Program (TPP) with their Adobe ID associated with a TPP organization.
-  - Publish on behalf of an ISV, if they are added to the TPP organization of the ISV. Provide evidence that ISV approves of SI publishing on their behalf by submitting a [TPP Support ticket](https://partners.adobe.com/ec/cform/case) and Adobe will provide the name of the organization to SI user to ensure they sign in to Developer Distribution (DD) under the correct organization.
+ISVs can publish the listing under their name, if they have an Adobe ID associated with a TPP organization.
+
+SIs can:
+
+- Publish the listing under their name, if they have joined the **Technology Partner Program** with their Adobe ID associated with a TPP organization.
+
+- Publish on behalf of an ISV, if they are added to the TPP organization of the ISV. Provide evidence that ISV approves of SI publishing on their behalf by submitting a [TPP Support](https://partners.adobe.com/ec/cform/case) ticket, and Adobe will provide the name of the organization to the SI user to ensure they sign in to the Developer Distribution (DD) under the correct organization.
 
 <InlineAlert variant="info" slots="text, text1"/>
 
@@ -136,14 +156,26 @@ Users updating or revising the App Builder App itself require Commerce and App B
 
 ## Resources
 
+- [SPP](https://solutionpartners.adobe.com/solution-partners/benefits.html) and [TPP](https://partners.adobe.com/technologyprogram/experiencecloud/benefits.html) Program Level Guide.
+
 - [About App Builder](https://developer.adobe.com/app-builder/docs/intro_and_overview/)
+
 - [Introduction to App Builder](https://experienceleague.adobe.com/en/docs/commerce-learn/tutorials/adobe-developer-app-builder/introduction-to-app-builder)
+
 - [Getting started with App Builder](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/app-builder-intro)
+
 - [Adobe Commerce checkout starter kit](../starter-kit/checkout/index.md) with the following Github repositories:
+  
   - [Adobe Commerce checkout starter kit](https://github.com/adobe/commerce-checkout-starter-kit)
+  
   - [Adobe Commerce integration starter kit](https://github.com/adobe/commerce-integration-starter-kit)
+
 - [Set up access, environment, and tools](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/set-up)
+
 - [Configuration files](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/configuration/configuration#public-distribution-configuration)
+
 - [Adobe Developer App Builder for Adobe Experience Cloud](https://business.adobe.com/products/experience-manager/developer-app-builder.html)
+
 - [Extend and integrate with Adobe Solutions](https://developer.adobe.com/app-builder/)
+
 - [Adobe Commerce extensibility](../index.md)

@@ -16,7 +16,7 @@ Together with Adobe, you can create solutions that deliver real value to you, yo
 
 ## Requirements to access App Builder
 
-Access to App Builder requires the following conditions:
+Access to App Builder requires the following conditions.
 
 - **Membership requirements** - To build and publish an application, you must have a Silver tier membership or higher, which gives you sandbox access and the possibility to publish on the Adobe Exchange Marketplace. Start with your membership and reach out to Adobe to share your objectives on app building and start a collaboration between your team and ours. We commit to our partners and will support you if you have questions or need help during the development stage.
 
@@ -34,15 +34,15 @@ Follow these steps to set up your TPP account.
 
 Go to the [Register to the Adobe Technology Partner Program](https://partners.adobe.com/technologyprogram/experiencecloud/registration.html) page and create a Silver-level (or higher) TPP account. You will be asked to provide a corporate email address and company website as part of the registration process. [How to register in the Adobe Technology Partner Program](https://partners.adobe.com/technologyprogram/experiencecloud/knowledgebase/a96d596f933f8214fbe77b847aba101c.html) provides additional information about this process.
 
-   ![Register to the TPP program](../_images/register-tpp-adobe.png)
+![Register to the TPP program](../_images/register-tpp-adobe.png)
 
 Adobe Support will create an IMS org for you, either proactively or after you request sandbox access in [Step 3](app-builder-partnership-essentials.md#step-3-request-sandbox-access). Each registrant must use an Adobe ID.
 
 After you join, Adobe will assign an ISV, a TPP organization, and an App Builder sandbox associated to that organization.
 
-   <InlineAlert variant="info" slots="text"/>
+<InlineAlert variant="info" slots="text"/>
 
-   A Silver membership (or higher) within a TPP account is needed to access App Builder, or public app listing.
+A Silver membership (or higher) within a TPP account is needed to access App Builder, or public app listing.
 
 ### Step 2: Adobe reviews your request
 
@@ -50,13 +50,13 @@ After you join, Adobe will assign an ISV, a TPP organization, and an App Builder
 
 ### Step 3: Request sandbox access
 
-After your Silver membership is processed, you can request sandbox access, which will be provisioned within five days of your request:
+After your Silver membership is processed, you can request sandbox access, which will be provisioned within five days of your request.
 
 - **App Builder Sandbox** - Newly provisioned TPP organizations are automatically associated with a TPP organization. Older organizations without the necessary permissions should request access to all three sandboxes—App Builder, PaaS, and ACCS/SaaS—through [TPP Support](https://partners.adobe.com/ec/cform/sandbox) using a single ticket.
 
 - **Commerce PaaS Sandbox** – Account Managers should request both Composer entitlements for Adobe Commerce EE/B2B Access and PaaS sandbox through [TPP Support](https://partners.adobe.com/ec/cform/sandbox).
 
-- **Commerce SaaS Sandbox** - File a ticket to [TPP Support](https://partners.adobe.com/ec/cform/sandbox). Once received, you can add additional users that will need sandbox access in your Admin Console. See Step 6 to manually assign users as Admins or Developers (check step 6).
+- **Commerce SaaS Sandbox** - File a ticket to [TPP Support](https://partners.adobe.com/ec/cform/sandbox). Once received, you can add additional users that will need sandbox access in your Admin Console. See [Step 6](app-builder-partnership-essentials.md#step-6-manage-your-team) to manually assign users as Admins or Developers.
 
 <InlineAlert variant="info" slots="text"/>
 
@@ -98,7 +98,7 @@ For detailed instructions, see [Adobe Admin Console Users](https://helpx.adobe.c
 
 <InlineAlert variant="info" slots="text"/>
 
-Only accounts with Developer or Admin access can manage App Builder listings. Accounts with User permissions cannot manage these listings.
+Only accounts with Developer or Admin access can manage App Builder listings.
 
 ## Integrations
 
@@ -155,7 +155,6 @@ Here are the distribution steps with use case for Commerce SIs and ISVs.
 ISVs can publish the listing under their name, if they have an Adobe ID associated with a TPP organization.
 
 SIs can:
-
 - Publish the listing under their name if they have joined the **Technology Partner Program** using their Adobe ID associated with a TPP organization.
 
 - Publish on behalf of an ISV if they have been added to the TPP organization of the ISV. To confirm approval, submit a [TPP Support](https://partners.adobe.com/ec/cform/case) ticket providing evidence that the ISV authorizes the SI to publish on their behalf. and Adobe will then share the organization name with the SI user to ensure that they sign in to the Developer Distribution (DD) under the correct organization.

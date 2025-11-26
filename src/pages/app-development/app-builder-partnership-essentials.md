@@ -64,7 +64,7 @@ You can create a ticket to check the status of your organization, or sandbox ena
 
 ### Step 4: Log into your Adobe IMS organization
 
-Verify that you are logged into your IMS organization by checking the top-right corner of the [Adobe Experience Cloud](https://experience.adobe.com/#/@commercelab/home) or [Developer Console](https://developer.adobe.com/console). If it displays your organization name, you're ready to use App Builder. If it shows an email address, you're signed into a personal account instead of your IMS organization.
+Verify that you are logged into your IMS organization by checking the top-right corner of the [Adobe Experience Cloud](https://experience.adobe.com/#/@commercelab/home) or [Developer Console](https://developer.adobe.com/console). If it displays your organization name, you are ready to use App Builder. If it shows an email address, you are signed into a personal account instead of your IMS organization.
 
 ### Step 5: Create a project from template
 

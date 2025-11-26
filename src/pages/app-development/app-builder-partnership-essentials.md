@@ -1,12 +1,12 @@
 ---
-title: Adobe Developer App Builder Kit for Developers
+title: App Builder Kit for Developers
 description: A guide to get you started with App Builder development and publishing.
 keywords:
   - App Builder
   - Extensibility
 ---
 
-# Adobe Developer App Builder Kit for Developers
+# App Builder Kit for Developers
 
 Adobe believes that strong partnerships result in powerful results. Whether you are a **Solution Implementer (SI)**, or an **Independent Software Vendor (ISV)** who wants to build App Builder apps, Adobe is committed to supporting you at every step—from onboarding and sandbox access to app development and distribution.
 

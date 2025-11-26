@@ -42,7 +42,6 @@ To install the observability module in Adobe Commerce:
 
 The message queue must be configured and running to use observability. The message queue is used to send observability data asynchronously, ensuring that the main application flow is not blocked by observability operations. Consumers can be configured to run by cron jobs or as workers.
 
-
 You can start the consumer to process logs, metrics, or tracing by running one or more of the following commands:
 
 ```bash

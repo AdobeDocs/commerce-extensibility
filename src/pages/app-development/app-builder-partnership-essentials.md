@@ -26,13 +26,15 @@ Access to App Builder requires the following conditions:
 
 If you are a **Solution Partner Program (SPP)** partner, you will need to create a TPP account to access these environments.
 
-### How to set up your account
+## How to set up your account
 
-#### Step 1: Request a TPP account
+Follow these steps to set up your TPP account.
 
-Go to the [Register to the Adobe Technology Partner Program](https://partners.adobe.com/technologyprogram/experiencecloud/registration.html) page and create a Silver-level (or higher) TPP account. You'll be asked to provide a corporate email address and company website as part of the registration process. [How to register in the Adobe Technology Partner Program](https://partners.adobe.com/technologyprogram/experiencecloud/knowledgebase/a96d596f933f8214fbe77b847aba101c.html) provides additional information about this process.
+### Step 1: Request a TPP account
 
-   ![Register to the TPP program](../_images/register_tpp_adobe.png)
+Go to the [Register to the Adobe Technology Partner Program](https://partners.adobe.com/technologyprogram/experiencecloud/registration.html) page and create a Silver-level (or higher) TPP account. You will be asked to provide a corporate email address and company website as part of the registration process. [How to register in the Adobe Technology Partner Program](https://partners.adobe.com/technologyprogram/experiencecloud/knowledgebase/a96d596f933f8214fbe77b847aba101c.html) provides additional information about this process.
+
+   ![Register to the TPP program](../_images/register-tpp-adobe.png)
 
 Adobe Support will create an IMS org for you, either proactively or after you request sandbox access in [Step 3](app-builder-partnership-essentials.md#step-3-request-sandbox-access). Each registrant must use an Adobe ID.
 
@@ -40,13 +42,13 @@ After you join, Adobe will assign an ISV, a TPP organization, and an App Builder
 
    <InlineAlert variant="info" slots="text"/>
 
-   You require a Silver membership (or higher) within a TPP account to access App Builder, or public app listing.
+   A Silver membership (or higher) within a TPP account is needed to access App Builder, or public app listing.
 
-#### Step 2: Adobe reviews your request
+### Step 2: Adobe reviews your request
 
 **Adobe will review your application and process your membership order.** Within a few days, you'll receive an email notification confirming whether your membership has been approved or rejected because additional information is required. If further details are needed, Adobe will provide guidance on next steps.
 
-#### Step 3: Request sandbox access
+### Step 3: Request sandbox access
 
 After your Silver membership is processed, you can request sandbox access, which will be provisioned within five days of your request:
 
@@ -60,21 +62,21 @@ After your Silver membership is processed, you can request sandbox access, which
 
 You can create a ticket to check the status of your organization, or sandbox enablement, specifying the name of your assigned TPP organization.
 
-#### Step 4: Log into your Adobe IMS organization
+### Step 4: Log into your Adobe IMS organization
 
-Verify that you are logged into your IMS organization by checking the top-right corner of the Adobe Experience Cloud or Developer Console. If it displays your organization name, you're ready to use App Builder. If it shows an email address, you're signed into a personal account instead of your IMS organization.
+Verify that you are logged into your IMS organization by checking the top-right corner of the [Adobe Experience Cloud]() or [Developer Console](). If it displays your organization name, you're ready to use App Builder. If it shows an email address, you're signed into a personal account instead of your IMS organization.
 
-#### Step 5: Create a project from template
+### Step 5: Create a project from template
 
 1. Navigate to the Developer Console to access App Builder.
 
 1. Select **Create Project from template**.
 
-   ![Create project from template](../_images/developer_console_template.png)
+   ![Create project from template](../_images/developer-console-template.png)
 
 1. Follow the steps described in the [Create your First App Builder Application](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app) topic.
 
-#### Step 6: Manage your team
+### Step 6: Manage your team
 
 The Admin Console is your central hub for managing access to Adobe Experience Cloud products. It enables administrators to control services, user access, product entitlements, and roles across the organization.
 
@@ -98,7 +100,7 @@ For detailed instructions, see [Adobe Admin Console Users](https://helpx.adobe.c
 
 Only accounts with Developer or Admin access can manage App Builder listings. Accounts with User permissions cannot manage these listings.
 
-### Integrations
+## Integrations
 
 After partners get sandbox access, the Adobe Commerce engineering team will ask developers to extend the integration starter kit when getting started with App Builder development.
 
@@ -130,9 +132,7 @@ After partners get sandbox access, the Adobe Commerce engineering team will ask 
 
 ## Distribution
 
-Before you distribute, you must be part of the [Technology Partner Program](#step-1-request-a-tpp-account).
-
-Here are the distribution steps with use case for Commerce SIs and ISVs:
+Here are the distribution steps with use case for Commerce SIs and ISVs.
 
 ### Step 1: Create an App Builder listing
 
@@ -142,7 +142,7 @@ Here are the distribution steps with use case for Commerce SIs and ISVs:
 
 - [Create an App Builder listing](https://developer.adobe.com/developer-distribution/experience-cloud/docs/guides/submission/app-builder-submission#creating-a-listing) using the zip file you created when building your App Builder app. After you create a listing, you can see it on the **Listing Overview** page.
 
-   ![Listing types](../_images/listing_type.png)
+   ![Listing types](../_images/listing-type.png)
 
 ### Step 2: Submit a listing for review
 
@@ -168,7 +168,9 @@ Users updating or revising the App Builder App itself require Commerce and App B
 
 ## Resources
 
-- [SPP](https://solutionpartners.adobe.com/solution-partners/benefits.html) and [TPP](https://partners.adobe.com/technologyprogram/experiencecloud/benefits.html) Program Level Guide.
+- [SPP](https://solutionpartners.adobe.com/solution-partners/benefits.html) Program Level Guide.
+
+- [TPP](https://partners.adobe.com/technologyprogram/experiencecloud/benefits.html) Program Level Guide.
 
 - [About App Builder](https://developer.adobe.com/app-builder/docs/intro_and_overview/)
 
@@ -176,10 +178,12 @@ Users updating or revising the App Builder App itself require Commerce and App B
 
 - [Getting started with App Builder](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/app-builder-intro)
 
-- [Adobe Commerce checkout starter kit](../starter-kit/checkout/index.md) with the following Github repositories:
-  
+- [Adobe Commerce checkout starter kit](../starter-kit/checkout/index.md) with its corresponding Github repository:
+
   - [Adobe Commerce checkout starter kit](https://github.com/adobe/commerce-checkout-starter-kit)
-  
+
+- [Adobe Commerce integration starter kit](../starter-kit/integration/index.md) with its corresponding Github repository:
+
   - [Adobe Commerce integration starter kit](https://github.com/adobe/commerce-integration-starter-kit)
 
 - [Set up access, environment, and tools](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/set-up)

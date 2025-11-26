@@ -14,11 +14,19 @@ Through the **Technology Partner Program (TPP)**, you receive access to the tool
 
 Together with Adobe, you can create solutions that deliver real value to you, your customers, and the broader Adobe ecosystem.
 
+In this page, you will find:
+
+- A starter kit to [help you set up your account and sandboxes](#how-to-set-up-your-account).
+
+- Guidance to [building your app](#how-to-build-an-app).
+
+- Instructions for [submission and distribution](#distribution).
+
 ## Requirements to access App Builder
 
-Access to App Builder requires the following conditions.
+Access to App Builder requires meeting two conditions: having the required membership level and account type. These will provide access to our sandboxes, allowing you to build and publish an application.
 
-- **Membership requirements** - To build and publish an application, you must have a Silver tier membership or higher, which gives you sandbox access and the possibility to publish on the Adobe Exchange Marketplace. Start with your membership and reach out to Adobe to share your objectives on app building and start a collaboration between your team and ours. We commit to our partners and will support you if you have questions or need help during the development stage.
+- **Membership requirements** - To build and publish an application, you must have a [Silver tier membership or higher](https://partners.adobe.com/technologyprogram/experiencecloud/benefits.html#benefits), which gives you sandbox access and the possibility to publish on the Adobe Exchange Marketplace.
 
 - **Account requirements** - A [TPP account](https://partners.adobe.com/technologyprogram/experiencecloud/registration.html) is required to access all sandboxes (App Builder, the Adobe Commerce as a Cloud Service SaaS sandbox, and the PaaS sandbox), whether you are an SI or ISV.
 
@@ -56,7 +64,7 @@ After your Silver membership is processed, you can request sandbox access, which
 
 - **Commerce PaaS Sandbox** – Account Managers should request both Composer entitlements for Adobe Commerce EE/B2B Access and PaaS sandbox through [TPP Support](https://partners.adobe.com/ec/cform/sandbox).
 
-- **Commerce SaaS Sandbox** - File a ticket to [TPP Support](https://partners.adobe.com/ec/cform/sandbox). Once received, you can add additional users that will need sandbox access in your Admin Console. See [Step 6](app-builder-partnership-essentials.md#step-6-manage-your-team) to manually assign users as Admins or Developers.
+- **Commerce SaaS Sandbox** - File a ticket to [TPP Support](https://partners.adobe.com/ec/cform/sandbox). Once received, you can add additional users that will need sandbox access in your Admin Console. See [Step 6](#step-6-manage-your-team) to manually assign users as Admins or Developers.
 
 <InlineAlert variant="info" slots="text"/>
 

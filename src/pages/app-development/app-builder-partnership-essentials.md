@@ -12,7 +12,7 @@ Adobe believes that strong partnerships result in powerful results. Whether you 
 
 Through the **Technology Partner Program (TPP)**, you receive access to the tools and resources you need for application development. Adobe is committed to helping you navigate challenges and complete your apps successfully.
 
-Together, we can create solutions that deliver real value to you, your customers, and the broader Adobe ecosystem.
+Together with Adobe, you can create solutions that deliver real value to you, your customers, and the broader Adobe ecosystem.
 
 ## Requirements to access App Builder
 
@@ -20,7 +20,7 @@ Access to App Builder requires the following conditions:
 
 - **Membership requirements** - To build and publish an application, you must have a Silver tier membership or higher, which gives you sandbox access and the possibility to publish on the Adobe Exchange Marketplace. Start with your membership and reach out to Adobe to share your objectives on app building and start a collaboration between your team and ours. We commit to our partners and will support you if you have questions or need help during the development stage.
 
-- **Account requirements** - A [TPP account](https://partners.adobe.com/technologyprogram/experiencecloud/registration.html) is required to access all sandboxes (App Builder, the Adobe Commerce as a Cloud Service SaaS sandbox, and the PaaS sandbox), whether you are a Solution Implementer (SI) or an Independent Software Vendor.
+- **Account requirements** - A [TPP account](https://partners.adobe.com/technologyprogram/experiencecloud/registration.html) is required to access all sandboxes (App Builder, the Adobe Commerce as a Cloud Service SaaS sandbox, and the PaaS sandbox), whether you are an SI or ISV.
 
 <InlineAlert variant="info" slots="text"/>
 
@@ -30,21 +30,21 @@ If you are a **Solution Partner Program (SPP)** partner, you will need to create
 
 #### Step 1: Request a TPP account
 
-[Create a Silver-level (or higher) TPP account](https://partners.adobe.com/technologyprogram/experiencecloud/registration.html) by using a personal corporate email address, and a valid company website. Follow the steps described [here](https://partners.adobe.com/technologyprogram/experiencecloud/knowledgebase/a96d596f933f8214fbe77b847aba101c.html) to Register for the Program.
+Go to the [Register to the Adobe Technology Partner Program](https://partners.adobe.com/technologyprogram/experiencecloud/registration.html) page and create a Silver-level (or higher) TPP account. You'll be asked to provide a corporate email address and company website as part of the registration process. [How to register in the Adobe Technology Partner Program](https://partners.adobe.com/technologyprogram/experiencecloud/knowledgebase/a96d596f933f8214fbe77b847aba101c.html) provides additional information about this process.
 
    ![Register to the TPP program](../_images/register_tpp_adobe.png)
 
-An IMS org will be created for you by Adobe Support, or after you have requested sandbox access in [Step 3](app-builder-partnership-essentials.md#step-3-request-sandbox-access). Each registrant will need to use an Adobe ID.
+Adobe Support will create an IMS org for you, either proactively or after you request sandbox access in [Step 3](app-builder-partnership-essentials.md#step-3-request-sandbox-access). Each registrant must use an Adobe ID.
 
-Once you have joined, Adobe will assign an ISV, a TPP organization, and an App Builder sandbox associated to that organization.
+After you join, Adobe will assign an ISV, a TPP organization, and an App Builder sandbox associated to that organization.
 
    <InlineAlert variant="info" slots="text"/>
 
    You require a Silver membership (or higher) within a TPP account to access App Builder, or public app listing.
 
-#### Step 2: Submission review
+#### Step 2: Adobe reviews your request
 
-**Adobe will review your application and process your membership order**. You will be notified by e-mail upon approval, or rejection, within a few days of your request. If you are rejected, our team will inform you of what else is needed.
+**Adobe will review your application and process your membership order. Within a few days, you’ll receive an email notification confirming whether your membership has been approved or rejected because additional information is required. If further details are needed, Adobe will provide guidance on next steps.
 
 #### Step 3: Request Sandbox access
 

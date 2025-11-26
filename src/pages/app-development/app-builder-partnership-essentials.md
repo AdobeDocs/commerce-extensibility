@@ -44,7 +44,7 @@ After you join, Adobe will assign an ISV, a TPP organization, and an App Builder
 
 #### Step 2: Adobe reviews your request
 
-**Adobe will review your application and process your membership order. Within a few days, you’ll receive an email notification confirming whether your membership has been approved or rejected because additional information is required. If further details are needed, Adobe will provide guidance on next steps.
+**Adobe will review your application and process your membership order.** Within a few days, you'll receive an email notification confirming whether your membership has been approved or rejected because additional information is required. If further details are needed, Adobe will provide guidance on next steps.
 
 #### Step 3: Request sandbox access
 
@@ -92,7 +92,7 @@ Use the following workflow to manage your teams:
     
     Ensure each user has the correct permissions for Adobe Experience Cloud products and App Builder tasks.
     
- For detailed instructions, see [Adobe Admin Console Users (https://helpx.adobe.com/enterprise/using/users.html).
+For detailed instructions, see [Adobe Admin Console Users](https://helpx.adobe.com/enterprise/using/users.html).
 
 <InlineAlert variant="info" slots="text"/>
 

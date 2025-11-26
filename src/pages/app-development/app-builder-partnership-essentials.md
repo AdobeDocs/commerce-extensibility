@@ -91,9 +91,9 @@ Use the following workflow to manage your teams:
 1. Add users to your IMS Organization.
 
 1. Assign product entitlements and roles
-    
-    Ensure each user has the correct permissions for Adobe Experience Cloud products and App Builder tasks.
-    
+
+   Ensure each user has the correct permissions for Adobe Experience Cloud products and App Builder tasks.
+
 For detailed instructions, see [Adobe Admin Console Users](https://helpx.adobe.com/enterprise/using/users.html).
 
 <InlineAlert variant="info" slots="text"/>
@@ -142,19 +142,20 @@ Here are the distribution steps with use case for Commerce SIs and ISVs.
 
 - [Create an App Builder listing](https://developer.adobe.com/developer-distribution/experience-cloud/docs/guides/submission/app-builder-submission#creating-a-listing) using the zip file you created when building your App Builder app. After you create a listing, you can see it on the **Listing Overview** page.
 
-   ![Listing types](../_images/listing-type.png)
+    ![Listing types](../_images/listing-type.png)
 
 ### Step 2: Submit a listing for review
 
 - Review the [Adobe Exchange Marketplace publishing requirements](./app-submission-guidelines.md) to ensure your submission meets the requirements and to prevent delays in the approval of your listing.
 
-- Adobe brand and code reviewers will [review the App Builder listing](https://developer.adobe.com/developer-distribution/experience-cloud/docs/guides/submission/app-builder-submission#reviewing-a-submission) and send an email confirmation once it’s approved. If your submission is incomplete, Adobe will provide feedback to help you address the issues. You can also check the status on your page, which will display **Approved** or **Published**.
+- Adobe brand and code reviewers will [review the App Builder listing](https://developer.adobe.com/developer-distribution/experience-cloud/docs/guides/submission/app-builder-submission#reviewing-a-submission) and send an email confirmation once it is approved. If your submission is incomplete, Adobe will provide feedback to help you address the issues. You can also check the status on your page, which will display an **Approved** or **Published** status.
 
 ## Variations
 
 ISVs can publish the listing under their name, if they have an Adobe ID associated with a TPP organization.
 
 SIs can:
+
 - Publish the listing under their name if they have joined the **Technology Partner Program** using their Adobe ID associated with a TPP organization.
 
 - Publish on behalf of an ISV if they have been added to the TPP organization of the ISV. To confirm approval, submit a [TPP Support](https://partners.adobe.com/ec/cform/case) ticket providing evidence that the ISV authorizes the SI to publish on their behalf. and Adobe will then share the organization name with the SI user to ensure that they sign in to the Developer Distribution (DD) under the correct organization.

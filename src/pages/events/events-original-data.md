@@ -1,7 +1,6 @@
 ---
 title: Create event subscriptions with original data
 description: Use original event data in Adobe Commerce events.
-edition: paas
 keywords:
   - Events
   - Extensibility

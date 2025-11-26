@@ -481,7 +481,7 @@ curl -H "Authorization:Bearer <AUTH_TOKEN>" \
 }
 ```
 
-### Get supported events for SaaS
+## Get supported events for SaaS
 
 <Edition name="saas" />
 

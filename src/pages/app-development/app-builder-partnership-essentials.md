@@ -46,11 +46,11 @@ After you join, Adobe will assign an ISV, a TPP organization, and an App Builder
 
 **Adobe will review your application and process your membership order. Within a few days, you’ll receive an email notification confirming whether your membership has been approved or rejected because additional information is required. If further details are needed, Adobe will provide guidance on next steps.
 
-#### Step 3: Request Sandbox access
+#### Step 3: Request sandbox access
 
-After your Silver membership is processed, you can request sandbox access, which will be provisioned within 5 days of your request:
+After your Silver membership is processed, you can request sandbox access, which will be provisioned within five days of your request:
 
-- **App Builder Sandbox** - automatically associated with a TPP organization (for newly provisioned TPP organizations). Older organizations without permission should request access to all three sandboxes (App Builder, PaaS and ACCS/SaaS) through [TPP Support](https://partners.adobe.com/ec/cform/sandbox) on the same ticket (if needed).
+- **App Builder Sandbox** - Newly provisioned TPP organizations are automatically associated with a TPP organization. Older organizations without the necessary permissions should request access to all three sandboxes—App Builder, PaaS, and ACCS/SaaS—through [TPP Support](https://partners.adobe.com/ec/cform/sandbox) using a single ticket.
 
 - **Commerce PaaS Sandbox** – Account Managers should request both Composer entitlements for Adobe Commerce EE/B2B Access and PaaS sandbox through [TPP Support](https://partners.adobe.com/ec/cform/sandbox).
 
@@ -60,11 +60,11 @@ After your Silver membership is processed, you can request sandbox access, which
 
 You can create a ticket to check the status of your organization, or sandbox enablement, specifying the name of your assigned TPP organization.
 
-#### Step 4: Log into your IMS organization
+#### Step 4: Log into your Adobe IMS organization
 
-Verify you are logged into your IMS organization by checking the top-right corner of Adobe Experience Cloud or Developer Console. If it displays your organization name, you're ready to use App Builder. If it shows an email address, you're signed into a personal account instead of your IMS organization.
+Verify that you are logged into your IMS organization by checking the top-right corner of the Adobe Experience Cloud or Developer Console. If it displays your organization name, you're ready to use App Builder. If it shows an email address, you're signed into a personal account instead of your IMS organization.
 
-#### Step 5: Create Project from template
+#### Step 5: Create a project from template
 
 1. Navigate to the Developer Console to access App Builder.
 
@@ -72,19 +72,31 @@ Verify you are logged into your IMS organization by checking the top-right corne
 
    ![Create project from template](../_images/developer_console_template.png)
 
-1. Follow steps described in the [Create your First App Builder Application](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app) topic.
+1. Follow the steps described in the [Create your First App Builder Application](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app) topic.
 
 #### Step 6: Manage your team
 
-**Admin Console** is a hub for accessing services, managing user access, product entitlements, or roles for all Adobe Experience Cloud products.
+The Admin Console is your central hub for managing access to Adobe Experience Cloud products. It enables administrators to control services, user access, product entitlements, and roles across the organization.
 
-**Admin Console** allows admins to manage their team members. Any additional users who need to submit, or manage App Builder listings, need to have their Adobe ID email added to the IMS organization.
+As an IMS organization admin, you have full control to add users, assign roles, and manage access through the Admin Console.
 
-If you are an admin of your IMS organization, you can add other users, admins or developers through the **Admin Console**.
+To manage team members who need to submit or manage App Builder listings, ensure their Adobe ID email is added to your IMS organization.
+
+Use the following workflow to manage your teams:
+
+1. Access the Admin Console by signing in with your Admin credentials.
+
+2. Add users to your IMS Organization.
+
+3. Assign product entitlements and roles
+    
+    Ensure each user has the correct permissions for Adobe Experience Cloud products and App Builder tasks.
+    
+ For detailed instructions, see [Adobe Admin Console Users (https://helpx.adobe.com/enterprise/using/users.html).
 
 <InlineAlert variant="info" slots="text"/>
 
-Only Developer or Admin status will allow them to manage App Builder listings; User status will not do that.
+Only accounts with Developer or Admin access can manage App Builder listings. Accounts with User permissions cannot manage these listings.
 
 ### Integrations
 
@@ -124,19 +136,19 @@ Here are the distribution steps with use case for Commerce SIs and ISVs:
 
 ### Step 1: Create an App Builder listing
 
-- Sign into [Developer Distribution (DD)](https://developer.adobe.com/distribute) and confirm that your approved IMS organization appears in the upper-right organization switcher. If the organization name looks like your email address, you are not in the TPP organization, and will get an error when trying to create a listing.
+- Sign into [Developer Distribution (DD)](https://developer.adobe.com/distribute) and confirm that your approved IMS organization appears in the upper-right organization switcher. If the organization name looks like your email address, you are not in the TPP organization and will encounter an error when attempting to create a listing.
 
 - Create a public profile before submitting your first App Builder listing.
 
-- [Create an App Builder listing](https://developer.adobe.com/developer-distribution/experience-cloud/docs/guides/submission/app-builder-submission#creating-a-listing) using the zip file you created when building your App Builder app. After creating your listing, you will be able to see it on the **Listing Overview** page.
+- [Create an App Builder listing](https://developer.adobe.com/developer-distribution/experience-cloud/docs/guides/submission/app-builder-submission#creating-a-listing) using the zip file you created when building your App Builder app. After you create a listing, you can see it on the **Listing Overview** page.
 
    ![Listing types](../_images/listing_type.png)
 
-### Step 2: Submit a listing for Review
+### Step 2: Submit a listing for review
 
-- Review the [Adobe Exchange Marketplace publishing requirements](./app-submission-guidelines.md) to ensure your submission meets the requirements and to avoid delaying approval of your listing due to unmet criteria.
+- Review the [Adobe Exchange Marketplace publishing requirements](./app-submission-guidelines.md) to ensure your submission meets the requirements and to prevent delays in the approval of your listing.
 
-- Adobe brand and code reviewers will [review the App Builder listing](https://developer.adobe.com/developer-distribution/experience-cloud/docs/guides/submission/app-builder-submission#reviewing-a-submission) and provide confirmation upon approval by e-mail. If it is incomplete, Adobe will provide you with feedback. You can also see the status on your page as **Approved**, or **Published**.
+- Adobe brand and code reviewers will [review the App Builder listing](https://developer.adobe.com/developer-distribution/experience-cloud/docs/guides/submission/app-builder-submission#reviewing-a-submission) and send an email confirmation once it’s approved. If your submission is incomplete, Adobe will provide feedback to help you address the issues. You can also check the status on your page, which will display **Approved** or **Published**.
 
 ## Variations
 
@@ -144,9 +156,9 @@ ISVs can publish the listing under their name, if they have an Adobe ID associat
 
 SIs can:
 
-- Publish the listing under their name, if they have joined the **Technology Partner Program** with their Adobe ID associated with a TPP organization.
+- Publish the listing under their name if they have joined the **Technology Partner Program** using their Adobe ID associated with a TPP organization.
 
-- Publish on behalf of an ISV, if they are added to the TPP organization of the ISV. Provide evidence that ISV approves of SI publishing on their behalf by submitting a [TPP Support](https://partners.adobe.com/ec/cform/case) ticket, and Adobe will provide the name of the organization to the SI user to ensure they sign in to the Developer Distribution (DD) under the correct organization.
+- Publish on behalf of an ISV if they have been added to the TPP organization of the ISV. To confirm approval, submit a [TPP Support](https://partners.adobe.com/ec/cform/case) ticket providing evidence that the ISV authorizes the SI to publish on their behalf. and Adobe will then share the organization name with the SI user to ensure that they sign in to the Developer Distribution (DD) under the correct organization.
 
 <InlineAlert variant="info" slots="text, text1"/>
 

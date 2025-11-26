@@ -8,7 +8,7 @@ keywords:
 
 # Adobe Developer App Builder Kit for Developers
 
-Adobe believes that strong partnerships result in powerful results. Whether you are a **Solution Implementer (SI)**, or an **Independent Software Vendor (ISV)** who wants to build App Builder apps, Adobe is committed to supporting you at every step: from onboarding and sandbox access, to app development and distribution.
+Adobe believes that strong partnerships result in powerful results. Whether you are a **Solution Implementer (SI)**, or an **Independent Software Vendor (ISV)** who wants to build App Builder apps, Adobe is committed to supporting you at every step—from onboarding and sandbox access to app development and distribution.
 
 Through the **Technology Partner Program (or TPP)**, you will receive access to the tools and resources you will need. Adobe is committed to helping you navigate challenges and complete your apps successfully.
 

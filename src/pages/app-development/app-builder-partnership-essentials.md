@@ -88,9 +88,9 @@ Use the following workflow to manage your teams:
 
 1. Access the Admin Console by signing in with your Admin credentials.
 
-2. Add users to your IMS Organization.
+1. Add users to your IMS Organization.
 
-3. Assign product entitlements and roles
+1. Assign product entitlements and roles
     
     Ensure each user has the correct permissions for Adobe Experience Cloud products and App Builder tasks.
     

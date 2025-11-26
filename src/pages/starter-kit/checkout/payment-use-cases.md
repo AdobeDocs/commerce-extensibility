@@ -263,10 +263,6 @@ You can use the `plugin.magento.out_of_process_payment_methods.api.payment_metho
 
 &#8203;<Edition name="paas" /> The following example demonstrates how to add a webhook to the `plugin.magento.out_of_process_payment_methods.api.payment_method_filter.get_list` method:
 
-<InlineAlert variant="info" slots="text"/>
-
-&#8203;<Edition name="saas" /> SaaS webhooks have slightly different naming conventions. For this example, use the `plugin.out_of_process_payment_methods.api.payment_method_filter.get_list` method.
-
 ```xml
 <method name="plugin.magento.out_of_process_payment_methods.api.payment_method_filter.get_list" type="after">
     <hooks>
@@ -280,6 +276,8 @@ You can use the `plugin.magento.out_of_process_payment_methods.api.payment_metho
     </hooks>
 </method>
 ```
+
+&#8203;<Edition name="saas" /> SaaS webhooks have slightly different naming conventions. For this example, use the `plugin.out_of_process_payment_methods.api.payment_method_filter.get_list` method.
 
 Payload example:
 

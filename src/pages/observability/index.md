@@ -17,8 +17,7 @@ Observability is a critical aspect of modern application development and operati
 
 **Logging**: The centralized collection of logs from application, infrastructure, CDN, and integrations.
 
-**Tracing**: Traces can track the flow of a request from the frontend to Commerce and the apps installed on the system. They help pinpoint bottlenecks and failures.
-Traces help in understanding the path and performance of requests, identifying bottlenecks, and diagnosing latency issues. For example, a trace might show how a user request travels through different microservices.
+**Tracing**: Traces can track the flow of a request from the frontend to Commerce and the apps installed on the system. They help pinpoint bottlenecks and failures. For example, a trace might show how a user request travels through different microservices.
 
 By implementing robust observability practices, developers and operators can gain deep insights into application behavior, quickly identify and resolve issues, and ensure optimal user experiences.
 
@@ -42,10 +41,21 @@ However, Adobe Commerce as a Cloud Service introduces additional complexity thro
 
 * **Independent deployment cycles**: Since App Builder applications are deployed independently from Commerce, monitoring and debugging issues requires visibility across separately managed systems.
 
-To handle this complexity, Adobe Commerce as a Cloud Service leverages [OpenTelemetry](https://opentelemetry.io/docs/), an open-source observability framework that provides standardized APIs and SDKs for collecting telemetry data across distributed systems. OpenTelemetry enables consistent observability practices across all components of the Adobe Commerce ecosystem, regardless of language or platform.
+On premises and Adobe Commerce on Cloud (PaaS) customers also face increased complexity in that their App Builder apps need to be monitored alongside their core Commerce installation.
+
+To handle this complexity, Adobe Commerce as a Cloud Service leverages [OpenTelemetry](https://opentelemetry.io/docs/), an open-source observability framework that provides standardized APIs and SDKs for collecting telemetry data across distributed systems. OpenTelemetry enables consistent observability practices across the following components of the Adobe Commerce ecosystem:
+
+* Eventing
+* Webhooks
+* App Builder applications
+* Integration and checkout starter kits
 
 ## OpenTelemetry overview
 
 OpenTelemetry is a vendor-neutral open-source observability framework that provides standardized APIs, libraries, agents, and instrumentation to collect telemetry data (metrics, logs, and traces) from applications and their supporting infrastructure. It is a collaborative project under the Cloud Native Computing Foundation (CNCF) and is widely adopted across the industry.
+
+One of OpenTelemetry's key advantages is its vendor-neutral design, which allows telemetry data to be exported to a wide range of observability platforms and analysis tools. Organizations can send their metrics, logs, and traces to popular services such as New Relic, Splunk, Prometheus, Datadog, and many others through standardized exporters. This flexibility enables merchants to choose the observability backend that best fits their needs without being locked into a specific vendor, and allows for easy migration between platforms if requirements change. OpenTelemetry's standardized data format ensures compatibility across different tools, making it possible to use multiple observability platforms simultaneously or switch between them with minimal code changes.
+
+The following diagram illustrates the high-level architecture of observability is implemented in Adobe Commerce as a Cloud Service and PaaS instances that implement App Builder apps. It shows key components and how they interact to provide comprehensive observability.
 
 ![Flowchart](../_images/observability/observability-flow.svg)

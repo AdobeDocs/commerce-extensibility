@@ -1,11 +1,11 @@
 ---
-title: Adobe Commerce observability with App Builder
+title: Implemnting observability in App Builder
 description: Adobe Commerce observability
 keywords:
   - Extensibility
 ---
 
-# Adobe Commerce observability with App Builder
+# Implmenting observability in App Builder
 
 Context propagation can align observability data from Commerce and App Builder. The context propagates automatically from Adobe Commerce to App Builder as webhooks headers or as a part of an event payload. This allows you to correlate observability data from both systems and get a complete picture of the request flow.
 

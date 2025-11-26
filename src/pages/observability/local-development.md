@@ -5,7 +5,7 @@ keywords:
   - Extensibility
 ---
 
-# Local development
+# Local development and testing
 
 You can run observability locally to test Commerce extensibility tools and their connection to App Builder. Refer to the [how to run Grafana locally](https://github.com/adobe/aio-lib-telemetry/blob/main/docs/use-cases/grafana.md#local-development) example for more information.
 

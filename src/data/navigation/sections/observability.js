@@ -16,11 +16,11 @@ module.exports = [
       path: "/observability/local-development.md"
     },
     {
-      title: "App Builder",
+      title: "Implementing in App Builder",
       path: "/observability/app-builder.md"
     },
     {
-      title: "API",
+      title: "REST APIs",
       path: "/observability/api.md"
     }
   ];

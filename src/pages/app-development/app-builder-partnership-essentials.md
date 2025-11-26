@@ -10,7 +10,7 @@ keywords:
 
 Adobe believes that strong partnerships result in powerful results. Whether you are a **Solution Implementer (SI)**, or an **Independent Software Vendor (ISV)** who wants to build App Builder apps, Adobe is committed to supporting you at every step—from onboarding and sandbox access to app development and distribution.
 
-Through the **Technology Partner Program (or TPP)**, you will receive access to the tools and resources you will need. Adobe is committed to helping you navigate challenges and complete your apps successfully.
+Through the **Technology Partner Program (TPP)**, you receive access to the tools and resources you need for application development. Adobe is committed to helping you navigate challenges and complete your apps successfully.
 
 Together, we can create solutions that deliver real value to you, your customers, and the broader Adobe ecosystem.
 

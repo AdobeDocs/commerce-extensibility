@@ -12,6 +12,16 @@ These release notes describe the latest version of Adobe I/O Events for Adobe Co
 
 See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io-events-for-adobe-commerce) for upgrade instructions.
 
+## Version 1.15.0
+
+### Release date
+
+Nov 26, 2025
+
+### Bug fixes
+
+* Fixed the event size payload validation to verify the size after payload filtering. <!-- CEXT-5561 -->
+
 ## Version 1.14.0
 
 ### Release date

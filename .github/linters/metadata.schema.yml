@@ -21,6 +21,8 @@ properties:
         - Extensibility
         - GraphQL
         - null
+        - Observability
+        - OpenTelemetry
         - Performance
         - REST
         - Security

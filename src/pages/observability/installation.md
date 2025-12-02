@@ -4,6 +4,9 @@ description: Learn how to install the Commerce modules needed to implement webho
 edition: paas
 keywords:
   - Extensibility
+  - Observability
+  - OpenTelemetry
+  - App Builder
 ---
 
 # Install Adobe Commerce Observability

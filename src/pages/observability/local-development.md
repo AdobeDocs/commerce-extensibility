@@ -3,6 +3,10 @@ title: Local development and testing
 description: Adobe Commerce observability
 keywords:
   - Extensibility
+  - App Builder
+  - Observability
+  - OpenTelemetry
+  - Tools
 ---
 
 # Local development and testing

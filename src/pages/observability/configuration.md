@@ -3,6 +3,9 @@ title: Configure subscriptions
 description: Adobe Commerce Observability
 keywords:
   - Extensibility
+  - App Builder
+  - Observability
+  - OpenTelemetry
 ---
 
 # Configure observability subscriptions

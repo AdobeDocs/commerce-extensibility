@@ -7,6 +7,9 @@ keywords:
   - Events
   - Starter Kit
   - Tools
+  - Observability
+  - OpenTelemetry
+  - Webhooks
 ---
 
 # Observability overview
@@ -58,4 +61,4 @@ One of OpenTelemetry's key advantages is its vendor-neutral design, which allows
 
 The following diagram illustrates the high-level architecture of observability is implemented in Adobe Commerce as a Cloud Service and PaaS instances that implement App Builder apps. It shows key components and how they interact to provide comprehensive observability.
 
-![Flowchart](../_images/observability/observability-flow.svg)
+![Flowchart](../_images/observability/observability.png)

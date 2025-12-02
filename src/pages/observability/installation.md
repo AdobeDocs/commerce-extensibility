@@ -10,7 +10,7 @@ keywords:
 
 This functionality is automatically available on [Adobe Commerce as a Cloud Service](https://experienceleague.adobe.com/en/docs/commerce/cloud-service/overview) (SaaS) projects. Adobe Commerce on-premises and Cloud infrastructure (PaaS) projects can install separate modules to provide this functionality.
 
-## Installation rerequisites
+## Installation prerequisites
 
 - Adobe Commerce on Cloud Infrastructure or on-premises: 2.4.5+
 - PHP 8.1+

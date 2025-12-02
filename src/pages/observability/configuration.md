@@ -23,7 +23,7 @@ To start using the observability module, you need to configure Adobe Commerce by
 
 Commerce sends all data in the OpenTelemetry format.
 
-### Configure from the Admin
+### Admin configuration
 
 To configure observability in the Admin UI, navigate to **System** > Observability > **Subscription List**. Here you can create, update, and delete subscriptions.
 
@@ -33,7 +33,7 @@ To create a new subscription, click the **Add New Subscription** button. Enter t
 
 ![Observability New Subscription Admin UI](../_images/observability/create-subscription-admin-ui.png)
 
-## Connect with an Observability platform
+## Connect with an observability platform
 
 You can connect Adobe Commerce observability data with various observability platforms that support the OpenTelemetry protocol, such as New Relic, Datadog, Splunk, or a custom collector. To do this, you must configure the endpoint URL and any required headers in the observability subscription.
 

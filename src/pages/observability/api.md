@@ -4,6 +4,9 @@ description: Provides details about the webhook API endpoints.
 keywords:
   - Extensibility
   - REST
+  - App Builder
+  - Observability
+  - OpenTelemetry
 ---
 
 # REST endpoints for observability

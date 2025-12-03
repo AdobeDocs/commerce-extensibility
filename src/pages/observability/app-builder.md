@@ -1,11 +1,16 @@
 ---
-title: Adobe Commerce observability
+title: Implementing observability in App Builder
 description: Adobe Commerce observability
 keywords:
   - Extensibility
+  - App Builder
+  - Events
+  - Webhooks
+  - Observability
+  - OpenTelemetry
 ---
 
-# Adobe Commerce observability with App Builder
+# Implementing observability in App Builder
 
 Context propagation can align observability data from Commerce and App Builder. The context propagates automatically from Adobe Commerce to App Builder as webhooks headers or as a part of an event payload. This allows you to correlate observability data from both systems and get a complete picture of the request flow.
 
@@ -13,7 +18,7 @@ If your App Builder app makes requests to other services, you can also propagate
 
 To forward observability data from App Builder, use the [`@adobe/aio-lib-telemetry` package](https://github.com/adobe/aio-lib-telemetry/blob/main/docs/usage.md).
 
-## Example
+## Examples
 
 Create a file with the telemetry configuration, for example `telemetry.js` in the `application` directory of your App Builder app. Replace the `<EXPORT_URL>` with the URL of your telemetry collector. You can use a Ngrok or another tunneling service to expose your local development environment.
 
@@ -152,15 +157,3 @@ const instrumentedMain = instrumentEntrypoint(main, {
 });
 exports.main = instrumentedMain
 ```
-
-## Local development
-
-You can run observability locally to test Commerce extensibility tools and their connection to App Builder. Refer to the [how to run Grafana locally](https://github.com/adobe/aio-lib-telemetry/blob/main/docs/use-cases/grafana.md#local-development) example for more information.
-
-You can use a tunneling service to forward observability data to your local development machine from the Commerce instance and deployed App Builder action. For example, you can use [Ngrok](https://ngrok.com/) to expose your local development environment to the internet. For more information, refer to [tunnel forwarding](https://github.com/adobe/aio-lib-telemetry/blob/main/docs/use-cases/support/tunnel-forwarding.md).
-
-![Grafana logs](../_images/observability/grafana-all-logs.png)
-
-To filter logs for a single request you can use the `trace_id` filter. The `trace_id` is propagated from Commerce to App Builder. Use the `trace_id` to correlate logs from both systems.
-
-![Grafana filtered logs](../_images/observability/grafana-filtered-logs.png)

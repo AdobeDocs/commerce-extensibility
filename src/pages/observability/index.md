@@ -1,56 +1,64 @@
 ---
-title: Adobe Commerce Observability
-description: Adobe Commerce Observability
+title: Observability overview
+description: A curated collection of the most important OpenTelemetry concepts and patterns for App Builder applications.
 keywords:
   - Extensibility
+  - App Builder
+  - Events
+  - Starter Kit
+  - Tools
+  - Observability
+  - OpenTelemetry
+  - Webhooks
 ---
 
-# Adobe Commerce observability overview
+# Observability overview
 
-<InlineAlert variant="important" slots="text" />
+Observability is a critical aspect of modern application development and operations, enabling merchants to monitor, analyze, and optimize the performance and reliability of Adobe Commerce and all installed App Builder apps. Observability encompasses the collection, processing, and visualization of telemetry data, including:
 
-This functionality is automatically available on [Adobe Commerce as a Cloud Service](https://experienceleague.adobe.com/en/docs/commerce/cloud-service/overview) (SaaS) projects. Adobe Commerce on-premises and Cloud infrastructure (PaaS) projects can [install separate modules](./installation.md) to provide this functionality.
+**Metrics**: Metrics provide insight to system health. They track quantitative data that measure real-time and historical performance data of applications and infrastructure, allowing for trend analysis and forecasting. Examples include API response times, request and error rates, and resource utilization.
 
-Observability allows you to monitor and understand the behavior of extensibility tools such as [webhooks](../webhooks/index.md), [events](../events/index.md), and the [Admin UI SDK](../admin-ui-sdk/index.md). This module allows you to forward logs, traces and metrics from Adobe Commerce and connect them with App Builder using context propagation. This enables tracing the flow of requests and responses across different components of your application, providing a comprehensive view of your system's performance and behavior.
+**Logging**: The centralized collection of logs from application, infrastructure, CDN, and integrations.
 
-<Edition name="paas" />
+**Tracing**: Traces can track the flow of a request from the frontend to Commerce and the apps installed on the system. They help pinpoint bottlenecks and failures. For example, a trace might show how a user request travels through different microservices.
 
-<InlineAlert variant="info" slots="text"/>
+By implementing robust observability practices, developers and operators can gain deep insights into application behavior, quickly identify and resolve issues, and ensure optimal user experiences.
 
-The message queue must be configured and running to use observability. The message queue is used to send observability data asynchronously, ensuring that the main application flow is not blocked by observability operations. Consumers can be configured to run by cron jobs or as workers.
+In traditional in-process implementations of Adobe Commerce, merchants automatically have access to New Relic, and merchants can [configure observability](https://experienceleague.adobe.com/en/docs/commerce-operations/tools/observation-for-adobe-commerce/intro) to monitor all types of Commerce processes. This is possible because all processes are executing within Commerce.
 
-## Configure observability
+However, Adobe Commerce as a Cloud Service introduces additional complexity through its composable architecture and out-of-process extensibility model:
 
-<InlineAlert variant="info" slots="text"/>
+* **Distributed architecture**: With App Builder applications running as separate microservices, telemetry data is now scattered across multiple systems and endpoints rather than centralized within Commerce.
 
-For [storefront](https://experienceleague.adobe.com/developer/commerce/storefront) observability, refer to [Operational Telemetry](https://www.aem.live/docs/rum-explorer#user-interface-overview).
+* **Multiple data sources**: Merchants must collect and correlate observability data from:
 
-To start using the observability module, you need to configure Adobe Commerce by creating a new subscription. You can create a subscription in two ways: in the Admin UI or through the REST API. You can create multiple subscriptions, each with its own configuration. The subscription configuration includes the following parameters:
+   * The core Commerce application
+   * Multiple App Builder applications
+   * Third-party integrations
+   * API Mesh (if implemented)
+   * Event-driven workflows
 
-- **Type**: The type of subscription: `logs`, `metrics`, or `traces`.
-- **Endpoint**: The endpoint where observability data will be sent. This is the URL of an observability collector that supports OpenTelemetry protocol such as New Relic, Datadog, or a custom collector.
-- **Component**: The component the subscription is created for. Supported values are `Webhooks`, `Eventing`, and `Admin UI SDK`, depending on the selected type. You can select one or more components to monitor.
-- **Service name**: The name of the service that will be used to identify the logs in the destination.
-- **Is active**: A flag that indicates whether the subscription is active.
-- **Headers**: Additional headers that will be sent with the logs to the destination. They are useful for adding custom metadata or authentication information. You can specify if a header has secret values to hide in the Admin UI or REST response.
-- **Log message configuration**: Enables or disables the additional data in the log message. This data includes the request headers, payload, and response payloads for webhooks.
+* **Cross-service tracing**: Understanding the full request flow requires distributed tracing capabilities to follow requests as they traverse from Commerce through various App Builder applications and back.
 
-Commerce sends all data in the OpenTelemetry format.
+* **Varied technology stacks**: Different App Builder applications may use different runtime environments, programming languages, and logging frameworks, requiring a standardized approach to telemetry collection.
 
-### Configure from the Admin
+* **Independent deployment cycles**: Since App Builder applications are deployed independently from Commerce, monitoring and debugging issues requires visibility across separately managed systems.
 
-To configure observability in the Admin UI, navigate to **System** > Observability > **Subscription List**. Here you can create, update, and delete subscriptions.
+On premises and Adobe Commerce on Cloud (PaaS) customers also face increased complexity in that their App Builder apps need to be monitored alongside their core Commerce installation.
 
-![Observability Admin UI](../_images/observability/list-of-subscriptions-admin-ui.png)
+To handle this complexity, Adobe Commerce as a Cloud Service leverages [OpenTelemetry](https://opentelemetry.io/docs/), an open-source observability framework that provides standardized APIs and SDKs for collecting telemetry data across distributed systems. OpenTelemetry enables consistent observability practices across the following components of the Adobe Commerce ecosystem:
 
-To create a new subscription, click the **Add New Subscription** button. Enter the required information and click **Save Subscription**. The new subscription is added to the list.
+* Eventing
+* Webhooks
+* App Builder applications
+* Integration and checkout starter kits
 
-![Observability New Subscription Admin UI](../_images/observability/create-subscription-admin-ui.png)
+## OpenTelemetry overview
 
-## Connect with an Observability platform
+OpenTelemetry is a vendor-neutral open-source observability framework that provides standardized APIs, libraries, agents, and instrumentation to collect telemetry data (metrics, logs, and traces) from applications and their supporting infrastructure. It is a collaborative project under the Cloud Native Computing Foundation (CNCF) and is widely adopted across the industry.
 
-You can connect Adobe Commerce observability data with various observability platforms that support the OpenTelemetry protocol, such as New Relic, Datadog, Splunk, or a custom collector. To do this, you must configure the endpoint URL and any required headers in the observability subscription.
+One of OpenTelemetry's key advantages is its vendor-neutral design, which allows telemetry data to be exported to a wide range of observability platforms and analysis tools. Organizations can send their metrics, logs, and traces to popular services such as New Relic, Splunk, Prometheus, Datadog, and many others through standardized exporters. This flexibility enables merchants to choose the observability backend that best fits their needs without being locked into a specific vendor, and allows for easy migration between platforms if requirements change. OpenTelemetry's standardized data format ensures compatibility across different tools, making it possible to use multiple observability platforms simultaneously or switch between them with minimal code changes.
 
-- [New Relic OTLP](https://docs.newrelic.com/docs/opentelemetry/best-practices/opentelemetry-otlp/)
-- [Datadog OTLP](https://docs.datadoghq.com/opentelemetry/setup/otlp_ingest/)
-- [Splunk OTLP](https://help.splunk.com/en/splunk-observability-cloud/manage-data/splunk-distribution-of-the-opentelemetry-collector/get-started-with-the-splunk-distribution-of-the-opentelemetry-collector/collector-components/exporters/splunk-hec-exporter)
+The following diagram illustrates the high-level architecture of observability is implemented in Adobe Commerce as a Cloud Service and PaaS instances that implement App Builder apps. It shows key components and how they interact to provide comprehensive observability.
+
+![Flowchart](../_images/observability/observability.png)

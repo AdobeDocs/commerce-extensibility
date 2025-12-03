@@ -4,15 +4,23 @@ module.exports = [
       path: "/observability/index.md"
     },
     {
-      title: "App Builder",
+      title: "Installation",
+      path: "/observability/installation.md"
+    },
+    {
+      title: "Configure subscriptions",
+      path: "/observability/configuration.md"
+    },
+    {
+      title: "Local development and testing",
+      path: "/observability/local-development.md"
+    },
+    {
+      title: "Implementing in App Builder",
       path: "/observability/app-builder.md"
     },
     {
-      title: "Installation",
-      path: "observability/installation.md",
-    },
-    {
-      title: "API",
+      title: "REST APIs",
       path: "/observability/api.md"
     }
   ];

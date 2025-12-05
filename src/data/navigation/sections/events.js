@@ -95,11 +95,15 @@ module.exports = [
   },
   {
     title: "Command reference",
-    path: "/events/commands.md",
+    path: "/events/commands.md"
   },
   {
     title: "API reference",
-    path: "/events/api.md",
+    path: "/events/api.md"
+  },
+  {
+    title: "Events reference",
+    path: "/events/events-reference.md"
   },
   {
     title: "Consume events",

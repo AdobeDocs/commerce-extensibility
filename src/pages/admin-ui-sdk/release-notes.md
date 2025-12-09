@@ -16,7 +16,7 @@ December 9, 2025
 
 ### Enhancements
 
-* Updated the `React` version in `uix` to 19.2.1. <!--CEXT-5593--->
+* Updated the `React` version in `uix` to 19.2.1. <!-- CEXT-5593 -->
 
 ### Bug fixes
 

@@ -65,7 +65,7 @@ Some requirements will differ based on whether you indicated the app was non-dow
     - Explain differences in the structure of the `COMMERCE_BASE_URL` value  if the variable is used (see [Download and configure the integration starter kit](https://developer.adobe.com/commerce/extensibility/starter-kit/integration/create-integration/#download-and-configure-the-integration-starter-kit) for an explanation)
     - Mention in the documentation how to obtain auth credentials for [PaaS](https://developer.adobe.com/commerce/extensibility/starter-kit/integration/create-integration/#paas-or-saas) and [SaaS](https://developer.adobe.com/commerce/extensibility/starter-kit/integration/create-integration/#create-an-integration-in-adobe-commerce-as-a-cloud-service)
   - For downloadable apps:
-    - **Environment setup**: Label all required environment variables in an `env.dist` file with clear guidance. Add a setup instruction to create an `.env` file from the `env.dist`.
+    - **Environment setup**: Label all required environment variables in an [`env.dist`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/env.dist) file with clear guidance. Add a setup instruction to create an `.env` file from the `env.dist`.
     - **API requirements**: List the required services for your application following [this template](https://github.com/adobe/commerce-checkout-starter-kit?tab=readme-ov-file#initialize-app-builder-project).
     - **Project creation**:
         - Document how to create a project and workspaces for deploying the app. Consider linking to [Create your First App Builder Application](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app)

@@ -14,7 +14,7 @@ The [Adobe Commerce Samples repository](https://github.com/adobe/adobe-commerce-
 
 <InlineAlert variant="info" slots="text1" />
 
-Read the README.md in each sample repository for prerequisites, deployment steps, and known issues.
+Review the README.md in each sample repository for prerequisites, deployment steps, and known issues.
 
 ## Implementation requirements
 
@@ -22,7 +22,7 @@ Read the README.md in each sample repository for prerequisites, deployment steps
 
 <Edition name="saas" />
 
-Extensions render only if your app is **published** in Adobe Developer Console. Draft apps will not display. See [Publish your app](../publish.md).
+Extensions render only if your app is **published** in Adobe Developer Console. Draft apps do not display. See [Publish your app](../publish.md).
 
 ## Shared contexts
 

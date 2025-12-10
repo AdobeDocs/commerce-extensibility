@@ -12,11 +12,11 @@ The Adobe Commerce Admin UI SDK allows you to use a local server to view and tes
 
 ## General configuration
 
-Navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Admin UI SDK** screen to configure the Admin UI SDK.
+Configure the Admin UI SDK from the Commerce Admin by navigating to **Stores** > Settings > **Configuration** > **Adobe Services** > **Admin UI SDK**.
 
 ![Admin UI SDK general configuration](../_images/admin-ui-sdk/configuration/general.png)
 
-### Enable and configure theAdmin UI SDK
+### Enable and configure the Admin UI SDK
 
 Set to **Yes** to enable the Admin UI SDK. Disabled by default.
 

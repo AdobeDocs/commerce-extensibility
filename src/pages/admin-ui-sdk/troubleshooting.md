@@ -10,6 +10,17 @@ keywords:
 
 In this comprehensive troubleshooting guide, we'll help you navigate through common challenges and provide solutions to get you back on track. We'll walk you through the troubleshooting process, empowering you to resolve problems efficiently and effectively.
 
+## Platform-specific issues
+
+| Platform | Issue | Resolution |
+| --- | --- | --- |
+| **SaaS** | App not rendering | Ensure the app is **published** in Adobe Developer Console. Verify the Production workspace status is "Published". |
+| **SaaS** | Extensions not visible | Verify the Admin UI SDK toggle is enabled in **Stores** > **Configuration** > **Services** > **Adobe Developer App Builder**. |
+| **PaaS / On-Premises** | 404 error for extension | Verify the Admin UI SDK module installation via Composer. Run `bin/magento module:status Magento_CommerceBackendUix` and ensure `bin/magento setup:upgrade` was executed. |
+| **PaaS / On-Premises** | Extension not loading | Complete all post-installation commands: `bin/magento setup:upgrade`, `bin/magento indexer:reindex`, and `bin/magento cache:clean`. |
+| **All** | "No Extensions Found" error | Validate the registration output from `/admin-ui-sdk/registration` action. Ensure `require-adobe-auth` is `true` in `ext.config.yaml`. |
+| **All** | IMS authentication issues | Verify the organization ID in App Builder matches Commerce configuration. Run `bin/magento admin:adobe-ims:info` to see your organization ID. |
+
 ## Eligible extensions screens is empty
 
 *  **The `Magento_AdminAdobeIms` module has not been enabled.** Run the following command from the Adobe Commerce command line to check the status of this module.

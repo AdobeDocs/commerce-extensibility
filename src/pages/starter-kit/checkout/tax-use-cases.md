@@ -14,11 +14,15 @@ For more general use cases, refer to [use-cases](./use-cases.md).
 
 ## Collect taxes
 
-You can calculate and apply taxes on shopping carts during checkout by using the `collectTaxes` webhook. See [webhooks](../../webhooks/index.md) to understand and setup a webhook.
+You can calculate and apply taxes on shopping carts during checkout by using the `plugin.magento.out_of_process_tax_management.api.oop_tax_collection.collect_taxes` webhook. See [webhooks](../../webhooks/index.md) to learn how to set up a webhook.
 
-To register a webhook, you need to create a `webhooks.xml` [configuration file](../../webhooks/xml-schema.md) in your module or in the root `app/etc` directory.
+To enable this webhook, set [`active`](./tax-reference.md#create-or-modify-a-new-oope-tax-integration) to `true` in the tax integration configuration.
 
-The following example demonstrates how to add a webhook to the `plugin.magento.out_of_process_tax_management.api.oop_tax_collection.collect_taxes` method:
+When the quote is recalculated, such as during a cart update or at checkout, a synchronous call is dispatched to the App Builder application that handles tax calculation. The response is returned through the `oopQuote` object, which includes the calculated tax fields. This webhook is triggered only when a shipping destination address is set, to avoid unnecessary calls during early cart interactions.
+
+Refer to [`actions/collect-taxes.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/collect-taxes/index.js) for an example of how to process the request and return the tax calculation to the commerce instance. This file can serve as a template to implement custom tax calculations.
+
+&#8203;<Edition name="paas" /> To register a webhook, you need to create a `webhooks.xml` [configuration file](../../webhooks/xml-schema.md) in your module or in the root `app/etc` directory.
 
 ```xml
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -29,9 +33,8 @@ The following example demonstrates how to add a webhook to the `plugin.magento.o
                 <hook
                     name="collect_taxes"
                     url="https://<your_app_builder>.runtime.adobe.io/api/v1/web/commerce-checkout-starter-kit/collect-taxes"
-                    method="POST" timeout="10000" softTimeout="2000"
-                    priority="300" required="true" fallbackErrorMessage="Tax calculation failed. Please try again later."
-                    ttl="0"
+                    method="POST" timeout="10000" softTimeout="2000" priority="100" required="true"
+                    fallbackErrorMessage="Tax calculation failed. Please try again later."
                 >
                 </hook>
             </batch>
@@ -40,9 +43,7 @@ The following example demonstrates how to add a webhook to the `plugin.magento.o
 </config>
 ```
 
-When the quote is recalculated, such as during a cart update or at checkout, a synchronous call is dispatched to the App Builder application that handles tax calculation. The response is returned through the oopQuote object, which includes the calculated tax fields. This webhook is only triggered when a shipping destination address is set, to avoid unnecessary calls during early cart interactions.
-
-Refer to [`actions/collect-taxes.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/collect-taxes/index.js) for an example of how to process the request and return the tax calculation to the commerce instance. This file can serve as a template to implement custom tax calculations.
+&#8203;<Edition name="saas" /> SaaS webhooks have slightly different naming conventions. For this example, use the `plugin.out_of_process_tax_management.api.oop_tax_collection.collect_taxes` method.
 
 ### Payload
 
@@ -110,7 +111,17 @@ The Appbuilder application receives the following payload as an `oopQuote` objec
       "shipping_method": "FREE",
       "shipping_description": "FREE"
     },
-    "custom_attributes": []
+    "custom_attributes": [],
+    "quote_id": 1234,
+    "customer": {
+      "entity_id": 123,
+      "website_id": 1,
+      "group_id": 1,
+      "email": "customer@example.com",
+      "firstname": "John",
+      "middlename": "",
+      "lastname": "Doe"
+    }
   }
 }
 ```
@@ -122,6 +133,7 @@ The key points for constructing the response are:
 - The `amount` in the `tax` object represents the actual tax applied to each line item.
 - The `rate` in both the `tax` and `tax_breakdown` objects is included for reference to indicate which tax rate was applied.
 - The `discount_compensation_amount` corresponds to the [`hidden tax`](https://experienceleague.adobe.com/en/docs/commerce-admin/stores-sales/site-store/taxes/hidden-tax-calculation), which accounts for the portion of tax adjusted by discounts.
+- The `customer` field will not be sent in the request payload for guest users.
 
 ```json
 [
@@ -164,6 +176,129 @@ The key points for constructing the response are:
       }
     },
     "instance": "Magento\\OutOfProcessTaxManagement\\Api\\Data\\OopQuoteItemTaxInterface"
+  }
+]
+```
+
+## Collect adjustment taxes for credit memo
+
+&#8203;<Edition name="paas" /> You can calculate and apply taxes to the adjustment amount of a credit memo during a refund by using the `plugin.magento.out_of_process_tax_management.api.oop_credit_memo_tax_collection.collect_taxes` webhook.
+
+To enable this webhook, activate the [`credit_memo_tax_enabled`](./tax-reference.md#create-or-modify-a-new-oope-tax-integration) setting in the active tax integration configuration.
+
+When the credit memo amount is recalculated, a synchronous call is dispatched to the App Builder application that handles tax calculation. The response includes the calculated adjustment tax fields. This webhook is triggered only when an adjustment refund or fee amount exists, to avoid unnecessary calls.
+
+Refer to [`actions/collect-adjustment-taxes.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/collect-adjustment-taxes/index.js) for an example of how to process the request and return the tax calculation to the commerce instance. This file can serve as a template for implementing custom tax calculations.
+
+To register a webhook, create a `webhooks.xml` [configuration file](../../webhooks/xml-schema.md) file in your module or in the root `app/etc` directory.
+
+```xml
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_AdobeCommerceWebhooks:etc/webhooks.xsd">
+    <method name="plugin.magento.out_of_process_tax_management.api.oop_credit_memo_tax_collection.collect_taxes" type="before">
+        <hooks>
+            <batch name="collect_taxes">
+                <hook
+                    name="collect_taxes"
+                    url="https://<your_app_builder>.runtime.adobe.io/api/v1/web/commerce-checkout-starter-kit/collect-adjustment-taxes"
+                    method="POST" timeout="10000" softTimeout="2000" priority="100" required="true"
+                    fallbackErrorMessage="Adjustment tax calculation failed. Please try again later."
+                >
+                </hook>
+            </batch>
+        </hooks>
+    </method>
+</config>
+```
+
+### Payload
+
+The App Builder application receives the following payload as an `oopCreditMemo` object, which contains the necessary data for the adjustment tax calculation. When action calculates the taxes, the response populates the `refund_tax` and `fee_tax` fields under the `adjustment` object and returns the result to the commerce instance.
+
+```json
+{
+  "order_id": 25,
+  "adjustment": {
+    "refund": 5,
+    "refund_tax": null,
+    "fee": 10,
+    "fee_tax": null
+  },
+  "items": [
+    {
+      "type": "simple",
+      "unit_price": 38,
+      "quantity": 1,
+      "discount_amount": 0,
+      "is_tax_included": false,
+      "tax_class": "Taxable Goods",
+      "custom_attributes": [],
+      "sku": "24-MB03",
+      "name": "Crown Summit Backpack"
+    }
+  ],
+  "ship_from_address": {
+    "street": [
+      "test1",
+      "test2"
+    ],
+    "city": "test",
+    "region": "California",
+    "region_code": "CA",
+    "country": "US",
+    "postcode": "90034"
+  },
+  "ship_to_address": {
+    "street": [
+      "6146 Honey Bluff Parkway"
+    ],
+    "city": "Calder",
+    "region": "Michigan",
+    "region_code": "MI",
+    "country": "US",
+    "postcode": "49628-7978"
+  },
+  "billing_address": {
+    "street": [
+      "6146 Honey Bluff Parkway"
+    ],
+    "city": "Calder",
+    "region": "Michigan",
+    "region_code": "MI",
+    "country": "US",
+    "postcode": "49628-7978"
+  },
+  "shipping": {
+    "shipping_method": "flatrate_flatrate",
+    "shipping_description": "Flat Rate - Fixed"
+  },
+  "custom_attributes": [],
+  "customer_tax_class": "Retail Customer",
+  "customer": {
+    "entity_id": 1,
+    "website_id": 1,
+    "group_id": 3,
+    "email": "roni_cost@example.com",
+    "firstname": "Veronica",
+    "middlename": "",
+    "lastname": "Costello"
+  }
+}
+```
+
+The adjustment refund and fee amounts are tax-exclusive, and the action can simply return the calculated taxes for each item:
+
+```json
+[
+  {
+    "op": "replace",
+    "path": "oopCreditMemo/adjustment/refund_tax",
+    "value": 0.41
+  },
+  {
+    "op": "replace",
+    "path": "oopCreditMemo/adjustment/fee_tax",
+    "value": 0.81
   }
 ]
 ```
@@ -235,9 +370,7 @@ Here's an example payload showing how the custom attributes from tax classes app
 
 ## Propagate custom attributes of tax classes
 
-The out-of-process tax module introduces support for assigning serialized custom attributes to tax classes. These attributes are then automatically associated with shopping cart data during cart creation and product addition. This allows for tax-related metadata to be included early in the checkout process and carried forward into subsequent operations.
-
-### How it works
+The out-of-process tax module introduces support for assigning serialized custom attributes to tax classes. These attributes are then automatically associated with shopping cart data during cart creation and product addition. This allows for tax-related metadata to be included early in the checkout process and carried forward into subsequent operations:
 
 - **Customer Tax Class > Quote**:  
   When a customer creates a shopping cart, any serialized custom attributes associated with the customer's tax class are copied to the `Quote` entity.

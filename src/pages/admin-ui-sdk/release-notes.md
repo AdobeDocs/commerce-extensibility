@@ -8,6 +8,22 @@ keywords:
 
 # Adobe Commerce Admin UI SDK release notes
 
+## Version 3.2.5
+
+### Release date
+
+December 9, 2025
+
+### Enhancements
+
+* Updated the `React` version in `uix` to 19.2.1. <!-- CEXT-5593 -->
+
+### Bug fixes
+
+* Fixed exporting of custom column data from Admin grids. <!-- CEXT-5529 -->
+
+* Fixed an error that ocurred on Commerce instances with JavaScript minification enabled. <!-- CEXT-5595 -->
+
 ## Version 3.2.4
 
 ### Release date

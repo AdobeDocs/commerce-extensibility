@@ -16,10 +16,6 @@ The [Adobe Commerce Samples repository](https://github.com/adobe/adobe-commerce-
 
 Review the README.md in each sample repository for prerequisites, deployment steps, and known issues.
 
-## Implementation requirements
-
-### For Adobe Commerce as a Cloud Service (SaaS)
-
 <Edition name="saas" />
 
 Extensions render only if your app is **published** in Adobe Developer Console. Draft apps do not display. See [Publish your app](../publish.md).

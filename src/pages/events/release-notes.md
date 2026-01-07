@@ -20,7 +20,7 @@ Jan 7, 2026
 
 ### Enhancements
 
-* Improved events information for multiple events. <!-- CEXT-5253 -->
+* Added fields and made improvements to multiple events. <!-- CEXT-5253 -->
 
 * Resolved compatibility issues with new versions of dependencies. <!-- AC-16197 -->
 

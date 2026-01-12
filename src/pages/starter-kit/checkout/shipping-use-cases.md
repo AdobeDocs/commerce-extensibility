@@ -121,12 +121,18 @@ Payload example:
         "selected_shipping_method": {
             "carrier_code": "DPS",
             "method_code": "dps_shipping_one"
+        },
+        "address_custom_attributes": {
+            "custom_attribute_one": "value_one",
+            ...
         }
     }
 }
 ```
 
 The request payload also contains information about the selected shipping method, if it was already selected before webhook execution. When no shipping method has been selected yet, the `selected_shipping_method` field is `null`.
+
+Additionally, the request payload contains custom attributes for the shipping address. See [Customer address attributes](https://experienceleague.adobe.com/en/docs/commerce-admin/customers/customer-accounts/attributes/address-attributes) for information on creating custom address attributes.
 
 You can find examples of how to use shipping addresses, customer data, and product attributes in your App Builder application in [`actions/shipping-methods.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/shipping-methods/index.js).
 

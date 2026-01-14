@@ -1,6 +1,6 @@
 ---
 title: Configuration schema reference
-description: Define your app's configuration schema in extensibility.config.js
+description: Define your app configuration schema
 keywords:
   - App Builder
   - Extensibility

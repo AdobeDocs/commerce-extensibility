@@ -4,7 +4,6 @@ description: Define your app configuration schema
 keywords:
   - App Builder
   - Extensibility
-  - App Management
 edition: beta
 ---
 

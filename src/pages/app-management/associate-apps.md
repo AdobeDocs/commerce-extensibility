@@ -4,7 +4,6 @@ description: Link App Builder applications to Commerce instances and configure s
 keywords:
   - App Builder
   - Extensibility
-  - App Management
 edition: beta
 ---
 

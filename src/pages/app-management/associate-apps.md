@@ -20,10 +20,13 @@ This page describes how to associate an App Builder application with your Commer
 
 Before associating an app, ensure you have:
 
-- Access to the Commerce Admin with App Management permissions
-- An App Builder application deployed to your organization
-- The application must have [auto-generated runtime actions](./runtime-actions.md) (created by running `npx @adobe/commerce-lib-config init`)
-- The application must be registered with the `commerce/backend-ui/1` extension point
+* Access to the Commerce Admin with App Management permissions
+
+* An App Builder application deployed to your organization
+
+* The application must have [auto-generated runtime actions](./runtime-actions.md) (created by running `npx @adobe/commerce-lib-config init`)
+
+* The application must be registered with the `commerce/backend-ui/1` extension point
 
 ## Access App Management
 
@@ -49,8 +52,8 @@ If this is your first time accessing App Management, you will see a message indi
 
 The association process performs the following actions:
 
-- **Syncs Commerce scopes** - Imports your Commerce instance's websites, stores, and store views into the application.
-- **Creates the link** - Associates the application with your Commerce instance.
+* **Syncs Commerce scopes** - Imports your Commerce instance's websites, stores, and store views into the application.
+* **Creates the link** - Associates the application with your Commerce instance.
 
 <InlineAlert variant="warning" slots="text"/>
 
@@ -87,16 +90,6 @@ Configuration values can be set at different scope levels. More specific scopes 
 
 1. Click **Save** to persist the scope-specific configuration.
 
-**Example:**
-
-| Scope | Threshold Amount |
-|-------|------------------|
-| Global | 50 |
-| Main Website | (inherits 50) |
-| Main Website > Default Store > Default Store View | 200 |
-
-In this example, the Default Store View has a threshold of 200, while all other scopes use the global value of 50.
-
 ## Manage scopes
 
 The **Manage Scopes** screen provides controls for managing the scopes available to your application.
@@ -118,14 +111,6 @@ The **Manage Scopes** screen provides controls for managing the scopes available
 <InlineAlert variant="info" slots="text"/>
 
 Commerce scopes (websites, stores, store views) must be created in the Commerce Admin. The App Management scope sync imports these scopes into your application for configuration purposes.
-
-### When to sync scopes
-
-Sync Commerce scopes when:
-
-- You add a new website, store, or store view in Commerce
-- Scopes appear to be missing in the App Management configuration
-- The initial association failed to sync scopes
 
 ## Unassociate an app
 

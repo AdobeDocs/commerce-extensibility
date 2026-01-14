@@ -14,9 +14,9 @@ edition: beta
 
 **Adobe Commerce App Management is for Beta users only and is not yet accessible to all customers.**
 
-The `extensibility.config.js` file is the central configuration file for App Management. It defines your app's business configuration schema, specifying the settings that merchants can customize.
+The `extensibility.config.js` file is the central configuration file for App Management. It defines your app business configuration schema, specifying the settings that merchants can customize.
 
-Based on this schema, the configuration library **automatically generates the runtime actions** required for App Management. These [auto-generated runtime actions](./runtime-actions.md) handle all configuration operations, and the App Management UI uses them to render a user-friendly configuration form in the Commerce Admin.
+Based on this schema, the configuration library generates the runtime actions required for App Management. These [runtime actions](./runtime-actions.md) handle all configuration operations, and the App Management UI uses them to render a user-friendly configuration form in the Commerce Admin.
 
 You define the fields declaratively—specifying types, labels, defaults, and validation rules—and the system handles the rest without requiring custom code.
 
@@ -26,7 +26,7 @@ Currently, `extensibility.config.js` supports business configuration. Future ver
 
 The `extensibility.config.js` file exports a configuration object with a `businessConfig` property:
 
-```javascript
+```js
 module.exports = {
   businessConfig: {
     schema: [
@@ -60,73 +60,9 @@ Each field in the schema array supports the following properties:
 | `select` | Dropdown selection with predefined options | string (option value) |
 | `combobox` | Searchable dropdown selection | string (option value) |
 
-## Field examples
+## example
 
-### Text field
-
-```javascript
-{
-  id: 'api-endpoint',
-  title: 'API Endpoint',
-  type: 'text',
-  default: 'https://api.example.com',
-  description: 'The base URL for the external API'
-}
-```
-
-### Number field
-
-```javascript
-{
-  id: 'threshold-amount',
-  title: 'Threshold Amount',
-  type: 'number',
-  default: 50
-}
-```
-
-### Checkbox field
-
-```javascript
-{
-  id: 'enable-feature',
-  title: 'Enable Feature',
-  type: 'checkbox',
-  default: true
-}
-```
-
-### Select field
-
-```javascript
-{
-  id: 'sync-frequency',
-  title: 'Sync Frequency',
-  type: 'select',
-  options: [
-    { label: 'Every hour', value: 'hourly' },
-    { label: 'Every 6 hours', value: '6hours' },
-    { label: 'Daily', value: 'daily' }
-  ],
-  default: 'daily'
-}
-```
-
-### Secret field
-
-```javascript
-{
-  id: 'api-key',
-  title: 'API Key',
-  type: 'text',
-  secret: true,
-  description: 'Your API key for authentication'
-}
-```
-
-## Complete example
-
-```javascript
+```js
 module.exports = {
   businessConfig: {
     schema: [
@@ -182,15 +118,15 @@ npx @adobe/commerce-lib-config validate-schema
 
 This command checks for:
 
-- **Type mismatches** - For example, a `number` field with a string default value
-- **Missing required properties** - Fields must have `id`, `title`, and `type`
-- **Invalid option definitions** - Select/combobox options must have `label` and `value`
+* **Type mismatches** - For example, a `number` field with a string default value
+* **Missing required properties** - Fields must have `id`, `title`, and `type`
+* **Invalid option definitions** - Select/combobox options must have `label` and `value`
 
 ### Example validation error
 
 If you define a number field with an invalid default:
 
-```javascript
+```js
 {
   id: 'threshold',
   title: 'Threshold',
@@ -213,7 +149,7 @@ Schema validation runs automatically during the build process (`aio app build`) 
 
 After merchants configure your app, retrieve the values at runtime using the Commerce configuration library:
 
-```javascript
+```js
 const { getConfig } = require('@adobe/commerce-sdk');
 
 async function main(params) {

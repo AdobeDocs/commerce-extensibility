@@ -14,21 +14,17 @@ edition: beta
 
 **Adobe Commerce App Management is for Beta users only and is not yet accessible to all customers.**
 
-The App Management configuration library **automatically generates a set of runtime actions** based on your configuration schema. These auto-generated actions enable the App Management UI to configure your application without requiring you to write boilerplate code.
-
-This page describes how to initialize the library and the runtime actions it generates.
+The App Management configuration library generates a set of runtime actions based on your configuration schema. These auto-generated actions enable the App Management UI to configure your application without requiring you to write boilerplate code.
 
 ## Initialize the configuration library
 
-To enable App Management support in your application, run the initialization command:
+To enable App Management support in your application, run the `init` command:
 
 ```bash
 npx @adobe/commerce-lib-config init
 ```
 
-### What the init command does
-
-The initialization command performs the following actions:
+The `init` command performs the following actions:
 
 | Step | Description |
 |------|-------------|
@@ -68,7 +64,7 @@ The library generates the following runtime actions in the `src/commerce-configu
 
 ## Post-install regeneration
 
-The initialization command adds a post-install script to your `package.json`:
+The `init` command adds a post-install script to your `package.json`:
 
 ```json
 {
@@ -122,9 +118,9 @@ aio app deploy
 
 The deployment includes:
 
-- Your configuration schema (`schema.json`)
-- The generated runtime actions
-- Your application code
+* Your configuration schema (`schema.json`)
+* The generated runtime actions
+* Your application code
 
 Once deployed, your app appears in the App Management UI and can be [associated with a Commerce instance](./associate-apps.md).
 
@@ -154,7 +150,8 @@ When a new version of `@adobe/commerce-lib-config` is released:
 If the `src/commerce-configuration-1/` folder is empty or missing:
 
 1. Ensure `extensibility.config.js` exists and contains a valid schema.
-2. Run the generate command manually:
+
+1. Run the generate command manually:
 
    ```bash
    npx @adobe/commerce-lib-config generate
@@ -170,4 +167,4 @@ If the build fails with schema validation errors:
    npx @adobe/commerce-lib-config validate-schema
    ```
 
-2. Fix the issues in `extensibility.config.js` and rebuild.
+1. Fix the issues in `extensibility.config.js` and rebuild.

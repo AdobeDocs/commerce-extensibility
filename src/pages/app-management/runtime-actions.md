@@ -23,15 +23,19 @@ npx @adobe/commerce-lib-config init
 
 This command:
 
-| Step | Action |
-|------|--------|
-| 1 | Creates `extensibility.config.js` with a sample schema |
-| 2 | Installs `@adobe/commerce-lib-config` and `@adobe/commerce-sdk` |
-| 3 | Adds post-install script to `package.json` |
-| 4 | Generates runtime actions in `src/commerce-configuration-1/` |
-| 5 | Creates `ext.config.yaml` declaring the actions |
-| 6 | Updates `app.config.yaml` to include the extension |
-| 7 | Validates the schema |
+1. Creates `extensibility.config.js` with a sample schema.
+
+1. Installs `@adobe/commerce-lib-config` and `@adobe/commerce-sdk`.
+
+1. Adds post-install script to `package.json`.
+
+1. Generates runtime actions in `src/commerce-configuration-1/`.
+
+1. Creates `ext.config.yaml` declaring the actions.
+
+1. Updates `app.config.yaml` to include the extension.
+
+1. Validates the schema.
 
 ## Generated files
 
@@ -81,17 +85,15 @@ The post-install script auto-regenerates runtime actions when you update the lib
 **Runtime actions not generated**
 
 1. Verify `extensibility.config.js` exists with a valid schema.
-1. Run manually: `npx @adobe/commerce-lib-config generate`
+
+1. Run manually: `npx @adobe/commerce-lib-config generate`.
 
 **Schema validation fails**
 
-1. Run: `npx @adobe/commerce-lib-config validate-schema`
+1. Run: `npx @adobe/commerce-lib-config validate-schema`.
+
 1. Fix issues in `extensibility.config.js` and rebuild.
 
 ## Next steps
 
-<DiscoverBlock slots="link, text"/>
-
-[Associate and configure apps](./associate-apps.md)
-
-Link apps to Commerce instances and configure business settings.
+* [Associate and configure apps](./associate-apps.md): Link apps to Commerce instances and configure business settings.

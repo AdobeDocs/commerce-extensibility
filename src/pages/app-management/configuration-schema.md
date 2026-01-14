@@ -130,14 +130,6 @@ async function main(params) {
 
 ## Next steps
 
-<DiscoverBlock slots="link, text"/>
+* [Runtime actions reference](./runtime-actions.md): Initialize the configuration library and understand the generated runtime actions.
 
-[Runtime actions reference](./runtime-actions.md)
-
-Initialize the configuration library and understand the generated runtime actions.
-
-<DiscoverBlock slots="link, text"/>
-
-[Associate and configure apps](./associate-apps.md)
-
-Link apps to Commerce instances and configure business settings.
+* [Associate and configure apps](./associate-apps.md):Link apps to Commerce instances and configure business settings.

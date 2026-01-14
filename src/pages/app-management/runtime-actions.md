@@ -4,6 +4,7 @@ description: Initialize the configuration library and understand auto-generated 
 keywords:
   - App Builder
   - Extensibility
+  - App Management
 edition: beta
 ---
 

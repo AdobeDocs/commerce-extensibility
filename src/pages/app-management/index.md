@@ -4,6 +4,7 @@ description: Learn how to manage App Builder applications in Adobe Commerce.
 keywords:
   - App Builder
   - Extensibility
+  - App Management
 edition: beta
 ---
 

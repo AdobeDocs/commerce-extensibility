@@ -2,6 +2,7 @@
 title:  Events reference
 description: Lists details about each event supported on Adobe Commerce as a Cloud Service.
 edition: saas
+layout: none
 keywords:
   - Events
   - Extensibility

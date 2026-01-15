@@ -134,7 +134,7 @@ async function main(params) {
 
 ## Tutorial
 
-<Media url="https://video.tv.adobe.com/v/3478943" />
+<Media video="<https://video.tv.adobe.com/v/3478943>" />
 
 ## Next steps
 

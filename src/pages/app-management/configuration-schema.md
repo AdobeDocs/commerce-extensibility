@@ -134,11 +134,7 @@ async function main(params) {
 
 ## Tutorial
 
-<Media slots="video">
-
 [Configuration schema tutorial](https://video.tv.adobe.com/v/3478943)
-
-</Media>
 
 ## Next steps
 

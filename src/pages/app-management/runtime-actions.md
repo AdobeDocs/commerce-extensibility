@@ -23,7 +23,7 @@ npx @adobe/commerce-lib-config init
 
 This command:
 
-1. Creates `extensibility.config.js` with a sample schema.
+1. Creates `app.commerce.config` with a sample schema.
 
 1. Installs `@adobe/commerce-lib-config` and `@adobe/commerce-sdk`.
 
@@ -41,7 +41,7 @@ This command:
 
 | File | Description |
 |------|-------------|
-| `extensibility.config.js` | Your [configuration schema](./configuration-schema.md) |
+| `app.commerce.config` | Your [configuration schema](./configuration-schema.md) |
 | `src/commerce-configuration-1/` | Auto-generated runtime actions |
 | `ext.config.yaml` | Action declarations for App Builder |
 
@@ -84,7 +84,7 @@ The post-install script auto-regenerates runtime actions when you update the lib
 
 **Runtime actions not generated**
 
-1. Verify `extensibility.config.js` exists with a valid schema.
+1. Verify `app.commerce.config` exists with a valid schema.
 
 1. Run manually: `npx @adobe/commerce-lib-config generate`.
 
@@ -92,7 +92,7 @@ The post-install script auto-regenerates runtime actions when you update the lib
 
 1. Run: `npx @adobe/commerce-lib-config validate-schema`.
 
-1. Fix issues in `extensibility.config.js` and rebuild.
+1. Fix issues in `app.commerce.config` and rebuild.
 
 ## Next steps
 

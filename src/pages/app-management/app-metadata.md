@@ -1,6 +1,6 @@
 ---
 title: App metadata reference
-description: Define your app metadata in extensibility.config.js
+description: Define your app metadata in app.commerce.config
 keywords:
   - App Builder
   - Extensibility
@@ -13,7 +13,7 @@ keywords:
 
 **Adobe Commerce App Management is for Beta users only and is not yet accessible to all customers.**
 
-The `metadata` object in your `extensibility.config.js` file identifies your application to the App Management system. This information displays in the Admin UI and helps merchants identify and manage installed apps.
+The `metadata` object in your `app.commerce.config` file identifies your application to the App Management system. This information displays in the Admin UI and helps merchants identify and manage installed apps.
 
 ## Metadata properties
 
@@ -41,7 +41,7 @@ metadata: {
 
 [Configuration schema reference](./configuration-schema.md)
 
-Define your app configuration schema in `extensibility.config.js`.
+Define your app configuration schema in `app.commerce.config`.
 
 <DiscoverBlock slots="link, text"/>
 

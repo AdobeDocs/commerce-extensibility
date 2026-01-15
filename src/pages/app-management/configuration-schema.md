@@ -13,7 +13,11 @@ keywords:
 
 **Adobe Commerce App Management is for Beta users only and is not yet accessible to all customers.**
 
-The `extensibility.config.js` file defines your app's business configuration schema. Based on this schema, the configuration library auto-generates runtime actions and the App Management UI renders a configuration form—no custom code required.
+The `app.commerce.config` file defines your app business configuration schema. Based on this schema, the configuration library auto-generates runtime actions and the App Management UI renders a configuration form—no custom code required.
+
+<InlineAlert variant="info" slots="text"/>
+
+The configuration file supports both JavaScript (`app.commerce.config.js`) and TypeScript (`app.commerce.config.ts`).
 
 ## File structure
 

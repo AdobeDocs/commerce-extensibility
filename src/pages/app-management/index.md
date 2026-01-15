@@ -37,9 +37,9 @@ App Management provides a unified experience for installing, configuring, and ma
 
 ## How it works
 
-1. **Define app metadata**–Add your [app metadata](./app-metadata.md) in `extensibility.config.js`.
+1. **Define app metadata**–Add your [app metadata](./app-metadata.md) in `app.commerce.config`.
 
-1. **Define config schema**–Create your [configuration schema](./configuration-schema.md) in `extensibility.config.js`.
+1. **Define config schema**–Create your [configuration schema](./configuration-schema.md) in `app.commerce.config`.
 
 1. **Generate actions**–Run `npx @adobe/commerce-lib-config init` to [auto-generate runtime actions](./runtime-actions.md).
 
@@ -55,13 +55,13 @@ App Management provides a unified experience for installing, configuring, and ma
 
 [App metadata reference](./app-metadata.md)
 
-Define your app metadata in `extensibility.config.js`.
+Define your app metadata in `app.commerce.config`.
 
 <DiscoverBlock slots="link, text"/>
 
 [Configuration schema reference](./configuration-schema.md)
 
-Define your app configuration schema in `extensibility.config.js`.
+Define your app configuration schema in `app.commerce.config`.
 
 <DiscoverBlock slots="link, text"/>
 

@@ -5,7 +5,6 @@ keywords:
   - App Builder
   - Extensibility
   - App Management
-edition: beta
 ---
 
 # Configuration schema reference
@@ -129,8 +128,20 @@ async function main(params) {
 }
 ```
 
+## Tutorial
+
+<Media url="https://video.tv.adobe.com/v/3478943" />
+
 ## Next steps
 
-* [Runtime actions reference](./runtime-actions.md): Initialize the configuration library and understand the generated runtime actions.
+<DiscoverBlock slots="link, text"/>
 
-* [Associate and configure apps](./associate-apps.md):Link apps to Commerce instances and configure business settings.
+[Runtime actions reference](./runtime-actions.md)
+
+Initialize the configuration library and understand the generated runtime actions.
+
+<DiscoverBlock slots="link, text"/>
+
+[Associate and configure apps](./associate-apps.md)
+
+Link apps to Commerce instances and configure business settings.

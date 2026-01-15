@@ -8,6 +8,10 @@ module.exports = [
                 path: "/app-management/index.md"
             },
             {
+                title: "App metadata",
+                path: "/app-management/app-metadata.md"
+            },
+            {
                 title: "Configuration schema",
                 path: "/app-management/configuration-schema.md"
             },

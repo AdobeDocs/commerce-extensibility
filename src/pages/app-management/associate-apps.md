@@ -5,7 +5,6 @@ keywords:
   - App Builder
   - Extensibility
   - App Management
-edition: beta
 ---
 
 # Associate and configure apps
@@ -24,6 +23,10 @@ Associate an App Builder application with your Commerce instance to enable confi
 | Deployed app | App Builder application deployed to your organization |
 | Runtime actions | [Auto-generated](./runtime-actions.md) via `npx @adobe/commerce-lib-config init` |
 | Extension point | Registered with `commerce/backend-ui/1` |
+
+## Tutorial
+
+<Media url="https://video.tv.adobe.com/v/3478944" />
 
 ## Associate an app
 

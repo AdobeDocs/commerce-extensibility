@@ -5,7 +5,6 @@ keywords:
   - App Builder
   - Extensibility
   - App Management
-edition: beta
 ---
 
 # Runtime actions reference
@@ -97,4 +96,8 @@ The post-install script auto-regenerates runtime actions when you update the lib
 
 ## Next steps
 
-* [Associate and configure apps](./associate-apps.md): Link apps to Commerce instances and configure business settings.
+<DiscoverBlock slots="link, text"/>
+
+[Associate and configure apps](./associate-apps.md)
+
+Link apps to Commerce instances and configure business settings.

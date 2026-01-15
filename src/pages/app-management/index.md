@@ -5,7 +5,6 @@ keywords:
   - App Builder
   - Extensibility
   - App Management
-edition: beta
 ---
 
 # App Management
@@ -15,6 +14,8 @@ edition: beta
 **Adobe Commerce App Management is for Beta users only and is not yet accessible to all customers.**
 
 App Management provides a unified experience for installing, configuring, and managing App Builder applications in Adobe Commerce. Define your configuration schema once, and the system auto-generates the runtime actions and Admin UI—no custom code required.
+
+![App Management UI](../_images/app-management/app-management-ui.png)
 
 ## Key benefits
 
@@ -30,13 +31,15 @@ App Management provides a unified experience for installing, configuring, and ma
 
 | Requirement | Description |
 |-------------|-------------|
-| Adobe Commerce | ACCS (SaaS) or PaaS environment |
+| Adobe Commerce | SaaS or PaaS environment |
 | App Builder | Deployed application with `commerce/backend-ui/1` extension point |
 | Configuration library | Initialized with `npx @adobe/commerce-lib-config init` |
 
 ## How it works
 
-1. **Define schema**–Create your [configuration schema](./configuration-schema.md) in `extensibility.config.js`.
+1. **Define app metadata**–Add your [app metadata](./app-metadata.md) in `extensibility.config.js`.
+
+1. **Define config schema**–Create your [configuration schema](./configuration-schema.md) in `extensibility.config.js`.
 
 1. **Generate actions**–Run `npx @adobe/commerce-lib-config init` to [auto-generate runtime actions](./runtime-actions.md).
 
@@ -50,9 +53,15 @@ App Management provides a unified experience for installing, configuring, and ma
 
 <DiscoverBlock slots="link, text"/>
 
+[App metadata reference](./app-metadata.md)
+
+Define your app metadata in `extensibility.config.js`.
+
+<DiscoverBlock slots="link, text"/>
+
 [Configuration schema reference](./configuration-schema.md)
 
-Define your app's configuration schema in `extensibility.config.js`.
+Define your app configuration schema in `extensibility.config.js`.
 
 <DiscoverBlock slots="link, text"/>
 

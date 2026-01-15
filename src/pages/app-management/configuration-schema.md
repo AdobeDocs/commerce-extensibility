@@ -134,7 +134,11 @@ async function main(params) {
 
 ## Tutorial
 
-<Media video="<https://video.tv.adobe.com/v/3478943>" />
+<Media slots="video">
+
+<https://video.tv.adobe.com/v/3478943>
+
+</Media>
 
 ## Next steps
 

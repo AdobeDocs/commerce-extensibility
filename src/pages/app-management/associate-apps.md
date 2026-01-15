@@ -26,7 +26,11 @@ Associate an App Builder application with your Commerce instance to enable confi
 
 ## Tutorial
 
-<Media video="<https://video.tv.adobe.com/v/3478944>" />
+<Media slots="video">
+
+<https://video.tv.adobe.com/v/3478944>
+
+</Media>
 
 ## Associate an app
 

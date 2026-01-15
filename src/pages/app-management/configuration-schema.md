@@ -136,7 +136,7 @@ async function main(params) {
 
 <Media slots="video">
 
-<https://video.tv.adobe.com/v/3478943>
+[Configuration schema tutorial](https://video.tv.adobe.com/v/3478943)
 
 </Media>
 

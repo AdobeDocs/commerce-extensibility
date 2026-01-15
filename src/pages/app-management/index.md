@@ -25,14 +25,14 @@ App Management provides a unified experience for installing, configuring, and ma
 
 * **Scope inheritance**–Configuration values cascade through Global, Website, Store, and Store View levels.
 
-* **Unified lifecycle management**–Install, configure, update, and uninstall apps from a single interface.
+* **Unified lifecycle management**–Associate, configure, and unassociate apps from a single interface.
 
 ## Requirements
 
 | Requirement | Description |
 |-------------|-------------|
 | Adobe Commerce | SaaS or PaaS environment |
-| App Builder | Deployed application with `commerce/backend-ui/1` extension point |
+| App Builder | Deployed application with `commerce/configuration/1` extension point |
 | Configuration library | Initialized with `npx @adobe/commerce-lib-config init` |
 
 ## How it works

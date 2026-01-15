@@ -38,7 +38,7 @@ Associate an App Builder application with your Commerce instance to enable confi
 
 1. Select a **Project** from the list.
 
-1. Select the **Workspace** (Stage or Production).
+1. Select the **Workspace**.
 
 1. Click **Associate**.
 
@@ -67,7 +67,7 @@ Override global values at specific scope levels:
 
 1. Click **Change Scope**.
 
-1. Select **Website**, **Store**, or **Store View**.
+1. Select a scope from the list.
 
 1. Modify values for this scope.
 
@@ -79,9 +79,9 @@ Access **Manage Scopes** from the app details screen.
 
 | Action | Description |
 |--------|-------------|
-| **Add root scope** | Add a scope to the app (must exist in Commerce first) |
-| **Sync Commerce scopes** | Import scopes from Commerce after adding websites/stores |
-| **Import scopes** | Bulk import from JSON file |
+| **Add root scope** | Add a scope to the app only (will not be visible in Commerce). |
+| **Sync Commerce scopes** | Import scopes from Commerce after adding websites/stores/storeviews in Commerce. |
+| **Import scopes** | Bulk import from JSON file of scopes only linked to the app. |
 
 ## Unassociate an app
 

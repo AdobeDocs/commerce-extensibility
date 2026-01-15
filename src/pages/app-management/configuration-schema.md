@@ -48,8 +48,6 @@ module.exports = {
 | Type | Description | Default value type |
 |------|-------------|-------------------|
 | `text` | Single-line text input | string |
-| `number` | Numeric input | number |
-| `checkbox` | Boolean toggle | boolean |
 | `select` | Dropdown with predefined options | string |
 | `combobox` | Searchable dropdown | string |
 

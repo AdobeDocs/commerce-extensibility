@@ -21,6 +21,7 @@ module.exports = [
             },
         ]
     },
+    /*
     {
         title: "Best practices",
         path: "/app-development/best-practices/index.md",
@@ -39,6 +40,7 @@ module.exports = [
             }
         ]
     },
+    */
     {
         title: "App submission guidelines",
         path: "/app-development/app-submission-guidelines.md"

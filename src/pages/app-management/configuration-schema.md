@@ -107,9 +107,9 @@ npx @adobe/commerce-lib-config validate-schema
 
 Validation checks for:
 
-* **Type mismatches**–A `number` field with a string default
-* **Missing properties**–Fields must have `id`, `title`, and `type`
-* **Invalid options**–Select/combobox options must have `label` and `value`
+* **Type mismatches**–--A `number` field with a string default
+* **Missing properties**–--Fields must have `id`, `title`, and `type`
+* **Invalid options**–--Select/combobox options must have `label` and `value`
 
 <InlineAlert variant="info" slots="text"/>
 

@@ -44,8 +44,8 @@ Associate an App Builder application with your Commerce instance to enable confi
 
 The association process:
 
-* **Syncs scopes**–Imports websites, stores, and store views from Commerce.
-* **Creates link**–Associates the app with your Commerce instance.
+* **Syncs scopes**–--Imports websites, stores, and store views from Commerce.
+* **Creates link**–--Associates the app with your Commerce instance.
 
 <InlineAlert variant="warning" slots="text"/>
 

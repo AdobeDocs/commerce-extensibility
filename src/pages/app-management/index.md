@@ -19,13 +19,13 @@ App Management provides a unified experience for installing, configuring, and ma
 
 ## Key benefits
 
-* **Auto-generated runtime actions**–Define a configuration schema and the library generates all required runtime actions automatically.
+* **Auto-generated runtime actions**---Define a configuration schema and the library generates all required runtime actions automatically.
 
-* **Auto-generated Admin UI**–Configuration forms are rendered dynamically based on your schema, eliminating custom UI development.
+* **Auto-generated Admin UI**–--Configuration forms are rendered dynamically based on your schema, eliminating custom UI development.
 
-* **Scope inheritance**–Configuration values cascade through Global, Website, Store, and Store View levels.
+* **Scope inheritance**–--Configuration values cascade through Global, Website, Store, and Store View levels.
 
-* **Unified lifecycle management**–Associate, configure, and unassociate apps from a single interface.
+* **Unified lifecycle management**–--Associate, configure, and unassociate apps from a single interface.
 
 ## Requirements
 
@@ -37,17 +37,17 @@ App Management provides a unified experience for installing, configuring, and ma
 
 ## How it works
 
-1. **Define app metadata**–Add your [app metadata](./app-metadata.md) in `app.commerce.config`.
+1. **Define app metadata**–--Add your [app metadata](./app-metadata.md) in `app.commerce.config`.
 
-1. **Define config schema**–Create your [configuration schema](./configuration-schema.md) in `app.commerce.config`.
+1. **Define config schema**–--Create your [configuration schema](./configuration-schema.md) in `app.commerce.config`.
 
-1. **Generate actions**–Run `npx @adobe/commerce-lib-config init` to [auto-generate runtime actions](./runtime-actions.md).
+1. **Generate actions**–--Run `npx @adobe/commerce-lib-config init` to [auto-generate runtime actions](./runtime-actions.md).
 
-1. **Deploy**–Build and deploy your app with `aio app build && aio app deploy`.
+1. **Deploy**–--Build and deploy your app with `aio app build && aio app deploy`.
 
-1. **Associate**–[Link your app](./associate-apps.md) to a Commerce instance in the Admin.
+1. **Associate**–--[Link your app](./associate-apps.md) to a Commerce instance in the Admin.
 
-1. **Configure**–Merchants configure settings through the auto-generated UI.
+1. **Configure**--–Merchants configure settings through the auto-generated UI.
 
 ## Next steps
 

@@ -38,7 +38,7 @@ Before using App Management, review that you have the following details:
 | Adobe Commerce | A Commerce instance |
 | App Builder | Deployed application with `commerce/configuration/1` extension point |
 | Configuration library | Initialized with `npx @adobe/commerce-lib-config init` |
-| Admin UI SDK | v3.3.0 Admin UI SDK | 
+| Admin UI SDK | v3.3.0 Admin UI SDK |
 
 App managers (Admin users) who associate apps must have App Management permissions. See [Associate and configure apps](./associate-apps.md) for more information.
 

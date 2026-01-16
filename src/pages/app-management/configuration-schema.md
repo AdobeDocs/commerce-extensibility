@@ -46,7 +46,7 @@ This schema contains the following properties:
 | `default` | varies | No | Default value. Must match the field type. |
 | `description` | string | No | Help text displayed below the field. |
 | `options` | array | Conditional | Required for `list`. Defines available options to be displayed in the dropdown list. |
-| `selectionMode` | string | Conditional | Required for `list`. Values can be `single` or `multiple`. The type of selection that is allowed in the schema. | 
+| `selectionMode` | string | Conditional | Required for `list`. Values can be `single` or `multiple`. The type of selection that is allowed in the schema. |
 
 ## Supported field types
 
@@ -69,40 +69,42 @@ The following example shows a complete configuration schema with various field t
 import { defineConfig } from "@adobe/aio-commerce-lib-app/config"
 
 export default defineConfig({
-  businessConfig: {
+businessConfig: {
     schema: [
       {
-        name: 'api-name',
-        label: 'API name',
-        type: 'text',
-        default: ''
-      },
-{
-        name: 'api-endpoint',
-        label: 'API Endpoint',
-        type: 'url',
-        default: 'https://api.example.com'
+        name: "api-name",
+        label: "API name",
+        type: "text",
+        default: "",
       },
       {
-        name: 'api-key',
-        label: 'API Key',
-        type: 'password',
+        name: "api-endpoint",
+        label: "API Endpoint",
+        type: "url",
+        default: "https://api.example.com",
       },
       {
-        name: 'level',
-        label: 'Risk Level',
-        type: 'select',
+        name: "api-key",
+        label: "API Key",
+        type: "password",
+      },
+      {
+        name: "level",
+        label: "Risk Level",
+        type: "list",
         options: [
-          { label: 'Low', value: 'low' },
-          { label: 'Medium', value: 'medium' },
-          { label: 'High', value: 'high' }
+          { label: "Low", value: "low" },
+          { label: "Medium", value: "medium" },
+          { label: "High", value: "high" },
         ],
-        default: 'medium'
-      }
-    ]
-  }
-});
+        default: "medium",
+        selectionMode: "single",
+      },
+    ],
+  },
 ```
+
+![Renderized schema](../_images/app-management/schema-render.png)
 
 ## Validate your schema
 

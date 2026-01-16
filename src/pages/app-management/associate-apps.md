@@ -23,7 +23,7 @@ Before associating an app, ensure you have the following:
 |-------------|-------------|
 | Admin access | Commerce Admin with App Management permissions |
 | Deployed app | App Builder application deployed to your organization with metadata defined |
-| IMS Org access | IMS Org permissions, connected to commerce instance |
+| IMS Org access | IMS Org permissions, connected to the commerce instance |
 
 ## Tutorial
 
@@ -34,8 +34,6 @@ Watch this video to learn how to associate an app with a Commerce instance and c
 ## Associate an app
 
 To link your App Builder application to a Commerce instance:
-
-1. Log in to the Commerce Admin.
 
 1. Navigate to **Apps** > **App Management**.
 

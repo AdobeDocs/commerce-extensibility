@@ -17,7 +17,7 @@ The `app.commerce.config` file is the central configuration file for your App Bu
 
 <InlineAlert variant="info" slots="text"/>
 
-The configuration file supports both JavaScript (`app.commerce.config.js`) and TypeScript (`app.commerce.config.ts`).
+The `app.commerce.config` file supports both JavaScript (`app.commerce.config.js`) and TypeScript (`app.commerce.config.ts`) file types.
 
 ## File structure
 
@@ -115,8 +115,7 @@ npx @adobe/commerce-lib-config validate schema
 Validation checks that your configuration matches the expected schema. Common errors include:
 
 * **Type mismatches**. A `number` field with a string default
-* **Missing properties**. Fields must have `id`, `title`, and `type`
-* **Invalid options**. Select/combobox options must have `label` and `value`
+* **Missing properties**. Fields must have `name`, `label`, and `type`
 
 <InlineAlert variant="info" slots="text"/>
 

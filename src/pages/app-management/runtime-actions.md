@@ -13,7 +13,7 @@ keywords:
 
 **Adobe Commerce App Management is for Beta users only and is not yet accessible to all customers.**
 
-The configuration library auto-generates runtime actions based on the `businessConfig` section in your [configuration schema](./configuration-schema.md). These actions power the App Management UI with no boilerplate code required.
+The `@adobe/aio-commerce-lib-config` library auto-generates runtime actions based on the `businessConfig` section in your [configuration schema](./configuration-schema.md). The `@adobe/aio-commerce-lib-app` library generates an additional action for app metadata. These actions power the App Management UI with no required boilerplate code.
 
 ## Initialize the library
 
@@ -46,7 +46,7 @@ The initialization process creates the following files in your project:
 
 ## Generated runtime actions
 
-The library generates six runtime actions to handle configuration and scope operations:
+The libraries generate the following runtime actions to handle configuration and scope operations:
 
 ### Scope management actions
 
@@ -97,10 +97,14 @@ Once deployed, your app appears in App Management and can be [associated with a 
 
 When a new version of the configuration library is available, update your project to get the latest features and fixes.
 
-Update the library:
+Update the libraries:
 
 ```bash
 npm update @adobe/aio-commerce-lib-config
+```
+
+```bash
+npm update @adobe/aio-commerce-lib-app
 ```
 
 The `postinstall` script regenerates runtime actions when you update the library.
@@ -126,4 +130,4 @@ Use the following solutions to resolve common issues with runtime actions.
 
 1. Run: `npx @adobe/aio-commerce-lib-config validate schema`.
 
-1. Fix issues in `app.commerce.config.js` and rebuild.
+1. Fix issues in `app.commerce.config` and rebuild.

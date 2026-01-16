@@ -15,6 +15,8 @@ keywords:
 
 App Management provides a unified experience for installing, configuring, and managing App Builder applications in Adobe Commerce. Define your configuration schema once, and the system auto-generates the runtime actions and Admin UI, with no custom code required.
 
+App developers define the configuration schema, metadata, and runtime actions for their applications. App managers associate and configure deployed apps within their Commerce instances.
+
 ![App Management UI](../_images/app-management/app-management-ui.png)
 
 ## Key benefits
@@ -38,7 +40,7 @@ Before using App Management, review that you have the following details:
 | Configuration library | Initialized with `npx @adobe/commerce-lib-config init` |
 | Admin UI SDK | v3.3.0 Admin UI SDK | 
 
-Admin users who associate apps must have App Management permissions. See [Associate and configure apps](./associate-apps.md) for more information.
+App managers (Admin users) who associate apps must have App Management permissions. See [Associate and configure apps](./associate-apps.md) for more information.
 
 ## How it works
 

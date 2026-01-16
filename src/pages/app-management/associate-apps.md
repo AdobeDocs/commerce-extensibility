@@ -13,7 +13,7 @@ keywords:
 
 **Adobe Commerce App Management is for Beta users only and is not yet accessible to all customers.**
 
-Associate an App Builder application with your Commerce instance to enable configuration through the auto-generated Admin UI.
+An App Manager associates an App Builder application with their Commerce instance to enable configuration through the auto-generated Admin UI.
 
 ## Prerequisites
 

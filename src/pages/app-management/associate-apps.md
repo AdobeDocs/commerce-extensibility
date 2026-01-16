@@ -22,9 +22,8 @@ Before associating an app, ensure you have the following:
 | Requirement | Description |
 |-------------|-------------|
 | Admin access | Commerce Admin with App Management permissions |
-| Deployed app | App Builder application deployed to your organization |
-| Runtime actions | [Auto-generated](./runtime-actions.md) with `npx @adobe/commerce-lib-config init` |
-| Extension point | Registered with `commerce/backend-ui/1` |
+| Deployed app | App Builder application deployed to your organization with metadata defined |
+| IMS Org access | IMS Org permissions, connected to commerce instance |
 
 ## Tutorial
 

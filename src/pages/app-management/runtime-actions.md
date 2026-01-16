@@ -68,9 +68,19 @@ These actions handle reading and writing configuration values:
 | `get-configuration` | Gets configuration values with inheritance for a scope. |
 | `set-configuration` | Saves configuration values for a scope. |
 
+### App metadata action
+
+The `@adobe/aio-commerce-lib-app` library generates an additional runtime action for retrieving app metadata:
+
+| Action | Description |
+|--------|-------------|
+| `get-app-config` | Returns the app configuration including metadata and business config schema. |
+
+This action is generated in `src/commerce-extensibility-1/.generated/actions/` along with the extensibility manifest.
+
 <InlineAlert variant="warning" slots="text"/>
 
-Do not manually edit files in `src/commerce-configuration-1/`. They are regenerated when the library updates.
+Do not manually edit files in `src/commerce-configuration-1/` or `src/commerce-extensibility-1/`. They are regenerated when the library updates.
 
 ## Build and deploy
 

@@ -40,23 +40,26 @@ This schema contains the following properties:
 
 | Property | Type | Required | Description |
 |----------|------|----------|-------------|
-| `id` | string | Yes | Unique field identifier. Used to retrieve values at runtime. |
-| `title` | string | Yes | Display label of a configuration field. |
+| `name` | string | Yes | Unique field identifier. Used to retrieve values at runtime. |
+| `label` | string | Yes | Display label of a configuration field. |
 | `type` | string | Yes | Field type. See [Supported types](#supported-field-types). |
 | `default` | varies | No | Default value. Must match the field type. |
-| `options` | array | Conditional | Required for `select` and `combobox`. Defines available options. |
-| `secret` | boolean | No | Masks input value. Use for API keys and tokens. |
 | `description` | string | No | Help text displayed below the field. |
+| `options` | array | Conditional | Required for `list`. Defines available options to be displayed in the dropdown list. |
+| `selectionMode` | string | Conditional | Required for `list`. Values can be `single` or `multiple`. The type of selection that is allowed in the schema. | 
 
 ## Supported field types
 
 The following field types are available for your configuration schema:
 
-| Type | Description | Default value type |
-|------|-------------|-------------------|
-| `text` | Single-line text input | string |
-| `select` | Dropdown with predefined options | string |
-| `combobox` | Searchable dropdown | string |
+| Field type | Type | Description |
+|------------|------|-------------|
+| `text` | string | Single-line text input |
+| `password` | string | Masked input for sensitive values like API keys and tokens |
+| `email` | string | Email address input with validation |
+| `tel` | string | Phone number input with format validation |
+| `url` | string | URL input with validation |
+| `list` | string | Dropdown with preconfigured options |
 
 ## Example
 
@@ -69,32 +72,25 @@ export default defineConfig({
   businessConfig: {
     schema: [
       {
-        id: 'api-endpoint',
-        title: 'API Endpoint',
+        name: 'api-name',
+        label: 'API name',
         type: 'text',
+        default: ''
+      },
+{
+        name: 'api-endpoint',
+        label: 'API Endpoint',
+        type: 'url',
         default: 'https://api.example.com'
       },
       {
-        id: 'api-key',
-        title: 'API Key',
-        type: 'text',
-        secret: true
+        name: 'api-key',
+        label: 'API Key',
+        type: 'password',
       },
       {
-        id: 'threshold',
-        title: 'Threshold Amount',
-        type: 'number',
-        default: 100
-      },
-      {
-        id: 'enabled',
-        title: 'Enable Feature',
-        type: 'checkbox',
-        default: true
-      },
-      {
-        id: 'level',
-        title: 'Risk Level',
+        name: 'level',
+        label: 'Risk Level',
         type: 'select',
         options: [
           { label: 'Low', value: 'low' },

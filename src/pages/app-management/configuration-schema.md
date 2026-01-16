@@ -13,7 +13,7 @@ keywords:
 
 **Adobe Commerce App Management is for Beta users only and is not yet accessible to all customers.**
 
-The `app.commerce.config` file defines your app business configuration schema. Based on this schema, the configuration library auto-generates runtime actions and the App Management UI renders a configuration form—no custom code required.
+The `app.commerce.config` file is the central configuration file for your App Builder application. It defines your app [metadata](./app-metadata.md), business configuration schema, and other settings. Based on the `businessConfig` schema, the configuration library generates runtime actions while the App Management renders a configuration form with no custom code required.
 
 <InlineAlert variant="info" slots="text"/>
 
@@ -22,21 +22,24 @@ The configuration file supports both JavaScript (`app.commerce.config.js`) and T
 ## File structure
 
 ```js
-module.exports = {
+import { defineConfig } from "@adobe/aio-commerce-lib-app/config"
+export default defineConfig({
   businessConfig: {
     schema: [
       // Field definitions
     ]
   }
-};
+});
 ```
 
 ## Schema properties
 
+This schema contains the following properties:
+
 | Property | Type | Required | Description |
 |----------|------|----------|-------------|
 | `id` | string | Yes | Unique field identifier. Used to retrieve values at runtime. |
-| `title` | string | Yes | Display label in the UI. |
+| `title` | string | Yes | Display label of a configuration field. |
 | `type` | string | Yes | Field type. See [Supported types](#supported-field-types). |
 | `default` | varies | No | Default value. Must match the field type. |
 | `options` | array | Conditional | Required for `select` and `combobox`. Defines available options. |
@@ -54,7 +57,9 @@ module.exports = {
 ## Example
 
 ```js
-module.exports = {
+import { defineConfig } from "@adobe/aio-commerce-lib-app/config"
+
+export default defineConfig({
   businessConfig: {
     schema: [
       {
@@ -94,7 +99,7 @@ module.exports = {
       }
     ]
   }
-};
+});
 ```
 
 ## Validate your schema
@@ -102,10 +107,10 @@ module.exports = {
 Run validation before deploying:
 
 ```bash
-npx @adobe/commerce-lib-config validate-schema
+npx @adobe/commerce-lib-config validate schema
 ```
 
-Validation checks for:
+Validation checks that your configuration matches the expected schema. Common errors include:
 
 * **Type mismatches**–--A `number` field with a string default
 * **Missing properties**–--Fields must have `id`, `title`, and `type`
@@ -113,28 +118,38 @@ Validation checks for:
 
 <InlineAlert variant="info" slots="text"/>
 
-Schema validation runs automatically during `aio app build`.
+By default, schema validation runs automatically during `aio app build` through the `pre-app-build` hook configured by the library.
 
 ## Retrieve configuration at runtime
 
+Use `getConfigurationByKey` from the configuration library to access configuration values in your runtime actions:
+
 ```js
-const { getConfig } = require('@adobe/commerce-sdk');
+import { getConfigurationByKey, byCodeAndLevel } from "@adobe/aio-commerce-lib-config";
 
 async function main(params) {
-  const config = await getConfig(params);
-  
-  const threshold = config.get('threshold');
-  const enabled = config.get('enabled');
-  
+  const storeCode = params.store_code || "default";
+  const storeLevel = params.store_level || "store_view";
+
   // Use values in your app logic
+  const { config: { value: endpoint } } = await getConfigurationByKey("api-endpoint", byCodeAndLevel(storeCode, storeLevel));
+  const { config: { value: apiKey } } = await getConfigurationByKey("api-key", byCodeAndLevel(storeCode, storeLevel));
 }
 ```
 
 ## Tutorial
 
+Watch this video to learn how to define a configuration schema and see the auto-generated Admin UI in action.
+
 [Configuration schema tutorial](https://video.tv.adobe.com/v/3478943)
 
 ## Next steps
+
+<DiscoverBlock slots="link, text"/>
+
+[App metadata reference](./app-metadata.md)
+
+Define your app metadata in `app.commerce.config`.
 
 <DiscoverBlock slots="link, text"/>
 

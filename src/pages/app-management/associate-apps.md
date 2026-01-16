@@ -17,18 +17,24 @@ Associate an App Builder application with your Commerce instance to enable confi
 
 ## Prerequisites
 
+Before associating an app, ensure you have the following:
+
 | Requirement | Description |
 |-------------|-------------|
 | Admin access | Commerce Admin with App Management permissions |
 | Deployed app | App Builder application deployed to your organization |
-| Runtime actions | [Auto-generated](./runtime-actions.md) via `npx @adobe/commerce-lib-config init` |
+| Runtime actions | [Auto-generated](./runtime-actions.md) with `npx @adobe/commerce-lib-config init` |
 | Extension point | Registered with `commerce/backend-ui/1` |
 
 ## Tutorial
 
+Watch this video to learn how to associate an app with a Commerce instance and configure settings.
+
 [Associate and configure apps](https://video.tv.adobe.com/v/3478944)
 
 ## Associate an app
+
+To link your App Builder application to a Commerce instance:
 
 1. Log in to the Commerce Admin.
 
@@ -49,9 +55,11 @@ The association process:
 
 <InlineAlert variant="warning" slots="text"/>
 
-If scope sync fails, association still completes. Sync manually from Manage Scopes.
+If scope sync fails, association still completes. You can always sync the scopes manually later from the **Manage Scopes** view in the configuration of the associated app.
 
 ## Configure settings
+
+After associating an app in the App Management view, configure its settings through the auto-generated form:
 
 1. Click **Configure** on the associated app.
 
@@ -63,7 +71,9 @@ If scope sync fails, association still completes. Sync manually from Manage Scop
 
 ### Scope-specific configuration
 
-Override global values at specific scope levels:
+Use scope-specific configuration when different websites, stores, or store views require unique settings. For example, you might configure different API endpoints for each region or enable features only for specific store views. Values set at a lower scope override inherited values from higher scopes.
+
+To override global values at a specific scope level:
 
 1. Click **Change Scope**.
 
@@ -75,15 +85,19 @@ Override global values at specific scope levels:
 
 ## Manage scopes
 
-Access **Manage Scopes** from the app details screen.
+Access **Manage Scopes** from the app details screen to manage scope hierarchy for your app.
 
 | Action | Description |
 |--------|-------------|
 | **Add root scope** | Add a scope to the app only (will not be visible in Commerce). |
-| **Sync Commerce scopes** | Import scopes from Commerce after adding websites/stores/storeviews in Commerce. |
+| **Sync Commerce scopes** | Import scopes from Commerce after adding websites/stores/store views in Commerce. |
 | **Import scopes** | Bulk import from JSON file of scopes only linked to the app. |
 
 ## Unassociate an app
+
+Unassociate an app when you no longer need it connected to your Commerce instance, such as when retiring an integration, switching to a different workspace, or cleaning up test configurations.
+
+To remove an app from a Commerce instance:
 
 1. Navigate to **Apps** > **App Management**.
 
@@ -96,6 +110,8 @@ Access **Manage Scopes** from the app details screen.
 Unassociating removes all configuration values for this instance. This cannot be undone.
 
 ## Troubleshooting
+
+Use the following solutions to resolve common issues with app association and configuration.
 
 **App not appearing**
 

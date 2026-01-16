@@ -28,20 +28,14 @@ The `metadata` object in your `app.commerce.config` file identifies your applica
 
 ```js
 metadata: {
-    id: "app-management-poc",
-    displayName: "App Management PoC",
-    description: "This is a PoC for Commerce app management",
+    id: "my-commerce-application",
+    displayName: "My Commerce Application",
+    description: "This is a description for my application",
     version: "1.0.0"
   },
 ```
 
 ## Next steps
-
-<DiscoverBlock slots="link, text"/>
-
-[Configuration schema reference](./configuration-schema.md)
-
-Define your app configuration schema in `app.commerce.config`.
 
 <DiscoverBlock slots="link, text"/>
 

@@ -21,6 +21,8 @@ The configuration file supports both JavaScript (`app.commerce.config.js`) and T
 
 ## File structure
 
+The basic structure of the configuration file is as follows:
+
 ```js
 import { defineConfig } from "@adobe/aio-commerce-lib-app/config"
 export default defineConfig({
@@ -48,6 +50,8 @@ This schema contains the following properties:
 
 ## Supported field types
 
+The following field types are available for your configuration schema:
+
 | Type | Description | Default value type |
 |------|-------------|-------------------|
 | `text` | Single-line text input | string |
@@ -55,6 +59,8 @@ This schema contains the following properties:
 | `combobox` | Searchable dropdown | string |
 
 ## Example
+
+The following example shows a complete configuration schema with various field types:
 
 ```js
 import { defineConfig } from "@adobe/aio-commerce-lib-app/config"
@@ -112,9 +118,9 @@ npx @adobe/commerce-lib-config validate schema
 
 Validation checks that your configuration matches the expected schema. Common errors include:
 
-* **Type mismatches**–--A `number` field with a string default
-* **Missing properties**–--Fields must have `id`, `title`, and `type`
-* **Invalid options**–--Select/combobox options must have `label` and `value`
+* **Type mismatches**. A `number` field with a string default
+* **Missing properties**. Fields must have `id`, `title`, and `type`
+* **Invalid options**. Select/combobox options must have `label` and `value`
 
 <InlineAlert variant="info" slots="text"/>
 
@@ -142,23 +148,3 @@ async function main(params) {
 Watch this video to learn how to define a configuration schema and see the auto-generated Admin UI in action.
 
 [Configuration schema tutorial](https://video.tv.adobe.com/v/3478943)
-
-## Next steps
-
-<DiscoverBlock slots="link, text"/>
-
-[App metadata reference](./app-metadata.md)
-
-Define your app metadata in `app.commerce.config`.
-
-<DiscoverBlock slots="link, text"/>
-
-[Runtime actions reference](./runtime-actions.md)
-
-Initialize the configuration library and understand the generated runtime actions.
-
-<DiscoverBlock slots="link, text"/>
-
-[Associate and configure apps](./associate-apps.md)
-
-Link apps to Commerce instances and configure business settings.

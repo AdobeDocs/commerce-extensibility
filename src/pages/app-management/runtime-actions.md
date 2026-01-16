@@ -50,6 +50,8 @@ The library generates six runtime actions to handle configuration and scope oper
 
 ### Scope management actions
 
+Scopes define the hierarchical boundaries where configuration values can be set and inherited:
+
 | Action | Description |
 |--------|-------------|
 | `get-scope-tree` | Retrieves scope hierarchies. |
@@ -57,6 +59,8 @@ The library generates six runtime actions to handle configuration and scope oper
 | `set-custom-scope-tree` | Defines custom scope hierarchies for external systems. |
 
 ### Configuration management actions
+
+These actions handle reading and writing configuration values:
 
 | Action | Description |
 |--------|-------------|
@@ -113,11 +117,3 @@ Use the following solutions to resolve common issues with runtime actions.
 1. Run: `npx @adobe/aio-commerce-lib-config validate schema`.
 
 1. Fix issues in `app.commerce.config.js` and rebuild.
-
-## Next steps
-
-<DiscoverBlock slots="link, text"/>
-
-[Associate and configure apps](./associate-apps.md)
-
-Link apps to Commerce instances and configure business settings.

@@ -50,8 +50,8 @@ To link your App Builder application to a Commerce instance:
 
 The association process:
 
-* **Syncs scopes**–--Imports websites, stores, and store views from Commerce.
-* **Creates link**–--Associates the app with your Commerce instance.
+* **Syncs scopes**. Imports websites, stores, and store views from Commerce.
+* **Creates link**. Associates the app with your Commerce instance.
 
 <InlineAlert variant="warning" slots="text"/>
 

@@ -17,6 +17,8 @@ The `metadata` object in your `app.commerce.config` file identifies your applica
 
 ## Metadata properties
 
+The metadata object contains the following properties:
+
 | Property | Type | Required | Description |
 |----------|------|----------|-------------|
 | `id` | string | Yes | Unique identifier for your app. Use lowercase letters, numbers, and hyphens. |
@@ -26,6 +28,8 @@ The `metadata` object in your `app.commerce.config` file identifies your applica
 
 ## Example
 
+The following example shows a metadata configuration:
+
 ```js
 metadata: {
     id: "my-commerce-application",
@@ -34,17 +38,3 @@ metadata: {
     version: "1.0.0"
   },
 ```
-
-## Next steps
-
-<DiscoverBlock slots="link, text"/>
-
-[Runtime actions reference](./runtime-actions.md)
-
-Initialize the configuration library and understand the generated runtime actions.
-
-<DiscoverBlock slots="link, text"/>
-
-[Associate and configure apps](./associate-apps.md)
-
-Link apps to Commerce instances and configure business settings.

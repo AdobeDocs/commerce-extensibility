@@ -69,7 +69,7 @@ The following example shows a complete configuration schema with various field t
 import { defineConfig } from "@adobe/aio-commerce-lib-app/config"
 
 export default defineConfig({
-businessConfig: {
+  businessConfig: {
     schema: [
       {
         name: "api-name",
@@ -102,6 +102,7 @@ businessConfig: {
       },
     ],
   },
+});
 ```
 
 ![Renderized schema](../_images/app-management/schema-render.png)

@@ -120,7 +120,7 @@ This will only function properly if `@adobe/aio-commerce-lib-config` is installe
 
 Validation checks that your configuration matches the expected schema. Common errors include:
 
-* **Type mismatches**. A `number` field with a string default
+* **Type mismatches**. A `text` field with a `number` default
 * **Missing properties**. Fields must have `name`, `label`, and `type`
 
 <InlineAlert variant="info" slots="text"/>

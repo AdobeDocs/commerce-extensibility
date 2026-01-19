@@ -113,6 +113,7 @@ Run validation before deploying:
 
 ```bash
 npx @adobe/commerce-lib-config validate schema
+````
 
 <InlineAlert variant="info" slots="text"/>
 

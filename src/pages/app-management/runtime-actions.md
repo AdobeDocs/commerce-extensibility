@@ -25,7 +25,7 @@ npx @adobe/aio-commerce-lib-config init
 
 The initialization process:
 
-* Creates `app.commerce.config` with a template schema if it does not exist, or uses your existing configuration
+* Creates `app.commerce.config` with a template schema if it does not exist. If the file exists but lacks the `businessConfig` property, the library attempts to add it automatically. If the library cannot add the property, the script fails and prompts user to add `businessConfig` manually.
 * Installs `@adobe/aio-commerce-lib-config` and `@adobe/aio-commerce-sdk`
 * Adds a `postinstall` script to `package.json` to ensure up-to-date generated runtime actions on library updates.
 * Generates all required artifacts (schema and runtime actions)
@@ -74,13 +74,13 @@ The `@adobe/aio-commerce-lib-app` library generates an additional runtime action
 
 | Action | Description |
 |--------|-------------|
-| `get-app-config` | Returns the app configuration including metadata and business config schema. |
+| `get-app-config` | Returns the app configuration. |
 
 This action is generated in `src/commerce-extensibility-1/.generated/actions/` along with the extensibility manifest.
 
 <InlineAlert variant="warning" slots="text"/>
 
-Do not manually edit files in `src/commerce-configuration-1/` or `src/commerce-extensibility-1/`. They are regenerated when the library updates.
+Do not manually edit files in `src/commerce-configuration-1/` or `src/commerce-extensibility-1/`. These are auto-generated directories and any manual changes can be lost at any time during regeneration.
 
 ## Build and deploy
 
@@ -97,17 +97,21 @@ Once deployed, your app appears in App Management and can be [associated with a 
 
 When a new version of the configuration library is available, update your project to get the latest features and fixes.
 
-Update the libraries:
+Install the latest version of the libraries:
 
 ```bash
-npm update @adobe/aio-commerce-lib-config
+npm install @adobe/aio-commerce-lib-config@latest
 ```
 
 ```bash
-npm update @adobe/aio-commerce-lib-app
+npm install @adobe/aio-commerce-lib-app@latest
 ```
 
-The `postinstall` script regenerates runtime actions when you update the library.
+<InlineAlert variant="info" slots="text"/>
+
+npm update only updates to the latest version compatible with the semver range defined in the `package.json` file. To get a specific or newer version outside that range, manually edit the `package.json` file.
+
+The `postinstall` script regenerates runtime actions when you install or update the library.
 
 Then, rebuild and redeploy your application:
 

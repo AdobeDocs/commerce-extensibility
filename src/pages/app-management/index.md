@@ -50,7 +50,7 @@ Follow these steps to set up and deploy an App Builder application with App Mana
 
 1. **Define your configuration schema**. Create your [configuration schema](./configuration-schema.md) in `app.commerce.config`.
 
-1. **Generate actions**. Run `npx @adobe/commerce-lib-config init` to [auto-generate runtime actions](./runtime-actions.md).
+1. Setup your project to use business configuration. See the [runtime actions section](./runtime-actions.md) for the required steps.
 
 1. **Deploy**. Build and deploy your app with the `aio app build && aio app deploy` command.
 

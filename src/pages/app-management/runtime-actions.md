@@ -13,7 +13,7 @@ keywords:
 
 **Adobe Commerce App Management is for Beta users only and is not yet accessible to all customers.**
 
-The `@adobe/aio-commerce-lib-config` library auto-generates runtime actions based on the `businessConfig` section in your [configuration schema](./configuration-schema.md). The `@adobe/aio-commerce-lib-app` library generates an additional action for app metadata. These actions power the App Management UI with no required boilerplate code.
+The `@adobe/aio-commerce-lib-config` library auto-generates runtime actions based on the `businessConfig` section in your [configuration schema](./configuration-schema.md). An additional action is generated for app metadata by the `@adobe/aio-commerce-lib-app` library. These actions power the App Management UI with no required boilerplate code.
 
 ## Initialize the library
 
@@ -27,9 +27,9 @@ The initialization process:
 
 * Creates `app.commerce.config` with a template schema if it does not exist, or uses your existing configuration
 * Installs `@adobe/aio-commerce-lib-config` and `@adobe/aio-commerce-sdk`
-* Adds `postinstall` script to `package.json`
+* Adds a `postinstall` script to `package.json` to ensure up-to-date generated runtime actions on library updates.
 * Generates all required artifacts (schema and runtime actions)
-* Updates `app.config.yaml` with the extension reference
+* Creates the `ext.config.yaml` needed for the `commerce/configuration/1` extension point and updates the `app.config.yaml` with the appropriate reference
 * Creates or updates `install.yaml` with the extension point reference
 * Creates or updates `.env` file with placeholder environment variables
 

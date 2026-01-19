@@ -117,7 +117,6 @@ npx @adobe/commerce-lib-config validate schema
 <InlineAlert variant="info" slots="text"/>
 
 This will only function properly if `@adobe/aio-commerce-lib-config` is installed and included in your `package.json` file.
-```
 
 Validation checks that your configuration matches the expected schema. Common errors include:
 

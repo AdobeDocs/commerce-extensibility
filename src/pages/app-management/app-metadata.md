@@ -22,7 +22,7 @@ The metadata object contains the following properties:
 | Property | Type | Required | Description |
 |----------|------|----------|-------------|
 | `id` | string | Yes | Unique identifier for your app. Use lowercase letters, numbers, and hyphens. |
-| `displayName` | string | Yes | Human-readable name shown in the Admin UI. |
+| `displayName` | string | Yes | Name shown in the Admin UI. |
 | `description` | string | Yes | Brief description of your app's functionality. |
 | `version` | string | Yes | Semantic version number. |
 

@@ -13,7 +13,7 @@ keywords:
 
 **Adobe Commerce App Management is for Beta users only and is not yet accessible to all customers.**
 
-The `app.commerce.config` file is the central configuration file for your App Builder application. It defines your app [metadata](./app-metadata.md), business configuration schema, and other settings. Based on the `businessConfig` schema, the configuration library generates runtime actions while the App Management renders a configuration form with no custom code required.
+Based on the `businessConfig` schema, the configuration library generates runtime actions while the App Management renders a configuration form with no custom code required.
 
 <InlineAlert variant="info" slots="text"/>
 

@@ -13,7 +13,7 @@ keywords:
 
 **Adobe Commerce App Management is for Beta users only and is not yet accessible to all customers.**
 
-Based on the `businessConfig` schema, the configuration library generates runtime actions while the App Management renders a configuration form with no custom code required.
+Based on the `businessConfig` schema that you defined in the `app.commerce.config`, the configuration library generates the runtime actions that the App Management UI uses to render a configuration form with no custom code required.
 
 <InlineAlert variant="info" slots="text"/>
 

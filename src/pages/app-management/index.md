@@ -35,7 +35,7 @@ Before using App Management, ensure the following:
 
 * Admin UI SDK version 3.3.0 is required.
 
-  * SaaS instances include this version by default. 
+  * SaaS instances include this version by default.
   * For PaaS, verify your [Admin UI SDK](../admin-ui-sdk/index.md) version before proceeding.
 
 * App managers (Admin users) who associate apps must have App Management permissions. See [Associate and configure apps](./associate-apps.md).

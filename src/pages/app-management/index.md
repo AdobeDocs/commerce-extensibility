@@ -31,16 +31,9 @@ App developers define the configuration schema, metadata, and runtime actions fo
 
 ## Requirements
 
-Before using App Management, review that you have the following details:
+* Before using App Management, review that you have v3.3.0 of the [Admin UI SDK](../admin-ui-sdk/index.md).
 
-| Requirement | Description |
-|-------------|-------------|
-| Adobe Commerce | A Commerce instance |
-| Admin UI SDK | v3.3.0 Admin UI SDK |
-| App Builder | Deployed application with `commerce/configuration/1` extension point |
-| Configuration library | Initialized with `npx @adobe/commerce-lib-config init` |
-
-App managers (Admin users) who associate apps must have App Management permissions. See [Associate and configure apps](./associate-apps.md) for more information.
+* App managers (Admin users) who associate apps must have App Management permissions. See [Associate and configure apps](./associate-apps.md).
 
 ## How it works
 

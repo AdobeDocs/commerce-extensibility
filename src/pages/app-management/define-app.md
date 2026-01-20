@@ -13,7 +13,7 @@ keywords:
 
 **Adobe Commerce App Management is for Beta users only and is not yet accessible to all customers.**
 
-Before deploying your App Builder application to App Management, you must define its metadata, business configuration, and configure your project by setting up the required runtime actions:
+The `app.commerce.config` file is the central configuration file for your App Builder application. It defines your app metadata, business configuration schema, and other settings:
 
 1. **[App metadata](./app-metadata.md)**. Define the metadata for your app.
 

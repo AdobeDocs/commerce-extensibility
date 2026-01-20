@@ -31,7 +31,9 @@ App developers define the configuration schema, metadata, and runtime actions fo
 
 ## Requirements
 
-* Before using App Management, review that you have v3.3.0 of the [Admin UI SDK](../admin-ui-sdk/index.md).
+Before using App Management, ensure the following:
+
+* If using PaaS, that you have v3.3.0 of the [Admin UI SDK](../admin-ui-sdk/index.md). If using SaaS, that version is already available for use.
 
 * App managers (Admin users) who associate apps must have App Management permissions. See [Associate and configure apps](./associate-apps.md).
 

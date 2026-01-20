@@ -1,28 +1,28 @@
 module.exports = [
     {
-        title: "App Management",
-        path: "/app-management/index.md",
+        title: "Overview",
+        path: "/app-management/index.md"
+    },
+    {
+        title: "Define your app",
+        path: "/app-management/define-app.md",
         pages: [
-            {
-                title: "Overview",
-                path: "/app-management/index.md"
-            },
-            {
-                title: "Configuration schema",
-                path: "/app-management/configuration-schema.md"
-            },
             {
                 title: "App metadata",
                 path: "/app-management/app-metadata.md"
             },
             {
-                title: "Runtime actions",
-                path: "/app-management/runtime-actions.md"
+                title: "Business configuration",
+                path: "/app-management/configuration-schema.md"
             },
             {
-                title: "Associate and configure apps",
-                path: "/app-management/associate-apps.md"
-            }
-        ]
-    }
+                title: "Configure your project",
+                path: "/app-management/runtime-actions.md"
+            },
+        ],
+    },
+    {
+        title: "Associate and configure apps",
+        path: "/app-management/associate-apps.md"
+    },
 ];

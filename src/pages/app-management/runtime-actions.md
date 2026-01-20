@@ -1,5 +1,5 @@
 ---
-title: Runtime actions reference
+title: Configure your project
 description: Initialize the configuration library and understand auto-generated runtime actions
 keywords:
   - App Builder
@@ -7,7 +7,7 @@ keywords:
   - App Management
 ---
 
-# Runtime actions reference
+# Configure your project
 
 <InlineAlert variant="warning" slots="text" />
 

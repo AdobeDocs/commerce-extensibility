@@ -1,13 +1,13 @@
 ---
-title: Configuration schema reference
-description: Define your app configuration schema
+title: Business configuration
+description: Define your app business configuration
 keywords:
   - App Builder
   - Extensibility
   - App Management
 ---
 
-# Configuration schema reference
+# Business configuration
 
 <InlineAlert variant="warning" slots="text" />
 

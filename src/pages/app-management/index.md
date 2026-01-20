@@ -7,7 +7,7 @@ keywords:
   - App Management
 ---
 
-# App Management
+# App Management overview
 
 <InlineAlert variant="warning" slots="text" />
 

@@ -80,7 +80,7 @@ This action is generated in `src/commerce-extensibility-1/.generated/actions/` a
 
 <InlineAlert variant="warning" slots="text"/>
 
-Do not manually edit files in `src/commerce-configuration-1/` or `src/commerce-extensibility-1/`. These are auto-generated directories and any manual changes can be lost at any time during regeneration.
+Do not manually edit files in `.generated` folders like `src/commerce-configuration-1/` or `src/commerce-extensibility-1/`. These are auto-generated directories and any manual changes can be lost at any time during regeneration.
 
 ## Build and deploy
 
@@ -106,10 +106,6 @@ npm install @adobe/aio-commerce-lib-config@latest
 ```bash
 npm install @adobe/aio-commerce-lib-app@latest
 ```
-
-<InlineAlert variant="info" slots="text"/>
-
-npm update only updates to the latest version compatible with the semver range defined in the `package.json` file. To get a specific or newer version outside that range, manually edit the `package.json` file.
 
 The `postinstall` script regenerates runtime actions when you install or update the library.
 

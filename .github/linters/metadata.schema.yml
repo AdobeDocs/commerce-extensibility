@@ -12,6 +12,7 @@ properties:
       enum:
         - API Mesh
         - App Builder
+        - App Management
         - B2B
         - Cache
         - Cloud

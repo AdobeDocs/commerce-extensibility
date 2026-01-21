@@ -32,3 +32,6 @@ cypress/screenshots
 
 # lerna
 lerna-debug.log
+
+# cursor
+.cursor

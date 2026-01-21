@@ -1,6 +1,7 @@
 ---
 title: Associate and configure apps
 description: Link App Builder applications to Commerce instances and configure settings
+edition: paas
 keywords:
   - App Builder
   - Extensibility

@@ -1,6 +1,7 @@
 ---
 title: App metadata
 description: Define your app metadata in app.commerce.config
+edition: paas
 keywords:
   - App Builder
   - Extensibility

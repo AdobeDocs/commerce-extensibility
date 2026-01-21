@@ -1,6 +1,7 @@
 ---
 title: Business configuration
 description: Define your app business configuration
+edition: paas
 keywords:
   - App Builder
   - Extensibility

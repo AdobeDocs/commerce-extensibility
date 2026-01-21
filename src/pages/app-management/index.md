@@ -1,6 +1,7 @@
 ---
 title: App Management overview
 description: Learn how to manage App Builder applications in Adobe Commerce.
+edition: paas
 keywords:
   - App Builder
   - Extensibility
@@ -33,12 +34,11 @@ App developers define the configuration schema, metadata, and runtime actions fo
 
 Before using App Management, ensure the following:
 
-* [Admin UI SDK](../admin-ui-sdk/index.md) version 3.3.0 is required for App Management:
-
-  * SaaS instances include this version by default.
-  * For PaaS, verify your version before proceeding.
+* [Admin UI SDK](../admin-ui-sdk/index.md) version 3.3.0 is required for App Management. Verify your version before proceeding.
 
 * App managers (Admin users) who associate apps must have App Management permissions. See [Associate and configure apps](./associate-apps.md).
+
+* Commerce instance should allow external REST calls to validate user permissions when connecting to the App Management.
 
 ## How it works
 

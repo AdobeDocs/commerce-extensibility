@@ -1,6 +1,7 @@
 ---
 title: Configure your project
 description: Initialize the configuration library and understand auto-generated runtime actions
+edition: paas
 keywords:
   - App Builder
   - Extensibility

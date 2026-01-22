@@ -8,6 +8,10 @@ module.exports = [
       path: "/app-development"
     },
     {
+      title: "App Management",
+      path: "/app-management/",
+    },
+    {
       title: "Starter Kits",
       menu: [
         {
@@ -27,6 +31,10 @@ module.exports = [
     {
       title: "Webhooks",
       path: "/webhooks/"
+    },
+    {
+      title: "Observability",
+      path: "/observability/"
     },
     {
       title: "Admin UI SDK",

@@ -12,6 +12,7 @@ properties:
       enum:
         - API Mesh
         - App Builder
+        - App Management
         - B2B
         - Cache
         - Cloud
@@ -21,6 +22,8 @@ properties:
         - Extensibility
         - GraphQL
         - null
+        - Observability
+        - OpenTelemetry
         - Performance
         - REST
         - Security

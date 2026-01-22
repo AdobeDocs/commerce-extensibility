@@ -8,6 +8,36 @@ keywords:
 
 # Adobe Commerce Admin UI SDK release notes
 
+## Version 3.3.0
+
+<InlineAlert variant="warning" slots="text"/>
+
+Available for Beta users only and is not yet accessible to all customers.
+
+### Release date
+
+January 21, 2026
+
+### Enhancements
+
+* Added an [App Management](../app-management/index.md) menu in the Admin Panel, enabling App Managers to view and manage deployed applications within the same IMS organization.
+
+## Version 3.2.5
+
+### Release date
+
+December 9, 2025
+
+### Enhancements
+
+* Updated the `React` version in `uix` to 19.2.1. <!-- CEXT-5593 -->
+
+### Bug fixes
+
+* Fixed exporting of custom column data from Admin grids. <!-- CEXT-5529 -->
+
+* Fixed an error that ocurred on Commerce instances with JavaScript minification enabled. <!-- CEXT-5595 -->
+
 ## Version 3.2.4
 
 ### Release date

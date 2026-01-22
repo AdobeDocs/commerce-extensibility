@@ -70,7 +70,7 @@ module.exports = [
         path: "/app-development/extension-compatibility.md"
     },
     {
-        title: "App Builder partnership essentials",
+        title: "App Builder Kit for Developers",
         path: "/app-development/app-builder-partnership-essentials.md"
     },
     {

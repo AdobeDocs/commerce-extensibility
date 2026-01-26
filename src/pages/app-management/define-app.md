@@ -18,6 +18,10 @@ The `app.commerce.config` file is the central configuration file for your App Bu
 
 Create an `app.commerce.config` file consisting of **[App metadata](./app-metadata.md)** and **[Business configuration](./configuration-schema.md)**.
 
+<InlineAlert variant="info" slots="text"/>
+
+The `app.commerce.config` file supports both JavaScript (`app.commerce.config.js`) and TypeScript (`app.commerce.config.ts`) file types.
+
 ## Example
 
 The following example shows a complete `app.commerce.config`:

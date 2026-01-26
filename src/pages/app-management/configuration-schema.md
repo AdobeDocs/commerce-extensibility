@@ -16,10 +16,6 @@ keywords:
 
 Based on the `businessConfig` schema that you defined in the `app.commerce.config`, the configuration library generates the runtime actions that the App Management UI uses to render a configuration form with no custom code required.
 
-<InlineAlert variant="info" slots="text"/>
-
-The `app.commerce.config` file supports both JavaScript (`app.commerce.config.js`) and TypeScript (`app.commerce.config.ts`) file types.
-
 ## File structure
 
 The basic structure of the configuration file is as follows:

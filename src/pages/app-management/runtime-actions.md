@@ -18,7 +18,7 @@ The `@adobe/aio-commerce-lib-config` library auto-generates runtime actions base
 
 ## Initialize the library
 
-Run the following command to set up your App Builder project with the configuration library. This command structures the required files, installs dependencies, and generates runtime actions based on your schema.
+Run the following command to set up your App Builder project with the configuration library. This command structures the required files, installs dependencies, and generates runtime actions based on your `app.commerce.config` file.
 
 ```bash
 npx @adobe/aio-commerce-lib-config init
@@ -26,7 +26,10 @@ npx @adobe/aio-commerce-lib-config init
 
 The initialization process:
 
-* Creates `app.commerce.config` with a template schema if it does not exist. If the file exists but lacks the `businessConfig` property, the library attempts to add it automatically. If the library cannot add the property, the script fails and prompts user to add `businessConfig` manually.
+* Checks for an existing and syntactically correct `app.commerce.config` file:
+  * If the file does not exist, creates it from a template schema.
+  * If the file exists, but lacks the `businessConfig` property, attempts to add it automatically.
+  * If the property cannot be added, fails and prompts the user to add `businessConfig` manually.
 * Installs `@adobe/aio-commerce-lib-config` and `@adobe/aio-commerce-sdk`
 * Adds a `postinstall` script to `package.json` to ensure up-to-date generated runtime actions on library updates.
 * Generates all required artifacts (schema and runtime actions)

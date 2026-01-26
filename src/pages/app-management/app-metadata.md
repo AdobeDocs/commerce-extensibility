@@ -16,6 +16,23 @@ keywords:
 
 The `metadata` in your `app.commerce.config` file identifies your application to the App Management system. This information displays in the Admin UI and helps merchants identify and manage installed apps.
 
+## Example
+
+The following example shows a metadata configuration:
+
+```js
+import { defineConfig } from "@adobe/aio-commerce-lib-app/config"
+
+export default defineConfig({
+  metadata: {
+    id: "my-commerce-application",
+    displayName: "My Commerce Application",
+    description: "This is a description for my application",
+    version: "1.0.0"
+  },
+});
+```
+
 ## Metadata properties
 
 The metadata contains the following properties:
@@ -26,16 +43,3 @@ The metadata contains the following properties:
 | `displayName` | string | Yes | Name shown in the Admin UI. |
 | `description` | string | Yes | Brief description of your app's functionality. |
 | `version` | string | Yes | Semantic version number. |
-
-## Example
-
-The following example shows a metadata configuration:
-
-```js
-metadata: {
-    id: "my-commerce-application",
-    displayName: "My Commerce Application",
-    description: "This is a description for my application",
-    version: "1.0.0"
-  },
-```

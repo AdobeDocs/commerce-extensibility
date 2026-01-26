@@ -14,10 +14,62 @@ keywords:
 
 **Adobe Commerce App Management is for Beta users only and is not yet accessible to all customers.**
 
-The `app.commerce.config` file is the central configuration file for your App Builder application. It defines your app metadata, business configuration schema, and other settings:
+The `app.commerce.config` file is the central configuration file for your App Builder application. It defines your app metadata, business configuration schema, and other settings.
 
-1. **[App metadata](./app-metadata.md)**. Define the metadata for your app.
+Create an `app.commerce.config` file consisting of **[app metadata](./app-metadata.md)** and **[business configuration](./configuration-schema.md)**.
 
-1. **[Business configuration](./configuration-schema.md)**. Specify the business configuration for your app.
+<InlineAlert variant="info" slots="text"/>
 
-1. **[Configure your project](./runtime-actions.md)**. Initialize the configuration library to generate the required runtime actions and project structure.
+The `app.commerce.config` file supports both JavaScript (`app.commerce.config.js`) and TypeScript (`app.commerce.config.ts`) file types.
+
+## Example
+
+The following example shows a complete `app.commerce.config` file:
+
+```js
+import { defineConfig } from "@adobe/aio-commerce-lib-app/config"
+
+export default defineConfig({
+  metadata: {
+    id: "my-commerce-application",
+    displayName: "My Commerce Application",
+    description: "This is a description for my application",
+    version: "1.0.0"
+  },
+  businessConfig: {
+    schema: [
+      {
+        name: "api-name",
+        label: "API name",
+        type: "text",
+        default: "",
+      },
+      {
+        name: "api-endpoint",
+        label: "API Endpoint",
+        type: "url",
+        default: "https://api.example.com",
+      },
+      {
+        name: "api-key",
+        label: "API Key",
+        type: "password",
+      },
+      {
+        name: "level",
+        label: "Risk Level",
+        type: "list",
+        options: [
+          { label: "Low", value: "low" },
+          { label: "Medium", value: "medium" },
+          { label: "High", value: "high" },
+        ],
+        default: "medium",
+        selectionMode: "single",
+      },
+    ],
+  },
+});
+```
+
+See the **[Configure your project](./runtime-actions.md)** topic for more information about initializing the configuration library to generate the required runtime actions, and project structure.

@@ -16,7 +16,7 @@ keywords:
 
 The `app.commerce.config` file is the central configuration file for your App Builder application. It defines your app metadata, business configuration schema, and other settings.
 
-Create an `app.commerce.config` file consisting of **[App metadata](./app-metadata.md)** and **[Business configuration](./configuration-schema.md)**.
+Create an `app.commerce.config` file consisting of **[app metadata](./app-metadata.md)** and **[business configuration](./configuration-schema.md)**.
 
 <InlineAlert variant="info" slots="text"/>
 

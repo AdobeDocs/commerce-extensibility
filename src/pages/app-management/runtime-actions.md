@@ -26,7 +26,7 @@ npx @adobe/aio-commerce-lib-config init
 
 The initialization process:
 
-* Checks for an existing `app.commerce.config` file:
+* Checks for an existing and syntactically correct `app.commerce.config` file:
   * If the file does not exist, creates it from a template schema.
   * If the file exists, but lacks the `businessConfig` property, attempts to add it automatically.
   * If the property cannot be added, fails and prompts the user to add `businessConfig` manually.

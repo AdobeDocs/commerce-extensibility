@@ -16,47 +16,7 @@ keywords:
 
 Based on the `businessConfig` schema that you defined in the `app.commerce.config`, the configuration library generates the runtime actions that the App Management UI uses to render a configuration form with no custom code required.
 
-## File structure
-
-The basic structure of the configuration file is as follows:
-
-```js
-import { defineConfig } from "@adobe/aio-commerce-lib-app/config"
-export default defineConfig({
-  businessConfig: {
-    schema: [
-      // Field definitions
-    ]
-  }
-});
-```
-
-## Schema properties
-
-This schema contains the following properties:
-
-| Property | Type | Required | Description |
-|----------|------|----------|-------------|
-| `name` | string | Yes | Unique field identifier. Used to retrieve values at runtime. |
-| `label` | string | Yes | Display label of a configuration field. |
-| `type` | string | Yes | Field type. See [Supported types](#supported-field-types). |
-| `default` | varies | No | Default value. Must match the field type. |
-| `description` | string | No | Help text displayed below the field. |
-| `options` | array | Conditional | Required for `list`. Defines available options to be displayed in the dropdown list. |
-| `selectionMode` | string | Conditional | Required for `list`. Values can be `single` or `multiple`. The type of selection that is allowed in the schema. |
-
-## Supported field types
-
-The following field types are available for your configuration schema:
-
-| Field type | Type | Description |
-|------------|------|-------------|
-| `text` | string | Single-line text input |
-| `password` | string | Masked input for sensitive values like API keys and tokens |
-| `email` | string | Email address input with validation |
-| `tel` | string | Phone number input with format validation |
-| `url` | string | URL input with validation |
-| `list` | string | Dropdown with preconfigured options |
+See the **[Configure your project](./runtime-actions.md)** topic for more information about initializing the configuration library to generate the required runtime actions, and project structure.
 
 ## Example
 
@@ -103,6 +63,33 @@ export default defineConfig({
 ```
 
 ![Renderized schema](../_images/app-management/schema-render.png)
+
+## Schema properties
+
+This `businessConfig` schema contains the following properties:
+
+| Property | Type | Required | Description |
+|----------|------|----------|-------------|
+| `name` | string | Yes | Unique field identifier. Used to retrieve values at runtime. |
+| `label` | string | Yes | Display label of a configuration field. |
+| `type` | string | Yes | Field type. See [Supported types](#supported-field-types). |
+| `default` | varies | No | Default value. Must match the field type. |
+| `description` | string | No | Help text displayed below the field. |
+| `options` | array | Conditional | Required for `list`. Defines available options to be displayed in the dropdown list. |
+| `selectionMode` | string | Conditional | Required for `list`. Values can be `single` or `multiple`. The type of selection that is allowed in the schema. |
+
+## Supported field types
+
+The following field types are available for your `businessConfig` schema:
+
+| Field type | Type | Description |
+|------------|------|-------------|
+| `text` | string | Single-line text input |
+| `password` | string | Masked input for sensitive values like API keys and tokens |
+| `email` | string | Email address input with validation |
+| `tel` | string | Phone number input with format validation |
+| `url` | string | URL input with validation |
+| `list` | string | Dropdown with preconfigured options |
 
 ## Validate your schema
 

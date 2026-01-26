@@ -24,7 +24,7 @@ The `app.commerce.config` file supports both JavaScript (`app.commerce.config.js
 
 ## Example
 
-The following example shows a complete `app.commerce.config`:
+The following example shows a complete `app.commerce.config` file:
 
 ```js
 import { defineConfig } from "@adobe/aio-commerce-lib-app/config"

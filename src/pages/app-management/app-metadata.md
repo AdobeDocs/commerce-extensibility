@@ -16,17 +16,6 @@ keywords:
 
 The `metadata` in your `app.commerce.config` file identifies your application to the App Management system. This information displays in the Admin UI and helps merchants identify and manage installed apps.
 
-## Metadata properties
-
-The metadata contains the following properties:
-
-| Property | Type | Required | Description |
-|----------|------|----------|-------------|
-| `id` | string | Yes | Unique identifier for your app. Use lowercase letters, numbers, and hyphens. |
-| `displayName` | string | Yes | Name shown in the Admin UI. |
-| `description` | string | Yes | Brief description of your app's functionality. |
-| `version` | string | Yes | Semantic version number. |
-
 ## Example
 
 The following example shows a metadata configuration:
@@ -43,3 +32,14 @@ export default defineConfig({
   },
 });
 ```
+
+## Metadata properties
+
+The metadata contains the following properties:
+
+| Property | Type | Required | Description |
+|----------|------|----------|-------------|
+| `id` | string | Yes | Unique identifier for your app. Use lowercase letters, numbers, and hyphens. |
+| `displayName` | string | Yes | Name shown in the Admin UI. |
+| `description` | string | Yes | Brief description of your app's functionality. |
+| `version` | string | Yes | Semantic version number. |

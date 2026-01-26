@@ -32,10 +32,14 @@ The metadata contains the following properties:
 The following example shows a metadata configuration:
 
 ```js
-metadata: {
+import { defineConfig } from "@adobe/aio-commerce-lib-app/config"
+
+export default defineConfig({
+  metadata: {
     id: "my-commerce-application",
     displayName: "My Commerce Application",
     description: "This is a description for my application",
     version: "1.0.0"
   },
+});
 ```

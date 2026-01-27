@@ -20,7 +20,7 @@ January 21, 2026
 
 ### Enhancements
 
-* Added an [App Management](../app-management/index.md) menu in the Admin Panel, enabling App Managers to view and manage deployed applications within the same IMS organization.
+* Added an [App Management](../app-management/index.md) menu in the Admin, enabling App Managers to view and manage deployed applications within the same IMS organization.
 
 ## Version 3.2.6
 
@@ -30,7 +30,7 @@ January 27, 2026
 
 ### Bug fixes
 
-* Fixed a crash in the Admin Panel caused by menu registrations referencing non-existent parent menus. <!-- CEXT-5701 -->
+* Fixed a crash in the Admin caused by menu registrations referencing non-existent parent menus. <!-- CEXT-5701 -->
 
 ## Version 3.2.5
 

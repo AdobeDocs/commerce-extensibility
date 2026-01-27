@@ -22,6 +22,16 @@ January 21, 2026
 
 * Added an [App Management](../app-management/index.md) menu in the Admin Panel, enabling App Managers to view and manage deployed applications within the same IMS organization.
 
+## Version 3.2.6
+
+### Release date
+
+January 27, 2026
+
+### Bug fixes
+
+* Fixed a crash in the Admin Panel caused by menu registrations referencing non-existent parent menus. <!-- CEXT-5701 -->
+
 ## Version 3.2.5
 
 ### Release date
@@ -36,7 +46,7 @@ December 9, 2025
 
 * Fixed exporting of custom column data from Admin grids. <!-- CEXT-5529 -->
 
-* Fixed an error that ocurred on Commerce instances with JavaScript minification enabled. <!-- CEXT-5595 -->
+* Fixed an error that occurred on Commerce instances with JavaScript minification enabled. <!-- CEXT-5595 -->
 
 ## Version 3.2.4
 

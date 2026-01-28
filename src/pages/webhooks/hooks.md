@@ -404,15 +404,7 @@ In this example, the `X-Custom-Header` from an incoming HTTP request to Commerce
 
 The following contexts are supported:
 
-| Context                     | Context class                                     |
-|-----------------------------|---------------------------------------------------|
-| `context_checkout_session`  | Magento\Checkout\Model\Session                    |
-| `context_customer_session`  | Magento\Customer\Model\Session                    |
-| `context_application_state` | Magento\Framework\App\State                       |
-| `context_scope_config`      | Magento\Framework\App\Config\ScopeConfigInterface |
-| `context_http_request`      | Magento\Framework\App\Request\Http                |
-| `context_staging`           | Magento\Staging\Model\VersionManager              |
-| `context_store`             | Magento\Store\Model\StoreManagerInterface         |
+import CommerceContext from '/src/_includes/commerce-context.md'
 
 #### Checkout session context
 

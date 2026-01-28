@@ -8,12 +8,13 @@ keywords:
 
 # Context values
 
+import CommerceContext from '/src/_includes/commerce-context.md'
+
 You can add to the event payload values from the application context. It allows you to include data that is not part of the event by default but is crucial for your integration.
 
 The following contexts are supported:
 
-import CommerceContext from '/src/_includes/commerce-context.md'
-
+<CommerceContext />
 
 #### Checkout session context
 
@@ -49,7 +50,7 @@ Source: context_checkout_session.get_quote.get_customer_group_id
 Active: Yes
 ```
 
-The next data will be a part of your event payload:
+Your event payload will contain the following data:
 
 ```json
 {
@@ -97,7 +98,7 @@ Source: context_customer_session.get_customer.get_group_id
 Active: Yes
 ```
 
-The next data will be a part of your event payload:
+Your event payload will contain the following data:
 
 ```json
 {
@@ -138,7 +139,7 @@ Source: context_application_state.get_mode
 Active: Yes
 ```
 
-The next data will be a part of your event payload:
+Your event payload will contain the following data:
 
 ```json
 {
@@ -182,7 +183,7 @@ Source: context_scope_config.get_value{general/locale/code:default}
 Active: Yes
 ```
 
-The next data will be a part of your event payload:
+Your event payload will contain the following data:
 
 ```json
 {
@@ -227,7 +228,7 @@ Source: context_http_request.get_front_name
 Active: Yes
 ```
 
-The next data will be a part of your event payload:
+Your event payload will contain the following data:
 
 ```json
 {
@@ -266,7 +267,7 @@ Source: context_staging.get_current_version
 Active: Yes
 ```
 
-The next data will be a part of your event payload:
+Your event payload will contain the following data:
 
 ```json
 {
@@ -314,7 +315,7 @@ Source: context_store.get_group
 Active: Yes
 ```
 
-The next data will be a part of your event payload:
+Your event payload will contain the following data:
 
 ```json
 {

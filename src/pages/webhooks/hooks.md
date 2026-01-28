@@ -7,6 +7,8 @@ keywords:
 
 # Configure hook contents
 
+import CommerceContext from '/src/_includes/commerce-context.md'
+
 The payload for a hook can be large, but in many cases you only need to transmit a few fields to perform the desired operation on the remote server.
 
 Defining the hook requires knowledge of the structure of the original event and the requirements of the remote call. You can use the following methods to determine the structure of the original event:
@@ -404,7 +406,7 @@ In this example, the `X-Custom-Header` from an incoming HTTP request to Commerce
 
 The following contexts are supported:
 
-import CommerceContext from '/src/_includes/commerce-context.md'
+<CommerceContext />
 
 #### Checkout session context
 

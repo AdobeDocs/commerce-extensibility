@@ -86,7 +86,7 @@ module.exports = [
     path: "/events/conditional-events.md",
   },
   {
-    title: "Context fields",
+    title: "Add context fields",
     path: "/events/context-fields.md",
   },
   {

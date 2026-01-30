@@ -20,7 +20,7 @@ Jan 30, 2026
 
 ### Enhancements
 
-* Added the functionality to add to the event payload values [from the application context](./context-fields.md) <!-- CEXT-5713 -->
+* You can now add event payload values [from the application context](./context-fields.md) <!-- CEXT-5713 -->
 
 ### Bug fixes
 

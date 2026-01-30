@@ -38,7 +38,11 @@ Before using App Management, ensure the following:
 
 * App managers (Admin users) who associate apps must have App Management permissions. See [Associate and configure apps](./associate-apps.md).
 
-* Commerce instance should allow external REST calls to validate user permissions when connecting to the App Management.
+* App Builder applications with the following minimum library versions.
+
+  * `@adobe/aio-commerce-lib-config` version 0.11.1 or later.
+  * `@adobe/aio-commerce-lib-api` version 0.6.0 or later.
+  * `@adobe/aio-commerce-sdk` version 0.7.2 or later.
 
 ## How it works
 

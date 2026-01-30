@@ -42,7 +42,7 @@ Before using App Management, ensure the following:
 
   * `@adobe/aio-commerce-lib-config` version 0.11.1 or later.
   * `@adobe/aio-commerce-lib-api` version 0.6.0 or later.
-  * `@adobe/aio-commerce-sdk` version 0.7.2
+  * `@adobe/aio-commerce-sdk` version 0.7.2 or later.
 
 ## How it works
 

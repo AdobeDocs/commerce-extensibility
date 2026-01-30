@@ -7,6 +7,8 @@ keywords:
 
 # Configure hook contents
 
+import CommerceContext from '/src/_includes/commerce-context.md'
+
 The payload for a hook can be large, but in many cases you only need to transmit a few fields to perform the desired operation on the remote server.
 
 Defining the hook requires knowledge of the structure of the original event and the requirements of the remote call. You can use the following methods to determine the structure of the original event:
@@ -55,7 +57,7 @@ Make sure the webhook method you select contains the information you need. Now, 
 {
     "eventName": "string",
     "data": {
-        "quoteItem": {
+        "quote_item": {
             "qty_options": "array",
             "product_type": "string",
             "real_product_type": "string",
@@ -81,7 +83,7 @@ Make sure the webhook method you select contains the information you need. Now, 
 
 At minimum, you need to transmit the `sku` and `qty` fields to check product availability. Other fields, such as `name` and `price`, might also be necessary. However, there are many other fields that contain data that is outside the scope of your call.
 
-Meanwhile, your external source probably does not accept data as a `quoteItem` object. Imagine that your remote application expects a payload with the following structure:
+Meanwhile, your external source probably does not accept data as a `quote_item` object. Imagine that your remote application expects a payload with the following structure:
 
 ```json
 {
@@ -103,10 +105,10 @@ The following example configures the webhook described above.
 ```xml
 <hook name="validate_stock" url="https://example.com/product-validate-stock" timeout="2000" softTimeout="200" required="true" fallbackErrorMessage="Can't add the product to the cart right now">
     <fields>
-        <field name='product.name' source='data.quoteItem.name' />
-        <field name='product.sku' source='data.quoteItem.sku' />
-        <field name='product.price' source='data.quoteItem.price' />
-        <field name='product.quantity' source='data.quoteItem.qty' />
+        <field name='product.name' source='data.quote_item.name' />
+        <field name='product.sku' source='data.quote_item.sku' />
+        <field name='product.price' source='data.quote_item.price' />
+        <field name='product.quantity' source='data.quote_item.qty' />
     </fields>
 </hook>
 ```
@@ -117,19 +119,19 @@ The following example configures the webhook described above.
 Hook Fields
 
 Name: product.name
-Source: data.quoteItem.name
+Source: data.quote_item.name
 Active: Yes
 
 Name: product.sku
-Source: data.quoteItem.sku
+Source: data.quote_item.sku
 Active: Yes
 
 Name: product.price
-Source: data.quoteItem.price
+Source: data.quote_item.price
 Active: Yes
 
 Name: product.quantity
-Source: data.quoteItem.qty
+Source: data.quote_item.qty
 Active: Yes
 ```
 
@@ -404,15 +406,7 @@ In this example, the `X-Custom-Header` from an incoming HTTP request to Commerce
 
 The following contexts are supported:
 
-| Context                     | Context class                                     |
-|-----------------------------|---------------------------------------------------|
-| `context_checkout_session`  | Magento\Checkout\Model\Session                    |
-| `context_customer_session`  | Magento\Customer\Model\Session                    |
-| `context_application_state` | Magento\Framework\App\State                       |
-| `context_scope_config`      | Magento\Framework\App\Config\ScopeConfigInterface |
-| `context_http_request`      | Magento\Framework\App\Request\Http                |
-| `context_staging`           | Magento\Staging\Model\VersionManager              |
-| `context_store`             | Magento\Store\Model\StoreManagerInterface         |
+<CommerceContext />
 
 #### Checkout session context
 

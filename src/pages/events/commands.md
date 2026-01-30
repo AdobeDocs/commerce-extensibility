@@ -212,7 +212,7 @@ If you are implementing eventing in a performance testing environment, run the `
 
 ### Options
 
-`--fields='{"<name>":"<field-name>", "converter":"<path\to\converterclass>"}'` Required, but the `converter` argument is optional. Specifies an event field to transmit to the Adobe App Builder application. You can specify this option multiple times. Each instance can contain only one field name. The `converter` argument applies the [converter class](convert-field-values.md) to the specified field.
+`--fields='{"<name>":"<field-name>", "converter":"<path\to\converterclass>", "source":"context_store.get_store.get_id"}'` Required, the `converter` and `source` arguments are optional. Specifies an event field to transmit to the Adobe App Builder application. You can specify this option multiple times. Each instance can contain only one field name. The `converter` argument applies the [converter class](convert-field-values.md) to the specified field. The `source` argument is used to retrieve the data [from the application context](./context-fields).
 
 `--force`, `-f` Forces subscription to the event, even if it hasn't been defined locally.
 

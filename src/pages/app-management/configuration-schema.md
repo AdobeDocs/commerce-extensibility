@@ -85,7 +85,7 @@ The following field types are available for your `businessConfig` schema:
 | Field type | Type | Description |
 |------------|------|-------------|
 | `text` | string | Single-line text input |
-| `password` | string | Masked input for sensitive values like API keys and tokens |
+| `password` | string | Masked input for sensitive values like API keys and tokens. Run [schema validation](#validate-your-schema) to ensure that the encryption key is correctly generated |
 | `email` | string | Email address input with validation |
 | `tel` | string | Phone number input with format validation |
 | `url` | string | URL input with validation |
@@ -107,6 +107,8 @@ Validation checks that your configuration matches the expected schema. Common er
 
 * **Type mismatches**. A `text` field with a `number` default
 * **Missing properties**. Fields must have `name`, `label`, and `type`
+
+The encryption key is automatically generated if your schema contains password fields and encryption is not yet configured.
 
 <InlineAlert variant="info" slots="text"/>
 

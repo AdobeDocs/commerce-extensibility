@@ -12,6 +12,16 @@ These release notes describe the latest version of Adobe I/O Events for Adobe Co
 
 See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io-events-for-adobe-commerce) for upgrade instructions.
 
+## Version 1.18.0
+
+### Release date
+
+Feb 2, 2026
+
+### Enhancements
+
+* Added PHP 8.5 support. <!-- CEXT-5736 -->
+
 ## Version 1.17.0
 
 ### Release date

@@ -211,6 +211,8 @@ Refer to [`actions/collect-adjustment-taxes.js`](https://github.com/adobe/commer
 </config>
 ```
 
+&#8203;<Edition name="saas" /> SaaS webhooks have slightly different naming conventions. For this example, use the `plugin.out_of_process_tax_management.api.oop_credit_memo_tax_collection.collect_taxes` method.
+
 ### Payload
 
 The App Builder application receives the following payload as an `oopCreditMemo` object, which contains the necessary data for the adjustment tax calculation. When action calculates the taxes, the response populates the `refund_tax` and `fee_tax` fields under the `adjustment` object and returns the result to the commerce instance.

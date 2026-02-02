@@ -46,6 +46,8 @@ The following example demonstrates how to add a webhook to the `plugin.magento.o
 
 You can register multiple webhooks for different shipping methods or shipping carriers by adding them into the same batch to ensure they are executed in parallel or create multiple batches to execute them sequentially.
 
+&#8203;<Edition name="saas" /> SaaS webhooks have slightly different naming conventions. For this example, use the `plugin.out_of_process_shipping_methods.api.shipping_rate_repository.get_rates` method.
+
 ### Payload
 
 The request payload contains information about all items in the cart, including product information, product attributes, shipping address, and customer information for logged-in customers.

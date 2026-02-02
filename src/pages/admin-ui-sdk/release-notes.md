@@ -22,6 +22,16 @@ January 21, 2026
 
 * Added an [App Management](../app-management/index.md) menu in the Admin, enabling App Managers to view and manage deployed applications within the same IMS organization.
 
+## Version 3.2.7
+
+### Release date
+
+Feb 2, 2026
+
+### Enhancements
+
+* Added PHP 8.5 support. <!-- CEXT-5736 -->
+
 ## Version 3.2.6
 
 ### Release date

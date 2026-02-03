@@ -96,7 +96,7 @@ The following field types are available for your `businessConfig` schema:
 Run validation before deploying:
 
 ```bash
-npx @adobe/commerce-lib-config validate schema
+npx @adobe/aio-commerce-lib-config validate schema
 ````
 
 <InlineAlert variant="info" slots="text"/>

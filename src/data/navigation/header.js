@@ -8,6 +8,10 @@ module.exports = [
       path: "/app-development"
     },
     {
+      title: "App Management",
+      path: "/app-management/",
+    },
+    {
       title: "Starter Kits",
       menu: [
         {

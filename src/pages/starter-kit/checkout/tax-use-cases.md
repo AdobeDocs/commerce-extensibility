@@ -182,7 +182,7 @@ The key points for constructing the response are:
 
 ## Collect adjustment taxes for credit memo
 
-&#8203;<Edition name="paas" /> You can calculate and apply taxes to the adjustment amount of a credit memo during a refund by using the `plugin.magento.out_of_process_tax_management.api.oop_credit_memo_tax_collection.collect_taxes` webhook.
+You can calculate and apply taxes to the adjustment amount of a credit memo during a refund by using the `plugin.magento.out_of_process_tax_management.api.oop_credit_memo_tax_collection.collect_taxes` webhook.
 
 To enable this webhook, activate the [`credit_memo_tax_enabled`](./tax-reference.md#create-or-modify-a-new-oope-tax-integration) setting in the active tax integration configuration.
 
@@ -190,7 +190,7 @@ When the credit memo amount is recalculated, a synchronous call is dispatched to
 
 Refer to [`actions/collect-adjustment-taxes.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/collect-adjustment-taxes/index.js) for an example of how to process the request and return the tax calculation to the commerce instance. This file can serve as a template for implementing custom tax calculations.
 
-To register a webhook, create a `webhooks.xml` [configuration file](../../webhooks/xml-schema.md) file in your module or in the root `app/etc` directory.
+&#8203;<Edition name="paas" /> To register a webhook, create a `webhooks.xml` [configuration file](../../webhooks/xml-schema.md) file in your module or in the root `app/etc` directory.
 
 ```xml
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -210,6 +210,8 @@ To register a webhook, create a `webhooks.xml` [configuration file](../../webhoo
     </method>
 </config>
 ```
+
+&#8203;<Edition name="saas" /> SaaS webhooks have slightly different naming conventions. For this example, use the `plugin.out_of_process_tax_management.api.oop_credit_memo_tax_collection.collect_taxes` method.
 
 ### Payload
 

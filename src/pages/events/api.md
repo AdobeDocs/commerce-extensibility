@@ -22,7 +22,8 @@ The `POST /rest/<store_view_code>/V1/eventing/eventSubscribe` endpoint subscribe
     "fields": [
       {
         "name": "string",
-        "converter": "string"
+        "converter": "string",
+        "source": "string"
       }
     ],
     "rules": [
@@ -58,7 +59,9 @@ Review the [`events:subscribe` command](./commands.md#subscribe-to-an-event) to 
 
 **Example usage:**
 
-The following cURL command subscribes to the `observer.catalog_category_save_after` event. The events contain the `name` and `entity_id` field. The priority setting expedites the transmission of this event.
+The following cURL command subscribes to the `observer.catalog_category_save_after` event. The event contains the `name`, `entity_id`, and `context.store_id` fields. The priority setting expedites the transmission of this event.
+
+The `context.store_id` field uses a source to retrieve the store ID from the [context of the application](./context-fields.md).
 
 ```bash
 curl -i -X POST \
@@ -74,6 +77,10 @@ curl -i -X POST \
       },
       {
         "name": "entity_id"
+      },
+      {
+        "name": "context.store_id",
+        "source": "context_store.get_store.get_id"
       }
     ],
     "priority": true
@@ -120,6 +127,10 @@ The `GET /rest/all/V1/eventing/getEventSubscriptions` endpoint returns a list of
     },
     {
       "name": "sku"
+    },
+    {
+      "name": "context.store_id",
+      "source": "context_store.get_store.get_id"
     }
   ],
   "rules": [
@@ -159,7 +170,8 @@ The `PUT /rest/<store_view_code>/V1/eventing/eventSubscribe/<event_name>` endpoi
     "fields": [
       {
         "name": "string",
-        "converter": "string"
+        "converter": "string",
+        "source": "string"
       }
     ],
     "rules": [

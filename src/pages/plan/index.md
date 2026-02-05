@@ -103,16 +103,6 @@ As you build, follow these practices to ensure a smooth path to production:
 - [Logging and troubleshooting](./best-practices/logging-troubleshooting.md) - Implement effective logging for debugging
 - [Database storage](./best-practices/database-storage.md) - Choose appropriate storage solutions for your app data
 
-## Phase 3: Submit your app
-
-If you're building an app for the Adobe Exchange marketplace, prepare and submit it for review.
-
-### Submit for review
-
-1. Review the complete [App submission guidelines](./app-submission-guidelines.md).
-2. Prepare your submission package following the [App Builder distribution documentation](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/distribution).
-3. Submit through the Adobe Developer Console.
-
 ## Quick reference: Documentation by task
 
 | I want to... | Start here |

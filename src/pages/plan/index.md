@@ -1,5 +1,5 @@
 ---
-title: App development lifecycle
+title: Plan your App Builder app
 description: Learn about the complete lifecycle for building, distributing, and managing App Builder apps that extend Adobe Commerce.
 keywords:
   - App Builder
@@ -8,27 +8,13 @@ keywords:
   - Getting Started
 ---
 
-# App development lifecycle
+# Plan your App Builder app
 
 This guide provides a roadmap for creating App Builder applications that extend Adobe Commerce. Whether you're building an integration for your own business or developing an app for the Adobe Exchange marketplace, understanding the complete lifecycle helps you plan your project and navigate the documentation.
 
-## Lifecycle overview
-
-Building an App Builder app for Commerce involves five main phases:
-
-| Phase | Description | Key activities |
-|-------|-------------|----------------|
-| **Plan** | Define requirements and set up your environment | Identify use case, configure App Builder workspace, connect to Commerce |
-| **Build** | Develop your application using Adobe's extensibility tools | Choose architecture, write code, integrate with Commerce |
-| **Submit** | Prepare your app and submit for review | Documentation, security requirements, submission package |
-| **Distribute** | Pass review and publish to Adobe Exchange | Address feedback, receive approval, publish listing |
-| **Operate** | Install, configure, and monitor apps in production | Associate with Commerce instances, configure settings, monitor health |
-
-## Phase 1: Plan your app
-
 Before writing code, define your requirements and prepare your development environment.
 
-### Define your requirements
+## Define your requirements
 
 Identify what your app needs to accomplish:
 
@@ -37,7 +23,7 @@ Identify what your app needs to accomplish:
 - Will merchants need to configure your app through the Admin interface?
 - What external systems will your app integrate with?
 
-### Choose your approach
+## Choose your approach
 
 Based on your requirements, determine which capabilities you'll need:
 
@@ -48,7 +34,7 @@ Based on your requirements, determine which capabilities you'll need:
 | Add configuration or management pages to the Admin | [Admin UI SDK](../admin-ui-sdk/index.md) |
 | Combine multiple APIs into a single endpoint | [API Mesh](https://developer.adobe.com/graphql-mesh-gateway/) |
 
-### Set up your environment
+## Set up your environment
 
 Prepare the foundation for development:
 
@@ -59,7 +45,7 @@ Prepare the foundation for development:
 
 The [learning path](../get-started/learning-path.md) provides detailed guidance for each setup step.
 
-## Phase 2: Build your app
+## Build your app
 
 With your environment ready, develop your application.
 
@@ -98,7 +84,7 @@ Your app can leverage one or more of these capabilities:
 
 Many apps combine multiple capabilities. For example, an order management integration might use Events to receive order notifications, Webhooks to validate inventory during checkout, and the Admin UI SDK to provide a management interface.
 
-### Events vs Webhooks: Which should I use?
+### Events vs W\webhooks: Which should I use?
 
 | Scenario | Recommended | Why |
 |----------|-------------|-----|
@@ -121,120 +107,11 @@ As you build, follow these practices to ensure a smooth path to production:
 
 If you're building an app for the Adobe Exchange marketplace, prepare and submit it for review.
 
-### Submission checklist
-
-Before submitting, ensure your app meets all requirements:
-
-**Documentation requirements**
-
-- [ ] Clear installation instructions for both PaaS and SaaS environments
-- [ ] Configuration details for all environment variables
-- [ ] Usage instructions explaining how to use the app post-installation
-- [ ] Prerequisites listed (Admin UI SDK version, module dependencies)
-
-**Security requirements**
-
-- [ ] All runtime actions use `require-adobe-auth: true`
-- [ ] No hardcoded secrets in code or configuration
-- [ ] Webhooks protected by [signature verification](../webhooks/signature-verification.md)
-- [ ] No critical or high vulnerabilities (`npm audit` passes)
-- [ ] Repository is private if hosted on GitHub
-
-**Project structure requirements**
-
-- [ ] Updated `package.json` with app-specific name, version, and author
-- [ ] Proper `app.config.yaml` configuration
-- [ ] Commerce defined as a required product dependency
-- [ ] Clean `.env.dist` file with all required variables
-- [ ] Unused folders and files removed
-
-**Testing requirements**
-
-- [ ] All tests pass (`npm test`)
-- [ ] Events are received and processed correctly
-- [ ] Webhooks respond with proper format and timing
-- [ ] Admin UI renders correctly
-- [ ] Works on both PaaS and SaaS Commerce environments
-
-<InlineAlert variant="warning" slots="text"/>
-
-Apps must support both PaaS (Commerce on cloud infrastructure, on-premises) and SaaS (Commerce as a Cloud Service) deployments. See [Extension compatibility](./extension-compatibility.md) for guidance.
-
 ### Submit for review
 
-1. Review the complete [App submission guidelines](./app-submission-guidelines.md)
-2. Prepare your submission package following the [App Builder distribution documentation](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/distribution)
-3. Submit through the Adobe Developer Console
-
-### Downloadable vs non-downloadable apps
-
-| Type | Description | User experience |
-|------|-------------|-----------------|
-| **Downloadable** | Users download source code and deploy to their own App Builder environment | Full access to customize and extend |
-| **Non-downloadable** | App runs in an auto-generated environment managed by Adobe | Simplified installation, no code access |
-
-Your submission requirements differ based on which type you choose. See the [submission guidelines](./app-submission-guidelines.md) for details.
-
-## Phase 4: Distribute your app
-
-After submission, your app goes through the review process before publication.
-
-### Review process
-
-The Adobe review team evaluates your submission against:
-
-- **Documentation quality** - Clear, complete, and accurate
-- **Security practices** - Proper authentication, no exposed secrets
-- **Code structure** - Clean, maintainable, follows best practices
-- **Functionality** - Works as documented across supported environments
-
-### If your app is rejected
-
-1. Review the specific feedback provided by the review team
-2. Address all requirements listed in the rejection notice
-3. Consider implementing suggested best practices
-4. Resubmit your updated app
-
-### Upon approval
-
-Once approved, your app is published to [Adobe Exchange](https://exchange.adobe.com/) where merchants can discover and install it.
-
-## Phase 5: Operate your app
-
-Once distributed, apps need to be installed, configured, and monitored in production environments.
-
-### Install and configure
-
-<InlineAlert variant="warning" slots="text"/>
-
-App Management is currently in Beta and not yet accessible to all customers.
-
-[App Management](../app-management/index.md) provides a unified experience for installing and configuring App Builder apps in Commerce:
-
-**For app developers:**
-
-1. [Define app metadata](../app-management/app-metadata.md) - Specify your app's identity and capabilities
-2. [Create configuration schema](../app-management/configuration-schema.md) - Define the settings merchants can configure
-3. [Configure runtime actions](../app-management/runtime-actions.md) - Set up the actions that power your app
-
-**For merchants and administrators:**
-
-1. [Associate apps](../app-management/associate-apps.md) - Connect deployed apps to your Commerce instance
-2. Configure settings through the auto-generated Admin UI
-3. Manage app lifecycle (enable, disable, unassociate)
-
-### Monitor and maintain
-
-Keep your app running smoothly in production:
-
-- [Observability overview](../observability/index.md) - Set up monitoring and alerting
-- [App Builder log forwarding](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/application_logging/logging#forwarding-application-logs) - Stream logs to external systems
-- [Configuration options](../observability/configuration.md) - Fine-tune observability settings
-
-### Debugging tools
-
-- [Events troubleshooting](../events/troubleshooting.md) - Debug event delivery and processing issues
-- [App Builder logging](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/application_logging/) - Access runtime logs for your actions
+1. Review the complete [App submission guidelines](./app-submission-guidelines.md).
+2. Prepare your submission package following the [App Builder distribution documentation](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/distribution).
+3. Submit through the Adobe Developer Console.
 
 ## Quick reference: Documentation by task
 

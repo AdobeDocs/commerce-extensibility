@@ -18,9 +18,7 @@ keywords:
 
 Build apps that extend Adobe Commerce using the Adobe Developer App Builder framework.
 
-## Why out-of-process?
-
-Traditional Commerce extensions run inside the application, sharing resources and release cycles with core code. **Out-of-process extensibility** moves your custom code outside Commerce to Adobe's serverless infrastructure, where it communicates through APIs and events.
+Traditional Commerce extensions run inside the application, sharing resources and release cycles with core code. **Out-of-process extensibility** (OOPE) moves your custom code outside Commerce to Adobe's serverless infrastructure, where it communicates through APIs and events.
 
 This separation means your apps deploy independently, scale on their own, and don't block Commerce upgrades. When issues arise, Commerce keeps running while you debug and redeploy.
 
@@ -28,17 +26,16 @@ This separation means your apps deploy independently, scale on their own, and do
 
 ## Your development journey
 
-Building an out-of-process app follows five phases:
+Building an out-of-process app follows the following phases:
 
 | Phase | What you'll do |
 |-------|----------------|
+| **Setup** | Learn about OOPE apps and set up your development environment  |
 | **Plan** | Define requirements, set up App Builder access, connect to Commerce |
 | **Build** | Develop using starter kits or core capabilities (Events, Webhooks, Admin UI SDK) |
 | **Submit** | Prepare documentation, meet security requirements, submit for review |
-| **Distribute** | Pass review and publish to Adobe Exchange |
-| **Operate** | Install, configure, and monitor in production |
 
-[View the detailed lifecycle guide](./plan/index.md)
+You can explore each phase in detail.
 
 ## Start building
 

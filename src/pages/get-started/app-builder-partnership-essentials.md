@@ -120,7 +120,7 @@ After partners get sandbox access, the Adobe Commerce engineering team will ask 
 
 1. Read the [App Submission guidelines](../app-development/app-submission-guidelines.md).
 
-1. Review the [developer guides](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/) for [out-of-process apps](index.md) and [app distribution](https://developer.adobe.com/developer-distribution/experience-cloud/docs/guides/discoverAndManage/app-builder-discover).
+1. Review the [developer guides](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/) for [out-of-process apps](./index.md) and [app distribution](https://developer.adobe.com/developer-distribution/experience-cloud/docs/guides/discoverAndManage/app-builder-discover).
 
 **Support resources:**
 
@@ -154,7 +154,7 @@ Here are the distribution steps with use case for Commerce SIs and ISVs.
 
 ### Step 2: Submit a listing for review
 
-- Review the [Adobe Exchange Marketplace publishing requirements](./app-submission-guidelines.md) to ensure your submission meets the requirements and to prevent delays in the approval of your listing.
+- Review the [Adobe Exchange Marketplace publishing requirements](../app-development/app-submission-guidelines.md) to ensure your submission meets the requirements and to prevent delays in the approval of your listing.
 
 - Adobe brand and code reviewers will [review the App Builder listing](https://developer.adobe.com/developer-distribution/experience-cloud/docs/guides/submission/app-builder-submission#reviewing-a-submission) and send an email confirmation once it is approved. If your submission is incomplete, Adobe will provide feedback to help you address the issues. You can also check the status on your page, which will display an **Approved** or **Published** status.
 

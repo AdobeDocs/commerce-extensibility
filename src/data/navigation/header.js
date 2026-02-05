@@ -1,47 +1,52 @@
 module.exports = [
     {
       title: "Extensibility",
-      path: "/",
+      path: "/"
     },
     {
-      title: "App Development",
-      path: "/app-development"
+      title: "Get started",
+      path: "/get-started/",
     },
     {
-      title: "App Management",
-      path: "/app-management/",
+      title: "Plan your app",
+      path: "/plan/"
     },
     {
-      title: "Starter Kits",
+      title: "Create apps",
       menu: [
         {
-          title: "Integration starter kit",
+          title: "Starter Kits",
           path: "/starter-kit/integration/"
         },
         {
-          title: "Checkout starter kit",
-          path: "/starter-kit/checkout/"
+          title: "Events",
+          path: "/events/"
+        },
+        {
+          title: "Webhooks",
+          path: "/webhooks/"
+        },
+        {
+          title: "Admin UI SDK",
+          path: "/admin-ui-sdk/"
         },
       ],
     },
     {
-      title: "Events",
-      path: "/events/"
+      title: "Submit apps",
+      path: "/review/"
     },
     {
-      title: "Webhooks",
-      path: "/webhooks/"
-    },
-    {
-      title: "Observability",
-      path: "/observability/"
-    },
-    {
-      title: "Admin UI SDK",
-      path: "/admin-ui-sdk/",
-    },
-    {
-      title: "API Mesh",
-      path: "https://developer.adobe.com/graphql-mesh-gateway/"
+      title: "Operations",
+      menu: [
+        {
+          title: "Observability",
+          path: "/observability/"
+        },
+        {
+          title: "App Management",
+          path: "/app-management/"
+        },
+      ],
     }
   ];

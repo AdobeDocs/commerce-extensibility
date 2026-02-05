@@ -1,0 +1,22 @@
+flowchart LR
+    subgraph Phase1[Plan]
+        P1[Define requirements]
+        P2[Set up environment]
+    end
+    subgraph Phase2[Build]
+        B1[Choose starter kit or<br/>core capabilities]
+        B2[Develop custom logic]
+    end
+    subgraph Phase3[Submit]
+        S1[Prepare documentation]
+        S2[Meet security requirements]
+    end
+    subgraph Phase4[Distribute]
+        D1[Pass review]
+        D2[Publish to Exchange]
+    end
+    subgraph Phase5[Operate]
+        O1[Install & configure]
+        O2[Monitor & maintain]
+    end
+    Phase1 --> Phase2 --> Phase3 --> Phase4 --> Phase5

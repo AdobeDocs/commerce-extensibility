@@ -64,9 +64,9 @@ Use cases:
 
 ### App builder
 
-**Recommended method**
+**App Builder State Storage**
 
-[State Database](https://developer.adobe.com/app-builder/docs/guides/application_state/) is a key-value store provided by [Adobe I/O Runtime](https://developer.adobe.com/runtime/docs/guides/overview/) to store and manage stateful data.
+[State Database](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/storage/application-state) is a key-value store provided by [Adobe I/O Runtime](https://developer.adobe.com/runtime/docs/guides/overview/) to store and manage stateful data.
 
 Features:
 
@@ -77,7 +77,7 @@ Features:
 
 Use cases:
 
-State Database allows you to store information required for operational microservices. It is ideal for storing simple, unstructured data. However, for more complex data storage needs, external databases such as MySQL are often necessary.
+State Database allows you to store information required for operational microservices. It is ideal for storing simple, unstructured data. However, for more complex data storage needs, either App Builder Database Storage or an external databases such as MySQL are often necessary.
 
 State Database is a straightforward and efficient way to store basic data in key-value pairs. This type of storage is highly suitable for:
   
@@ -92,7 +92,29 @@ These features allow for quick access and retrieval of data, making it an excell
 
 The [maximum TTL](https://developer.adobe.com/app-builder/docs/guides/application_state/#feature-matrix) for all Application State entities is limited to 365 days.
 
-#### External Databases for Complex Solutions
+**App Builder Database Storage**
+
+[Database Storage](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/storage/database) is a managed document style database service provided by [Adobe I/O Runtime](https://developer.adobe.com/runtime/docs/guides/overview/). 
+
+Features:
+
+- Fully managed database service with simple self-serve onboarding
+- Efficient storage of collections of JSON encoded documents in binary format
+- Rich and performant indexing and search capabilities
+- Robust and resilient data storage backed by AWS DocumentDB
+- Programming interface is a near drop-in replacement for MongoDB database driver
+
+Use cases:
+
+Database Storage provides convenient and robust document storage for your App Builder microservices. It is recommended when an application needs much more than a key-value store for its business logic, but the complexity and operational overhead of a relational database is not needed.
+
+App Builder Database Storage is essential for:
+
+- Rich query support for filtering, sorting, aggregation and pagination over potentially large collections of documents.
+- Full CRUD support including atomic and bulk updates.
+- Flexible and intuitive data schemas which can evolve along with the application itself without sacrificing performance.
+
+**External Databases for Complex Solutions**
 
 When a microservice requires more advanced data management capabilities, such as intricate querying, transactional support, or relational integrity, consider external databases. MySQL, a widely-used relational database, is a prime example of an external database that can handle these requirements.
 

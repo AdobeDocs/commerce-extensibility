@@ -17,6 +17,7 @@ For more comparison information, refer to:
 - [Out-of-process extensibility overview](../index.md)
 - [Coding convention](./app-development-comparison.md#coding-conventions)
 - [Integrating third-party modules](./app-development-comparison.md#integrating-third-party-modules)
+- [Storage Options](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/storage/)
 
 ## Persistent Storage
 
@@ -24,7 +25,9 @@ This section compares the persistent storage solutions used in Commerce to those
 
 ### Commerce
 
-**MySQL**
+Commerce uses MySQL as its primary database for storing and managing structured data, while Redis is used for caching and session management.
+
+#### MySQL
 
 MySQL is a relational database management system (RDBMS) used to store and manage structured data.
 
@@ -44,7 +47,7 @@ Use Cases:
 
 - Storing any data you need in persistent storage for your extension business logic.
 
-**Redis**
+#### Redis
 
 Redis is an in-memory data structure store used as a database, cache, and message broker.
 
@@ -62,9 +65,11 @@ Use cases:
 - Session management.
 - Real-time analytics and leaderboard systems.
 
-### App builder
+### App Builder
 
-**App Builder State Storage**
+App Builder provides built-in persistent storage solutions that are designed to be simple, efficient, and integrated with the Adobe I/O Runtime environment.
+
+#### App Builder State Storage
 
 [State Database](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/storage/application-state) is a key-value store provided by [Adobe I/O Runtime](https://developer.adobe.com/runtime/docs/guides/overview/) to store and manage stateful data.
 
@@ -92,17 +97,17 @@ These features allow for quick access and retrieval of data, making it an excell
 
 The [maximum TTL](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/application_state/#feature-matrix) for all Application State entities is limited to 365 days.
 
-**App Builder Database Storage**
+#### App Builder Database Storage
 
-[Database Storage](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/storage/database) is a managed document style database service provided by [Adobe I/O Runtime](https://developer.adobe.com/runtime/docs/guides/overview/). 
+[Database Storage](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/storage/database) is a managed document style database service provided by [Adobe I/O Runtime](https://developer.adobe.com/runtime/docs/guides/overview/).
 
 Features:
 
-- Fully managed database service with simple self-serve onboarding
-- Efficient storage of collections of JSON encoded documents in binary format
-- Rich and performant indexing and search capabilities
-- Robust and resilient data storage backed by AWS DocumentDB
-- Programming interface is a near drop-in replacement for MongoDB database driver
+- Fully managed database service with simple self-serve onboarding.
+- Efficient storage of collections of JSON encoded documents in binary format.
+- Rich and performant indexing and search capabilities.
+- Robust and resilient data storage backed by AWS DocumentDB.
+- Programming interface is a near drop-in replacement for a MongoDB database driver.
 
 Use cases:
 
@@ -114,7 +119,7 @@ App Builder Database Storage is essential for:
 - Full CRUD support including atomic and bulk updates.
 - Flexible and intuitive data schemas which can evolve along with the application itself without sacrificing performance.
 
-**External Databases for Complex Solutions**
+#### External Databases for Complex Solutions
 
 When a microservice requires more advanced data management capabilities, such as intricate querying, transactional support, or relational integrity, consider external databases. MySQL, a widely-used relational database, is a prime example of an external database that can handle these requirements.
 

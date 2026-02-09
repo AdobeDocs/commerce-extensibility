@@ -8,7 +8,225 @@ keywords:
 
 # Adobe Commerce Admin UI SDK release notes
 
-## Version 2.0
+## Version 3.3.0
+
+<InlineAlert variant="warning" slots="text"/>
+
+Available for Beta users only and is not yet accessible to all customers.
+
+### Release date
+
+January 21, 2026
+
+### Enhancements
+
+* Added an [App Management](../app-management/index.md) menu in the Admin, enabling App Managers to view and manage deployed applications within the same IMS organization.
+
+## Version 3.2.7
+
+### Release date
+
+Feb 2, 2026
+
+### Enhancements
+
+* Added PHP 8.5 support. <!-- CEXT-5736 -->
+
+## Version 3.2.6
+
+### Release date
+
+January 27, 2026
+
+### Bug fixes
+
+* Fixed a crash in the Admin caused by menu registrations referencing non-existent parent menus. <!-- CEXT-5701 -->
+
+## Version 3.2.5
+
+### Release date
+
+December 9, 2025
+
+### Enhancements
+
+* Updated the `React` version in `uix` to 19.2.1. <!-- CEXT-5593 -->
+
+### Bug fixes
+
+* Fixed exporting of custom column data from Admin grids. <!-- CEXT-5529 -->
+
+* Fixed an error that occurred on Commerce instances with JavaScript minification enabled. <!-- CEXT-5595 -->
+
+## Version 3.2.4
+
+### Release date
+
+November 11, 2025
+
+### Bug fixes
+
+* Fixed handling of invalid extension ID characters for menu extensions to avoid error screens in Adobe Commerce as a Cloud Service. <!-- CEXT-5299 -->
+
+* Fixed the **Refresh Registrations** button by adding registration cache invalidation before reloading. <!-- CEXT-5414 -->
+
+## Version 3.2.3
+
+### Release date
+
+October 2, 2025
+
+### Bug fixes
+
+* Fixed an error that occurred when placing an order with custom fees. <!-- CEXT-5312 -->
+
+* Fixed an issue where custom menu items would disappear in Adobe Commerce as a Cloud Service after a period of inactivity, requiring a refresh of registrations to restore them. <!-- CCSAAS-3696 -->
+
+## Version 3.2.2
+
+### Release date
+
+September 19, 2025
+
+### Bug fixes
+
+* Fixed a crash that occurred when placing an order with payment method configuration set to **Authorize and Capture** while the Admin UI SDK is enabled. <!-- CCSAAS-3449 -->
+
+## Version 3.2.1
+
+### Release date
+
+August 25, 2025
+
+### Bug fixes
+
+* Fixed spinner behavior when an error occurs while refreshing registrations. <!-- CEXT-5111 -->
+
+* Fixed a crash in the Admin Panel when multiple applications define sections within the same organization. <!-- CEXT-5106 -->
+
+## Version 3.2.0
+
+### Release date
+
+August 18, 2025
+
+### Enhancements
+
+* Updated dependencies to ensure all resolved security issues are addressed and the system remains up-to-date. <!--- CEXT-5049 -->
+
+* Added request IDs to logs when database logging is enabled. <!-- CEXT-4848, CEXT-5056 -->
+
+### Bug fixes
+
+* Fixed mapping of API Mesh for applications deployed on non-Production workspaces. <!-- CEXT-5052 -->
+
+## Version 3.1.0
+
+### Release date
+
+July 18, 2025
+
+### Enhancements
+
+* Added new ACL resources for Admin UI SDK. <!--- CEXT-4581 -->
+
+* Removed the "Refresh registrations on schedule" feature. <!--- CEXT-4819 -->
+
+* Added the `sandbox` attribute to iFrame extension points to allow flexibility. <!--- CEXT-4659 -->
+
+* Added a blocking spinner when clicking on **Refresh Registrations** button. <!--- CEXT-4846 -->
+
+* The order view button can now be implemented [without an iFrame](./api.md#order-view-button-without-iframes). <!-- CEXT-4885 -->
+
+### Bug fixes
+
+* Fixed incorrect debug logs caused by incorrect object mapping. <!--- CEXT-4886 -->
+
+* Fixed log cleaning based on log retention period. <!--- CEXT-4573 -->
+
+* Fixed potential Commerce instance crash if same section/menu ID is found. <!--- CEXT-4811 -->
+
+## Version 3.0.0
+
+### Release date
+
+April 15, 2025
+
+### Enhancements
+
+* This release changes how extensions are integrated into the Adobe Commerce Admin. Previously, the Admin directly loaded published extensions. Now, extensions must be selected in the **Configure extensions** screen, resulting in a better developer experience. The limitation on **Production**-only workspaces has been resolved.
+
+* Added the IMS organization ID to the [shared context](./extension-points/index.md#shared-contexts) when loading a menu, a mass action, or an order view button in an iFrame. <!--- CEXT-4396  -->
+
+* Updated dependencies to ensure all resolved security issues are addressed and the system remains up-to-date. <!--- CEXT-4464  -->
+
+* Added **Refresh registrations on schedule** to automatically fetch registrations of selected extensions. <!-- CEXT-4258, CEXT-4402, CEXT-4493 -->
+
+## Version 2.3.0
+
+### Release date
+
+March 14, 2025
+
+### Enhancements
+
+* Renamed Staging **Test mode** to Sandbox. <!--- CEXT-4072  -->
+
+* Aligned the **App Status** label with the App Registry. <!--- CEXT-4071  -->
+
+* Added a tooltip to clarify the **Test mode** options. <!--- CEXT-4134  -->
+
+### Bug fixes
+
+* Fixed a REST API order retrieval error that could occur when the Admin UI SDK custom fees module was enabled. <!--- CEXT-4348  -->
+
+* Fixed a timeout issue that could occur when contacting the App Registry. <!--- CEXT-4205  -->
+
+## Version 2.2.0
+
+### Release date
+
+February 4, 2025
+
+### Enhancements
+
+* The Admin UI SDK supports PHP 8.4.
+
+## Version 2.1.1
+
+### Release date
+
+December 18, 2024
+
+### Bug fixes
+
+* Accessing the Admin UI SDK configuration in Commerce versions prior to 2.4.8-beta1 no longer causes crashes.
+
+## Version 2.1.0
+
+### Release date
+
+December 17, 2024
+
+### Enhancements
+
+* Added the ability to save Admin UI SDK logs to the database and access them from the Admin.
+
+* Registrations can now be secured with Adobe IMS authentication.
+
+* Admin UI SDK is now compatible with edge API Mesh. Legacy API Mesh is deprecated.
+
+* Custom columns can now send an optional default value for unmatched data instead of leaving the cell empty.
+
+* Custom columns data can now be secured with Adobe IMS authentication.
+
+* Enhanced loading of custom column data by retrieving only the necessary items for display.
+
+* Registrations automatically refresh when saving Admin UI SDK configurations.
+
+* Enhanced developer experience with the option to enable staging testing.
+
+## Version 2.0.0
 
 ### Release date
 
@@ -21,6 +239,16 @@ September 4, 2024
   You must update any extension points developed with Admin UI SDK 1.x. [Migrate your extension point from 1.x to 2.0](./extension-points/index.md#migrate-your-extension-point-from-version-1x-to-20) describes how.
 
 * Added a custom fee column to the invoice and credit memo grids.
+
+## Version 1.4.1
+
+### Release date
+
+January 10, 2025
+
+### Bug fixes
+
+Fixed an error with a missed class during dependency injection compilation in Adobe Commerce.  <!--- CEXT-4013  -->
 
 ## Version 1.4.0
 
@@ -37,9 +265,9 @@ June 28, 2024
   * [`customer mass action`](./extension-points/customer/mass-action.md)
   * [`order get custom fees`](./extension-points/order/custom-fees.md)  <!--- CEXT-2733  -->
 
-* Mass actions can now be implemented [without an iFrame](./extension-points/index.md#mass-actions-without-iframes). <!--- CEXT-2590, CEXT-2825, CEXT-2932, CEXT-2903 -->
+* Mass actions can now be implemented [without an iFrame](./api.md#mass-actions-without-iframes). <!--- CEXT-2590, CEXT-2825, CEXT-2932, CEXT-2903 -->
 
-* Added the `GET V1/adminuisdk/massaction/<requestId>` [REST API](./extension-points/index.md#connection-interruption-failures) to debug mass action failures.
+* Added the `GET V1/adminuisdk/massaction/<requestId>` [REST API](./api.md) to debug mass action failures.
 
 * Added the **Refresh registrations** button to the configuration page. This button allows the administrator to  refresh the `admin_ui_sdk` cache and reload all extensions. <!--- CEXT-2642 -->
 
@@ -130,7 +358,7 @@ October 18, 2023
 
 * Created the [`order` extension point](extension-points/order/grid-columns.md), which adds columns to the order grid. <!-- CEXT-2272 -->
 
-* Added the [`admin_ui_sdk` cache type](configuration.md#clean-the-admin-ui-sdk-cache). When enabled, Commerce caches customizations to the Admin. <!-- CEXT-2377 -->
+* Added the `admin_ui_sdk` cache type. When enabled, Commerce caches customizations to the Admin. <!-- CEXT-2377 -->
 
 * Added the `isSection` and `sortOrder` parameters to the [`menu` extension point](extension-points/menu.md). The `isSection` parameter allows you to define a menu section, while `sortOrder` defines the placement of a menu item. <!-- CEXT 2249, CEXT-2289 -->
 

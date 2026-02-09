@@ -1,11 +1,12 @@
 ---
 title: Webhooks configuration reference
 description: Provides reference information for constructing a webhooks.xml file.
+edition: paas
 keywords:
   - Extensibility
 ---
 
-# Webhook configuration reference
+# Webhooks configuration reference
 
 Webhooks are configured in a `webhooks.xml` file. This file can be placed in the system `<install_directory>/app/etc` directory or in the `etc` directory of an enabled Adobe Commerce module.
 
@@ -78,8 +79,11 @@ The `hook` element defines the HTTP request to the remote server.
 | `fallbackErrorMessage` | Int    | The error message to return when the hook fails. | false       | Not applicable     |
 | `remove` | Boolean   | Indicates whether to skip a removed hook during the batch execution. | false       | false   |
 | `ttl` | Int    | The cache time-to-live (in seconds) for requests with the same URL, body, and headers. If this attribute is not specified, or if the value set to `0`, the response is not cached. | false       | 0       |
+| `sslVerification` | Boolean | Specifies whether SSL certificate verification would be performed during request. Enabled by default. This option should only be used for development purposes. | false       | true        |
+| `sslCertificatePath` | String  | Specifies the path to a custom SSL certificate file to use for SSL verification. This option will be ignored if `sslVerification` is set to false. | false       | Not applicable        |
 | `headers` | Array  | A set of HTTP headers to send with the request. | false       | []      |
 | `fields` | Array  | A set of fields to include in the hook payload. If not set, the entire payload will be sent. | false       | []      |
+| `developerConsoleOauth` | Array | A set of OAuth credentials to use for generating authorization headers for the request | false | Not applicable |
 
 ### `headers` and `header` elements
 
@@ -93,7 +97,7 @@ A `headers` element is optional and can contain one or more `header` elements. E
 
 ## `fields` and `field` elements
 
-A `fields` element is optional and can contain one or more `field` elements. The `fields` element provides the ability to limit the payload of a webhook to only those fields defined in the individual `field` definitions. [Define the hook body](hooks.md#define-the-hook-body) shows a fully-constructed hook.
+A `fields` element is optional and can contain one or more `field` elements. The `fields` element provides the ability to limit the payload of a webhook to only those fields defined in the individual `field` definitions. [Configure hook contents](./hooks.md) shows a fully-constructed hook.
 
 | Attribute | Type   | Description  | Is required | Default |
 |---|---|---|---|---|
@@ -112,3 +116,13 @@ A `rules` element is optional and can contain one or more `rule` elements. Each 
 | `operator` | String | A string that defines which comparison operator to use. Examples include `equal`, `notEqual`, and `regex`. | true | Not applicable
 | `value` | String | The value to be compared. | true | Not applicable
 | `remove` | Boolean | Indicates whether the rule is active. The default value of `true` indicates the rule is active. | false | false
+
+## `developerConsoleOauth` element
+
+The `developerConsoleOauth` element is optional. If provided must contain the following elements to generate OAuth authorization headers for the request:
+
+| Element       | Type   | Description                     | Is required | Default |
+|---------------|--------|---------------------------------|-------------|---------|
+| `clientId`    | String | The OAuth client ID.            | true        | Not applicable     |
+| `clientSecret`| String | The OAuth client secret.        | true        | Not applicable     |
+| `orgId`       | String | The OAuth organization ID.      | true        | Not applicable     |

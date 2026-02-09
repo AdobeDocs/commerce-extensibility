@@ -12,6 +12,152 @@ These release notes describe the latest version of Adobe I/O Events for Adobe Co
 
 See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io-events-for-adobe-commerce) for upgrade instructions.
 
+## Version 1.18.0
+
+### Release date
+
+Feb 2, 2026
+
+### Enhancements
+
+* Added PHP 8.5 support. <!-- CEXT-5736 -->
+
+## Version 1.17.0
+
+### Release date
+
+Jan 30, 2026
+
+### Enhancements
+
+* You can now add event payload values [from the application context](./context-fields.md) <!-- CEXT-5713 -->
+
+### Bug fixes
+
+* Fixed event payload information for several order-related events. <!-- CEXT-5735 -->
+
+## Version 1.16.0
+
+### Release date
+
+Jan 7, 2026
+
+### Enhancements
+
+* Added fields and made improvements to multiple events. <!-- CEXT-5253 -->
+
+* Resolved compatibility issues with new versions of dependencies. <!-- AC-16197 -->
+
+## Version 1.15.0
+
+### Release date
+
+Nov 26, 2025
+
+### Bug fixes
+
+* Fixed the event size payload validation to verify the size after payload filtering. <!-- CEXT-5561 -->
+
+## Version 1.14.0
+
+### Release date
+
+Oct 30, 2025
+
+### Enhancements
+
+* Added [original data](./events-original-data.md) to the event payload. <!-- CEXT-5400 -->
+
+* Added [on-change rules](./conditional-events.md#trigger-events-on-specific-field-changes) for event subscriptions. <!-- CEXT-5400 -->
+
+* Added event size validation. <!-- CEXT-5229 -->
+
+## Version 1.13.1
+
+### Release date
+
+Sep 2, 2025
+
+### Enhancements
+
+* Added validation to check the request format of the event subscribe API. <!-- CEXT-4823 -->
+
+* Improved error responses for multiple event providers management. <!-- CEXT-5008 -->
+
+### Bug fixes
+
+* Updated the plugin generation to handle the case when API interface methods return a scalar type. <!-- CEXT-5174 -->
+
+## Version 1.13.0
+
+### Release date
+
+July 30, 2025
+
+### Enhancements
+
+* Updated logic for the **Send Test Event** button to support multiple event providers. <!-- CEXT-4651 -->
+
+* Added logging improvements. <!-- CEXT-4803 -->
+
+### Bug fixes
+
+* Fixed validation of supported plugin-type events with empty parent code. <!-- CEXT-4911 -->
+
+## Version 1.12.1
+
+### Release date
+
+April 30, 2025
+
+### Enhancements
+
+* Returns the provider ID instead of "default" in the REST API. <!-- CEXT-4561 -->
+
+* Improves the message during the removal of providers with linked event subscriptions. <!-- CEXT-4577 -->
+
+* Allows the removal of event providers with inactive subscriptions. <!-- CEXT-4583 -->
+
+## Version 1.12.0
+
+### Release date
+
+April 17, 2025
+
+### Enhancements
+
+* Added support of [multiple event providers](./configure-additional-event-providers.md) <!-- CEXT-4383 -->
+
+* Improved conversion of event payloads. In some cases payload of extension attributes was not converted correctly. <!-- CEXT-4487 -->
+
+## Version 1.11.1
+
+### Release date
+
+February 25, 2025
+
+### Enhancements
+
+* Removed the requirement for Merchant ID and Environment ID to start with letters. <!-- CEXT-4246 -->
+
+## Version 1.11.0
+
+### Release date
+
+January 23, 2025
+
+### Enhancements
+
+* Event subscriptions created/updated via API or CLI now get stored in `env.php`. These subscriptions were previously stored in `config.php`. Event subscriptions remaining in `config.php` continue to be read by the modules to preserve backward compatibility. <!-- CEXT-3459 -->
+
+* Added the `GET /rest/<store_view_code>/V1/eventing/getEventSubscriptions` REST endpoint for retrieving a list of enabled event subscriptions. <!-- CEXT-3925, CEXT-4055, CEXT-4066 -->
+
+* Added the `PUT /rest/<store_view_code>/V1/eventing/eventSubscribe/{name}` REST endpoint for updating event subscriptions. <!-- CEXT-3974 -->
+
+* Added the `POST /rest/<store_view_code>/V1/eventing/eventUnsubscribe/{name}` REST endpoint for unsubscribing from events. <!-- CEXT-3975 -->
+
+* Event name prefix validation is now skipped when subscribing to an event with a parent name. <!-- CEXT-3989 -->
+
 ## Version 1.10.0
 
 ### Release date

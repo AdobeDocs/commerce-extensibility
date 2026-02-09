@@ -7,6 +7,22 @@ keywords:
 
 # Testing Webhooks
 
+The Commerce application provides a way to test webhooks before enabling them in production. Adobe Commerce as a Cloud Service (SaaS) developers can test webhooks in the Commerce Admin. In Platform as a Service (PaaS) and on-premises environments, developers use the [`webhooks:dev:run`](commands.md#emulate-webhook-execution) command in development mode to emulate webhook execution locally.
+
+## Testing webhooks in the Admin
+
+<Edition name="saas" />
+
+Click **Select** > **Test Webhook** in a hook's **Action** column to open a page for testing execution of all hooks configured for the same webhook method and type.
+
+![Test webhook](../_images/webhooks/test-webhook.png)
+
+In the **Request payload** text area, input a webhook request payload in JSON format. After clicking the **Run Webhook** button, a banner displays at the top of the page indicating if webhook execution was successful or if an exception occurred. In the **Resolved payload** section, a JSON object displays the payload returned by the webhook after processing the hook response operations.
+
+## Testing webhooks in development mode
+
+<Edition name="paas" />
+
 Use the [`webhooks:dev:run <webhook-name> <webhook-arguments-payload>`](commands.md#emulate-webhook-execution) command in development mode to test your webhooks locally. It emulates the execution of your registered webhook, which contains a custom payload, without requiring changes to the Commerce application. Run this command after setting the initial webhook payload in a `webhooks.xml` file. Then run the command again any time you make subsequent modifications to the payload until you can confirm that the payload works as expected.
 
 In this example, the `webhooks.xml` file registered the following webhook:
@@ -49,4 +65,52 @@ Responses for a webhook endpoint may be cached if the `ttl` attribute for a hook
 
 ```bash
 bin/magento cache:clean webhooks_response
+```
+
+## Testing webhook endpoint with self-signed SSL certificate
+
+<Edition name="paas" />
+
+<InlineAlert variant="info" slots="text1" />
+
+SSL verification should be not be disabled in production environments. These options are recommended for development purposes only.
+
+If your webhook endpoint uses a self-signed SSL certificate, you can disable SSL verification for the webhook endpoint by setting the `sslVerification` attribute to `false` in the `hook` element.
+
+```xml
+    <method name="observer.checkout_cart_product_add_before" type="before">
+        <hooks>
+            <batch>
+                <hook name="validate_stock" 
+                      url="{env:APP_BUILDER_PROJECT_URL}/product-validate-stock" 
+                      sslVerification="false"
+                >
+                    <fields>
+                        <field name='product.name' source='data.product.name' />
+                        <field name='product.sku' source='data.product.sku' />
+                    </fields>
+                </hook>
+            </batch>
+        </hooks>
+    </method>
+```
+
+Or, to specify the path to the SSL certificate:
+
+```xml
+    <method name="observer.checkout_cart_product_add_before" type="before">
+        <hooks>
+            <batch>
+                <hook name="validate_stock" 
+                      url="{env:APP_BUILDER_PROJECT_URL}/product-validate-stock"
+                      sslCertificatePath="/path/to/ssl/certificate.pem"
+                >
+                    <fields>
+                        <field name='product.name' source='data.product.name' />
+                        <field name='product.sku' source='data.product.sku' />
+                    </fields>
+                </hook>
+            </batch>
+        </hooks>
+    </method>
 ```

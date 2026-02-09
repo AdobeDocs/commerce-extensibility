@@ -10,6 +10,23 @@ keywords:
 
 Your app must be correctly configured with Adobe App Registry to use the Admin UI SDK to create a custom UI in Commerce. You must perform the following steps before submitting your app to be published.
 
+## Code layout best practices
+
+We recommend using the following code layout for your project:
+
+```text
+├── src/
+│   └── commerce-backend-ui-1/
+│       ├── actions/
+│       ├── web-src/
+│       └── ext.config.yaml
+├── install.yaml
+├── extension-manifest.json
+├── package.json
+├── .env
+└── app.config.yaml
+```
+
 ## Add or update the `install.yml` file
 
 Create an `install.yml` file in the root of your project.
@@ -50,34 +67,35 @@ Create an `ExtensionRegistration` React component that registers the menu config
 1. Add the `uix-guest` dependency in the `package.json`.
 
    ```json
-   "@adobe/uix-guest": "^0.8.3"
+   "@adobe/uix-guest": "^1.0.3"
    ```
 
-2. Run `npm install`.
+1. Run `npm install`.
 
    ```bash
    npm install
    ```
 
-3. Create an `ExtensionRegistration.js` file as follows:
+1. Create an `ExtensionRegistration` React component to register the application with a unique `extensionId`, as shown in the following sample `ExtensionRegistration.jsx` file. The component can optionally return your main page, if any.
 
    ```javascript
-   import { register } from '@adobe/uix-guest';
+   import { register } from '@adobe/uix-guest'
+   import { MainPage } from './MainPage'
+   import { useEffect } from 'react'
+   import { extensionId } from './Constants'
 
-   export default function ExtensionRegistration() {
-     init().catch(console.error);
-     return <></>;
-    }
+   export default function ExtensionRegistration(props) {
+     useEffect(() => {
+       (async () => {
+         await register({
+           id: extensionId,
+           methods: {
+           }
+         })
+       })()
+     }, [])
 
-    const extensionId = 'commerce-first-app'
-    
-    const init = async () => {
-      await register({
-        id: extensionId,
-        methods: {
-        }
-      }
-    )
+     return <MainPage ims={props.ims} runtime={props.runtime} />
    }
    ```
 
@@ -85,21 +103,14 @@ Create an `ExtensionRegistration` React component that registers the menu config
 
 ## Update the `App.js` routing
 
-Add the following route to your `App.js` file to define the correct routing to your app:
-
-```javascript
-<Route path={'index.html'} element={<ExtensionRegistration />} />
-```
-
-Make sure that your main page is correctly routed to the index. Here is an example of the first app routing in the `App.js` component:
+Update the application routing to have the `ExtensionRegistration` component correctly routed to the index. Here is an example of the first app routing in the `App.js` component:
 
 ```javascript
 <ErrorBoundary onError={onError} FallbackComponent={fallbackComponent}>
   <HashRouter>
       <Provider theme={lightTheme} colorScheme={'light'}>
           <Routes>
-              <Route path={'index.html'} element={<ExtensionRegistration />} />
-              <Route index element={<MainPage runtime={props.runtime} ims={props.ims} />} />
+              <Route index element={<ExtensionRegistration runtime={props.runtime} ims={props.ims} />} />
           </Routes>
       </Provider>
   </HashRouter>
@@ -134,12 +145,14 @@ Update the `app.config.yaml` [configuration file](https://developer.adobe.com/ap
 ```yaml
 extensions:
   commerce/backend-ui/1:
-    $include: ext.config.yaml
+    $include: src/commerce-backend-ui-1/ext.config.yaml
 ```
 
 This file now declares extensions and redirects to an `ext.config.yaml` file.
 
 ## Add or update the `ext.config.yaml`
+
+Add or update the `src/commerce-backend-ui-1/ext.config.yaml` file. The `commerce-backend-ui-1` directory contains the `actions` and `web-src` code.
 
 Your extension configuration file should look like this:
 
@@ -162,8 +175,12 @@ runtimeManifest:
           inputs:
             LOG_LEVEL: debug
           annotations:
-            require-adobe-auth: false
+            require-adobe-auth: true
             final: true
 ```
+
+The package name must be `admin-ui-sdk`, and the action must be `registration`. The `function` can point to any route that returns the registration in the correct expected format.
+
+We recommend securing the registration runtime action by setting `require-adobe-auth` to `true`. The Adobe Commerce instance will correctly load registrations securely based on the provided IMS credentials.
 
 Complete this file with the actions from your app.

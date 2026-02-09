@@ -1,6 +1,7 @@
 ---
 title: Convert payload field values
-description: Learn how to convert a field value based on a condition
+description: Learn how to convert a field value based on a condition.
+edition: paas
 keywords:
   - Events
   - Extensibility
@@ -101,7 +102,7 @@ The converter changes the payload to:
 
 ## Register the converter
 
-You must configure a module's `io_events.xml` or root `app/etc/io_events.xml` file to update the required fields. You can also declare them in the system `config.php` file or add them when using the CLI to subscribe to an event.
+You must configure a module's `io_events.xml` or root `app/etc/io_events.xml` file to update the required fields. You can also declare them in the system `env.php` or `config.php` files or add them when using the CLI to subscribe to an event.
 
 ### Command line
 

@@ -1,0 +1,159 @@
+---
+title: Implementing observability in App Builder
+description: Adobe Commerce observability
+keywords:
+  - Extensibility
+  - App Builder
+  - Events
+  - Webhooks
+  - Observability
+  - OpenTelemetry
+---
+
+# Implementing observability in App Builder
+
+Context propagation can align observability data from Commerce and App Builder. The context propagates automatically from Adobe Commerce to App Builder as webhooks headers or as a part of an event payload. This allows you to correlate observability data from both systems and get a complete picture of the request flow.
+
+If your App Builder app makes requests to other services, you can also propagate the context to those services, which allows you to trace the request flow across multiple systems and get a complete picture of the request flow.
+
+To forward observability data from App Builder, use the [`@adobe/aio-lib-telemetry` package](https://github.com/adobe/aio-lib-telemetry/blob/main/docs/usage.md).
+
+## Examples
+
+Create a file with the telemetry configuration, for example `telemetry.js` in the `application` directory of your App Builder app. Replace the `<EXPORT_URL>` with the URL of your telemetry collector. You can use a Ngrok or another tunneling service to expose your local development environment.
+
+```javascript
+const {
+    defineTelemetryConfig,
+    getPresetInstrumentations,
+    getAioRuntimeResource
+} = require("@adobe/aio-lib-telemetry")
+
+const {
+    OTLPLogExporterHttp,
+    OTLPTraceExporterHttp,
+    SimpleLogRecordProcessor
+} = require("@adobe/aio-lib-telemetry/otel");
+
+function localCollectorConfig(exportUrl) {
+    const makeExporterConfig = (path) => ({
+        url: `${exportUrl}/${path}`,
+    });
+
+    return {
+        logRecordProcessors: [
+            new SimpleLogRecordProcessor(
+                new OTLPLogExporterHttp(makeExporterConfig("v1/logs"))
+            ),
+        ],
+        traceExporter: new OTLPTraceExporterHttp(makeExporterConfig("v1/traces")),
+    };
+}
+
+const telemetryConfig = defineTelemetryConfig((params, isDev) => {
+    // Use the tunnel URL instead of localhost
+    const exportUrl = "<EXPORT_URL>"; // Replace with your actual export URL
+
+    return {
+        sdkConfig: {
+            serviceName: "<YOUR_SERVICE>", // Use the name in the observability subscription to match the observability data
+            instrumentations: getPresetInstrumentations("simple"),
+            resource: getAioRuntimeResource(),
+
+            ...localCollectorConfig(exportUrl),
+        }
+    };
+});
+
+exports.telemetryConfig = telemetryConfig
+```
+
+### Context propagation from Commerce webhook headers
+
+By using the following pattern in `index.js`, you can trace requests across Adobe Commerce and your App Builder app, making it easier to monitor, debug, and analyze your integrations. The following code example:
+
+- Imports and uses a custom telemetry configuration (`telemetryConfig`) to send logs to your observability backend.
+- Instruments the action's entrypoint with `instrumentEntrypoint` from `@adobe/aio-lib-telemetry`, which enables distributed tracing and log correlation.
+- Uses `commerceWebhooks` integration to extract tracing headers from incoming webhook requests and propagates them, so logs from both Commerce and App Builder can be correlated in your observability tool.
+- Uses a logger to record structured logs at different levels (debug, info, warn, error) for better monitoring and troubleshooting.
+
+```javascript
+const { HTTP_OK } = require('../../lib/http');
+const { telemetryConfig } = require('../telemetry');
+const { instrumentEntrypoint, getLogger } = require('@adobe/aio-lib-telemetry');
+const { commerceWebhooks } = require('@adobe/aio-lib-telemetry/integrations');
+
+async function main(params) {
+    const logger = getLogger('my-custom-action', { level: params.LOG_LEVEL || 'info' });
+    try {
+        logger.debug('My custom action called with params: ', params);
+        logger.info('Headers: ', params.__ow_headers);
+
+
+        // Your action logic goes here
+
+        logger.warn('Some warnings can be logged here for debugging purposes in AppBuilder action');
+
+        const operations = [];
+
+        operations.push({
+            op: 'success',
+        })
+
+        logger.info(`Returning operations from AppBuilder action: ${JSON.stringify(operations)}`);
+
+        return {
+            statusCode: HTTP_OK,
+            body: JSON.stringify(operations)
+        }
+    } catch (error) {
+        logger.error(error);
+    }
+}
+
+// The following adds integration for passing context propagation from Commerce webhook headers
+const instrumentedMain = instrumentEntrypoint(main, {
+    ...telemetryConfig,
+    integrations: [commerceWebhooks()]
+});
+exports.main = instrumentedMain
+```
+
+### Context propagation from Commerce eventing payload
+
+By using the following example, you can trace requests using eventing. The following code example:
+
+- Defines a function (`instrumentedMain`) that wraps the main handler with telemetry instrumentation, enabling distributed tracing and log correlation.
+- Uses a `commerceEvents` integration to extract tracing headers from the incoming event payload, ensuring that trace context is forwarded correctly for end-to-end observability across systems.
+- Enables logs and traces generated by the App Builder action to be correlated with the originating Commerce event, providing full visibility into request flows.
+
+```javascript
+const {HTTP_OK} = require('../../lib/http');
+const {instrumentEntrypoint, getLogger} = require('@adobe/aio-lib-telemetry');
+const {commerceEvents} = require('@adobe/aio-lib-telemetry/integrations');
+const {telemetryConfig} = require('../telemetry');
+
+async function main(params) {
+  const logger = getLogger('commerce-events/consume', { level: params.LOG_LEVEL || 'info' });
+
+  logger.debug(`Received Commerce event ${type}`);
+
+  logger.warn('Event processing is not implemented yet, returning a dummy response');
+
+  logger.debug('Consumed Commerce event.', {type});
+
+  return {
+    statusCode: HTTP_OK,
+    body: JSON.stringify({
+      message: `Received Commerce event ${type}`
+    })
+  }
+}
+
+// The following adds integration for passing context propagation from Commerce events payload
+const instrumentedMain = instrumentEntrypoint(main, {
+  ...telemetryConfig,
+  integrations: [commerceEvents()]
+});
+exports.main = instrumentedMain
+```

@@ -12,37 +12,35 @@ After you have created an [App Builder project](./project-setup.md) and [install
 
 ## Configure the Adobe I/O connection
 
-You must configure Commerce to communicate with your project. Configuration includes copying and pasting the contents of the [workspace configuration file](./project-setup.md#download-the-workspace-configuration-file) that you downloaded from the Adobe Developer Console. If you decided to use JSON Web Tokens (JWT) as your server-to server authentication method, you must also upload a private key.
+You must configure Commerce to communicate with your project. Configuration includes copying and pasting the contents of the [workspace configuration file](./project-setup.md#download-the-workspace-configuration-file) that you downloaded from the Adobe Developer Console.
 
 1. In the Commerce Admin, navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Adobe I/O Events** > **General configuration**. The following screen displays.
 
    ![General configuration](../_images/events/general-configuration-empty.png)
 
-1. Select the server-to-server authorization method you implemented from the **Adobe I/O Authorization Type** menu. Adobe recommends using OAuth. JWT has been deprecated.
-
-1. (JWT only) Copy and paste the contents of your `private.key` file into the **Service Account Private Key** field. Use the following command to copy the contents.
-
-   ```bash
-   cat config/private.key | pbcopy
-   ```
-
-   See [Service Account (JWT) Authentication](https://developer.adobe.com/developer-console/docs/guides/authentication/JWT/) for more information about the `private.key` file.
-
 1. Copy the entire contents of the `<workspace-name>.json` file into the **Adobe I/O Workspace Configuration** field.
 
-1. Enter a unique identifier in the **Adobe Commerce Instance ID** field. This unique value identifies your Commerce instance, which allows Commerce events to connect to the correct `Event Provider` in Adobe I/O. This ID corresponds to the **Provider** displayed when [subscribing to events](#subscribe-and-register-events).
+1. Enter a unique identifier in the **Adobe I/O Event Provider Instance ID** field. This unique value identifies your Commerce instance, which allows Commerce events to connect to the correct `Event Provider` in Adobe I/O. This ID corresponds to the **Provider** displayed when [subscribing to events](#subscribe-and-register-events).
 
-   **Note**: The **Adobe Commerce Instance ID** field only supports alphanumeric characters, hyphens and underscores.
+   **Note**: The **Adobe I/O Event Provider Instance ID** field only supports alphanumeric characters, hyphens and underscores.
 
 1. Click **Save Config**, but do not leave the page. The next section creates an event provider, which is necessary to complete the configuration.
 
- The event provider will not appear in the Developer Console until after you subscribe to an event emitted by Commerce, such as `io_events.xml` or `config.php`.
+ The event provider will not appear in the Developer Console until after you subscribe to an event emitted by Commerce, such as `io_events.xml`, `env.php`, or `config.php`.
 
 ## Create an event provider
 
 Create an event provider in Adobe I/O Events to associate the Commerce Events subscriptions with the provider. The event subscriptions in Adobe Commerce are created as event metadata in Adobe I/O Events infrastructure.
 
-Each event provider can link to multiple event subscriptions (event metadata). The event's subscriptions will be automatically linked to your event provider whenever you subscribe with the `events:subscribe` command. You can also manually synchronize all subscriptions with the `events:metadata:populate` command or by clicking the **Execute Synchronization** button on the **General configuration** section of the Adobe I/O Events page in the Admin. Running the `setup:upgrade` command also synchronizes events subscriptions.
+Each event provider can link to multiple event subscriptions (event metadata). The event's subscriptions will be automatically linked to your event provider whenever you:
+
+* Click the **Execute Synchronization** button on the **General configuration** section of the Adobe I/O Events page in the Admin.
+
+* &#8203;<Edition name="paas" /> Subscribe with the `events:subscribe` command.
+
+* &#8203;<Edition name="paas" /> Manually synchronize all subscriptions with the `events:metadata:populate` command.
+
+* &#8203;<Edition name="paas" /> Run the `setup:upgrade` command also synchronizes events subscriptions.
 
 You can find the list of event providers created in your organization, in the App Builder UI when [creating an Event Registration in App Builder](#subscribe-and-register-events).
 
@@ -50,11 +48,13 @@ You can also use the `aio` CLI tool to manage providers. See [Provider Commands]
 
 <InlineAlert variant="info" slots="text"/>
 
-You cannot create an event provider until you have configured and saved instance ID values and a workspace file. If you are using JWT for server-to-server authentication, you must have previously specified the private key.
+You cannot create an event provider until you have configured and saved instance ID values and a workspace file.
 
 You can create an event provider using either the [Command line](./configure-commerce.md#command-line) or [Commerce Admin](./configure-commerce.md#commerce-admin).
 
 ### Command line
+
+<Edition name="paas" />
 
 1. Run the following command to create an event provider:
 
@@ -107,9 +107,9 @@ You can create an event provider using either the [Command line](./configure-com
 
    **Note**: The **Merchant ID** and **Environment ID** fields only support alphanumeric characters and underscores.
 
-```javascript
-"source": "<merchant-id>.<environment-id>"
-```
+   ```javascript
+   "source": "<merchant-id>.<environment-id>"
+   ```
 
 1. (Optional) By default, if an error occurs when Adobe Commerce attempts to send an event to Adobe I/O, Commerce retries a maximum of seven times. To change this value, uncheck the **Use system value** checkbox and set a new value in the **Maximum retries to send events** field.
 
@@ -125,7 +125,7 @@ You must define which Commerce events to subscribe to, then register them in the
 
 Commerce provides two sources for events: observers and plugins. You must specify the source as part of the event name. See [Subscribe to a Commerce event](./commands.md) for details about the syntax of the `events:subscribe` command.
 
-1. If you don't have a module ready for integration with Adobe I/O Events, or you don't know exactly which events to register at this point, use the `events:subscribe` command to subscribe to some sample events, as shown in the following example commands:
+1. &#8203;<Edition name="paas" />  If you don't have a module ready for integration with Adobe I/O Events, or you don't know exactly which events to register at this point, use the `events:subscribe` command to subscribe to some sample events, as shown in the following example commands:
 
    ```bash
    bin/magento events:subscribe observer.catalog_product_save_after --fields=sku --fields=stock_data.qty
@@ -135,8 +135,7 @@ Commerce provides two sources for events: observers and plugins. You must specif
    bin/magento events:subscribe observer.customer_login --fields=customer.firstname --fields=customer.lastname
    ```
 
-    **Warning**: When you use the `events:subscribe` command to subscribe to events on a Cloud environment, configuration information is stored in the `app/etc/config.php` file. You must keep in mind that this file can be replaced with the `app/etc/config.php` file from Git during deployment. As a result, the event subscription will be replaced as well.
-   To make these changes permanent, manually add the appropriate configuration to the `app/etc/config.php` file under Git.
+    **Note**: When you use the `events:subscribe` command to subscribe to events on a Cloud environment, configuration information is stored in the `app/etc/env.php` file.
 
    If you have a module ready or have specific events in mind, see [Register events](./module-development.md#register-events) for more information.
 
@@ -156,7 +155,7 @@ Commerce provides two sources for events: observers and plugins. You must specif
 
    ![Select the events to subscribe to](../_images/events/config-event-registration.png)
 
-1. Optionally create a new OAuth or JWT credential. Then click **Next**.
+1. Optionally create a new OAuth credential. Then click **Next**.
 
 1. Update the **Event registration name** and **Event registration description** fields. The Journaling API can consume your events by default. You can optionally select other consumption methods during this step. Learn more about your options in [Consuming Events](./consume-events.md).
 
@@ -305,6 +304,8 @@ If you want to add `Event Registrations` with `Runtime Actions` as event consume
 [App Builder with IO Events](https://developer.adobe.com/events/docs/guides/appbuilder/#initialising-an-app-builder-app-with-io-events-template) provides additional information about setting up App Builder projects.
 
 ## Check cron and message queue configuration
+
+<Edition name="paas" />
 
 Cron and message queues must be enabled. Commerce uses the `event_data_batch_send` cron job to transmit batches of event messages and the `clean_event_data` cron job to remove these messages from the database. These cron jobs are part of the `default` group.
 

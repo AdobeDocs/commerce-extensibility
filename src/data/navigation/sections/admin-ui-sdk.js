@@ -81,16 +81,24 @@ module.exports = [
       ]
     },
     {
-      title: "Admin configuration and local testing",
+      title: "Admin configuration and testing",
       path: "/admin-ui-sdk/configuration.md"
     },
     {
-      title: "Prepare your app for production",
-      path: "admin-ui-sdk/publish.md"
+      title: "Eligible extensions configuration",
+      path: "/admin-ui-sdk/eligible-extensions-config.md"
+    },
+    {
+      title: "API Reference",
+      path: "/admin-ui-sdk/api.md",
     },
     {
       title: "Troubleshooting",
       path: "/admin-ui-sdk/troubleshooting.md"
+    },
+    {
+      title: "App review checklist",
+      path: "/admin-ui-sdk/app-review-checklist.md"
     },
     {
       title: "Release notes",

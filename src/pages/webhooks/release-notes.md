@@ -9,6 +9,136 @@ keywords:
 
 These release notes describe the latest version of Adobe Commerce Webhooks.
 
+## Version 1.16.0
+
+### Release date
+
+Feb 2, 2026
+
+### Enhancements
+
+* Added PHP 8.5 support. <!-- CEXT-5736 -->
+
+## Version 1.15.0
+
+### Release date
+
+Jan 30, 2026
+
+### Enhancements
+
+* Improved logged webhook messages for better observability integration. <!-- CEXT-5660 -->
+
+## Version 1.14.0
+
+### Release date
+
+Jan 7, 2026
+
+### Enhancements
+
+* Added fields and made improvements to multiple webhooks. <!-- CEXT-5253 -->
+
+* Resolved compatibility issues with new versions of dependencies. <!-- AC-16197 -->
+
+## Version 1.13.0
+
+### Release date
+
+Nov 10, 2025
+
+### Enhancements
+
+* PaaS installations now support the `POST /V1/webhooks/subscribe` and `POST /V1/webhooks/unsubscribe` [REST endpoints](./api.md). Previously, these endpoints were only available on SaaS. <!-- CEXT-5434 -->
+
+* Added the [`developerConsoleOauth`](./xml-schema.md#developerconsoleoauth-element) XML configuration option to set Adobe Developer Console credentials for webhooks. <!-- CEXT-5434 -->
+
+* Added the exception message to the log context in webhook plugins. <!-- CEXT-5273 -->
+
+## Version 1.12.0
+
+### Release date
+
+Oct 30, 2025
+
+### Enhancements
+
+* Added support for context fields in webhook payloads. <!-- CEXT-5381 -->
+
+## Version 1.11.0
+
+### Release date
+
+September 11, 2025
+
+### Enhancements
+
+* Added the ability to apply webhook rules to context fields. <!-- CEXT:5005 -->
+
+### Bug fix
+
+* Fixed an issue that caused an error during the installation of some versions of Adobe Commerce. <!-- CEXT-5116 -->
+
+## Version 1.10.0
+
+### Release date
+
+July 28, 2025
+
+### Enhancements
+
+* Added a store context to retrieve information about the store in the webhook payload. <!-- CEXT-4973 -->
+
+* Added the ability to retrieve object values from the context. <!-- CEXT-4973 -->
+
+* Added a **Copy public key** button to the webhook Digital Signature configuration panel. <!-- CEXT-4631 -->
+
+* Added logging improvements. <!-- CEXT-4801 -->
+
+## Version 1.9.0
+
+### Release date
+
+February 14, 2025
+
+### Enhancements
+
+* Added the ability to configure the log grid message detail in the Admin configuration. <!-- CEXT-4126 -->
+
+* Improved the database logging to add logging in case of failed requests. <!-- CEXT-4084 -->
+
+* Updated php version requirement in the generated module. <!-- CEXT-4120 -->
+
+### Bug fix
+
+* Fixed the webhook data filtration logic when the source is an empty string. <!-- CEXT-4121 -->
+
+## Version 1.8.0
+
+### Release date
+
+January 23, 2025
+
+### Enhancements
+
+* Added the `GET /rest/<store_view_code>/V1/webhooks/list` REST endpoint for retrieving a list of configured webhooks. <!-- CEXT-3925, CEXT-4068 -->
+
+### Bug fix
+
+* Fixed an issue causing the `depth` option value to not impact the output of the `webhooks:info` command. <!-- CEXT-4102 -->
+
+## Version 1.7.0
+
+### Release date
+
+December 18, 2024
+
+### Enhancements
+
+* Added webhook options to skip SSL certificate validation and to set the path to the certificate file. <!--CEXT-3914 -->
+
+* Fixed the resource name needed to access webhook logs in the Admin. <!--CEXT-3782 -->
+
 ## Version 1.6.0
 
 ### Release date
@@ -25,7 +155,7 @@ October 30, 2024
 
 * Updated copyrights in the generated module files. <!--- CEXT-3508 -->
 
-## Bug fix
+### Bug fix
 
 * Fixed an issue causing `null` values to be returned in some payloads output by the `webhooks:info` command <!--CEXT-3608 -->
 

@@ -1,6 +1,7 @@
 ---
 title: Add custom fields to an event
 description: Learn how to add custom fields to an event.
+edition: paas
 keywords:
   - Events
   - Extensibility
@@ -12,7 +13,7 @@ Your custom module might generate data that would be useful to insert into an ex
 
 <InlineAlert variant="info" slots="text"/>
 
-You must configure a module's `io_events.xml` or root `app/etc/io_events.xml` file to add custom fields. You cannot declare them in the system `config.php` file or add them using the CLI.
+You must configure a module's `io_events.xml` or root `app/etc/io_events.xml` file to add custom fields. You cannot declare them in the system `config.php` or `env.php` files or add them using the CLI.
 
 ## Configure the `io_events.xml` file
 
@@ -67,7 +68,7 @@ The processor class must implement `EventDataProcessorInterface`. This interface
 
 `public function process(Event $event, array $eventData): array`
 
-You must create a separate class for each field to be added.
+You must create a separate class for each field to be added. Processor classes are executed during the `event_data_batch_send` cron job execution.
 
 In the following example, the `TestProcessorOrderStatus` class adds the `order_status` field and a value to the `eventData` array.
 

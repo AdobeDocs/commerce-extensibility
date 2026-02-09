@@ -10,7 +10,9 @@ keywords:
 Currently, Adobe Commerce webhooks support responses in JSON format only. The response may be a single operation or an array of operations to be executed afterward.
 Each operation must contain some required fields based on the desired operation.
 
-Exceptions and notices are logged in the `<installation_directory>/var/log/system.log` file.
+&#8203;<Edition name="paas" /> Exceptions and notices are logged in the `<installation_directory>/var/log/system.log` file.
+
+&#8203;<Edition name="saas" /> On the Webhooks Subscriptions page, click **Select** > **Show Logs** in the **Action** column to display a new page that displays logging activity for that webhook. The grid resembles the [Webhook Logs grid](./responses.md#database-logging), but displays activity for the selected hook only.
 
 ## Responses
 
@@ -211,6 +213,8 @@ To enable database logging, navigate to **Stores** > Settings > **Configuration*
 ![Webhooks database logging configuration](../_images/webhooks/database-logging-configuration.png)
 
 You can configure the minimum log level to store logs in the database and log retention time. The available log levels are `DEBUG`, `INFO`, `WARNING`, and `ERROR`.
+
+You can also configure if you want to log the full log message. In case of an unsuccessful request, the full log message might contain response data from the external endpoint used for the webhook.
 
 The logs are cleared once per day based on the retention time.
 

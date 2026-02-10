@@ -8,6 +8,10 @@ keywords:
 
 # Database storage
 
+<InlineAlert variant="info" slots="text" />
+
+This topic references the Amazon Sales Channel reference app, which is no longer available. However, the methods described in this topic can be applied to any App Builder application that requires storage.
+
 Adobe Developer App Builder is a cloud native framework that has storage capabilities for both long-term and short-term storage.
 
 The [Adobe I/O Files](https://github.com/adobe/aio-lib-files) and [Adobe I/O State](https://github.com/adobe/aio-lib-state) libraries provide zero-config file and state caching for App Builder. The Adobe I/O State library is an npm module that provides a JavaScript abstraction on top of distributed/cloud databases with a simple key-value store state persistence API. The Adobe I/O Files library provides a JavaScript abstraction on top of cloud blob storage with a simple file-system like persistence API. Use the state library for storing and accessing small values and the files library for storing larger amounts of data.

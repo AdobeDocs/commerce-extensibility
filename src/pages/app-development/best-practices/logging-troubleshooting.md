@@ -8,6 +8,10 @@ keywords:
 
 # Logging and troubleshooting
 
+<InlineAlert variant="info" slots="text" />
+
+This topic references the Amazon Sales Channel reference app, which is no longer available. However, the methods described in this topic can be applied to any App Builder application.
+
 Adobe Developer App Builder offers different options to facilitate logging from code and for viewing and forwarding applications logs as needed. You can opt for the default setting, which involves retrieving logs directly from the IO Runtime, or you can forward them to other destinations like Splunk or Azure Log Analytics. This topic describes implementing the default option and forwarding to Splunk.
 
 ## Adobe I/O Runtime (default)

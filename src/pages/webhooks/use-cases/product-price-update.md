@@ -152,6 +152,8 @@ async function main (params) {
 exports.main = main
 ```
 
-* Unitls example file can be found here: https://github.com/adobe/adobe-commerce-samples/blob/main/events/commerce-customer-login/actions/utils.js
+* Example utils.js file: https://github.com/adobe/adobe-commerce-samples/blob/main/events/commerce-customer-login/actions/utils.js
+* In this example, your action name must be set to change-product-price.
+  
 
 The product will be added to the cart with the updated price if the webhook returns a replace operation with the new price. The product will be added to the cart with the original price if the webhook returns a success operation.

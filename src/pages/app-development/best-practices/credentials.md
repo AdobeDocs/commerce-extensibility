@@ -8,7 +8,6 @@ keywords:
 
 # Credentials management
 
-
 <InlineAlert variant="info" slots="text" />
 
 This topic references the Amazon Sales Channel reference app, which is no longer available. However, the methods described in this topic can be applied to any App Builder application that requires credential management.

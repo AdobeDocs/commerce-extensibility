@@ -1,0 +1,1226 @@
+openapi: 3.0.3
+info:
+  title: Adobe Commerce Extensibility REST API
+  description: |
+    Complete REST API reference documentation for Adobe Commerce extensibility projects.
+    
+    This reference provides endpoints for managing:
+    - **Admin UI SDK**: Admin UI SDK component integrations
+    - **Custom Attributes**: Custom attributes for carts, quotes, and other objects that don't support EAV (Entity-Attribute-Value) attributes
+    - **Custom Attributes B2B**: Custom attributes for B2B quotes and companies
+    - **Events**: Event subscriptions, providers, and configuration
+    - **Observability**: Monitoring subscriptions and logging
+    - **Payment Methods**: Out-of-process payment integrations
+    - **Shipping Methods**: Out-of-process shipping carriers
+    - **Tax Management**: External tax calculation services
+    - **Webhooks**: Webhook subscription management
+
+    On PaaS systems, the URL to these endpoints is https://{host}/rest/{store-view-code}/.
+    
+    On SaaS, the path is https://{server}.api.commerce.adobe.com/{tenant-id}/.
+
+  license:
+    name: Adobe Proprietary
+
+paths:
+  # Backend UI Extensions
+  /adminuisdk/massaction/{request_id}:
+    get:
+      summary: Get mass action failed request
+      description: Retrieve details of a failed mass action request
+      tags:
+        - Admin UI SDK
+      parameters:
+        - name: request_id
+          in: path
+          required: true
+          description: Request ID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Mass action request details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MassActionFailedRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /adminuisdk/orderviewbutton/{request_id}:
+    get:
+      summary: Get order view button failed request
+      description: Retrieve details of a failed order view button request
+      tags:
+        - Admin UI SDK
+      parameters:
+        - name: request_id
+          in: path
+          required: true
+          description: Request ID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Order view button request details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderViewButtonFailedRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # Custom Attributes
+  /carts/{cartId}/customAttributes:
+    post:
+      summary: Save custom attributes for cart
+      description: Save custom attributes for a specific cart/quote
+      tags:
+        - Custom Attributes
+      parameters:
+        - name: cartId
+          in: path
+          required: true
+          description: Cart/Quote ID
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                customAttributes:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/CustomAttribute'
+      responses:
+        '200':
+          description: Custom attributes saved successfully
+          content:
+            application/json:
+              schema:
+                type: boolean
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # Custom Attributes for B2B
+  /negotiableQuote/setCustomAttributes:
+    post:
+      summary: Set custom attributes on negotiable quote
+      description: Set custom attributes for a negotiable quote
+      tags:
+        - Custom Attributes for B2B
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                quoteId:
+                  type: integer
+                  description: Negotiable quote ID
+                customAttributes:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/CustomAttribute'
+      responses:
+        '200':
+          description: Custom attributes set successfully
+          content:
+            application/json:
+              schema:
+                type: boolean
+
+  /company/setCustomAttributes:
+    post:
+      summary: Set custom attributes on company
+      description: Set custom attributes for a company
+      tags:
+        - Custom Attributes for B2B
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                companyId:
+                  type: integer
+                  description: Company ID
+                customAttributes:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/CustomAttribute'
+      responses:
+        '200':
+          description: Custom attributes set successfully
+          content:
+            application/json:
+              schema:
+                type: boolean
+
+  # Events
+  /eventing/eventSubscribe:
+    post:
+      summary: Subscribe to event
+      description: Create a new event subscription
+      tags:
+        - Events
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventSubscriptionRequest'
+      responses:
+        '200':
+          description: Event subscription created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+
+  /eventing/eventSubscribe/{name}:
+    put:
+      summary: Update event subscription
+      description: Update an existing event subscription
+      tags:
+        - Events
+      parameters:
+        - name: name
+          in: path
+          required: true
+          description: Event name
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventSubscriptionRequest'
+      responses:
+        '200':
+          description: Event subscription updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+
+  /eventing/eventUnsubscribe/{name}:
+    post:
+      summary: Unsubscribe from event
+      description: Remove an event subscription
+      tags:
+        - Events
+      parameters:
+        - name: name
+          in: path
+          required: true
+          description: Event name
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Event unsubscribed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+
+  /eventing/updateConfiguration:
+    put:
+      summary: Update eventing configuration
+      description: Update the eventing system configuration
+      tags:
+        - Events
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventingConfiguration'
+      responses:
+        '200':
+          description: Configuration updated successfully
+          content:
+            application/json:
+              schema:
+                type: boolean
+
+  /eventing/getEventProviders:
+    get:
+      summary: Get event providers
+      description: Retrieve list of event providers
+      tags:
+        - Events
+      responses:
+        '200':
+          description: List of event providers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventProvider'
+
+  /eventing/eventProvider:
+    get:
+      summary: Get event providers (alternative)
+      description: Alternative endpoint to retrieve list of event providers
+      tags:
+        - Events
+      responses:
+        '200':
+          description: List of event providers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventProvider'
+
+    post:
+      summary: Create event provider
+      description: Create a new event provider
+      tags:
+        - Events
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventProviderRequest'
+      responses:
+        '200':
+          description: Event provider created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventProvider'
+
+    put:
+      summary: Update event provider
+      description: Update an existing event provider
+      tags:
+        - Events
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventProviderRequest'
+      responses:
+        '200':
+          description: Event provider updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventProvider'
+
+  /eventing/eventProvider/{providerId}:
+    get:
+      summary: Get event provider by ID
+      description: Retrieve a specific event provider by its ID
+      tags:
+        - Events
+      parameters:
+        - name: providerId
+          in: path
+          required: true
+          description: Provider ID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Event provider details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventProvider'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      summary: Delete event provider
+      description: Delete an event provider by its ID
+      tags:
+        - Events
+      parameters:
+        - name: providerId
+          in: path
+          required: true
+          description: Provider ID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Event provider deleted successfully
+          content:
+            application/json:
+              schema:
+                type: boolean
+
+  /eventing/getEventSubscriptions:
+    get:
+      summary: Get event subscriptions
+      description: Retrieve list of all event subscriptions
+      tags:
+        - Events
+      responses:
+        '200':
+          description: List of event subscriptions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventSubscription'
+
+  # Observability
+  /oope_observability/subscription:
+    get:
+      summary: Get observability subscriptions
+      description: Retrieve list of all observability subscriptions
+      tags:
+        - Observability
+      responses:
+        '200':
+          description: List of observability subscriptions
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ObservabilitySubscription'
+                  search_criteria:
+                    $ref: '#/components/schemas/SearchCriteria'
+                  total_count:
+                    type: integer
+
+    post:
+      summary: Create observability subscription
+      description: Create a new observability subscription
+      tags:
+        - Observability
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObservabilitySubscriptionRequest'
+      responses:
+        '200':
+          description: Subscription created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObservabilitySubscription'
+
+    put:
+      summary: Update observability subscription
+      description: Update an existing observability subscription
+      tags:
+        - Observability
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObservabilitySubscriptionRequest'
+      responses:
+        '200':
+          description: Subscription updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObservabilitySubscription'
+
+  /oope_observability/subscription/{subscriptionId}:
+    get:
+      summary: Get observability subscription by ID
+      description: Retrieve a specific observability subscription by its ID
+      tags:
+        - Observability
+      parameters:
+        - name: subscriptionId
+          in: path
+          required: true
+          description: Subscription ID
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Subscription details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObservabilitySubscription'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      summary: Delete observability subscription
+      description: Delete an observability subscription by its ID
+      tags:
+        - Observability
+      parameters:
+        - name: subscriptionId
+          in: path
+          required: true
+          description: Subscription ID
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Subscription deleted successfully
+          content:
+            application/json:
+              schema:
+                type: boolean
+
+  # Payment Methods
+  /oope_payment_method:
+    get:
+      summary: Get payment methods
+      description: Retrieve list of all out-of-process payment methods
+      tags:
+        - Payment Methods
+      responses:
+        '200':
+          description: List of payment methods
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PaymentMethod'
+
+    post:
+      summary: Create or update payment method
+      description: Create a new payment method or update an existing one
+      tags:
+        - Payment Methods
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentMethodRequest'
+      responses:
+        '200':
+          description: Payment method created/updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentMethod'
+
+  /oope_payment_method/{code}:
+    get:
+      summary: Get payment method by code
+      description: Retrieve a specific payment method by its code
+      tags:
+        - Payment Methods
+      parameters:
+        - name: code
+          in: path
+          required: true
+          description: Payment method code
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Payment method details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentMethod'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # Shipping Methods
+  /oope_shipping_carrier:
+    get:
+      summary: Get shipping carriers
+      description: Retrieve list of all out-of-process shipping carriers
+      tags:
+        - Shipping Methods
+      responses:
+        '200':
+          description: List of shipping carriers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ShippingCarrier'
+
+    post:
+      summary: Create shipping carrier
+      description: Create a new shipping carrier
+      tags:
+        - Shipping Methods
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShippingCarrierRequest'
+      responses:
+        '200':
+          description: Shipping carrier created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShippingCarrier'
+
+    put:
+      summary: Update shipping carrier
+      description: Update an existing shipping carrier
+      tags:
+        - Shipping Methods
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShippingCarrierRequest'
+      responses:
+        '200':
+          description: Shipping carrier updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShippingCarrier'
+
+  /oope_shipping_carrier/{code}:
+    get:
+      summary: Get shipping carrier by code
+      description: Retrieve a specific shipping carrier by its code
+      tags:
+        - Shipping Methods
+      parameters:
+        - name: code
+          in: path
+          required: true
+          description: Shipping carrier code
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Shipping carrier details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShippingCarrier'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      summary: Delete shipping carrier
+      description: Delete a shipping carrier by its code
+      tags:
+        - Shipping Methods
+      parameters:
+        - name: code
+          in: path
+          required: true
+          description: Shipping carrier code
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Shipping carrier deleted successfully
+          content:
+            application/json:
+              schema:
+                type: boolean
+
+  # Tax Management
+  /oope_tax_management/tax_integration:
+    get:
+      summary: Get tax integrations
+      description: Retrieve list of all tax integrations
+      tags:
+        - Tax Management
+      responses:
+        '200':
+          description: List of tax integrations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TaxIntegration'
+
+    post:
+      summary: Create or update tax integration
+      description: Create a new tax integration or update an existing one
+      tags:
+        - Tax Management
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaxIntegrationRequest'
+      responses:
+        '200':
+          description: Tax integration created/updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaxIntegration'
+
+  /oope_tax_management/tax_integration/{code}:
+    get:
+      summary: Get tax integration by code
+      description: Retrieve a specific tax integration by its code
+      tags:
+        - Tax Management
+      parameters:
+        - name: code
+          in: path
+          required: true
+          description: Tax integration code
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Tax integration details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaxIntegration'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # Webhooks
+  /webhooks/list:
+    get:
+      summary: Get webhook subscriptions
+      description: Retrieve list of all webhook subscriptions
+      tags:
+        - Webhooks
+      responses:
+        '200':
+          description: List of webhook subscriptions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WebhookSubscription'
+
+components:
+  schemas:
+    # Admin UI SDK
+    MassActionFailedRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Internal ID
+        request_id:
+          type: string
+          description: Request ID
+        action_id:
+          type: string
+          description: Action ID
+        grid_type:
+          type: string
+          description: Grid type
+        error_status:
+          type: string
+          description: Error status
+        error_message:
+          type: string
+          description: Error message
+        request_timestamp:
+          type: string
+          format: date-time
+        selected_ids:
+          type: string
+          description: Selected IDs
+
+    OrderViewButtonFailedRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Internal ID
+        request_id:
+          type: string
+          description: Request ID
+        error_status:
+          type: string
+          description: Error status
+        error_message:
+          type: string
+          description: Error message
+        request_timestamp:
+          type: string
+          format: date-time
+
+    # Custom Attributes
+    CustomAttribute:
+      type: object
+      required:
+        - attribute_code
+        - value
+      properties:
+        attribute_code:
+          type: string
+          description: Attribute code
+          example: "custom_field"
+        value:
+          description: Attribute value
+          example: "custom_value"
+
+    # Eventing
+    EventSubscriptionRequest:
+      type: object
+      required:
+        - event
+      properties:
+        event:
+          $ref: '#/components/schemas/EventData'
+        force:
+          type: boolean
+          description: Force subscription
+          default: false
+
+    EventData:
+      type: object
+      required:
+        - name
+        - parent
+        - destination
+        - provider_id
+      properties:
+        name:
+          type: string
+          description: Event name
+          example: "order.created"
+        parent:
+          type: string
+          description: Event parent
+          example: "order"
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventField'
+        rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventRule'
+        destination:
+          type: string
+          description: Event destination
+          example: "webhook"
+        priority:
+          type: boolean
+          description: Event priority
+          default: false
+        hipaa_audit_required:
+          type: boolean
+          description: HIPAA audit required
+          default: false
+        provider_id:
+          type: string
+          description: Provider ID
+          example: "default-provider"
+
+    EventField:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "order_id"
+        type:
+          type: string
+          example: "integer"
+
+    EventRule:
+      type: object
+      properties:
+        field:
+          type: string
+          example: "status"
+        operator:
+          type: string
+          example: "equals"
+        value:
+          type: string
+          example: "complete"
+
+    EventProvider:
+      type: object
+      properties:
+        provider_id:
+          type: string
+          example: "default-provider"
+        label:
+          type: string
+          example: "Default Provider"
+        description:
+          type: string
+          example: "Default event provider"
+
+    EventProviderRequest:
+      type: object
+      required:
+        - eventProvider
+      properties:
+        eventProvider:
+          $ref: '#/components/schemas/EventProvider'
+
+    EventSubscription:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "order.created"
+        status:
+          type: string
+          example: "active"
+        created_at:
+          type: string
+          format: date-time
+
+    EventingConfiguration:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: Whether eventing is enabled
+        environment_id:
+          type: string
+          description: Environment ID
+        app_id:
+          type: string
+          description: Application ID
+
+    # Observability
+    ObservabilitySubscription:
+      type: object
+      required:
+        - type
+        - destination
+        - destination_endpoint
+        - is_active
+      properties:
+        id:
+          type: integer
+          description: Subscription ID
+        type:
+          type: string
+          enum: ["logs", "metrics"]
+          description: Subscription type
+        destination:
+          type: string
+          description: Destination service
+          example: "newrelic"
+        destination_endpoint:
+          type: string
+          format: uri
+          description: Destination endpoint
+        destination_api_key:
+          type: string
+          description: API key
+        component:
+          type: array
+          items:
+            type: string
+          description: Components to monitor
+        is_active:
+          type: boolean
+          description: Whether active
+
+    ObservabilitySubscriptionRequest:
+      type: object
+      required:
+        - subscription
+      properties:
+        subscription:
+          $ref: '#/components/schemas/ObservabilitySubscription'
+
+    # Payment Methods
+    PaymentMethod:
+      type: object
+      required:
+        - code
+        - title
+        - active
+        - backend_integration_url
+      properties:
+        id:
+          type: integer
+          description: Payment method ID
+        code:
+          type: string
+          description: Payment method code
+          example: "external_payment"
+        title:
+          type: string
+          description: Payment method title
+          example: "External Payment Gateway"
+        active:
+          type: boolean
+          description: Whether active
+        backend_integration_url:
+          type: string
+          format: uri
+          description: Backend integration URL
+        stores:
+          type: array
+          items:
+            type: string
+          description: Store codes
+        order_status:
+          type: string
+          description: Initial order status
+        countries:
+          type: array
+          items:
+            type: string
+          description: Allowed countries
+        currencies:
+          type: array
+          items:
+            type: string
+          description: Supported currencies
+        custom_config:
+          type: array
+          items:
+            $ref: '#/components/schemas/KeyValuePair'
+
+    PaymentMethodRequest:
+      type: object
+      required:
+        - payment_method
+      properties:
+        payment_method:
+          $ref: '#/components/schemas/PaymentMethod'
+
+    # Shipping Methods
+    ShippingCarrier:
+      type: object
+      required:
+        - code
+        - title
+        - is_active
+      properties:
+        id:
+          type: integer
+          description: Carrier ID
+        code:
+          type: string
+          description: Carrier code
+          example: "external_shipping"
+        title:
+          type: string
+          description: Carrier title
+          example: "External Shipping Service"
+        stores:
+          type: array
+          items:
+            type: string
+          description: Store codes
+        countries:
+          type: array
+          items:
+            type: string
+          description: Allowed countries
+        sort_order:
+          type: integer
+          description: Sort order
+        is_active:
+          type: boolean
+          description: Whether active
+        is_tracking_available:
+          type: boolean
+          description: Tracking available
+        is_shipping_labels_available:
+          type: boolean
+          description: Shipping labels available
+
+    ShippingCarrierRequest:
+      type: object
+      required:
+        - carrier
+      properties:
+        carrier:
+          $ref: '#/components/schemas/ShippingCarrier'
+
+    # Tax Management
+    TaxIntegration:
+      type: object
+      required:
+        - code
+        - title
+        - active
+      properties:
+        code:
+          type: string
+          description: Integration code
+          example: "external_tax"
+        title:
+          type: string
+          description: Integration title
+          example: "External Tax Service"
+        active:
+          type: boolean
+          description: Whether active
+        stores:
+          type: array
+          items:
+            type: string
+          description: Store codes
+
+    TaxIntegrationRequest:
+      type: object
+      required:
+        - tax_integration
+      properties:
+        tax_integration:
+          $ref: '#/components/schemas/TaxIntegration'
+
+    # Webhooks
+    WebhookSubscription:
+      type: object
+      properties:
+        webhook_method:
+          type: string
+          example: "order.created"
+        webhook_type:
+          type: string
+          example: "order"
+        url:
+          type: string
+          format: uri
+          example: "https://webhook.example.com/order"
+        method:
+          type: string
+          enum: ["GET", "POST", "PUT", "DELETE"]
+          example: "POST"
+        priority:
+          type: integer
+          example: 1
+        required:
+          type: boolean
+          example: true
+        timeout:
+          type: integer
+          example: 30
+
+    # Common
+    KeyValuePair:
+      type: object
+      required:
+        - key
+        - value
+      properties:
+        key:
+          type: string
+          description: Configuration key
+        value:
+          type: string
+          description: Configuration value
+
+    SearchCriteria:
+      type: object
+      properties:
+        filter_groups:
+          type: array
+          items:
+            type: object
+        sort_orders:
+          type: array
+          items:
+            type: object
+        page_size:
+          type: integer
+          example: 20
+        current_page:
+          type: integer
+          example: 1
+
+    Error:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
+          description: Error message
+        parameters:
+          type: array
+          items:
+            type: string
+        trace:
+          type: string
+          description: Error trace
+
+  responses:
+    BadRequest:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    NotFound:
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    InternalServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+tags:
+  - name: Admin UI SDK
+    description: Admin UI component integrations
+  - name: Custom Attributes
+    description: Cart custom attributes management
+  - name: Custom Attributes for B2B
+    description: B2B custom attributes for quotes and companies
+  - name: Events
+    description: Event subscription and provider management
+  - name: Observability
+    description: Observability subscription management
+  - name: Payment Methods
+    description: Out-of-process payment method management
+  - name: Shipping Methods
+    description: Out-of-process shipping carrier management
+  - name: Tax Management
+    description: Out-of-process tax integration management
+  - name: Webhooks
+    description: Webhook subscription management
+
+externalDocs:
+  description: Adobe Commerce Web API Documentation
+  url: https://developer.adobe.com/commerce/webapi/

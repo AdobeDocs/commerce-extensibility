@@ -1,7 +1,6 @@
 ---
 title: Add fields from the application context to an event
 description: Learn how to add data from the application context to an event payload.
-edition: paas
 keywords:
   - Events
   - Extensibility

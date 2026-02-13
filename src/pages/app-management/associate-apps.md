@@ -34,6 +34,8 @@ Watch this video to learn how to associate an app with a Commerce instance and c
 
 <https://video.tv.adobe.com/v/3478944>
 
+[Associate and configure apps](https://video.tv.adobe.com/v/3478944)
+
 ## Associate an app
 
 To link your App Builder application to a Commerce instance:

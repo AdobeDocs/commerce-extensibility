@@ -30,7 +30,9 @@ Before associating an app, ensure you have the following:
 
 Watch this video to learn how to associate an app with a Commerce instance and configure settings.
 
-[Associate and configure apps](https://video.tv.adobe.com/v/3478944)
+<Media slots="video"/>
+
+<https://video.tv.adobe.com/v/3478944>
 
 ## Associate an app
 

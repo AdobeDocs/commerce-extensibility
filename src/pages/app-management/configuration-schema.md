@@ -135,8 +135,4 @@ async function main(params) {
 
 Watch this video to learn how to define a configuration schema and see the auto-generated Admin UI in action.
 
-<Media slots="video"/>
-
-<https://video.tv.adobe.com/v/3478943>
-
 [Configuration schema tutorial](https://video.tv.adobe.com/v/3478943)

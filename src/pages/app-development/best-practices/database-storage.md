@@ -141,11 +141,12 @@ Consider the following benefits and limitations when using the Adobe I/O Databas
 
 ### Benefits
 
-This is the newest addition to the App Builder Storage family. While `aio-lib-state` continues to be the best choice for storing key-value pairs for caching or state management, `aio-lib-db` provides full-fledged document style database storage. Its API is intended to be a near drop-in replacement for the (MongoDB Node.js Driver)[https://www.mongodb.com/docs/drivers/node/current/].
+This is the newest addition to the App Builder Storage family. While `aio-lib-state` continues to be the best choice for storing key-value pairs for caching or state management, `aio-lib-db` provides full-fledged document style database storage. Its API is intended to be a near drop-in replacement for the [MongoDB Node.js Driver](https://www.mongodb.com/docs/drivers/node/current/).
 
 In reference to the Amazon Sales Channel reference app described elsewhere, the developers would more than likely use `aio-lib-db` if it had been available at the time. It overcomes many of the limitations of `aio-lib-state` that required some complicated workarounds.
 
 `aio-lib-db` offers full CRUD support, and includes additional methods like `findOneAndUpdate` that can update a document and then return it in one operation:
+
 ```javascript
 const updatedUser = await collection.findOneAndUpdate(
   {email: 'john@example.com'},
@@ -155,6 +156,7 @@ const updatedUser = await collection.findOneAndUpdate(
 ```
 
 and `bulkWrite` which allows executing multiple operations with a single call:
+
 ```javascript
 const operations = [
   {insertOne: {document: {name: 'Alice'}}},
@@ -277,7 +279,7 @@ The result will look something like this:
 ]
 ```
 
-The above example is adapted from the excellent guide from MongoDB at (Complete Aggregation Pipeline Tutorials)[https://www.mongodb.com/docs/manual/tutorial/aggregation-complete-examples/]. With only a few exceptions (for example, the `$set` and `$unset` stages are not supported) the examples there are valid for App Builder Database Storage.
+The above example is adapted from the excellent guide from MongoDB at [Complete Aggregation Pipeline Tutorials](https://www.mongodb.com/docs/manual/tutorial/aggregation-complete-examples/). With only a few exceptions (for example, the `$set` and `$unset` stages are not supported) the examples there are valid for App Builder Database Storage.
 
 Lastly, `aio-lib-db` supports a variety of indexes that can greatly improve query performance on even very large collections, including single field indexes, compound indexes (multiple fields), multikey indexes (for indexing arrays), text indexes (including case-insensitive) and 2dsphere for geolocation searches.
 

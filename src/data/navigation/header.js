@@ -16,7 +16,7 @@ module.exports = [
       menu: [
         {
           title: "Starter Kits",
-          path: "/starter-kit/integration/"
+          path: "/starter-kit/"
         },
         {
           title: "Events",

@@ -8,7 +8,13 @@ keywords:
 
 # Database storage
 
-Adobe Developer App Builder is a cloud native framework that has storage capabilities for both long-term and short-term storage. The [Adobe I/O Files](https://github.com/adobe/aio-lib-files), [Adobe I/O State](https://github.com/adobe/aio-lib-state) and [Adobe I/O Database](https://github.com/adobe/aio-lib-db) provide managed file, state and database storage for App Builder applications. The Adobe I/O State library (`aio-lib-state`) is an npm module that provides a JavaScript abstraction on top of distributed/cloud databases with a simple key-value store state persistence API. The Adobe I/O Files library (`aio-lib-files`) provides a JavaScript abstraction on top of cloud blob storage with a simple file-system like persistence API. The Adobe I/O Database library (`aio-lib-db`) provides a JavaScript abstraction on top of a document style database backed by AWS DocumentDB with an API based on the MongoDB database driver.
+<InlineAlert variant="info" slots="text" />
+
+This topic references the Amazon Sales Channel reference app, which is no longer available. However, the methods described in this topic can be applied to any App Builder application that requires storage.
+
+Adobe Developer App Builder is a cloud native framework that has storage capabilities for both long-term and short-term storage.
+
+The [Adobe I/O Files](https://github.com/adobe/aio-lib-files), [Adobe I/O State](https://github.com/adobe/aio-lib-state) and [Adobe I/O Database](https://github.com/adobe/aio-lib-db) provide managed file, state and database storage for App Builder applications. The Adobe I/O State library (`aio-lib-state`) is an npm module that provides a JavaScript abstraction on top of distributed/cloud databases with a simple key-value store state persistence API. The Adobe I/O Files library (`aio-lib-files`) provides a JavaScript abstraction on top of cloud blob storage with a simple file-system like persistence API. The Adobe I/O Database library (`aio-lib-db`) provides a JavaScript abstraction on top of a document style database backed by AWS DocumentDB with an API based on the MongoDB database driver.
 
 ## Adobe I/O State library
 

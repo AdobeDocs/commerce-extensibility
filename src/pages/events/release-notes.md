@@ -12,6 +12,14 @@ These release notes describe the latest version of Adobe I/O Events for Adobe Co
 
 See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io-events-for-adobe-commerce) for upgrade instructions.
 
+## Version 1.19.0
+
+Feb 18, 2026
+
+### Enhancements
+
+* Added support for context fields in event rules. <!-- CEXT-5829 -->
+
 ## Version 1.18.0
 
 ### Release date

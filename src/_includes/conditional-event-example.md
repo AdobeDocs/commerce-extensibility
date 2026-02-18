@@ -4,6 +4,7 @@ The following example creates and registers a conditional event named `plugin.ma
 *  The `category_id` is either `3`, `4`, or `5`
 *  The product `name` contains `TV`
 *  The `store_id` of product category is either `1` or `2`
+*  The application area is `adminhtml`
 *  The `quantity_and_stock_status.qty` value has changed
 
 These fields are present and declared in the parent event.

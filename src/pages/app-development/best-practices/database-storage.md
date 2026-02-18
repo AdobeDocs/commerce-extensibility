@@ -14,7 +14,11 @@ This topic references the Amazon Sales Channel reference app, which is no longer
 
 Adobe Developer App Builder is a cloud native framework that has storage capabilities for both long-term and short-term storage.
 
-The [Adobe I/O Files](https://github.com/adobe/aio-lib-files), [Adobe I/O State](https://github.com/adobe/aio-lib-state) and [Adobe I/O Database](https://github.com/adobe/aio-lib-db) provide managed file, state and database storage for App Builder applications. The Adobe I/O State library (`aio-lib-state`) is an npm module that provides a JavaScript abstraction on top of distributed/cloud databases with a simple key-value store state persistence API. The Adobe I/O Files library (`aio-lib-files`) provides a JavaScript abstraction on top of cloud blob storage with a simple file-system like persistence API. The Adobe I/O Database library (`aio-lib-db`) provides a JavaScript abstraction on top of a document style database backed by AWS DocumentDB with an API based on the MongoDB database driver.
+The [Adobe I/O Files](https://github.com/adobe/aio-lib-files), [Adobe I/O State](https://github.com/adobe/aio-lib-state), and [Adobe I/O Database](https://github.com/adobe/aio-lib-db) libraries provide managed storage solutions for App Builder applications.
+
+* **Adobe I/O State (`aio-lib-state`)**: An npm module offering a JavaScript abstraction over distributed/cloud databases with a simple key-value store API for state persistence.
+* **Adobe I/O Files (`aio-lib-files`)**: A JavaScript abstraction over cloud blob storage, providing a file-system-like API for managing files.
+* **Adobe I/O Database (`aio-lib-db`)**: A JavaScript abstraction over a document-style database backed by AWS DocumentDB, with an API modeled after the MongoDB database driver.
 
 ## Adobe I/O State library
 
@@ -155,7 +159,7 @@ const updatedUser = await collection.findOneAndUpdate(
 )
 ```
 
-and `bulkWrite` which allows executing multiple operations with a single call:
+The `bulkWrite` method allows you to execute multiple operations with a single call:
 
 ```javascript
 const operations = [
@@ -279,7 +283,7 @@ The result will look something like this:
 ]
 ```
 
-The above example is adapted from the excellent guide from MongoDB at [Complete Aggregation Pipeline Tutorials](https://www.mongodb.com/docs/manual/tutorial/aggregation-complete-examples/). With only a few exceptions (for example, the `$set` and `$unset` stages are not supported) the examples there are valid for App Builder Database Storage.
+The above example is adapted from MongoDB's [Complete Aggregation Pipeline Tutorials](https://www.mongodb.com/docs/manual/tutorial/aggregation-complete-examples/). With only a few exceptions (for example, the `$set` and `$unset` stages are not supported) the examples there are valid for App Builder Database Storage.
 
 Lastly, `aio-lib-db` supports a variety of indexes that can greatly improve query performance on even very large collections, including single field indexes, compound indexes (multiple fields), multikey indexes (for indexing arrays), text indexes (including case-insensitive) and 2dsphere for geolocation searches.
 
@@ -291,4 +295,4 @@ Databases provided by App Builder Database Storage are completely independent of
 
 Although quite powerful, App Builder Database Storage, as a document style database, is not intended as a replacement for relational databases. When an application requires complex and highly structured database storage with formal schemas and extended transactional support, connecting to an external relational database may be the best choice.
 
-App Builder Database Storage, as a hosted service, does not provide direct access to the underlying AWS DocumentDB service. This is done both for the sake of security (it is a multi-tenant service and Adobe must control access to the underlying infrastructure) and for the sake of convenience (there is no need for developers to provision or maintain that infrastructure). That does mean that developers do not have as much low level control over their databases in order to leverage advanced features such as sharding and other potential optimizations, but we are confident that in most cases that should not be necessary.
+App Builder Database Storage, as a hosted service, does not provide direct access to the underlying AWS DocumentDB service. This is done both for the sake of security (it is a multi-tenant service and Adobe must control access to the underlying infrastructure) and for the sake of convenience (there is no need for developers to provision or maintain that infrastructure). As a result, developers do not have as much low level control over their databases in order to leverage advanced features such as sharding and other potential optimizations, but we are confident that in most cases that should not be necessary.

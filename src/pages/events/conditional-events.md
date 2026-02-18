@@ -15,7 +15,7 @@ import ConditionalEventExample from '/src/_includes/conditional-event-example.md
 
 You can create conditional events within your module's or root `io_events.xml` file or from the command line.
 
-You can use [context fields](./context-fields.md) in conditional event rules to access additional data about the event, such as the application state or the store id. Context fields are prefixed with `context_` and can be used in any rule just like regular payload fields.
+These conditional events can include [context fields](./context-fields.md) in conditional event rules. These fields allow you to access additional data about the event, such as the application state or the store ID. Context fields are prefixed with `context_` and can be used in any rule, just like regular payload fields.
 
 ## Define conditional events in `io_events.xml`
 

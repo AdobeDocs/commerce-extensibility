@@ -1,6 +1,6 @@
 ---
 title: Database storage
-description: Learn about the decisions to use the Adobe I/O State (aio-lib-state), Adobe I/O Files (aio-lib-files), and Adobe I/O Database (aio-lib-db) libraries to store data.
+description: Learn about the decisions to use the Adobe I/O State, Adobe I/O Files, and Adobe I/O Database libraries to store data.
 keywords:
   - App Builder
   - Extensibility

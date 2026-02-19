@@ -30,6 +30,10 @@ module.exports = [
           title: "Admin UI SDK",
           path: "/admin-ui-sdk/"
         },
+        {
+          title: "App Management",
+          path: "/app-management/"
+        },
       ],
     },
     {
@@ -42,10 +46,6 @@ module.exports = [
         {
           title: "Observability",
           path: "/observability/"
-        },
-        {
-          title: "App Management",
-          path: "/app-management/"
         },
       ],
     }

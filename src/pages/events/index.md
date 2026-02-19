@@ -1,21 +1,45 @@
 ---
-title: Adobe I/O Events for Adobe Commerce Overview
-description: An architectural overview of Adobe I/O Events for Adobe Commerce
+title: Adobe I/O Events for Adobe Commerce overview
+description: Learn how Commerce events enable out-of-process extensibility with Adobe App Builder.
 keywords:
   - Events
   - Extensibility
 ---
 
-# Adobe I/O Events for Adobe Commerce Overview
+# Adobe I/O Events for Adobe Commerce overview
 
-With [Adobe I/O Events](https://developer.adobe.com/events/docs/), developers can create event-driven applications that take action when a shopper performs an action on an Adobe product. These capabilities are now available in Adobe Commerce and, as a result, Commerce can now make transactional data available to applications created with [Adobe App Builder](https://developer.adobe.com/app-builder/docs/getting_started/first_app/).
+Commerce events are a core building block of [out-of-process extensibility](../get-started/index.md) in Adobe Commerce. When something happens in Commerce, such as a customer placing an order, a product being updated, or a shipment being created, Commerce emits an event through [Adobe I/O Events](https://developer.adobe.com/events/docs/). Your [Adobe App Builder](https://developer.adobe.com/app-builder/docs/getting_started/first_app/) application receives that event and takes action, all without running custom code inside the Commerce process.
 
-The following architectural diagram provides an overview of how Adobe I/O Events for Adobe Commerce works.
+This event-driven architecture keeps your integration logic isolated from the Commerce core. Your apps deploy independently, scale on their own, and never block Commerce upgrades.
+
+<!---
+To do: Determine whether to keep diagram
 
 ![Architectural diagram](../_images/events/event-architecture.png)
+--->
 
-Imagine that you want to build an extension that notifies a third-party Enterprise Resource Planning (ERP) system every time a shopper places an order. In your Commerce module, you register the `plugin.magento.sales.api.order_management.place` event and possibly related events. When a shopper places an order, Commerce sends the event to Adobe I/O Events, which then routes the events to the appropriate App Builder application.
+## How events work with App Builder
 
-Your App Builder application uses any applicable details provided with the event to construct a REST or GraphQL request (pull) to Commerce to gather details about the transaction. Perhaps full details about the order are required. The App Builder application then pushes that information to the ERP system. The ERP system responds to the request, and then the App Builder application pushes any new data to Commerce.
+When Commerce emits an event, Adobe I/O Events routes it to one or more App Builder applications that have registered for that event type. The App Builder application can then:
 
-This architecture helps merchants efficiently customize processes and integrate systems while maintaining SaaS-like upgradeability. Before event-driven applications, developers had to use API polling to determine if something had occurred. Lags in polling could result in merchants missing real-time activities, which could prevent shoppers from having an optimal experience. Eventing enables developers to focus on solving business problems with event data, rather than focusing on problems getting data to applications.
+- Use details from the event payload to call back to Commerce for additional data via REST or GraphQL.
+- Push data to an external system such as an ERP, OMS, or CRM.
+- Receive a response from the external system and sync updates back to Commerce.
+
+For example, when a shopper places an order, Commerce can emit the `plugin.magento.sales.api.order_management.place` event. An App Builder application receives the event, retrieves the full order details from Commerce, and forwards them to a third-party ERP system. The ERP responds with fulfillment data, which the App Builder application pushes back to Commerce.
+
+Before event-driven applications, developers relied on API polling to detect changes. Polling introduces latency and resource overhead. Eventing replaces this pattern with near-real-time notifications, so developers can focus on business logic rather than data retrieval mechanics.
+
+## Getting started with events
+
+Most integrators work with Commerce events through [starter kits](../starter-kit/index.md), which provide pre-built event subscriptions, routing, and handler patterns for common integration scenarios:
+
+- The [integration starter kit](../starter-kit/integration/events.md) handles bidirectional data synchronization (customers, orders, products, shipments, stock) between Commerce and back-office systems.
+- The [checkout starter kit](../starter-kit/checkout/configure.md) uses events for order lifecycle processing and third-party event handling during checkout.
+
+If your use case falls outside these patterns, you can subscribe to events directly. The approach depends on your Commerce edition:
+
+- **SaaS** customers can [create event subscriptions from the Admin](./create-events.md) or through the REST API.
+- **PaaS** customers can use REST APIs, CLI commands, or [custom module development](./module-development.md) with `io_events.xml` configuration.
+
+The remaining pages in this section cover event configuration, subscription management, payload customization, and consumption patterns in detail.

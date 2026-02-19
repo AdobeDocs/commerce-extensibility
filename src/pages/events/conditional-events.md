@@ -15,6 +15,8 @@ import ConditionalEventExample from '/src/_includes/conditional-event-example.md
 
 You can create conditional events within your module's or root `io_events.xml` file or from the command line.
 
+These conditional events can include [context fields](./context-fields.md) in conditional event rules. These fields allow you to access additional data about the event, such as the application state or the store ID. Context fields are prefixed with `context_` and can be used in any rule, just like regular payload fields.
+
 ## Define conditional events in `io_events.xml`
 
 <ConditionalEventExample />
@@ -48,6 +50,11 @@ You can create conditional events within your module's or root `io_events.xml` f
               <field>category.store_id</field>
               <operator>in</operator>
               <value>1,2</value>
+           </rule>
+           <rule>
+               <field>context_application_state.get_area_code</field>
+               <operator>equal</operator>
+               <value>adminhtml</value>
            </rule>
            <rule>
                <field>quantity_and_stock_status.qty</field>

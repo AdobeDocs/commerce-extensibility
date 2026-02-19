@@ -14,7 +14,7 @@ See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io
 
 ## Version 1.19.0
 
-Feb 18, 2026
+Feb 19, 2026
 
 ### Enhancements
 

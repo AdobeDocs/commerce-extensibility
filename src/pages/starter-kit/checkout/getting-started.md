@@ -7,10 +7,13 @@ keywords:
 ---
 
 import Version from '/src/_includes/checkout-version.md'
+import MigrationNotice from '/src/_includes/migration-notice.md'
 
 # Getting started
 
 To begin using the checkout starter kit, ensure that your Adobe Commerce installation meets the following prerequisites and then proceed with the installation and configuration.
+
+<MigrationNotice />
 
 ## Prerequisites
 
@@ -18,10 +21,10 @@ You must install or have access to the following prerequisites to develop with t
 
 - Adobe Commerce as a Cloud Service or Adobe Commerce version `2.4.5` or higher.
 
-- [Node.js](https://nodejs.org/) version 22. If you have Node Version Manager (`nvm`) installed, you can run the following command to install and use the required version:
+- [Node.js](https://nodejs.org/) version 24. If you have Node Version Manager (`nvm`) installed, you can run the following command to install and use the required version:
 
   ```bash
-  nvm install 22 && nvm use
+  nvm install 24 && nvm use
   ```
 
 - [Adobe I/O CLI](https://developer.adobe.com/app-builder/docs/guides/runtime_guides/tools/cli-install).

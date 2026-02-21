@@ -12,11 +12,13 @@ keywords:
 ---
 
 import Actions from '/src/_includes/actions.md'
+import MigrationNotice from '/src/_includes/migration-notice.md'
 
 # Event-based integrations
 
 The following sections demonstrate all the event-based integrations that Adobe Commerce integration starter kit has to offer, including webhook ingestion, event handler actions and event ingestion actions.
 
+<MigrationNotice />
 <Actions />
 
 ## Ingestion webhook
@@ -95,11 +97,11 @@ webhook:
   runtime: nodejs:16
   inputs:
     LOG_LEVEL: debug
-    OAUTH_ORG_ID: $OAUTH_ORG_ID
-    OAUTH_CLIENT_ID: $OAUTH_CLIENT_ID
-    OAUTH_CLIENT_SECRET: $OAUTH_CLIENT_SECRET
-    OAUTH_TECHNICAL_ACCOUNT_ID: $OAUTH_TECHNICAL_ACCOUNT_ID
-    OAUTH_TECHNICAL_ACCOUNT_EMAIL: $OAUTH_TECHNICAL_ACCOUNT_EMAIL
+    AIO_COMMERCE_AUTH_IMS_ORG_ID: $AIO_COMMERCE_AUTH_IMS_ORG_ID
+    AIO_COMMERCE_AUTH_IMS_CLIENT_ID: $AIO_COMMERCE_AUTH_IMS_CLIENT_ID
+    AIO_COMMERCE_AUTH_IMS_CLIENT_SECRETS: $AIO_COMMERCE_AUTH_IMS_CLIENT_SECRETS
+    AIO_COMMERCE_AUTH_IMS_TECHNICAL_ACCOUNT_ID: $AIO_COMMERCE_AUTH_IMS_TECHNICAL_ACCOUNT_ID
+    AIO_COMMERCE_AUTH_IMS_TECHNICAL_ACCOUNT_EMAIL: $AIO_COMMERCE_AUTH_IMS_TECHNICAL_ACCOUNT_EMAIL
     IO_MANAGEMENT_BASE_URL: $IO_MANAGEMENT_BASE_URL
     IO_CONSUMER_ID: $IO_CONSUMER_ID
     IO_PROJECT_ID: $IO_PROJECT_ID

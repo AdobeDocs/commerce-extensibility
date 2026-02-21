@@ -43,7 +43,7 @@ For more information on REST API access, refer to the [Developer Console configu
 
 For older versions of the starter kit, check if your code is adapted as follows:
 
-- To support both PaaS and SaaS, modify the `COMMERCE_BASE_URL` environment variable according to the [Commerce integration guide](https://developer.adobe.com/commerce/extensibility/starter-kit/checkout/connect/).
+- To support both PaaS and SaaS, modify the `AIO_COMMERCE_API_BASE_URL` environment variable according to the [Commerce integration guide](https://developer.adobe.com/commerce/extensibility/starter-kit/checkout/connect/).
 - Ensure that your [adobe-commerce](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/lib/adobe-commerce.js) HTTP client removes the `rest/all` prefix for compatibility with both deployment flavors. For example:
 
     ```javascript

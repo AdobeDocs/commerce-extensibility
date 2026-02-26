@@ -8,6 +8,34 @@ keywords:
 
 # Adobe Commerce Admin UI SDK release notes
 
+## Version 3.3.2
+
+<InlineAlert variant="warning" slots="text"/>
+
+Available for Beta users only and is not yet accessible to all customers.
+
+### Release date
+
+February 13, 2026
+
+### Bug fixes
+
+* Fixed an issue where App Management was available despite the IMS module being disabled. <!-- CEXT-5755 -->
+
+## Version 3.3.1
+
+<InlineAlert variant="warning" slots="text"/>
+
+Available for Beta users only and is not yet accessible to all customers.
+
+### Release date
+
+February 11, 2026
+
+### Enhancements
+
+* Improved navigation by grouping SPA menu items under the Apps main menu. <!-- CEXT-5727 -->
+
 ## Version 3.3.0
 
 <InlineAlert variant="warning" slots="text"/>

@@ -56,3 +56,9 @@ product: {
 ## Sample code
 
 The Adobe Commerce Extensibility Code Samples repository demonstrates how to customize the [product mass action](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/product/custom-mass-action).
+
+<InlineAlert variant="warning" slots="text1, text2" />
+
+This sample requires two separate App Builder projects.
+
+Both parts are interdependent and must be configured and deployed together. See the `README.md` file for setup instructions.

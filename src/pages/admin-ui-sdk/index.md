@@ -12,6 +12,18 @@ The Adobe Commerce Admin UI SDK enables an App Builder developer to extend the [
 
 Many types of apps will use this SDK. It represents a one-to-many approach for supporting Out of Process UI Extensibility. Application developers, internal adopters, and merchants using Out of Process Extensibility no longer have to rely on purely headless applications. Instead, they can now build and use secure and authenticated UIs directly from the Commerce Admin panel.
 
+## Use cases
+
+Partners and merchants can use the Admin UI SDK to build extensions that enhance the Commerce Admin, such as:
+
+* **Build custom reporting dashboards** - Create interactive analytics and business intelligence views for sales data, inventory metrics, and customer insights.
+
+* **Integrate third-party systems** - Connect to ERP, CRM, or warehouse management systems for data sync and operations management.
+
+* **Automate workflows** - Develop custom workflows and approval processes for order management, content publishing, or inventory updates.
+
+* **Enhance product management** - Add specialized product configuration interfaces, bulk editing tools, or custom attribute management.
+
 ## Architecture
 
 The following diagram shows the architecture of the Admin UI SDK.

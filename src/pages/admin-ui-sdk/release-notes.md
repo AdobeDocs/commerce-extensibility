@@ -8,6 +8,24 @@ keywords:
 
 # Adobe Commerce Admin UI SDK release notes
 
+## Version 3.4.0
+
+<InlineAlert variant="warning" slots="text"/>
+
+Available for Beta users only and is not yet accessible to all customers.
+
+### Release date
+
+March 3, 2026
+
+### Enhancements
+
+* Added `allow-modals` to the allowed sandbox values for extension points. <!-- ACCS-424 -->
+
+### Bug fixes
+
+* Fixed Unit Tests for compatibility with latest version of PHPUnit. <!-- CEXT-5861 -->
+
 ## Version 3.3.2
 
 <InlineAlert variant="warning" slots="text"/>

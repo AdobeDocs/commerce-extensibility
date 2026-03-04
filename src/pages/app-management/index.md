@@ -1,7 +1,6 @@
 ---
 title: App Management overview
 description: Learn how to manage App Builder applications in Adobe Commerce.
-edition: paas
 keywords:
   - App Builder
   - Extensibility

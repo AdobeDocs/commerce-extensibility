@@ -1,7 +1,6 @@
 ---
 title: Define your app
 description: Learn how to configure your App Builder application for App Management
-edition: paas
 keywords:
   - App Builder
   - Extensibility

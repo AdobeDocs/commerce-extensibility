@@ -1,7 +1,6 @@
 ---
 title: Business configuration
 description: Define your app business configuration
-edition: paas
 keywords:
   - App Builder
   - Extensibility
@@ -72,7 +71,7 @@ This `businessConfig` schema contains the following properties:
 | `default` | varies | No | Default value. Must match the field type. |
 | `description` | string | No | Help text displayed below the field. |
 | `options` | array | Conditional | Required for `list`. Defines available options to be displayed in the dropdown list. |
-| `selectionMode` | string | Conditional | Required for `list`. Values can be `single` or `multiple`. The type of selection that is allowed in the schema. |
+| `selectionMode` | string | Conditional | Required for `list`. Set to `single` for standard dropdown or `multiple` to allow multiple selections. |
 
 ## Supported field types
 
@@ -81,11 +80,56 @@ The following field types are available for your `businessConfig` schema:
 | Field type | Type | Description |
 |------------|------|-------------|
 | `text` | string | Single-line text input |
-| `password` | string | Masked input for sensitive values like API keys and tokens. Run [schema validation](#validate-your-schema) to ensure that the encryption key is correctly generated |
+| `password` | string | Masked input for sensitive values like API keys and tokens. See [Password field encryption](#password-field-encryption). |
 | `email` | string | Email address input with validation |
 | `tel` | string | Phone number input with format validation |
 | `url` | string | URL input with validation |
 | `list` | string | Dropdown with preconfigured options |
+
+### Password field encryption
+
+Password fields are automatically encrypted using `AES-256-GCM` when stored and decrypted when retrieved. When you [validate your schema](#validate-your-schema), the encryption key is automatically generated if not already configured.
+
+The validation process:
+
+1. Generates a secure 256-bit encryption key.
+
+1. Adds a `CONFIG_ENCRYPTION_KEY` to your `.env` file.
+
+1. Sets the key in your environment for immediate use.
+
+<InlineAlert variant="warning" slots="text"/>
+
+Never commit the `.env` file to version control. Keep the encryption key secure and only accessible in the app runtime context.
+
+See the [Password Field Encryption](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-config/docs/password-encryption.md) topic for more detailed information.
+
+### List field with multiple selection
+
+For fields that allow multiple selections:
+
+1. Set `selectionMode` to `multiple`. 
+
+1. Provide the `default` value as an array:
+
+```js
+{
+  name: "paymentMethods",
+  label: "Enabled Payment Methods",
+  type: "list",
+  selectionMode: "multiple",
+  options: [
+    { label: "Credit Card", value: "credit_card" },
+    { label: "PayPal", value: "paypal" },
+    { label: "Apple Pay", value: "apple_pay" },
+  ],
+  default: ["credit_card"]
+}
+```
+
+<InlineAlert variant="info" slots="text"/>
+
+For `selectionMode: "multiple"`, the `default` value must be an array of strings, even if only one option is selected by default.
 
 ## Validate your schema
 
@@ -103,8 +147,7 @@ Validation checks that your configuration matches the expected schema. Common er
 
 * **Type mismatches**. A `text` field with a `number` default
 * **Missing properties**. Fields must have `name`, `label`, and `type`
-
-The encryption key is automatically generated if your schema contains password fields and encryption is not yet configured.
+* **Missing encryption key**. If your schema contains password fields without a configured encryption key, the validation automatically generates one. See [Password field encryption](#password-field-encryption) for details.
 
 <InlineAlert variant="info" slots="text"/>
 

@@ -108,7 +108,7 @@ See the [Password Field Encryption](https://github.com/adobe/aio-commerce-sdk/bl
 
 For fields that allow multiple selections:
 
-1. Set `selectionMode` to `multiple`. 
+1. Set `selectionMode` to `multiple`.
 
 1. Provide the `default` value as an array:
 

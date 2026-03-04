@@ -10,10 +10,6 @@ keywords:
 
 # App metadata
 
-<InlineAlert variant="warning" slots="text" />
-
-**Adobe Commerce App Management is for Beta users only and is not yet accessible to all customers.**
-
 The `metadata` in your `app.commerce.config` file identifies your application to the App Management system. This information displays in the Admin UI and helps merchants identify and manage installed apps.
 
 ## Example

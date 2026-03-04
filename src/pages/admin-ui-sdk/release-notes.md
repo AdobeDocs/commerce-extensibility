@@ -12,7 +12,7 @@ keywords:
 
 <InlineAlert variant="warning" slots="text"/>
 
-Available for Beta users only and is not yet accessible to all customers.
+This version is available to App Management Beta customers only.
 
 ### Release date
 
@@ -20,7 +20,7 @@ March 3, 2026
 
 ### Enhancements
 
-* Added `allow-modals` to the allowed sandbox values for extension points. <!-- ACCS-424 -->
+* Added `allow-modals` to the list of allowed values for the `sandbox` parameter in multiple extension points. <!-- ACCS-424 -->
 
 ### Bug fixes
 
@@ -30,7 +30,7 @@ March 3, 2026
 
 <InlineAlert variant="warning" slots="text"/>
 
-Available for Beta users only and is not yet accessible to all customers.
+This version is available to App Management Beta customers only.
 
 ### Release date
 
@@ -44,7 +44,7 @@ February 13, 2026
 
 <InlineAlert variant="warning" slots="text"/>
 
-Available for Beta users only and is not yet accessible to all customers.
+This version is available to App Management Beta customers only.
 
 ### Release date
 
@@ -58,7 +58,7 @@ February 11, 2026
 
 <InlineAlert variant="warning" slots="text"/>
 
-Available for Beta users only and is not yet accessible to all customers.
+This version is available to App Management Beta customers only.
 
 ### Release date
 

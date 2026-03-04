@@ -10,10 +10,6 @@ keywords:
 
 ## Version 3.4.0
 
-<InlineAlert variant="warning" slots="text"/>
-
-This version is available to App Management Beta customers only.
-
 ### Release date
 
 March 3, 2026
@@ -28,10 +24,6 @@ March 3, 2026
 
 ## Version 3.3.2
 
-<InlineAlert variant="warning" slots="text"/>
-
-This version is available to App Management Beta customers only.
-
 ### Release date
 
 February 13, 2026
@@ -42,10 +34,6 @@ February 13, 2026
 
 ## Version 3.3.1
 
-<InlineAlert variant="warning" slots="text"/>
-
-This version is available to App Management Beta customers only.
-
 ### Release date
 
 February 11, 2026
@@ -55,10 +43,6 @@ February 11, 2026
 * Improved navigation by grouping SPA menu items under the Apps main menu. <!-- CEXT-5727 -->
 
 ## Version 3.3.0
-
-<InlineAlert variant="warning" slots="text"/>
-
-This version is available to App Management Beta customers only.
 
 ### Release date
 

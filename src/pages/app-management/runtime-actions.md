@@ -58,9 +58,13 @@ Scopes define the hierarchical boundaries where configuration values can be set 
 
 | Action | Description |
 |--------|-------------|
-| `get-scope-tree` | Retrieves scope hierarchies. |
-| `sync-commerce-scopes` | Syncs scopes from Adobe Commerce. |
+| `get-scope-tree` | Retrieves scope hierarchies. Returns cached data by default. |
+| `sync-commerce-scopes` | Syncs scopes from Adobe Commerce. Requires the Commerce base URL. |
 | `set-custom-scope-tree` | Defines custom scope hierarchies for external systems. |
+
+<InlineAlert variant="info" slots="text"/>
+
+The `sync-commerce-scopes` action accepts `commerceBaseUrl` (required) and `commerceEnv` (optional) parameters. The Commerce environment (`saas` or `paas`) is auto-detected from the URL if not provided.
 
 ### Configuration management actions
 
@@ -95,7 +99,7 @@ aio app build
 aio app deploy
 ```
 
-Once deployed, your app appears in App Management and can be [associated with a Commerce instance](./associate-apps.md).
+Once deployed, your app appears in App Management and can be [associated with a Commerce instance](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app){target="_blank"}.
 
 ## Update the library
 

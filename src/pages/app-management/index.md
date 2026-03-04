@@ -36,7 +36,7 @@ Before using App Management, ensure the following:
 
 * [Admin UI SDK](../admin-ui-sdk/index.md) version 3.3.0 is required for App Management. Verify your version before proceeding.
 
-* App managers (Admin users) who associate apps must have App Management permissions. See [Associate and configure apps](./associate-apps.md).
+* App managers (Admin users) who associate apps must have App Management permissions. See [Manage your app](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app).
 
 * App Builder applications with the following minimum library versions.
 
@@ -56,6 +56,6 @@ Follow these steps to set up and deploy an App Builder application with App Mana
 
 1. **Deploy**. Build and deploy your app with the `aio app build && aio app deploy` command.
 
-1. **Link your app**. [Associate your app](./associate-apps.md) with a Commerce instance in the Admin.
+1. **Link your app**. [Associate your app](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app) with a Commerce instance in the Admin.
 
 1. **Configure settings**. Merchants configure settings through the auto-generated UI.

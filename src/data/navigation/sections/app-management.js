@@ -21,8 +21,4 @@ module.exports = [
             },
         ],
     },
-    {
-        title: "Associate and configure apps",
-        path: "/app-management/associate-apps.md"
-    },
 ];

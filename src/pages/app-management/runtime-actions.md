@@ -95,7 +95,7 @@ aio app build
 aio app deploy
 ```
 
-Once deployed, your app appears in App Management and can be [associated with a Commerce instance](./associate-apps.md).
+Once deployed, your app appears in App Management and can be [associated with a Commerce instance](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app).
 
 ## Update the library
 

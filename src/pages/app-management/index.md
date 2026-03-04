@@ -46,6 +46,10 @@ Before using App Management, ensure the following:
 
 ## How it works
 
+The following diagram illustrates the workflow between app developers and app managers:
+
+![App Management workflow](../_images/app-management/app-management-workflow.png)
+
 Follow these steps to set up and deploy an App Builder application with App Management:
 
 1. **Define app metadata**. Add your [app metadata](./app-metadata.md) in `app.commerce.config`.

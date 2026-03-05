@@ -108,7 +108,7 @@ npx @adobe/aio-commerce-lib-config encryption setup
 
 Never commit the `.env` file to version control. Keep the encryption key secure and only accessible in the app runtime context. Operations fail if the key is not configured. Passwords are never stored in plain text.
 
-See [Password Field Encryption](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-config/docs/password-encryption.md) for key rotation and advanced usage.
+See [Password Field Encryption](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-config/docs/password-encryption.md) for more information.
 
 ### Multiple selection list fields
 

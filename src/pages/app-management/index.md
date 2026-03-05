@@ -1,7 +1,6 @@
 ---
 title: App Management overview
 description: Learn how to manage App Builder applications in Adobe Commerce.
-edition: paas
 keywords:
   - App Builder
   - Extensibility
@@ -10,15 +9,13 @@ keywords:
 
 # App Management overview
 
-<InlineAlert variant="warning" slots="text" />
-
-**Adobe Commerce App Management is for Beta users only and is not yet accessible to all customers.**
-
 App Management provides a unified experience for installing, configuring, and managing App Builder applications in Adobe Commerce. Define your configuration schema once, and the system auto-generates the runtime actions and Admin UI, with no custom code required.
 
 App developers define the configuration schema, metadata, and runtime actions for their applications. App managers associate and configure deployed apps within their Commerce instances.
 
-![App Management UI](../_images/app-management/app-management-ui.png)
+The following diagram illustrates the workflow between app developers and app managers:
+
+![App Management workflow](../_images/app-management/app-management-workflow.png)
 
 ## Key benefits
 
@@ -36,7 +33,7 @@ Before using App Management, ensure the following:
 
 * [Admin UI SDK](../admin-ui-sdk/index.md) version 3.3.0 is required for App Management. Verify your version before proceeding.
 
-* App managers (Admin users) who associate apps must have App Management permissions. See [Associate and configure apps](./associate-apps.md).
+* App managers (Admin users) who associate apps must have App Management permissions. See [Manage your app](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app).
 
 * App Builder applications with the following minimum library versions.
 
@@ -56,6 +53,6 @@ Follow these steps to set up and deploy an App Builder application with App Mana
 
 1. **Deploy**. Build and deploy your app with the `aio app build && aio app deploy` command.
 
-1. **Link your app**. [Associate your app](./associate-apps.md) with a Commerce instance in the Admin.
+1. **Link your app**. [Associate your app](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app) with a Commerce instance in the Admin.
 
 1. **Configure settings**. Merchants configure settings through the auto-generated UI.

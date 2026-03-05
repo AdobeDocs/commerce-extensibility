@@ -1,7 +1,6 @@
 ---
 title: Define your app
 description: Learn how to configure your App Builder application for App Management
-edition: paas
 keywords:
   - App Builder
   - Extensibility
@@ -9,10 +8,6 @@ keywords:
 ---
 
 # Define your app
-
-<InlineAlert variant="warning" slots="text" />
-
-**Adobe Commerce App Management is for Beta users only and is not yet accessible to all customers.**
 
 The `app.commerce.config` file is the central configuration file for your App Builder application. It defines your app metadata, business configuration schema, and other settings.
 

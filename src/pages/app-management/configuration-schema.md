@@ -104,13 +104,11 @@ Never commit the `.env` file to version control. Keep the encryption key secure 
 
 See the [Password Field Encryption](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-config/docs/password-encryption.md) topic for more detailed information.
 
-### List field with multiple selection
+### Multiple selection list fields
 
 For fields that allow multiple selections:
 
-1. Set `selectionMode` to `multiple`.
-
-1. Provide the `default` value as an array:
+Set `selectionMode` to `multiple`. For `selectionMode: "multiple"`, the `default` value must be an array of strings, even if only one option is selected by default.
 
 ```js
 {
@@ -126,10 +124,6 @@ For fields that allow multiple selections:
   default: ["credit_card"]
 }
 ```
-
-<InlineAlert variant="info" slots="text"/>
-
-For `selectionMode: "multiple"`, the `default` value must be an array of strings, even if only one option is selected by default.
 
 ## Validate your schema
 

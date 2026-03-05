@@ -36,8 +36,21 @@ Before using App Management, ensure the following:
 * App Builder applications with the following minimum library versions.
 
   * `@adobe/aio-commerce-lib-config` version 0.11.1 or later.
-  * `@adobe/aio-commerce-lib-api` version 0.6.0 or later.
+  * `@adobe/aio-commerce-lib-app` version 0.6.0 or later.
   * `@adobe/aio-commerce-sdk` version 0.7.2 or later.
+
+## SDK libraries
+
+App Management uses the [Adobe Commerce SDK](https://github.com/adobe/aio-commerce-sdk) libraries:
+
+| Library | Description |
+|---------|-------------|
+| `@adobe/aio-commerce-sdk` | Meta-package that re-exports commonly used libraries. |
+| `@adobe/aio-commerce-lib-config` | Configuration management with scope trees and inheritance. |
+| `@adobe/aio-commerce-lib-app` | App definition, validation, and manifest generation. |
+| `@adobe/aio-commerce-lib-auth` | Authentication utilities for IMS and Integration auth. |
+| `@adobe/aio-commerce-lib-api` | HTTP clients for Adobe Commerce and I/O Events APIs. |
+| `@adobe/aio-commerce-lib-events` | Event management for Commerce and external events. |
 
 ## How it works
 

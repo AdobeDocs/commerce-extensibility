@@ -9,81 +9,150 @@ keywords:
 
 # Configure your project
 
-The `@adobe/aio-commerce-lib-config` library auto-generates runtime actions based on the `businessConfig` section in your [configuration schema](./configuration-schema.md). An additional action is generated for app metadata by the `@adobe/aio-commerce-lib-app` library. These actions power the App Management UI with no required boilerplate code.
+The `@adobe/aio-commerce-lib-config` library auto-generates runtime actions based on the `businessConfig` section in your [configuration schema](./configuration-schema.md). An additional action is generated for app metadata by the `@adobe/aio-commerce-lib-app` library.
+
+These actions power the App Management UI with no required boilerplate code.
 
 ## Initialize the library
 
-Run the following command to set up your App Builder project with the configuration library. This command structures the required files, installs dependencies, and generates runtime actions based on your `app.commerce.config` file.
+Run the following command to set up your App Builder project. This command creates the required files, installs dependencies, and generates runtime actions based on your `app.commerce.config` file.
 
 ```bash
-npx @adobe/aio-commerce-lib-config init
+npx @adobe/aio-commerce-lib-app init
 ```
 
 The initialization process:
 
-* Checks for an existing and syntactically correct `app.commerce.config` file:
-  * If the file does not exist, creates it from a template schema.
-  * If the file exists, but lacks the `businessConfig` property, attempts to add it automatically.
-  * If the property cannot be added, fails and prompts the user to add `businessConfig` manually.
-* Installs `@adobe/aio-commerce-lib-config` and `@adobe/aio-commerce-sdk`
-* Adds a `postinstall` script to `package.json` to ensure up-to-date generated runtime actions on library updates.
-* Generates all required artifacts (schema and runtime actions)
-* Creates the `ext.config.yaml` needed for the `commerce/configuration/1` extension point and updates the `app.config.yaml` with the appropriate reference
-* Creates or updates `install.yaml` with the extension point reference
-* Creates or updates `.env` file with placeholder environment variables
+* Creates `app.commerce.config` with a template (prompts you to choose format and features if the file doesn't exist)
+* Installs required dependencies (`@adobe/aio-commerce-lib-app`, `@adobe/aio-commerce-sdk`, and `@adobe/aio-commerce-lib-config` when business configuration is enabled)
+* Adds a `postinstall` hook to `package.json`
+* Generates all required artifacts (`commerce/configuration/1` resources are only generated when `businessConfig` is defined)
+* Updates `app.config.yaml` and `install.yaml` with the appropriate extension references
 
-## Generated files
+The command automatically detects your package manager (npm, pnpm, yarn, or bun) and uses the appropriate commands.
 
-The initialization process creates the following files in your project:
+## Environment variables
 
-| File | Description |
-|------|-------------|
-| `app.commerce.config` | Your [configuration schema](./configuration-schema.md) |
-| `src/commerce-configuration-1/.generated/` | Auto-generated runtime actions and schema |
-| `src/commerce-configuration-1/ext.config.yaml` | Action declarations for App Builder |
-| `install.yaml` | Extension point references |
+The generated runtime actions require environment variables for authentication. Add these to your `.env` file based on your Commerce instance type.
 
-## Generated runtime actions
+### SaaS instances (IMS authentication)
 
-The libraries generate the following runtime actions to handle configuration and scope operations:
+```bash
+LOG_LEVEL=info
 
-### Scope management actions
+AIO_COMMERCE_API_BASE_URL=https://your-commerce-instance.com
 
-Scopes define the hierarchical boundaries where configuration values can be set and inherited:
-
-| Action | Description |
-|--------|-------------|
-| `get-scope-tree` | Retrieves scope hierarchies. Returns cached data by default. |
-| `sync-commerce-scopes` | Syncs scopes from Adobe Commerce. Requires the Commerce base URL. |
-| `set-custom-scope-tree` | Defines custom scope hierarchies for external systems. |
+AIO_COMMERCE_AUTH_IMS_CLIENT_ID=your-client-id
+AIO_COMMERCE_AUTH_IMS_CLIENT_SECRETS=your-client-secrets
+AIO_COMMERCE_AUTH_IMS_TECHNICAL_ACCOUNT_ID=your-technical-account-id
+AIO_COMMERCE_AUTH_IMS_TECHNICAL_ACCOUNT_EMAIL=your-technical-account-email
+AIO_COMMERCE_AUTH_IMS_ORG_ID=your-ims-org-id
+AIO_COMMERCE_AUTH_IMS_SCOPES=your-ims-scopes
+```
 
 <InlineAlert variant="info" slots="text"/>
 
-The `sync-commerce-scopes` action accepts `commerceBaseUrl` (required) and `commerceEnv` (optional) parameters. The Commerce environment (`saas` or `paas`) is auto-detected from the URL if not provided.
+Run `npx @adobe/aio-commerce-lib-auth sync-ims-credentials` to automatically sync IMS credentials from your Adobe I/O workspace context to the `.env` file.
 
-### Configuration management actions
+### PaaS instances (Integration authentication)
 
-These actions handle reading and writing configuration values:
+```bash
+LOG_LEVEL=info
+
+AIO_COMMERCE_API_BASE_URL=https://your-commerce-instance.com
+
+AIO_COMMERCE_AUTH_INTEGRATION_CONSUMER_KEY=your-consumer-key
+AIO_COMMERCE_AUTH_INTEGRATION_CONSUMER_SECRET=your-consumer-secret
+AIO_COMMERCE_AUTH_INTEGRATION_ACCESS_TOKEN=your-access-token
+AIO_COMMERCE_AUTH_INTEGRATION_ACCESS_TOKEN_SECRET=your-access-token-secret
+```
+
+## Making API calls
+
+Use `@adobe/aio-commerce-lib-api` to make authenticated API calls to Adobe Commerce from your custom runtime actions.
+
+### Resolving client parameters
+
+Use `resolveCommerceHttpClientParams` to automatically resolve client parameters from action inputs:
+
+```js
+import {
+  resolveCommerceHttpClientParams,
+  AdobeCommerceHttpClient,
+} from "@adobe/aio-commerce-lib-api/commerce";
+
+export const main = async function (params) {
+  const clientParams = resolveCommerceHttpClientParams(params);
+  const client = new AdobeCommerceHttpClient(clientParams);
+  
+  return await client.get("products").json();
+};
+```
+
+The resolver automatically detects the Commerce flavor from the URL and authentication type from the provided parameters.
+
+### Forwarding IMS authentication
+
+When your action receives a pre-existing IMS token, forward it to downstream API calls:
+
+```js
+export const main = async function (params) {
+  const clientParams = resolveCommerceHttpClientParams(params, {
+    tryForwardAuthProvider: true,
+  });
+  const client = new AdobeCommerceHttpClient(clientParams);
+
+  return await client.get("products").json();
+};
+```
+
+## Generated files
+
+The initialization process creates files organized by extension point:
+
+**`commerce/extensibility/1`** - App management:
+
+| File | Description |
+|------|-------------|
+| `src/commerce-extensibility-1/.generated/app.commerce.manifest.json` | Validated JSON representation of your app config |
+| `src/commerce-extensibility-1/.generated/actions/app-management/` | Runtime actions for app config and installation |
+| `src/commerce-extensibility-1/ext.config.yaml` | Extension manifest with `pre-app-build` hook |
+
+**`commerce/configuration/1`** - Business configuration (when `businessConfig` is defined):
+
+| File | Description |
+|------|-------------|
+| `src/commerce-configuration-1/.generated/configuration-schema.json` | Validated JSON representation of your schema |
+| `src/commerce-configuration-1/.generated/actions/business-configuration/` | Runtime actions for config and scope management |
+| `src/commerce-configuration-1/ext.config.yaml` | Extension manifest with `pre-app-build` hook |
+
+## Generated runtime actions
+
+The libraries generate runtime actions organized by extension point.
+
+### App management actions (`commerce/extensibility/1`)
 
 | Action | Description |
 |--------|-------------|
-| `get-config-schema` | Retrieves the configuration schema. UI uses this to render the form. |
-| `get-configuration` | Gets configuration values with inheritance for a scope. |
-| `set-configuration` | Saves configuration values for a scope. |
+| `app-config` | Serves the app configuration to the App Management UI. |
+| `installation` | Drives the installation flow, including custom installation steps. |
 
-### App metadata action
+### Business configuration actions (`commerce/configuration/1`)
 
-The `@adobe/aio-commerce-lib-app` library generates an additional runtime action for retrieving app metadata:
+These actions handle configuration and scope operations (generated when `businessConfig` is defined):
 
 | Action | Description |
 |--------|-------------|
-| `get-app-config` | Returns the app configuration. |
+| `config` | Handles retrieving and updating configuration values across scopes. |
+| `scope-tree` | Handles scope hierarchy management for Commerce and custom scopes. |
 
-This action is generated in `src/commerce-extensibility-1/.generated/actions/` along with the extensibility manifest.
+<InlineAlert variant="info" slots="text"/>
+
+The scope tree action supports syncing scopes from Adobe Commerce (requires `commerceBaseUrl`), setting custom scope hierarchies for external systems, and unsyncing Commerce scopes.
 
 <InlineAlert variant="warning" slots="text"/>
 
-Do not manually edit files in `.generated` folders like `src/commerce-configuration-1/` or `src/commerce-extensibility-1/`. These are auto-generated directories and any manual changes can be lost at any time during regeneration.
+Do not manually edit files in `.generated` folders. These are auto-generated directories and any manual changes can be lost during regeneration.
 
 ## Build and deploy
 
@@ -98,19 +167,19 @@ Once deployed, your app appears in App Management and can be [associated with a 
 
 ## Update the library
 
-When a new version of the configuration library is available, update your project to get the latest features and fixes.
+When a new version of the library is available, update your project to get the latest features and fixes:
 
-Install the latest version of the libraries:
+```bash
+npm install @adobe/aio-commerce-lib-app@latest @adobe/aio-commerce-sdk@latest
+```
+
+If you use business configuration, also update:
 
 ```bash
 npm install @adobe/aio-commerce-lib-config@latest
 ```
 
-```bash
-npm install @adobe/aio-commerce-lib-app@latest
-```
-
-The `postinstall` script regenerates runtime actions when you install or update the library.
+The `postinstall` hook regenerates runtime actions when you install or update the library.
 
 Then, rebuild and redeploy your application:
 
@@ -119,18 +188,37 @@ aio app build
 aio app deploy
 ```
 
+## CLI commands
+
+The library provides the following CLI commands:
+
+```bash
+# Initialize the project (recommended for first-time setup)
+npx @adobe/aio-commerce-lib-app init
+
+# Generate all artifacts (manifest + schema + runtime actions)
+npx @adobe/aio-commerce-lib-app generate all
+
+# Or generate individually:
+npx @adobe/aio-commerce-lib-app generate manifest
+npx @adobe/aio-commerce-lib-app generate actions
+npx @adobe/aio-commerce-lib-app generate schema
+```
+
 ## Troubleshooting
 
 Use the following solutions to resolve common issues with runtime actions.
 
 **Runtime actions not generated**
 
-1. Verify `app.commerce.config` exists with a valid schema.
+1. Verify `app.commerce.config` exists with valid configuration.
 
-1. Run manually: `npx @adobe/aio-commerce-lib-config generate all`.
+1. Run manually: `npx @adobe/aio-commerce-lib-app generate all`.
 
 **Schema validation fails**
 
-1. Run: `npx @adobe/aio-commerce-lib-config validate schema`.
+1. Check your `app.commerce.config` for syntax errors.
 
-1. Fix issues in `app.commerce.config` and rebuild.
+1. Ensure all required fields are present in your configuration.
+
+1. Rebuild with `aio app build`.

@@ -13,7 +13,9 @@ App Management provides a unified experience for installing, configuring, and ma
 
 App developers define the configuration schema, metadata, and runtime actions for their applications. App managers associate and configure deployed apps within their Commerce instances.
 
-![App Management UI](../_images/app-management/app-management-ui.png)
+The following diagram illustrates the workflow between app developers and app managers:
+
+![App Management workflow](../_images/app-management/app-management-workflow.png)
 
 ## Key benefits
 

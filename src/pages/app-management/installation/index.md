@@ -39,6 +39,6 @@ export default defineConfig({
 
 ## Next steps
 
-- [Events](./events.md) - Configure event subscriptions
-- [Webhooks](./webhooks.md) - Set up webhook endpoints
-- [Post installation](./post-installation.md) - Define custom installation steps
+- [Events](./events.md): Configure event subscriptions
+- [Webhooks](./webhooks.md): Set up webhook endpoints
+- [Post installation](./post-installation.md): Define custom installation steps

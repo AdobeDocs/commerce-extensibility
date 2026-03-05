@@ -5,7 +5,6 @@ keywords:
   - App Builder
   - Extensibility
   - App Management
-  - Installation
 ---
 
 # Installation

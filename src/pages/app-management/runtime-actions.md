@@ -1,7 +1,6 @@
 ---
 title: Configure your project
 description: Initialize the configuration library and understand auto-generated runtime actions
-edition: paas
 keywords:
   - App Builder
   - Extensibility
@@ -9,10 +8,6 @@ keywords:
 ---
 
 # Configure your project
-
-<InlineAlert variant="warning" slots="text" />
-
-**Adobe Commerce App Management is for Beta users only and is not yet accessible to all customers.**
 
 The `@adobe/aio-commerce-lib-config` library auto-generates runtime actions based on the `businessConfig` section in your [configuration schema](./configuration-schema.md). An additional action is generated for app metadata by the `@adobe/aio-commerce-lib-app` library. These actions power the App Management UI with no required boilerplate code.
 

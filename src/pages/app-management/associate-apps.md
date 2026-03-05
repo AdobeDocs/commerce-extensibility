@@ -1,7 +1,6 @@
 ---
 title: Associate and configure apps
 description: Link App Builder applications to Commerce instances and configure settings
-edition: paas
 keywords:
   - App Builder
   - Extensibility
@@ -9,10 +8,6 @@ keywords:
 ---
 
 # Associate and configure apps
-
-<InlineAlert variant="warning" slots="text" />
-
-**Adobe Commerce App Management is for Beta users only and is not yet accessible to all customers.**
 
 An App Manager associates an App Builder application with their Commerce instance to enable configuration through the auto-generated Admin UI.
 

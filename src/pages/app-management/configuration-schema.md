@@ -1,7 +1,6 @@
 ---
 title: Business configuration
 description: Define your app business configuration
-edition: paas
 keywords:
   - App Builder
   - Extensibility
@@ -9,10 +8,6 @@ keywords:
 ---
 
 # Business configuration
-
-<InlineAlert variant="warning" slots="text" />
-
-**Adobe Commerce App Management is for Beta users only and is not yet accessible to all customers.**
 
 Based on the `businessConfig` schema that you defined in the `app.commerce.config`, the configuration library generates the runtime actions that the App Management UI uses to render a configuration form with no custom code required.
 
@@ -109,9 +104,9 @@ Never commit the `.env` file to version control. Keep the encryption key secure 
 
 See the [Password Field Encryption](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-config/docs/password-encryption.md) topic for more detailed information.
 
-### List field with multiple selection
+### Multiple selection list fields
 
-For fields that allow multiple selections, set `selectionMode` to `multiple` and provide the `default` value as an array:
+For fields that allow multiple selections, set `selectionMode` to `multiple` and the `default` value must be an array of strings, even if only one option is selected by default.
 
 ```js
 {
@@ -127,10 +122,6 @@ For fields that allow multiple selections, set `selectionMode` to `multiple` and
   default: ["credit_card"]
 }
 ```
-
-<InlineAlert variant="info" slots="text"/>
-
-For `selectionMode: "multiple"`, the `default` value must be an array of strings, even if only one option is selected by default.
 
 ## Validate your schema
 

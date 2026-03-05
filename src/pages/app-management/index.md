@@ -1,7 +1,6 @@
 ---
 title: App Management overview
 description: Learn how to manage App Builder applications in Adobe Commerce.
-edition: paas
 keywords:
   - App Builder
   - Extensibility
@@ -9,10 +8,6 @@ keywords:
 ---
 
 # App Management overview
-
-<InlineAlert variant="warning" slots="text" />
-
-**Adobe Commerce App Management is for Beta users only and is not yet accessible to all customers.**
 
 App Management provides a unified experience for installing, configuring, and managing App Builder applications in Adobe Commerce. Define your configuration schema once, and the system auto-generates the runtime actions and Admin UI, with no custom code required.
 

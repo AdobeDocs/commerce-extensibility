@@ -62,13 +62,13 @@ Follow these steps to set up and deploy an App Builder application with App Mana
 
 1. **Initialize your app**. Run the [initialization command](./initialize-app.md) to set up your project and create the `app.commerce.config` file.
 
-1. **Define app metadata**. Add your [app metadata](./app-metadata.md) to identify your application.
-
-1. **Define your configuration schema**. Create your [configuration schema](./configuration-schema.md) to enable merchant-configurable settings.
+1. **Define your app**. Add your [app metadata](./app-metadata.md) and [business configuration](./configuration-schema.md).
 
 1. **Configure event subscriptions**. Set up [event subscriptions](./installation/events.md) to respond to Commerce and external events.
 
-1. (Optional) **Add custom installation steps**. Define [custom installation scripts](./installation/custom-installation.md) that run when merchants install your app.
+1. (Optional) **Add custom installation steps**. Define [custom installation 
+scripts](./installation/custom-installation.md) that run when merchants install 
+your app.
 
 1. **Build and deploy**. [Build and deploy](./build-deploy.md) your app with the `aio app build && aio app deploy` commands.
 

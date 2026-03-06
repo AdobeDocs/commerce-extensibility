@@ -4,8 +4,8 @@ module.exports = [
         path: "/app-management/index.md"
     },
     {
-        title: "Release notes",
-        path: "/app-management/release-notes.md"
+        title: "Initialize your app",
+        path: "/app-management/initialize-app.md"
     },
     {
         title: "Define your app",
@@ -16,35 +16,35 @@ module.exports = [
                 path: "/app-management/app-metadata.md"
             },
             {
-                title: "Configuration",
+                title: "Business configuration",
                 path: "/app-management/configuration-schema.md"
             },
             {
-                title: "Configure your project",
-                path: "/app-management/runtime-actions.md"
+                title: "Installation",
+                path: "/app-management/installation/index.md",
+                pages: [
+                    {
+                        title: "Events",
+                        path: "/app-management/installation/events.md"
+                    },
+                    {
+                        title: "Custom installation",
+                        path: "/app-management/installation/custom-installation.md"
+                    },
+                ],
             },
         ],
     },
     {
-        title: "Installation",
-        path: "/app-management/installation/index.md",
-        pages: [
-            {
-                title: "Events",
-                path: "/app-management/installation/events.md"
-            },
-            {
-                title: "Webhooks",
-                path: "/app-management/installation/webhooks.md"
-            },
-            {
-                title: "Admin UI SDK",
-                path: "/admin-ui-sdk/index.md"
-            },
-            {
-                title: "Post installation",
-                path: "/app-management/installation/post-installation.md"
-            },
-        ],
+        title: "Build and deploy",
+        path: "/app-management/build-deploy.md"
+    },
+    {
+        title: "Troubleshooting",
+        path: "/app-management/troubleshooting.md"
+    },
+    {
+        title: "Release notes",
+        path: "/app-management/release-notes.md"
     },
 ];

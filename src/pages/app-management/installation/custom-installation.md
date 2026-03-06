@@ -1,5 +1,5 @@
 ---
-title: Post installation
+title: Custom installation
 description: Define custom installation steps for your App Builder application
 keywords:
   - App Builder
@@ -7,7 +7,7 @@ keywords:
   - App Management
 ---
 
-# Post installation
+# Custom installation
 
 The `customInstallationSteps` field allows you to define custom scripts that run during the application installation process. These scripts are pre-loaded and executed in the order they are defined.
 
@@ -114,11 +114,9 @@ export default defineCustomInstallationStep(async (config, context) => {
 
 ## Script requirements
 
-- Scripts **must** use `export default` to export the main function
-- Scripts are executed **sequentially** in the order defined
-- If any script throws an error, the installation fails and subsequent scripts are not executed
-- Scripts have access to the complete app configuration
-
-<InlineAlert variant="warning" slots="text"/>
+* Scripts **must** use `export default` to export the main function
+* Scripts are executed **sequentially** in the order defined
+* If any script throws an error, the installation fails and subsequent scripts are not executed
+* Scripts have access to the complete app configuration
 
 After modifying custom installation scripts, run `npx @adobe/aio-commerce-lib-app generate actions` to regenerate the installation action.

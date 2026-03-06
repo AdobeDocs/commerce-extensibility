@@ -33,7 +33,7 @@ Before using App Management, ensure the following:
 
 * [Admin UI SDK](../admin-ui-sdk/index.md) version 3.3.0 is required for App Management. Verify your version before proceeding.
 
-* App managers (Admin users) who associate apps must have App Management permissions. See [Manage apps](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app){target="_blank"}.
+* App managers (Admin users) who associate apps must have App Management permissions. See [Manage your app](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app) for more information.
 
 * App Builder applications with the following minimum library versions.
 
@@ -47,25 +47,21 @@ App Management uses the [Adobe Commerce SDK](https://github.com/adobe/aio-commer
 
 | Library | Description |
 |---------|-------------|
-| `@adobe/aio-commerce-sdk` | Meta-package that re-exports commonly used libraries. |
-| `@adobe/aio-commerce-lib-config` | Configuration management with scope trees and inheritance. |
 | `@adobe/aio-commerce-lib-app` | App definition, validation, and manifest generation. |
-| `@adobe/aio-commerce-lib-auth` | Authentication utilities for IMS and Integration auth. |
-| `@adobe/aio-commerce-lib-api` | HTTP clients for Adobe Commerce and I/O Events APIs. |
-| `@adobe/aio-commerce-lib-events` | Event management for Commerce and external events. |
+| `@adobe/aio-commerce-lib-config` | Configuration management with scope trees and inheritance. |
 
 ## How it works
 
 Follow these steps to set up and deploy an App Builder application with App Management:
 
+1. **Initialize your app**. Run the [initialization command](./initialize-app.md) to set up your project.
+
 1. **Define app metadata**. Add your [app metadata](./app-metadata.md) in `app.commerce.config`.
 
 1. **Define your configuration schema**. Create your [configuration schema](./configuration-schema.md) in `app.commerce.config`.
 
-1. Setup your project to use business configuration. See the [runtime actions section](./runtime-actions.md) for the required steps.
+1. **Build and deploy**. [Build and deploy](./build-deploy.md) your app with the `aio app build && aio app deploy` commands.
 
-1. **Deploy**. Build and deploy your app with the `aio app build && aio app deploy` command.
-
-1. **Link your app**. [Associate your app](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app){target="_blank"} with a Commerce instance in the Admin.
+1. **Link your app**. [Associate your app](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app) with a Commerce instance in the Admin.
 
 1. **Configure settings**. Merchants configure settings through the auto-generated UI.

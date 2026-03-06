@@ -9,12 +9,8 @@ keywords:
 
 # Release notes
 
-This page contains release notes for App Management features and SDK libraries.
+Check GitHub releases for the latest updates about the main libraries used by App Management.
 
-## Latest releases
-
-Check GitHub releases for the latest updates:
-
-- [@adobe/aio-commerce-sdk](https://github.com/adobe/aio-commerce-sdk/releases)
-- [@adobe/aio-commerce-lib-config](https://github.com/adobe/aio-commerce-sdk/tree/main/packages/aio-commerce-lib-config)
-- [@adobe/aio-commerce-lib-app](https://github.com/adobe/aio-commerce-sdk/tree/main/packages/aio-commerce-lib-app)
+* [@adobe/aio-commerce-sdk](https://github.com/adobe/aio-commerce-sdk/releases)
+* [@adobe/aio-commerce-lib-config](https://github.com/adobe/aio-commerce-sdk/tree/main/packages/aio-commerce-lib-config)
+* [@adobe/aio-commerce-lib-app](https://github.com/adobe/aio-commerce-sdk/tree/main/packages/aio-commerce-lib-app)

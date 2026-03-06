@@ -11,7 +11,7 @@ keywords:
 
 Based on the `businessConfig` schema that you defined in the `app.commerce.config`, the configuration library generates the runtime actions that the App Management UI uses to render a configuration form with no custom code required.
 
-See the **[Configure your project](./runtime-actions.md)** topic for more information about initializing the configuration library to generate the required runtime actions, and project structure.
+See [Initialize your app](./initialize-app.md) for setup instructions and [Build and deploy](./build-deploy.md) for information about generated runtime actions and project structure.
 
 ## Example
 
@@ -94,21 +94,25 @@ The validation process:
 
 1. Generates a secure 256-bit encryption key.
 
-1. Adds a `CONFIG_ENCRYPTION_KEY` to your `.env` file.
+1. Adds a `AIO_COMMERCE_CONFIG_ENCRYPTION_KEY` to your `.env` file.
 
 1. Sets the key in your environment for immediate use.
 
+You can also manually generate a key by using the CLI:
+
+```bash
+npx @adobe/aio-commerce-lib-config encryption setup
+```
+
 <InlineAlert variant="warning" slots="text"/>
 
-Never commit the `.env` file to version control. Keep the encryption key secure and only accessible in the app runtime context.
+Never commit the `.env` file to version control. Keep the encryption key secure and only accessible in the app runtime context. Operations fail if the key is not configured. Passwords are never stored in plain text.
 
-See the [Password Field Encryption](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-config/docs/password-encryption.md) topic for more detailed information.
+See [Password Field Encryption](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-config/docs/password-encryption.md) for more information.
 
 ### Multiple selection list fields
 
-For fields that allow multiple selections:
-
-Set `selectionMode` to `multiple`. For `selectionMode: "multiple"`, the `default` value must be an array of strings, even if only one option is selected by default.
+For fields that allow multiple selections, set `selectionMode` to `multiple` and the `default` value must be an array of strings, even if only one option is selected by default.
 
 ```js
 {

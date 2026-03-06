@@ -38,5 +38,5 @@ export default defineConfig({
 
 ## Next steps
 
-- [Events](./events.md) - Configure event subscriptions
-- [Post installation](./post-installation.md) - Define custom installation steps
+* [Events](./events.md) - Configure event subscriptions
+* [Custom installation](./custom-installation.md) - Define custom installation steps

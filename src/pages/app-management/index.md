@@ -23,8 +23,6 @@ The following diagram illustrates the workflow between app developers and app ma
 
 * **Auto-generated Admin UI**. Configuration forms are rendered dynamically based on your schema, eliminating custom UI development.
 
-* **Scope inheritance**. Configuration values cascade through Global, Website, Store, and Store View levels.
-
 * **Event subscriptions**. Subscribe to Commerce and external events with declarative configuration and automatic event registration.
 
 * **Custom installation workflows**. Define pre and post installation messages and custom scripts that run during app installation.

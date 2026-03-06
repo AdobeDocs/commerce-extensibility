@@ -25,6 +25,10 @@ The following diagram illustrates the workflow between app developers and app ma
 
 * **Scope inheritance**. Configuration values cascade through Global, Website, Store, and Store View levels.
 
+* **Event subscriptions**. Subscribe to Commerce and external events with declarative configuration and automatic event registration.
+
+* **Custom installation workflows**. Define pre and post installation messages and custom scripts that run during app installation.
+
 * **Unified lifecycle management**. Associate, configure, and unassociate apps from a single interface.
 
 ## Requirements
@@ -52,13 +56,19 @@ App Management uses the [Adobe Commerce SDK](https://github.com/adobe/aio-commer
 
 ## How it works
 
+All App Management configuration is defined in the `app.commerce.config` file at the root of your project. This single file contains your app metadata, business configuration schema, event subscriptions, and installation settings.
+
 Follow these steps to set up and deploy an App Builder application with App Management:
 
-1. **Initialize your app**. Run the [initialization command](./initialize-app.md) to set up your project.
+1. **Initialize your app**. Run the [initialization command](./initialize-app.md) to set up your project and create the `app.commerce.config` file.
 
-1. **Define app metadata**. Add your [app metadata](./app-metadata.md) in `app.commerce.config`.
+1. **Define app metadata**. Add your [app metadata](./app-metadata.md) to identify your application.
 
-1. **Define your configuration schema**. Create your [configuration schema](./configuration-schema.md) in `app.commerce.config`.
+1. **Define your configuration schema**. Create your [configuration schema](./configuration-schema.md) to enable merchant-configurable settings.
+
+1. **Configure event subscriptions**. Set up [event subscriptions](./installation/events.md) to respond to Commerce and external events.
+
+1. (Optional) **Add custom installation steps**. Define [custom installation scripts](./installation/custom-installation.md) that run when merchants install your app.
 
 1. **Build and deploy**. [Build and deploy](./build-deploy.md) your app with the `aio app build && aio app deploy` commands.
 

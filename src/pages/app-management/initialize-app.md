@@ -23,9 +23,14 @@ Complete the following steps before initializing your app:
 
    Add the following services to your project:
 
-   * **I/O Management API**. Required for App Builder runtime actions
-   * **I/O Events for Adobe Commerce**. Required for events
-   * **Adobe Commerce as a Cloud Service**. Required for ACCS API access
+   * **I/O Management API**. Required for App Builder runtime actions.
+   * **I/O Events**. Required only if your app uses events.
+   * **I/O Events for Adobe Commerce**. Required only if your app uses events.
+   * **Adobe Commerce as a Cloud Service**. Required only for Adobe Commerce as a Cloud Service (ACCS) instances.
+
+   <InlineAlert variant="info" slots="text"/>
+
+   Only add the services your app needs. This keeps your credentials scoped to the minimum required permissions.
 
 1. **Set up App Builder**
 

@@ -9,6 +9,26 @@ keywords:
 
 These release notes describe the latest version of Adobe Commerce Webhooks.
 
+## Version 1.17.1
+
+### Release date
+
+Mar 9, 2026
+
+### Bug fix
+
+* Fixed an issue that caused quote items to not be converted properly when retrieved from the webhook quote context. <!-- CEXT-5899 -->
+
+## Version 1.17.0
+
+### Release date
+
+Mar 9, 2026
+
+### Enhancements
+
+* Improved the ability to retrieve an active Quote in the webhook context. <!-- CEXT-5869 -->
+
 ## Version 1.16.0
 
 ### Release date

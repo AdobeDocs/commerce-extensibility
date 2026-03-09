@@ -24,8 +24,8 @@ Complete the following steps before initializing your app:
    Add the following services to your project:
 
    * **I/O Management API**. Required for App Builder runtime actions
-   * **I/O Events for Adobe Commerce**. Required for event subscriptions
-   * **Adobe Commerce as a Cloud Service**. Required for Commerce API access
+   * **I/O Events for Adobe Commerce**. Required for events
+   * **Adobe Commerce as a Cloud Service**. Required for ACCS API access
 
 1. **Set up App Builder**
 
@@ -36,7 +36,7 @@ Complete the following steps before initializing your app:
 Run the following command to set up your App Builder project:
 
 ```bash
-npx @adobe/aio-commerce-lib-app init
+npx aio-commerce-lib-app init
 ```
 
 The initialization process:
@@ -45,7 +45,7 @@ The initialization process:
 * Installs required dependencies (`@adobe/aio-commerce-lib-app`, `@adobe/aio-commerce-sdk`, and `@adobe/aio-commerce-lib-config` when business configuration is enabled)
 * Adds a `postinstall` hook to `package.json`
 * Generates all required artifacts (`commerce/configuration/1` resources are only generated when `businessConfig` is defined)
-* Updates `app.config.yaml` and `install.yaml` with the appropriate extension references
+* Updates `app.config.yaml` and `install.yaml` with the appropriate extension references. Creates these files if not existing.
 
 The command automatically detects your package manager (for example, npm) and uses the appropriate commands.
 

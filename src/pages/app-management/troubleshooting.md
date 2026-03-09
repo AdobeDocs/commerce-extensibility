@@ -11,11 +11,21 @@ keywords:
 
 Use the following solutions to resolve common issues with App Management.
 
+## Configuration validation errors
+
+The entire `app.commerce.config` is validated each time you run a generate command. Schema validation is included as part of this validation. If validation fails, check:
+
+1. **Required properties**. Fields must have `name`, `label`, and `type`.
+
+1. **Type-matched defaults**. Default values must match the field type.
+
+1. **Valid metadata**. App metadata must include `id`, `displayName`, `description`, and `version`.
+
 ## Runtime actions not generated
 
 1. Verify `app.commerce.config` exists with valid configuration.
 
-1. Run manually: `npx @adobe/aio-commerce-lib-app generate all`.
+1. Run manually: `npx aio-commerce-lib-app generate all`.
 
 ## App not appearing in App Management
 
@@ -37,20 +47,14 @@ Use the following solutions to resolve common issues with App Management.
 
 ## Encryption key errors
 
-**"AIO_COMMERCE_CONFIG_ENCRYPTION_KEY not found"**
-
-The environment variable is not set at runtime. Ensure the encryption key is in your `.env` file:
+To validate your encryption key configuration, run:
 
 ```bash
-AIO_COMMERCE_CONFIG_ENCRYPTION_KEY=your_64_character_hex_key
+npx aio-commerce-lib-config encryption validate
 ```
 
-**"AIO_COMMERCE_CONFIG_ENCRYPTION_KEY is not a valid hex string"**
-
-The key format is incorrect. Generate a new key:
+To generate a new encryption key, run:
 
 ```bash
-npx @adobe/aio-commerce-lib-config encryption setup
+npx aio-commerce-lib-config encryption setup
 ```
-
-Ensure the key is a 64-character hexadecimal string.

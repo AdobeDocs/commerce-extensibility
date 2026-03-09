@@ -57,7 +57,7 @@ export default defineConfig({
 });
 ```
 
-![Renderized schema](../_images/app-management/schema-render.png)
+![Rendered schema](../_images/app-management/schema-render.png)
 
 ## Schema properties
 
@@ -88,21 +88,23 @@ The following field types are available for your `businessConfig` schema:
 
 ### Password field encryption
 
-Password fields are automatically encrypted using `AES-256-GCM` when stored and decrypted when retrieved. When you [validate your schema](#validate-your-schema), the encryption key is automatically generated if not already configured.
+Password fields are automatically encrypted using `AES-256-GCM` when stored and decrypted when retrieved.
 
-The validation process:
-
-1. Generates a secure 256-bit encryption key.
-
-1. Adds a `AIO_COMMERCE_CONFIG_ENCRYPTION_KEY` to your `.env` file.
-
-1. Sets the key in your environment for immediate use.
-
-You can also manually generate a key by using the CLI:
+To validate that your encryption key is properly configured, run:
 
 ```bash
-npx @adobe/aio-commerce-lib-config encryption setup
+npx aio-commerce-lib-config encryption validate
 ```
+
+This command is executed automatically during the `pre-app-build` hook.
+
+To manually generate an encryption key, use:
+
+```bash
+npx aio-commerce-lib-config encryption setup
+```
+
+This generates a secure 256-bit encryption key and adds `AIO_COMMERCE_CONFIG_ENCRYPTION_KEY` to your `.env` file.
 
 <InlineAlert variant="warning" slots="text"/>
 
@@ -129,27 +131,13 @@ For fields that allow multiple selections, set `selectionMode` to `multiple` and
 }
 ```
 
-## Validate your schema
+## Schema requirements
 
-Run validation before deploying:
+Your `app.commerce.config` is validated each time you run a generate command (for example, `npx aio-commerce-lib-app generate all`). The schema validation checks for:
 
-```bash
-npx @adobe/aio-commerce-lib-config validate schema
-````
-
-<InlineAlert variant="info" slots="text"/>
-
-This will only function properly if `@adobe/aio-commerce-lib-config` is installed and included in your `package.json` file.
-
-Validation checks that your configuration matches the expected schema. Common errors include:
-
-* **Type mismatches**. A `text` field with a `number` default
-* **Missing properties**. Fields must have `name`, `label`, and `type`
-* **Missing encryption key**. If your schema contains password fields without a configured encryption key, the validation automatically generates one. See [Password field encryption](#password-field-encryption) for details.
-
-<InlineAlert variant="info" slots="text"/>
-
-By default, schema validation runs automatically during `aio app build` through the `pre-app-build` hook configured by the library.
+* **Required properties**. Fields must have `name`, `label`, and `type`.
+* **Type-matched defaults**. Default values must match the field type (for example, a `text` field cannot have a `number` default).
+* **Encryption key for passwords**. If your schema contains password fields, configure an encryption key. See [Password field encryption](#password-field-encryption) for more information.
 
 ## Retrieve configuration at runtime
 

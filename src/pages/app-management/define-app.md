@@ -67,4 +67,4 @@ export default defineConfig({
 });
 ```
 
-See [Initialize your app](./initialize-app.md) for setup instructions and [Build and deploy](./build-deploy.md) for information about generated runtime actions and project structure.
+See [Initialize your app](./initialize-app.md) for setup instructions and [Build and deploy](./build-deploy.md) for information about generated runtime actions and project structure. If your schema includes password fields, see [Password field encryption](./configuration-schema.md#password-field-encryption).

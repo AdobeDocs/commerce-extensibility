@@ -62,7 +62,7 @@ Follow these steps to set up and deploy an App Builder application with App Mana
 
 1. **Define your app**. Add your [app metadata](./app-metadata.md) and [business configuration](./configuration-schema.md).
 
-1. **Configure event subscriptions**. Set up [event subscriptions](./installation/events.md) to respond to Commerce and external events.
+1. **Configure events**. Set up [events](./installation/events.md) to respond to Commerce and external events.
 
 1. (Optional) **Add custom installation steps**. Define [custom installation scripts](./installation/custom-installation.md) that run when merchants install your app.
 

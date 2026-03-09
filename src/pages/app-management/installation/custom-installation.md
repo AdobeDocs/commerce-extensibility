@@ -119,4 +119,4 @@ export default defineCustomInstallationStep(async (config, context) => {
 * If any script throws an error, the installation fails and subsequent scripts are not executed
 * Scripts have access to the complete app configuration
 
-After modifying custom installation scripts, run `npx @adobe/aio-commerce-lib-app generate actions` to regenerate the installation action.
+After modifying custom installation scripts, run `npx aio-commerce-lib-app generate actions` to regenerate the installation action.

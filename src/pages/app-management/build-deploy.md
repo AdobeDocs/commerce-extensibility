@@ -55,7 +55,15 @@ The scope tree action supports syncing scopes from Adobe Commerce (requires `com
 
 ## Build and deploy
 
-Build and deploy your application:
+After making changes to your `app.commerce.config` file, regenerate the runtime actions before building:
+
+```bash
+npx aio-commerce-lib-app generate actions
+```
+
+The manifest and schema files are automatically regenerated during the `pre-app-build` hook, but runtime actions require manual regeneration.
+
+Then build and deploy your application:
 
 ```bash
 aio app build

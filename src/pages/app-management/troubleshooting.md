@@ -28,7 +28,7 @@ The entire `app.commerce.config` is validated each time you run a generate comma
 1. Manually run:
 
 ```bash
-npx aio-commerce-lib-app generate all.
+npx aio-commerce-lib-app generate all
 ```
 
 ## App not appearing in App Management

@@ -1,7 +1,6 @@
 ---
 title: App Management overview
 description: Learn how to manage App Builder applications in Adobe Commerce.
-edition: paas
 keywords:
   - App Builder
   - Extensibility
@@ -10,15 +9,13 @@ keywords:
 
 # App Management overview
 
-<InlineAlert variant="warning" slots="text" />
-
-**Adobe Commerce App Management is for Beta users only and is not yet accessible to all customers.**
-
 App Management provides a unified experience for installing, configuring, and managing App Builder applications in Adobe Commerce. Define your configuration schema once, and the system auto-generates the runtime actions and Admin UI, with no custom code required.
 
 App developers define the configuration schema, metadata, and runtime actions for their applications. App managers associate and configure deployed apps within their Commerce instances.
 
-![App Management UI](../_images/app-management/app-management-ui.png)
+The following diagram illustrates the workflow between app developers and app managers:
+
+![App Management workflow](../_images/app-management/app-management-workflow.png)
 
 ## Key benefits
 
@@ -26,36 +23,51 @@ App developers define the configuration schema, metadata, and runtime actions fo
 
 * **Auto-generated Admin UI**. Configuration forms are rendered dynamically based on your schema, eliminating custom UI development.
 
-* **Scope inheritance**. Configuration values cascade through Global, Website, Store, and Store View levels.
+* **Event registrations**. Subscribe to Commerce and external events with declarative configuration and automatic event registration.
 
-* **Unified lifecycle management**. Associate, configure, and unassociate apps from a single interface.
+* **Custom installation workflows**. Define pre and post installation messages and custom scripts that run during app installation.
+
+* **Unified lifecycle management**. Associate, configure, install, and unassociate apps from a single interface.
 
 ## Requirements
 
 Before using App Management, ensure the following:
 
-* [Admin UI SDK](../admin-ui-sdk/index.md) version 3.3.0 is required for App Management. Verify your version before proceeding.
+* [Admin UI SDK](../admin-ui-sdk/index.md) version 3.3.1, or greater, is required for App Management. [Verify your version](../admin-ui-sdk/installation.md#install-the-admin-ui-sdk) before proceeding.
 
-* App managers (Admin users) who associate apps must have App Management permissions. See [Associate and configure apps](./associate-apps.md).
+* App managers (Admin users) who associate apps must have App Management permissions. See [Manage your app](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app) for more information.
 
 * App Builder applications with the following minimum library versions.
 
-  * `@adobe/aio-commerce-lib-config` version 0.11.1 or later.
-  * `@adobe/aio-commerce-lib-api` version 0.6.0 or later.
-  * `@adobe/aio-commerce-sdk` version 0.7.2 or later.
+  * `@adobe/aio-commerce-lib-config` version 1.0.0 or later.
+  * `@adobe/aio-commerce-lib-app` version 1.0.0 or later.
+  * `@adobe/aio-commerce-sdk` version 1.0.0 or later.
+
+## SDK libraries
+
+App Management uses the [Adobe Commerce SDK](https://github.com/adobe/aio-commerce-sdk) libraries:
+
+| Library | Description |
+|---------|-------------|
+| `@adobe/aio-commerce-lib-app` | App definition, validation, and manifest generation. |
+| `@adobe/aio-commerce-lib-config` | Configuration management with scope trees and inheritance. |
 
 ## How it works
 
+All App Management configuration is defined in the `app.commerce.config` file at the root of your project. This single file contains your app metadata, business configuration schema, event subscriptions, and installation settings.
+
 Follow these steps to set up and deploy an App Builder application with App Management:
 
-1. **Define app metadata**. Add your [app metadata](./app-metadata.md) in `app.commerce.config`.
+1. **Initialize your app**. Run the [initialization command](./initialize-app.md) to set up your project and create the `app.commerce.config` file.
 
-1. **Define your configuration schema**. Create your [configuration schema](./configuration-schema.md) in `app.commerce.config`.
+1. **Define your app**. Add your [app metadata](./app-metadata.md) and [business configuration](./configuration-schema.md).
 
-1. Setup your project to use business configuration. See the [runtime actions section](./runtime-actions.md) for the required steps.
+1. **Configure events**. Set up [events](./installation/events.md) to respond to Commerce and external events.
 
-1. **Deploy**. Build and deploy your app with the `aio app build && aio app deploy` command.
+1. **Customize installation**. Define [installation messages and custom scripts](./installation/customize.md) that run when merchants install your app.
 
-1. **Link your app**. [Associate your app](./associate-apps.md) with a Commerce instance in the Admin.
+1. **Build and deploy**. [Build and deploy](./build-deploy.md) your app with the `aio app build && aio app deploy` commands.
+
+1. **Link your app**. [Associate your app](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app) with a Commerce instance in the Admin.
 
 1. **Configure settings**. Merchants configure settings through the auto-generated UI.

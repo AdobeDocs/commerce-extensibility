@@ -58,19 +58,13 @@ The command automatically detects your package manager and uses the appropriate 
 
 The library provides the following CLI commands:
 
-```bash
-# Initialize the project (recommended for first-time setup)
-npx @adobe/aio-commerce-lib-app init
-
-# Generate all artifacts (manifest + schema + runtime actions)
-# The @adobe prefix is only required for the init command
-npx aio-commerce-lib-app generate all
-
-# Or generate individually:
-npx aio-commerce-lib-app generate manifest
-npx aio-commerce-lib-app generate actions
-npx aio-commerce-lib-app generate schema
-```
+| Command | Description |
+|---------|-------------|
+| `npx @adobe/aio-commerce-lib-app init` | Initialize the project. Recommended for a first-time setup. The `@adobe` prefix is only required for this command |
+| `npx aio-commerce-lib-app generate all` | Generate all artifacts (manifest, schema, and runtime actions) |
+| `npx aio-commerce-lib-app generate manifest` | Generate only the app manifest file |
+| `npx aio-commerce-lib-app generate actions` | Generate only runtime actions |
+| `npx aio-commerce-lib-app generate schema` | Generate only the configuration schema |
 
 ## Update the library
 

@@ -15,7 +15,7 @@ Create an `app.commerce.config` file consisting of **[app metadata](./app-metada
 
 <InlineAlert variant="info" slots="text"/>
 
-The `app.commerce.config` file supports both JavaScript (`app.commerce.config.js`) and TypeScript (`app.commerce.config.ts`) file types.
+The `app.commerce.config` file supports both JavaScript and TypeScript file types.
 
 ## Example
 

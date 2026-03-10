@@ -28,9 +28,9 @@ Complete the following steps before initializing your app:
    * **I/O Events for Adobe Commerce**. Required only if your app uses events.
    * **Adobe Commerce as a Cloud Service**. Required only for Adobe Commerce as a Cloud Service instances.
 
-   <InlineAlert variant="info" slots="text"/>
+<InlineAlert variant="info" slots="text"/>
 
-   Only add the services your app needs. This keeps your credentials scoped to the minimum required permissions.
+Only add the services your app needs. This keeps your credentials scoped to the minimum required permissions.
 
 1. **Set up App Builder**
 
@@ -52,7 +52,7 @@ The initialization process:
 * Generates all required artifacts (`commerce/configuration/1` resources are only generated when `businessConfig` is defined)
 * Updates `app.config.yaml` and `install.yaml` with the appropriate extension references. Creates these files if they do not exist.
 
-The command automatically detects your package manager (for example, npm) and uses the appropriate commands.
+The command automatically detects your package manager and uses the appropriate package runner (`npx` for npm, `yarn dlx` for Yarn, `pnpm dlx` for pnpm, `bunx` for Bun).
 
 ## CLI commands
 

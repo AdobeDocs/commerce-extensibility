@@ -21,22 +21,12 @@ The entire `app.commerce.config` is validated each time you run a generate comma
 
 1. **Valid metadata**. App metadata must include `id`, `displayName`, `description`, and `version`.
 
-## Runtime actions not generated
-
-1. Verify `app.commerce.config` exists with valid configuration.
-
-1. Manually run:
-
-  ```bash
-  npx aio-commerce-lib-app generate all
-  ```
-
 ## App not appearing in App Management
 
 1. Verify app is deployed:
 
   ```bash
-  aio app deploy
+  aio app deploy --force-build --force-deploy
   ```
 
 1. Check runtime actions are generated in `.generated` folders.
@@ -45,13 +35,15 @@ The entire `app.commerce.config` is validated each time you run a generate comma
 
 1. Verify correct organization in Developer Console.
 
-## Configuration not saving
+### Runtime actions not generated
 
-1. Check for validation errors in the Admin UI.
+1. Verify `app.commerce.config` exists with valid configuration.
 
-1. Verify that runtime actions are deployed.
+1. Manually run:
 
-1. Check your browser console for errors.
+  ```bash
+  npx aio-commerce-lib-app generate all
+  ```
 
 ## Encryption key errors
 

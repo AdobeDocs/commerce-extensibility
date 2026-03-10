@@ -41,7 +41,7 @@ Only add the services your app needs. This keeps your credentials scoped to the 
 Run the following command to set up your App Builder project:
 
 ```bash
-npx aio-commerce-lib-app init
+npx @adobe/aio-commerce-lib-app init
 ```
 
 The initialization process:
@@ -63,12 +63,13 @@ The library provides the following CLI commands:
 npx @adobe/aio-commerce-lib-app init
 
 # Generate all artifacts (manifest + schema + runtime actions)
-npx @adobe/aio-commerce-lib-app generate all
+# The @adobe prefix is only required for the init command
+npx aio-commerce-lib-app generate all
 
 # Or generate individually:
-npx @adobe/aio-commerce-lib-app generate manifest
-npx @adobe/aio-commerce-lib-app generate actions
-npx @adobe/aio-commerce-lib-app generate schema
+npx aio-commerce-lib-app generate manifest
+npx aio-commerce-lib-app generate actions
+npx aio-commerce-lib-app generate schema
 ```
 
 ## Update the library

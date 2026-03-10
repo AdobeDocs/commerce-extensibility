@@ -23,17 +23,17 @@ The following diagram illustrates the workflow between app developers and app ma
 
 * **Auto-generated Admin UI**. Configuration forms are rendered dynamically based on your schema, eliminating custom UI development.
 
-* **Event subscriptions**. Subscribe to Commerce and external events with declarative configuration and automatic event registration.
+* **Event registrations**. Subscribe to Commerce and external events with declarative configuration and automatic event registration.
 
 * **Custom installation workflows**. Define pre and post installation messages and custom scripts that run during app installation.
 
-* **Unified lifecycle management**. Associate, configure, and unassociate apps from a single interface.
+* **Unified lifecycle management**. Associate, configure, install, and unassociate apps from a single interface.
 
 ## Requirements
 
 Before using App Management, ensure the following:
 
-* [Admin UI SDK](../admin-ui-sdk/index.md) version 3.3.0 is required for App Management. Verify your version before proceeding.
+* [Admin UI SDK](../admin-ui-sdk/index.md) version 3.3.1, or greater, is required for App Management. [Verify your version](../admin-ui-sdk/installation.md#install-the-admin-ui-sdk) before proceeding.
 
 * App managers (Admin users) who associate apps must have App Management permissions. See [Manage your app](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app) for more information.
 

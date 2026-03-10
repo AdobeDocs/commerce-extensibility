@@ -64,6 +64,55 @@ export default defineConfig({
       },
     ],
   },
+  eventing: {
+    commerce: [
+      {
+        provider: {
+          label: "Commerce Events Provider",
+          description: "A description for your Commerce Events provider.",
+        },
+        events: [
+          {
+            name: "observer.catalog_product_save_commit_after",
+            fields: [{ name: "sku" }],
+            label: "Product Save Commit After",
+            description: "Used to react to a product save in Commerce",
+            runtimeActions: ["my-package/handle-event"],
+            priority: true,
+          },
+        ],
+      },
+    ],
+    external: [
+      {
+        provider: {
+          label: "External Events Provider",
+          description: "A description for your External Events provider.",
+        },
+        events: [
+          {
+            name: "external.sample_event",
+            label: "External Sample Event",
+            description: "An event reacting to something in an external system.",
+            runtimeActions: ["my-package/handle-event"],
+          },
+        ],
+      },
+    ],
+  },
+  installation: {
+    messages: {
+      preInstallation: "Do something before installation",
+      postInstallation: "Do something after installation",
+    },
+    customInstallationSteps: [
+      {
+        name: "custom-step",
+        description: "Run custom logic after installation",
+        script: "./scripts/custom.js",
+      },
+    ],
+  },
 });
 ```
 

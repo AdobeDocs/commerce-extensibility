@@ -39,9 +39,9 @@ Before using App Management, ensure the following:
 
 * App Builder applications with the following minimum library versions.
 
-  * `@adobe/aio-commerce-lib-config` version 0.11.1 or later.
-  * `@adobe/aio-commerce-lib-app` version 0.6.0 or later.
-  * `@adobe/aio-commerce-sdk` version 0.7.2 or later.
+  * `@adobe/aio-commerce-lib-config` version 1.0.0 or later.
+  * `@adobe/aio-commerce-lib-app` version 1.0.0 or later.
+  * `@adobe/aio-commerce-sdk` version 1.0.0 or later.
 
 ## SDK libraries
 

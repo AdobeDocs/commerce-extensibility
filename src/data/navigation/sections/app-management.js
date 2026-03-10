@@ -27,10 +27,6 @@ module.exports = [
                         title: "Events",
                         path: "/app-management/installation/events.md"
                     },
-                    {
-                        title: "Custom installation",
-                        path: "/app-management/installation/custom-installation.md"
-                    },
                 ],
             },
         ],

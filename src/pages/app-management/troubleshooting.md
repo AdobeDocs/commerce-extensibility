@@ -25,17 +25,25 @@ The entire `app.commerce.config` is validated each time you run a generate comma
 
 1. Verify `app.commerce.config` exists with valid configuration.
 
-1. Run manually: `npx aio-commerce-lib-app generate all`.
+1. Manually run:
+
+```bash
+npx aio-commerce-lib-app generate all.
+```
 
 ## App not appearing in App Management
 
-1. Verify app is deployed: `aio app deploy`
+1. Verify app is deployed:
 
-1. Check runtime actions are generated in `.generated` folders
+```bash
+aio app deploy
+```
 
-1. Confirm valid configuration schema
+1. Check runtime actions are generated in `.generated` folders.
 
-1. Verify correct organization in Developer Console
+1. Confirm valid configuration schema.
+
+1. Verify correct organization in Developer Console.
 
 ## Configuration not saving
 
@@ -47,13 +55,13 @@ The entire `app.commerce.config` is validated each time you run a generate comma
 
 ## Encryption key errors
 
-To validate your encryption key configuration, run:
+1. Validate your encryption key configuration.
 
 ```bash
 npx aio-commerce-lib-config encryption validate
 ```
 
-To generate a new encryption key, run:
+1. Generate an encryption key (only creates one if it does not already exist).
 
 ```bash
 npx aio-commerce-lib-config encryption setup

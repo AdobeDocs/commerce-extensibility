@@ -64,7 +64,7 @@ Follow these steps to set up and deploy an App Builder application with App Mana
 
 1. **Configure events**. Set up [events](./installation/events.md) to respond to Commerce and external events.
 
-1. (Optional) **Add custom installation steps**. Define [custom installation scripts](./installation/custom-installation.md) that run when merchants install your app.
+1. (Optional) **Add custom installation steps**. Define [custom installation scripts](./installation/index.md#custom-installation-steps) that run when merchants install your app.
 
 1. **Build and deploy**. [Build and deploy](./build-deploy.md) your app with the `aio app build && aio app deploy` commands.
 

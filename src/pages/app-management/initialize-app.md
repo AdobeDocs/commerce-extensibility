@@ -26,7 +26,7 @@ Complete the following steps before initializing your app:
    * **I/O Management API**. Required for App Builder runtime actions.
    * **I/O Events**. Required only if your app uses events.
    * **I/O Events for Adobe Commerce**. Required only if your app uses events.
-   * **Adobe Commerce as a Cloud Service**. Required only for Adobe Commerce as a Cloud Service (ACCS) instances.
+   * **Adobe Commerce as a Cloud Service**. Required only for Adobe Commerce as a Cloud Service instances.
 
    <InlineAlert variant="info" slots="text"/>
 
@@ -50,7 +50,7 @@ The initialization process:
 * Installs required dependencies (`@adobe/aio-commerce-lib-app`, `@adobe/aio-commerce-sdk`, and `@adobe/aio-commerce-lib-config` when business configuration is enabled)
 * Adds a `postinstall` hook to `package.json`
 * Generates all required artifacts (`commerce/configuration/1` resources are only generated when `businessConfig` is defined)
-* Updates `app.config.yaml` and `install.yaml` with the appropriate extension references. Creates these files if not existing.
+* Updates `app.config.yaml` and `install.yaml` with the appropriate extension references. Creates these files if they do not exist.
 
 The command automatically detects your package manager (for example, npm) and uses the appropriate commands.
 
@@ -79,7 +79,7 @@ When a new version of the library is available, update your project to get the l
 npm install @adobe/aio-commerce-lib-app@latest @adobe/aio-commerce-sdk@latest
 ```
 
-If you use a business configuration, also update:
+If you use a business configuration, also run the following command:
 
 ```bash
 npm install @adobe/aio-commerce-lib-config@latest

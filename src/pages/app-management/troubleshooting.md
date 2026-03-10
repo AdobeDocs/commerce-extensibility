@@ -39,11 +39,11 @@ The entire `app.commerce.config` is validated each time you run a generate comma
 
 ## Configuration not saving
 
-1. Check for validation errors in the Admin UI
+1. Check for validation errors in the Admin UI.
 
-1. Verify runtime actions are deployed
+1. Verify that runtime actions are deployed.
 
-1. Check browser console for errors
+1. Check your browser console for errors.
 
 ## Encryption key errors
 

@@ -119,6 +119,10 @@ export async function pageable<T>(
 }
 ```
 
+## More information
+
+See [Dealing with Application State](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/storage/application-state) for more information on Adobe I/O State.
+
 ## Adobe I/O File library
 
 Consider the following benefits and limitations when using the Adobe I/O File library.
@@ -138,6 +142,10 @@ The `aio-lib-files` library has some limitations from both in practice and from 
 * The development team ran into errors when trying to run an asynchronous version. Additionally, there were issues with simultaneously reading and writing file storage.
 
 * Developers must distinguish between public and non-public folders when modifying bucket permissions.
+
+## More information
+
+See [Dealing with Application State](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/storage/application-state) for more information on Adobe I/O Files.
 
 ## Adobe I/O Database library
 
@@ -296,3 +304,7 @@ Databases provided by App Builder Database Storage are completely independent of
 Although quite powerful, App Builder Database Storage, as a document style database, is not intended as a replacement for relational databases. When an application requires complex and highly structured database storage with formal schemas and extended transactional support, connecting to an external relational database may be the best choice.
 
 App Builder Database Storage, as a hosted service, does not provide direct access to the underlying AWS DocumentDB service. This is done both for the sake of security (it is a multi-tenant service and Adobe must control access to the underlying infrastructure) and for the sake of convenience (there is no need for developers to provision or maintain that infrastructure). As a result, developers do not have as much low level control over their databases in order to leverage advanced features such as sharding and other potential optimizations, but we are confident that in most cases that should not be necessary.
+
+## More information
+
+See [Getting started with Database Storage](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/storage/database) for more information on Adobe I/O Database.

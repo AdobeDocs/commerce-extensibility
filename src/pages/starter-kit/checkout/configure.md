@@ -21,6 +21,7 @@ Select one of the following modules to learn about the available scripts:
 - [Payment](./payment-install.md#configuration)
 - [Shipping](./shipping-install.md#configuration)
 - [Tax](./tax-install.md#configuration)
+- [Totals collector](./totals-collector-install.md#configuration)
 
 ## Configure OAuth Server-to-Server Credential
 

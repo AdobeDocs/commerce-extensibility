@@ -111,4 +111,18 @@ module.exports = [
       },
     ],
   },
+  {
+    title: "Totals collector",
+    path: "/starter-kit/checkout/totals-collector-install/",
+    pages: [
+      {
+        title: "Totals collector module installation",
+        path: "/starter-kit/checkout/totals-collector-install/",
+      },
+      {
+        title: "Totals collector use cases",
+        path: "/starter-kit/checkout/totals-collector-use-cases/",
+      },
+    ],
+  },
 ];

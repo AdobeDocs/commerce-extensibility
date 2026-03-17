@@ -11,6 +11,8 @@ keywords:
 
 App Management provides a unified experience for installing, configuring, and managing App Builder applications in Adobe Commerce. Define your configuration schema once, and the system auto-generates the runtime actions and Admin UI, with no custom code required.
 
+![App Management view](../_images/app-management/app-management-view.png)
+
 App developers define the configuration schema, metadata, and runtime actions for their applications. App managers associate and configure deployed apps within their Commerce instances.
 
 The following diagram illustrates the workflow between app developers and app managers:

@@ -89,18 +89,18 @@ Your endpoint can use this data (items, quantities, prices, customer/quote attri
 
 ## Response format
 
-The webhook endpoint must return a **JSON Patch** (RFC 6902) array. To supply discount data that the built-in discount handler applies, use a `replace` operation on the `result` path with a value object that matches the totals collector result schema.
+The webhook endpoint must return a **JSON Patch** (RFC 6902) array. To supply discount data that the built-in discount handler applies, use a `replace` operation on the `result` path. The `value` object is mapped to `TotalModificationsResultInterface`; handlers (e.g. `DiscountHandler`) read it via getters and apply the data to the quote totals and items.
 
 ### Result object (discount handler)
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `code` | string | Modification code. Use `"discount"` for the built-in discount handler. |
-| `base_discount` | float | Discount amount in base currency, or percentage value when `discount_type` is `"percentage"`. |
-| `discount_description_array` | array | Labels shown on cart/checkout (e.g. `["My Custom Discount"]`). |
-| `discount_rule_id_array` | array | Optional rule IDs for display or reporting. |
-| `discount_type` | string | `"fixed"` or `"percentage"`. Default `"fixed"`. |
-| `discount_item_id_array` | array | Quote item IDs the discount applies to. Omit or empty = apply to all items. |
+| `code` | string | Modification code (e.g. `"discount"`). Used by handlers to identify the type of total modification. |
+| `base_discount` | float | The discount amount in base currency to apply to the quote totals. When `discount_type` is `"percentage"`, this is the percentage value and the amount is derived from the basis (subtotal or item). |
+| `discount_description_array` | array | List of discount description labels to display on the cart/checkout. |
+| `discount_rule_id_array` | array | Optional list of rule IDs associated with the discount, for display or reporting. |
+| `discount_type` | string | `"fixed"` or `"percentage"`. Default `"fixed"`. When `"fixed"`, `base_discount` is the amount; when `"percentage"`, it is the percentage and the amount is derived from the basis. |
+| `discount_item_id_array` | array | When the discount applies to specific items, list of quote item IDs or indices (e.g. `[0, 1, 2]`). Empty or omitted when the discount applies to subtotal. |
 
 ### Example: fixed discount on entire cart
 
@@ -144,7 +144,7 @@ When `discount_type` is `"percentage"`, the system calculates and distributes th
 
 ### Example: fixed discount on specific items
 
-For a fixed discount, you can optionally return item-level discount amounts via additional patch operations:
+You may also include additional JSON Patch operations in the same response when `discount_type` is `"fixed"` and you want to apply specific discount amounts to individual quote items:
 
 ```json
 [
@@ -173,7 +173,9 @@ For a fixed discount, you can optionally return item-level discount amounts via 
 ]
 ```
 
-Item paths use zero-based indices into `shippingAssignment.items`. The handler converts base amounts to store currency and updates totals and GraphQL discount data.
+Item paths use zero-based indices into `shippingAssignment.items`. This allows the external service to explicitly set the discount amount for particular items. The handler converts base amounts to store currency and updates totals and GraphQL discount data.
+
+When `discount_type` is `"percentage"`, item-level discount values do not need to be returned in the patch response. The system automatically calculates and distributes the discount across the applicable items based on the provided percentage.
 
 ## Use cases
 

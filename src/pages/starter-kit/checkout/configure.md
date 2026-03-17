@@ -14,7 +14,7 @@ This section provides an overview of configuring out-of-process extensibility on
 
 All the configurations in your app must align with the [App Builder Configuration file guidelines](https://developer.adobe.com/app-builder/docs/guides/configuration/). In addition, the starter kit provides a set of [scripts](https://github.com/adobe/commerce-checkout-starter-kit/tree/main/scripts) to help you get started with your project.
 
-## Configure Payment, Shipping, or Tax modules
+## Configure Payment, Shipping, Tax or Totals-Collector modules
 
 Select one of the following modules to learn about the available scripts:
 

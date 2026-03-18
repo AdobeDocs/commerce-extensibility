@@ -152,7 +152,9 @@ async function main(params) {
 
   // Use values in your app logic
   const { config: { value: endpoint } } = await getConfigurationByKey("api-endpoint", byCodeAndLevel(storeCode, storeLevel));
-  const { config: { value: apiKey } } = await getConfigurationByKey("api-key", byCodeAndLevel(storeCode, storeLevel));
+  const { config: { value: apiKey } } = await getConfigurationByKey("api-key", byCodeAndLevel(storeCode, storeLevel), {
+    encryptionKey: params.AIO_COMMERCE_CONFIG_ENCRYPTION_KEY,
+  });
 }
 ```
 

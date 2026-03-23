@@ -162,10 +162,10 @@ The unsubscribe endpoint allows you to delete an existing webhook subscription. 
 ```json
 {
   "webhook": {
-    "webhook_method": "observer.checkout_cart_product_add_before",
-    "webhook_type": "after",
-    "batch_name": "add_product",
-    "hook_name": "validate_product"
+    "webhookMethod": "observer.checkout_cart_product_add_before",
+    "webhookType": "after",
+    "batchName": "add_product",
+    "hookName": "validate_product"
   }
 }
 ```

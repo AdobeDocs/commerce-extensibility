@@ -5,12 +5,11 @@ keywords:
   - App Builder
   - Extensibility
   - App Management
-  - Events
 ---
 
 # Events
 
-The `eventing` field in your `app.commerce.config` file allows you to configure event sources for your application. There are two types of event sources:
+The `events` field in your `app.commerce.config` file allows you to configure event sources for your application. There are two types of event sources:
 
 * **commerce** (for Adobe Commerce events).
 * **external** (for third-party events).
@@ -137,4 +136,4 @@ Both commerce and external event sources require a provider configuration:
 
 ## Related topics
 
-To manage Commerce webhook subscriptions and build webhook handler responses from code, see [Webhooks](./webhooks.md).
+To declare Commerce webhooks in `app.commerce.config` for App Management (separate from event subscriptions), see [Webhooks](./webhooks.md).

@@ -1,135 +1,138 @@
 ---
 title: Webhooks
-description: Use Commerce Webhooks API from App Builder with aio-commerce-lib-webhooks
+description: Declare Commerce webhooks in app.commerce.config for App Management
 keywords:
   - App Builder
   - Extensibility
   - App Management
-  - Webhooks
 ---
 
 # Webhooks
 
-Use [`@adobe/aio-commerce-lib-webhooks`](https://github.com/adobe/aio-commerce-sdk/tree/main/packages/aio-commerce-lib-webhooks) to work with the [Adobe Commerce Webhooks API](https://developer.adobe.com/commerce/extensibility/webhooks/) from your App Builder runtime actions. This is separate from [external events](./events.md#external-events) in `app.commerce.config`, which declare subscriptions for I/O Events; the webhooks library manages Commerce webhook subscriptions and builds handler responses.
+The `webhooks` field in your `app.commerce.config` file declares [Adobe Commerce webhook](https://developer.adobe.com/commerce/extensibility/webhooks/) subscriptions for your application. App Management uses this definition so merchants can review and complete webhook setup in the Admin UI, similarly to how [Events](./events.md) are declared for event subscriptions.
 
-## Capabilities
+You define **what** webhooks exist, **which** Commerce methods they use, batches and hooks, fields, rules, and headers. Each entry either points Commerce at a **fixed URL** or names a **runtime action** that resolves the webhook URL when the app runs.
 
-* **Webhooks API client** — List, subscribe, and unsubscribe webhook subscriptions in Commerce
-* **Webhook operations** — Build responses such as success, exception, add, replace, and remove
-* **Action response helpers** — Combine operations with HTTP responses (for example, `ok()`)
-* **TypeScript** — Discriminated unions, generics, and preset or builder helpers where applicable
+Store administrators use App Management to associate and configure the app. For prerequisites and access, see [commerce webhooks and apps](https://experienceleague.adobe.com/en/docs/commerce/app-management/install#commerce-webhooks-and-apps) on Experience League.
 
-## Installation
+## Webhook entries
 
-Run the following command:
+Add a `webhooks` array at the top level of `defineConfig`. When present, it must contain **at least one** entry.
 
-```bash
-npm install @adobe/aio-commerce-lib-webhooks
-```
+Each entry must use **one** of these patterns (not both):
 
-## Package entry points
+1. **`runtimeAction`**. No `url` inside `webhook`. The runtime action (format `package/action`) supplies the webhook URL at runtime. Optional `requireAdobeAuth` controls Adobe auth on that resolution path.
 
-The package exposes dedicated subpaths for tree-shaking:
+1. **Explicit `url`**. The nested `webhook` object includes a valid absolute `https` URL. Do **not** set `runtimeAction` on the entry.
 
-| Entry | Purpose |
-|-------|---------|
-| `@adobe/aio-commerce-lib-webhooks/api` | Webhooks API client and standalone API functions |
-| `@adobe/aio-commerce-lib-webhooks/responses` | Webhook operations and HTTP response helpers |
+Commerce properties:
 
-## Webhooks API client
+| Property | Type | Required | Description |
+|----------|------|----------|-------------|
+| `label` | string | Yes | Display label in App Management. |
+| `description` | string | Yes | Description shown in App Management. |
+| `category` | string | No | One of `validation`, `append`, or `modification` (used for conflict grouping). |
+| `runtimeAction` | string | Conditional | Required when not using an explicit `url` in `webhook`. Runtime action that resolves the webhook URL. |
+| `requireAdobeAuth` | boolean | No | When using `runtimeAction`, whether Adobe authentication is required. |
+| `webhook` | object | Yes | Webhook method, hook identity, HTTP method, and optional fields, rules, headers, timeouts, and either a `url` or no `url` (if `runtimeAction` is set). |
 
-Create a client with your Commerce base URL, flavor (`paas` or `saas`), and authentication (IMS or integration, same patterns as other Commerce SDK clients).
+### Nested `webhook` object
 
-```typescript
-import { createCommerceWebhooksApiClient } from "@adobe/aio-commerce-lib-webhooks/api";
+The `webhook` object contains the following properties:
 
-const client = createCommerceWebhooksApiClient({
-  config: {
-    baseUrl: "https://my-commerce-instance.com",
-    flavor: "paas",
+| Property | Type | Required | Description |
+|----------|------|----------|-------------|
+| `webhook_method` | string | Yes | Commerce webhook method (for example, `observer.catalog_product_save_after`). |
+| `webhook_type` | string | Yes | Typically `before` or `after` the original action. |
+| `batch_name` | string | Yes | Batch identifier. Letters, numbers, and underscores only. |
+| `hook_name` | string | Yes | Hook identifier within the batch. Same character rules as `batch_name`. |
+| `method` | string | Yes | HTTP method for the outbound request (for example, `POST`). |
+| `url` | string | Conditional | Absolute HTTPS URL. Required when the entry does **not** use `runtimeAction`. Omit when using `runtimeAction`. |
+| `batch_order` | number | No | Positive number; order among batches. |
+| `priority` | number | No | Positive priority hint. |
+| `required` | boolean | No | Whether the hook is required. |
+| `soft_timeout` | number | No | Positive soft timeout. |
+| `timeout` | number | No | Positive timeout. |
+| `fallback_error_message` | string | No | Message if the webhook fails. |
+| `ttl` | number | No | Positive TTL for cached responses, when applicable. |
+| `fields` | array | No | Payload field mapping. Each item: `name` (required), `source` (optional). |
+| `rules` | array | No | Conditional execution. Each item: `field`, `operator`, `value` (all strings). |
+| `headers` | array | No | Outbound headers. Each item: `name`, `value`. |
+
+## Example with explicit URL
+
+```js
+import { defineConfig } from "@adobe/aio-commerce-lib-app/config"
+
+export default defineConfig({
+  metadata: {
+    // ...
   },
-  auth: {
-    /* IMS or integration auth params */
-  },
+  webhooks: [
+    {
+      label: "Product save notification",
+      description: "POST to your endpoint after a product is saved",
+      category: "append",
+      webhook: {
+        webhook_method: "observer.catalog_product_save_after",
+        webhook_type: "after",
+        batch_name: "product_batch",
+        hook_name: "notify_external",
+        method: "POST",
+        url: "https://my-app.example.com/webhooks/product-save",
+        headers: [
+          { name: "Authorization", value: "Bearer ${token}" },
+        ],
+        fields: [
+          { name: "sku", source: "product.sku" },
+        ],
+      },
+    },
+  ],
 });
 ```
 
-**List subscriptions**
+## Example with runtime action (URL resolved at runtime)
 
-```typescript
-const webhooks = await client.getWebhookList();
-```
+Use this when the webhook URL depends on deployment or configuration resolved by your action (App Management still shows the subscription; the action provides the final URL).
 
-**Subscribe**
+```js
+import { defineConfig } from "@adobe/aio-commerce-lib-app/config"
 
-```typescript
-await client.subscribeWebhook({
-  webhook_method: "observer.catalog_product_save_after",
-  webhook_type: "after",
-  batch_name: "my_batch",
-  hook_name: "my_hook",
-  url: "https://my-app.com/webhook",
-  headers: [{ name: "Authorization", value: "Bearer token123" }],
-  fields: [{ name: "product_id", value: "entity_id" }],
+export default defineConfig({
+  metadata: {
+    // ...
+  },
+  webhooks: [
+    {
+      label: "Cart validation",
+      description: "Runtime-resolved endpoint for cart validation",
+      category: "validation",
+      runtimeAction: "my-package/resolve-webhook-url",
+      requireAdobeAuth: true,
+      webhook: {
+        webhook_method: "observer.checkout_cart_product_add_after",
+        webhook_type: "after",
+        batch_name: "cart_validation",
+        hook_name: "stock_check",
+        method: "POST",
+        rules: [
+          { field: "product.qty", operator: "greaterThan", value: "0" },
+        ],
+      },
+    },
+  ],
 });
 ```
 
-**Unsubscribe**
+After changing `webhooks`, regenerate artifacts and redeploy. See [Build and deploy](../build-deploy.md) for more information.
 
-```typescript
-await client.unsubscribeWebhook({ webhook_id: "123" });
-```
+## Handler implementation (optional)
 
-**Supported webhook methods**
-
-```typescript
-const supportedWebhooks = await client.getSupportedWebhookList();
-```
-
-### Standalone API functions
-
-You can call `getWebhookList`, `subscribeWebhook`, `unsubscribeWebhook`, and `getSupportedWebhookList` with an `AdobeCommerceHttpClient` from `@adobe/aio-commerce-lib-api` instead of using `createCommerceWebhooksApiClient`. See the [usage guide in the SDK repo](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-webhooks/docs/usage.md#using-standalone-functions).
-
-## Webhook operations and responses
-
-Handlers return **HTTP 200** with one or more **operations** that tell Commerce how to treat the event (continue, block with a message, add or change payload data, and so on). **HTTP 4xx/5xx** indicates system or validation failures, not business-rule blocks.
-
-Import helpers from `@adobe/aio-commerce-lib-webhooks/responses`:
-
-| Operation | Role |
-|-----------|------|
-| `successOperation()` | Let the Commerce process continue unchanged |
-| `exceptionOperation()` | Block the process with an error message (optional exception class) |
-| `addOperation()` | Add data to the event |
-| `replaceOperation()` | Replace data on a path in the event |
-| `removeOperation()` | Remove data from the event |
-
-Wrap operations with `ok()` (or equivalent) so the runtime returns the shape Commerce expects.
-
-```typescript
-import { successOperation, ok } from "@adobe/aio-commerce-lib-webhooks/responses";
-
-export async function handleWebhook(params) {
-  return ok(successOperation());
-}
-```
-
-```typescript
-import { exceptionOperation, ok } from "@adobe/aio-commerce-lib-webhooks/responses";
-
-export async function validateStock(params) {
-  if (/* out of stock */) {
-    return ok(
-      exceptionOperation("The product cannot be added to the cart because it is out of stock"),
-    );
-  }
-  return ok(successOperation());
-}
-```
-
-You can return **multiple operations** in one response; they run in order. For full examples (add, replace, remove, generics), see the [package usage guide](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-webhooks/docs/usage.md) and [Commerce webhook responses](https://developer.adobe.com/commerce/extensibility/webhooks/responses/).
+When your runtime action **handles** the HTTP callback from Commerce, you build the response body with [webhook operations](https://developer.adobe.com/commerce/extensibility/webhooks/responses/) (success, exception, add, replace, remove). The [`@adobe/aio-commerce-lib-webhooks`](https://github.com/adobe/aio-commerce-sdk/tree/main/packages/aio-commerce-lib-webhooks) package (responses entry point) is optional tooling for that; declaring webhooks in `app.commerce.config` does not require installing it.
 
 ## Related documentation
 
-* [Adobe Commerce Webhooks](https://developer.adobe.com/commerce/extensibility/webhooks/) references.
-* [`aio-commerce-lib-webhooks` on GitHub](https://github.com/adobe/aio-commerce-sdk/tree/main/packages/aio-commerce-lib-webhooks)
+* [Install and access App Management](https://experienceleague.adobe.com/en/docs/commerce/app-management/install#access-app-management) (Experience League) — user guide for App Management in the Admin.
+* [Adobe Commerce Webhooks](https://developer.adobe.com/commerce/extensibility/webhooks/) — product concepts and Admin behavior.
+* [Webhook responses](https://developer.adobe.com/commerce/extensibility/webhooks/responses/) — operation types for handler actions.

@@ -9,8 +9,8 @@ keywords:
 
 # Installation
 
-The Installation section covers how to configure event subscriptions and customize the installation experience for your App Builder application. Use these features to respond to Commerce events, integrate with external services, and define custom installation workflows.
+The Installation section covers how to configure event subscriptions, declare Commerce webhooks for App Management, and customize the installation experience for your App Builder application.
 
 * [Events](./events.md) - Configure Commerce and external event subscriptions to trigger runtime actions.
-* [Webhooks](./webhooks.md) - Configure Commerce Webhooks API client and response helpers.
+* [Webhooks](./webhooks.md) - Declare Commerce webhook subscriptions in `app.commerce.config` for App Management.
 * [Customize](./customize.md) - Define installation messages and custom scripts that run during app installation.

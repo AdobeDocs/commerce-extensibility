@@ -111,7 +111,7 @@ After completing the previous steps you can:
 
 <Version />
 
-### Install the Payment, Shipping, Tax or Totals-Collector modules
+### Install the individual modules
 
 To install the individual modules, refer to the following topics:
 

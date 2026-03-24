@@ -14,7 +14,7 @@ For more general use cases, refer to [use-cases](./use-cases.md).
 
 ## How it works
 
-The out-of-process totals collector extends Adobe Commerce quote totals collection via [webhooks](../../webhooks/index.md). When the core discount totals collector runs, a plugin invokes the `GetTotalModificationsInterface::execute` API. The webhook framework sends the quote and totals payload to your subscribed endpoint. Your App Builder application computes discounts (or other total modifications) and returns a JSON Patch response. Commerce applies the response to the quote totals and items, and the built-in `DiscountHandler` applies discount data so it appears in cart/checkout and in GraphQL.
+The out-of-process totals collector extends Adobe Commerce quote totals collection with [webhooks](../../webhooks/index.md). When the core discount totals collector runs, a plugin invokes the `GetTotalModificationsInterface::execute` API. The webhook framework sends the quote and totals payload to your subscribed endpoint. Your App Builder application computes discounts (or other total modifications) and returns a JSON Patch response. Commerce applies the response to the quote totals and items, and the built-in `DiscountHandler` applies discount data so it appears in cart/checkout and in GraphQL.
 
 ## Totals collector webhook
 
@@ -89,20 +89,22 @@ Your endpoint can use this data (items, quantities, prices, customer/quote attri
 
 ## Response format
 
-The webhook endpoint must return a **JSON Patch** (RFC 6902) array. To supply discount data that the built-in discount handler applies, use a `replace` operation on the `result` path. The `value` object is mapped to `TotalModificationsResultInterface`; handlers (e.g. `DiscountHandler`) read it via getters and apply the data to the quote totals and items.
+The webhook endpoint must return a **JSON Patch** (RFC 6902) array. To supply discount data that the built-in discount handler applies, use a `replace` operation on the `result` path. The `value` object is mapped to `TotalModificationsResultInterface`; handlers (for example, `DiscountHandler`) read it using getters and apply the data to the quote totals and items.
 
 ### Result object (discount handler)
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `code` | string | Modification code (e.g. `"discount"`). Used by handlers to identify the type of total modification. |
+| Field | Type | Description                                                                                                                                                                                          |
+|-------|------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `code` | string | Modification code (for example, `"discount"`). Used by handlers to identify the type of total modification.                                                                                          |
 | `base_discount` | float | The discount amount in base currency to apply to the quote totals. When `discount_type` is `"percentage"`, this is the percentage value and the amount is derived from the basis (subtotal or item). |
-| `discount_description_array` | array | List of discount description labels to display on the cart/checkout. |
-| `discount_rule_id_array` | array | Optional list of rule IDs associated with the discount, for display or reporting. |
-| `discount_type` | string | `"fixed"` or `"percentage"`. Default `"fixed"`. When `"fixed"`, `base_discount` is the amount; when `"percentage"`, it is the percentage and the amount is derived from the basis. |
-| `discount_item_id_array` | array | When the discount applies to specific items, list of quote item IDs or indices (e.g. `[0, 1, 2]`). Empty or omitted when the discount applies to subtotal. |
+| `discount_description_array` | array | List of discount description labels to display on the cart/checkout.                                                                                                                                 |
+| `discount_rule_id_array` | array | Optional list of rule IDs associated with the discount, for display or reporting.                                                                                                                    |
+| `discount_type` | string | `"fixed"` or `"percentage"`. Default `"fixed"`. When the value is `"fixed"`, `base_discount` is the amount. When the value is `"percentage"`, it is the percentage, and the amount is derived from the basis.                   |
+| `discount_item_id_array` | array | When the discount applies to specific items, list of quote item IDs or indices (e.g. `[0, 1, 2]`). Empty or omitted when the discount applies to subtotal.                                           |
 
 ### Example: fixed discount on entire cart
+
+When `discount_type` is `"fixed"`, `base_discount` is the total discount amount. Item-level discount patch operations are optional and only needed when you want to explicitly distribute the discount across specific quote items; when provided, their sum should equal `base_discount`.
 
 ```json
 [
@@ -123,6 +125,8 @@ The webhook endpoint must return a **JSON Patch** (RFC 6902) array. To supply di
 
 ### Example: percentage discount with description
 
+When `discount_type` is `"percentage"`, the system calculates and distributes the discount across the applicable items; you do not need to return item-level discount amounts in the patch.
+
 ```json
 [
   {
@@ -139,8 +143,6 @@ The webhook endpoint must return a **JSON Patch** (RFC 6902) array. To supply di
   }
 ]
 ```
-
-When `discount_type` is `"percentage"`, the system calculates and distributes the discount across the applicable items; you do not need to return item-level discount amounts in the patch.
 
 ### Example: fixed discount on specific items
 
@@ -177,20 +179,4 @@ Item paths use zero-based indices into `shippingAssignment.items`. This allows t
 
 When `discount_type` is `"percentage"`, item-level discount values do not need to be returned in the patch response. The system automatically calculates and distributes the discount across the applicable items based on the provided percentage.
 
-## Use cases
-
-### External discount engine
-
-Use an external service (e.g. promotion engine, loyalty platform, or headless discount API) to decide discount rules. Your App Builder action receives the quote/totals payload, calls the external API, and returns the JSON Patch with a `result` object and optional item-level patches. Commerce applies the changes and the discount appears in cart and checkout.
-
-### Conditional discounts
-
-Implement logic in your action based on cart content, customer group, or other quote/address data from the payload. Return `base_discount: 0` or omit a `result` replace to apply no discount. You can still return other patch operations if needed.
-
-### Multiple or stacked discounts
-
-The webhook supports a single `result` object per invocation. To model multiple discount lines, include several entries in `discount_description_array` and `discount_rule_id_array`; the handler adds them to the address extension attributes and GraphQL discount list. Alternatively, aggregate multiple rules in your external service and return one combined result.
-
-### No discount (fallback)
-
-If your endpoint fails or times out, the webhook framework uses the configured `fallbackErrorMessage` and no out-of-process modifications are applied. Ensure your endpoint is fast and resilient so totals collection remains reliable.
+For totals collector implementation scenarios and guidance, see [Development considerations](./totals-collector-development-considerations.md).

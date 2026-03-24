@@ -123,6 +123,10 @@ module.exports = [
         title: "Totals collector use cases",
         path: "/starter-kit/checkout/totals-collector-use-cases/",
       },
+      {
+        title: "Totals collector development considerations",
+        path: "/starter-kit/checkout/totals-collector-development-considerations/",
+      },
     ],
   },
 ];

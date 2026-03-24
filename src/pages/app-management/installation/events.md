@@ -134,3 +134,7 @@ Both commerce and external event sources require a provider configuration:
 | `label` | string | Yes | Display name for the provider. Maximum 100 characters. |
 | `description` | string | No | Description of the provider. Maximum 255 characters. |
 | `key` | string | No | Optional unique key for the provider. Maximum 50 characters, alphanumeric with hyphens. |
+
+## Related topics
+
+To manage Commerce webhook subscriptions and build webhook handler responses from code, see [Webhooks](./webhooks.md).

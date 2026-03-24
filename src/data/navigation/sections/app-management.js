@@ -25,7 +25,11 @@ module.exports = [
                 pages: [
                     {
                         title: "Events",
-                        path: "/app-management/installation/events.md"
+                        path: "/app-management/installation/events.md",
+                    },
+                    {
+                        title: "Webhooks",
+                        path: "/app-management/installation/webhooks.md"
                     },
                     {
                         title: "Customize",

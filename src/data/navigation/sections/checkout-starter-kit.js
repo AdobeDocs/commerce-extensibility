@@ -46,19 +46,19 @@ module.exports = [
     path: "/starter-kit/checkout/payment-install/",
     pages: [
       {
-        title: "Payment module installation",
+        title: "Module installation",
         path: "/starter-kit/checkout/payment-install/",
       },
       {
-        title: "Payment use cases",
+        title: "Use cases",
         path: "/starter-kit/checkout/payment-use-cases/",
       },
       {
-        title: "Payment API Javascript usage",
+        title: "Javascript API usage",
         path: "/starter-kit/checkout/payment-usage/",
       },
       {
-        title: "Payment API reference",
+        title: "REST API reference",
         path: "/starter-kit/checkout/payment-reference/",
       },
     ],
@@ -68,23 +68,23 @@ module.exports = [
     path: "/starter-kit/checkout/shipping-install/",
     pages: [
       {
-        title: "Shipping module installation",
+        title: "Module installation",
         path: "/starter-kit/checkout/shipping-install/",
       },
       {
-        title: "Shipping use cases",
+        title: "Use cases",
         path: "/starter-kit/checkout/shipping-use-cases/",
       },
       {
-        title: "Shipping API Javascript usage",
+        title: "Javascript API usage",
         path: "/starter-kit/checkout/shipping-usage/",
       },
       {
-        title: "Shipping API reference",
+        title: "REST API reference",
         path: "/starter-kit/checkout/shipping-reference/",
       },
       {
-        title: "Shipping method extension tutorial",
+        title: "Tutorial",
         path: "https://experienceleague.adobe.com/docs/commerce/cloud-service/tutorials/shipping-method-extension.html"
       },
     ],
@@ -94,19 +94,19 @@ module.exports = [
     path: "/starter-kit/checkout/tax-install/",
     pages: [
       {
-        title: "Tax module installation",
+        title: "Module installation",
         path: "/starter-kit/checkout/tax-install/",
       },
       {
-        title: "Tax use cases",
+        title: "Use cases",
         path: "/starter-kit/checkout/tax-use-cases/",
       },
       {
-        title: "Tax API Javascript usage",
+        title: "Javascript API usage",
         path: "/starter-kit/checkout/tax-usage/",
       },
       {
-        title: "Tax API reference",
+        title: "REST API reference",
         path: "/starter-kit/checkout/tax-reference/",
       },
     ],
@@ -116,15 +116,15 @@ module.exports = [
     path: "/starter-kit/checkout/totals-collector-install/",
     pages: [
       {
-        title: "Totals collector module installation",
+        title: "Module installation",
         path: "/starter-kit/checkout/totals-collector-install/",
       },
       {
-        title: "Totals collector use cases",
+        title: "Use cases",
         path: "/starter-kit/checkout/totals-collector-use-cases/",
       },
       {
-        title: "Totals collector development considerations",
+        title: "Development considerations",
         path: "/starter-kit/checkout/totals-collector-development-considerations/",
       },
     ],

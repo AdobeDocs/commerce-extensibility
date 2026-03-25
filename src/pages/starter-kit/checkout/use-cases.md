@@ -15,6 +15,7 @@ For module-specific use cases, refer to the following pages:
 - [Payment](./payment-use-cases.md)
 - [Shipping](./shipping-use-cases.md)
 - [Tax](./tax-use-cases.md)
+- [Totals collector](./totals-collector-use-cases.md)
 
 ## Third-party events processing
 

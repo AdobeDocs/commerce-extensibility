@@ -57,7 +57,7 @@ The `webhook` object contains the following properties:
 | `url` | string | Conditional | Absolute HTTPS URL. Required when the entry does **not** use `runtimeAction`. Omit when using `runtimeAction`. |
 | `batch_order` | number | No | Positive number; order among batches. |
 | `priority` | number | No | Positive priority hint. |
-| `required` | boolean | No | Whether the hook is required. |
+| `required` | boolean | No | Indicates whether the hook is required. |
 | `soft_timeout` | number | No | Positive soft timeout. |
 | `timeout` | number | No | Positive timeout. |
 | `fallback_error_message` | string | No | Message if the webhook fails. |

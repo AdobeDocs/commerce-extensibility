@@ -16,7 +16,7 @@ The `webhooks` field in your `app.commerce.config` file declares [Adobe Commerce
 
 **App developers** declare webhooks in the `webhooks` field of `app.commerce.config`. That manifest is what App Management uses to know which webhook subscriptions belong to your app.
 
-**Merchants** complete whatever App Management and the Commerce Admin require **after** the app is associated. That typically means confirming or supplying connection details the app cannot hard-code (for example, OAuth or credentials that the Admin stores as secrets, or reviewing subscription labels so hooks register against the right instance). The exact steps depend on your app and Commerce edition. See [Install and access App Management](https://experienceleague.adobe.com/en/docs/commerce/app-management/install#access-app-management) and [Commerce webhooks and apps](https://experienceleague.adobe.com/en/docs/commerce/app-management/install#commerce-webhooks-and-apps) on Experience League.
+**Merchants** complete whatever steps are required for App Management and the Commerce Admin **after** the app is associated. That typically means confirming or supplying connection details that the app cannot hard-code (for example, OAuth or credentials that the Admin stores as secrets, or reviewing subscription labels so hooks register against the right instance). The exact steps depend on your app and Commerce edition. See [Install and access App Management](https://experienceleague.adobe.com/en/docs/commerce/app-management/install#access-app-management) and [Commerce webhooks and apps](https://experienceleague.adobe.com/en/docs/commerce/app-management/install#commerce-webhooks-and-apps) on Experience League.
 
 ### Use Events and webhooks together
 

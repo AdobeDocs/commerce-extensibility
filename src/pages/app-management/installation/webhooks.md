@@ -28,9 +28,9 @@ Add a `webhooks` array at the top level of `defineConfig`. When present, it must
 
 Each entry must use **one** of these patterns (not both):
 
-1. **`runtimeAction`**. No `url` inside `webhook`. The runtime action (format `package/action`) supplies the webhook URL at runtime. Optional `requireAdobeAuth` controls Adobe auth on that resolution path.
+- **`runtimeAction`**. No `url` inside `webhook`. The runtime action (format `package/action`) supplies the webhook URL at runtime. Optional `requireAdobeAuth` controls Adobe auth on that resolution path.
 
-1. **Explicit `url`**. The nested `webhook` object includes a valid absolute `https` URL. Do not set `runtimeAction` on the entry, or your configuration will be flagged as invalid.
+- **Explicit `url`**. The nested `webhook` object includes a valid absolute `https` URL. Do not set `runtimeAction` on the entry, or your configuration will be flagged as invalid.
 
 Each webhook entry uses the following properties:
 

@@ -111,13 +111,14 @@ After completing the previous steps you can:
 
 <Version />
 
-### Install the Payment, Shipping, or Tax modules
+### Install the individual modules
 
 To install the individual modules, refer to the following topics:
 
 - [Payment](./payment-install.md)
 - [Shipping](./shipping-install.md)
 - [Tax](./tax-install.md)
+- [Totals collector](./totals-collector-install.md)
 
 ### Install the Commerce Eventing module (Commerce 2.4.5 only)
 

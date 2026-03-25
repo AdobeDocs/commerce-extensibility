@@ -64,6 +64,6 @@ aio app deploy
 
 **Exception:** If you change [custom installation scripts](./installation/customize.md), run `npx aio-commerce-lib-app generate actions` so the installation action picks up those changes, then build and deploy as usual.
 
-You can still run `npx aio-commerce-lib-app generate …` manually when debugging; it is not required for normal config edits.
+You can still run `npx aio-commerce-lib-app generate …` manually when debugging, but it is not required for normal config edits.
 
 Once deployed, your app appears in App Management and can be associated with a Commerce instance. See [manage your app](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app) for more information.

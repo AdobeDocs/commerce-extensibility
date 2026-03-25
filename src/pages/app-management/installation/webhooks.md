@@ -10,15 +10,17 @@ keywords:
 
 # Webhooks
 
-The `webhooks` field in your `app.commerce.config` file declares [Adobe Commerce Webhook](https://developer.adobe.com/commerce/extensibility/webhooks/) subscriptions for your application. App Management uses that definition during installation to provision the subscriptions your app needs, similar to how they define [Events](./events.md) for event subscriptions, so merchants get an out-of-the-box experience instead of assembling webhook setup themselves. Webhooks allow your app to respond to live Commerce processes, such as checkout, or cart validation.
+The `webhooks` field in your `app.commerce.config` file declares [Adobe Commerce Webhook](https://developer.adobe.com/commerce/extensibility/webhooks/) subscriptions for your application. App Management uses that definition during installation to provision the subscriptions your app needs, similar to how [Events](./events.md) subscriptions are driven from your configuration so merchants get an out-of-the-box experience instead of assembling webhook setup themselves. Webhooks allow your app to respond to live Commerce processes, such as checkout, or cart validation.
 
-## App developers and merchants
+## Responsibilities by role
 
 **App developers** declare webhooks in the `webhooks` field of `app.commerce.config`. That manifest is what App Management uses to know which webhook subscriptions belong to your app.
 
-**Merchants** complete whatever App Management and the Commerce Admin require **after** the app is associated—typically confirming or supplying connection details the app cannot hard-code (for example, OAuth or credentials where the Admin stores secrets, or reviewing subscription labels so hooks register against the right instance). The exact steps depend on your app and Commerce edition; see [Install and access App Management](https://experienceleague.adobe.com/en/docs/commerce/app-management/install#access-app-management) and [Commerce webhooks and apps](https://experienceleague.adobe.com/en/docs/commerce/app-management/install#commerce-webhooks-and-apps) on Experience League.
+**Merchants** complete whatever App Management and the Commerce Admin require **after** the app is associated. That typically means confirming or supplying connection details the app cannot hard-code (for example, OAuth or credentials that the Admin stores as secrets, or reviewing subscription labels so hooks register against the right instance). The exact steps depend on your app and Commerce edition. See [Install and access App Management](https://experienceleague.adobe.com/en/docs/commerce/app-management/install#access-app-management) and [Commerce webhooks and apps](https://experienceleague.adobe.com/en/docs/commerce/app-management/install#commerce-webhooks-and-apps) on Experience League.
 
-Use [Events](./events.md) and webhooks together when you need both asynchronous event delivery and synchronous hooks inside Commerce processes.
+### Use Events and webhooks together
+
+Use [Events](./events.md) and webhooks when you need both asynchronous event delivery and synchronous hooks inside Commerce processes.
 
 ## Webhook entries
 
@@ -30,7 +32,7 @@ Each entry must use **one** of these patterns (not both):
 
 1. **Explicit `url`**. The nested `webhook` object includes a valid absolute `https` URL. Do not set `runtimeAction` on the entry, or your configuration will be flagged as invalid.
 
-Commerce properties:
+Each webhook entry uses the following properties:
 
 | Property | Type | Required | Description |
 |----------|------|----------|-------------|
@@ -64,7 +66,7 @@ The `webhook` object contains the following properties:
 | `rules` | array | No | Conditional execution. Each item: `field`, `operator`, `value` (all strings). |
 | `headers` | array | No | Outbound headers. Each item: `name`, `value`. |
 
-See [Webhooks API reference](../../webhooks/api.md) topic for more information.
+For the full property reference, see [Webhooks API](../../webhooks/api.md).
 
 ## Example with explicit URL
 
@@ -101,7 +103,7 @@ export default defineConfig({
 
 ## Example with runtime action (URL resolved at runtime)
 
-Use this instead of executing the webhook in an external system, you prefer to execute a `runtimeAction` instead.
+Use this pattern when you resolve the webhook URL at runtime with a `runtimeAction` instead of declaring an explicit URL in configuration.
 
 ```js
 import { defineConfig } from "@adobe/aio-commerce-lib-app/config"
@@ -136,7 +138,7 @@ After changing `webhooks`, rebuild and deploy your app so the `pre-app-build` ho
 
 ## Handler implementation (optional)
 
-When your runtime action **handles** the HTTP callback from Commerce, you build the response body with [Webhook operations](https://developer.adobe.com/commerce/extensibility/webhooks/responses/) (success, exception, add, replace, remove). The [`@adobe/aio-commerce-lib-webhooks`](https://github.com/adobe/aio-commerce-sdk/tree/main/packages/aio-commerce-lib-webhooks) package (responses entry point) is optional tooling for that; declaring webhooks in `app.commerce.config` does not require installing it.
+When your runtime action **handles** the HTTP callback from Commerce, you build the response body with [Webhook operations](https://developer.adobe.com/commerce/extensibility/webhooks/responses/) (success, exception, add, replace, remove). The [`@adobe/aio-commerce-lib-webhooks`](https://github.com/adobe/aio-commerce-sdk/tree/main/packages/aio-commerce-lib-webhooks) package (responses entry point) provides optional helpers for that workflow. Declaring webhooks in `app.commerce.config` does not require installing it.
 
 ## Related documentation
 

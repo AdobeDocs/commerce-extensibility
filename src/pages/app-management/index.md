@@ -27,7 +27,7 @@ The following diagram illustrates the workflow between app developers and app ma
 
 * **Event registrations**. Subscribe to Commerce and external events with declarative configuration and automatic event registration.
 
-* **Custom installation workflows**. Define pre and post installation messages and custom scripts that run during app installation.
+* **Custom installation workflows**. Define pre-installation, post-installation messages, and custom scripts that run during app installation.
 
 * **Unified lifecycle management**. Associate, configure, install, and unassociate apps from a single interface.
 

@@ -5,11 +5,12 @@ keywords:
   - App Builder
   - Extensibility
   - App Management
+  - Events
 ---
 
 # Events
 
-The `events` field in your `app.commerce.config` file allows you to configure event sources for your application. There are two types of event sources:
+The `eventing` field in your `app.commerce.config` file allows you to configure event sources for your application. There are two types of event sources:
 
 * **commerce** (for Adobe Commerce events).
 * **external** (for third-party events).

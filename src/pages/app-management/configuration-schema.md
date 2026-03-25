@@ -133,7 +133,7 @@ For fields that allow multiple selections, set `selectionMode` to `multiple` and
 
 ## Schema requirements
 
-Your `app.commerce.config` is validated each time you run a `generate` command (for example, `npx aio-commerce-lib-app generate all`). The schema validation checks for:
+Your `app.commerce.config` is validated when the `pre-app-build` hook runs (for example during `aio app build`) and when you run `npx aio-commerce-lib-app generate …` manually. The schema validation checks for:
 
 * **Required properties**. Fields must have `name`, `label`, and `type`.
 * **Type-matched defaults**. Default values must match the field type (for example, a `text` field cannot have a `number` default).

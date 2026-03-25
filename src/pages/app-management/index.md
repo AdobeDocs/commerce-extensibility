@@ -56,7 +56,7 @@ App Management uses the [Adobe Commerce SDK](https://github.com/adobe/aio-commer
 
 ## How it works
 
-All App Management configuration is defined in the `app.commerce.config` file at the root of your project. This single file contains your app metadata, business configuration schema, optional event subscriptions and webhook declarations, and installation settings.
+All App Management configuration is defined in the `app.commerce.config` file at the root of your project. This single file contains your app metadata, business configuration schema, optional [event](./installation/events.md) subscriptions, optional [webhook](./installation/webhooks.md) declarations for in-process Commerce hooks, and [installation](./installation/customize.md) settings.
 
 Follow these steps to set up and deploy an App Builder application with App Management:
 
@@ -64,9 +64,9 @@ Follow these steps to set up and deploy an App Builder application with App Mana
 
 1. **Define your app**. Add your [app metadata](./app-metadata.md) and [business configuration](./configuration-schema.md).
 
-1. **Configure events**. Set up [events](./installation/events.md) to respond to Commerce and external events.
+1. **Configure events**. Set up [events](./installation/events.md) so Commerce and external events invoke your runtime actions.
 
-1. **Declare webhooks**. Add [Commerce webhooks](./installation/webhooks.md) in `app.commerce.config` so merchants can complete webhook setup in App Management.
+1. **Declare webhooks**. Add [webhooks](./installation/webhooks.md) to hook into live Commerce flows (checkout, tax, shipping, validation, and similar) and expose those subscriptions in App Management for merchants.
 
 1. **Customize installation**. Define [installation messages and custom scripts](./installation/customize.md) that run when merchants install your app.
 

@@ -40,7 +40,7 @@ Each webhook entry uses the following properties:
 | `description` | string | Yes | Description shown in App Management. |
 | `category` | string | No | One of `validation`, `append`, or `modification` (used for conflict grouping). |
 | `runtimeAction` | string | Conditional | Required when not using an explicit `url` in `webhook`. Runtime action that resolves the webhook URL. |
-| `requireAdobeAuth` | boolean | No | When using `runtimeAction`, whether Adobe authentication is required. |
+| `requireAdobeAuth` | boolean | No | When using `runtimeAction`, indicates whether Adobe authentication is required. |
 | `webhook` | object | Yes | Webhook method, hook identity, HTTP method, and optional fields, rules, headers, timeouts, and either a `url` or no `url` (if `runtimeAction` is set). |
 
 ### Nested `webhook` object

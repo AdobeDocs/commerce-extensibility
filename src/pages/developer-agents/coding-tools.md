@@ -75,7 +75,7 @@ This updates the tools to the latest version.
 
 1. Clone one of the following:
 
-   * Commerce [integration starter kit](../starter-kit/integration/create-integration) — for building back-office integrations.
+   * Commerce [integration starter kit](../starter-kit/integration/create-integration.md) — for building back-office integrations.
 
       ```bash
       git clone git@github.com:adobe/commerce-integration-starter-kit.git
@@ -141,7 +141,7 @@ This updates the tools to the latest version.
 
 <InlineAlert variant="info" slots="text" />
 
-Before deploying your project, complete configuration tasks: log in to [Adobe Developer Console](https://developer.adobe.com/console) using the Adobe I/O CLI, create an App Builder project (see [Project setup](../events/project-setup)), and set up environment variables in an `.env` file. You can do these steps manually or use the AI coding tools for guidance. See [Create an integration](../starter-kit/integration/create-integration) for detailed configuration instructions.
+Before deploying your project, complete configuration tasks: log in to [Adobe Developer Console](https://developer.adobe.com/console) using the Adobe I/O CLI, create an App Builder project (see [Project setup](../events/project-setup.md)), and set up environment variables in an `.env` file. You can do these steps manually or use the AI coding tools for guidance. See [Create an integration](../starter-kit/integration/create-integration.md for detailed configuration instructions.
 
 ## Post-installation configuration
 

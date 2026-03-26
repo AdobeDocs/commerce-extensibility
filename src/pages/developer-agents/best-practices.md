@@ -57,7 +57,7 @@ This also allows you to leverage Adobe's templates and build upon proven pattern
 
 Consult the following resources to get started:
 
-* [Integration starter kit](../starter-kit/integration/create-integration)
+* [Integration starter kit](../starter-kit/integration/create-integration.md)
 * [Checkout starter kit](../starter-kit/checkout/)
 * [Adobe Commerce starter kit templates](https://github.com/adobe/adobe-commerce-samples/tree/main/starter-kit)
 * [Adobe I/O Events starter templates](https://experienceleague.adobe.com/en/docs/commerce-learn/tutorials/adobe-developer-app-builder/io-events/getting-started-io-events)

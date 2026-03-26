@@ -14,13 +14,14 @@ This section provides an overview of configuring out-of-process extensibility on
 
 All the configurations in your app must align with the [App Builder Configuration file guidelines](https://developer.adobe.com/app-builder/docs/guides/configuration/). In addition, the starter kit provides a set of [scripts](https://github.com/adobe/commerce-checkout-starter-kit/tree/main/scripts) to help you get started with your project.
 
-## Configure Payment, Shipping, or Tax modules
+## Configure Commerce modules
 
 Select one of the following modules to learn about the available scripts:
 
 - [Payment](./payment-install.md#configuration)
 - [Shipping](./shipping-install.md#configuration)
 - [Tax](./tax-install.md#configuration)
+- [Totals collector](./totals-collector-install.md#configuration)
 
 ## Configure OAuth Server-to-Server Credential
 

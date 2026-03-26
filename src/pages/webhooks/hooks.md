@@ -350,6 +350,27 @@ Source: context_checkout_session.get_quote
 Active: Yes
 ```
 
+To get a list of items from the quote object, you can use the `getItems()` method of the quote object. The following example retrieves the list of items from the quote object by calling `Magento\Checkout\Model\Session::getQuote()::getItems()`:
+
+<CodeBlock slots="heading, code" repeat="2" languages="XML, YAML" />
+
+##### webhooks.xml (PaaS)
+
+```xml
+<fields>
+    <field name="quote.items" source="context_checkout_session.get_quote.get_items" />
+</fields>
+```
+
+##### Admin (SaaS)
+
+```yaml
+Hook Fields
+Name: quote.items
+Source: context_checkout_session.get_quote.get_items
+Active: Yes
+```
+
 To get a value of the specific field of an object, you can use the `get_<field_name>` method of the object. The following example retrieves the `subtotal` value from the quote object by calling `Magento\Checkout\Model\Session::getQuote()::getSubtotal()`:
 
 <CodeBlock slots="heading, code" repeat="2" languages="XML, YAML" />

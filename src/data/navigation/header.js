@@ -4,6 +4,10 @@ module.exports = [
       path: "/",
     },
     {
+      title: "Developer agents",
+      path: "/developer-agents/",
+    },
+    {
       title: "App Development",
       path: "/app-development"
     },

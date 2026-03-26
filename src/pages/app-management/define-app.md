@@ -9,9 +9,9 @@ keywords:
 
 # Define your app
 
-The `app.commerce.config` file is the central configuration file for your App Builder application. It defines your app metadata, business configuration schema, and other settings.
+The `app.commerce.config` file is the central configuration file for your App Builder application. It defines your app metadata, business configuration schema, and optional sections such as **[Events](./installation/events.md)**, **[Webhooks](./installation/webhooks.md)**, and **[Custom steps](./installation/customize.md)**.
 
-Create an `app.commerce.config` file consisting of **[app metadata](./app-metadata.md)** and **[business configuration](./configuration-schema.md)**.
+Create an `app.commerce.config` file consisting of **[App metadata](./app-metadata.md)** and **[Business configuration](./configuration-schema.md)**.
 
 <InlineAlert variant="info" slots="text"/>
 
@@ -100,6 +100,21 @@ export default defineConfig({
       },
     ],
   },
+  webhooks: [
+    {
+      label: "Product save webhook",
+      description: "Notify an external system when a product is saved",
+      category: "append",
+      webhook: {
+        webhook_method: "observer.catalog_product_save_after",
+        webhook_type: "after",
+        batch_name: "product_batch",
+        hook_name: "notify_hook",
+        method: "POST",
+        url: "https://my-app.example.com/webhooks/product-save",
+      },
+    },
+  ],
   installation: {
     messages: {
       preInstallation: "Do something before installation",

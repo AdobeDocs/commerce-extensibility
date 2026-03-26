@@ -144,4 +144,4 @@ export default defineCustomInstallationStep(async (config, context) => {
 * If any script throws an error, the installation fails and subsequent scripts are not executed.
 * Scripts have access to the complete app configuration.
 
-After modifying custom installation scripts, run `npx aio-commerce-lib-app generate actions` to regenerate the installation action.
+After you modify custom installation scripts, you must manually run the `npx aio-commerce-lib-app` generate actions command before building and deploying. This ensures the installation action picks up your changes. For all other `app.commerce.config` updates, build and deploy alone is sufficient, as artifacts are regenerated during pre-app-build.

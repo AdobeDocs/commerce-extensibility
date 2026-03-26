@@ -13,7 +13,7 @@ Use the following solutions to resolve common issues with App Management.
 
 ## Configuration validation errors
 
-The entire `app.commerce.config` is validated each time you run a generate command. Schema validation is included as part of this validation. If validation fails, check:
+The entire `app.commerce.config` is validated when the `pre-app-build` hook runs (for example during `aio app build`) and when you run `npx aio-commerce-lib-app generate …` manually. Schema validation is included. If validation fails, check:
 
 1. **Required properties**. Fields must have `name`, `label`, and `type`.
 
@@ -39,7 +39,13 @@ The entire `app.commerce.config` is validated each time you run a generate comma
 
 1. Verify `app.commerce.config` exists with valid configuration.
 
-1. Manually run:
+1. Run a build so `pre-app-build` runs the generators:
+
+  ```bash
+  aio app build
+  ```
+
+1. If `.generated` folders are still missing or stale, run:
 
   ```bash
   npx aio-commerce-lib-app generate all

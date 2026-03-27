@@ -6,7 +6,7 @@ const eventing = require("./events");
 const wh = require("./webhooks");
 const adminuisdk = require("./admin-ui-sdk");
 const observe = require("./observability");
-const developerAgents = require("./developer-agents");
+const developerAgents = require("./developer-agent");
 
 module.exports = [
   ...appdev,

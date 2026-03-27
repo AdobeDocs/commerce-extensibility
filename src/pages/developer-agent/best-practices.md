@@ -323,11 +323,11 @@ The user experience will vary slightly depending on the IDE you are using. The f
 
 1. Provide your feedback for the tooling in the **Feedback** field that appears at the top of the IDE and press the **Enter** key.
 
-   ![Cursor feedback command input field](../_images/developer-agents/feedback-response.png)
+   ![Cursor feedback command input field](../_images/developer-agent/feedback-response.png)
 
 1. In the **Save Locally** field, type either `yes` or `no` and press **Enter** to indicate if you want to save a local copy of your logs.
 
-   ![Cursor feedback command save locally field](../_images/developer-agents/feedback-save.png)
+   ![Cursor feedback command save locally field](../_images/developer-agent/feedback-save.png)
 
    If you selected **Yes**, you can review the logs in your `chats` folder after sending your feedback.
 

@@ -24,21 +24,26 @@ module.exports = [
         },
       ],
     },
-    {
-      title: "Events",
-      path: "/events/"
-    },
-    {
-      title: "Webhooks",
-      path: "/webhooks/"
+    { 
+      title: "Components",
+      menu: [
+        {
+          title: "Events",
+          path: "/events/"
+        },
+        {
+          title: "Webhooks",
+          path: "/webhooks/"
+        },
+        {
+          title: "Admin UI SDK",
+          path: "/admin-ui-sdk/",
+        },
+      ]
     },
     {
       title: "Observability",
       path: "/observability/"
-    },
-    {
-      title: "Admin UI SDK",
-      path: "/admin-ui-sdk/",
     },
     {
       title: "API Mesh",

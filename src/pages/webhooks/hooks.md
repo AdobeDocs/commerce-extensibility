@@ -778,9 +778,10 @@ When a context method returns an array of objects, you can filter the fields inc
 
 The filtration syntax is:
 
-```
+```text
 <context_name>.<method>[field1,field2,nested.field,...]
 ```
+
 Use square bracket filtration directly on a collection method to include only specific fields from each item.
 
 <CodeBlock slots="heading, code" repeat="2" languages="XML, YAML" />

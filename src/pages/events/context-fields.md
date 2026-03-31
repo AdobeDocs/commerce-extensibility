@@ -365,7 +365,7 @@ When a context method returns an array of objects, you can filter the fields inc
 
 The filtration syntax is:
 
-```
+```text
 <context_name>.<method>[field1,field2,nested.field,...]
 ```
 

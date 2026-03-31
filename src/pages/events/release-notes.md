@@ -12,6 +12,22 @@ These release notes describe the latest version of Adobe I/O Events for Adobe Co
 
 See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io-events-for-adobe-commerce) for upgrade instructions.
 
+## Version 1.20.0
+
+### Release date
+
+Mar 31, 2026
+
+### Enhancements
+
+* Added filtration functionality for the context fields. <!-- CEXT-5905 -->
+
+### Bug fixes
+
+* Fixed event payload information for several events. <!-- CEXT-5994 -->
+
+* Fixed an issue where the `workspace_configuration.json` file generated in App Builder could exceed size of the configuration field, leading to corrupted data. The workspace configuration is now cleaned up before saving. <!-- CEXT-6018 -->
+
 ## Version 1.19.0
 
 Feb 19, 2026

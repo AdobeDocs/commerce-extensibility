@@ -772,6 +772,139 @@ This hook sends the following JSON object to the webhook endpoint:
 }
 ```
 
+### Context field filtration
+
+When a context method returns an array of objects, you can filter the fields included in the result by appending a comma-separated list of field paths in square brackets to the source expression. This lets you reduce the payload size by including only the fields you need.
+
+The filtration syntax is:
+
+```text
+<context_name>.<method>[field1,field2,nested.field,...]
+```
+
+Use square bracket filtration directly on a collection method to include only specific fields from each item.
+
+<CodeBlock slots="heading, code" repeat="2" languages="XML, YAML" />
+
+##### webhooks.xml (PaaS)
+
+```xml
+<fields>
+    <field name="quote.items" source="context_checkout_session.get_quote.get_items[qty,price,product.name,product.customer_group_id,product.attributes.url_key]" />
+</fields>
+```
+
+##### Admin (SaaS)
+
+```yaml
+Hook Fields
+
+Name: quote.items
+Source: context_checkout_session.get_quote.get_items[qty,price,product.name,product.customer_group_id,product.attributes.url_key]
+Active: Yes
+```
+
+##### Result
+
+```json
+{
+    "quote": {
+        "items": [
+            {
+                "qty": 1,
+                "price": 124.04,
+                "product": {
+                    "name": "Simple product Demo Product 2",
+                    "customer_group_id": "0",
+                    "attributes": {
+                        "url_key": "simple-product-2"
+                    }
+                }
+            },
+            {
+                "qty": 1,
+                "price": 123,
+                "product": {
+                    "name": "Virtual product 1",
+                    "customer_group_id": "0",
+                    "attributes": {
+                        "url_key": "virtual-product-1"
+                    }
+                }
+            },
+            {
+                "qty": 1,
+                "price": 125,
+                "product": {
+                    "name": "Simple product 3",
+                    "customer_group_id": "0",
+                    "attributes": {
+                        "url_key": "simple-product-3"
+                    }
+                }
+            }
+        ]
+    }
+}
+```
+
+You can also apply filtration on an object method and specify the paths to nested collection fields using dot notation, prefixing collection item fields with the collection key.
+
+<CodeBlock slots="heading, code" repeat="2" languages="XML, YAML" />
+
+##### webhooks.xml (PaaS)
+
+```xml
+<fields>
+    <field name="quote" source="context_checkout_session.get_quote[items.qty,items.price,items.product.name,items.product.customer_group_id,items.product.attributes.url_key]" />
+</fields>
+```
+
+##### Admin (SaaS)
+
+```yaml
+Hook Fields
+
+Name: quote
+Source: context_checkout_session.get_quote[items.qty,items.price,items.product.name,items.product.customer_group_id,items.product.attributes.url_key]
+Active: Yes
+```
+
+##### Result
+
+```json
+{
+    "quote": {
+        "items": [
+            {
+                "qty": 2,
+                "price": "125.0000",
+                "product": {
+                    "name": "Simple product 3",
+                    "customer_group_id": "0"
+                }
+            },
+            {
+                "qty": 1,
+                "price": "123.0300",
+                "product": {
+                    "name": "Simple product 22",
+                    "customer_group_id": "0"
+                }
+            },
+            {
+                "qty": 1,
+                "price": "124.0400",
+                "product": {
+                    "name": "Simple product Demo Product 2",
+                    "customer_group_id": "0"
+                }
+            }
+        ]
+    }
+}
+```
+
 ## Clean the cache
 
 <Edition name="paas" />

@@ -83,7 +83,7 @@ The following four-phase protocol is automatically enforced by the installed ski
 * **Phase 2**: Architectural planning and user approval
   * When presented a plan, review it carefully before approving.
 * **Phase 3**: Code generation and implementation
-  * Review generated code before accepting changes.
+  * Review generated code before accepting any changes.
 * **Phase 4**: Documentation and validation
   * Review documentation and validate code.
 

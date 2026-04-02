@@ -1,6 +1,6 @@
 ---
 title: Best practices for AI Commerce coding tools
-description: Planning mode, workflows, MCP usage, testing, deployment, monitoring, and feedback for Adobe Commerce App Builder AI tooling.
+description: Plan mode, workflows, MCP usage, testing, deployment, monitoring, and feedback for Adobe Commerce App Builder AI tooling.
 keywords:
   - App Builder
   - Extensibility
@@ -116,7 +116,7 @@ Use only MCP tools and not CLI commands
 ```
 
 * MCP tools: aio-app-deploy, aio-app-dev, aio-dev-invoke
-* CLI commands: aio app deploy, aio app dev
+* CLI commands: aio app deploy, aio app dev, aio rt:action:invoke
 
 CLI commands can be used for the following scenarios:
 

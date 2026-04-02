@@ -1,5 +1,5 @@
 ---
-title: AI coding tools setup for Commerce App Builder
+title: AI coding tools setup for Commerce App Builder and storefront
 description: Install and configure Adobe AI coding developer tooling for Commerce App Builder—prerequisites, Adobe I/O CLI, starter kits, and IDE setup.
 keywords:
   - App Builder
@@ -115,7 +115,7 @@ This updates the tools to the latest version.
       ? Which coding agent would you like to install skills for?
       ❯ Cursor
          Claude Code
-         GithubCopilot
+         GitHub Copilot
          Windsurf
          Gemini CLI
          OpenAI Codex
@@ -141,7 +141,7 @@ This updates the tools to the latest version.
 
 <InlineAlert variant="info" slots="text" />
 
-Before deploying your project, complete configuration tasks: log in to [Adobe Developer Console](https://developer.adobe.com/console) using the Adobe I/O CLI, create an App Builder project (see [Project setup](../events/project-setup.md)), and set up environment variables in an `.env` file. You can do these steps manually or use the AI coding tools for guidance. See [Create an integration](../starter-kit/integration/create-integration.md for detailed configuration instructions.
+Before deploying your project, complete configuration tasks: log in to [Adobe Developer Console](https://developer.adobe.com/console) using the Adobe I/O CLI, create an App Builder project (see [Project setup](../events/project-setup.md)), and set up environment variables in an `.env` file. You can do these steps manually or use the AI coding tools for guidance. See [Create an integration](../starter-kit/integration/create-integration.md) for detailed configuration instructions.
 
 ## Post-installation configuration
 

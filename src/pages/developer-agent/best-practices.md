@@ -12,16 +12,6 @@ keywords:
 
 Adobe recommends the following practices when using the AI coding tools for Commerce App Builder. For setup steps, see [Coding tools setup](./coding-tools.md). For skills and sample prompts, see [Skills, prompts, and commands](./skills-and-prompts.md).
 
-## Plan mode
-
-When chatting with your coding agent, use **Plan** mode to produce a detailed implementation plan.
-
-The way you enable Plan mode depends on the agent. Refer to your agent's documentation, for example:
-
-* [Cursor](https://cursor.com/docs/agent/modes)
-* [Claude Code](https://code.claude.com/docs/en/common-workflows#when-to-use-plan-mode)
-* [Gemini CLI](https://geminicli.com/docs/cli/plan-mode/)
-
 ## Checklist
 
 ### Before starting a development session

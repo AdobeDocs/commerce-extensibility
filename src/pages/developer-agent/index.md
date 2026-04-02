@@ -24,8 +24,7 @@ This section documents the current tooling and is structured so additional guide
 | Capability | Description |
 | --- | --- |
 | Agent skills | Commerce- and App Builder–specific skills that guide architecture, implementation, DevOps, requirements, docs, testing, and learning workflows. |
-| Commerce extensibility MCP Server | IDE integration for Commerce development tasks, documentation-aware assistance, and tooling aligned with App Builder. |
-| App Builder MCP Server | Support for App Builder application development patterns. |
+| Adobe Commerce App Builder MCP server | IDE integration for Commerce development tasks, documentation-aware assistance, and tooling aligned with App Builder application development patterns. |
 
 Together, these improve workflow integration, context-aware generation, and repeatable development and deployment steps.
 

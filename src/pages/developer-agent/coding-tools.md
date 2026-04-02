@@ -12,7 +12,7 @@ keywords:
 
 When migrating to Adobe Commerce as a Cloud Service, you can use the AI coding tools to convert existing Adobe Commerce PHP extensions to Adobe Developer App Builder applications.
 
-You can also use these tools to create completely new App Builder applications as well as storefront customizations.
+You can also use these tools to create completely new App Builder applications and storefront customizations.
 
 The AI coding tools provide the following benefits:
 

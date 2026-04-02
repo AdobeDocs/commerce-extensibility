@@ -87,10 +87,14 @@ This updates the tools to the latest version.
       git clone git@github.com:adobe/commerce-checkout-starter-kit.git
       ```
 
-1. Navigate to the starter kit directory:
+1. Navigate to the starter kit directory that you cloned:
 
    ```bash
    cd commerce-integration-starter-kit
+   ```
+
+   ```bash
+   cd commerce-checkout-starter-kit
    ```
 
 1. Install the Commerce AI extensibility tools by running the interactive setup command:
@@ -101,7 +105,7 @@ This updates the tools to the latest version.
 
    The setup process prompts you with configuration options. Follow the prompts to complete the installation. The tools are installed in the selected directory.
 
-   * Select the starter kit you want to use for your project.
+   * Select the starter kit you want to use for your project. This configures the tooling for your selected starter kit.
 
       ```shell
       ? Which starter kit would you like to use?
@@ -168,7 +172,7 @@ aio auth login
 
 <InlineAlert variant="info" slots="text" />
 
-Some features of the MCP server will work without logging in, but the RAG (Retrieval-Augmented Generation) service will not work. The RAG service provides the AI coding agent with real-time access to the complete Adobe Commerce documentation set, enabling it to answer questions and generate code based on current Commerce development practices, APIs, and architectural patterns.
+Some features of the MCP server will work without logging in, but the RAG (Retrieval-Augmented Generation) service will not work. The RAG service provides the AI coding agent with access to relevant parts of the Adobe Commerce documentation set, enabling it to answer questions and generate code based on current Commerce development practices, APIs, and architectural patterns.
 
 ### Cursor
 
@@ -223,5 +227,5 @@ Some features of the MCP server will work without logging in, but the RAG (Retri
 1. Use the following prompt to see if the agent uses the MCP server. If it does not, ask the agent explicitly to use the MCP tools available.
 
    ```shell
-   What are the differences between Adobe Commerce PaaS and SaaS when configuring a webhook that activates an App Builder runtime action?
+   What are the differences between Adobe Commerce PaaS and Adobe Commerce as a Cloud Service when configuring a webhook that activates an App Builder runtime action?
    ```

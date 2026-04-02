@@ -83,7 +83,9 @@ The following four-phase protocol is automatically enforced by the installed ski
 * **Phase 2**: Architectural planning and user approval
   * When presented a plan, review it carefully before approving.
 * **Phase 3**: Code generation and implementation
+  * Review generated code before accepting changes.
 * **Phase 4**: Documentation and validation
+  * Review documentation and validate code.
 
 ## Request implementation plans for complex development
 
@@ -306,7 +308,7 @@ Avoid the following anti-patterns when using the AI coding tools:
 * **Do not skip the clarification phase** - Always ensure Phase 1 is completed before implementation.
 * **Do not skip testing after each feature** - Test incrementally, don't wait until everything is complete.
 * **Do not add complexity without root cause analysis** - Question unnecessary file additions and request proper investigation.
-* **Do not declare success without real data testing** - Always test with actual data, not just edge cases.
+* **Do not declare success without real data testing** - Always test with actual data in addition to edge cases.
 * **Do not forget runtime cleanup** - Always clean up orphaned actions after major changes.
 
 ## Providing feedback

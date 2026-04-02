@@ -1,6 +1,6 @@
 ---
-title: AI coding tools setup for Commerce App Builder and storefront
-description: Install and configure Adobe AI coding developer tooling.
+title: AI coding tools setup for Commerce App Builder / storefront
+description: Install and configure Adobe AI coding developer tooling. 
 keywords:
   - App Builder
   - Cloud

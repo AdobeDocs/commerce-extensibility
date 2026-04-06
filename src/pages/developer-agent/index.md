@@ -33,6 +33,7 @@ Together, these improve workflow integration, context-aware generation, and repe
 | Guide | Description |
 | --- | --- |
 | [Coding tools setup](./coding-tools.md) | Prerequisites, installation with `aio commerce extensibility tools-setup`, post-install CLI auth, and IDE configuration (for example Cursor and GitHub Copilot). |
+| [Use cases](./use-cases.md) | Common extension patterns — REST APIs, checkout extensions, storefront components, event-driven integrations, and more. |
 | [Skills, prompts, and commands](./skills-and-prompts.md) | Slash commands, sample prompts, and the `/search-commerce-docs` command. |
 | [Best practices](./best-practices.md) | Planning mode, session checklists, workflow and protocol, MCP vs CLI, testing, deployment, monitoring, anti-patterns, and feedback. |
 

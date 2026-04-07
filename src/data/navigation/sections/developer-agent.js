@@ -17,6 +17,10 @@ module.exports = [
     path: "/developer-agent/skills-and-prompts.md",
   },
   {
+    title: "Use cases",
+    path: "/developer-agent/use-cases.md",
+  },
+  {
     title: "Best practices",
     path: "/developer-agent/best-practices.md",
   },

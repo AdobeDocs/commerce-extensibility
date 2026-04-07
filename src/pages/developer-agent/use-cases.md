@@ -36,7 +36,7 @@ See the [Shipping method extension tutorial](https://experienceleague.adobe.com/
 
 Create new UI blocks or customize existing drop-in component slots on Edge Delivery Services storefronts. The AI tools research your codebase and Commerce documentation, propose architecture options, and generate accessible, responsive components with scoped styles and loading states.
 
-**Example — Star ratings on PDP:** Render a star-rating display with review count on the product detail page by customizing a drop-in slot or creating a standalone block that fetches data from your ratings API.
+**Example — Star ratings on product detail pages (PDP):** Render a star-rating display with review count on the PDP by customizing a drop-in slot or creating a standalone block that fetches data from your ratings API.
 
 ## Event-driven back-office integrations
 

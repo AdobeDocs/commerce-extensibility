@@ -12,6 +12,10 @@ keywords:
 
 The AI developer tools for Adobe Commerce extensibility support a range of Adobe Commerce extension patterns. The following use cases describe a category of extension you can build with the tools, the starter kits, and an AI-assisted IDE.
 
+>[!TIP]
+>
+>These use cases are examples and not exhaustive. You can build a wide range of extensions with the AI Commerce coding tools.
+
 ## Custom REST APIs for storefronts
 
 Build headless API endpoints that serve custom data to an Edge Delivery Services storefront. The AI tools scaffold the App Builder runtime action, handle deployment, and generate a service contract you can hand off to a storefront agent or team.

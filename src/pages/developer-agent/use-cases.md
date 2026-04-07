@@ -12,9 +12,9 @@ keywords:
 
 The AI developer tools for Adobe Commerce extensibility support a range of Adobe Commerce extension patterns. The following use cases describe a category of extension you can build with the tools, the starter kits, and an AI-assisted IDE.
 
->[!TIP]
->
->These use cases are examples and not exhaustive. You can build a wide range of extensions with the AI Commerce coding tools.
+<InlineAlert variant="info" slots="text"/>
+
+These use cases are examples and not exhaustive. You can build a wide range of extensions with the AI Commerce coding tools.
 
 ## Custom REST APIs for storefronts
 
@@ -26,21 +26,21 @@ See the [Ratings extension tutorial](https://experienceleague.adobe.com/en/docs/
 
 ## Checkout extensions with external services
 
-Extend the Commerce checkout flow by connecting to external service providers through webhooks. The checkout starter kit provides the foundation for shipping, payment, and tax extensions, and the AI tools generate the webhook handler, Admin UI configuration, and carrier registration.
+Extend the Commerce checkout flow by connecting to external service providers through webhooks. The [checkout starter kit](../starter-kit/checkout/index.md) provides the foundation for shipping, payment, and tax extensions, and the AI tools generate the webhook handler, Admin UI configuration, and carrier registration.
 
-**Example — Custom shipping method:** Add a configurable shipping method that fetches rates from an external API at checkout. A merchant-facing Admin UI screen (built with the Admin UI SDK) stores the service URL, API key, and warehouse address. At checkout, the extension calls the external rates service and returns the available shipping options to the customer.
+**Example — Custom shipping method:** Add a configurable shipping method that fetches rates from an external API at checkout. A merchant-facing Admin UI screen (built with the [Admin UI SDK](../admin-ui-sdk/index.md)) stores the service URL, API key, and warehouse address. At checkout, the extension calls the external rates service and returns the available shipping options to the customer.
 
 See the [Shipping method extension tutorial](https://experienceleague.adobe.com/en/docs/commerce/cloud-service/tutorials/shipping-method-extension).
 
 ## Storefront UI components
 
-Create new UI blocks or customize existing drop-in component slots on Edge Delivery Services storefronts. The AI tools research your codebase and Commerce documentation, propose architecture options, and generate accessible, responsive components with scoped styles and loading states.
+Create new UI blocks or customize existing [drop-in component slots](https://experienceleague.adobe.com/developer/commerce/storefront/dropins/product-details/) on Edge Delivery Services storefronts. The AI tools research your codebase and Commerce documentation, propose architecture options, and generate accessible, responsive components with scoped styles and loading states.
 
 **Example — Star ratings on product detail pages (PDP):** Render a star-rating display with review count on the PDP by customizing a drop-in slot or creating a standalone block that fetches data from your ratings API.
 
 ## Event-driven back-office integrations
 
-Use the integration starter kit to react to Commerce events (order placed, customer created, product updated) and synchronize data with external systems such as ERPs, CRMs, or PIMs. The AI tools generate event-handler runtime actions, configure event subscriptions, and manage payload transformation.
+Use the [integration starter kit](../starter-kit/integration/index.md) to react to Commerce events (order placed, customer created, product updated) and synchronize data with external systems such as ERPs, CRMs, or PIMs. The AI tools generate event-handler runtime actions, configure event subscriptions, and manage payload transformation.
 
 **Example — ERP order notification:** Send order details (ID, total, customer email, payment type) to an ERP endpoint whenever a customer places an order.
 

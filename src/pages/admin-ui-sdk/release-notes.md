@@ -8,6 +8,16 @@ keywords:
 
 # Adobe Commerce Admin UI SDK release notes
 
+## Version 3.4.1
+
+### Release date
+
+April 10, 2026
+
+### Bug fixes
+
+* Fixed an issue where the Order Extension mass action failed when selecting a large number of orders (700+). <!-- CEXT-5844 -->
+
 ## Version 3.4.0
 
 ### Release date

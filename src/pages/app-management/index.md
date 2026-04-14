@@ -31,6 +31,8 @@ The following diagram illustrates the workflow between app developers and app ma
 
 * **Unified lifecycle management**. Associate, configure, install, and unassociate apps from a single interface.
 
+* **List filters** — [Narrow the applications list](./build-deploy.md#find-an-application-in-the-admin) in **Apps** > **App Management** when many apps share an organization.
+
 ## Requirements
 
 Before using App Management, ensure the following:

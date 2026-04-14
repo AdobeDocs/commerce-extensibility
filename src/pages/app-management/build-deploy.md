@@ -67,3 +67,7 @@ aio app deploy
 You can still run `npx aio-commerce-lib-app generate …` manually when debugging, but it is not required for normal config edits.
 
 Once deployed, your app appears in App Management and can be associated with a Commerce instance. See [manage your app](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app) for more information.
+
+## Find an application in the Admin
+
+Under **Apps** > **App Management**, the applications list can include every app deployed for your Adobe IMS organization. When the list is long, App managers use the **filters** above the grid to narrow it. Filter labels and options match the columns and status information shown for each row. Multiple active filters apply together (logical AND); clear or adjust filters when you need to see the full list again.

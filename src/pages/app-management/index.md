@@ -13,7 +13,7 @@ App Management provides a unified experience for installing, configuring, and ma
 
 ![App Management view](../_images/app-management/app-management-view.png)
 
-The **App Management** view lists applications for your Adobe IMS organization as cards, with filters above the list. **Acquire App** opens a new browser tab to [Adobe Exchange](https://exchange.adobe.com/experiencecloud) so you can browse Commerce-related marketplace listings. App developers define the configuration schema, metadata, and runtime actions for their applications. App managers associate and configure deployed apps within their Commerce instances.
+The **App Management** view lists applications for your Adobe Commerce instance as cards, with filters above the list. **Acquire App** opens a new browser tab to [Adobe Exchange](https://exchange.adobe.com/experiencecloud) so you can browse Commerce-related marketplace listings. App developers define the configuration schema, metadata, and runtime actions for their applications. App managers associate and configure deployed apps within their Commerce instances.
 
 The following diagram illustrates the workflow between app developers and app managers:
 

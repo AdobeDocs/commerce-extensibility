@@ -75,10 +75,10 @@ Under **Apps** > **App Management**, each application appears as a card. The lis
 | Control | Description |
 | --- | --- |
 | **Filter by app…** | Search by application name (and related text shown on the card). |
-| **Status** | Limit cards by lifecycle state. **All Statuses** shows every app; other values include **Associated**, **Installed**, **Partially Installed**, and **Unassociated**. Status on each card matches the colored indicator in the list. |
+| **Status** | Limit cards by lifecycle state. **All Statuses** shows every app; other values include **Associated**, **Installed**, **Partially Installed**, and **Unassociated**. The status on each card matches the colored indicator in the list. |
 | **Extensibility patterns** | Limit cards by the capabilities the app uses. **All Extensibility Patterns** shows every app; other values align with the badges on each card, such as **Business Configuration**, **Admin UI SDK**, **Webhooks**, and **Events**. |
 
-Search text and both dropdowns apply together (logical AND). Set **Status** and **Extensibility patterns** back to their **All …** options, and clear the search field, when you want to see the full list again.
+Search text and both dropdowns apply together (logical AND). To display the full list again, set **Status** and **Extensibility patterns** back to their **All …** options, and clear the search field.
 
 ### Acquire App
 

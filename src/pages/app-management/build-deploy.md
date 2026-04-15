@@ -67,3 +67,19 @@ aio app deploy
 You can still run `npx aio-commerce-lib-app generate …` manually when debugging, but it is not required for normal config edits.
 
 Once deployed, your app appears in App Management and can be associated with a Commerce instance. See [manage your app](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app) for more information.
+
+## Find an application in the Admin
+
+Under **Apps** > **App Management**, each application appears as a card. The list can include every app associated with the Adobe Commerce instance for the selected Adobe IMS organization. Use the controls above the cards to narrow results:
+
+| Control | Description |
+| --- | --- |
+| **Filter by app…** | Search by application name. |
+| **Status** | Limit cards by lifecycle state. **All Statuses** shows every app; other values include **Associated**, **Installed**, **Partially Installed**, and **Unassociated**. The status on each card matches the colored indicator in the list. |
+| **Extensibility patterns** | Limit cards by the capabilities the app uses. **All Extensibility Patterns** shows every app; other values align with the badges on each card, such as **Business Configuration**, **Admin UI SDK**, **Webhooks**, and **Events**. |
+
+Search text and both dropdowns apply together (logical AND). To display the full list again, set **Status** and **Extensibility patterns** back to their **All …** options, and clear the search field.
+
+### Acquire App
+
+**Acquire App** opens a new browser tab (or a separate browser view) to [Adobe Exchange](https://exchange.adobe.com/experiencecloud), where you can discover Commerce-related marketplace listings and add applications to your Adobe IMS organization. Once the app is acquired, approved, and deployed, app will be loaded in App Management for [association and installation](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app).

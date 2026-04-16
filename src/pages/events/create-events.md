@@ -10,6 +10,7 @@ edition: saas
 import SampleEvent from '/src/_includes/sample-event.md'
 import NestedEvent from '/src/_includes/nested-event.md'
 import ConditionalEvents from '/src/_includes/conditional-event.md'
+import EventSize from '/src/_includes/event-size-limitations.md'
 
 # Create event subscriptions from the Admin
 
@@ -44,6 +45,8 @@ Field | Description
 ### Configure event subscription fields
 
 The **Event Subscription Fields** configuration panel allows you to define the fields of the event payload to transmit from Commerce. The name provides the path to the field in the event payload.
+
+<EventSize />
 
 <SampleEvent />
 

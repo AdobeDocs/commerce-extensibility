@@ -10,7 +10,7 @@ edition: saas
 import SampleEvent from '/src/_includes/sample-event.md'
 import NestedEvent from '/src/_includes/nested-event.md'
 import ConditionalEvents from '/src/_includes/conditional-event.md'
-import EventSize from '/src/_includes/event-size-limitations.md'
+import EventSize from '/src/_includes/event-size-limitation.md'
 
 # Create event subscriptions from the Admin
 

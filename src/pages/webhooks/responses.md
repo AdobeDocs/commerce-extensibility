@@ -47,7 +47,7 @@ The `exception` operation causes Commerce to terminate the process that triggere
 Field | Type | Description
 --- | --- | ---
 `op` | Required | Contains `exception`.
-`class` | Optional | Specifies the exception class. If `class` is not set, `\Magento\Framework\Exception\LocalizedException` will be thrown.
+`type` | Optional | Specifies the exception class. If `type` is not set, `\Magento\Framework\Exception\LocalizedException` will be thrown.
 `message` | Optional | Specifies the exception message. If this field is not explicitly set, then the message defined in the `fallbackErrorMessage` configuration field will be returned. If `fallbackErrorMessage` is not set, the system default error message will be returned.
 
 If an error occurs, the response is similar to the following:
@@ -55,7 +55,7 @@ If an error occurs, the response is similar to the following:
 ```json
 {
   "op": "exception",
-  "class": "Path\\To\\Exception\\Class",
+  "type": "Path\\To\\Exception\\Class",
   "message": "The product cannot be added to the cart because it is out of the stock"
 }
 ```

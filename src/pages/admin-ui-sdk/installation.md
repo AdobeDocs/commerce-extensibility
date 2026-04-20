@@ -130,3 +130,7 @@ The Admin UI SDK is automatically updated for SaaS projects. For PaaS projects, 
 1. If you are updating from V1.x to V2.0, refer to [Migrate your extension point](./extension-points/index.md#migrate-your-extension-point-from-version-1x-to-20) for additional instructions.
 
 1. If you are updating from V2.x to V3.0, the published extensions won't be fetched automatically. Refer to [Eligible extensions configuration](./eligible-extensions-config.md) to select the needed extensions to display.
+
+1. If you are updating from V3.x to V4.0, be aware that the Configure Extensions modal dialog has been deprecated and will be removed in a future release. This dialog displays when you click on the **Configure Extensions** button on the **Stores** > Settings > **Configuration** > **Adobe Services** > **Admin UI SDK** > screen. App Management now handles the association of new apps to Commerce instances. You can still select extensions by workspace, but Adobe recomends using App Management.
+
+<!--- To do: Add link to App Management documentation when available. --->

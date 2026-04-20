@@ -85,7 +85,7 @@ module.exports = [
       path: "/admin-ui-sdk/configuration.md"
     },
     {
-      title: "Eligible extensions configuration",
+      title: "Display extensions",
       path: "/admin-ui-sdk/eligible-extensions-config.md"
     },
     {

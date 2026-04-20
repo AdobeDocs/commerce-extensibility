@@ -32,6 +32,10 @@ module.exports = [
                         path: "/app-management/installation/webhooks.md"
                     },
                     {
+                        title: "Admin UI SDK",
+                        path: "/app-management/installation/admin-ui-sdk.md"
+                    },
+                    {
                         title: "Customize",
                         path: "/app-management/installation/customize.md"
                     },

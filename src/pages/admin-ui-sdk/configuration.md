@@ -18,7 +18,7 @@ Navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **A
 
 The **General configuration** section enables the Admin UI SDK and refreshes registrations when changes are made.
 
-The [**Configure extensions**](./eligible-extensions-config.md) button allows you to select the workspace and eligible extensions for the Commerce instance.
+The [**Configure extensions**](./eligible-extensions-config.md) button allows you to display the eligible extensions for the Commerce instance.
 
 The **Refresh registrations** button reloads all registrations from the App Builder registry. It is typically used when changes are made to the registration on the App Builder application side or when a new app is added and published, to reflect these changes in the Admin.
 

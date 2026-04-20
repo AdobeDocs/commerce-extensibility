@@ -12,14 +12,6 @@ module.exports = [
             path: "/webhooks/use-cases/order-placement-validation.md"
           },
           {
-            title: "Checkout: Update product price",
-            path: "/webhooks/use-cases/product-price-update.md"
-          },
-          {
-            title: "Checkout: Validate product stock",
-            path: "/webhooks/use-cases/product-stock-validation.md"
-          },
-          {
             title: "Customer: Modify address",
             path: "/webhooks/use-cases/customer-address-modification.md"
           },

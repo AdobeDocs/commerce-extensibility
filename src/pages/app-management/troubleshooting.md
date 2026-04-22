@@ -26,26 +26,21 @@ The entire `app.commerce.config` is validated when the `pre-app-build` hook runs
 1. Verify app is deployed:
 
   ```bash
+  aio app get-url
+
+  # Only if you don't see listed the `app-management` actions
   aio app deploy --force-build --force-deploy
   ```
 
 1. Check runtime actions are generated in `.generated` folders.
 
-1. Confirm valid configuration schema.
+1. Ensure your commerce app configuration is valid.
 
 1. Verify correct organization in Developer Console.
 
 ### Runtime actions not generated
 
-1. Verify `app.commerce.config` exists with valid configuration.
-
-1. Run a build so `pre-app-build` runs the generators:
-
-  ```bash
-  aio app build
-  ```
-
-If `.generated` folders are still missing or stale, run:
+Code generation is a mandatory step for App Management to work. It happens automatically during the `pre-app-build` phase, but if you're having issues you can make sure it runs by manually executing the following command (idempotent):
 
 <CodeBlock slots="heading, code" repeat="4" languages="BASH, BASH, BASH, BASH" />
 
@@ -72,32 +67,9 @@ bun x aio-commerce-lib-app generate all
 
 ## Encryption key errors
 
-### Validate your encryption key configuration.
-
-<CodeBlock slots="heading, code" repeat="4" languages="BASH, BASH, BASH, BASH" />
-
-#### npm
-
-```bash
-npx aio-commerce-lib-config encryption validate
-```
-
-#### yarn
-```bash
-yarn exec aio-commerce-lib-config encryption validate
-```
-
-#### pnpm
-```bash
-pnpm exec aio-commerce-lib-config encryption validate
-```
-
-#### bun
-```bash
-bun x aio-commerce-lib-config encryption validate
-```
-
 ### Generate an encryption key (only creates one if it does not already exist).
+
+Ensure your encryption key is present in the `.env` by running the below command.
 
 <CodeBlock slots="heading, code" repeat="4" languages="BASH, BASH, BASH, BASH" />
 
@@ -120,4 +92,31 @@ pnpm exec aio-commerce-lib-config encryption setup
 #### bun
 ```bash
 bun x aio-commerce-lib-config encryption setup
+```
+
+### Validate your encryption key configuration.
+
+If it's already there, validate it has the expected format:
+
+<CodeBlock slots="heading, code" repeat="4" languages="BASH, BASH, BASH, BASH" />
+
+#### npm
+
+```bash
+npx aio-commerce-lib-config encryption validate
+```
+
+#### yarn
+```bash
+yarn exec aio-commerce-lib-config encryption validate
+```
+
+#### pnpm
+```bash
+pnpm exec aio-commerce-lib-config encryption validate
+```
+
+#### bun
+```bash
+bun x aio-commerce-lib-config encryption validate
 ```

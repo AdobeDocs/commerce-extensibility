@@ -119,8 +119,27 @@ This command is executed automatically during the `pre-app-build` hook.
 
 To manually generate an encryption key, use:
 
+<CodeBlock slots="heading, code" repeat="4" languages="BASH, BASH, BASH, BASH" />
+
+#### npm
+
 ```bash
 npx aio-commerce-lib-config encryption setup
+```
+
+#### yarn
+```bash
+yarn exec aio-commerce-lib-config encryption setup
+```
+
+#### pnpm
+```bash
+pnpm exec aio-commerce-lib-config encryption setup
+```
+
+#### bun
+```bash
+bun x aio-commerce-lib-config encryption setup
 ```
 
 This generates a secure 256-bit encryption key and adds `AIO_COMMERCE_CONFIG_ENCRYPTION_KEY` to your `.env` file.

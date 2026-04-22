@@ -40,8 +40,32 @@ Only add the services your app needs. This keeps your credentials scoped to the 
 
 Run the following command to set up your App Builder project:
 
+<CodeBlock slots="heading, code" repeat="4" languages="BASH, BASH, BASH, BASH" />
+
+#### npm
+
 ```bash
 npx @adobe/aio-commerce-lib-app init
+```
+
+#### yarn
+```bash
+# For Yarn classic (v1), install first
+yarn add @adobe/aio-commerce-lib-app
+yarn exec aio-commerce-lib-app init
+
+# For Yarn Berry (v2+), pull directly from remote via `dlx`
+yarn dlx @adobe/aio-commerce-lib-app init
+```
+
+#### pnpm
+```bash
+pnpm dlx @adobe/aio-commerce-lib-app init
+```
+
+#### bun
+```bash
+bun x @adobe/aio-commerce-lib-app init
 ```
 
 The initialization process:
@@ -56,11 +80,15 @@ The command automatically detects your package manager and uses the appropriate 
 
 ## CLI commands
 
-The library provides the following CLI commands:
+The library provides the following CLI commands. Replace `npx` with your package manager of preference, using the below equivalents:
+
+- For [Yarn](https://yarnpkg.com/): `yarn exec`
+- For [PNPM](https://pnpm.io/): `pnpm exec`
+- For [Bun](https://bun.com/): `bun x`
 
 | Command | Description |
 |---------|-------------|
-| `npx @adobe/aio-commerce-lib-app init` | Initialize the project. Recommended for a first-time setup. The `@adobe` prefix is only required for this command |
+| `npx @adobe/aio-commerce-lib-app init` | Initialize the project. Recommended for a first-time setup. The `@adobe` prefix is only required when you don't have the dependency installed locally. |
 | `npx aio-commerce-lib-app generate all` | Generate all artifacts (manifest, schema, and runtime actions). If your schema contains password fields, configure an encryption key. An encryption key is generated when no encryption key is found.  See [Password field encryption](configuration-schema.md#password-field-encryption) for more information   |
 | `npx aio-commerce-lib-app generate manifest` | Generate only the app manifest file |
 | `npx aio-commerce-lib-app generate actions` | Generate only runtime actions |

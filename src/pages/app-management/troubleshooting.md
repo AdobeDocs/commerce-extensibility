@@ -47,20 +47,77 @@ The entire `app.commerce.config` is validated when the `pre-app-build` hook runs
 
 1. If `.generated` folders are still missing or stale, run:
 
+  <CodeBlock slots="heading, code" repeat="4" languages="BASH, BASH, BASH, BASH" />
+
+  #### npm
+
   ```bash
   npx aio-commerce-lib-app generate all
+  ```
+
+  #### yarn
+  ```bash
+  yarn exec aio-commerce-lib-app generate all
+  ```
+
+  #### pnpm
+  ```bash
+  pnpm exec aio-commerce-lib-app generate all
+  ```
+
+  #### bun
+  ```bash
+  bun x aio-commerce-lib-app generate all
   ```
 
 ## Encryption key errors
 
 1. Validate your encryption key configuration.
 
+  <CodeBlock slots="heading, code" repeat="4" languages="BASH, BASH, BASH, BASH" />
+
+  #### npm
+
   ```bash
   npx aio-commerce-lib-config encryption validate
   ```
 
+  #### yarn
+  ```bash
+  yarn exec aio-commerce-lib-config encryption validate
+  ```
+
+  #### pnpm
+  ```bash
+  pnpm exec aio-commerce-lib-config encryption validate
+  ```
+
+  #### bun
+  ```bash
+  bun x aio-commerce-lib-config encryption validate
+  ```
+
 1. Generate an encryption key (only creates one if it does not already exist).
+
+  <CodeBlock slots="heading, code" repeat="4" languages="BASH, BASH, BASH, BASH" />
+
+  #### npm
 
   ```bash
   npx aio-commerce-lib-config encryption setup
+  ```
+
+  #### yarn
+  ```bash
+  yarn exec aio-commerce-lib-config encryption setup
+  ```
+
+  #### pnpm
+  ```bash
+  pnpm exec aio-commerce-lib-config encryption setup
+  ```
+
+  #### bun
+  ```bash
+  bun x aio-commerce-lib-config encryption setup
   ```

@@ -92,8 +92,27 @@ Password fields are automatically encrypted using `AES-256-GCM` when stored and 
 
 To validate that your encryption key is properly configured, run:
 
+<CodeBlock slots="heading, code" repeat="4" languages="BASH, BASH, BASH, BASH" />
+
+#### npm
+
 ```bash
 npx aio-commerce-lib-config encryption validate
+```
+
+#### yarn
+```bash
+yarn exec aio-commerce-lib-config encryption validate
+```
+
+#### pnpm
+```bash
+pnpm exec aio-commerce-lib-config encryption validate
+```
+
+#### bun
+```bash
+bun x aio-commerce-lib-config encryption validate
 ```
 
 This command is executed automatically during the `pre-app-build` hook.

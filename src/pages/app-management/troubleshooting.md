@@ -29,6 +29,12 @@ Only Admin users whose **role** includes the **App Management** resource can use
 
 For the full association and installation workflow, see [Manage your app](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app).
 
+## Local Adobe Commerce instances
+
+App Management is **not supported** for local Adobe Commerce development instances at this time. Association, installation, and in-Admin workflows expect a Commerce deployment that App Management can integrate with in a supported way (for example Adobe Commerce on cloud infrastructure or a reachable hosted instance).
+
+If you are developing against a local stack, plan to validate App Management behavior in a non-local environment.
+
 ## Configuration validation errors
 
 The entire `app.commerce.config` is validated when the `pre-app-build` hook runs (for example during `aio app build`) and when you run `npx aio-commerce-lib-app generate …` manually. Schema validation is included. If validation fails, check:

@@ -37,6 +37,8 @@ The following diagram illustrates the workflow between app developers and app ma
 
 Before using App Management, ensure the following:
 
+* App Management is **not supported** for **local** Adobe Commerce installations at this time. Use a hosted Commerce environment (cloud or on-premises) where App Management is available in the Admin. See [Local Adobe Commerce instances](./troubleshooting.md#local-adobe-commerce-instances) for details.
+
 * [Admin UI SDK](../admin-ui-sdk/index.md) version 3.3.1, or greater, is required for App Management. [Verify your version](../admin-ui-sdk/installation.md#install-the-admin-ui-sdk) before proceeding.
 
 * App managers (Admin users) who associate apps must have the **App Management** permission enabled for their role under **Admin UI SDK** in **System** > **User Roles** > **Role Resources**. If someone cannot see App Management, see [Cannot access App Management (permissions)](./troubleshooting.md#cannot-access-app-management-permissions).

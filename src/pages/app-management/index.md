@@ -39,7 +39,7 @@ Before using App Management, ensure the following:
 
 * [Admin UI SDK](../admin-ui-sdk/index.md) version 3.3.1, or greater, is required for App Management. [Verify your version](../admin-ui-sdk/installation.md#install-the-admin-ui-sdk) before proceeding.
 
-* App managers (Admin users) who associate apps must have App Management permissions. See [Manage your app](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app) for more information.
+* App managers (Admin users) who associate apps must have the **App Management** permission enabled for their role under **Admin UI SDK** in **System** > **User Roles** > **Role Resources**. If someone cannot see App Management, see [Cannot access App Management (permissions)](./troubleshooting.md#cannot-access-app-management-permissions).
 
 * App Builder applications with the following minimum library versions.
 

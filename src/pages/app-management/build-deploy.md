@@ -31,6 +31,12 @@ The initialization process creates files organized by extension point:
 | `src/commerce-configuration-1/.generated/actions/business-configuration/` | Runtime actions for config and scope management |
 | `src/commerce-configuration-1/ext.config.yaml` | Extension manifest with `pre-app-build` hook |
 
+### Version control
+
+Commit the files above—including `app.commerce.config`, each `ext.config.yaml`, and everything under the `.generated` directories—to your Git repository so they are part of **source control** (the same copies your collaborators and CI/CD pipelines clone and build). Even though generators refresh `.generated` during build, those paths should live in the repo for a consistent, deployable project.
+
+Do not commit secrets. Keep `.env` and other sensitive material out of the repository; see [Password field encryption](./configuration-schema.md#password-field-encryption).
+
 ## Generated runtime actions
 
 The libraries generate runtime actions organized by extension point. These are auto-generated directories and any manual changes can be lost during regeneration.

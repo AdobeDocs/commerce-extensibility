@@ -52,6 +52,8 @@ The initialization process:
 * Generates all required artifacts (`commerce/configuration/1` resources are only generated when `businessConfig` is defined)
 * Updates `app.config.yaml` and `install.yaml` with the appropriate extension references. Creates these files if they do not exist.
 
+After initialization, **commit** the new and updated files to your Git repository (add them to source control) so the project is reproducible for your team and for builds. See [Version control](./build-deploy.md#version-control) under Build and deploy for what to include and what to exclude.
+
 The command automatically detects your package manager and uses the appropriate package runner (`npx` for npm, `yarn dlx` for Yarn, `pnpm dlx` for pnpm, `bunx` for Bun).
 
 ## CLI commands

@@ -51,16 +51,19 @@ npx aio-commerce-lib-app generate all
 ```
 
 #### yarn
+
 ```bash
 yarn exec aio-commerce-lib-app generate all
 ```
 
 #### pnpm
+
 ```bash
 pnpm exec aio-commerce-lib-app generate all
 ```
 
 #### bun
+
 ```bash
 bun x aio-commerce-lib-app generate all
 ```
@@ -80,16 +83,19 @@ npx aio-commerce-lib-config encryption setup
 ```
 
 #### yarn
+
 ```bash
 yarn exec aio-commerce-lib-config encryption setup
 ```
 
 #### pnpm
+
 ```bash
 pnpm exec aio-commerce-lib-config encryption setup
 ```
 
 #### bun
+
 ```bash
 bun x aio-commerce-lib-config encryption setup
 ```
@@ -107,16 +113,19 @@ npx aio-commerce-lib-config encryption validate
 ```
 
 #### yarn
+
 ```bash
 yarn exec aio-commerce-lib-config encryption validate
 ```
 
 #### pnpm
+
 ```bash
 pnpm exec aio-commerce-lib-config encryption validate
 ```
 
 #### bun
+
 ```bash
 bun x aio-commerce-lib-config encryption validate
 ```

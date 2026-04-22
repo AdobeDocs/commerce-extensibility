@@ -101,16 +101,19 @@ npx aio-commerce-lib-config encryption validate
 ```
 
 #### yarn
+
 ```bash
 yarn exec aio-commerce-lib-config encryption validate
 ```
 
 #### pnpm
+
 ```bash
 pnpm exec aio-commerce-lib-config encryption validate
 ```
 
 #### bun
+
 ```bash
 bun x aio-commerce-lib-config encryption validate
 ```
@@ -128,16 +131,19 @@ npx aio-commerce-lib-config encryption setup
 ```
 
 #### yarn
+
 ```bash
 yarn exec aio-commerce-lib-config encryption setup
 ```
 
 #### pnpm
+
 ```bash
 pnpm exec aio-commerce-lib-config encryption setup
 ```
 
 #### bun
+
 ```bash
 bun x aio-commerce-lib-config encryption setup
 ```

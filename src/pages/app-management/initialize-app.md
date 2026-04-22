@@ -53,6 +53,7 @@ npx @adobe/aio-commerce-lib-app init
 ```
 
 #### yarn
+
 ```bash
 # For Yarn classic (v1), install first
 yarn add @adobe/aio-commerce-lib-app
@@ -63,11 +64,13 @@ yarn dlx @adobe/aio-commerce-lib-app init
 ```
 
 #### pnpm
+
 ```bash
 pnpm dlx @adobe/aio-commerce-lib-app init
 ```
 
 #### bun
+
 ```bash
 bun x @adobe/aio-commerce-lib-app init
 ```
@@ -84,9 +87,9 @@ The initialization process:
 
 The library provides the following CLI commands. Replace `npx` with your package manager of preference, using the below equivalents:
 
-- For [Yarn](https://yarnpkg.com/): `yarn exec`
-- For [PNPM](https://pnpm.io/): `pnpm exec`
-- For [Bun](https://bun.com/): `bun x`
+* For [Yarn](https://yarnpkg.com/): `yarn exec`
+* For [PNPM](https://pnpm.io/): `pnpm exec`
+* For [Bun](https://bun.com/): `bun x`
 
 | Command | Description |
 |---------|-------------|

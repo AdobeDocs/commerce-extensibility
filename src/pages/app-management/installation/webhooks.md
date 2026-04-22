@@ -113,9 +113,9 @@ export default defineConfig({
 });
 ```
 
-## Example with runtime action (URL resolved at runtime)
+## Example with runtime action
 
-Use this pattern when you resolve the webhook URL at runtime with a `runtimeAction` instead of declaring an explicit URL in configuration.
+Use this pattern so the webhook can execute a `runtimeAction` in the project.
 
 ```js
 import { defineConfig } from "@adobe/aio-commerce-lib-app/config"

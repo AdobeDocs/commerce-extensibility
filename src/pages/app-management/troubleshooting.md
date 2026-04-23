@@ -13,7 +13,7 @@ Use the following solutions to resolve common issues with App Management.
 
 ## Configuration validation errors
 
-The entire `app.commerce.config` is validated when the `pre-app-build` hook runs (for example during `aio app build`) and when you run `npx aio-commerce-lib-app generate …` manually. Schema validation is included. If validation fails, check:
+`app.commerce.config` is validated against its schema every time the config is loaded. This happens during the `postinstall` and `pre-app-build` hooks (for example during `aio app build`), and whenever you run an `npx aio-commerce-lib-app generate …` command manually. If validation fails, check:
 
 1. **Required properties**. Fields must have `name`, `label`, and `type`.
 
@@ -40,7 +40,7 @@ The entire `app.commerce.config` is validated when the `pre-app-build` hook runs
 
 ### Runtime actions not generated
 
-Code generation is a mandatory step for App Management to work. It happens automatically during the `pre-app-build` phase, but if you're having issues you can make sure it runs by manually executing the following command (idempotent):
+Code generation is a mandatory step for App Management to work. The `pre-app-build` hook only regenerates the manifest (for `extensibility/1`) or the configuration schema (for `configuration/1`), so runtime actions must be generated manually with the following command (idempotent):
 
 <CodeBlock slots="heading, code" repeat="4" languages="BASH, BASH, BASH, BASH" />
 

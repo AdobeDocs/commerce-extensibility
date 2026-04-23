@@ -127,3 +127,90 @@ curl -X GET \
 ### Recommendations
 
 - Event and REST API responses contain the order ID for a request. It is the application's responsibility to monitor updates or failures in Commerce.
+
+## App Management
+
+The following endpoints manage selected extensions stored in the Commerce database.
+
+### Save a selected extension
+
+`POST /V1/adminuisdk/extension`
+
+Saves a selected extension record to the database.
+
+**Headers:**
+
+| Header | Value |
+| --- | --- |
+| `Authorization` | Bearer `<Token>` |
+| `Content-Type` | application/json |
+
+**Request body:**
+
+All fields are defined in the `extension` object.
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `extension_name` | string | Yes | The extension name |
+| `extension_title` | string | Yes | The extension title |
+| `extension_url` | string | Yes | The extension URL |
+| `extension_workspace` | string | Yes | The extension workspace |
+| `id` | string | No | Unique ID field |
+
+**Example usage:**
+
+```bash
+curl -X POST \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer <TOKEN>" \
+    -d '{"extension": {"extension_name": "my-extension", "extension_title": "My Extension", "extension_url": "https://example.com", "extension_workspace": "production"}}' \
+    '<ADOBE_COMMERCE_URL>/rest/V1/adminuisdk/extension'
+```
+
+**Responses:**
+
+- **400**: Bad request
+- **401**: Unauthorized
+- **500**: Internal server error
+
+### Delete a selected extension
+
+`DELETE /V1/adminuisdk/extension/<workspace_name>/<extension_name>`
+
+Deletes the specified extension from the database by workspace name and extension name.
+
+**Headers:**
+
+| Header | Value |
+| --- | --- |
+| `Authorization` | Bearer `<Token>` |
+| `Content-Type` | application/json |
+
+**Path parameters:**
+
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| `workspace_name` | string | Yes | The workspace name |
+| `extension_name` | string | Yes | The extension name |
+
+**Request body:**
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `workspaceName` | string | Yes | The workspace name |
+| `extensionName` | string | Yes | The extension name |
+
+**Example usage:**
+
+```bash
+curl -X DELETE \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer <TOKEN>" \
+    -d '{"workspaceName": "production", "extensionName": "my-extension"}' \
+    '<ADOBE_COMMERCE_URL>/rest/V1/adminuisdk/extension/<WORKSPACE_NAME>/<EXTENSION_NAME>'
+```
+
+**Responses:**
+
+- **401**: Unauthorized
+- **500**: Internal server error

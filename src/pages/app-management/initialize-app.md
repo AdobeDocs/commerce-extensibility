@@ -1,10 +1,10 @@
 ---
 title: Initialize your app
-description: Set up your App Builder project for App Management
+description: Initialize an App Builder project for App Management
 keywords:
   - App Builder
-  - Extensibility
   - App Management
+  - Extensibility
 ---
 
 # Initialize your app
@@ -63,7 +63,7 @@ The library provides the following CLI commands:
 | Command | Description |
 |---------|-------------|
 | `npx @adobe/aio-commerce-lib-app init` | Initialize the project. Recommended for a first-time setup. The `@adobe` prefix is only required for this command |
-| `npx aio-commerce-lib-app generate all` | Generate all artifacts (manifest, schema, and runtime actions). If your schema contains password fields, configure an encryption key. An encryption key is generated when no encryption key is found.  See [Password field encryption](configuration-schema.md#password-field-encryption) for more information   |
+| `npx aio-commerce-lib-app generate all` | Generate all artifacts (manifest, schema, and runtime actions). If your schema contains password fields, configure an encryption key. An encryption key is generated when no encryption key is found. See [Password field encryption](configuration-schema.md#password-field-encryption) for more information |
 | `npx aio-commerce-lib-app generate manifest` | Generate only the app manifest file |
 | `npx aio-commerce-lib-app generate actions` | Generate only runtime actions |
 | `npx aio-commerce-lib-app generate schema` | Generate only the configuration schema |

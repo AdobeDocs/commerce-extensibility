@@ -1,10 +1,10 @@
 ---
 title: Build and deploy
-description: Build and deploy your App Builder application for App Management
+description: Build and deploy App Builder apps for App Management
 keywords:
   - App Builder
-  - Extensibility
   - App Management
+  - Extensibility
 ---
 
 # Build and deploy
@@ -15,7 +15,7 @@ After defining your app configuration, build and deploy your application to make
 
 The initialization process creates files organized by extension point:
 
-**`commerce/extensibility/1`** for App management.
+**`commerce/extensibility/1`** for App Management.
 
 | File | Description |
 |------|-------------|
@@ -35,7 +35,7 @@ The initialization process creates files organized by extension point:
 
 Commit the files above—including `app.commerce.config`, each `ext.config.yaml`, and everything under the `.generated` directories—to your Git repository so they are part of **source control** (the same copies your collaborators and CI/CD pipelines clone and build). Even though generators refresh `.generated` during build, those paths should live in the repo for a consistent, deployable project.
 
-Do not commit secrets. Keep `.env` and other sensitive material out of the repository. [Password field encryption](./configuration-schema.md#password-field-encryption) provides additional guidance.
+Do not commit secrets. Keep `.env` and other sensitive material out of the repository; see [Password field encryption](./configuration-schema.md#password-field-encryption).
 
 ## Generated runtime actions
 
@@ -72,7 +72,7 @@ aio app deploy
 
 You can still run `npx aio-commerce-lib-app generate …` manually when debugging, but it is not required for normal config edits.
 
-Once deployed, your app appears in App Management and can be associated with a Commerce instance. See [manage your app](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app) for more information.
+Once deployed, your app appears in App Management and can be associated with an Adobe Commerce instance. See [Manage your app](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app) for more information.
 
 ## Find an application in the Admin
 
@@ -88,4 +88,4 @@ Search text and both dropdowns apply together (logical AND). To display the full
 
 ### Acquire App
 
-**Acquire App** opens a new browser tab (or a separate browser view) to [Adobe Exchange](https://exchange.adobe.com/experiencecloud), where you can discover Commerce-related marketplace listings and add applications to your Adobe IMS organization. Once the app is acquired, approved, and deployed, app will be loaded in App Management for [association and installation](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app).
+**Acquire App** opens a new browser tab (or a separate browser view) to [Adobe Exchange](https://exchange.adobe.com/experiencecloud), where you can discover Commerce-related marketplace listings and add applications to your Adobe IMS organization. Once the app is acquired, approved, and deployed, the app appears in App Management for [association and installation](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app).

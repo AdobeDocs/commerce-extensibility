@@ -1,10 +1,10 @@
 ---
 title: Troubleshooting
-description: Solutions for common App Management issues
+description: Resolve App Management permissions, local Commerce limits, schema validation, deployment, generated actions, and encryption key issues.
 keywords:
   - App Builder
-  - Extensibility
   - App Management
+  - Extensibility
 ---
 
 # Troubleshooting
@@ -13,9 +13,9 @@ Use the following solutions to resolve common issues with App Management.
 
 ## Cannot access App Management (permissions)
 
-Only Admin users whose **role** includes the **App Management** resource can use App Management in the Commerce Admin. If **Apps** > **App Management** is missing or access is denied, the user’s role likely does not grant that permission.
+Only Admin users whose **role** includes the **App Management** resource can use App Management in the Adobe Commerce Admin. If **Apps** > **App Management** is missing or access is denied, the user’s role likely does not grant that permission.
 
-1. Log in as an administrator with the proper roles.
+1. Sign in as an Admin user who can edit roles.
 
 1. Go to **System** > **User Roles** and open the role assigned to the user who needs access (or create or adjust a role for app managers).
 
@@ -31,7 +31,7 @@ For the full association and installation workflow, see [Manage your app](https:
 
 ## Local Adobe Commerce instances
 
-App Management is **not supported** for local Adobe Commerce development instances at this time. Association, installation, and in-Admin workflows expect a Commerce deployment that App Management can integrate with in a supported way (for example Adobe Commerce on cloud infrastructure or a reachable hosted instance).
+App Management is **not supported** for local Adobe Commerce development instances. Association, installation, and workflows in the Admin require an Adobe Commerce deployment that App Management can integrate with.
 
 If you are developing against a local stack, plan to validate App Management behavior in a non-local environment.
 

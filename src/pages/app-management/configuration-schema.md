@@ -3,8 +3,9 @@ title: Business configuration
 description: Define your app business configuration
 keywords:
   - App Builder
-  - Extensibility
   - App Management
+  - Configuration
+  - Extensibility
 ---
 
 # Business configuration
@@ -143,7 +144,9 @@ Your `app.commerce.config` is validated each time you run a `generate` command (
 
 Use `getConfigurationByKey` from the configuration library (together with `getConfiguration` and `setConfiguration` when you need full documents or writes) to access configuration values in your runtime actions.
 
-For **store- or website-scoped** values, pass an explicit selector such as `byCodeAndLevel(storeCode, storeLevel)`:
+A **scope selector** tells the library which node in the scope tree to read or write. That tree can include **Adobe Commerce** scopes (such as websites and store views, each with a scope code and a **level** in the hierarchy), **custom scopes** you create in App Management (code only; see below), **global** scope, and other nodes that your app or merchants configure.
+
+When the target scope has **both** a code and a level—typical for Commerce store and website scopes—use `byCodeAndLevel`:
 
 ```js
 import { getConfigurationByKey, byCodeAndLevel } from "@adobe/aio-commerce-lib-config";
@@ -160,11 +163,22 @@ async function main(params) {
 }
 ```
 
+**Custom scopes** created in the App Management UI are identified by **code only**; they do not define a separate **level** in the tree. For those scopes you must use **`byCode("your-custom-scope-code")`**. `byCodeAndLevel` is not used for custom scopes because there is no level to pass.
+
+```js
+import { getConfigurationByKey, byCode } from "@adobe/aio-commerce-lib-config";
+
+const { config: { value: endpoint } } = await getConfigurationByKey(
+  "api-endpoint",
+  byCode("your-custom-scope-code"),
+);
+```
+
 ### Global scope and selectors
 
 `getConfiguration`, `getConfigurationByKey`, and `setConfiguration` accept an **optional** scope selector. When you omit it, the library resolves the **global** scope (the same default used when you call `byCode` with only a scope code).
 
-`byCode("my-scope")` applies the **global** level when you do not pass a level separately. To target another level (for example `base`), use `byCodeAndLevel("my-scope", "my-level")` or the selector that matches your scope tree.
+`byCode("my-scope")` applies the **global** level when you do not pass a level separately. For Commerce scopes that use another level (for example `base`), use `byCodeAndLevel("my-scope", "base")` or the selector that matches your scope tree.
 
 For more patterns and API detail, see the configuration library [usage](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-config/docs/usage.md) documentation in the Adobe Commerce SDK repository.
 

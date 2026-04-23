@@ -13,7 +13,7 @@ App Management provides a unified experience for installing, configuring, and ma
 
 ![App Management view](../_images/app-management/app-management-view.png)
 
-App developers define the configuration schema, metadata, and runtime actions for their applications. App managers associate and configure deployed apps within their Commerce instances.
+The **App Management** view lists applications for your Adobe Commerce instance as cards, with filters above the list. **Acquire App** opens a new browser tab to [Adobe Exchange](https://exchange.adobe.com/experiencecloud) so you can browse Commerce-related marketplace listings. App developers define the configuration schema, metadata, and runtime actions for their applications. App managers associate and configure deployed apps within their Commerce instances.
 
 The following diagram illustrates the workflow between app developers and app managers:
 
@@ -30,6 +30,8 @@ The following diagram illustrates the workflow between app developers and app ma
 * **Custom installation workflows**. Define pre-installation, post-installation messages, and custom scripts that run during app installation.
 
 * **Unified lifecycle management**. Associate, configure, install, and unassociate apps from a single interface.
+
+* **List filters** — [Search and filter](./build-deploy.md#find-an-application-in-the-admin) by app name, lifecycle **status**, and **extensibility pattern** (for example Events, or Webhooks) when many apps share your Adobe IMS organization.
 
 ## Requirements
 

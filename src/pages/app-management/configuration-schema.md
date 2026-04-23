@@ -162,9 +162,9 @@ async function main(params) {
 
 ### Global scope and selectors
 
-`getConfiguration`, `getConfigurationByKey`, and `setConfiguration` accept an **optional** scope selector. When you omit it, the library resolves **global** scope (the same default used when you call `byCode` with only a scope code).
+`getConfiguration`, `getConfigurationByKey`, and `setConfiguration` accept an **optional** scope selector. When you omit it, the library resolves the **global** scope (the same default used when you call `byCode` with only a scope code).
 
-`byCode("my-scope")` applies the **global** level when you do not pass a level separately. To target another level (for example `base`), use `byCodeAndLevel("my-scope", "base")` or the selector that matches your scope tree.
+`byCode("my-scope")` applies the **global** level when you do not pass a level separately. To target another level (for example `base`), use `byCodeAndLevel("my-scope", "my-level")` or the selector that matches your scope tree.
 
 For more patterns and API detail, see the configuration library [usage](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-config/docs/usage.md) documentation in the Adobe Commerce SDK repository.
 

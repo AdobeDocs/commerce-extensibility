@@ -35,7 +35,7 @@ The initialization process creates files organized by extension point:
 
 Commit the files above—including `app.commerce.config`, each `ext.config.yaml`, and everything under the `.generated` directories—to your Git repository so they are part of **source control** (the same copies your collaborators and CI/CD pipelines clone and build). Even though generators refresh `.generated` during build, those paths should live in the repo for a consistent, deployable project.
 
-Do not commit secrets. Keep `.env` and other sensitive material out of the repository; see [Password field encryption](./configuration-schema.md#password-field-encryption).
+Do not commit secrets. Keep `.env` and other sensitive material out of the repository. [Password field encryption](./configuration-schema.md#password-field-encryption) provides additional guidance.
 
 ## Generated runtime actions
 

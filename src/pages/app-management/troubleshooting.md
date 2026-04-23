@@ -70,9 +70,9 @@ bun x aio-commerce-lib-app generate all
 
 ## Encryption key errors
 
-### Generate an encryption key (only creates one if it does not already exist).
+### Generate an encryption key
 
-Ensure your encryption key is present in the `.env` by running the below command.
+Ensure your encryption key is present in the `.env` by running the command below. It only creates a new key if one does not already exist.
 
 <CodeBlock slots="heading, code" repeat="4" languages="BASH, BASH, BASH, BASH" />
 

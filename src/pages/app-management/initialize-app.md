@@ -102,14 +102,58 @@ The library provides the following CLI commands. Replace `npx` with your package
 
 When a new version of the library is available, update your project to get the latest features and fixes:
 
+<CodeBlock slots="heading, code" repeat="4" languages="BASH, BASH, BASH, BASH" />
+
+#### npm
+
 ```bash
 npm install @adobe/aio-commerce-lib-app@latest @adobe/aio-commerce-sdk@latest
 ```
 
+#### yarn
+
+```bash
+yarn add @adobe/aio-commerce-lib-app@latest @adobe/aio-commerce-sdk@latest
+```
+
+#### pnpm
+
+```bash
+pnpm add @adobe/aio-commerce-lib-app@latest @adobe/aio-commerce-sdk@latest
+```
+
+#### bun
+
+```bash
+bun add @adobe/aio-commerce-lib-app@latest @adobe/aio-commerce-sdk@latest
+```
+
 If you use a business configuration, also run the following command:
+
+<CodeBlock slots="heading, code" repeat="4" languages="BASH, BASH, BASH, BASH" />
+
+#### npm
 
 ```bash
 npm install @adobe/aio-commerce-lib-config@latest
+```
+
+#### yarn
+
+```bash
+yarn add @adobe/aio-commerce-lib-config@latest
+```
+
+#### pnpm
+
+```bash
+pnpm add @adobe/aio-commerce-lib-config@latest
+```
+
+#### bun
+
+```bash
+bun add @adobe/aio-commerce-lib-config@latest
 ```
 
 The `postinstall` hook regenerates runtime actions when you install or update the library.

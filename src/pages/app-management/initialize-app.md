@@ -28,9 +28,7 @@ Complete the following steps before initializing your app:
    * **I/O Events for Adobe Commerce**. Required only if your app uses events.
    * **Adobe Commerce as a Cloud Service**. Required only for Adobe Commerce as a Cloud Service instances.
 
-<InlineAlert variant="info" slots="text"/>
-
-Only add the services your app needs. This keeps your credentials scoped to the minimum required permissions.
+   Only add the services your app needs. This keeps your credentials scoped to the minimum required permissions.
 
 1. **Set up App Builder**
 

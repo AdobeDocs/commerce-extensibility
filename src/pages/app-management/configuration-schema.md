@@ -220,9 +220,7 @@ const { config: { value: endpoint } } = await getConfigurationByKey(
 
 ### Global scope and selectors
 
-`getConfiguration`, `getConfigurationByKey`, and `setConfiguration` accept an **optional** scope selector. When you omit it, the library resolves the **global** scope (the same default used when you call `byCode` with only a scope code).
-
-`byCode("my-scope")` applies the **global** level when you do not pass a level separately. For Commerce scopes that use another level (for example `base`), use `byCodeAndLevel("my-scope", "base")` or the selector that matches your scope tree.
+`getConfiguration`, `getConfigurationByKey`, and `setConfiguration` accept an **optional** scope selector. When you omit it, the library resolves the **global** scope.
 
 For more patterns and API detail, see the configuration library [usage](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-config/docs/usage.md) documentation in the Adobe Commerce SDK repository.
 

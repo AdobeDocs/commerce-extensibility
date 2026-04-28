@@ -8,17 +8,17 @@ keywords:
 
 # Totals collector use cases
 
-This page explores use cases and scenarios for implementing out-of-process quote totals (such as discounts) using the Adobe Commerce checkout starter kit and the `magento/module-out-of-process-totals-collector` module.
+This page explores use cases and scenarios for implementing out-of-process discount totals (such as discounts) using the Adobe Commerce checkout starter kit and the `magento/module-out-of-process-totals-collector` module.
 
 For more general use cases, refer to [use-cases](./use-cases.md).
 
 ## How it works
 
-The out-of-process totals collector extends Adobe Commerce quote totals collection with [webhooks](../../webhooks/index.md). When the core discount totals collector runs, a plugin invokes the `GetTotalModificationsInterface::execute` API. The webhook framework sends the quote and totals payload to your subscribed endpoint. Your App Builder application computes discounts (or other total modifications) and returns a JSON Patch response. Commerce applies the response to the quote totals and items, and the built-in `DiscountHandler` applies discount data so it appears in cart/checkout and in GraphQL.
+The out-of-process totals collector extends Adobe Commerce discount totals collection with [webhooks](../../webhooks/index.md). When the core discount totals collector runs, a plugin invokes the `GetTotalModificationsInterface::execute` API. The webhook framework sends the quote and totals payload to your subscribed endpoint. Your App Builder application computes discounts and returns a JSON Patch response. Commerce applies the response to the quote totals and items, and the built-in `DiscountHandler` applies discount data so it appears in cart/checkout and in GraphQL.
 
 ## Totals collector webhook
 
-To apply discounts (or other total modifications) from an external service, register a webhook for the method `plugin.magento.out_of_process_totals_collector.api.get_total_modifications.execute` (type `after`).
+To apply discounts from an external service, register a webhook for the method `plugin.magento.out_of_process_totals_collector.api.get_total_modifications.execute` (type `after`).
 
 &#8203;<Edition name="paas" /> To register the webhook, [modify the `webhooks.xml` file](../../webhooks/hooks.md) (in your module or in `app/etc`):
 
@@ -85,7 +85,7 @@ The request body includes the quote, shipping assignment, and current totals. Th
 }
 ```
 
-Your endpoint can use this data (items, quantities, prices, customer/quote attributes) to compute discounts or other modifications.
+Your endpoint can use this data (items, quantities, prices, customer/quote attributes) to compute discounts.
 
 ## Response format
 

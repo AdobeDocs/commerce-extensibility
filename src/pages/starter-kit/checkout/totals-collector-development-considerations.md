@@ -8,7 +8,7 @@ keywords:
 
 # Totals collector development considerations
 
-When implementing out-of-process discount totals collector integrations, consider response model constraints, discount composition behavior, and failure handling. These considerations help keep totals collection predictable and checkout performance reliable.
+When implementing out-of-process discount totals collector integrations, consider response model constraints, discount composition behavior, and failure handling. These considerations help keep totals collection predictable and checkout performance reliable. Currently, the totals collector supports discount modifications only; support for additional total types may be added in the future.
 
 ## External discount engine
 
@@ -28,4 +28,4 @@ If your endpoint fails or times out, the webhook framework uses the configured `
 
 <InlineAlert variant="info" slots="text"/>
 
-The current implementation supports discount handling only via the DiscountHandler. Custom total types are not processed by this module.
+The current implementation supports discount handling only via the DiscountHandler. Any total types other than discounts are not supported at this time.

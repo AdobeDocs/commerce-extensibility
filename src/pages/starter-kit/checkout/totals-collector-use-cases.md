@@ -8,7 +8,7 @@ keywords:
 
 # Totals collector use cases
 
-This page explores use cases and scenarios for implementing out-of-process discount totals (such as discounts) using the Adobe Commerce checkout starter kit and the `magento/module-out-of-process-totals-collector` module.
+This page explores use cases and scenarios for implementing out-of-process discount totals using the Adobe Commerce checkout starter kit and the `magento/module-out-of-process-totals-collector` module.
 
 For more general use cases, refer to [use-cases](./use-cases.md).
 

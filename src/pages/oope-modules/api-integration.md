@@ -95,7 +95,6 @@ curl --request GET \
 
 This module is available automatically on Adobe Commerce as a Cloud Service. For on-premises and cloud infrastructure projects, install it with Composer:
 
-
 1. Run the following command to install the module:
 
    ```bash

@@ -1,6 +1,6 @@
 ---
 title: Custom Attributes Modules
-description: Learn about the REST endpoints provided by the Magento_OopeApiIntegrations module for Adobe Commerce out-of-process extensibility.
+description: Describes the OOPE modules that enable custom attributes.
 keywords:
  - Extensibility
  - App Builder

@@ -93,7 +93,7 @@ curl --request GET \
 
 ## Installation
 
-This module is available automatically on Adobe Commerce as a Cloud Service. For on-premises and cloud infrastructure projects, install it with Composer:
+This module is included by default in Adobe Commerce as a Cloud Service. For on-premises or cloud infrastructure projects, install it using Composer.
 
 1. Run the following command to install the module:
 

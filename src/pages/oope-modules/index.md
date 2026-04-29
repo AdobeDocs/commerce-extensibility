@@ -1,5 +1,5 @@
 ---
-title: Out-of-Process Extensibility (OOPE) modules
+title: Out-of-process Extensubulity Modules
 description: Learn about the family of OOPE modules that enable external services to extend Adobe Commerce behavior without modifying core code.
 keywords:
  - Extensibility
@@ -10,6 +10,8 @@ keywords:
  - Starter Kit
  - Tools
 ---
+
+# Out-of-process extensibility modules
 
 Adobe Commerce has a set of modules that enable out-of-process extensibility (OOPE). They allow external services and App Builder actions to extend Commerce behavior without modifying core code. These modules cover a range of integration patterns, including REST APIs, GraphQL extensions, and webhooks.
 
@@ -24,4 +26,4 @@ Shipping Methods | `magento/module-out-of-process-shipping-methods` | Enables ou
 Tax | `magento/module-out-of-process-tax-management` | Allows an [external tax service](../starter-kit/checkout/tax-use-cases.md) to drive quote tax calculation. It includes a REST registry for tax integrations (only one may be active at a time) and replaces the core `Magento\Tax\Model\Sales\Total\Quote\Tax` class using a `di.xml` preference, making it *incompatible* with 3rd-party extensions that override the same class.
 Totals Collector | `magento/module-out-of-process-totals-collector` | Allows an [external service](../starter-kit/checkout/totals-collector-use-cases.md) to modify quote totals (primarily discounts) using webhooks.
 
-These modules are available automatically on Adobe Commerce as a Cloud Service. For on-premises and cloud infrastructure projects, they can be installed with Composer.
+These modules are available automatically on Adobe Commerce as a Cloud Service. For Adobe Commerce on cloud infrastructure and on-premises, refer to the installation instructions for each module.

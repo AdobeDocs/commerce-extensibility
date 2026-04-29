@@ -1,5 +1,5 @@
 ---
-title: Out-of-process Extensubulity Modules
+title: Out-of-process Extensibility Modules
 description: Learn about the family of OOPE modules that enable external services to extend Adobe Commerce behavior without modifying core code.
 keywords:
  - Extensibility

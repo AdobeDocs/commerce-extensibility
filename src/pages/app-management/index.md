@@ -1,10 +1,10 @@
 ---
 title: App Management overview
-description: Learn how to manage App Builder applications in Adobe Commerce.
+description: Overview of App Management for installing and configuring App Builder applications in Adobe Commerce, with requirements and workflow.
 keywords:
   - App Builder
-  - Extensibility
   - App Management
+  - Extensibility
 ---
 
 # App Management overview
@@ -13,7 +13,7 @@ App Management provides a unified experience for installing, configuring, and ma
 
 ![App Management view](../_images/app-management/app-management-view.png)
 
-The **App Management** view lists applications for your Adobe Commerce instance as cards, with filters above the list. **Acquire App** opens a new browser tab to [Adobe Exchange](https://exchange.adobe.com/experiencecloud) so you can browse Commerce-related marketplace listings. App developers define the configuration schema, metadata, and runtime actions for their applications. App managers associate and configure deployed apps within their Commerce instances.
+The **App Management** view lists applications for your Adobe Commerce instance as cards, with filters above the list. **Acquire App** opens a new browser tab to [Adobe Exchange](https://exchange.adobe.com/experiencecloud) so you can browse Commerce-related marketplace listings. App developers define the configuration schema, metadata, and runtime actions for their applications. App managers associate and configure deployed apps within their Adobe Commerce instances.
 
 The following diagram illustrates the workflow between app developers and app managers:
 
@@ -37,11 +37,13 @@ The following diagram illustrates the workflow between app developers and app ma
 
 Before using App Management, ensure the following:
 
+* App Management is **not supported** for **local** Adobe Commerce installations at this time. Use a hosted Adobe Commerce environment (cloud or on-premises) where App Management is available in the Admin. See [Local Adobe Commerce instances](./troubleshooting.md#local-adobe-commerce-instances) for details.
+
 * [Admin UI SDK](../admin-ui-sdk/index.md) version 3.3.1, or greater, is required for App Management. [Verify your version](../admin-ui-sdk/installation.md#install-the-admin-ui-sdk) before proceeding.
 
-* App managers (Admin users) who associate apps must have App Management permissions. See [Manage your app](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app) for more information.
+* App managers (Admin users) who associate apps must have the **App Management** permission enabled for their role under **Admin UI SDK** in **System** > **User Roles** > **Role Resources**. [Cannot access App Management (permissions)](./troubleshooting.md#cannot-access-app-management-permissions) describes how to set permissions.
 
-* App Builder applications with the following minimum library versions.
+* App Builder applications with the following minimum library versions:
 
   * `@adobe/aio-commerce-lib-config` version 1.0.0 or later.
   * `@adobe/aio-commerce-lib-app` version 1.0.0 or later.
@@ -74,6 +76,6 @@ Follow these steps to set up and deploy an App Builder application with App Mana
 
 1. **Build and deploy**. [Build and deploy](./build-deploy.md) your app with the `aio app build && aio app deploy` commands.
 
-1. **Link your app**. [Associate your app](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app) with a Commerce instance in the Admin.
+1. **Link your app**. [Associate your app](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app) with an Adobe Commerce instance in the Admin.
 
 1. **Configure settings**. Merchants configure settings through the auto-generated UI.

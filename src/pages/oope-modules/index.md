@@ -25,4 +25,4 @@ Name | Description
 [Tax](../starter-kit/checkout/tax-use-cases.md)| Allows an external tax service to drive quote tax calculation. It includes a REST registry for tax integrations (only one may be active at a time) and replaces the core `Magento\Tax\Model\Sales\Total\Quote\Tax` class using a `di.xml` preference, making it *incompatible* with 3rd-party extensions that override the same class.
 [Totals Collector](../starter-kit/checkout/totals-collector-use-cases.md) | Allows an external service to modify quote totals (primarily discounts) using webhooks.
 
-These modules are available automatically on Adobe Commerce as a Cloud Service. For Adobe Commerce on cloud infrastructure and on-premises, refer to the installation instructions for each module.
+These modules are included by default on Adobe Commerce as a Cloud Service. For Adobe Commerce on cloud infrastructure and on-premises, refer to the installation instructions for each module.

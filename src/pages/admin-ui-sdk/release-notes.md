@@ -1,5 +1,5 @@
 ---
-title: Release notes
+title: Adobe Commerce Admin UI SDK Release Notes
 description: This page lists new features and known issues for each release of Adobe Commerce Admin UI SDK
 keywords:
   - App Builder
@@ -194,7 +194,7 @@ April 15, 2025
 
 ### Enhancements
 
-* This release changes how extensions are integrated into the Adobe Commerce Admin. Previously, the Admin directly loaded published extensions. Now, extensions must be selected in the **Configure extensions** screen, resulting in a better developer experience. The limitation on **Production**-only workspaces has been resolved.
+* This release changes how extensions are integrated into the Adobe Commerce Admin. Previously, the Admin directly loaded published extensions. Now, extensions must be selected in the **Configure Extensions** section of the Admin UI SDK configuration page.
 
 * Added the IMS organization ID to the [shared context](./extension-points/index.md#shared-contexts) when loading a menu, a mass action, or an order view button in an iFrame. <!--- CEXT-4396  -->
 
@@ -274,9 +274,9 @@ September 4, 2024
 
 ### Enhancements
 
-* This release changes how registrations are declared. Previously, calls were performed asynchronously. This could result with delayed retrieval and availability of registrations when loading pages in the Admin. Registrations are now loaded synchronously. resulting in a better merchant experience.
+* This release changes how registrations are declared. Previously, calls were performed asynchronously. This could result with delayed retrieval and availability of registrations when loading pages. Registrations are now declared synchronously.
 
-  You must update any extension points developed with Admin UI SDK 1.x. [Migrate your extension point from 1.x to 2.0](./extension-points/index.md#migrate-your-extension-point-from-version-1x-to-20) describes how.
+   You must update any extension points developed with Admin UI SDK 1.x. [Migrate your extension point from 1.x to 2.0](./extension-points/index.md#migrate-your-extension-point-from-version-1x-to-version-20).
 
 * Added a custom fee column to the invoice and credit memo grids.
 
@@ -311,7 +311,7 @@ June 28, 2024
 
 * Added the **Refresh registrations** button to the configuration page. This button allows the administrator to  refresh the `admin_ui_sdk` cache and reload all extensions. <!--- CEXT-2642 -->
 
-* Refactored multiple sanitizers. As a result, incomplete or invalid input data from an extension point no longer causes display problems in the Admin.  <!--- CEXT-2649, CEXT-2732, CEXT-2731, CEXT-2730, CEXT-2727, CEXT-2767, CEXT-2758, CEXT-2826, CEXT-2823, CEXT-2758, CEXT-2826, CEXT-2823, CEXT-2807, CEXT-2825 -->
+* Refactored multiple sanitizers. As a result, incomplete or invalid input data from an extension point no longer causes display problems in the Admin.  <!--- CEXT-2649, CEXT-2732, CEXT-2731, CEXT-2728 -->
 
 * The `class` parameter has been removed from the `order view button` extension point.
 
@@ -380,7 +380,7 @@ October 31, 2023
 
 * Added the **Mock AdobeAdminIms Module** field to the Admin UI SDK configuration page in the Admin. This field determines whether to send mock or real Adobe IMS credentials. <!-- CEXT-2449 -->
 
-* Added the **Admin UI SDK** (`Magento_CommerceBackendUix::admin`) resource. Administrators who are not assigned this resource will not have access the Admin UI SDK configuration page. <!-- CEXT-2425 -->
+* Added the **Admin UI SDK** (`Magento_CommerceBackendUix::admin`) resource. Administrators who are not assigned this resource will not have access the Admin UI SDK configuration page. <!-- CEXT-2449 -->
 
 * Custom date columns in the order grid now use ISO 8601 formatting. Previously, these values were simple timestamps. <!-- CEXT-2436 -->
 
@@ -400,7 +400,7 @@ October 18, 2023
 
 * Added the `admin_ui_sdk` cache type. When enabled, Commerce caches customizations to the Admin. <!-- CEXT-2377 -->
 
-* Added the `isSection` and `sortOrder` parameters to the [`menu` extension point](extension-points/menu.md). The `isSection` parameter allows you to define a menu section, while `sortOrder` defines the placement of a menu item. <!-- CEXT 2249, CEXT-2289 -->
+* Added the `isSection` and `sortOrder` parameters to the [`menu` extension point](extension-points/menu.md). The `isSection` parameter allows you to define a menu section, while `sortOrder` defines the sort order of the section. <!-- CEXT-2340 -->
 
 * Added the `productSelectLimit` parameter for mass actions in the [`product` extension point](extension-points/product/mass-action.md). <!-- CEXT-2357 -->
 
@@ -448,7 +448,7 @@ August 25, 2023
 
 ## Known issues
 
-* You cannot deploy an app that uses the Admin UI SDK in a staging environment. Instead, you must deploy it in a production environment. See [Prepare your app for production](publish.md) for details about this workaround.
+* You cannot deploy an app that uses the Admin UI SDK in a staging environment. Instead, you must deploy it in a production environment. See [Prepare your app for production](publish.md) for details.
 
 ## Version 1.0.0
 

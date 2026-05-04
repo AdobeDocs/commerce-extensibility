@@ -274,7 +274,7 @@ September 4, 2024
 
 ### Enhancements
 
-* This release changes how registrations are declared. Previously, calls were performed asynchronously. This could result with delayed retrieval and availability of registrations when loading pages. Registrations are now declared synchronously.
+* This release changes how registrations are declared. Previously, calls were performed asynchronously. This could result in delayed retrieval and availability of registrations when loading pages. Registrations are now declared synchronously.
 
    You must update any extension points developed with Admin UI SDK 1.x. [Migrate your extension point from 1.x to 2.0](./extension-points/index.md#migrate-your-extension-point-from-version-1x-to-version-20).
 
@@ -311,7 +311,7 @@ June 28, 2024
 
 * Added the **Refresh registrations** button to the configuration page. This button allows the administrator to  refresh the `admin_ui_sdk` cache and reload all extensions. <!--- CEXT-2642 -->
 
-* Refactored multiple sanitizers. As a result, incomplete or invalid input data from an extension point no longer causes display problems in the Admin.  <!--- CEXT-2649, CEXT-2732, CEXT-2731, CEXT-2728 -->
+* Refactored multiple sanitizers. As a result, incomplete or invalid input data from an extension point no longer causes display problems in the Admin.  <!---  CEXT-2649, CEXT-2732, CEXT-2731, CEXT-2730, CEXT-2727, CEXT-2767 -->
 
 * The `class` parameter has been removed from the `order view button` extension point.
 

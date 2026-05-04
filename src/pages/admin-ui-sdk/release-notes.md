@@ -6,7 +6,7 @@ keywords:
   - Extensibility
 ---
 
-# Adobe Commerce Admin UI SDK release notes
+# Admin UI SDK release notes
 
 ## Version 3.4.1
 
@@ -380,7 +380,7 @@ October 31, 2023
 
 * Added the **Mock AdobeAdminIms Module** field to the Admin UI SDK configuration page in the Admin. This field determines whether to send mock or real Adobe IMS credentials. <!-- CEXT-2449 -->
 
-* Added the **Admin UI SDK** (`Magento_CommerceBackendUix::admin`) resource. Administrators who are not assigned this resource will not have access the Admin UI SDK configuration page. <!-- CEXT-2449 -->
+* Added the **Admin UI SDK** (`Magento_CommerceBackendUix::admin`) resource. Administrators who are not assigned this resource will not have access the Admin UI SDK configuration page. <!-- CEXT-2425 -->
 
 * Custom date columns in the order grid now use ISO 8601 formatting. Previously, these values were simple timestamps. <!-- CEXT-2436 -->
 
@@ -400,7 +400,7 @@ October 18, 2023
 
 * Added the `admin_ui_sdk` cache type. When enabled, Commerce caches customizations to the Admin. <!-- CEXT-2377 -->
 
-* Added the `isSection` and `sortOrder` parameters to the [`menu` extension point](extension-points/menu.md). The `isSection` parameter allows you to define a menu section, while `sortOrder` defines the sort order of the section. <!-- CEXT-2340 -->
+* Added the `isSection` and `sortOrder` parameters to the [`menu` extension point](extension-points/menu.md). The `isSection` parameter allows you to define a menu section, while `sortOrder` defines the sort order of the section. <!--CEXT 2249, CEXT-2289-->
 
 * Added the `productSelectLimit` parameter for mass actions in the [`product` extension point](extension-points/product/mass-action.md). <!-- CEXT-2357 -->
 

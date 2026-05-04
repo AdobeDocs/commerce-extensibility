@@ -7,7 +7,7 @@ keywords:
   - App Management
 ---
 
-# Adobe Commerce App Management Release Notes
+# App Management Release Notes
 
 Check GitHub releases for the latest updates about the main libraries used by App Management.
 

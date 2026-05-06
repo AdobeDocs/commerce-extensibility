@@ -20,7 +20,7 @@ The **Installed Extensions** tab displays extensions that were installed with Ap
 
 The **Manual Extensions Selection** tab allows you to select the extensions that have already been installed for a specific Commerce instance. Commerce loads all eligible extensions from the App Registry. An extension is considered eligible when the deployed workspace is published to the `commerce/backend-ui/1` extension point.
 
-![Admin UI SDK eligible extensions configuration](../_images/admin-ui-sdk/configuration/eligible-extensions.png)
+![Admin UI SDK eligible extensions configuration](../_images/admin-ui-sdk/configuration/configure-extensions-manual.png)
 
 1. Select the workspace of extensions you want to map to the Commerce instance. Click **Apply** to load the eligible extensions. Workspace choices are: **Stage**, **Production**, or **Custom**. If **Custom** is selected, be sure to provide the workspace name corresponding to the extension in App Builder. Only English alphanumeric and Latin alphabet characters are allowed.
 

@@ -13,7 +13,7 @@ Use the following solutions to resolve common issues with App Management.
 
 ## Configuration validation errors
 
-The entire `app.commerce.config` is validated when the `pre-app-build` hook runs (for example during `aio app build`) and when you run `npx aio-commerce-lib-app generate …` manually. Schema validation is included. If validation fails, check:
+`app.commerce.config` is validated against its schema every time the config is loaded. This happens during the `postinstall` and `pre-app-build` hooks, and whenever you run an `npx aio-commerce-lib-app generate …` command manually. If validation fails, check:
 
 1. **Required properties**. Fields must have `name`, `label`, and `type`.
 
@@ -26,41 +26,106 @@ The entire `app.commerce.config` is validated when the `pre-app-build` hook runs
 1. Verify app is deployed:
 
   ```bash
+  aio app get-url
+
+  # Only if you don't see listed the `app-management` actions
   aio app deploy --force-build --force-deploy
   ```
 
 1. Check runtime actions are generated in `.generated` folders.
 
-1. Confirm valid configuration schema.
+1. Ensure your commerce app configuration is valid.
 
 1. Verify correct organization in Developer Console.
 
-### Runtime actions not generated
+### Runtime actions
 
-1. Verify `app.commerce.config` exists with valid configuration.
+Code generation is a mandatory step for App Management to work. The `pre-app-build` hook only regenerates the commerce app manifest (a snapshot of your config), and the configuration schema, so runtime actions must be generated manually with the following command (idempotent):
 
-1. Run a build so `pre-app-build` runs the generators:
+<CodeBlock slots="heading, code" repeat="4" languages="BASH, BASH, BASH, BASH" />
 
-  ```bash
-  aio app build
-  ```
+#### npm
 
-1. If `.generated` folders are still missing or stale, run:
+```bash
+npx aio-commerce-lib-app generate all
+```
 
-  ```bash
-  npx aio-commerce-lib-app generate all
-  ```
+#### yarn
+
+```bash
+yarn exec aio-commerce-lib-app generate all
+```
+
+#### pnpm
+
+```bash
+pnpm exec aio-commerce-lib-app generate all
+```
+
+#### bun
+
+```bash
+bun x aio-commerce-lib-app generate all
+```
 
 ## Encryption key errors
 
-1. Validate your encryption key configuration.
+### Generate an encryption key
 
-  ```bash
-  npx aio-commerce-lib-config encryption validate
-  ```
+Ensure your encryption key is present in the `.env` by running the command below. It only creates a new key if one does not already exist.
 
-1. Generate an encryption key (only creates one if it does not already exist).
+<CodeBlock slots="heading, code" repeat="4" languages="BASH, BASH, BASH, BASH" />
 
-  ```bash
-  npx aio-commerce-lib-config encryption setup
-  ```
+#### npm
+
+```bash
+npx aio-commerce-lib-config encryption setup
+```
+
+#### yarn
+
+```bash
+yarn exec aio-commerce-lib-config encryption setup
+```
+
+#### pnpm
+
+```bash
+pnpm exec aio-commerce-lib-config encryption setup
+```
+
+#### bun
+
+```bash
+bun x aio-commerce-lib-config encryption setup
+```
+
+### Validate your encryption key configuration.
+
+If it's already there, validate it has the expected format:
+
+<CodeBlock slots="heading, code" repeat="4" languages="BASH, BASH, BASH, BASH" />
+
+#### npm
+
+```bash
+npx aio-commerce-lib-config encryption validate
+```
+
+#### yarn
+
+```bash
+yarn exec aio-commerce-lib-config encryption validate
+```
+
+#### pnpm
+
+```bash
+pnpm exec aio-commerce-lib-config encryption validate
+```
+
+#### bun
+
+```bash
+bun x aio-commerce-lib-config encryption validate
+```

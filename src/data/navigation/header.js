@@ -43,6 +43,10 @@ module.exports = [
           title: "Admin UI SDK",
           path: "/admin-ui-sdk/",
         },
+        {
+          title: "OOPE modules",
+          path: "/oope-modules/"
+        }
       ]
     },
     {

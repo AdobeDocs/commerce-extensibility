@@ -7,6 +7,7 @@ const wh = require("./webhooks");
 const adminuisdk = require("./admin-ui-sdk");
 const observe = require("./observability");
 const developerAgents = require("./developer-agent");
+const oopeModules = require("./oope-modules");
 
 module.exports = [
   ...appdev,
@@ -18,4 +19,5 @@ module.exports = [
   ...observe,
   ...adminuisdk,
   ...developerAgents,
+  ...oopeModules,
 ];

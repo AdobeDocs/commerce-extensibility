@@ -1,7 +1,6 @@
 ---
 title: Validate journaling events processing
 description: Learn how to validate that events from Adobe Commerce are successfully reaching the journaling endpoint and being processed by the runtime action.
-edition: saas
 keywords:
   - Extensibility
   - Events

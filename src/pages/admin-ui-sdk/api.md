@@ -163,7 +163,7 @@ All fields are defined in the `extension` object.
 curl -X POST \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer <TOKEN>" \
-    -d '{"extension": {"extension_name": "my-extension", "extension_title": "My Extension", "extension_url": "https://example.com", "extension_workspace": "production"}}' \
+    -d '{"extension": {"extension_name": "my-extension", "extension_title": "My Extension", "extension_url": "https://myapp-example..adobeio-static.net/index.html", "extension_workspace": "production"}}' \
     '<ADOBE_COMMERCE_URL>/rest/V1/adminuisdk/extension'
 ```
 
@@ -206,11 +206,12 @@ Deletes the specified extension from the database by workspace name and extensio
 curl -X DELETE \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer <TOKEN>" \
-    -d '{"workspaceName": "production", "extensionName": "my-extension"}' \
     '<ADOBE_COMMERCE_URL>/rest/V1/adminuisdk/extension/<WORKSPACE_NAME>/<EXTENSION_NAME>'
 ```
 
 **Responses:**
 
+- **200**: Ok
 - **401**: Unauthorized
+- **404**: Not Found: Selected extension does not exist.
 - **500**: Internal server error

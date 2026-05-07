@@ -10,7 +10,7 @@ keywords:
 
 <InlineAlert variant="info" slots="text" />
 
-As of Admin UI SDK 4.1, extensions shouldare no longer configured from the Adobe Commerce Admin. Instead, use App Manager to associate an App Builder app to a Commerce instance. See [App Management](../app-management/index.md) and [Manage your app](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app) in the _App Management Guide_ for details.
+As of Admin UI SDK 4.1, extensions are no longer configured from the Adobe Commerce Admin. Instead, use App Management to associate an App Builder app to a Commerce instance. See [App Management](../app-management/index.md) and [Manage your app](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app) in the _App Management Guide_ for details.
 
 Navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Admin UI SDK**. In the **General Configuration** section, click the **Configure extensions** button. The **Configure Extensions** modal dialog displays.
 

@@ -20,7 +20,7 @@ May 7, 2026
 
 ### Enhancements
 
-* Extensions are no longer configured from the Adobe Commerce Admin. See [Manage your app](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app) in the _App Management Uset Guide_ for installation and setup details. Extension developers should review [App Management](../app-management/index.md) for information about packaging your extension without using the Admin UI SDK for registration.
+* Extensions are no longer configured from the Adobe Commerce Admin. See [Manage your app](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app) in the _App Management User Guide_ for installation and setup details. Extension developers should review [App Management](../app-management/index.md) for information about packaging your extension without using the Admin UI SDK for registration.
 
   Clicking the [**Configure extensions** button](./eligible-extensions-config.md) on **Stores** > Settings > **Configuration** > **Adobe Services** > **Admin UI SDK** > **General Configuration** page now displays a modal dialog that has two tabs. The **Installed Extensions** tab displays the extensions that were installed with App Management. The **Manual Extensions Selection** tab allows you to manage previously-installed extensions, but this tab is deprecated and will be removed in a future release. Extension developers should migrate their extensions to App Management. <!-- CEXT-6119 -->
 

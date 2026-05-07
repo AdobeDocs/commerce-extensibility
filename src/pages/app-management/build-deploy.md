@@ -31,6 +31,13 @@ The initialization process creates files organized by extension point:
 | `src/commerce-configuration-1/.generated/actions/business-configuration/` | Runtime actions for config and scope management |
 | `src/commerce-configuration-1/ext.config.yaml` | Extension manifest with `pre-app-build` hook |
 
+**`commerce/backend-ui/1`** for Admin UI SDK registration (when `adminUiSdk.registration` is defined in `app.commerce.config`).
+
+| File | Description |
+|------|-------------|
+| `src/commerce-backend-ui-1/.generated/actions/registration/` | Runtime action that serves the Admin UI SDK registration payload to Adobe Commerce |
+| `src/commerce-backend-ui-1/ext.config.yaml` | Extension manifest with a `pre-app-build` hook |
+
 ## Generated runtime actions
 
 The libraries generate runtime actions organized by extension point. These are auto-generated directories and any manual changes can be lost during regeneration.
@@ -53,6 +60,14 @@ These actions handle configuration and scope operations (generated when a `busin
 
 The scope tree action supports syncing scopes from Adobe Commerce (requires `commerceBaseUrl`), setting custom scope hierarchies for external systems, and unsyncing Commerce scopes.
 
+### Admin UI SDK registration action from `commerce/backend-ui/1`
+
+When `adminUiSdk.registration` is defined, a generated action serves the registration payload to Adobe Commerce.
+
+| Action | Description |
+|--------|-------------|
+| `registration` | Serves the Admin UI SDK registration object (menus, extension points, and related configuration). |
+
 ## Build and deploy
 
 After you change `app.commerce.config`, build and deploy your application. The `pre-app-build` hook runs the generators for you, so the manifest, schema, and runtime actions under `.generated` stay in sync without a separate step.
@@ -62,9 +77,7 @@ aio app build
 aio app deploy
 ```
 
-**Exception:** If you change [custom installation scripts](./installation/customize.md), run `npx aio-commerce-lib-app generate actions` so the installation action picks up those changes, then build and deploy as usual.
-
-You can still run `npx aio-commerce-lib-app generate …` manually when debugging, but it is not required for normal config edits.
+You can still run `npx aio-commerce-lib-app generate …` manually when debugging, but it is not required for normal config or installation script edits.
 
 Once deployed, your app appears in App Management and can be associated with a Commerce instance. See [manage your app](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app) for more information.
 

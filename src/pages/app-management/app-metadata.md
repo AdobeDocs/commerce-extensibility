@@ -38,3 +38,9 @@ The metadata contains the following properties:
 | `displayName` | string | Yes | Name shown in the Admin UI. Maximum 50 characters. |
 | `description` | string | Yes | Brief description of your app's functionality. Maximum 255 characters. |
 | `version` | string | Yes | Semantic version number (for example, `1.0.0`, `2.1.3`). |
+
+## App icon
+
+The displayed icon for an app in App Management is supplied by the **Adobe app registry** (for example your Adobe Exchange listing or enterprise app registration). It is not configurable through the `metadata` in `app.commerce.config`.
+
+To change how the icon appears for merchants, update the app’s registry or marketplace listing, not the commerce config metadata.

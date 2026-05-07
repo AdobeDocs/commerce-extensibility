@@ -21,6 +21,36 @@ Use the following solutions to resolve common issues with App Management.
 
 1. **Valid metadata**. App metadata must include `id`, `displayName`, `description`, and `version`.
 
+## Association errors
+
+Association errors in the Admin are not the same as an invalid `app.commerce.config` in your repository. They mean that the deployed app package is not properly set up for the App Management association flow.
+
+### Not compatible with Adobe Commerce
+
+When you try to **associate** an application from Adobe Exchange (or from your organization in the app registry) with **App Management**, the Admin may show the following error message:
+
+```text
+The selected application is not compatible with Adobe Commerce.
+```
+
+This message describes a compatibility issue with the App Management installation, but it does not mean the app cannot work with Adobe Commerce. Exchange listings marked for Commerce may still require manual setup, credentials, and steps documented by the vendor rather than this automated path.
+
+### Manage the Commerce instance
+
+1. The app may still be appropriate for your project. Use the installation and configuration instructions on the Adobe Exchange listing and in the vendor’s documentation (including non-downloadable or enterprise apps that use custom onboarding).
+
+1. If those materials do not explain Commerce integration, contact the app provider to confirm supported options.
+
+### Develop or maintain the application
+
+1. Association through App Management requires an app that follows the [Adobe Commerce SDK](https://github.com/adobe/aio-commerce-sdk) pattern used with App Management:
+
+   * a root [`app.commerce.config`](./configuration-schema.md) file
+   * generated runtime actions
+   * libraries listed in the [App Management overview](./index.md#sdk-libraries).
+
+1. To support App Management, add or migrate to that configuration and generate the commerce actions. See [Initialize your app](./initialize-app.md) and [Define your configuration schema](./configuration-schema.md) for more information.
+
 ## App not appearing in App Management
 
 1. Verify app is deployed:

@@ -14,7 +14,7 @@ These tutorials walk you through building event-driven integrations between Adob
 
 This tutorial covers the most direct event delivery model: a Commerce event triggers an Adobe I/O Events registration that immediately invokes an App Builder runtime action. A product update use case illustrates each step, from configuring an event provider and event metadata to writing and deploying the runtime action code.
 
-**What you learn:**
+**In this tutorial, you will learn how to:**
 
 - Set up an Adobe I/O event provider and event metadata in Adobe Commerce.
 - Create an event subscription and sync it with App Builder.
@@ -30,9 +30,9 @@ This tutorial covers the most direct event delivery model: a Commerce event trig
 
 ## Integrate Commerce events using the Adobe I/O Events Journaling API
 
-This tutorial covers journaling as an alternative to direct runtime invocation. Instead of immediately invoking a runtime action, Commerce events are stored in a journaling endpoint for up to seven days. A scheduled runtime action polls the journal, fetches batches of events, and processes them asynchronously. A product deletion use case illustrates the pattern.
+This tutorial covers journaling as an alternative to direct runtime invocation. Instead of immediately invoking a runtime action, Commerce events are stored in a journaling endpoint for up to seven days. A scheduled runtime action polls the journal, fetches batches of events, and processes them asynchronously.
 
-**What you learn:**
+**In this tutorial you will learn how to:**
 
 - Register Commerce events in the Adobe Developer Console using the journaling delivery model.
 - Validate that events flow from Commerce to the journaling endpoint.

@@ -3,8 +3,9 @@ title: Build and deploy
 description: Build and deploy your App Builder application for App Management
 keywords:
   - App Builder
-  - Extensibility
   - App Management
+  - Configuration
+  - Extensibility
 ---
 
 # Build and deploy
@@ -15,7 +16,7 @@ After defining your app configuration, build and deploy your application to make
 
 The initialization process creates files organized by extension point:
 
-**`commerce/extensibility/1`** for App management.
+**`commerce/extensibility/1`** for App Management.
 
 | File | Description |
 |------|-------------|
@@ -42,7 +43,7 @@ The initialization process creates files organized by extension point:
 
 The libraries generate runtime actions organized by extension point. These are auto-generated directories and any manual changes can be lost during regeneration.
 
-### App management actions from `commerce/extensibility/1`
+### App Management actions from `commerce/extensibility/1`
 
 | Action | Description |
 |--------|-------------|
@@ -77,7 +78,9 @@ aio app build
 aio app deploy
 ```
 
-You can still run `npx aio-commerce-lib-app generate …` manually when debugging, but it is not required for normal config or installation script edits.
+<InlineAlert variant="tip" slots="text"/>
+
+When debugging, you can run `npx aio-commerce-lib-app generate …` without a full App Builder build to refresh generated files quickly.
 
 Once deployed, your app appears in App Management and can be associated with a Commerce instance. See [manage your app](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app) for more information.
 
@@ -95,4 +98,4 @@ Search text and both dropdowns apply together (logical AND). To display the full
 
 ### Acquire App
 
-**Acquire App** opens a new browser tab (or a separate browser view) to [Adobe Exchange](https://exchange.adobe.com/experiencecloud), where you can discover Commerce-related marketplace listings and add applications to your Adobe IMS organization. Once the app is acquired, approved, and deployed, app will be loaded in App Management for [association and installation](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app).
+**Acquire App** opens a new browser tab (or a separate browser view) to [Adobe Exchange](https://exchange.adobe.com/experiencecloud), where you can discover Commerce-related marketplace listings and add applications to your Adobe IMS organization. After the app is acquired, approved, and deployed, it appears in App Management for [association and installation](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app).

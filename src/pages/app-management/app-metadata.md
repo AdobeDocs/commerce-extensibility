@@ -3,13 +3,14 @@ title: App metadata
 description: Define your app metadata in app.commerce.config
 keywords:
   - App Builder
-  - Extensibility
   - App Management
+  - Configuration
+  - Extensibility
 ---
 
 # App metadata
 
-The `metadata` in your `app.commerce.config` file identifies your application to the App Management system. This information displays in the Admin UI and helps merchants identify and manage installed apps.
+The `metadata` object in your `app.commerce.config` file identifies your application to App Management. This information appears in the Admin and helps merchants identify and manage installed apps.
 
 ## Example
 
@@ -41,6 +42,6 @@ The metadata contains the following properties:
 
 ## App icon
 
-The displayed icon for an app in App Management is supplied by the **Adobe app registry** (for example your Adobe Exchange listing or enterprise app registration). It is not configurable through the `metadata` in `app.commerce.config`.
+<InlineAlert variant="info" slots="text"/>
 
-To change how the icon appears for merchants, update the app’s registry or marketplace listing, not the commerce config metadata.
+The listing icon comes from the Adobe app registry (Adobe Exchange or enterprise registration), not from the `metadata` object in `app.commerce.config`. Update the listing or registry record to change what merchants see.

@@ -3,8 +3,9 @@ title: Troubleshooting
 description: Solutions for common App Management issues
 keywords:
   - App Builder
-  - Extensibility
   - App Management
+  - Configuration
+  - Extensibility
 ---
 
 # Troubleshooting
@@ -21,9 +22,11 @@ Use the following solutions to resolve common issues with App Management.
 
 1. **Valid metadata**. App metadata must include `id`, `displayName`, `description`, and `version`.
 
+If validation succeeds locally but associating the app still fails with a compatibility message in the Admin, see [Association errors](#association-errors).
+
 ## Association errors
 
-Association errors in the Admin are not the same as an invalid `app.commerce.config` in your repository. They mean that the deployed app package is not properly set up for the App Management association flow.
+Association errors in the Admin are not the same as schema validation failures in your local `app.commerce.config`. They usually mean the deployed app package is not set up for the App Management association flow. See [Not compatible with Adobe Commerce](#not-compatible-with-adobe-commerce).
 
 ### Not compatible with Adobe Commerce
 
@@ -33,7 +36,9 @@ When you try to **associate** an application from Adobe Exchange (or from your o
 The selected application is not compatible with Adobe Commerce.
 ```
 
-This message describes a compatibility issue with the App Management installation, but it does not mean the app cannot work with Adobe Commerce. Exchange listings marked for Commerce may still require manual setup, credentials, and steps documented by the vendor rather than this automated path.
+<InlineAlert variant="info" slots="text"/>
+
+This message refers to the **App Management** association flow, not general Adobe Commerce compatibility. You might still integrate the app using vendor documentation or manual onboarding; Adobe Exchange listings that target Commerce sometimes describe those paths rather than automation in App Management.
 
 ### Manage the Commerce instance
 
@@ -49,18 +54,18 @@ This message describes a compatibility issue with the App Management installatio
    * generated runtime actions
    * libraries listed in the [App Management overview](./index.md#sdk-libraries).
 
-1. To support App Management, add or migrate to that configuration and generate the commerce actions. See [Initialize your app](./initialize-app.md) and [Define your configuration schema](./configuration-schema.md) for more information.
+1. To support App Management, add or migrate to that configuration, then build and deploy so generated artifacts are created. See [Initialize your app](./initialize-app.md) and [Define your configuration schema](./configuration-schema.md) for more information.
 
 ## App not appearing in App Management
 
 1. Verify app is deployed:
 
-  ```bash
-  aio app get-url
+   ```bash
+   aio app get-url
 
-  # Only if you don't see listed the `app-management` actions
-  aio app deploy --force-build --force-deploy
-  ```
+   # Only if you don't see listed the `app-management` actions
+   aio app deploy --force-build --force-deploy
+   ```
 
 1. Check runtime actions are generated in `.generated` folders.
 

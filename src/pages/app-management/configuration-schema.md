@@ -3,8 +3,9 @@ title: Business configuration
 description: Define your app business configuration
 keywords:
   - App Builder
-  - Extensibility
   - App Management
+  - Configuration
+  - Extensibility
 ---
 
 # Business configuration

@@ -9,6 +9,10 @@ keywords:
 
 # Admin UI SDK configuration
 
+<InlineAlert variant="info" slots="text"/>
+
+This feature is in Beta and is subject to change.
+
 The `adminUiSdk` field in your `app.commerce.config` file allows you to configure the menu items managed by the Adobe Commerce Admin UI SDK.
 
 ## Menu registration

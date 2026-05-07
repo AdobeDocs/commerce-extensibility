@@ -153,9 +153,8 @@ All fields are defined in the `extension` object.
 | --- | --- | --- | --- |
 | `extension_name` | string | Yes | The extension name |
 | `extension_title` | string | Yes | The extension title |
-| `extension_url` | string | Yes | The extension URL |
+| `extension_url` | string | Yes | The extension UR, which must be in the format `https://[a-zA-Z0-9-]/.adobeio-static.net/index.html` |
 | `extension_workspace` | string | Yes | The extension workspace |
-| `id` | string | No | Unique ID field |
 
 **Example usage:**
 
@@ -163,7 +162,7 @@ All fields are defined in the `extension` object.
 curl -X POST \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer <TOKEN>" \
-    -d '{"extension": {"extension_name": "my-extension", "extension_title": "My Extension", "extension_url": "https://myapp-example..adobeio-static.net/index.html", "extension_workspace": "production"}}' \
+    -d '{"extension": {"extension_name": "my-extension", "extension_title": "My Extension", "extension_url": "https://myapp-example/.adobeio-static.net/index.html", "extension_workspace": "production"}}' \
     '<ADOBE_COMMERCE_URL>/rest/V1/adminuisdk/extension'
 ```
 
@@ -192,13 +191,6 @@ Deletes the specified extension from the database by workspace name and extensio
 | --- | --- | --- | --- |
 | `workspace_name` | string | Yes | The workspace name |
 | `extension_name` | string | Yes | The extension name |
-
-**Request body:**
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `workspaceName` | string | Yes | The workspace name |
-| `extensionName` | string | Yes | The extension name |
 
 **Example usage:**
 

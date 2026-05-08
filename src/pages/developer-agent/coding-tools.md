@@ -60,7 +60,7 @@ This updates the tools to the latest version.
 
 ## Installation
 
-* **[Automated setup](#automated-setup) (Recommended)** — Run a single command to configure your workspace automatically.
+* **[Automated setup](#automated-setup-recommended) (Recommended)** — Run a single command to configure your workspace automatically.
 * **[Manual setup](#manual-setup)** — Follow step-by-step instructions to configure each component individually.
 
 ### Automated setup (Recommended)

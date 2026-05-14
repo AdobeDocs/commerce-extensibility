@@ -20,7 +20,7 @@ Use the following solutions to resolve common issues with App Management.
 
 1. **Type-matched defaults**. Default values must match the field type.
 
-1. **Valid metadata**. App metadata must include `id`, `displayName`, `description`, and `version`.
+1. **Valid metadata**. In `app.commerce.config`, the `metadata` object must include `id`, `displayName`, `description`, and `version`, as required by `@adobe/aio-commerce-lib-app` when it validates the file.
 
 If validation succeeds locally but associating the app still fails with a compatibility message in the Admin, see [Association errors](#association-errors).
 
@@ -48,13 +48,9 @@ This message refers to the **App Management** association flow, not general Adob
 
 ### Develop or maintain the application
 
-1. Association through App Management requires an app that follows the [Adobe Commerce SDK](https://github.com/adobe/aio-commerce-sdk) pattern used with App Management:
+1. Adobe Commerce treats an app as compatible with the association flow when the deployed package exposes the manifest and App Management runtime actions produced from **`app.commerce.config`**—specifically including valid **`metadata`**—by **`@adobe/aio-commerce-lib-app`**. Generic App Builder projects are not sufficient without that library-driven definition and generation step.
 
-   * A root [`app.commerce.config`](./configuration-schema.md) file
-   * Generated runtime actions
-   * Libraries listed in the [App Management overview](./index.md#sdk-libraries).
-
-1. To support App Management, add or migrate to that configuration, then build and deploy so generated artifacts are created. See [Initialize your app](./initialize-app.md) and [Define your configuration schema](./configuration-schema.md) for more information.
+1. Add the [SDK libraries](./index.md#sdk-libraries), maintain a root [`app.commerce.config`](./define-app.md) with [`metadata`](./app-metadata.md) (and other sections as needed), run generators so `.generated` artifacts exist, then build and deploy. See [Initialize your app](./initialize-app.md) and [Define your configuration schema](./configuration-schema.md) for more information.
 
 ## App not appearing in App Management
 

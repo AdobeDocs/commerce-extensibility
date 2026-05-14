@@ -10,7 +10,7 @@ keywords:
 
 # Build and deploy
 
-After defining your app configuration, build and deploy your application to make it available in App Management.
+After defining your app configuration, build and deploy your application so it is ready for association and installation with Adobe Commerce through App Management.
 
 ## Generated files
 
@@ -82,7 +82,7 @@ aio app deploy --force-deploy --no-build
 
 When debugging, you can run `npx aio-commerce-lib-app generate …` without a full App Builder build to refresh generated files quickly.
 
-Once deployed, your app appears in App Management and can be associated with a Commerce instance. See [manage your app](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app) for more information.
+After deployment, your application is ready to be associated with Adobe Commerce using App Management. See [manage your app](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app) for association, installation, and other lifecycle steps.
 
 ## Find an application in the Admin
 

@@ -3,8 +3,9 @@ title: Customize
 description: Customize the installation process for your App Builder application
 keywords:
   - App Builder
-  - Extensibility
   - App Management
+  - Configuration
+  - Extensibility
 ---
 
 # Customize

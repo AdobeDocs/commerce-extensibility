@@ -3,8 +3,9 @@ title: Business configuration
 description: Define your app business configuration
 keywords:
   - App Builder
-  - Extensibility
   - App Management
+  - Configuration
+  - Extensibility
 ---
 
 # Business configuration
@@ -156,6 +157,8 @@ Never commit the `.env` file to version control. Keep the encryption key secure 
 
 See [Password Field Encryption](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-config/docs/password-encryption.md) for more information.
 
+See [Failed to decrypt configuration](./troubleshooting.md#failed-to-decrypt-configuration-re-association-or-configuration-page) if you already see decrypt errors.
+
 ### Multiple selection list fields
 
 For fields that allow multiple selections, set `selectionMode` to `multiple` and the `default` value must be an array of strings, even if only one option is selected by default.
@@ -174,6 +177,22 @@ For fields that allow multiple selections, set `selectionMode` to `multiple` and
   default: ["credit_card"]
 }
 ```
+
+## Scope tree synchronization
+
+Apps with `businessConfig` use a scope tree (Global, Commerce websites, stores, and store views) when merchants configure settings in App Management. That tree reflects Adobe Commerce scope structure **as of the last sync**. It is **not** kept in lockstep with Commerce automatically.
+
+### Commerce scope changes require a manual sync per app
+
+When you add, rename, or remove websites, stores, or store views in Adobe Commerce, App Management **does not** refresh the scope hierarchy by itself. Cached scope data is used until an Admin runs **Sync commerce scopes** for **that** application.
+
+If several apps are associated with the same instance—for example, ten apps that define business configuration—you must open **each** app in App Management and sync **individually**. From the application, open **Manage scopes**, open **Quick actions**, then choose **Sync commerce scopes**.
+
+### Removing scopes
+
+After a scope is deleted in Commerce, run **Sync commerce scopes** again for each affected application. The operation replaces the cached tree with the current Commerce data, so scopes that no longer exist in Commerce **disappear** from App Management after a successful sync.
+
+![Manage Scopes Quick actions menu with Sync commerce scopes](../_images/app-management/manage-scopes-sync-commerce-scopes.png)
 
 ## Schema requirements
 

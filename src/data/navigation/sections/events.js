@@ -5,7 +5,7 @@ module.exports = [
   },
   {
     title: "Tutorials",
-    path: "/events/tutorial/index.md",
+    path: "/events/tutorials.md",
     pages: [
       {
         title: "Eventing",

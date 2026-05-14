@@ -12,6 +12,22 @@ keywords:
 
 Use the following solutions to resolve common issues with App Management.
 
+## Commerce instance behind HTTP authentication
+
+App Management is **not supported** when Adobe Commerce is reachable only behind HTTP authentication (for example, HTTP Basic Auth in front of the Admin or APIs that App Management must call). Traffic from Adobe App Builder runtimes **does not use a fixed set of source IP addresses** that you can publish on an allowlist; Adobe does **not** provide static IPs for proxy or runtime actions for this purpose.
+
+Plan network and access controls so Commerce endpoints required by App Management are reachable without HTTP authentication barriers that block Adobe-hosted runtime requests, in line with your security policies.
+
+## Scope tree synchronization issues
+
+If new websites, stores, or store views exist in Commerce but **Manage scopes** in App Management looks stale—or scopes removed in Commerce still appear—the scope tree is almost certainly **out of date**.
+
+Scope hierarchy in App Management is **cached**. Changes to Commerce websites, stores, or store views **do not** sync automatically.
+
+**What to do:** For **each** associated application that uses business configuration, open **Manage scopes**, open **Quick actions**, then select **Sync commerce scopes**. Running sync again reads the current hierarchy from Commerce, which updates additions and **removes** scopes that were deleted in Commerce.
+
+For full behavior and UI context, see [Scope tree synchronization](./configuration-schema.md#scope-tree-synchronization).
+
 ## Configuration validation errors
 
 `app.commerce.config` is validated against its schema every time the config is loaded. This happens during the `postinstall` and `pre-app-build` hooks, and whenever you run an `npx aio-commerce-lib-app generate …` command manually. If validation fails, check:

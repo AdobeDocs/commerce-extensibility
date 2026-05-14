@@ -176,6 +176,22 @@ For fields that allow multiple selections, set `selectionMode` to `multiple` and
 }
 ```
 
+## Scope tree synchronization
+
+Apps with `businessConfig` use a scope tree (Global, Commerce websites, stores, and store views) when merchants configure settings in App Management. That tree reflects Adobe Commerce scope structure **as of the last sync**. It is **not** kept in lockstep with Commerce automatically.
+
+### Commerce scope changes require a manual sync per app
+
+When you add, rename, or remove websites, stores, or store views in Adobe Commerce, App Management **does not** refresh the scope hierarchy by itself. Cached scope data is used until an Admin runs **Sync commerce scopes** for **that** application.
+
+If several apps are associated with the same instance—for example, ten apps that define business configuration—you must open **each** app in App Management and sync **individually**. From the application, open **Manage scopes**, open **Quick actions**, then choose **Sync commerce scopes**.
+
+### Removing scopes
+
+After a scope is deleted in Commerce, run **Sync commerce scopes** again for each affected application. The operation replaces the cached tree with the current Commerce data, so scopes that no longer exist in Commerce **disappear** from App Management after a successful sync.
+
+![Manage Scopes Quick actions menu with Sync commerce scopes](../_images/app-management/manage-scopes-sync-commerce-scopes.png)
+
 ## Schema requirements
 
 Your `app.commerce.config` is validated each time you run a `generate` command (for example, `npx aio-commerce-lib-app generate all`). The schema validation checks for:

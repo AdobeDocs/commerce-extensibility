@@ -3,8 +3,9 @@ title: Initialize your app
 description: Set up your App Builder project for App Management
 keywords:
   - App Builder
-  - Extensibility
   - App Management
+  - Configuration
+  - Extensibility
 ---
 
 # Initialize your app
@@ -154,4 +155,4 @@ pnpm add @adobe/aio-commerce-lib-config@latest
 bun add @adobe/aio-commerce-lib-config@latest
 ```
 
-The `postinstall` hook regenerates runtime actions when you install or update the library.
+The `postinstall` hook refreshes generated artifacts when you install or update the library. Separately, `aio app build` runs `pre-app-build`, which regenerates runtime action sources from your current `app.commerce.config`.

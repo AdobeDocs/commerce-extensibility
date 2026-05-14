@@ -12,7 +12,7 @@ Each operation must contain some required fields based on the desired operation.
 
 &#8203;<Edition name="paas" /> Exceptions and notices are logged in the `<installation_directory>/var/log/system.log` file.
 
-&#8203;<Edition name="saas" /> On the Webhooks Subscriptions page, click **Select** > **Show Logs** in the **Action** column to display a new page that displays logging activity for that webhook. The grid resembles the [Webhook Logs grid](./responses.md#database-logging), but displays activity for the selected hook only.
+&#8203;<Edition name="saas" /> On the Webhooks Subscriptions page, click **Select** > **Show Logs** in the **Action** column to display a new page that displays logging activity for that webhook. The grid resembles the [Webhook Logs grid](responses.md#database-logging), but displays activity for the selected hook only.
 
 ## Responses
 
@@ -210,7 +210,7 @@ You can enable database logging for debugging webhooks from the Admin. You shoul
 
 To enable database logging, navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Webhooks** > **Database logging configuration** and set the **Enabled** option to **Yes**.
 
-![Webhooks database logging configuration](../_images/webhooks/database-logging-configuration.png)
+![Webhooks database logging configuration](../images/webhooks/database-logging-configuration.png)
 
 You can configure the minimum log level to store logs in the database and log retention time. The available log levels are `DEBUG`, `INFO`, `WARNING`, and `ERROR`.
 
@@ -220,6 +220,6 @@ The logs are cleared once per day based on the retention time.
 
 When database logging is enabled, the webhook logs are stored in the `webhook_log` table. To check logs in the Admin, navigate to **System** > **Webhooks** > **Webhook Logs**.
 
-![Webhooks database logging](../_images/webhooks/database-logging.png)
+![Webhooks database logging](../images/webhooks/database-logging.png)
 
 You can filter logs by multiple fields, such as webhook method, type, hook name, and request ID.

@@ -10,7 +10,7 @@ keywords:
 
 This page explores use cases and scenarios for implementing out-of-process discount totals using the Adobe Commerce checkout starter kit and the `magento/module-out-of-process-totals-collector` module.
 
-For more general use cases, refer to [use-cases](./use-cases.md).
+For more general use cases, refer to [use-cases](use-cases.md).
 
 ## How it works
 
@@ -179,4 +179,4 @@ Item paths use zero-based indices into `shippingAssignment.items`. This allows t
 
 When `discount_type` is `"percentage"`, item-level discount values do not need to be returned in the patch response. The system automatically calculates and distributes the discount across the applicable items based on the provided percentage.
 
-For totals collector implementation scenarios and guidance, see [Development considerations](./totals-collector-development-considerations.md).
+For totals collector implementation scenarios and guidance, see [Development considerations](totals-collector-development-considerations.md).

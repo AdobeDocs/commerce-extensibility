@@ -12,7 +12,7 @@ With [Adobe I/O Events](https://developer.adobe.com/events/docs/), developers ca
 
 The following architectural diagram provides an overview of how Adobe I/O Events for Adobe Commerce works.
 
-![Architectural diagram](../_images/events/event-architecture.png)
+![Architectural diagram](../images/events/event-architecture.png)
 
 Imagine that you want to build an extension that notifies a third-party Enterprise Resource Planning (ERP) system every time a shopper places an order. In your Commerce module, you register the `plugin.magento.sales.api.order_management.place` event and possibly related events. When a shopper places an order, Commerce sends the event to Adobe I/O Events, which then routes the events to the appropriate App Builder application.
 

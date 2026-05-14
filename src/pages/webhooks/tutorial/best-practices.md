@@ -70,7 +70,7 @@ Instead of hardcoding the OAuth credentials in the `webhooks.xml` file, you can 
 
    Expand the **Developer Console OAuth** section, enable it, and enter the values for the **Client ID**, **Client Secret**, and **Organization ID** fields. These values must match the credentials you retrieved from the Developer Console in Step 1.
 
-   ![oAuth Section in Webhooks Subscription](../../_images/webhooks/tutorial/developer-console-oauth-commerce.png)
+   ![oAuth Section in Webhooks Subscription](../../images/webhooks/tutorial/developer-console-oauth-commerce.png)
 
 #### Configure OAuth through API
 

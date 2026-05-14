@@ -17,8 +17,8 @@ Adobe Commerce has a set of modules that enable out-of-process extensibility (OO
 
 Name | Description
 --- | ---
-[API Integration](./api-integration.md) | Exposes the `GET /V1/order-statuses` REST endpoint. It returns all order statuses configured in the Commerce instance, with each status's name, label, associated state, default status, and whether it can be displayed on the storefront.
-[Custom Attributes](./custom-attributes.md) | Two separate metapackages that lets OOPE services attach and persist custom attributes on Commerce data models. The base metapackage adds coverage for Adobe Commerce. The B2B metapackage adds support for negotiable quotes and companies.
+[API Integration](api-integration.md) | Exposes the `GET /V1/order-statuses` REST endpoint. It returns all order statuses configured in the Commerce instance, with each status's name, label, associated state, default status, and whether it can be displayed on the storefront.
+[Custom Attributes](custom-attributes.md) | Two separate metapackages that lets OOPE services attach and persist custom attributes on Commerce data models. The base metapackage adds coverage for Adobe Commerce. The B2B metapackage adds support for negotiable quotes and companies.
 [Observability](../observability/index.md) | Provides observability infrastructure for OOPE extensions. It manages subscriptions for the location where logs, metrics, and traces are routed (OTLP endpoints). It includes a set of REST APIs and updates the Admin.
 [Payment Methods](../starter-kit/checkout/payment-use-cases.md)| Provides REST endpoints to register OOPE payment method definitions and GraphQL extensions to expose a backend URL and custom key/value configuration on the `available_payment_methods` type. An optional webhook can filter which methods appear at checkout.
 [Shipping Methods](../starter-kit/checkout/shipping-use-cases.md) | Enables out-of-process shipping carriers, where webhooks fetch rates from external services. It adds REST calls for carrier registration and GraphQL extensions to add `additional_data` (key/value pairs) to the `available_shipping_methods` and `selected_shipping_method` types on the cart.

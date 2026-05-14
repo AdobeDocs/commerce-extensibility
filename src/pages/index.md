@@ -12,19 +12,19 @@ keywords:
 
 <Hero slots="image, heading, text"/>
 
-![Commerce Extensibility](_images/home-bg.jpeg)
+![Commerce Extensibility](images/home-bg.jpeg)
 
 # Adobe Commerce extensibility
 
 Learn about in-process and out-of-process development tools provided by Adobe Commerce
 
-This guide explains how to develop Out-of-Process apps that extend and customize Adobe Commerce. For a more in-depth understanding of extensibility, follow our [learning path](./app-development/learning-path.md).
+This guide explains how to develop Out-of-Process apps that extend and customize Adobe Commerce. For a more in-depth understanding of extensibility, follow our [learning path](app-development/learning-path.md).
 
 Extensibility, as a concept, reflects the possibility for growth and the ease of extending functionality in a system. When referring to extensibility in Adobe Commerce, we mean the ability of developers to expand, customize, and control their interactions with Adobe Commerce.
 
 The following diagram highlights the main components of the Adobe Commerce [extensibility strategy](https://experienceleague.adobe.com/docs/commerce-operations/implementation-playbook/architecture/extensibility-strategy.html):
 
-![extensibility strategy](./_images/extensibility-strategy-overview.png)
+![extensibility strategy](./images/extensibility-strategy-overview.png)
 
 Extensibility generally has two variations, in-process extensibility and out-of-process extensibility. In the context of Adobe Commerce, in-process extensibility refers to extended functionality that is located inside or alongside the Adobe Commerce core software. Conversely, out-of-process extensibility refers to extended functionality and services that operate outside the core software.
 
@@ -48,15 +48,15 @@ Adobe Commerce offers the following out-of-process development tools:
 
 - [App Builder](https://developer.adobe.com/app-builder/docs/overview/) - Build and deploy secure and scalable web applications that extend Commerce functionality and integrate with third-party solutions.
 
-- [Events](./events/index.md) - Use custom event triggers to interact with other extensible development tools.
+- [Events](events/index.md) - Use custom event triggers to interact with other extensible development tools.
 
-- [Webhooks](./webhooks/index.md) - Use webhooks to automatically trigger interactions between Commerce and third-party systems.
+- [Webhooks](webhooks/index.md) - Use webhooks to automatically trigger interactions between Commerce and third-party systems.
 
-- [Admin UI SDK](./admin-ui-sdk/index.md) - Customize and enhance the Commerce Admin with new pages and features for your merchants.
+- [Admin UI SDK](admin-ui-sdk/index.md) - Customize and enhance the Commerce Admin with new pages and features for your merchants.
 
 - Custom attributes - Use [GraphQL](https://developer.adobe.com/commerce/webapi/graphql/schema/attributes/mutations/) and [REST](https://developer.adobe.com/commerce/webapi/rest/modules/custom-attributes/) APIs to create custom attributes for carts, credit memos, and invoices and items in those objects. B2B developers can also create custom attributes for companies and negotiable quotes.
 
-Additionally, [Marketplace Apps](./app-development/index.md) allow you to create and sell custom single-page applications on the [Adobe Commerce Marketplace](https://commercemarketplace.adobe.com).
+Additionally, [Marketplace Apps](app-development/index.md) allow you to create and sell custom single-page applications on the [Adobe Commerce Marketplace](https://commercemarketplace.adobe.com).
 
 <InlineAlert variant="info" slots="text"/>
 

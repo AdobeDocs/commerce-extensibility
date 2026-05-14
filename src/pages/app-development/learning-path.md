@@ -68,6 +68,6 @@ The following resources will help you get to know the extensibility options offe
 ## Additional Resources
 
 - [Code samples for extending and integrating Adobe Commerce](https://developer.adobe.com/commerce/code-samples)
-- [Logging and troubleshooting in App Builder](./best-practices/logging-troubleshooting.md)
+- [Logging and troubleshooting in App Builder](best-practices/logging-troubleshooting.md)
 - [Adobe I/O Events frequently asked questions](https://developer.adobe.com/events/docs/support/faq/)
 - [App Builder security overview](https://developer.adobe.com/app-builder/docs/guides/security/)

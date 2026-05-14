@@ -28,7 +28,7 @@ This tutorial covers the most direct event delivery model: a Commerce event trig
 
 Runtime actions invoked directly by an event registration must complete within 60 seconds. For long-running or blocking workloads, see the journaling tutorial below.
 
-[Start the tutorial](./tutorial/index.md)
+[Start the tutorial](tutorial/index.md)
 
 ## Integrate Commerce events using the Adobe I/O Events Journaling API
 
@@ -49,4 +49,4 @@ This tutorial is appliable to all versions of Adobe Commerce.
 - You need to process events in bulk or at a controlled pace.
 - You want resilience against missed events, since the journal retains events for seven days.
 
-[Start the tutorial](./journaling-tutorial/index.md)
+[Start the tutorial](journaling-tutorial/index.md)

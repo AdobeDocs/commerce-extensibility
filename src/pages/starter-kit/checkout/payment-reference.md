@@ -13,7 +13,7 @@ The checkout module provides REST and GraphQL APIs to configure out-of-process p
 
 ## REST
 
-For more information on the available endpoints, refer to [payment API usage](./payment-usage.md#create-a-new-payment-method).
+For more information on the available endpoints, refer to [payment API usage](payment-usage.md#create-a-new-payment-method).
 
 The raw Payment REST API schema is available [here](/payment.xml).
 
@@ -190,7 +190,7 @@ You can access details about out-of-process payment types by specifying the `oop
 
 The raw Payment GraphQL schema is available [here](/payment.graphqls).
 
-For more information on extending the out-of-process GraphQL schema, refer to the [EDS Integration Guide](./eds.md).
+For more information on extending the out-of-process GraphQL schema, refer to the [EDS Integration Guide](eds.md).
 
 <CodeBlock slots="heading, code" repeat="2" languages="graphql, graphql" />
 

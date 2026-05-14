@@ -8,15 +8,15 @@ keywords:
 
 # Configure Adobe Commerce
 
-After you have created an [App Builder project](./project-setup.md) and [install the eventing modules](./installation.md), you must download several files from the App Builder project and configure eventing in the Commerce admin.
+After you have created an [App Builder project](project-setup.md) and [install the eventing modules](installation.md), you must download several files from the App Builder project and configure eventing in the Commerce admin.
 
 ## Configure the Adobe I/O connection
 
-You must configure Commerce to communicate with your project. Configuration includes copying and pasting the contents of the [workspace configuration file](./project-setup.md#download-the-workspace-configuration-file) that you downloaded from the Adobe Developer Console.
+You must configure Commerce to communicate with your project. Configuration includes copying and pasting the contents of the [workspace configuration file](project-setup.md#download-the-workspace-configuration-file) that you downloaded from the Adobe Developer Console.
 
 1. In the Commerce Admin, navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Adobe I/O Events** > **General configuration**. The following screen displays.
 
-   ![General configuration](../_images/events/general-configuration-empty.png)
+   ![General configuration](../images/events/general-configuration-empty.png)
 
 1. Copy the entire contents of the `<workspace-name>.json` file into the **Adobe I/O Workspace Configuration** field.
 
@@ -50,7 +50,7 @@ You can also use the `aio` CLI tool to manage providers. See [Provider Commands]
 
 You cannot create an event provider until you have configured and saved instance ID values and a workspace file.
 
-You can create an event provider using either the [Command line](./configure-commerce.md#command-line) or [Commerce Admin](./configure-commerce.md#commerce-admin).
+You can create an event provider using either the [Command line](configure-commerce.md#command-line) or [Commerce Admin](configure-commerce.md#commerce-admin).
 
 ### Command line
 
@@ -81,25 +81,25 @@ You can create an event provider using either the [Command line](./configure-com
 
 1. Copy the ID returned in the command output into the **Adobe I/O Event Provider ID** field in the Admin.
 
-   ![General configuration updated](../_images/events/general-configuration-providerId-cli.png)
+   ![General configuration updated](../images/events/general-configuration-provider-id-cli.png)
 
 ### Commerce Admin
 
 1. In the Commerce Admin, navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Adobe I/O Events** > **General configuration**. The following screen displays.
 
-   ![General configuration](../_images/events/general-configuration-instanceId.png)
+   ![General configuration](../images/events/general-configuration-instance-id.png)
 
 2. Click on the **Create Event Provider** button, enter the **Label** and **Description**, and then click submit. The **Adobe I/O Event Provider ID** field will be populated with the newly generated event provider ID
 
-   ![General configuration](../_images/events/general-configuration-providerInfo.png)
+   ![General configuration](../images/events/general-configuration-provider-info.png)
 
-   ![General configuration](../_images/events/general-configuration-providerId-adminui.png)
+   ![General configuration](../images/events/general-configuration-provider-id-adminui.png)
 
 ## Complete the Commerce configuration
 
 1. Enable Commerce Eventing by setting **Enabled** to `Yes`.
 
-   ![Commerce events configuration](../_images/events/commerce-events.png)
+   ![Commerce events configuration](../images/events/commerce-events.png)
 
    **Note**: You must [enable cron](#check-cron-and-message-queue-configuration) so that Commerce can send events to the endpoint.
 
@@ -123,7 +123,7 @@ After you have completely configured and saved your Adobe I/O event connection a
 
 You must define which Commerce events to subscribe to, then register them in the project.
 
-Commerce provides two sources for events: observers and plugins. You must specify the source as part of the event name. See [Subscribe to a Commerce event](./commands.md) for details about the syntax of the `events:subscribe` command.
+Commerce provides two sources for events: observers and plugins. You must specify the source as part of the event name. See [Subscribe to a Commerce event](commands.md) for details about the syntax of the `events:subscribe` command.
 
 1. &#8203;<Edition name="paas" />  If you don't have a module ready for integration with Adobe I/O Events, or you don't know exactly which events to register at this point, use the `events:subscribe` command to subscribe to some sample events, as shown in the following example commands:
 
@@ -137,15 +137,15 @@ Commerce provides two sources for events: observers and plugins. You must specif
 
     **Note**: When you use the `events:subscribe` command to subscribe to events on a Cloud environment, configuration information is stored in the `app/etc/env.php` file.
 
-   If you have a module ready or have specific events in mind, see [Register events](./module-development.md#register-events) for more information.
+   If you have a module ready or have specific events in mind, see [Register events](module-development.md#register-events) for more information.
 
 1. Return to your workspace. Click the **Add service** pop-up menu and select **Event**.
 
-   ![Click Add service in your workspace](../_images/events/add-event.png)
+   ![Click Add service in your workspace](../images/events/add-event.png)
 
 1. On the **Add events** page, select **Commerce events**. Then click **Next**.
 
-   ![Select Commerce events](../_images/events/select-commerce-event.png)
+   ![Select Commerce events](../images/events/select-commerce-event.png)
 
    **Note:** If the **Commerce events** category is not shown, check that you have created an event provider, and that it has at least one subscribed event. You may need to run the `bin/magento events:metadata:populate` command to synchronize event registrations in Adobe Commerce with the created event provider.
 
@@ -153,13 +153,13 @@ Commerce provides two sources for events: observers and plugins. You must specif
 
 1. Select the events to subscribe to. Then click **Next**.
 
-   ![Select the events to subscribe to](../_images/events/config-event-registration.png)
+   ![Select the events to subscribe to](../images/events/config-event-registration.png)
 
 1. Optionally create a new OAuth credential. Then click **Next**.
 
-1. Update the **Event registration name** and **Event registration description** fields. The Journaling API can consume your events by default. You can optionally select other consumption methods during this step. Learn more about your options in [Consuming Events](./consume-events.md).
+1. Update the **Event registration name** and **Event registration description** fields. The Journaling API can consume your events by default. You can optionally select other consumption methods during this step. Learn more about your options in [Consuming Events](consume-events.md).
 
-   ![Select how to receive events](../_images/events/receive-events-options.png)
+   ![Select how to receive events](../images/events/receive-events-options.png)
 
 1. Select **Save configured events**.
 
@@ -249,7 +249,7 @@ If you want to add `Event Registrations` with `Runtime Actions` as event consume
      ? Choose from the following provider families ( provider metadata ) Commerce Events
      ```
 
-   * Select the event provider you created in the [Create an Event Provider](./configure-commerce.md#create-an-event-provider) section.
+   * Select the event provider you created in the [Create an Event Provider](configure-commerce.md#create-an-event-provider) section.
 
      ```terminal
      ? Choose from below provider for provider metadata: dx_commerce_events team-mercury-sandbox
@@ -326,7 +326,7 @@ stage:
 
 <InlineAlert variant="warning" slots="text" />
 
-The deployment process might become stuck if the consumer runs in the background. The [Troubleshooting](./troubleshooting.md#stuck-deployment-after-configuring-priority-events) topic describes how to resolve this condition.
+The deployment process might become stuck if the consumer runs in the background. The [Troubleshooting](troubleshooting.md#stuck-deployment-after-configuring-priority-events) topic describes how to resolve this condition.
 
 See [Global variables](https://experienceleague.adobe.com/docs/commerce-cloud-service/user-guide/configure/env/stage/variables-global.html) for more information about the `ENABLE_EVENTING` variable.
 

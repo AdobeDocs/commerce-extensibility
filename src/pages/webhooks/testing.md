@@ -15,7 +15,7 @@ The Commerce application provides a way to test webhooks before enabling them in
 
 Click **Select** > **Test Webhook** in a hook's **Action** column to open a page for testing execution of all hooks configured for the same webhook method and type.
 
-![Test webhook](../_images/webhooks/test-webhook.png)
+![Test webhook](../images/webhooks/test-webhook.png)
 
 In the **Request payload** text area, input a webhook request payload in JSON format. After clicking the **Run Webhook** button, a banner displays at the top of the page indicating if webhook execution was successful or if an exception occurred. In the **Resolved payload** section, a JSON object displays the payload returned by the webhook after processing the hook response operations.
 

@@ -9,7 +9,7 @@ keywords:
 
 # Events reference
 
-This reference lists the full payload for each event supported on Adobe Commerce as a Cloud Service. Adobe recommends that you minimize the data that you send to App Builder, as described in [Create event subscriptions from the Admin](./create-events.md).
+This reference lists the full payload for each event supported on Adobe Commerce as a Cloud Service. Adobe recommends that you minimize the data that you send to App Builder, as described in [Create event subscriptions from the Admin](create-events.md).
 
 ## Catalog
 

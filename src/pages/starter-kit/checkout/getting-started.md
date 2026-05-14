@@ -103,9 +103,9 @@ Use the following steps to configure your local environment:
 
 After completing the previous steps you can:
 
-- [Connect to Adobe Commerce](./connect.md)
-- [Configure the available scripts](./configure.md)
-- [Deploy your initial project in App Builder](./development.md#deploy-the-application)
+- [Connect to Adobe Commerce](connect.md)
+- [Configure the available scripts](configure.md)
+- [Deploy your initial project in App Builder](development.md#deploy-the-application)
 
 ## Install Commerce modules
 
@@ -115,10 +115,10 @@ After completing the previous steps you can:
 
 To install the individual modules, refer to the following topics:
 
-- [Payment](./payment-install.md)
-- [Shipping](./shipping-install.md)
-- [Tax](./tax-install.md)
-- [Totals collector](./totals-collector-install.md)
+- [Payment](payment-install.md)
+- [Shipping](shipping-install.md)
+- [Tax](tax-install.md)
+- [Totals collector](totals-collector-install.md)
 
 ### Install the Commerce Eventing module (Commerce 2.4.5 only)
 

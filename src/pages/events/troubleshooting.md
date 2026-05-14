@@ -14,7 +14,7 @@ This topic describes how to resolve frequently encountered issues with Adobe I/O
 
 If Commerce is correctly [configured](configure-commerce.md), but triggered events aren't being received, check the the _Events Status_ grid, located at **System** > Events > **Events Status** in the Commerce Admin, to view the status of triggered events that are present in the Commerce `event_data` database table.
 
-![Events Status grid](../_images/events/event-status-grid.png)
+![Events Status grid](../images/events/event-status-grid.png)
 
 You can perform additional troubleshooting by retrieving the contents of the `event_data` table, which contains information that is not displayed in the grid.
 This table temporarily stores events before transforming them into Adobe I/O events. The table contains a status column that can have the following values:
@@ -82,16 +82,16 @@ The following error indicates the project in the Developer Console is missing th
 Event publishing failed: Error code: 403; reason: Forbidden { "error": { "code": "Forbidden", "message": "Client ID is invalid", "details": { "error_code": "403003" } } }
 ```
 
-[Set up a project](./project-setup.md#set-up-a-project) describes how to add the required API.
+[Set up a project](project-setup.md#set-up-a-project) describes how to add the required API.
 After adding the required API, download the workspace configuration for your project again and update it in the **Adobe I/O Workspace Configuration** field in the Adobe Commerce admin.
 
 ### The status shows the events have been successfully sent, but they were not received in the event registration
 
 If events are not received, determine if you have a different value for the `Adobe I/O Event Provider Instance ID` configured in the Adobe Commerce environment that is used in the event registration of the Developer Console.
 
-![Choose your instance ](../_images/events/instance-name-developer-console.png)
+![Choose your instance ](../images/events/instance-name-developer-console.png)
 
-![Adobe I/O Event Provider Instance ID](../_images/events/instance-name-developer-commerce.png)
+![Adobe I/O Event Provider Instance ID](../images/events/instance-name-developer-commerce.png)
 
 ## Event subscribe CLI command error
 

@@ -54,7 +54,7 @@ Jan 30, 2026
 
 ### Enhancements
 
-* You can now add event payload values [from the application context](./context-fields.md) <!-- CEXT-5713 -->
+* You can now add event payload values [from the application context](context-fields.md) <!-- CEXT-5713 -->
 
 ### Bug fixes
 
@@ -90,9 +90,9 @@ Oct 30, 2025
 
 ### Enhancements
 
-* Added [original data](./events-original-data.md) to the event payload. <!-- CEXT-5400 -->
+* Added [original data](events-original-data.md) to the event payload. <!-- CEXT-5400 -->
 
-* Added [on-change rules](./conditional-events.md#trigger-events-on-specific-field-changes) for event subscriptions. <!-- CEXT-5400 -->
+* Added [on-change rules](conditional-events.md#trigger-events-on-specific-field-changes) for event subscriptions. <!-- CEXT-5400 -->
 
 * Added event size validation. <!-- CEXT-5229 -->
 
@@ -150,7 +150,7 @@ April 17, 2025
 
 ### Enhancements
 
-* Added support of [multiple event providers](./configure-additional-event-providers.md) <!-- CEXT-4383 -->
+* Added support of [multiple event providers](configure-additional-event-providers.md) <!-- CEXT-4383 -->
 
 * Improved conversion of event payloads. In some cases payload of extension attributes was not converted correctly. <!-- CEXT-4487 -->
 
@@ -344,7 +344,7 @@ November 30, 2023
 
 * Added the ability to switch to a development environment when testing the transmission of events. <!--- CEXT-2121 -->
 
-* Common logic for data collecting has been moved to a new module, `OutOfProcessExtensibility`. This module must be enabled as described in the [update instructions](./installation.md#update-adobe-io-events-for-adobe-commerce). <!--- CEXT-2215, 2266, 2267, 2312, 2503-->
+* Common logic for data collecting has been moved to a new module, `OutOfProcessExtensibility`. This module must be enabled as described in the [update instructions](installation.md#update-adobe-io-events-for-adobe-commerce). <!--- CEXT-2215, 2266, 2267, 2312, 2503-->
 
 ### Bug fixes
 
@@ -445,7 +445,7 @@ April 20, 2023
 
 ### Enhancements
 
-*  Added support for delivering events using message queues. Previously, all events were delivered by cron, which could delay delivery by up to a minute. Use the `bin/magento events:subscribe --priority` command to register the event as requiring expedited delivery. See [Configure Adobe Commerce](./configure-commerce.md#check-cron-and-message-queue-configuration) for information about configuring the message queues.
+*  Added support for delivering events using message queues. Previously, all events were delivered by cron, which could delay delivery by up to a minute. Use the `bin/magento events:subscribe --priority` command to register the event as requiring expedited delivery. See [Configure Adobe Commerce](configure-commerce.md#check-cron-and-message-queue-configuration) for information about configuring the message queues.
 
 *  Added the ability to filter on fields in an array of nested objects. For example, you can retrieve the `sku` and `qty` fields in an `items[]` array as shown:
 

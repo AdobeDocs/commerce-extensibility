@@ -26,7 +26,7 @@ See [Add a payment method](https://experienceleague.adobe.com/developer/commerce
 
 The following image indicates the location of the checkout drop-in component in the EDS Storefront:
 
-![checkout-drop-in-component.png](../../_images/starterkit/eds-components.png)
+![checkout-drop-in-component.png](../../images/starterkit/eds-components.png)
 
 ## Extend OOPE GraphQL Schema
 

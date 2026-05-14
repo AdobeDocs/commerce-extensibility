@@ -13,7 +13,7 @@ Adobe I/O Events for Adobe Commerce requires Adobe Commerce 2.4.4 or higher.
 
 Magento Open Source is not supported.
 
-After you have created an [App Builder project](./project-setup.md), you must install the Commerce modules that enable integrations with Adobe I/O Events.
+After you have created an [App Builder project](project-setup.md), you must install the Commerce modules that enable integrations with Adobe I/O Events.
 
 ## Install Adobe I/O modules on Commerce
 

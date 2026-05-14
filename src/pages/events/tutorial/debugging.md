@@ -55,7 +55,7 @@ To start debugging your action code:
 
 1. In VS Code, on the **Run and Debug** tab, select the launch configuration you created in "Configure the debugger". This will allow you to run your app in debug mode.
 
-   ![Debug Action in VS](../../_images/webhooks/tutorial/debug-actions-option.png)
+   ![Debug Action in VS](../../images/webhooks/tutorial/debug-actions-option.png)
 
 1. Click the Run button or press **F5** to start the debugger. This starts the app using the `aio app dev` command. Output similar to the following is displayed in the terminal:
 

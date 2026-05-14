@@ -24,7 +24,7 @@ The development team chose to implement a cypher algorithm to safely store and r
 
 The merchant enters credentials and secrets when creating a new store through the Admin using the **Add Amazon Store** menu.
 
-![Add Amazon Sales Channel form](../../_images/add-amazon-sales-channel.png)
+![Add Amazon Sales Channel form](../../images/add-amazon-sales-channel.png)
 
 Once the merchant completes the form, an action is triggered to randomly generate an initialization vector specific to the new account and to store the account information. It's important that the initialization vector is generated in the backend so that it's not visible from the UI.
 
@@ -32,7 +32,7 @@ This vector is then used in another action that encrypts the credentials and sto
 
 The following diagram describes the generic flow of the credential storage and encryption process.
 
-![Credentials storage and encryption flow](../../_images/credentials-flow.png)
+![Credentials storage and encryption flow](../../images/credentials-flow.png)
 
 ## Encryption algorithm
 

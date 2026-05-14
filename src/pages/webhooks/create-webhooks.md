@@ -27,7 +27,7 @@ With this knowledge, you can create a webhook, which defines the following sets 
 
 * Optional rules that trigger only when certain conditions are met, such as when a string matches a specific value.
 
-&#8203;<Edition name="saas" /> In Adobe Commerce as a Cloud Service, you can create a webhook subscription in the Admin or by using a REST endpoint. (See [Subscribe a webhook](./api.md#subscribe-a-webhook) for details on using REST.) Adobe Commerce as a Cloud Service does not support all possible webhook methods. Open a support ticket to request additional webhook methods.
+&#8203;<Edition name="saas" /> In Adobe Commerce as a Cloud Service, you can create a webhook subscription in the Admin or by using a REST endpoint. (See [Subscribe a webhook](api.md#subscribe-a-webhook) for details on using REST.) Adobe Commerce as a Cloud Service does not support all possible webhook methods. Open a support ticket to request additional webhook methods.
 
 &#8203;<Edition name="paas" /> In Platform as a Service (PaaS) and on-premises environments, you must create an `app/etc/webhooks.xml` file or create a custom module that includes a `<custom-module-root>/etc/webhooks.xml` file.
 
@@ -35,13 +35,13 @@ With this knowledge, you can create a webhook, which defines the following sets 
 
 Adobe Commerce as a Cloud Service customers can select **System** > Webhooks > **Webhooks Subscriptions** in the Admin to display the _Webhooks_ grid page.
 
-![Webhooks grid page](../_images/webhooks/webhooks-subscriptions-grid.png)
+![Webhooks grid page](../images/webhooks/webhooks-subscriptions-grid.png)
 
 The rows of this grid show configuration settings for all registered hooks, both active and inactive.
 
 Click **Add New Webhook** from the grid page to display the form for creating a new hook.
 
-![New webhook](../_images/webhooks/new-hook-settings.png)
+![New webhook](../images/webhooks/new-hook-settings.png)
 
 On PaaS systems, you can create a `webhooks.xml` file in the `etc` directory of a custom module or in the Commerce `app/etc/webhooks.xml` file. The XML file has the following structure:
 
@@ -80,13 +80,13 @@ Admin field | XML attribute | Description
 
 Unless you want to send the entire default payload, unedited, you must define at least one hook field. You will usually need to define authentication information. You can also optionally define rules that allow the webhook to run when the event payload contains configured values.
 
-[Webhooks configuration reference](./xml-schema.md) describes the XML schema in further detail.
+[Webhooks configuration reference](xml-schema.md) describes the XML schema in further detail.
 
 ### Configure developer console OAuth
 
 <Edition name="paas" />
 
-In PaaS environments, you can define OAuth credentials in the `developerConsoleOauth` element of a `webhooks.xml` file. See [Best practices for webhook development](./tutorial/best-practices.md#configure-oauth-in-paas) for details.
+In PaaS environments, you can define OAuth credentials in the `developerConsoleOauth` element of a `webhooks.xml` file. See [Best practices for webhook development](tutorial/best-practices.md#configure-oauth-in-paas) for details.
 
 <Edition name="saas" />
 
@@ -112,7 +112,7 @@ Admin field | XML attribute | Description
 | **Active** | `field.remove` | Indicates whether to include the field in the payload. By default, all fields are included. If you are building a `webhooks.xml` file, set `field.remove` to `true` to remove the field from the payload. |
 | - | `field.converter` | A class that transforms the value of a field, such as from integer to string. This attribute is only available in `webhooks.xml` files. |
 
-[Define hooks](./hooks.md) describes how to define the fields of a webhook request.
+[Define hooks](hooks.md) describes how to define the fields of a webhook request.
 
 ### Configure hook headers
 
@@ -184,11 +184,11 @@ Point to the `AddProductToCartResolver` class in the `header.resolver` attribute
 
 #### Application context header values
 
-You can create hook headers with values from the application context. See [Context fields](./hooks.md#context-values) for details.
+You can create hook headers with values from the application context. See [Context fields](hooks.md#context-values) for details.
 
 ### Configure hook rules
 
-The **Hook Rules** configuration panel or `rules` element allows you to define rules that trigger a webhook when certain conditions are met. [Create conditional webhooks](./conditional-webhooks.md) describes how to configure hook rules.
+The **Hook Rules** configuration panel or `rules` element allows you to define rules that trigger a webhook when certain conditions are met. [Create conditional webhooks](conditional-webhooks.md) describes how to configure hook rules.
 
 Admin field | XML attribute | Description
 --- | --- | ---

@@ -145,7 +145,7 @@ Some requirements will differ based on whether you indicated the app was non-dow
 - Commerce compatibility
   - **Multi-flavor support**: Ensure compatibility between Commerce flavors (PaaS and SaaS):
     - &#8203;<Edition name="saas" /> Use [IMS](/starter-kit/checkout/connect/#adobe-identity-management-service-ims) for authentication instead of [Commerce integrations (OAuth1)](/starter-kit/checkout/connect/#create-a-commerce-integration).
-  - For detailed guidelines on supporting both SaaS and PaaS, see [Extension Compatibility](./extension-compatibility.md).
+  - For detailed guidelines on supporting both SaaS and PaaS, see [Extension Compatibility](extension-compatibility.md).
 
 - Quality assurance
   - **Test suite**: Ensure tests all tests are passing. Run `npm test` to validate.

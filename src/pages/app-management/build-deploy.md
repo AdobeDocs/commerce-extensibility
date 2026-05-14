@@ -59,7 +59,7 @@ These actions handle configuration and scope operations (generated when a `busin
 | `config` | Handles retrieving and updating configuration values across scopes. |
 | `scope-tree` | Handles scope hierarchy management for Commerce and custom scopes. |
 
-The scope tree action supports syncing scopes from Adobe Commerce, setting custom scope hierarchies for external systems, and unsyncing Commerce scopes. Structural changes in Commerce (websites, stores, store views) are **not** reflected in App Management until an Admin runs **Sync commerce scopes** for each associated application that uses scopes; see [Scope tree synchronization](./configuration-schema.md#scope-tree-synchronization).
+The scope tree action supports syncing scopes from Adobe Commerce, setting custom scope hierarchies for external systems, and unsyncing Commerce scopes. Structural changes in Commerce (websites, stores, store views) are **not** reflected in App Management until an Admin runs **Sync commerce scopes** for each associated application that uses scopes; see [Scope tree synchronization](configuration-schema.md#scope-tree-synchronization).
 
 ### Admin UI SDK registration action from `commerce/backend-ui/1`
 

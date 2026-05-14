@@ -27,7 +27,7 @@ By installing the AI coding tools, you get access to:
 * Developer MCP Server
 * App Builder MCP Server
 
-For skills, prompts, and best practices after setup, see [Skills, prompts, and commands](./skills-and-prompts.md) and [Best practices](./best-practices.md).
+For skills, prompts, and best practices after setup, see [Skills, prompts, and commands](skills-and-prompts.md) and [Best practices](best-practices.md).
 
 ## Updating to the latest version
 
@@ -197,7 +197,7 @@ Next steps:
       git clone git@github.com:adobe/commerce-integration-starter-kit.git
       ```
 
-   * Commerce [checkout starter kit](../starter-kit/checkout/) for building or extending the checkout experience, including payments, shipping, and taxes.
+   * Commerce [checkout starter kit](../starter-kit/checkout/index.md) for building or extending the checkout experience, including payments, shipping, and taxes.
 
       ```bash
       git clone git@github.com:adobe/commerce-checkout-starter-kit.git
@@ -254,7 +254,7 @@ Next steps:
 1. After a successful install, the process configures:
 
    * MCP server integration for Adobe Commerce development
-   * [Agent skills](./skills-and-prompts.md#skills) for enhanced development experience
+   * [Agent skills](skills-and-prompts.md#skills) for enhanced development experience
    * Commerce-specific development tools and workflows
 
    Skills and MCP tools are installed. If you do not see them, restart your coding agent.

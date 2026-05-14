@@ -46,9 +46,9 @@ To proceed, request Developer Access from your organization admin.
 
 The following images contrast what you will see with and without developer access.
 
-![Without Developer Access:](../../_images/webhooks/tutorial/restrcited-access-developer-console.png)
+![Without Developer Access:](../../images/webhooks/tutorial/restrcited-access-developer-console.png)
 
-![With Developer Access:](../../_images/webhooks/tutorial/developer-access-dev-console.png)
+![With Developer Access:](../../images/webhooks/tutorial/developer-access-dev-console.png)
 
 ### Create a new project in Adobe Developer Console
 

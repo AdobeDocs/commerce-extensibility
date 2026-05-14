@@ -471,7 +471,7 @@ We need to define which Commerce events to subscribe to and register them within
 
 1. On the next screen, update the Event Registration **Name** and **Description** fields, then choose the **Runtime Action** that should handle the events and save the configuration.
 
-![Developer Console Event Registration](../../_images/events/tutorial/adobe-console-event-registration-action.png)
+![Developer Console Event Registration](../../images/events/tutorial/adobe-console-event-registration-action.png)
 
 ### Test the integration
 
@@ -489,7 +489,7 @@ After deploying your app and triggering the event by creating a new product in C
 
 To learn more about using the debug tracer feature, refer to Adobe's documentation: Debug tracing in [Adobe Developer Console](https://developer.adobe.com/events/docs/support/tracing).
 
-![Developer Console Debug Tracer](../../_images/events/tutorial/adobe-console-events-debug-tracer.png)
+![Developer Console Debug Tracer](../../images/events/tutorial/adobe-console-events-debug-tracer.png)
 
 ## Invoke the action code locally and test
 

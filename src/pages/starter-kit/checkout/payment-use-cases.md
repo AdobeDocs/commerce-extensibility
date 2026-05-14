@@ -10,7 +10,7 @@ keywords:
 
 This page explores different use cases and scenarios for implementing payment methods using the Adobe Commerce checkout starter kit.
 
-For more general use cases, refer to [use-cases](./use-cases.md).
+For more general use cases, refer to [use-cases](use-cases.md).
 
 ## Integration strategies
 
@@ -29,7 +29,7 @@ This strategy consists of the following components:
 
 The following diagram shows a complete payment integration where the frontend handles user interactions, the backend manages business logic and data synchronization, and the external payment gateway processes the actual financial transactions. This architecture separates concerns between client-side user experience and server-side security and processing.
 
-![oope-payment-components-with-actors](../../_images/starterkit/oope-payment-components-with-actors.png)
+![oope-payment-components-with-actors](../../images/starterkit/oope-payment-components-with-actors.png)
 
 1. **Admin REST API connection** - The merchant connects to Adobe Commerce as a Cloud Service (SaaS) through the Admin REST API, allowing them to manage and configure the payment system from the backend.
 1. **GraphQL API** - The Storefront Checkout communicates with Commerce SaaS using the GraphQL API, enabling the frontend to fetch and submit payment-related data during the checkout process.
@@ -44,7 +44,7 @@ The starter kit supports multiple checkout flow patterns. The following flow rep
 
 For alternative checkout flow patterns, see [Checkout session](#checkout-session-pattern) and [Client-side nonce](#client-side-nonce-pattern).
 
-![checkout-flow](../../_images/starterkit/basic-checkout-flow.png)
+![checkout-flow](../../images/starterkit/basic-checkout-flow.png)
 
 1. **Initialize cart and fetch payment methods** - The merchant client loads a shopping cart and requests cart details from Adobe Commerce. Adobe Commerce responds with available payment methods, including codes, titles, backend URLs, and configuration details for offline payment methods.
 1. **Create payment session** - The merchant client initiates a payment session with the merchant server using a cart ID as reference. The merchant server then creates a payment session with the payment gateway, exchanging session data that gets relayed back to the merchant client.
@@ -68,19 +68,19 @@ Payment gateway events (capture, refund, cancellation) flow asynchronously throu
 
 The `observer.sales_order_invoice_save_after` and `observer.sales_order_creditmemo_save_after` events are implemented in the following diagram:
 
-![non-blocking-invoice-creation](../../_images/starterkit/non-blocking-invoice-creation.png)
+![non-blocking-invoice-creation](../../images/starterkit/non-blocking-invoice-creation.png)
 
 #### Blocking invoice creation
 
 Alternatively, you can use the `plugin.magento.sales.api.invoice_repository.create` and `plugin.magento.sales.api.creditmemo_repository.create` webhooks to make invoice and credit memo creation dependent on successful payment operations, ensuring payment success before completing the financial document creation.
 
-![blocking-invoice-creation](../../_images/starterkit/blocking-invoice-creation.png)
+![blocking-invoice-creation](../../images/starterkit/blocking-invoice-creation.png)
 
 #### Incoming payment synchronization
 
 Payment gateway captures and refunds are synchronized bidirectionally with Adobe Commerce through the Admin REST API, enabling real-time updates between the payment system and commerce platform.
 
-![incoming-captures-and-refunds](../../_images/starterkit/incoming-captures-and-refunds.png)
+![incoming-captures-and-refunds](../../images/starterkit/incoming-captures-and-refunds.png)
 
 ### Checkout session pattern
 
@@ -88,7 +88,7 @@ In a minimal checkout flow, a checkout session is created with the payment gatew
 
 This pattern represents a streamlined approach where the payment gateway handles the complete payment lifecycle upfront, allowing for faster order completion and reduced complexity in the checkout flow.
 
-![basic-checkout-flow-annotated](../../_images/starterkit/basic-checkout-flow-annotated.png)
+![basic-checkout-flow-annotated](../../images/starterkit/basic-checkout-flow-annotated.png)
 
 1. **Establish payment session** - Create a checkout session with the payment gateway before starting any client-side payment processing, establishing the foundation for the payment transaction.
 1. **Complete payment client-side** - Handle the entire payment transaction through the client-side payment form, with the payment gateway processing the transaction and providing immediate confirmation.
@@ -102,7 +102,7 @@ When using a payment method nonce (a secure, single-use reference to payment inf
 
 Unlike the checkout session pattern where payment is completed client-side, the nonce pattern defers actual payment processing until the server-side validation step. This provides enhanced security by ensuring sensitive payment information is never processed directly on the client side, while still allowing for immediate order placement with the understanding that payment confirmation happens asynchronously.
 
-![basic-checkout-flow-nonce-annotated](../../_images/starterkit/basic-checkout-flow-with-nonce-annotated.png)
+![basic-checkout-flow-nonce-annotated](../../images/starterkit/basic-checkout-flow-with-nonce-annotated.png)
 
 1. **Load shopping cart** - The merchant client initiates the checkout process by loading the shopping cart.
 1. **Generate client token** - The merchant client requests a client token from the merchant server, which then obtains it from the payment gateway.
@@ -127,7 +127,7 @@ The following steps demonstrate the payment flow:
 
 1. The App Builder application uses the Adobe Commerce HTTP Client to retrieve the order details using the masked cart ID. To facilitate this, the starter kit provides the method `getOrderByMaskedCartId` in the Adobe Commerce HTTP Client.
 
-![sequence.png](../../_images/starterkit/sequence.png)
+![sequence.png](../../images/starterkit/sequence.png)
 
 ## Validate payment info
 

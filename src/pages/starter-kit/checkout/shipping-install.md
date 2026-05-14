@@ -11,9 +11,9 @@ import Version from '/src/_includes/checkout-version.md'
 
 # Install the shipping module
 
-To begin using the shipping module with the checkout starter kit, ensure that you have completed the [getting started](./getting-started.md) and [configuration](./configure.md) steps.
+To begin using the shipping module with the checkout starter kit, ensure that you have completed the [getting started](getting-started.md) and [configuration](configure.md) steps.
 
-For more ideas on how you can use the shipping module, refer to [shipping use cases](./shipping-use-cases.md).
+For more ideas on how you can use the shipping module, refer to [shipping use cases](shipping-use-cases.md).
 
 ## Prerequisites
 

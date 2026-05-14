@@ -13,7 +13,7 @@ The following tips provide assistance for debugging your Adobe Commerce App Buil
 
 You can view logs from the Admin to debug your webhooks and actions. This is useful for identifying issues with your webhook configuration or action logic. Log into your Commerce instance and navigate to **System** > **Webhook Logs**.
 
-![WebHook Logs](../../_images/webhooks/tutorial/webhook-logs-adminui-accs.png)
+![WebHook Logs](../../images/webhooks/tutorial/webhook-logs-adminui-accs.png)
 
 [Logging](../responses.md#logging) describes webhooks logging in more detail.
 
@@ -63,7 +63,7 @@ aio app build
 
 In VS Code, on the **Run and Debug** tab, select the launch configuration you created in Step 1. This will allow you to run your app in debug mode.
 
-![Debug Action in VS](../../_images/webhooks/tutorial/debug-actions-option.png)
+![Debug Action in VS](../../images/webhooks/tutorial/debug-actions-option.png)
 
 Click the Run button or press **F5** to start the debugger. This starts the app using the `aio app dev` command. Output similar to the following is displayed in the terminal:
 

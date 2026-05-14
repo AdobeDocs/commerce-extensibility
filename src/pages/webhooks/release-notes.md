@@ -79,9 +79,9 @@ Nov 10, 2025
 
 ### Enhancements
 
-* PaaS installations now support the `POST /V1/webhooks/subscribe` and `POST /V1/webhooks/unsubscribe` [REST endpoints](./api.md). Previously, these endpoints were only available on SaaS. <!-- CEXT-5434 -->
+* PaaS installations now support the `POST /V1/webhooks/subscribe` and `POST /V1/webhooks/unsubscribe` [REST endpoints](api.md). Previously, these endpoints were only available on SaaS. <!-- CEXT-5434 -->
 
-* Added the [`developerConsoleOauth`](./xml-schema.md#developerconsoleoauth-element) XML configuration option to set Adobe Developer Console credentials for webhooks. <!-- CEXT-5434 -->
+* Added the [`developerConsoleOauth`](xml-schema.md#developerconsoleoauth-element) XML configuration option to set Adobe Developer Console credentials for webhooks. <!-- CEXT-5434 -->
 
 * Added the exception message to the log context in webhook plugins. <!-- CEXT-5273 -->
 

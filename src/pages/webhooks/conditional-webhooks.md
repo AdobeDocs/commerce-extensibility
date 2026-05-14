@@ -39,7 +39,7 @@ Conditional webhooks can have one or more rules. The webhook triggers only when 
 
 * &#8203;<Edition name="saas" />
 
-   ![Conditional webhooks](../_images/webhooks/webhooks-rule.png)
+   ![Conditional webhooks](../images/webhooks/webhooks-rule.png)
 
 ## Example: Calculate tax
 

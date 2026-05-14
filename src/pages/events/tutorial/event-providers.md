@@ -160,7 +160,7 @@ Event providers act as connectors that enable Adobe Commerce to send system even
 
 1. Click **Add New Provider** and provide the required details. These fields are essential for establishing the connection between Adobe Commerce and the newly created Event Provider.
 
-   ![Add new provider](../../_images/events/tutorial/adobe-commerce-create-event-provider.png)
+   ![Add new provider](../../images/events/tutorial/adobe-commerce-create-event-provider.png)
 
    - **Provider ID** and **Instance ID** are required fields.
 

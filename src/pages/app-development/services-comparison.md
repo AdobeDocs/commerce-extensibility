@@ -15,8 +15,8 @@ This guide highlights key differences and benefits of using Adobe Developer App 
 For more comparison information, refer to:
 
 - [Out-of-process extensibility overview](../index.md)
-- [Coding convention](./app-development-comparison.md#coding-conventions)
-- [Integrating third-party modules](./app-development-comparison.md#integrating-third-party-modules)
+- [Coding convention](app-development-comparison.md#coding-conventions)
+- [Integrating third-party modules](app-development-comparison.md#integrating-third-party-modules)
 - [Storage Options](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/storage/)
 
 ## Persistent Storage

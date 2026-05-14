@@ -15,13 +15,13 @@ Defining the hook requires knowledge of the structure of the original event and 
 
 * &#8203;<Edition name="paas" />
 
-   * Run the [`bin/magento webhooks:list:all` command](./commands.md#return-a-list-of-supported-webhook-event-names) to return a list of all supported webhooks methods. Then run the [`bin/magento webhooks:info <webhook-name>` command](./commands.md#display-the-payload-of-a-webhook) to return the payload of the specified webhook method.
+   * Run the [`bin/magento webhooks:list:all` command](commands.md#return-a-list-of-supported-webhook-event-names) to return a list of all supported webhooks methods. Then run the [`bin/magento webhooks:info <webhook-name>` command](commands.md#display-the-payload-of-a-webhook) to return the payload of the specified webhook method.
 
 * &#8203;<Edition name="saas" />
 
    * View the list supported webhook methods by going to **System** > Webhooks > **Webhooks List** in the Admin. Then click on a webhook method name to display its default contents.
 
-   * Call the `GET /V1/webhooks/supportedList` [REST endpoint](./api.md#get-supported-webhooks-for-saas).
+   * Call the `GET /V1/webhooks/supportedList` [REST endpoint](api.md#get-supported-webhooks-for-saas).
 
 Imagine that a hypothetical webhook has the following structure:
 

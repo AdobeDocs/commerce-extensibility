@@ -176,7 +176,7 @@ July 18, 2025
 
 * Added a blocking spinner when clicking on **Refresh Registrations** button. <!--- CEXT-4846 -->
 
-* The order view button can now be implemented [without an iFrame](./api.md#order-view-button-without-iframes). <!-- CEXT-4885 -->
+* The order view button can now be implemented [without an iFrame](api.md#order-view-button-without-iframes). <!-- CEXT-4885 -->
 
 ### Bug fixes
 
@@ -196,7 +196,7 @@ April 15, 2025
 
 * This release changes how extensions are integrated into the Adobe Commerce Admin. Previously, the Admin directly loaded published extensions. Now, extensions must be selected in the **Configure extensions** screen, resulting in a better developer experience. The limitation on **Production**-only workspaces has been resolved.
 
-* Added the IMS organization ID to the [shared context](./extension-points/index.md#shared-contexts) when loading a menu, a mass action, or an order view button in an iFrame. <!--- CEXT-4396  -->
+* Added the IMS organization ID to the [shared context](extension-points/index.md#shared-contexts) when loading a menu, a mass action, or an order view button in an iFrame. <!--- CEXT-4396  -->
 
 * Updated dependencies to ensure all resolved security issues are addressed and the system remains up-to-date. <!--- CEXT-4464  -->
 
@@ -276,7 +276,7 @@ September 4, 2024
 
 * This release changes how registrations are declared. Previously, calls were performed asynchronously. This could result in delayed retrieval and availability of registrations when loading pages. Registrations are now declared synchronously.
 
-  You must update any extension points developed with Admin UI SDK 1.x. For details, see [Migrate your extension point from 1.x to 2.0](./extension-points/index.md#migrate-your-extension-point-from-version-1x-to-20).
+  You must update any extension points developed with Admin UI SDK 1.x. For details, see [Migrate your extension point from 1.x to 2.0](extension-points/index.md#migrate-your-extension-point-from-version-1x-to-20).
 
 * Added a custom fee column to the invoice and credit memo grids.
 
@@ -300,14 +300,14 @@ June 28, 2024
 
 * Added the following extension points:
 
-  * [`banner notification`](./extension-points/banner-notification.md)
-  * [`customer grid columns`](./extension-points/customer/grid-columns.md)  <!--- CEXT-2867  -->
-  * [`customer mass action`](./extension-points/customer/mass-action.md)
-  * [`order get custom fees`](./extension-points/order/custom-fees.md)  <!--- CEXT-2733  -->
+  * [`banner notification`](extension-points/banner-notification.md)
+  * [`customer grid columns`](extension-points/customer/grid-columns.md)  <!--- CEXT-2867  -->
+  * [`customer mass action`](extension-points/customer/mass-action.md)
+  * [`order get custom fees`](extension-points/order/custom-fees.md)  <!--- CEXT-2733  -->
 
-* Mass actions can now be implemented [without an iFrame](./api.md#mass-actions-without-iframes). <!--- CEXT-2590, CEXT-2825, CEXT-2932, CEXT-2903 -->
+* Mass actions can now be implemented [without an iFrame](api.md#mass-actions-without-iframes). <!--- CEXT-2590, CEXT-2825, CEXT-2932, CEXT-2903 -->
 
-* Added the `GET V1/adminuisdk/massaction/<requestId>` [REST API](./api.md) to debug mass action failures.
+* Added the `GET V1/adminuisdk/massaction/<requestId>` [REST API](api.md) to debug mass action failures.
 
 * Added the **Refresh registrations** button to the configuration page. This button allows the administrator to  refresh the `admin_ui_sdk` cache and reload all extensions. <!--- CEXT-2642 -->
 
@@ -356,14 +356,14 @@ November 30, 2023
 ### Enhancements
 
 * Enabled the following extension points:
-  * [Add buttons to the orders view](./extension-points/order/view-button.md)
-  * [Add mass actions to the orders grid](./extension-points/order/mass-action.md)
-  * [Add columns to the products grid](./extension-points/product/grid-columns.md)
+  * [Add buttons to the orders view](extension-points/order/view-button.md)
+  * [Add mass actions to the orders grid](extension-points/order/mass-action.md)
+  * [Add columns to the products grid](extension-points/product/grid-columns.md)
 * Menus and extensions are cached to improve performance.
 * When selecting a mass action, now only the needed extension is loaded.
 * A spinner is now displayed when content is being loaded on customized extension points.
 * Added the ability to redirect back to a grid page after executing a mass action.
-* Added the `clientId` parameter to [`sharedContext`](./extension-points/index.md#shared-contexts).
+* Added the `clientId` parameter to [`sharedContext`](extension-points/index.md#shared-contexts).
 
 ### Bug fixes
 

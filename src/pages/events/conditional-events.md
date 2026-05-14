@@ -15,7 +15,7 @@ import ConditionalEventExample from '/src/_includes/conditional-event-example.md
 
 You can create conditional events within your module's or root `io_events.xml` file or from the command line.
 
-These conditional events can include [context fields](./context-fields.md) in conditional event rules. These fields allow you to access additional data about the event, such as the application state or the store ID. Context fields are prefixed with `context_` and can be used in any rule, just like regular payload fields.
+These conditional events can include [context fields](context-fields.md) in conditional event rules. These fields allow you to access additional data about the event, such as the application state or the store ID. Context fields are prefixed with `context_` and can be used in any rule, just like regular payload fields.
 
 ## Define conditional events in `io_events.xml`
 
@@ -70,11 +70,11 @@ These conditional events can include [context fields](./context-fields.md) in co
 
 <InlineAlert variant="warning" slots="text"/>
 
-This rule is possible only for events that include original data [`_origData`](./events-original-data.md) in the payload. If an event does not include original data, the `onChange` operator cannot be used, and such an event will not be triggered.
+This rule is possible only for events that include original data [`_origData`](events-original-data.md) in the payload. If an event does not include original data, the `onChange` operator cannot be used, and such an event will not be triggered.
 
-For events that contain original data [`_origData`](./events-original-data.md) within the payload, you can create conditional events that trigger only when specific fields change. It can reduce the number of events sent to your application when only specific field changes are relevant.
+For events that contain original data [`_origData`](events-original-data.md) within the payload, you can create conditional events that trigger only when specific fields change. It can reduce the number of events sent to your application when only specific field changes are relevant.
 
-To check if the event payload contains original data, you can visit **System** > Events > **Events List** page or use the [`bin/magento events:info <event_code>`](./commands.md#return-event-details) command.
+To check if the event payload contains original data, you can visit **System** > Events > **Events List** page or use the [`bin/magento events:info <event_code>`](commands.md#return-event-details) command.
 
 For example, you want to trigger an event only when the product stock quantity changes:
 
@@ -100,7 +100,7 @@ For example, you want to trigger an event only when the product stock quantity c
 
 In this example the payload value of `quantity_and_stock_status.qty` is compared to its previous value stored in `_origData.quantity_and_stock_status.qty`. The event is triggered only when the quantity value has changed.
 
-For some events the payload structure may differ and the original data [`_origData`](./events-original-data.md) may not be available as a root node. In such cases you can provide a custom path to compare against in the `value` element:
+For some events the payload structure may differ and the original data [`_origData`](events-original-data.md) may not be available as a root node. In such cases you can provide a custom path to compare against in the `value` element:
 
 ```xml
 <event name="observer.checkout_cart_product_add_before">

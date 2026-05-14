@@ -16,13 +16,13 @@ import EventSize from '/src/_includes/event-size-limitation.md'
 
 <InlineAlert variant="info" slots="text1" />
 
-Adobe Commerce as a Cloud Service (SaaS) customers can create event subscriptions from the Admin or by using [REST](./api.md) calls. (Platform as a Service (PaaS) customers must either use REST or create a custom module.) SaaS does not support all possible events. To view the list of supported events, select **System** > Events > **Events List**. Contact Customer Support if you would like to implement other events.
+Adobe Commerce as a Cloud Service (SaaS) customers can create event subscriptions from the Admin or by using [REST](api.md) calls. (Platform as a Service (PaaS) customers must either use REST or create a custom module.) SaaS does not support all possible events. To view the list of supported events, select **System** > Events > **Events List**. Contact Customer Support if you would like to implement other events.
 
 ## View event subscriptions
 
 In the Admin, select **System** > Events > **Events Subscriptions** to display the _Events Subscriptions_ grid page.
 
-![Events Subscriptions grid page](../_images/events/events-subscriptions-grid.png)
+![Events Subscriptions grid page](../images/events/events-subscriptions-grid.png)
 
 The rows of this grid show configuration settings for all event subscriptions, both enabled and disabled.
 
@@ -30,7 +30,7 @@ The rows of this grid show configuration settings for all event subscriptions, b
 
 Click **Add New Subscription** from the grid page to display the form for creating a new event subscription.
 
-![New event subscription](../_images/events/event-subscription-settings.png)
+![New event subscription](../images/events/event-subscription-settings.png)
 
 The **Event subscription settings** configuration panel contains the following fields:
 
@@ -134,6 +134,6 @@ Value:
 
 Click **Select** > **Edit** in the **Action** column of an event subscription's row to display a form for editing the subscription.
 
-![Edit event subscription](../_images/events/edit-event-subscription.png)
+![Edit event subscription](../images/events/edit-event-subscription.png)
 
 Click **Select** > **Delete** in the **Action** column to delete an event subscription.

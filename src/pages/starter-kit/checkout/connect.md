@@ -44,11 +44,11 @@ SaaS instances already include IMS configuration.
 
 Use the following steps to create OAuth credentials for App Builder authentication:
 
-1. Access your IMS credentials through the [Adobe Developer Console](https://developer.adobe.com/console). Select the project and workspace you set up during the [initial configuration](./getting-started.md#initial-configuration). Then click **OAuth Server-to-Server** in the side-navigation menu.
+1. Access your IMS credentials through the [Adobe Developer Console](https://developer.adobe.com/console). Select the project and workspace you set up during the [initial configuration](getting-started.md#initial-configuration). Then click **OAuth Server-to-Server** in the side-navigation menu.
 
 1. Copy the IMS credentials to the `.env` file in the root of the project.
 
-   **NOTE**: These credentials are automatically populated in [Configure OAuth Server-to-Server Credential](./configure.md#configure-oauth-server-to-server-credential).
+   **NOTE**: These credentials are automatically populated in [Configure OAuth Server-to-Server Credential](configure.md#configure-oauth-server-to-server-credential).
 
    ```js
    OAUTH_CLIENT_ID=<client id>
@@ -65,11 +65,11 @@ Use the following steps to create OAuth credentials for App Builder authenticati
 
       - When associating the user with the account, find your **Technical Account email** as a part of generated IMS credentials with following pattern: `<technical-account>@techacct.adobe.com` and use that value in the **Email** field during user creation:
 
-         ![ims-user-creation.png](../../_images/starterkit/ims-user-creation.png)
+         ![ims-user-creation.png](../../images/starterkit/ims-user-creation.png)
 
       - On the **User Role** tab, select the role that provides all necessary permissions for API integrations.
 
-         ![ims-user-role.png](../../_images/starterkit/ims-user-role.png)
+         ![ims-user-role.png](../../images/starterkit/ims-user-role.png)
 
 ### Create a Commerce integration
 

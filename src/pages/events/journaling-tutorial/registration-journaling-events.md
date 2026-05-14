@@ -1,7 +1,6 @@
 ---
 title: Register and validate your journaling integration
 description: Learn how to configure and build event-driven integrations between Adobe Commerce and Adobe App Builder using Journaling API.
-edition: saas
 keywords:
   - Extensibility
   - Events
@@ -15,10 +14,9 @@ In this section, you will register your Commerce events in the Adobe Developer C
 
 Before configuring journaling, ensure that you have completed the standard setup for Adobe Commerce Events and App Builder.
 
-- To create and configure an Event Provider in Adobe Commerce, follow the steps outlined in (Setting up Event Provider in Adobe Commerce) [https://developer.adobe.com/commerce/extensibility/events/tutorial/event-providers/#set-up-event-providers] up to the section
-**Sync event metadata with App Builder**
+- To create and configure an Event Provider in Adobe Commerce, follow the steps outlined in  [Setting up Event Provider in Adobe Commerce](../tutorial/event-providers.md#set-up-event-providers) up to the section **Sync event metadata with App Builder**.
 
-- To set up your App Builder project, follow the steps in (Set up the Adobe Developer Console and App Builder project locally) https://developer.adobe.com/commerce/extensibility/events/tutorial/deployment/#set-up-the-adobe-developer-console-and-app-builder-project-locally up to the section **Set up your local App Builder environment using the CLI**.
+- To set up your App Builder project, follow the steps in [Set up the Adobe Developer Console and App Builder project locally](../tutorial/deployment.md#set-up-the-adobe-developer-console-and-app-builder-project-locally) up to the section **Set up your local App Builder environment using the CLI**.
 
 ## Register Commerce events in Adobe Developer Console for Journaling
 
@@ -40,7 +38,7 @@ After registering Commerce events, you can verify that Adobe Commerce is success
 
 Follow these steps to validate event delivery:
 
-1. In your Adobe Commerce Admin panel, delete a product from the catalog. (**Catalog** > **Products** > **Delete Product**. This action triggers a product deletion event.
+1. In your Adobe Commerce Admin, delete a product from the catalog by navigating to **Catalog** > **Products** > **Delete Product**. This action triggers a product deletion event.
 
 1. Open the Adobe Developer Console and navigate to the event browser within your project workspace.
 

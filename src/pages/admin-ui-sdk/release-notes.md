@@ -1,12 +1,12 @@
 ---
-title: Release notes
+title: Adobe Commerce Admin UI SDK Release Notes
 description: This page lists new features and known issues for each release of Adobe Commerce Admin UI SDK
 keywords:
   - App Builder
   - Extensibility
 ---
 
-# Adobe Commerce Admin UI SDK release notes
+# Admin UI SDK release notes
 
 ## Version 3.4.1
 
@@ -274,9 +274,9 @@ September 4, 2024
 
 ### Enhancements
 
-* This release changes how registrations are declared. Previously, calls were performed asynchronously. This could result with delayed retrieval and availability of registrations when loading pages in the Admin. Registrations are now loaded synchronously. resulting in a better merchant experience.
+* This release changes how registrations are declared. Previously, calls were performed asynchronously. This could result in delayed retrieval and availability of registrations when loading pages. Registrations are now declared synchronously.
 
-  You must update any extension points developed with Admin UI SDK 1.x. [Migrate your extension point from 1.x to 2.0](./extension-points/index.md#migrate-your-extension-point-from-version-1x-to-20) describes how.
+  You must update any extension points developed with Admin UI SDK 1.x. For details, see [Migrate your extension point from 1.x to 2.0](./extension-points/index.md#migrate-your-extension-point-from-version-1x-to-20).
 
 * Added a custom fee column to the invoice and credit memo grids.
 
@@ -400,7 +400,7 @@ October 18, 2023
 
 * Added the `admin_ui_sdk` cache type. When enabled, Commerce caches customizations to the Admin. <!-- CEXT-2377 -->
 
-* Added the `isSection` and `sortOrder` parameters to the [`menu` extension point](extension-points/menu.md). The `isSection` parameter allows you to define a menu section, while `sortOrder` defines the placement of a menu item. <!-- CEXT 2249, CEXT-2289 -->
+* Added the `isSection` and `sortOrder` parameters to the [`menu` extension point](extension-points/menu.md). The `isSection` parameter allows you to define a menu section, while `sortOrder` defines the sort order of the section. <!--CEXT 2249, CEXT-2289-->
 
 * Added the `productSelectLimit` parameter for mass actions in the [`product` extension point](extension-points/product/mass-action.md). <!-- CEXT-2357 -->
 
@@ -448,7 +448,7 @@ August 25, 2023
 
 ## Known issues
 
-* You cannot deploy an app that uses the Admin UI SDK in a staging environment. Instead, you must deploy it in a production environment. See [Prepare your app for production](publish.md) for details about this workaround.
+* You cannot deploy an app that uses the Admin UI SDK in a staging environment. Instead, you must deploy it in a production environment. See [Prepare your app for production](publish.md) for details.
 
 ## Version 1.0.0
 

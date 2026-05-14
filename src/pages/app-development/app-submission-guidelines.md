@@ -186,7 +186,7 @@ To facilitate proper testing during review, ensure you provide:
 - Test credentials or demo environments (if applicable)
 - Documentation of any third-party service dependencies
 
-<InlineAlert variant="help" slots="header, text1, text2, text3" />
+<InlineAlert variant="help" slots="heading, text1, text2, text3" />
 
 Alternative options
 

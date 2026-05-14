@@ -157,6 +157,8 @@ Never commit the `.env` file to version control. Keep the encryption key secure 
 
 See [Password Field Encryption](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-config/docs/password-encryption.md) for more information.
 
+See [Failed to decrypt configuration](./troubleshooting.md#failed-to-decrypt-configuration-re-association-or-configuration-page) if you already see decrypt errors.
+
 ### Multiple selection list fields
 
 For fields that allow multiple selections, set `selectionMode` to `multiple` and the `default` value must be an array of strings, even if only one option is selected by default.

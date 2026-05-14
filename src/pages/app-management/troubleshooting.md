@@ -117,9 +117,21 @@ bun x aio-commerce-lib-app generate all
 
 ## Encryption key errors
 
+Business configuration `password` fields rely on `AIO_COMMERCE_CONFIG_ENCRYPTION_KEY` at runtime. Errors usually mean decrypt failures after a key change, or a missing or invalid key, in `.env`. The following covers both cases.
+
+### Failed to decrypt configuration (re-association or configuration page)
+
+Errors when opening **Configure** in App Management after re-associating or redeploying an app that uses `password` fields. Runtime logs for `app-management/__secured_config` may report `Failed to decrypt value`.
+
+1. App Builder runtime is using a different `AIO_COMMERCE_CONFIG_ENCRYPTION_KEY` than the key that was used when merchants originally saved those secrets.
+
+1. Restore `AIO_COMMERCE_CONFIG_ENCRYPTION_KEY` to the default value from the first installation. Align local `.env` with whatever is configured for the deployed runtime so ciphertext and key are paired.
+
+Changing schema fields from `password` to `text` is **not** a recommended fix for published apps. This sidesteps encryption instead of correcting the key. See [Password field encryption](./configuration-schema.md#password-field-encryption)  for more information on better handling.
+
 ### Generate an encryption key
 
-Ensure your encryption key is present in the `.env` by running the command below. It only creates a new key if one does not already exist.
+Ensure your encryption key is present in the `.env` by running the command below. It only creates a new key if one does not already exist—so deleting `.env` or starting from an empty file typically provisions a **new** key and breaks decryption of configuration encrypted with the previous key. See [Failed to decrypt configuration](#failed-to-decrypt-configuration-re-association-or-configuration-page).
 
 <CodeBlock slots="heading, code" repeat="4" languages="BASH, BASH, BASH, BASH" />
 

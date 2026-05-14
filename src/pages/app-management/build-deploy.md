@@ -29,7 +29,7 @@ The initialization process creates files organized by extension point:
 | File | Description |
 |------|-------------|
 | `src/commerce-configuration-1/.generated/configuration-schema.json` | Validated JSON representation of your schema |
-| `src/commerce-configuration-1/.generated/actions/business-configuration/` | Runtime actions for config and scope management |
+| `src/commerce-configuration-1/.generated/actions/app-management/` | Runtime actions for config and scope management |
 | `src/commerce-configuration-1/ext.config.yaml` | Extension manifest with `pre-app-build` hook |
 
 **`commerce/backend-ui/1`** for Admin UI SDK registration (when `adminUiSdk.registration` is defined in `app.commerce.config`).
@@ -59,7 +59,7 @@ These actions handle configuration and scope operations (generated when a `busin
 | `config` | Handles retrieving and updating configuration values across scopes. |
 | `scope-tree` | Handles scope hierarchy management for Commerce and custom scopes. |
 
-The scope tree action supports syncing scopes from Adobe Commerce (requires `commerceBaseUrl`), setting custom scope hierarchies for external systems, and unsyncing Commerce scopes.
+The scope tree action supports syncing scopes from Adobe Commerce, setting custom scope hierarchies for external systems, and unsyncing Commerce scopes.
 
 ### Admin UI SDK registration action from `commerce/backend-ui/1`
 
@@ -67,15 +67,15 @@ When `adminUiSdk.registration` is defined, a generated action serves the registr
 
 | Action | Description |
 |--------|-------------|
-| `registration` | Serves the Admin UI SDK registration object (menus, extension points, and related configuration). |
+| `registration` | Serves the Admin UI SDK registration object ([Admin UI SDK extension points](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/extension-points/)). |
 
 ## Build and deploy
 
 After you change `app.commerce.config`, build and deploy your application. The `pre-app-build` hook runs the generators for you, so the manifest, schema, and runtime actions under `.generated` stay in sync without a separate step.
 
 ```bash
-aio app build
-aio app deploy
+aio app build --force-build
+aio app deploy --force-deploy --no-build
 ```
 
 <InlineAlert variant="tip" slots="text"/>

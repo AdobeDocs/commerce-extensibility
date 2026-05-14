@@ -26,11 +26,11 @@ If validation succeeds locally but associating the app still fails with a compat
 
 ## Association errors
 
-Association errors in the Admin are not the same as schema validation failures in your local `app.commerce.config`. They usually mean the deployed app package is not set up for the App Management association flow. See [Not compatible with Adobe Commerce](#not-compatible-with-adobe-commerce).
+Association errors in the Admin are not the same as schema validation failures in your local `app.commerce.config`. They usually mean the deployed app package is not set up for the App Management association flow.
 
 ### Not compatible with Adobe Commerce
 
-When you try to **associate** an application from Adobe Exchange (or from your organization in the app registry) with **App Management**, the Admin may show the following error message:
+When you try to **associate** an application with **App Management**, the Admin may show the following error message:
 
 ```text
 The selected application is not compatible with Adobe Commerce.
@@ -50,9 +50,9 @@ This message refers to the **App Management** association flow, not general Adob
 
 1. Association through App Management requires an app that follows the [Adobe Commerce SDK](https://github.com/adobe/aio-commerce-sdk) pattern used with App Management:
 
-   * a root [`app.commerce.config`](./configuration-schema.md) file
-   * generated runtime actions
-   * libraries listed in the [App Management overview](./index.md#sdk-libraries).
+   * A root [`app.commerce.config`](./configuration-schema.md) file
+   * Generated runtime actions
+   * Libraries listed in the [App Management overview](./index.md#sdk-libraries).
 
 1. To support App Management, add or migrate to that configuration, then build and deploy so generated artifacts are created. See [Initialize your app](./initialize-app.md) and [Define your configuration schema](./configuration-schema.md) for more information.
 

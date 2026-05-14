@@ -12,6 +12,14 @@ This section describes how to use existing extension points in any Adobe Develop
 
 The [Adobe Commerce Samples repository](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk) contains samples for different extension points of the Adobe Commerce Admin UI SDK. Use these samples to gain insight on how the Admin SDK injects menus and pages into the Admin.
 
+<InlineAlert variant="info" slots="text1" />
+
+Review the README.md in each sample repository for prerequisites, deployment steps, and known issues.
+
+<Edition name="saas" />
+
+Extensions render only if your app is **published** in Adobe Developer Console. Draft apps do not display. See [Publish your app](../publish.md).
+
 ## Shared contexts
 
 The `sharedContext` constant is available only when a mass action, menu, or order view button performs a redirection to an iFrame page. For mass actions, `sharedContext` contains a set of selected IDs, the Commerce base URL, the client ID, an IMS token, and the IMS org ID, as shown below.

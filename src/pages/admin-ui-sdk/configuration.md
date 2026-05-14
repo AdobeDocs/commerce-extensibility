@@ -12,15 +12,28 @@ The Adobe Commerce Admin UI SDK allows you to use a local server to view and tes
 
 ## General configuration
 
-Navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Admin UI SDK** screen. The Admin UI SDK is disabled by default. To enable it, set the **Enable Admin UI SDK** field to **Yes**.
+Configure the Admin UI SDK from the Commerce Admin by navigating to **Stores** > Settings > **Configuration** > **Adobe Services** > **Admin UI SDK**.
 
 ![Admin UI SDK general configuration](../_images/admin-ui-sdk/configuration/general.png)
 
-The **General configuration** section enables the Admin UI SDK and refreshes registrations when changes are made.
+### Enable and configure the Admin UI SDK
 
-The [**Configure extensions**](./eligible-extensions-config.md) button allows you to select the workspace and eligible extensions for the Commerce instance.
+Set to **Yes** to enable the Admin UI SDK. Disabled by default.
 
-The **Refresh registrations** button reloads all registrations from the App Builder registry. It is typically used when changes are made to the registration on the App Builder application side or when a new app is added and published, to reflect these changes in the Admin.
+* <Edition name="saas" /> **SaaS** - Toggle to **Yes**. No additional installation required.
+* <Edition name="paas" /> **PaaS / On-Premises** - Install the Admin UI SDK using Composer (versions `2.4.5-2.4.7`) before enabling. Version `2.4.8+` is pre-installed.
+
+After enabling the Admin UI SDK, configure your IMS credentials and select extensions using the [**Configure extensions**](./eligible-extensions-config.md) button, which allows you to:
+
+* Select your App Builder workspace
+* Choose which extensions display in the Admin
+* View eligible extensions from your organization
+
+The **Refresh registrations** button reloads extension registrations from App Builder. Use this button when:
+
+* An extension registration changes in App Builder
+* A new app or version is published
+* Extensions are not appearing as expected
 
 ## Database logging configuration
 

@@ -10,15 +10,24 @@ keywords:
 
 Your app must be correctly configured with Adobe App Registry to use the Admin UI SDK to create a custom UI in Commerce. You must perform the following steps before submitting your app to be published.
 
+<InlineAlert variant="info" slots="text1" />
+
+These registration steps are required for all deployment types.
+
 ## Code layout best practices
 
-We recommend using the following code layout for your project:
+Recommended project structure:
 
 ```text
 ├── src/
 │   └── commerce-backend-ui-1/
 │       ├── actions/
+│       │   └── registration/
+│       │       └── index.js
 │       ├── web-src/
+│       │   ├── App.js
+│       │   ├── ExtensionRegistration.jsx
+│       │   └── ...
 │       └── ext.config.yaml
 ├── install.yaml
 ├── extension-manifest.json

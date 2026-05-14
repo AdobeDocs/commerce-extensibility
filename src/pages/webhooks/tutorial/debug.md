@@ -212,7 +212,7 @@ To set and use ngrok:
    ngrok http https://localhost:9080
    ```
 
-   The command starts a secure tunnel to your local app running on https://localhost:9080. You will see output similar to the following:
+   The command starts a secure tunnel to your local app running on [https://localhost:9080](https://localhost:9080). You will see output similar to the following:
 
   ```terminal
    Session Status            online

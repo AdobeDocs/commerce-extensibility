@@ -1,15 +1,16 @@
 ---
 title: Build and deploy
-description: Build and deploy App Builder apps for App Management
+description: Build and deploy your App Builder application for App Management
 keywords:
   - App Builder
   - App Management
+  - Configuration
   - Extensibility
 ---
 
 # Build and deploy
 
-After defining your app configuration, build and deploy your application to make it available in App Management.
+After defining your app configuration, build and deploy your application so it is ready for association and installation with Adobe Commerce through App Management.
 
 ## Generated files
 
@@ -28,20 +29,21 @@ The initialization process creates files organized by extension point:
 | File | Description |
 |------|-------------|
 | `src/commerce-configuration-1/.generated/configuration-schema.json` | Validated JSON representation of your schema |
-| `src/commerce-configuration-1/.generated/actions/business-configuration/` | Runtime actions for config and scope management |
+| `src/commerce-configuration-1/.generated/actions/app-management/` | Runtime actions for config and scope management |
 | `src/commerce-configuration-1/ext.config.yaml` | Extension manifest with `pre-app-build` hook |
 
-### Version control
+**`commerce/backend-ui/1`** for Admin UI SDK registration (when `adminUiSdk.registration` is defined in `app.commerce.config`).
 
-Commit the files above—including `app.commerce.config`, each `ext.config.yaml`, and everything under the `.generated` directories—to your Git repository so they are part of **source control** (the same copies your collaborators and CI/CD pipelines clone and build). Even though generators refresh `.generated` during build, those paths should live in the repo for a consistent, deployable project.
-
-Do not commit secrets. Keep `.env` and other sensitive material out of the repository; see [Password field encryption](./configuration-schema.md#password-field-encryption).
+| File | Description |
+|------|-------------|
+| `src/commerce-backend-ui-1/.generated/actions/registration/` | Runtime action that serves the Admin UI SDK registration payload to Adobe Commerce |
+| `src/commerce-backend-ui-1/ext.config.yaml` | Extension manifest with a `pre-app-build` hook |
 
 ## Generated runtime actions
 
 The libraries generate runtime actions organized by extension point. These are auto-generated directories and any manual changes can be lost during regeneration.
 
-### App management actions from `commerce/extensibility/1`
+### App Management actions from `commerce/extensibility/1`
 
 | Action | Description |
 |--------|-------------|
@@ -57,22 +59,30 @@ These actions handle configuration and scope operations (generated when a `busin
 | `config` | Handles retrieving and updating configuration values across scopes. |
 | `scope-tree` | Handles scope hierarchy management for Commerce and custom scopes. |
 
-The scope tree action supports syncing scopes from Adobe Commerce (requires `commerceBaseUrl`), setting custom scope hierarchies for external systems, and unsyncing Commerce scopes.
+The scope tree action supports syncing scopes from Adobe Commerce, setting custom scope hierarchies for external systems, and unsyncing Commerce scopes. Structural changes in Commerce (websites, stores, store views) are **not** reflected in App Management until an Admin runs **Sync commerce scopes** for each associated application that uses scopes; see [Scope tree synchronization](./configuration-schema.md#scope-tree-synchronization).
+
+### Admin UI SDK registration action from `commerce/backend-ui/1`
+
+When `adminUiSdk.registration` is defined, a generated action serves the registration payload to Adobe Commerce.
+
+| Action | Description |
+|--------|-------------|
+| `registration` | Serves the Admin UI SDK registration object ([Admin UI SDK extension points](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/extension-points/)). |
 
 ## Build and deploy
 
 After you change `app.commerce.config`, build and deploy your application. The `pre-app-build` hook runs the generators for you, so the manifest, schema, and runtime actions under `.generated` stay in sync without a separate step.
 
 ```bash
-aio app build
-aio app deploy
+aio app build --force-build
+aio app deploy --force-deploy --no-build
 ```
 
-**Exception:** If you change [custom installation scripts](./installation/customize.md), run `npx aio-commerce-lib-app generate actions` so the installation action picks up those changes, then build and deploy as usual.
+<InlineAlert variant="tip" slots="text"/>
 
-You can still run `npx aio-commerce-lib-app generate …` manually when debugging, but it is not required for normal config edits.
+When debugging, you can run `npx aio-commerce-lib-app generate …` without a full App Builder build to refresh generated files quickly.
 
-Once deployed, your app appears in App Management and can be associated with an Adobe Commerce instance. See [Manage your app](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app) for more information.
+After deployment, your application is ready to be associated with Adobe Commerce using App Management. See [manage your app](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app) for association, installation, and other lifecycle steps.
 
 ## Find an application in the Admin
 
@@ -88,4 +98,4 @@ Search text and both dropdowns apply together (logical AND). To display the full
 
 ### Acquire App
 
-**Acquire App** opens a new browser tab (or a separate browser view) to [Adobe Exchange](https://exchange.adobe.com/experiencecloud), where you can discover Commerce-related marketplace listings and add applications to your Adobe IMS organization. Once the app is acquired, approved, and deployed, the app appears in App Management for [association and installation](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app).
+**Acquire App** opens a new browser tab (or a separate browser view) to [Adobe Exchange](https://exchange.adobe.com/experiencecloud), where you can discover Commerce-related marketplace listings and add applications to your Adobe IMS organization. After the app is acquired, approved, and deployed, it appears in App Management for [association and installation](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app).

@@ -23,7 +23,7 @@ For more ideas on how you can use the tax module, refer to [tax use cases](tax-u
 
 ## Installation
 
-<Version />
+\<Version /\>
 
 To enable out-of-process tax management in Adobe Commerce, install the `magento/module-out-of-process-tax-management` module using the following command:
 
@@ -39,7 +39,7 @@ magento setup:di:compile
 
 ## Configuration
 
-<Configuration />
+\<Configuration /\>
 
 The checkout starter kit provides the [`create-tax-integrations`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/create-tax-integrations.js) script to help configure Adobe Commerce. It reads the tax integrations configuration from the `tax-integrations.yaml` file and creates tax integrations in Adobe Commerce.
 

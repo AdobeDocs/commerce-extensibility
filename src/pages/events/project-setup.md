@@ -16,7 +16,7 @@ To get started with Adobe I/O Events, you must:
 
 import ProjectRequirements from '/src/_includes/project-requirements.md'
 
-<ProjectRequirements />
+\<ProjectRequirements /\>
 
 ## Set up a project
 

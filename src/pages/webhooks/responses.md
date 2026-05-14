@@ -199,9 +199,9 @@ The following table describes webhook logging activity. Each hook can be configu
 | --- | --- |
 A hook was executed within the soft and hard time limits with a 2xx response code. | None
 An optional hook was executed with a response code other than 2xx within the soft and hard time limits. | Add error log entry
-A required hook was executed with a response code other than 2xx within the soft and hard time limits. | Add error log entry<br/>Throw an exception
+A required hook was executed with a response code other than 2xx within the soft and hard time limits. | Add error log entry\<br/\>Throw an exception
 An optional hook is aborted due to reaching the hard timeout limit. | Add error log entry
-A required hook is aborted due to reaching the hard timeout limit. | Add error log entry<br/>Throw an exception
+A required hook is aborted due to reaching the hard timeout limit. | Add error log entry\<br/\>Throw an exception
 The execution time of hook exceeds the soft timeout limit. | Add a notice to the error log
 
 ## Database logging

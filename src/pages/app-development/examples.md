@@ -22,7 +22,7 @@ To learn more about App Builder, follow [this step-by-step tutorial](https://dev
 [API Mesh](https://developer.adobe.com/graphql-mesh-gateway/) is an Adobe service that allows you to take multiple vendor APIs of different protocols, like GraphQL, REST, JSON schemas, and SOAP implementations, and combine them into a single unified GraphQL endpoint. By consuming a mesh's unified GraphQL endpoint, you can connect Adobe Commerce to App Builder, Adobe I/O Events for Adobe Commerce, and any other service that provides an accessible source. You can further customize your experience by using [transforms](https://developer.adobe.com/graphql-mesh-gateway/gateway/transforms/) to customize the source data to your needs.
 
 ![API Mesh diagram](../images/api-mesh-diagram.png)
-<!-- [Link to .mmd file](../_images/api-mesh-diagram.mmd) -->
+\<!-- [Link to .mmd file](../_images/api-mesh-diagram.mmd) --\>
 
 API Mesh adds extensibility at the web API layer (headless/consumer level) by providing the relevant data and behavior from different vendor APIs to the consumer (usually an experience like a storefront, web store, or kiosk) without needing to modify these sources.
 
@@ -55,7 +55,7 @@ While App Builder, API Mesh, and Adobe I/O Events provide powerful extensibility
 The Commerce back office acts as a consumer, while API Mesh acts as an orchestration layer. The consumer sends events to the orchestration layer, which can access other systems and vendor APIs. The orchestration layer can then compute or modify the data and send it to a storefront or pass it on to an ERP or a single-page application (App Builder). The consumer or back office can also contact the single-page application directly.
 
 ![Integrated Commerce](../images/integrated-commerce.png)
-<!-- [Link to .mmd file](../_images/integrated-commerce.mmd) -->
+\<!-- [Link to .mmd file](../_images/integrated-commerce.mmd) --\>
 
 ### Example: Auditing product changes
 

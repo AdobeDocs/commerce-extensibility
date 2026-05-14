@@ -227,27 +227,27 @@ The following `observer.sales_order_view_custom_attributes_update_before` defaul
 
 The following configurations define a conditional webhook. As a result of the specified rule in the examples, the webhook will only make requests to external systems when it is triggered from the Commerce Admin.
 
-<TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" />
+\<TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" /\>
 
 #### webhook.xml (PaaS)
 
-<OrderPlaceConfigXml/>
+\<OrderPlaceConfigXml/\>
 
 #### Admin (SaaS)
 
-<OrderPlaceConfigAdmin/>
+\<OrderPlaceConfigAdmin/\>
 
 ### observer.sales_order_view_custom_attributes_update_before
 
-<TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" />
+\<TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" /\>
 
 #### webhook.xml (PaaS)
 
-<OrderViewConfigXml/>
+\<OrderViewConfigXml/\>
 
 #### Admin (SaaS)
 
-<OrderViewCnfigAdmin/>
+\<OrderViewCnfigAdmin/\>
 
 ## Endpoint code example
 

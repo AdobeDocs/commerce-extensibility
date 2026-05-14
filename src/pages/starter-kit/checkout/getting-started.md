@@ -109,7 +109,7 @@ After completing the previous steps you can:
 
 ## Install Commerce modules
 
-<Version />
+\<Version /\>
 
 ### Install the individual modules
 

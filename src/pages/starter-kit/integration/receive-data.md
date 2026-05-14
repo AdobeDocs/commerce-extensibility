@@ -29,7 +29,7 @@ import Integration from '/src/_includes/integration.md'
 
 This runtime action is responsible for notifying Adobe Commerce when an `<object>` is created, updated, or deleted in the external backoffice application.
 
-<Integration />
+\<Integration /\>
 
 ## Incoming information
 
@@ -37,63 +37,63 @@ The incoming information depends on the external API. The following sample imple
 
 ![ingest info from commerce](../../images/starterkit/ingest.png)
 
-<br></br>
-<TabsBlock orientation="vertical" slots="heading, content" repeat="6"/>
+\<br\>\</br\>
+\<TabsBlock orientation="vertical" slots="heading, content" repeat="6"/\>
 
 #### `customer`
 
-<IncomingCustomer/>
+\<IncomingCustomer/\>
 
 #### `customer_group`
 
-<IncomingCustomerGroup/>
+\<IncomingCustomerGroup/\>
 
 #### `order`
 
-<IncomingOrder/>
+\<IncomingOrder/\>
 
 #### `product`
 
-<IncomingProduct/>
+\<IncomingProduct/\>
 
 #### `shipment`
 
-<IncomingShipment/>
+\<IncomingShipment/\>
 
 #### `stock`
 
-<IncomingStock/>
+\<IncomingStock/\>
 
 ## Data validation
 
 The incoming data is validated against a JSON schema defined in the `schema.json` file.
 
-<br></br>
-<TabsBlock orientation="vertical" slots="heading, content" repeat="6"/>
+\<br\>\</br\>
+\<TabsBlock orientation="vertical" slots="heading, content" repeat="6"/\>
 
 #### `customer`
 
-<DataCustomer/>
+\<DataCustomer/\>
 
 #### `customer_group`
 
-<DataCustomerGroup/>
+\<DataCustomerGroup/\>
 
 #### `order`
 
-<DataOrder/>
+\<DataOrder/\>
 
 #### `product`
 
-<DataProduct/>
+\<DataProduct/\>
 
 #### `shipment`
 
-<DataShipment/>
+\<DataShipment/\>
 
 #### `stock`
 
-<DataStock/>
+\<DataStock/\>
 
 ## Payload transformation
 

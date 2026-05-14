@@ -17,7 +17,7 @@ import Integration from '/src/_includes/integration.md'
 
 This runtime action is responsible for notifying the external backoffice application when an `<object>` is created, updated, or deleted in Adobe Commerce.
 
-<Integration />
+\<Integration /\>
 
 ## Incoming event payload
 

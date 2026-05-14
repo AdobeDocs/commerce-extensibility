@@ -44,15 +44,15 @@ This use case runs with a webhook of type `after`.
 
 ## Configuration
 
-<TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" />
+\<TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" /\>
 
 #### webhook.xml (PaaS)
 
-<ConfigXml/>
+\<ConfigXml/\>
 
 #### Admin (SaaS)
 
-<ConfigAdmin/>
+\<ConfigAdmin/\>
 
 ## Endpoint code example
 

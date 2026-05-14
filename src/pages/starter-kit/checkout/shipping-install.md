@@ -23,7 +23,7 @@ For more ideas on how you can use the shipping module, refer to [shipping use ca
 
 ## Installation
 
-<Version />
+\<Version /\>
 
 To enable out-of-process shipping methods in Adobe Commerce, install the `magento/module-out-of-process-shipping-methods` module using the following command:
 
@@ -33,7 +33,7 @@ composer require magento/module-out-of-process-shipping-methods --with-dependenc
 
 ## Configuration
 
-<Configuration />
+\<Configuration /\>
 
 The starter kit provides the [`create-shipping-carriers`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/create-shipping-carriers.js) script to help configure Adobe Commerce. It reads the shipping carriers configuration from the `shipping-carriers.yaml` file and creates the shipping carriers in Adobe Commerce.
 

@@ -36,7 +36,7 @@ You can programmatically register events using the following methods:
 *  Create an `io_events.xml` file in your module or in the root `app/etc` directory
 *  Declare them in the system `env.php` or `config.php` file
 
-<SampleEvent />
+\<SampleEvent /\>
 
 After you've registered at least one event, run the [events:generate:module command](commands.md#generate-a-commerce-module-based-on-a-list-of-subscribed-events) to generate the required plugins.
 
@@ -46,7 +46,7 @@ Create the `<module-root>/etc/io_events.xml` or `app/etc/io_events.xml` file and
 
 You can transmit all the fields within an event by setting the value of the `field` element to `*` (`<field name="*"  />`). You cannot use the `*` wildcard character to match partial strings.
 
-<EventSize />
+\<EventSize /\>
 
 [Add custom fields to an event](custom-event-fields.md) describes how to enhance the payload of pre-defined events.
 
@@ -98,7 +98,7 @@ The `<field>` element can also contain the `converter` attribute. Use this attri
 
 ### Array of nested objects
 
-<NestedEvent />
+\<NestedEvent /\>
 
 ```xml
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module-commerce-events-client/etc/io_events.xsd">

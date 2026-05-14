@@ -58,15 +58,15 @@ In this example, the default payload is the same as the target payload.
 
 The entirety of the `address` object in the payload will be sent to the configured endpoint.
 
-<TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" />
+\<TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" /\>
 
 #### webhook.xml (PaaS)
 
-<ConfigXml/>
+\<ConfigXml/\>
 
 #### Admin (SaaS)
 
-<ConfigAdmin/>
+\<ConfigAdmin/\>
 
 ## Endpoint code example
 

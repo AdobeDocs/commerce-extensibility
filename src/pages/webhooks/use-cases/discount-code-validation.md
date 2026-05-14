@@ -46,15 +46,15 @@ A merchant uses a third-party extension to create and manage discount codes. Whe
 
 ## Configuration
 
-<TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" />
+\<TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" /\>
 
 #### webhook.xml (PaaS)
 
-<ConfigXml/>
+\<ConfigXml/\>
 
 #### Admin (SaaS)
 
-<ConfigAdmin/>
+\<ConfigAdmin/\>
 
 ## Endpoint code example
 

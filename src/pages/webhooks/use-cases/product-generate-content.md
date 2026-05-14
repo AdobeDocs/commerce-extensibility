@@ -79,15 +79,15 @@ The following configuration contains rules to call the third-party endpoint only
 
 ## Configuration
 
-<TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" />
+\<TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" /\>
 
 #### webhook.xml (PaaS)
 
-<ConfigXml/>
+\<ConfigXml/\>
 
 #### Admin (SaaS)
 
-<ConfigAdmin/>
+\<ConfigAdmin/\>
 
 ## Endpoint code example
 

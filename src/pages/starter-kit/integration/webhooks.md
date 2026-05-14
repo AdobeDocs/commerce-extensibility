@@ -19,7 +19,7 @@ The following sections demonstrate all the real-time integrations that Adobe Com
 
 ## Synchronous webhook action
 
-<Actions />
+\<Actions /\>
 
 The contents of the `./actions/webhook` directory expose a webhook that can be invoked synchronously from Commerce to affect the behavior of a particular business flow.
 

@@ -121,15 +121,15 @@ In the following example default payload, some data has been removed for brevity
 
 ## Configuration
 
-<TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" />
+\<TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" /\>
 
 #### webhook.xml (PaaS)
 
-<ConfigXml/>
+\<ConfigXml/\>
 
 #### Admin (SaaS)
 
-<ConfigAdmin/>
+\<ConfigAdmin/\>
 
 ## Endpoint code example
 

@@ -162,7 +162,7 @@ App Builder leverages Node Package Manager (NPM) to manage dependencies for its 
 
 While both tools serve the same fundamental purpose of dependency management, they operate in different environments and cater to distinct programming languages and ecosystems. The following comparison highlights the key features and differences between Composer packages in Commerce and NPM packages in App Builder.
 
-<p></p>
+\<p\>\</p\>
 
 | Feature | Composer (Commerce) | NPM (App Builder) |
 |---------|---------------------------|-------------------------|

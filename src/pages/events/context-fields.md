@@ -14,7 +14,7 @@ You can add to the event payload values from the application context. It allows 
 
 The following contexts are supported:
 
-<CommerceContext />
+\<CommerceContext /\>
 
 #### Checkout session context
 

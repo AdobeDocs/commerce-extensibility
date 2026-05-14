@@ -11,7 +11,7 @@ import ConditionalEventExample from '/src/_includes/conditional-event-example.md
 
 # Create conditional events
 
-<ConditionalEvents />
+\<ConditionalEvents /\>
 
 You can create conditional events within your module's or root `io_events.xml` file or from the command line.
 
@@ -19,7 +19,7 @@ These conditional events can include [context fields](context-fields.md) in cond
 
 ## Define conditional events in `io_events.xml`
 
-<ConditionalEventExample />
+\<ConditionalEventExample /\>
 
 ```xml
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="...">

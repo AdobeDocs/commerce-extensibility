@@ -46,9 +46,9 @@ Field | Description
 
 The **Event Subscription Fields** configuration panel allows you to define the fields of the event payload to transmit from Commerce. The name provides the path to the field in the event payload.
 
-<EventSize />
+\<EventSize /\>
 
-<SampleEvent />
+\<SampleEvent /\>
 
 <InlineAlert variant="info" slots="text" />
 
@@ -74,7 +74,7 @@ The contents of an `observer.catalog_product_save_after` event are similar to th
 
 #### Array of nested objects
 
-<NestedEvent />
+\<NestedEvent /\>
 
 ```yaml
 Name: order_id
@@ -102,7 +102,7 @@ The contents of the transmitted event are similar to the following:
 
 ### Configure event subscription rules
 
-<ConditionalEvents />
+\<ConditionalEvents /\>
 
 #### Example
 
@@ -124,11 +124,11 @@ Operator: in
 Value: 1,2
 ```
 
-<!--
+\<!--
 Field: quantity_and_stock_status.qty
 Operator: onChange
 Value:
--->
+--\>
 
 ## Events Subscriptions grid actions
 

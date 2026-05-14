@@ -23,7 +23,7 @@ For more ideas on how you can use the totals collector module, refer to [totals 
 
 ## Installation
 
-<Version />
+\<Version /\>
 
 To enable out-of-process discount totals collection (from an external service) in Adobe Commerce, install the `magento/module-out-of-process-totals-collector` module using the following command:
 
@@ -33,7 +33,7 @@ composer require magento/module-out-of-process-totals-collector --with-dependenc
 
 ## Configuration
 
-<Configuration />
+\<Configuration /\>
 
 After installation, register a webhook so that Adobe Commerce can call your App Builder application when quote totals are collected. The webhook runs after the core discount totals collector; your endpoint returns a JSON Patch response that is applied to the quote totals and items.
 

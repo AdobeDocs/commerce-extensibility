@@ -162,7 +162,7 @@ aio event provider delete <provider-id>
 
 ### configure-commerce-events
 
-<Configuration />
+\<Configuration /\>
 
 The [`configure-commerce-events`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/configure-commerce-events.js) script configures the Commerce event provider for your Commerce instance.
 

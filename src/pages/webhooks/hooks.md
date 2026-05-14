@@ -406,7 +406,7 @@ You can use the same syntax and features available for context values in fields 
 </headers>
 ```
 
-<!--
+\<!--
 
 When uncommenting the SaaS example, change the "repeat" attribute to "2" to show both code blocks.
 
@@ -419,7 +419,7 @@ Name: X-Custom-Header
 Value: context_http_request.get_header{X-Custom-Header}
 Active: Yes
 ```
--->
+--\>
 
 In this example, the `X-Custom-Header` from an incoming HTTP request to Commerce will be forwarded as a header in the request sent by the webhook. This approach can be used to pass Authorization headers required by an external system.
 
@@ -427,7 +427,7 @@ In this example, the `X-Custom-Header` from an incoming HTTP request to Commerce
 
 The following contexts are supported:
 
-<CommerceContext />
+\<CommerceContext /\>
 
 #### Checkout session context
 

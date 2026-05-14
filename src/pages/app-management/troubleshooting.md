@@ -127,11 +127,11 @@ Errors when opening **Configure** in App Management after re-associating or rede
 
 1. Restore `AIO_COMMERCE_CONFIG_ENCRYPTION_KEY` to the default value from the first installation. Align local `.env` with whatever is configured for the deployed runtime so ciphertext and key are paired.
 
-Changing schema fields from `password` to `text` is **not** a recommended fix for published apps. This sidesteps encryption instead of correcting the key. See [Password field encryption](./configuration-schema.md#password-field-encryption)  for more information on better handling.
-
 ### Generate an encryption key
 
-Ensure your encryption key is present in the `.env` by running the command below. It only creates a new key if one does not already exist—so deleting `.env` or starting from an empty file typically provisions a **new** key and breaks decryption of configuration encrypted with the previous key. See [Failed to decrypt configuration](#failed-to-decrypt-configuration-re-association-or-configuration-page).
+Run the command below to ensure `AIO_COMMERCE_CONFIG_ENCRYPTION_KEY` is present in `.env`. If a key already exists, `encryption setup` leaves it unchanged.
+
+If `.env` was removed or has no key, the command generates a **new** key. That new key cannot decrypt configuration that was encrypted with an older key. If that happens, see [Failed to decrypt configuration](#failed-to-decrypt-configuration-re-association-or-configuration-page) for more information.
 
 <CodeBlock slots="heading, code" repeat="4" languages="BASH, BASH, BASH, BASH" />
 

@@ -312,14 +312,14 @@ Run the following commands in your project directory:
    Your deployed actions:
    
    web actions:
-   -> https://1234567-appbuilderforextens-stage.adobeio-static.net/api/v1/web/appbuilderforextensibility/testwebhook
+   -> [https://1234567-appbuilderforextens-stage.adobeio-static.net/api/v1/web/appbuilderforextensibility/testwebhook](https://1234567-appbuilderforextens-stage.adobeio-static.net/api/v1/web/appbuilderforextensibility/testwebhook)
    
    To view your deployed application:
-   -> https://1234567-appbuilderforextens-stage.adobeio-static.net/index.html
+   -> [https://1234567-appbuilderforextens-stage.adobeio-static.net/index.html](https://1234567-appbuilderforextens-stage.adobeio-static.net/index.html)
    
    To view your deployed application in the Experience Cloud shell:
    
-   -> https://experience.adobe.com/?devMode=true#/custom-apps/?localDevUrl=https://1234567-appbuilderforextens-stage.adobeio-static.net/index.html
+   -> [https://experience.adobe.com/?devMode=true#/custom-apps/?localDevUrl=https://1234567-appbuilderforextens-stage.adobeio-static.net/index.html](https://experience.adobe.com/?devMode=true#/custom-apps/?localDevUrl=https://1234567-appbuilderforextens-stage.adobeio-static.net/index.html)
    
    skipping publish phase...
    Successful deployment

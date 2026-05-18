@@ -11,15 +11,19 @@ keywords:
  - Tools
 ---
 
-import Actions from '/src/_includes/actions.md'
-
 # Real-time integrations
 
 The following sections demonstrate all the real-time integrations that Adobe Commerce Extensibility Integration Kit has to offer, including the synchronous webhook action and an example implementation of a webhook.
 
 ## Synchronous webhook action
 
-\<Actions /\>
+The `consumer` and `event handler` actions implement the business logic needed to synchronize data between Commerce and the external systems being integrated.
+
+Additionally, boilerplate code, responses, and samples for event ingestion and synchronous webhook actions are provided.
+
+<InlineAlert variant="info" slots="text"/>
+
+The synchronous webhook responses for each action are configured for the [Commerce webhook module](https://developer.adobe.com/commerce/extensibility/webhooks/). To customize the responses for other implementations, modify the `responses.js` file.
 
 The contents of the `./actions/webhook` directory expose a webhook that can be invoked synchronously from Commerce to affect the behavior of a particular business flow.
 

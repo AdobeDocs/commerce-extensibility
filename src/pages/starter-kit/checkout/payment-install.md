@@ -6,9 +6,6 @@ keywords:
   - Extensibility
 ---
 
-import Configuration from '/src/_includes/checkout-configuration.md'
-import Version from '/src/_includes/checkout-version.md'
-
 # Install the payment module
 
 To begin using the payment module with the checkout starter kit, ensure that you have completed the [getting started](getting-started.md) and [configuration](configure.md) steps.
@@ -23,7 +20,13 @@ For more ideas on how you can use the payment module, refer to [payment use case
 
 ## Installation
 
-\<Version /\>
+<InlineAlert variant="info" slots="text"/>
+
+Adobe Commerce as a Cloud Service is preconfigured with all the required modules for the checkout starter kit. Cloud Service users can proceed by [configuring an App Builder project](./getting-started.md#initial-configuration) or [configuring Commerce](./configure.md).
+
+<Edition name="paas" />
+
+Before installing Commerce modules, ensure that you have the required credentials in `auth.json` with [access to the Adobe Commerce repository](https://experienceleague.adobe.com/en/docs/commerce-operations/installation-guide/prerequisites/authentication-keys).
 
 To enable out-of-process payment methods in Commerce, install the `magento/module-out-of-process-payment-methods` module using the following command:
 
@@ -33,7 +36,9 @@ composer require magento/module-out-of-process-payment-methods --with-dependenci
 
 ## Configuration
 
-\<Configuration /\>
+<InlineAlert variant="info" slots="text"/>
+
+This step requires the [Adobe Commerce HTTP Client](./connect.md#connect-to-adobe-commerce) to authenticate the Commerce instance.
 
 The starter kit provides the [`create-payment-methods`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/create-payment-methods.js) script to help configure Adobe Commerce. It reads the payment methods configuration from the `payment-methods.yaml` file and creates the payment methods in Adobe Commerce.
 

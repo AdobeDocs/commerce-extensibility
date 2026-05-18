@@ -5,9 +5,6 @@ keywords:
   - Extensibility
 ---
 
-import ConfigXml from './code-samples/product-generate-content-xml.md';
-import ConfigAdmin from './code-samples/product-generate-content-admin.md';
-
 # Generate content for products
 
 When an admin creates or updates a product, a third-party system is used to generate product description and metadata. For example, the AI system can generate product description based on the product name and other attributes.
@@ -79,15 +76,74 @@ The following configuration contains rules to call the third-party endpoint only
 
 ## Configuration
 
-\<TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" /\>
+<CodeBlock slots="heading, code" repeat="2" languages="XML, YAML" />
 
 #### webhook.xml (PaaS)
 
-\<ConfigXml/\>
+```xml
+<method name="observer.catalog_product_save_before" type="before">
+   <hooks>
+       <batch name="product_generate_content">
+           <hook name="product_generate_content" url="{env:APP_BUILDER_URL}/product-description" timeout="5000" softTimeout="1000" priority="300" required="true" fallbackErrorMessage="The product could not be updated">
+               <headers>
+                   <header name="x-gw-ims-org-id">{env:APP_BUILDER_IMS_ORG_ID}</header>
+                   <header name="Authorization">Bearer {env:APP_BUILDER_AUTH_TOKEN}</header>
+               </headers>
+               <fields>
+                   <field name="product.name" source="data.product.name" />
+                   <field name="product.sku" source="data.product.sku" />
+               </fields>
+               <rules>
+                   <rule field="product.short_description" operator="isEmpty" />
+                   <rule field="product.description" operator="isEmpty" />
+               </rules>
+           </hook>
+       </batch>
+   </hooks>
+</method>
+```
 
 #### Admin (SaaS)
 
-\<ConfigAdmin/\>
+```yaml
+Webhook method: observer.catalog_product_save_before
+Webhook type: before
+Batch name: product_generate_content
+Hook name: product_generate_content
+URL: <Host>/product-description
+Timeout: 1000
+Soft timeout: 5000
+Fallback Error Message: The product could not be updated
+Required: Required
+Active: Yes
+Method: POST
+
+Developer Console OAuth
+
+Client ID: The client ID for the OAuth credential.
+Client Secret: The client secret for the OAuth credential.
+Organization ID: The organization ID for the OAuth credential.
+
+Hook Fields
+
+Name: product.name
+Source: data.product.name
+Active: Yes
+
+Name: product.sku
+Source: data.product.sku
+Active: Yes
+
+Hook Rules
+
+Name: product.short_description
+Operator: isEmpty
+Active: Yes
+
+Name: product.description
+Operator: isEmpty
+Active: Yes
+```
 
 ## Endpoint code example
 

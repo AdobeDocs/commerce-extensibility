@@ -5,9 +5,6 @@ keywords:
   - Extensibility
 ---
 
-import ConfigXml from './code-samples/discount-code-validation-xml.md';
-import ConfigAdmin from './code-samples/discount-code-validation-admin.md';
-
 # Discount code validation
 
 A merchant uses a third-party extension to create and manage discount codes. When a shopper applies a coupon code to their cart, the coupon code must be validated. The Commerce checkout process can continue if the code is valid. Otherwise, the following error message displays on the Payment Method checkout page:
@@ -46,15 +43,63 @@ A merchant uses a third-party extension to create and manage discount codes. Whe
 
 ## Configuration
 
-\<TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" /\>
+<CodeBlock slots="heading, code" repeat="2" languages="XML, YAML" />
 
 #### webhook.xml (PaaS)
 
-\<ConfigXml/\>
+```xml
+<method name="plugin.magento.quote.api.guest_coupon_management.set" type="before">
+    <hooks>
+        <batch name="add_coupon">
+            <hook name="validate_discount_code" url="{env:APP_BUILDER_URL}/validate-discount-code" method="POST" timeout="5000" softTimeout="1000" priority="300" required="true" fallbackErrorMessage="The discount code cannot be validated">
+                <headers>
+                    <header name="x-gw-ims-org-id">{env:APP_BUILDER_IMS_ORG_ID}</header>
+                    <header name="Authorization">Bearer {env:APP_BUILDER_AUTH_TOKEN}</header>
+                </headers>
+                <fields>
+                    <field name="discountCode.cartId" source="cartId" />
+                    <field name="discountCode.couponCode" source="couponCode" />
+                </fields>
+            </hook>
+        </batch>
+    </hooks>
+</method>
+```
 
 #### Admin (SaaS)
 
-\<ConfigAdmin/\>
+```yaml
+Hook Settings
+
+Webhook method: plugin.quote.api.guest_coupon_management.set
+Webhook type: before
+Batch name: add_coupon
+Hook name: validate_discount_code
+Hook priority: 300
+URL: {env:APP_BUILDER_URL}/validate-discount-code
+Timeout: 5000
+Soft timeout: 1000
+Fallback Error Message: The discount code cannot be validated
+Required: Required
+Active: Yes
+Method: POST
+
+Developer Console OAuth
+
+Client ID: The client ID for the OAuth credential.
+Client Secret: The client secret for the OAuth credential.
+Organization ID: The organization ID for the OAuth credential.
+
+Hook Fields
+
+Name: discountCode.cartId
+Source: cartId
+Active: Yes
+
+Name: discountCode.couponCode 
+Source: couponCode
+Active: Yes
+```
 
 ## Endpoint code example
 

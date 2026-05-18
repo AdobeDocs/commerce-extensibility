@@ -5,9 +5,6 @@ keywords:
   - Extensibility
 ---
 
-import ConfigXml from './code-samples/customer-address-mod-xml.md';
-import ConfigAdmin from './code-samples/customer-address-mod-admin.md';
-
 # Customer address modification
 
 When a customer signs in and adds a new address, the address must be converted to the proper format. Before the new address is saved, Commerce can call a third-party address system to validate and update the input information. If the address is not in the correct format it's updated and saved.
@@ -58,15 +55,58 @@ In this example, the default payload is the same as the target payload.
 
 The entirety of the `address` object in the payload will be sent to the configured endpoint.
 
-\<TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" /\>
+<CodeBlock slots="heading, code" repeat="2" languages="XML, YAML" />
 
 #### webhook.xml (PaaS)
 
-\<ConfigXml/\>
+```xml
+<method name="plugin.magento.customer.api.address_repository.save" type="before">
+    <hooks>
+        <batch name="update_address">
+            <hook name="update_address" url="{env:APP_BUILDER_URL}/update-address"
+method="POST" timeout="5000" softTimeout="1000" fallbackErrorMessage="The address can not be updated">
+                <headers>
+                    <header name="x-gw-ims-org-id">{env:APP_BUILDER_IMS_ORG_ID}</header>
+                    <header name="Authorization">Bearer {env:APP_BUILDER_AUTH_TOKEN}</header>
+                </headers>
+                <fields>
+                    <field name="address" />
+                </fields>
+            </hook>
+        </batch>
+    </hooks>
+</method>
+```
 
 #### Admin (SaaS)
 
-\<ConfigAdmin/\>
+```yaml
+Hook Settings
+
+Webhook method: plugin.magento.customer.api.address_repository.save
+Webhook type: before
+Batch name: update_address
+Hook name: update_address
+URL: <Host>/update-address
+Timeout: 5000
+Soft timeout: 1000
+Fallback Error Message: The address cannot be updated
+Required: Required
+Active: Yes
+Method: POST
+
+Developer Console OAuth
+
+Client ID: The client ID for the OAuth credential.
+Client Secret: The client secret for the OAuth credential.
+Organization ID: The organization ID for the OAuth credential.
+
+Hook Fields
+
+Name: address
+Source: address
+Active: Yes
+```
 
 ## Endpoint code example
 

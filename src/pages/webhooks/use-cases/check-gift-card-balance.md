@@ -5,9 +5,6 @@ keywords:
   - Extensibility
 ---
 
-import ConfigXml from './code-samples/check-gift-card-balance-xml.md';
-import ConfigAdmin from './code-samples/check-gift-card-balance-admin.md';
-
 # Check gift card balance
 
 When a shopper is checking out and enters a gift card code to check its balance, a third-party system is used to get the current balance value.
@@ -44,15 +41,57 @@ This use case runs with a webhook of type `after`.
 
 ## Configuration
 
-\<TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" /\>
+<CodeBlock slots="heading, code" repeat="2" languages="XML, YAML" />
 
 #### webhook.xml (PaaS)
 
-\<ConfigXml/\>
+```xml
+<method name="plugin.magento.gift_card_account.api.gift_card_account_management.check_gift_card" type="after">
+    <hooks>
+        <batch name="check_gift_card">
+            <hook name="get_balance" url="{env:APP_BUILDER_URL}/get-gift-card-balance" timeout="5000" softTimeout="1000" fallbackErrorMessage="Could not get the gift card balance" required="true">
+                <headers>
+                    <header name="x-gw-ims-org-id">{env:APP_BUILDER_IMS_ORG_ID}</header>
+                    <header name="Authorization">Bearer {env:APP_BUILDER_AUTH_TOKEN}</header>
+                </headers>
+                <fields>
+                    <field name="giftCardCode"/>
+                </fields>
+            </hook>
+        </batch>
+    </hooks>
+</method>
+```
 
 #### Admin (SaaS)
 
-\<ConfigAdmin/\>
+```yaml
+Hook Settings
+
+Webhook method: plugin.gift_card_account.api.gift_card_account_management.check_gift_card
+Webhook type: after
+Batch name: check_gift_card
+Hook name: get_balance
+URL: <Host>/get-gift-card-balance
+Timeout: 5000
+Soft timeout: 1000
+Fallback Error Message: Could not get the gift card balance
+Required: Required
+Active: Yes
+Method: POST
+
+Developer Console OAuth
+
+Client ID: The client ID for the OAuth credential.
+Client Secret: The client secret for the OAuth credential.
+Organization ID: The organization ID for the OAuth credential.
+
+Hook Fields
+
+Name: giftCardCode
+Source: giftCardCode
+Active: Yes
+```
 
 ## Endpoint code example
 

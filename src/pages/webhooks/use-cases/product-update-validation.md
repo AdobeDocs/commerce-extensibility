@@ -5,9 +5,6 @@ keywords:
   - Extensibility
 ---
 
-import ConfigXml from './code-samples/product-update-validation-xml.md';
-import ConfigAdmin from './code-samples/product-update-validation-admin.md';
-
 # Product update validation
 
 When an admin creates or updates a product, a third-party system is used to validate the product attributes. For example, a third-party system can validate the new product name.
@@ -85,15 +82,57 @@ The third-party endpoint receives the following payload, which is based on the c
 
 ## Configuration
 
-\<TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" /\>
+<CodeBlock slots="heading, code" repeat="2" languages="XML, YAML" />
 
 #### webhook.xml (PaaS)
 
-\<ConfigXml/\>
+```xml
+<method name="observer.catalog_product_save_after" type="before">
+    <hooks>
+        <batch name="product_update">
+            <hook name="validate_name" url="{env:APP_BUILDER_URL}/validate-product-name" fallbackErrorMessage="The product name cannot be validated" method="POST" timeout="5000" softTimeout="1000">
+                <headers>
+                    <header name="x-gw-ims-org-id">{env:APP_BUILDER_IMS_ORG_ID}</header>
+                    <header name="Authorization">Bearer {env:APP_BUILDER_AUTH_TOKEN}</header>
+                </headers>
+                <fields>
+                    <field name="product.name" source="data.product.name" />
+                </fields>
+            </hook>
+        </batch>
+    </hooks>
+</method>
+```
 
 #### Admin (SaaS)
 
-\<ConfigAdmin/\>
+```yaml
+Hook Settings
+
+Webhook method: observer.catalog_product_save_after
+Webhook type: after
+Batch name: product_update
+Hook name: validate_name
+URL: <Host>/validate-product-name
+Timeout: 5000
+Soft timeout: 1000
+Fallback Error Message: The product name cannot be validated
+Required: Required
+Active: Yes
+Method: POST
+
+Developer Console OAuth
+
+Client ID: The client ID for the OAuth credential.
+Client Secret: The client secret for the OAuth credential.
+Organization ID: The organization ID for the OAuth credential.
+
+Hook Fields
+
+Name: product.name
+Source: data.product.name
+Active: Yes
+```
 
 ## Endpoint code example
 

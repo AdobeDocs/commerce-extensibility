@@ -71,6 +71,7 @@ The request body includes the quote, shipping assignment, and current totals. Th
     "items": [
       {
         "item_id": "1",
+        "hash": "43893738b58abf4851c02719841321c0f946197b",
         "quote_id": "1",
         "product_id": "9",
         "sku": "simple-product-1",

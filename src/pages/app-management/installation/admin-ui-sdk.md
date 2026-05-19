@@ -56,8 +56,8 @@ export default defineConfig({
 | Property | Type | Required | Description |
 |----------|------|----------|-------------|
 | `id` | string | Yes | Unique identifier for the menu item. |
-| `title` | string | No | Display title for the menu item. |
-| `parent` | string | No | The parent menu item identifier, used to nest this item under an existing menu. |
-| `sortOrder` | number | No | Numeric value that determines the position of the menu item relative to its siblings. |
-| `sandbox` | string | No | The sandbox URL to load when the menu item is clicked. |
 | `isSection` | boolean | No | When `true`, the menu item acts as a section header rather than a navigable link. |
+| `parent` | string | No | The parent menu item identifier, used to nest this item under an existing menu. |
+| `sandbox` | string | No | The sandbox URL to load when the menu item is clicked. |
+| `sortOrder` | number | No | Numeric value that determines the position of the menu item relative to its siblings. |
+| `title` | string | No | Display title for the menu item. |

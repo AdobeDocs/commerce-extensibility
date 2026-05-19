@@ -404,7 +404,6 @@ You can use the same syntax and features available for context values in fields 
 </headers>
 ```
 
-
 In this example, the `X-Custom-Header` from an incoming HTTP request to Commerce will be forwarded as a header in the request sent by the webhook. This approach can be used to pass Authorization headers required by an external system.
 
 ### Supported contexts

@@ -2647,7 +2647,7 @@ This reference lists the full payload for each event supported on Adobe Commerce
 }
 ```
 
-##  Sales
+## Sales
 
 ### observer.checkout_submit_all_after
 

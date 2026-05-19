@@ -176,13 +176,13 @@ This step links a specific Adobe Commerce event to the event provider created ea
 
 1. Click **Add New Subscription** to create event metadata for specific events you want to emit. Provide the following details in the **Event subscription settings** section:
 
-  Field | Value
-  --- | ---
-  **Event Name** | `observer.catalog_product_save_commit_after`
-  **Event Name Alias** | Optional. Any user-friendly name.
-  **Event Provider** | Select the Event Provider created in the previous step.
-  **Is Enabled** | Yes
-  **Priority** | Yes
+  | Field | Value |
+  |---|---|
+  | **Event Name** | `observer.catalog_product_save_commit_after` |
+  | **Event Name Alias** | Optional. Any user-friendly name. |
+  | **Event Provider** | Select the Event Provider created in the previous step. |
+  | **Is Enabled** | Yes |
+  | **Priority** | Yes |
 
 1. In the **Event Subscription Fields** section, specify the following fields to be included in the event payload. This limits the payload to only the selected fields rather than sending the full event data, improving efficiency.
 

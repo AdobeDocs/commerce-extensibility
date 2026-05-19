@@ -159,7 +159,7 @@ pnpm exec aio-commerce-lib-config encryption setup
 bun x aio-commerce-lib-config encryption setup
 ```
 
-### Validate your encryption key configuration.
+### Validate your encryption key configuration
 
 If it's already there, validate it has the expected format:
 

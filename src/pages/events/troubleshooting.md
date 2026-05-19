@@ -19,12 +19,12 @@ If Commerce is correctly [configured](configure-commerce.md), but triggered even
 You can perform additional troubleshooting by retrieving the contents of the `event_data` table, which contains information that is not displayed in the grid.
 This table temporarily stores events before transforming them into Adobe I/O events. The table contains a status column that can have the following values:
 
-Status ID | Status
---- | ---
-`0` | Waiting
-`1` | Successfully sent
-`2` | Failed to send event
-`3` | Transmission is in progress
+| Status ID | Status |
+|---|---|
+| `0` | Waiting |
+| `1` | Successfully sent |
+| `2` | Failed to send event |
+| `3` | Transmission is in progress |
 
 You can use the following SQL query to select all events from the `event_data` table:
 

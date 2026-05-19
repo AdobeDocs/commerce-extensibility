@@ -69,14 +69,14 @@ The contents of the `commerce` and `external` directories are similar. Each cont
 
 Individual directories that define actions contain the following files:
 
-File | Purpose
---- | ---
-`index.js` | Contains the main method that gets invoked when handling an event. It is responsible for coordinating the different activities involved in that handling, such as validating the incoming payload, transforming the payload to the target API, and interacting with the target API.
-`pre.js` and `post.js` | Provide convenient extension points to introduce custom business logic before and after interacting with the target API.
-`sender.js` | Implements the logic to interact with the target API so that the changes are propagated. For actions in the `external` directory, Commerce APIs are the target. Actions in the `commerce` directory target external APIs.
-`schema.json` | (`external` directories only) Defines the schema to be validated against the incoming event payload.
-`transformer.js` | Implements the logic to transform the incoming event payload to make it suitable for the target API being called to propagate the changes.
-`validator.js` | Implements the logic to validate the incoming event payload.
+| File | Purpose |
+|---|---|
+| `index.js` | Contains the main method that gets invoked when handling an event. It is responsible for coordinating the different activities involved in that handling, such as validating the incoming payload, transforming the payload to the target API, and interacting with the target API. |
+| `pre.js` and `post.js` | Provide convenient extension points to introduce custom business logic before and after interacting with the target API. |
+| `sender.js` | Implements the logic to interact with the target API so that the changes are propagated. For actions in the `external` directory, Commerce APIs are the target. Actions in the `commerce` directory target external APIs. |
+| `schema.json` | (`external` directories only) Defines the schema to be validated against the incoming event payload. |
+| `transformer.js` | Implements the logic to transform the incoming event payload to make it suitable for the target API being called to propagate the changes. |
+| `validator.js` | Implements the logic to validate the incoming event payload. |
 
 ### `scripts/onboarding` directory
 

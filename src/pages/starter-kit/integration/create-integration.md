@@ -386,13 +386,13 @@ For earlier versions, follow the steps below to subscribe to the events manually
 
 Use the `bin/magento events:subscribe` command to subscribe to events, as described in [Subscribe and register events](../../events/configure-commerce.md#subscribe-and-register-events). The following table defines the events for each supported entity that you must subscribe to and lists the required fields, if applicable.
 
-Entity | Event | Required fields
---- | --- | ---
-Product | `observer.catalog_product_delete_commit_after` | `sku`
-Product | `observer.catalog_product_save_commit_after`   | `sku`, `created_at`, `updated_at`
-Customer | `observer.customer_save_commit_after` | `created_at`, `updated_at`
-Customer | `observer.customer_delete_commit_after` | `entity_id`
-Customer group | `observer.customer_group_save_commit_after` | `customer_group_code`
-Customer group | `observer.customer_group_delete_commit_after` | `customer_group_code`
-Order | `observer.sales_order_save_commit_after` | `created_at`, `updated_at`
-Stock | `observer.cataloginventory_stock_item_save_commit_after` | `product_id`
+| Entity | Event | Required fields |
+|---|---|---|
+| Product | `observer.catalog_product_delete_commit_after` | `sku` |
+| Product | `observer.catalog_product_save_commit_after`   | `sku`, `created_at`, `updated_at` |
+| Customer | `observer.customer_save_commit_after` | `created_at`, `updated_at` |
+| Customer | `observer.customer_delete_commit_after` | `entity_id` |
+| Customer group | `observer.customer_group_save_commit_after` | `customer_group_code` |
+| Customer group | `observer.customer_group_delete_commit_after` | `customer_group_code` |
+| Order | `observer.sales_order_save_commit_after` | `created_at`, `updated_at` |
+| Stock | `observer.cataloginventory_stock_item_save_commit_after` | `product_id` |

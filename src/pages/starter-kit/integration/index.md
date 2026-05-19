@@ -33,4 +33,3 @@ Enrich the shopper experience with backend integrations and realize the full pow
 [Existing data flows](data-flows.md)
 
 Integrate quickly and easily using the starter kit template, which works with the most common data flows.
-

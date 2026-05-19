@@ -149,4 +149,4 @@ The deployment process can get stuck in some cases in the Cloud environment when
    vendor/bin/ece-tools cron:kill
    ```
 
-By default, the consumer will restart within one minute, but this value may vary, based on your [cron configuration](https://experienceleague.adobe.com/docs/commerce-cloud-service/user-guide/configure/app/properties/crons-property.html) or whether you have set up a [worker](https://experienceleague.adobe.com/docs/commerce-cloud-service/user-guide/configure/app/properties/workers-property.html).
+By default, the consumer will restart within one minute, but this value may vary, based on your [cron configuration](https://experienceleague.adobe.com/en/docs/commerce-on-cloud/user-guide/configure/app/properties/crons-property) or whether you have set up a [worker](https://experienceleague.adobe.com/en/docs/commerce-on-cloud/user-guide/configure/app/properties/workers-property).

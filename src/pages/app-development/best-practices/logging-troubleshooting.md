@@ -16,7 +16,7 @@ Adobe Developer App Builder offers different options to facilitate logging from 
 
 ## Adobe I/O Runtime (default)
 
-[Actions](https://developer.adobe.com/runtime/docs/guides/overview/entities/) are serverless functions that run on Adobe I/O Runtime. In general, an action is invoked in response to an event and produces some observable output. An Adobe Commerce event must work successfully for its resulting Runtime Action to be successful. Make sure to troubleshoot both of these entities when diagnosing issues with your application. The following tips and comprehensive comparison enable you to make informed decisions about your Logging approach.
+[Actions](https://developer.adobe.com/app-builder/docs/get_started/runtime_getting_started/entities) are serverless functions that run on Adobe I/O Runtime. In general, an action is invoked in response to an event and produces some observable output. An Adobe Commerce event must work successfully for its resulting Runtime Action to be successful. Make sure to troubleshoot both of these entities when diagnosing issues with your application. The following tips and comprehensive comparison enable you to make informed decisions about your Logging approach.
 
 When building and troubleshooting your application, it is important to understand the differences between events and runtime actions. These concepts are often interrelated, with events triggering runtime actions, but the actual functionality and logging capabilities are separate entities. Best practice is to determine whether the event delivery was successful, and then investigate any resulting runtime actions.
 
@@ -166,11 +166,11 @@ aio app config get log-forwarding errors
 
 ## Log forwarding to New Relic
 
-[Forwarding logs to New Relic](https://developer.adobe.com/app-builder/docs/guides/application_logging/new_relic/) in the _App Builder Logging_ guide describes how to implement log forwarding on this platform.
+[Forwarding logs to New Relic](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/application_logging/new-relic) in the _App Builder Logging_ guide describes how to implement log forwarding on this platform.
 
 ## Splunk logging vs IO Runtime logging
 
-[Managing Application Logs](https://developer.adobe.com/app-builder/docs/guides/application_logging/#when-to-use-log-forwarding) can help you decide which logging works best for your use case.
+[Managing Application Logs](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/application_logging/logging) can help you decide which logging works best for your use case.
 
 ### Log display time
 
@@ -204,7 +204,7 @@ However, when it comes to debugging actions, there are two alternatives availabl
 
 The [Debugging App Builder Apps](https://developer.adobe.com/app-builder/docs/resources/debugging/) codelab describes the debugging process in detail. As you work through that codelab, keep in mind that the `aio app run --local` command that allows you to run actions in the local container is not supported in NodeJS 18.
 
-To perform [advanced debugging](https://developer.adobe.com/runtime/docs/guides/using/debugging/) for `node.js` actions, use the `wskdebug` command to forward actions from the OpenWhisk system to a local container. Based on testing conducted with various versions of both packages and two different versions of Node.js, the following information outlines the current support status:
+To perform [advanced debugging](https://developer.adobe.com/app-builder/docs/guides/runtime_guides/debugging) for `node.js` actions, use the `wskdebug` command to forward actions from the OpenWhisk system to a local container. Based on testing conducted with various versions of both packages and two different versions of Node.js, the following information outlines the current support status:
 
 ```bash
 wskdebug --inspect-brk=11932 <action_name> <path_action_name.js> -l -v
@@ -225,9 +225,9 @@ If you encounter any issues, check the `openwhisk` local log file (`openwhisk-lo
 
 ### Limitations and known issues
 
-* You cannot use `wskdebug` to debug your actions if you are using `aio-lib-state` or `aio-lib-files`. See [common issues](https://developer.adobe.com/app-builder/docs/getting_started/common_troubleshooting/#debugging-errors-with-state-and-files-sdk).
+* You cannot use `wskdebug` to debug your actions if you are using `aio-lib-state` or `aio-lib-files`. See [common issues](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/troubleshoot).
 
-* Breakpoints might not pause when debugging an action. [Troubleshoot Asset Compute extensibility](https://experienceleague.adobe.com/docs/experience-manager-learn/cloud-service/asset-compute/troubleshooting.html?lang=en#debug) provides more information.
+* Breakpoints might not pause when debugging an action. [Troubleshoot Asset Compute extensibility](https://experienceleague.adobe.com/en/docs/experience-manager-learn/cloud-service/asset-compute/troubleshooting#debug) provides more information.
 
 * The `aio app run --local` command does not work with Nodejs18, Currently, only Nodejs16 is supported.
 

@@ -332,10 +332,10 @@ stage:
 
 The deployment process might become stuck if the consumer runs in the background. The [Troubleshooting](troubleshooting.md#stuck-deployment-after-configuring-priority-events) topic describes how to resolve this condition.
 
-See [Global variables](https://experienceleague.adobe.com/docs/commerce-cloud-service/user-guide/configure/env/stage/variables-global.html) for more information about the `ENABLE_EVENTING` variable.
+See [Global variables](https://experienceleague.adobe.com/en/docs/commerce-on-cloud/user-guide/configure/env/stage/variables-global) for more information about the `ENABLE_EVENTING` variable.
 
 Cloud infrastructure and on-premises instances require different cron management procedures as described here:
 
-*  [Adobe Commerce on cloud infrastructure](https://experienceleague.adobe.com/docs/commerce-cloud-service/user-guide/configure/app/properties/crons-property.html)
+*  [Adobe Commerce on cloud infrastructure](https://experienceleague.adobe.com/en/docs/commerce-on-cloud/user-guide/configure/app/properties/crons-property)
 
-*  [On premises](https://experienceleague.adobe.com/docs/commerce-operations/configuration-guide/crons/custom-cron-reference.html)
+*  [On premises](https://experienceleague.adobe.com/en/docs/commerce-operations/configuration-guide/crons/custom-cron-reference)

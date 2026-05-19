@@ -22,7 +22,7 @@ This guide explains how to develop Out-of-Process apps that extend and customize
 
 Extensibility, as a concept, reflects the possibility for growth and the ease of extending functionality in a system. When referring to extensibility in Adobe Commerce, we mean the ability of developers to expand, customize, and control their interactions with Adobe Commerce.
 
-The following diagram highlights the main components of the Adobe Commerce [extensibility strategy](https://experienceleague.adobe.com/docs/commerce-operations/implementation-playbook/architecture/extensibility-strategy.html):
+The following diagram highlights the main components of the Adobe Commerce [extensibility strategy](https://experienceleague.adobe.com/en/docs/commerce-operations/implementation-playbook/architecture/enterprise-blueprint):
 
 ![extensibility strategy](./images/extensibility-strategy-overview.png)
 
@@ -44,7 +44,7 @@ Adobe Commerce offers the following out-of-process development tools:
 
 - [API Mesh for Adobe Developer App Builder](https://developer.adobe.com/graphql-mesh-gateway/) - Coordinate and combine multiple API, GraphQL, REST, and other sources into a single, queryable GraphQL endpoint.
 
-- [App Builder](https://developer.adobe.com/app-builder/docs/overview/) - Build and deploy secure and scalable web applications that extend Commerce functionality and integrate with third-party solutions.
+- [App Builder](https://developer.adobe.com/app-builder/docs/intro_and_overview/) - Build and deploy secure and scalable web applications that extend Commerce functionality and integrate with third-party solutions.
 
 - [Events](events/index.md) - Use custom event triggers to interact with other extensible development tools.
 
@@ -76,7 +76,7 @@ Adobe Commerce and Magento Open Source provide the following in-process extensib
 
 <DiscoverBlock slots="link, text"/>
 
-[App Builder](https://developer.adobe.com/app-builder/docs/overview/)
+[App Builder](https://developer.adobe.com/app-builder/docs/intro_and_overview/)
 
 Is a complete framework that enables enterprise developers to build and deploy custom web applications that extend Adobe Experience Cloud solutions and run on Adobe infrastructure.
 

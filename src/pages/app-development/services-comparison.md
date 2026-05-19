@@ -71,7 +71,7 @@ App Builder provides built-in persistent storage solutions that are designed to 
 
 #### App Builder State Storage
 
-[State Database](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/storage/application-state) is a key-value store provided by [Adobe I/O Runtime](https://developer.adobe.com/runtime/docs/guides/overview/) to store and manage stateful data.
+[State Database](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/storage/application-state) is a key-value store provided by [Adobe I/O Runtime](https://developer.adobe.com/app-builder/docs/intro_and_overview/what-is-app-builder) to store and manage stateful data.
 
 Features:
 
@@ -99,7 +99,7 @@ The [maximum TTL](https://developer.adobe.com/app-builder/docs/guides/app_builde
 
 #### App Builder Database Storage
 
-[Database Storage](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/storage/database) is a managed document style database service provided by [Adobe I/O Runtime](https://developer.adobe.com/runtime/docs/guides/overview/).
+[Database Storage](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/storage/database) is a managed document style database service provided by [Adobe I/O Runtime](https://developer.adobe.com/app-builder/docs/intro_and_overview/what-is-app-builder).
 
 Features:
 
@@ -176,7 +176,7 @@ This section compares the search capabilities between Adobe Commerce and App Bui
 ### Commerce
 
 - OpenSearch - Adobe Commerce utilizes OpenSearch as its primary search engine. OpenSearch is a highly scalable, open-source search and analytics engine, which is a fork of Elasticsearch and provides similar functionalities.  
-- Live Search - Adobe Commerce has integrated [Live Search](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/live-search/overview) as a standard feature, which provides advanced search capabilities powered by Adobe Sensei, a suite of AI and machine learning technologies. Live Search delivers more relevant and personalized search results to users, enhancing the shopping experience.
+- Live Search - Adobe Commerce has integrated [Live Search](https://experienceleague.adobe.com/en/docs/commerce/live-search/overview) as a standard feature, which provides advanced search capabilities powered by Adobe Sensei, a suite of AI and machine learning technologies. Live Search delivers more relevant and personalized search results to users, enhancing the shopping experience.
 - Third-party integrations - For businesses with specific needs or preferences, Adobe Commerce supports the integration of third-party search solutions.
 
 ### App Builder

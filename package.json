@@ -36,6 +36,14 @@
           "src/pages/_includes"
         ]
       }
-    }
+    },
+    "skipUrlPatterns": [
+      "https://forms.office.com/r/YbYArqE3DT",
+      "https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions%22",
+      "https://localhost:9080/",
+      "https://experience.adobe.com/#/@commercelab/home",
+      "https://magentocommeng.slack.com/",
+      "https://partners.adobe.com/ec/cform/sandbox"
+    ]
   }
 }

@@ -45,7 +45,7 @@ aio app dev
 aio app run
 ```
 
-See [aio app dev vs. aio app run](https://developer.adobe.com/app-builder/docs/guides/development/#aio-app-dev-vs-aio-app-run) to understand the differences between the two modes.
+See [aio app dev vs. aio app run](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/development) to understand the differences between the two modes.
 
 ## Deploy the application
 
@@ -92,7 +92,7 @@ Use the following links to configure formatting for your IDE:
 
 ## Debugging
 
-For debugging applications created with the starter kit, refer to the [App Builder debugging](https://developer.adobe.com/app-builder/docs/guides/development/#debugging) documentation.
+For debugging applications created with the starter kit, refer to the [App Builder debugging](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/development#debugging) documentation.
 
 ## Testing
 

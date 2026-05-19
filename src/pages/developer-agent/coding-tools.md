@@ -44,7 +44,7 @@ This updates the tools to the latest version.
 * Any coding agent that supports [agent skills](https://agentskills.io/home#adoption), such as:
 
    * [Cursor](https://cursor.com/download)
-   * [Claude Code](https://www.claude.com/product/claude-code)
+   * [Claude Code](https://claude.com/product/claude-code)
    * [GitHub Copilot](https://github.com/features/copilot)
    * [Windsurf](https://windsurf.com)
    * [Gemini CLI](https://github.com/google-gemini/gemini-cli)

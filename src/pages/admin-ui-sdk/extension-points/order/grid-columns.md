@@ -49,7 +49,7 @@ order: {
 ### Sample API Mesh configuration file
 
 The following sample mesh configuration file defines the external source that contains the data to populate in the custom columns.
-It leverages API Mesh [JSON Schemas handler](https://developer.adobe.com/graphql-mesh-gateway/mesh/basic/handlers/json-schema/).
+It leverages API Mesh [JSON Schemas handler](https://developer.adobe.com/graphql-mesh-gateway/mesh/basic/handlers/json-schema).
 
 ```json
 {

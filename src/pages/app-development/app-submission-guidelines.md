@@ -44,7 +44,7 @@ Some requirements will differ based on whether you indicated the app was non-dow
 - General documentation guidelines
   - **Project-specific language**: Use project-specific language. Avoid generic references to "Adobe", "Magento" or "starter kit".
   - **Configuration details**: Clearly list the app configuration and any third-party service-specific setup steps.
-  - **Clear summary**: Provide a compact description that captures the app’s purpose and primary use cases.
+  - **Clear summary**: Provide a compact description that captures the app's purpose and primary use cases.
   - **Usage instructions**: Add instructions on how to use the app post-installation.
   - For non-downloadable apps:
       - All installation steps and usage instructions must be posted at the application documentation URL provided in Exchange. Because the app is not downloadable, README files and similar documents will not be accessible to customers.

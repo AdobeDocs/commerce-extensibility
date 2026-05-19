@@ -20,7 +20,7 @@ In this comprehensive troubleshooting guide, we'll help you navigate through com
 
    `bin/magento admin:adobe-ims:enable`
 
-   [Configure the Commerce Admin Integration with Adobe ID](https://experienceleague.adobe.com/docs/commerce-admin/start/admin/ims/adobe-ims-config.html#) provides additional information about setting up Adobe Identity Management Service (IMS) on Adobe Commerce.
+   [Configure the Commerce Admin Integration with Adobe ID](https://experienceleague.adobe.com/en/docs/commerce-admin/start/admin/ims/adobe-ims-config) provides additional information about setting up Adobe Identity Management Service (IMS) on Adobe Commerce.
 
 * **The application is deployed in a different organization.** Run the following command from the Adobe Commerce command line to check the organization ID used to enable the `Magento_AdminAdobeIms` module.
 

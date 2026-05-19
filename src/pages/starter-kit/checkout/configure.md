@@ -10,7 +10,7 @@ keywords:
 
 This section provides an overview of configuring out-of-process extensibility on Adobe Commerce for developing an app using the checkout starter kit.
 
-All the configurations in your app must align with the [App Builder Configuration file guidelines](https://developer.adobe.com/app-builder/docs/guides/configuration/). In addition, the starter kit provides a set of [scripts](https://github.com/adobe/commerce-checkout-starter-kit/tree/main/scripts) to help you get started with your project.
+All the configurations in your app must align with the [App Builder Configuration file guidelines](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/configuration/configuration). In addition, the starter kit provides a set of [scripts](https://github.com/adobe/commerce-checkout-starter-kit/tree/main/scripts) to help you get started with your project.
 
 ## Configure Commerce modules
 

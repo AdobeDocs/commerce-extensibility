@@ -98,4 +98,4 @@ Search text and both dropdowns apply together (logical AND). To display the full
 
 ### Acquire App
 
-**Acquire App** opens a new browser tab (or a separate browser view) to [Adobe Exchange](https://exchange.adobe.com/experiencecloud), where you can discover Commerce-related marketplace listings and add applications to your Adobe IMS organization. After the app is acquired, approved, and deployed, it appears in App Management for [association and installation](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app).
+**Acquire App** opens a new browser tab (or a separate browser view) to [Adobe Exchange](https://exchange.adobe.com/apps/browse/ec), where you can discover Commerce-related marketplace listings and add applications to your Adobe IMS organization. After the app is acquired, approved, and deployed, it appears in App Management for [association and installation](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app).

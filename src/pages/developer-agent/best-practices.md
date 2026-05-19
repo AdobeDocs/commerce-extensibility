@@ -50,8 +50,8 @@ Consult the following resources to get started:
 * [Integration starter kit](../starter-kit/integration/create-integration.md)
 * [Checkout starter kit](../starter-kit/checkout/index.md)
 * [Adobe Commerce starter kit templates](https://github.com/adobe/adobe-commerce-samples/tree/main/starter-kit)
-* [Adobe I/O Events starter templates](https://experienceleague.adobe.com/en/docs/commerce-learn/tutorials/adobe-developer-app-builder/io-events/getting-started-io-events)
-* [App Builder sample applications](https://developer.adobe.com/app-builder/docs/resources/sample_apps)
+* [Adobe I/O Events starter templates](https://experienceleague.adobe.com/en/docs/commerce-learn/tutorials/extensibility/adobe-developer-app-builder/io-events/getting-started-io-events)
+* [App Builder sample applications](https://developer.adobe.com/app-builder/docs/resources/sample_apps/)
 
 ### Why you should use these resources
 

@@ -24,7 +24,7 @@ The Adobe Commerce integration starter kit provides boilerplate code to synchron
 
 By default, object synchronization is bi-directional. Changes in Commerce are propagated to the external backoffice application and vice versa.
 
-The source code follows the [file structure](https://developer.adobe.com/app-builder/docs/guides/extensions/extension_migration_guide/#old-file-structure) of a typical App Builder application. Most importantly, the `actions` directory contains the source code for all the serverless actions.
+The source code follows the [file structure](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/extensions/extension-migration-guide#old-file-structure) of a typical App Builder application. Most importantly, the `actions` directory contains the source code for all the serverless actions.
 
 The following diagram shows the directory structure of the starter kit project:
 
@@ -90,4 +90,4 @@ The `commerce-event-subscribe` directory contains the script to subscribe the Co
 
 The starter kit provides unit tests for most of the included runtime actions. These tests are in the `test/actions` directory. You can also find unit tests for the onboarding script in the `test/onboarding` directory.
 
-[Testing a Serverless Action](https://developer.adobe.com/app-builder/docs/resources/barcode-reader/test/) provides details about unit testing.
+[Testing a Serverless Action](https://developer.adobe.com/app-builder/docs/resources/barcode-reader/test) provides details about unit testing.

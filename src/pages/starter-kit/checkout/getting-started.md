@@ -24,8 +24,8 @@ You must install or have access to the following prerequisites to develop with t
 
 - [Adobe I/O CLI](https://developer.adobe.com/app-builder/docs/guides/runtime_guides/tools/cli-install).
 
-- Access to the [Adobe Developer Console](https://console.adobe.io/) with an App
-  Builder license. If you do not have access to the Adobe Developer Console or App Builder, refer to [get access to App Builder](https://developer.adobe.com/app-builder/docs/overview/getting_access/#get-access-to-app-builder).
+- Access to the [Adobe Developer Console](https://developer.adobe.com/console/) with an App
+  Builder license. If you do not have access to the Adobe Developer Console or App Builder, refer to [get access to App Builder](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/set-up).
 
 - If you intend to use the Admin UI SDK (version `3.0` and higher), you must also complete the [Admin UI SDK installation process](../../admin-ui-sdk/installation.md).
 
@@ -55,7 +55,7 @@ Use the following steps to configure your local environment:
   
   Replace `$GITHUB_PAT` with your GitHub personal access token. For more information, refer to [managing your personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens).
 
-1. You can create an app builder project, or select the existing one, while initializing the starter kit. The created project can be found in the [Adobe Developer Console](https://console.adobe.io/).
+1. You can create an app builder project, or select the existing one, while initializing the starter kit. The created project can be found in the [Adobe Developer Console](https://developer.adobe.com/console/).
 
   ```bash
   ? Select Org: <your-ims-org>

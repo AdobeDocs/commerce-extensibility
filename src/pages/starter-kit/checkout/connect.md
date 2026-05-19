@@ -38,7 +38,7 @@ If Commerce integration authentication is detected, it has precedence over IMS a
 
 <InlineAlert variant="info" slots="text1, text2"/>
 
-\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions"\>\<span style="background-color: rgb(4, 105, 227); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;"\>PaaS Only\</span\>\</a\> This process requires a Commerce instance with [Adobe Identity Management Service (IMS) for Adobe Commerce](https://experienceleague.adobe.com/docs/commerce-admin/start/admin/ims/adobe-ims-integration-overview.html) configured.
+\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions"\>\<span style="background-color: rgb(4, 105, 227); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;"\>PaaS Only\</span\>\</a\> This process requires a Commerce instance with [Adobe Identity Management Service (IMS) for Adobe Commerce](https://experienceleague.adobe.com/en/docs/commerce-admin/start/admin/ims/adobe-ims-integration-overview) configured.
 
 SaaS instances already include IMS configuration.
 

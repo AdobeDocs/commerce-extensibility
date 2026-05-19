@@ -42,7 +42,7 @@ Together, these improve workflow integration, context-aware generation, and repe
 - [Create an integration](../starter-kit/integration/create-integration.md) — Integration starter kit
 - [Checkout starter kit](../starter-kit/checkout/index.md) — Checkout and payments
 - [Project setup](../events/project-setup.md) — App Builder project and events
-- [App Builder sample applications](https://developer.adobe.com/app-builder/docs/resources/sample_apps)
+- [App Builder sample applications](https://developer.adobe.com/app-builder/docs/resources/sample_apps/)
 
 ## Updating the tools
 

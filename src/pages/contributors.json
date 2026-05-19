@@ -6,6 +6,7 @@
     {
       "page": "/",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4",
@@ -60,7 +61,9 @@
     },
     {
       "page": "/_includes/project-requirements",
-      "avatars": [],
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4"
+      ],
       "lastUpdated": "5/19/2026"
     },
     {
@@ -81,12 +84,13 @@
     {
       "page": "/admin-ui-sdk/",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/71198017?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/114562006?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/admin-ui-sdk/api",
@@ -99,21 +103,23 @@
     {
       "page": "/admin-ui-sdk/app-registration",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/71198017?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4"
       ],
-      "lastUpdated": "8/18/2025"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/admin-ui-sdk/app-review-checklist",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/6577801?v=4",
         "https://avatars.githubusercontent.com/u/71198017?v=4",
         "https://avatars.githubusercontent.com/u/47368809?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/admin-ui-sdk/configuration",
@@ -147,10 +153,11 @@
     {
       "page": "/admin-ui-sdk/extension-points/banner-notification",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/71198017?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/admin-ui-sdk/extension-points/customer/",
@@ -162,27 +169,30 @@
     {
       "page": "/admin-ui-sdk/extension-points/customer/grid-columns",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/71198017?v=4"
       ],
-      "lastUpdated": "12/16/2024"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/admin-ui-sdk/extension-points/customer/mass-action",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/71198017?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/admin-ui-sdk/extension-points/menu",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/71198017?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/admin-ui-sdk/extension-points/order/",
@@ -195,27 +205,30 @@
     {
       "page": "/admin-ui-sdk/extension-points/order/custom-fees",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/71198017?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4"
       ],
-      "lastUpdated": "9/4/2024"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/admin-ui-sdk/extension-points/order/grid-columns",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/71198017?v=4"
       ],
-      "lastUpdated": "12/16/2024"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/admin-ui-sdk/extension-points/order/mass-action",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/71198017?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/admin-ui-sdk/extension-points/order/view-button",
@@ -245,10 +258,11 @@
     {
       "page": "/admin-ui-sdk/extension-points/product/grid-columns",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/71198017?v=4"
       ],
-      "lastUpdated": "12/16/2024"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/admin-ui-sdk/extension-points/product/mass-action",
@@ -261,22 +275,24 @@
     {
       "page": "/admin-ui-sdk/installation",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4",
         "https://avatars.githubusercontent.com/u/71198017?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4",
         "https://avatars.githubusercontent.com/u/1022072?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/admin-ui-sdk/publish",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/28722775?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/71198017?v=4"
       ],
-      "lastUpdated": "11/25/2024"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/admin-ui-sdk/release-notes",
@@ -293,12 +309,13 @@
     {
       "page": "/admin-ui-sdk/troubleshooting",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/71198017?v=4",
         "https://avatars.githubusercontent.com/u/114562006?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/app-development/",
@@ -314,23 +331,26 @@
     {
       "page": "/app-development/app-builder-partnership-essentials",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/38460853?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/app-development/app-development-comparison",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/app-development/app-submission-guidelines",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4",
         "https://avatars.githubusercontent.com/u/47715589?v=4",
         "https://avatars.githubusercontent.com/u/47368809?v=4",
@@ -367,10 +387,11 @@
     {
       "page": "/app-development/best-practices/logging-troubleshooting",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/app-development/examples",
@@ -384,6 +405,7 @@
     {
       "page": "/app-development/extension-compatibility",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4"
       ],
       "lastUpdated": "5/19/2026"
@@ -391,30 +413,33 @@
     {
       "page": "/app-development/learning-path",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/18550571?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4",
         "https://avatars.githubusercontent.com/in/29110?v=4",
         "https://avatars.githubusercontent.com/u/111585301?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/app-development/port-extensions",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4"
       ],
-      "lastUpdated": "10/18/2024"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/app-development/services-comparison",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/6577801?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/app-development/use-cases/",
@@ -433,11 +458,12 @@
     {
       "page": "/app-management/",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/38460853?v=4",
         "https://avatars.githubusercontent.com/u/71198017?v=4",
         "https://avatars.githubusercontent.com/u/47715589?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/app-management/app-metadata",
@@ -450,9 +476,10 @@
     {
       "page": "/app-management/build-deploy",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/38460853?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/app-management/configuration-schema",
@@ -474,10 +501,11 @@
     {
       "page": "/app-management/initialize-app",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/38460853?v=4",
         "https://avatars.githubusercontent.com/u/47715589?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/app-management/installation/",
@@ -518,34 +546,41 @@
     {
       "page": "/app-management/troubleshooting",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/38460853?v=4",
         "https://avatars.githubusercontent.com/u/47715589?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/config",
-      "avatars": [],
-      "lastUpdated": "5/15/2026"
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4"
+      ],
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/developer-agent/",
-      "avatars": [],
-      "lastUpdated": "5/14/2026"
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4"
+      ],
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/developer-agent/best-practices",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/developer-agent/coding-tools",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/developer-agent/skills-and-prompts",
@@ -562,14 +597,16 @@
     {
       "page": "/events/",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/events/api",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/18550571?v=4",
         "https://avatars.githubusercontent.com/u/47368809?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
@@ -610,6 +647,7 @@
     {
       "page": "/events/configure-commerce",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/18550571?v=4",
         "https://avatars.githubusercontent.com/u/17369548?v=4",
@@ -622,12 +660,13 @@
     {
       "page": "/events/consume-events",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4",
         "https://avatars.githubusercontent.com/in/29110?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/47368809?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/events/consume-events-examples/",
@@ -639,11 +678,12 @@
     {
       "page": "/events/consume-events-examples/runtime-action-commerce-callback",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/47368809?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4"
       ],
-      "lastUpdated": "12/13/2024"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/events/context-fields",
@@ -657,16 +697,17 @@
     {
       "page": "/events/convert-field-values",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/18550571?v=4",
-        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/17369548?v=4"
       ],
-      "lastUpdated": "6/16/2025"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/events/create-events",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/18550571?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4"
@@ -676,13 +717,13 @@
     {
       "page": "/events/custom-event-fields",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/9975788?v=4",
         "https://avatars.githubusercontent.com/u/18550571?v=4",
-        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4"
       ],
-      "lastUpdated": "4/1/2026"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/events/events-original-data",
@@ -695,19 +736,21 @@
     {
       "page": "/events/events-reference",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/events/installation",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/47368809?v=4",
         "https://avatars.githubusercontent.com/u/18550571?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/events/journaling-tutorial/",
@@ -736,14 +779,16 @@
     {
       "page": "/events/journaling-tutorial/validating-journaling-integration",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/206226297?v=4"
       ],
-      "lastUpdated": "4/29/2026"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/events/module-development",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/18550571?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/47368809?v=4",
@@ -775,11 +820,12 @@
     {
       "page": "/events/troubleshooting",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/18550571?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/47368809?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/events/tutorial/",
@@ -791,9 +837,10 @@
     {
       "page": "/events/tutorial/debugging",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/events/tutorial/deployment",
@@ -805,9 +852,10 @@
     {
       "page": "/events/tutorial/event-providers",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/events/tutorials",
@@ -841,9 +889,10 @@
     {
       "page": "/observability/configuration",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/observability/installation",
@@ -862,9 +911,10 @@
     {
       "page": "/oope-modules/",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/oope-modules/api-integration",
@@ -891,13 +941,15 @@
     {
       "page": "/starter-kit/checkout/cicd",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4"
       ],
-      "lastUpdated": "1/9/2025"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/starter-kit/checkout/configure",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/142383015?v=4",
         "https://avatars.githubusercontent.com/u/17369548?v=4",
         "https://avatars.githubusercontent.com/u/16409901?v=4",
@@ -910,6 +962,7 @@
     {
       "page": "/starter-kit/checkout/connect",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/16409901?v=4",
         "https://avatars.githubusercontent.com/u/8988184?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4",
@@ -920,10 +973,11 @@
     {
       "page": "/starter-kit/checkout/development",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/16409901?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/starter-kit/checkout/eds",
@@ -937,6 +991,7 @@
     {
       "page": "/starter-kit/checkout/getting-started",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/142383015?v=4",
         "https://avatars.githubusercontent.com/u/17369548?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
@@ -967,13 +1022,14 @@
     {
       "page": "/starter-kit/checkout/payment-reference",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/6577801?v=4",
         "https://avatars.githubusercontent.com/u/16409901?v=4",
         "https://avatars.githubusercontent.com/u/8988184?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4",
         "https://avatars.githubusercontent.com/u/3788579?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/starter-kit/checkout/payment-usage",
@@ -987,6 +1043,7 @@
     {
       "page": "/starter-kit/checkout/payment-use-cases",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/16409901?v=4",
         "https://avatars.githubusercontent.com/u/80530839?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4",
@@ -1005,10 +1062,11 @@
     {
       "page": "/starter-kit/checkout/shipping-reference",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4",
         "https://avatars.githubusercontent.com/u/3788579?v=4"
       ],
-      "lastUpdated": "5/15/2025"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/starter-kit/checkout/shipping-usage",
@@ -1041,12 +1099,13 @@
     {
       "page": "/starter-kit/checkout/tax-reference",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/16409901?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4",
         "https://avatars.githubusercontent.com/u/8988184?v=4",
         "https://avatars.githubusercontent.com/u/3788579?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/starter-kit/checkout/tax-usage",
@@ -1105,6 +1164,7 @@
     {
       "page": "/starter-kit/integration/",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4"
       ],
       "lastUpdated": "5/19/2026"
@@ -1217,6 +1277,7 @@
     {
       "page": "/starter-kit/integration/create-integration",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/17369548?v=4",
@@ -1241,9 +1302,10 @@
     {
       "page": "/starter-kit/integration/developer-tools",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4"
       ],
-      "lastUpdated": "1/7/2025"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/starter-kit/integration/events",
@@ -1283,6 +1345,7 @@
     {
       "page": "/starter-kit/integration/receive-data",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4"
       ],
       "lastUpdated": "5/19/2026"
@@ -1311,9 +1374,10 @@
     {
       "page": "/starter-kit/integration/structure",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/starter-kit/integration/use-cases",
@@ -1341,6 +1405,7 @@
     {
       "page": "/webhooks/api",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/18550571?v=4",
         "https://avatars.githubusercontent.com/u/47368809?v=4",
@@ -1360,6 +1425,7 @@
     {
       "page": "/webhooks/conditional-webhooks",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/17369548?v=4",
         "https://avatars.githubusercontent.com/u/18550571?v=4"
@@ -1369,6 +1435,7 @@
     {
       "page": "/webhooks/create-webhooks",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/47368809?v=4",
         "https://avatars.githubusercontent.com/u/18550571?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4"
@@ -1378,6 +1445,7 @@
     {
       "page": "/webhooks/hooks",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/18550571?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/47368809?v=4"
@@ -1387,11 +1455,12 @@
     {
       "page": "/webhooks/installation",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/211294?v=4",
         "https://avatars.githubusercontent.com/u/18550571?v=4"
       ],
-      "lastUpdated": "5/27/2025"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/webhooks/release-notes",
@@ -1406,6 +1475,7 @@
     {
       "page": "/webhooks/responses",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/18550571?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4"
       ],
@@ -1414,10 +1484,11 @@
     {
       "page": "/webhooks/signature-verification",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/18550571?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/webhooks/testing",
@@ -1432,6 +1503,7 @@
     {
       "page": "/webhooks/tutorial/",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4"
       ],
       "lastUpdated": "5/19/2026"
@@ -1669,11 +1741,12 @@
     {
       "page": "/webhooks/xml-schema",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/18550571?v=4",
         "https://avatars.githubusercontent.com/u/47368809?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "5/19/2026"
     }
   ],
   ":type": "sheet"

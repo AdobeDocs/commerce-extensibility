@@ -1,5 +1,5 @@
 ---
-title: Release notes
+title: Adobe Commerce App Management Release Notes
 description: App Management release notes and changelog
 keywords:
   - App Builder
@@ -7,7 +7,7 @@ keywords:
   - App Management
 ---
 
-# Release notes
+# App Management Release Notes
 
 Check GitHub releases for the latest updates about the main libraries used by App Management.
 

@@ -4,6 +4,6 @@ Adobe Commerce as a Cloud Service is preconfigured with all the required modules
 
 <Edition slots="text" backgroundcolor="blue" />
 
-PaaS Only
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 Before installing Commerce modules, ensure that you have the required credentials in `auth.json` with [access to the Adobe Commerce repository](https://experienceleague.adobe.com/en/docs/commerce-operations/installation-guide/prerequisites/authentication-keys).

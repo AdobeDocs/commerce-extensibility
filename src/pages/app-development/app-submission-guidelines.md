@@ -158,7 +158,7 @@ annotations:
 
 - Commerce compatibility
   - **Multi-flavor support**: Ensure compatibility between Commerce flavors (PaaS and SaaS):
-    - \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: rgb(0, 128, 0); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;" \>SaaS Only\</div\>\</a\> Use [IMS](/starter-kit/checkout/connect.md#adobe-identity-management-service-ims) for authentication instead of [Commerce integrations (OAuth1)](/starter-kit/checkout/connect.md#create-a-commerce-integration).
+    - \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions"\>\<span style="background-color: rgb(0, 128, 0); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;"\>SaaS Only\</span\>\</a\> Use [IMS](/starter-kit/checkout/connect.md#adobe-identity-management-service-ims) for authentication instead of [Commerce integrations (OAuth1)](/starter-kit/checkout/connect.md#create-a-commerce-integration).
   - For detailed guidelines on supporting both SaaS and PaaS, see [Extension Compatibility](extension-compatibility.md).
 
 - Quality assurance

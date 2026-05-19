@@ -1,10 +1,8 @@
 - pathPrefix:
     - /commerce/extensibility/
 
-- home:
-    - [Commerce](/commerce/docs.md)
-
 - pages:
+    - [Commerce](https://developer.adobe.com/commerce/docs)
     - [Extensibility](/index.md)
     - [Developer agent](/developer-agent/index.md)
     - [App Development](/app-development/index.md)

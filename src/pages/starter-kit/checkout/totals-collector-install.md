@@ -20,15 +20,7 @@ For more ideas on how you can use the totals collector module, refer to [totals 
 
 ## Installation
 
-<InlineAlert variant="info" slots="text"/>
-
-Adobe Commerce as a Cloud Service is preconfigured with all the required modules for the checkout starter kit. Cloud Service users can proceed by [configuring an App Builder project](./getting-started.md#initial-configuration) or [configuring Commerce](./configure.md).
-
-<Edition slots="text" backgroundcolor="blue" />
-
-[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
-
-Before installing Commerce modules, ensure that you have the required credentials in `auth.json` with [access to the Adobe Commerce repository](https://experienceleague.adobe.com/en/docs/commerce-operations/installation-guide/prerequisites/authentication-keys).
+<Fragment src="/_includes/checkout-version.md" />
 
 To enable out-of-process discount totals collection (from an external service) in Adobe Commerce, install the `magento/module-out-of-process-totals-collector` module using the following command:
 
@@ -38,9 +30,7 @@ composer require magento/module-out-of-process-totals-collector --with-dependenc
 
 ## Configuration
 
-<InlineAlert variant="info" slots="text"/>
-
-This step requires the [Adobe Commerce HTTP Client](./connect.md#connect-to-adobe-commerce) to authenticate the Commerce instance.
+<Fragment src="/_includes/checkout-configuration.md" />
 
 After installation, register a webhook so that Adobe Commerce can call your App Builder application when quote totals are collected. The webhook runs after the core discount totals collector; your endpoint returns a JSON Patch response that is applied to the quote totals and items.
 

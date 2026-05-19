@@ -91,21 +91,7 @@ Some requirements will differ based on whether you indicated the app was non-dow
 
   - **Webhook protection**: For webhooks, actions need to be protected by [signature verification](../webhooks/signature-verification.md) or by enabling the use of IMS authentication in your configuration file.
 
-    #### Signature verification
-
-      ```yaml
-      inputs:
-          COMMERCE_WEBHOOKS_PUBLIC_KEY: $COMMERCE_WEBHOOKS_PUBLIC_KEY
-      annotations:
-          raw-http: true
-      ```
-
-      #### IMS authentication
-
-      ```yaml
-      annotations:
-        require-adobe-auth: true
-      ```
+<Fragment src="/_includes/webhook-auth.md" />
 
 - Credential management
   - **Hardcoded secrets**: No hardcoded secrets (account IDs or tokens) in the code or configuration files.

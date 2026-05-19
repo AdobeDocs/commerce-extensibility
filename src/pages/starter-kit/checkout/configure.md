@@ -160,9 +160,7 @@ aio event provider delete <provider-id>
 
 ### configure-commerce-events
 
-<InlineAlert variant="info" slots="text"/>
-
-This step requires the [Adobe Commerce HTTP Client](./connect.md#connect-to-adobe-commerce) to authenticate the Commerce instance.
+<Fragment src="/_includes/checkout-configuration.md" />
 
 The [`configure-commerce-events`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/configure-commerce-events.js) script configures the Commerce event provider for your Commerce instance.
 

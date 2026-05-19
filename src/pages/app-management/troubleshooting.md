@@ -35,6 +35,7 @@ For the full association and installation workflow, see [Manage your app](https:
 App Management is **not supported** for local Adobe Commerce development instances. Association, installation, and workflows in the Admin require an Adobe Commerce deployment that App Management can integrate with.
 
 If you are developing against a local stack, plan to validate App Management behavior in a non-local environment.
+
 ## Commerce instance behind HTTP authentication
 
 App Management is **not supported** when Adobe Commerce is reachable only behind HTTP authentication (for example, HTTP Basic Auth in front of the Admin or APIs that App Management must call). Traffic from Adobe App Builder runtimes **does not use a fixed set of source IP addresses** that you can publish on an allowlist; Adobe does **not** provide static IPs for proxy or runtime actions for this purpose.

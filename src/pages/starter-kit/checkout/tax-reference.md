@@ -13,8 +13,6 @@ The checkout module provides REST and GraphQL APIs to configure out-of-process t
 
 ## REST
 
-The REST API schema is available [here](/assets/tax.xml).
-
 | **Route URL**                                   | **Method** | **Description**                                    |
 | ----------------------------------------------- | ---------- | -------------------------------------------------- |
 | `/V1/oope_tax_management/tax_integration/:code` | GET        | Retrieve an OOPE tax integration info by its code. |

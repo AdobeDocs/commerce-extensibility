@@ -149,7 +149,7 @@ For massive data flows, you can consider external storage as an option.
 
 ### App Builder
 
-**Recommended method**
+**Recommended method:**
 
 App builder uses an Adobe I/O Runtime service to store and manage files.
 
@@ -181,7 +181,7 @@ This section compares the search capabilities between Adobe Commerce and App Bui
 
 ### App Builder
 
-**Recommended method**
+**Recommended method:**
 
 Adobe App Builder does not come with a built-in full-text search service. However, developers can integrate external search services or implement custom search functionalities using multiple tools and technologies:
 

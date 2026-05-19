@@ -40,7 +40,7 @@ Commerce models are usually found in `app/code/<Vendor>/<Module>/Model/`. They o
 
 #### App Builder
 
-**Recommended method**
+**Recommended method:**
 
 App Builder replaces the concept of Models with API endpoints and business logic functions that interact with external data sources or Adobe services.
 
@@ -58,7 +58,7 @@ These controllers usually extend from Magento's core controller classes like `\M
 
 #### App Builder
 
-**Recommended method**
+**Recommended method:**
 
 App Builder uses actions to handle HTTP requests and execute the necessary business logic. They are similar to controllers in traditional Model-View-Controller (MVC) frameworks.
 
@@ -78,7 +78,7 @@ Commerce observers listen to dispatch events during various points of the applic
 
 #### App Builder
 
-**Recommended method**
+**Recommended method:**
 
 In App Builder, you can create plugins and observers using [Adobe I/O Events](https://developer.adobe.com/events/docs/). Adobe I/O Events allows Commerce to publish events that services built on App Builder can consume. This enables you to extend the capabilities of Commerce by triggering actions in your custom App Builder application.
 
@@ -96,7 +96,7 @@ In Commerce, you define Cron jobs in the module's `crontab.xml` file, but the ac
 
 #### App Builder
 
-**Recommended method**
+**Recommended method:**
 
 Alarms in Adobe I/O Runtime are trigger provided by the OpenWhisk ecosystem. They allow you to schedule actions to run at specified intervals, similar to how [cron jobs](https://developer.adobe.com/app-builder/docs/resources/cron-jobs/) work in a traditional server environment.
 
@@ -116,7 +116,7 @@ Message producers send messages to the queue, and message consumers process thos
 
 #### App Builder
 
-**Recommended method**
+**Recommended method:**
 
 In App Builder, [Adobe I/O Events](https://developer.adobe.com/events/docs/) provides a substitute to message queues. Adobe I/O Events allows you to publish events and consume them asynchronously using Webhooks or the Journaling API. This mechanism helps manage background processes, decouple tasks, and handle asynchronous communication between different parts of the application.
 
@@ -136,7 +136,7 @@ Commerce delivers extensive capabilities for developing custom Admin interfaces.
 
 #### App Builder
 
-**Recommended method**
+**Recommended method:**
 
 App Builder brings a modern approach to creating and integrating admin interfaces by leveraging the [Admin UI SDK](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/). This SDK allows developers to integrate Single Page Applications (SPAs) directly into the Commerce Admin interface, providing a seamless experience.
 
@@ -154,7 +154,7 @@ Commerce uses Composer, a dependency management tool for PHP, to manage the inst
 
 #### App Builder
 
-**Recommended method**
+**Recommended method:**
 
 App Builder leverages Node Package Manager (NPM) to manage dependencies for its serverless functions and other JavaScript-based components. NPM is the default package manager for Node.js and is essential for managing the vast ecosystem of JavaScript libraries and tools. It allows developers to install, update, and manage third-party modules, facilitating the rapid development and deployment of serverless applications within App Builder.
 

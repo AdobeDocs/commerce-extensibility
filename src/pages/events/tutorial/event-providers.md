@@ -72,7 +72,7 @@ The event provider acts as a bridge between Adobe Commerce and Adobe's event-dri
 | `label`           | A user-friendly display name for the provider. |
 | `provider_metadata` | A technical identifier used to map the event provider to Adobe Commerce. |
 
-**Sample payload**
+**Sample payload:**
 
 ```json
 {
@@ -124,7 +124,7 @@ Event metadata defines the individual events that your event provider can emit. 
 | `provider_metadata`| A technical identifier linking the event to Adobe Commerce. |
 | `event_code`       | The unique code for this event, used to identify it in Adobe I/O. |
 
-**Sample payload**
+**Sample payload:**
 
 ```json
 {
@@ -136,7 +136,8 @@ Event metadata defines the individual events that your event provider can emit. 
 }
 ```
 
-**Expected response**
+**Expected response:**
+
 Once all required fields are completed, click the **Send** button. The  response will be similar to the following:
 
 ```json

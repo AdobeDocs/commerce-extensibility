@@ -27,19 +27,19 @@ For more information on enabling IMS authentication for your actions, see [IMS A
 
 Verify that your Commerce APIs are compatible with both environments by checking the following specifications.
 
-**GraphQL API**
+**GraphQL API:**
 
 - \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions"\>\<span style="background-color: rgb(4, 105, 227); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;"\>PaaS Only\</span\>\</a\> For PaaS, there are separate core and catalog services GraphQL endpoints.
 - \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions"\>\<span style="background-color: rgb(0, 128, 0); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;"\>SaaS Only\</span\>\</a\> For SaaS, a single GraphQL URL is used, see the [GraphQL API specification](https://developer.adobe.com/commerce/services/reference/cloud/graphql/).
 
-**REST API**
+**REST API:**
 
 - \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions"\>\<span style="background-color: rgb(4, 105, 227); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;"\>PaaS Only\</span\>\</a\> [PaaS REST API specification](https://developer.adobe.com/commerce/webapi/rest/quick-reference/) - The **I/O Management API** is required to connect a PaaS instance with your app builder application.
 - \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions"\>\<span style="background-color: rgb(0, 128, 0); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;"\>SaaS Only\</span\>\</a\> [SaaS REST API specification](https://developer.adobe.com/commerce/services/reference/cloud/rest/) - The **Adobe Commerce as a Cloud Service API** is required to connect a SaaS instance with your app builder application.
 
 For more information on REST API access, refer to the [Developer Console configuration](../starter-kit/integration/create-integration.md#onboarding) in the integration starter kit, or the [CLI configuration](../starter-kit/checkout/getting-started.md#initial-configuration) in the checkout starter kit.
 
-**Adapt REST endpoint for older starter kit versions**
+**Adapt REST endpoint for older starter kit versions:**
 
 For older versions of the starter kit, check if your code is adapted as follows:
 

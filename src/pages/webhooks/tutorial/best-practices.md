@@ -31,7 +31,7 @@ Retrieve the client secret, client ID, and organization ID from the Adobe Develo
 
 <Edition slots="text" backgroundcolor="blue" />
 
-PaaS Only
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 Add `developerConsoleOauth` to your hook configuration in the `webhooks.xml` file.
 
@@ -68,7 +68,7 @@ Instead of hardcoding the OAuth credentials in the `webhooks.xml` file, you can 
 
 <Edition slots="text" backgroundcolor="green" />
 
-SaaS Only
+[SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 1. Log in to the Commerce Admin and navigate to **System** > **Webhook Subscriptions**. Select the webhook you want to configure.
 

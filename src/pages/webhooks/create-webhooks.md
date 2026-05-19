@@ -86,13 +86,13 @@ Unless you want to send the entire default payload, unedited, you must define at
 
 <Edition slots="text" backgroundcolor="blue" />
 
-PaaS Only
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 In PaaS environments, you can define OAuth credentials in the `developerConsoleOauth` element of a `webhooks.xml` file. See [Best practices for webhook development](tutorial/best-practices.md#configure-oauth-in-paas) for details.
 
 <Edition slots="text" backgroundcolor="green" />
 
-SaaS Only
+[SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 The **Developer Console OAuth** configuration panel provides the ability to configure the details of an OAuth credential from the Adobe Developer Console. If configured and enabled, an IMS token will be generated using the credential details and passed in an Authorization header with the hook request.
 
@@ -142,7 +142,7 @@ Secrets and other sensitive data should not be stored in the `webhooks.xml` file
 
 <Edition slots="text" backgroundcolor="blue" />
 
-PaaS Only
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 Instead of storing secrets that expire in environment variables, you can create a dynamic header resolver to manage these values. To create your own resolver, define a new class that implements `Magento\AdobeCommerceWebhooks\Model\HeaderResolverInterface`, as shown below.
 

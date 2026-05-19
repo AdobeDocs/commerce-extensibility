@@ -178,6 +178,6 @@ Active: Yes
 
 <Edition slots="text" backgroundcolor="blue" />
 
-PaaS Only
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 You can use the `bin/magento webhooks:list` command to display the contents of your subscribed webhooks, including rules information.

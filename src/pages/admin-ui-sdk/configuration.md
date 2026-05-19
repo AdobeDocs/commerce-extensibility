@@ -42,7 +42,7 @@ Navigate to **System** > Admin UI SDK > **Admin UI SDK Logs** to check the saved
 
 <Edition slots="text" backgroundcolor="blue" />
 
-PaaS Only
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 <InlineAlert variant="info" slots="text" />
 

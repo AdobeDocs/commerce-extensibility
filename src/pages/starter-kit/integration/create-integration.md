@@ -120,7 +120,7 @@ The integration starter kit is designed to work with all Adobe Commerce versions
 
 <Edition slots="text" backgroundcolor="blue" />
 
-PaaS Only
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 A Commerce integration generates the consumer key, consumer secret, access token, and access token secret that are required to connect to the starter kit. It also identifies the available API resources that are needed for the integration.
 
@@ -156,7 +156,7 @@ Use the following steps to create and activate an integration.
 
 <Edition slots="text" backgroundcolor="green" />
 
-SaaS Only
+[SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 To configure authentication for Adobe Commerce as a Cloud Service (SaaS), you need to add OAuth server-to-server credentials to your environment.
 

@@ -13,7 +13,7 @@ The Commerce application provides a way to test webhooks before enabling them in
 
 <Edition slots="text" backgroundcolor="green" />
 
-SaaS Only
+[SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 Click **Select** > **Test Webhook** in a hook's **Action** column to open a page for testing execution of all hooks configured for the same webhook method and type.
 
@@ -25,7 +25,7 @@ In the **Request payload** text area, input a webhook request payload in JSON fo
 
 <Edition slots="text" backgroundcolor="blue" />
 
-PaaS Only
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 Use the [`webhooks:dev:run <webhook-name> <webhook-arguments-payload>`](commands.md#emulate-webhook-execution) command in development mode to test your webhooks locally. It emulates the execution of your registered webhook, which contains a custom payload, without requiring changes to the Commerce application. Run this command after setting the initial webhook payload in a `webhooks.xml` file. Then run the command again any time you make subsequent modifications to the payload until you can confirm that the payload works as expected.
 
@@ -75,7 +75,7 @@ bin/magento cache:clean webhooks_response
 
 <Edition slots="text" backgroundcolor="blue" />
 
-PaaS Only
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 <InlineAlert variant="info" slots="text1" />
 

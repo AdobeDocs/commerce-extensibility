@@ -28,24 +28,9 @@ Initiate robust shopper synchronization with your backend systems.
 
 Enrich the shopper experience with backend integrations and realize the full power of Adobe Commerce.
 
-\<!--
-<DiscoverBlock slots="link, text"/>
-
-[Collaborate & launch](best-practices.md)
-
-Learn how scaffolding will empower your teams from the first line of code to production.
---\>
-
 <DiscoverBlock slots="link, text"/>
 
 [Existing data flows](data-flows.md)
 
 Integrate quickly and easily using the starter kit template, which works with the most common data flows.
 
-\<!--
-<DiscoverBlock slots="link, text"/>
-
-[Need help?](contact-us.md)
-
-For more information on best practices, troubleshooting, or to request support.
---\>

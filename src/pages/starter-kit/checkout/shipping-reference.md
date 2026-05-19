@@ -17,7 +17,7 @@ The App Builder application actions can act as webhook endpoints to communicate 
 
 To configure out-of-process shipping methods, add shipping carriers using the REST API.
 
-The raw Shipping REST schema is available [here](/shipping.xml).
+The raw Shipping REST schema is available [here](/assets/shipping.xml).
 
 | **Route URL**                     | **Method** | **Description**                                          |
 | --------------------------------- | ---------- | -------------------------------------------------------- |
@@ -264,7 +264,7 @@ curl --request DELETE \
 
 The GraphQL schema allows providing additional data for out-of-process shipping methods. The `additional_data` is added to `selected_shipping_method` and `available_shipping_methods` in cart queries.
 
-The raw Shipping GraphQL schema is available [here](/shipping.graphqls).
+The raw Shipping GraphQL schema is available [here](/assets/shipping.graphqls).
 
 The `additional_data` is a list of key-value pairs that can store additional information about the shipping method.
 

@@ -15,7 +15,7 @@ The checkout module provides REST and GraphQL APIs to configure out-of-process p
 
 For more information on the available endpoints, refer to [payment API usage](payment-usage.md#create-a-new-payment-method).
 
-The raw Payment REST API schema is available [here](/payment.xml).
+The raw Payment REST API schema is available [here](/assets/payment.xml).
 
 | **Route URL**                   | **Method** | **Description**                                        |
 | ------------------------------- | ---------- | ------------------------------------------------------ |
@@ -188,7 +188,7 @@ curl --request GET \
 The Payment module's GraphQL schema for this is defined in `etc/schema.graphqls`.
 You can access details about out-of-process payment types by specifying the `oope_payment_method_config` field within the `available_payment_methods` or `selected_payment_method` field of the cart API.
 
-The raw Payment GraphQL schema is available [here](/payment.graphqls).
+The raw Payment GraphQL schema is available [here](/assets/payment.graphqls).
 
 For more information on extending the out-of-process GraphQL schema, refer to the [EDS Integration Guide](eds.md).
 

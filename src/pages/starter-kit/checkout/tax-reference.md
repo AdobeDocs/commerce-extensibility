@@ -13,7 +13,7 @@ The checkout module provides REST and GraphQL APIs to configure out-of-process t
 
 ## REST
 
-The REST API schema is available [here](/tax.xml).
+The REST API schema is available [here](/assets/tax.xml).
 
 | **Route URL**                                   | **Method** | **Description**                                    |
 | ----------------------------------------------- | ---------- | -------------------------------------------------- |

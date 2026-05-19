@@ -36,11 +36,11 @@ Each event provider can link to multiple event subscriptions (event metadata). T
 
 * Click the **Execute Synchronization** button on the **General configuration** section of the Adobe I/O Events page in the Admin.
 
-* &#8203;<Edition name="paas" /> Subscribe with the `events:subscribe` command.
+* \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: blue; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>PaaS Only\</div\>\</a\> Subscribe with the `events:subscribe` command.
 
-* &#8203;<Edition name="paas" /> Manually synchronize all subscriptions with the `events:metadata:populate` command.
+* \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: blue; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>PaaS Only\</div\>\</a\> Manually synchronize all subscriptions with the `events:metadata:populate` command.
 
-* &#8203;<Edition name="paas" /> Run the `setup:upgrade` command also synchronizes events subscriptions.
+* \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: blue; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>PaaS Only\</div\>\</a\> Run the `setup:upgrade` command also synchronizes events subscriptions.
 
 You can find the list of event providers created in your organization, in the App Builder UI when [creating an Event Registration in App Builder](#subscribe-and-register-events).
 
@@ -54,7 +54,9 @@ You can create an event provider using either the [Command line](configure-comme
 
 ### Command line
 
-<Edition name="paas" />
+<Edition slots="text" backgroundcolor="blue" />
+
+PaaS Only
 
 1. Run the following command to create an event provider:
 
@@ -125,7 +127,7 @@ You must define which Commerce events to subscribe to, then register them in the
 
 Commerce provides two sources for events: observers and plugins. You must specify the source as part of the event name. See [Subscribe to a Commerce event](commands.md) for details about the syntax of the `events:subscribe` command.
 
-1. &#8203;<Edition name="paas" />  If you don't have a module ready for integration with Adobe I/O Events, or you don't know exactly which events to register at this point, use the `events:subscribe` command to subscribe to some sample events, as shown in the following example commands:
+1. \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: blue; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>PaaS Only\</div\>\</a\>  If you don't have a module ready for integration with Adobe I/O Events, or you don't know exactly which events to register at this point, use the `events:subscribe` command to subscribe to some sample events, as shown in the following example commands:
 
    ```bash
    bin/magento events:subscribe observer.catalog_product_save_after --fields=sku --fields=stock_data.qty
@@ -305,7 +307,9 @@ If you want to add `Event Registrations` with `Runtime Actions` as event consume
 
 ## Check cron and message queue configuration
 
-<Edition name="paas" />
+<Edition slots="text" backgroundcolor="blue" />
+
+PaaS Only
 
 Cron and message queues must be enabled. Commerce uses the `event_data_batch_send` cron job to transmit batches of event messages and the `clean_event_data` cron job to remove these messages from the database. These cron jobs are part of the `default` group.
 

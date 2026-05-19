@@ -13,9 +13,9 @@ A merchant uses a third-party extension to create and manage discount codes. Whe
 
 ## Webhook name
 
-&#8203;<Edition name="paas" /> `plugin.magento.quote.api.guest_coupon_management.set`
+\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: blue; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>PaaS Only\</div\>\</a\> `plugin.magento.quote.api.guest_coupon_management.set`
 
-&#8203;<Edition name="saas" /> `plugin.quote.api.guest_coupon_management.set`
+\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: green; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>SaaS Only\</div\>\</a\> `plugin.quote.api.guest_coupon_management.set`
 
 ## Payloads
 

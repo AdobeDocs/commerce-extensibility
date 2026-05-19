@@ -495,7 +495,9 @@ curl -H "Authorization:Bearer <AUTH_TOKEN>" \
 
 ## Get supported events for SaaS
 
-<Edition name="saas" />
+<Edition slots="text" backgroundcolor="green" />
+
+SaaS Only
 
 The `GET /V1/eventing/supportedList` endpoint returns the events supported in Adobe Commerce as a Cloud Service (SaaS). The response body is similar to the following:
 

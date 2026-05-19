@@ -11,9 +11,9 @@ As a shopper places an order, a third-party system is used to confirm that the i
 
 ## Webhook name
 
-&#8203;<Edition name="paas" /> `plugin.magento.sales.api.order_management.place`
+\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: blue; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>PaaS Only\</div\>\</a\> `plugin.magento.sales.api.order_management.place`
 
-&#8203;<Edition name="saas" /> `plugin.sales.api.order_management.place`
+\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: green; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>SaaS Only\</div\>\</a\> `plugin.sales.api.order_management.place`
 
 <InlineAlert variant="info" slots="text" />
 

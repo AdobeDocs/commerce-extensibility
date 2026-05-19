@@ -40,7 +40,9 @@ Navigate to **System** > Admin UI SDK > **Admin UI SDK Logs** to check the saved
 
 ## Local testing
 
-<Edition name="paas" />
+<Edition slots="text" backgroundcolor="blue" />
+
+PaaS Only
 
 <InlineAlert variant="info" slots="text" />
 

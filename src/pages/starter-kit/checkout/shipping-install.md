@@ -24,7 +24,9 @@ For more ideas on how you can use the shipping module, refer to [shipping use ca
 
 Adobe Commerce as a Cloud Service is preconfigured with all the required modules for the checkout starter kit. Cloud Service users can proceed by [configuring an App Builder project](./getting-started.md#initial-configuration) or [configuring Commerce](./configure.md).
 
-<Edition name="paas" />
+<Edition slots="text" backgroundcolor="blue" />
+
+PaaS Only
 
 Before installing Commerce modules, ensure that you have the required credentials in `auth.json` with [access to the Adobe Commerce repository](https://experienceleague.adobe.com/en/docs/commerce-operations/installation-guide/prerequisites/authentication-keys).
 

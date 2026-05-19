@@ -27,9 +27,9 @@ With this knowledge, you can create a webhook, which defines the following sets 
 
 * Optional rules that trigger only when certain conditions are met, such as when a string matches a specific value.
 
-&#8203;<Edition name="saas" /> In Adobe Commerce as a Cloud Service, you can create a webhook subscription in the Admin or by using a REST endpoint. (See [Subscribe a webhook](api.md#subscribe-a-webhook) for details on using REST.) Adobe Commerce as a Cloud Service does not support all possible webhook methods. Open a support ticket to request additional webhook methods.
+\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: green; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>SaaS Only\</div\>\</a\> In Adobe Commerce as a Cloud Service, you can create a webhook subscription in the Admin or by using a REST endpoint. (See [Subscribe a webhook](api.md#subscribe-a-webhook) for details on using REST.) Adobe Commerce as a Cloud Service does not support all possible webhook methods. Open a support ticket to request additional webhook methods.
 
-&#8203;<Edition name="paas" /> In Platform as a Service (PaaS) and on-premises environments, you must create an `app/etc/webhooks.xml` file or create a custom module that includes a `<custom-module-root>/etc/webhooks.xml` file.
+\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: blue; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>PaaS Only\</div\>\</a\> In Platform as a Service (PaaS) and on-premises environments, you must create an `app/etc/webhooks.xml` file or create a custom module that includes a `<custom-module-root>/etc/webhooks.xml` file.
 
 ## Define webhook properties
 
@@ -84,11 +84,15 @@ Unless you want to send the entire default payload, unedited, you must define at
 
 ### Configure developer console OAuth
 
-<Edition name="paas" />
+<Edition slots="text" backgroundcolor="blue" />
+
+PaaS Only
 
 In PaaS environments, you can define OAuth credentials in the `developerConsoleOauth` element of a `webhooks.xml` file. See [Best practices for webhook development](tutorial/best-practices.md#configure-oauth-in-paas) for details.
 
-<Edition name="saas" />
+<Edition slots="text" backgroundcolor="green" />
+
+SaaS Only
 
 The **Developer Console OAuth** configuration panel provides the ability to configure the details of an OAuth credential from the Adobe Developer Console. If configured and enabled, an IMS token will be generated using the credential details and passed in an Authorization header with the hook request.
 
@@ -136,7 +140,9 @@ Secrets and other sensitive data should not be stored in the `webhooks.xml` file
 
 #### Dynamic header resolvers
 
-<Edition name="paas" />
+<Edition slots="text" backgroundcolor="blue" />
+
+PaaS Only
 
 Instead of storing secrets that expire in environment variables, you can create a dynamic header resolver to manage these values. To create your own resolver, define a new class that implements `Magento\AdobeCommerceWebhooks\Model\HeaderResolverInterface`, as shown below.
 

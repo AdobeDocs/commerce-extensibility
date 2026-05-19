@@ -172,7 +172,9 @@ The unsubscribe endpoint allows you to delete an existing webhook subscription. 
 
 ## Get supported webhooks for SaaS
 
-<Edition name="saas" />
+<Edition slots="text" backgroundcolor="green" />
+
+SaaS Only
 
 The `GET /V1/webhooks/supportedList` endpoint returns the events supported in Adobe Commerce as a Cloud Service (SaaS). The response body is similar to the following:
 

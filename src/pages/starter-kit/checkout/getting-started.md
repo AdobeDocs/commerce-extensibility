@@ -74,7 +74,7 @@ Use the following steps to configure your local environment:
    - I/O Management API
    - I/O Events
    - Adobe I/O Events for Adobe Commerce
-   - &#8203;<Edition name="saas" /> Adobe Commerce as a Cloud Service. When asked to select a product profile, choose **Default - Cloud Manager**. If this option is not displayed, make sure you have [developer permissions](https://experienceleague.adobe.com/en/docs/commerce/cloud-service/user-management#add-users-developers-and-product-profile-admins) to **Adobe Commerce as a Cloud Service - Backend - Commerce Cloud Manager**.
+   - \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: green; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>SaaS Only\</div\>\</a\> Adobe Commerce as a Cloud Service. When asked to select a product profile, choose **Default - Cloud Manager**. If this option is not displayed, make sure you have [developer permissions](https://experienceleague.adobe.com/en/docs/commerce/cloud-service/user-management#add-users-developers-and-product-profile-admins) to **Adobe Commerce as a Cloud Service - Backend - Commerce Cloud Manager**.
 
    Execute the following command to add the services by selecting them from the list:
 
@@ -85,13 +85,13 @@ Use the following steps to configure your local environment:
    The variable `AIO_ims_contexts_{credential}_scopes` will be automatically populated but may need to be updated with the scopes required for your project.
    The scopes depend on the services you selected in the previous step. If you included all the specified services, the set of scopes should look like this:
 
-   - &#8203;<Edition name="paas" />
+   - \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: blue; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>PaaS Only\</div\>\</a\>
 
       ```env
       ["AdobeID","openid","read_organizations","additional_info.projectedProductContext","additional_info.roles","adobeio_api","read_client_secret","manage_client_secrets","event_receiver_api"]
       ```
 
-   - &#8203;<Edition name="saas" />
+   - \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: green; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>SaaS Only\</div\>\</a\>
 
       ```env
       ["AdobeID","openid","read_organizations","additional_info.projectedProductContext","additional_info.roles","adobeio_api","read_client_secret","manage_client_secrets","event_receiver_api","profile","email","org.read","commerce.accs"]
@@ -111,7 +111,9 @@ After completing the previous steps you can:
 
 Adobe Commerce as a Cloud Service is preconfigured with all the required modules for the checkout starter kit. Cloud Service users can proceed by [configuring an App Builder project](./getting-started.md#initial-configuration) or [configuring Commerce](./configure.md).
 
-<Edition name="paas" />
+<Edition slots="text" backgroundcolor="blue" />
+
+PaaS Only
 
 Before installing Commerce modules, ensure that you have the required credentials in `auth.json` with [access to the Adobe Commerce repository](https://experienceleague.adobe.com/en/docs/commerce-operations/installation-guide/prerequisites/authentication-keys).
 

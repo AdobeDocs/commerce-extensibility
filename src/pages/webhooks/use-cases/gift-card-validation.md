@@ -11,9 +11,9 @@ In this example, Commerce calls a third-party gift card provider to validate the
 
 ## Webhook name
 
-&#8203;<Edition name="paas" /> `plugin.magento.gift_card_account.api.gift_card_account_management.save_by_quote_id`
+\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: blue; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>PaaS Only\</div\>\</a\> `plugin.magento.gift_card_account.api.gift_card_account_management.save_by_quote_id`
 
-&#8203;<Edition name="saas" /> `plugin.gift_card_account.api.gift_card_account_management.save_by_quote_id`
+\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: green; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>SaaS Only\</div\>\</a\> `plugin.gift_card_account.api.gift_card_account_management.save_by_quote_id`
 
 ## Payloads
 

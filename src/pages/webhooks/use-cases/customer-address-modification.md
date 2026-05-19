@@ -11,9 +11,9 @@ When a customer signs in and adds a new address, the address must be converted t
 
 ## Webhook name
 
-&#8203;<Edition name="paas" /> `plugin.magento.customer.api.address_repository.save`
+\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: blue; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>PaaS Only\</div\>\</a\> `plugin.magento.customer.api.address_repository.save`
 
-&#8203;<Edition name="saas" /> `plugin.customer.api.address_repository.save`
+\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: green; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>SaaS Only\</div\>\</a\> `plugin.customer.api.address_repository.save`
 
 ## Payloads
 

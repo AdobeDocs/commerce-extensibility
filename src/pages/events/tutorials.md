@@ -12,7 +12,7 @@ These tutorials walk you through building event-driven integrations between Adob
 
 ## Use events and App Builder to extend Adobe Commerce
 
-&#8203;<Edition name="saas" />
+\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: green; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>SaaS Only\</div\>\</a\>
 
 This tutorial covers the most direct event delivery model: a Commerce event triggers an Adobe I/O Events registration that immediately invokes an App Builder runtime action. A product update use case illustrates each step, from configuring an event provider and event metadata to writing and deploying the runtime action code.
 

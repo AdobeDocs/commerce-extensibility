@@ -114,9 +114,9 @@ To download a `.json` file containing your workspace configuration:
 
 The integration starter kit is designed to work with all Adobe Commerce versions, but only one at a time. This means that you can use either Adobe Commerce on Cloud / on Premises (PaaS) or Adobe Commerce as a Cloud Service (SaaS). By default, the starter kit will check for PaaS authentication first using **OAuth1**, before it checks for SaaS authentication using **IMS**.
 
-&#8203;<Edition name="paas" /> For PaaS configurations, refer to [Create an integration in Adobe Commerce (PaaS only)](#create-an-integration-in-adobe-commerce-paas-only) and make sure your environment variables `COMMERCE_XXXX` are set correctly in the `.env` file.
+\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: blue; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>PaaS Only\</div\>\</a\> For PaaS configurations, refer to [Create an integration in Adobe Commerce (PaaS only)](#create-an-integration-in-adobe-commerce-paas-only) and make sure your environment variables `COMMERCE_XXXX` are set correctly in the `.env` file.
 
-&#8203;<Edition name="saas" /> For SaaS configurations, refer to [Create an integration in Adobe Commerce as a Cloud Service](#create-an-integration-in-adobe-commerce-as-a-cloud-service) and make sure the environment variables file does not contain `COMMERCE_XXXX` variables.
+\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: green; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>SaaS Only\</div\>\</a\> For SaaS configurations, refer to [Create an integration in Adobe Commerce as a Cloud Service](#create-an-integration-in-adobe-commerce-as-a-cloud-service) and make sure the environment variables file does not contain `COMMERCE_XXXX` variables.
 
 <InlineAlert variant="info" slots="text"/>
 
@@ -124,7 +124,9 @@ The integration starter kit is designed to work with all Adobe Commerce versions
 
 #### Create an integration in Adobe Commerce (PaaS only)
 
-<Edition name="paas" />
+<Edition slots="text" backgroundcolor="blue" />
+
+PaaS Only
 
 A Commerce integration generates the consumer key, consumer secret, access token, and access token secret that are required to connect to the starter kit. It also identifies the available API resources that are needed for the integration.
 
@@ -158,7 +160,9 @@ Use the following steps to create and activate an integration.
 
 #### Create an integration in Adobe Commerce as a Cloud Service
 
-<Edition name="saas" />
+<Edition slots="text" backgroundcolor="green" />
+
+SaaS Only
 
 To configure authentication for Adobe Commerce as a Cloud Service (SaaS), you need to add OAuth server-to-server credentials to your environment.
 
@@ -235,12 +239,12 @@ Use the following steps to download and configure the Adobe Commerce integration
 
 When configuring the `COMMERCE_BASE_URL` environment variable, the format differs between [PaaS and SaaS](#paas-or-saas):
 
-- &#8203;<Edition name="paas" />For PaaS (On-Premise/Cloud):
+- \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: blue; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>PaaS Only\</div\>\</a\>For PaaS (On-Premise/Cloud):
 
    - `COMMERCE_BASE_URL` must include your base site URL + `/rest/`
    - Example: `https://<environment-name>.us-4.magentosite.cloud/rest/`
 
-- &#8203;<Edition name="saas" />For SaaS (Adobe Commerce as a Cloud Service):
+- \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: green; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>SaaS Only\</div\>\</a\>For SaaS (Adobe Commerce as a Cloud Service):
 
    - `COMMERCE_BASE_URL` must be the REST API endpoint provided by Adobe Commerce
    - Example: `https://na1-sandbox.api.commerce.adobe.com/<tenant-id>/`

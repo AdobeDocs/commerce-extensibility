@@ -29,7 +29,9 @@ Retrieve the client secret, client ID, and organization ID from the Adobe Develo
 
 #### Configure OAuth in PaaS
 
-<Edition name="paas" />
+<Edition slots="text" backgroundcolor="blue" />
+
+PaaS Only
 
 Add `developerConsoleOauth` to your hook configuration in the `webhooks.xml` file.
 
@@ -64,7 +66,9 @@ Instead of hardcoding the OAuth credentials in the `webhooks.xml` file, you can 
 
 #### Configure OAuth in ACCS
 
-<Edition name="saas" />
+<Edition slots="text" backgroundcolor="green" />
+
+SaaS Only
 
 1. Log in to the Commerce Admin and navigate to **System** > **Webhook Subscriptions**. Select the webhook you want to configure.
 

@@ -47,7 +47,7 @@ To get started with Adobe I/O Events, you must:
    - I/O Management API
    - I/O Events
    - Adobe I/O Events for Adobe Commerce
-   - <Edition name="saas" /> Adobe Commerce as a Cloud Service
+   - \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: green; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>SaaS Only\</div\>\</a\> Adobe Commerce as a Cloud Service
 
    Then click **Next**.
 

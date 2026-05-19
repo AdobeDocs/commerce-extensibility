@@ -34,75 +34,75 @@ If you want to retrieve OOPE payment method information from the Commerce instan
 
 1. In `build.mjs` of the boilerplate, add the following code to extend the OOPE GraphQL schema:
 
-  ```javascript
-  overrideGQLOperations([
-    {
-      npm: '@dropins/storefront-checkout',
-      operations: [
-        `
-    fragment CHECKOUT_DATA_FRAGMENT on Cart {
-      available_payment_methods {
-        code
-        title
-        oope_payment_method_config {
-          backend_integration_url
-          custom_config {
-            ... on CustomConfigKeyValue {
-                key
-                value
-            }
-          }
-        }
-      }
-      selected_payment_method {
-        code
-        title
-        oope_payment_method_config {
-          backend_integration_url
-          custom_config {
-            ... on CustomConfigKeyValue {
-                key
-                value
-            }
-          }
-        }
-      }
-    }
-  `,
-      ],
-    },
-  ]);
-  ```
+   ```javascript
+   overrideGQLOperations([
+     {
+       npm: '@dropins/storefront-checkout',
+       operations: [
+         `
+     fragment CHECKOUT_DATA_FRAGMENT on Cart {
+       available_payment_methods {
+         code
+         title
+         oope_payment_method_config {
+           backend_integration_url
+           custom_config {
+             ... on CustomConfigKeyValue {
+                 key
+                 value
+             }
+           }
+         }
+       }
+       selected_payment_method {
+         code
+         title
+         oope_payment_method_config {
+           backend_integration_url
+           custom_config {
+             ... on CustomConfigKeyValue {
+                 key
+                 value
+             }
+           }
+         }
+       }
+     }
+   `,
+       ],
+     },
+   ]);
+   ```
 
-1. Extend the OOPE GraphQL schema in the checkout drop-in component initializer. It enables the drop-in component to retrieve the OOPE data.
+2. Extend the OOPE GraphQL schema in the checkout drop-in component initializer. It enables the drop-in component to retrieve the OOPE data.
 
-  ```javascript
-  await initializeDropin(async () => {
-    ...
-    return initializers.mountImmediately(initialize, {
-        langDefinitions,
-        models: {
-          CartModel: {
-              transformer: (data) => {
-                return {
-                    availablePaymentMethods: data?.available_payment_methods,
-                    selectedPaymentMethod: data?.selected_payment_method,
-                };
-              },
-          },
-        },
-    });
-  })();
-  ```
+   ```javascript
+   await initializeDropin(async () => {
+     ...
+     return initializers.mountImmediately(initialize, {
+         langDefinitions,
+         models: {
+           CartModel: {
+               transformer: (data) => {
+                 return {
+                     availablePaymentMethods: data?.available_payment_methods,
+                     selectedPaymentMethod: data?.selected_payment_method,
+                 };
+               },
+           },
+         },
+     });
+   })();
+   ```
 
-1. Retrieve the OOPE payment method information from the data coming from the event responses.
+3. Retrieve the OOPE payment method information from the data coming from the event responses.
 
-  ```javascript
-  events.on('checkout/initialized', handleCheckoutInitialized, { eager: true });
-  ```
+   ```javascript
+   events.on('checkout/initialized', handleCheckoutInitialized, { eager: true });
+   ```
 
-1. Retrieve Cart information from the data coming from the event responses.
+4. Retrieve Cart information from the data coming from the event responses.
 
-  ```javascript
-  events.on('cart/data', handleCartData, { eager: true });
-  ```
+   ```javascript
+   events.on('cart/data', handleCartData, { eager: true });
+   ```

@@ -43,33 +43,33 @@ Use the following steps to configure your local environment:
 
 1. Create a folder for your project and navigate to it.
 
-  ```bash
-  mkdir <your-project-name> && cd <your-project-name>
-  ```
+   ```bash
+   mkdir <your-project-name> && cd <your-project-name>
+   ```
 
-1. Execute the following command to create an Adobe Developer Console project in your organization and using the Commerce checkout starter kit as a template:
+2. Execute the following command to create an Adobe Developer Console project in your organization and using the Commerce checkout starter kit as a template:
 
-  ```bash
-  aio app init --repo adobe/commerce-checkout-starter-kit --github-pat $GITHUB_PAT
-  ```
-  
-  Replace `$GITHUB_PAT` with your GitHub personal access token. For more information, refer to [managing your personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens).
+   ```bash
+   aio app init --repo adobe/commerce-checkout-starter-kit --github-pat $GITHUB_PAT
+   ```
 
-1. You can create an app builder project, or select the existing one, while initializing the starter kit. The created project can be found in the [Adobe Developer Console](https://developer.adobe.com/console/).
+   Replace `$GITHUB_PAT` with your GitHub personal access token. For more information, refer to [managing your personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens).
 
-  ```bash
-  ? Select Org: <your-ims-org>
-  ? Select a Project, or press + to create new:
-  ?   > do you wish to create a new Project? Yes
-  Enter Project details:
-  ? Name: <your-project-name>
-  ? Title: <your-project-title>
-  ? Description: <your-project-description>
-  ```
+3. You can create an app builder project, or select the existing one, while initializing the starter kit. The created project can be found in the [Adobe Developer Console](https://console.adobe.io/).
 
-  This creates a new project using **App Builder** as a template, including **runtime environment with each workspace**.
+   ```bash
+   ? Select Org: <your-ims-org>
+   ? Select a Project, or press + to create new:
+   ?   > do you wish to create a new Project? Yes
+   Enter Project details:
+   ? Name: <your-project-name>
+   ? Title: <your-project-title>
+   ? Description: <your-project-description>
+   ```
 
-1. The starter kit requires you to add the following services in the console project:
+   This creates a new project using **App Builder** as a template, including **runtime environment with each workspace**.
+
+4. The starter kit requires you to add the following services in the console project:
 
    - I/O Management API
    - I/O Events
@@ -97,7 +97,7 @@ Use the following steps to configure your local environment:
       ["AdobeID","openid","read_organizations","additional_info.projectedProductContext","additional_info.roles","adobeio_api","read_client_secret","manage_client_secrets","event_receiver_api","profile","email","org.read","commerce.accs"]
       ```
 
-1. Copy the environment variables from the [`env.dist`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/env.dist) to a local `.env` file and enter the required values.
+5. Copy the environment variables from the [`env.dist`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/env.dist) to a local `.env` file and enter the required values.
 
 After completing the previous steps you can:
 

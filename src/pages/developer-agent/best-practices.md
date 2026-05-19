@@ -177,25 +177,25 @@ Once local testing is successful, deploy and test in the runtime environment. Ru
 
 Ask for help with testing. The tools can help with debugging, log analysis, and creating appropriate test data for your specific runtime actions.
 
-**Test runtime actions**
+**Test runtime actions:**
 
 ```shell
 Help me test the customer-created runtime action running locally
 ```
 
-**Debug failures**
+**Debug failures:**
 
 ```shell
 Why did the subscription-updated runtime action activation fail?
 ```
 
-**Check logs**
+**Check logs:**
 
 ```shell
 Help me check the logs for the last stock-monitoring runtime action invocation
 ```
 
-**Create test payloads**
+**Create test payloads:**
 
 ```shell
 Generate test data for this Commerce event
@@ -205,19 +205,19 @@ Generate test data for this Commerce event
 Create a test payload for the customer_save_after event
 ```
 
-**Find runtime endpoints**
+**Find runtime endpoints:**
 
 ```shell
 What's the URL for this deployed action?
 ```
 
-**Handle authentication**
+**Handle authentication:**
 
 ```shell
 How do I authenticate with this external API?
 ```
 
-**Troubleshoot**
+**Troubleshoot:**
 
 ```shell
 Help me debug why this action is returning 500 errors

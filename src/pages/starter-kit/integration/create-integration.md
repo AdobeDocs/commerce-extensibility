@@ -280,7 +280,7 @@ You can confirm the success of the deployment in the Adobe Developer Console by 
 
 The next steps in the onboarding process configures event registrations and completes the eventing configuration in Adobe Commerce.
 
-**Configure the event registrations**
+**Configure the event registrations:**
 
 By default, the `scripts/onboarding/config/starter-kit-registrations.json` config file creates all the registrations for all entities that are present in the repo's `app.config.yaml` file. You can edit this file to remove any unnecessary Commerce or back office registrations. For example, the YAML file shown in the [Configure the project](#configure-the-starter-kit) section comments out the `product-backoffice` package. In this case, you must remove backoffice from the product entity:
 
@@ -295,7 +295,7 @@ By default, the `scripts/onboarding/config/starter-kit-registrations.json` confi
 
 The Customize Registrations and Events [code sample](https://github.com/adobe/adobe-commerce-samples/blob/main/starter-kit/customize-registrations-and-events/README.md) shows how you can configure your event registrations.
 
-**Execute the onboarding**
+**Execute the onboarding:**
 
 Run the following command to generate the IO Event providers and the registrations for your starter kit project.
 
@@ -330,7 +330,7 @@ Check your App in the Developer Console to confirm the registrations were create
 
 ![Event registrations](../../images/starterkit/registrations.png)
 
-**Complete the Adobe Commerce eventing configuration**
+**Complete the Adobe Commerce eventing configuration:**
 
 <InlineAlert variant="info" slots="text"/>
 
@@ -374,7 +374,7 @@ You must configure Commerce to communicate with your project. Configuration incl
 
 1. Click **Save Config**.
 
-**Subscribe to events in Adobe Commerce**
+**Subscribe to events in Adobe Commerce:**
 
 To automatically subscribe to Commerce events using Adobe I/O Events, run the `commerce-event-subscribe` script in the `scripts/commerce-event-subscribe/config/` directory.
 

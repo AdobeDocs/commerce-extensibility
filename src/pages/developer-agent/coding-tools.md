@@ -89,7 +89,7 @@ After the command completes, navigate to your project directory and restart your
 
 The following example installation shows the interactive prompts and output for the checkout starter kit.
 
-**Example installation (checkout starter kit)**
+**Example installation (checkout starter kit):**
 
 ```shell-session
 aio commerce extensibility app-setup

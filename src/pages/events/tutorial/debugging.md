@@ -195,7 +195,7 @@ Datetime        Status    Kind      Version    Activation ID
 
 The last column shows the Activation ID.
 
-**To get logs explicitly**
+**To get logs explicitly:**
 
 ```bash
 aio rt activation logs <ACTIVATION_ID>

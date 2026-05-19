@@ -4,6 +4,9 @@
 # Default state for all rules
 default: true
 
+# MD001/heading-increment - Heading levels should only increment by one level at a time
+MD001: false
+
 # MD003/heading-style - Heading style
 MD003:
   style: atx
@@ -80,6 +83,9 @@ MD051:
 # MD055/table-pipe-style - Require leading and trailing pipes (matches AM023)
 MD055:
   style: leading_and_trailing
+
+# MD059/descriptive-link-text - Link text should be descriptive
+MD059: false
 
 # MD060/table-column-style - Table column style (disabled for flexible formatting)
 MD060: false

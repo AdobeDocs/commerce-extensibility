@@ -14,12 +14,12 @@ The [`adobe-commerce.js`](https://github.com/adobe/commerce-checkout-starter-kit
 
 To use the Adobe Commerce HTTP Client, update the `COMMERCE_BASE_URL` value in the `.env` file, and complete the authentication setup.
 
-- \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: blue; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>PaaS Only\</div\>\</a\>For PaaS (On-Premise/Cloud):
+- \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: rgb(4, 105, 227); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;" \>PaaS Only\</div\>\</a\>For PaaS (On-Premise/Cloud):
 
   - `COMMERCE_BASE_URL` includes your base site URL + `/rest/<store_view_code>/`
   - Example: `https://<commerce_instance_url>/rest/<store_view_code>/`
 
-- \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: green; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>SaaS Only\</div\>\</a\>For SaaS (Adobe Commerce as a Cloud Service):
+- \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: rgb(0, 128, 0); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;" \>SaaS Only\</div\>\</a\>For SaaS (Adobe Commerce as a Cloud Service):
 
   - `COMMERCE_BASE_URL` must be the REST API endpoint provided by Adobe Commerce
   - Example: `https://na1.api.commerce.adobe.com/<tenant_id>/`
@@ -30,7 +30,7 @@ Depending on your Adobe Commerce setup, there are two options to authenticate an
 
 - [Adobe Identity Management Service (IMS)](#adobe-identity-management-service-ims)
 
-- \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: blue; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>PaaS Only\</div\>\</a\> [Commerce Integration](#create-a-commerce-integration)
+- \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: rgb(4, 105, 227); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;" \>PaaS Only\</div\>\</a\> [Commerce Integration](#create-a-commerce-integration)
 
 If Commerce integration authentication is detected, it has precedence over IMS authentication. However, if neither option is detected or configured, then client instantiation will fail.
 
@@ -38,7 +38,7 @@ If Commerce integration authentication is detected, it has precedence over IMS a
 
 <InlineAlert variant="info" slots="text1, text2"/>
 
-\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: blue; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>PaaS Only\</div\>\</a\> This process requires a Commerce instance with [Adobe Identity Management Service (IMS) for Adobe Commerce](https://experienceleague.adobe.com/docs/commerce-admin/start/admin/ims/adobe-ims-integration-overview.html) configured.
+\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: rgb(4, 105, 227); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;" \>PaaS Only\</div\>\</a\> This process requires a Commerce instance with [Adobe Identity Management Service (IMS) for Adobe Commerce](https://experienceleague.adobe.com/docs/commerce-admin/start/admin/ims/adobe-ims-integration-overview.html) configured.
 
 SaaS instances already include IMS configuration.
 
@@ -60,8 +60,8 @@ Use the following steps to create OAuth credentials for App Builder authenticati
    ```
 
 1. Provide the technical account with access to the Commerce instance:
-   - \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: green; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>SaaS Only\</div\>\</a\> The technical account is automatically created and associated with the Commerce instance once the first request is made using the OAuth credentials.
-   - \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: blue; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>PaaS Only\</div\>\</a\> Add a technical account with server-to-server credentials to the Commerce Admin with the appropriate permissions using the [Admin User Creation Guide](https://experienceleague.adobe.com/en/docs/commerce-admin/systems/user-accounts/permissions-users-all#create-a-user).
+   - \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: rgb(0, 128, 0); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;" \>SaaS Only\</div\>\</a\> The technical account is automatically created and associated with the Commerce instance once the first request is made using the OAuth credentials.
+   - \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: rgb(4, 105, 227); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;" \>PaaS Only\</div\>\</a\> Add a technical account with server-to-server credentials to the Commerce Admin with the appropriate permissions using the [Admin User Creation Guide](https://experienceleague.adobe.com/en/docs/commerce-admin/systems/user-accounts/permissions-users-all#create-a-user).
 
       - When associating the user with the account, find your **Technical Account email** as a part of generated IMS credentials with following pattern: `<technical-account>@techacct.adobe.com` and use that value in the **Email** field during user creation:
 
@@ -73,7 +73,7 @@ Use the following steps to create OAuth credentials for App Builder authenticati
 
 ### Create a Commerce integration
 
-\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: blue; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>PaaS Only\</div\>\</a\> This option allows communication between Commerce and App Builder.
+\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: rgb(4, 105, 227); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;" \>PaaS Only\</div\>\</a\> This option allows communication between Commerce and App Builder.
 
 1. Create a new Adobe Commerce Integration by following the [systems integration](https://experienceleague.adobe.com/en/docs/commerce-admin/systems/integrations) guide.
 

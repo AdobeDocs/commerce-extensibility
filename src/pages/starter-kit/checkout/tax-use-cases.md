@@ -22,7 +22,7 @@ When the quote is recalculated, such as during a cart update or at checkout, a s
 
 Refer to [`actions/collect-taxes.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/collect-taxes/index.js) for an example of how to process the request and return the tax calculation to the commerce instance. This file can serve as a template to implement custom tax calculations.
 
-\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: blue; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>PaaS Only\</div\>\</a\> To register a webhook, you need to create a `webhooks.xml` [configuration file](../../webhooks/xml-schema.md) in your module or in the root `app/etc` directory.
+\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: rgb(4, 105, 227); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;" \>PaaS Only\</div\>\</a\> To register a webhook, you need to create a `webhooks.xml` [configuration file](../../webhooks/xml-schema.md) in your module or in the root `app/etc` directory.
 
 ```xml
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -43,7 +43,7 @@ Refer to [`actions/collect-taxes.js`](https://github.com/adobe/commerce-checkout
 </config>
 ```
 
-\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: green; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>SaaS Only\</div\>\</a\> SaaS webhooks have slightly different naming conventions. For this example, use the `plugin.out_of_process_tax_management.api.oop_tax_collection.collect_taxes` method.
+\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: rgb(0, 128, 0); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;" \>SaaS Only\</div\>\</a\> SaaS webhooks have slightly different naming conventions. For this example, use the `plugin.out_of_process_tax_management.api.oop_tax_collection.collect_taxes` method.
 
 ### Payload
 
@@ -190,7 +190,7 @@ When the credit memo amount is recalculated, a synchronous call is dispatched to
 
 Refer to [`actions/collect-adjustment-taxes.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/collect-adjustment-taxes/index.js) for an example of how to process the request and return the tax calculation to the commerce instance. This file can serve as a template for implementing custom tax calculations.
 
-\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: blue; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>PaaS Only\</div\>\</a\> To register a webhook, create a `webhooks.xml` [configuration file](../../webhooks/xml-schema.md) file in your module or in the root `app/etc` directory.
+\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: rgb(4, 105, 227); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;" \>PaaS Only\</div\>\</a\> To register a webhook, create a `webhooks.xml` [configuration file](../../webhooks/xml-schema.md) file in your module or in the root `app/etc` directory.
 
 ```xml
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -211,7 +211,7 @@ Refer to [`actions/collect-adjustment-taxes.js`](https://github.com/adobe/commer
 </config>
 ```
 
-\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: green; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>SaaS Only\</div\>\</a\> SaaS webhooks have slightly different naming conventions. For this example, use the `plugin.out_of_process_tax_management.api.oop_credit_memo_tax_collection.collect_taxes` method.
+\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: rgb(0, 128, 0); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;" \>SaaS Only\</div\>\</a\> SaaS webhooks have slightly different naming conventions. For this example, use the `plugin.out_of_process_tax_management.api.oop_credit_memo_tax_collection.collect_taxes` method.
 
 ### Payload
 

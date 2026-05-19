@@ -22,7 +22,7 @@ After the webhook is registered, every time a shopping cart is requested, a sync
 
 Refer to [`actions/shipping-methods.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/shipping-methods/index.js) for an example of how to process the request and return the list of available shipping methods.
 
-\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: blue; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>PaaS Only\</div\>\</a\> To register a webhook, you need to create a `webhooks.xml` [configuration file](../../webhooks/xml-schema.md) in your module or in the root `app/etc` directory.
+\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: rgb(4, 105, 227); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;" \>PaaS Only\</div\>\</a\> To register a webhook, you need to create a `webhooks.xml` [configuration file](../../webhooks/xml-schema.md) in your module or in the root `app/etc` directory.
 
 The following example demonstrates how to add a webhook to the `plugin.magento.out_of_process_shipping_methods.api.shipping_rate_repository.get_rates` method:
 
@@ -46,7 +46,7 @@ The following example demonstrates how to add a webhook to the `plugin.magento.o
 
 You can register multiple webhooks for different shipping methods or shipping carriers by adding them into the same batch to ensure they are executed in parallel or create multiple batches to execute them sequentially.
 
-\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: green; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>SaaS Only\</div\>\</a\> SaaS webhooks have slightly different naming conventions. For this example, use the `plugin.out_of_process_shipping_methods.api.shipping_rate_repository.get_rates` method.
+\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: rgb(0, 128, 0); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;" \>SaaS Only\</div\>\</a\> SaaS webhooks have slightly different naming conventions. For this example, use the `plugin.out_of_process_shipping_methods.api.shipping_rate_repository.get_rates` method.
 
 ### Payload
 

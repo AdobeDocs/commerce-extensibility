@@ -74,7 +74,7 @@ Use the following steps to configure your local environment:
    - I/O Management API
    - I/O Events
    - Adobe I/O Events for Adobe Commerce
-   - \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: green; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>SaaS Only\</div\>\</a\> Adobe Commerce as a Cloud Service. When asked to select a product profile, choose **Default - Cloud Manager**. If this option is not displayed, make sure you have [developer permissions](https://experienceleague.adobe.com/en/docs/commerce/cloud-service/user-management#add-users-developers-and-product-profile-admins) to **Adobe Commerce as a Cloud Service - Backend - Commerce Cloud Manager**.
+   - \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: rgb(0, 128, 0); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;" \>SaaS Only\</div\>\</a\> Adobe Commerce as a Cloud Service. When asked to select a product profile, choose **Default - Cloud Manager**. If this option is not displayed, make sure you have [developer permissions](https://experienceleague.adobe.com/en/docs/commerce/cloud-service/user-management#add-users-developers-and-product-profile-admins) to **Adobe Commerce as a Cloud Service - Backend - Commerce Cloud Manager**.
 
    Execute the following command to add the services by selecting them from the list:
 
@@ -85,13 +85,13 @@ Use the following steps to configure your local environment:
    The variable `AIO_ims_contexts_{credential}_scopes` will be automatically populated but may need to be updated with the scopes required for your project.
    The scopes depend on the services you selected in the previous step. If you included all the specified services, the set of scopes should look like this:
 
-   - \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: blue; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>PaaS Only\</div\>\</a\>
+   - \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: rgb(4, 105, 227); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;" \>PaaS Only\</div\>\</a\>
 
       ```env
       ["AdobeID","openid","read_organizations","additional_info.projectedProductContext","additional_info.roles","adobeio_api","read_client_secret","manage_client_secrets","event_receiver_api"]
       ```
 
-   - \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: green; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>SaaS Only\</div\>\</a\>
+   - \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: rgb(0, 128, 0); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;" \>SaaS Only\</div\>\</a\>
 
       ```env
       ["AdobeID","openid","read_organizations","additional_info.projectedProductContext","additional_info.roles","adobeio_api","read_client_secret","manage_client_secrets","event_receiver_api","profile","email","org.read","commerce.accs"]

@@ -72,13 +72,9 @@ Support services for the starter kit include the basic functionality and configu
        - Check the `.env` file to ensure that the `commerce.accs` scope is added to OAUTH_SCOPES.
        - [Download the workspace configuration](#download-the-workspace-configuration-file) and run `aio app use` again.
 
-   \<InlineNestedAlert variant="info" header="false" iconPosition="right"\>
+   <InlineAlert variant="info" slots="text"/>
 
-   Adobe Commerce as a Cloud Service API is only required when accessing Adobe Commerce as a Cloud Service.
-
-   If you do not see the **Adobe Commerce as a Cloud Service** service, make sure you have [developer permissions](https://experienceleague.adobe.com/en/docs/commerce/cloud-service/user-management#add-users-developers-and-product-profile-admins) for **Adobe Commerce as a Cloud Service - Backend - Commerce Cloud Manager** for your organization.
-
-   \</InlineNestedAlert\>
+   Adobe Commerce as a Cloud Service API is only required when accessing Adobe Commerce as a Cloud Service. If you do not see the **Adobe Commerce as a Cloud Service** service, make sure you have [developer permissions](https://experienceleague.adobe.com/en/docs/commerce/cloud-service/user-management#add-users-developers-and-product-profile-admins) for **Adobe Commerce as a Cloud Service - Backend - Commerce Cloud Manager** for your organization.
 
    Click one of these services, such as **I/O Management API**. Then click **Next**.
 
@@ -88,11 +84,9 @@ Support services for the starter kit include the basic functionality and configu
 
    ![generate a key pair](../../images/common/setup-api-oauth.png)
 
-   \<InlineNestedAlert variant="info" header="true" iconPosition="right"\>
+   <InlineAlert variant="info" slots="text"/>
 
    You can set up server-to-server authentication using JSON Web Tokens (JWT). However, this method has been deprecated in favor of OAuth and must be replaced no later than January 1, 2025. See [Service Account Authentication](https://developer.adobe.com/developer-console/docs/guides/authentication/JWT/) for details on implementing this solution.
-
-   \</InlineNestedAlert\>
 
 1. Use the **Add service** pop-up menu to select and add the other required services.
 
@@ -114,9 +108,9 @@ To download a `.json` file containing your workspace configuration:
 
 The integration starter kit is designed to work with all Adobe Commerce versions, but only one at a time. This means that you can use either Adobe Commerce on Cloud / on Premises (PaaS) or Adobe Commerce as a Cloud Service (SaaS). By default, the starter kit will check for PaaS authentication first using **OAuth1**, before it checks for SaaS authentication using **IMS**.
 
-\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: blue; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>PaaS Only\</div\>\</a\> For PaaS configurations, refer to [Create an integration in Adobe Commerce (PaaS only)](#create-an-integration-in-adobe-commerce-paas-only) and make sure your environment variables `COMMERCE_XXXX` are set correctly in the `.env` file.
+\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: rgb(4, 105, 227); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;" \>PaaS Only\</div\>\</a\> For PaaS configurations, refer to [Create an integration in Adobe Commerce (PaaS only)](#create-an-integration-in-adobe-commerce-paas-only) and make sure your environment variables `COMMERCE_XXXX` are set correctly in the `.env` file.
 
-\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: green; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>SaaS Only\</div\>\</a\> For SaaS configurations, refer to [Create an integration in Adobe Commerce as a Cloud Service](#create-an-integration-in-adobe-commerce-as-a-cloud-service) and make sure the environment variables file does not contain `COMMERCE_XXXX` variables.
+\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: rgb(0, 128, 0); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;" \>SaaS Only\</div\>\</a\> For SaaS configurations, refer to [Create an integration in Adobe Commerce as a Cloud Service](#create-an-integration-in-adobe-commerce-as-a-cloud-service) and make sure the environment variables file does not contain `COMMERCE_XXXX` variables.
 
 <InlineAlert variant="info" slots="text"/>
 
@@ -239,12 +233,12 @@ Use the following steps to download and configure the Adobe Commerce integration
 
 When configuring the `COMMERCE_BASE_URL` environment variable, the format differs between [PaaS and SaaS](#paas-or-saas):
 
-- \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: blue; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>PaaS Only\</div\>\</a\>For PaaS (On-Premise/Cloud):
+- \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: rgb(4, 105, 227); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;" \>PaaS Only\</div\>\</a\>For PaaS (On-Premise/Cloud):
 
    - `COMMERCE_BASE_URL` must include your base site URL + `/rest/`
    - Example: `https://<environment-name>.us-4.magentosite.cloud/rest/`
 
-- \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: green; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>SaaS Only\</div\>\</a\>For SaaS (Adobe Commerce as a Cloud Service):
+- \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: rgb(0, 128, 0); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;" \>SaaS Only\</div\>\</a\>For SaaS (Adobe Commerce as a Cloud Service):
 
    - `COMMERCE_BASE_URL` must be the REST API endpoint provided by Adobe Commerce
    - Example: `https://na1-sandbox.api.commerce.adobe.com/<tenant-id>/`
@@ -276,11 +270,9 @@ Make sure to use your actual environment name or tenant ID in the URL. The examp
 
 1. The `app.config.yaml` file in the repo's root directory defines which packages to deploy. The Integration Starter Kit provides packages for Commerce products, customers, orders, shipments, and stocks and their external back office counterparts. Comment out any unneeded packages that are not applicable to your project.
 
-   \<InlineNestedAlert variant="info" header="true" iconPosition="right"\>
+   <InlineAlert variant="info" slots="text"/>
 
    The `info` action is enabled by default. This action is reserved for future use. Do not disable or delete the `info` action.
-
-   \</InlineNestedAlert\>
 
 #### Deploy the project
 
@@ -368,11 +360,9 @@ You must configure Commerce to communicate with your project. Configuration incl
 
 1. Enter a unique identifier in the **Adobe I/O Event Provider Instance ID** field. This unique value identifies your Commerce instance, which allows Commerce events to connect to the correct `Event Provider` in Adobe I/O. This ID corresponds to the **Provider** displayed when [subscribing to events](../../events/configure-commerce.md#subscribe-and-register-events).
 
-   \<InlineNestedAlert variant="info" header="true" iconPosition="right"\>
+   <InlineAlert variant="info" slots="text"/>
 
    This value must contain English alphanumeric characters, underscores (_), and hyphens (-) only.
-
-   \</InlineNestedAlert\>
 
 1. Click **Save Config**, but do not leave the page. The next section creates an event provider, which is necessary to complete the configuration.
 
@@ -384,11 +374,9 @@ You must configure Commerce to communicate with your project. Configuration incl
 
 1. Enter the merchant's company name in the **Merchant ID** and the environment name in the **Environment ID** field. The values of these fields will be combined and added as a `source` attribute to your event data to identify the source of the events. It can be useful for event filtration or other logic if you are using the same event provider for several environments or projects.
 
-   \<InlineNestedAlert variant="info" header="true" iconPosition="right"\>
+   <InlineAlert variant="info" slots="text"/>
 
    The **Merchant ID** and **Environment ID** fields only support alphanumeric characters and underscores.
-
-   \</InlineNestedAlert\>
 
    ```javascript
    "source": "<merchant-id>.<environment-id>"

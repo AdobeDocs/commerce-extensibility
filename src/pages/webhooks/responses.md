@@ -10,9 +10,9 @@ keywords:
 Currently, Adobe Commerce webhooks support responses in JSON format only. The response may be a single operation or an array of operations to be executed afterward.
 Each operation must contain some required fields based on the desired operation.
 
-\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: blue; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>PaaS Only\</div\>\</a\> Exceptions and notices are logged in the `<installation_directory>/var/log/system.log` file.
+\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: rgb(4, 105, 227); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;" \>PaaS Only\</div\>\</a\> Exceptions and notices are logged in the `<installation_directory>/var/log/system.log` file.
 
-\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: green; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>SaaS Only\</div\>\</a\> On the Webhooks Subscriptions page, click **Select** > **Show Logs** in the **Action** column to display a new page that displays logging activity for that webhook. The grid resembles the [Webhook Logs grid](responses.md#database-logging), but displays activity for the selected hook only.
+\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: rgb(0, 128, 0); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;" \>SaaS Only\</div\>\</a\> On the Webhooks Subscriptions page, click **Select** > **Show Logs** in the **Action** column to display a new page that displays logging activity for that webhook. The grid resembles the [Webhook Logs grid](responses.md#database-logging), but displays activity for the selected hook only.
 
 ## Responses
 

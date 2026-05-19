@@ -38,8 +38,6 @@ Other benefits of out-of-process extensibility include:
 
 - Technological Independence - Developers can choose whichever tech stacks and coding languages that fit their needs.
 
-\<p\>\</p\>
-
 ## Out-of-process development tools
 
 Adobe Commerce offers the following out-of-process development tools:

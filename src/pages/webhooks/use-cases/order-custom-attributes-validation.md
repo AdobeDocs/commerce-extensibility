@@ -15,7 +15,7 @@ When an order and its custom attributes are saved in the Commerce Admin, a third
 
 `observer.sales_order_view_custom_attributes_update_before` - triggered only when order custom attributes are saved from the **Custom Attributes** tab of the **Order View** page in the Commerce Admin.
 
-\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: blue; color: white; padding: 0 4px; width: 80px; display: inline; border-radius: 3px;" \>PaaS Only\</div\>\</a\> The custom attributes modules must be installed for this use case. See [Install custom attribute support](https://developer.adobe.com/commerce/webapi/rest/modules/custom-attributes/#install-custom-attribute-support) if the modules are not yet installed.
+\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions" \>\<div style="background-color: rgb(4, 105, 227); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;" \>PaaS Only\</div\>\</a\> The custom attributes modules must be installed for this use case. See [Install custom attribute support](https://developer.adobe.com/commerce/webapi/rest/modules/custom-attributes/#install-custom-attribute-support) if the modules are not yet installed.
 
 ## Payloads
 

@@ -56,13 +56,13 @@ Follow the steps described in [Create an App Builder project](https://developer.
 
 This procedure allows you to quickly set up a new App Builder project with the necessary configurations and dependencies. You must install multiple APIs in your project, though the exact APIs vary, depending on whether you have Adobe Commerce as a Cloud Service (SaaS) or Adobe Commerce on Cloud or on-premises (PaaS).
 
-\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions"\>\<span style="background-color: rgb(0, 128, 0); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;"\>SaaS Only\</span\>\</a\> Install the following APIs in your **Stage** workspace:
+[SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) Install the following APIs in your **Stage** workspace:
 
 *  Adobe Commerce as a Cloud Service API
 *  I/O Events
 *  Adobe I/O Events for Adobe Commerce
 
-\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions"\>\<span style="background-color: rgb(4, 105, 227); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;"\>PaaS Only\</span\>\</a\> Install the following APIs in your **Stage** workspace:
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) Install the following APIs in your **Stage** workspace:
 
 *  I/O Management API
 *  I/O Events

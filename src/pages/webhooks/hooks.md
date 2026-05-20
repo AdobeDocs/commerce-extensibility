@@ -11,11 +11,11 @@ The payload for a hook can be large, but in many cases you only need to transmit
 
 Defining the hook requires knowledge of the structure of the original event and the requirements of the remote call. You can use the following methods to determine the structure of the original event:
 
-* \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions"\>\<span style="background-color: rgb(4, 105, 227); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;"\>PaaS Only\</span\>\</a\>
+* [PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
    * Run the [`bin/magento webhooks:list:all` command](commands.md#return-a-list-of-supported-webhook-event-names) to return a list of all supported webhooks methods. Then run the [`bin/magento webhooks:info <webhook-name>` command](commands.md#display-the-payload-of-a-webhook) to return the payload of the specified webhook method.
 
-* \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions"\>\<span style="background-color: rgb(0, 128, 0); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;"\>SaaS Only\</span\>\</a\>
+* [SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
    * View the list supported webhook methods by going to **System** > Webhooks > **Webhooks List** in the Admin. Then click on a webhook method name to display its default contents.
 

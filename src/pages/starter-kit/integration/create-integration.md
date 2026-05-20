@@ -100,9 +100,9 @@ To download a `.json` file containing your workspace configuration:
 
 The integration starter kit is designed to work with all Adobe Commerce versions, but only one at a time. This means that you can use either Adobe Commerce on Cloud / on Premises (PaaS) or Adobe Commerce as a Cloud Service (SaaS). By default, the starter kit will check for PaaS authentication first using **OAuth1**, before it checks for SaaS authentication using **IMS**.
 
-\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions"\>\<span style="background-color: rgb(4, 105, 227); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;"\>PaaS Only\</span\>\</a\> For PaaS configurations, refer to [Create an integration in Adobe Commerce (PaaS only)](#create-an-integration-in-adobe-commerce-paas-only) and make sure your environment variables `COMMERCE_XXXX` are set correctly in the `.env` file.
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) For PaaS configurations, refer to [Create an integration in Adobe Commerce (PaaS only)](#create-an-integration-in-adobe-commerce-paas-only) and make sure your environment variables `COMMERCE_XXXX` are set correctly in the `.env` file.
 
-\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions"\>\<span style="background-color: rgb(0, 128, 0); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;"\>SaaS Only\</span\>\</a\> For SaaS configurations, refer to [Create an integration in Adobe Commerce as a Cloud Service](#create-an-integration-in-adobe-commerce-as-a-cloud-service) and make sure the environment variables file does not contain `COMMERCE_XXXX` variables.
+[SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) For SaaS configurations, refer to [Create an integration in Adobe Commerce as a Cloud Service](#create-an-integration-in-adobe-commerce-as-a-cloud-service) and make sure the environment variables file does not contain `COMMERCE_XXXX` variables.
 
 <InlineAlert variant="info" slots="text"/>
 
@@ -225,12 +225,12 @@ Use the following steps to download and configure the Adobe Commerce integration
 
 When configuring the `COMMERCE_BASE_URL` environment variable, the format differs between [PaaS and SaaS](#paas-or-saas):
 
-- \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions"\>\<span style="background-color: rgb(4, 105, 227); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;"\>PaaS Only\</span\>\</a\>For PaaS (On-Premise/Cloud):
+- [PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)For PaaS (On-Premise/Cloud):
 
    - `COMMERCE_BASE_URL` must include your base site URL + `/rest/`
    - Example: `https://<environment-name>.us-4.magentosite.cloud/rest/`
 
-- \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions"\>\<span style="background-color: rgb(0, 128, 0); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;"\>SaaS Only\</span\>\</a\>For SaaS (Adobe Commerce as a Cloud Service):
+- [SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)For SaaS (Adobe Commerce as a Cloud Service):
 
    - `COMMERCE_BASE_URL` must be the REST API endpoint provided by Adobe Commerce
    - Example: `https://na1-sandbox.api.commerce.adobe.com/<tenant-id>/`

@@ -36,11 +36,11 @@ Each event provider can link to multiple event subscriptions (event metadata). T
 
 * Click the **Execute Synchronization** button on the **General configuration** section of the Adobe I/O Events page in the Admin.
 
-* \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions"\>\<span style="background-color: rgb(4, 105, 227); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;"\>PaaS Only\</span\>\</a\> Subscribe with the `events:subscribe` command.
+* [PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) Subscribe with the `events:subscribe` command.
 
-* \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions"\>\<span style="background-color: rgb(4, 105, 227); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;"\>PaaS Only\</span\>\</a\> Manually synchronize all subscriptions with the `events:metadata:populate` command.
+* [PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) Manually synchronize all subscriptions with the `events:metadata:populate` command.
 
-* \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions"\>\<span style="background-color: rgb(4, 105, 227); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;"\>PaaS Only\</span\>\</a\> Run the `setup:upgrade` command also synchronizes events subscriptions.
+* [PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) Run the `setup:upgrade` command also synchronizes events subscriptions.
 
 You can find the list of event providers created in your organization, in the App Builder UI when [creating an Event Registration in App Builder](#subscribe-and-register-events).
 
@@ -127,7 +127,7 @@ You must define which Commerce events to subscribe to, then register them in the
 
 Commerce provides two sources for events: observers and plugins. You must specify the source as part of the event name. See [Subscribe to a Commerce event](commands.md) for details about the syntax of the `events:subscribe` command.
 
-1. \<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions"\>\<span style="background-color: rgb(4, 105, 227); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;"\>PaaS Only\</span\>\</a\>  If you don't have a module ready for integration with Adobe I/O Events, or you don't know exactly which events to register at this point, use the `events:subscribe` command to subscribe to some sample events, as shown in the following example commands:
+1. [PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)  If you don't have a module ready for integration with Adobe I/O Events, or you don't know exactly which events to register at this point, use the `events:subscribe` command to subscribe to some sample events, as shown in the following example commands:
 
    ```bash
    bin/magento events:subscribe observer.catalog_product_save_after --fields=sku --fields=stock_data.qty

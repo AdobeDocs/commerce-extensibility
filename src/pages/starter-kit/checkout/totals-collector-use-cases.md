@@ -20,7 +20,7 @@ The out-of-process totals collector extends Adobe Commerce discount totals colle
 
 To apply discounts from an external service, register a webhook for the method `plugin.magento.out_of_process_totals_collector.api.get_total_modifications.execute` (type `after`).
 
-\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions"\>\<span style="background-color: rgb(4, 105, 227); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;"\>PaaS Only\</span\>\</a\> To register the webhook, [modify the `webhooks.xml` file](../../webhooks/hooks.md) (in your module or in `app/etc`):
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) To register the webhook, [modify the `webhooks.xml` file](../../webhooks/hooks.md) (in your module or in `app/etc`):
 
 ```xml
 <?xml version="1.0"?>
@@ -50,7 +50,7 @@ To apply discounts from an external service, register a webhook for the method `
 </config>
 ```
 
-\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions"\>\<span style="background-color: rgb(0, 128, 0); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;"\>SaaS Only\</span\>\</a\> For Adobe Commerce as a Cloud Service, [create the webhook in the Admin](../../webhooks/create-webhooks.md). Use method name `plugin.magento.out_of_process_totals_collector.api.get_total_modifications.execute`, type `after`, and configure the same fields and rules as above.
+[SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) For Adobe Commerce as a Cloud Service, [create the webhook in the Admin](../../webhooks/create-webhooks.md). Use method name `plugin.magento.out_of_process_totals_collector.api.get_total_modifications.execute`, type `after`, and configure the same fields and rules as above.
 
 To improve security, enable [webhook signature verification](../../webhooks/signature-verification.md).
 

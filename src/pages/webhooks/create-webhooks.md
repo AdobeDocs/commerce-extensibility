@@ -27,9 +27,9 @@ With this knowledge, you can create a webhook, which defines the following sets 
 
 * Optional rules that trigger only when certain conditions are met, such as when a string matches a specific value.
 
-\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions"\>\<span style="background-color: rgb(0, 128, 0); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;"\>SaaS Only\</span\>\</a\> In Adobe Commerce as a Cloud Service, you can create a webhook subscription in the Admin or by using a REST endpoint. (See [Subscribe a webhook](api.md#subscribe-a-webhook) for details on using REST.) Adobe Commerce as a Cloud Service does not support all possible webhook methods. Open a support ticket to request additional webhook methods.
+[SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) In Adobe Commerce as a Cloud Service, you can create a webhook subscription in the Admin or by using a REST endpoint. (See [Subscribe a webhook](api.md#subscribe-a-webhook) for details on using REST.) Adobe Commerce as a Cloud Service does not support all possible webhook methods. Open a support ticket to request additional webhook methods.
 
-\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions"\>\<span style="background-color: rgb(4, 105, 227); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;"\>PaaS Only\</span\>\</a\> In Platform as a Service (PaaS) and on-premises environments, you must create an `app/etc/webhooks.xml` file or create a custom module that includes a `<custom-module-root>/etc/webhooks.xml` file.
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) In Platform as a Service (PaaS) and on-premises environments, you must create an `app/etc/webhooks.xml` file or create a custom module that includes a `<custom-module-root>/etc/webhooks.xml` file.
 
 ## Define webhook properties
 

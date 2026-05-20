@@ -13,9 +13,9 @@ This use case runs with a webhook of type `after`.
 
 ## Webhook name
 
-\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions"\>\<span style="background-color: rgb(4, 105, 227); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;"\>PaaS Only\</span\>\</a\> `plugin.magento.gift_card_account.api.gift_card_account_management.check_gift_card`
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) `plugin.magento.gift_card_account.api.gift_card_account_management.check_gift_card`
 
-\<a href="https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions"\>\<span style="background-color: rgb(0, 128, 0); color: white; font-size: 12px; border-radius: 4px; padding: 5px 8px; display: inline-block;"\>SaaS Only\</span\>\</a\> `plugin.gift_card_account.api.gift_card_account_management.check_gift_card`
+[SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) `plugin.gift_card_account.api.gift_card_account_management.check_gift_card`
 
 ## Payloads
 

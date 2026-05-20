@@ -5,7 +5,7 @@ description: Learn how to use API Mesh, Adobe I/O Events, and App Builder to ext
 
 # Extensibility examples
 
-There are many ways to extend [Adobe Commerce](../index.md) today, such as [APIs](https://developer.adobe.com/commerce/webapi/) and [extensions](https://developer.adobe.com/commerce/marketplace/guides/sellers/extension-create/). However, these options in isolation only encapsulate a small fraction of possibilities with extensibility. This article speculates on what is possible with new and emergent technologies and more elaborate integrations to explore what can be created in the future.
+There are many ways to extend [Adobe Commerce](../index.md) today, such as [APIs](https://developer.adobe.com/commerce/webapi/) and [extensions](https://developer.adobe.com/commerce/marketplace/guides/sellers/extension-create). However, these options in isolation only encapsulate a small fraction of possibilities with extensibility. This article speculates on what is possible with new and emergent technologies and more elaborate integrations to explore what can be created in the future.
 
 ## Understanding extensibility components
 
@@ -19,7 +19,7 @@ To learn more about App Builder, follow [this step-by-step tutorial](https://dev
 
 ### API Mesh for Adobe Developer App Builder
 
-[API Mesh](https://developer.adobe.com/graphql-mesh-gateway/) is an Adobe service that allows you to take multiple vendor APIs of different protocols, like GraphQL, REST, JSON schemas, and SOAP implementations, and combine them into a single unified GraphQL endpoint. By consuming a mesh's unified GraphQL endpoint, you can connect Adobe Commerce to App Builder, Adobe I/O Events for Adobe Commerce, and any other service that provides an accessible source. You can further customize your experience by using [transforms](https://developer.adobe.com/graphql-mesh-gateway/gateway/transforms/) to customize the source data to your needs.
+[API Mesh](https://developer.adobe.com/graphql-mesh-gateway/) is an Adobe service that allows you to take multiple vendor APIs of different protocols, like GraphQL, REST, JSON schemas, and SOAP implementations, and combine them into a single unified GraphQL endpoint. By consuming a mesh's unified GraphQL endpoint, you can connect Adobe Commerce to App Builder, Adobe I/O Events for Adobe Commerce, and any other service that provides an accessible source. You can further customize your experience by using [transforms](https://developer.adobe.com/graphql-mesh-gateway/mesh/basic/transforms/) to customize the source data to your needs.
 
 ![API Mesh diagram](../images/api-mesh-diagram.png)
 
@@ -29,13 +29,13 @@ Additionally, the unified GraphQL endpoint allows you to integrate with other th
 
 API Mesh has several features which allow for further extensibility:
 
-- `beforeAll` [Hooks](https://developer.adobe.com/graphql-mesh-gateway/gateway/hooks/) - Allow you to insert a function before the query takes place, which can be helpful for use cases like authenticating or checking for a header before making a request.
+- `beforeAll` [Hooks](https://developer.adobe.com/graphql-mesh-gateway/mesh/advanced/hooks) - Allow you to insert a function before the query takes place, which can be helpful for use cases like authenticating or checking for a header before making a request.
 
 - [Custom Resolvers](https://developer.adobe.com/graphql-mesh-gateway/mesh/advanced/extend/) - Allow you to upload a resolver to your mesh that uses JavaScript to modify data, insert custom logic, and return custom computed data. [This example](https://developer.adobe.com/graphql-mesh-gateway/mesh/advanced/extend/resolvers/programmatic-resolvers#programmatic-additionalresolvers) uses a discounts API to apply discounts to your products.
 
-- [Transforms](https://developer.adobe.com/graphql-mesh-gateway/gateway/transforms/) - Allow you to modify the structure of an API's data without modifying the source itself.
+- [Transforms](https://developer.adobe.com/graphql-mesh-gateway/mesh/basic/transforms/) - Allow you to modify the structure of an API's data without modifying the source itself.
 
-To learn more about API Mesh, follow [this walkthrough](https://developer.adobe.com/graphql-mesh-gateway/gateway/mesh_walkthrough/) where you create, query, and transform data using a sample configuration.
+To learn more about API Mesh, follow [this tutorial](https://developer.adobe.com/graphql-mesh-gateway/mesh/resources/) where you create, query, and transform data using a sample configuration.
 
 ### Adobe I/O Events
 

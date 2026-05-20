@@ -160,7 +160,7 @@ This section applies to **SaaS** customers only. For **PaaS** customers, see [Cr
 
    1. Navigate to your project or create a new one.
 
-   1. Add the **I/O Management API** to enable server-to-server authentication capabilities. For more information, refer to [server-to-server authentication](https://developer.adobe.com/developer-console/docs/guides/authentication/ServerToServerAuthentication/implementation#setting-up-the-oauth-server-to-server-credential/).
+   1. Add the **I/O Management API** to enable server-to-server authentication capabilities. For more information, refer to [server-to-server authentication](https://developer.adobe.com/developer-console/docs/guides/authentication/ServerToServerAuthentication/implementation#setting-up-the-oauth-server-to-server-credential).
 
 1. Store the credentials from Adobe Developer Console in the integration starter kit's `.env` file. The following values are required:
 

@@ -38,7 +38,7 @@ The following diagram describes the generic flow of the credential storage and e
 
 We recommend using the AES-256 encryption algorithm, which requires a 32-character encryption key, an initialization vector, and a 16-bit authentication tag. AES-256 is a resilient encryption algorithm that is nearly impossible to brute force.
 
-The [`encrypt.ts`](https://github.com/adobe/amazon-sales-channel-app-builder/blob/main/actions-src/shared/security/encrypt.ts) file provides encryption and decryption functions, as shown below:
+The `encrypt.ts` file provides encryption and decryption functions, as shown below:
 
 ```typescript
 import { createCipheriv, createDecipheriv } from 'node:crypto';
@@ -104,7 +104,7 @@ The following code block shows the helper class that receives the encryption key
 
 For local development, the encryption key and initialization vector can be stored in the `.env` file. Since this file cannot be uploaded to GitHub, we recommend that you store these secrets as GitHub secrets. Furthermore, AES-256 best practices recommend that you use a different initialization vector for each encryption.
 
-The [`CredentialsEncryptionHelper`](https://github.com/adobe/amazon-sales-channel-app-builder/blob/main/actions-src/shared/security/credentialsEncryptionHelper.ts) class provides encryption and decryption methods.
+The `CredentialsEncryptionHelper` class provides encryption and decryption methods.
 
 ```typescript
 import { randomBytes } from 'node:crypto';
@@ -142,7 +142,7 @@ export class CredentialsEncryptionHelper {
 
 ### Encryption example
 
-In [this example](https://github.com/adobe/amazon-sales-channel-app-builder/blob/main/actions-src/api/account/runtime/storeCredentials.ts), we initialize the encryption helper with the encryption key and initialization vector. Data is encrypted and stored in the database using the `accountId` as the identifier.
+In this example, we initialize the encryption helper with the encryption key and initialization vector. Data is encrypted and stored in the database using the `accountId` as the identifier.
 
 ```typescript
 const credentialsRepository = new CredentialsRepository(logger);
@@ -167,7 +167,7 @@ await credentialsRepository.saveCredentials(
 
 ### Decryption example
 
-In [this example](https://github.com/adobe/amazon-sales-channel-app-builder/blob/main/actions-src/api/account/runtime/getCredentials.ts), we retrieve the list of accounts, and the encryption helper is initialized with the encryption key and initialization vector.
+In this example, we retrieve the list of accounts, and the encryption helper is initialized with the encryption key and initialization vector.
 
 The account's credentials are retrieved from the `lib-file` storage system and decrypted using the encryption library.
 

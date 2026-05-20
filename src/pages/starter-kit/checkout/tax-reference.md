@@ -176,7 +176,7 @@ curl --request POST \
 
 ### Update a tax class with custom attributes
 
-The out-of-process tax module extends the [`PUT /V1/taxClasses/:classId`](https://adobe-commerce.redoc.ly/2.4.8-admin/tag/taxClassesclassId) endpoint to update an existing tax class with custom attributes.
+The out-of-process tax module extends the [`PUT /V1/taxClasses/:classId`](https://adobe-commerce.redoc.ly/2.4.8-admin/tag/taxClassesclassId/) endpoint to update an existing tax class with custom attributes.
 
 <CodeBlock slots="heading, code" repeat="2" languages="bash, json" />
 
@@ -208,7 +208,7 @@ curl --request POST \
 
 ### List all tax classes with custom attributes
 
-The out-of-process tax module extends the [`GET /V1/taxClasses/search`](https://adobe-commerce.redoc.ly/2.4.8-admin/tag/taxClassessearch#operation/GetV1TaxClassesSearch) endpoint to include custom attributes in the response when available.
+The out-of-process tax module extends the [`GET /V1/taxClasses/search`](https://adobe-commerce.redoc.ly/2.4.8-admin/tag/taxClassessearch/#operation/GetV1TaxClassesSearch) endpoint to include custom attributes in the response when available.
 
 <CodeBlock slots="heading, code" repeat="2" languages="bash, json" />
 

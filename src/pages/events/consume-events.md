@@ -17,9 +17,9 @@ You can consume events sent from Adobe Commerce to Adobe I/O events in several w
 
 ## Using the Journaling API
 
-When you create an Adobe I/O event registration, by default, the subscribed events get added to an ordered list (referred to as the journal). You can consume these events using a journaling endpoint URL that is unique to the registration. For more information on reading events from the journal, see the [Introduction to Journaling](https://developer.adobe.com/events/docs/guides/journaling_intro/).
+When you create an Adobe I/O event registration, by default, the subscribed events get added to an ordered list (referred to as the journal). You can consume these events using a journaling endpoint URL that is unique to the registration. For more information on reading events from the journal, see the [Introduction to Journaling](https://developer.adobe.com/events/docs/guides/journaling-intro).
 
-You can also consume events from the Journaling API using the [Adobe I/O Events SDK](https://github.com/adobe/aio-lib-events). See [Subscribe to Events Using Journaling](https://developer.adobe.com/events/docs/guides/sdk/sdk_journaling/) for details and sample code.
+You can also consume events from the Journaling API using the [Adobe I/O Events SDK](https://github.com/adobe/aio-lib-events). See [Subscribe to Events Using Journaling](https://developer.adobe.com/events/docs/guides/sdk/sdk-journaling) for details and sample code.
 
 ## Using a Webhook URL
 
@@ -33,7 +33,7 @@ See [Introduction to Adobe I/O Events Webhooks](https://developer.adobe.com/even
 
 <InlineAlert variant="warning" slots="text"/>
 
-Be careful not to confuse this method of consuming events with [Runtime Actions as a Webhook](https://developer.adobe.com/events/docs/guides/runtime_webhooks/#benefits-of-using-runtime-action-as-webhook). Runtime Actions as a Webhook is a functionality for creating a URL for App Builder to receive events from a 3rd party system.
+Be careful not to confuse this method of consuming events with [Runtime Actions as a Webhook](https://developer.adobe.com/events/docs/guides/runtime-webhooks/#benefits-of-using-runtime-action-as-webhook). Runtime Actions as a Webhook is a functionality for creating a URL for App Builder to receive events from a 3rd party system.
 
 ## Using a Runtime Action
 
@@ -45,4 +45,4 @@ See more examples of end-to-end integrations between Commerce and 3rd party syst
 
 ## Using Amazon EventBridge
 
-You can configure an Adobe I/O event registration to forward received Commerce events to Amazon EventBridge. See [Adobe I/O Events and Amazon EventBridge Integration](https://developer.adobe.com/events/docs/guides/amazon_eventbridge/) for more details.
+You can configure an Adobe I/O event registration to forward received Commerce events to Amazon EventBridge. See [Adobe I/O Events and Amazon EventBridge Integration](https://developer.adobe.com/events/docs/guides/amazon-eventbridge/) for more details.

@@ -20,8 +20,6 @@ View the following tutorials for more information about using App Builder to bui
 
 *  [Extensibility Framework for App Builder](https://experienceleague.adobe.com/en/docs/commerce-learn/tutorials/extensibility/adobe-developer-app-builder/extensibility-framework-commerce-eventing)
 
-*  [Functional demonstration for App Builder](https://experienceleague.adobe.com/docs/commerce-learn/tutorials/adobe-developer-app-builder/app-builder-functional-demonstration.html)
-
 *  [Build your first App Builder app](https://experienceleague.adobe.com/en/docs/commerce-learn/tutorials/extensibility/adobe-developer-app-builder/first-app/overview)
 
 *  [Get started with API Mesh](https://experienceleague.adobe.com/en/docs/commerce-learn/tutorials/extensibility/api-mesh/getting-started-api-mesh)

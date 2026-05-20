@@ -20,7 +20,6 @@ The following resources will help you get to know the extensibility options offe
 
 - [Introducing App Builder for Commerce](https://experienceleague.adobe.com/en/docs/commerce-learn/tutorials/extensibility/adobe-developer-app-builder/introduction-to-app-builder) - A high-level business value proposition and ecosystem.
 - [Use Cases](https://www.youtube.com/watch?v=spm90jwC94A&t=1s) - a one-hour video on common App Builder use cases.
-- [Demo](https://experienceleague.adobe.com/docs/commerce-learn/tutorials/adobe-developer-app-builder/app-builder-functional-demonstration.html) - A short video demonstrating a functional integration between Commerce and Amazon Marketplace.
 
 ## How can I get set up?
 
@@ -34,9 +33,9 @@ The following resources will help you get to know the extensibility options offe
   - [Creating your first App Builder application](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app) - A generalized tutorial on creating your first App Builder app. If you are new to App Builder, Adobe recommends reviewing the App Builder overview before beginning this tutorial.
   - [Building integrations with App Builder](../starter-kit/integration/create-integration.md) - Accelerate building integrations with the integration starter kit for Adobe Commerce
 - Orchestration with API Mesh for Adobe Developer App Builder
-  - [Getting started](https://developer.adobe.com/graphql-mesh-gateway/gateway/getting-started/) - Information on how to get started with API Mesh.
-  - [Creating a mesh](https://developer.adobe.com/graphql-mesh-gateway/gateway/create-mesh/) - Developer documentation on creating a mesh.
-  - [Create a mesh walkthrough](https://developer.adobe.com/graphql-mesh-gateway/gateway/mesh_walkthrough/) - Documentation that provides a guided walkthrough of basic API Mesh functionality.
+  - [Getting started](https://developer.adobe.com/graphql-mesh-gateway/mesh/basic/) - Information on how to get started with API Mesh.
+  - [Creating a mesh](https://developer.adobe.com/graphql-mesh-gateway/mesh/basic/create-mesh) - Developer documentation on creating a mesh.
+  - [API Mesh tutorial](https://developer.adobe.com/graphql-mesh-gateway/mesh/resources/) - Documentation that provides a guided walkthrough of basic API Mesh functionality.
   - API Mesh video tutorials - A set of video tutorials that demonstrate basic API Mesh functionality:
     - [Getting started with API Mesh](https://experienceleague.adobe.com/en/docs/commerce-learn/tutorials/extensibility/api-mesh/getting-started-api-mesh)
     - [Installing Adobe I/O Runtime CLI and the API Mesh plugin](https://experienceleague.adobe.com/en/docs/commerce-learn/tutorials/extensibility/api-mesh/installing-aio-mesh-plugin)
@@ -69,5 +68,5 @@ The following resources will help you get to know the extensibility options offe
 
 - [Code samples for extending and integrating Adobe Commerce](https://developer.adobe.com/commerce/code-samples)
 - [Logging and troubleshooting in App Builder](best-practices/logging-troubleshooting.md)
-- [Adobe I/O Events frequently asked questions](https://developer.adobe.com/events/docs/support/faq/)
+- [Adobe I/O Events frequently asked questions](https://developer.adobe.com/events/docs/support/faq)
 - [App Builder security overview](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/security/)

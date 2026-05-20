@@ -93,7 +93,7 @@ In PaaS environments, you can define OAuth credentials in the `developerConsoleO
 
 The **Developer Console OAuth** configuration panel provides the ability to configure the details of an OAuth credential from the Adobe Developer Console. If configured and enabled, an IMS token will be generated using the credential details and passed in an Authorization header with the hook request.
 
-See [Setting up the OAuth Server-to-Server credential](https://developer.adobe.com/developer-console/docs/guides/authentication/ServerToServerAuthentication/implementation/#setting-up-the-oauth-server-to-server-credential) for information on creating an OAuth credential in the Adobe Developer Console.
+See [Setting up the OAuth Server-to-Server credential](https://developer.adobe.com/developer-console/docs/guides/authentication/ServerToServerAuthentication/implementation#setting-up-the-oauth-server-to-server-credential) for information on creating an OAuth credential in the Adobe Developer Console.
 
 | Field | Description |
 |---|---|

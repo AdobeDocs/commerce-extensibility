@@ -18,7 +18,7 @@ To manage event providers in the Adobe Commerce Admin, go to **System** > **Even
 
 ![Event Providers](../images/events/multiprovider-grid.png)
 
-To add a new event provider, click **Add New Provider**. Keep in mind that the event provider must be created in the Adobe I/O Events before you can add it to your Commerce instance. You can create the event provider the using [`aio` CLI tool](https://developer.adobe.com/events/docs/guides/cli/#provider-commands) or to use the [Adobe I/O Events API](https://developer.adobe.com/events/docs/api/#tag/Providers/operation/createProvider).
+To add a new event provider, click **Add New Provider**. Keep in mind that the event provider must be created in the Adobe I/O Events before you can add it to your Commerce instance. You can create the event provider the using [`aio` CLI tool](https://developer.adobe.com/events/docs/guides/cli/#provider-commands) or to use the [Adobe I/O Events API](https://developer.adobe.com/events/docs/api#operation/createProvider).
 
 ![Add New Provider](../images/events/multiprovider-create.png)
 

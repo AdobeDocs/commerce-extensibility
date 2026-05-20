@@ -56,7 +56,7 @@ This updates the tools to the latest version.
 * [Git](https://github.com/git-guides/install-git): For repository cloning and version control
 * Bash shell
   * macOS/Linux: No installation required
-  * Windows: Use [Git Bash](https://git-scm.com/install) or [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install)
+  * Windows: Use [Git Bash](https://git-scm.com/install/) or [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install)
 
 ## Installation
 

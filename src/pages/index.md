@@ -70,7 +70,7 @@ Adobe Commerce and Magento Open Source provide the following in-process extensib
 
 - [PHP Extensions](https://developer.adobe.com/commerce/php/development/) - Develop or modify Adobe Commerce and Magento Open Source components.
 
-- [Marketplace Extensions](https://developer.adobe.com/commerce/marketplace/guides/sellers/extensions/) - Create and sell PHP extensions in the [Adobe Commerce Marketplace](https://commercemarketplace.adobe.com).
+- [Marketplace Extensions](https://developer.adobe.com/commerce/marketplace/guides/sellers/extensions) - Create and sell PHP extensions in the [Adobe Commerce Marketplace](https://commercemarketplace.adobe.com).
 
 ### Related information
 

@@ -38,7 +38,7 @@ We recommend ingesting events directly from the third-party system. This is the 
 
 ![use case 2](../../images/starterkit/use-case-2.png)
 
-Refer to the [Events Publishing API](https://developer.adobe.com/events/docs/guides/api/eventsingress_api/) for more information.
+Refer to the [Events Publishing API](https://developer.adobe.com/events/docs/guides/api/eventsingress-api) for more information.
 
 <InlineAlert variant="info" slots="text"/>
 
@@ -71,4 +71,4 @@ aio app add event
 For more information on how to implement a consumer action and register it as a webhook, refer to
 the [AppBuilder Applications with Adobe I/O Events](https://developer.adobe.com/events/docs/guides/appbuilder/) documentation.
 
-You can also refer to the [Adobe I/O Events Webhook FAQ](https://developer.adobe.com/events/docs/support/faq/#webhook-faq) which contains information about how to handle event consumption, such as state of registration, retries, and debugging.
+You can also refer to the [Adobe I/O Events Webhook FAQ](https://developer.adobe.com/events/docs/support/faq#webhook-faq) which contains information about how to handle event consumption, such as state of registration, retries, and debugging.

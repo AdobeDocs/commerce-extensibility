@@ -55,7 +55,7 @@ Use the following steps to configure your local environment:
 
    Replace `$GITHUB_PAT` with your GitHub personal access token. For more information, refer to [managing your personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens).
 
-3. You can create an app builder project, or select the existing one, while initializing the starter kit. The created project can be found in the [Adobe Developer Console](https://console.adobe.io/).
+3. You can create an app builder project, or select the existing one, while initializing the starter kit. The created project can be found in the [Adobe Developer Console](https://developer.adobe.com/console/).
 
    ```bash
    ? Select Org: <your-ims-org>

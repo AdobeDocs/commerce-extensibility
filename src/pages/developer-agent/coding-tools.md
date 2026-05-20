@@ -65,9 +65,9 @@ This updates the tools to the latest version.
 
 ### Automated setup (Recommended)
 
->[!TIP]
->
->If you encounter issues with the automated setup, follow the [manual setup](#manual-setup) steps below.
+<InlineAlert variant="info" slots="text" />
+
+If you encounter issues with the automated setup, follow the [manual setup](#manual-setup) steps below.
 
 The `app-setup` command automates the workspace setup process, including creating an [!DNL Adobe Developer Console] project, adding the required APIs, configuring the [!DNL Adobe I/O CLI], cloning the starter kit, connecting your local workspace, and installing the extensibility AI tools.
 

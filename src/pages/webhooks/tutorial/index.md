@@ -333,21 +333,17 @@ In the Commerce Admin, navigate to **System** > **Webhooks** > **Webhook Subscri
 
 1. Define the webhook settings as follows. The batch name and hook name can be any value. You can leave unlisted fields blank.
 
-   | Field | Value |
-   | --- | --- |
-   | **Webhook Method** | `observer.catalog_product_save_after` |
-   | **Webhook Type** | `after` |
-   | **Batch Name** | `checkproductName` |
-   | **Hook Name** | `checkproductName` |
-   | **URL** | The URL you noted in the previous step, such as `https://1234567-appbuilderforextens-stage.adobeio-static.net/api/v1/web/appbuilderforextensibility/testwebhook` |
+   * **Webhook Method** — `observer.catalog_product_save_after`
+   * **Webhook Type** — `after`
+   * **Batch Name** — `checkproductName`
+   * **Hook Name** — `checkproductName`
+   * **URL** — The URL you noted in the previous step, such as `https://1234567-appbuilderforextens-stage.adobeio-static.net/api/v1/web/appbuilderforextensibility/testwebhook`
 
 1. Define a hook field to specify the payload you want to send to App Builder. Click the **Add Hook Field** button and enter the following information:
 
-   | Field | Value |
-   | --- | --- |
-   | **Name** | `product` |
-   | **Source** | `data.product` |
-   | **Active** | `Yes` |
+   * **Name** — `product`
+   * **Source** — `data.product`
+   * **Active** — `Yes`
   
 #### Testing the integration using webhooks
 

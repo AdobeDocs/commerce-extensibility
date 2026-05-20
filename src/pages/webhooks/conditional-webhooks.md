@@ -24,16 +24,14 @@ Conditional webhooks can have one or more rules. The webhook triggers only when 
 
    The operator must be one of the following:
 
-   | Operator | Description |
-   |---|---|
-   | `greaterThan` | Checks whether the value supplied in the payload of the webhook is greater than a specified value. Applicable for integer and float data types. |
-   | `lessThan` | Checks whether the payload value is less than a specified value. Applicable for integer and float data types. |
-   | `equal` | Checks whether the payload value matches the specified value. For Boolean data types, use `1` to compare to `true` and `0` to compare to `false`. |
-   | `notEqual` | Checks whether the payload value does not match the specified value. |
-   | `regex` | A regular expression that checks for matches. The specified value must be compatible with the [regular expression match](https://www.php.net/manual/en/function.preg-match.php). |
-   | `in`| Checks whether the payload value is one of multiple specified values. The value must be a comma-separated list. You do not need to provide additional escape characters. |
-   | `isEmpty` | Checks whether the payload value is empty. |
-   | `notEmpty` | Checks whether the payload value is not empty. |
+   * **`greaterThan`** — Checks whether the value supplied in the payload of the webhook is greater than a specified value. Applicable for integer and float data types.
+   * **`lessThan`** — Checks whether the payload value is less than a specified value. Applicable for integer and float data types.
+   * **`equal`** — Checks whether the payload value matches the specified value. For Boolean data types, use `1` to compare to `true` and `0` to compare to `false`.
+   * **`notEqual`** — Checks whether the payload value does not match the specified value.
+   * **`regex`** — A regular expression that checks for matches. The specified value must be compatible with the [regular expression match](https://www.php.net/manual/en/function.preg-match.php).
+   * **`in`** — Checks whether the payload value is one of multiple specified values. The value must be a comma-separated list. You do not need to provide additional escape characters.
+   * **`isEmpty`** — Checks whether the payload value is empty.
+   * **`notEmpty`** — Checks whether the payload value is not empty.
 
 *  `Value` - The value to compare against. When you assign the `regex` operator, you must delimit the regular expression value with valid characters, such as forward slashes (/). For example, `/^TV .*/i`, which checks whether the string starts with `TV`, ignoring the case of the letters.
 

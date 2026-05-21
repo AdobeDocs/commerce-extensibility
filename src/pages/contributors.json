@@ -1,7 +1,7 @@
 {
-  "total": 211,
+  "total": 212,
   "offset": 0,
-  "limit": 211,
+  "limit": 212,
   "data": [
     {
       "page": "/",
@@ -98,7 +98,7 @@
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/71198017?v=4"
       ],
-      "lastUpdated": "7/15/2025"
+      "lastUpdated": "5/7/2026"
     },
     {
       "page": "/admin-ui-sdk/app-registration",
@@ -124,14 +124,14 @@
     {
       "page": "/admin-ui-sdk/configuration",
       "avatars": [
-        "https://avatars.githubusercontent.com/u/47368809?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
+        "https://avatars.githubusercontent.com/u/47368809?v=4",
         "https://avatars.githubusercontent.com/u/114562006?v=4",
         "https://avatars.githubusercontent.com/u/71198017?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4"
       ],
-      "lastUpdated": "5/19/2026"
+      "lastUpdated": "5/21/2026"
     },
     {
       "page": "/admin-ui-sdk/eligible-extensions-config",
@@ -139,7 +139,7 @@
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/71198017?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "5/7/2026"
     },
     {
       "page": "/admin-ui-sdk/extension-points/",
@@ -275,14 +275,14 @@
     {
       "page": "/admin-ui-sdk/installation",
       "avatars": [
-        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4",
         "https://avatars.githubusercontent.com/u/71198017?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4",
         "https://avatars.githubusercontent.com/u/1022072?v=4"
       ],
-      "lastUpdated": "5/19/2026"
+      "lastUpdated": "5/21/2026"
     },
     {
       "page": "/admin-ui-sdk/publish",
@@ -304,7 +304,7 @@
         "https://avatars.githubusercontent.com/u/47368809?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4"
       ],
-      "lastUpdated": "5/19/2026"
+      "lastUpdated": "5/21/2026"
     },
     {
       "page": "/admin-ui-sdk/troubleshooting",
@@ -514,6 +514,13 @@
         "https://avatars.githubusercontent.com/u/38460853?v=4"
       ],
       "lastUpdated": "5/14/2026"
+    },
+    {
+      "page": "/app-management/installation/admin-ui-sdk",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/11652541?v=4"
+      ],
+      "lastUpdated": "5/19/2026"
     },
     {
       "page": "/app-management/installation/customize",

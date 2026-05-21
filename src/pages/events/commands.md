@@ -46,7 +46,7 @@ If you decide to omit the arguments, the `event-types.json` file must have the f
 }
 ```
 
-As an alternative to above steps, you can click the [Create Event Provider](./configure-commerce.md#commerce-admin) button on the **General configuration** section of the Adobe I/O Events page in the Admin.
+As an alternative to above steps, you can click the [Create Event Provider](configure-commerce.md#commerce-admin) button on the **General configuration** section of the Adobe I/O Events page in the Admin.
 
 ### Usage
 
@@ -178,7 +178,7 @@ where:
 
 The `--fields` command option defines which fields within an event to send to your external application. To send all fields, specify `--fields='*'`. If you want to send only specific fields, use a separate instance of the `--fields` command option to define each field to transmit. You cannot use a `*` wildcard character to match partial strings.
 
-If the Commerce event contains objects, use dotted notation to specify fields within an object. For example, if your event contains a `stock_data` object, and you want to send its `product_id` and `qty` fields, you would specify the `--fields stock_data.product_id` and `--fields stock_data.qty` command options. [Commerce module development](./module-development.md) provides a detailed example of using files to register events.
+If the Commerce event contains objects, use dotted notation to specify fields within an object. For example, if your event contains a `stock_data` object, and you want to send its `product_id` and `qty` fields, you would specify the `--fields stock_data.product_id` and `--fields stock_data.qty` command options. [Commerce module development](module-development.md) provides a detailed example of using files to register events.
 
 <InlineAlert variant="warning" slots="text" />
 
@@ -194,9 +194,9 @@ The command supports observer events by default. You must perform additional ste
 
 <InlineAlert variant="info" slots="text"/>
 
-You can also subscribe to a plugin event if it was registered in the `app/etc/config.php` or `app/etc/env.php` file and subsequently unsubscribed with the [`events:unsubscribe` command](#unsubscribe-from-a-commerce-event). [Register events](./module-development.md#register-events) describes the format of these files.
+You can also subscribe to a plugin event if it was registered in the `app/etc/config.php` or `app/etc/env.php` file and subsequently unsubscribed with the [`events:unsubscribe` command](#unsubscribe-from-a-commerce-event). [Register events](module-development.md#register-events) describes the format of these files.
 
-You can also create and subscribe to a conditional event. Conditional events allow you to determine the conditions that the Commerce events client module uses to emit native or custom events to your application. See [Create conditional events](./conditional-events.md) for detailed information and examples.
+You can also create and subscribe to a conditional event. Conditional events allow you to determine the conditions that the Commerce events client module uses to emit native or custom events to your application. See [Create conditional events](conditional-events.md) for detailed information and examples.
 
 <InlineAlert variant="info" slots="text"/>
 
@@ -212,7 +212,7 @@ If you are implementing eventing in a performance testing environment, run the `
 
 ### Options
 
-`--fields='{"<name>":"<field-name>", "converter":"<path\to\converterclass>", "source":"context_store.get_store.get_id"}'` Required, the `converter` and `source` arguments are optional. Specifies an event field to transmit to the Adobe App Builder application. You can specify this option multiple times. Each instance can contain only one field name. The `converter` argument applies the [converter class](convert-field-values.md) to the specified field. The `source` argument is used to retrieve the data [from the application context](./context-fields.md).
+`--fields='{"<name>":"<field-name>", "converter":"<path\to\converterclass>", "source":"context_store.get_store.get_id"}'` Required, the `converter` and `source` arguments are optional. Specifies an event field to transmit to the Adobe App Builder application. You can specify this option multiple times. Each instance can contain only one field name. The `converter` argument applies the [converter class](convert-field-values.md) to the specified field. The `source` argument is used to retrieve the data [from the application context](context-fields.md).
 
 `--force`, `-f` Forces subscription to the event, even if it hasn't been defined locally.
 
@@ -226,7 +226,7 @@ If you are implementing eventing in a performance testing environment, run the `
 
 `--destination`, `-d` A custom destination for the event. This argument is used for SaaS integrations.
 
-`--providerId` The event provider to which events will be delivered. If not provided the default event provider will be used. To configure additional event providers refer to the [Configure additional event providers](./configure-commerce.md) section.
+`--providerId` The event provider to which events will be delivered. If not provided the default event provider will be used. To configure additional event providers refer to the [Configure additional event providers](configure-commerce.md) section.
 
 `--hipaaAuditRequired` Indicates the event contains data that is subject to HIPAA auditing.`
 

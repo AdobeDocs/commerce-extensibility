@@ -64,7 +64,7 @@ Use the following steps to perform additional configuration for Adobe Commerce o
    git add app/etc/config.php
    ```
 
-1. Run the `composer info magento/ece-tools` command to determine your version of ece-tools. If the version is less than `2002.1.16`, [update to the most recent version](https://experienceleague.adobe.com/docs/commerce-cloud-service/user-guide/dev-tools/ece-tools/update-package.html).
+1. Run the `composer info magento/ece-tools` command to determine your version of ece-tools. If the version is less than `2002.1.16`, [update to the most recent version](https://experienceleague.adobe.com/en/docs/commerce-on-cloud/user-guide/dev-tools/ece-tools/update-package).
 
 1. Enable webhooks in the `.magento.env.yaml` file:
 

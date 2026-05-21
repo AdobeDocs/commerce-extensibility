@@ -5,11 +5,6 @@ keywords:
   - Extensibility
 ---
 
-import OrderPlaceConfigXml from './code-samples/order-place-custom-attributes-validation-xml.md';
-import OrderPlaceConfigAdmin from './code-samples/order-place-custom-attributes-validation-admin.md';
-import OrderViewConfigXml from './code-samples/order-view-custom-attributes-validation-admin.md';
-import OrderViewConfigAdmin from './code-samples/order-view-custom-attributes-validation-xml.md';
-
 # Order custom attribute validation
 
 When an order and its custom attributes are saved in the Commerce Admin, a third-party system checks whether the sales representative custom attribute has a valid value. If valid, allow the order to be saved. Otherwise, display an error message.
@@ -20,7 +15,7 @@ When an order and its custom attributes are saved in the Commerce Admin, a third
 
 `observer.sales_order_view_custom_attributes_update_before` - triggered only when order custom attributes are saved from the **Custom Attributes** tab of the **Order View** page in the Commerce Admin.
 
-&#8203;<Edition name="paas" /> The custom attributes modules must be installed for this use case. See [Install custom attribute support](https://developer.adobe.com/commerce/webapi/rest/modules/custom-attributes/#install-custom-attribute-support) if the modules are not yet installed.
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) The custom attributes modules must be installed for this use case. See [Install custom attribute support](https://developer.adobe.com/commerce/webapi/rest/modules/custom-attributes/#install-custom-attribute-support) if the modules are not yet installed.
 
 ## Payloads
 
@@ -227,27 +222,133 @@ The following `observer.sales_order_view_custom_attributes_update_before` defaul
 
 The following configurations define a conditional webhook. As a result of the specified rule in the examples, the webhook will only make requests to external systems when it is triggered from the Commerce Admin.
 
-<TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" />
+<CodeBlock slots="heading, code" repeat="2" languages="XML, YAML" />
 
 #### webhook.xml (PaaS)
 
-<OrderPlaceConfigXml/>
+```xml
+<method name="observer.sales_order_place_before" type="before">
+    <hooks>
+        <batch name="order_validation" order="100">
+            <hook name="order_custom_attributes_validation" url="{env:APP_BUILDER_URL}/validate-order-attributes" priority="100" fallbackErrorMessage="Could not validate the order's attributes" softTimeout="1000" required="true" method="POST">
+                <headers>
+                    <header name="x-gw-ims-org-id">{env:APP_BUILDER_IMS_ORG_ID}</header>
+                    <header name="Authorization">Bearer {env:APP_BUILDER_AUTH_TOKEN}</header>
+                </headers>
+                <fields>
+                    <field name="custom_attributes" source="data.order.custom_attributes_serializable" />
+                    <field name="order" source="data.order" />
+                </fields>
+                <rules>
+                    <rule field="context_application_state.get_area_code" operator="equal" value="adminhtml" />
+                </rules>
+            </hook>
+        </batch>
+    </hooks>
+</method>
+```
 
 #### Admin (SaaS)
 
-<OrderPlaceConfigAdmin/>
+```yaml
+Hook Settings
+
+Webhook method: observer.sales_order_place_before
+Webhook type: before
+Batch name: order_validation
+Batch order: 100
+Hook name: order_custom_attributes_validation
+Hook priority: 100
+URL: <Host>/validate-order-attributes
+Soft timeout: 1000
+Fallback Error Message: Could not validate the order's attributes
+Required: Required
+Active: Yes
+Method: POST
+
+Developer Console OAuth
+
+Client ID: The client ID for the OAuth credential.
+Client Secret: The client secret for the OAuth credential.
+Organization ID: The organization ID for the OAuth credential.
+
+Hook Fields
+
+Name: custom_attributes
+Source: data.order.custom_attributes_serializable
+Active: Yes
+
+Name: order
+Source: data.order
+Active: Yes
+
+Hook Rules
+
+Field: context_application_state.get_area_code
+Value: adminhtml
+Operator: equal
+Active: Yes
+```
 
 ### observer.sales_order_view_custom_attributes_update_before
 
-<TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" />
+<CodeBlock slots="heading, code" repeat="2" languages="XML, YAML" />
 
 #### webhook.xml (PaaS)
 
-<OrderViewConfigXml/>
+```xml
+<method name="observer.sales_order_view_custom_attributes_update_before" type="before">
+    <hooks>
+        <batch name="order_validation" order="100">
+            <hook name="order_custom_attributes_validation" url="{env:APP_BUILDER_URL}/validate-order-attributes" priority="100" fallbackErrorMessage="Could not validate the order's attributes" softTimeout="1000" required="true" method="POST">
+                <headers>
+                    <header name="x-gw-ims-org-id">{env:APP_BUILDER_IMS_ORG_ID}</header>
+                    <header name="Authorization">Bearer {env:APP_BUILDER_AUTH_TOKEN}</header>
+                </headers>
+                <fields>
+                    <field name="custom_attributes" source="data.custom_attributes" />
+                    <field name="order" source="data.order" />
+                </fields>
+            </hook>
+        </batch>
+    </hooks>
+</method>
+```
 
 #### Admin (SaaS)
 
-<OrderViewCnfigAdmin/>
+```yaml
+Hook Settings
+
+Webhook method: observer.sales_order_view_custom_attributes_update_before
+Webhook type: before
+Batch name: order_validation
+Batch order: 100
+Hook name: order_custom_attributes_validation
+Hook priority: 100
+URL: <Host>/validate-order-attributes
+Soft timeout: 1000
+Fallback Error Message: Could not validate the order's attributes
+Required: Required
+Active: Yes
+Method: POST
+
+Developer Console OAuth
+
+Client ID: The client ID for the OAuth credential.
+Client Secret: The client secret for the OAuth credential.
+Organization ID: The organization ID for the OAuth credential.
+
+Hook Fields
+
+Name: custom_attributes
+Source: data.custom_attributes
+Active: Yes
+
+Name: order
+Source: data.order
+Active: Yes
+```
 
 ## Endpoint code example
 

@@ -27,7 +27,7 @@ By installing the AI coding tools, you get access to:
 * Developer MCP Server
 * App Builder MCP Server
 
-For skills, prompts, and best practices after setup, see [Skills, prompts, and commands](./skills-and-prompts.md) and [Best practices](./best-practices.md).
+For skills, prompts, and best practices after setup, see [Skills, prompts, and commands](skills-and-prompts.md) and [Best practices](best-practices.md).
 
 ## Updating to the latest version
 
@@ -44,7 +44,7 @@ This updates the tools to the latest version.
 * Any coding agent that supports [agent skills](https://agentskills.io/home#adoption), such as:
 
    * [Cursor](https://cursor.com/download)
-   * [Claude Code](https://www.claude.com/product/claude-code)
+   * [Claude Code](https://claude.com/product/claude-code)
    * [GitHub Copilot](https://github.com/features/copilot)
    * [Windsurf](https://windsurf.com)
    * [Gemini CLI](https://github.com/google-gemini/gemini-cli)
@@ -56,7 +56,7 @@ This updates the tools to the latest version.
 * [Git](https://github.com/git-guides/install-git): For repository cloning and version control
 * Bash shell
   * macOS/Linux: No installation required
-  * Windows: Use [Git Bash](https://git-scm.com/install) or [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install)
+  * Windows: Use [Git Bash](https://git-scm.com/install/) or [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install)
 
 ## Installation
 
@@ -89,7 +89,7 @@ After the command completes, navigate to your project directory and restart your
 
 The following example installation shows the interactive prompts and output for the checkout starter kit.
 
-**Example installation (checkout starter kit)**
+**Example installation (checkout starter kit):**
 
 ```shell-session
 aio commerce extensibility app-setup
@@ -197,7 +197,7 @@ Next steps:
       git clone git@github.com:adobe/commerce-integration-starter-kit.git
       ```
 
-   * Commerce [checkout starter kit](../starter-kit/checkout/) for building or extending the checkout experience, including payments, shipping, and taxes.
+   * Commerce [checkout starter kit](../starter-kit/checkout/index.md) for building or extending the checkout experience, including payments, shipping, and taxes.
 
       ```bash
       git clone git@github.com:adobe/commerce-checkout-starter-kit.git
@@ -254,7 +254,7 @@ Next steps:
 1. After a successful install, the process configures:
 
    * MCP server integration for Adobe Commerce development
-   * [Agent skills](./skills-and-prompts.md#skills) for enhanced development experience
+   * [Agent skills](skills-and-prompts.md#skills) for enhanced development experience
    * Commerce-specific development tools and workflows
 
    Skills and MCP tools are installed. If you do not see them, restart your coding agent.

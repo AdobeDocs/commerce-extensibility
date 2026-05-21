@@ -21,7 +21,7 @@ const commerceClient = await getAdobeCommerceClient(process.env);
 
 `createOopeShippingCarrier` creates a new out-of-process shipping carrier with the necessary details such as `code`, `title`, and `configuration`.
 
-Check the [API reference](./shipping-reference.md#create-a-new-oope-shipping-carrier) for more details.
+Check the [API reference](shipping-reference.md#create-a-new-oope-shipping-carrier) for more details.
 
 <CodeBlock slots="heading, code" repeat="1" languages="javascript" />
 
@@ -60,7 +60,7 @@ try {
 
 `getOopeShippingCarriers` retrieves a list of all out-of-process shipping carriers in the Adobe Commerce instance.
 
-Check the [API reference](./shipping-reference.md#list-all-shipping-carriers) for more details.
+Check the [API reference](shipping-reference.md#list-all-shipping-carriers) for more details.
 
 <CodeBlock slots="heading, code" repeat="1" languages="javascript" />
 
@@ -88,7 +88,7 @@ try {
 
 `getOopeShippingCarrier` retrieves one out-of-process shipping carrier by `code` from the Adobe Commerce instance.
 
-Check the [API reference](./shipping-reference.md#get-an-oope-shipping-carrier-by-code) for more details.
+Check the [API reference](shipping-reference.md#get-an-oope-shipping-carrier-by-code) for more details.
 
 <CodeBlock slots="heading, code" repeat="1" languages="javascript" />
 

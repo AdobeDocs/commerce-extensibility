@@ -11,17 +11,21 @@ The Commerce application provides a way to test webhooks before enabling them in
 
 ## Testing webhooks in the Admin
 
-<Edition name="saas" />
+<Edition slots="text" backgroundcolor="green" />
+
+[SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 Click **Select** > **Test Webhook** in a hook's **Action** column to open a page for testing execution of all hooks configured for the same webhook method and type.
 
-![Test webhook](../_images/webhooks/test-webhook.png)
+![Test webhook](../images/webhooks/test-webhook.png)
 
 In the **Request payload** text area, input a webhook request payload in JSON format. After clicking the **Run Webhook** button, a banner displays at the top of the page indicating if webhook execution was successful or if an exception occurred. In the **Resolved payload** section, a JSON object displays the payload returned by the webhook after processing the hook response operations.
 
 ## Testing webhooks in development mode
 
-<Edition name="paas" />
+<Edition slots="text" backgroundcolor="blue" />
+
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 Use the [`webhooks:dev:run <webhook-name> <webhook-arguments-payload>`](commands.md#emulate-webhook-execution) command in development mode to test your webhooks locally. It emulates the execution of your registered webhook, which contains a custom payload, without requiring changes to the Commerce application. Run this command after setting the initial webhook payload in a `webhooks.xml` file. Then run the command again any time you make subsequent modifications to the payload until you can confirm that the payload works as expected.
 
@@ -69,7 +73,9 @@ bin/magento cache:clean webhooks_response
 
 ## Testing webhook endpoint with self-signed SSL certificate
 
-<Edition name="paas" />
+<Edition slots="text" backgroundcolor="blue" />
+
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 <InlineAlert variant="info" slots="text1" />
 

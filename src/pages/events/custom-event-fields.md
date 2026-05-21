@@ -19,10 +19,10 @@ You must configure a module's `io_events.xml` or root `app/etc/io_events.xml` fi
 
 The `<processors>` element defines the processors that inject custom data into the specified event. This element contains one or more `<processor>` elements, which can contain the following attributes:
 
-Attribute | Required | Description
---- | --- | ---
-`class` | Yes | The fully-qualified class name.
-`priority` | No | An integer indicating the order in which multiple processors are executed. The system executes unprioritized processors first, in the order listed. All processors with defined priority values are executed in numerical order, from lowest to highest.
+| Attribute | Required | Description |
+|---|---|---|
+| `class` | Yes | The fully-qualified class name. |
+| `priority` | No | An integer indicating the order in which multiple processors are executed. The system executes unprioritized processors first, in the order listed. All processors with defined priority values are executed in numerical order, from lowest to highest. |
 
 The following example adds the `order_status`, `order_id`, and `order_details` fields to the `observer.sales_order_save_after` event payload. The assigned `priority` values indicate the processors will be executed in the following order:
 

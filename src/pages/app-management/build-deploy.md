@@ -59,7 +59,7 @@ These actions handle configuration and scope operations (generated when a `busin
 | `config` | Handles retrieving and updating configuration values across scopes. |
 | `scope-tree` | Handles scope hierarchy management for Commerce and custom scopes. |
 
-The scope tree action supports syncing scopes from Adobe Commerce, setting custom scope hierarchies for external systems, and unsyncing Commerce scopes. Structural changes in Commerce (websites, stores, store views) are **not** reflected in App Management until an Admin runs **Sync commerce scopes** for each associated application that uses scopes; see [Scope tree synchronization](./configuration-schema.md#scope-tree-synchronization).
+The scope tree action supports syncing scopes from Adobe Commerce, setting custom scope hierarchies for external systems, and unsyncing Commerce scopes. Structural changes in Commerce (websites, stores, store views) are **not** reflected in App Management until an Admin runs **Sync commerce scopes** for each associated application that uses scopes; see [Scope tree synchronization](configuration-schema.md#scope-tree-synchronization).
 
 ### Admin UI SDK registration action from `commerce/backend-ui/1`
 
@@ -98,4 +98,4 @@ Search text and both dropdowns apply together (logical AND). To display the full
 
 ### Acquire App
 
-**Acquire App** opens a new browser tab (or a separate browser view) to [Adobe Exchange](https://exchange.adobe.com/experiencecloud), where you can discover Commerce-related marketplace listings and add applications to your Adobe IMS organization. After the app is acquired, approved, and deployed, it appears in App Management for [association and installation](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app).
+**Acquire App** opens a new browser tab (or a separate browser view) to [Adobe Exchange](https://exchange.adobe.com/apps/browse/ec), where you can discover Commerce-related marketplace listings and add applications to your Adobe IMS organization. After the app is acquired, approved, and deployed, it appears in App Management for [association and installation](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app).

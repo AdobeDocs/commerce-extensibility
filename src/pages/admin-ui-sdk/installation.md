@@ -15,7 +15,7 @@ Adobe Commerce as a Cloud Service (SaaS) automatically includes the Adobe Commer
 
 Magento Open Source is not supported.
 
-[Admin configuration and testing](./configuration.md) describes how to enable and configure the Admin UI SDK.
+[Admin configuration and testing](configuration.md) describes how to enable and configure the Admin UI SDK.
 
 ## Install the Admin UI SDK
 
@@ -25,13 +25,13 @@ Adobe Commerce has the following software requirements:
 
 * Adobe Commerce on cloud infrastructure or on premises: 2.4.5+
 * PHP 8.1+
-* [Adobe Identity Management Service (IMS) for Adobe Commerce](https://experienceleague.adobe.com/docs/commerce-admin/start/admin/ims/adobe-ims-integration-overview.html)
+* [Adobe Identity Management Service (IMS) for Adobe Commerce](https://experienceleague.adobe.com/en/docs/commerce-admin/start/admin/ims/adobe-ims-integration-overview)
 
-The [Adobe App Builder _Getting Started_ guide](https://developer.adobe.com/app-builder/docs/getting_started/) lists the latest software requirements for creating App Builder apps.
+The [Adobe App Builder _Getting Started_ guide](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app) lists the latest software requirements for creating App Builder apps.
 
 ### Enable Adobe IMS for Commerce
 
-You must implement Adobe Identity Management Service (IMS) for Adobe Commerce to use the Admin UI SDK. [Configure the Commerce Admin Integration with Adobe ID](https://experienceleague.adobe.com/docs/commerce-admin/start/admin/ims/adobe-ims-config.html?lang=en) describes this process.
+You must implement Adobe Identity Management Service (IMS) for Adobe Commerce to use the Admin UI SDK. [Configure the Commerce Admin Integration with Adobe ID](https://experienceleague.adobe.com/en/docs/commerce-admin/start/admin/ims/adobe-ims-config) describes this process.
 
 ### Adobe Commerce on cloud infrastructure installation
 
@@ -127,6 +127,6 @@ The Admin UI SDK is automatically updated for SaaS projects. For PaaS projects, 
    bin/magento setup:upgrade && bin/magento indexer:reindex && bin/magento cache:clean
    ```
 
-1. If you are updating from V1.x to V2.0, refer to [Migrate your extension point](./extension-points/index.md#migrate-your-extension-point-from-version-1x-to-20) for additional instructions.
+1. If you are updating from V1.x to V2.0, refer to [Migrate your extension point](extension-points/index.md#migrate-your-extension-point-from-version-1x-to-20) for additional instructions.
 
-1. If you are updating from V2.x to V3.0, the published extensions won't be fetched automatically. Refer to [Eligible extensions configuration](./eligible-extensions-config.md) to select the needed extensions to display.
+1. If you are updating from V2.x to V3.0, the published extensions won't be fetched automatically. Refer to [Eligible extensions configuration](eligible-extensions-config.md) to select the needed extensions to display.

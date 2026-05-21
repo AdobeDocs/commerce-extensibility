@@ -14,7 +14,7 @@ The eligible extensions configuration allows you to select the extensions for a 
 
 Navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Admin UI SDK**. In the **General Configuration** section, click the **Configure extensions**` button.
 
-![Admin UI SDK eligible extensions configuration](../_images/admin-ui-sdk/configuration/eligible-extensions.png)
+![Admin UI SDK eligible extensions configuration](../images/admin-ui-sdk/configuration/eligible-extensions.png)
 
 1. Select the workspace of extensions you want to map to the Commerce instance. Click **Apply** to load the eligible extensions. Workspace choices are: **Stage**, **Production**, or **Custom**. If **Custom** is selected, be sure to provide the workspace name corresponding to the extension in App Builder. Only English alphanumeric and Latin alphabet characters are allowed.
 

@@ -6,14 +6,11 @@ keywords:
   - Extensibility
 ---
 
-import Configuration from '/src/_includes/checkout-configuration.md'
-import Version from '/src/_includes/checkout-version.md'
-
 # Install the shipping module
 
-To begin using the shipping module with the checkout starter kit, ensure that you have completed the [getting started](./getting-started.md) and [configuration](./configure.md) steps.
+To begin using the shipping module with the checkout starter kit, ensure that you have completed the [getting started](getting-started.md) and [configuration](configure.md) steps.
 
-For more ideas on how you can use the shipping module, refer to [shipping use cases](./shipping-use-cases.md).
+For more ideas on how you can use the shipping module, refer to [shipping use cases](shipping-use-cases.md).
 
 ## Prerequisites
 
@@ -23,7 +20,7 @@ For more ideas on how you can use the shipping module, refer to [shipping use ca
 
 ## Installation
 
-<Version />
+<Fragment src="/_includes/checkout-version.md" />
 
 To enable out-of-process shipping methods in Adobe Commerce, install the `magento/module-out-of-process-shipping-methods` module using the following command:
 
@@ -33,7 +30,7 @@ composer require magento/module-out-of-process-shipping-methods --with-dependenc
 
 ## Configuration
 
-<Configuration />
+<Fragment src="/_includes/checkout-configuration.md" />
 
 The starter kit provides the [`create-shipping-carriers`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/create-shipping-carriers.js) script to help configure Adobe Commerce. It reads the shipping carriers configuration from the `shipping-carriers.yaml` file and creates the shipping carriers in Adobe Commerce.
 

@@ -12,6 +12,10 @@ This page explores different use cases and scenarios for implementing payment me
 
 For more general use cases, refer to [use-cases](use-cases.md).
 
+<InlineAlert variant="info" slots="text"/>
+
+The payment use cases are for headless implementations only. Luma storefronts are not supported.
+
 ## Integration strategies
 
 The Adobe Commerce checkout starter kit supports several integration patterns with payment gateways based on a few key components that can be combined and adapted as needed.

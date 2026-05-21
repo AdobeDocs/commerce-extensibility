@@ -26,9 +26,9 @@ In this page, you will find:
 
 Access to App Builder requires meeting two conditions: having the required membership level and account type. These will provide access to our sandboxes, allowing you to build and publish an application.
 
-- **Membership requirements** - To build and publish an application, you must have a [Silver tier membership or higher](https://partners.adobe.com/technologyprogram/experiencecloud/benefits.html#benefits), which gives you sandbox access and the possibility to publish on the Adobe Exchange Marketplace.
+- **Membership requirements** - To build and publish an application, you must have a [Silver tier membership or higher](https://partners.adobe.com/digitalexperience/), which gives you sandbox access and the possibility to publish on the Adobe Exchange Marketplace.
 
-- **Account requirements** - A [TPP account](https://partners.adobe.com/technologyprogram/experiencecloud/registration.html) is required to access all sandboxes (App Builder, the Adobe Commerce as a Cloud Service SaaS sandbox, and the PaaS sandbox), whether you are an SI or ISV.
+- **Account requirements** - A [TPP account](https://partners.adobe.com/digitalexperience/) is required to access all sandboxes (App Builder, the Adobe Commerce as a Cloud Service SaaS sandbox, and the PaaS sandbox), whether you are an SI or ISV.
 
 <InlineAlert variant="info" slots="text"/>
 
@@ -40,9 +40,9 @@ Follow these steps to set up your TPP account.
 
 ### Step 1: Request a TPP account
 
-Go to the [Register to the Adobe Technology Partner Program](https://partners.adobe.com/technologyprogram/experiencecloud/registration.html) page and create a Silver-level (or higher) TPP account. You will be asked to provide a corporate email address and company website as part of the registration process. [How to register in the Adobe Technology Partner Program](https://partners.adobe.com/technologyprogram/experiencecloud/knowledgebase/a96d596f933f8214fbe77b847aba101c.html) provides additional information about this process.
+Go to the [Register to the Adobe Technology Partner Program](https://partners.adobe.com/digitalexperience/) page and create a Silver-level (or higher) TPP account. You will be asked to provide a corporate email address and company website as part of the registration process. [How to register in the Adobe Technology Partner Program](https://partners.adobe.com/digitalexperience/) provides additional information about this process.
 
-![Register to the TPP program](../_images/register-tpp-adobe.png)
+![Register to the TPP program](../images/register-tpp-adobe.png)
 
 Adobe Support will create an IMS org for you, either proactively or after you request sandbox access in [Step 3](app-builder-partnership-essentials.md#step-3-request-sandbox-access). Each registrant must use an Adobe ID.
 
@@ -80,7 +80,7 @@ Verify that you are logged into your IMS organization by checking the top-right 
 
 1. Select **Create Project from template**.
 
-   ![Create project from template](../_images/developer-console-template.png)
+   ![Create project from template](../images/developer-console-template.png)
 
 1. Follow the steps described in the [Create your First App Builder Application](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app) topic.
 
@@ -118,7 +118,7 @@ After partners get sandbox access, the Adobe Commerce engineering team will ask 
 
 1. Install the [Adobe Commerce integration starter kit](../starter-kit/integration/create-integration.md).
 
-1. Read the [App Submission guidelines](../app-development/app-submission-guidelines.md).
+1. Read the [App Submission guidelines](app-submission-guidelines.md).
 
 1. Review the [developer guides](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/) for [out-of-process apps](index.md) and [app distribution](https://developer.adobe.com/developer-distribution/experience-cloud/docs/guides/discoverAndManage/app-builder-discover).
 
@@ -126,13 +126,13 @@ After partners get sandbox access, the Adobe Commerce engineering team will ask 
 
 - [Common issues](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/troubleshoot).
 
-- [Experience League forum](https://experienceleaguecommunities.adobe.com/t5/app-builder/ct-p/adobe-app-builder).
+- [Experience League forum](https://experienceleaguecommunities.adobe.com/adobe-developer-19).
 
 - Slack support channel in the [Magento Open Source Workspace](https://developer.adobe.com/open/magento/slack): `#app-builder-community`
 
 ## How to package your app
 
-1. [Package and configure the app overview](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/distribution/).
+1. [Package and configure the app overview](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/distribution).
 
 1. Internal publishing: Publish within the [partner's organization](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/publish-app).
 
@@ -150,11 +150,11 @@ Here are the distribution steps with use case for Commerce SIs and ISVs.
 
 - [Create an App Builder listing](https://developer.adobe.com/developer-distribution/experience-cloud/docs/guides/submission/app-builder-submission#creating-a-listing) using the zip file you created when building your App Builder app. After you create a listing, you can see it on the **Listing Overview** page.
 
-    ![Listing types](../_images/listing-type.png)
+    ![Listing types](../images/listing-type.png)
 
 ### Step 2: Submit a listing for review
 
-- Review the [Adobe Exchange Marketplace publishing requirements](./app-submission-guidelines.md) to ensure your submission meets the requirements and to prevent delays in the approval of your listing.
+- Review the [Adobe Exchange Marketplace publishing requirements](app-submission-guidelines.md) to ensure your submission meets the requirements and to prevent delays in the approval of your listing.
 
 - Adobe brand and code reviewers will [review the App Builder listing](https://developer.adobe.com/developer-distribution/experience-cloud/docs/guides/submission/app-builder-submission#reviewing-a-submission) and send an email confirmation once it is approved. If your submission is incomplete, Adobe will provide feedback to help you address the issues. You can also check the status on your page, which will display an **Approved** or **Published** status.
 
@@ -166,7 +166,7 @@ SIs can:
 
 - Publish the listing under their name if they have joined the **Technology Partner Program** using their Adobe ID associated with a TPP organization.
 
-- Publish on behalf of an ISV if they have been added to the TPP organization of the ISV. To confirm approval, submit a [TPP Support](https://partners.adobe.com/ec/cform/case) ticket providing evidence that the ISV authorizes the SI to publish on their behalf. and Adobe will then share the organization name with the SI user to ensure that they sign in to the Developer Distribution (DD) under the correct organization.
+- Publish on behalf of an ISV if they have been added to the TPP organization of the ISV. To confirm approval, submit a [TPP Support](https://partners.adobe.com/digitalexperience/m/forms/case) ticket providing evidence that the ISV authorizes the SI to publish on their behalf. and Adobe will then share the organization name with the SI user to ensure that they sign in to the Developer Distribution (DD) under the correct organization.
 
 <InlineAlert variant="info" slots="text, text1"/>
 
@@ -176,13 +176,13 @@ Users updating or revising the App Builder App itself require Commerce and App B
 
 ## Resources
 
-- [SPP](https://solutionpartners.adobe.com/solution-partners/benefits.html) Program Level Guide.
+- [SPP](https://partners.adobe.com/digitalexperience/) Program Level Guide.
 
-- [TPP](https://partners.adobe.com/technologyprogram/experiencecloud/benefits.html) Program Level Guide.
+- [TPP](https://partners.adobe.com/digitalexperience/) Program Level Guide.
 
 - [About App Builder](https://developer.adobe.com/app-builder/docs/intro_and_overview/)
 
-- [Introduction to App Builder](https://experienceleague.adobe.com/en/docs/commerce-learn/tutorials/adobe-developer-app-builder/introduction-to-app-builder)
+- [Introduction to App Builder](https://experienceleague.adobe.com/en/docs/commerce-learn/tutorials/extensibility/adobe-developer-app-builder/introduction-to-app-builder)
 
 - [Getting started with App Builder](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/app-builder-intro)
 

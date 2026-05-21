@@ -1,3 +1,8 @@
+---
+title: Customer Address Modification XML Configuration
+description: XML configuration for the customer address modification webhook use case.
+---
+
 ```xml
 <method name="plugin.magento.customer.api.address_repository.save" type="before">
     <hooks>

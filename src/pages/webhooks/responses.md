@@ -10,9 +10,9 @@ keywords:
 Currently, Adobe Commerce webhooks support responses in JSON format only. The response may be a single operation or an array of operations to be executed afterward.
 Each operation must contain some required fields based on the desired operation.
 
-&#8203;<Edition name="paas" /> Exceptions and notices are logged in the `<installation_directory>/var/log/system.log` file.
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) Exceptions and notices are logged in the `<installation_directory>/var/log/system.log` file.
 
-&#8203;<Edition name="saas" /> On the Webhooks Subscriptions page, click **Select** > **Show Logs** in the **Action** column to display a new page that displays logging activity for that webhook. The grid resembles the [Webhook Logs grid](./responses.md#database-logging), but displays activity for the selected hook only.
+[SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) On the Webhooks Subscriptions page, click **Select** > **Show Logs** in the **Action** column to display a new page that displays logging activity for that webhook. The grid resembles the [Webhook Logs grid](responses.md#database-logging), but displays activity for the selected hook only.
 
 ## Responses
 
@@ -20,13 +20,13 @@ The endpoint is expected to return a `200` response and a JSON object or array o
 
 Adobe Commerce webhooks support the following operations:
 
-Operation | Description
---- | ---
-`success` | The process that triggered the original event continues without any changes.
-`exception` | Causes Commerce to terminate the process that triggered the original event.
-`add` | Updates the arguments in the original event by adding data described in the operation
-`replace` | Replaces argument values in the original event, based on the response.
-`remove` | Removes values or nodes from the arguments in the original event by the provided path
+| Operation | Description |
+|---|---|
+| `success` | The process that triggered the original event continues without any changes. |
+| `exception` | Causes Commerce to terminate the process that triggered the original event. |
+| `add` | Updates the arguments in the original event by adding data described in the operation |
+| `replace` | Replaces argument values in the original event, based on the response. |
+| `remove` | Removes values or nodes from the arguments in the original event by the provided path |
 
 ### Success operation
 
@@ -44,11 +44,11 @@ The response of a successful request is as follows:
 
 The `exception` operation causes Commerce to terminate the process that triggered the original event. The exception is logged in `<installation_directory>/var/log/system.log`.
 
-Field | Type | Description
---- | --- | ---
-`op` | Required | Contains `exception`.
-`type` | Optional | Specifies the exception class. If `type` is not set, `\Magento\Framework\Exception\LocalizedException` will be thrown.
-`message` | Optional | Specifies the exception message. If this field is not explicitly set, then the message defined in the `fallbackErrorMessage` configuration field will be returned. If `fallbackErrorMessage` is not set, the system default error message will be returned.
+| Field | Type | Description |
+|---|---|---|
+| `op` | Required | Contains `exception`. |
+| `type` | Optional | Specifies the exception class. If `type` is not set, `\Magento\Framework\Exception\LocalizedException` will be thrown. |
+| `message` | Optional | Specifies the exception message. If this field is not explicitly set, then the message defined in the `fallbackErrorMessage` configuration field will be returned. If `fallbackErrorMessage` is not set, the system default error message will be returned. |
 
 If an error occurs, the response is similar to the following:
 
@@ -64,12 +64,12 @@ If an error occurs, the response is similar to the following:
 
 The `add` operation causes Commerce to add the provided `value` to the provided `path` to the triggered event arguments
 
-Field | Type     | Description
---- |----------| ---
-`op` | Required | Contains `add`.
-`path` | Required | Specifies the path at which the `value` should be added to the triggered event arguments.
-`value` | Required | Specifies the value to be added. This can be as a single value or in an array format.
-`instance` | Optional | Specifies the `DataObject` class name to create, based on the  `value` and added to the provided `path`. Use this field for cases when the object should be added in provided path.
+| Field | Type     | Description |
+|---|---|---|
+| `op` | Required | Contains `add`. |
+| `path` | Required | Specifies the path at which the `value` should be added to the triggered event arguments. |
+| `value` | Required | Specifies the value to be added. This can be as a single value or in an array format. |
+| `instance` | Optional | Specifies the `DataObject` class name to create, based on the  `value` and added to the provided `path`. Use this field for cases when the object should be added in provided path. |
 
 For example, we want to add a new shipping method to the triggered event result payload.
 The result is an array of `Magento\Quote\Model\Cart\ShippingMethod` objects:
@@ -113,12 +113,12 @@ $result = [
 
 The `replace` operation causes Commerce to replace a value in triggered event arguments for the provided `path`
 
-Field | Type     | Description
---- |----------| ---
-`op` | Required | Contains `replace`.
-`path` | Required | Specifies the path at which the value should be replaced with the provided `value`.
-`value` | Required | Specifies the replacement value. This can be as a single value or in an array format.
-`instance` | Optional | Specifies the `DataObject` class name to create, based on the  `value` and added to the provided `path`.
+| Field | Type     | Description |
+|---|---|---|
+| `op` | Required | Contains `replace`. |
+| `path` | Required | Specifies the path at which the value should be replaced with the provided `value`. |
+| `value` | Required | Specifies the replacement value. This can be as a single value or in an array format. |
+| `instance` | Optional | Specifies the `DataObject` class name to create, based on the  `value` and added to the provided `path`. |
 
 The following example replaces a nested element in the triggered event result payload:
 
@@ -158,10 +158,10 @@ $result = [
 
 The `remove` operation causes Commerce to remove a value or node in triggered event arguments by the provided `path`
 
-Field | Type     | Description
---- |----------| ---
-`op` | Required | Contains `remove`.
-`path` | Required | Specifies the path at which the value should be removed.
+| Field | Type     | Description |
+|---|---|---|
+| `op` | Required | Contains `remove`. |
+| `path` | Required | Specifies the path at which the value should be removed. |
 
 The following example removes element `key2` from the triggered event result payload:
 
@@ -195,14 +195,14 @@ $result = [
 
 The following table describes webhook logging activity. Each hook can be configured to have its own soft and hard timeout values.
 
-| Case | Logging activity
+| Case | Logging activity |
 | --- | --- |
-A hook was executed within the soft and hard time limits with a 2xx response code. | None
-An optional hook was executed with a response code other than 2xx within the soft and hard time limits. | Add error log entry
-A required hook was executed with a response code other than 2xx within the soft and hard time limits. | Add error log entry<br/>Throw an exception
-An optional hook is aborted due to reaching the hard timeout limit. | Add error log entry
-A required hook is aborted due to reaching the hard timeout limit. | Add error log entry<br/>Throw an exception
-The execution time of hook exceeds the soft timeout limit. | Add a notice to the error log
+| A hook was executed within the soft and hard time limits with a 2xx response code. | None |
+| An optional hook was executed with a response code other than 2xx within the soft and hard time limits. | Add error log entry |
+| A required hook was executed with a response code other than 2xx within the soft and hard time limits. | Add error log entry\<br/\>Throw an exception |
+| An optional hook is aborted due to reaching the hard timeout limit. | Add error log entry |
+| A required hook is aborted due to reaching the hard timeout limit. | Add error log entry\<br/\>Throw an exception |
+| The execution time of hook exceeds the soft timeout limit. | Add a notice to the error log |
 
 ## Database logging
 
@@ -210,7 +210,7 @@ You can enable database logging for debugging webhooks from the Admin. You shoul
 
 To enable database logging, navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Webhooks** > **Database logging configuration** and set the **Enabled** option to **Yes**.
 
-![Webhooks database logging configuration](../_images/webhooks/database-logging-configuration.png)
+![Webhooks database logging configuration](../images/webhooks/database-logging-configuration.png)
 
 You can configure the minimum log level to store logs in the database and log retention time. The available log levels are `DEBUG`, `INFO`, `WARNING`, and `ERROR`.
 
@@ -220,6 +220,6 @@ The logs are cleared once per day based on the retention time.
 
 When database logging is enabled, the webhook logs are stored in the `webhook_log` table. To check logs in the Admin, navigate to **System** > **Webhooks** > **Webhook Logs**.
 
-![Webhooks database logging](../_images/webhooks/database-logging.png)
+![Webhooks database logging](../images/webhooks/database-logging.png)
 
 You can filter logs by multiple fields, such as webhook method, type, hook name, and request ID.

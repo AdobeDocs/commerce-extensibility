@@ -46,9 +46,9 @@ To proceed, request Developer Access from your organization admin.
 
 The following images contrast what you will see with and without developer access.
 
-![Without Developer Access:](../../_images/webhooks/tutorial/restrcited-access-developer-console.png)
+![Without Developer Access:](../../images/webhooks/tutorial/restrcited-access-developer-console.png)
 
-![With Developer Access:](../../_images/webhooks/tutorial/developer-access-dev-console.png)
+![With Developer Access:](../../images/webhooks/tutorial/developer-access-dev-console.png)
 
 ### Create a new project in Adobe Developer Console
 
@@ -56,13 +56,13 @@ Follow the steps described in [Create an App Builder project](https://developer.
 
 This procedure allows you to quickly set up a new App Builder project with the necessary configurations and dependencies. You must install multiple APIs in your project, though the exact APIs vary, depending on whether you have Adobe Commerce as a Cloud Service (SaaS) or Adobe Commerce on Cloud or on-premises (PaaS).
 
-&#8203;<Edition name="saas" /> Install the following APIs in your **Stage** workspace:
+[SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) Install the following APIs in your **Stage** workspace:
 
 *  Adobe Commerce as a Cloud Service API
 *  I/O Events
 *  Adobe I/O Events for Adobe Commerce
 
-&#8203;<Edition name="paas" /> Install the following APIs in your **Stage** workspace:
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) Install the following APIs in your **Stage** workspace:
 
 *  I/O Management API
 *  I/O Events
@@ -312,14 +312,14 @@ Run the following commands in your project directory:
    Your deployed actions:
    
    web actions:
-   -> https://1234567-appbuilderforextens-stage.adobeio-static.net/api/v1/web/appbuilderforextensibility/testwebhook
+   -> [https://1234567-appbuilderforextens-stage.adobeio-static.net/api/v1/web/appbuilderforextensibility/testwebhook](https://1234567-appbuilderforextens-stage.adobeio-static.net/api/v1/web/appbuilderforextensibility/testwebhook)
    
    To view your deployed application:
-   -> https://1234567-appbuilderforextens-stage.adobeio-static.net/index.html
+   -> [https://1234567-appbuilderforextens-stage.adobeio-static.net/index.html](https://1234567-appbuilderforextens-stage.adobeio-static.net/index.html)
    
    To view your deployed application in the Experience Cloud shell:
    
-   -> https://experience.adobe.com/?devMode=true#/custom-apps/?localDevUrl=https://1234567-appbuilderforextens-stage.adobeio-static.net/index.html
+   -> [https://experience.adobe.com/?devMode=true#/custom-apps/?localDevUrl=https://1234567-appbuilderforextens-stage.adobeio-static.net/index.html](https://experience.adobe.com/?devMode=true#/custom-apps/?localDevUrl=https://1234567-appbuilderforextens-stage.adobeio-static.net/index.html)
    
    skipping publish phase...
    Successful deployment
@@ -333,21 +333,17 @@ In the Commerce Admin, navigate to **System** > **Webhooks** > **Webhook Subscri
 
 1. Define the webhook settings as follows. The batch name and hook name can be any value. You can leave unlisted fields blank.
 
-   Field | Value
-   --- | ---
-   **Webhook Method** | `observer.catalog_product_save_after`
-   **Webhook Type** | `after`
-   **Batch Name** | `checkproductName`
-   **Hook Name** | `checkproductName`
-   **URL** | The URL you noted in the previous step, such as `https://1234567-appbuilderforextens-stage.adobeio-static.net/api/v1/web/appbuilderforextensibility/testwebhook`
+   * **Webhook Method** — `observer.catalog_product_save_after`
+   * **Webhook Type** — `after`
+   * **Batch Name** — `checkproductName`
+   * **Hook Name** — `checkproductName`
+   * **URL** — The URL you noted in the previous step, such as `https://1234567-appbuilderforextens-stage.adobeio-static.net/api/v1/web/appbuilderforextensibility/testwebhook`
 
 1. Define a hook field to specify the payload you want to send to App Builder. Click the **Add Hook Field** button and enter the following information:
 
-   Field | Value
-   --- | ---
-   **Name** | `product`
-   **Source** | `data.product`
-   **Active** | `Yes`
+   * **Name** — `product`
+   * **Source** — `data.product`
+   * **Active** — `Yes`
   
 #### Testing the integration using webhooks
 

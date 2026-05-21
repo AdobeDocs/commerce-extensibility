@@ -5,18 +5,15 @@ keywords:
   - Extensibility
 ---
 
-import ConfigXml from './code-samples/gift-card-validation-xml.md';
-import ConfigAdmin from './code-samples/gift-card-validation-admin.md';
-
 # Gift card validation
 
 In this example, Commerce calls a third-party gift card provider to validate the gift card.
 
 ## Webhook name
 
-&#8203;<Edition name="paas" /> `plugin.magento.gift_card_account.api.gift_card_account_management.save_by_quote_id`
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) `plugin.magento.gift_card_account.api.gift_card_account_management.save_by_quote_id`
 
-&#8203;<Edition name="saas" /> `plugin.gift_card_account.api.gift_card_account_management.save_by_quote_id`
+[SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) `plugin.gift_card_account.api.gift_card_account_management.save_by_quote_id`
 
 ## Payloads
 
@@ -51,15 +48,62 @@ In this example, Commerce calls a third-party gift card provider to validate the
 
 ## Configuration
 
-<TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" />
+<CodeBlock slots="heading, code" repeat="2" languages="XML, YAML" />
 
 #### webhook.xml (PaaS)
 
-<ConfigXml/>
+```xml
+<method name="plugin.magento.gift_card_account.api.gift_card_account_management.save_by_quote_id" type="before">
+    <hooks>
+        <batch name="apply_gift_card">
+            <hook name="validate_gift_card" url="{env:APP_BUILDER_URL}/validate-gift-card" method="POST" timeout="5000" softTimeout="1000" required="true" fallbackErrorMessage="The gift card cannot be validated">
+                <headers>
+                    <header name="x-gw-ims-org-id">{env:APP_BUILDER_IMS_ORG_ID}</header>
+                    <header name="Authorization">Bearer {env:APP_BUILDER_AUTH_TOKEN}</header>
+                </headers>
+                <fields>
+                    <field name="giftCard.cartId" source="cartId" />
+                    <field name="giftCard.gift_cards" source="giftCardAccountData.gift_cards" />
+                </fields>
+            </hook>
+        </batch>
+    </hooks>
+</method>
+```
 
 #### Admin (SaaS)
 
-<ConfigAdmin/>
+```yaml
+Hook Settings
+
+Webhook method: plugin.gift_card_account.api.gift_card_account_management.save_by_quote_id
+Webhook type: before
+Batch name: apply_gift_card
+Hook name: validate_gift_card
+URL: <Host>/validate-gift-card
+Timeout: 5000
+Soft timeout: 1000
+Fallback Error Message: The gift card cannot be validated
+Required: Required
+Active: Yes
+Method: POST
+
+Developer Console OAuth
+
+Client ID: The client ID for the OAuth credential.
+Client Secret: The client secret for the OAuth credential.
+Organization ID: The organization ID for the OAuth credential.
+
+Hook Fields
+
+Name: giftCard.cartId
+Source: cartId
+Active: Yes
+
+Name: giftCard.gift_cards
+Source: giftCardAccountData.gift_cards
+Active: Yes
+```
 
 ## Endpoint code example
 

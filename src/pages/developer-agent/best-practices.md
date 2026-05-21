@@ -10,7 +10,7 @@ keywords:
 
 # Best practices for AI Commerce coding tools
 
-Adobe recommends the following practices when using the AI coding tools for Commerce App Builder. For setup steps, see [Coding tools setup](./coding-tools.md). For skills and sample prompts, see [Skills, prompts, and commands](./skills-and-prompts.md).
+Adobe recommends the following practices when using the AI coding tools for Commerce App Builder. For setup steps, see [Coding tools setup](coding-tools.md). For skills and sample prompts, see [Skills, prompts, and commands](skills-and-prompts.md).
 
 ## Checklist
 
@@ -48,10 +48,10 @@ This also allows you to leverage Adobe's templates and build upon proven pattern
 Consult the following resources to get started:
 
 * [Integration starter kit](../starter-kit/integration/create-integration.md)
-* [Checkout starter kit](../starter-kit/checkout/)
+* [Checkout starter kit](../starter-kit/checkout/index.md)
 * [Adobe Commerce starter kit templates](https://github.com/adobe/adobe-commerce-samples/tree/main/starter-kit)
-* [Adobe I/O Events starter templates](https://experienceleague.adobe.com/en/docs/commerce-learn/tutorials/adobe-developer-app-builder/io-events/getting-started-io-events)
-* [App Builder sample applications](https://developer.adobe.com/app-builder/docs/resources/sample_apps)
+* [Adobe I/O Events starter templates](https://experienceleague.adobe.com/en/docs/commerce-learn/tutorials/extensibility/adobe-developer-app-builder/io-events/getting-started-io-events)
+* [App Builder sample applications](https://developer.adobe.com/app-builder/docs/resources/sample_apps/)
 
 ### Why you should use these resources
 
@@ -97,7 +97,7 @@ Complex Adobe Commerce applications often involve:
 
 <InlineAlert variant="info" slots="text" />
 
-Before relying on MCP tools, ensure you are [logged in to the Adobe I/O CLI](./coding-tools.md#log-in-to-the-adobe-io-cli).
+Before relying on MCP tools, ensure you are [logged in to the Adobe I/O CLI](coding-tools.md#log-in-to-the-adobe-io-cli).
 
 The tooling defaults to MCP tools, but in certain circumstances it can use CLI commands instead. To ensure MCP tool usage, explicitly request them in your prompt.
 
@@ -177,25 +177,25 @@ Once local testing is successful, deploy and test in the runtime environment. Ru
 
 Ask for help with testing. The tools can help with debugging, log analysis, and creating appropriate test data for your specific runtime actions.
 
-**Test runtime actions**
+**Test runtime actions:**
 
 ```shell
 Help me test the customer-created runtime action running locally
 ```
 
-**Debug failures**
+**Debug failures:**
 
 ```shell
 Why did the subscription-updated runtime action activation fail?
 ```
 
-**Check logs**
+**Check logs:**
 
 ```shell
 Help me check the logs for the last stock-monitoring runtime action invocation
 ```
 
-**Create test payloads**
+**Create test payloads:**
 
 ```shell
 Generate test data for this Commerce event
@@ -205,19 +205,19 @@ Generate test data for this Commerce event
 Create a test payload for the customer_save_after event
 ```
 
-**Find runtime endpoints**
+**Find runtime endpoints:**
 
 ```shell
 What's the URL for this deployed action?
 ```
 
-**Handle authentication**
+**Handle authentication:**
 
 ```shell
 How do I authenticate with this external API?
 ```
 
-**Troubleshoot**
+**Troubleshoot:**
 
 ```shell
 Help me debug why this action is returning 500 errors
@@ -315,11 +315,11 @@ The user experience will vary slightly depending on the IDE you are using. The f
 
 1. Provide your feedback for the tooling in the **Feedback** field that appears at the top of the IDE and press the **Enter** key.
 
-   ![Cursor feedback command input field](../_images/developer-agent/feedback-response.png)
+   ![Cursor feedback command input field](../images/developer-agent/feedback-response.png)
 
 1. In the **Save Locally** field, type either `yes` or `no` and press **Enter** to indicate if you want to save a local copy of your logs.
 
-   ![Cursor feedback command save locally field](../_images/developer-agent/feedback-save.png)
+   ![Cursor feedback command save locally field](../images/developer-agent/feedback-save.png)
 
    If you selected **Yes**, you can review the logs in your `chats` folder after sending your feedback.
 
@@ -327,4 +327,4 @@ The user experience will vary slightly depending on the IDE you are using. The f
 
 <InlineAlert variant="info" slots="text" />
 
-If you do not see the `/feedback` command, you may need to [update to the latest version](./coding-tools.md#updating-to-the-latest-version).
+If you do not see the `/feedback` command, you may need to [update to the latest version](coding-tools.md#updating-to-the-latest-version).

@@ -140,7 +140,7 @@ You must populate the `registration` section with calls to fetch menus, pages, a
 
 ## Update the `app.config.yaml` file
 
-Update the `app.config.yaml` [configuration file](https://developer.adobe.com/app-builder/docs/guides/configuration/) as follows:
+Update the `app.config.yaml` [configuration file](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/configuration/configuration) as follows:
 
 ```yaml
 extensions:

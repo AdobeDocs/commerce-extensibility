@@ -10,19 +10,19 @@ keywords:
 
 This page explores different use cases and scenarios for implementing shipping methods using the Adobe Commerce checkout starter kit.
 
-For more general use cases, refer to [use-cases](./use-cases.md).
+For more general use cases, refer to [use-cases](use-cases.md).
 
 ## Shipping methods
 
 You can add shipping methods to the checkout process by using [webhooks](../../webhooks/index.md).
 
-To add shipping methods, you must [run a script to automatically create shipping carriers](./shipping-install.md#configuration) or [create shipping carriers manually](./shipping-reference.md#shipping-api-reference) using the REST API. Only shipping methods with registered carriers are available in the checkout process.
+To add shipping methods, you must [run a script to automatically create shipping carriers](shipping-install.md#configuration) or [create shipping carriers manually](shipping-reference.md#shipping-api-reference) using the REST API. Only shipping methods with registered carriers are available in the checkout process.
 
 After the webhook is registered, every time a shopping cart is requested, a synchronous call is dispatched to the App Builder application implementing the shipping method to calculate the shipping cost and provide the available shipping methods.
 
 Refer to [`actions/shipping-methods.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/shipping-methods/index.js) for an example of how to process the request and return the list of available shipping methods.
 
-&#8203;<Edition name="paas" /> To register a webhook, you need to create a `webhooks.xml` [configuration file](../../webhooks/xml-schema.md) in your module or in the root `app/etc` directory.
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) To register a webhook, you need to create a `webhooks.xml` [configuration file](../../webhooks/xml-schema.md) in your module or in the root `app/etc` directory.
 
 The following example demonstrates how to add a webhook to the `plugin.magento.out_of_process_shipping_methods.api.shipping_rate_repository.get_rates` method:
 
@@ -46,7 +46,7 @@ The following example demonstrates how to add a webhook to the `plugin.magento.o
 
 You can register multiple webhooks for different shipping methods or shipping carriers by adding them into the same batch to ensure they are executed in parallel or create multiple batches to execute them sequentially.
 
-&#8203;<Edition name="saas" /> SaaS webhooks have slightly different naming conventions. For this example, use the `plugin.out_of_process_shipping_methods.api.shipping_rate_repository.get_rates` method.
+[SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) SaaS webhooks have slightly different naming conventions. For this example, use the `plugin.out_of_process_shipping_methods.api.shipping_rate_repository.get_rates` method.
 
 ### Payload
 

@@ -45,12 +45,12 @@ order: {
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-`id` | string | Yes | A unique ID that identifies the fee/discount. We recommended using the format: `<extensionId>`::`<fee/discountName>`.
-`label` | string | Yes | The name of the fee/discount to display.
-`value` | float | Yes | The amount of fee/discount to charge, in the base currency.
-`orderMinimumAmount` | float | No | The minimum amount of the order to apply the fee/discount. Default value: `0`.
-`applyFeeOnLastInvoice` | boolean | No | Whether to apply the fee/discount to the last invoice. If `false`, the fee/discount will be applied to the first invoice. Default value: `false`.
-`applyFeeOnLastCreditmemo` | boolean | No | Whether to refund the fee/discount to the last credit memo. If `false`, the fee/discount will be refunded to the first credit memo. Default value: `true`.
+| `id` | string | Yes | A unique ID that identifies the fee/discount. We recommended using the format: `<extensionId>`::`<fee/discountName>`. |
+| `label` | string | Yes | The name of the fee/discount to display. |
+| `value` | float | Yes | The amount of fee/discount to charge, in the base currency. |
+| `orderMinimumAmount` | float | No | The minimum amount of the order to apply the fee/discount. Default value: `0`. |
+| `applyFeeOnLastInvoice` | boolean | No | Whether to apply the fee/discount to the last invoice. If `false`, the fee/discount will be applied to the first invoice. Default value: `false`. |
+| `applyFeeOnLastCreditmemo` | boolean | No | Whether to refund the fee/discount to the last credit memo. If `false`, the fee/discount will be refunded to the first credit memo. Default value: `true`. |
 
 ## Sample code
 

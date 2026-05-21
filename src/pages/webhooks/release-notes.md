@@ -17,7 +17,7 @@ Mar 31, 2026
 
 ### Enhancements
 
-* Added filtration functionality for the context fields. <!-- CEXT-5905 -->
+* Added filtration functionality for the context fields.
 
 ## Version 1.17.1
 
@@ -27,7 +27,7 @@ Mar 9, 2026
 
 ### Bug fix
 
-* Fixed an issue that caused quote items to not be converted properly when retrieved from the webhook quote context. <!-- CEXT-5899 -->
+* Fixed an issue that caused quote items to not be converted properly when retrieved from the webhook quote context.
 
 ## Version 1.17.0
 
@@ -37,7 +37,7 @@ Mar 9, 2026
 
 ### Enhancements
 
-* Improved the ability to retrieve an active Quote in the webhook context. <!-- CEXT-5869 -->
+* Improved the ability to retrieve an active Quote in the webhook context.
 
 ## Version 1.16.0
 
@@ -47,7 +47,7 @@ Feb 2, 2026
 
 ### Enhancements
 
-* Added PHP 8.5 support. <!-- CEXT-5736 -->
+* Added PHP 8.5 support.
 
 ## Version 1.15.0
 
@@ -57,7 +57,7 @@ Jan 30, 2026
 
 ### Enhancements
 
-* Improved logged webhook messages for better observability integration. <!-- CEXT-5660 -->
+* Improved logged webhook messages for better observability integration.
 
 ## Version 1.14.0
 
@@ -67,9 +67,9 @@ Jan 7, 2026
 
 ### Enhancements
 
-* Added fields and made improvements to multiple webhooks. <!-- CEXT-5253 -->
+* Added fields and made improvements to multiple webhooks.
 
-* Resolved compatibility issues with new versions of dependencies. <!-- AC-16197 -->
+* Resolved compatibility issues with new versions of dependencies.
 
 ## Version 1.13.0
 
@@ -79,11 +79,11 @@ Nov 10, 2025
 
 ### Enhancements
 
-* PaaS installations now support the `POST /V1/webhooks/subscribe` and `POST /V1/webhooks/unsubscribe` [REST endpoints](./api.md). Previously, these endpoints were only available on SaaS. <!-- CEXT-5434 -->
+* PaaS installations now support the `POST /V1/webhooks/subscribe` and `POST /V1/webhooks/unsubscribe` [REST endpoints](api.md). Previously, these endpoints were only available on SaaS.
 
-* Added the [`developerConsoleOauth`](./xml-schema.md#developerconsoleoauth-element) XML configuration option to set Adobe Developer Console credentials for webhooks. <!-- CEXT-5434 -->
+* Added the [`developerConsoleOauth`](xml-schema.md#developerconsoleoauth-element) XML configuration option to set Adobe Developer Console credentials for webhooks.
 
-* Added the exception message to the log context in webhook plugins. <!-- CEXT-5273 -->
+* Added the exception message to the log context in webhook plugins.
 
 ## Version 1.12.0
 
@@ -93,7 +93,7 @@ Oct 30, 2025
 
 ### Enhancements
 
-* Added support for context fields in webhook payloads. <!-- CEXT-5381 -->
+* Added support for context fields in webhook payloads.
 
 ## Version 1.11.0
 
@@ -103,11 +103,11 @@ September 11, 2025
 
 ### Enhancements
 
-* Added the ability to apply webhook rules to context fields. <!-- CEXT:5005 -->
+* Added the ability to apply webhook rules to context fields.
 
 ### Bug fix
 
-* Fixed an issue that caused an error during the installation of some versions of Adobe Commerce. <!-- CEXT-5116 -->
+* Fixed an issue that caused an error during the installation of some versions of Adobe Commerce.
 
 ## Version 1.10.0
 
@@ -117,13 +117,13 @@ July 28, 2025
 
 ### Enhancements
 
-* Added a store context to retrieve information about the store in the webhook payload. <!-- CEXT-4973 -->
+* Added a store context to retrieve information about the store in the webhook payload.
 
-* Added the ability to retrieve object values from the context. <!-- CEXT-4973 -->
+* Added the ability to retrieve object values from the context.
 
-* Added a **Copy public key** button to the webhook Digital Signature configuration panel. <!-- CEXT-4631 -->
+* Added a **Copy public key** button to the webhook Digital Signature configuration panel.
 
-* Added logging improvements. <!-- CEXT-4801 -->
+* Added logging improvements.
 
 ## Version 1.9.0
 
@@ -133,15 +133,15 @@ February 14, 2025
 
 ### Enhancements
 
-* Added the ability to configure the log grid message detail in the Admin configuration. <!-- CEXT-4126 -->
+* Added the ability to configure the log grid message detail in the Admin configuration.
 
-* Improved the database logging to add logging in case of failed requests. <!-- CEXT-4084 -->
+* Improved the database logging to add logging in case of failed requests.
 
-* Updated php version requirement in the generated module. <!-- CEXT-4120 -->
+* Updated php version requirement in the generated module.
 
 ### Bug fix
 
-* Fixed the webhook data filtration logic when the source is an empty string. <!-- CEXT-4121 -->
+* Fixed the webhook data filtration logic when the source is an empty string.
 
 ## Version 1.8.0
 
@@ -151,11 +151,11 @@ January 23, 2025
 
 ### Enhancements
 
-* Added the `GET /rest/<store_view_code>/V1/webhooks/list` REST endpoint for retrieving a list of configured webhooks. <!-- CEXT-3925, CEXT-4068 -->
+* Added the `GET /rest/<store_view_code>/V1/webhooks/list` REST endpoint for retrieving a list of configured webhooks.
 
 ### Bug fix
 
-* Fixed an issue causing the `depth` option value to not impact the output of the `webhooks:info` command. <!-- CEXT-4102 -->
+* Fixed an issue causing the `depth` option value to not impact the output of the `webhooks:info` command.
 
 ## Version 1.7.0
 
@@ -165,9 +165,9 @@ December 18, 2024
 
 ### Enhancements
 
-* Added webhook options to skip SSL certificate validation and to set the path to the certificate file. <!--CEXT-3914 -->
+* Added webhook options to skip SSL certificate validation and to set the path to the certificate file.
 
-* Fixed the resource name needed to access webhook logs in the Admin. <!--CEXT-3782 -->
+* Fixed the resource name needed to access webhook logs in the Admin.
 
 ## Version 1.6.0
 
@@ -177,17 +177,17 @@ October 30, 2024
 
 ### Enhancements
 
-* Added the **Webhooks Logs** grid to the Admin for viewing webhook execution information. <!--CEXT-3510 -->
+* Added the **Webhooks Logs** grid to the Admin for viewing webhook execution information.
 
-* Added additional debug logging related to webhooks response caching. <!--CEXT-3586 -->
+* Added additional debug logging related to webhooks response caching.
 
-* Added additional observer events to the list of supported webhook event names. <!--CEXT-3671 -->
+* Added additional observer events to the list of supported webhook event names.
 
-* Updated copyrights in the generated module files. <!--- CEXT-3508 -->
+* Updated copyrights in the generated module files.
 
 ### Bug fix
 
-* Fixed an issue causing `null` values to be returned in some payloads output by the `webhooks:info` command <!--CEXT-3608 -->
+* Fixed an issue causing `null` values to be returned in some payloads output by the `webhooks:info` command
 
 ## Version 1.5.1
 
@@ -195,9 +195,9 @@ October 30, 2024
 
 July 10, 2024
 
-* Improved caching of webhook responses during single request. <!--CEXT-3279 -->
+* Improved caching of webhook responses during single request.
 
-* Fixed a possible vulnerability issue with showing the public key in the Admin UI configuration page. <!--CEXT-3354 -->
+* Fixed a possible vulnerability issue with showing the public key in the Admin UI configuration page.
 
 ## Version 1.5.0
 
@@ -209,7 +209,7 @@ May 20, 2024
 
 The Admin configuration UI for webhooks was removed as part of a security risk mitigation. Webhooks provide developer-oriented functionality and the Admin UI gave an unprecedented amount of access to admins, which could be inappropriate in some cases. All other webhooks functionality is still supported.
 
-Upgrading to the latest version could impact existing webhooks. If you previously had webhooks that were created in the Admin UI, you must recreate them in an XML file. <!--CEXT-3241 -->
+Upgrading to the latest version could impact existing webhooks. If you previously had webhooks that were created in the Admin UI, you must recreate them in an XML file.
 
 ## Version 1.4.0
 
@@ -219,9 +219,9 @@ May 15, 2024
 
 ### Enhancements
 
-* Added the ability to enable [digital signatures for webhooks](signature-verification.md). <!--CEXT-3047 -->
+* Added the ability to enable [digital signatures for webhooks](signature-verification.md).
 
-* Updated the list of disallowed webhooks. <!--CEXT-3132 -->
+* Updated the list of disallowed webhooks.
 
 ## Version 1.3.1
 
@@ -231,9 +231,9 @@ April 25, 2024
 
 ### Enhancements
 
-* Added the ability to sanitize sensitive data in the payload of webhooks. <!--CEXT-3063 -->
+* Added the ability to sanitize sensitive data in the payload of webhooks.
 
-* Made disallowed webhook expressions case-insensitive. <!--CEXT-3076 -->
+* Made disallowed webhook expressions case-insensitive.
 
 ## Version 1.3.0
 
@@ -243,9 +243,9 @@ April 22, 2024
 
 ### Enhancements
 
-* Added additional validation while saving webhooks in the Admin. <!--CEXT-3053 -->
+* Added additional validation while saving webhooks in the Admin.
 
-* Added a list of disallowed plugins. <!--CEXT-3051-->
+* Added a list of disallowed plugins.
 
 ## Version 1.2.1
 
@@ -255,12 +255,12 @@ March 19, 2024
 
 ### Enhancements
 
-* Enhanced test coverage for the `AdobeCommerceWebhooksAdminUi` module. <!--CEXT-2834 -->
+* Enhanced test coverage for the `AdobeCommerceWebhooksAdminUi` module.
 
 ### Bug fixes
 
-* Fixed integration test errors. <!--- CEXT-2920 -->
-* Removed the **Default View** drop down menu from the **Webhooks** page of the Admin. <!--- CEXT-2941 -->
+* Fixed integration test errors.
+* Removed the **Default View** drop down menu from the **Webhooks** page of the Admin.
 
 ## Version 1.2.0
 
@@ -290,17 +290,17 @@ November 30, 2023
 
 ### Enhancements
 
-* You can now define [conditional webhooks](conditional-webhooks.md) that run only when configured conditions are met. <!--- CEXT-2541 -->
+* You can now define [conditional webhooks](conditional-webhooks.md) that run only when configured conditions are met.
 
-* Added support for data-modifying webhooks by introducing new [response operations](responses.md#responses): `add`, `remove`, and `replace`. <!--- CEXT-2405, 2413, 2468 -->
+* Added support for data-modifying webhooks by introducing new [response operations](responses.md#responses): `add`, `remove`, and `replace`.
 
-* Added the ability to cache webhook responses and specify cache duration. The `ttl` attribute in the [`hook` element](xml-schema.md#hooks-element) of the `webhooks.xml` file defines the duration. Also added a new cache type, `webhooks_response`, to store webhook responses. <!--- CEXT-2403 -->
+* Added the ability to cache webhook responses and specify cache duration. The `ttl` attribute in the [`hook` element](xml-schema.md#hooks-element) of the `webhooks.xml` file defines the duration. Also added a new cache type, `webhooks_response`, to store webhook responses.
 
-* You can now use a [converter class](hooks.md#field-converters) to convert the value in a hook endpoint response object that has an operation status of `replace`. <!--- CEXT-2455 -->
+* You can now use a [converter class](hooks.md#field-converters) to convert the value in a hook endpoint response object that has an operation status of `replace`.
 
 ### Bug fixes
 
-* Fixed a TypeError that occurred when accessing a nested field given a scalar value. <!--- CEXT-2415 -->
+* Fixed a TypeError that occurred when accessing a nested field given a scalar value.
 
 ## Version 1.0.0
 

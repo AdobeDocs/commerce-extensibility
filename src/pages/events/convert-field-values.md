@@ -31,12 +31,12 @@ interface FieldConverterInterface
 
 As an example, the `observer.catalog_product_save_after` event contains a top-level `visibility` field, which must contain an integer value. Convert these values to strings that match values on the external system. The following table describes these values.
 
-Commerce value | Converted value | Description
---- | --- | ---
-1 | NOT_VISIBLE_INDIVIDUALLY | This product should not be displayed if it is part of a configurable product.
-2 | CATALOG_ONLY | This product appears in catalog listings, but not in searches.
-3 | SEARCH_ONLY | This product appears in searches, but not catalog listings.
-4 | CATALOG_AND_SEARCH | This product appears in catalog listings and searches. For most products, this is the default.
+| Commerce value | Converted value | Description |
+|---|---|---|
+| 1 | NOT_VISIBLE_INDIVIDUALLY | This product should not be displayed if it is part of a configurable product. |
+| 2 | CATALOG_ONLY | This product appears in catalog listings, but not in searches. |
+| 3 | SEARCH_ONLY | This product appears in searches, but not catalog listings. |
+| 4 | CATALOG_AND_SEARCH | This product appears in catalog listings and searches. For most products, this is the default. |
 
 In the following example, the `TestConverterVisibility` converter class updates the value of the `visibility` field to a string.
 

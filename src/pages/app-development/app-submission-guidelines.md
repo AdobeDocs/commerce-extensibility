@@ -5,8 +5,6 @@ keywords:
   - Extensibility
 ---
 
-import Webhook from '/src/_includes/webhook-auth.md'
-
 # App submission guidelines
 
 This page provides a list of requirements and best practices for Adobe Commerce app developers to ensure your app is ready for submission. Following these guidelines will help reduce rejection rates and improve the quality of your app.
@@ -46,7 +44,7 @@ Some requirements will differ based on whether you indicated the app was non-dow
 - General documentation guidelines
   - **Project-specific language**: Use project-specific language. Avoid generic references to "Adobe", "Magento" or "starter kit".
   - **Configuration details**: Clearly list the app configuration and any third-party service-specific setup steps.
-  - **Clear summary**: Provide a compact description that captures the app’s purpose and primary use cases.
+  - **Clear summary**: Provide a compact description that captures the app's purpose and primary use cases.
   - **Usage instructions**: Add instructions on how to use the app post-installation.
   - For non-downloadable apps:
       - All installation steps and usage instructions must be posted at the application documentation URL provided in Exchange. Because the app is not downloadable, README files and similar documents will not be accessible to customers.
@@ -93,7 +91,7 @@ Some requirements will differ based on whether you indicated the app was non-dow
 
   - **Webhook protection**: For webhooks, actions need to be protected by [signature verification](../webhooks/signature-verification.md) or by enabling the use of IMS authentication in your configuration file.
 
-    <Webhook />
+<Fragment src="/_includes/webhook-auth.md" />
 
 - Credential management
   - **Hardcoded secrets**: No hardcoded secrets (account IDs or tokens) in the code or configuration files.
@@ -127,7 +125,7 @@ Some requirements will differ based on whether you indicated the app was non-dow
           minVersion: 2.4.5
       ```
 
-  - **Events configuration**: Review [`events.config.yaml`](/starter-kit/checkout/configure/#eventsconfigyaml) to verify event providers and registrations, document usage, and prefix events with your app's scope to avoid collisions. Remove this file if your app does not use events.
+  - **Events configuration**: Review [`events.config.yaml`](/starter-kit/checkout/configure.md#eventsconfigyaml) to verify event providers and registrations, document usage, and prefix events with your app's scope to avoid collisions. Remove this file if your app does not use events.
   - **Admin UI SDK configuration**: If an app implements the Admin UI SDK, make sure requirements in the [Admin UI SDK review checklist](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/app-review-checklist/) are met.
   - **API Mesh configuration**: For non-downloadable apps, having an automatically-created mesh that is configured for an app builder action deployed within the same environment is not currently supported. If this is needed by an app, we recommend adding a `mesh.json` example in the documentation or in a public repo and providing instructions for setting up the mesh after the auto-generated environment is created.
 
@@ -144,8 +142,8 @@ Some requirements will differ based on whether you indicated the app was non-dow
 
 - Commerce compatibility
   - **Multi-flavor support**: Ensure compatibility between Commerce flavors (PaaS and SaaS):
-    - &#8203;<Edition name="saas" /> Use [IMS](/starter-kit/checkout/connect/#adobe-identity-management-service-ims) for authentication instead of [Commerce integrations (OAuth1)](/starter-kit/checkout/connect/#create-a-commerce-integration).
-  - For detailed guidelines on supporting both SaaS and PaaS, see [Extension Compatibility](./extension-compatibility.md).
+    - [SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) Use [IMS](/starter-kit/checkout/connect.md#adobe-identity-management-service-ims) for authentication instead of [Commerce integrations (OAuth1)](/starter-kit/checkout/connect.md#create-a-commerce-integration).
+  - For detailed guidelines on supporting both SaaS and PaaS, see [Extension Compatibility](extension-compatibility.md).
 
 - Quality assurance
   - **Test suite**: Ensure tests all tests are passing. Run `npm test` to validate.
@@ -186,7 +184,7 @@ To facilitate proper testing during review, ensure you provide:
 - Test credentials or demo environments (if applicable)
 - Documentation of any third-party service dependencies
 
-<InlineAlert variant="help" slots="header, text1, text2, text3" />
+<InlineAlert variant="help" slots="heading, text1, text2, text3" />
 
 Alternative options
 

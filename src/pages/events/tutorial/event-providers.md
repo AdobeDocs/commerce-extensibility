@@ -72,7 +72,7 @@ The event provider acts as a bridge between Adobe Commerce and Adobe's event-dri
 | `label`           | A user-friendly display name for the provider. |
 | `provider_metadata` | A technical identifier used to map the event provider to Adobe Commerce. |
 
-**Sample payload**
+**Sample payload:**
 
 ```json
 {
@@ -124,7 +124,7 @@ Event metadata defines the individual events that your event provider can emit. 
 | `provider_metadata`| A technical identifier linking the event to Adobe Commerce. |
 | `event_code`       | The unique code for this event, used to identify it in Adobe I/O. |
 
-**Sample payload**
+**Sample payload:**
 
 ```json
 {
@@ -136,7 +136,8 @@ Event metadata defines the individual events that your event provider can emit. 
 }
 ```
 
-**Expected response**
+**Expected response:**
+
 Once all required fields are completed, click the **Send** button. The  response will be similar to the following:
 
 ```json
@@ -160,7 +161,7 @@ Event providers act as connectors that enable Adobe Commerce to send system even
 
 1. Click **Add New Provider** and provide the required details. These fields are essential for establishing the connection between Adobe Commerce and the newly created Event Provider.
 
-   ![Add new provider](../../_images/events/tutorial/adobe-commerce-create-event-provider.png)
+   ![Add new provider](../../images/events/tutorial/adobe-commerce-create-event-provider.png)
 
    - **Provider ID** and **Instance ID** are required fields.
 
@@ -176,13 +177,13 @@ This step links a specific Adobe Commerce event to the event provider created ea
 
 1. Click **Add New Subscription** to create event metadata for specific events you want to emit. Provide the following details in the **Event subscription settings** section:
 
-  Field | Value
-  --- | ---
-  **Event Name** | `observer.catalog_product_save_commit_after`
-  **Event Name Alias** | Optional. Any user-friendly name.
-  **Event Provider** | Select the Event Provider created in the previous step.
-  **Is Enabled** | Yes
-  **Priority** | Yes
+  | Field | Value |
+  |---|---|
+  | **Event Name** | `observer.catalog_product_save_commit_after` |
+  | **Event Name Alias** | Optional. Any user-friendly name. |
+  | **Event Provider** | Select the Event Provider created in the previous step. |
+  | **Is Enabled** | Yes |
+  | **Priority** | Yes |
 
 1. In the **Event Subscription Fields** section, specify the following fields to be included in the event payload. This limits the payload to only the selected fields rather than sending the full event data, improving efficiency.
 

@@ -10,21 +10,21 @@ keywords:
  - Tools
 ---
 
-<Hero slots="image, heading, text"/>
+<SuperHero slots="image, heading, text"/>
 
-![Commerce Extensibility](_images/home-bg.jpeg)
+![Commerce Extensibility](images/home-bg.jpeg)
 
 # Adobe Commerce extensibility
 
 Learn about in-process and out-of-process development tools provided by Adobe Commerce
 
-This guide explains how to develop Out-of-Process apps that extend and customize Adobe Commerce. For a more in-depth understanding of extensibility, follow our [learning path](./app-development/learning-path.md).
+This guide explains how to develop Out-of-Process apps that extend and customize Adobe Commerce. For a more in-depth understanding of extensibility, follow our [learning path](app-development/learning-path.md).
 
 Extensibility, as a concept, reflects the possibility for growth and the ease of extending functionality in a system. When referring to extensibility in Adobe Commerce, we mean the ability of developers to expand, customize, and control their interactions with Adobe Commerce.
 
-The following diagram highlights the main components of the Adobe Commerce [extensibility strategy](https://experienceleague.adobe.com/docs/commerce-operations/implementation-playbook/architecture/extensibility-strategy.html):
+The following diagram highlights the main components of the Adobe Commerce [extensibility strategy](https://experienceleague.adobe.com/en/docs/commerce-operations/implementation-playbook/architecture/enterprise-blueprint):
 
-![extensibility strategy](./_images/extensibility-strategy-overview.png)
+![extensibility strategy](./images/extensibility-strategy-overview.png)
 
 Extensibility generally has two variations, in-process extensibility and out-of-process extensibility. In the context of Adobe Commerce, in-process extensibility refers to extended functionality that is located inside or alongside the Adobe Commerce core software. Conversely, out-of-process extensibility refers to extended functionality and services that operate outside the core software.
 
@@ -38,25 +38,23 @@ Other benefits of out-of-process extensibility include:
 
 - Technological Independence - Developers can choose whichever tech stacks and coding languages that fit their needs.
 
-<p></p>
-
 ## Out-of-process development tools
 
 Adobe Commerce offers the following out-of-process development tools:
 
 - [API Mesh for Adobe Developer App Builder](https://developer.adobe.com/graphql-mesh-gateway/) - Coordinate and combine multiple API, GraphQL, REST, and other sources into a single, queryable GraphQL endpoint.
 
-- [App Builder](https://developer.adobe.com/app-builder/docs/overview/) - Build and deploy secure and scalable web applications that extend Commerce functionality and integrate with third-party solutions.
+- [App Builder](https://developer.adobe.com/app-builder/docs/intro_and_overview/) - Build and deploy secure and scalable web applications that extend Commerce functionality and integrate with third-party solutions.
 
-- [Events](./events/index.md) - Use custom event triggers to interact with other extensible development tools.
+- [Events](events/index.md) - Use custom event triggers to interact with other extensible development tools.
 
-- [Webhooks](./webhooks/index.md) - Use webhooks to automatically trigger interactions between Commerce and third-party systems.
+- [Webhooks](webhooks/index.md) - Use webhooks to automatically trigger interactions between Commerce and third-party systems.
 
-- [Admin UI SDK](./admin-ui-sdk/index.md) - Customize and enhance the Commerce Admin with new pages and features for your merchants.
+- [Admin UI SDK](admin-ui-sdk/index.md) - Customize and enhance the Commerce Admin with new pages and features for your merchants.
 
 - Custom attributes - Use [GraphQL](https://developer.adobe.com/commerce/webapi/graphql/schema/attributes/mutations/) and [REST](https://developer.adobe.com/commerce/webapi/rest/modules/custom-attributes/) APIs to create custom attributes for carts, credit memos, and invoices and items in those objects. B2B developers can also create custom attributes for companies and negotiable quotes.
 
-Additionally, [Marketplace Apps](./app-development/index.md) allow you to create and sell custom single-page applications on the [Adobe Commerce Marketplace](https://commercemarketplace.adobe.com).
+Additionally, [Marketplace Apps](app-development/index.md) allow you to create and sell custom single-page applications on the [Adobe Commerce Marketplace](https://commercemarketplace.adobe.com).
 
 <InlineAlert variant="info" slots="text"/>
 
@@ -72,13 +70,13 @@ Adobe Commerce and Magento Open Source provide the following in-process extensib
 
 - [PHP Extensions](https://developer.adobe.com/commerce/php/development/) - Develop or modify Adobe Commerce and Magento Open Source components.
 
-- [Marketplace Extensions](https://developer.adobe.com/commerce/marketplace/guides/sellers/extensions/) - Create and sell PHP extensions in the [Adobe Commerce Marketplace](https://commercemarketplace.adobe.com).
+- [Marketplace Extensions](https://developer.adobe.com/commerce/marketplace/guides/sellers/extensions) - Create and sell PHP extensions in the [Adobe Commerce Marketplace](https://commercemarketplace.adobe.com).
 
 ### Related information
 
 <DiscoverBlock slots="link, text"/>
 
-[App Builder](https://developer.adobe.com/app-builder/docs/overview/)
+[App Builder](https://developer.adobe.com/app-builder/docs/intro_and_overview/)
 
 Is a complete framework that enables enterprise developers to build and deploy custom web applications that extend Adobe Experience Cloud solutions and run on Adobe infrastructure.
 

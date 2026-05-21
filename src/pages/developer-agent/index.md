@@ -32,24 +32,24 @@ Together, these improve workflow integration, context-aware generation, and repe
 
 | Guide | Description |
 | --- | --- |
-| [Coding tools setup](./coding-tools.md) | Prerequisites, installation with `aio commerce extensibility tools-setup`, post-install CLI auth, and IDE configuration (for example Cursor and GitHub Copilot). |
-| [Use cases](./use-cases.md) | Common extension patterns — REST APIs, checkout extensions, storefront components, event-driven integrations, and more. |
-| [Skills, prompts, and commands](./skills-and-prompts.md) | Slash commands, sample prompts, and the `/search-commerce-docs` command. |
-| [Best practices](./best-practices.md) | Planning mode, session checklists, workflow and protocol, MCP vs CLI, testing, deployment, monitoring, anti-patterns, and feedback. |
+| [Coding tools setup](coding-tools.md) | Prerequisites, installation with `aio commerce extensibility tools-setup`, post-install CLI auth, and IDE configuration (for example Cursor and GitHub Copilot). |
+| [Use cases](use-cases.md) | Common extension patterns — REST APIs, checkout extensions, storefront components, event-driven integrations, and more. |
+| [Skills, prompts, and commands](skills-and-prompts.md) | Slash commands, sample prompts, and the `/search-commerce-docs` command. |
+| [Best practices](best-practices.md) | Planning mode, session checklists, workflow and protocol, MCP vs CLI, testing, deployment, monitoring, anti-patterns, and feedback. |
 
 ## Related resources
 
 - [Create an integration](../starter-kit/integration/create-integration.md) — Integration starter kit
-- [Checkout starter kit](../starter-kit/checkout/) — Checkout and payments
+- [Checkout starter kit](../starter-kit/checkout/index.md) — Checkout and payments
 - [Project setup](../events/project-setup.md) — App Builder project and events
-- [App Builder sample applications](https://developer.adobe.com/app-builder/docs/resources/sample_apps)
+- [App Builder sample applications](https://developer.adobe.com/app-builder/docs/resources/sample_apps/)
 
 ## Updating the tools
 
-After the initial [installation](./coding-tools.md#installation), update to the latest version from your project or tooling directory:
+After the initial [installation](coding-tools.md#installation), update to the latest version from your project or tooling directory:
 
 ```bash
 aio commerce extensibility tools-setup
 ```
 
-See [Coding tools setup](./coding-tools.md#updating-to-the-latest-version) for details.
+See [Coding tools setup](coding-tools.md#updating-to-the-latest-version) for details.

@@ -71,7 +71,7 @@ curl --request GET \
 
 ## Subscribe a webhook
 
-To subscribe a webhook, make a `POST` request to the `/V1/webhooks/subscribe` endpoint. [Create a webhook](./conditional-webhooks.md) provides details about the contents of a webhook.
+To subscribe a webhook, make a `POST` request to the `/V1/webhooks/subscribe` endpoint. [Create a webhook](conditional-webhooks.md) provides details about the contents of a webhook.
 
 The following restrictions apply to the webhook request:
 
@@ -79,11 +79,11 @@ The following restrictions apply to the webhook request:
   - `name` cannot be a null.
 - Any `rules` must have a `field`, `value`, and `operator`.
   - `field` and `operator` cannot be null.
-  - The `operator` must be one of the supported options listed under [conditional webhooks](./conditional-webhooks.md).
+  - The `operator` must be one of the supported options listed under [conditional webhooks](conditional-webhooks.md).
 - Any `headers` must have a `name` and `value`.
   - `name` and `value` cannot be null.
 - `timeout`, `ttl`, and `soft_timeout` must be non-negative integers.
-- The `developer_console_oauth` section is optional. If provided, the [authorization headers](./tutorial/best-practices.md#secure-webhook-communication-using-oauth-credentials) will be automatically added to the webhook request based on your credentials.
+- The `developer_console_oauth` section is optional. If provided, the [authorization headers](tutorial/best-practices.md#secure-webhook-communication-using-oauth-credentials) will be automatically added to the webhook request based on your credentials.
 
 The request body must include the following attributes:
 
@@ -172,7 +172,9 @@ The unsubscribe endpoint allows you to delete an existing webhook subscription. 
 
 ## Get supported webhooks for SaaS
 
-<Edition name="saas" />
+<Edition slots="text" backgroundcolor="green" />
+
+[SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 The `GET /V1/webhooks/supportedList` endpoint returns the events supported in Adobe Commerce as a Cloud Service (SaaS). The response body is similar to the following:
 
@@ -191,7 +193,7 @@ The `GET /V1/webhooks/supportedList` endpoint returns the events supported in Ad
 ]
 ```
 
-The access token used in the request must have access to the `Webhooks > Webhooks Management > Webhooks List` resource. See [REST authentication](https://developer.adobe.com/commerce/services/cloud/guides/rest/authentication/) for information on authentication for SaaS.
+The access token used in the request must have access to the `Webhooks > Webhooks Management > Webhooks List` resource. See [REST authentication](https://developer.adobe.com/commerce/webapi/rest/authentication/) for information on authentication for SaaS.
 
 **Example usage:**
 

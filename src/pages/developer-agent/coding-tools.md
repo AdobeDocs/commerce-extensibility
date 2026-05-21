@@ -65,16 +65,16 @@ This updates the tools to the latest version.
 
 ### Automated setup (Recommended)
 
->[!TIP]
->
->If you encounter issues with the automated setup, follow the [manual setup](#manual-setup) steps below.
+<InlineAlert variant="info" slots="text" />
 
-The `app-setup` command automates the workspace setup process, including creating an [!DNL Adobe Developer Console] project, adding the required APIs, configuring the [!DNL Adobe I/O CLI], cloning the starter kit, connecting your local workspace, and installing the extensibility AI tools.
+If you encounter issues with the automated setup, follow the [manual setup](#manual-setup) steps below.
+
+The `app-setup` command automates the workspace setup process, including creating an Adobe Developer Console project, adding the required APIs, configuring the Adobe I/O CLI, cloning the starter kit, connecting your local workspace, and installing the extensibility AI tools.
 
 The `app-setup` command guides you through the following steps:
 
-* Selecting or creating an [!DNL Adobe Developer Console] project with the required APIs
-* Configuring the [!DNL Adobe I/O CLI] with your organization, project, and workspace
+* Selecting or creating an Adobe Developer Console project with the required APIs
+* Configuring the Adobe I/O CLI with your organization, project, and workspace
 * Cloning the appropriate starter kit and setting up the project
 * Configuring the environment and connecting the local workspace to the remote workspace
 * Installing the Commerce extensibility tools and coding agent skills
@@ -85,7 +85,7 @@ Run the following command and follow the interactive prompts:
 aio commerce extensibility app-setup
 ```
 
-After the command completes, navigate to your project directory and restart your coding agent to load the new MCP tools and skills. If your tutorial requires a storefront, rerun the command and select the [!DNL AEM Boilerplate Commerce] starter kit.
+After the command completes, navigate to your project directory and restart your coding agent to load the new MCP tools and skills. If your tutorial requires a storefront, rerun the command and select the AEM Boilerplate Commerce starter kit.
 
 The following example installation shows the interactive prompts and output for the checkout starter kit.
 

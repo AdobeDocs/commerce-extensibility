@@ -16,7 +16,7 @@ Admin UI SDK 4.0 was not released externally.
 
 ### Release Date
 
-May 7, 2026
+May 18, 2026
 
 ### Enhancements
 
@@ -25,8 +25,6 @@ May 7, 2026
   Clicking the [**Configure extensions** button](./eligible-extensions-config.md) on **Stores** > Settings > **Configuration** > **Adobe Services** > **Admin UI SDK** > **General Configuration** page now displays a modal dialog that has two tabs. The **Installed Extensions** tab displays the extensions that were installed with App Management. The **Manual Extensions Selection** tab allows you to manage previously-installed extensions, but this tab is deprecated and will be removed in a future release. Extension developers should migrate their extensions to App Management. <!-- CEXT-6119 -->
 
 * Added the `POST /V1/adminuisdk/extension` and `DELETE /V1/adminuisdk/extension/<orkspace_name>/<extension_name>` [REST endpoints](./api.md#app-management) to manage extensions stored in the Commerce database. These endpoints automatically refresh registrations upon execution. <!-- CEXT-6002, CEXT-6020 -->
-
-<!-- CEXT-6139 not documented-->
 
 ## Version 3.4.1
 

@@ -29,7 +29,9 @@ Retrieve the client secret, client ID, and organization ID from the Adobe Develo
 
 #### Configure OAuth in PaaS
 
-<Edition name="paas" />
+<Edition slots="text" backgroundcolor="blue" />
+
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 Add `developerConsoleOauth` to your hook configuration in the `webhooks.xml` file.
 
@@ -64,13 +66,15 @@ Instead of hardcoding the OAuth credentials in the `webhooks.xml` file, you can 
 
 #### Configure OAuth in ACCS
 
-<Edition name="saas" />
+<Edition slots="text" backgroundcolor="green" />
+
+[SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 1. Log in to the Commerce Admin and navigate to **System** > **Webhook Subscriptions**. Select the webhook you want to configure.
 
    Expand the **Developer Console OAuth** section, enable it, and enter the values for the **Client ID**, **Client Secret**, and **Organization ID** fields. These values must match the credentials you retrieved from the Developer Console in Step 1.
 
-   ![oAuth Section in Webhooks Subscription](../../_images/webhooks/tutorial/developer-console-oauth-commerce.png)
+   ![oAuth Section in Webhooks Subscription](../../images/webhooks/tutorial/developer-console-oauth-commerce.png)
 
 #### Configure OAuth through API
 

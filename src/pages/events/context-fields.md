@@ -8,13 +8,11 @@ keywords:
 
 # Context values
 
-import CommerceContext from '/src/_includes/commerce-context.md'
-
 You can add to the event payload values from the application context. It allows you to include data that is not part of the event by default but is crucial for your integration.
 
 The following contexts are supported:
 
-<CommerceContext />
+<Fragment src="/_includes/commerce-context.md" />
 
 #### Checkout session context
 

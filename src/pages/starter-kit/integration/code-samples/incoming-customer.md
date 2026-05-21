@@ -1,3 +1,8 @@
+---
+title: Incoming Customer
+description: Incoming customer data samples for the Adobe Commerce integration starter kit.
+---
+
 <CodeBlock slots="heading, code" repeat="3" languages="JSON, JSON, JSON" />
 
 #### create

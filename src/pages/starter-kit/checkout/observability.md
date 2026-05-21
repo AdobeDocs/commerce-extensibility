@@ -113,7 +113,7 @@ For concrete exporter code (such as constructing OTLP exporters, using batch pro
 
 - [API reference for `@adobe/aio-lib-telemetry`](https://github.com/adobe/aio-lib-telemetry/blob/main/docs/api-reference/README.md)
 - [Use cases (configuration examples)](https://github.com/adobe/aio-lib-telemetry/tree/main/docs/use-cases)
-- [Exporting data guide](https://github.com/adobe/aio-lib-telemetry/blob/main/docs/usage.md#exporting-data)
+- [Exporting data guide](https://github.com/adobe/aio-lib-telemetry/blob/main/docs/usage%2Emd#exporting-data)
 
 ## Troubleshooting
 

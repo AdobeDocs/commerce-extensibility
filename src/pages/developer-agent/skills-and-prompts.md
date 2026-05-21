@@ -10,7 +10,7 @@ keywords:
 
 # Skills, prompts, and commands
 
-This page describes sample prompts, the `/search-commerce-docs` command, and skill slash commands used with the Commerce AI extensibility tooling. For installation and IDE setup, see [Coding tools setup](./coding-tools.md). For workflow guidance, see [Best practices](./best-practices.md).
+This page describes sample prompts, the `/search-commerce-docs` command, and skill slash commands used with the Commerce AI extensibility tooling. For installation and IDE setup, see [Coding tools setup](coding-tools.md). For workflow guidance, see [Best practices](best-practices.md).
 
 ## Sample prompts
 

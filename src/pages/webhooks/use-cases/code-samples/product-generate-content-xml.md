@@ -1,3 +1,8 @@
+---
+title: Product Generate Content XML Configuration
+description: XML configuration for the product generate content webhook use case.
+---
+
 ```xml
 <method name="observer.catalog_product_save_before" type="before">
    <hooks>

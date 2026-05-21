@@ -13,7 +13,7 @@ Adobe I/O Events for Adobe Commerce requires Adobe Commerce 2.4.4 or higher.
 
 Magento Open Source is not supported.
 
-After you have created an [App Builder project](./project-setup.md), you must install the Commerce modules that enable integrations with Adobe I/O Events.
+After you have created an [App Builder project](project-setup.md), you must install the Commerce modules that enable integrations with Adobe I/O Events.
 
 ## Install Adobe I/O modules on Commerce
 
@@ -75,7 +75,7 @@ Use the following steps to perform additional configuration for Adobe Commerce o
    git add app/etc/config.php
    ```
 
-1. Run the `composer info magento/ece-tools` command to determine your version of ece-tools. If the version is less than `2002.1.13`, [update to the most recent version](https://experienceleague.adobe.com/docs/commerce-cloud-service/user-guide/dev-tools/ece-tools/update-package.html).
+1. Run the `composer info magento/ece-tools` command to determine your version of ece-tools. If the version is less than `2002.1.13`, [update to the most recent version](https://experienceleague.adobe.com/en/docs/commerce-on-cloud/user-guide/dev-tools/ece-tools/update-package).
 
 1. Enable eventing in the `.magento.env.yaml` file:
 

@@ -137,4 +137,4 @@ Both commerce and external event sources require a provider configuration:
 
 ## Related topics
 
-[Webhooks](./webhooks.md) — Learn how to declare Commerce webhook subscriptions in `app.commerce.config` for App Management
+[Webhooks](webhooks.md) — Learn how to declare Commerce webhook subscriptions in `app.commerce.config` for App Management

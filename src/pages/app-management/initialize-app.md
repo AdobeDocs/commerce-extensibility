@@ -1,6 +1,6 @@
 ---
 title: Initialize your app
-description: Set up your App Builder project for App Management
+description: Initialize an App Builder project for App Management
 keywords:
   - App Builder
   - App Management

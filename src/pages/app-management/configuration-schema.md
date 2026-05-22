@@ -73,6 +73,7 @@ This `businessConfig` schema contains the following properties:
 | `description` | string | No | Help text displayed below the field. |
 | `options` | array | Conditional | Required for `list`. Defines available options to be displayed in the dropdown list. |
 | `selectionMode` | string | Conditional | Required for `list`. Set to `single` for standard dropdown or `multiple` to allow multiple selections. |
+| `env` | array | No | Restricts the field to one or more Commerce environments. When omitted, the field applies to all environments. See [Commerce environment fields](#commerce-environment-fields). |
 
 ## Supported field types
 
@@ -86,6 +87,10 @@ The following field types are available for your `businessConfig` schema:
 | `tel` | string | Phone number input with format validation |
 | `url` | string | URL input with validation |
 | `list` | string | Dropdown with preconfigured options |
+
+### Commerce environment fields
+
+Each schema field can include an optional `env` array so App Management shows it only for each environment, or a combination of both. When `env` is omitted, the field applies to every Commerce environment. This matches how the configuration library interprets the [schema](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-config/docs/usage.md#conditional-fields-by-commerce-environment).
 
 ### Password field encryption
 
@@ -206,6 +211,8 @@ Your `app.commerce.config` is validated each time you run a `generate` command (
 
 Use `getConfigurationByKey` from the configuration library (together with `getConfiguration` and `setConfiguration` when you need full documents or writes) to access configuration values in your runtime actions.
 
+You must call `initialize` with your generated configuration schema before any of those functions. The schema is held in memory for the lifetime of the action invocation. You can load it from the generated `configuration-schema.json` under your `commerce/configuration/1`. See [Initialization](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-config/docs/usage.md#initialization) in the configuration library usage guide for more information.
+
 A **scope selector** tells the library which node in the scope tree to read or write. That tree can include **Adobe Commerce** scopes (such as websites and store views, each with a scope code and a **level** in the hierarchy), **custom scopes** you create in App Management (code only; see below), **global** scope, and other nodes that your app or merchants configure.
 
 When the target scope has **both** a code and a level—typical for Commerce store and website scopes—use `byCodeAndLevel`:
@@ -225,7 +232,7 @@ async function main(params) {
 }
 ```
 
-**Custom scopes** created in the App Management UI are identified by **code only**; they do not define a separate **level** in the tree. For those scopes you must use **`byCode("your-custom-scope-code")`**. `byCodeAndLevel` is not used for custom scopes because there is no level to pass.
+**Custom scopes** created in the App Management UI are identified by **code only**. They do not define a separate **level** in the tree. For those scopes you must use **`byCode("your-custom-scope-code")`**. `byCodeAndLevel` is not used for custom scopes because there is no level to pass. See the configuration library [usage](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-config/docs/usage.md) for more information.
 
 ```js
 import { getConfigurationByKey, byCode } from "@adobe/aio-commerce-lib-config";

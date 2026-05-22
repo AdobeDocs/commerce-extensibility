@@ -459,12 +459,12 @@
     {
       "page": "/app-management/",
       "avatars": [
-        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/38460853?v=4",
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/71198017?v=4",
         "https://avatars.githubusercontent.com/u/47715589?v=4"
       ],
-      "lastUpdated": "5/19/2026"
+      "lastUpdated": "5/22/2026"
     },
     {
       "page": "/app-management/app-metadata",
@@ -477,10 +477,10 @@
     {
       "page": "/app-management/build-deploy",
       "avatars": [
-        "https://avatars.githubusercontent.com/u/12731225?v=4",
-        "https://avatars.githubusercontent.com/u/38460853?v=4"
+        "https://avatars.githubusercontent.com/u/38460853?v=4",
+        "https://avatars.githubusercontent.com/u/12731225?v=4"
       ],
-      "lastUpdated": "5/19/2026"
+      "lastUpdated": "5/22/2026"
     },
     {
       "page": "/app-management/configuration-schema",
@@ -489,7 +489,7 @@
         "https://avatars.githubusercontent.com/u/47715589?v=4",
         "https://avatars.githubusercontent.com/u/71198017?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "5/22/2026"
     },
     {
       "page": "/app-management/define-app",
@@ -502,11 +502,11 @@
     {
       "page": "/app-management/initialize-app",
       "avatars": [
-        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/38460853?v=4",
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/47715589?v=4"
       ],
-      "lastUpdated": "5/19/2026"
+      "lastUpdated": "5/22/2026"
     },
     {
       "page": "/app-management/installation/",
@@ -541,7 +541,7 @@
       "avatars": [
         "https://avatars.githubusercontent.com/u/38460853?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "5/22/2026"
     },
     {
       "page": "/app-management/release-notes",
@@ -554,11 +554,11 @@
     {
       "page": "/app-management/troubleshooting",
       "avatars": [
-        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/38460853?v=4",
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/47715589?v=4"
       ],
-      "lastUpdated": "5/19/2026"
+      "lastUpdated": "5/22/2026"
     },
     {
       "page": "/config",

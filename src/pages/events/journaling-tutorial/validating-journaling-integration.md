@@ -63,7 +63,7 @@ In Developer Console > Projects → **projectname** > stage > Events > Event Bro
 2025-09-05T06:28:10.754Z stdout: [journalaction] info: SKU: fcdcd 2025-09-05T06:28:10.782Z stdout: [journalaction] info: Updated last processed position: 
 ```
 
-##  Inspect the action result
+## Inspect the action result
 
 Run the following command using the same activation ID to view the action's returned result, such as a success confirmation or event details.
 

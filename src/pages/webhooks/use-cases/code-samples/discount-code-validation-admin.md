@@ -1,3 +1,8 @@
+---
+title: Discount Code Validation Admin Configuration
+description: Admin panel configuration for the discount code validation webhook use case.
+---
+
 ```yaml
 Hook Settings
 

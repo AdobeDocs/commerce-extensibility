@@ -46,11 +46,11 @@ async function main(params) {
 
 ## Logging
 
-Application logs allow developers to debug an application in development as well as monitor it in production. By default, the starter kit uses the [Adobe I/O SDK](https://github.com/adobe/aio-sdk) to store logs in Adobe I/O Runtime. You can find additional details in [Managing Application Logs](https://developer.adobe.com/app-builder/docs/guides/application_logging/).
+Application logs allow developers to debug an application in development as well as monitor it in production. By default, the starter kit uses the [Adobe I/O SDK](https://github.com/adobe/aio-sdk) to store logs in Adobe I/O Runtime. You can find additional details in [Managing Application Logs](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/application_logging/logging).
 
-Alternatively, the application logs can be forwarded to a customer-owned log management solution. Use [When to use Log Forwarding](https://developer.adobe.com/app-builder/docs/guides/application_logging/#when-to-use-log-forwarding) to inform your decision when choosing to store logs in Adobe I/O Runtime or forward them to a log management platform.
+Alternatively, the application logs can be forwarded to a customer-owned log management solution. Use [When to use Log Forwarding](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/application_logging/logging#when-to-use-log-forwarding) to inform your decision when choosing to store logs in Adobe I/O Runtime or forward them to a log management platform.
 
-If you are using Adobe Commerce on Cloud Infrastructure, you have access to a New Relic instance. [Forwarding Logs to New Relic](https://developer.adobe.com/app-builder/docs/guides/application_logging/new_relic/) page describes the process necessary to configure starter kit to forward logs to New Relic.
+If you are using Adobe Commerce on Cloud Infrastructure, you have access to a New Relic instance. [Forwarding Logs to New Relic](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/application_logging/new-relic) page describes the process necessary to configure starter kit to forward logs to New Relic.
 
 ### Hiding secrets in logs
 
@@ -73,7 +73,7 @@ The starter kit provides unit tests for most of the predefined runtime actions. 
 
 Additionally, unit tests for the onboarding script can be found in the `.test/scripts` folder.
 
-For more details about unit testing, refer to [Testing a Serverless Action](https://developer.adobe.com/app-builder/docs/resources/barcode-reader/test/).
+For more details about unit testing, refer to [Testing a Serverless Action](https://developer.adobe.com/app-builder/docs/resources/barcode-reader/test).
 
 ## Create or modify an event
 

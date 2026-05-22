@@ -12,7 +12,7 @@ These tutorials walk you through building event-driven integrations between Adob
 
 ## Use events and App Builder to extend Adobe Commerce
 
-&#8203;<Edition name="saas" />
+[SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 This tutorial covers the most direct event delivery model: a Commerce event triggers an Adobe I/O Events registration that immediately invokes an App Builder runtime action. A product update use case illustrates each step, from configuring an event provider and event metadata to writing and deploying the runtime action code.
 
@@ -28,7 +28,7 @@ This tutorial covers the most direct event delivery model: a Commerce event trig
 
 Runtime actions invoked directly by an event registration must complete within 60 seconds. For long-running or blocking workloads, see the journaling tutorial below.
 
-[Start the tutorial](./tutorial/index.md)
+[Start the tutorial](tutorial/index.md)
 
 ## Integrate Commerce events using the Adobe I/O Events Journaling API
 
@@ -49,4 +49,4 @@ This tutorial is appliable to all versions of Adobe Commerce.
 - You need to process events in bulk or at a controlled pace.
 - You want resilience against missed events, since the journal retains events for seven days.
 
-[Start the tutorial](./journaling-tutorial/index.md)
+[Start the tutorial](journaling-tutorial/index.md)

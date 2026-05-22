@@ -1,3 +1,8 @@
+---
+title: Discount Code Validation XML Configuration
+description: XML configuration for the discount code validation webhook use case.
+---
+
 ```xml
 <method name="plugin.magento.quote.api.guest_coupon_management.set" type="before">
     <hooks>

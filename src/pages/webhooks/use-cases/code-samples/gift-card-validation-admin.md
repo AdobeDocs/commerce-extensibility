@@ -1,3 +1,8 @@
+---
+title: Gift Card Validation Admin Configuration
+description: Admin panel configuration for the gift card validation webhook use case.
+---
+
 ```yaml
 Hook Settings
 

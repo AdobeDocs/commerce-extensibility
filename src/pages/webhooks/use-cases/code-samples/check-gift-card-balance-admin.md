@@ -1,3 +1,8 @@
+---
+title: Check Gift Card Balance Admin Configuration
+description: Admin panel configuration for the check gift card balance webhook use case.
+---
+
 ```yaml
 Hook Settings
 

@@ -10,7 +10,7 @@ keywords:
 
 The checkout starter kit helps you get started building custom checkout experiences for Adobe Commerce. It demonstrates how to use Adobe Commerce extensibility in combination with Adobe Developer App Builder to build custom checkout experiences.
 
-Refer to the [Getting Started](./getting-started.md) page to learn how to set up the starter kit.
+Refer to the [Getting Started](getting-started.md) page to learn how to set up the starter kit.
 
 ## Resources
 

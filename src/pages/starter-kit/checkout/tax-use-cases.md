@@ -10,19 +10,19 @@ keywords:
 
 This page explores different use cases and scenarios for implementing tax integrations using the Adobe Commerce checkout starter kit.
 
-For more general use cases, refer to [use-cases](./use-cases.md).
+For more general use cases, refer to [use-cases](use-cases.md).
 
 ## Collect taxes
 
 You can calculate and apply taxes on shopping carts during checkout by using the `plugin.magento.out_of_process_tax_management.api.oop_tax_collection.collect_taxes` webhook. See [webhooks](../../webhooks/index.md) to learn how to set up a webhook.
 
-To enable this webhook, set [`active`](./tax-reference.md#create-or-modify-a-new-oope-tax-integration) to `true` in the tax integration configuration.
+To enable this webhook, set [`active`](tax-reference.md#create-or-modify-a-new-oope-tax-integration) to `true` in the tax integration configuration.
 
 When the quote is recalculated, such as during a cart update or at checkout, a synchronous call is dispatched to the App Builder application that handles tax calculation. The response is returned through the `oopQuote` object, which includes the calculated tax fields. This webhook is triggered only when a shipping destination address is set, to avoid unnecessary calls during early cart interactions.
 
 Refer to [`actions/collect-taxes.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/collect-taxes/index.js) for an example of how to process the request and return the tax calculation to the commerce instance. This file can serve as a template to implement custom tax calculations.
 
-&#8203;<Edition name="paas" /> To register a webhook, you need to create a `webhooks.xml` [configuration file](../../webhooks/xml-schema.md) in your module or in the root `app/etc` directory.
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) To register a webhook, you need to create a `webhooks.xml` [configuration file](../../webhooks/xml-schema.md) in your module or in the root `app/etc` directory.
 
 ```xml
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -43,7 +43,7 @@ Refer to [`actions/collect-taxes.js`](https://github.com/adobe/commerce-checkout
 </config>
 ```
 
-&#8203;<Edition name="saas" /> SaaS webhooks have slightly different naming conventions. For this example, use the `plugin.out_of_process_tax_management.api.oop_tax_collection.collect_taxes` method.
+[SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) SaaS webhooks have slightly different naming conventions. For this example, use the `plugin.out_of_process_tax_management.api.oop_tax_collection.collect_taxes` method.
 
 ### Payload
 
@@ -184,13 +184,13 @@ The key points for constructing the response are:
 
 You can calculate and apply taxes to the adjustment amount of a credit memo during a refund by using the `plugin.magento.out_of_process_tax_management.api.oop_credit_memo_tax_collection.collect_taxes` webhook.
 
-To enable this webhook, activate the [`credit_memo_tax_enabled`](./tax-reference.md#create-or-modify-a-new-oope-tax-integration) setting in the active tax integration configuration.
+To enable this webhook, activate the [`credit_memo_tax_enabled`](tax-reference.md#create-or-modify-a-new-oope-tax-integration) setting in the active tax integration configuration.
 
 When the credit memo amount is recalculated, a synchronous call is dispatched to the App Builder application that handles tax calculation. The response includes the calculated adjustment tax fields. This webhook is triggered only when an adjustment refund or fee amount exists, to avoid unnecessary calls.
 
 Refer to [`actions/collect-adjustment-taxes.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/collect-adjustment-taxes/index.js) for an example of how to process the request and return the tax calculation to the commerce instance. This file can serve as a template for implementing custom tax calculations.
 
-&#8203;<Edition name="paas" /> To register a webhook, create a `webhooks.xml` [configuration file](../../webhooks/xml-schema.md) file in your module or in the root `app/etc` directory.
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) To register a webhook, create a `webhooks.xml` [configuration file](../../webhooks/xml-schema.md) file in your module or in the root `app/etc` directory.
 
 ```xml
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -211,7 +211,7 @@ Refer to [`actions/collect-adjustment-taxes.js`](https://github.com/adobe/commer
 </config>
 ```
 
-&#8203;<Edition name="saas" /> SaaS webhooks have slightly different naming conventions. For this example, use the `plugin.out_of_process_tax_management.api.oop_credit_memo_tax_collection.collect_taxes` method.
+[SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) SaaS webhooks have slightly different naming conventions. For this example, use the `plugin.out_of_process_tax_management.api.oop_credit_memo_tax_collection.collect_taxes` method.
 
 ### Payload
 
@@ -322,7 +322,7 @@ Adobe Commerce supports two pricing models for tax calculation: tax-inclusive an
 
 This configuration is set in the Adobe Commerce Admin under **Stores** > **Configuration** > **Sales** > **Tax** > **Calculation Settings**
 
-![System > Sales > Tax > Calculation Settings](../../_images/system_sales_tax_calculation-settings.png)
+![System > Sales > Tax > Calculation Settings](../../images/system-sales-tax-calculation-settings.png)
 
 ### Calculation examples
 
@@ -336,11 +336,11 @@ In the [Adobe Commerce checkout starter kit](https://github.com/adobe/commerce-c
 ## Update custom attributes on tax classes via Admin UI
 
 The out-of-process tax module allows you to add custom attributes to tax classes. These attributes are useful when integrating with third-party tax systems that require standardized identifiers or additional metadata.  
-For the relevant endpoints to update tax class custom attributes, see the [Tax API reference](./tax-reference.md).
+For the relevant endpoints to update tax class custom attributes, see the [Tax API reference](tax-reference.md).
 
 To simplify management, the starter kit includes a sample Admin UI application. This single-page application, located in the [`commerce-backend-ui-1`](https://github.com/adobe/commerce-checkout-starter-kit/tree/main/commerce-backend-ui-1), connects to your Commerce instance, retrieves tax classes, and allows you to add or edit their custom attributes directly from the UI.
 
-![Tax Management UI](../../_images/starterkit/tax-management-ui.png)
+![Tax Management UI](../../images/starterkit/tax-management-ui.png)
 
 To set up the Admin UI application in your Commerce environment, see the [Admin UI SDK documentation](../../admin-ui-sdk/index.md).
 

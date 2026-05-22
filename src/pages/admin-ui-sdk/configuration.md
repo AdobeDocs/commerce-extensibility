@@ -14,11 +14,11 @@ The Adobe Commerce Admin UI SDK allows you to use a local server to view and tes
 
 Navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Admin UI SDK** screen. The Admin UI SDK is disabled by default. To enable it, set the **Enable Admin UI SDK** field to **Yes**.
 
-![Admin UI SDK general configuration](../_images/admin-ui-sdk/configuration/general.png)
+![Admin UI SDK general configuration](../images/admin-ui-sdk/configuration/general.png)
 
 The **General configuration** section enables the Admin UI SDK and refreshes registrations when changes are made.
 
-The [**Configure extensions**](./eligible-extensions-config.md) button allows you to select the workspace and eligible extensions for the Commerce instance.
+The [**Configure eligible extensions**](./eligible-extensions-config.md) button displays a list of extensions that were installed with App Management. It also allows you to configure the eligible extensions that were installed before App Management became the primary installation method.
 
 The **Refresh registrations** button reloads all registrations from the App Builder registry. It is typically used when changes are made to the registration on the App Builder application side or when a new app is added and published, to reflect these changes in the Admin.
 
@@ -26,7 +26,7 @@ The **Refresh registrations** button reloads all registrations from the App Buil
 
 The **Database logging configuration** section allows you to save Admin UI SDK log entries for the specified retention period.
 
-![Admin UI SDK database logging configuration](../_images/admin-ui-sdk/configuration/database-logging.png)
+![Admin UI SDK database logging configuration](../images/admin-ui-sdk/configuration/database-logging.png)
 
 To save logs, set the **Enable Logs** field to **Yes**. By default, this field is set to **No**.
 
@@ -36,11 +36,13 @@ Set the retention period for logs to be cleaned from the database. This field sp
 
 Navigate to **System** > Admin UI SDK > **Admin UI SDK Logs** to check the saved logs.
 
-![Admin UI SDK Logs screen](../_images/admin-ui-sdk/admin-ui-sdk-logs.png)
+![Admin UI SDK Logs screen](../images/admin-ui-sdk/admin-ui-sdk-logs.png)
 
 ## Local testing
 
-<Edition name="paas" />
+<Edition slots="text" backgroundcolor="blue" />
+
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 <InlineAlert variant="info" slots="text" />
 
@@ -48,7 +50,7 @@ The local testing feature is available only for PaaS versions of Adobe Commerce.
 
 When you enable the local service, all calls are automatically redirected to the local server, instead of connecting to Adobe's App Registry. The values you specify must match the contents of your local `server.js` file.
 
-![Admin UI SDK local testing configuration](../_images/admin-ui-sdk/configuration/local-testing.png)
+![Admin UI SDK local testing configuration](../images/admin-ui-sdk/configuration/local-testing.png)
 
 1. Select **Yes** from the **Enable local testing** menu.
 
@@ -226,6 +228,6 @@ You can download a sample app from the [Adobe Commerce Samples repository](https
 
 1. Confirm that the **Apps** section appears on the main menu and the **First App on App Builder** option appears in the **Apps** menu in the Admin. Click **First App on App Builder** and confirm that the **Fetched orders from Adobe Commerce** page opens.
 
-   ![Fetched orders from Adobe Commerce page](../_images/first-app.png)
+   ![Fetched orders from Adobe Commerce page](../images/first-app.png)
 
-   ![First App on App Builder menu](../_images/fetched-orders.png)
+   ![First App on App Builder menu](../images/fetched-orders.png)

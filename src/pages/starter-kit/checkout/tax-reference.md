@@ -13,8 +13,6 @@ The checkout module provides REST and GraphQL APIs to configure out-of-process t
 
 ## REST
 
-The REST API schema is available [here](/tax.xml).
-
 | **Route URL**                                   | **Method** | **Description**                                    |
 | ----------------------------------------------- | ---------- | -------------------------------------------------- |
 | `/V1/oope_tax_management/tax_integration/:code` | GET        | Retrieve an OOPE tax integration info by its code. |
@@ -35,9 +33,9 @@ Only one tax integration can be active at a time. If you want to change the acti
 |---------------------------|---------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `code`                    | String  | Yes      | Unique identifier for the tax integration.                                                                                                                                                             |
 | `title`                   | String  | Yes      | Display name of the tax integration.                                                                                                                                                                   |
-| `active`                  | Boolean | No       | Indicates whether the tax integration is active. Triggers [tax calculation](./tax-use-cases.md#collect-taxes) when an address is set on the Cart.                                                      |
+| `active`                  | Boolean | No       | Indicates whether the tax integration is active. Triggers [tax calculation](tax-use-cases.md#collect-taxes) when an address is set on the Cart.                                                      |
 | `stores`                  | Array   | No       | List of store codes where the tax integration is available.                                                                                                                                            |
-| `credit_memo_tax_enabled` | Boolean | No       | Indicates whether [credit memo tax collection](./tax-use-cases.md#collect-adjustment-taxes-for-credit-memo) is active. Recalculation occurs when the credit memo adjustment refund or fee is non-zero. |
+| `credit_memo_tax_enabled` | Boolean | No       | Indicates whether [credit memo tax collection](tax-use-cases.md#collect-adjustment-taxes-for-credit-memo) is active. Recalculation occurs when the credit memo adjustment refund or fee is non-zero. |
 
 <CodeBlock slots="heading, code" repeat="2" languages="bash, json" />
 
@@ -178,7 +176,7 @@ curl --request POST \
 
 ### Update a tax class with custom attributes
 
-The out-of-process tax module extends the [`PUT /V1/taxClasses/:classId`](https://adobe-commerce.redoc.ly/2.4.8-admin/tag/taxClassesclassId) endpoint to update an existing tax class with custom attributes.
+The out-of-process tax module extends the [`PUT /V1/taxClasses/:classId`](https://adobe-commerce.redoc.ly/2.4.8-admin/tag/taxClassesclassId/) endpoint to update an existing tax class with custom attributes.
 
 <CodeBlock slots="heading, code" repeat="2" languages="bash, json" />
 
@@ -210,7 +208,7 @@ curl --request POST \
 
 ### List all tax classes with custom attributes
 
-The out-of-process tax module extends the [`GET /V1/taxClasses/search`](https://adobe-commerce.redoc.ly/2.4.8-admin/tag/taxClassessearch#operation/GetV1TaxClassesSearch) endpoint to include custom attributes in the response when available.
+The out-of-process tax module extends the [`GET /V1/taxClasses/search`](https://adobe-commerce.redoc.ly/2.4.8-admin/tag/taxClassessearch/#operation/GetV1TaxClassesSearch) endpoint to include custom attributes in the response when available.
 
 <CodeBlock slots="heading, code" repeat="2" languages="bash, json" />
 

@@ -12,7 +12,7 @@ keywords:
 
 Based on the `businessConfig` schema that you defined in the `app.commerce.config`, the configuration library generates the runtime actions that the App Management UI uses to render a configuration form with no custom code required.
 
-See [Initialize your app](./initialize-app.md) for setup instructions and [Build and deploy](./build-deploy.md) for information about generated runtime actions and project structure.
+See [Initialize your app](initialize-app.md) for setup instructions and [Build and deploy](build-deploy.md) for information about generated runtime actions and project structure.
 
 ## Example
 
@@ -58,7 +58,7 @@ export default defineConfig({
 });
 ```
 
-![Rendered schema](../_images/app-management/schema-render.png)
+![Rendered schema](../images/app-management/schema-render.png)
 
 ## Schema properties
 
@@ -157,7 +157,7 @@ Never commit the `.env` file to version control. Keep the encryption key secure 
 
 See [Password Field Encryption](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-config/docs/password-encryption.md) for more information.
 
-See [Failed to decrypt configuration](./troubleshooting.md#failed-to-decrypt-configuration-re-association-or-configuration-page) if you already see decrypt errors.
+See [Failed to decrypt configuration](troubleshooting.md#failed-to-decrypt-configuration-re-association-or-configuration-page) if you already see decrypt errors.
 
 ### Multiple selection list fields
 
@@ -192,7 +192,7 @@ If several apps are associated with the same instance—for example, ten apps th
 
 After a scope is deleted in Commerce, run **Sync commerce scopes** again for each affected application. The operation replaces the cached tree with the current Commerce data, so scopes that no longer exist in Commerce **disappear** from App Management after a successful sync.
 
-![Manage Scopes Quick actions menu with Sync commerce scopes](../_images/app-management/manage-scopes-sync-commerce-scopes.png)
+![Manage Scopes Quick actions menu with Sync commerce scopes](../images/app-management/manage-scopes-sync-commerce-scopes.png)
 
 ## Schema requirements
 

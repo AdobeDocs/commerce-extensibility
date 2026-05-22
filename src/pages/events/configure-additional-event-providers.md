@@ -16,13 +16,13 @@ To link your event subscriptions to an additional event provider, the provider m
 
 To manage event providers in the Adobe Commerce Admin, go to **System** > **Events** > **Event Providers**. The Event Providers page lists all additional event providers configured in your Adobe Commerce instance.
 
-![Event Providers](../_images/events/multiprovider-grid.png)
+![Event Providers](../images/events/multiprovider-grid.png)
 
-To add a new event provider, click **Add New Provider**. Keep in mind that the event provider must be created in the Adobe I/O Events before you can add it to your Commerce instance. You can create the event provider the using [`aio` CLI tool](https://developer.adobe.com/events/docs/guides/cli/#provider-commands) or to use the [Adobe I/O Events API](https://developer.adobe.com/events/docs/api/#tag/Providers/operation/createProvider).
+To add a new event provider, click **Add New Provider**. Keep in mind that the event provider must be created in the Adobe I/O Events before you can add it to your Commerce instance. You can create the event provider the using [`aio` CLI tool](https://developer.adobe.com/events/docs/guides/cli/#provider-commands) or to use the [Adobe I/O Events API](https://developer.adobe.com/events/docs/api#operation/createProvider).
 
-![Add New Provider](../_images/events/multiprovider-create.png)
+![Add New Provider](../images/events/multiprovider-create.png)
 
-`Provider ID` and `Instance ID` are required fields, while the `Workspace Configuration` field is optional. If provided, it synchronizes the event metadata registered with this provider. Otherwise, the creation of event metadata will be skipped. The `Workspace Configuration` must be provided from the workspace where the event provider was created. You can [download the workspace configuration from the Adobe Developer Console](./project-setup.md#download-the-workspace-configuration-file).
+`Provider ID` and `Instance ID` are required fields, while the `Workspace Configuration` field is optional. If provided, it synchronizes the event metadata registered with this provider. Otherwise, the creation of event metadata will be skipped. The `Workspace Configuration` must be provided from the workspace where the event provider was created. You can [download the workspace configuration from the Adobe Developer Console](project-setup.md#download-the-workspace-configuration-file).
 
 ### Delete an event provider
 

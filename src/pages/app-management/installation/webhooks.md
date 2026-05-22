@@ -10,18 +10,18 @@ keywords:
 
 # Webhooks
 
-The `webhooks` field in your `app.commerce.config` file declares [Adobe Commerce Webhook](https://developer.adobe.com/commerce/extensibility/webhooks/) subscriptions for your application. App Management uses that definition during installation to provision the subscriptions your app needs, similar to how [Events](events.md) subscriptions are driven from your configuration so merchants get an out-of-the-box experience instead of assembling webhook setup themselves. Webhooks allow your app to respond to live Commerce processes, such as checkout, or cart validation.
+The `webhooks` field in your `app.commerce.config` file declares [Adobe Commerce Webhook](https://developer.adobe.com/commerce/extensibility/webhooks/) subscriptions for your application. App Management uses that definition during installation to provision the subscriptions your app needs, similar to how [Events](./events.md) subscriptions are driven from your configuration so merchants get an out-of-the-box experience instead of assembling webhook setup themselves. Webhooks allow your app to respond to live Commerce processes, such as checkout, or cart validation.
 
 ## Responsibilities by role
 
 Webhook configuration spans both the developer who ships the app and the merchant who associates it with Commerce:
 
 * **App developers** declare webhooks in the `webhooks` field of `app.commerce.config`. That manifest is what App Management uses to know which webhook subscriptions belong to your app.
-* **Merchants** get webhooks driven from that manifest for an out-of-the-box experience in many cases. If Commerce or your app needs extra connection steps (for example edition-specific setup), follow [Install and access App Management](https://experienceleague.adobe.com/en/docs/commerce/app-management/install#access-app-management) and [Commerce webhooks and apps](https://experienceleague.adobe.com/en/docs/commerce/app-management/install#commerce-webhooks-and-apps) on Experience League.
+* **Merchants** usually get webhooks from that manifest without extra setup. If **Adobe Commerce** or your app still needs more steps, see [Install and access App Management](https://experienceleague.adobe.com/en/docs/commerce/app-management/install#access-app-management) and [Commerce webhooks and apps](https://experienceleague.adobe.com/en/docs/commerce/app-management/install#commerce-webhooks-and-apps) (Experience League) — user guides in the Adobe Commerce Help site.
 
 ### Use Events and webhooks together
 
-Use [Events](events.md) and webhooks when you need both asynchronous event delivery and synchronous hooks inside Commerce processes.
+Use [Events](./events.md) and webhooks when you need both asynchronous event delivery and synchronous hooks inside Commerce processes.
 
 ## Webhook entries
 

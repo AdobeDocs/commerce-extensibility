@@ -88,10 +88,6 @@ The following field types are available for your `businessConfig` schema:
 | `url` | string | URL input with validation |
 | `list` | string | Dropdown with preconfigured options |
 
-### Commerce environment fields
-
-Optional property `env` is an array of **`"paas"`**, **`"saas"`**, or both. App Management shows the field only for the environments you list. When `env` is omitted, the field applies to every Commerce environment. This matches the configuration library behavior for [conditional fields by Commerce environment](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-config/docs/usage.md#conditional-fields-by-commerce-environment).
-
 ### Password field encryption
 
 Password fields are automatically encrypted using `AES-256-GCM` when stored and decrypted when retrieved.

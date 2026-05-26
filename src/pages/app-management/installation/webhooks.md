@@ -10,7 +10,7 @@ keywords:
 
 # Webhooks
 
-The `webhooks` field in your `app.commerce.config` file declares [Adobe Commerce Webhook](https://developer.adobe.com/commerce/extensibility/webhooks/) subscriptions for your application. App Management uses that definition during installation to provision the subscriptions your app needs, similar to how [Events](./events.md) subscriptions are driven from your configuration so merchants get an out-of-the-box experience instead of assembling webhook setup themselves. Webhooks allow your app to respond to live Commerce processes, such as checkout, or cart validation.
+The `webhooks` field in your `app.commerce.config` file declares [Adobe Commerce webhook](https://developer.adobe.com/commerce/extensibility/webhooks/) subscriptions for your application and configures the subscriptions on the merchant's Admin. Webhooks allow your app to make calls to third-party systems synchronously.
 
 ## Responsibilities by role
 

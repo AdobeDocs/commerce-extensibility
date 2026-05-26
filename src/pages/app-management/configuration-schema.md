@@ -73,7 +73,7 @@ This `businessConfig` schema contains the following properties:
 | `description` | string | No | Help text displayed below the field. |
 | `options` | array | Conditional | Required for `list`. Defines available options to be displayed in the dropdown list. |
 | `selectionMode` | string | Conditional | Required for `list`. Set to `single` for standard dropdown or `multiple` to allow multiple selections. |
-| `env` | array | No | Limits the field to **PaaS** (`"paas"`), **SaaS** (`"saas"`), or both. When omitted, the field applies to all environments. See [Commerce environment fields](#commerce-environment-fields). |
+| `env` | array | No | Limits the field to **PaaS** (`paas`) or **SaaS** (`saas`). To enable the field to all environments, omit the field or specify both values. See [Commerce environment fields](#commerce-environment-fields). |
 
 ## Supported field types
 
@@ -217,7 +217,7 @@ If you skip `initialize`, see [Initialization](https://github.com/adobe/aio-comm
 
 A **scope selector** tells the library which node in the scope tree to read or write. That tree can include **Adobe Commerce** scopes (such as websites and store views, each with a scope code and a **level** in the hierarchy), **custom scopes** you create in App Management (code only; see below), **global** scope, and other nodes that your app or merchants configure.
 
-When the target scope has both a code and a level—typical for Commerce store and website scopes—use `byCodeAndLevel`.
+When the target scope has both a code and a level, which is typical for Commerce store and website scopes, use `byCodeAndLevel`.
 
 The following examples show only the configuration calls. In your action, run `initialize` before these calls, as described in the opening paragraphs of this section. For a full runtime action example, see [Using configuration in runtime actions](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-config/docs/usage.md#using-configuration-in-runtime-actions) in the usage guide.
 

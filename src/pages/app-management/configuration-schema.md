@@ -73,7 +73,7 @@ This `businessConfig` schema contains the following properties:
 | `description` | string | No | Help text displayed below the field. |
 | `options` | array | Conditional | Required for `list`. Defines available options to be displayed in the dropdown list. |
 | `selectionMode` | string | Conditional | Required for `list`. Set to `single` for standard dropdown or `multiple` to allow multiple selections. |
-| `env` | array | No | Limits the field to **PaaS** (`paas`) or **SaaS** (`saas`). To enable the field to all environments, omit the field or specify both values. See [Commerce environment fields](#commerce-environment-fields). |
+| `env` | array | No | Limits the field to **PaaS** (`paas`) or **SaaS** (`saas`). To enable the field to all environments, omit the field or specify both values. |
 
 ## Supported field types
 

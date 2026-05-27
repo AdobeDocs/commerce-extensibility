@@ -1,9 +1,9 @@
+
 # OS
 .DS_Store
 
 # IDE
 .vscode
-.cursor/*
 
 # environment variables
 .env

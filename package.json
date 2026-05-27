@@ -1,14 +1,10 @@
 {
-  "name": "dev-docs-template",
+  "name": "commerce-extensibility",
   "version": "1.0.0",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/AdobeDocs/dev-docs-template"
-  },
-  "author": {
-    "name": "Tim Kim",
-    "url": "https://github.com/timkim"
+    "url": "https://github.com/AdobeDocs/commerce-extensibility"
   },
   "engines": {
     "node": "^24.11.0"
@@ -27,6 +23,61 @@
     "link:externalLinkOnly": "npx --yes --prefer-online github:AdobeDocs/adp-devsite-utils runLint --external-links-only -v",
     "link:checkAllLinks": "npx --yes --prefer-online github:AdobeDocs/adp-devsite-utils runLint --internal-links-only --external-links-only -v",
     "redirectCheck:stage": "npx --yes --prefer-online github:AdobeDocs/adp-devsite-utils redirectChecker stage --verbose",
-    "redirectCheck:prod": "npx --yes --prefer-online github:AdobeDocs/adp-devsite-utils redirectChecker prod --verbose"
+    "redirectCheck:prod": "npx --yes --prefer-online github:AdobeDocs/adp-devsite-utils redirectChecker prod --verbose",
+    "lint:md": "npx --yes markdownlint-cli2 'src/pages/**/*.md' '*.md'",
+    "lint:md:fix": "npx --yes markdownlint-cli2 --fix 'src/pages/**/*.md' '*.md'",
+    "test": "npx --yes jest",
+    "test:config": "npx --yes jest tests/config.test.js"
+  },
+  "lint": {
+    "skipRules": {
+      "check-frontmatter": {
+        "paths": [
+          "src/pages/_includes"
+        ]
+      }
+    },
+    "skipUrlPatterns": [
+      "https://adobe-commerce.redoc.ly/",
+      "https://agentskills.io/home#adoption",
+      "https://blog.jetbrains.com/webstorm/2016/08/using-external-tools/",
+      "https://business.adobe.com/products/experience-manager/developer-app-builder.html",
+      "https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable",
+      "https://cline.bot/",
+      "https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/development#debugging",
+      "https://developer.adobe.com/app-builder/docs/guides/runtime_guides/tools/cli-install",
+      "https://developer.adobe.com/commerce/webapi/graphql-api/index.html#definition-Cart",
+      "https://developer.adobe.com/commerce/webapi/graphql-api/index.html#definition-CartPrices",
+      "https://developer.adobe.com/commerce/webapi/graphql/schema/cart/queries/cart/",
+      "https://developer.adobe.com/events/docs/api#operation/createProvider",
+      "https://developer.adobe.com/events/docs/api#operation/createProvider",
+      "https://docs.npmjs.com/downloading-and-installing-node-js-and-npm",
+      "https://eslint.org/",
+      "https://experience.adobe.com/#/@commercelab/home",
+      "https://experienceleague.adobe.com/developer/commerce/storefront",
+      "https://experienceleague.adobe.com/en/docs/commerce/cloud-service/user-management#add-users-developers-and-product-profile-admins",
+      "https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions%22",
+      "https://forms.office.com/r/YbYArqE3DT",
+      "https://github.com/adobe/aio-cli",
+      "https://github.com/adobe/aio-lib-telemetry",
+      "https://github.com/adobe/aio-sdk",
+      "https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/collect-taxes/index.js#L85",
+      "https://help.splunk.com/en/splunk-observability-cloud/manage-data/splunk-distribution-of-the-opentelemetry-collector/get-started-with-the-splunk-distribution-of-the-opentelemetry-collector/collector-components/exporters/splunk-hec-exporter",
+      "https://helpx.adobe.com/enterprise/using/manage-developers.html",
+      "https://helpx.adobe.com/enterprise/using/users.html",
+      "https://jestjs.io/",
+      "https://learn.microsoft.com/en-us/windows/wsl/install",
+      "https://localhost:9080/",
+      "https://magentocommeng.slack.com/",
+      "https://ngrok.com/",
+      "https://nodejs.org/en/download",
+      "https://openai.com/index/introducing-codex/",
+      "https://partners.adobe.com/ec/cform/sandbox",
+      "https://pnpm.io/",
+      "https://windsurf.com/",
+      "https://www.php.net/manual/en/function.preg-match.php",
+      "https://git-scm.com/install/",
+      "https://github.com/adobe-commerce/aio-cli-plugin-commerce"
+    ]
   }
 }

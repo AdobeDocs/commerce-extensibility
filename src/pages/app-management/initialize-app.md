@@ -82,6 +82,12 @@ The initialization process:
 * Generates all required artifacts (`commerce/configuration/1` resources are only generated when `businessConfig` is defined)
 * Updates `app.config.yaml` and `install.yaml` with the appropriate extension references. Creates these files if they do not exist.
 
+## Initialize the configuration library in runtime actions
+
+When your app defines **`businessConfig`**, **each** App Builder runtime action that calls **`getConfiguration`**, **`getConfigurationByKey`**, or **`setConfiguration`** must call **`initialize`** at the start of that action’s handler—before any of those three methods. That applies to **every** action that reads or writes business configuration, not only the generated App Management actions. Initialization does not carry over between actions or invocations.
+
+See [Retrieve configuration at runtime](./configuration-schema.md#retrieve-configuration-at-runtime) for examples that import **`app.commerce.config`** and pass **`appConfig.businessConfig.schema`** to **`initialize`**.
+
 ## CLI commands
 
 The library provides the following CLI commands. Replace `npx` with your package manager of preference, using the below equivalents:

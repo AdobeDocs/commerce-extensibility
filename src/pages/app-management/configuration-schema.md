@@ -215,7 +215,7 @@ A **scope selector** tells the library which node in the scope tree to read or w
 
 When the target scope has both a code and a level, which is typical for Commerce store and website scopes, use `byCodeAndLevel`.
 
-The following examples show only the configuration calls. In your action, run `initialize` before these calls, as described in the opening paragraphs of this section. For a full runtime action example, see [Using configuration in runtime actions](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-config/docs/usage.md#using-configuration-in-runtime-actions) in the usage guide.
+The following examples show only the configuration calls. In your action, run `initialize` before these calls. For a full runtime action example, see [Using configuration in runtime actions](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-config/docs/usage.md#using-configuration-in-runtime-actions) in the usage guide.
 
 ```js
 import { getConfigurationByKey, byCodeAndLevel } from "@adobe/aio-commerce-lib-config";

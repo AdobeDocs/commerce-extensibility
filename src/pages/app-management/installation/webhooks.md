@@ -10,7 +10,7 @@ keywords:
 
 # Webhooks
 
-The `webhooks` field in your `app.commerce.config` file declares [Adobe Commerce webhook](../../webhooks/index.md) subscriptions for your application and configures the subscriptions on the merchant's Admin. Webhooks allow your app to make calls to third-party systems synchronously.
+The `webhooks` field in your `app.commerce.config` file declares [Adobe Commerce webhook](../../webhooks/index.md) subscriptions for your application and configures the subscriptions in the merchant's Admin. Webhooks allow your app to make calls to third-party systems synchronously.
 
 Use [Events](./events.md) and webhooks when you need both asynchronous event delivery and synchronous hooks inside Commerce processes.
 
@@ -19,7 +19,7 @@ Use [Events](./events.md) and webhooks when you need both asynchronous event del
 Webhook configuration spans both the developer who ships the app and the merchant who associates it with Commerce:
 
 * **App developers** declare webhooks in the `webhooks` field of `app.commerce.config`. That manifest is what App Management uses to know which webhook subscriptions belong to your app.
-* **Merchants** usually get webhooks from that manifest without extra setup. If **Adobe Commerce** or your app still needs more steps, see [Install and access App Management](https://experienceleague.adobe.com/en/docs/commerce/app-management/install#access-app-management) and [Commerce webhooks and apps](https://experienceleague.adobe.com/en/docs/commerce/app-management/install#commerce-webhooks-and-apps) (Experience League) — user guides in the Adobe Commerce Help site.
+* **Merchants** usually get webhooks from that manifest without extra setup. See [Install and access App Management](https://experienceleague.adobe.com/en/docs/commerce/app-management/install#access-app-management) and [Commerce webhooks and apps](https://experienceleague.adobe.com/en/docs/commerce/app-management/install#commerce-webhooks-and-apps)  for more information on how to configure Adobe Commerce.
 
 ## Webhook entries
 

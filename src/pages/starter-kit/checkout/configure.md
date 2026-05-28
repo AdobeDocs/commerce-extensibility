@@ -6,28 +6,26 @@ keywords:
   - Extensibility
 ---
 
-import Configuration from '/src/_includes/checkout-configuration.md'
-
 # Configure Commerce
 
 This section provides an overview of configuring out-of-process extensibility on Adobe Commerce for developing an app using the checkout starter kit.
 
-All the configurations in your app must align with the [App Builder Configuration file guidelines](https://developer.adobe.com/app-builder/docs/guides/configuration/). In addition, the starter kit provides a set of [scripts](https://github.com/adobe/commerce-checkout-starter-kit/tree/main/scripts) to help you get started with your project.
+All the configurations in your app must align with the [App Builder Configuration file guidelines](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/configuration/configuration). In addition, the starter kit provides a set of [scripts](https://github.com/adobe/commerce-checkout-starter-kit/tree/main/scripts) to help you get started with your project.
 
 ## Configure Commerce modules
 
 Select one of the following modules to learn about the available scripts:
 
-- [Payment](./payment-install.md#configuration)
-- [Shipping](./shipping-install.md#configuration)
-- [Tax](./tax-install.md#configuration)
-- [Totals collector](./totals-collector-install.md#configuration)
+- [Payment](payment-install.md#configuration)
+- [Shipping](shipping-install.md#configuration)
+- [Tax](tax-install.md#configuration)
+- [Totals collector](totals-collector-install.md#configuration)
 
 ## Configure OAuth Server-to-Server Credential
 
 <InlineAlert variant="info" slots="text"/>
 
-The OAuth credentials are available after completing the [initial configuration](./getting-started.md#initial-configuration).
+The OAuth credentials are available after completing the [initial configuration](getting-started.md#initial-configuration).
 
 The [`sync-oauth-credentials`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/sync-oauth-credentials.js) script ensures that the OAuth credentials are available for interacting with AIO, such as creating an event provider. This script synchronizes the OAuth credentials from Adobe Developer Console with your local App Builder project configuration, located in `.env`:
 
@@ -48,20 +46,20 @@ application:
     pre-app-build: ./hooks/pre-app-build.js
 ```
 
-If OAuth credentials are still missing, review [Verify your application is initialized](./development.md#verify-your-application-is-initialized).
+If OAuth credentials are still missing, review [Verify your application is initialized](development.md#verify-your-application-is-initialized).
 
 ## Configure Eventing
 
 <InlineAlert variant="info" slots="text, text1"/>
 
 The following configuration is required if you want to use the [Eventing feature](https://developer.adobe.com/commerce/extensibility/events/). Skip this process if you do not plan to use the Eventing feature.
-For third-party events processing, refer to [Third-party events processing](./use-cases.md#third-party-events-processing)
+For third-party events processing, refer to [Third-party events processing](use-cases.md#third-party-events-processing)
 
 To configure eventing, follow these steps:
 
-1. Install the [Commerce eventing module](./getting-started.md) in your Commerce instance.
+1. Install the [Commerce eventing module](getting-started.md) in your Commerce instance.
 
-1. Set up the [Adobe Commerce HTTP Client](./connect.md#connect-to-adobe-commerce) to authenticate the Commerce instance.
+1. Set up the [Adobe Commerce HTTP Client](connect.md#connect-to-adobe-commerce) to authenticate the Commerce instance.
 
 1. Configure your [events.config.yaml](#eventsconfigyaml) and `.env` files with the commerce event provider specification.
 
@@ -102,7 +100,7 @@ The [`events.config.yaml`](https://github.com/adobe/commerce-checkout-starter-ki
 
 ### app.config.yaml
 
-The [`app.config.yaml`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/app.config.yaml) file defines the events of interest for your app. The events will be registered during [app deployment](./development.md#deploy-the-application).
+The [`app.config.yaml`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/app.config.yaml) file defines the events of interest for your app. The events will be registered during [app deployment](development.md#deploy-the-application).
 
 ```yaml
   events:
@@ -162,7 +160,7 @@ aio event provider delete <provider-id>
 
 ### configure-commerce-events
 
-<Configuration />
+<Fragment src="/_includes/checkout-configuration.md" />
 
 The [`configure-commerce-events`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/configure-commerce-events.js) script configures the Commerce event provider for your Commerce instance.
 

@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: Solutions for common App Management issues
+description: Resolve App Management permissions, local Commerce limits, schema validation, deployment, generated actions, and encryption key issues.
 keywords:
   - App Builder
   - App Management
@@ -11,6 +11,30 @@ keywords:
 # Troubleshooting
 
 Use the following solutions to resolve common issues with App Management.
+
+## Cannot access App Management (permissions)
+
+Only Admin users whose **role** includes the **App Management** resource can use App Management in the Adobe Commerce Admin. If **Apps** > **App Management** is missing or access is denied, the user’s role likely does not grant that permission.
+
+1. Sign in as an Admin user who can edit roles.
+
+1. Go to **System** > **User Roles** and open the role assigned to the user who needs access (or create or adjust a role for app managers).
+
+1. Open the **Role Resources** tab. If you choose specific resources instead of **All**, set **Resource Access** to **Custom**.
+
+1. In the tree, expand **Admin UI SDK** and select **App Management**.
+
+![App Management selected under Admin UI SDK in Role Resources](../_images/app-management/app-management-role-resources.png)
+
+1. Save the role and have the user sign out and back in if the menu does not update immediately.
+
+For the full association and installation workflow, see [Manage your app](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app).
+
+## Local Adobe Commerce instances
+
+App Management is **not supported** for local Adobe Commerce development instances. Association, installation, and workflows in the Admin require an Adobe Commerce deployment that App Management can integrate with.
+
+If you are developing against a local stack, plan to validate App Management behavior in a non-local environment.
 
 ## Commerce instance behind HTTP authentication
 
@@ -26,7 +50,7 @@ Scope hierarchy in App Management is **cached**. Changes to Commerce websites, s
 
 **What to do:** For **each** associated application that uses business configuration, open **Manage scopes**, open **Quick actions**, then select **Sync commerce scopes**. Running sync again reads the current hierarchy from Commerce, which updates additions and **removes** scopes that were deleted in Commerce.
 
-For full behavior and UI context, see [Scope tree synchronization](./configuration-schema.md#scope-tree-synchronization).
+For full behavior and UI context, see [Scope tree synchronization](configuration-schema.md#scope-tree-synchronization).
 
 ## Configuration validation errors
 
@@ -66,7 +90,7 @@ This message refers to the **App Management** association flow, not general Adob
 
 1. Adobe Commerce treats an app as compatible with the association flow when the deployed package exposes the manifest and App Management runtime actions produced from **`app.commerce.config`**—specifically including valid **`metadata`**—by **`@adobe/aio-commerce-lib-app`**. Generic App Builder projects are not sufficient without that library-driven definition and generation step.
 
-1. Add the [SDK libraries](./index.md#sdk-libraries), maintain a root [`app.commerce.config`](./define-app.md) with [`metadata`](./app-metadata.md) (and other sections as needed), run generators so `.generated` artifacts exist, then build and deploy. See [Initialize your app](./initialize-app.md) and [Define your configuration schema](./configuration-schema.md) for more information.
+1. Add the [SDK libraries](index.md#sdk-libraries), maintain a root [`app.commerce.config`](define-app.md) with [`metadata`](app-metadata.md) (and other sections as needed), run generators so `.generated` artifacts exist, then build and deploy. See [Initialize your app](initialize-app.md) and [Define your configuration schema](configuration-schema.md) for more information.
 
 ## App not appearing in App Management
 
@@ -159,7 +183,7 @@ pnpm exec aio-commerce-lib-config encryption setup
 bun x aio-commerce-lib-config encryption setup
 ```
 
-### Validate your encryption key configuration.
+### Validate your encryption key configuration
 
 If it's already there, validate it has the expected format:
 

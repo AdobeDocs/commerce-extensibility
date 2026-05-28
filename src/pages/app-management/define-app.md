@@ -9,9 +9,9 @@ keywords:
 
 # Define your app
 
-The `app.commerce.config` file is the central configuration file for your App Builder application. It defines your app metadata, business configuration schema, and optional sections such as **[Events](./installation/events.md)**, **[Webhooks](./installation/webhooks.md)**, and **[Custom steps](./installation/customize.md)**.
+The `app.commerce.config` file is the central configuration file for your App Builder application. It defines your app metadata, business configuration schema, and optional sections such as **[Events](installation/events.md)**, **[Webhooks](installation/webhooks.md)**, and **[Custom steps](installation/customize.md)**.
 
-Create an `app.commerce.config` file consisting of **[App metadata](./app-metadata.md)** and **[Business configuration](./configuration-schema.md)**.
+Create an `app.commerce.config` file consisting of **[App metadata](app-metadata.md)** and **[Business configuration](configuration-schema.md)**.
 
 <InlineAlert variant="info" slots="text"/>
 
@@ -131,4 +131,4 @@ export default defineConfig({
 });
 ```
 
-See [Initialize your app](./initialize-app.md) for setup instructions and [Build and deploy](./build-deploy.md) for information about generated runtime actions and project structure. If your schema includes password fields, see [Password field encryption](./configuration-schema.md#password-field-encryption).
+See [Initialize your app](initialize-app.md) for setup instructions and [Build and deploy](build-deploy.md) for information about generated runtime actions and project structure. If your schema includes password fields, see [Password field encryption](configuration-schema.md#password-field-encryption).

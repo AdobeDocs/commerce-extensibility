@@ -1,3 +1,8 @@
+---
+title: Order Place Custom Attributes Validation Admin Configuration
+description: Admin panel configuration for the order place custom attributes validation webhook use case.
+---
+
 ```yaml
 Hook Settings
 

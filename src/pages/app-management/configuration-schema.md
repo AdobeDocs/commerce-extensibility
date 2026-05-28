@@ -58,7 +58,7 @@ export default defineConfig({
 });
 ```
 
-![Rendered schema](../_images/app-management/schema-render.png)
+![Rendered schema](../images/app-management/schema-render.png)
 
 ## Schema properties
 
@@ -73,6 +73,7 @@ This `businessConfig` schema contains the following properties:
 | `description` | string | No | Help text displayed below the field. |
 | `options` | array | Conditional | Required for `list`. Defines available options to be displayed in the dropdown list. |
 | `selectionMode` | string | Conditional | Required for `list`. Set to `single` for standard dropdown or `multiple` to allow multiple selections. |
+| `env` | array | No | Limits the field to **PaaS** (`paas`) or **SaaS** (`saas`). To enable the field to all environments, omit the field or specify both values. |
 
 ## Supported field types
 
@@ -192,7 +193,7 @@ If several apps are associated with the same instance—for example, ten apps th
 
 After a scope is deleted in Commerce, run **Sync commerce scopes** again for each affected application. The operation replaces the cached tree with the current Commerce data, so scopes that no longer exist in Commerce **disappear** from App Management after a successful sync.
 
-![Manage Scopes Quick actions menu with Sync commerce scopes](../_images/app-management/manage-scopes-sync-commerce-scopes.png)
+![Manage Scopes Quick actions menu with Sync commerce scopes](../images/app-management/manage-scopes-sync-commerce-scopes.png)
 
 ## Schema requirements
 
@@ -204,7 +205,17 @@ Your `app.commerce.config` is validated each time you run a `generate` command (
 
 ## Retrieve configuration at runtime
 
-Use `getConfigurationByKey` from the configuration library to access configuration values in your runtime actions:
+Use `getConfigurationByKey` from the configuration library (together with `getConfiguration` and `setConfiguration` when you need full documents or writes) to access configuration values in your runtime actions.
+
+Before you run `getConfiguration`, `getConfigurationByKey`, or `setConfiguration`, call `initialize` with your generated configuration schema. The schema is kept in memory for that action invocation. Import the generated `configuration-schema.json` from your `commerce/configuration/1` extension (the path relative to your action depends on your project layout).
+
+If you skip `initialize`, see [Initialization](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-config/docs/usage.md#initialization) in the configuration library usage guide for more information.
+
+A **scope selector** tells the library which node in the scope tree to read or write. That tree can include **Adobe Commerce** scopes (such as websites and store views, each with a scope code and a **level** in the hierarchy), **custom scopes** you create in App Management (code only; see below), **global** scope, and other nodes that your app or merchants configure.
+
+When the target scope has both a code and a level, which is typical for Commerce store and website scopes, use `byCodeAndLevel`.
+
+The following examples show only the configuration calls. In your action, run `initialize` before these calls. For a full runtime action example, see [Using configuration in runtime actions](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-config/docs/usage.md#using-configuration-in-runtime-actions) in the usage guide.
 
 ```js
 import { getConfigurationByKey, byCodeAndLevel } from "@adobe/aio-commerce-lib-config";
@@ -220,6 +231,23 @@ async function main(params) {
   });
 }
 ```
+
+**Custom scopes** created in the App Management UI are identified by **code only**. They do not define a separate **level** in the tree. For those scopes you must use **`byCode("your-custom-scope-code")`**. `byCodeAndLevel` is not used for custom scopes because there is no level to pass. See the configuration library [usage](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-config/docs/usage.md) for more information.
+
+```js
+import { getConfigurationByKey, byCode } from "@adobe/aio-commerce-lib-config";
+
+const { config: { value: endpoint } } = await getConfigurationByKey(
+  "api-endpoint",
+  byCode("your-custom-scope-code"),
+);
+```
+
+### Global scope and selectors
+
+`getConfiguration`, `getConfigurationByKey`, and `setConfiguration` accept an **optional** scope selector. When you omit it, the library resolves the **global** scope.
+
+For more patterns and API detail, see the configuration library [usage](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-config/docs/usage.md) documentation in the Adobe Commerce SDK repository.
 
 ## Tutorial
 

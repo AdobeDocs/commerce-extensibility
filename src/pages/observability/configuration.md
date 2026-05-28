@@ -12,7 +12,7 @@ keywords:
 
 <InlineAlert variant="info" slots="text"/>
 
-For [storefront](https://experienceleague.adobe.com/developer/commerce/storefront) observability, refer to [Operational Telemetry](https://www.aem.live/docs/rum-explorer#user-interface-overview).
+For [storefront](https://experienceleague.adobe.com/developer/commerce/storefront/) observability, refer to [Operational Telemetry](https://www.aem.live/docs/optel-explorer#user-interface-overview).
 
 To start using the observability module, you need to configure Adobe Commerce by creating a new subscription. You can create a subscription in two ways: in the Admin UI or through the REST API. You can create multiple subscriptions, each with its own configuration. The subscription configuration includes the following parameters:
 
@@ -30,11 +30,11 @@ Commerce sends all data in the OpenTelemetry format.
 
 To configure observability in the Admin UI, navigate to **System** > Observability > **Subscription List**. Here you can create, update, and delete subscriptions.
 
-![Observability Admin UI](../_images/observability/list-of-subscriptions-admin-ui.png)
+![Observability Admin UI](../images/observability/list-of-subscriptions-admin-ui.png)
 
 To create a new subscription, click the **Add New Subscription** button. Enter the required information and click **Save Subscription**. The new subscription is added to the list.
 
-![Observability New Subscription Admin UI](../_images/observability/create-subscription-admin-ui.png)
+![Observability New Subscription Admin UI](../images/observability/create-subscription-admin-ui.png)
 
 ## Connect with an observability platform
 

@@ -7,13 +7,9 @@ keywords:
   - Extensibility
 ---
 
-import SampleEvent from '/src/_includes/sample-event.md'
-import NestedEvent from '/src/_includes/nested-event.md'
-import EventSize from '/src/_includes/event-size-limitation.md'
-
 # Commerce module development
 
-This topic describes how to enable your custom modules for Adobe I/O Events. You can also manually register observer events using the [`events:subscribe` command](./commands.md#subscribe-to-an-event).
+This topic describes how to enable your custom modules for Adobe I/O Events. You can also manually register observer events using the [`events:subscribe` command](commands.md#subscribe-to-an-event).
 
 ## Find supported events
 
@@ -23,7 +19,7 @@ You can use the Commerce Admin or the command line to find supported events and 
 
 *  In the Admin, select **System** > Events > **Events List** to display the _Events list_ page.
 
-   ![Events list page](../_images/events/event-list.png)
+   ![Events list page](../images/events/event-list.png)
 
    The left navigation contains a list of enabled modules on your system. Click on a module name to display a list of supported events. When you select an event, the main panel of the Admin displays the event's payload.
 
@@ -36,17 +32,17 @@ You can programmatically register events using the following methods:
 *  Create an `io_events.xml` file in your module or in the root `app/etc` directory
 *  Declare them in the system `env.php` or `config.php` file
 
-<SampleEvent />
+<Fragment src="/_includes/sample-event.md" />
 
-After you've registered at least one event, run the [events:generate:module command](./commands.md#generate-a-commerce-module-based-on-a-list-of-subscribed-events) to generate the required plugins.
+After you've registered at least one event, run the [events:generate:module command](commands.md#generate-a-commerce-module-based-on-a-list-of-subscribed-events) to generate the required plugins.
 
 ### io_events.xml
 
-Create the `<module-root>/etc/io_events.xml` or `app/etc/io_events.xml` file and define a list of events that should always be transmitted. Events listed in this file cannot be disabled with the [`events:unsubscribe` command](./commands.md#unsubscribe-from-a-commerce-event).
+Create the `<module-root>/etc/io_events.xml` or `app/etc/io_events.xml` file and define a list of events that should always be transmitted. Events listed in this file cannot be disabled with the [`events:unsubscribe` command](commands.md#unsubscribe-from-a-commerce-event).
 
 You can transmit all the fields within an event by setting the value of the `field` element to `*` (`<field name="*"  />`). You cannot use the `*` wildcard character to match partial strings.
 
-<EventSize />
+<Fragment src="/_includes/event-size-limitation.md" />
 
 [Add custom fields to an event](custom-event-fields.md) describes how to enhance the payload of pre-defined events.
 
@@ -94,11 +90,11 @@ The contents of an `observer.catalog_product_save_after` event are similar to th
 }
 ```
 
-The `<field>` element can also contain the `converter` attribute. Use this attribute to change the value of a field in the event payload. [Convert payload field values](./convert-field-values.md) describes its usage.
+The `<field>` element can also contain the `converter` attribute. Use this attribute to change the value of a field in the event payload. [Convert payload field values](convert-field-values.md) describes its usage.
 
 ### Array of nested objects
 
-<NestedEvent />
+<Fragment src="/_includes/nested-event.md" />
 
 ```xml
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module-commerce-events-client/etc/io_events.xsd">
@@ -132,7 +128,7 @@ The contents of the event are similar to the following:
 
 ### config.php and env.php
 
-You can also create an `io_events` section in the Commerce [`app/etc/config.php file`](https://experienceleague.adobe.com/docs/commerce-operations/configuration-guide/files/deployment-files.html). As of version of **1.11.0** of Adobe I/O Events for Adobe Commerce, you can also create an `io_events` section in the Commerce [`app/etc/env.php file`](https://experienceleague.adobe.com/en/docs/commerce-operations/configuration-guide/files/deployment-files). Events registered using this mechanism can be disabled from the command line.
+You can also create an `io_events` section in the Commerce [`app/etc/config.php file`](https://experienceleague.adobe.com/en/docs/commerce-operations/configuration-guide/files/deployment-files). As of version of **1.11.0** of Adobe I/O Events for Adobe Commerce, you can also create an `io_events` section in the Commerce [`app/etc/env.php file`](https://experienceleague.adobe.com/en/docs/commerce-operations/configuration-guide/files/deployment-files). Events registered using this mechanism can be disabled from the command line.
 
 For example:
 

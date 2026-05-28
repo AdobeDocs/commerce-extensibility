@@ -1,6 +1,6 @@
 ---
 title: Initialize your app
-description: Set up your App Builder project for App Management
+description: Initialize an App Builder project for App Management
 keywords:
   - App Builder
   - App Management
@@ -33,7 +33,7 @@ Complete the following steps before initializing your app:
 
 1. **Set up App Builder**
 
-   Ensure you have the [Adobe I/O CLI](https://developer.adobe.com/app-builder/docs/getting_started/) installed and configured.
+   Ensure you have the [Adobe I/O CLI](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app) installed and configured.
 
 ## Initialize
 

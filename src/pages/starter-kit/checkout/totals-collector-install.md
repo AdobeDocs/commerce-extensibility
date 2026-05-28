@@ -6,14 +6,11 @@ keywords:
   - Extensibility
 ---
 
-import Configuration from '/src/_includes/checkout-configuration.md'
-import Version from '/src/_includes/checkout-version.md'
-
 # Install the totals collector module
 
-To begin using the totals collector module with the checkout starter kit, ensure that you have completed the [getting started](./getting-started.md) and [configuration](./configure.md) steps.
+To begin using the totals collector module with the checkout starter kit, ensure that you have completed the [getting started](getting-started.md) and [configuration](configure.md) steps.
 
-For more ideas on how you can use the totals collector module, refer to [totals collector use cases](./totals-collector-use-cases.md).
+For more ideas on how you can use the totals collector module, refer to [totals collector use cases](totals-collector-use-cases.md).
 
 ## Prerequisites
 
@@ -23,7 +20,7 @@ For more ideas on how you can use the totals collector module, refer to [totals 
 
 ## Installation
 
-<Version />
+<Fragment src="/_includes/checkout-version.md" />
 
 To enable out-of-process discount totals collection (from an external service) in Adobe Commerce, install the `magento/module-out-of-process-totals-collector` module using the following command:
 
@@ -33,7 +30,7 @@ composer require magento/module-out-of-process-totals-collector --with-dependenc
 
 ## Configuration
 
-<Configuration />
+<Fragment src="/_includes/checkout-configuration.md" />
 
 After installation, register a webhook so that Adobe Commerce can call your App Builder application when quote totals are collected. The webhook runs after the core discount totals collector; your endpoint returns a JSON Patch response that is applied to the quote totals and items.
 
@@ -41,4 +38,4 @@ After installation, register a webhook so that Adobe Commerce can call your App 
 
 The totals collector currently supports discount modifications only. Other total types are not supported.
 
-For webhook registration details and payload/response format, see [totals collector use cases](./totals-collector-use-cases.md#totals-collector-webhook).
+For webhook registration details and payload/response format, see [totals collector use cases](totals-collector-use-cases.md#totals-collector-webhook).

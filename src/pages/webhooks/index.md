@@ -11,7 +11,7 @@ Webhooks enable developers to configure synchronous logic to execute calls to ex
 
 This process is illustrated in the following diagram.
 
-![Webhooks architecture](../_images/webhooks.png)
+![Webhooks architecture](../images/webhooks.png)
 
 1. Webhook execution always starts with an event occurring in Adobe Commerce. This event can occur from many different types of user flows. For example, an event fires when a shopper adds a product to their shopping cart or an administrator creates a quote.
 
@@ -21,16 +21,16 @@ This process is illustrated in the following diagram.
 
 Not all situations are ideal for webhooks. You should create a webhook only if synchronous communication with the external server is critical. For many scenarios, asynchronous communication is sufficient, and as a result, [Adobe I/O Events for Adobe Commerce](../events/index.md) might be a better fit.
 
-The resolution of a remote call also determines whether you should implement a webhook. Webhooks currently can be resolved as successful, by throwing an exception, or by modifying the data payload of the event. [Use cases](./use-cases/index.md) can help you understand when to implement webhooks.
+The resolution of a remote call also determines whether you should implement a webhook. Webhooks currently can be resolved as successful, by throwing an exception, or by modifying the data payload of the event. [Use cases](use-cases/index.md) can help you understand when to implement webhooks.
 
 ## Webhook development process
 
 Use these guidelines to develop your own webhooks:
 
-1. Identify the Adobe Commerce event that triggers a webhook. In Adobe Commerce as a Cloud Service (SaaS), you can browse the available events from the Admin by selecting **System** > Webhooks > **Webhooks List** or using the `GET /V1/webhooks/supportedList` [REST endpoint](./api.md#get-supported-webhooks-for-saas). In PaaS environments, such as Commerce on Cloud Infrastructure and on-premises, you can accomplish this by running the [`bin/magento webhooks:list:all` command](./commands.md#return-a-list-of-supported-webhook-event-names) to return a list of all supported webhooks methods and the [`bin/magento webhooks:info <webhook-name>` command](./commands.md#display-the-payload-of-a-webhook) to return the payload of a specified webhook method.
+1. Identify the Adobe Commerce event that triggers a webhook. In Adobe Commerce as a Cloud Service (SaaS), you can browse the available events from the Admin by selecting **System** > Webhooks > **Webhooks List** or using the `GET /V1/webhooks/supportedList` [REST endpoint](api.md#get-supported-webhooks-for-saas). In PaaS environments, such as Commerce on Cloud Infrastructure and on-premises, you can accomplish this by running the [`bin/magento webhooks:list:all` command](commands.md#return-a-list-of-supported-webhook-event-names) to return a list of all supported webhooks methods and the [`bin/magento webhooks:info <webhook-name>` command](commands.md#display-the-payload-of-a-webhook) to return the payload of a specified webhook method.
 
 1. Gather the requirements to make a web call to the external server. This includes the URL, connection information, headers, and the payload the server expects.
 
-1. Create your [webhook](hooks.md). Review the sample [use cases](./use-cases/index.md) for ideas. Extension developers should place this file in the `etc` directory of their custom module. Merchants who want to implement their own webhooks can define them in the system `app/etc/webhooks.xml` file.
+1. Create your [webhook](hooks.md). Review the sample [use cases](use-cases/index.md) for ideas. Extension developers should place this file in the `etc` directory of their custom module. Merchants who want to implement their own webhooks can define them in the system `app/etc/webhooks.xml` file.
 
 1. [Test](testing.md) your webhook and interpret the [response](responses.md).

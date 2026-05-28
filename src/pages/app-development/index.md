@@ -76,7 +76,7 @@ A typical task for most e-commerce projects is to export orders from Adobe Comme
 
 The following diagram illustrates an out-of-process implementation using this service.
 
-![Out of process example](../_images/oms1.svg)
+![Out of process example](../images/oms1.svg)
 
 Configure Commerce to trigger [webhooks](https://developer.adobe.com/commerce/extensibility/webhooks/) whenever a customer places an order. These webhooks send order data to the OES. You can achieve this with [Adobe I/O Events for Adobe Commerce](https://developer.adobe.com/commerce/extensibility/events/).
 
@@ -125,7 +125,7 @@ But what if you need to request additional information from Adobe Commerce to co
 
 For this use case, you must develop an extension on the Adobe Commerce side that modifies the GraphQL response, performs some custom logic on the Adobe Commerce instance, and delivers the expected results back.
 
-![Hybrid example](../_images/oms2.svg)
+![Hybrid example](../images/oms2.svg)
 
 ## Conclusion
 

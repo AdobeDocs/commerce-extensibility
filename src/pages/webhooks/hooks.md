@@ -7,21 +7,19 @@ keywords:
 
 # Configure hook contents
 
-import CommerceContext from '/src/_includes/commerce-context.md'
-
 The payload for a hook can be large, but in many cases you only need to transmit a few fields to perform the desired operation on the remote server.
 
 Defining the hook requires knowledge of the structure of the original event and the requirements of the remote call. You can use the following methods to determine the structure of the original event:
 
-* &#8203;<Edition name="paas" />
+* [PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
-   * Run the [`bin/magento webhooks:list:all` command](./commands.md#return-a-list-of-supported-webhook-event-names) to return a list of all supported webhooks methods. Then run the [`bin/magento webhooks:info <webhook-name>` command](./commands.md#display-the-payload-of-a-webhook) to return the payload of the specified webhook method.
+   * Run the [`bin/magento webhooks:list:all` command](commands.md#return-a-list-of-supported-webhook-event-names) to return a list of all supported webhooks methods. Then run the [`bin/magento webhooks:info <webhook-name>` command](commands.md#display-the-payload-of-a-webhook) to return the payload of the specified webhook method.
 
-* &#8203;<Edition name="saas" />
+* [SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
    * View the list supported webhook methods by going to **System** > Webhooks > **Webhooks List** in the Admin. Then click on a webhook method name to display its default contents.
 
-   * Call the `GET /V1/webhooks/supportedList` [REST endpoint](./api.md#get-supported-webhooks-for-saas).
+   * Call the `GET /V1/webhooks/supportedList` [REST endpoint](api.md#get-supported-webhooks-for-saas).
 
 Imagine that a hypothetical webhook has the following structure:
 
@@ -406,28 +404,13 @@ You can use the same syntax and features available for context values in fields 
 </headers>
 ```
 
-<!--
-
-When uncommenting the SaaS example, change the "repeat" attribute to "2" to show both code blocks.
-
-##### Admin (SaaS)
-
-```yaml
-Hook Headers
-
-Name: X-Custom-Header
-Value: context_http_request.get_header{X-Custom-Header}
-Active: Yes
-```
--->
-
 In this example, the `X-Custom-Header` from an incoming HTTP request to Commerce will be forwarded as a header in the request sent by the webhook. This approach can be used to pass Authorization headers required by an external system.
 
 ### Supported contexts
 
 The following contexts are supported:
 
-<CommerceContext />
+<Fragment src="/_includes/commerce-context.md" />
 
 #### Checkout session context
 
@@ -907,7 +890,9 @@ Active: Yes
 
 ## Clean the cache
 
-<Edition name="paas" />
+<Edition slots="text" backgroundcolor="blue" />
+
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 If you are adding webhook functionality to an instance that is in production mode, run the following command to clean the cache and make the webhook available to the system:
 

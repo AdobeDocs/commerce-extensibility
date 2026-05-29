@@ -209,9 +209,9 @@ Use `getConfiguration`, `getConfigurationByKey`, and `setConfiguration` from `@a
 
 <InlineAlert variant="info" slots="text"/>
 
-**Every** runtime action that calls **`getConfiguration`**, **`getConfigurationByKey`**, or **`setConfiguration`** must call **`initialize`** first. Initialization is **per action invocation**—not once per deployment. If you add a new action that uses any of those three methods, add **`initialize`** at the start of that action’s `main` handler as well.
+Every runtime action that calls `getConfiguration`, `getConfigurationByKey`, or `setConfiguration` must call `initialize` first. Initialization is **per action invocation**;not once per deployment. If you add a new action that uses any of those three methods, add `initialize` at the start of that action’s `main` handler as well.
 
-At the start of each such action, call **`initialize`** with the schema from your root **`app.commerce.config`** file:
+At the start of each such action, call `initialize` with the schema from your root `app.commerce.config` file:
 
 ```js
 import appConfig from "#app.commerce.config";
@@ -219,7 +219,7 @@ import appConfig from "#app.commerce.config";
 initialize({ schema: appConfig.businessConfig.schema });
 ```
 
-The schema is held in memory only for that invocation. If you omit **`initialize`**, those configuration functions throw errors. See [Initialization](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-config/docs/usage.md#initialization) in the configuration library usage guide.
+The schema is held in memory only for that invocation. If you omit `initialize`, those configuration functions throw errors. See [Initialization](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-config/docs/usage.md#initialization) in the configuration library usage guide.
 
 A **scope selector** tells the library which node in the scope tree to read or write. That tree can include **Adobe Commerce** scopes (such as websites and store views, each with a scope code and a **level** in the hierarchy), **custom scopes** you create in App Management (code only; see below), **global** scope, and other nodes that your app or merchants configure.
 
@@ -242,7 +242,7 @@ async function main(params) {
 }
 ```
 
-**Custom scopes** created in the App Management UI are identified by **code only**. They do not define a separate **level** in the tree. For those scopes you must use **`byCode("your-custom-scope-code")`**. `byCodeAndLevel` is not used for custom scopes because there is no level to pass. See the configuration library [usage](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-config/docs/usage.md) for more information.
+Custom scopes created in the App Management UI are identified by **code only**. They do not define a separate level in the tree. For those scopes you must use `byCode("your-custom-scope-code")`. `byCodeAndLevel` is not used for custom scopes because there is no level to pass. See the configuration library [usage](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-config/docs/usage.md) for more information.
 
 ```js
 import { initialize, getConfigurationByKey, byCode } from "@adobe/aio-commerce-lib-config";

@@ -34,6 +34,12 @@ For the full association and installation workflow, see [Manage your app](https:
 
 When your app defines `businessConfig`, each App Builder runtime action that calls `getConfiguration`, `getConfigurationByKey`, or `setConfiguration` must run `initialize` before any of those three methods.
 
+An error message appears when you do not call `initialize` before any of those three methods:
+
+```text
+Schema not initialized. Call initialize({ schema }) before using configuration functions.
+```
+
 See [Retrieve configuration at runtime](./configuration-schema.md#retrieve-configuration-at-runtime) for an example.
 
 ## Local Adobe Commerce instances

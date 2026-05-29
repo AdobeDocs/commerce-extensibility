@@ -71,6 +71,7 @@ The request body includes the quote, shipping assignment, and current totals. Th
     "items": [
       {
         "item_id": "1",
+        "hash": "43893738b58abf4851c02719841321c0f946197b",
         "quote_id": "1",
         "product_id": "9",
         "sku": "simple-product-1",
@@ -99,8 +100,8 @@ The webhook endpoint must return a **JSON Patch** (RFC 6902) array. To supply di
 | `base_discount` | float | The discount amount in base currency to apply to the quote totals. When `discount_type` is `"percentage"`, this is the percentage value and the amount is derived from the basis (subtotal or item). |
 | `discount_description_array` | array | List of discount description labels to display on the cart/checkout.                                                                                                                                 |
 | `discount_rule_id_array` | array | Optional list of rule IDs associated with the discount, for display or reporting.                                                                                                                    |
-| `discount_type` | string | `"fixed"` or `"percentage"`. Default `"fixed"`. When the value is `"fixed"`, `base_discount` is the amount. When the value is `"percentage"`, it is the percentage, and the amount is derived from the basis.                   |
-| `discount_item_id_array` | array | When the discount applies to specific items, list of quote item IDs or indices (e.g. `[0, 1, 2]`). Empty or omitted when the discount applies to subtotal.                                           |
+| `discount_type` | string | `"fixed"` or `"percentage"`. Default `"fixed"`. When the value is `"fixed"`, `base_discount` is the amount. When the value is `"percentage"`, it is the percentage, and the amount is derived from the basis.                  |
+| `discount_item_id_array` | array | When the discount applies to specific items, list of quote item IDs or indices (such as `[0, 1, 2]`). Empty or omitted when the discount applies to subtotal. In PaaS requests (Luma theme), this field should contain quote item hashes instead of item IDs.                                          |
 
 ### Example: fixed discount on entire cart
 

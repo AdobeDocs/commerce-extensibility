@@ -86,6 +86,8 @@ The initialization process:
 
 When your app defines `businessConfig`, each App Builder runtime action that calls `getConfiguration`, `getConfigurationByKey`, or `setConfiguration` must run `initialize` before any of those three methods.
 
+If your schema includes `dynamicList` fields, you must **await** `initialize` and pass runtime action `params`. See [Initialize with and without dynamic lists](./configuration-schema.md#initialize-with-and-without-dynamic-lists) and [Configure action inputs for dynamic lists](./configuration-schema.md#configure-action-inputs-for-dynamic-lists).
+
 See [Retrieve configuration at runtime](./configuration-schema.md#retrieve-configuration-at-runtime) for an example.
 
 ## CLI commands

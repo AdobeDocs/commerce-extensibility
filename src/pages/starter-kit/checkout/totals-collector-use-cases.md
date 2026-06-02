@@ -14,7 +14,7 @@ For more general use cases, refer to [use-cases](use-cases.md).
 
 ## How it works
 
-The out-of-process totals collector extends Adobe Commerce discount totals collection with [webhooks](../../webhooks/index.md). When the core discount totals collector runs, a plugin invokes the `GetTotalModificationsInterface::execute` API. The webhook framework sends the quote and totals payload to your subscribed endpoint. Your App Builder application computes discounts and returns a JSON Patch response. Commerce applies the response to the quote totals and items, and the built-in `DiscountHandler` applies discount data so it appears in cart/checkout and in GraphQL.
+The out-of-process totals collector extends Adobe Commerce discount totals collection with [webhooks](../../webhooks/index.md). During cart totals collection, the webhook framework sends the quote and totals payload to your subscribed endpoint. Your App Builder application computes discounts and returns a JSON Patch response. Commerce applies the response to the quote totals and items so the discount appears in cart/checkout and in GraphQL.
 
 ## Totals collector webhook
 

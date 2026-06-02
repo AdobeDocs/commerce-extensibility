@@ -89,7 +89,7 @@ Your endpoint can use this data (items, quantities, prices, customer/quote attri
 
 ## Response format
 
-The webhook endpoint must return a **JSON Patch** (RFC 6902) array. To supply discount data that the built-in discount handler applies, use a `replace` operation on the `result` path. The `value` object is mapped to `TotalModificationsResultInterface`; handlers (for example, `DiscountHandler`) read it using getters and apply the data to the quote totals and items.
+The webhook endpoint must return a **JSON Patch** array. To supply discount data that the built-in discount handler applies, use a `replace` operation on the `result` path. The `value` object is mapped to `TotalModificationsResultInterface`; handlers (for example, `DiscountHandler`) read it using getters and apply the data to the quote totals and items.
 
 ### Result object (discount handler)
 

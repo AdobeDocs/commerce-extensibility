@@ -100,7 +100,7 @@ Your endpoint can use any combination of item data, cart totals, the computed sh
 
 ## Response format
 
-The webhook endpoint must return a **JSON Patch** (RFC 6902) array. To apply custom fees, use a `replace` operation on the `result/fees` path.
+The webhook endpoint must return a **JSON Patch** array. To apply custom fees, use a `replace` operation on the `result/fees` path.
 
 ### Fee object fields
 

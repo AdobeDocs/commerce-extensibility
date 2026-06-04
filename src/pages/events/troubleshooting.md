@@ -93,6 +93,8 @@ If events are not received, determine if you have a different value for the `Ado
 
 ![Adobe I/O Event Provider Instance ID](../images/events/instance-name-developer-commerce.png)
 
+![Adobe I/O Event Provider Instance ID Provider grid](../images/events/instance-name-developer-commerce-provider-grid.png)
+
 ## Event subscribe CLI command error
 
 You might encounter the following error when attempting to subscribe to events with the `bin/magento events:subscribe` command:

@@ -12,7 +12,7 @@ keywords:
 
 Based on the `businessConfig` schema that you defined in the `app.commerce.config`, the configuration library generates the runtime actions that the App Management UI uses to render a configuration form with no custom code required.
 
-See [Initialize your app](initialize-app.md) for setup instructions and [Build and deploy](build-deploy.md) for information about generated runtime actions and project structure.
+See [Initialize your app](./initialize-app.md) for setup instructions and [Build and deploy](./build-deploy.md) for information about generated runtime actions and project structure.
 
 ## Example
 
@@ -73,6 +73,7 @@ This `businessConfig` schema contains the following properties:
 | `description` | string | No | Help text displayed below the field. |
 | `options` | array | Conditional | Required for `list`. Defines available options to be displayed in the dropdown list. |
 | `selectionMode` | string | Conditional | Required for `list`. Set to `single` for standard dropdown or `multiple` to allow multiple selections. |
+| `env` | array | No | Limits the field to **PaaS** (`paas`) or **SaaS** (`saas`). To enable the field to all environments, omit the field or specify both values. |
 
 ## Supported field types
 
@@ -157,7 +158,7 @@ Never commit the `.env` file to version control. Keep the encryption key secure 
 
 See [Password Field Encryption](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-config/docs/password-encryption.md) for more information.
 
-See [Failed to decrypt configuration](troubleshooting.md#failed-to-decrypt-configuration-re-association-or-configuration-page) if you already see decrypt errors.
+See [Failed to decrypt configuration](./troubleshooting.md#failed-to-decrypt-configuration-re-association-or-configuration-page) if you already see decrypt errors.
 
 ### Multiple selection list fields
 
@@ -206,9 +207,15 @@ Your `app.commerce.config` is validated each time you run a `generate` command (
 
 Use `getConfigurationByKey` from the configuration library (together with `getConfiguration` and `setConfiguration` when you need full documents or writes) to access configuration values in your runtime actions.
 
+Before you run `getConfiguration`, `getConfigurationByKey`, or `setConfiguration`, call `initialize` with your generated configuration schema. The schema is kept in memory for that action invocation. Import the generated `configuration-schema.json` from your `commerce/configuration/1` extension (the path relative to your action depends on your project layout).
+
+If you skip `initialize`, see [Initialization](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-config/docs/usage.md#initialization) in the configuration library usage guide for more information.
+
 A **scope selector** tells the library which node in the scope tree to read or write. That tree can include **Adobe Commerce** scopes (such as websites and store views, each with a scope code and a **level** in the hierarchy), **custom scopes** you create in App Management (code only; see below), **global** scope, and other nodes that your app or merchants configure.
 
-When the target scope has **both** a code and a level—typical for Commerce store and website scopes—use `byCodeAndLevel`:
+When the target scope has both a code and a level, which is typical for Commerce store and website scopes, use `byCodeAndLevel`.
+
+The following examples show only the configuration calls. In your action, run `initialize` before these calls. For a full runtime action example, see [Using configuration in runtime actions](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-config/docs/usage.md#using-configuration-in-runtime-actions) in the usage guide.
 
 ```js
 import { getConfigurationByKey, byCodeAndLevel } from "@adobe/aio-commerce-lib-config";
@@ -225,7 +232,7 @@ async function main(params) {
 }
 ```
 
-**Custom scopes** created in the App Management UI are identified by **code only**; they do not define a separate **level** in the tree. For those scopes you must use **`byCode("your-custom-scope-code")`**. `byCodeAndLevel` is not used for custom scopes because there is no level to pass.
+**Custom scopes** created in the App Management UI are identified by **code only**. They do not define a separate **level** in the tree. For those scopes you must use **`byCode("your-custom-scope-code")`**. `byCodeAndLevel` is not used for custom scopes because there is no level to pass. See the configuration library [usage](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-config/docs/usage.md) for more information.
 
 ```js
 import { getConfigurationByKey, byCode } from "@adobe/aio-commerce-lib-config";

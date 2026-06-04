@@ -16,7 +16,7 @@ For discount use cases, see [Totals collector use cases](totals-collector-use-ca
 
 The out-of-process totals collector exposes a dedicated webhook for custom fees:
 
-```
+```text
 plugin.magento.out_of_process_totals_collector.api.get_total_modifications.custom_fees
 ```
 

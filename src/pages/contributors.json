@@ -1,7 +1,7 @@
 {
-  "total": 212,
+  "total": 213,
   "offset": 0,
-  "limit": 212,
+  "limit": 213,
   "data": [
     {
       "page": "/",
@@ -566,9 +566,10 @@
     {
       "page": "/config",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/18550571?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4"
       ],
-      "lastUpdated": "5/19/2026"
+      "lastUpdated": "6/2/2026"
     },
     {
       "page": "/developer-agent/",
@@ -1150,23 +1151,34 @@
       "page": "/starter-kit/checkout/totals-collector-development-considerations",
       "avatars": [
         "https://avatars.githubusercontent.com/u/11652541?v=4",
+        "https://avatars.githubusercontent.com/u/18550571?v=4",
         "https://avatars.githubusercontent.com/u/142383015?v=4"
       ],
       "lastUpdated": "6/5/2026"
     },
     {
+      "page": "/starter-kit/checkout/totals-collector-fees",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/11652541?v=4",
+        "https://avatars.githubusercontent.com/u/18550571?v=4"
+      ],
+      "lastUpdated": "6/4/2026"
+    },
+    {
       "page": "/starter-kit/checkout/totals-collector-install",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/18550571?v=4",
         "https://avatars.githubusercontent.com/u/142383015?v=4"
       ],
-      "lastUpdated": "5/19/2026"
+      "lastUpdated": "6/2/2026"
     },
     {
       "page": "/starter-kit/checkout/totals-collector-use-cases",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/18550571?v=4",
         "https://avatars.githubusercontent.com/u/142383015?v=4"
       ],
-      "lastUpdated": "5/29/2026"
+      "lastUpdated": "6/4/2026"
     },
     {
       "page": "/starter-kit/checkout/use-cases",

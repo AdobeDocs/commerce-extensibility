@@ -1,6 +1,6 @@
 ---
 title: Totals collector development considerations
-description: Learn about important development considerations when implementing out-of-process totals collector integrations in the Adobe Commerce checkout starter kit.
+description: Learn about important development considerations when implementing out-of-process discount and item pricing integrations in the Adobe Commerce checkout starter kit.
 keywords:
   - App Builder
   - Extensibility
@@ -8,7 +8,7 @@ keywords:
 
 # Totals collector development considerations
 
-When implementing out-of-process discount totals collector integrations, consider response model constraints, discount composition behavior, and failure handling. These considerations help keep totals collection predictable and checkout performance reliable. Currently, the totals collector supports discount modifications only; support for additional total types may be added in the future.
+When implementing out-of-process totals collector integrations, consider response model constraints, discount composition behavior, and failure handling. These considerations help keep totals collection predictable and checkout performance reliable. The sections below focus on the discount webhook; for item pricing considerations, see [Item pricing use cases](totals-collector-item-prices.md).
 
 ## External discount engine
 

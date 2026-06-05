@@ -32,10 +32,7 @@ composer require magento/module-out-of-process-totals-collector --with-dependenc
 
 <Fragment src="/_includes/checkout-configuration.md" />
 
-After installation, register a webhook so that Adobe Commerce can call your App Builder application when quote totals are collected. The webhook runs after the core discount totals collector; your endpoint returns a JSON Patch response that is applied to the quote totals and items.
+After installation, register one or more webhooks so that Adobe Commerce can call your App Builder application during quote totals collection:
 
-<InlineAlert variant="info" slots="text"/>
-
-The totals collector currently supports discount modifications only. Other total types are not supported.
-
-For webhook registration details and payload/response format, see [totals collector use cases](totals-collector-use-cases.md#totals-collector-webhook).
+- **Discounts** — fires during cart totals collection. See [Discount use cases](totals-collector-use-cases.md#totals-collector-webhook) for registration details and response format.
+- **Item prices** — fires during cart totals collection, immediately after the subtotal is computed. See [Item price use cases](totals-collector-item-prices.md#item-prices-webhook) for registration details and response format.

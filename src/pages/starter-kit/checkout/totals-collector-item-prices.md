@@ -10,7 +10,7 @@ keywords:
 
 This page describes how to modify quote item prices in an Adobe Commerce cart using the `magento/module-out-of-process-totals-collector` module.
 
-For discount use cases, see [Totals collector use cases](totals-collector-use-cases.md). For custom fee use cases, see [Custom fees use cases](totals-collector-fees.md).
+For discount use cases, see [Totals collector use cases](totals-collector-use-cases.md).
 
 ## How it works
 

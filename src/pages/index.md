@@ -64,7 +64,7 @@ Some out-of-process development tools are only available with Adobe Commerce and
 
 Adobe Commerce and Magento Open Source provide the following in-process extensible development tools:
 
-- [REST](https://developer.adobe.com/commerce/webapi/rest) - Use REST calls to interact with your Commerce instance on behalf of an administrator, customer, guest, or integration.
+- [REST](https://developer.adobe.com/commerce/webapi/rest/) - Use REST calls to interact with your Commerce instance on behalf of an administrator, customer, guest, or integration.
 
 - [GraphQL](https://developer.adobe.com/commerce/webapi/graphql/) - Use GraphQL requests to transfer information between the storefront and backend.
 

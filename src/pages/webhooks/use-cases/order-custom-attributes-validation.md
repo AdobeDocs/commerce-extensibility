@@ -15,7 +15,7 @@ When an order and its custom attributes are saved in the Commerce Admin, a third
 
 `observer.sales_order_view_custom_attributes_update_before` - triggered only when order custom attributes are saved from the **Custom Attributes** tab of the **Order View** page in the Commerce Admin.
 
-[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) The custom attributes modules must be installed for this use case. See [Install custom attribute support](https://developer.adobe.com/commerce/webapi/rest/modules/custom-attributes/#install-custom-attribute-support) if the modules are not yet installed.
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) The custom attributes modules must be installed for this use case. See [Install custom attribute support](https://developer.adobe.com/commerce/webapi/rest/modules/custom-attributes#install-custom-attribute-support) if the modules are not yet installed.
 
 ## Payloads
 

@@ -148,10 +148,10 @@ After changing `webhooks`, rebuild and deploy your app so the `pre-app-build` ho
 
 ## Handler implementation (optional)
 
-When your runtime action **handles** the HTTP callback from Commerce, you build the response body with [Webhook operations](https://developer.adobe.com/commerce/extensibility/webhooks/responses/) (success, exception, add, replace, remove). The [`@adobe/aio-commerce-lib-webhooks`](https://github.com/adobe/aio-commerce-sdk/tree/main/packages/aio-commerce-lib-webhooks) package (responses entry point) provides optional helpers for that workflow. Declaring webhooks in `app.commerce.config` does not require installing it.
+When your runtime action **handles** the HTTP callback from Commerce, you build the response body with [Webhook operations](../../webhooks/responses.md) (success, exception, add, replace, remove). The [`@adobe/aio-commerce-lib-webhooks`](https://github.com/adobe/aio-commerce-sdk/tree/main/packages/aio-commerce-lib-webhooks) package (responses entry point) provides optional helpers for that workflow. Declaring webhooks in `app.commerce.config` does not require installing it.
 
 ## Related documentation
 
 * [Install and access App Management](https://experienceleague.adobe.com/en/docs/commerce/app-management/install#access-app-management) (Experience League) — user guide for App Management in the Admin.
-* [Adobe Commerce Webhooks](https://developer.adobe.com/commerce/extensibility/webhooks/) — product concepts and Admin behavior.
-* [Webhook responses](https://developer.adobe.com/commerce/extensibility/webhooks/responses/) — operation types for handler actions.
+* [Adobe Commerce Webhooks](../../webhooks/index.md) — product concepts and Admin behavior.
+* [Webhook responses](../../webhooks/responses.md) — operation types for handler actions.

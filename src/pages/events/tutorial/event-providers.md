@@ -171,7 +171,7 @@ Event providers act as connectors that enable Adobe Commerce to send system even
 
 ## Create a subscription in Adobe Commerce
 
-This step links a specific Adobe Commerce event to the event provider created earlier. It defines which events should be sent, how they should be identified, and what data should be included in the payload. Refer to the  [Create events from the Admin](https://developer.adobe.com/commerce/extensibility/events/create-events/) for more information about subscriptions.
+This step links a specific Adobe Commerce event to the event provider created earlier. It defines which events should be sent, how they should be identified, and what data should be included in the payload. Refer to the  [Create events from the Admin](../create-events.md) for more information about subscriptions.
 
 1. Navigate to **System** > **Events** > **Events Subscriptions**.
 

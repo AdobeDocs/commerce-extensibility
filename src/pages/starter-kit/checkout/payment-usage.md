@@ -116,7 +116,7 @@ try {
 
 `getOrderByMaskedCartId` retrieves order details from the Adobe Commerce instance using `maskedCartID`. This is typically used when the app builder application receives a webhook or event from the payment gateway.
 
-This method uses the Adobe Commerce API [order search criteria](https://developer.adobe.com/commerce/webapi/rest/use-rest/performing-searches/#other-search-criteria).
+This method uses the Adobe Commerce API [order search criteria](https://developer.adobe.com/commerce/webapi/rest/use-rest/performing-searches#other-search-criteria).
 
 **Payload parameters:**
 

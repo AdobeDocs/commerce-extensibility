@@ -1,6 +1,6 @@
 ---
 title: Totals collector development considerations
-description: Learn about important development considerations when implementing out-of-process totals collector integrations in the Adobe Commerce checkout starter kit.
+description: Learn about important considerations when implementing out-of-process totals collector integrations in the checkout starter kit.
 keywords:
   - App Builder
   - Extensibility

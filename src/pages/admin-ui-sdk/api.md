@@ -8,7 +8,7 @@ keywords:
 
 # REST endpoints for Admin UI SDK
 
-Adobe Commerce provides several REST endpoints that interact with the Admin UI SDK processes. These endpoints require an [admin token](https://developer.adobe.com/commerce/webapi/get-started/authentication/gs-authentication-token/) on PaaS systems or a token using [Adobe's Identity Management System (IMS)](https://developer.adobe.com/commerce/webapi/rest/authentication/user/) on SaaS systems.
+Adobe Commerce provides several REST endpoints that interact with the Admin UI SDK processes. These endpoints require an [admin token](https://developer.adobe.com/commerce/webapi/get-started/authentication/gs-authentication-token) on PaaS systems or a token using [Adobe's Identity Management System (IMS)](https://developer.adobe.com/commerce/webapi/rest/authentication/user) on SaaS systems.
 
 ## Mass actions without iFrames
 

@@ -77,7 +77,10 @@
       "https://windsurf.com/",
       "https://www.php.net/manual/en/function.preg-match.php",
       "https://git-scm.com/install/",
-      "https://github.com/adobe-commerce/aio-cli-plugin-commerce"
+      "https://github.com/adobe-commerce/aio-cli-plugin-commerce",
+      "https://experienceleaguecommunities.adobe.com/t5/app-builder/ct-p/adobe-app-builder",
+      "https://exchange.adobe.com/apps/browse/ec",
+      "https://developer.adobe.com/console"
     ]
   }
 }

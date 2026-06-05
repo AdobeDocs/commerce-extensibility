@@ -19,5 +19,5 @@ The base module is available on all platforms, but the B2B module is available o
 
 For details on how to use these modules, see the following documentation:
 
-* [REST](https://developer.adobe.com/commerce/webapi/rest/modules/custom-attributes/)
+* [REST](https://developer.adobe.com/commerce/webapi/rest/modules/custom-attributes)
 * [GraphQL](https://developer.adobe.com/commerce/webapi/graphql/schema/attributes/mutations/)

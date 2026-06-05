@@ -34,8 +34,8 @@ Verify that your Commerce APIs are compatible with both environments by checking
 
 **REST API:**
 
-- [PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) [PaaS REST API specification](https://developer.adobe.com/commerce/webapi/reference/rest/paas/) - The **I/O Management API** is required to connect a PaaS instance with your app builder application.
-- [SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) [SaaS REST API specification](https://developer.adobe.com/commerce/webapi/reference/rest/saas/) - The **Adobe Commerce as a Cloud Service API** is required to connect a SaaS instance with your app builder application.
+- [PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) [PaaS REST API specification](https://developer.adobe.com/commerce/webapi/reference/rest/paas) - The **I/O Management API** is required to connect a PaaS instance with your app builder application.
+- [SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) [SaaS REST API specification](https://developer.adobe.com/commerce/webapi/reference/rest/saas) - The **Adobe Commerce as a Cloud Service API** is required to connect a SaaS instance with your app builder application.
 
 For more information on REST API access, refer to the [Developer Console configuration](../starter-kit/integration/create-integration.md#onboarding) in the integration starter kit, or the [CLI configuration](../starter-kit/checkout/getting-started.md#initial-configuration) in the checkout starter kit.
 
@@ -43,7 +43,7 @@ For more information on REST API access, refer to the [Developer Console configu
 
 For older versions of the starter kit, check if your code is adapted as follows:
 
-- To support both PaaS and SaaS, modify the `COMMERCE_BASE_URL` environment variable according to the [Commerce integration guide](https://developer.adobe.com/commerce/extensibility/starter-kit/checkout/connect/).
+- To support both PaaS and SaaS, modify the `COMMERCE_BASE_URL` environment variable according to the [Commerce integration guide](../starter-kit/checkout/connect.md).
 - Ensure that your [adobe-commerce](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/lib/adobe-commerce.js) HTTP client removes the `rest/all` prefix for compatibility with both deployment flavors. For example:
 
     ```javascript
@@ -100,12 +100,12 @@ Refer to [URL structure](https://developer.adobe.com/commerce/webapi/rest/#url-s
 - [PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) Requires composer installation.
 - [SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) Modules are pre-installed.
 - APIs function the same way in both environments:
-  - [custom attributes](https://developer.adobe.com/commerce/webapi/rest/modules/custom-attributes/)
+  - [custom attributes](https://developer.adobe.com/commerce/webapi/rest/modules/custom-attributes)
   - [payment](../starter-kit/checkout/payment-reference.md)
   - [shipping](../starter-kit/checkout/shipping-reference.md)
   - [tax](../starter-kit/checkout/tax-reference.md)
 
 ## Storefront integration and testing
 
-- [PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) EDS Storefronts require additional configuration, such as the Catalog and [Storefront Compatibility Package](https://experienceleague.adobe.com/developer/commerce/storefront/setup/configuration/storefront-compatibility/install/). PaaS also provides the [Luma Storefront](https://experienceleague.adobe.com/docs/commerce/frontend/guide/storefront/luma.html), which is not available in SaaS.
+- [PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) EDS Storefronts require additional configuration, such as the Catalog and [Storefront Compatibility Package](https://experienceleague.adobe.com/developer/commerce/storefront/setup/configuration/storefront-compatibility/install/). PaaS also provides the [Luma Storefront](https://experienceleague.adobe.com/en/docs/commerce-admin/content-design/design/themes/themes), which is not available in SaaS.
 - [SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) You can use the [EDS Storefront to connect to your Commerce instance](https://experienceleague.adobe.com/en/docs/commerce/cloud-service/storefront) without installing any modules. SaaS environments do not have access to the Luma Storefront.

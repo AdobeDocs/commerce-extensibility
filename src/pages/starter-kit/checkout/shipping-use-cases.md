@@ -85,7 +85,15 @@ Payload example:
                         "country_origin": "Japan",
                         ...
                     }
-                }
+                },
+                "custom_options": [
+                  {
+                    "label": "Monogram",
+                    "option_id": "1",
+                    "option_value": "J.D."
+                  },
+                  ...
+                ]
             }
         ],
         "dest_country_id": "US",

@@ -45,8 +45,8 @@ The following resources will help you get to know the extensibility options offe
   - [Try out the Commerce API](https://experienceleague.adobe.com/developer/commerce/storefront/playgrounds/commerce-services/) in the developer playground with zero setup required.
 - Build event-driven integrations with Adobe I/O Events for Adobe Commerce
   - [Adobe I/O Events](https://developer.adobe.com/events/docs/) - Developer documentation for general Adobe I/O Events functionality, not specific to Adobe Commerce. View this documentation for information about consuming events in App Builder using journaling, runtime actions, retry mechanisms, and more.
-  - [Adobe I/O Events for Adobe Commerce](https://developer.adobe.com/commerce/extensibility/events/) - Developer documentation for Adobe I/O Events for Adobe Commerce.
-  - [Installation](https://developer.adobe.com/commerce/extensibility/events/installation/) - Developer docs for setting up the I/O Events for Adobe Commerce.
+  - [Adobe I/O Events for Adobe Commerce](../events/index.md) - Developer documentation for Adobe I/O Events for Adobe Commerce.
+  - [Installation](../events/installation.md) - Developer docs for setting up the I/O Events for Adobe Commerce.
   - Eventing video tutorials - A set of developer-facing video tutorials that demonstrate how to set up I/O Events for Adobe Commerce
      - [Getting started](https://experienceleague.adobe.com/en/docs/commerce-learn/tutorials/extensibility/adobe-developer-app-builder/io-events/getting-started-io-events) - A video tutorial on how to use I/O Events for Adobe Commerce.
      - Adobe I/O Events installation - Learn how to install several new modules in Adobe Commerce using Composer for the corresponding version.
@@ -55,11 +55,11 @@ The following resources will help you get to know the extensibility options offe
      - [Configure I/O Events for Adobe Commerce](https://experienceleague.adobe.com/en/docs/commerce-learn/tutorials/extensibility/adobe-developer-app-builder/io-events/configure-commerce) - A tutorial video on how to set up I/O Events for Adobe Commerce.
      - [Create an App Builder project](https://experienceleague.adobe.com/en/docs/commerce-learn/tutorials/extensibility/adobe-developer-app-builder/io-events/create-app-builder-project) - Learn how to create an Adobe Developer App Builder project to consume events from Adobe Commerce.
 - Extend the Admin UI with the Admin UI SDK
-  - [Admin UI SDK overview](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/) - Developer documentation on how to extend and customize the Commerce Admin to include custom menus and pages.
-  - [Installation](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/installation/) - Developer documentation on how to set up the Admin UI SDK.
-  - [Extension points](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/extension-points/) - Developer documentation on how to use existing extension points in any Adobe Developer App Builder application that customizes the Adobe Commerce Admin.
+  - [Admin UI SDK overview](../admin-ui-sdk/index.md) - Developer documentation on how to extend and customize the Commerce Admin to include custom menus and pages.
+  - [Installation](../admin-ui-sdk/installation.md) - Developer documentation on how to set up the Admin UI SDK.
+  - [Extension points](../admin-ui-sdk/extension-points/index.md) - Developer documentation on how to use existing extension points in any Adobe Developer App Builder application that customizes the Adobe Commerce Admin.
 - Extend native Commerce processes with webhooks
-  - [Overview](https://developer.adobe.com/commerce/extensibility/webhooks/) - An architectural overview of webhooks.
+  - [Overview](../webhooks/index.md) - An architectural overview of webhooks.
   - [Setup and installation](../webhooks/installation.md) - Information on how to install Commerce modules necessary for implementing webhooks.
   - [Configuration](../webhooks/hooks.md) - Developer documentation on how to configure hooks for Adobe Commerce.
   - [Common use cases](../webhooks/use-cases/index.md) - Descriptions of common Adobe Commerce use cases for webhooks.

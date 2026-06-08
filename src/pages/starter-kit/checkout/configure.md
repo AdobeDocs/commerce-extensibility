@@ -71,7 +71,7 @@ To configure eventing, follow these steps:
 
         - The environment variable `AIO_EVENTS_PROVIDERMETADATA_TO_PROVIDER_MAPPING` contains the Commerce event provider ID.
 
-    - Update `<your_application_name>` as a prefix in both `events.config.yaml` and `app.config.yaml` to isolate [event providers](https://developer.adobe.com/commerce/extensibility/events/configure-additional-event-providers/) per application.
+    - Update `<your_application_name>` as a prefix in both `events.config.yaml` and `app.config.yaml` to isolate [event providers](../../events/configure-additional-event-providers.md) per application.
 
 1. The script requires the following environment variables, which update the values in **Stores > Configuration > Adobe Services > Adobe I/O Events > Commerce events**:
 

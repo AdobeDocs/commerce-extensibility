@@ -94,6 +94,7 @@
     - [Totals collector](/starter-kit/checkout/totals-collector-install.md)
         - [Module installation](/starter-kit/checkout/totals-collector-install.md)
         - [Discount use cases](/starter-kit/checkout/totals-collector-use-cases.md)
+        - [Custom fees use cases](/starter-kit/checkout/totals-collector-fees.md)
         - [Item price modification use cases](/starter-kit/checkout/totals-collector-item-prices.md)
         - [Development considerations](/starter-kit/checkout/totals-collector-development-considerations.md)
     - [Overview](/events/index.md)

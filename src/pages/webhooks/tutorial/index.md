@@ -52,7 +52,7 @@ The following images contrast what you will see with and without developer acces
 
 ### Create a new project in Adobe Developer Console
 
-Follow the steps described in [Create an App Builder project](https://developer.adobe.com/commerce/extensibility/events/project-setup/). These steps are essential because the Adobe Developer Console provides the credentials and configuration required to deploy your App Builder app and access Adobe services like I/O Runtime and Commerce APIs. Without completing these steps, your app will not be able to authenticate or run within the Adobe ecosystem.
+Follow the steps described in [Create an App Builder project](../../events/project-setup.md). These steps are essential because the Adobe Developer Console provides the credentials and configuration required to deploy your App Builder app and access Adobe services like I/O Runtime and Commerce APIs. Without completing these steps, your app will not be able to authenticate or run within the Adobe ecosystem.
 
 This procedure allows you to quickly set up a new App Builder project with the necessary configurations and dependencies. You must install multiple APIs in your project, though the exact APIs vary, depending on whether you have Adobe Commerce as a Cloud Service (SaaS) or Adobe Commerce on Cloud or on-premises (PaaS).
 
@@ -70,7 +70,7 @@ This procedure allows you to quickly set up a new App Builder project with the n
 
 When you have installed the applicable APIs, save the project configuration. This step is crucial because it generates a JSON file that contains the necessary credentials and configurations for your App Builder project. You will use this file later to set up your local development environment.
 
-For more information about these APIs, refer to the [Adobe Commerce Extensibility documentation](https://developer.adobe.com/commerce/extensibility/events/project-setup/).
+For more information about these APIs, refer to the [Adobe Commerce Extensibility documentation](../../events/project-setup.md).
 
 ### Set up your local App Builder environment using the CLI
 
@@ -96,7 +96,7 @@ The following software is required to set up your App Builder project:
 
     This command opens a browser window where you can sign in to your Adobe Developer Console account. After signing in, you will be redirected back to the CLI. The command returns a user token string, which is automatically stored in your local environment. This token is used to authenticate your CLI commands with the Adobe Developer Console.
 
-1. Retrieve the JSON file from the Admin Console by following the steps outlined in [Download the workspace configuration file](https://developer.adobe.com/commerce/extensibility/events/project-setup/#download-the-workspace-configuration-file).
+1. Retrieve the JSON file from the Admin Console by following the steps outlined in [Download the workspace configuration file](../../events/project-setup.md#download-the-workspace-configuration-file).
 
 1. Optionally, run the `aio where` command to verify the current context of your Adobe Developer Console project.
 

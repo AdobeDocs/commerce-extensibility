@@ -200,7 +200,7 @@ Use `dynamicList` when dropdown options depend on data that is only available at
 
 When your schema includes a `dynamicList` field, the `options` function may read values from runtime action inputs (such as API keys). Add those inputs to every action that calls `initialize`, including the generated `app-config` and `config` actions. See [Configure action inputs for dynamic lists](#configure-action-inputs-for-dynamic-lists).
 
-Because `dynamicList` options are resolved at runtime, `initialize` must be **awaited** and passed the action `params`. See [Initialize with and without dynamic lists](#initialize-with-and-without-dynamic-lists).
+Because `dynamicList` options are resolved at runtime, `initialize` must be **awaited** and passed the action `params`. Import the schema from `app.commerce.config`; when your schema includes any `dynamicList` field, no `configuration-schema.json` file is generated because JSON cannot represent function values. See [Initialize with and without dynamic lists](#initialize-with-and-without-dynamic-lists).
 
 ## Scope tree synchronization
 
@@ -242,7 +242,7 @@ The schema is held in memory only for that invocation. If you omit `initialize`,
 
 ### Without dynamicList
 
-When your schema has **no** `dynamicList` fields, call `initialize` synchronously at the start of the action. You can pass the schema from your root `app.commerce.config` file or from the generated JSON file:
+When your schema has **no** `dynamicList` fields, call `initialize` synchronously at the start of the action. You can pass the schema from your root `app.commerce.config` file or from the generated `configuration-schema.json` file:
 
 ```js
 import { initialize } from "@adobe/aio-commerce-lib-config";
@@ -255,7 +255,7 @@ export async function main(params) {
 
 ### With dynamicList
 
-When your schema includes a `dynamicList` field (requires `@adobe/aio-commerce-lib-config` version **1.6.0** or later), `options` and `default` are resolved at runtime. **Await** `initialize` and pass the action `params`. Use the live schema from `app.commerce.config` (not the generated JSON) so async `options` and `default` functions remain available:
+When your schema includes a `dynamicList` field (requires `@adobe/aio-commerce-lib-config` version 1.6.0 or later), `options` and `default` are functions that run at runtime. Import the schema from `app.commerce.config`. No `configuration-schema.json` file is generated for schemas that include `dynamicList` fields—JSON cannot represent function values, so there is no generated file to import. Await `initialize` and pass the action `params`:
 
 ```js
 import { initialize } from "@adobe/aio-commerce-lib-config";
@@ -265,6 +265,10 @@ export async function main(params) {
   await initialize({ schema: appConfig.businessConfig.schema, params });
 }
 ```
+
+<InlineAlert variant="info" slots="text"/>
+
+The `#app.commerce.config` import alias is currently available only when your schema includes `dynamicList` fields. Support for using this import without `dynamicList` may be added in a future library release.
 
 A **scope selector** tells the library which node in the scope tree to read or write. That tree can include **Adobe Commerce** scopes (such as websites and store views, each with a scope code and a **level** in the hierarchy), **custom scopes** you create in App Management (code only; see below), **global** scope, and other nodes that your app or merchants configure.
 
@@ -287,7 +291,39 @@ async function main(params) {
 }
 ```
 
-Custom scopes created in the App Management UI are identified by **code only**. They do not define a separate level in the tree. For those scopes you must use `byCode("your-custom-scope-code")`. `byCodeAndLevel` is not used for custom scopes because there is no level to pass. See the configuration library [usage](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-config/docs/usage.md) for more information.
+When your action receives Adobe Commerce **numeric IDs** (for example, from a REST API response), use `byWebsiteId`, `byStoreId`, or `byStoreViewId`. Each helper hard-codes its scope level so the same ID can target a website, store, or store view unambiguously.
+
+```js
+import {
+  initialize,
+  getConfigurationByKey,
+  byWebsiteId,
+  byStoreId,
+  byStoreViewId,
+} from "@adobe/aio-commerce-lib-config";
+import appConfig from "#app.commerce.config";
+
+async function main(params) {
+  initialize({ schema: appConfig.businessConfig.schema });
+
+  const { config: { value: websiteEndpoint } } = await getConfigurationByKey(
+    "api-endpoint",
+    byWebsiteId(params.website_id),
+  );
+
+  const { config: { value: storeEndpoint } } = await getConfigurationByKey(
+    "api-endpoint",
+    byStoreId(params.store_id),
+  );
+
+  const { config: { value: storeViewEndpoint } } = await getConfigurationByKey(
+    "api-endpoint",
+    byStoreViewId(params.store_view_id),
+  );
+}
+```
+
+Custom scopes created in the App Management UI are identified by **code only**. They do not define a separate level in the tree. For those scopes you must use `byCode("your-custom-scope-code")`. `byCodeAndLevel` is not used for custom scopes because there is no level to pass. See the configuration library [managing configuration](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-config/docs/usage.md#managing-configuration) topic for more information.
 
 ```js
 import { initialize, getConfigurationByKey, byCode } from "@adobe/aio-commerce-lib-config";
@@ -341,7 +377,7 @@ Define the corresponding variable in your `.env` file (for example, `SOME_API_KE
 
 Repeat this step for **each custom runtime action** that calls `initialize` when your schema includes `dynamicList` fields.
 
-For more patterns and API detail, see the configuration library [usage](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-config/docs/usage.md) documentation in the Adobe Commerce SDK repository.
+For more patterns and API detail, see [Managing configuration](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-config/docs/usage.md#managing-configuration) in the configuration library usage guide.
 
 ## Tutorial
 

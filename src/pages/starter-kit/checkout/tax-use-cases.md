@@ -126,7 +126,7 @@ The Appbuilder application receives the following payload as an `oopQuote` objec
 }
 ```
 
-Responses to commerce webhooks are expected to modify the original request body in various ways (see [`Webhook responses and logging`](https://developer.adobe.com/commerce/extensibility/webhooks/responses/)). The following response example uses the `replace` operation to set the tax field and the `add` operation to add different taxes to the `tax_breakdown` array.
+Responses to commerce webhooks are expected to modify the original request body in various ways (see [`Webhook responses and logging`](../../webhooks/responses.md)). The following response example uses the `replace` operation to set the tax field and the `add` operation to add different taxes to the `tax_breakdown` array.
 
 The key points for constructing the response are:
 

@@ -126,7 +126,7 @@ After partners get sandbox access, the Adobe Commerce engineering team will ask 
 
 - [Common issues](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/troubleshoot).
 
-- [Experience League forum](https://experienceleaguecommunities.adobe.com/adobe-developer-19).
+- [Experience League forum](https://experienceleaguecommunities.adobe.com/t5/app-builder/ct-p/adobe-app-builder).
 
 - Slack support channel in the [Magento Open Source Workspace](https://developer.adobe.com/open/magento/slack): `#app-builder-community`
 

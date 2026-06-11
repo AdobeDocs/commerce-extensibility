@@ -1,6 +1,6 @@
 ---
 title: Totals collector development considerations
-description: Learn about important development considerations when implementing out-of-process totals collector integrations in the Adobe Commerce checkout starter kit.
+description: Learn about important considerations when implementing out-of-process discount and custom fee integrations in the checkout starter kit.
 keywords:
   - App Builder
   - Extensibility
@@ -8,7 +8,7 @@ keywords:
 
 # Totals collector development considerations
 
-When implementing out-of-process discount totals collector integrations, consider response model constraints, discount composition behavior, and failure handling. These considerations help keep totals collection predictable and checkout performance reliable. Currently, the totals collector supports discount modifications only; support for additional total types may be added in the future.
+When implementing out-of-process totals collector integrations, consider response model constraints, discount composition behavior, and failure handling. These considerations help keep totals collection predictable and checkout performance reliable. The sections below focus on the discount webhook; for custom fee considerations, see [Custom fees use cases](totals-collector-fees.md).
 
 ## External discount engine
 
@@ -25,7 +25,3 @@ The webhook supports a single `result` object per invocation. To model multiple 
 ## No discount (fallback)
 
 If your endpoint fails or times out, the webhook framework uses the configured `fallbackErrorMessage` and no out-of-process modifications are applied. Ensure your endpoint is fast and resilient so totals collection remains reliable.
-
-<InlineAlert variant="info" slots="text"/>
-
-The current implementation supports discount handling only via the DiscountHandler. Any total types other than discounts are not supported at this time.

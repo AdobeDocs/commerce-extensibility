@@ -24,7 +24,7 @@ The Adobe Commerce checkout starter kit supports several integration patterns wi
 
 This strategy consists of the following components:
 
-1. **OOPE Payment Method** - Database-persisted configuration managed with the [Admin REST APIs](https://developer.adobe.com/commerce/webapi/rest) based on [Commerce offline payment methods](https://experienceleague.adobe.com/en/docs/commerce-admin/stores-sales/payments/payments#offline-payment-methods).
+1. **OOPE Payment Method** - Database-persisted configuration managed with the [Admin REST APIs](https://developer.adobe.com/commerce/webapi/rest/) based on [Commerce offline payment methods](https://experienceleague.adobe.com/en/docs/commerce-admin/stores-sales/payments/payments#offline-payment-methods).
 1. **Cart GraphQL Extensions** - An enhanced GraphQL API that accommodates OOPE workflows.
 1. **Client-Side Gateway Integration** - Lightweight widget using gateway SDKs in the [Adobe Commerce storefront checkout drop-in](https://experienceleague.adobe.com/developer/commerce/storefront/dropins/checkout/).
 1. **Server-Side Gateway Integration** - App Builder application handling gateway communication.
@@ -139,7 +139,7 @@ To perform a headless checkout and payment, the Commerce instance must ensure th
 
 ### Set payment method additional data
 
-To ingest payment gateway specific information in the payment process, the checkout process must use the [`setPaymentMethodOnCart` mutation](https://developer.adobe.com/commerce/webapi/graphql/schema/cart/mutations/set-payment-method/) in combination with the `payment_method.additional_data` field to persist the information required to validate the payment once the order is placed.
+To ingest payment gateway specific information in the payment process, the checkout process must use the [`setPaymentMethodOnCart` mutation](https://developer.adobe.com/commerce/webapi/graphql/schema/cart/mutations/set-payment-method) in combination with the `payment_method.additional_data` field to persist the information required to validate the payment once the order is placed.
 
 #### Using GraphQL
 

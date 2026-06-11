@@ -1,6 +1,6 @@
 ---
 title: Totals collector development considerations
-description: Learn about important considerations when implementing out-of-process discount and custom fee integrations in the checkout starter kit.
+description: Learn about important considerations when implementing out-of-process discount, custom fee, and item pricing integrations in the checkout starter kit.
 keywords:
   - App Builder
   - Extensibility
@@ -8,7 +8,7 @@ keywords:
 
 # Totals collector development considerations
 
-When implementing out-of-process totals collector integrations, consider response model constraints, discount composition behavior, and failure handling. These considerations help keep totals collection predictable and checkout performance reliable. The sections below focus on the discount webhook; for custom fee considerations, see [Custom fees use cases](totals-collector-fees.md).
+When implementing out-of-process totals collector integrations, consider response model constraints, discount composition behavior, and failure handling. These considerations help keep totals collection predictable and checkout performance reliable. The sections below focus on the discount webhook; for custom fee considerations, see [Custom fees use cases](totals-collector-fees.md), and for item pricing considerations, see [Item pricing use cases](totals-collector-item-prices.md).
 
 ## External discount engine
 

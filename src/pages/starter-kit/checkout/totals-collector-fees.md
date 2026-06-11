@@ -8,9 +8,13 @@ keywords:
 
 # Custom fees use cases
 
+<Edition slots="text" backgroundcolor="blue" />
+
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
+
 This page describes how to apply custom fee line items (such as processing fees, handling charges, or insurance fees) to an Adobe Commerce cart using the `magento/module-out-of-process-totals-collector` module.
 
-For discount use cases, see [Totals collector use cases](totals-collector-use-cases.md).
+For discount use cases, see [Totals collector use cases](totals-collector-use-cases.md). For item pricing, see [Item price use cases](totals-collector-item-prices.md).
 
 ## How it works
 

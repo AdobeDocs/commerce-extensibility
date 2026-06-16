@@ -1,6 +1,6 @@
 ---
 title: Adobe Commerce extensibility
-description: Learn about in-process and out-of-process development tools provided by Adobe Commerce and Magento Open Source.
+description: Build integrations, extensions, Admin experiences, and storefront experiences for Adobe Commerce.
 keywords:
  - Extensibility
  - App Builder
@@ -10,82 +10,118 @@ keywords:
  - Tools
 ---
 
+
 <SuperHero slots="image, heading, text"/>
 
 ![Commerce Extensibility](images/home-bg.jpeg)
 
-# Adobe Commerce extensibility
+# Commerce Extensibility
 
-Learn about in-process and out-of-process development tools provided by Adobe Commerce
+Extend Adobe Commerce without modifying core code.
 
-This guide explains how to develop Out-of-Process apps that extend and customize Adobe Commerce. For a more in-depth understanding of extensibility, follow our [learning path](app-development/learning-path.md).
+This guide covers everything you need to build out-of-process extensions for Adobe Commerce, including starter kits, event-driven integrations, Admin UI extensions. Out-of-process extensions run independently of the core application, so they stay compatible across Commerce upgrades and work across deployment models without modification.
 
-Extensibility, as a concept, reflects the possibility for growth and the ease of extending functionality in a system. When referring to extensibility in Adobe Commerce, we mean the ability of developers to expand, customize, and control their interactions with Adobe Commerce.
+## Choose your path
 
-The following diagram highlights the main components of the Adobe Commerce [extensibility strategy](https://experienceleague.adobe.com/en/docs/commerce-operations/implementation-playbook/architecture/enterprise-blueprint):
+Start with the use case you need to solve.
 
-![extensibility strategy](./images/extensibility-strategy-overview.png)
+### Integrate and extend
 
-Extensibility generally has two variations, in-process extensibility and out-of-process extensibility. In the context of Adobe Commerce, in-process extensibility refers to extended functionality that is located inside or alongside the Adobe Commerce core software. Conversely, out-of-process extensibility refers to extended functionality and services that operate outside the core software.
+Connect Commerce to external systems or extend its behavior using event-driven and real-time patterns. The Integration and Checkout Starter Kits provide scaffolding for the most common scenarios. Events and Webhooks are the underlying mechanisms that power both.
 
-Out-of-process extensibility can reduce the total cost of ownership by simplifying upgrades and giving developers more control of the timing, coding, and implementation of their systems.
+<Cards slots="heading, text" width="25%" />
 
-Other benefits of out-of-process extensibility include:
+#### [Integration Starter Kit](./starter-kit/integration/index.md)
 
-- Scalability - Extensions can be scaled separately from the core software, allowing for greater efficiency.
+Scaffold event-driven integrations between Commerce and back-office systems using reference data flows for orders, products, customers, and inventory.
 
-- Isolation - An isolated environment means that developers can upgrade or modify their extensions at their discretion without relying on a core release.
+<Cards slots="heading, text" width="25%" />
 
-- Technological Independence - Developers can choose whichever tech stacks and coding languages that fit their needs.
+#### [Checkout Starter Kit](./starter-kit/checkout/index.md)
 
-## Out-of-process development tools
+Accelerate payment, shipping, tax, pricing, inventory, and checkout extension scenarios.
 
-Adobe Commerce offers the following out-of-process development tools:
+<Cards slots="heading, text" width="25%" />
 
-- [API Mesh for Adobe Developer App Builder](https://developer.adobe.com/graphql-mesh-gateway/) - Coordinate and combine multiple API, GraphQL, REST, and other sources into a single, queryable GraphQL endpoint.
+#### [Events](./events/index.md)
 
-- [App Builder](https://developer.adobe.com/app-builder/docs/intro_and_overview/) - Build and deploy secure and scalable web applications that extend Commerce functionality and integrate with third-party solutions.
+Use asynchronous, event-driven flows for downstream sync, notifications, and background processing.
 
-- [Events](events/index.md) - Use custom event triggers to interact with other extensible development tools.
+<Cards slots="heading, text" width="25%" />
 
-- [Webhooks](webhooks/index.md) - Use webhooks to automatically trigger interactions between Commerce and third-party systems.
+#### [Webhooks](./webhooks/index.md)
 
-- [Admin UI SDK](admin-ui-sdk/index.md) - Customize and enhance the Commerce Admin with new pages and features for your merchants.
+Use real-time callbacks when Commerce must wait for an external decision before continuing.
 
-- Custom attributes - Use [GraphQL](https://developer.adobe.com/commerce/webapi/graphql/schema/attributes/mutations/) and [REST](https://developer.adobe.com/commerce/webapi/rest/modules/custom-attributes) APIs to create custom attributes for carts, credit memos, and invoices and items in those objects. B2B developers can also create custom attributes for companies and negotiable quotes.
+### Customize Commerce surfaces
 
-Additionally, [Marketplace Apps](app-development/index.md) allow you to create and sell custom single-page applications on the [Adobe Commerce Marketplace](https://commercemarketplace.adobe.com).
+Add functionality to the Admin, the checkout flow, and the storefront without modifying core code. The Admin UI SDK embeds custom React apps in Commerce Admin. OOPE modules register external payment, shipping, tax, and custom-attribute implementations. Edge Delivery Services powers composable storefronts connected to Commerce APIs.
 
-<InlineAlert variant="info" slots="text"/>
+<Cards slots="heading, text" width="33%" />
 
-Some out-of-process development tools are only available with Adobe Commerce and are not available with Magento Open Source.
+#### [Admin UI SDK](./admin-ui-sdk/index.md)
 
-## In-process development tools
+Add custom pages, navigation, workflows, and merchant-facing interfaces inside Commerce Admin.
 
-Adobe Commerce and Magento Open Source provide the following in-process extensible development tools:
+<Cards slots="heading, text" width="33%" />
 
-- [REST](https://developer.adobe.com/commerce/webapi/rest/) - Use REST calls to interact with your Commerce instance on behalf of an administrator, customer, guest, or integration.
+#### [OOPE modules](./oope-modules/index.md)
 
-- [GraphQL](https://developer.adobe.com/commerce/webapi/graphql/) - Use GraphQL requests to transfer information between the storefront and backend.
+Add out-of-process payment, shipping, tax, totals-collector, and custom-attribute modules to Commerce without modifying core code.
 
-- [PHP Extensions](https://developer.adobe.com/commerce/php/development/) - Develop or modify Adobe Commerce and Magento Open Source components.
+<Cards slots="heading, text" width="33%" />
 
-- [Marketplace Extensions](https://developer.adobe.com/commerce/marketplace/guides/sellers/extensions) - Create and sell PHP extensions in the [Adobe Commerce Marketplace](https://commercemarketplace.adobe.com).
+#### [Edge Delivery Services](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/content-and-commerce/introduction)
 
-### Related information
+Build fast, composable storefront experiences using Edge Delivery Services connected to Commerce APIs.
 
-<DiscoverBlock slots="link, text"/>
+### Build and operate
 
-[App Builder](https://developer.adobe.com/app-builder/docs/intro_and_overview/)
+Manage the full lifecycle of App Builder applications from a single interface in Commerce Admin, monitor distributed workloads with OpenTelemetry, and use Commerce-aware AI tooling to accelerate development across all of the above.
 
-Is a complete framework that enables enterprise developers to build and deploy custom web applications that extend Adobe Experience Cloud solutions and run on Adobe infrastructure.
+<Cards slots="heading, text" width="33%" />
 
-<DiscoverBlock slots="link, text"/>
+#### [AI developer tools](./developer-agent/index.md)
 
-[API Mesh for Adobe Developer App Builder](https://developer.adobe.com/graphql-mesh-gateway/)
+Use Commerce-aware AI agent skills and an MCP server to build, maintain, and debug extensions with reduced friction.
 
-Allows developers to integrate private and third-party APIs and other software interfaces with Adobe Commerce and other Adobe products using Adobe IO.
+<Cards slots="heading, text" width="33%" />
 
-## Contributing to this documentation
+#### [App Management](./app-management/index.md)
 
-We encourage you to participate in our open documentation initiative. If you have suggestions, corrections, additions, or deletions for this documentation, check out the source on [GitHub](https://github.com/AdobeDocs/commerce-extensibility), and open a pull request.
+Install, configure, and manage App Builder applications in Commerce Admin with schema-driven configuration and a unified lifecycle view.
+
+<Cards slots="heading, text" width="33%" />
+
+#### [Observability](./observability/index.md)
+
+Set up OpenTelemetry-based monitoring for metrics, logs, and traces across Commerce, App Builder apps, and third-party integrations.
+
+## How it works
+
+Traditional Adobe Commerce extensions run in-process: custom PHP code executes inside the same server process as the core application. That model gives extensions direct access to Commerce internals, but it also means upgrades can break extensions, and a poorly written extension can destabilize the entire installation.
+
+**Out-of-process extensibility** moves custom logic outside the core application. Instead of modifying Commerce directly, you build independent services, integrations, and UI extensions that communicate with Commerce through APIs, events, and webhooks. These apps run on their own runtime, scale independently, and survive Commerce upgrades without modification. Adobe recommends out-of-process patterns for all new extension and integration work.
+
+**Adobe Developer App Builder** is the serverless runtime that makes this practical. It provides the infrastructure to host, deploy, and run your extension logic without provisioning or managing servers. Within App Builder, the key building blocks are:
+
+- **Runtime actions** — Node.js functions that process events, call external APIs, transform data, and respond to webhook requests on demand.
+- **Events** — Asynchronous subscriptions to Commerce activity (order placed, product updated, customer registered) that invoke runtime actions without polling.
+- **Webhooks** — Synchronous callbacks that let Commerce call your App Builder action and wait for a response before continuing — for example, during tax calculation, shipping rate lookup, or order validation.
+- **Admin UI SDK** — A React application served from App Builder and embedded as a native panel or page inside Commerce Admin, authenticated with IMS.
+- **API Mesh** — A GraphQL gateway that composes Commerce APIs and third-party APIs behind a single endpoint, reducing round trips from the storefront or App Builder actions.
+
+In practice, most extensions combine several of these. An order management integration, for example, uses Events to receive order data asynchronously, runtime actions to transform and forward it to an external OMS, and Webhooks to validate specific order states in real time. Observability then collects logs, metrics, and traces from every layer into a single backend. Building this way means each piece can be developed, tested, and deployed independently of the Commerce release cycle — reducing upgrade risk and enabling faster iteration.
+
+## Build for all Adobe Commerce platforms
+
+The principles described in this guide apply to all variants of Adobe Commerce. However, there are some key architectural differences that you need to consider and validate when building your extension:
+
+- **Authentication** — Prefer IMS-based authentication where possible.
+- **Module availability** — Account for preinstalled extensibility capabilities versus manual installation requirements.
+- **Events and webhooks** — Validate supported events, supported webhooks, and how they are registered in each environment.
+- **Admin UI SDK** — Confirm runtime behavior and token access in - **REST and GraphQL endpoints** — Confirm the endpoint format and assumptions used by your app.
+each environment.
+- **Storefront testing** — Validate storefront integrations with the supported storefront model for the target environment.
+
+Use the [extension compatibility guide](./app-development/extension-compatibility.md) to avoid common issues across deployment models.

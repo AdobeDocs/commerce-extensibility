@@ -31,25 +31,25 @@ Connect Commerce to external systems or extend its behavior using event-driven a
 
 <Cards slots="heading, text" width="25%" />
 
-#### [Integration Starter Kit](./starter-kit/integration/)
+#### [Integration Starter Kit](./starter-kit/integration/index.md)
 
 Scaffold event-driven integrations between Commerce and back-office systems using reference data flows for orders, products, customers, and inventory.
 
 <Cards slots="heading, text" width="25%" />
 
-#### [Checkout Starter Kit](./starter-kit/checkout/)
+#### [Checkout Starter Kit](./starter-kit/checkout/index.md)
 
 Accelerate payment, shipping, tax, pricing, inventory, and checkout extension scenarios.
 
 <Cards slots="heading, text" width="25%" />
 
-#### [Events](./events/)
+#### [Events](./events/index.md)
 
 Use asynchronous, event-driven flows for downstream sync, notifications, and background processing.
 
 <Cards slots="heading, text" width="25%" />
 
-#### [Webhooks](./webhooks/)
+#### [Webhooks](./webhooks/index.md)
 
 Use real-time callbacks when Commerce must wait for an external decision before continuing.
 
@@ -59,13 +59,13 @@ Add functionality to the Admin, the checkout flow, and the storefront without mo
 
 <Cards slots="heading, text" width="33%" />
 
-#### [Admin UI SDK](./admin-ui-sdk/)
+#### [Admin UI SDK](./admin-ui-sdk/index.md)
 
 Add custom pages, navigation, workflows, and merchant-facing interfaces inside Commerce Admin.
 
 <Cards slots="heading, text" width="33%" />
 
-#### [OOPE modules](./oope-modules/)
+#### [OOPE modules](./oope-modules/index.md)
 
 Add out-of-process payment, shipping, tax, totals-collector, and custom-attribute modules to Commerce without modifying core code.
 
@@ -81,19 +81,19 @@ Manage the full lifecycle of App Builder applications from a single interface in
 
 <Cards slots="heading, text" width="33%" />
 
-#### [AI developer tools](./developer-agent/)
+#### [AI developer tools](./developer-agent/index.md)
 
 Use Commerce-aware AI agent skills and an MCP server to build, maintain, and debug extensions with reduced friction.
 
 <Cards slots="heading, text" width="33%" />
 
-#### [App Management](./app-management/)
+#### [App Management](./app-management/index.md)
 
 Install, configure, and manage App Builder applications in Commerce Admin with schema-driven configuration and a unified lifecycle view.
 
 <Cards slots="heading, text" width="33%" />
 
-#### [Observability](./observability/)
+#### [Observability](./observability/index.md)
 
 Set up OpenTelemetry-based monitoring for metrics, logs, and traces across Commerce, App Builder apps, and third-party integrations.
 
@@ -124,4 +124,4 @@ The principles described in this guide apply to all variants of Adobe Commerce. 
 each environment.
 - **Storefront testing** — Validate storefront integrations with the supported storefront model for the target environment.
 
-Use the [extension compatibility guide](./app-development/extension-compatibility/) to avoid common issues across deployment models.
+Use the [extension compatibility guide](./app-development/extension-compatibility.md) to avoid common issues across deployment models.

@@ -36,3 +36,4 @@ After installation, register one or both webhooks so that Adobe Commerce can cal
 
 - **Discounts** — fires during cart totals collection. See [Discount use cases](totals-collector-use-cases.md#totals-collector-webhook) for registration details and response format.
 - **Custom fees** — fires during cart totals collection, after shipping costs and discounts are computed, giving your application access to the computed shipping cost and any shipping discount. See [Custom fees use cases](totals-collector-fees.md#custom-fees-webhook) for registration details and response format.
+- **Item prices** — fires during cart totals collection, immediately after the subtotal is computed. See [Item price use cases](totals-collector-item-prices.md#item-prices-webhook) for registration details and response format.

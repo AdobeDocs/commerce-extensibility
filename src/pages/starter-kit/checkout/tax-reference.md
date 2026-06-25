@@ -259,7 +259,7 @@ The following are GraphQL query examples to check the taxes applied by the tax i
 
 ### Cart taxes
 
-To check the taxes applied to the cart, you can use the [`getCart`](https://developer.adobe.com/commerce/webapi/graphql/schema/cart/queries/cart/) query to retrieve the [`cart`](https://developer.adobe.com/commerce/webapi/graphql-api/index.html#definition-Cart)/[`prices`](https://developer.adobe.com/commerce/webapi/graphql-api/index.html#definition-CartPrices)/[`applied_taxes`](https://developer.adobe.com/commerce/webapi/graphql-api/index.html#definition-CartPrices) field. This field contains information about the taxes applied to the cart.
+To check the taxes applied to the cart, you can use the [`getCart`](https://developer.adobe.com/commerce/webapi/graphql/schema/cart/queries/cart/) query to retrieve the [`cart`](https://developer.adobe.com/commerce/webapi/reference/graphql/latest/types-c-e#cart)/[`prices`](https://developer.adobe.com/commerce/webapi/reference/graphql/latest/types-c-e#cartprices)/[`applied_taxes`](https://developer.adobe.com/commerce/webapi/reference/graphql/latest/types-c-e#cartprices) field. This field contains information about the taxes applied to the cart.
 
 <InlineAlert variant="info" slots="text"/>
 

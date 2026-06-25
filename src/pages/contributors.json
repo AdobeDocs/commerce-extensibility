@@ -1,7 +1,7 @@
 {
-  "total": 214,
+  "total": 215,
   "offset": 0,
-  "limit": 214,
+  "limit": 215,
   "data": [
     {
       "page": "/",
@@ -566,11 +566,12 @@
     {
       "page": "/config",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/47368809?v=4",
         "https://avatars.githubusercontent.com/u/18550571?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4"
       ],
-      "lastUpdated": "6/8/2026"
+      "lastUpdated": "6/25/2026"
     },
     {
       "page": "/developer-agent/",
@@ -1776,6 +1777,15 @@
         "https://avatars.githubusercontent.com/u/11652541?v=4"
       ],
       "lastUpdated": "5/18/2026"
+    },
+    {
+      "page": "/webhooks/use-cases/product-stock-validation",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/47368809?v=4",
+        "https://avatars.githubusercontent.com/u/11652541?v=4",
+        "https://avatars.githubusercontent.com/u/98363870?v=4"
+      ],
+      "lastUpdated": "6/24/2026"
     },
     {
       "page": "/webhooks/use-cases/product-update-validation",

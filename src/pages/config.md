@@ -134,6 +134,7 @@
         - [Customer: Validate address](/webhooks/use-cases/customer-address-validation.md)
         - [Products: Validate updates](/webhooks/use-cases/product-update-validation.md)
         - [Products: Generate content](/webhooks/use-cases/product-generate-content.md)
+        - [Products: Validate stock](/webhooks/use-cases/product-stock-validation.md)
         - [Orders: Validate attributes](/webhooks/use-cases/order-custom-attributes-validation.md)
         - [Gift cards: Check balance](/webhooks/use-cases/check-gift-card-balance.md)
         - [Gift cards: Validate](/webhooks/use-cases/gift-card-validation.md)

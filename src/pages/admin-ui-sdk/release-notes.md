@@ -8,6 +8,16 @@ keywords:
 
 # Admin UI SDK release notes
 
+## Version 4.1.1
+
+### Release date
+
+July 9. 2026
+
+### Bug fixes
+
+* Removed a constraint that prevented installation of an App Management extension when an extension with the same name or title was already registered with the Admin UI SDK.
+
 ## Version 4.1.0
 
 <InlineAlert variant="info" slots="text" />

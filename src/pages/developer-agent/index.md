@@ -18,6 +18,7 @@ This section documents the current tooling and is structured so additional guide
 
 - Developers using Adobe Commerce as a Cloud Service (and related SaaS offerings) who want guided, Commerce-aware assistance in the IDE.
 - Teams standardizing on agent skills and MCP (Model Context Protocol) integrations for documentation and App Builder workflows.
+- Developers customizing storefronts built on the [AEM Boilerplate Commerce](https://github.com/hlxsites/aem-boilerplate-commerce) starter kit who want AI assistance grounded in authoritative drop-in component data.
 
 ## What you get
 
@@ -25,6 +26,7 @@ This section documents the current tooling and is structured so additional guide
 | --- | --- |
 | Agent skills | Commerce- and App Builder–specific skills that guide architecture, implementation, DevOps, requirements, docs, testing, and learning workflows. |
 | Adobe Commerce App Builder MCP server | IDE integration for Commerce development tasks, documentation-aware assistance, and tooling aligned with App Builder application development patterns. |
+| `dropins` MCP server | For storefronts built on the AEM Boilerplate Commerce starter kit — structured, authoritative data about drop-in slots, events, containers, APIs, models, and design tokens. |
 
 Together, these improve workflow integration, context-aware generation, and repeatable development and deployment steps.
 

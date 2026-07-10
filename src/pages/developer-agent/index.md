@@ -26,7 +26,7 @@ This section documents the current tooling and is structured so additional guide
 | --- | --- |
 | Agent skills | Commerce and App Builder skills that guide architecture, implementation, DevOps, requirements, docs, testing, and learning workflows. |
 | Adobe Commerce App Builder MCP server | IDE integration for Commerce development tasks, documentation-aware assistance, and tooling aligned with App Builder application development patterns. |
-| `dropins` MCP server | For storefronts built on the AEM Boilerplate Commerce starter kit. Provides structured, authoritative data about drop-in slots, events, containers, APIs, models, and design tokens. |
+| [`dropins` MCP server](dropins-mcp-server.md) | For storefronts built on the AEM Boilerplate Commerce starter kit. Provides structured, authoritative data about drop-in slots, events, containers, APIs, models, and design tokens. |
 
 Together, these improve workflow integration, context-aware generation, and repeatable development and deployment steps.
 
@@ -35,6 +35,7 @@ Together, these improve workflow integration, context-aware generation, and repe
 | Guide | Description |
 | --- | --- |
 | [Coding tools setup](coding-tools.md) | Prerequisites, installation with `aio commerce extensibility tools-setup`, post-install CLI auth, and IDE configuration (for example Cursor and GitHub Copilot). |
+| [`dropins` MCP server](dropins-mcp-server.md) | Installation, update, and skill integration details for the `dropins` MCP server used on AEM Boilerplate Commerce storefronts. |
 | [Use cases](use-cases.md) | Common extension patterns — REST APIs, checkout extensions, storefront components, event-driven integrations, and more. |
 | [Skills, prompts, and commands](skills-and-prompts.md) | Slash commands, sample prompts, and the `/search-commerce-docs` command. |
 | [Best practices](best-practices.md) | Planning mode, session checklists, workflow and protocol, MCP vs CLI, testing, deployment, monitoring, anti-patterns, and feedback. |

@@ -64,7 +64,7 @@ Skills are invoked automatically when you chat with your coding agent. You can a
 
 ## Storefront skills
 
-When you select the **AEM Boilerplate Commerce** starter kit during [setup](coding-tools.md#dropins-mcp-server-for-storefront-development), a separate set of skills is installed for storefront development. These skills route drop-in data queries (slots, events, containers, and API functions) to the `dropins` MCP server as the primary reference, and fallback to the TypeScript definitions in `node_modules/@dropins/` when the server is unavailable.
+When you select the **AEM Boilerplate Commerce** starter kit during [setup](dropins-mcp-server.md), a separate set of skills is installed for storefront development. These skills route drop-in data queries (slots, events, containers, and API functions) to the `dropins` MCP server as the primary reference, and fallback to the TypeScript definitions in `node_modules/@dropins/` when the server is unavailable.
 
 | Command | Purpose |
 | --- | --- |

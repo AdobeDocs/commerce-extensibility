@@ -24,9 +24,9 @@ This section documents the current tooling and is structured so additional guide
 
 | Capability | Description |
 | --- | --- |
-| Agent skills | Commerce- and App Builder–specific skills that guide architecture, implementation, DevOps, requirements, docs, testing, and learning workflows. |
+| Agent skills | Commerce and App Builder skills that guide architecture, implementation, DevOps, requirements, docs, testing, and learning workflows. |
 | Adobe Commerce App Builder MCP server | IDE integration for Commerce development tasks, documentation-aware assistance, and tooling aligned with App Builder application development patterns. |
-| `dropins` MCP server | For storefronts built on the AEM Boilerplate Commerce starter kit — structured, authoritative data about drop-in slots, events, containers, APIs, models, and design tokens. |
+| `dropins` MCP server | For storefronts built on the AEM Boilerplate Commerce starter kit. Provides structured, authoritative data about drop-in slots, events, containers, APIs, models, and design tokens. |
 
 Together, these improve workflow integration, context-aware generation, and repeatable development and deployment steps.
 

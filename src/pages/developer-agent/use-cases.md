@@ -34,9 +34,9 @@ See the [Shipping method extension tutorial](https://experienceleague.adobe.com/
 
 ## Storefront UI components
 
-Create new UI blocks or customize existing [drop-in component slots](https://experienceleague.adobe.com/developer/commerce/storefront/dropins/product-details/) on Edge Delivery Services storefronts. When you install the tools with the [AEM Boilerplate Commerce starter kit](coding-tools.md#dropins-mcp-server-for-storefront-development), the AI tools use the `dropins` MCP server to look up real slot names, event payloads, and API signatures against the drop-in registry — instead of guessing from documentation alone — then propose architecture options and generate accessible, responsive components with scoped styles and loading states.
+Create new UI blocks or customize existing [drop-in component slots](https://experienceleague.adobe.com/developer/commerce/storefront/dropins/product-details/) on Edge Delivery Services storefronts. When you install the tools with the [AEM Boilerplate Commerce starter kit](coding-tools.md#dropins-mcp-server-for-storefront-development), the AI tools use the `dropins` MCP server to look up real slot names, event payloads, and API signatures against the drop-in registry. Then they propose architecture options and generate accessible, responsive components with scoped styles and loading states.
 
-**Example — Star ratings on product detail pages (PDP):** Render a star-rating display with review count on the PDP by customizing a drop-in slot or creating a standalone block that fetches data from your ratings API. Ask the `/dropin-developer` skill to verify the slot exists with `dropins:list_slots` before scaffolding it.
+**Example — Star ratings on product detail pages (PDP):** Render a star-rating display with review count on the PDP by customizing a drop-in slot or creating a standalone block that fetches data from your ratings API. Ask the `/dropin-developer` skill to verify that the slot exists with `dropins:list_slots` before scaffolding it.
 
 ## Event-driven back-office integrations
 

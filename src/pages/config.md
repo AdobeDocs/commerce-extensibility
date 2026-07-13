@@ -187,7 +187,7 @@
     - AI coding tooling header
     - [Overview](/developer-agent/index.md)
     - [Coding tools setup](/developer-agent/coding-tools.md)
-    - [dropins MCP server](/developer-agent/dropins-mcp-server.md)
+    - [Dropins MCP server](/developer-agent/dropins-mcp-server.md)
     - [Skills, prompts, and commands](/developer-agent/skills-and-prompts.md)
     - [Use cases](/developer-agent/use-cases.md)
     - [Best practices](/developer-agent/best-practices.md)

@@ -8,11 +8,11 @@ keywords:
 
 # Connect to Adobe Commerce
 
-This guide explains how to integrate the checkout starter kit with Adobe Commerce.
+This guide explains how to integrate a checkout starter kit app with Adobe Commerce.
 
-The [`adobe-commerce.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/lib/adobe-commerce.js) file provides a set of methods to interact with the Adobe Commerce instance. The client uses the Adobe Commerce HTTP Client, which is a wrapper around the Adobe Commerce REST API.
+Each app uses [`@adobe/aio-commerce-lib-app`](https://github.com/adobe/aio-commerce-lib-app)'s `getCommerceClient` to interact with the Adobe Commerce instance, which is a wrapper around the Adobe Commerce REST API.
 
-To use the Adobe Commerce HTTP Client, update the `COMMERCE_BASE_URL` value in the `.env` file, and complete the authentication setup.
+To use the Adobe Commerce HTTP Client, update the `COMMERCE_BASE_URL` value in your app's `.env` file, and complete the authentication setup.
 
 - [PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)For PaaS (On-Premise/Cloud):
 
@@ -44,11 +44,9 @@ SaaS instances already include IMS configuration.
 
 Use the following steps to create OAuth credentials for App Builder authentication:
 
-1. Access your IMS credentials through the [Adobe Developer Console](https://developer.adobe.com/console). Select the project and workspace you set up during the [initial configuration](getting-started.md#initial-configuration). Then click **OAuth Server-to-Server** in the side-navigation menu.
+1. Access your IMS credentials through the [Adobe Developer Console](https://developer.adobe.com/console). Select the project and workspace you set up while [initializing your app](getting-started.md#initialize-your-app). Then click **OAuth Server-to-Server** in the side-navigation menu.
 
-1. Copy the IMS credentials to the `.env` file in the root of the project.
-
-   **NOTE**: These credentials are automatically populated in [Configure OAuth Server-to-Server Credential](configure.md#configure-oauth-server-to-server-credential).
+1. Copy the IMS credentials to your app's `.env` file.
 
    ```js
    OAUTH_CLIENT_ID=<client id>
@@ -81,7 +79,7 @@ Use the following steps to create OAuth credentials for App Builder authenticati
 
    To confirm that you have access, in the Commerce Admin, navigate to **System** > **Extensions** > **Integrations**. Under the Basic Settings menu, click **API** to view the Available APIs. Then select **All** in the **Resource Access** field.
 
-1. Copy the integration details (consumer key, consumer secret, access token, and access token secret) to the `.env` file in the root of the project.
+1. Copy the integration details (consumer key, consumer secret, access token, and access token secret) to your app's `.env` file.
 
    ```js
    COMMERCE_CONSUMER_KEY=<key>

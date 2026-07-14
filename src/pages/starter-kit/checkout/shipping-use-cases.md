@@ -20,7 +20,7 @@ To add shipping methods, you must [run a script to automatically create shipping
 
 After the webhook is registered, every time a shopping cart is requested, a synchronous call is dispatched to the App Builder application implementing the shipping method to calculate the shipping cost and provide the available shipping methods.
 
-Refer to [`actions/shipping-methods.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/shipping-methods/index.js) for an example of how to process the request and return the list of available shipping methods.
+Refer to [`actions/shipping-methods.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/apps/shipping-method/src/commerce-extensibility-1/actions/shipping-methods/index.js) for an example of how to process the request and return the list of available shipping methods.
 
 [PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) To register a webhook, you need to create a `webhooks.xml` [configuration file](../../webhooks/xml-schema.md) in your module or in the root `app/etc` directory.
 
@@ -33,7 +33,7 @@ The following example demonstrates how to add a webhook to the `plugin.magento.o
     <method name="plugin.magento.out_of_process_shipping_methods.api.shipping_rate_repository.get_rates" type="after">
         <hooks>
             <batch name="dps">
-                <hook name="add_shipping_rates_dps" url="https://<your_app_builder>.runtime.adobe.io/api/v1/web/commerce-checkout-starter-kit/shipping-methods" method="POST" timeout="5000" softTimeout="1000" priority="100" required="true">
+                <hook name="add_shipping_rates_dps" url="https://<your_app_builder>.runtime.adobe.io/api/v1/web/shipping-method/shipping-methods" method="POST" timeout="5000" softTimeout="1000" priority="100" required="true">
                     <fields>
                         <field name="rateRequest" />
                     </fields>
@@ -136,7 +136,7 @@ The request payload also contains information about the selected shipping method
 
 Additionally, the request payload contains custom attributes for the shipping address. See [Customer address attributes](https://experienceleague.adobe.com/en/docs/commerce-admin/customers/customer-accounts/attributes/address-attributes) for information on creating custom address attributes.
 
-You can find examples of how to use shipping addresses, customer data, and product attributes in your App Builder application in [`actions/shipping-methods.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/shipping-methods/index.js).
+You can find examples of how to use shipping addresses, customer data, and product attributes in your App Builder application in [`actions/shipping-methods.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/apps/shipping-method/src/commerce-extensibility-1/actions/shipping-methods/index.js).
 
 ### GraphQL
 
@@ -284,4 +284,4 @@ In the [`setShippingMethodsOnCart` mutation](https://developer.adobe.com/commerc
 
 The `plugin.magento.out_of_process_shipping_methods.api.shipping_rate_repository.get_rates` webhook allows you to remove specific shipping methods from the list of available options.
 
-If you use the `flatrate` shipping method, but want to disable it, you must update your webhook response to mark the shipping method as removed. This example is demonstrated in [`actions/shipping-methods.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/shipping-methods/index.js).
+If you use the `flatrate` shipping method, but want to disable it, you must update your webhook response to mark the shipping method as removed. This example is demonstrated in [`actions/shipping-methods.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/apps/shipping-method/src/commerce-extensibility-1/actions/shipping-methods/index.js).

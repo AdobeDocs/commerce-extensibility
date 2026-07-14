@@ -8,7 +8,7 @@ keywords:
 
 # Install the totals collector module
 
-To begin using the totals collector module with the checkout starter kit, ensure that you have completed the [getting started](getting-started.md) and [configuration](configure.md) steps.
+To begin using the `totals-collector` app, ensure that you have completed the [getting started](getting-started.md) and [configuration](configure.md) steps.
 
 For more ideas on how you can use the totals collector module, refer to [totals collector use cases](totals-collector-use-cases.md).
 
@@ -32,7 +32,7 @@ composer require magento/module-out-of-process-totals-collector --with-dependenc
 
 <Fragment src="/_includes/checkout-configuration.md" />
 
-After installation, register one or both webhooks so that Adobe Commerce can call your App Builder application during quote totals collection:
+After installation, register one or both webhooks so that Adobe Commerce can call your app during quote totals collection:
 
-- **Discounts** — fires during cart totals collection. See [Discount use cases](totals-collector-use-cases.md#totals-collector-webhook) for registration details and response format.
-- **Custom fees** — fires during cart totals collection, after shipping costs and discounts are computed, giving your application access to the computed shipping cost and any shipping discount. See [Custom fees use cases](totals-collector-fees.md#custom-fees-webhook) for registration details and response format.
+- **Discounts** — fires during cart totals collection. The app ships with 9 example discount actions and declares this webhook out of the box, defaulting to one of them; pick which example to use (or write your own) and set it as the webhook's runtime action. See [Discount use cases](totals-collector-use-cases.md#totals-collector-webhook) for registration details and response format.
+- **Custom fees** — fires during cart totals collection, after shipping costs and discounts are computed, giving your app access to the computed shipping cost and any shipping discount. The app doesn't declare this webhook out of the box; add your own runtime action and register it. See [Custom fees use cases](totals-collector-fees.md#custom-fees-webhook) for registration details and response format.

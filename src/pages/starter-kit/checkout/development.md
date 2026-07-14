@@ -12,8 +12,8 @@ This guide provides basic information for software development using the checkou
 
 ## Prerequisites
 
-Before you begin, make sure you've completed the initial setup of the starter kit.  
-See [Initial configuration](getting-started.md) for more details.
+Before you begin, make sure you've completed the initial setup of your app.  
+See [Getting started](getting-started.md) for more details.
 
 ### Verify your application is initialized
 
@@ -30,12 +30,9 @@ aio app use --merge
 
 ## Running locally
 
-The starter kit consists of two main parts, as defined in [`app.config.yaml`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/app.config.yaml):
+Each app is organized by extension point (`commerce/extensibility/1`, and for `tax-integration`, `commerce/backend-ui/2` for its Admin UI) — see [Generated files](../../app-management/build-deploy.md#generated-files) for what each contains.
 
-- `application`: The main app builder actions and event handlers of the starter kit.
-- `commerce/backend-ui/1`: UI-specific components and related actions for the Adobe Commerce Admin UI.
-
-To run the project locally, use the following commands:
+To run an app locally, use the following commands from within its `apps/<name>/` directory:
 
 ```bash
 # Run the project locally
@@ -49,15 +46,11 @@ See [aio app dev vs. aio app run](https://developer.adobe.com/app-builder/docs/g
 
 ## Deploy the application
 
-To deploy the app using the Adobe I/O CLI, use the following commands:
-
-```bash
-aio app deploy --force-build --force-deploy
-```
+See [Build and deploy](../../app-management/build-deploy.md) for the build, deploy, and association steps.
 
 ## Undeploy the application
 
-To remove the app and clean up all deployed resources from Adobe I/O Runtime and web resources, use the following commands:
+To remove an app and clean up all deployed resources from Adobe I/O Runtime and web resources, run the following command from within its `apps/<name>/` directory:
 
 ```bash
 aio app undeploy
@@ -118,7 +111,7 @@ This section provides solutions to common issues you may encounter while develop
 
 If you encounter the error `AioCoreSDKError [EventsSDKError]: [EventsSDK:ERROR_GET_ALL_PROVIDERS] Error: 403 - Forbidden` when creating an event provider, perform the following steps:
 
-1. Ensure you have added the [I/O Management API](getting-started.md#initial-configuration) during the [initial configuration](getting-started.md#initial-configuration).
+1. Ensure you have added the I/O Management API while [initializing your app](getting-started.md#initialize-your-app).
 1. Verify that you have the following permissions in the [Adobe Developer Console](https://developer.adobe.com/console) in the side-navigation menu under **OAuth Server-to-Server** > **Scope**:
 
   ```bash

@@ -8,7 +8,7 @@ keywords:
 
 # Install the tax module
 
-To begin using the checkout starter kit, ensure that you have completed the [getting started](getting-started.md) and [configuration](configure.md) steps.
+To begin using the `tax-integration` app, ensure that you have completed the [getting started](getting-started.md) and [configuration](configure.md) steps.
 
 For more ideas on how you can use the tax module, refer to [tax use cases](tax-use-cases.md).
 
@@ -38,13 +38,7 @@ magento setup:di:compile
 
 <Fragment src="/_includes/checkout-configuration.md" />
 
-The checkout starter kit provides the [`create-tax-integrations`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/create-tax-integrations.js) script to help configure Adobe Commerce. It reads the tax integrations configuration from the `tax-integrations.yaml` file and creates tax integrations in Adobe Commerce.
-
-To run this script, use the following command:
-
-```bash
-npm run create-tax-integrations
-```
+The `tax-integration` app registers [`create-tax-integrations`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/apps/tax-integration/scripts/create-tax-integrations.js) as a [custom installation step](../../app-management/installation/customize.md#custom-installation-steps), so it runs automatically when the app is installed, creating the tax integrations in Adobe Commerce.
 
 ## Limitations
 

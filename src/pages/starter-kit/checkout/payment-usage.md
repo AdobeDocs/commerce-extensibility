@@ -11,8 +11,10 @@ keywords:
 To call the Commerce REST endpoints, initialize the Adobe Commerce Client:
 
 ```javascript
-const { getAdobeCommerceClient } = require("../lib/adobe-commerce");
-const commerceClient = await getAdobeCommerceClient(process.env);
+import { getCommerceClient } from "@adobe/aio-commerce-lib-app";
+import { resolveImsAuthParams } from "@adobe/aio-commerce-sdk/auth";
+
+const commerceClient = await getCommerceClient(resolveImsAuthParams(params));
 ```
 
 ## Create a new payment method

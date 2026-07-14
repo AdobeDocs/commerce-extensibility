@@ -8,7 +8,7 @@ keywords:
 
 # Install the shipping module
 
-To begin using the shipping module with the checkout starter kit, ensure that you have completed the [getting started](getting-started.md) and [configuration](configure.md) steps.
+To begin using the `shipping-method` app, ensure that you have completed the [getting started](getting-started.md) and [configuration](configure.md) steps.
 
 For more ideas on how you can use the shipping module, refer to [shipping use cases](shipping-use-cases.md).
 
@@ -32,16 +32,4 @@ composer require magento/module-out-of-process-shipping-methods --with-dependenc
 
 <Fragment src="/_includes/checkout-configuration.md" />
 
-The starter kit provides the [`create-shipping-carriers`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/create-shipping-carriers.js) script to help configure Adobe Commerce. It reads the shipping carriers configuration from the `shipping-carriers.yaml` file and creates the shipping carriers in Adobe Commerce.
-
-To run this script, use the following command:
-
-```bash
-npm run create-shipping-carriers
-```
-
-To retrieve shipping carriers from Commerce, use the [`get-shipping-carriers`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/get-shipping-carriers.js) script:
-
-```bash
-npm run get-shipping-carriers
-```
+The `shipping-method` app registers [`create-shipping-carriers`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/apps/shipping-method/scripts/create-shipping-carriers.js) as a [custom installation step](../../app-management/installation/customize.md#custom-installation-steps), so it runs automatically when the app is installed, creating the shipping carriers in Adobe Commerce.

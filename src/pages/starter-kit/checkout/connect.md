@@ -3,75 +3,45 @@ title: Connect to Adobe Commerce
 description: Learn about the checkout starter kit and how to integrate it with Adobe Commerce.
 keywords:
   - App Builder
+  - App Management
   - Extensibility
 ---
 
 # Connect to Adobe Commerce
 
-This guide explains how to integrate a checkout starter kit app with Adobe Commerce.
+This guide explains how a checkout starter kit app connects to Adobe Commerce.
 
-Each app uses [`@adobe/aio-commerce-lib-app`](https://github.com/adobe/aio-commerce-lib-app)'s `getCommerceClient` to interact with the Adobe Commerce instance, which is a wrapper around the Adobe Commerce REST API.
+## Association
 
-To use the Adobe Commerce HTTP Client, update the `COMMERCE_BASE_URL` value in your app's `.env` file, and complete the authentication setup.
+Each app connects to a specific Commerce instance through App Management's association step: an app manager associates the deployed app with their Commerce instance from **Apps** > **App Management** in the Commerce Admin. See [manage your app](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app) for the association, installation, and other lifecycle steps.
 
-- [PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)For PaaS (On-Premise/Cloud):
+Once associated, `getCommerceClient` (from [`@adobe/aio-commerce-lib-app`](https://github.com/adobe/aio-commerce-lib-app)) resolves the Commerce instance's base URL and environment (PaaS or SaaS) from the stored association data, so there's no `COMMERCE_BASE_URL` to configure manually for actions that go through association:
 
-  - `COMMERCE_BASE_URL` includes your base site URL + `/rest/<store_view_code>/`
-  - Example: `https://<commerce_instance_url>/rest/<store_view_code>/`
+```javascript
+import { getCommerceClient } from "@adobe/aio-commerce-lib-app";
+import { resolveImsAuthParams } from "@adobe/aio-commerce-sdk/auth";
 
-- [SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)For SaaS (Adobe Commerce as a Cloud Service):
+export async function main(params) {
+  const commerceClient = await getCommerceClient(resolveImsAuthParams(params));
+  const products = await commerceClient.get("products").json();
+}
+```
 
-  - `COMMERCE_BASE_URL` must be the REST API endpoint provided by Adobe Commerce
-  - Example: `https://na1.api.commerce.adobe.com/<tenant_id>/`
+`getCommerceClient` throws an `AppNotAssociatedError` if the app isn't associated with a Commerce instance yet — re-associating the app resolves this.
 
 ## Authentication
 
-Depending on your Adobe Commerce setup, there are two options to authenticate and communicate with App Builder:
-
-- [Adobe Identity Management Service (IMS)](#adobe-identity-management-service-ims)
-
-- [PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) [Commerce Integration](#create-a-commerce-integration)
-
-If Commerce integration authentication is detected, it has precedence over IMS authentication. However, if neither option is detected or configured, then client instantiation will fail.
+`getCommerceClient` only accepts [IMS](#adobe-identity-management-service-ims) authentication. If you're calling Commerce directly instead of going through App Management association, use `resolveCommerceHttpClientParams` and `AdobeCommerceHttpClient` from [`@adobe/aio-commerce-sdk/api`](https://github.com/adobe/aio-commerce-sdk) — these support both IMS and [Commerce Integration](#create-a-commerce-integration) (OAuth1) authentication, picked automatically based on which credentials are present.
 
 ### Adobe Identity Management Service (IMS)
 
-<InlineAlert variant="info" slots="text1, text2"/>
+[SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) IMS authentication is used and Commerce Integration authentication is not available.
 
-[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) This process requires a Commerce instance with [Adobe Identity Management Service (IMS) for Adobe Commerce](https://experienceleague.adobe.com/en/docs/commerce-admin/start/admin/ims/adobe-ims-integration-overview) configured.
-
-SaaS instances already include IMS configuration.
-
-Use the following steps to create OAuth credentials for App Builder authentication:
-
-1. Access your IMS credentials through the [Adobe Developer Console](https://developer.adobe.com/console). Select the project and workspace you set up while [initializing your app](getting-started.md#initialize-your-app). Then click **OAuth Server-to-Server** in the side-navigation menu.
-
-1. Copy the IMS credentials to your app's `.env` file.
-
-   ```js
-   OAUTH_CLIENT_ID=<client id>
-   OAUTH_CLIENT_SECRETS=<client secrets>
-   OAUTH_TECHNICAL_ACCOUNT_ID=<technical account id>
-   OAUTH_TECHNICAL_ACCOUNT_EMAIL=<technical account email>
-   OAUTH_SCOPES=<scopes>
-   OAUTH_IMS_ORG_ID=<img org>
-   ```
-
-1. Provide the technical account with access to the Commerce instance:
-   - [SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) The technical account is automatically created and associated with the Commerce instance once the first request is made using the OAuth credentials.
-   - [PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) Add a technical account with server-to-server credentials to the Commerce Admin with the appropriate permissions using the [Admin User Creation Guide](https://experienceleague.adobe.com/en/docs/commerce-admin/systems/user-accounts/permissions-users-all#create-a-user).
-
-      - When associating the user with the account, find your **Technical Account email** as a part of generated IMS credentials with following pattern: `<technical-account>@techacct.adobe.com` and use that value in the **Email** field during user creation:
-
-         ![ims-user-creation.png](../../images/starterkit/ims-user-creation.png)
-
-      - On the **User Role** tab, select the role that provides all necessary permissions for API integrations.
-
-         ![ims-user-role.png](../../images/starterkit/ims-user-role.png)
+Use `resolveImsAuthParams(params)` to resolve the app's own IMS credentials, populated automatically at association time. Use `forwardImsAuthProvider(params)` instead to forward the caller's own IMS token — for example, when an Admin UI action needs to act as the logged-in admin rather than as the app itself.
 
 ### Create a Commerce integration
 
-[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) This option allows communication between Commerce and App Builder.
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) Commerce Integration (OAuth1) is a supported alternative to IMS for calling Commerce directly, outside of App Management association.
 
 1. Create a new Adobe Commerce Integration by following the [systems integration](https://experienceleague.adobe.com/en/docs/commerce-admin/systems/integrations) guide.
 
@@ -79,15 +49,27 @@ Use the following steps to create OAuth credentials for App Builder authenticati
 
    To confirm that you have access, in the Commerce Admin, navigate to **System** > **Extensions** > **Integrations**. Under the Basic Settings menu, click **API** to view the Available APIs. Then select **All** in the **Resource Access** field.
 
-1. Copy the integration details (consumer key, consumer secret, access token, and access token secret) to your app's `.env` file.
+1. Provide the integration details, along with the Commerce base URL, as action inputs:
 
-   ```js
-   COMMERCE_CONSUMER_KEY=<key>
-   COMMERCE_CONSUMER_SECRET=<secret>
-   COMMERCE_ACCESS_TOKEN=<access token>
-   COMMERCE_ACCESS_TOKEN_SECRET=<access token secret>
+   ```env
+   AIO_COMMERCE_API_BASE_URL=<your commerce base url>
+   AIO_COMMERCE_AUTH_INTEGRATION_CONSUMER_KEY=<key>
+   AIO_COMMERCE_AUTH_INTEGRATION_CONSUMER_SECRET=<secret>
+   AIO_COMMERCE_AUTH_INTEGRATION_ACCESS_TOKEN=<access token>
+   AIO_COMMERCE_AUTH_INTEGRATION_ACCESS_TOKEN_SECRET=<access token secret>
+   ```
+
+1. Build the client:
+
+   ```javascript
+   import { AdobeCommerceHttpClient, resolveCommerceHttpClientParams } from "@adobe/aio-commerce-sdk/api";
+
+   export async function main(params) {
+     const commerceClient = new AdobeCommerceHttpClient(resolveCommerceHttpClientParams(params));
+     const products = await commerceClient.get("products").json();
+   }
    ```
 
 ## Debugging requests
 
-After following one of the connection options above, you can debug your application and access customized logs using the `LOG_LEVEL` environment variable. If this variable is set, logs from different phases of the commerce client display with detailed information.
+You can debug your application and access customized logs using the `LOG_LEVEL` environment variable. If this variable is set, logs from different phases of the commerce client display with detailed information.

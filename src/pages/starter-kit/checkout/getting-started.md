@@ -50,7 +50,13 @@ Each checkout domain (payment, shipping, tax, totals collector) is an independen
 
   Replace `<app>` with the domain you want to install (`shipping-method`, `payment-method`, `tax-integration`, or `totals-collector`), and `$GITHUB_PAT` with your GitHub personal access token. For more information, refer to [managing your personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens).
 
-  This creates an Adobe Developer Console project (or lets you select an existing one) and adds the services the app needs, such as I/O Management API, I/O Events, and Adobe Commerce as a Cloud Service.
+  This creates an Adobe Developer Console project (or lets you select an existing one), but does not add the services the app needs. Add them manually in the [Adobe Developer Console](https://developer.adobe.com/console/), or run:
+
+  ```bash
+  aio app add service
+  ```
+
+  and select the services required for your app, such as I/O Management API, I/O Events, I/O Events for Adobe Commerce, and Adobe Commerce as a Cloud Service.
 
 - To build your own App Management app from scratch instead, refer to [Initialize your app](../../app-management/initialize-app.md).
 

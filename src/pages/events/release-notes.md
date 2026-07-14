@@ -12,6 +12,22 @@ These release notes describe the latest version of Adobe I/O Events for Adobe Co
 
 See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io-events-for-adobe-commerce) for upgrade instructions.
 
+## Version 1.21.0
+
+### Release date
+
+July 14, 2026
+
+### Enhancements
+
+* Added event name validation for new event subscriptions.
+
+* Improved event name validation and removed unnecessary files from module generation.
+
+### Bug fixes
+
+* Fixed event field filtering for events with uppercase alias characters.
+
 ## Version 1.20.0
 
 ### Release date

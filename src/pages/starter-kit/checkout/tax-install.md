@@ -38,7 +38,17 @@ magento setup:di:compile
 
 <Fragment src="/_includes/checkout-configuration.md" />
 
-The `tax-integration` app registers [`create-tax-integrations`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/apps/tax-integration/scripts/create-tax-integrations.js) as a [custom installation step](../../app-management/installation/customize.md#custom-installation-steps), so it runs automatically when the app is installed, creating the tax integrations in Adobe Commerce.
+The `tax-integration` app registers [`create-tax-integrations`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/apps/tax-integration/scripts/create-tax-integrations.js) as a [custom installation step](../../app-management/installation/customize.md#custom-installation-steps), so it runs automatically when the app is installed or uninstalled.
+
+### Install
+
+Creates (or reactivates) one out-of-process tax integration, `oop-tax-integration`, on the associated Commerce instance via `POST oope_tax_management/tax_integration`, with `active: true` explicitly forced in the payload.
+
+### Uninstall
+
+Deactivates the tax integration (`active: false`) via the same endpoint. Commerce has no delete endpoint at all for this entity — `active: false` is the only mechanism the platform supports, not a workaround.
+
+Setting `active: false` makes `OopTaxIntegrationHelper::getActiveIntegration()` return `null`, so Commerce's tax calculation falls back entirely to core Magento tax calculation instead of dispatching the OOPE webhook. There's no referential-integrity concern: orders and quotes don't store a foreign key to this row.
 
 ## Limitations
 

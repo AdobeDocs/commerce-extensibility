@@ -32,6 +32,8 @@ composer require magento/module-out-of-process-totals-collector --with-dependenc
 
 <Fragment src="/_includes/checkout-configuration.md" />
 
+The `totals-collector` app has no custom installation step — unlike `shipping-method`, `payment-method`, and `tax-integration`, it doesn't create any Commerce entities, since it only implements webhook-based discount and fee actions. There's nothing to install or uninstall beyond the app itself.
+
 After installation, register one or both webhooks so that Adobe Commerce can call your app during quote totals collection:
 
 - **Discounts** — fires during cart totals collection. The app ships with 9 example discount actions and declares this webhook out of the box, defaulting to one of them; pick which example to use (or write your own) and set it as the webhook's runtime action. See [Discount use cases](totals-collector-use-cases.md#totals-collector-webhook) for registration details and response format.

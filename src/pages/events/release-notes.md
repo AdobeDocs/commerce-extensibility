@@ -20,13 +20,13 @@ July 14, 2026
 
 ### Enhancements
 
-* Added event name validation for new event subscriptions.
+* Added event name validation for new event subscriptions. \<!-- CEXT-6164 --\>
 
-* Improved event name validation and removed unnecessary files from module generation.
+* Improved event name validation and removed unnecessary files from module generation. \<!-- CEXT-6303 --\>
 
 ### Bug fixes
 
-* Fixed event field filtering for events with uppercase alias characters.
+* Fixed event field filtering for events with uppercase alias characters. \<!-- CEXT-6162 --\>
 
 ## Version 1.20.0
 

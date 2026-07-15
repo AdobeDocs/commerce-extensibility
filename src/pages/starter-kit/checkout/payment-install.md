@@ -36,8 +36,8 @@ The `payment-method` app sets up Commerce for you automatically as part of insta
 
 ### Install
 
-Installing the app creates a demo payment method, **Method one**, you can use right away to try out out-of-process payment validation.
+Installing the app creates a demo payment method, **Method one**, using the `oope_payment_method` REST endpoint, so you can try out out-of-process payment validation right away.
 
 ### Uninstall
 
-Uninstalling the app disables this payment method, so it immediately stops appearing as a payment option at checkout. Orders that were already placed with it aren't affected. If you install the app again later, the same payment method is turned back on instead of being created again.
+Uninstalling the app disables this payment method via the same endpoint, so it immediately stops appearing as a payment option at checkout. Orders that were already placed with it aren't affected. If you install the app again later, the same payment method is turned back on instead of being created again.

@@ -42,11 +42,11 @@ The `tax-integration` app sets up Commerce for you automatically as part of inst
 
 ### Install
 
-Installing the app creates a demo tax integration, **My tax integration**, you can use right away to try out out-of-process tax calculation.
+Installing the app creates a demo tax integration, **My tax integration**, using the `oope_tax_management/tax_integration` REST endpoint, so you can try out out-of-process tax calculation right away.
 
 ### Uninstall
 
-Uninstalling the app disables this tax integration, so Commerce immediately goes back to calculating tax itself instead of calling out to the app. If you install the app again later, the same tax integration is turned back on instead of being created again.
+Uninstalling the app disables this tax integration via the same endpoint, so Commerce immediately goes back to calculating tax itself instead of calling out to the app. If you install the app again later, the same tax integration is turned back on instead of being created again.
 
 ## Limitations
 

@@ -36,7 +36,7 @@ The `payment-method` app sets up Commerce for you automatically as part of insta
 
 ### Install
 
-Installing the app creates a demo payment method, **Method one**, using the `oope_payment_method` REST endpoint, so you can try out out-of-process payment validation right away.
+Installing the app creates a demo payment method, **Method one**, using the `/V1/oope_payment_method` REST endpoint, so you can try out out-of-process payment validation right away.
 
 ### Uninstall
 

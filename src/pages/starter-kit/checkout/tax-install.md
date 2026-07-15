@@ -42,7 +42,7 @@ The `tax-integration` app sets up Commerce for you automatically as part of inst
 
 ### Install
 
-Installing the app creates a demo tax integration, **My tax integration**, using the `oope_tax_management/tax_integration` REST endpoint, so you can try out out-of-process tax calculation right away.
+Installing the app creates a demo tax integration, **My tax integration**, using the `/V1/oope_tax_management/tax_integration` REST endpoint, so you can try out out-of-process tax calculation right away.
 
 ### Uninstall
 

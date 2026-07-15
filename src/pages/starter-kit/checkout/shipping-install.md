@@ -36,7 +36,7 @@ The `shipping-method` app sets up Commerce for you automatically as part of inst
 
 ### Install
 
-Installing the app creates two demo shipping carriers you can use right away to try out out-of-process shipping rates, using the `oope_shipping_carrier` REST endpoint: **DPS** (Demo Postal Service) and **Fedex**.
+Installing the app creates two demo shipping carriers you can use right away to try out out-of-process shipping rates, using the `/V1/oope_shipping_carrier` REST endpoint: **DPS** (Demo Postal Service) and **Fedex**.
 
 ### Uninstall
 

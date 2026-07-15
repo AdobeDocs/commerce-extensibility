@@ -32,19 +32,12 @@ composer require magento/module-out-of-process-shipping-methods --with-dependenc
 
 <Fragment src="/_includes/checkout-configuration.md" />
 
-The `shipping-method` app registers [`create-shipping-carriers`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/apps/shipping-method/scripts/create-shipping-carriers.js) as a [custom installation step](../../app-management/installation/customize.md#custom-installation-steps), so it runs automatically when the app is installed or uninstalled.
+The `shipping-method` app sets up Commerce for you automatically as part of installation, using an [App Management custom installation step](../../app-management/installation/customize.md#custom-installation-steps).
 
 ### Install
 
-Creates (or reactivates) two out-of-process shipping carriers on the associated Commerce instance via `POST oope_shipping_carrier`, both with `active: true` explicitly forced in the payload:
-
-- **DPS** (Demo Postal Service, US/CA)
-- **Fedex** (Fedex Service, US)
+Installing the app creates two demo shipping carriers you can use right away to try out out-of-process shipping rates: **DPS** (Demo Postal Service) and **Fedex**.
 
 ### Uninstall
 
-Deactivates both carriers (`active: false`) via the same endpoint, rather than deleting them. Commerce does expose a `DELETE /V1/oope_shipping_carrier/:code` endpoint that hard-deletes the row, but this app deliberately doesn't use it, for consistency with the payment and tax apps, which have no delete endpoint available to them.
-
-Setting `active: false` immediately removes the carrier from checkout rate collection (`ShippingPlugin::appendRates` skips inactive carriers, so no shipping rates are quoted for it) and from the list of active carriers checkout uses. It doesn't remove the carrier from Commerce's unfiltered carrier listing (for example, admin dropdowns), so a deactivated carrier can still appear there — a cosmetic difference from a true delete, not a functional one.
-
-Reinstalling the app reactivates the same rows (upsert by code).
+Uninstalling the app disables these carriers, so they immediately stop appearing as shipping options at checkout. If you install the app again later, the same carriers are turned back on instead of being created again.

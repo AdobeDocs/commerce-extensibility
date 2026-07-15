@@ -38,17 +38,15 @@ magento setup:di:compile
 
 <Fragment src="/_includes/checkout-configuration.md" />
 
-The `tax-integration` app registers [`create-tax-integrations`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/apps/tax-integration/scripts/create-tax-integrations.js) as a [custom installation step](../../app-management/installation/customize.md#custom-installation-steps), so it runs automatically when the app is installed or uninstalled.
+The `tax-integration` app sets up Commerce for you automatically as part of installation, using an [App Management custom installation step](../../app-management/installation/customize.md#custom-installation-steps).
 
 ### Install
 
-Creates (or reactivates) one out-of-process tax integration, `oop-tax-integration`, on the associated Commerce instance via `POST oope_tax_management/tax_integration`, with `active: true` explicitly forced in the payload.
+Installing the app creates a demo tax integration, **My tax integration**, you can use right away to try out out-of-process tax calculation.
 
 ### Uninstall
 
-Deactivates the tax integration (`active: false`) via the same endpoint. Commerce has no delete endpoint at all for this entity — `active: false` is the only mechanism the platform supports, not a workaround.
-
-Setting `active: false` makes `OopTaxIntegrationHelper::getActiveIntegration()` return `null`, so Commerce's tax calculation falls back entirely to core Magento tax calculation instead of dispatching the OOPE webhook. There's no referential-integrity concern: orders and quotes don't store a foreign key to this row.
+Uninstalling the app disables this tax integration, so Commerce immediately goes back to calculating tax itself instead of calling out to the app. If you install the app again later, the same tax integration is turned back on instead of being created again.
 
 ## Limitations
 

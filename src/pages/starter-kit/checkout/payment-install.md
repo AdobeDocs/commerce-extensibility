@@ -32,14 +32,12 @@ composer require magento/module-out-of-process-payment-methods --with-dependenci
 
 <Fragment src="/_includes/checkout-configuration.md" />
 
-The `payment-method` app registers [`create-payment-methods`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/apps/payment-method/scripts/create-payment-methods.js) as a [custom installation step](../../app-management/installation/customize.md#custom-installation-steps), so it runs automatically when the app is installed or uninstalled.
+The `payment-method` app sets up Commerce for you automatically as part of installation, using an [App Management custom installation step](../../app-management/installation/customize.md#custom-installation-steps).
 
 ### Install
 
-Creates (or reactivates) one out-of-process payment method, `method-1`, on the associated Commerce instance via `POST oope_payment_method/`, with `active: true` explicitly forced in the payload.
+Installing the app creates a demo payment method, **Method one**, you can use right away to try out out-of-process payment validation.
 
 ### Uninstall
 
-Deactivates the payment method (`active: false`) via the same endpoint. Commerce has no delete endpoint for out-of-process payment methods, so this is the only mechanism the platform supports, not a workaround.
-
-Setting `active: false` triggers `PaymentMethodAdapter::isActive()`, which excludes the method from checkout's available-payment-methods list — the same first-class hook any core payment method's active flag uses. Historical orders aren't affected: `sales_order_payment.method` stores the code as a plain string, not a foreign key.
+Uninstalling the app disables this payment method, so it immediately stops appearing as a payment option at checkout. Orders that were already placed with it aren't affected. If you install the app again later, the same payment method is turned back on instead of being created again.

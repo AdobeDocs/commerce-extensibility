@@ -1,7 +1,7 @@
 {
-  "total": 215,
+  "total": 216,
   "offset": 0,
-  "limit": 215,
+  "limit": 216,
   "data": [
     {
       "page": "/",
@@ -566,19 +566,21 @@
     {
       "page": "/config",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/10073809?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/47368809?v=4",
         "https://avatars.githubusercontent.com/u/18550571?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4"
       ],
-      "lastUpdated": "6/25/2026"
+      "lastUpdated": "7/13/2026"
     },
     {
       "page": "/developer-agent/",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/10073809?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4"
       ],
-      "lastUpdated": "5/19/2026"
+      "lastUpdated": "7/10/2026"
     },
     {
       "page": "/developer-agent/best-practices",
@@ -591,23 +593,34 @@
     {
       "page": "/developer-agent/coding-tools",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/10073809?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4"
       ],
-      "lastUpdated": "5/21/2026"
+      "lastUpdated": "7/10/2026"
+    },
+    {
+      "page": "/developer-agent/dropins-mcp-server",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/10073809?v=4"
+      ],
+      "lastUpdated": "7/10/2026"
     },
     {
       "page": "/developer-agent/skills-and-prompts",
-      "avatars": [],
-      "lastUpdated": "5/14/2026"
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/10073809?v=4"
+      ],
+      "lastUpdated": "7/10/2026"
     },
     {
       "page": "/developer-agent/use-cases",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/10073809?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4"
       ],
-      "lastUpdated": "4/7/2026"
+      "lastUpdated": "7/10/2026"
     },
     {
       "page": "/events/",

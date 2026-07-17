@@ -30,7 +30,9 @@ aio app use --merge
 
 ## Running locally
 
-Each app is organized by extension point (`commerce/extensibility/1`, and for `tax-integration`, `commerce/backend-ui/2` for its Admin UI) — see [Generated files](../../app-management/build-deploy.md#generated-files) for what each contains.
+Each app implements the `commerce/extensibility/1` extension point, which is required for App Management integration. Additionally, `tax-integration` implements the `commerce/backend-ui/2` extension point, which is required for its Admin UI SDK integration.
+
+App Management hooks into the `aio` CLI lifecycle to auto-configure and generate the code under these extension points. For more details, refer to the [App Management](../../app-management/build-deploy.md) documentation.
 
 To run an app locally, use the following commands from within your app's project directory:
 
@@ -46,7 +48,13 @@ See [aio app dev vs. aio app run](https://developer.adobe.com/app-builder/docs/g
 
 ## Deploy the application
 
-See [Build and deploy](../../app-management/build-deploy.md) for the build, deploy, and association steps.
+To deploy the app using the Adobe I/O CLI, run the following command from within your app's project directory:
+
+```bash
+aio app deploy --force-build --force-deploy
+```
+
+See [Build and deploy](../../app-management/build-deploy.md) for the full build, deploy, and association steps.
 
 ## Undeploy the application
 

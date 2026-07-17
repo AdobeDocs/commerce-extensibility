@@ -184,6 +184,13 @@
     - [Troubleshooting](/admin-ui-sdk/troubleshooting.md)
     - [App review checklist](/admin-ui-sdk/app-review-checklist.md)
     - [Release notes](/admin-ui-sdk/release-notes.md)
+    - Developer agent header
+    - [Capabilities and limitations](/developer-agent/capabilities.md)
+    - [Getting started](/developer-agent/getting-started.md)
+    - [Migration assessment development](/developer-agent/assessment-development.md)
+    - [Net-new development](/developer-agent/new-development.md)
+    - [Prompt crafting](/developer-agent/prompting.md)
+    - [Feedback and support](/developer-agent/support.md)
     - AI coding tooling header
     - [Overview](/developer-agent/index.md)
     - [Coding tools setup](/developer-agent/coding-tools.md)

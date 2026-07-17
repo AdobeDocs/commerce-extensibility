@@ -30,9 +30,9 @@ There are two main ways to start a Commerce Developer Agent session, one for new
 
 ## Access the Commerce Developer Agent
 
-To access the developer agent:
+Accessing the developer agent differs depending on your use case:
 
-**Net-new development**
+#### Net-new development
 
 1. Navigate directly to the Commerce Developer Agent home screen. The URL depends on your IMS organization name: `https://experience.adobe.com/#/@<your-ims-org-name>/commerce-developer-agent/`.
 1. Sign in with your Adobe IMS credentials when prompted.
@@ -40,7 +40,7 @@ To access the developer agent:
 
 For more information on starting a net-new project, see [Net-new development](new-development.md).
 
-**Migration development**
+#### Migration development
 
 1. Navigate to the [Migration Assessment Tool](https://experience.adobe.com/migration-assessment) and complete a migration assessment for your Adobe Commerce module or plugin. The URL for the migration assessment depends on your IMS organization name: `https://experience.adobe.com/#/@<your-ims-org-name>/commerce-migration-assessment/`.
 1. Select a completed assessment and navigate to the **Module Reports** section.

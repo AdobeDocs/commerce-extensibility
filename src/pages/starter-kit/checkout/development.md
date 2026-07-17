@@ -32,7 +32,7 @@ aio app use --merge
 
 Each app is organized by extension point (`commerce/extensibility/1`, and for `tax-integration`, `commerce/backend-ui/2` for its Admin UI) — see [Generated files](../../app-management/build-deploy.md#generated-files) for what each contains.
 
-To run an app locally, use the following commands from within its `apps/<name>/` directory:
+To run an app locally, use the following commands from within your app's project directory:
 
 ```bash
 # Run the project locally
@@ -50,7 +50,7 @@ See [Build and deploy](../../app-management/build-deploy.md) for the build, depl
 
 ## Undeploy the application
 
-To remove an app and clean up all deployed resources from Adobe I/O Runtime and web resources, run the following command from within its `apps/<name>/` directory:
+To remove an app and clean up all deployed resources from Adobe I/O Runtime and web resources, run the following command from within your app's project directory:
 
 ```bash
 aio app undeploy
@@ -66,30 +66,21 @@ See [Setting up a CI/CD pipeline using GitHub Actions](https://developer.adobe.c
 
 ## Linting and formatting
 
-The starter kit uses [Prettier](https://prettier.io) and [ESLint](https://eslint.org) to enforce code style and formatting. The following commands are available for linting and formatting:
+The starter kit uses [Biome](https://biomejs.dev) to enforce code style and formatting. The following commands are available:
 
-- Fix linting
-
-  ```bash
-  npm run lint:fix
-  ```
-
-- Fix format
+- Check for linting and formatting issues
 
   ```bash
-  npm run format:fix
+  npm run code:check
   ```
 
-- Fix both linting and format
+- Fix linting and formatting issues
 
   ```bash
   npm run code:fix
   ```
 
-Use the following links to configure formatting for your IDE:
-
-- [VS Code](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-- [Jetbrains](https://blog.jetbrains.com/webstorm/2016/08/using-external-tools/)
+To configure Biome for your IDE, refer to the [Biome editor integrations](https://biomejs.dev/guides/editors/first-party-extensions/).
 
 ## Debugging
 
@@ -97,39 +88,10 @@ For debugging applications created with the starter kit, refer to the [App Build
 
 ## Testing
 
-The testing framework is in [Jest](https://jestjs.io) and execution is based on the [`aio` CLI](https://developer.adobe.com/app-builder/docs/guides/runtime_guides/tools/cli-install).
+The testing framework is [Vitest](https://vitest.dev).
 
 Run unit tests for the UI and actions:
 
 ```bash
-aio app test
+npm test
 ```
-
-Run end-to-end tests:
-
-```bash
-aio app test --e2e
-```
-
-## Troubleshooting
-
-This section provides solutions to common issues you may encounter while developing with the checkout starter kit.
-
-### AioCoreSDKError 403 Forbidden
-
-If you encounter the error `AioCoreSDKError [EventsSDKError]: [EventsSDK:ERROR_GET_ALL_PROVIDERS] Error: 403 - Forbidden` when creating an event provider, perform the following steps:
-
-1. Ensure you have added the I/O Management API while [initializing your app](getting-started.md#initialize-your-app).
-1. Verify that you have the following permissions in the [Adobe Developer Console](https://developer.adobe.com/console) in the side-navigation menu under **OAuth Server-to-Server** > **Scope**:
-
-  ```bash
-  ["AdobeID","openid","read_organizations","additional_info.projectedProductContext","additional_info.roles","adobeio_api","read_client_secret","manage_client_secrets","event_receiver_api"]
-  ```
-
-1. If any permissions are missing, update your [Adobe I/O CLI](https://developer.adobe.com/app-builder/docs/guides/runtime_guides/tools/cli-install) to the latest version. Then delete and re-add the I/O Management API service:
-
-  ```bash
-  npm install -g @adobe/aio-cli
-  aio app delete service # Delete I/O Management API
-  aio app add service # Add I/O Management API again
-  ```

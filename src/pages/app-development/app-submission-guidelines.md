@@ -125,7 +125,7 @@ Some requirements will differ based on whether you indicated the app was non-dow
           minVersion: 2.4.5
       ```
 
-  - **Events configuration**: Review [`events.config.yaml`](/starter-kit/checkout/configure.md#eventsconfigyaml) to verify event providers and registrations, document usage, and prefix events with your app's scope to avoid collisions. Remove this file if your app does not use events.
+  - **Events configuration**: Review `events.config.yaml` to verify event providers and registrations, document usage, and prefix events with your app's scope to avoid collisions. Remove this file if your app does not use events.
   - **Admin UI SDK configuration**: If an app implements the Admin UI SDK, make sure requirements in the [Admin UI SDK review checklist](../admin-ui-sdk/app-review-checklist.md) are met.
   - **API Mesh configuration**: For non-downloadable apps, having an automatically-created mesh that is configured for an app builder action deployed within the same environment is not currently supported. If this is needed by an app, we recommend adding a `mesh.json` example in the documentation or in a public repo and providing instructions for setting up the mesh after the auto-generated environment is created.
 

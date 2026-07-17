@@ -94,6 +94,7 @@
         - [Module installation](/starter-kit/checkout/totals-collector-install.md)
         - [Discount use cases](/starter-kit/checkout/totals-collector-use-cases.md)
         - [Custom fees use cases](/starter-kit/checkout/totals-collector-fees.md)
+        - [Item price modification use cases](/starter-kit/checkout/totals-collector-item-prices.md)
         - [Development considerations](/starter-kit/checkout/totals-collector-development-considerations.md)
     - [Overview](/events/index.md)
     - [Tutorials](/events/tutorials.md)
@@ -132,6 +133,7 @@
         - [Customer: Validate address](/webhooks/use-cases/customer-address-validation.md)
         - [Products: Validate updates](/webhooks/use-cases/product-update-validation.md)
         - [Products: Generate content](/webhooks/use-cases/product-generate-content.md)
+        - [Products: Validate stock](/webhooks/use-cases/product-stock-validation.md)
         - [Orders: Validate attributes](/webhooks/use-cases/order-custom-attributes-validation.md)
         - [Gift cards: Check balance](/webhooks/use-cases/check-gift-card-balance.md)
         - [Gift cards: Validate](/webhooks/use-cases/gift-card-validation.md)
@@ -184,6 +186,7 @@
     - AI coding tooling header
     - [Overview](/developer-agent/index.md)
     - [Coding tools setup](/developer-agent/coding-tools.md)
+    - [Dropins MCP server](/developer-agent/dropins-mcp-server.md)
     - [Skills, prompts, and commands](/developer-agent/skills-and-prompts.md)
     - [Use cases](/developer-agent/use-cases.md)
     - [Best practices](/developer-agent/best-practices.md)

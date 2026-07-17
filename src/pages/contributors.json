@@ -1,7 +1,7 @@
 {
-  "total": 213,
+  "total": 216,
   "offset": 0,
-  "limit": 213,
+  "limit": 216,
   "data": [
     {
       "page": "/",
@@ -12,7 +12,7 @@
         "https://avatars.githubusercontent.com/u/13662379?v=4",
         "https://avatars.githubusercontent.com/u/23483039?v=4"
       ],
-      "lastUpdated": "6/5/2026"
+      "lastUpdated": "6/17/2026"
     },
     {
       "page": "/_includes/actions",
@@ -304,7 +304,7 @@
         "https://avatars.githubusercontent.com/u/47368809?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4"
       ],
-      "lastUpdated": "5/21/2026"
+      "lastUpdated": "7/14/2026"
     },
     {
       "page": "/admin-ui-sdk/troubleshooting",
@@ -423,7 +423,7 @@
         "https://avatars.githubusercontent.com/in/29110?v=4",
         "https://avatars.githubusercontent.com/u/111585301?v=4"
       ],
-      "lastUpdated": "6/5/2026"
+      "lastUpdated": "6/17/2026"
     },
     {
       "page": "/app-development/port-extensions",
@@ -566,17 +566,21 @@
     {
       "page": "/config",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/10073809?v=4",
+        "https://avatars.githubusercontent.com/u/11652541?v=4",
+        "https://avatars.githubusercontent.com/u/47368809?v=4",
         "https://avatars.githubusercontent.com/u/18550571?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4"
       ],
-      "lastUpdated": "6/2/2026"
+      "lastUpdated": "7/13/2026"
     },
     {
       "page": "/developer-agent/",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/10073809?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4"
       ],
-      "lastUpdated": "5/19/2026"
+      "lastUpdated": "7/10/2026"
     },
     {
       "page": "/developer-agent/best-practices",
@@ -589,23 +593,34 @@
     {
       "page": "/developer-agent/coding-tools",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/10073809?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4"
       ],
-      "lastUpdated": "5/21/2026"
+      "lastUpdated": "7/10/2026"
+    },
+    {
+      "page": "/developer-agent/dropins-mcp-server",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/10073809?v=4"
+      ],
+      "lastUpdated": "7/10/2026"
     },
     {
       "page": "/developer-agent/skills-and-prompts",
-      "avatars": [],
-      "lastUpdated": "5/14/2026"
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/10073809?v=4"
+      ],
+      "lastUpdated": "7/10/2026"
     },
     {
       "page": "/developer-agent/use-cases",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/10073809?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4"
       ],
-      "lastUpdated": "4/7/2026"
+      "lastUpdated": "7/10/2026"
     },
     {
       "page": "/events/",
@@ -824,12 +839,12 @@
     {
       "page": "/events/release-notes",
       "avatars": [
-        "https://avatars.githubusercontent.com/u/18550571?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
+        "https://avatars.githubusercontent.com/u/18550571?v=4",
         "https://avatars.githubusercontent.com/u/47368809?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4"
       ],
-      "lastUpdated": "5/19/2026"
+      "lastUpdated": "7/14/2026"
     },
     {
       "page": "/events/troubleshooting",
@@ -1125,7 +1140,7 @@
         "https://avatars.githubusercontent.com/u/8988184?v=4",
         "https://avatars.githubusercontent.com/u/3788579?v=4"
       ],
-      "lastUpdated": "5/20/2026"
+      "lastUpdated": "6/25/2026"
     },
     {
       "page": "/starter-kit/checkout/tax-usage",
@@ -1151,26 +1166,36 @@
       "page": "/starter-kit/checkout/totals-collector-development-considerations",
       "avatars": [
         "https://avatars.githubusercontent.com/u/11652541?v=4",
+        "https://avatars.githubusercontent.com/u/47368809?v=4",
         "https://avatars.githubusercontent.com/u/18550571?v=4",
         "https://avatars.githubusercontent.com/u/142383015?v=4"
       ],
-      "lastUpdated": "6/5/2026"
+      "lastUpdated": "6/23/2026"
     },
     {
       "page": "/starter-kit/checkout/totals-collector-fees",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/47368809?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/18550571?v=4"
       ],
-      "lastUpdated": "6/4/2026"
+      "lastUpdated": "6/18/2026"
     },
     {
       "page": "/starter-kit/checkout/totals-collector-install",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/47368809?v=4",
         "https://avatars.githubusercontent.com/u/18550571?v=4",
         "https://avatars.githubusercontent.com/u/142383015?v=4"
       ],
-      "lastUpdated": "6/2/2026"
+      "lastUpdated": "6/18/2026"
+    },
+    {
+      "page": "/starter-kit/checkout/totals-collector-item-prices",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/47368809?v=4"
+      ],
+      "lastUpdated": "6/18/2026"
     },
     {
       "page": "/starter-kit/checkout/totals-collector-use-cases",
@@ -1765,6 +1790,15 @@
         "https://avatars.githubusercontent.com/u/11652541?v=4"
       ],
       "lastUpdated": "5/18/2026"
+    },
+    {
+      "page": "/webhooks/use-cases/product-stock-validation",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/47368809?v=4",
+        "https://avatars.githubusercontent.com/u/11652541?v=4",
+        "https://avatars.githubusercontent.com/u/98363870?v=4"
+      ],
+      "lastUpdated": "6/24/2026"
     },
     {
       "page": "/webhooks/use-cases/product-update-validation",

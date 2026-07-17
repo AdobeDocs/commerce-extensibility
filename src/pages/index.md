@@ -86,6 +86,10 @@ Is a complete framework that enables enterprise developers to build and deploy c
 
 Allows developers to integrate private and third-party APIs and other software interfaces with Adobe Commerce and other Adobe products using Adobe IO.
 
+## Join the conversation
+
+Join the [#app-builder-community](https://magentocommeng.slack.com/archives/C04KT43Q75K) Slack channel to ask questions, share your work, and connect with other developers interested in Adobe Commerce extensibility and App Builder.
+
 ## Contributing to this documentation
 
 We encourage you to participate in our open documentation initiative. If you have suggestions, corrections, additions, or deletions for this documentation, check out the source on [GitHub](https://github.com/AdobeDocs/commerce-extensibility), and open a pull request.

@@ -26,7 +26,7 @@ To access the developer agent, you must have access to the following:
 There are two main ways to start a Commerce Developer Agent session, one for new development and one for migration related development:
 
 * [Net-new development](./new-development.md) — for creating new development not based on any previous Adobe Commerce code.
-* [From a Migration Assessment](./migration-assessment-workflow.md) — for migrating existing Adobe Commerce modules, plugins, or customizations based on a completed [Migration Assessment](https://experienceleague.adobe.com/en/docs/commerce/cloud-service/migration/migration-tools/assessment).
+* [From a Migration Assessment](./assessment-development.md) — for migrating existing Adobe Commerce modules, plugins, or customizations based on a completed [Migration Assessment](https://experienceleague.adobe.com/en/docs/commerce/cloud-service/migration/migration-tools/assessment).
 
 ## Access the Commerce Developer Agent
 

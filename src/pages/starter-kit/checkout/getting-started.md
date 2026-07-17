@@ -63,7 +63,7 @@ Each checkout domain (payment, shipping, tax, totals collector) is an independen
 After completing these steps you can:
 
 - [Connect to Adobe Commerce](connect.md)
-- [Configure the available scripts](configure.md)
+- [Configure Commerce](configure.md)
 - [Deploy your app](development.md#deploy-the-application)
 
 ## Install Commerce modules

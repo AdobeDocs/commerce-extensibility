@@ -14,7 +14,7 @@ Each app's configuration follows the standard [App Management](../../app-managem
 
 ## Configure Commerce modules
 
-Select one of the following modules to learn about the available scripts:
+Select one of the following modules to learn about configuring it:
 
 - [Payment](payment-install.md#configuration)
 - [Shipping](shipping-install.md#configuration)
@@ -31,4 +31,4 @@ OAuth Server-to-Server credential setup happens as part of [initializing your ap
 
 The following configuration is required if you want to use the [Eventing feature](https://developer.adobe.com/commerce/extensibility/events/). Skip this process if you do not plan to use the Eventing feature.
 
-Each app declares its own events in its `app.commerce.config.ts` file. See [Events](../../app-management/installation/events.md) for the full reference on Commerce event subscriptions, external events, and provider configuration.
+Each app declares its own events in its `app.commerce.config` file. See [Events](../../app-management/installation/events.md) for the full reference on Commerce event subscriptions, external events, and provider configuration.

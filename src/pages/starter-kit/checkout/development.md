@@ -56,6 +56,14 @@ To remove an app and clean up all deployed resources from Adobe I/O Runtime and 
 aio app undeploy
 ```
 
+## Continuous integration and delivery (CI/CD)
+
+Each app is an independent App Builder project with its own workspaces, so you set up CI/CD per app.
+
+The recommended pattern provisions each workspace once (as a human with Adobe Developer Console access), downloads its `workspace.json`, and stores it as a GitHub Actions secret. The pipeline then injects those values into `aio app build` and `aio app deploy` — it never calls Console management APIs itself.
+
+See [Setting up a CI/CD pipeline using GitHub Actions](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/deployment/cicd-using-github-actions) for the full setup.
+
 ## Linting and formatting
 
 The starter kit uses [Prettier](https://prettier.io) and [ESLint](https://eslint.org) to enforce code style and formatting. The following commands are available for linting and formatting:

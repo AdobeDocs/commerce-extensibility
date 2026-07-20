@@ -55,7 +55,7 @@ Each checkout domain (payment, shipping, tax, totals collector) is an independen
   aio app add service
   ```
 
-  and select the services required for your app, such as I/O Management API and Adobe Commerce as a Cloud Service.
+  Then select the services required for your app, such as I/O Management API and Adobe Commerce as a Cloud Service.
 
 - To build your own App Management app from scratch instead, refer to [Initialize your app](../../app-management/initialize-app.md).
 

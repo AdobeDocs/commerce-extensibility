@@ -342,7 +342,7 @@ To simplify management, the `tax-integration` app includes a Tax Management admi
 
 ![Tax Management UI](../../images/starterkit/tax-management-ui.png)
 
-The UI calls a Commerce REST proxy runtime action, authenticated with the logged-in admin's own IMS token, to read and update tax classes on your Commerce instance. To set up the Admin UI, see [Admin UI SDK configuration](../../app-management/installation/admin-ui-sdk.md).
+The Admin calls a Commerce REST proxy runtime action, authenticated with the logged-in admin's own IMS token, to read and update tax classes on your Commerce instance. [Admin UI SDK configuration](../../app-management/installation/admin-ui-sdk.md) describes the configuration.
 
 Once custom attributes are assigned to tax classes, they are included in webhook requests during tax calculation.
 Here's an example payload showing how the custom attributes from tax classes appear in the webhook request:

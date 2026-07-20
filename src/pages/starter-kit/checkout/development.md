@@ -68,7 +68,7 @@ aio app undeploy
 
 Each app is an independent App Builder project with its own workspaces, so you set up CI/CD per app.
 
-The recommended pattern provisions each workspace once (as a human with Adobe Developer Console access), downloads its `workspace.json`, and stores it as a GitHub Actions secret. The pipeline then injects those values into `aio app build` and `aio app deploy` — it never calls Console management APIs itself.
+The recommended pattern provisions each workspace once (as a human with Adobe Developer Console access), downloads its `workspace.json`, and stores it as a GitHub Actions secret. The pipeline then injects those values into the `aio app build` and `aio app deploy` commands. It never calls Console management APIs itself.
 
 See [Setting up a CI/CD pipeline using GitHub Actions](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/deployment/cicd-using-github-actions) for the full setup.
 

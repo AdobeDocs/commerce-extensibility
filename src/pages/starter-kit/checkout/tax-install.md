@@ -38,15 +38,15 @@ magento setup:di:compile
 
 <Fragment src="/_includes/checkout-configuration.md" />
 
-The `tax-integration` app sets up Commerce for you automatically as part of installation, using an [App Management custom installation step](../../app-management/installation/customize.md#custom-installation-steps).
+The `tax-integration` app uses an [App Management custom installation step](../../app-management/installation/customize.md#custom-installation-steps) to set up Commerce for you automatically.
 
 ### Install
 
-Installing the app creates a demo tax integration, **My tax integration**, using the `/V1/oope_tax_management/tax_integration` REST endpoint, so you can try out out-of-process tax calculation right away.
+Installing the app creates a demo tax integration, **My tax integration**, using the `/V1/oope_tax_management/tax_integration` REST endpoint, allowing you to test out-of-process tax calculation right away.
 
 ### Uninstall
 
-Uninstalling the app disables this tax integration via the same endpoint, so Commerce immediately goes back to calculating tax itself instead of calling out to the app. If you install the app again later, the same tax integration is turned back on instead of being created again.
+Uninstalling the app disables this tax integration using the same endpoint. Commerce immediately goes back to calculating tax itself, instead of calling out to the app. If you re-install the app later, the same tax integration is turned back on, instead of being created again.
 
 ## Limitations
 

@@ -27,17 +27,17 @@ export async function main(params) {
 }
 ```
 
-`getCommerceClient` throws an `AppNotAssociatedError` if the app isn't associated with a Commerce instance yet — re-associating the app resolves this.
+`getCommerceClient` throws an `AppNotAssociatedError` if the app isn't associated with a Commerce instance yet. Re-associating the app resolves this error.
 
 ## Authentication
 
-`getCommerceClient` only accepts [IMS](#adobe-identity-management-service-ims) authentication. If you're calling Commerce directly instead of going through App Management association, use `resolveCommerceHttpClientParams` and `AdobeCommerceHttpClient` from [`@adobe/aio-commerce-sdk/api`](https://github.com/adobe/aio-commerce-sdk) — these support both IMS and [Commerce Integration](#create-a-commerce-integration) (OAuth1) authentication, picked automatically based on which credentials are present.
+`getCommerceClient` only accepts [IMS](#adobe-identity-management-service-ims) authentication. If you're calling Commerce directly instead of going through App Management association, use `resolveCommerceHttpClientParams` and `AdobeCommerceHttpClient` from [`@adobe/aio-commerce-sdk/api`](https://github.com/adobe/aio-commerce-sdk). These support both IMS and [Commerce Integration](#create-a-commerce-integration) (OAuth1) authentication, picked automatically based on which credentials are present.
 
 ### Adobe Identity Management Service (IMS)
 
 [SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) IMS authentication is used and Commerce Integration authentication is not available.
 
-Use `resolveImsAuthParams(params)` to resolve the app's own IMS credentials, populated automatically at association time. Use `forwardImsAuthProvider(params)` instead to forward the caller's own IMS token — for example, when an Admin UI action needs to act as the logged-in admin rather than as the app itself.
+Use `resolveImsAuthParams(params)` to resolve the app's own IMS credentials, which are populated automatically at association time. Use `forwardImsAuthProvider(params)` when you need to forward the caller's own IMS token, such as  when an Admin UI action needs to act as the logged-in admin rather than as the app itself.
 
 ### Create a Commerce integration
 

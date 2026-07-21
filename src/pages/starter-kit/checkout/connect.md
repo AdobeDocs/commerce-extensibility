@@ -13,6 +13,8 @@ This guide explains how a checkout starter kit app connects to Adobe Commerce.
 
 ## Association
 
+The `adobe-commerce.js` file provides a set of methods to interact with the Adobe Commerce instance. The client uses the Adobe Commerce HTTP Client, which is a wrapper around the Adobe Commerce REST API.
+
 Each app connects to a specific Commerce instance through App Management's association step: an app manager associates the deployed app with their Commerce instance from **Apps** > **App Management** in the Commerce Admin. See [manage your app](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app) for the association, installation, and other lifecycle steps.
 
 Once associated, `getCommerceClient` (from [`@adobe/aio-commerce-lib-app`](https://github.com/adobe/aio-commerce-lib-app)) resolves the Commerce instance's base URL and environment (PaaS or SaaS) from the stored association data, so there's no `COMMERCE_BASE_URL` to configure manually for actions that go through association:

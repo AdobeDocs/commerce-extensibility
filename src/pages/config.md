@@ -4,7 +4,7 @@
 - pages:
     - [Commerce](https://developer.adobe.com/commerce/docs)
     - [Extensibility](/index.md)
-    - [Developer agent](/developer-agent/index.md)
+    - [Developer agent](/developer-agent/capabilities.md)
     - [App Development](/app-development/index.md)
     - [App Management](/app-management/index.md)
     - Starter Kits

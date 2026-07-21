@@ -2,8 +2,8 @@
 
 When you are satisfied with the generated code, deploy the app to make it live:
 
-1. [Configure integrations](integrations.md) — Connect the App Builder workspace, Commerce instance, GitHub repository, and any required environment variables. You must configure integrations before you deploy.
-1. [Deploy and install your app](deployment.md) — Deploy the app from the developer agent, then associate, install, and configure it in Commerce App Management.
+1. [Configure integrations](../developer-agent/integrations.md) — Connect the App Builder workspace, Commerce instance, GitHub repository, and any required environment variables. You must configure integrations before you deploy.
+1. [Deploy and install your app](../developer-agent/deployment.md) — Deploy the app from the developer agent, then associate, install, and configure it in Commerce App Management.
 
 ### Continue development externally
 

@@ -390,6 +390,30 @@ Source: context_checkout_session.get_quote.get_sub_total
 Active: Yes
 ```
 
+To get the product custom options such as Text Field, Text Area, Radio Button, Check box or product quantity while adding the product to cart via Storefront or Graphql API.x
+
+<CodeBlock slots="heading, code" repeat="2" languages="XML, YAML" />
+
+##### webhooks.xml (PaaS)
+
+```xml
+<fields>
+    <field name="custom_options" source="context_quote_item_options.get_options" />
+    <field name="quantity"       source="context_quote_item_options.get_qty" />
+</fields>
+```
+
+##### Admin (SaaS)
+
+```yaml
+Hook Fields
+Name: custom_options
+Source: context_quote_item_options.get_options
+Name: quantity
+Source: context_quote_item_options.get_qty
+Active: Yes
+```
+
 ### Context headers
 
 You can use the same syntax and features available for context values in fields to set hook headers.

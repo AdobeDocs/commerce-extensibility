@@ -153,10 +153,24 @@ All fields are defined in the `extension` object.
 | --- | --- | --- | --- |
 | `extension_name` | string | Yes | The extension name |
 | `extension_title` | string | Yes | The extension title |
-| `extension_url` | string | Yes | The extension UR, which must be in the format `https://[a-zA-Z0-9-]/.adobeio-static.net/index.html` |
+| `extension_url` | string | Varies | Not used for V2, but required for V1. The extension URL, which must be in the format `https://[a-zA-Z0-9-]/.adobeio-static.net/index.html` |
 | `extension_workspace` | string | Yes | The extension workspace |
 
 **Example usage:**
+
+<CodeBlock slots="heading, code" repeat="2" languages="bash, bash" />
+
+#### Admin UI SDK V2
+
+```bash
+curl -X POST \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer <TOKEN>" \
+    -d '{"extension": {"extension_name": "my-extension", "extension_title": "My Extension",  "extension_workspace": "production"}}' \
+    '<ADOBE_COMMERCE_URL>/rest/V1/adminuisdk/extension'
+```
+
+#### Admin UI SDK V1
 
 ```bash
 curl -X POST \
@@ -206,4 +220,47 @@ curl -X DELETE \
 - **200**: Ok
 - **401**: Unauthorized
 - **404**: Not Found: Selected extension does not exist.
+- **500**: Internal server error
+
+### Enable or disable the Admin UI SDK
+
+`PUT /V1/adminuisdk/config`
+
+This endpoint manages whether the Admin UI SDK is enabled. It is available for Admin UI SDK V2 only.
+
+**Headers:**
+
+| Header | Value |
+| --- | --- |
+| `Authorization` | Bearer `<Token>` |
+| `Content-Type` | application/json |
+
+**Request body:**
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `enableAdminUiSdk` | boolean | Yes | Set to `true` to enable the Admin UI SDK, or `false` to disable it |
+
+**Example usage:**
+
+```bash
+curl -X PUT \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer <TOKEN>" \
+    -d '{"enableAdminUiSdk": true}' \
+    '<ADOBE_COMMERCE_URL>/rest/V1/adminuisdk/config'
+```
+
+**Responses:**
+
+- **200**: Successful response with the following response payload:
+
+    ```json
+    {
+        "enabled": true
+    }
+    ```
+
+- **400**: Bad request: `enableAdminUiSdk` is missing from the request body or is not a valid boolean value.
+- **401**: Unauthorized
 - **500**: Internal server error

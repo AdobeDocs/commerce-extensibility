@@ -390,7 +390,7 @@ Source: context_checkout_session.get_quote.get_sub_total
 Active: Yes
 ```
 
-To get the product custom options such as Text Field, Text Area, Radio Button, Check box or product quantity while adding the product to cart via Storefront or Graphql API.x
+To get the product custom options such as Text Field, Text Area, Radio Button, Check box or product quantity while adding the product to cart via Storefront or Graphql API.
 
 <CodeBlock slots="heading, code" repeat="2" languages="XML, YAML" />
 

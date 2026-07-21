@@ -53,8 +53,10 @@ Some requirements will differ based on whether you indicated the app was non-dow
 
       - If the app is compatible with the EDS storefront, include instructions for setup. [Example documentation](https://experienceleague.adobe.com/developer/commerce/storefront/get-started/create-storefront/)
       - If the app uses a Mesh, provide detailed information on how to configure it according to Adobe guidelines. [Example documentation](https://developer.adobe.com/graphql-mesh-gateway/mesh/basic/create-mesh)
-      - If the app uses eventing, provide information about the events used in the project and how to subscribe to them. [Example documentation](https://github.com/adobe/commerce-integration-starter-kit?tab=readme-ov-file#onboarding)
-      - If the app uses webhooks, provide information on how to create a webhook. [Example documentation](https://github.com/adobe/commerce-checkout-starter-kit?tab=readme-ov-file#create-webhooks)
+      - If the app uses eventing, provide information about the events used in the project and how to subscribe to them. Example documentation:
+         - [Integration starter kit overview](https://github.com/adobe/commerce-integration-starter-kit?tab=readme-ov-file#onboarding
+         - [Configure eventing in the checkout starter kit](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/SUBMISSION_TEMPLATE.md#configure-eventing)
+      - If the app uses webhooks, provide information on how to create a webhook. [Example documentation](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/SUBMISSION_TEMPLATE.md#configure-webhooks)
   - **Version requirements**: Indicate the required module versions (example: Admin UI SDK minimum version `3.0.0`).
   - **Developer documentation**: Include links to relevant Adobe developer documentation (example: App Builder [getting started guide](https://developer.adobe.com/app-builder/docs/get_started/)).
   - **PaaS support**: Documentation must include installation steps for PaaS merchants. This means if you are submitting an app for Adobe Commerce as a Cloud Service (SaaS), you also need to support Adobe Commerce on cloud infrastructure (PaaS) and Adobe Commerce on-premises (on-prem).
@@ -63,8 +65,8 @@ Some requirements will differ based on whether you indicated the app was non-dow
     - Explain differences in the structure of the `COMMERCE_BASE_URL` value  if the variable is used (see [Download and configure the integration starter kit](../starter-kit/integration/create-integration.md#download-and-configure-the-integration-starter-kit) for an explanation)
     - Mention in the documentation how to obtain auth credentials for [PaaS](../starter-kit/integration/create-integration.md#paas-or-saas) and [SaaS](../starter-kit/integration/create-integration.md#create-an-integration-in-adobe-commerce-as-a-cloud-service)
   - For downloadable apps:
-    - **Environment setup**: Label all required environment variables in an [`env.dist`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/env.dist) file with clear guidance. Add a setup instruction to create an `.env` file from the `env.dist`.
-    - **API requirements**: List the required services for your application following [this template](https://github.com/adobe/commerce-checkout-starter-kit?tab=readme-ov-file#initialize-app-builder-project).
+    - **Environment setup**: Label all required environment variables in an `env.dist` file with clear guidance. Add a setup instruction to create an `.env` file from the `env.dist`.
+    - **API requirements**: List the required services for your application following [this template](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/SUBMISSION_TEMPLATE.md#initialize-app-builder-project).
     - **Project creation**:
         - Document how to create a project and workspaces for deploying the app. Consider linking to [Create your First App Builder Application](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app)
         - Document CLI commands for installing dependencies and connecting to the created project, which are mentioned in [Configure the starter kit](../starter-kit/integration/create-integration.md#configure-the-starter-kit)
@@ -162,7 +164,7 @@ The following best practices are not required for your app to be accepted, but t
 ### Project enhancement
 
 - Tracking and monitoring
-  - **Starter kit info**: Include the [`starter-kit-info`](https://github.com/adobe/commerce-integration-starter-kit/blob/main/actions/starter-kit-info/index.js) runtime action for deployment tracking.
+  - **Starter kit info**: Include the [`starter-kit-info`](https://github.com/adobe/commerce-integration-starter-kit/blob/main/src/commerce-extensibility-1/actions/starter-kit/info/index.js) runtime action for deployment tracking.
   - **Feature utilization**: Leverage new starter kit features where applicable.
     - [Integration starter kit](../starter-kit/integration/index.md)
     - [Checkout starter kit](../starter-kit/checkout/index.md)

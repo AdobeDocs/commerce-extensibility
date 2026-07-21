@@ -19,9 +19,9 @@ The **Integrations** tab is where you connect your Commerce development environm
 The tab guides you through four steps:
 
 - [App Builder](#connect-or-create-an-app-builder-workspace) — Connect or create the App Builder workspace your app deploys to.
-- [Commerce](#connect-the-adobe-commerce-as-a-cloud-service-instance) (optional) — Connect the Adobe Commerce as a Cloud Service instance your app integrates with.
-- [GitHub](#connect-a-github-repository) (optional) — Connect a GitHub repository so you can push generated code for continued development.
-- [Project env](#set-project-environment-variables) — Set the environment variables your project requires.
+- [Commerce](#connect-to-commerce) (optional) — Connect the Adobe Commerce as a Cloud Service instance your app integrates with.
+- [GitHub](#connect-to-github) (optional) — Connect a GitHub repository so you can push generated code for continued development.
+- [Project env](#review-project-environment-variables) — Set the environment variables your project requires.
 
 The **Environment readiness** panel on the right tracks your progress against the required checks and indicates when your environment is ready to deploy.
 

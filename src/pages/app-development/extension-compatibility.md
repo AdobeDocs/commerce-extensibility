@@ -43,8 +43,8 @@ For more information on REST API access, refer to the [Developer Console configu
 
 For older versions of the starter kit, check if your code is adapted as follows:
 
-- To support both PaaS and SaaS, modify the `COMMERCE_BASE_URL` environment variable according to the [Commerce integration guide](../starter-kit/checkout/connect.md).
-- Ensure that your [adobe-commerce](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/lib/adobe-commerce.js) HTTP client removes the `rest/all` prefix for compatibility with both deployment flavors. For example:
+- To support both PaaS and SaaS, modify the `COMMERCE_BASE_URL` environment variable in `.env` file.
+- Ensure that your Adobe Commerce HTTP client removes the `rest/all` prefix for compatibility with both deployment flavors. For example:
 
     ```javascript
     - commerceGot(`rest/all/V1/oope_payment_method/`, {
@@ -93,7 +93,7 @@ Refer to [URL structure](https://developer.adobe.com/commerce/webapi/rest/#url-s
     }
     ```
 
-    For more information, see the [full example](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/commerce-backend-ui-1/web-src/src/components/MainPage.js).
+    For more information, see the [full example](https://github.com/adobe/adobe-commerce-samples/blob/main/admin-ui-sdk/menu/custom-menu/src/commerce-backend-ui-1/web-src/src/components/MainPage.js).
 
 ## Out-of-process extensibility modules
 

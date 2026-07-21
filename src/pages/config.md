@@ -189,6 +189,8 @@
       - [Getting started](/developer-agent/getting-started.md)
       - [Migration assessment development](/developer-agent/assessment-development.md)
       - [Net-new development](/developer-agent/new-development.md)
+      - [Configure integrations](/developer-agent/integrations.md)
+      - [Deploy and install](/developer-agent/deployment.md)
       - [Prompt crafting](/developer-agent/prompting.md)
       - [Feedback and support](/developer-agent/support.md)
     - [AI coding tooling](/developer-agent/index.md)

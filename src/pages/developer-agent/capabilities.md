@@ -110,7 +110,6 @@ The following limitations apply when developing net new or migration-based proje
 
 * API Mesh generation is not available.
 * Multi-lane projects (App Builder + API Mesh + EDS simultaneously) are not supported.
-* App Builder deployment may be temporarily unavailable or unreliable.
 * A local development environment setup is not generated. Commerce Developer Agent generates the project workspace, but users are responsible for local environment setup and dependency installation.
 * Users are limited to a single generated project per session. Multi-project management dashboards will be available in a future release.
 * Non-Adobe assessment formats are not supported as input.

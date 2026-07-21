@@ -55,7 +55,7 @@ The Commerce Developer Agent workspace is organized into tabs or stages that cor
 * **Blueprint** — View and refine proposed architecture and implementation plans.
 * **Develop** — Generate and refine the project workspace from the approved blueprint.
 * **Integrations** — Configure external connections, such as GitHub or App Builder.
-* **Deployments** — Initiate App Builder deployment actions when the deployment workflow is available.
+* **Deployments** — Initiate App Builder deployment actions.
 
 The **Blueprint** and **Develop** sections should function without much setup, however some **Integrations** and **Deployments** capabilities might require additional setup.
 

@@ -133,11 +133,4 @@ Generate a README with setup and deployment instructions.
 
 The agent retains project context and can update generated files without starting over.
 
-### Continue development externally
-
-When you are ready to continue outside the Commerce Developer Agent, use one of the available export options:
-
-* **Download artifact ZIP** — Download the generated workspace as a ZIP file and use it as the starting point in your local development workflow.
-* **Push to GitHub** — Connect a GitHub repository through the **Integrations** tab, and push the generated code to that repo. You can then clone the repository locally and continue development using your normal Git workflow.
-  * Pushing to GitHub requires setting up the integration and connecting a repository.
-* Direct deployment will be available as a future update.
+<Fragment src="/_includes/developer-agent-deploy.md" />

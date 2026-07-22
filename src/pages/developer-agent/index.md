@@ -1,5 +1,5 @@
 ---
-title: Commerce Developer Agent capabilities and limitations
+title: Commerce Developer Agent
 description: Learn what the Commerce Developer Agent can and cannot do, including supported entry points, code generation, and known limitations.
 keywords:
   - Developer Agent
@@ -8,11 +8,13 @@ keywords:
   - Early Access
 ---
 
-# Commerce Developer Agent capabilities and limitations
+# Commerce Developer Agent
 
 <Fragment src="/_includes/developer-agent.md" />
 
-This reference page defines what the Commerce Developer Agent can and cannot do. It is intended to set accurate expectations and help you plan your use of the Commerce Developer Agent. The capabilities will continue to expand and improve over time, and this page will be updated accordingly.
+The Commerce Developer Agent allows you to migrate existing application, extension, and module code to App Builder, or to create new development from scratch. The agent is designed to help you plan and execute your development work in a structured and efficient way.
+
+This page defines what the Commerce Developer Agent can and cannot do. It is intended to set accurate expectations and help you plan your use of the Commerce Developer Agent. The capabilities will continue to expand and improve over time, and this page will be updated accordingly.
 
 **Available during Early Access:**
 

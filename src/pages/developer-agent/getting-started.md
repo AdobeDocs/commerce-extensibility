@@ -1,5 +1,5 @@
 ---
-title: Get started with the Commerce Developer Agent
+title: Getting started
 description: Learn how to access and begin using the Commerce Developer Agent for the first time, including IMS login, interface overview, and your first session.
 keywords:
   - Developer Agent
@@ -8,7 +8,7 @@ keywords:
   - App Builder
 ---
 
-# Get started with the Commerce Developer Agent
+# Getting started
 
 <Fragment src="/_includes/developer-agent.md" />
 

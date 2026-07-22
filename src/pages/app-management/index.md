@@ -49,6 +49,8 @@ Before using App Management, ensure the following:
   * `@adobe/aio-commerce-lib-app` version 1.0.0 or later.
   * `@adobe/aio-commerce-sdk` version 1.0.0 or later.
 
+* **Network connectivity to Adobe Commerce**. App Management requires connectivity to the Adobe Commerce instance you associate the app with. If that instance restricts inbound traffic with an IP allowlist, add the [Adobe I/O Runtime egress IPs](https://developer.adobe.com/app-builder/docs/guides/runtime_guides/security-general/#secure-communication-with-back-end-services) used by your app. See [Commerce instance behind an IP allowlist](./troubleshooting.md#commerce-instance-behind-an-ip-allowlist) for details.
+
 ## SDK libraries
 
 App Management uses the [Adobe Commerce SDK](https://github.com/adobe/aio-commerce-sdk) libraries:

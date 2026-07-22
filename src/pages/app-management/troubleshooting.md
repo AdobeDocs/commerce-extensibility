@@ -48,9 +48,21 @@ App Management is **not supported** for local Adobe Commerce development instanc
 
 If you are developing against a local stack, plan to validate App Management behavior in a non-local environment.
 
+## Commerce instance behind an IP allowlist
+
+If Adobe Commerce only accepts traffic from allowlisted IP addresses, add the Adobe I/O Runtime egress IPs used by your App Builder application to that allowlist. Fetch the current list by running:
+
+```bash
+aio runtime ip-list get
+```
+
+See [Secure communication with back-end services](https://developer.adobe.com/app-builder/docs/guides/runtime_guides/security-general/#secure-communication-with-back-end-services) in the App Builder documentation for the full process, including the one-time terms acceptance and contact email prompt.
+
+Because this must be configured on the Commerce instance itself, only a Commerce administrator can apply the change—not the App Builder application owner.
+
 ## Commerce instance behind HTTP authentication
 
-App Management is **not supported** when Adobe Commerce is reachable only behind HTTP authentication (for example, HTTP Basic Auth in front of the Admin or APIs that App Management must call). Traffic from Adobe App Builder runtimes **does not use a fixed set of source IP addresses** that you can publish on an allowlist; Adobe does **not** provide static IPs for proxy or runtime actions for this purpose.
+App Management is **not supported** when Adobe Commerce is reachable only behind HTTP authentication (for example, HTTP Basic Auth in front of the Admin or APIs that App Management must call). HTTP authentication blocks every request regardless of its source IP address, so it is a separate problem from an IP allowlist; adding App Builder's egress IPs (see [Commerce instance behind an IP allowlist](#commerce-instance-behind-an-ip-allowlist)) does not resolve it.
 
 Plan network and access controls so Commerce endpoints required by App Management are reachable without HTTP authentication barriers that block Adobe-hosted runtime requests, in line with your security policies.
 

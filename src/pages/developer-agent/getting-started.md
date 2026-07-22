@@ -80,5 +80,5 @@ The developer agent features to consider when planning your workflow:
   * [Net-new development](./new-development.md)
   * [Migration assessment development](./assessment-development.md)
 * [Prompting tips](prompting.md)
-* [Understanding limitations](capabilities.md).
+* [Understanding limitations](index.md).
 * [Reporting issues](support.md).

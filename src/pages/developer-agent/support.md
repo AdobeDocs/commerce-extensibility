@@ -21,7 +21,7 @@ During Early Access, support is provided as a best-effort service. There are no 
 If you are unsure how to approach a workflow or prompt, try these resources before posting in the support channel:
 
 * **[Prompt crafting](prompting.md)** — covers effective prompting patterns for both workflows.
-* **[Capabilities and limitations](capabilities.md)** — confirms whether what you want is supported.
+* **[Capabilities and limitations](index.md)** — confirms whether what you want is supported.
 * **[Migration development](assessment-development.md)**
 * **[Net-new development](new-development.md)**
 

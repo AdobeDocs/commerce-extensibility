@@ -352,6 +352,7 @@
       "page": "/app-development/app-submission-guidelines",
       "avatars": [
         "https://avatars.githubusercontent.com/u/11652541?v=4",
+        "https://avatars.githubusercontent.com/u/8988184?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4",
         "https://avatars.githubusercontent.com/u/47715589?v=4",
@@ -359,7 +360,7 @@
         "https://avatars.githubusercontent.com/u/16409901?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4"
       ],
-      "lastUpdated": "6/5/2026"
+      "lastUpdated": "7/21/2026"
     },
     {
       "page": "/app-development/best-practices/",
@@ -407,11 +408,12 @@
     {
       "page": "/app-development/extension-compatibility",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/8988184?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4"
       ],
-      "lastUpdated": "6/5/2026"
+      "lastUpdated": "7/21/2026"
     },
     {
       "page": "/app-development/learning-path",
@@ -994,13 +996,13 @@
     {
       "page": "/starter-kit/checkout/connect",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/8988184?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/16409901?v=4",
-        "https://avatars.githubusercontent.com/u/8988184?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4",
         "https://avatars.githubusercontent.com/u/3788579?v=4"
       ],
-      "lastUpdated": "5/20/2026"
+      "lastUpdated": "7/21/2026"
     },
     {
       "page": "/starter-kit/checkout/development",

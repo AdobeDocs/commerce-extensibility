@@ -42,6 +42,7 @@
             - [Webhooks](/app-management/installation/webhooks.md)
             - [Customize](/app-management/installation/customize.md)
     - [Build and deploy](/app-management/build-deploy.md)
+    - [Purchase Approval reference app](/app-management/purchase-approval-app.md)
     - [Troubleshooting](/app-management/troubleshooting.md)
     - [Release notes](/app-management/release-notes.md)
     - Integration starter kit header

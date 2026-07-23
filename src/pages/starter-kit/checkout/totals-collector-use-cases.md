@@ -14,7 +14,9 @@ For more general use cases, refer to [use-cases](use-cases.md).
 
 ## How it works
 
-The out-of-process totals collector extends Adobe Commerce discount totals collection with [webhooks](../../webhooks/index.md). During cart totals collection, the webhook framework sends the quote and totals payload to your subscribed endpoint. Your App Builder application computes discounts and returns a JSON Patch response. Commerce applies the response to the quote totals and items so the discount appears in cart/checkout and in GraphQL.
+The out-of-process totals collector extends Adobe Commerce discount totals collection with [webhooks](../../webhooks/index.md). During cart totals collection, the webhook framework sends the quote and totals payload to your subscribed endpoint. Your app computes discounts and returns a JSON Patch response. Commerce applies the response to the quote totals and items so the discount appears in cart/checkout and in GraphQL.
+
+The `totals-collector` app ships multiple example discount actions (`tiered-quantity-discount`, `cheapest-quantity-discount`, `category-based-discount`, `step-price-discount`, `expensive-item-discount`, `tiered-category-discount`, `multi-condition-discount`, `tiered-total-spend-discount`, `cheapest-item-discount`) that all implement this same webhook contract. However, only one can be active at a time. The app declares the webhook with `tiered-quantity-discount` as the default runtime action. Implement whichever example fits your use case (or write your own).
 
 ## Totals collector webhook
 
@@ -30,7 +32,7 @@ To apply discounts from an external service, register a webhook for the method `
         <hooks>
             <batch name="totals_collector">
                 <hook name="totals_collector"
-                      url="https://<your_app_builder>.adobeioruntime.net/api/v1/web/commerce-checkout-starter-kit/totals-collector"
+                      url="https://<your_app_builder>.adobeioruntime.net/api/v1/web/totals-collector/tiered-quantity-discount"
                       method="POST"
                       timeout="30000"
                       softTimeout="1000"

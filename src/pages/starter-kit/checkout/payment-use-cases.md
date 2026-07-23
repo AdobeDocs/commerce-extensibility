@@ -209,7 +209,7 @@ The following example demonstrates how to add a webhook to the [`observer.sales_
         <hooks>
             <batch name="out_of_process_payment_methods">
                 <hook name="validate_payment"
-                      url="https://<your_app_builder>.adobeioruntime.net/api/v1/web/commerce-checkout-starter-kit/validate-payment"
+                      url="https://<your_app_builder>.adobeioruntime.net/api/v1/web/payment-method/validate-payment"
                       method="POST" timeout="20000" softTimeout="0" priority="100" required="true"
                       fallbackErrorMessage="Error on validation">
                     <fields>
@@ -236,7 +236,7 @@ Hook Settings
   Webhook Type: before
   Batch Name: validate_payment
   Hook Name: oope_payment_methods_sales_order_place_before
-  URL: https://<your_app_builder>.runtime.adobe.io/api/v1/web/commerce-checkout-starter-kit/validate-payment
+  URL: https://<your_app_builder>.runtime.adobe.io/api/v1/web/payment-method/validate-payment
   Active: Yes
   Method: POST
 
@@ -257,7 +257,7 @@ Hook Rules
 
 To enhance security, enable webhook signature generation by following the [webhooks signature verification](../../webhooks/signature-verification.md) instructions.
 
-Refer to [`actions/validate-payment.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/validate-payment/index.js) for an example of how to validate the payment according to the payment gateway needs.
+Refer to [`actions/validate-payment.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/apps/payment-method/src/commerce-extensibility-1/actions/validate-payment/index.js) for an example of how to validate the payment according to the payment gateway needs.
 
 ## Filter out payment method
 
@@ -271,7 +271,7 @@ You can use the `plugin.magento.out_of_process_payment_methods.api.payment_metho
 <method name="plugin.magento.out_of_process_payment_methods.api.payment_method_filter.get_list" type="after">
     <hooks>
         <batch name="out_of_process_payment_methods">
-            <hook name="payment_method_filter" url="https://<your_app_builder>.runtime.adobe.io/api/v1/web/commerce-checkout-starter-kit/filter-payment" method="POST" timeout="20000" softTimeout="0">
+            <hook name="payment_method_filter" url="https://<your_app_builder>.runtime.adobe.io/api/v1/web/payment-method/filter-payment" method="POST" timeout="20000" softTimeout="0">
                 <fields>
                     <field name="payload" />
                 </fields>
@@ -330,4 +330,4 @@ Payload example:
 }
 ```
 
-You can find examples of how to filter out payment methods using customer data or product attributes in your App Builder application in [`actions/filter-payment.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/actions/filter-payment/index.js).
+You can find examples of how to filter out payment methods using customer data or product attributes in your App Builder application in [`actions/filter-payment.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/apps/payment-method/src/commerce-extensibility-1/actions/filter-payment/index.js).

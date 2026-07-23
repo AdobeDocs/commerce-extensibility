@@ -16,10 +16,10 @@ You must install or have access to the following prerequisites to develop with t
 
 - Adobe Commerce as a Cloud Service or Adobe Commerce version `2.4.5` or higher.
 
-- [Node.js](https://nodejs.org/) version 22. If you have Node Version Manager (`nvm`) installed, you can run the following command to install and use the required version:
+- [Node.js](https://nodejs.org/) version 24. If you have Node Version Manager (`nvm`) installed, you can run the following command to install and use the required version:
 
   ```bash
-  nvm install 22 && nvm use
+  nvm install 24 && nvm use
   ```
 
 - [Adobe I/O CLI](https://developer.adobe.com/app-builder/docs/guides/runtime_guides/tools/cli-install).
@@ -37,73 +37,33 @@ When completing the steps to [install the Admin UI SDK](../../admin-ui-sdk/insta
 composer require "magento/commerce-backend-sdk": ">=3.0"
 ```
 
-## Initial configuration
+## Initialize your app
 
-Use the following steps to configure your local environment:
+Each checkout domain (payment, shipping, tax, totals collector) is an independent app. Initialize the one you need using one of the following approaches:
 
-1. Create a folder for your project and navigate to it.
+- To start from this starter kit's app as a template, run the following command, where `<dir>` is the name of the project directory to create:
 
-   ```bash
-   mkdir <your-project-name> && cd <your-project-name>
-   ```
+  ```bash
+  aio app init <dir> --repo adobe/commerce-checkout-starter-kit/apps/<app> --github-pat $GITHUB_PAT
+  ```
 
-2. Execute the following command to create an Adobe Developer Console project in your organization and using the Commerce checkout starter kit as a template:
+  Replace `<app>` with the domain you want to install (`shipping-method`, `payment-method`, `tax-integration`, or `totals-collector`), and `$GITHUB_PAT` with your GitHub personal access token. For more information, refer to [managing your personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens).
 
-   ```bash
-   aio app init --repo adobe/commerce-checkout-starter-kit --github-pat $GITHUB_PAT
-   ```
+  This creates an Adobe Developer Console project (or lets you select an existing one), but does not add the services the app needs. Add them manually in the [Adobe Developer Console](https://developer.adobe.com/console/), or run:
 
-   Replace `$GITHUB_PAT` with your GitHub personal access token. For more information, refer to [managing your personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens).
+  ```bash
+  aio app add service
+  ```
 
-3. You can create an app builder project, or select the existing one, while initializing the starter kit. The created project can be found in the [Adobe Developer Console](https://developer.adobe.com/console/).
+  Then select the services required for your app, such as I/O Management API and Adobe Commerce as a Cloud Service.
 
-   ```bash
-   ? Select Org: <your-ims-org>
-   ? Select a Project, or press + to create new:
-   ?   > do you wish to create a new Project? Yes
-   Enter Project details:
-   ? Name: <your-project-name>
-   ? Title: <your-project-title>
-   ? Description: <your-project-description>
-   ```
+- To build your own App Management app from scratch instead, refer to [Initialize your app](../../app-management/initialize-app.md).
 
-   This creates a new project using **App Builder** as a template, including **runtime environment with each workspace**.
-
-4. The starter kit requires you to add the following services in the console project:
-
-   - I/O Management API
-   - I/O Events
-   - Adobe I/O Events for Adobe Commerce
-   - [SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) Adobe Commerce as a Cloud Service. When asked to select a product profile, choose **Default - Cloud Manager**. If this option is not displayed, make sure you have [developer permissions](https://experienceleague.adobe.com/en/docs/commerce/cloud-service/user-management#add-users-developers-and-product-profile-admins) to **Adobe Commerce as a Cloud Service - Backend - Commerce Cloud Manager**.
-
-   Execute the following command to add the services by selecting them from the list:
-
-   ```bash
-   aio app add service
-   ```
-
-   The variable `AIO_ims_contexts_{credential}_scopes` will be automatically populated but may need to be updated with the scopes required for your project.
-   The scopes depend on the services you selected in the previous step. If you included all the specified services, the set of scopes should look like this:
-
-   - [PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
-
-      ```env
-      ["AdobeID","openid","read_organizations","additional_info.projectedProductContext","additional_info.roles","adobeio_api","read_client_secret","manage_client_secrets","event_receiver_api"]
-      ```
-
-   - [SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
-
-      ```env
-      ["AdobeID","openid","read_organizations","additional_info.projectedProductContext","additional_info.roles","adobeio_api","read_client_secret","manage_client_secrets","event_receiver_api","profile","email","org.read","commerce.accs"]
-      ```
-
-5. Copy the environment variables from the [`env.dist`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/env.dist) to a local `.env` file and enter the required values.
-
-After completing the previous steps you can:
+After completing these steps you can:
 
 - [Connect to Adobe Commerce](connect.md)
-- [Configure the available scripts](configure.md)
-- [Deploy your initial project in App Builder](development.md#deploy-the-application)
+- [Configure Commerce](configure.md)
+- [Deploy your app](development.md#deploy-the-application)
 
 ## Install Commerce modules
 
@@ -117,23 +77,3 @@ To install the individual modules, refer to the following topics:
 - [Shipping](shipping-install.md)
 - [Tax](tax-install.md)
 - [Totals collector](totals-collector-install.md)
-
-### Install the Commerce Eventing module (Commerce 2.4.5 only)
-
-The [Commerce Eventing module](https://developer.adobe.com/commerce/extensibility/events/) is crucial for handling events within Adobe Commerce. The eventing module is installed automatically in Adobe Commerce version `2.4.6` and higher.
-
-This starter kit requires the **Commerce Eventing** module version `1.12.1` or higher, which introduces support for multi-event-provider functionality. It allows multiple App Builder extensions to connect to the same Adobe Commerce instance using isolated event providers.
-
-To view your installed version, run the following command:
-
-```bash
-composer show magento/commerce-eventing
-```
-
-To install this module, run the following command using Composer:
-
-```bash
-composer update magento/commerce-eventing --with-dependencies
-```
-
-For Adobe Commerce versions `2.4.5`, you must install the Adobe I/O Events for Adobe Commerce module manually. Follow the instructions provided in [Adobe I/O Events installation](https://developer.adobe.com/commerce/extensibility/events/installation).

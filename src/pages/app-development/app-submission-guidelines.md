@@ -54,7 +54,7 @@ Some requirements will differ based on whether you indicated the app was non-dow
       - If the app is compatible with the EDS storefront, include instructions for setup. [Example documentation](https://experienceleague.adobe.com/developer/commerce/storefront/get-started/create-storefront/)
       - If the app uses a Mesh, provide detailed information on how to configure it according to Adobe guidelines. [Example documentation](https://developer.adobe.com/graphql-mesh-gateway/mesh/basic/create-mesh)
       - If the app uses eventing, provide information about the events used in the project and how to subscribe to them. Example documentation:
-         - [Integration starter kit overview](https://github.com/adobe/commerce-integration-starter-kit?tab=readme-ov-file#onboarding
+         - [Integration starter kit overview](https://github.com/adobe/commerce-integration-starter-kit?tab=readme-ov-file#onboarding)
          - [Configure eventing in the checkout starter kit](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/SUBMISSION_TEMPLATE.md#configure-eventing)
       - If the app uses webhooks, provide information on how to create a webhook. [Example documentation](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/SUBMISSION_TEMPLATE.md#configure-webhooks)
   - **Version requirements**: Indicate the required module versions (example: Admin UI SDK minimum version `3.0.0`).

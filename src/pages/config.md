@@ -72,7 +72,7 @@
         - [Configure](/starter-kit/checkout/configure.md)
         - [Development](/starter-kit/checkout/development.md)
         - [Connect to Adobe Commerce](/starter-kit/checkout/connect.md)
-        - [Integrate with an EDS storefront](/starter-kit/checkout/eds.md)
+        - [EDS storefront integration](/starter-kit/checkout/eds.md)
         - [OpenTelemetry integration](/starter-kit/checkout/observability.md)
     - [Payment](/starter-kit/checkout/payment-install.md)
         - [Module installation](/starter-kit/checkout/payment-install.md)

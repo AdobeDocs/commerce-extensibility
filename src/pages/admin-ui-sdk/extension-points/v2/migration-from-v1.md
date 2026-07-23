@@ -6,7 +6,11 @@ keywords:
   - Extensibility
 ---
 
-# Migration
+# Migration from V1
+
+<InlineAlert variant="tip" slots="text"/>
+
+The `commerce-app-migrate` skill assists with migrating your V1 Admin UI SDK extension to V2. It generates a new V2 extension scaffold, copies your existing code, and updates the configuration to match the new V2 structure. Refer to the skill's [README in the `aio-commerce-sdk` repo](https://github.com/adobe/aio-commerce-sdk/blob/main/plugins/commerce/app-migration/README.md) for details.
 
 If you are porting an extension from the deprecated [V1 extension points](../index.md), note the following structural changes:
 

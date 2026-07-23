@@ -36,7 +36,7 @@ The initialization process creates files organized by extension point:
 
 | File | Description |
 |------|-------------|
-| `src/commerce-backend-ui-2/ext.config.yaml` | Extension manifest with the `pre-app-build` hook and `workerProcess` declarations derived from `runtimeAction` values |
+| `src/commerce-backend-ui-2/ext.config.yaml` | Extension manifest |
 | `src/commerce-backend-ui-2/web-src/` | Browser scaffold generated when a menu, or a `view` mass action or order view button, is configured |
 
 ## Generated runtime actions
@@ -63,7 +63,7 @@ The scope tree action supports syncing scopes from Adobe Commerce, setting custo
 
 ### Admin UI SDK registration on `commerce/backend-ui/2`
 
-When [`adminUi`](installation/admin-ui-sdk.md) is defined, no dedicated registration action is generated. Adobe Commerce reads the registration directly from the `app-config` action described above. `generate` derives any `workerProcess` operations from the `runtimeAction` values in your `adminUi` configuration and keeps them in sync in `src/commerce-backend-ui-2/ext.config.yaml` at build time.
+When [`adminUi`](installation/admin-ui-sdk.md) is defined, Admin UI SDK V2 handles registration automatically. Unlike V1, there is no `registration` action to hand-author. Adobe Commerce reads the registration directly from the `app-config` action described above. `generate` derives any `workerProcess` operations from the `runtimeAction` values in your `adminUi` configuration and keeps them in sync in `src/commerce-backend-ui-2/ext.config.yaml` at build time.
 
 ## Build and deploy
 
@@ -73,8 +73,6 @@ After you change `app.commerce.config`, build and deploy your application. The `
 aio app build --force-build
 aio app deploy --force-deploy --no-build
 ```
-
-<InlineAlert variant="tip" slots="text"/>
 
 When debugging, you can run `npx aio-commerce-lib-app generate …` without a full App Builder build to refresh generated files quickly.
 

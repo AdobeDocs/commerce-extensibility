@@ -19,16 +19,17 @@ At a high level, it is the top-level config block for declaring:
 * Mass actions
 * Order view buttons
 
-`commerce/backend-ui/2` reads the registration directly from the generated `app-config` runtime action, so no dedicated registration action is generated. When `adminUi` is defined, `init` and `generate all` automatically wire up the extension point, including the `pre-app-build` hook and the `workerProcess` declarations in `ext.config.yaml`. View-based features (a menu, a `view` mass action, or a `view` order view button) also get a minimal `web-src/` scaffold the first time they're added, using `.tsx` files for TypeScript configs and `.jsx` files otherwise.
+Admin UI SDK V2 handles registration automatically. Unlike V1, there is no `registration` action to hand-author. `commerce/backend-ui/2` reads the registration directly from the generated `app-config` runtime action. When `adminUi` is defined, `init` and `generate all` automatically wire up the extension point, including the `pre-app-build` hook and the `workerProcess` declarations in `ext.config.yaml`. View-based features (a menu, a `view` mass action, or a `view` order view button) also get a minimal `web-src/` scaffold the first time they're added, using `.tsx` files for TypeScript configs and `.jsx` files otherwise.
 
 For general Admin UI SDK concepts and extension points outside of App Management, see the [Admin UI SDK](../../admin-ui-sdk/index.md) documentation.
 
 ## Add a menu declaration
 
-Declare a single Commerce Admin menu entry for the application:
+Declare a single Commerce Admin menu entry for the application. Use the named constants exported by `@adobe/aio-commerce-lib-admin-ui/menu` instead of raw strings for `parentMenu`:
 
 ```js
 import { defineConfig } from "@adobe/aio-commerce-lib-app/config"
+import { MENU_CATALOG } from "@adobe/aio-commerce-lib-admin-ui/menu";
 
 export default defineConfig({
   metadata: {
@@ -39,7 +40,7 @@ export default defineConfig({
       id: "approval_dashboard",
       label: "Approval Dashboard",
       description: "Review and approve purchase requests from Commerce Admin.",
-      parentMenu: "catalog",
+      parentMenu: MENU_CATALOG,
       sandboxPermissions: ["allow-popups", "allow-downloads"],
       aclProtected: true,
     },
@@ -53,26 +54,9 @@ export default defineConfig({
 | `label` | string | Yes | Menu label rendered in Commerce Admin. |
 | `description` | string | Yes | Summary shown in installation and permission-review surfaces. |
 | `pageTitle` | string | No | Page title for the menu entry. |
-| `parentMenu` | string | No | Existing Commerce menu ID under which the app menu is attached. When omitted, App Management generates a per-app section automatically from `metadata`. |
+| `parentMenu` | string | No | Existing Commerce menu ID under which the app menu is attached. When omitted, App Management generates a per-app section automatically from `metadata` and places it under the `Apps` menu. |
 | `sandboxPermissions` | array | No | iframe sandbox permissions. One or more of `allow-downloads`, `allow-modals`, `allow-popups`. |
 | `aclProtected` | boolean | No | When `true`, Commerce generates a per-app ACL resource and adds it to the Adobe Commerce User Roles tree. See [ACL-protected extension points](#acl-protected-extension-points). |
-
-Use the named constants exported by `@adobe/aio-commerce-lib-admin-ui/menu` instead of raw strings for `parentMenu`:
-
-```js
-import { MENU_SALES } from "@adobe/aio-commerce-lib-admin-ui/menu";
-
-export default defineConfig({
-  adminUi: {
-    menu: {
-      id: "approval_dashboard",
-      label: "Approval Dashboard",
-      description: "Review and approve purchase requests.",
-      parentMenu: MENU_SALES,
-    },
-  },
-});
-```
 
 ## Add grid columns
 
@@ -216,7 +200,7 @@ The `view` and `worker` variants are strict — setting `path` or `sandboxPermis
 | `title` | string | No | Page title rendered in the iframe (`view`) or confirmation surface (`worker`). |
 | `description` | string | No | Summary exposed through `app-config` for installation tooling. |
 | `confirm` | object | No | `{ title?, message? }` confirmation dialog shown before the action runs. |
-| `notifications` | object | No | `{ success?, error? }` toast strings shown after the action completes. |
+| `notifications` | object | No | `{ success?, error? }` banner messages shown in Commerce Admin after the action completes. When omitted, Commerce displays a default success or error banner. |
 | `selectionLimit` | number | No | Caps how many records may be selected at once. |
 | `aclProtected` | boolean | No | See [ACL-protected extension points](#acl-protected-extension-points). |
 | `path` (`view`) | string | Yes | In-app iframe URL, for example `#/export-orders`. |
@@ -241,6 +225,21 @@ export async function main(params) {
 ```
 
 Use `massActionErrorResponse(status, message)` to report a failure. See the [`@adobe/aio-commerce-lib-admin-ui` usage guide](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-admin-ui/docs/usage.md#mass-action-worker-contract) for the full wire contract, including the end-to-end ACL example.
+
+### View mass action page
+
+A `view` mass action opens an iframe at `path` inside your App Builder frontend — there's no server-side handler. Read the selected row IDs and close the iframe with the React hooks exported from `@adobe/aio-commerce-lib-admin-ui/web`:
+
+```jsx
+import { useHostConnection, useMassActionContext } from "@adobe/aio-commerce-lib-admin-ui/web";
+
+export function ExportOrdersPage() {
+  const { selectedIds } = useMassActionContext();
+  const { close } = useHostConnection();
+
+  // ...export selectedIds, then call close() to return to the order grid.
+}
+```
 
 ## Add order view buttons
 
@@ -282,22 +281,58 @@ adminUi: {
 
 Order view buttons are only available on `order`.
 
+### Field applicability by variant
+
+| Field | Common | `view` only | `worker` only |
+|-------|:------:|:-----------:|:-------------:|
+| `id` | x | | |
+| `label` | x | | |
+| `description` | x | | |
+| `level` | x | | |
+| `sortOrder` | x | | |
+| `confirm` | x | | |
+| `notifications` | x | | |
+| `aclProtected` | x | | |
+| `path` | | x | |
+| `sandboxPermissions` | | x | |
+| `runtimeAction` | | | x |
+| `timeout` | | | x |
+
+The `view` and `worker` variants are strict — setting `path` or `sandboxPermissions` on a `worker` button, or `runtimeAction` or `timeout` on a `view` button, fails validation.
+
 | Property | Type | Required | Description |
 |----------|------|----------|-------------|
 | `id` | string | Yes | Stable button identifier, served to Commerce as-is. |
 | `label` | string | Yes | On-button text rendered in Admin. |
 | `description` | string | No | Summary exposed through `app-config` for installation tooling. |
-| `level` | number | No | `-1`, `0`, or `1`. |
-| `sortOrder` | number | No | Positive number controlling display order. |
+| `level` | number | No | Position of the button in the toolbar: `-1` (left), `0` (center), or `1` (right). |
+| `sortOrder` | number | No | Positive number controlling the button's order within its `level`. |
 | `confirm` | object | No | `{ title?, message? }` confirmation dialog shown before the handler runs. |
-| `notifications` | object | No | `{ success?, error? }` toast strings shown after the handler returns. |
+| `notifications` | object | No | `{ success?, error? }` banner messages shown in Commerce Admin after the handler returns. When omitted, Commerce displays a default success or error banner. |
 | `aclProtected` | boolean | No | See [ACL-protected extension points](#acl-protected-extension-points). |
 | `path` (`view`) | string | Yes | In-app iframe URL, for example `#/delete-order`. |
 | `sandboxPermissions` (`view`) | array | No | One or more of `allow-downloads`, `allow-modals`, `allow-popups`. |
 | `runtimeAction` (`worker`) | string | Yes | `package/action` path. Registered as a `workerProcess` operation automatically. |
 | `timeout` (`worker`) | number | No | Timeout in seconds. |
 
-A `view` button opens an iframe at `<extension-host>/index.html<path>?orderId=<orderId>` and signals completion back to Commerce through the UIX host connection (`close()` or `onError()`) — no server-side handler is required. A `worker` button POSTs to your runtime action; parse the request and build the response with `@adobe/aio-commerce-lib-admin-ui/order-view-buttons`:
+### View order view button page
+
+A `view` button opens an iframe at `<extension-host>/index.html<path>?orderId=<orderId>` inside your App Builder frontend — there's no server-side handler. Read the order ID and close the iframe with the React hooks exported from `@adobe/aio-commerce-lib-admin-ui/web`:
+
+```jsx
+import { useHostConnection, useOrderViewButtonContext } from "@adobe/aio-commerce-lib-admin-ui/web";
+
+export function DeleteOrderPage() {
+  const { orderId } = useOrderViewButtonContext();
+  const { close } = useHostConnection();
+
+  // ...delete orderId, then call close() to return to the order view.
+}
+```
+
+### Order view button worker handler
+
+A `worker` button POSTs to your runtime action; parse the request and build the response with `@adobe/aio-commerce-lib-admin-ui/order-view-buttons`:
 
 ```js
 import {

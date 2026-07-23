@@ -128,6 +128,55 @@ curl -X GET \
 
 - Event and REST API responses contain the order ID for a request. It is the application's responsibility to monitor updates or failures in Commerce.
 
+## Permission Checks
+
+The following endpoint lets an extension point verify whether the currently authenticated admin user is authorized for an Admin UI SDK ACL resource that the extension registered.
+
+### Check a user's permission for an ACL resource
+
+`POST /V1/adminuisdk/permission/check`
+
+Checks whether the currently authenticated admin user holds the specified Admin UI SDK ACL resource. The resource must have been registered by an extension point (for example, through a menu, mass action, or order view button registration) for this endpoint to grant it. Resources that are unregistered or unrecognized return `false`, the same as a genuine permission denial, so the response can't be used to determine whether a resource ID exists.
+
+**Headers:**
+
+| Header | Value |
+| --- | --- |
+| `Authorization` | Bearer `<Token>` |
+| `Content-Type` | application/json |
+
+**Request body:**
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `resource` | string | Yes | The ACL resource ID to check, in the format `Vendor_Module::resource_id` |
+
+**Example usage:**
+
+```bash
+curl -X POST \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer <TOKEN>" \
+    -d '{"resource": "Acme_Promotions::manage_promotions"}' \
+    '<ADOBE_COMMERCE_URL>/rest/V1/adminuisdk/permission/check'
+```
+
+**Responses:**
+
+- **200**: Successful response with the following response payload:
+
+    ```json
+    {
+        "allowed": true
+    }
+    ```
+
+    `allowed` is `false` both when the resource isn't registered by any extension point and when the user's role doesn't grant it.
+
+- **400**: Bad request: `resource` is missing, empty, or contains only whitespace.
+- **401**: Unauthorized
+- **500**: Internal server error
+
 ## App Management
 
 The following endpoints manage selected extensions stored in the Commerce database.

@@ -62,3 +62,7 @@ npx skills add adobe/skills --skill commerce-app-migrate
 ```
 
 Restart your coding agent to load the new skill.
+
+## Related information
+
+[AI developer tools for Commerce extensibility](../developer-agent/index.md) describes additional AI resources.

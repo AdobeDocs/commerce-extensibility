@@ -50,7 +50,7 @@ You can register multiple webhooks for different shipping methods or shipping ca
 
 ### Payload
 
-The request payload contains information about all items in the cart, including product information, product attributes, shipping address, and customer information for logged-in customers.
+The request payload contains information about all items in the cart, including product information, product attributes, item custom options, shipping address, and customer information for logged-in customers.
 
 Payload example:
 
@@ -85,7 +85,15 @@ Payload example:
                         "country_origin": "Japan",
                         ...
                     }
-                }
+                },
+                "custom_options": [
+                  {
+                    "label": "Monogram",
+                    "option_id": "1",
+                    "option_value": "J.D."
+                  },
+                  ...
+                ]
             }
         ],
         "dest_country_id": "US",

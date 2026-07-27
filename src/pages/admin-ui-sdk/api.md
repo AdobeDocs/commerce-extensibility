@@ -136,7 +136,7 @@ The following endpoint lets an extension point verify whether the currently auth
 
 `POST /V1/adminuisdk/permission/check`
 
-Checks whether the currently authenticated admin user holds the specified Admin UI SDK ACL resource. The resource must have been registered by an extension point (for example, through a menu, mass action, or order view button registration) for this endpoint to grant it. Resources that are unregistered or unrecognized return `false`, the same as a genuine permission denial, so the response can't be used to determine whether a resource ID exists.
+Checks whether the currently authenticated admin user holds the specified Admin UI SDK ACL resource. The resource must have been registered by an extension point (for example, through a menu, mass action, or order view button registration) for this endpoint to grant it. Resources that are unregistered or unrecognized return `false`, the same as a genuine permission denial, so the response cannot be used to determine whether a resource ID exists.
 
 **Headers:**
 

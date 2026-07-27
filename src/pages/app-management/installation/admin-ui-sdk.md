@@ -172,7 +172,7 @@ adminUi: {
 }
 ```
 
-Mass actions are supported on `order`, `product`, and `customer`. The `id` is authored as a bare name (for example `bulk-approve`); Commerce handles prefixing and collision resolution when rendering the final Admin UI configuration.
+Mass actions are supported on `order`, `product`, and `customer`. The `id` is authored as a bare name (for example `bulk-approve`). Commerce handles prefixing and collision resolution when rendering the final Admin UI configuration.
 
 ### Field applicability by variant
 
@@ -298,7 +298,7 @@ Order view buttons are only available on `order`.
 | `runtimeAction` | | | x |
 | `timeout` | | | x |
 
-The `view` and `worker` variants are strict — setting `path` or `sandboxPermissions` on a `worker` button, or `runtimeAction` or `timeout` on a `view` button, fails validation.
+The `view` and `worker` variants are strict. Setting `path` or `sandboxPermissions` on a `worker` button, or `runtimeAction` or `timeout` on a `view` button, fails validation.
 
 | Property | Type | Required | Description |
 |----------|------|----------|-------------|
@@ -317,7 +317,7 @@ The `view` and `worker` variants are strict — setting `path` or `sandboxPermis
 
 ### View order view button page
 
-A `view` button opens an iframe at `<extension-host>/index.html<path>?orderId=<orderId>` inside your App Builder frontend — there's no server-side handler. Read the order ID and close the iframe with the React hooks exported from `@adobe/aio-commerce-lib-admin-ui/web`:
+A `view` button opens an iframe at `<extension-host>/index.html<path>?orderId=<orderId>` inside your App Builder frontend. There is no server-side handler. Read the order ID and close the iframe with the React hooks exported from `@adobe/aio-commerce-lib-admin-ui/web`:
 
 ```jsx
 import { useHostConnection, useOrderViewButtonContext } from "@adobe/aio-commerce-lib-admin-ui/web";
@@ -352,7 +352,7 @@ Use `orderViewButtonErrorResponse(status, message)` to report a failure. See the
 
 ## ACL-protected extension points
 
-Set `aclProtected: true` on a menu, grid column, mass action, or order view button to have Commerce generate a per-app ACL resource for that item and add it to the Adobe Commerce User Roles tree. Admins can then grant or deny the resource per role; users without the resource don't see the item and can't invoke it.
+Set `aclProtected: true` on a menu, grid column, mass action, or order view button to have Commerce generate a per-app ACL resource for that item and add it to the Adobe Commerce User Roles tree. Admins can then grant or deny the resource per role. Users without the resource do not see the item and cannot invoke it.
 
 Each resource id follows a hierarchical scheme rooted at the app (derived from `metadata.id`), with a leaf id per protected item. Use the id helpers from `@adobe/aio-commerce-lib-admin-ui` instead of hardcoding the generated string:
 

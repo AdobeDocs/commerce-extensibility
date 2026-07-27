@@ -17,7 +17,7 @@ July 27, 2026
 
 ### Enhancements
 
-The `observer.sales_quote_item_set_product` webhook payload now includes shopper-entered custom option values. \<!-- ACCS-972 --\>
+On PaaS, the `observer.sales_quote_item_set_product` webhook payload now includes shopper-entered custom option values. \<!-- ACCS-972 --\>
 
 ## Version 1.18.0
 

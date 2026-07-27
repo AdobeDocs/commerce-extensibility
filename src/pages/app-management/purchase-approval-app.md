@@ -38,7 +38,7 @@ The app registers three Commerce extension points, declared in `app.config.yaml`
 |---|---|
 | `commerce/configuration/1` | Business configuration schema (approval threshold, currency, approver emails) rendered by the App Management Admin UI. |
 | `commerce/extensibility/1` | Checkout approval webhook subscription and the order-placed event subscription. |
-| `commerce/backend-ui/2` | Admin menu entry, order grid columns, and the approver dashboard SPA (requires Admin UI SDK 3.3.1 or greater). |
+| `commerce/backend-ui/2` | Admin menu entry, order grid columns, and the approver dashboard SPA (requires Admin UI SDK 4.2.0 or greater). |
 
 ## How it works
 
@@ -63,13 +63,13 @@ The app subscribes to the `observer.checkout_submit_all_after` event (declared u
 
 ### Approver dashboard
 
-Through the `commerce/backend-ui/2` extension point, the app adds an Admin menu entry and order grid columns, and serves an approver dashboard SPA where reviewers list pending approvals and approve or reject orders. Approving an order releases the hold in Commerce and returns it to the `pending` status; rejecting an order cancels it. In both cases the app writes an order comment back to Commerce via REST and updates the approval request. This requires [Admin UI SDK](../admin-ui-sdk/index.md) 3.3.1 or greater.
+Through the `commerce/backend-ui/2` extension point, the app adds an Admin menu entry and order grid columns, and serves an approver dashboard SPA where reviewers list pending approvals and approve or reject orders. Approving an order releases the hold in Commerce and returns it to the `pending` status; rejecting an order cancels it. In both cases the app writes an order comment back to Commerce via REST and updates the approval request. This requires [Admin UI SDK](../admin-ui-sdk/index.md) 4.2.0 or greater.
 
 ## Prerequisites
 
 * Node.js 24 or later.
 * An Adobe Developer Console project and workspace, with Adobe I/O Runtime for deployment. Add these API services to the workspace (**Add service > API**): **I/O Management API**, **App Builder Data Services** (backs the App Builder Database used for approval requests and the execution log), **I/O Events**, and **Adobe I/O Events for Adobe Commerce**.
-* [Admin UI SDK](../admin-ui-sdk/index.md) 3.3.1 or greater, enabled and configured — required for the `commerce/backend-ui/2` extension point.
+* [Admin UI SDK](../admin-ui-sdk/index.md) 4.2.0 or greater, enabled and configured — required for the `commerce/backend-ui/2` extension point.
 * The Commerce Webhooks module and the Adobe I/O Events for Commerce module, both enabled — required for the checkout webhook and the order-placed event subscription.
 * Adobe Commerce 2.4.5 or later. The app runs on both Adobe Commerce as a Cloud Service (SaaS) and Adobe Commerce on PaaS/on-premises, and authenticates to Commerce with Adobe IMS in both cases (via `@adobe/aio-commerce-lib-auth`), so no Commerce integration (OAuth1) credentials are required. Note that the checkout webhook's IMS authentication (`require-adobe-auth`) is SaaS-only; on PaaS, configure the webhook's authorization as described in [Checkout webhook](#checkout-webhook) above.
 

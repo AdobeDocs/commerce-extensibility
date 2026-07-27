@@ -1,6 +1,7 @@
 ---
 title: mass action
 description: Customize the order grid mass action in the Adobe Commerce Admin.
+edition: paas
 keywords:
   - App Builder
   - Extensibility
@@ -52,7 +53,7 @@ adminUi: {
 
 ## How it works
 
-1. A merchant selects one or more orders in the order grid and picks a mass action from the dropdown.
+1. A merchant selects one or more orders in the order grid (**Sales** > **Orders**) and picks a mass action from the dropdown.
 1. For `view` actions, Commerce Admin opens the configured `path` inside an iframe backed by your App Builder web app; the app reads the selected IDs via [`useMassActionContext()`](../index.md#reading-context-in-your-app).
 1. For `worker` actions, Commerce Admin calls the configured `runtimeAction` directly with the selected IDs. No iframe is shown.
 1. If the action declares `notifications`, Commerce Admin shows a success or error banner once the action completes.

@@ -1,6 +1,7 @@
 ---
 title: mass action
 description: Customize the customer grid mass action in the Adobe Commerce Admin.
+edition: paas
 keywords:
   - App Builder
   - Extensibility
@@ -48,7 +49,7 @@ adminUi: {
 
 ## How it works
 
-1. A merchant selects one or more customers in the customer grid and picks a mass action from the dropdown.
+1. A merchant selects one or more customers in the customer grid (**Customer** > **All Customers**) and picks a mass action from the dropdown.
 1. For `view` actions, Commerce Admin opens the configured `path` inside an iframe backed by your App Builder web app; the app reads the selected IDs via [`useMassActionContext()`](../index.md#reading-context-in-your-app).
 1. For `worker` actions, Commerce Admin calls the configured `runtimeAction` directly with the selected IDs. No iframe is shown.
 1. If the action declares `notifications`, Commerce Admin shows a success or error banner once the action completes.
@@ -59,7 +60,7 @@ adminUi: {
 | --- | --- | --- | --- |
 | `id` | string | Yes | A unique ID assigned to the action. The recommended format is `<extensionId>::<actionName>`. |
 | `label` | string | Yes | The action label to display in the mass actions dropdown. |
-| `description` | string | No | A description of the action, used when the action is ACL-protected. |
+| `description` | string | No | A description of the action, used when the action is restricted by role. |
 | `type` | string | Yes | Either `view` (opens `path` in an iframe) or `worker` (calls `runtimeAction` directly, with no UI). |
 | `path` | string | Only for `type: 'view'` | The relative path in your App Builder app to open in the iframe. You might need to prepend `#/` to the path. |
 | `runtimeAction` | string | Only for `type: 'worker'` | The runtime action to call, in `<package>/<action>` format from your `app.config.yaml` runtime manifest. |

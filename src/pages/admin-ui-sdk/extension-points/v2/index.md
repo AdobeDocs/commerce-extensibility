@@ -1,6 +1,7 @@
 ---
 title: Extension points (V2)
 description: Learn about the Admin UI SDK V2 extension points built on App Management.
+edition: paas
 keywords:
   - App Builder
   - Extensibility
@@ -46,7 +47,7 @@ The `adminUi` object is where every extension point in this section is registere
 
 If you are porting an extension from the deprecated [V1 extension points](../index.md), note the following structural changes:
 
-* **Notifications are inline, not a separate extension point.** V1 had a standalone `bannerNotification` extension point that referenced mass actions and order view buttons by ID. In V2, the success and error messages are declared directly on the mass action or view button that uses them, as `notifications: { success, error }`. This applies to mass actions and view buttons on orders, customers, and products &mdash; see [Inline notifications](#inline-notifications).
+* **Notifications are inline, not a separate extension point.** V1 had a standalone `bannerNotification` extension point that referenced mass actions and order view buttons by ID. In V2, the success and error messages are declared directly on the mass action or view button that uses them, as `notifications: { success, error }`. This applies to mass actions and view buttons on orders, customers, and products. See [Inline notifications](#inline-notifications) for more information.
 * **`id` replaces `actionId`, `buttonId`, and `title`.** Every registration (menu, mass action, view button) now identifies itself with a single `id` field instead of extension-point-specific ID field names.
 * **`type` replaces `displayIframe`.** Mass actions and order view buttons declare `type: 'view'` or `type: 'worker'` instead of a `displayIframe` boolean. See [View vs. worker actions](#view-vs-worker-actions).
 * **`sandboxPermissions` replaces `sandbox`.** Sandbox restrictions are now an array of values (for example, `['allow-modals', 'allow-popups']`) instead of a single space-separated string.
@@ -55,7 +56,7 @@ If you are porting an extension from the deprecated [V1 extension points](../ind
 * **Custom fees are not a V2 Admin UI SDK extension point.** In V2, order total modifications are implemented as a webhook on `plugin.magento.out_of_process_totals_collector.api.get_total_modifications.custom_fees`. See [Checkout Totals Collector](../../../starter-kit/checkout/totals-collector-fees.md).
 * **A no-framework (vanilla JS) menu variant is not supported.** App Management always scaffolds a `web-src` App Builder frontend for extensions that render UI.
 
-## View vs. worker actions
+## View and worker actions
 
 Mass actions and order view buttons declare a `type` of either `view` or `worker`:
 
@@ -88,7 +89,7 @@ Instead of registering a separate `bannerNotification` extension point, declare 
 
 If `notifications` is omitted, Commerce displays a default success or error banner.
 
-## ACL protection
+## Access control list protection
 
 Any menu item, mass action, view button, or grid column can be gated behind a dedicated Commerce ACL resource by setting `aclProtected: true`:
 
@@ -102,7 +103,7 @@ Any menu item, mass action, view button, or grid column can be gated behind a de
 }
 ```
 
-When `aclProtected` is `true`, Commerce generates a nested ACL resource scoped to your app (app &rarr; entity &rarr; extension-point type &rarr; item) so administrators can grant or restrict access to individual menu items, mass actions, view buttons, or grid columns per admin role. When `aclProtected` is omitted or `false`, the item uses the shared `Magento_CommerceBackendUix::adminuisdk_extensions` resource used by all unprotected V2 extension points.
+When `aclProtected` is `true`, Commerce generates a nested ACL resource scoped to your app so administrators can grant or restrict access to individual menu items, mass actions, view buttons, or grid columns per admin role. When `aclProtected` is omitted or `false`, the item uses the shared `Magento_CommerceBackendUix::adminuisdk_extensions` resource used by all unprotected V2 extension points.
 
 ## Reading context in your app
 
@@ -134,17 +135,3 @@ Instead of an API Mesh source, a V2 `gridColumns` registration declares a `runti
 ```
 
 See [Order grid columns](order/grid-columns.md), [Product grid columns](product/grid-columns.md), and [Customer grid columns](customer/grid-columns.md) for the full column schema and a sample runtime action.
-
-## Sections
-
-* [menu](menu.md)
-* [customer](customer/index.md)
-  * [grid columns](customer/grid-columns.md)
-  * [mass action](customer/mass-action.md)
-* [order](order/index.md)
-  * [grid columns](order/grid-columns.md)
-  * [mass action](order/mass-action.md)
-  * [view button](order/view-button.md)
-* [product](product/index.md)
-  * [grid columns](product/grid-columns.md)
-  * [mass action](product/mass-action.md)

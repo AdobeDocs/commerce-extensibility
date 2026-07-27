@@ -1,6 +1,7 @@
 ---
 title: order grid columns
 description: Customize the orders page in the Adobe Commerce Admin.
+edition: paas
 keywords:
   - App Builder
   - Extensibility
@@ -70,7 +71,7 @@ export async function main(params) {
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `label` | string | No | A label describing the set of columns, used when the columns are ACL-protected. |
+| `label` | string | No | A label describing the set of columns, used when the columns are protected by an access control list (ACL). |
 | `description` | string | No | A description of the columns, used when the columns are ACL-protected. |
 | `runtimeAction` | string | Yes | The runtime action that returns column data, in `<package>/<action>` format from your `app.config.yaml` runtime manifest. Commerce resolves this to the full deployed action URL at installation time. |
 | `columns[].id` | string | Yes | The identifier for the column. Referenced in the request sent to your runtime action and in its response. |

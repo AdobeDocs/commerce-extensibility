@@ -1,6 +1,7 @@
 ---
 title: customer grid columns
 description: Customize the customers page in the Adobe Commerce Admin.
+edition: paas
 keywords:
   - App Builder
   - Extensibility
@@ -33,7 +34,7 @@ adminUi: {
 
 ## How it works
 
-1. A merchant opens the customer grid in the Commerce Admin.
+1. A merchant opens the customer grid (**Customer** > **All Customers**) in the Commerce Admin.
 1. Commerce sends a POST request to your runtime action with the grid type and the visible customer IDs: `{ requestId, gridType: 'customer', ids: ['1', '2', ...] }`.
 1. Your action looks up the column values for each customer ID and returns them.
 1. Commerce renders the returned values in the corresponding columns, alongside the built-in columns.

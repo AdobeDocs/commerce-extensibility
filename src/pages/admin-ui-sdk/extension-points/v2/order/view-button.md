@@ -1,6 +1,7 @@
 ---
 title: order view button
 description: Customize the orders page in the Adobe Commerce Admin.
+edition: paas
 keywords:
   - App Builder
   - Extensibility
@@ -8,7 +9,7 @@ keywords:
 
 # order view button
 
-The `order view button` extension point adds a customized button to the order view in the Adobe Commerce Admin. When a merchant opens an order, Commerce renders your buttons alongside the built-in ones.
+The `order view button` extension point adds a customized button to the order view page in the Adobe Commerce Admin. When a merchant opens an order, Commerce renders your buttons alongside the built-in ones.
 
 ## Example customization
 

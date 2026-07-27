@@ -1,6 +1,7 @@
 ---
 title: mass action
 description: Customize the product grid mass action in the Adobe Commerce Admin.
+edition: paas
 keywords:
   - App Builder
   - Extensibility
@@ -8,11 +9,15 @@ keywords:
 
 # product mass action
 
-The `product mass action` extension point customizes product grid mass actions in the Adobe Commerce Admin. When a merchant selects one or more products and picks one of these actions from the mass actions dropdown, Commerce Admin either opens an iframe backed by your App Builder frontend (`view` actions), or calls a backend runtime action directly with no UI (`worker` actions).
+The `product mass action` extension point customizes product grid mass actions in the Adobe Commerce Admin. When a merchant selects one or more products from the grid on **Catalog** > **Products** and picks one of these actions from the mass actions dropdown, Commerce Admin either opens an iframe backed by your App Builder frontend (`view` actions), or calls a backend runtime action directly with no UI (`worker` actions).
 
 ## Example customization
 
-The following example creates three mass actions: one that opens an iframe, one that opens an iframe and shows a banner notification, and one that runs headless as a worker action.
+The following example creates three mass actions that perform the following tasks:
+
+* Opens an iframe
+* Opens an iframe and displays a banner notification
+* Run headless as a worker action
 
 ```typescript
 adminUi: {
@@ -53,8 +58,8 @@ adminUi: {
 ## How it works
 
 1. A merchant selects one or more products in the product grid and picks a mass action from the dropdown.
-1. For `view` actions, Commerce Admin opens the configured `path` inside an iframe backed by your App Builder web app; the app reads the selected IDs via [`useMassActionContext()`](../index.md#reading-context-in-your-app).
-1. For `worker` actions, Commerce Admin calls the configured `runtimeAction` directly with the selected IDs. No iframe is shown.
+1. For `view` actions, Commerce Admin opens the configured `path` inside an iframe backed by your App Builder web app. The app reads the selected IDs using [`useMassActionContext()`](../index.md#reading-context-in-your-app).
+1. For `worker` actions, Commerce Admin calls the configured `runtimeAction` directly with the selected IDs. No iframe is displayed.
 1. If the action declares `notifications`, Commerce Admin shows a success or error banner once the action completes.
 
 ## Parameters

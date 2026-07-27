@@ -1,6 +1,7 @@
 ---
 title: Migration from V1
 description: Learn how version 2 of the Admin UI SDK differs from version 1, and how to migrate your extension.
+edition: paas
 keywords:
   - App Builder
   - Extensibility

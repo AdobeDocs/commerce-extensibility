@@ -373,17 +373,28 @@ import {
 } from "@adobe/aio-commerce-lib-admin-ui/api";
 import { getMassActionAclResourceId } from "@adobe/aio-commerce-lib-admin-ui/mass-actions";
 
-const permissionClient = getAdminUiPermissionClient({ httpClient, appId: "approval-dashboard-app" });
+import { getCommerceClient } from "@adobe/aio-commerce-lib-app";
+import { resolveImsAuthParams } from "@adobe/aio-commerce-lib-auth";
 
-try {
-  await permissionClient.require(
-    getMassActionAclResourceId("approval-dashboard-app", "order", "bulk-approve"),
-  );
-} catch (error) {
-  if (error instanceof AdminUiPermissionDeniedError) {
-    return massActionErrorResponse(403, "You do not have access to this action");
+import appConfig from "#app.commerce.config";
+
+export async function main(params) {
+  const appId = appConfig.metadata.id;
+  const httpClient = await getCommerceClient(resolveImsAuthParams(params));
+  const permissionClient = getAdminUiPermissionClient({ httpClient, appId });
+
+  try {
+    await permissionClient.require(
+      getMassActionAclResourceId(appId, "order", "bulk-approve"),
+    );
+    
+    // Do something after checking permission is granted.
+  } catch (error) {
+    if (error instanceof AdminUiPermissionDeniedError) {
+      return massActionErrorResponse(403, "You do not have access to this action");
+    }
+    throw error;
   }
-  throw error;
 }
 ```
 

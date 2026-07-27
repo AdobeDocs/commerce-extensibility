@@ -392,7 +392,7 @@ Active: Yes
 
 To get the product custom options such as text field, text area, radio button, check box, or product quantity while adding the product to cart from the storefront or GraphQL API.
 
-<CodeBlock slots="heading, code" repeat="2" languages="XML, YAML" />
+<CodeBlock slots="heading, code" repeat="1" languages="XML, YAML" />
 
 ##### webhooks.xml (PaaS)
 
@@ -402,6 +402,8 @@ To get the product custom options such as text field, text area, radio button, c
     <field name="quantity"       source="context_quote_item_options.get_qty" />
 </fields>
 ```
+
+\<!--
 
 ##### Admin (SaaS)
 
@@ -413,6 +415,7 @@ Name: quantity
 Source: context_quote_item_options.get_qty
 Active: Yes
 ```
+--\>
 
 ### Context headers
 

@@ -341,11 +341,13 @@ import {
 } from "@adobe/aio-commerce-lib-admin-ui/order-view-buttons";
 
 async function syncInventory(orderId) {
-  // Your sync inventory logic for `orderId`
+  // Your sync inventory logic for orderId
 }
+
 export async function main(params) {
   const { id, orderId } = parseOrderViewButtonRequest(params);
   await syncInventory(orderId);
+  
   return okOrderViewButtonResponse();
 }
 ```

@@ -1,7 +1,7 @@
 {
-  "total": 216,
+  "total": 230,
   "offset": 0,
-  "limit": 216,
+  "limit": 230,
   "data": [
     {
       "page": "/",
@@ -84,13 +84,13 @@
     {
       "page": "/admin-ui-sdk/",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/71198017?v=4",
-        "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/114562006?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4"
       ],
-      "lastUpdated": "5/19/2026"
+      "lastUpdated": "7/28/2026"
     },
     {
       "page": "/admin-ui-sdk/api",
@@ -98,7 +98,7 @@
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/71198017?v=4"
       ],
-      "lastUpdated": "6/5/2026"
+      "lastUpdated": "7/28/2026"
     },
     {
       "page": "/admin-ui-sdk/app-registration",
@@ -273,6 +273,97 @@
       "lastUpdated": "5/14/2026"
     },
     {
+      "page": "/admin-ui-sdk/extension-points/v2/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/11652541?v=4"
+      ],
+      "lastUpdated": "7/28/2026"
+    },
+    {
+      "page": "/admin-ui-sdk/extension-points/v2/customer/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/11652541?v=4"
+      ],
+      "lastUpdated": "7/27/2026"
+    },
+    {
+      "page": "/admin-ui-sdk/extension-points/v2/customer/grid-columns",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/11652541?v=4"
+      ],
+      "lastUpdated": "7/27/2026"
+    },
+    {
+      "page": "/admin-ui-sdk/extension-points/v2/customer/mass-action",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/11652541?v=4"
+      ],
+      "lastUpdated": "7/27/2026"
+    },
+    {
+      "page": "/admin-ui-sdk/extension-points/v2/menu",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/11652541?v=4"
+      ],
+      "lastUpdated": "7/27/2026"
+    },
+    {
+      "page": "/admin-ui-sdk/extension-points/v2/migration-from-v1",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/11652541?v=4"
+      ],
+      "lastUpdated": "7/28/2026"
+    },
+    {
+      "page": "/admin-ui-sdk/extension-points/v2/order/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/11652541?v=4"
+      ],
+      "lastUpdated": "7/27/2026"
+    },
+    {
+      "page": "/admin-ui-sdk/extension-points/v2/order/grid-columns",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/11652541?v=4"
+      ],
+      "lastUpdated": "7/27/2026"
+    },
+    {
+      "page": "/admin-ui-sdk/extension-points/v2/order/mass-action",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/11652541?v=4"
+      ],
+      "lastUpdated": "7/28/2026"
+    },
+    {
+      "page": "/admin-ui-sdk/extension-points/v2/order/view-button",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/11652541?v=4"
+      ],
+      "lastUpdated": "7/28/2026"
+    },
+    {
+      "page": "/admin-ui-sdk/extension-points/v2/product/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/11652541?v=4"
+      ],
+      "lastUpdated": "7/27/2026"
+    },
+    {
+      "page": "/admin-ui-sdk/extension-points/v2/product/grid-columns",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/11652541?v=4"
+      ],
+      "lastUpdated": "7/27/2026"
+    },
+    {
+      "page": "/admin-ui-sdk/extension-points/v2/product/mass-action",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/11652541?v=4"
+      ],
+      "lastUpdated": "7/27/2026"
+    },
+    {
       "page": "/admin-ui-sdk/installation",
       "avatars": [
         "https://avatars.githubusercontent.com/u/11652541?v=4",
@@ -304,7 +395,7 @@
         "https://avatars.githubusercontent.com/u/47368809?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4"
       ],
-      "lastUpdated": "7/14/2026"
+      "lastUpdated": "7/28/2026"
     },
     {
       "page": "/admin-ui-sdk/troubleshooting",
@@ -463,12 +554,14 @@
     {
       "page": "/app-management/",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/11652541?v=4",
+        "https://avatars.githubusercontent.com/u/8988184?v=4",
         "https://avatars.githubusercontent.com/u/38460853?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/71198017?v=4",
         "https://avatars.githubusercontent.com/u/47715589?v=4"
       ],
-      "lastUpdated": "5/22/2026"
+      "lastUpdated": "7/28/2026"
     },
     {
       "page": "/app-management/app-metadata",
@@ -481,10 +574,11 @@
     {
       "page": "/app-management/build-deploy",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/38460853?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4"
       ],
-      "lastUpdated": "5/22/2026"
+      "lastUpdated": "7/23/2026"
     },
     {
       "page": "/app-management/configuration-schema",
@@ -515,16 +609,17 @@
     {
       "page": "/app-management/installation/",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/38460853?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "7/15/2026"
     },
     {
       "page": "/app-management/installation/admin-ui-sdk",
       "avatars": [
         "https://avatars.githubusercontent.com/u/11652541?v=4"
       ],
-      "lastUpdated": "5/19/2026"
+      "lastUpdated": "7/28/2026"
     },
     {
       "page": "/app-management/installation/customize",
@@ -559,22 +654,32 @@
     {
       "page": "/app-management/troubleshooting",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/8988184?v=4",
         "https://avatars.githubusercontent.com/u/38460853?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/47715589?v=4"
       ],
-      "lastUpdated": "6/11/2026"
+      "lastUpdated": "7/22/2026"
+    },
+    {
+      "page": "/app-management/working-with-ai",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/11652541?v=4",
+        "https://avatars.githubusercontent.com/u/8988184?v=4"
+      ],
+      "lastUpdated": "7/23/2026"
     },
     {
       "page": "/config",
       "avatars": [
-        "https://avatars.githubusercontent.com/u/10073809?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
+        "https://avatars.githubusercontent.com/u/8988184?v=4",
+        "https://avatars.githubusercontent.com/u/10073809?v=4",
         "https://avatars.githubusercontent.com/u/47368809?v=4",
         "https://avatars.githubusercontent.com/u/18550571?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4"
       ],
-      "lastUpdated": "7/13/2026"
+      "lastUpdated": "7/28/2026"
     },
     {
       "page": "/developer-agent/",

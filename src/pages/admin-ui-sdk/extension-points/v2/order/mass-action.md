@@ -59,12 +59,13 @@ adminUi: {
 1. If the action declares `notifications`, Commerce Admin shows a success or error banner once the action completes.
 
 ```tsx
-import { useHostConnection, useMassActionContext } from '@adobe/aio-commerce-lib-admin-ui/web'
+import { useMassActionContext } from "@adobe/aio-commerce-lib-admin-ui/web";
 
-export function MassActionWithRedirect() {
-  const { selectedIds } = useMassActionContext()
-  const { close } = useHostConnection()
-  // render selectedIds, then call close() when done
+function MassActionPage() {
+  const { data, error } = useMassActionContext();
+  if (error) return null;
+
+  // data.selectedIds is a non-empty string[].
 }
 ```
 

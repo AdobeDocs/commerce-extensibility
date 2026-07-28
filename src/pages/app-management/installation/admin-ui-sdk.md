@@ -40,7 +40,7 @@ export default defineConfig({
       id: "approval_dashboard",
       label: "Approval Dashboard",
       description: "Review and approve purchase requests from Commerce Admin.",
-      parentMenu: MENU_CATALOG,
+      parentMenu: MENU_SALES,
       sandboxPermissions: ["allow-popups", "allow-downloads"],
       aclProtected: true,
     },
@@ -54,7 +54,7 @@ export default defineConfig({
 | `label` | string | Yes | Menu label rendered in Commerce Admin. |
 | `description` | string | Yes | Summary shown in installation and permission-review surfaces. |
 | `pageTitle` | string | No | Page title for the menu entry. |
-| `parentMenu` | string | No | Existing Commerce menu ID under which the app menu is attached. When omitted, App Management generates a per-app section automatically from `metadata` and places it under the `Apps` menu. |
+| `parentMenu` | string | No | Existing Commerce menu ID under which the app menu is attached. App Management automatically generates a per-app section from `metadata.displayName`. When this property is omitted, Commerce places it under the Apps menu. |
 | `sandboxPermissions` | array | No | iframe sandbox permissions. One or more of `allow-downloads`, `allow-modals`, `allow-popups`. |
 | `aclProtected` | boolean | No | When `true`, Commerce generates a per-app ACL resource and adds it to the Adobe Commerce User Roles tree. See [ACL-protected extension points](#acl-protected-extension-points). |
 
@@ -340,9 +340,11 @@ import {
   parseOrderViewButtonRequest,
 } from "@adobe/aio-commerce-lib-admin-ui/order-view-buttons";
 
+async function syncInventory(orderId) {
+  // Your sync inventory logic for `orderId`
+}
 export async function main(params) {
   const { id, orderId } = parseOrderViewButtonRequest(params);
-
   await syncInventory(orderId);
   return okOrderViewButtonResponse();
 }

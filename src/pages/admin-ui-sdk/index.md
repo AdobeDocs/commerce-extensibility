@@ -16,7 +16,7 @@ Many types of apps will use this SDK. It represents a one-to-many approach for s
 
 The following diagram shows the architecture of the Admin UI SDK.
 
-![Architecture](../images/admin-ui-sdk/overview/architecture.svg)
+![Architecture](../images/admin-ui-sdk/overview/architecture-v2.svg)
 
 The SDK contains two main components that are necessary for development:
 

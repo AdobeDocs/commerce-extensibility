@@ -9,7 +9,7 @@ keywords:
 
 # Adobe Commerce Admin UI SDK V2 extension points
 
-This section describes how to use the `commerce/backend-ui/2` extension points in any Adobe Developer App Builder application that customizes Adobe Commerce Admin. These extension points are built on [App Management](../../../app-management/index.md), the current foundation for Admin UI SDK extensions, and replace the [V1 extension points](../index.md), which are deprecated and will be removed in a future release.
+This topic describes how to use the `commerce/backend-ui/2` extension points in any Adobe Developer App Builder application that customizes Adobe Commerce Admin. These extension points are built on [App Management](../../../app-management/index.md), the current foundation for Admin UI SDK extensions, and replace the [V1 extension points](../index.md), which are deprecated and will be removed in a future release.
 
 The [Adobe Commerce Samples repository](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/v2) contains samples for each V2 extension point. Use these samples to see how App Management projects register menus, mass actions, view buttons, and grid columns with the Admin Commerce UI.
 
@@ -43,52 +43,6 @@ The `adminUi` object is where every extension point in this section is registere
 * [menu](menu.md) &mdash; a single object at `adminUi.menu`.
 * [customer](customer/index.md), [order](order/index.md), and [product](product/index.md) &mdash; each accepts `massActions` and `gridColumns`; `order` additionally accepts `viewButtons`.
 
-## What changed from V1
-
-If you are porting an extension from the deprecated [V1 extension points](../index.md), note the following structural changes:
-
-* **Notifications are inline, not a separate extension point.** V1 had a standalone `bannerNotification` extension point that referenced mass actions and order view buttons by ID. In V2, the success and error messages are declared directly on the mass action or view button that uses them, as `notifications: { success, error }`. This applies to mass actions and view buttons on orders, customers, and products. See [Inline notifications](#inline-notifications) for more information.
-* **`id` replaces `actionId`, `buttonId`, and `title`.** Every registration (menu, mass action, view button) now identifies itself with a single `id` field instead of extension-point-specific ID field names.
-* **`type` replaces `displayIframe`.** Mass actions and order view buttons declare `type: 'view'` or `type: 'worker'` instead of a `displayIframe` boolean. See [View vs. worker actions](#view-and-worker-actions).
-* **`sandboxPermissions` replaces `sandbox`.** Sandbox restrictions are now an array of values (for example, `['allow-modals', 'allow-popups']`) instead of a single space-separated string.
-* **Grid columns call a runtime action instead of API Mesh.** V1 grid columns fetched data through an API Mesh instance referenced by `data.meshId`. V2 grid columns declare a `runtimeAction`, and Commerce calls it directly. See [Grid columns](#grid-columns-call-your-runtime-action-directly).
-* **The `menu` extension point is a single object, not an array.** V1 registered an array of `menuItems` (allowing multiple items and a shared section item). V2 declares one `menu` object per app; the section is generated automatically from the app's display name. `sortOrder` is removed, and `description` is a new required field.
-* **Custom fees are not a V2 Admin UI SDK extension point.** In V2, order total modifications are implemented as a webhook on `plugin.magento.out_of_process_totals_collector.api.get_total_modifications.custom_fees`. See [Checkout Totals Collector](../../../starter-kit/checkout/totals-collector-fees.md).
-* **A no-framework (vanilla JS) menu variant is not supported.** App Management always scaffolds a `web-src` App Builder frontend for extensions that render UI.
-
-## View and worker actions
-
-Mass actions and order view buttons declare a `type` of either `view` or `worker`:
-
-* `view` actions open the `path` you specify inside an iframe backed by your App Builder frontend. This is the equivalent of a V1 action with `displayIframe: true`.
-* `worker` actions call the `runtimeAction` you specify directly, with no UI shown. This is the equivalent of a V1 action with `displayIframe: false`.
-
-For `worker` actions, `runtimeAction` identifies the action using the `<package>/<action>` format from your `app.config.yaml` runtime manifest (for example, `mass-actions/massAction`). Commerce resolves this to the full deployed action URL at installation time.
-
-## Inline notifications
-
-Instead of registering a separate `bannerNotification` extension point, declare a `notifications` object directly on a mass action or view button:
-
-```typescript
-{
-  id: 'order-mass-action-with-redirect',
-  label: 'Mass Action With Redirect',
-  type: 'view',
-  path: '#/mass-action-with-redirect',
-  notifications: {
-    success: 'Order custom success message',
-    error: 'Order custom error message',
-  },
-}
-```
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `notifications.success` | string | No | The banner message shown when the action completes successfully. |
-| `notifications.error` | string | No | The banner message shown when the action fails. |
-
-If `notifications` is omitted, Commerce displays a default success or error banner.
-
 ## Access control list protection
 
 Any menu item, mass action, view button, or grid column can be gated behind a dedicated Commerce ACL resource by setting `aclProtected: true`:
@@ -107,31 +61,118 @@ When `aclProtected` is `true`, Commerce generates a nested ACL resource scoped t
 
 ## Reading context in your app
 
-V2 iframe pages read context through React hooks exported from `@adobe/aio-commerce-lib-admin-ui/web`, instead of the V1 `sharedContext`/`attach()` guest connection pattern:
+V2 iframe pages read context through React hooks exported from `@adobe/aio-commerce-lib-admin-ui/web`:
 
 | Hook | Available in | Returns |
 | --- | --- | --- |
 | `useIms()` | Any page | The signed-in admin's `imsOrgId` and `imsToken`. |
+| `useHostConnection()` | Any iframe page | A `close()` function to close the iframe and return to the Commerce Admin grid or view. |
 | `useMassActionContext()` | Mass action `view` pages | `selectedIds`, the array of grid row IDs the mass action was triggered with. |
 | `useOrderViewButtonContext()` | Order view button `view` pages | `orderId`, the order the button was rendered for. |
-| `useHostConnection()` | Any iframe page | A `close()` function to close the iframe and return to the Commerce Admin grid or view. |
+| `useCommerce()` | Any page | The host (domain) of the Commerce Admin the extension is embedded in. |
+| `useSharedContext()` | Any page | The raw Commerce shared context and host proxy from the guest connection. |
 
-```tsx
-import { useHostConnection, useMassActionContext } from '@adobe/aio-commerce-lib-admin-ui/web'
+### Read IMS credentials
 
-export function MassActionWithRedirect() {
-  const { selectedIds } = useMassActionContext()
-  const { close } = useHostConnection()
-  // ...
+`useIms` returns the IMS credentials provided by the host (`{ imsToken, imsOrgId }`). It works inside both the Commerce Admin and the Experience Cloud shell, and returns an error when the app runs standalone because no host provides credentials:
+
+```jsx
+import { useIms } from "@adobe/aio-commerce-lib-admin-ui/web";
+
+function Welcome() {
+  const { data, error } = useIms();
+  if (error) return <span>{error.message}</span>;
+
+  // Use data.imsToken to call IMS-authenticated APIs on behalf of the admin user.
+  return <span>{data.imsOrgId}</span>;
 }
 ```
 
-## Grid columns call your runtime action directly
+When a component is guaranteed to render within a supported host and you do not need explicit error handling, you can ignore error and use optional chaining:
 
-Instead of an API Mesh source, a V2 `gridColumns` registration declares a `runtimeAction`. When a merchant opens the grid, Commerce sends a POST request to your action with the visible row IDs, and renders the values your action returns:
-
-```json
-{ "requestId": "...", "gridType": "order", "ids": ["000000001", "000000002"] }
+```tsx
+function Welcome() {
+  const { data } = useIms();
+  return <span>{data?.imsOrgId}</span>;
+}
 ```
 
-See [Order grid columns](order/grid-columns.md), [Product grid columns](product/grid-columns.md), and [Customer grid columns](customer/grid-columns.md) for the full column schema and a sample runtime action.
+This is valid, but it is less explicit and not recommended. If the component renders outside the expected host, it silently renders an absent value instead of explaining or forwarding the error.
+
+### Interact with the Commerce Admin host
+
+`useHostConnection` returns typed helpers for closing the extension iframe and returning control to the Commerce Admin. Note that these are only useful in flows that need to close the current iframe and navigate back, such as mass actions and order view buttons.
+
+```tsx
+import { useHostConnection } from "@adobe/aio-commerce-lib-admin-ui/web";
+
+function Actions() {
+  const { actions, error } = useHostConnection();
+  if (error) return null;
+
+  // actions.close() closes the current iframe and navigates back to the originating grid or order.
+  // actions.closeWithError() does the same, flagging that an error occurred.
+}
+```
+
+### Read mass action context
+
+`useMassActionContext` returns the selected IDs for a mass action. It only works in mass action `view` pages, and returns an error when used outside that context:
+
+```tsx
+import { useMassActionContext } from "@adobe/aio-commerce-lib-admin-ui/web";
+
+function MassActionPage() {
+  const { data, error } = useMassActionContext();
+  if (error) return null;
+
+  // data.selectedIds is a non-empty string[].
+}
+```
+
+### Read the order view-button context
+
+`useOrderViewButtonContext` returns the order ID for an order view button. It only works in order view button `view` pages, and returns an error when used outside that context:
+
+```tsx
+import { useOrderViewButtonContext } from "@adobe/aio-commerce-lib-admin-ui/web";
+
+function OrderViewButtonPage() {
+  const { data, error } = useOrderViewButtonContext();
+  if (error) return null;
+
+  return <span>{data.orderId}</span>;
+}
+```
+
+### Resolve the Commerce host
+
+`useCommerce` returns the host (domain) of the Commerce Admin the extension is embedded in. The value is resolved over the guest connection using the host's integration API. It returns an error when used outside the Commerce Admin frame, when the host doesn't expose that integration API, or when host resolution fails:
+
+```tsx
+import { useCommerce } from "@adobe/aio-commerce-lib-admin-ui/web";
+
+function CommerceInfo() {
+  const { data, error } = useCommerce();
+  if (error) return <span>Commerce features aren't available here.</span>;
+
+  return <span>{data.commerceHost}</span>;
+}
+```
+
+### Shared context access
+
+`useSharedContext` exposes the raw Commerce shared context and host proxy from the guest connection. We recommend using `useCommerce`, `useMassActionContext`, `useOrderViewButtonContext`, or `useHostConnection`) whenever possible.
+
+`useSharedContext` (and the hooks built on it) require the Commerce guest connection. In Experience Cloud Shell or a standalone page, they will always return an error.
+
+```tsx
+import { useSharedContext } from "@adobe/aio-commerce-lib-admin-ui/web";
+
+function Advanced() {
+  const { data, error } = useSharedContext();
+  if (error) return null;
+
+  const selectedIds = data.sharedContext.get("selectedIds");
+}
+```

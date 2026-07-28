@@ -73,27 +73,6 @@ Any menu item, mass action, view button, or grid column can be gated behind a de
 
 When `aclProtected` is `true`, Commerce generates a nested ACL resource scoped to your app (app &rarr; entity &rarr; extension-point type &rarr; item) so administrators can grant or restrict access to individual menu items, mass actions, view buttons, or grid columns per admin role. When `aclProtected` is omitted or `false`, the item uses the shared `Magento_CommerceBackendUix::adminuisdk_extensions` resource used by all unprotected V2 extension points.
 
-## Reading context in your app
-
-V2 iframe pages read context through React hooks exported from `@adobe/aio-commerce-lib-admin-ui/web`, instead of the V1 `sharedContext`/`attach()` guest connection pattern:
-
-| Hook | Available in | Returns |
-| --- | --- | --- |
-| `useIms()` | Any page | The signed-in admin's `imsOrgId` and `imsToken`. |
-| `useMassActionContext()` | Mass action `view` pages | `selectedIds`, the array of grid row IDs the mass action was triggered with. |
-| `useOrderViewButtonContext()` | Order view button `view` pages | `orderId`, the order the button was rendered for. |
-| `useHostConnection()` | Any iframe page | A `close()` function to close the iframe and return to the Commerce Admin grid or view. |
-
-```tsx
-import { useHostConnection, useMassActionContext } from '@adobe/aio-commerce-lib-admin-ui/web'
-
-export function MassActionWithRedirect() {
-  const { selectedIds } = useMassActionContext()
-  const { close } = useHostConnection()
-  // ...
-}
-```
-
 ## Grid columns call your runtime action directly
 
 Instead of an API Mesh source, a V2 `gridColumns` registration declares a `runtimeAction`. When a merchant opens the grid, Commerce sends a POST request to your action with the visible row IDs, and renders the values your action returns:

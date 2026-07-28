@@ -202,30 +202,19 @@ All fields are defined in the `extension` object.
 | --- | --- | --- | --- |
 | `extension_name` | string | Yes | The extension name |
 | `extension_title` | string | Yes | The extension title |
-| `extension_url` | string | Varies | Not used for V2, but required for V1. The extension URL, which must be in the format `https://[a-zA-Z0-9-]/.adobeio-static.net/index.html` |
 | `extension_workspace` | string | Yes | The extension workspace |
 
+<InlineAlert variant="info" slots="text" />
+
+The Admin UI SDK V2 Beta version of this endpoint added the `extension_url` field on an experimental basis. This field has been removed.
+
 **Example usage:**
-
-<CodeBlock slots="heading, code" repeat="2" languages="bash, bash" />
-
-#### Admin UI SDK V2
 
 ```bash
 curl -X POST \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer <TOKEN>" \
     -d '{"extension": {"extension_name": "my-extension", "extension_title": "My Extension",  "extension_workspace": "production"}}' \
-    '<ADOBE_COMMERCE_URL>/rest/V1/adminuisdk/extension'
-```
-
-#### Admin UI SDK V1
-
-```bash
-curl -X POST \
-    -H "Content-Type: application/json" \
-    -H "Authorization: Bearer <TOKEN>" \
-    -d '{"extension": {"extension_name": "my-extension", "extension_title": "My Extension", "extension_url": "https://myapp-example/.adobeio-static.net/index.html", "extension_workspace": "production"}}' \
     '<ADOBE_COMMERCE_URL>/rest/V1/adminuisdk/extension'
 ```
 

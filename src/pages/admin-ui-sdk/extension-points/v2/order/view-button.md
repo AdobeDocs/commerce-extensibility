@@ -60,12 +60,13 @@ adminUi: {
 1. If the button declares `notifications`, Commerce shows a success or error banner once the action completes.
 
 ```tsx
-import { useHostConnection, useOrderViewButtonContext } from '@adobe/aio-commerce-lib-admin-ui/web'
+import { useOrderViewButtonContext } from "@adobe/aio-commerce-lib-admin-ui/web";
 
-export function CreateReturnPage() {
-  const { orderId } = useOrderViewButtonContext()
-  const { close } = useHostConnection()
-  // render orderId, then call close() when done
+function OrderViewButtonPage() {
+  const { data, error } = useOrderViewButtonContext();
+  if (error) return null;
+
+  return <span>{data.orderId}</span>;
 }
 ```
 

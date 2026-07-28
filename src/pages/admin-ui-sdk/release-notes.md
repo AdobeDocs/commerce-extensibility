@@ -18,9 +18,9 @@ July 28, 2026
 
 ### Enhancements
 
-* Added the [`commerce/backend-ui/2` extension point](extension-points/v2/index.md). Commerce now supports `backend-ui/2` alongside the existing `commerce/backend-ui/1` extension point. The `commerce/backend-ui/1` extension point has been deprecated but remains available for backward compatibility.
+* Added the [`commerce/backend-ui/2` extension point](extension-points/v2/index.md). Commerce now supports `backend-ui/2` alongside the existing `commerce/backend-ui/1` extension point. This extension point provides new capabilities and improvements over the previous version and is referred to as V2. The `commerce/backend-ui/1` extension point has been deprecated but remains available for backward compatibility.
 
-* Added granular ACL controls. Extension points can now check whether the current admin user is authorized for an ACL resource using the new [permission-check endpoint](api.md#permission-checks), and [ACL protection](../app-management/installation/admin-ui-sdk.md#acl-protected-extension-points) now extends to grid columns, order view buttons, and mass actions, in addition to menus.
+* Added granular ACL controls in V2. Extension points can now check whether the current admin user is authorized for an ACL resource using the new [permission-check endpoint](api.md#permission-checks), and [ACL protection](../app-management/installation/admin-ui-sdk.md#acl-protected-extension-points) now extends to grid columns, order view buttons, and mass actions, in addition to menus.
 
 * Simplified extension configuration. The [`extension_url` field](api.md#save-a-selected-extension) is now optional, since the view URL can be derived from the App Registry. The extension URL pattern is also injectable, and production environments are restricted to `adobeio-static.net`.
 
@@ -35,8 +35,6 @@ July 28, 2026
 * Fixed registrations not refreshing when extensions are added through `webapi_rest`, including gaps in the IMS token and custom fees.
 
 * Eliminated redundant extension and registration re-fetches on every Admin page load when the Admin UI SDK is enabled but no extensions are registered.
-
-* Fixed dependency injection wiring for `CustomFeeParser`.
 
 * Removed orphaned unique constraints and unneeded indexes.
 

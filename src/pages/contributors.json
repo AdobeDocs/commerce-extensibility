@@ -463,12 +463,13 @@
     {
       "page": "/app-management/",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/8988184?v=4",
         "https://avatars.githubusercontent.com/u/38460853?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/71198017?v=4",
         "https://avatars.githubusercontent.com/u/47715589?v=4"
       ],
-      "lastUpdated": "5/22/2026"
+      "lastUpdated": "7/22/2026"
     },
     {
       "page": "/app-management/app-metadata",
@@ -559,11 +560,12 @@
     {
       "page": "/app-management/troubleshooting",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/8988184?v=4",
         "https://avatars.githubusercontent.com/u/38460853?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/47715589?v=4"
       ],
-      "lastUpdated": "6/11/2026"
+      "lastUpdated": "7/22/2026"
     },
     {
       "page": "/config",

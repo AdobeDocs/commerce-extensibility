@@ -231,13 +231,34 @@ Use `massActionErrorResponse(status, message)` to report a failure. See the [`@a
 A `view` mass action opens an iframe at `path` inside your App Builder frontend — there's no server-side handler. Read the selected row IDs and close the iframe with the React hooks exported from `@adobe/aio-commerce-lib-admin-ui/web`:
 
 ```jsx
-import { useHostConnection, useMassActionContext } from "@adobe/aio-commerce-lib-admin-ui/web";
+import {
+  useHostConnection,
+  useMassActionContext,
+} from "@adobe/aio-commerce-lib-admin-ui/web";
+import { Button, ComboBox, ComboBoxItem, Heading } from "@react-spectrum/s2";
+import { style } from "@react-spectrum/s2/style" with { type: "macro" };
 
-export function ExportOrdersPage() {
-  const { selectedIds } = useMassActionContext();
-  const { close } = useHostConnection();
+import { throwIfError } from "#web/utils.ts";
 
-  // ...export selectedIds, then call close() to return to the order grid.
+/** Lists the order IDs the mass action was triggered with, then closes the iframe on demand. */
+export function MassActionWithRedirect() {
+  const { data } = throwIfError(useMassActionContext());
+  const { actions } = throwIfError(useHostConnection());
+
+  return (
+    <div className={style({ margin: 8 })}>
+      <Heading level={1}>Selected Ids</Heading>
+      <ComboBox defaultItems={data.selectedIds.map((id) => ({ id }))}>
+        {(item) => <ComboBoxItem id={item.id}>{item.id}</ComboBoxItem>}
+      </ComboBox>
+      <Button
+        onPress={actions.close}
+        styles={style({ marginTop: 8 })}
+        variant="primary">
+        Done
+      </Button>
+    </div>
+  );
 }
 ```
 

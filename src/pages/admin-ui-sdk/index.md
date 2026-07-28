@@ -26,9 +26,13 @@ The SDK contains two main components that are necessary for development:
 
 [Adobe Identity Management Service (IMS)](https://experienceleague.adobe.com/en/docs/commerce-admin/start/admin/ims/adobe-ims-integration-overview) manages authentication. The merchant adds their IMS org information into a configuration panel in Commerce. Once this information added, the merchant's App Builder app can securely communicate with the merchant's instance and render the app UI.
 
-The following sequence diagram illustrates the authentication process.
+The following sequence diagram illustrates the authentication process in V2.
 
-![Sequence diagram](../images/admin-ui-sdk/overview/sequence-diagram.png)
+![Sequence diagram](../images/admin-ui-sdk/overview/admin_ui_sdk_sequence_v2.png)
+
+In V1, the sequence is as follows:
+
+![Sequence diagram](../images/admin-ui-sdk/overview/admin_ui_sdk_sequence_v1.png)
 
 ## Code samples
 

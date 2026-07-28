@@ -66,7 +66,7 @@ V2 iframe pages read context through React hooks exported from `@adobe/aio-comme
 | Hook | Available in | Returns |
 | --- | --- | --- |
 | `useIms()` | Any page | The signed-in admin's `imsOrgId` and `imsToken`. |
-| `useHostConnection()` | Any iframe page | A `close()` function to close the iframe and return to the Commerce Admin grid or view. |
+| `useHostConnection()` | Any iframe page | A `close()` function to close the iframe and return to the Commerce Admin grid or view or `closeWithError()` to return to the opening view with an error banner. |
 | `useMassActionContext()` | Mass action `view` pages | `selectedIds`, the array of grid row IDs the mass action was triggered with. |
 | `useOrderViewButtonContext()` | Order view button `view` pages | `orderId`, the order the button was rendered for. |
 | `useCommerce()` | Any page | The host (domain) of the Commerce Admin the extension is embedded in. |

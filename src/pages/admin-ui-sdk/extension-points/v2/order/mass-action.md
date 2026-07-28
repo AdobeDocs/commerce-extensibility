@@ -59,13 +59,34 @@ adminUi: {
 1. If the action declares `notifications`, Commerce Admin shows a success or error banner once the action completes.
 
 ```tsx
-import { useMassActionContext } from "@adobe/aio-commerce-lib-admin-ui/web";
+import {
+  useHostConnection,
+  useMassActionContext,
+} from "@adobe/aio-commerce-lib-admin-ui/web";
+import { Button, ComboBox, ComboBoxItem, Heading } from "@react-spectrum/s2";
+import { style } from "@react-spectrum/s2/style" with { type: "macro" };
 
-function MassActionPage() {
-  const { data, error } = useMassActionContext();
-  if (error) return null;
+import { throwIfError } from "#web/utils.ts";
 
-  // data.selectedIds is a non-empty string[].
+/** Lists the order IDs the mass action was triggered with, then closes the iframe on demand. */
+export function MassActionWithRedirect() {
+  const { data } = throwIfError(useMassActionContext());
+  const { actions } = throwIfError(useHostConnection());
+
+  return (
+    <div className={style({ margin: 8 })}>
+      <Heading level={1}>Selected Ids</Heading>
+      <ComboBox defaultItems={data.selectedIds.map((id) => ({ id }))}>
+        {(item) => <ComboBoxItem id={item.id}>{item.id}</ComboBoxItem>}
+      </ComboBox>
+      <Button
+        onPress={actions.close}
+        styles={style({ marginTop: 8 })}
+        variant="primary">
+        Done
+      </Button>
+    </div>
+  );
 }
 ```
 

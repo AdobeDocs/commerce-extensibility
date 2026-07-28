@@ -1507,12 +1507,13 @@
     {
       "page": "/webhooks/hooks",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/11652541?v=4",
+        "https://avatars.githubusercontent.com/u/17369548?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/18550571?v=4",
-        "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/47368809?v=4"
       ],
-      "lastUpdated": "5/20/2026"
+      "lastUpdated": "7/27/2026"
     },
     {
       "page": "/webhooks/installation",
@@ -1527,12 +1528,12 @@
     {
       "page": "/webhooks/release-notes",
       "avatars": [
-        "https://avatars.githubusercontent.com/u/18550571?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
+        "https://avatars.githubusercontent.com/u/18550571?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4",
         "https://avatars.githubusercontent.com/u/47368809?v=4"
       ],
-      "lastUpdated": "5/19/2026"
+      "lastUpdated": "7/27/2026"
     },
     {
       "page": "/webhooks/responses",

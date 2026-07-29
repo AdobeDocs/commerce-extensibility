@@ -126,6 +126,7 @@
     {
       "page": "/admin-ui-sdk/configuration",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/47715589?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/47368809?v=4",
         "https://avatars.githubusercontent.com/u/114562006?v=4",
@@ -133,7 +134,7 @@
         "https://avatars.githubusercontent.com/u/98363870?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4"
       ],
-      "lastUpdated": "5/21/2026"
+      "lastUpdated": "7/29/2026"
     },
     {
       "page": "/admin-ui-sdk/eligible-extensions-config",
@@ -155,11 +156,12 @@
     {
       "page": "/admin-ui-sdk/extension-points/banner-notification",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/47715589?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/71198017?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4"
       ],
-      "lastUpdated": "5/19/2026"
+      "lastUpdated": "7/29/2026"
     },
     {
       "page": "/admin-ui-sdk/extension-points/customer/",
@@ -171,30 +173,33 @@
     {
       "page": "/admin-ui-sdk/extension-points/customer/grid-columns",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/47715589?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/71198017?v=4"
       ],
-      "lastUpdated": "5/20/2026"
+      "lastUpdated": "7/29/2026"
     },
     {
       "page": "/admin-ui-sdk/extension-points/customer/mass-action",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/47715589?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/71198017?v=4"
       ],
-      "lastUpdated": "5/19/2026"
+      "lastUpdated": "7/29/2026"
     },
     {
       "page": "/admin-ui-sdk/extension-points/menu",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/47715589?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/71198017?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4"
       ],
-      "lastUpdated": "5/19/2026"
+      "lastUpdated": "7/29/2026"
     },
     {
       "page": "/admin-ui-sdk/extension-points/order/",
@@ -207,38 +212,42 @@
     {
       "page": "/admin-ui-sdk/extension-points/order/custom-fees",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/47715589?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/71198017?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4"
       ],
-      "lastUpdated": "5/19/2026"
+      "lastUpdated": "7/29/2026"
     },
     {
       "page": "/admin-ui-sdk/extension-points/order/grid-columns",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/47715589?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/71198017?v=4"
       ],
-      "lastUpdated": "5/20/2026"
+      "lastUpdated": "7/29/2026"
     },
     {
       "page": "/admin-ui-sdk/extension-points/order/mass-action",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/47715589?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/71198017?v=4"
       ],
-      "lastUpdated": "5/19/2026"
+      "lastUpdated": "7/29/2026"
     },
     {
       "page": "/admin-ui-sdk/extension-points/order/view-button",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/47715589?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/71198017?v=4"
       ],
-      "lastUpdated": "3/4/2026"
+      "lastUpdated": "7/29/2026"
     },
     {
       "page": "/admin-ui-sdk/extension-points/page",
@@ -260,19 +269,21 @@
     {
       "page": "/admin-ui-sdk/extension-points/product/grid-columns",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/47715589?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/71198017?v=4"
       ],
-      "lastUpdated": "5/20/2026"
+      "lastUpdated": "7/29/2026"
     },
     {
       "page": "/admin-ui-sdk/extension-points/product/mass-action",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/47715589?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/71198017?v=4"
       ],
-      "lastUpdated": "5/14/2026"
+      "lastUpdated": "7/29/2026"
     },
     {
       "page": "/admin-ui-sdk/extension-points/v2/",
@@ -502,11 +513,12 @@
       "page": "/app-development/extension-compatibility",
       "avatars": [
         "https://avatars.githubusercontent.com/u/11652541?v=4",
+        "https://avatars.githubusercontent.com/u/47715589?v=4",
         "https://avatars.githubusercontent.com/u/8988184?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4"
       ],
-      "lastUpdated": "7/21/2026"
+      "lastUpdated": "7/29/2026"
     },
     {
       "page": "/app-development/learning-path",
@@ -816,12 +828,13 @@
     {
       "page": "/events/consume-events-examples/runtime-action-commerce-callback",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/47715589?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/47368809?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4"
       ],
-      "lastUpdated": "5/19/2026"
+      "lastUpdated": "7/29/2026"
     },
     {
       "page": "/events/context-fields",

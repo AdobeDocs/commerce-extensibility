@@ -24,11 +24,29 @@ This code is provided as a learning reference. It is not production-ready and sh
 
 The app shows how a single App Builder application can participate in the entire lifecycle of a business scenario:
 
-1. **Install and configure** — The app is installed from Adobe Exchange, associated with a Commerce instance in the App Management view, and configured (approval threshold, currency, approver emails) through the auto-generated Admin UI. No custom configuration UI code is required.
-1. **Checkout evaluation** — At checkout, Commerce calls the app through a webhook to evaluate the approval policy in real time and flag orders that require approval.
-1. **Event-driven workflow** — When an order is placed, Commerce emits an order event. For orders at or above the configured approval threshold, the app's event handler creates an approval request in an App Builder database.
-1. **Approver dashboard** — A lightweight single-page app (React + Adobe Spectrum), surfaced through the Admin UI SDK, displays pending approvals, allowing finance or procurement reviewers to approve or reject orders.
-1. **Observability** — An execution log, stored alongside the approval requests in the App Builder database, records webhook and event-handler invocations for troubleshooting.
+* **Install and configure** — The app is installed from Adobe Exchange, associated with a Commerce instance in the App Management view, and configured through the auto-generated Admin UI. No custom configuration UI code is required.
+
+* **Checkout evaluation** — At checkout, Commerce calls the app through a webhook to evaluate the approval policy in real time and flag orders that require approval.
+
+* **Event-driven workflow** — When an order is placed, Commerce emits an order event. For orders at or above the configured approval threshold, the app's event handler creates an approval request in an App Builder database.
+
+* **Approver dashboard** — A lightweight single-page app (React + Adobe Spectrum), surfaced through the Admin UI SDK, allows finance or procurement reviewers to list pending approvals and approve or reject orders.
+
+* **Observability** — An execution log, stored alongside the approval requests in the App Builder database, records webhook and event-handler invocations for troubleshooting.
+
+## Prerequisites
+
+* An Adobe Developer Console project and workspace, with Adobe I/O Runtime for deployment. Add these API services to the workspace:
+
+  * **I/O Management API**
+  * **I/O Events**
+  * **Adobe I/O Events for Adobe Commerce**
+  * **App Builder Data Services** (backs the App Builder database used for approval requests and the execution log)
+
+* [Admin UI SDK](../admin-ui-sdk/index.md) 4.2.0 or greater, enabled and configured — required for the `commerce/backend-ui/2` extension point.
+* Adobe Commerce 2.4.5 or later. The app runs on both Adobe Commerce as a Cloud Service (SaaS) and Adobe Commerce on Cloud/on-premises (PaaS), and uses `@adobe/aio-commerce-lib-auth` to authenticate to Commerce with Adobe IMS. Commerce integration (OAuth1) credentials are not required. Note that the checkout webhook's IMS authentication (`require-adobe-auth`) is SaaS-only. On PaaS, configure the webhook's authorization as described in [Checkout webhook](#checkout-webhook) above.
+* The Commerce Webhooks module and the Adobe I/O Events for Commerce module, both enabled — required for the checkout webhook and the order-placed event subscription.
+* Node.js 24 or later.
 
 ## Extension points
 
@@ -41,6 +59,8 @@ The app registers three Commerce extension points, declared in `app.config.yaml`
 | `commerce/backend-ui/2` | Admin menu entry, order grid columns, and the approver dashboard SPA (requires Admin UI SDK 4.2.0 or greater). |
 
 ## How it works
+
+The following sections describe the app's pieces and how they work together to implement the purchase-approval workflow.
 
 ### Installation and configuration
 
@@ -65,19 +85,11 @@ The app subscribes to the `observer.checkout_submit_all_after` event (declared u
 
 ### Approver dashboard
 
-Through the `commerce/backend-ui/2` extension point, the app adds an Admin menu entry and order grid columns, and serves an approver dashboard SPA where reviewers list pending approvals and approve or reject orders. Approving an order releases the hold in Commerce and returns it to the `pending` status; rejecting an order cancels it. In both cases the app writes an order comment back to Commerce via REST and updates the approval request. This requires [Admin UI SDK](../admin-ui-sdk/index.md) 4.2.0 or greater.
-
-## Prerequisites
-
-* Node.js 24 or later.
-* An Adobe Developer Console project and workspace, with Adobe I/O Runtime for deployment. Add these API services to the workspace (**Add service > API**): **I/O Management API**, **App Builder Data Services** (backs the App Builder Database used for approval requests and the execution log), **I/O Events**, and **Adobe I/O Events for Adobe Commerce**.
-* [Admin UI SDK](../admin-ui-sdk/index.md) 4.2.0 or greater, enabled and configured — required for the `commerce/backend-ui/2` extension point.
-* The Commerce Webhooks module and the Adobe I/O Events for Commerce module, both enabled — required for the checkout webhook and the order-placed event subscription.
-* Adobe Commerce 2.4.5 or later. The app runs on both Adobe Commerce as a Cloud Service (SaaS) and Adobe Commerce on PaaS/on-premises, and authenticates to Commerce with Adobe IMS in both cases (via `@adobe/aio-commerce-lib-auth`), so no Commerce integration (OAuth1) credentials are required. Note that the checkout webhook's IMS authentication (`require-adobe-auth`) is SaaS-only; on PaaS, configure the webhook's authorization as described in [Checkout webhook](#checkout-webhook) above.
+Through the `commerce/backend-ui/2` extension point, the app adds an Admin menu entry and order grid columns, and serves an approver dashboard SPA where reviewers list pending approvals and approve or reject orders. Approving an order releases the hold in Commerce and returns it to the `pending` status; rejecting an order cancels it. In both cases, the app uses a REST call to write an order comment back to Commerce and updates the approval request. This requires [Admin UI SDK](../admin-ui-sdk/index.md) 4.2.0 or greater.
 
 ## Get the code
 
-Scaffold a new project from the reference app with the [Adobe I/O CLI](https://developer.adobe.com/app-builder/docs/guides/runtime_guides/tools/cli-install/). This command clones the app, installs its dependencies, and lets you select or create the App Builder workspace to use:
+You can scaffold a new project from the reference app with the [Adobe I/O CLI](https://developer.adobe.com/app-builder/docs/guides/runtime_guides/tools/cli-install/). This command clones the app, installs its dependencies, and lets you select or create the App Builder workspace to use:
 
 ```bash
 aio app init my-approval --repo adobe/adobe-commerce-samples/apps/purchase-approval

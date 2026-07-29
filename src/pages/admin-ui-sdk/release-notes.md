@@ -8,6 +8,16 @@ keywords:
 
 # Admin UI SDK release notes
 
+## Version 4.2.1
+
+### Release date
+
+July 29, 2026
+
+### Bug fixes
+
+* Fixed an issue where multiple apps registering at the same Admin UI extension point could produce colliding identifiers, causing extensions to overwrite one another or fail to render.
+
 ## Version 4.2.0
 
 Admin UI SDK 4.2.0 is available for Adobe Caommerce on Cloud and on-premises (PaaS) version 2.4.8 and later. Support for Adobe Commerce as a Cloud Service (SaaS) will be available in the near future.
@@ -42,7 +52,7 @@ July 28, 2026
 
 ### Release date
 
-July 14. 2026
+July 14, 2026
 
 ### Bug fixes
 

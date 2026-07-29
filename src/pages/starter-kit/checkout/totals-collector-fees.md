@@ -20,7 +20,9 @@ The out-of-process totals collector exposes a dedicated webhook for custom fees:
 plugin.magento.out_of_process_totals_collector.api.get_total_modifications.custom_fees
 ```
 
-This webhook fires during cart totals collection, after shipping costs and discounts are computed, so your App Builder application receives both the computed shipping cost and any shipping discount as part of the request payload. Your application returns a JSON Patch response with the fees to apply. Commerce converts each fee to the store currency, adds the amounts to the cart grand total, and persists them for display in the checkout, admin documents, and transactional emails.
+This webhook fires during cart totals collection, after shipping costs and discounts are computed, so your app receives both the computed shipping cost and any shipping discount as part of the request payload. Your app returns a JSON Patch response with the fees to apply. Commerce converts each fee to the store currency, adds the amounts to the cart grand total, and persists them for display in the checkout, admin documents, and transactional emails.
+
+The `totals-collector` app does not declare this webhook or ship an example action for it. Instead, you must add your own runtime action implementing the response format below, then register it.
 
 ## Custom fees webhook
 
@@ -36,7 +38,7 @@ To apply fees from an external service, register a webhook for the method `plugi
         <hooks>
             <batch name="totals_collector_fees">
                 <hook name="totals_collector_fees"
-                      url="https://<your_app_builder>.adobeioruntime.net/api/v1/web/commerce-checkout-starter-kit/totals-collector-fees"
+                      url="https://<your_app_builder>.adobeioruntime.net/api/v1/web/totals-collector/<your-custom-fees-action>"
                       method="POST"
                       timeout="30000"
                       softTimeout="1000"

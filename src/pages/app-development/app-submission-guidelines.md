@@ -54,7 +54,7 @@ Some requirements will differ based on whether you indicated the app was non-dow
       - If the app is compatible with the EDS storefront, include instructions for setup. [Example documentation](https://experienceleague.adobe.com/developer/commerce/storefront/get-started/create-storefront/)
       - If the app uses a Mesh, provide detailed information on how to configure it according to Adobe guidelines. [Example documentation](https://developer.adobe.com/graphql-mesh-gateway/mesh/basic/create-mesh)
       - If the app uses eventing, provide information about the events used in the project and how to subscribe to them. Example documentation:
-         - [Integration starter kit overview](https://github.com/adobe/commerce-integration-starter-kit?tab=readme-ov-file#onboarding
+         - [Integration starter kit overview](https://github.com/adobe/commerce-integration-starter-kit?tab=readme-ov-file#onboarding)
          - [Configure eventing in the checkout starter kit](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/SUBMISSION_TEMPLATE.md#configure-eventing)
       - If the app uses webhooks, provide information on how to create a webhook. [Example documentation](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/SUBMISSION_TEMPLATE.md#configure-webhooks)
   - **Version requirements**: Indicate the required module versions (example: Admin UI SDK minimum version `3.0.0`).
@@ -127,7 +127,7 @@ Some requirements will differ based on whether you indicated the app was non-dow
           minVersion: 2.4.5
       ```
 
-  - **Events configuration**: Review [`events.config.yaml`](/starter-kit/checkout/configure.md#eventsconfigyaml) to verify event providers and registrations, document usage, and prefix events with your app's scope to avoid collisions. Remove this file if your app does not use events.
+  - **Events configuration**: Review `events.config.yaml` to verify event providers and registrations, document usage, and prefix events with your app's scope to avoid collisions. Remove this file if your app does not use events.
   - **Admin UI SDK configuration**: If an app implements the Admin UI SDK, make sure requirements in the [Admin UI SDK review checklist](../admin-ui-sdk/app-review-checklist.md) are met.
   - **API Mesh configuration**: For non-downloadable apps, having an automatically-created mesh that is configured for an app builder action deployed within the same environment is not currently supported. If this is needed by an app, we recommend adding a `mesh.json` example in the documentation or in a public repo and providing instructions for setting up the mesh after the auto-generated environment is created.
 

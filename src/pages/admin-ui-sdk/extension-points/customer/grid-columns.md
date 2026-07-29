@@ -196,4 +196,4 @@ The following example provides a default value.
 
 ## Sample code
 
-The Adobe Commerce Extensibility Code Samples repository demonstrates how to customize [customer grid columns](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/customer/custom-grid-columns).
+The Adobe Commerce Extensibility Code Samples repository demonstrates how to customize [customer grid columns](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/v1/customer/custom-grid-columns).

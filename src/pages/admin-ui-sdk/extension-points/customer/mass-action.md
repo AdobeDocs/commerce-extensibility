@@ -56,4 +56,4 @@ customer: {
 
 ## Sample code
 
-The Adobe Commerce Extensibility Code Samples repository demonstrates how to customize [customer mass actions](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/customer/custom-mass-action).
+The Adobe Commerce Extensibility Code Samples repository demonstrates how to customize [customer mass actions](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/v1/customer/custom-mass-action).

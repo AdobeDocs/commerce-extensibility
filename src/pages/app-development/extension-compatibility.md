@@ -93,7 +93,7 @@ Refer to [URL structure](https://developer.adobe.com/commerce/webapi/rest/#url-s
     }
     ```
 
-    For more information, see the [full example](https://github.com/adobe/adobe-commerce-samples/blob/main/admin-ui-sdk/menu/custom-menu/src/commerce-backend-ui-1/web-src/src/components/MainPage.js).
+    For more information, see the [full example](https://github.com/adobe/adobe-commerce-samples/blob/main/admin-ui-sdk/v1/menu/custom-menu/src/commerce-backend-ui-1/web-src/src/components/MainPage.js).
 
 ## Out-of-process extensibility modules
 

@@ -190,4 +190,4 @@ The following example provides a default value.
 
 ## Sample code
 
-The Adobe Commerce Extensibility Code Samples repository demonstrates how to customize [product grid columns](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/product/custom-grid-columns).
+The Adobe Commerce Extensibility Code Samples repository demonstrates how to customize [product grid columns](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/v1/product/custom-grid-columns).

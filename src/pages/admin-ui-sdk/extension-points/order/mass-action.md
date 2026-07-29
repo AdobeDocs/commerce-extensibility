@@ -56,4 +56,4 @@ order: {
 
 ## Sample code
 
-The Adobe Commerce Extensibility Code Samples repository demonstrates how to customize the [order mass action](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/order/custom-mass-action).
+The Adobe Commerce Extensibility Code Samples repository demonstrates how to customize the [order mass action](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/v1/order/custom-mass-action).

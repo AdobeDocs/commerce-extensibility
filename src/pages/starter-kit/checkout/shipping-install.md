@@ -8,7 +8,7 @@ keywords:
 
 # Install the shipping module
 
-To begin using the shipping module with the checkout starter kit, ensure that you have completed the [getting started](getting-started.md) and [configuration](configure.md) steps.
+To begin using the `shipping-method` app, ensure that you have completed the [getting started](getting-started.md) and [configuration](configure.md) steps.
 
 For more ideas on how you can use the shipping module, refer to [shipping use cases](shipping-use-cases.md).
 
@@ -32,16 +32,12 @@ composer require magento/module-out-of-process-shipping-methods --with-dependenc
 
 <Fragment src="/_includes/checkout-configuration.md" />
 
-The starter kit provides the [`create-shipping-carriers`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/create-shipping-carriers.js) script to help configure Adobe Commerce. It reads the shipping carriers configuration from the `shipping-carriers.yaml` file and creates the shipping carriers in Adobe Commerce.
+The `shipping-method` app sets up Commerce for you automatically as part of installation, using an [App Management custom installation step](../../app-management/installation/customize.md#custom-installation-steps).
 
-To run this script, use the following command:
+### Install
 
-```bash
-npm run create-shipping-carriers
-```
+Installing the app creates two demo shipping carriers:  **DPS** (Demo Postal Service) and **Fedex**. You can use the `/V1/oope_shipping_carrier` REST endpoint to test out-of-process shipping rates.
 
-To retrieve shipping carriers from Commerce, use the [`get-shipping-carriers`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/get-shipping-carriers.js) script:
+### Uninstall
 
-```bash
-npm run get-shipping-carriers
-```
+Uninstalling the app disables these carriers using the same endpoint, so they immediately stop appearing as shipping options at checkout. If you re-install the app later, the same carriers are turned back on instead of being created again.

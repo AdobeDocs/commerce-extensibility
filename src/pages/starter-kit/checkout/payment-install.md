@@ -8,7 +8,7 @@ keywords:
 
 # Install the payment module
 
-To begin using the payment module with the checkout starter kit, ensure that you have completed the [getting started](getting-started.md) and [configuration](configure.md) steps.
+To begin using the `payment-method` app, ensure that you have completed the [getting started](getting-started.md) and [configuration](configure.md) steps.
 
 For more ideas on how you can use the payment module, refer to [payment use cases](payment-use-cases.md).
 
@@ -32,10 +32,12 @@ composer require magento/module-out-of-process-payment-methods --with-dependenci
 
 <Fragment src="/_includes/checkout-configuration.md" />
 
-The starter kit provides the [`create-payment-methods`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/create-payment-methods.js) script to help configure Adobe Commerce. It reads the payment methods configuration from the `payment-methods.yaml` file and creates the payment methods in Adobe Commerce.
+The `payment-method` app sets up Commerce for you automatically as part of installation, using an [App Management custom installation step](../../app-management/installation/customize.md#custom-installation-steps).
 
-To run this script, use the following command:
+### Install
 
-```bash
-npm run create-payment-methods
-```
+Installing the app creates a demo payment method, **Method one**, using the `/V1/oope_payment_method` REST endpoint, so you can try out out-of-process payment validation right away.
+
+### Uninstall
+
+Uninstalling the app disables this payment method via the same endpoint, so it immediately stops appearing as a payment option at checkout. Orders that were already placed with it aren't affected. If you install the app again later, the same payment method is turned back on instead of being created again.

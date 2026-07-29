@@ -12,7 +12,7 @@ keywords:
 
 # Purchase Approval reference app
 
-The **Purchase Approval** app is a complete, end-to-end App Builder reference application that implements a B2B purchase-approval workflow for Adobe Commerce. It is a real-world example that combines several extensibility technologies in a single app: [App Management](./index.md) for installation and configuration, [Webhooks](../webhooks/index.md) for real-time checkout evaluation, [Adobe I/O Events](../events/index.md) for an order-driven workflow, and the [Admin UI SDK](../admin-ui-sdk/index.md) for an in-Admin approver experience.
+The **Purchase Approval** app is a complete, end-to-end App Builder reference application that implements a B2B purchase-approval workflow for Adobe Commerce. It is a real-world example that combines several extensibility technologies in a single app: [App Management](./index.md) for installation and configuration, [webhooks](../webhooks/index.md) for real-time checkout evaluation, [events](../events/index.md) for an order-driven workflow, and the [Admin UI SDK](../admin-ui-sdk/index.md) for an in-Admin approver experience.
 
 Use it as a starting point or as a reference for how these components fit together. See [Get the code](#get-the-code) for the source repository and setup steps.
 
@@ -24,11 +24,11 @@ This code is provided as a learning reference. It is not production-ready and sh
 
 The app shows how a single App Builder application can participate in the entire lifecycle of a business scenario:
 
-1. **Install and configure** — The app is installed from Adobe Exchange, associated with a Commerce instance in the App Management view, and configured (approval threshold, currency, approver emails) through the auto-generated Admin UI — no custom configuration UI code is required.
-2. **Checkout evaluation** — At checkout, Commerce calls the app through a webhook to evaluate the approval policy in real time and flag orders that require approval.
-3. **Event-driven workflow** — When an order is placed, Commerce emits an order event; for orders at or above the configured approval threshold, the app's event handler creates an approval request in an App Builder Database.
-4. **Approver dashboard** — A lightweight single-page app (React + Adobe Spectrum), surfaced through the Admin UI SDK, lets finance or procurement reviewers list pending approvals and approve or reject orders.
-5. **Observability** — An execution log, stored alongside the approval requests in the App Builder Database, records webhook and event-handler invocations for troubleshooting.
+1. **Install and configure** — The app is installed from Adobe Exchange, associated with a Commerce instance in the App Management view, and configured (approval threshold, currency, approver emails) through the auto-generated Admin UI. No custom configuration UI code is required.
+1. **Checkout evaluation** — At checkout, Commerce calls the app through a webhook to evaluate the approval policy in real time and flag orders that require approval.
+1. **Event-driven workflow** — When an order is placed, Commerce emits an order event. For orders at or above the configured approval threshold, the app's event handler creates an approval request in an App Builder database.
+1. **Approver dashboard** — A lightweight single-page app (React + Adobe Spectrum), surfaced through the Admin UI SDK, displays pending approvals, allowing finance or procurement reviewers to approve or reject orders.
+1. **Observability** — An execution log, stored alongside the approval requests in the App Builder database, records webhook and event-handler invocations for troubleshooting.
 
 ## Extension points
 
@@ -55,11 +55,13 @@ For the general install-and-associate flow, see [Installation](./installation/in
 
 ### Checkout webhook
 
-The `commerce/extensibility/1` extension registers a webhook subscription on `observer.sales_order_place_before` (type `after`). Commerce sends the order payload to the app's runtime action, which compares the order total against the configured threshold. For an order at or above the threshold, the action places the order on hold in Commerce (via REST) and adds the approval message as an order comment, then returns webhook operations that set the order status to `holded` and store the approval message as a custom attribute. Orders below the threshold pass through unchanged. The webhook uses Adobe IMS authentication (`require-adobe-auth`), which is a SaaS-only capability; on PaaS, configure authorization in `webhooks.xml` or use [signature verification](../webhooks/signature-verification.md). See [Webhooks installation](./installation/webhooks.md) for how webhook subscriptions are provisioned during app installation.
+The `commerce/extensibility/1` extension registers a webhook subscription on `observer.sales_order_place_before` (type `after`). Commerce sends the order payload to the app's runtime action, which compares the order total against the configured threshold. For an order at or above the threshold, the action uses a REST call to place the order on hold in Commerce, then adds the approval message as an order comment. The action returns webhook operations that set the order state to `holded` and store the approval message as a custom attribute. Orders below the threshold pass through unchanged.
+
+The webhook uses Adobe IMS authentication (`require-adobe-auth`), which is available on Adobe Commerce as a Cloud Service. On Adobe Commerce on Cloud and on-premises systems, configure authorization in `webhooks.xml` or use [signature verification](../webhooks/signature-verification.md). See [Webhooks installation](./installation/webhooks.md) for how webhook subscriptions are provisioned during app installation.
 
 ### Order-placed event
 
-The app subscribes to the `observer.checkout_submit_all_after` event (declared under `eventing.commerce` in `app.commerce.config.ts`), which is provisioned automatically for the app's event provider during installation. When an order is placed, the event handler evaluates the order total against the configured threshold and, for orders at or above it, creates an approval request in an App Builder Database (via `@adobe/aio-lib-db`). Approval requests and the execution log are stored in this database in separate collections. See [Events installation](./installation/events.md) for how event subscriptions are provisioned.
+The app subscribes to the `observer.checkout_submit_all_after` event (declared under `eventing.commerce` in `app.commerce.config.ts`), which is provisioned automatically for the app's event provider during installation. When an order is placed, the event handler evaluates the order total against the configured threshold. If the order is at or above this threshold, the handler creates an approval request in an App Builder database (using `@adobe/aio-lib-db`). Approval requests and the execution log are stored in this database in separate collections. See [Events installation](./installation/events.md) for how event subscriptions are provisioned.
 
 ### Approver dashboard
 
@@ -83,7 +85,7 @@ aio app init my-approval --repo adobe/adobe-commerce-samples/apps/purchase-appro
 
 Make sure the workspace has the required API services (see [Prerequisites](#prerequisites)), then deploy it with App Builder. When you change the app's configuration or schema, regenerate the manifest and App Management actions by running `npx aio-commerce-lib-app generate all`. Follow the sample `README.md` for the complete step-by-step instructions.
 
- * Source code: [Purchase Approval reference app](https://github.com/adobe/adobe-commerce-samples/tree/main/apps/purchase-approval)
+Source code: [Purchase Approval reference app](https://github.com/adobe/adobe-commerce-samples/tree/main/apps/purchase-approval)
 
 ## Related documentation
 

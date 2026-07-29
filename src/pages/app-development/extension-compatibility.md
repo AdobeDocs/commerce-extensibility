@@ -37,7 +37,7 @@ Verify that your Commerce APIs are compatible with both environments by checking
 - [PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) [PaaS REST API specification](https://developer.adobe.com/commerce/webapi/reference/rest/paas) - The **I/O Management API** is required to connect a PaaS instance with your app builder application.
 - [SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) [SaaS REST API specification](https://developer.adobe.com/commerce/webapi/reference/rest/saas) - The **Adobe Commerce as a Cloud Service API** is required to connect a SaaS instance with your app builder application.
 
-For more information on REST API access, refer to the [Developer Console configuration](../starter-kit/integration/create-integration.md#onboarding) in the integration starter kit, or the [CLI configuration](../starter-kit/checkout/getting-started.md#initial-configuration) in the checkout starter kit.
+For more information on REST API access, refer to the [Developer Console configuration](../starter-kit/integration/create-integration.md#onboarding) in the integration starter kit, or the [CLI configuration](../starter-kit/checkout/getting-started.md#initialize-your-app) in the checkout starter kit.
 
 **Adapt REST endpoint for older starter kit versions:**
 
@@ -93,7 +93,7 @@ Refer to [URL structure](https://developer.adobe.com/commerce/webapi/rest/#url-s
     }
     ```
 
-    For more information, see the [full example](https://github.com/adobe/adobe-commerce-samples/blob/main/admin-ui-sdk/menu/custom-menu/src/commerce-backend-ui-1/web-src/src/components/MainPage.js).
+    For more information, see the [full example](https://github.com/adobe/adobe-commerce-samples/blob/main/admin-ui-sdk/v1/menu/custom-menu/src/commerce-backend-ui-1/web-src/src/components/MainPage.js).
 
 ## Out-of-process extensibility modules
 

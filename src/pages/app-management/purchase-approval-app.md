@@ -44,7 +44,9 @@ The app shows how a single App Builder application can participate in the entire
   * **App Builder Data Services** (backs the App Builder database used for approval requests and the execution log)
 
 * [Admin UI SDK](../admin-ui-sdk/index.md) 4.2.0 or greater, enabled and configured — required for the `commerce/backend-ui/2` extension point.
-* Adobe Commerce 2.4.5 or later. The app runs on both Adobe Commerce as a Cloud Service (SaaS) and Adobe Commerce on Cloud/on-premises (PaaS), and uses `@adobe/aio-commerce-lib-auth` to authenticate to Commerce with Adobe IMS. Commerce integration (OAuth1) credentials are not required. Note that the checkout webhook's IMS authentication (`require-adobe-auth`) is SaaS-only. On PaaS, configure the webhook's authorization as described in [Checkout webhook](#checkout-webhook) above.
+* Adobe Commerce 2.4.5 or later, on either Adobe Commerce as a Cloud Service (SaaS) or Adobe Commerce on Cloud/on-premises (PaaS). In both cases, the app authenticates to Commerce with Adobe IMS via `@adobe/aio-commerce-lib-auth`, so no Commerce integration (OAuth1) credentials are required. The only SaaS-vs-PaaS difference is how the checkout webhook is secured:
+  * **SaaS:** the webhook uses Adobe IMS authentication (`require-adobe-auth`), so Commerce authenticates to the runtime action automatically — no extra setup.
+  * **PaaS:** `require-adobe-auth` is not available, so configure the webhook's authorization as described in [Checkout webhook](#checkout-webhook) above.
 * The Commerce Webhooks module and the Adobe I/O Events for Commerce module, both enabled — required for the checkout webhook and the order-placed event subscription.
 * Node.js 24 or later.
 
@@ -89,13 +91,15 @@ Through the `commerce/backend-ui/2` extension point, the app adds an Admin menu 
 
 ## Get the code
 
-You can scaffold a new project from the reference app with the [Adobe I/O CLI](https://developer.adobe.com/app-builder/docs/guides/runtime_guides/tools/cli-install/). This command clones the app, installs its dependencies, and lets you select or create the App Builder workspace to use:
+Clone the reference app and install its dependencies:
 
 ```bash
-aio app init my-approval --repo adobe/adobe-commerce-samples/apps/purchase-approval
+git clone https://github.com/adobe/adobe-commerce-samples.git
+cd adobe-commerce-samples/apps/purchase-approval
+npm install
 ```
 
-Make sure the workspace has the required API services (see [Prerequisites](#prerequisites)), then deploy it with App Builder. When you change the app's configuration or schema, regenerate the manifest and App Management actions by running `npx aio-commerce-lib-app generate all`. Follow the sample `README.md` for the complete step-by-step instructions.
+Associate the project with an App Builder workspace (`aio app use`), make sure the workspace has the required API services (see [Prerequisites](#prerequisites)), then deploy it with App Builder. If you change the app's configuration or schema, regenerate the manifest and App Management actions with `npm run manifest`. See the sample `README.md` for full instructions.
 
 Source code: [Purchase Approval reference app](https://github.com/adobe/adobe-commerce-samples/tree/main/apps/purchase-approval)
 

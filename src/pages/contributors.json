@@ -1,7 +1,7 @@
 {
-  "total": 230,
+  "total": 231,
   "offset": 0,
-  "limit": 230,
+  "limit": 231,
   "data": [
     {
       "page": "/",
@@ -658,6 +658,14 @@
       "lastUpdated": "6/5/2026"
     },
     {
+      "page": "/app-management/purchase-approval-app",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/11652541?v=4",
+        "https://avatars.githubusercontent.com/u/171511902?v=4"
+      ],
+      "lastUpdated": "7/30/2026"
+    },
+    {
       "page": "/app-management/release-notes",
       "avatars": [
         "https://avatars.githubusercontent.com/u/6391769?v=4",
@@ -687,13 +695,14 @@
       "page": "/config",
       "avatars": [
         "https://avatars.githubusercontent.com/u/11652541?v=4",
+        "https://avatars.githubusercontent.com/u/171511902?v=4",
         "https://avatars.githubusercontent.com/u/8988184?v=4",
         "https://avatars.githubusercontent.com/u/10073809?v=4",
         "https://avatars.githubusercontent.com/u/47368809?v=4",
         "https://avatars.githubusercontent.com/u/18550571?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4"
       ],
-      "lastUpdated": "7/28/2026"
+      "lastUpdated": "7/29/2026"
     },
     {
       "page": "/developer-agent/",

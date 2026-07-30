@@ -44,9 +44,9 @@ The app shows how a single App Builder application can participate in the entire
   * **App Builder Data Services** (backs the App Builder database used for approval requests and the execution log)
 
 * [Admin UI SDK](../admin-ui-sdk/index.md) 4.2.0 or greater, enabled and configured — required for the `commerce/backend-ui/2` extension point.
-* Adobe Commerce 2.4.5 or later, on either Adobe Commerce as a Cloud Service (SaaS) or Adobe Commerce on Cloud/on-premises (PaaS). In both cases, the app authenticates to Commerce with Adobe IMS via `@adobe/aio-commerce-lib-auth`, so no Commerce integration (OAuth1) credentials are required. The only SaaS-vs-PaaS difference is how the checkout webhook is secured:
-  * **SaaS:** the webhook uses Adobe IMS authentication (`require-adobe-auth`), so Commerce authenticates to the runtime action automatically — no extra setup.
-  * **PaaS:** `require-adobe-auth` is not available, so configure the webhook's authorization as described in [Checkout webhook](#checkout-webhook) above.
+* Adobe Commerce 2.4.5 or later, on either Adobe Commerce as a Cloud Service (SaaS) or Adobe Commerce on Cloud/on-premises (PaaS). In both cases, the app authenticates to Commerce with Adobe IMS with `@adobe/aio-commerce-lib-auth`. As a result, no Commerce integration (OAuth1) credentials are required. The checkout webhook is secured as follows:
+  * **SaaS:** the webhook uses Adobe IMS authentication (`require-adobe-auth`), so Commerce authenticates to the runtime action automatically. No extra setup is required.
+  * **PaaS:** `require-adobe-auth` is not available, so configure the webhook's authorization as described in [Checkout webhook](#checkout-webhook).
 * The Commerce Webhooks module and the Adobe I/O Events for Commerce module, both enabled — required for the checkout webhook and the order-placed event subscription.
 * Node.js 24 or later.
 

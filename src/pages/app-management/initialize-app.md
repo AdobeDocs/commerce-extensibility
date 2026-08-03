@@ -82,6 +82,14 @@ The initialization process:
 * Generates all required artifacts (`commerce/configuration/1` resources are only generated when `businessConfig` is defined)
 * Updates `app.config.yaml` and `install.yaml` with the appropriate extension references. Creates these files if they do not exist.
 
+## Initialize the configuration library in runtime actions
+
+When your app defines `businessConfig`, each App Builder runtime action that calls `getConfiguration`, `getConfigurationByKey`, or `setConfiguration` must run `initialize` before any of those three methods.
+
+If your schema includes `dynamicList` fields, you must **await** `initialize` and pass runtime action `params`. See [Initialize with and without dynamic lists](./configuration-schema.md#initialize-with-and-without-dynamic-lists) and [Configure action inputs for dynamic lists](./configuration-schema.md#configure-action-inputs-for-dynamic-lists).
+
+See [Retrieve configuration at runtime](./configuration-schema.md#retrieve-configuration-at-runtime) for an example.
+
 ## CLI commands
 
 The library provides the following CLI commands. Replace `npx` with your package manager of preference, using the below equivalents:

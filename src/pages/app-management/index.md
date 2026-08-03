@@ -49,6 +49,8 @@ Before using App Management, ensure the following:
   * `@adobe/aio-commerce-lib-app` version 1.0.0 or later.
   * `@adobe/aio-commerce-sdk` version 1.0.0 or later.
 
+* **Network connectivity to Adobe Commerce**. App Management requires connectivity to the Adobe Commerce instance you associate the app with. If that instance restricts inbound traffic with an IP allowlist, add the [Adobe I/O Runtime egress IPs](https://developer.adobe.com/app-builder/docs/guides/runtime_guides/security-general/#secure-communication-with-back-end-services) used by your app. See [Commerce instance behind an IP allowlist](./troubleshooting.md#commerce-instance-behind-an-ip-allowlist) for details.
+
 ## SDK libraries
 
 App Management uses the [Adobe Commerce SDK](https://github.com/adobe/aio-commerce-sdk) libraries:
@@ -57,10 +59,11 @@ App Management uses the [Adobe Commerce SDK](https://github.com/adobe/aio-commer
 |---------|-------------|
 | `@adobe/aio-commerce-lib-app` | App definition, validation, and manifest generation. |
 | `@adobe/aio-commerce-lib-config` | Configuration management with scope trees and inheritance. |
+| `@adobe/aio-commerce-lib-admin-ui` | Wire contract builders, menu constants, and the permission client for [Admin UI SDK](installation/admin-ui-sdk.md) extension points. |
 
 ## How it works
 
-All App Management configuration is defined in the `app.commerce.config` file at the root of your project. This single file contains your app metadata, business configuration schema, optional [event](installation/events.md) subscriptions, optional [webhook](installation/webhooks.md) declarations for in-process Commerce hooks, and [installation](installation/customize.md) settings.
+All App Management configuration is defined in the `app.commerce.config` file at the root of your project. This single file contains your app metadata, business configuration schema, optional [event](installation/events.md) subscriptions, optional [webhook](installation/webhooks.md) declarations for in-process Commerce hooks, optional [Admin UI SDK](installation/admin-ui-sdk.md) registrations, and [installation](installation/customize.md) settings.
 
 Follow these steps to set up and deploy an App Builder application with App Management:
 
@@ -71,6 +74,8 @@ Follow these steps to set up and deploy an App Builder application with App Mana
 1. **Configure events**. Set up [events](installation/events.md) so Commerce and external events invoke your runtime actions.
 
 1. **Declare webhooks**. Add [webhooks](installation/webhooks.md) to hook into live Commerce flows (checkout, tax, shipping, validation, and similar) and expose those subscriptions in App Management for merchants.
+
+1. **Configure the Admin UI SDK**. Add an [Admin UI SDK](installation/admin-ui-sdk.md) menu entry, grid columns, mass actions, or order view buttons rendered inside Commerce Admin.
 
 1. **Customize installation**. Define [installation messages and custom scripts](installation/customize.md) that run when merchants install your app.
 

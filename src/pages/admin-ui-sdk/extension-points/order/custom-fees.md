@@ -54,4 +54,4 @@ order: {
 
 ## Sample code
 
-The Adobe Commerce Extensibility Code Samples repository demonstrates how to customize [order custom fees](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/order/custom-fees).
+The Adobe Commerce Extensibility Code Samples repository demonstrates how to customize [order custom fees](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/v1/order/custom-fees).

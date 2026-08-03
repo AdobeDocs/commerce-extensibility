@@ -44,6 +44,7 @@ MD033:
     - RedoclyAPIBlock
     - Resources
     - SuperHero
+    - Tab
     - InlineAlert
     - GetCredential
     - Details

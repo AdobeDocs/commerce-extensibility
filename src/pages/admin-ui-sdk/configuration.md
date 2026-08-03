@@ -60,7 +60,7 @@ When you enable the local service, all calls are automatically redirected to the
 
 ### Configuration
 
-You can download a sample app from the [Adobe Commerce Samples repository](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/menu/custom-menu) to gain insight on how the Admin SDK injects menus and pages into the Admin.
+You can download a sample app from the [Adobe Commerce Samples repository](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/v1/menu/custom-menu) to gain insight on how the Admin SDK injects menus and pages into the Admin.
 
 1. Run the following command to clone and sync the repository:
 
@@ -186,7 +186,7 @@ You can download a sample app from the [Adobe Commerce Samples repository](https
 
 ### Custom menu example
 
-1. Change directories to `<repoRootDir>/admin-ui-sdk/menu/custom-menu`.
+1. Change directories to `<repoRootDir>/admin-ui-sdk/v1/menu/custom-menu`.
 
 1. Run the following command to load dependencies.
 

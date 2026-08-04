@@ -29,7 +29,7 @@ Declare a single Commerce Admin menu entry for the application. Use the named co
 
 ```js
 import { defineConfig } from "@adobe/aio-commerce-lib-app/config"
-import { MENU_CATALOG } from "@adobe/aio-commerce-lib-admin-ui/menu";
+import { MENU_SALES } from "@adobe/aio-commerce-lib-admin-ui/menu";
 
 export default defineConfig({
   metadata: {

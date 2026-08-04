@@ -14,3 +14,4 @@ The Installation section covers how to configure event subscriptions, declare Co
 * [Events](events.md) - Configure Commerce and external event subscriptions to trigger runtime actions.
 * [Webhooks](webhooks.md) - Declare Commerce webhook subscriptions in `app.commerce.config` for App Management.
 * [Customize](customize.md) - Define installation messages and custom scripts that run during app installation.
+* [Admin UI SDK](admin-ui-sdk.md) - Configure a Commerce Admin menu entry, grid columns, mass actions, and order view buttons in `app.commerce.config`.

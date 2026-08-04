@@ -60,7 +60,7 @@ bannerNotification: {
 
 ### Sample code
 
-The Adobe Commerce Extensibility Code Samples repository demonstrates how to customize [mass action banner notifications](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/banner-notification/custom-mass-actions).
+The Adobe Commerce Extensibility Code Samples repository demonstrates how to customize [mass action banner notifications](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/v1/order/custom-mass-action).
 
 ## Order view button customization
 
@@ -95,4 +95,4 @@ bannerNotification: {
 
 ### Sample code
 
-The Adobe Commerce Extensibility Code Samples repository demonstrates how to customize [order view button banner notifications](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/banner-notification/custom-order-view-button).
+The Adobe Commerce Extensibility Code Samples repository demonstrates how to customize [order view button banner notifications](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/v1/order/custom-view-button).

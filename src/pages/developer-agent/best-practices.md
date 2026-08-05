@@ -1,5 +1,5 @@
 ---
-title: Best practices for AI Commerce Commerce development MCPs and skills.
+title: Best practices for Commerce development MCPs and skills
 description: Plan mode, workflows, MCP usage, testing, deployment, monitoring, and feedback for Adobe Commerce App Builder AI tooling.
 keywords:
   - App Builder

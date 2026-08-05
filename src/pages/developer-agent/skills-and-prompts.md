@@ -1,5 +1,5 @@
 ---
-title: Skills, prompts, and commands for Commerce development MCPs and skills
+title: Skills, prompts, and commands for Commerce development MCPs
 description: Slash commands, sample prompts, and documentation search for Adobe Commerce Commerce development MCPs and skills and App Builder development.
 keywords:
   - App Builder

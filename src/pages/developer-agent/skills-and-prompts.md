@@ -1,6 +1,6 @@
 ---
 title: Skills, prompts, and commands for AI Commerce tooling
-description: Slash commands, sample prompts, and documentation search for Adobe Commerce AI coding tools and App Builder development.
+description: Slash commands, sample prompts, and documentation search for Adobe Commerce Commerce development MCPs and skills and App Builder development.
 keywords:
   - App Builder
   - Extensibility
@@ -10,7 +10,7 @@ keywords:
 
 # Skills, prompts, and commands
 
-This page describes sample prompts, the `/search-commerce-docs` command, and skill slash commands used with the Commerce AI extensibility tooling. For installation and IDE setup, see [Coding tools setup](coding-tools.md). For workflow guidance, see [Best practices](best-practices.md).
+This page describes sample prompts, the `/search-commerce-docs` command, and skill slash commands used with the Commerce AI extensibility tooling. For installation and IDE setup, see [Commerce development MCPs and skills](coding-tools.md). For workflow guidance, see [Best practices](best-practices.md).
 
 ## Sample prompts
 

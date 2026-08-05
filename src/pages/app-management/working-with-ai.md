@@ -10,7 +10,7 @@ keywords:
 
 # Working with AI
 
-Adobe publishes agent skills that guide AI coding tools through building and migrating App Management apps. These skills follow the open [agentskills.io](https://agentskills.io) standard, so they work with Claude Code, Cursor, VS Code Copilot, Gemini CLI, and other supported coding agents.
+Adobe publishes Commerce development MCPs and skills for building and migrating App Management apps. These skills follow the open [agentskills.io](https://agentskills.io) standard, so they work with Claude Code, Cursor, VS Code Copilot, Gemini CLI, and other supported coding agents.
 
 Two plugins are available in the [`adobe/skills`](https://github.com/adobe/skills) repository:
 

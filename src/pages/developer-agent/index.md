@@ -1,6 +1,6 @@
 ---
 title: AI developer tools for Commerce extensibility
-description: Overview of Adobe-provided AI coding tools, agent skills, and MCP servers for Adobe Commerce and App Builder development.
+description: Overview of Adobe-provided Commerce development MCPs and skills for Adobe Commerce and App Builder development.
 keywords:
   - App Builder
   - Cloud
@@ -10,7 +10,7 @@ keywords:
 
 # AI developer tools for Commerce extensibility
 
-Adobe provides AI developer tooling so you can build and maintain Adobe Developer App Builder applications for Adobe Commerce with less friction. The same stack supports teams who are migrating from in-process PHP extensions to out-of-process apps and teams who are starting new integrations from the starter kits.
+Adobe provides Commerce development MCPs and skills so you can build and maintain Adobe Developer App Builder applications for Adobe Commerce with less friction. The same stack supports teams who are migrating from in-process PHP extensions to out-of-process apps and teams who are starting new integrations from the starter kits.
 
 This section documents the current tooling and is structured so additional guides (for new agents, skills, or workflows) can be added alongside these pages.
 
@@ -34,7 +34,7 @@ Together, these improve workflow integration, context-aware generation, and repe
 
 | Guide | Description |
 | --- | --- |
-| [Coding tools setup](coding-tools.md) | Prerequisites, installation with `aio commerce extensibility tools-setup`, post-install CLI auth, and IDE configuration (for example Cursor and GitHub Copilot). |
+| [Commerce development MCPs and skills](coding-tools.md) | Prerequisites, installation with `aio commerce extensibility tools-setup`, post-install CLI auth, and IDE configuration (for example Cursor and GitHub Copilot). |
 | [`dropins` MCP server](dropins-mcp-server.md) | Installation, update, and skill integration details for the `dropins` MCP server used on AEM Boilerplate Commerce storefronts. |
 | [Use cases](use-cases.md) | Common extension patterns — REST APIs, checkout extensions, storefront components, event-driven integrations, and more. |
 | [Skills, prompts, and commands](skills-and-prompts.md) | Slash commands, sample prompts, and the `/search-commerce-docs` command. |
@@ -55,4 +55,4 @@ After the initial [installation](coding-tools.md#installation), update to the la
 aio commerce extensibility tools-setup
 ```
 
-See [Coding tools setup](coding-tools.md#updating-to-the-latest-version) for details.
+See [Coding Commerce development MCPs and skills](coding-tools.md#updating-to-the-latest-version) for details.

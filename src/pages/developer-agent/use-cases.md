@@ -1,6 +1,6 @@
 ---
-title: Use cases for AI Commerce coding tools
-description: Common extension patterns and use cases you can build with the AI coding tools, App Builder starter kits, and Adobe Commerce as a Cloud Service.
+title: Use cases for AI Commerce Commerce development MCPs and skills
+description: Common extension patterns and use cases you can build with the Commerce development MCPs and skills, App Builder starter kits, and Adobe Commerce as a Cloud Service.
 keywords:
   - App Builder
   - Cloud
@@ -8,13 +8,13 @@ keywords:
   - Tools
 ---
 
-# Use cases
+# Use cases for Commerce development MCPs and skills
 
 The AI developer tools for Adobe Commerce extensibility support a range of Adobe Commerce extension patterns. The following use cases describe a category of extension you can build with the tools, the starter kits, and an AI-assisted IDE.
 
 <InlineAlert variant="info" slots="text"/>
 
-These use cases are examples and not exhaustive. You can build a wide range of extensions with the AI Commerce coding tools.
+These use cases are examples and not exhaustive. You can build a wide range of extensions with the Commerce development MCPs and skills.
 
 ## Custom REST APIs for storefronts
 

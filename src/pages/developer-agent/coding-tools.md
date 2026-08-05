@@ -32,7 +32,7 @@ For skills, prompts, and best practices after setup, see [Skills, prompts, and c
 
 ## Updating to the latest version
 
-After [installing the AI coding developer tooling](#installation), update to the latest version by running:
+After [installing the Commerce development MCPs and skills](#installation), update to the latest version by running:
 
 ```bash
 aio commerce extensibility tools-setup

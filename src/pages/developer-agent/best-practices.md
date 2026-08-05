@@ -1,5 +1,5 @@
 ---
-title: Best practices for AI Commerce coding tools
+title: Best practices for AI Commerce Commerce development MCPs and skills.
 description: Plan mode, workflows, MCP usage, testing, deployment, monitoring, and feedback for Adobe Commerce App Builder AI tooling.
 keywords:
   - App Builder
@@ -28,7 +28,7 @@ Adobe recommends the following practices when using the [Commerce development MC
 * Use MCP tools when available
 * Test each feature after implementation
 * Test locally first, then deploy and test again
-* Use the coding tools for testing support
+* Use the Commerce development MCPs and skills for testing support
 * Question unnecessary complexity
 * Deploy incrementally for faster iteration
 
@@ -173,7 +173,7 @@ Once local testing is successful, deploy and test in the runtime environment. Ru
 
 1. Check activation logs for debugging
 
-### Leverage the coding tools for testing support
+### Leverage the Commerce development MCPs and skills for testing support
 
 Ask for help with testing. The tools can help with debugging, log analysis, and creating appropriate test data for your specific runtime actions.
 

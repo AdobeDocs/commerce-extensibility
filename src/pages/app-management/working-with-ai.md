@@ -1,6 +1,6 @@
 ---
 title: Working with AI
-description: Agent skills for building and migrating Adobe Commerce App Management apps with AI coding tools, and how to install them.
+description: Agent skills for building and migrating Adobe Commerce App Management apps with Commerce development MCPs and skills, and how to install them.
 keywords:
   - App Builder
   - App Management

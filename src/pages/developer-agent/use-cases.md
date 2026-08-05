@@ -1,6 +1,6 @@
 ---
-title: Use cases for AI Commerce Commerce development MCPs and skills
-description: Common extension patterns and use cases you can build with the Commerce development MCPs and skills, App Builder starter kits, and Adobe Commerce as a Cloud Service.
+title: Use cases for Commerce development MCPs and skills
+description: Common extension patterns and use cases for Commerce development MCPs and skills, App Builder starter kits, and Adobe Commerce as a Cloud Service.
 keywords:
   - App Builder
   - Cloud

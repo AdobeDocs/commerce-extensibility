@@ -23,6 +23,8 @@ The tab guides you through four steps:
 - [GitHub](#connect-to-github) (optional) — Connect a GitHub repository so you can push generated code for continued development.
 - [Project env](#review-project-environment-variables) — Set the environment variables your project requires.
 
+The agent shows only the integrations your generated project uses.
+
 The **Environment readiness** panel on the right tracks your progress against the required checks and indicates when your environment is ready to deploy.
 
 ## Connect or create an App Builder workspace
@@ -61,23 +63,32 @@ Make sure the workspace has the **Runtime** service added, along with the follow
 
 The Required APIs section displays any missing APIs. After you add the missing APIs in the Developer Console, you can click **Re-check status** to update the list.
 
-### Review advanced configuration
+### Import the App Builder workspace
 
-Expand **Advanced Configuration** to review or edit the raw credentials:
-
-![Advanced Configuration on the Integrations tab](../images/developer-agent/advanced-config.png)
-
-The fastest way to populate these values is to paste your workspace JSON. To access your workspace JSON:
+Use the **Import App Builder Workspace** section to populate your workspace credentials from your workspace JSON file. To download your workspace JSON:
 
 1. Navigate to `https://developer.adobe.com/console/`.
 1. Open your project and workspace.
-1. Click **Download All** to download the workspace JSON file.
+1. Click **Download all** in the top-right to download the workspace JSON file.
 
-After pasting the contents of your JSON file in the **Paste Workspace JSON** field, click **Apply Workspace JSON** to populate all credentials automatically.
+Then import the file with one of the following methods:
 
-You can also review or edit each group of values individually.
+* **Drag and drop** — Drag your `workspace.json` file into the designated area or click **Browse File** to select the file.
+* **Paste JSON** — Click **Paste JSON instead**, paste the contents of your JSON file. Then click **Apply Workspace JSON**.
 
-After you have reviewed the advanced configuration, click **Next** to continue.
+The agent populates all managed credentials from the imported workspace, so you do not enter them manually.
+
+After you import the workspace, the **Setup Checklist** section indicates which credentials have been successfully imported. If any credentials are missing, you can enter them manually in the **Advanced Diagnostics** section.
+
+![Setup Checklist on the Integrations tab](../images/developer-agent/setup-checklist.png)
+
+### Review advanced diagnostics
+
+Expand **Advanced Diagnostics** to review or edit the raw credentials the agent captured from your imported workspace:
+
+![Advanced Diagnostics on the Integrations tab](../images/developer-agent/advanced-diagnostics.png)
+
+You can review or edit each group of values individually. The **Advanced Diagnostics** section includes the following groups.
 
 #### IMS authentication
 
@@ -97,17 +108,6 @@ These credentials allow the agent to authenticate with Adobe Identity Management
 
 The **OAuth client secret** cannot be retrieved automatically. Open the workspace in the Adobe Developer Console and copy the **client secret** from the **OAuth Server-to-Server** tab, and paste it in the **OAUTH_CLIENT_SECRETS** field manually.
 
-#### Commerce integration auth (optional)
-
-These credentials allow you to authenticate with Adobe Commerce.
-
-![Commerce Integration Auth settings](../images/developer-agent/commerce-auth.png)
-
-* `COMMERCE_CONSUMER_KEY`
-* `COMMERCE_CONSUMER_SECRET`
-* `COMMERCE_ACCESS_TOKEN`
-* `COMMERCE_ACCESS_TOKEN_SECRET`
-
 #### Adobe Commerce REST
 
 These credentials allow you to connect to the Adobe Commerce REST API.
@@ -115,17 +115,6 @@ These credentials allow you to connect to the Adobe Commerce REST API.
 ![Adobe Commerce REST settings](../images/developer-agent/commerce-rest.png)
 
 * `COMMERCE_BASE_URL` — The REST endpoint for your Commerce instance. The URL must end with a slash (`/`).
-
-#### Adobe I/O Events
-
-These credentials allow you to connect to Adobe I/O Events.
-
-![Adobe I/O Events settings](../images/developer-agent/io-events.png)
-
-* `AIO_EVENTS_PROVIDERMETADATA_TO_PROVIDER_MAPPING` — The provider metadata mapping.
-* `COMMERCE_ADOBE_IO_EVENTS_MERCHANT_ID` — The Adobe I/O Events merchant ID.
-* `COMMERCE_ADOBE_IO_EVENTS_ENVIRONMENT_ID` — The Adobe I/O Events environment ID.
-* `AIO_CLI_ENV` (optional) — The CLI environment, such as `stage`.
 
 #### App Builder workspace
 
@@ -137,6 +126,8 @@ These values are auto-populated from the workspace after you connect. Edit them 
 * `IO_PROJECT_ID`
 * `IO_WORKSPACE_ID`
 * `EVENT_PREFIX` — A unique prefix for event isolation.
+
+After you review the advanced diagnostics, click **Next** to continue.
 
 ## Connect to Commerce
 
@@ -176,7 +167,7 @@ Click **Next** to continue, or click **Skip (optional)** to skip this step.
 
 ![Project env step on the Integrations tab](../images/developer-agent/project-env-integration.png)
 
-On the **Project env** step, the agent lists the environment variables it detects from the generated workspace code. While code generation is active, this list auto-refreshes regularly. You can also click **Refresh** to update it manually.
+On the **Project env** step, the agent lists the environment variables it detects from the generated workspace code. These variables are separate from the managed credentials captured during the workspace import, so you do not re-enter those values here. While code generation is active, this list auto-refreshes regularly. You can also click **Refresh** to update it manually.
 
 If no develop session is active, the tab is empty. Start a develop session to populate it.
 

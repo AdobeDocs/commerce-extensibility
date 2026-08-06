@@ -171,6 +171,32 @@ On the **Project env** step, the agent lists the environment variables it detect
 
 If no develop session is active, the tab is empty. Start a develop session to populate it.
 
+### Environment variables security
+
+The environment variables you configure in the **Project env** section are stored securely in an encrypted, per-project secret store. The agent injects them into your app's environment at deploy time, so they reach the deployed workspace `.env` file.
+
+<InlineAlert variant="info" slots="text"/>
+
+You must deploy or re-deploy your app for new or changed **Project env** values to take effect.
+
+Your stored values are encrypted at rest and isolated to your project.
+
+### Set and manage variables
+
+When you set variables in the **Project env** section, consider the following:
+
+* Stored values are masked when you reload the step. Use the reveal or hide control on each key to view or conceal its value.
+* Submitting an empty value does not overwrite a value that is already stored.
+* Reserved, agent-managed keys cannot be set here, including: `OAUTH_*`, `AIO_RUNTIME_*`, `AIO_COMMERCE_AUTH_IMS_*`, and `GITHUB_*`. The Commerce Developer Agent manages these credentials for you.
+
+### Troubleshoot missing variables
+
+If an environment variable is empty in your deployed app:
+
+* Confirm a develop session ran and the variable appears in the **Project env** section.
+* Confirm the variable is not a reserved, agent-managed key.
+* Re-deploy your app so that the stored values are rebuilt into the app's `.env` file.
+
 ## Track environment readiness
 
 As you complete each step, the **Environment readiness** panel updates its status. The panel tracks the following checks:

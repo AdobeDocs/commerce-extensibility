@@ -1,6 +1,6 @@
 ---
-title: AI coding tools setup for Commerce App Builder / storefront
-description: Install and configure Adobe AI coding developer tooling. 
+title: Commerce development MCPs and skills
+description: Commerce MCPs and skills for AI developer tooling, including the Commerce Developer MCP, App Builder MCP Server, and dropins MCP server.
 keywords:
   - App Builder
   - Cloud
@@ -8,30 +8,31 @@ keywords:
   - Tools
 ---
 
-# AI coding tools setup for Commerce App Builder and storefront
+# Commerce development MCPs and skills
 
-When migrating to Adobe Commerce as a Cloud Service, you can use the AI coding tools to convert existing Adobe Commerce PHP extensions to Adobe Developer App Builder applications.
+When migrating to Adobe Commerce as a Cloud Service, you can use the Commerce development MCPs and skills to convert existing Adobe Commerce PHP extensions to Adobe Developer App Builder applications.
 
 You can also use these tools to create completely new App Builder applications and storefront customizations.
 
-The AI coding tools provide the following benefits:
+The Commerce development MCPs and skills provide the following benefits:
 
 * **Enhanced development workflow** — Integrated Adobe Commerce development tools.
 * **AI-powered assistance** — Context-aware code generation and debugging.
 * **Commerce-specific features** — Specialized tools for Adobe Commerce App Builder development.
 * **Automated workflows** — Streamlined development and deployment processes.
 
-By installing the AI coding tools, you get access to:
+By installing the Commerce development MCPs and skills, you get access to:
 
 * Skills - An Adobe Commerce and App Builder specific skill set designed to guide and inform your application development.
-* Developer MCP Server
+* Commerce Developer MCP Server
 * App Builder MCP Server
+* dropins MCP Server
 
 For skills, prompts, and best practices after setup, see [Skills, prompts, and commands](skills-and-prompts.md) and [Best practices](best-practices.md).
 
 ## Updating to the latest version
 
-After [installing the AI coding developer tooling](#installation), update to the latest version by running:
+After [installing the Commerce development MCPs and skills](#installation), update to the latest version by running:
 
 ```bash
 aio commerce extensibility tools-setup
@@ -264,7 +265,7 @@ Next steps:
 
 <InlineAlert variant="info" slots="text" />
 
-Before deploying your project, complete configuration tasks: log in to [Adobe Developer Console](https://developer.adobe.com/console) using the Adobe I/O CLI, create an App Builder project (see [Project setup](../events/project-setup.md)), and set up environment variables in an `.env` file. You can do these steps manually or use the AI coding tools for guidance. See [Create an integration](../starter-kit/integration/create-integration.md) for detailed configuration instructions.
+Before deploying your project, complete configuration tasks: log in to [Adobe Developer Console](https://developer.adobe.com/console) using the Adobe I/O CLI, create an App Builder project (see [Project setup](../events/project-setup.md)), and set up environment variables in an `.env` file. You can do these steps manually or use the Commerce development MCPs and skills for guidance. See [Create an integration](../starter-kit/integration/create-integration.md) for detailed configuration instructions.
 
 If you selected the AEM Boilerplate Commerce starter kit, see [`dropins` MCP server for storefront development](dropins-mcp-server.md) for details on the additional server and skills that were installed.
 
@@ -304,7 +305,7 @@ Some features of the MCP server will work without logging in, but the RAG (Retri
    * Open the Command Palette: **Cmd+Shift+P** (macOS) or **Ctrl+Shift+P** (Windows and Linux).
    * Run **View: Open MCP Settings**.
    * Find **commerce-extensibility MCP Server** in the list.
-   * Turn the server **on** to enable the coding tools.
+   * Turn the server **on** to enable the Commerce development MCPs and skills.
 
 1. Verify server status. The Commerce extensibility MCP Server should look like:
 

@@ -12,7 +12,7 @@ keywords:
 
 # `dropins` MCP server for storefront development
 
-If you select the `AEM Boilerplate Commerce` starter kit, the AI coding tools additionally install the [`@dropins/mcp`](https://www.npmjs.com/package/@dropins/mcp) server and a set of storefront-specific agent skills, alongside the standard `commerce-extensibility` MCP server and App Builder skills. This applies whether you choose the starter kit through the [automated setup](coding-tools.md#automated-setup-recommended) (`app-setup`) or the [manual setup](coding-tools.md#manual-setup) (`tools-setup`) flow.
+If you select the `AEM Boilerplate Commerce` starter kit, the Commerce development MCPs and skills additionally install the [`@dropins/mcp`](https://www.npmjs.com/package/@dropins/mcp) server and a set of storefront-specific agent skills, alongside the standard `commerce-extensibility` MCP server and App Builder skills. This applies whether you choose the starter kit through the [automated setup](coding-tools.md#automated-setup-recommended) (`app-setup`) or the [manual setup](coding-tools.md#manual-setup) (`tools-setup`) flow.
 
 The `dropins` MCP server provides structured, authoritative data about every drop-in component extracted directly from the drop-in source repositories. Agent skills use this server as the primary reference for storefront customization tasks, and fallback to the TypeScript definitions in `node_modules/@dropins/` when the server is unavailable.
 

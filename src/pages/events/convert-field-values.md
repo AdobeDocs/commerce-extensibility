@@ -153,7 +153,7 @@ The following example updates the value of the field `visibility` present in the
 
 [PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
-By default, Commerce builds the entire source object (order, quote, product, and so on) before trimming it down to the fields you subscribed to. For large records, this intermediate build can use significantly more memory and processing than the delivered payload requires.
+By default, Commerce builds the entire source object (such as order, quote, or product) before trimming it down to the fields you subscribed to. For large records, this intermediate build can use significantly more memory and processing than the delivered payload requires.
 
 When you enable field-aware event conversion, Commerce collects only the fields you subscribed to, plus any fields used by your event rules, instead of first building the complete source object. The data delivered to your destinations does not change — only how it is built internally.
 

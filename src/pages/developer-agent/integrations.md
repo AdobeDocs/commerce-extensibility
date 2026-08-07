@@ -120,7 +120,7 @@ These credentials allow you to connect to the Adobe Commerce REST API.
 
 These values are auto-populated from the workspace after you connect. Edit them only if necessary:
 
-![App Builder Workspace settings](../images/developer-agent/app-builder-workspace.png)
+![App Builder Workspace settings](../images/developer-agent/app-workspace.png)
 
 * `IO_CONSUMER_ID`
 * `IO_PROJECT_ID`

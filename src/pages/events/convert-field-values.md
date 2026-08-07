@@ -146,3 +146,27 @@ The following example updates the value of the field `visibility` present in the
     </event>
 </config>
 ```
+
+## Field-aware event conversion
+
+<Edition slots="text" backgroundcolor="blue" />
+
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
+
+By default, Commerce builds the entire source object (such as order, quote, or product) before trimming it down to the fields you subscribed to. For large records, this intermediate build can use significantly more memory and processing than the delivered payload requires.
+
+When you enable field-aware event conversion, Commerce collects only the fields you subscribed to, plus any fields used by your event rules, instead of first building the complete source object. The data delivered to your destinations does not change — only how it is built internally.
+
+Field-aware conversion helps most when you subscribe to a narrow set of fields on large records, such as orders or quotes with many items. Subscriptions that use a wildcard (`fields:*`) still build the full object, but they are protected from producing excessively large payloads by an early size check.
+
+### Enable field-aware event conversion
+
+In the Commerce Admin, navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Adobe I/O Events** > **Commerce events**, and set **Field-aware event conversion** to **Yes**. This setting is disabled by default.
+
+You can also enable it from the command line:
+
+```bash
+bin/magento config:set adobe_io_events/eventing/field_aware_conversion_enabled 1
+```
+
+This setting takes effect immediately for any environment running version 1.22.0 or later of the eventing modules.

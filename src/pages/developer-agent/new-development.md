@@ -113,7 +113,7 @@ After blueprint approval, Commerce Developer Agent generates the project workspa
 
 Real-time progress displays on the **Develop** tab while the code is generated. You can inspect generated files, review validation output, and continue refining the generated code through chat.
 
-![develop tab](../images/developer-agent/development.png)
+![develop tab](../images/developer-agent/develop.png)
 
 ### Iterate on the code
 

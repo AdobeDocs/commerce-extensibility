@@ -14,7 +14,7 @@ keywords:
 
 After you [configure integrations](integrations.md), you can deploy the generated app directly from the Commerce Developer Agent. Deployment is not the final step in this process, the app must also be associated and installed in Commerce App Management before it becomes active.
 
-![Deployments tab in the Commerce Developer Agent](../images/developer-agent/deployments.png)
+![develop tab](../images/developer-agent/develop.png)
 
 ## Prerequisites
 
@@ -25,7 +25,7 @@ After you [configure integrations](integrations.md), you can deploy the generate
 
 To validate before you deploy, click **Run validation**. This runs `npm install` and `npm build` against the workspace.
 
-1. Click **Deploy via Developer Agent** to return to the develop tab.
+1. Click **Deploy to App Builder** on the **Develop** tab.
 1. Review the **Confirm deployment** message, which displays the target **Organization**, **Project**, **Workspace**, and **Runtime namespace**.
 1. Confirm the deployment.
 1. Review the logs on the **Deploy** tab.

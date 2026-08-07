@@ -116,7 +116,7 @@ After approval, the developer agent generates the project workspace from the app
 
 Real-time progress is shown in the Develop stage while generation runs. In the Develop stage, you can inspect generated files, review validation output, and continue refining the generated code through chat.
 
-![develop tab](../images/developer-agent/development.png)
+![develop tab](../images/developer-agent/develop.png)
 
 ### Iterate on the generated code
 

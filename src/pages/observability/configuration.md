@@ -42,4 +42,4 @@ You can connect Adobe Commerce observability data with various observability pla
 
 - [New Relic OTLP](https://docs.newrelic.com/docs/opentelemetry/best-practices/opentelemetry-otlp/)
 - [Datadog OTLP](https://docs.datadoghq.com/opentelemetry/setup/otlp_ingest/)
-- [Splunk OTLP](https://help.splunk.com/en/splunk-observability-cloud/manage-data/splunk-distribution-of-the-opentelemetry-collector/get-started-with-the-splunk-distribution-https://www.aem.live/docs/optel-explorer#user-interface-overviewof-the-opentelemetry-collector/collector-components/exporters/splunk-hec-exporter)
+- [Splunk OTLP](https://help.splunk.com/en/splunk-observability-cloud/manage-data/splunk-distribution-of-the-opentelemetry-collector/get-started-with-the-splunk-distribution-of-the-opentelemetry-collector/collector-components/exporters/splunk-hec-exporter)

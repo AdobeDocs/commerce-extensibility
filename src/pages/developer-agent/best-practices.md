@@ -1,5 +1,5 @@
 ---
-title: Best practices for AI Commerce coding tools
+title: Best practices for Commerce development MCPs and skills
 description: Plan mode, workflows, MCP usage, testing, deployment, monitoring, and feedback for Adobe Commerce App Builder AI tooling.
 keywords:
   - App Builder
@@ -8,9 +8,9 @@ keywords:
   - Cloud
 ---
 
-# Best practices for AI Commerce coding tools
+# Best practices for Commerce development MCPs and skills
 
-Adobe recommends the following practices when using the AI coding tools for Commerce App Builder. For setup steps, see [Coding tools setup](coding-tools.md). For skills and sample prompts, see [Skills, prompts, and commands](skills-and-prompts.md).
+Adobe recommends the following practices when using the [Commerce development MCPs and skills](coding-tools.md) for Commerce App Builder. For skills and sample prompts, see [Skills, prompts, and commands](skills-and-prompts.md).
 
 ## Checklist
 
@@ -28,7 +28,7 @@ Adobe recommends the following practices when using the AI coding tools for Comm
 * Use MCP tools when available
 * Test each feature after implementation
 * Test locally first, then deploy and test again
-* Use the coding tools for testing support
+* Use the Commerce development MCPs and skills for testing support
 * Question unnecessary complexity
 * Deploy incrementally for faster iteration
 
@@ -41,7 +41,7 @@ Adobe recommends the following practices when using the AI coding tools for Comm
 
 ## Workflow
 
-When developing with the AI coding tools, start with sample code or scaffolded projects. This approach ensures you are building on a solid foundation rather than starting from nothing, while also optimizing your AI development workflow.
+When developing with the Commerce development MCPs and skills, start with sample code or scaffolded projects. This approach ensures you are building on a solid foundation rather than starting from nothing, while also optimizing your AI development workflow.
 
 This also allows you to leverage Adobe's templates and build upon proven patterns and architectures, while keeping established directory structures and conventions.
 
@@ -173,7 +173,7 @@ Once local testing is successful, deploy and test in the runtime environment. Ru
 
 1. Check activation logs for debugging
 
-### Leverage the coding tools for testing support
+### Leverage the Commerce development MCPs and skills for testing support
 
 Ask for help with testing. The tools can help with debugging, log analysis, and creating appropriate test data for your specific runtime actions.
 
@@ -293,7 +293,7 @@ Track token usage patterns:
 
 ## What to avoid
 
-Avoid the following anti-patterns when using the AI coding tools:
+Avoid the following anti-patterns when using the Commerce development MCPs and skills:
 
 * **Do not skip the clarification phase** - Always ensure Phase 1 is completed before implementation.
 * **Do not skip testing after each feature** - Test incrementally, don't wait until everything is complete.
@@ -303,7 +303,7 @@ Avoid the following anti-patterns when using the AI coding tools:
 
 ## Providing feedback
 
-Developers who are interested in providing feedback on the AI coding tools can use the `/feedback` command.
+Developers who are interested in providing feedback on the Commerce development MCPs and skills can use the `/feedback` command.
 
 This command allows you to provide text feedback and send logs to Adobe. Any logs you send will be sanitized to remove any private or personal information.
 

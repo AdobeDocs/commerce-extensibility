@@ -12,6 +12,20 @@ These release notes describe the latest version of Adobe I/O Events for Adobe Co
 
 See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io-events-for-adobe-commerce) for upgrade instructions.
 
+## Version 1.22.0
+
+### Release date
+
+August 6, 2026
+
+### Enhancements
+
+* Added an opt-in setting to build only the event fields you subscribed to instead of the entire source object before filtering, reducing memory and processing for large records. See [Convert payload field values](convert-field-values.md#field-aware-event-conversion). \<!-- CEXT-6501 --\>
+
+### Bug fixes
+
+* Fixed an issue where the `commerce.eventing.event.publish` message queue could accumulate a large backlog of priority events instead of draining as events were processed. \<!-- CEXT-6541 --\>
+
 ## Version 1.21.0
 
 ### Release date

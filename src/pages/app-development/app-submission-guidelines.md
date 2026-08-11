@@ -169,6 +169,21 @@ The following best practices are not required for your app to be accepted, but t
     - [Integration starter kit](../starter-kit/integration/index.md)
     - [Checkout starter kit](../starter-kit/checkout/index.md)
 
+- Adobe Commerce SDK
+  - **Typed API clients**: Use packages from the [Adobe Commerce SDK](https://github.com/adobe/aio-commerce-sdk) family instead of writing custom HTTP/auth/eventing logic from scratch. These libraries provide typed clients, built-in authentication, and retry logic, and keep your code aligned with Adobe's recommended patterns:
+    - `@adobe/aio-commerce-lib-auth` — authentication flows for Adobe IMS and Commerce integrations
+    - `@adobe/aio-commerce-lib-api` — HTTP/API client builders for Adobe Commerce and Adobe I/O Events
+    - `@adobe/aio-commerce-lib-events` — event-driven integrations between Commerce and Adobe I/O Events
+    - `@adobe/aio-commerce-lib-webhooks` — utilities for the Adobe Commerce Webhooks API
+    - `@adobe/aio-commerce-lib-core` — shared foundational utilities used across the family
+
+    Apps that adopt full App Management additionally require `@adobe/aio-commerce-lib-app` and `@adobe/aio-commerce-lib-config`, but the libraries above can be used independently for apps not yet using App Management.
+
+  - **App Management**: Use [App Management](../app-management/index.md) to define your configuration schema, event subscriptions, and Admin UI once in an `app.commerce.config` file, and let the system auto-generate the required runtime actions and Admin UI. This is the Adobe-endorsed approach for installing, configuring, and managing App Builder applications in Commerce, and removes the need for merchants to manually configure event providers, subscriptions, or environment variables.
+    - Requires [Admin UI SDK](../admin-ui-sdk/index.md) version 3.3.1 or later.
+    - Requires minimum library versions 1.0.0 or later for `@adobe/aio-commerce-lib-config`, `@adobe/aio-commerce-lib-app`, and `@adobe/aio-commerce-sdk`.
+    - Not currently supported for local Commerce installations — requires a hosted (cloud or on-premises) environment.
+
 - Script management
   - **Script validation**: Execute everything in `package.json` scripts section and ensure there are no errors.
   - **Script cleanup**: Ensure there are no unused or non-working scripts.

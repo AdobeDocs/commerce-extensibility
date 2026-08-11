@@ -179,8 +179,8 @@ The following best practices are not required for your app to be accepted, but t
 
     Apps that adopt full App Management additionally require `@adobe/aio-commerce-lib-app` and `@adobe/aio-commerce-lib-config`, but the libraries above can be used independently for apps not yet using App Management.
 
-  - **App Management**: Use [App Management](https://developer.adobe.com/commerce/extensibility/app-management/) to define your configuration schema, event subscriptions, and Admin UI once in an `app.commerce.config` file, and let the system auto-generate the required runtime actions and Admin UI. This is the Adobe-endorsed approach for installing, configuring, and managing App Builder applications in Commerce, and removes the need for merchants to manually configure event providers, subscriptions, or environment variables.
-    - Requires [Admin UI SDK](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/) version 3.3.1 or later.
+  - **App Management**: Use [App Management](../app-management/index.md) to define your configuration schema, event subscriptions, and Admin UI once in an `app.commerce.config` file, and let the system auto-generate the required runtime actions and Admin UI. This is the Adobe-endorsed approach for installing, configuring, and managing App Builder applications in Commerce, and removes the need for merchants to manually configure event providers, subscriptions, or environment variables.
+    - Requires [Admin UI SDK](../admin-ui-sdk/index.md)
     - Requires minimum library versions 1.0.0 or later for `@adobe/aio-commerce-lib-config`, `@adobe/aio-commerce-lib-app`, and `@adobe/aio-commerce-sdk`.
     - Not currently supported for local Commerce installations — requires a hosted (cloud or on-premises) environment.
 

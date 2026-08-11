@@ -12,7 +12,7 @@ keywords:
 
 <InlineAlert variant="info" slots="text"/>
 
-For [storefront](https://experienceleague.adobe.com/developer/commerce/storefront/) observability, refer to [Operational Telemetry](https://www.aem.live/docs/optel-explorer#user-interface-overview).
+For [storefront](https://experienceleague.adobe.com/developer/commerce/storefront/) observability, refer to [Operational Telemetry](https://www.aem.live/docs/operational-telemetry).
 
 To start using the observability module, you need to configure Adobe Commerce by creating a new subscription. You can create a subscription in two ways: in the Admin UI or through the REST API. You can create multiple subscriptions, each with its own configuration. The subscription configuration includes the following parameters:
 
@@ -42,4 +42,4 @@ You can connect Adobe Commerce observability data with various observability pla
 
 - [New Relic OTLP](https://docs.newrelic.com/docs/opentelemetry/best-practices/opentelemetry-otlp/)
 - [Datadog OTLP](https://docs.datadoghq.com/opentelemetry/setup/otlp_ingest/)
-- [Splunk OTLP](https://help.splunk.com/en/splunk-observability-cloud/manage-data/splunk-distribution-of-the-opentelemetry-collector/get-started-with-the-splunk-distribution-of-the-opentelemetry-collector/collector-components/exporters/splunk-hec-exporter)
+- [Splunk OTLP](https://help.splunk.com/en/splunk-observability-cloud/manage-data/splunk-distribution-of-the-opentelemetry-collector/get-started-with-the-splunk-distribution-https://www.aem.live/docs/optel-explorer#user-interface-overviewof-the-opentelemetry-collector/collector-components/exporters/splunk-hec-exporter)

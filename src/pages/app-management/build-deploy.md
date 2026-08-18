@@ -20,9 +20,15 @@ The initialization process creates files organized by extension point:
 
 | File | Description |
 |------|-------------|
-| `src/commerce-extensibility-1/.generated/app.commerce.manifest.json` | Validated JSON representation of your app config |
+| `src/commerce-extensibility-1/.generated/app.commerce.manifest.json` | Validated JSON snapshot of your app config, generated only when the whole config can be represented as JSON |
+| `src/commerce-extensibility-1/.generated/app.commerce.config.js` | Generated module that the `#app.commerce.config` import alias resolves to |
 | `src/commerce-extensibility-1/.generated/actions/app-management/` | Runtime actions for app config and installation |
 | `src/commerce-extensibility-1/ext.config.yaml` | Extension manifest with `pre-app-build` hook |
+
+Import your app configuration through the `#app.commerce.config` alias. `generate` registers this alias in your project's `package.json` `imports` for every app (since `@adobe/aio-commerce-lib-app` 1.8.0), so your own runtime actions can import your config the same way the generated actions do, without referencing generated file paths. The alias resolves to the generated `app.commerce.config.js` module, which is built differently depending on whether your config is static or dynamic:
+
+* **Static (serializable) config**: the validated `app.commerce.manifest.json` snapshot is generated, and the module re-exports it.
+* **Dynamic config** (contains logic that can't be expressed as JSON, such as a `dynamicList` field with a function-based `options`): no manifest is generated, and the module is built directly from your `app.commerce.config` source file.
 
 **`commerce/configuration/1`** for Business configuration (when a `businessConfig` is defined).
 
@@ -41,14 +47,17 @@ The initialization process creates files organized by extension point:
 
 ## Generated runtime actions
 
-The libraries generate runtime actions organized by extension point. These are auto-generated directories and any manual changes can be lost during regeneration.
+The libraries generate runtime actions organized by extension point. These are auto-generated directories and any manual changes can be lost during regeneration. Generated runtime actions default to the `nodejs:24` App Builder runtime, and the CLI requires Node.js 22–24.
 
 ### App Management actions from `commerce/extensibility/1`
 
 | Action | Description |
 |--------|-------------|
 | `app-config` | Serves the app configuration to the App Management UI. |
-| `installation` | Drives the installation flow, including custom installation steps. |
+| `association` | Keeps track of which Commerce instance the app is associated with, so the app can identify and connect to it while installed; clears that record when the app is unassociated. |
+| `installation` | Drives the installation and uninstallation flow, including custom installation steps. |
+
+`generate` only creates the `installation` action when your config includes custom installation steps, Commerce or external events, webhooks, or `adminUi`.
 
 ### Business configuration actions from `commerce/configuration/1`
 

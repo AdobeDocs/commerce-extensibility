@@ -21,6 +21,8 @@ At a high level, it is the top-level config block for declaring:
 
 Admin UI SDK V2 handles registration automatically. Unlike V1, there is no `registration` action to hand-author. `commerce/backend-ui/2` reads the registration directly from the generated `app-config` runtime action. When `adminUi` is defined, `init` and `generate all` automatically wire up the extension point, including the `pre-app-build` hook and the `workerProcess` declarations in `ext.config.yaml`. View-based features (a menu, a `view` mass action, or a `view` order view button) also get a minimal `web-src/` scaffold the first time they're added, using `.tsx` files for TypeScript configs and `.jsx` files otherwise.
 
+`adminUi` requires `@adobe/aio-commerce-lib-app` version 1.8.0 or later. Its schema (menu, grid columns, mass actions, order view buttons) became API-stable in version 1.9.0.
+
 For general Admin UI SDK concepts and extension points outside of App Management, see the [Admin UI SDK](../../admin-ui-sdk/index.md) documentation.
 
 ## Add a menu declaration
@@ -191,7 +193,7 @@ Mass actions are supported on `order`, `product`, and `customer`. The `id` is au
 | `runtimeAction` | | | x |
 | `timeout` | | | x |
 
-The `view` and `worker` variants are strict — setting `path` or `sandboxPermissions` on a `worker` action, or `runtimeAction` or `timeout` on a `view` action, fails validation.
+The `view` and `worker` variants are strict: setting `path` or `sandboxPermissions` on a `worker` action, or `runtimeAction` or `timeout` on a `view` action, fails validation.
 
 | Property | Type | Required | Description |
 |----------|------|----------|-------------|
@@ -228,7 +230,7 @@ Use `massActionErrorResponse(status, message)` to report a failure. See the [`@a
 
 ### View mass action page
 
-A `view` mass action opens an iframe at `path` inside your App Builder frontend — there's no server-side handler. Read the selected row IDs and close the iframe with the React hooks exported from `@adobe/aio-commerce-lib-admin-ui/web`:
+A `view` mass action opens an iframe at `path` inside your App Builder frontend. There's no server-side handler. Read the selected row IDs and close the iframe with the React hooks exported from `@adobe/aio-commerce-lib-admin-ui/web`:
 
 ```jsx
 import {
@@ -343,11 +345,14 @@ A `view` button opens an iframe at `<extension-host>/index.html<path>?orderId=<o
 ```jsx
 import { useHostConnection, useOrderViewButtonContext } from "@adobe/aio-commerce-lib-admin-ui/web";
 
-export function DeleteOrderPage() {
-  const { orderId } = useOrderViewButtonContext();
-  const { close } = useHostConnection();
+import { throwIfError } from "#web/utils.ts";
 
-  // ...delete orderId, then call close() to return to the order view.
+export function DeleteOrderPage() {
+  const { data } = throwIfError(useOrderViewButtonContext());
+  const { actions } = throwIfError(useHostConnection());
+  const { orderId } = data;
+
+  // ...delete orderId, then call actions.close() to return to the order view.
 }
 ```
 
@@ -396,7 +401,10 @@ import {
   AdminUiPermissionDeniedError,
   getAdminUiPermissionClient,
 } from "@adobe/aio-commerce-lib-admin-ui/api";
-import { getMassActionAclResourceId } from "@adobe/aio-commerce-lib-admin-ui/mass-actions";
+import {
+  getMassActionAclResourceId,
+  massActionErrorResponse,
+} from "@adobe/aio-commerce-lib-admin-ui/mass-actions";
 
 import { getCommerceClient } from "@adobe/aio-commerce-lib-app";
 import { resolveImsAuthParams } from "@adobe/aio-commerce-lib-auth";
@@ -429,6 +437,6 @@ After changing `adminUi`, rebuild and deploy your app so the `pre-app-build` hoo
 
 ## Related documentation
 
-* [Admin UI SDK](../../admin-ui-sdk/index.md) — general Admin UI SDK concepts and extension points.
-* [`@adobe/aio-commerce-lib-admin-ui`](https://github.com/adobe/aio-commerce-sdk/tree/main/packages/aio-commerce-lib-admin-ui) — wire contract builders, menu constants, and the permission client used by `commerce/backend-ui/2` handlers.
-* [Build and deploy](../build-deploy.md) — generated files and runtime actions for `commerce/backend-ui/2`.
+* [Admin UI SDK](../../admin-ui-sdk/index.md): general Admin UI SDK concepts and extension points.
+* [`@adobe/aio-commerce-lib-admin-ui`](https://github.com/adobe/aio-commerce-sdk/tree/main/packages/aio-commerce-lib-admin-ui): wire contract builders, menu constants, and the permission client used by `commerce/backend-ui/2` handlers.
+* [Build and deploy](../build-deploy.md): generated files and runtime actions for `commerce/backend-ui/2`.

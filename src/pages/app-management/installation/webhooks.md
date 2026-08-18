@@ -37,6 +37,7 @@ Each webhook entry uses the following properties:
 | `label` | string | Yes | Display label in App Management. |
 | `description` | string | Yes | Description shown in App Management. |
 | `category` | string | No | Used for webhook conflict resolution when multiple apps are using the same webhooks. Possible values are one of `validation`, `append`, or `modification`. |
+| `env` | array | No | Restricts the webhook to **PaaS** (`paas`) and/or **SaaS** (`saas`). Omit or specify both to apply to all environments. |
 | `runtimeAction` | string | Conditional | Required when not using an explicit `url` in `webhook`. Runtime action that resolves the webhook URL. |
 | `requireAdobeAuth` | boolean | No | When using `runtimeAction`, indicates whether Adobe authentication is required. Must match the `require-adobe-auth` setting for that runtime action in `app.config.yaml`. |
 | `webhook` | object | Yes | Webhook method, hook identity, HTTP method, and optional fields, rules, headers, timeouts, and either a `url` or no `url` (if `runtimeAction` is set). |
@@ -152,6 +153,6 @@ When your runtime action **handles** the HTTP callback from Commerce, you build 
 
 ## Related documentation
 
-* [Install and access App Management](https://experienceleague.adobe.com/en/docs/commerce/app-management/install#access-app-management) (Experience League) — user guide for App Management in the Admin.
-* [Adobe Commerce Webhooks](../../webhooks/index.md) — product concepts and Admin behavior.
-* [Webhook responses](../../webhooks/responses.md) — operation types for handler actions.
+* [Install and access App Management](https://experienceleague.adobe.com/en/docs/commerce/app-management/install#access-app-management) (Experience League): user guide for App Management in the Admin.
+* [Adobe Commerce Webhooks](../../webhooks/index.md): product concepts and Admin behavior.
+* [Webhook responses](../../webhooks/responses.md): operation types for handler actions.

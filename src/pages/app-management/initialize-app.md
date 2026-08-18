@@ -78,15 +78,23 @@ The initialization process:
 
 * Creates `app.commerce.config` with a template (prompts you to choose format and features if the file doesn't exist)
 * Installs required dependencies (`@adobe/aio-commerce-lib-app`, `@adobe/aio-commerce-sdk`, and `@adobe/aio-commerce-lib-config` when business configuration is enabled)
-* Adds a `postinstall` hook to `package.json`
 * Generates all required artifacts (`commerce/configuration/1` resources are only generated when `businessConfig` is defined)
 * Updates `app.config.yaml` and `install.yaml` with the appropriate extension references. Creates these files if they do not exist.
+* Adds a `postinstall` hook to `package.json`
+
+### Working with TypeScript
+
+Since `@adobe/aio-commerce-lib-app` 1.10.0, `init` supports TypeScript scaffolding. Using TypeScript in an App Management project requires the project's TypeScript build setup: a `webpack-config.cjs` file, a root `tsconfig.json`, and the `typescript` development dependency. If you scaffold a new project with a TypeScript config, `init` sets this up for you out of the box.
+
+If you're adding TypeScript to an existing project, re-run `init`. It's idempotent, so it adds any missing files or dependencies without touching your existing code. `init` only adds these files if they don't already exist, so any existing setup is preserved.
+
+See [Migrating an Existing Project to TypeScript](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-app/docs/usage.md#migrating-an-existing-project-to-typescript) if you already have these files or need to configure the TypeScript setup yourself.
 
 ## Initialize the configuration library in runtime actions
 
 When your app defines `businessConfig`, each App Builder runtime action that calls `getConfiguration`, `getConfigurationByKey`, or `setConfiguration` must run `initialize` before any of those three methods.
 
-If your schema includes `dynamicList` fields, you must **await** `initialize` and pass runtime action `params`. See [Initialize with and without dynamic lists](./configuration-schema.md#initialize-with-and-without-dynamic-lists) and [Configure action inputs for dynamic lists](./configuration-schema.md#configure-action-inputs-for-dynamic-lists).
+If your schema includes `dynamicList` fields, you must **await** `initialize` and pass runtime action `params`. See [Initialize configuration](./configuration-schema.md#initialize-configuration) and [Configure action inputs for dynamic lists](./configuration-schema.md#configure-action-inputs-for-dynamic-lists).
 
 See [Retrieve configuration at runtime](./configuration-schema.md#retrieve-configuration-at-runtime) for an example.
 

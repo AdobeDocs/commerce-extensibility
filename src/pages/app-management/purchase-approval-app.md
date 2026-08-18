@@ -24,15 +24,15 @@ This code is provided as a learning reference. It is not production-ready and sh
 
 The app shows how a single App Builder application can participate in the entire lifecycle of a business scenario:
 
-* **Install and configure** — The app is installed from Adobe Exchange, associated with a Commerce instance in the App Management view, and configured through the auto-generated Admin UI. No custom configuration UI code is required.
+* **Install and configure**: The app is installed from Adobe Exchange, associated with a Commerce instance in the App Management view, and configured through the auto-generated Admin UI. No custom configuration UI code is required.
 
-* **Checkout evaluation** — At checkout, Commerce calls the app through a webhook to evaluate the approval policy in real time and flag orders that require approval.
+* **Checkout evaluation**: At checkout, Commerce calls the app through a webhook to evaluate the approval policy in real time and flag orders that require approval.
 
-* **Event-driven workflow** — When an order is placed, Commerce emits an order event. For orders at or above the configured approval threshold, the app's event handler creates an approval request in an App Builder database.
+* **Event-driven workflow**: When an order is placed, Commerce emits an order event. For orders at or above the configured approval threshold, the app's event handler creates an approval request in an App Builder database.
 
-* **Approver dashboard** — A lightweight single-page app (React + Adobe Spectrum), surfaced through the Admin UI SDK, allows finance or procurement reviewers to list pending approvals and approve or reject orders.
+* **Approver dashboard**: A lightweight single-page app (React + Adobe Spectrum), surfaced through the Admin UI SDK, allows finance or procurement reviewers to list pending approvals and approve or reject orders.
 
-* **Observability** — An execution log, stored alongside the approval requests in the App Builder database, records webhook and event-handler invocations for troubleshooting.
+* **Observability**: An execution log, stored alongside the approval requests in the App Builder database, records webhook and event-handler invocations for troubleshooting.
 
 ## Prerequisites
 
@@ -43,12 +43,12 @@ The app shows how a single App Builder application can participate in the entire
   * **Adobe I/O Events for Adobe Commerce**
   * **App Builder Data Services** (backs the App Builder database used for approval requests and the execution log)
 
-* [Admin UI SDK](../admin-ui-sdk/index.md) 4.2.0 or greater, enabled and configured — required for the `commerce/backend-ui/2` extension point.
-* Adobe Commerce 2.4.5 or later, on either Adobe Commerce as a Cloud Service (SaaS) or Adobe Commerce on Cloud/on-premises (PaaS). In both cases, the app authenticates to Commerce with Adobe IMS with `@adobe/aio-commerce-lib-auth`. As a result, no Commerce integration (OAuth1) credentials are required. The checkout webhook is secured as follows:
+* [Admin UI SDK](../admin-ui-sdk/index.md) 4.2.0 or greater, enabled and configured. It powers the `commerce/backend-ui/2` extension point behind the approver dashboard, and is supported on Adobe Commerce as a Cloud Service (SaaS) and on Adobe Commerce on-premises and Cloud (PaaS) 2.4.8 or later.
+* Adobe Commerce 2.4.5 or later for the checkout webhook and order-placed event subscription, on either Adobe Commerce as a Cloud Service (SaaS) or Adobe Commerce on Cloud/on-premises (PaaS). In both cases, the app authenticates to Commerce with Adobe IMS with `@adobe/aio-commerce-lib-auth`. As a result, no Commerce integration (OAuth1) credentials are required. The checkout webhook is secured as follows:
   * **SaaS:** the webhook uses Adobe IMS authentication (`require-adobe-auth`), so Commerce authenticates to the runtime action automatically. No extra setup is required.
   * **PaaS:** `require-adobe-auth` is not available, so configure the webhook's authorization as described in [Checkout webhook](#checkout-webhook).
 * On PaaS only, the Commerce webhooks module and the Adobe I/O Events for Commerce module must be enabled. They are required for the checkout webhook and the order-placed event subscription. These modules are enabled automatically on Adobe Commerce as a Cloud Service.
-* Node.js 24 or later.
+* Node.js 22–24.
 
 ## Extension points
 
@@ -68,10 +68,10 @@ The following sections describe the app's pieces and how they work together to i
 
 The app is defined with [`@adobe/aio-commerce-lib-app`](./index.md#sdk-libraries) and [`@adobe/aio-commerce-lib-config`](./index.md#sdk-libraries). The configuration schema in `app.commerce.config.ts` drives the auto-generated [business configuration](./configuration-schema.md) form, where an app manager sets:
 
-* **Approval threshold amount** — orders at or above this value require approval.
-* **Currency code** — for example, `USD`.
-* **Approver emails** — a comma-separated list for reference.
-* **Approval message** — added to the order as a comment when the checkout webhook holds an order.
+* **Approval threshold amount**: orders at or above this value require approval.
+* **Currency code**: for example, `USD`.
+* **Approver emails**: a comma-separated list for reference.
+* **Approval message**: added to the order as a comment when the checkout webhook holds an order.
 
 For the general install-and-associate flow, see [Installation](./installation/index.md).
 

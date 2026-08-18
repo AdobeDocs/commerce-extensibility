@@ -28,6 +28,7 @@
         - [Credentials management](/app-development/best-practices/credentials.md)
         - [Logging and troubleshooting](/app-development/best-practices/logging-troubleshooting.md)
         - [Database storage](/app-development/best-practices/database-storage.md)
+        - [Social login storefront SSO integration](/app-development/best-practices/social-login-sso.md)
     - [App submission guidelines](/app-development/app-submission-guidelines.md)
     - [Extension compatibility](/app-development/extension-compatibility.md)
     - [App Builder Kit for Developers](/app-development/app-builder-partnership-essentials.md)

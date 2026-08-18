@@ -25,7 +25,7 @@ Every helper on this page (`getCommerceInstance`, `getCommerceClient`, `publishE
 Every app generated with `@adobe/aio-commerce-lib-app` includes a standalone `association` runtime action alongside `app-config`. App Management calls it automatically during the association lifecycle: you don't call it yourself.
 
 * **During association**: stores the Commerce instance's `baseUrl` and `env` (`"saas"` or `"paas"`).
-* **During unassociation**: clears the stored data when the app.
+* **During unassociation**: clears the stored data.
 
 <InlineAlert variant="info" slots="text"/>
 
@@ -42,7 +42,7 @@ Both throw `AssociationRecordNotFoundError` if the app is not currently associat
 
 ### Get a ready-to-use client
 
-`getCommerceClient` builds the base URL and flavor from the stored association data; you supply the resolved IMS auth. App Management requires IMS, so `auth` accepts only IMS auth: resolve it with `resolveImsAuthParams` (available since `@adobe/aio-commerce-lib-auth` version 1.0.1) from `@adobe/aio-commerce-lib-auth`, or pass an `ImsAuthProvider` built with `getImsAuthProvider` or `forwardImsAuthProvider`. The optional `fetchOptions` ([ky](https://github.com/sindresorhus/ky#options) options such as `headers`, `timeout`, or `retry`) are forwarded to the underlying client.
+The `getCommerceClient` method builds the base URL and flavor from the stored association data; you supply the resolved IMS auth. App Management requires IMS, so the `auth` parameter accepts only IMS auth: resolve it with `resolveImsAuthParams` (available since `@adobe/aio-commerce-lib-auth` version 1.0.1) from `@adobe/aio-commerce-lib-auth`, or pass an `ImsAuthProvider` built with `getImsAuthProvider` or `forwardImsAuthProvider`. The optional `fetchOptions` ([ky](https://github.com/sindresorhus/ky#options) options such as `headers`, `timeout`, or `retry`) are forwarded to the underlying client.
 
 ```js
 import { getCommerceClient } from "@adobe/aio-commerce-lib-app";
@@ -98,9 +98,9 @@ export async function main(params) {
 
 ## Publish a configured event
 
-Runtime actions can publish a custom I/O Event by referencing the provider and event exactly as declared in the `eventing` section of `app.commerce.config`. At installation time, the SDK writes each configured provider's I/O Events ID and event codes to system storage. `publishEvent` resolves those automatically by key and name and publishes the event.
+Runtime actions can publish a custom I/O Event by referencing the provider and event exactly as declared in the `eventing` section of `app.commerce.config`. At installation time, the SDK writes each configured provider's I/O Events ID and event codes to system storage. The `publishEvent` function resolves those automatically by key and name, then publishes the event.
 
-`publishEvent(params)` takes:
+The `publishEvent(params)` function takes:
 
 | Property | Description |
 |----------|-------------|
@@ -168,7 +168,7 @@ export async function main(params) {
 
 ### Resolve an event's I/O Events code ahead of time
 
-`resolveIoEventCode(appId, eventName, providerType)` computes the same event code `publishEvent` sends, matching the prefixing rules used at installation time. This is useful when a caller needs to know an event's code in advance: for example, to match it against an incoming I/O Event.
+The `resolveIoEventCode(appId, eventName, providerType)` function computes the same event code that `publishEvent` sends, matching the prefixing rules used at installation time. This is useful when a caller needs to know an event's code in advance: for example, to match it against an incoming I/O Event.
 
 | Property | Description |
 |----------|-------------|

@@ -19,9 +19,9 @@ At a high level, it is the top-level config block for declaring:
 * Mass actions
 * Order view buttons
 
-Admin UI SDK V2 handles registration automatically. Unlike V1, there is no `registration` action to hand-author. `commerce/backend-ui/2` reads the registration directly from the generated `app-config` runtime action. When `adminUi` is defined, `init` and `generate all` automatically wire up the extension point, including the `pre-app-build` hook and the `workerProcess` declarations in `ext.config.yaml`. View-based features (a menu, a `view` mass action, or a `view` order view button) also get a minimal `web-src/` scaffold the first time they're added, using `.tsx` files for TypeScript configs and `.jsx` files otherwise.
+Admin UI SDK V2 handles registration automatically. Unlike V1, there is no `registration` action to hand-author. `commerce/backend-ui/2` reads the registration directly from the generated `app-config` runtime action. When `adminUi` is defined, the `init` and `generate all` commands automatically wire up the extension point, including the `pre-app-build` hook and the `workerProcess` declarations in `ext.config.yaml`. View-based features (a menu, a `view` mass action, or a `view` order view button) also get a minimal `web-src/` scaffold the first time they're added, using `.tsx` files for TypeScript configs and `.jsx` files otherwise.
 
-`adminUi` requires `@adobe/aio-commerce-lib-app` version 1.8.0 or later. Its schema (menu, grid columns, mass actions, order view buttons) became API-stable in version 1.9.0.
+The `adminUi` config block requires `@adobe/aio-commerce-lib-app` version 1.8.0 or later. Its schema (menu, grid columns, mass actions, order view buttons) became API-stable in version 1.9.0.
 
 For general Admin UI SDK concepts and extension points outside of App Management, see the [Admin UI SDK](../../admin-ui-sdk/index.md) documentation.
 
@@ -62,7 +62,7 @@ export default defineConfig({
 
 ## Add grid columns
 
-You can add custom columns to order, product, or customer grids. Each grid's columns are fetched by a runtime action you implement; `generate` derives the `workerProcess` entry from `runtimeAction` automatically:
+You can add custom columns to order, product, or customer grids. Each grid's columns are fetched by a runtime action you implement. The `generate` command derives the `workerProcess` entry from `runtimeAction` automatically:
 
 ```js
 adminUi: {

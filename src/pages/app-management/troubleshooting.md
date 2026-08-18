@@ -42,7 +42,7 @@ Schema not initialized. Call `initialize({ schema })` before using configuration
 
 See [Retrieve configuration at runtime](./configuration-schema.md#retrieve-configuration-at-runtime) for an example.
 
-If your `businessConfig` schema uses `dynamicList` fields, `initialize` also needs `params` to resolve the list options at runtime. Omitting `params` produces:
+If your `businessConfig` schema uses `dynamicList` fields, the `initialize` call also needs `params` to resolve the list options at runtime. Omitting `params` produces:
 
 ```text
 Dynamic list options require runtime params. Call `initialize({ schema, params })` to resolve them.
@@ -193,7 +193,7 @@ Pass `encryptionKey: params.AIO_COMMERCE_CONFIG_ENCRYPTION_KEY` whenever you cal
 
 ### Generate an encryption key
 
-Run the command below to ensure `AIO_COMMERCE_CONFIG_ENCRYPTION_KEY` is present in `.env`. If a key already exists, `encryption setup` leaves it unchanged.
+Run the command below to ensure `AIO_COMMERCE_CONFIG_ENCRYPTION_KEY` is present in `.env`. If a key already exists, the `encryption setup` command leaves it unchanged.
 
 If `.env` was removed or has no key, the command generates a **new** key. That new key cannot decrypt configuration that was encrypted with an older key. If that happens, see [Failed to decrypt configuration](#failed-to-decrypt-configuration-re-association-or-configuration-page) for more information.
 
@@ -225,7 +225,7 @@ bun x aio-commerce-lib-config encryption setup
 
 ### Validate your encryption key configuration
 
-If it's already there, validate it has the expected format:
+If it's already there, validate that it has the expected format:
 
 <CodeBlock slots="heading, code" repeat="4" languages="BASH, BASH, BASH, BASH" />
 

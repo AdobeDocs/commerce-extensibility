@@ -41,7 +41,7 @@ Run the following command to set up your App Builder project:
 
 <InlineAlert variant="info" slots="text"/>
 
-Unlike the commands in [CLI commands](#cli-commands) below, `init` runs before the library is installed. At this point each package manager needs to use its fetch-and-run runner (`npx`, `yarn dlx`, `pnpm dlx`, `bun x`) rather than its `exec`-style equivalent, which only runs locally installed binaries. For the same reason, `init` references the library by its full registry name (`@adobe/aio-commerce-lib-app`), whereas later commands invoke the locally installed binary using the short name (`aio-commerce-lib-app`).
+Unlike the commands in [CLI commands](#cli-commands) below, the `init` command runs before the library is installed. At this point, each package manager needs to use its fetch-and-run runner (`npx`, `yarn dlx`, `pnpm dlx`, `bun x`) rather than its `exec`-style equivalent, which only runs locally installed binaries. For the same reason, this command references the library by its full registry name (`@adobe/aio-commerce-lib-app`), whereas later commands invoke the locally installed binary using the short name (`aio-commerce-lib-app`).
 
 <CodeBlock slots="heading, code" repeat="4" languages="BASH, BASH, BASH, BASH" />
 
@@ -84,9 +84,9 @@ The initialization process:
 
 ### Working with TypeScript
 
-Since `@adobe/aio-commerce-lib-app` 1.10.0, `init` supports TypeScript scaffolding. Using TypeScript in an App Management project requires the project's TypeScript build setup: a `webpack-config.cjs` file, a root `tsconfig.json`, and the `typescript` development dependency. If you scaffold a new project with a TypeScript config, `init` sets this up for you out of the box.
+As of version 1.10.0 of `@adobe/aio-commerce-lib-app`, the `init` command supports TypeScript scaffolding. Using TypeScript in an App Management project requires the project's TypeScript build setup: a `webpack-config.cjs` file, a root `tsconfig.json`, and the `typescript` development dependency. Scaffolding a new project with a TypeScript config sets this up for you out of the box.
 
-If you're adding TypeScript to an existing project, re-run `init`. It's idempotent, so it adds any missing files or dependencies without touching your existing code. `init` only adds these files if they don't already exist, so any existing setup is preserved.
+If you're adding TypeScript to an existing project, re-run `init`. It's idempotent: it only adds files and dependencies that don't already exist, so your existing setup and code are preserved.
 
 See [Migrating an Existing Project to TypeScript](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-app/docs/usage.md#migrating-an-existing-project-to-typescript) if you already have these files or need to configure the TypeScript setup yourself.
 
@@ -100,7 +100,7 @@ See [Retrieve configuration at runtime](./configuration-schema.md#retrieve-confi
 
 ## CLI commands
 
-The library provides the following CLI commands. Replace `npx` with your package manager of preference, using the below equivalents:
+The library provides the following CLI commands. Replace `npx` with your package manager of preference, using the equivalents below:
 
 * For [Yarn](https://yarnpkg.com/): `yarn exec`
 * For [PNPM](https://pnpm.io/): `pnpm exec`
@@ -108,7 +108,7 @@ The library provides the following CLI commands. Replace `npx` with your package
 
 | Command | Description |
 |---------|-------------|
-| `npx aio-commerce-lib-app generate all` | Generate all artifacts (manifest, schema, and runtime actions). If your schema contains password fields, configure an encryption key. An encryption key is generated when no encryption key is found.  See [Password field encryption](configuration-schema.md#password-field-encryption) for more information   |
+| `npx aio-commerce-lib-app generate all` | Generate all artifacts (manifest, schema, and runtime actions). If your schema contains password fields, configure an encryption key. An encryption key is generated when no encryption key is found. See [Password field encryption](configuration-schema.md#password-field-encryption) for more information. |
 | `npx aio-commerce-lib-app generate manifest` | Generate only the app manifest file |
 | `npx aio-commerce-lib-app generate actions` | Generate only runtime actions |
 | `npx aio-commerce-lib-app generate schema` | Generate only the configuration schema |

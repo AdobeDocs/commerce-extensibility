@@ -73,7 +73,7 @@ This `businessConfig` schema contains the following properties:
 | `description` | string | No | Help text displayed below the field. |
 | `options` | array or function | Conditional | Required for `list` and `dynamicList`. For `list`, an array of `{ label, value }` objects. For `dynamicList`, an async function that receives runtime action `params` and returns that array. |
 | `selectionMode` | string | Conditional | Required for `list` and `dynamicList`. Set to `single` for standard dropdown or `multiple` to allow multiple selections. |
-| `env` | array | No | Limits the field to **PaaS** (`paas`) or **SaaS** (`saas`). To enable the field to all environments, omit the field or specify both values. |
+| `env` | array | No | Limits the field to **PaaS** (`paas`) or **SaaS** (`saas`). To enable the field in all environments, omit the property or specify both values. |
 
 ## Supported field types
 
@@ -221,7 +221,7 @@ After a scope is deleted in Commerce, run **Sync commerce scopes** again for eac
 
 ### Syncing scopes from a runtime action
 
-`getScopeTree`, `syncCommerceScopes`, `unsyncCommerceScopes`, and `setCustomScopeTree` from `@adobe/aio-commerce-lib-config` are callable SDK functions, not only the Admin UI actions behind **Sync commerce scopes**. Call them directly from your own runtime actions when you need to read or refresh the scope tree programmatically.
+The `@adobe/aio-commerce-lib-config` functions `getScopeTree`, `syncCommerceScopes`, `unsyncCommerceScopes`, and `setCustomScopeTree` are callable directly, not only through the Admin UI actions behind **Sync commerce scopes**. Call them from your own runtime actions when you need to read or refresh the scope tree programmatically.
 
 ## Schema requirements
 
@@ -343,7 +343,7 @@ async function main(params) {
 
 ### Global scope and selectors
 
-`getConfiguration`, `getConfigurationByKey`, and `setConfiguration` accept an **optional** scope selector. When you omit it, the library resolves the **global** scope.
+The `getConfiguration`, `getConfigurationByKey`, and `setConfiguration` functions accept an **optional** scope selector. When you omit it, the library resolves the **global** scope.
 
 ### Write configuration values
 

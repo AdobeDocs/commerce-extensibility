@@ -80,9 +80,9 @@ export default defineConfig({
 | `runtimeActions` | array | Yes | Array of runtime actions to invoke (format: `package/action`). |
 | `destination` | string | No | Destination for the event. Must be a valid destination name. |
 | `env` | array | No | Restricts the event to **PaaS** (`paas`) and/or **SaaS** (`saas`). Omit or specify both to apply to all environments. |
-| `hipaa_audit_required` | boolean | No | Indicates if the event requires HIPAA audit. |
-| `priority` | boolean | No | Indicates if the event is prioritary. |
-| `force` | boolean | No | Indicates if the event should be forced. |
+| `hipaa_audit_required` | boolean | No | Indicates whether the event requires HIPAA audit. |
+| `priority` | boolean | No | Indicates whether the event is high priority. |
+| `force` | boolean | No | Indicates whether the event should be forced. |
 
 ### Event rules
 
@@ -128,7 +128,7 @@ eventing: {
 | `description` | string | Yes | Description of the event. Maximum 255 characters. |
 | `runtimeActions` | array | Yes | Array of runtime actions to invoke. |
 | `env` | array | No | Restricts the event to **PaaS** (`paas`) and/or **SaaS** (`saas`). Omit or specify both to apply to all environments. |
-| `hipaa_audit_required` | boolean | No | Indicates if the event requires HIPAA audit. |
+| `hipaa_audit_required` | boolean | No | Indicates whether the event requires HIPAA audit. |
 
 ## Provider configuration
 

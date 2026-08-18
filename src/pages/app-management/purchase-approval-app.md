@@ -16,7 +16,7 @@ The **Purchase Approval** app is a complete, end-to-end App Builder reference ap
 
 Use it as a starting point or as a reference for how these components fit together. See [Get the code](#get-the-code) for the source repository and setup steps.
 
-<InlineAlert variant="info" slots="text" />
+<InlineAlert variant="info" slots="text"/>
 
 This code is provided as a learning reference. It is not production-ready and should not be deployed as-is in a production environment without further review of security, performance, and error handling.
 

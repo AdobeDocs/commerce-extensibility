@@ -25,7 +25,7 @@ The initialization process creates files organized by extension point:
 | `src/commerce-extensibility-1/.generated/actions/app-management/` | Runtime actions for app config and installation |
 | `src/commerce-extensibility-1/ext.config.yaml` | Extension manifest with `pre-app-build` hook |
 
-Import your app configuration through the `#app.commerce.config` alias. `generate` registers this alias in your project's `package.json` `imports` for every app (since `@adobe/aio-commerce-lib-app` 1.8.0), so your own runtime actions can import your config the same way the generated actions do, without referencing generated file paths. The alias resolves to the generated `app.commerce.config.js` module, which is built differently depending on whether your config is static or dynamic:
+Import your app configuration through the `#app.commerce.config` alias. The `generate` command registers this alias in your project's `package.json` `imports` for every app (since `@adobe/aio-commerce-lib-app` 1.8.0), so your own runtime actions can import your config the same way the generated actions do, without referencing generated file paths. The alias resolves to the generated `app.commerce.config.js` module, which is built differently depending on whether your config is static or dynamic:
 
 * **Static (serializable) config**: the validated `app.commerce.manifest.json` snapshot is generated, and the module re-exports it.
 * **Dynamic config** (contains logic that can't be expressed as JSON, such as a `dynamicList` field with a function-based `options`): no manifest is generated, and the module is built directly from your `app.commerce.config` source file.

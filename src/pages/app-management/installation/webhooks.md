@@ -19,7 +19,7 @@ Use [Events](./events.md) and webhooks when you need both asynchronous event del
 Webhook configuration spans both the developer who ships the app and the merchant who associates it with Commerce:
 
 * **App developers** declare webhooks in the `webhooks` field of `app.commerce.config`. That manifest is what App Management uses to know which webhook subscriptions belong to your app.
-* **Merchants** usually get webhooks from that manifest without extra setup. See [Install and access App Management](https://experienceleague.adobe.com/en/docs/commerce/app-management/install#access-app-management) and [Commerce webhooks and apps](https://experienceleague.adobe.com/en/docs/commerce/app-management/install#commerce-webhooks-and-apps)  for more information on how to configure Adobe Commerce.
+* **Merchants** usually get webhooks from that manifest without extra setup. See [Install and access App Management](https://experienceleague.adobe.com/en/docs/commerce/app-management/install#access-app-management) and [Commerce webhooks and apps](https://experienceleague.adobe.com/en/docs/commerce/app-management/install#commerce-webhooks-and-apps) for more information on how to configure Adobe Commerce.
 
 ## Webhook entries
 
@@ -27,7 +27,7 @@ Add a `webhooks` array at the top level of `defineConfig`. When present, it must
 
 Each entry must use **one** of these patterns (not both):
 
-* **`runtimeAction`**. No `url` inside `webhook`. The runtime action (format `package/action`) supplies the webhook URL at runtime. Optional `requireAdobeAuth` controls Adobe auth on that resolution path.
+* **`runtimeAction`**. No `url` inside `webhook`. The runtime action (format `package/action`) supplies the webhook URL at runtime. The optional `requireAdobeAuth` property controls Adobe auth on that resolution path.
 * **Explicit `url`**. The nested `webhook` object includes a valid absolute `https` URL. Do not set `runtimeAction` on the entry, or your configuration will be flagged as invalid.
 
 Each webhook entry uses the following properties:
@@ -44,15 +44,15 @@ Each webhook entry uses the following properties:
 
 ### Webhook category property
 
-Webhooks are divided into 3 categories (from lower to higher when it comes to possible conflicts with other applications):
+Webhooks are divided into three categories, ordered from lowest to highest potential for conflicts with other applications:
 
-* `validation` - Webhook is used only for validation purposes, returns only `success` or `validation` operations.
-* `append` - Webhook only appends data to the result and does not modify existing data. For example, add a shipping method on the checkout page.
-* `modification` - Webhook modifies the Commerce data with `add`, `replace`, and `remove` operations.
+* `validation`: Used only for validation purposes; returns only `success` or `validation` operations.
+* `append`: Appends data to the result without modifying existing data. For example, adding a shipping method on the checkout page.
+* `modification`: Modifies Commerce data with `add`, `replace`, and `remove` operations.
 
 <InlineAlert variant="warning" slots="text"/>
 
-If you're not sure which `category` to choose between `append` and `modification`, use `modification`. Keep in mind that it will not stop the app from install if there are possible conflicts, it only warns the user before install.
+If you're not sure whether to choose `append` or `modification`, use `modification`. Choosing the wrong category doesn't block installation when there are possible conflicts; it only warns the user before install.
 
 ### Nested `webhook` object
 

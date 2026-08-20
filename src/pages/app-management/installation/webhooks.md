@@ -61,10 +61,10 @@ The `webhook` object contains the following properties:
 | Property | Type | Required | Description |
 |----------|------|----------|-------------|
 | `webhook_method` | string | Yes | Commerce webhook method (for example, `observer.catalog_product_save_after`). |
-| `webhook_type` | string | Yes | Typically `before` or `after` the original action. |
+| `webhook_type` | string | Yes | Must be `before` or `after`. |
 | `batch_name` | string | Yes | Batch identifier. Letters, numbers, and underscores only. |
 | `hook_name` | string | Yes | Hook identifier within the batch. Same character rules as `batch_name`. |
-| `method` | string | Yes | HTTP method for the outbound request (for example, `POST`). |
+| `method` | string | Yes | HTTP method for the outbound request. Must be `POST`, `PUT`, `DELETE`, or `GET`. |
 | `url` | string | Conditional | Absolute HTTPS URL. Required when the entry does **not** use `runtimeAction`. Omit when using `runtimeAction`. |
 | `batch_order` | number | No | Positive number; order among batches. |
 | `priority` | number | No | Positive priority hint. |

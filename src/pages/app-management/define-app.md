@@ -9,13 +9,13 @@ keywords:
 
 # Define your app
 
-The `app.commerce.config` file is the central configuration file for your App Builder application. It defines your app metadata, business configuration schema, and optional sections such as **[Events](installation/events.md)**, **[Webhooks](installation/webhooks.md)**, and **[Custom steps](installation/customize.md)**.
+The `app.commerce.config` file is the central configuration file for your App Builder application. It defines your app metadata, business configuration schema, and optional sections such as **[Events](installation/events.md)**, **[Webhooks](installation/webhooks.md)**, **[Custom steps](installation/customize.md)**, and **[Admin UI SDK](installation/admin-ui-sdk.md)**.
 
 Create an `app.commerce.config` file consisting of **[App metadata](app-metadata.md)** and **[Business configuration](configuration-schema.md)**.
 
 <InlineAlert variant="info" slots="text"/>
 
-The `app.commerce.config` file supports both JavaScript and TypeScript file types.
+The `app.commerce.config` file can be written in JavaScript or TypeScript. If both are present, the JavaScript file takes priority.
 
 ## Example
 
@@ -127,6 +127,13 @@ export default defineConfig({
         script: "./scripts/custom.js",
       },
     ],
+  },
+  adminUi: {
+    menu: {
+      id: "my_commerce_application_menu",
+      label: "My Commerce Application",
+      description: "Manage settings for My Commerce Application.",
+    },
   },
 });
 ```

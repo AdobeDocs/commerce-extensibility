@@ -20,7 +20,7 @@ July 29, 2026
 
 ## Version 4.2.0
 
-Admin UI SDK 4.2.0 is available for Adobe Commerce on Cloud and on-premises (PaaS) version 2.4.8 and later. It is also available for Adobe Commerce as a Cloud Service (SaaS).
+Admin UI SDK 4.2.0 is available for Adobe Commerce as a Cloud Service (SaaS) and version 2.4.8 and later of Adobe Commerce on Cloud and on-premises (PaaS).
 
 ### Release date
 

@@ -1099,6 +1099,7 @@ This reference lists the full payload for each event supported on Adobe Commerce
 }
 ```
 
+\<!--
 ### observer.customer_register_success
 
 ```json
@@ -1157,6 +1158,7 @@ This reference lists the full payload for each event supported on Adobe Commerce
     "account_controller": []
 }
 ```
+--\>
 
 ### observer.customer_save_after
 
@@ -1187,6 +1189,8 @@ This reference lists the full payload for each event supported on Adobe Commerce
 }
 ```
 
+\<!--
+
 ### observer.customer_save_commit_after
 
 ```json
@@ -1215,6 +1219,7 @@ This reference lists the full payload for each event supported on Adobe Commerce
     "extension_attributes": "object{}"
 }
 ```
+--\>
 
 ## CustomerCustomAttributes
 
@@ -2647,6 +2652,22 @@ This reference lists the full payload for each event supported on Adobe Commerce
 }
 ```
 
+## SaasReminder
+
+### observer.reminder_matched_carts
+
+```
+{
+    "carts": [
+        {
+            "cart_id": "int",
+            "customer_id": "int",
+            "last_updated": "string"
+        }
+    ]
+}
+```
+
 ## Sales
 
 ### observer.checkout_submit_all_after
@@ -3223,6 +3244,98 @@ This reference lists the full payload for each event supported on Adobe Commerce
             "value": "mixed"
         }
     ]
+}
+```
+
+### observer.sales_order_invoice_pay
+
+```json
+{
+    "items": [
+        {
+            "additional_data": "string",
+            "base_cost": "float",
+            "base_discount_amount": "float",
+            "base_discount_tax_compensation_amount": "float",
+            "base_price": "float",
+            "base_price_incl_tax": "float",
+            "base_row_total": "float",
+            "base_row_total_incl_tax": "float",
+            "base_tax_amount": "float",
+            "description": "string",
+            "discount_amount": "float",
+            "entity_id": "int",
+            "discount_tax_compensation_amount": "float",
+            "name": "string",
+            "parent_id": "int",
+            "price": "float",
+            "price_incl_tax": "float",
+            "product_id": "int",
+            "row_total": "float",
+            "row_total_incl_tax": "float",
+            "sku": "string",
+            "tax_amount": "float",
+            "extension_attributes": "object{}",
+            "order_item_id": "int",
+            "qty": "float"
+        }
+    ],
+    "comments": [
+        {
+            "is_customer_notified": "int",
+            "parent_id": "int",
+            "extension_attributes": "object{}",
+            "comment": "string",
+            "is_visible_on_front": "int",
+            "created_at": "string",
+            "entity_id": "int"
+        }
+    ],
+    "increment_id": "string",
+    "base_total_refunded": "float",
+    "discount_description": "string",
+    "base_currency_code": "string",
+    "base_discount_amount": "float",
+    "base_grand_total": "float",
+    "base_discount_tax_compensation_amount": "float",
+    "base_shipping_amount": "float",
+    "base_shipping_discount_tax_compensation_amnt": "float",
+    "base_shipping_incl_tax": "float",
+    "base_shipping_tax_amount": "float",
+    "base_subtotal": "float",
+    "base_subtotal_incl_tax": "float",
+    "base_tax_amount": "float",
+    "base_to_global_rate": "float",
+    "base_to_order_rate": "float",
+    "billing_address_id": "int",
+    "can_void_flag": "int",
+    "created_at": "string",
+    "discount_amount": "float",
+    "email_sent": "int",
+    "global_currency_code": "string",
+    "grand_total": "float",
+    "discount_tax_compensation_amount": "float",
+    "is_used_for_refund": "int",
+    "order_currency_code": "string",
+    "order_id": "int",
+    "shipping_address_id": "int",
+    "shipping_amount": "float",
+    "shipping_discount_tax_compensation_amount": "float",
+    "shipping_incl_tax": "float",
+    "shipping_tax_amount": "float",
+    "state": "int",
+    "store_currency_code": "string",
+    "store_id": "int",
+    "store_to_base_rate": "float",
+    "store_to_order_rate": "float",
+    "subtotal": "float",
+    "subtotal_incl_tax": "float",
+    "tax_amount": "float",
+    "total_qty": "float",
+    "transaction_id": "string",
+    "updated_at": "string",
+    "_origData": "array",
+    "_isNew": "boolean"
 }
 ```
 

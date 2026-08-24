@@ -1100,6 +1100,7 @@ This reference lists the full payload for each event supported on Adobe Commerce
 ```
 
 \<!--
+
 ### observer.customer_register_success
 
 ```json
@@ -1158,6 +1159,7 @@ This reference lists the full payload for each event supported on Adobe Commerce
     "account_controller": []
 }
 ```
+
 --\>
 
 ### observer.customer_save_after
@@ -2653,7 +2655,7 @@ This reference lists the full payload for each event supported on Adobe Commerce
 
 ### observer.reminder_matched_carts
 
-```
+```json
 {
     "carts": [
         {

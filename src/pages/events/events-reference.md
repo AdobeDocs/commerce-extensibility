@@ -1189,8 +1189,6 @@ This reference lists the full payload for each event supported on Adobe Commerce
 }
 ```
 
-\<!--
-
 ### observer.customer_save_commit_after
 
 ```json
@@ -1219,7 +1217,6 @@ This reference lists the full payload for each event supported on Adobe Commerce
     "extension_attributes": "object{}"
 }
 ```
---\>
 
 ## CustomerCustomAttributes
 

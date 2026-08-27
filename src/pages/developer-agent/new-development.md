@@ -124,5 +124,3 @@ Generate a README with setup and deployment instructions.
 ```
 
 The agent retains all project context across your session and across return visits.
-
-<Fragment src="/_includes/developer-agent-deploy.md" />

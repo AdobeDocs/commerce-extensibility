@@ -131,5 +131,3 @@ Generate a README with setup and deployment instructions.
 ```
 
 The agent retains project context and can update generated files without starting over.
-
-<Fragment src="/_includes/developer-agent-deploy.md" />

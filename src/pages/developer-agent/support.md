@@ -5,16 +5,13 @@ keywords:
   - Developer Agent
   - Feedback
   - Support
-  - Early Access
 ---
 
 # Feedback and support
 
-<Fragment src="/_includes/developer-agent.md" />
-
 Your feedback is essential to improving the Commerce Developer Agent. This guide explains how to report bugs, submit feature requests, share satisfaction ratings, and get help when you encounter issues.
 
-During Early Access, support is provided as a best-effort service. There are no formal service-level agreements (SLAs) or commitments. Response times vary based on issue severity and team availability. For urgent access issues, escalate directly to your Adobe representative.
+Support is provided as a best-effort service. There are no formal service-level agreements (SLAs) or commitments. Response times vary based on issue severity and team availability. For urgent access issues, escalate directly to your Adobe representative.
 
 ## Before you report an issue
 
@@ -47,7 +44,7 @@ For access issues, provisioning requests, or escalations, contact your Adobe rep
 
 * Cannot log in or access denied issues
 * Requesting additional participant provisioning
-* Questions about the early access agreement scope
+* Questions about the program or agreement scope
 * Urgent data or security concerns
 
 ## Report a bug
@@ -71,7 +68,7 @@ Include in your bug report:
 | **Medium** | Impacts quality but functional | Minor generated-code issue with a workaround, a UI element not functioning as expected |
 | **Low** | Cosmetic or minor issue | Typo in agent response, UI label inconsistency |
 
-For Critical or High-severity bugs, post a message in the early access Slack channel and `@` mention your Adobe representative, so your issue can be addressed quickly.
+For Critical or High-severity bugs, post a message in the support Slack channel and `@` mention your Adobe representative, so your issue can be addressed quickly.
 
 ## Submit a feature request
 

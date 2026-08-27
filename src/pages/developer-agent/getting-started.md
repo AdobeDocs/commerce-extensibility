@@ -3,14 +3,11 @@ title: Getting started
 description: Learn how to access and begin using the Commerce Developer Agent for the first time, including IMS login, interface overview, and your first session.
 keywords:
   - Developer Agent
-  - Early Access
   - Getting Started
   - App Builder
 ---
 
 # Getting started
-
-<Fragment src="/_includes/developer-agent.md" />
 
 This guide provides everything you need to access and start using the Commerce Developer Agent for the first time.
 
@@ -18,7 +15,8 @@ This guide provides everything you need to access and start using the Commerce D
 
 To access the developer agent, you must have access to the following:
 
-* An Early Access invitation from your Adobe representative
+* An Adobe Commerce entitlement. The Commerce Developer Agent is available to Adobe Commerce customers only.
+* Adobe Developer App Builder access. App Builder access is required to use the Commerce Developer Agent.
 * An active Adobe IMS identity (Adobe ID or Federated ID) associated with your organization
 
 ## Use cases

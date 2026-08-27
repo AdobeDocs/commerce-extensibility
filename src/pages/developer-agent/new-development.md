@@ -5,12 +5,9 @@ keywords:
   - Developer Agent
   - Net-New Development
   - Blueprint
-  - Early Access
 ---
 
 # Net-new development workflow
-
-<Fragment src="/_includes/developer-agent.md" />
 
 The net-new development workflow allows you to use the Commerce Developer Agent to scaffold the architecture and generate starter code for new Commerce extensions, integration layers, or storefront components.
 

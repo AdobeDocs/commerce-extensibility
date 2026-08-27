@@ -5,23 +5,30 @@ keywords:
   - Developer Agent
   - Capabilities
   - Limitations
-  - Early Access
 ---
 
 # Commerce Developer Agent
-
-<Fragment src="/_includes/developer-agent.md" />
 
 The Commerce Developer Agent allows you to migrate existing application, extension, and module code to App Builder, or to create new development from scratch. The agent is designed to help you plan and execute your development work in a structured and efficient way.
 
 This page defines what the Commerce Developer Agent can and cannot do. It is intended to set accurate expectations and help you plan your use of the Commerce Developer Agent. The capabilities will continue to expand and improve over time, and this page will be updated accordingly.
 
-**Available during Early Access:**
+## Access the Commerce Developer Agent
+
+Launch the Commerce Developer Agent directly at the following URL:
+
+`https://experience.adobe.com/#/@<your-ims-org-name>/commerce-migration-assessment/developer-agent`
+
+Replace `<your-ims-org-name>` with your own IMS organization ID.
+
+For step-by-step access instructions and entry points, see [Getting started](getting-started.md).
+
+## Capabilities
 
 * A structured **Blueprint** that allows you to iterate through a phased migration and review the architecture plans, allowing you as a developer to review and approve before execution.
 * Generated code artifacts based on the Adobe Developer App Builder scaffolded extensions designed for Adobe Commerce and supported workflow outputs based on the approved Blueprint.
 
-**Not available during Early Access:**
+## Current limitations
 
 * Access to Adobe Experience Manager's Experience Modernization Agent. Content-specific Edge Delivery Service (EDS) use cases are not currently supported by the Commerce Developer Agent.
 * API Mesh integrations
@@ -97,7 +104,7 @@ The following tables summarize the capabilities of the Commerce Developer Agent.
 
 ## Limitations
 
-The following limitations currently apply to the Commerce Developer Agent. Many of these limitations will be addressed before the Commerce Developer Agent reaches general availability.
+The following limitations currently apply to the Commerce Developer Agent. Adobe continues to expand the agent's capabilities, and this page is updated as limitations are addressed.
 
 ### Deployment and integration
 

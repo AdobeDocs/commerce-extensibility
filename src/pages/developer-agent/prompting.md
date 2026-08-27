@@ -5,12 +5,9 @@ keywords:
   - Developer Agent
   - Prompting
   - blueprint
-  - Early Access
 ---
 
 # Prompt crafting
-
-<Fragment src="/_includes/developer-agent.md" />
 
 The Commerce Developer Agent is a reasoning system, not a search engine. The quality and specificity of your prompts directly affect the accuracy and scope of the blueprint and code artifacts it produces.
 

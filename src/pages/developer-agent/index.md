@@ -32,7 +32,6 @@ For step-by-step access instructions and entry points, see [Getting started](get
 
 * Access to Adobe Experience Manager's Experience Modernization Agent. Content-specific Edge Delivery Service (EDS) use cases are not currently supported by the Commerce Developer Agent.
 * API Mesh integrations
-* Self-service provisioning or access requests
 * Usage dashboards
 
 ## What to expect from generated code quality
@@ -56,7 +55,7 @@ Use the Develop stage to correct it through follow-up prompts. If the generated 
 
 **Can I share a project with a colleague?**
 
-Multi-user project sharing is not currently available. Each provisioned user only has access to their own projects.
+Multi-user project sharing is not currently available. Each user only has access to their own projects.
 
 **Why does my session sometimes feel slow?**
 
@@ -127,7 +126,6 @@ The following limitations apply when developing net new or migration-based proje
 
 The following capabilities are not available:
 
-* Self-service access requests
 * Customer-facing usage dashboards
 * Organization-level role-based access control hierarchies
 * Non-Adobe identity provider federation (SAML/OIDC)

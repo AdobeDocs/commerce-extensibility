@@ -9,8 +9,6 @@ keywords:
 
 # Deploy and install your app
 
-<Fragment src="/_includes/developer-agent.md" />
-
 After you [configure integrations](integrations.md), you can deploy the generated app directly from the Commerce Developer Agent. Deployment is not the final step in this process, the app must also be associated and installed in Commerce App Management before it becomes active.
 
 ![develop tab](../images/developer-agent/develop.png)

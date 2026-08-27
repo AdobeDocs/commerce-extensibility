@@ -11,7 +11,7 @@ keywords:
 
 Your feedback is essential to improving the Commerce Developer Agent. This guide explains how to report bugs, submit feature requests, share satisfaction ratings, and get help when you encounter issues.
 
-Support is provided as a best-effort service. There are no formal service-level agreements (SLAs) or commitments. Response times vary based on issue severity and team availability. For urgent access issues, escalate directly to your Adobe representative.
+Response times vary based on issue severity and team availability. For urgent access issues, escalate directly to your Adobe representative.
 
 ## Before you report an issue
 
@@ -24,11 +24,7 @@ If you are unsure how to approach a workflow or prompt, try these resources befo
 
 ## Support channel
 
-For bugs, questions, and issues that are not resolved by in-product feedback, use the dedicated Slack channel provided to you during onboarding.
-
-<InlineAlert variant="info" slots="text"/>
-
-Access to the Slack channel is provided by your Adobe program lead during onboarding.
+For bugs, questions, and issues that are not resolved by in-product feedback, contact your Adobe support representative.
 
 When posting in the support channel, include:
 
@@ -40,12 +36,7 @@ When posting in the support channel, include:
 
 ### Adobe representative
 
-For access issues, provisioning requests, or escalations, contact your Adobe representative or program lead directly. Contact your Adobe representative for the following issues:
-
-* Cannot log in or access denied issues
-* Requesting additional participant provisioning
-* Questions about the program or agreement scope
-* Urgent data or security concerns
+For access issues, escalations, or any urgent data or security concerns, contact your Adobe representative directly.
 
 ## Report a bug
 

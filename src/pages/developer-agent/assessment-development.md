@@ -9,9 +9,9 @@ keywords:
 
 # Migration assessment development
 
-<Fragment src="/_includes/developer-agent.md" />
+The following sections describe how to migrate existing Adobe Commerce modules, plugins, or customizations based on a completed [Migration Assessment](https://experienceleague.adobe.com/en/docs/commerce/cloud-service/migration/migration-tools/assessment).
 
-The following sections describe how to migrate existing Adobe Commerce modules, plugins, or customizations based on a completed [Migration Assessment](https://experienceleague.adobe.com/en/docs/commerce/cloud-service/migration/migration-tools/assessment). For an overview of migrating to Adobe Commerce as a Cloud Service, see the [migration overview](https://experienceleague.adobe.com/en/docs/commerce/cloud-service/migration/overview).
+For an overview of migrating to Adobe Commerce as a Cloud Service, see the [migration overview](https://experienceleague.adobe.com/en/docs/commerce/cloud-service/migration/overview).
 
 ## Requirements
 

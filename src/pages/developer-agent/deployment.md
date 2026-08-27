@@ -35,18 +35,7 @@ To undeploy, click **Undeploy workspace** at any time.
 
 After deploying, you must associate the app in App Management to make it available for installation.
 
-1. Navigate to your Adobe Commerce as a Cloud Service instance Admin URL and sign in.
-1. In the Admin, select **Apps** > **App Management**.
-1. Click **Associate App**.
-1. Select the **Project** and **Workspace** that the developer agent deployed to.
-
-   App Management displays a card showing the application name, version, and the capabilities the application implements, such as **Business Configuration**, **Webhooks**, or **Events**.
-
-1. Click **Associate**.
-
-<InlineAlert variant="info" slots="text"/>
-
-To update an app that is already associated with your Commerce project, you must **Unassociate** and then **Associate** it again in App Management.
+Follow the instruction in [Associate an app in App Management](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app#associate-an-app).
 
 ## Install and configure the app
 

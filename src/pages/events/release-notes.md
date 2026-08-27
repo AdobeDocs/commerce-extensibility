@@ -12,6 +12,16 @@ These release notes describe the latest version of Adobe I/O Events for Adobe Co
 
 See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io-events-for-adobe-commerce) for upgrade instructions.
 
+## Version 1.22.1
+
+### Release date
+
+August 18, 2026
+
+### Bug fixes
+
+* Fixed an issue where objects inside a top-level array event field were not converted, causing empty objects in the event payload. \<!-- CEXT-6554 --\>
+
 ## Version 1.22.0
 
 ### Release date

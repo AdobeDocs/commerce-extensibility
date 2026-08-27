@@ -41,7 +41,7 @@ Run the following command to set up your App Builder project:
 
 <InlineAlert variant="info" slots="text"/>
 
-Unlike the commands in [CLI commands](#cli-commands) below, `init` runs before the library is installed. At this point each package manager needs to use its fetch-and-run runner (`npx`, `yarn dlx`, `pnpm dlx`, `bun x`) rather than its `exec`-style equivalent, which only runs locally installed binaries. For the same reason, `init` references the library by its full registry name (`@adobe/aio-commerce-lib-app`), whereas later commands invoke the locally installed binary using the short name (`aio-commerce-lib-app`).
+Unlike the commands in [CLI commands](#cli-commands) below, the `init` command runs before the library is installed. At this point, each package manager needs to use its fetch-and-run runner (`npx`, `yarn dlx`, `pnpm dlx`, `bun x`) rather than its `exec`-style equivalent, which only runs locally installed binaries. For the same reason, this command references the library by its full registry name (`@adobe/aio-commerce-lib-app`), whereas later commands invoke the locally installed binary using the short name (`aio-commerce-lib-app`).
 
 <CodeBlock slots="heading, code" repeat="4" languages="BASH, BASH, BASH, BASH" />
 
@@ -78,21 +78,29 @@ The initialization process:
 
 * Creates `app.commerce.config` with a template (prompts you to choose format and features if the file doesn't exist)
 * Installs required dependencies (`@adobe/aio-commerce-lib-app`, `@adobe/aio-commerce-sdk`, and `@adobe/aio-commerce-lib-config` when business configuration is enabled)
-* Adds a `postinstall` hook to `package.json`
 * Generates all required artifacts (`commerce/configuration/1` resources are only generated when `businessConfig` is defined)
 * Updates `app.config.yaml` and `install.yaml` with the appropriate extension references. Creates these files if they do not exist.
+* Adds a `postinstall` hook to `package.json`
+
+### Working with TypeScript
+
+As of version 1.10.0 of `@adobe/aio-commerce-lib-app`, the `init` command supports TypeScript scaffolding. Using TypeScript in an App Management project requires the project's TypeScript build setup: a `webpack-config.cjs` file, a root `tsconfig.json`, and the `typescript` development dependency. Scaffolding a new project with a TypeScript config sets this up for you out of the box.
+
+If you're adding TypeScript to an existing project, re-run `init`. It's idempotent: it only adds files and dependencies that don't already exist, so your existing setup and code are preserved.
+
+See [Migrating an Existing Project to TypeScript](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-app/docs/usage.md#migrating-an-existing-project-to-typescript) if you already have these files or need to configure the TypeScript setup yourself.
 
 ## Initialize the configuration library in runtime actions
 
 When your app defines `businessConfig`, each App Builder runtime action that calls `getConfiguration`, `getConfigurationByKey`, or `setConfiguration` must run `initialize` before any of those three methods.
 
-If your schema includes `dynamicList` fields, you must **await** `initialize` and pass runtime action `params`. See [Initialize with and without dynamic lists](./configuration-schema.md#initialize-with-and-without-dynamic-lists) and [Configure action inputs for dynamic lists](./configuration-schema.md#configure-action-inputs-for-dynamic-lists).
+If your schema includes `dynamicList` fields, you must **await** `initialize` and pass runtime action `params`. See [Initialize configuration](./configuration-schema.md#initialize-configuration) and [Configure action inputs for dynamic lists](./configuration-schema.md#configure-action-inputs-for-dynamic-lists).
 
 See [Retrieve configuration at runtime](./configuration-schema.md#retrieve-configuration-at-runtime) for an example.
 
 ## CLI commands
 
-The library provides the following CLI commands. Replace `npx` with your package manager of preference, using the below equivalents:
+The library provides the following CLI commands. Replace `npx` with your package manager of preference, using the equivalents below:
 
 * For [Yarn](https://yarnpkg.com/): `yarn exec`
 * For [PNPM](https://pnpm.io/): `pnpm exec`
@@ -100,7 +108,7 @@ The library provides the following CLI commands. Replace `npx` with your package
 
 | Command | Description |
 |---------|-------------|
-| `npx aio-commerce-lib-app generate all` | Generate all artifacts (manifest, schema, and runtime actions). If your schema contains password fields, configure an encryption key. An encryption key is generated when no encryption key is found.  See [Password field encryption](configuration-schema.md#password-field-encryption) for more information   |
+| `npx aio-commerce-lib-app generate all` | Generate all artifacts (manifest, schema, and runtime actions). If your schema contains password fields, configure an encryption key. An encryption key is generated when no encryption key is found. See [Password field encryption](configuration-schema.md#password-field-encryption) for more information. |
 | `npx aio-commerce-lib-app generate manifest` | Generate only the app manifest file |
 | `npx aio-commerce-lib-app generate actions` | Generate only runtime actions |
 | `npx aio-commerce-lib-app generate schema` | Generate only the configuration schema |

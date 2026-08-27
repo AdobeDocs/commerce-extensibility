@@ -25,8 +25,8 @@ To access the developer agent, you must have access to the following:
 
 There are two main ways to start a Commerce Developer Agent session, one for new development and one for migration related development:
 
-* [Net-new development](./new-development.md) — for creating new development not based on any previous Adobe Commerce code.
 * [From a Migration Assessment](./assessment-development.md) — for migrating existing Adobe Commerce modules, plugins, or customizations based on a completed [Migration Assessment](https://experienceleague.adobe.com/en/docs/commerce/cloud-service/migration/migration-tools/assessment).
+* [Net-new development](./new-development.md) — for creating new development not based on any previous Adobe Commerce code.
 
 ## Access the Commerce Developer Agent
 
@@ -57,7 +57,7 @@ The Commerce Developer Agent workspace is organized into tabs or stages that cor
 * **Integrations** — Configure external connections, such as GitHub or App Builder.
 * **Deployments** — Initiate App Builder deployment actions.
 
-The **Blueprint** and **Develop** sections should function without much setup, however some **Integrations** and **Deployments** capabilities might require additional setup.
+The **Blueprint** and **Develop** sections should function without much setup. However some **Integrations** and **Deployments** capabilities might require additional setup.
 
 ## Understand how the agent works
 
@@ -77,8 +77,8 @@ The developer agent features to consider when planning your workflow:
 ## Next steps
 
 * Start developing:
-  * [Net-new development](./new-development.md)
   * [Migration assessment development](./assessment-development.md)
+  * [Net-new development](./new-development.md)
 * [Prompting tips](prompting.md)
 * [Understanding limitations](index.md).
 * [Reporting issues](support.md).

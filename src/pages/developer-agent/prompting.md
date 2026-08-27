@@ -42,7 +42,7 @@ Useful constraints to mention:
 
 ### One scope per blueprint
 
-blueprints work best when they have a clear, bounded scope. If you want to build multiple related features, consider generating them as separate blueprints within the same project and using the Develop stage to synthesize them.
+Blueprints work best when they have a clear, bounded scope. If you want to build multiple related features, consider generating them as separate blueprints within the same project and using the Develop stage to synthesize them.
 
 Aim for one primary capability per blueprint. The agent performs better with focused scope than with vague, multi-goal prompts.
 

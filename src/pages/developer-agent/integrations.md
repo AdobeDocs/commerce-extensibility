@@ -67,7 +67,7 @@ The Required APIs section displays any missing APIs. After you add the missing A
 
 Use the **Import App Builder Workspace** section to populate your workspace credentials from your workspace JSON file. To download your workspace JSON:
 
-1. Navigate to `https://developer.adobe.com/console/`.
+1. Navigate to `https://developer.adobe.com/console/` and log in.
 1. Open your project and workspace.
 1. Click **Download all** in the top-right to download the workspace JSON file.
 

@@ -72,6 +72,14 @@ The developer agent features to consider when planning your workflow:
 * **The project is the source of truth** — all blueprints, runs, and artifacts live under a project. A new chat thread within the same project is not a fresh start.
 * **Execution can be paused and resumed** — if you need to step away mid-execution, the run can be paused and picked up later.
 
+## View your usage
+
+The **Usage** tab displays the percentage of your org's capacity that has been used. Currently, the allocated capacity is provided at no additional charge. Expanded usage details and pricing information will be available at a later date.
+
+### Request additional capacity
+
+If you need additional capacity, contact your Adobe Commerce representative. An administrator can also raise your organization's limit in the Adobe Admin Console.
+
 ## Next steps
 
 * Start developing:

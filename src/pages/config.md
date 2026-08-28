@@ -206,7 +206,6 @@
       - [Net-new development](/developer-agent/new-development.md)
       - [Configure integrations](/developer-agent/integrations.md)
       - [Deploy and install](/developer-agent/deployment.md)
-      - [View usage](/developer-agent/usage.md)
       - [Prompt crafting](/developer-agent/prompting.md)
       - [Feedback and support](/developer-agent/support.md)
     - [AI coding tooling](/developer-agent/tools-overview.md)

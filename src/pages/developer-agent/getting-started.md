@@ -13,6 +13,8 @@ This guide provides everything you need to access and start using the Commerce D
 
 >[!VIDEO](https://video.tv.adobe.com/v/3502440)
 
+If you would like to view more videos for the Commerce Developer Agent, see [Video tutorials](https://experienceleague.adobe.com/en/playlists/commerce-developer-agent).
+
 ## Prerequisites
 
 To access the developer agent, you must have access to the following:

@@ -208,6 +208,7 @@
       - [Configure integrations](/developer-agent/integrations.md)
       - [Deploy and install](/developer-agent/deployment.md)
       - [Prompt crafting](/developer-agent/prompting.md)
+      - [Video tutorials](https://experienceleague.adobe.com/en/playlists/commerce-developer-agent)
       - [Feedback and support](/developer-agent/support.md)
     - [AI coding tooling](/developer-agent/tools-overview.md)
       - [Overview](/developer-agent/tools-overview.md)

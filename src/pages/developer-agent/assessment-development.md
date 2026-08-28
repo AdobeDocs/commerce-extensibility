@@ -36,9 +36,10 @@ The following sections describe the workflow from running the Migration Assessme
 
 ### Access the Commerce Developer Agent
 
-1. Navigate to the [Migration Assessment Tool](https://experience.adobe.com/migration-assessment) and complete a migration assessment for your Adobe Commerce module or plugin. The URL for the migration assessment depends on your IMS organization name: `https://experience.adobe.com/#/@<your-ims-org-name>/commerce-migration-assessment/`.
+1. Navigate to https://experience.adobe.com/#/commerce-migration-assessment/shared-assessments to view your completed migration assessments for your Adobe Commerce module or plugin.
+   - To request an assessment, contact your support representative, see [Migration Assessment](https://experienceleague.adobe.com/en/docs/commerce/cloud-service/migration/migration-tools/assessment) for more information.
 1. Select a completed assessment and navigate to the **Module Reports** section.
-1. Select a report and click **Open in Developer Agent**. You are redirected to the Commerce Developer Agent home screen with the assessment context pre-loaded.
+1. Select an individual module report and click **Open in Developer Agent**. You are redirected to the Commerce Developer Agent home screen with the assessment context pre-loaded.
 
 <InlineAlert variant="info" slots="text"/>
 

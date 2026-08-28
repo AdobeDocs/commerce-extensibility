@@ -31,7 +31,7 @@ The following diagram illustrates the workflow between app developers and app ma
 
 * **Unified lifecycle management**. Associate, configure, install, and unassociate apps from a single interface.
 
-* **List filters** — [Search and filter](build-deploy.md#find-an-application-in-the-admin) by app name, lifecycle **status**, and **extensibility pattern** (for example Events, or Webhooks) when many apps share your Adobe IMS organization.
+* **List filters**: [Search and filter](build-deploy.md#find-an-application-in-the-admin) by app name, lifecycle **status**, and **extensibility pattern** (for example Events, or Webhooks) when many apps share your Adobe IMS organization.
 
 ## Requirements
 
@@ -39,14 +39,17 @@ Before using App Management, ensure the following:
 
 * App Management is **not supported** for **local** Adobe Commerce installations at this time. Use a hosted Adobe Commerce environment (cloud or on-premises) where App Management is available in the Admin. See [Local Adobe Commerce instances](./troubleshooting.md#local-adobe-commerce-instances) for details.
 
-* [Admin UI SDK](../admin-ui-sdk/index.md) version 3.3.1, or greater, is required for App Management. [Verify your version](../admin-ui-sdk/installation.md#install-the-admin-ui-sdk) before proceeding.
+* [Admin UI SDK](../admin-ui-sdk/index.md) version 3.3.0, or greater, is required for the App Management view. [Verify your version](../admin-ui-sdk/installation.md#install-the-admin-ui-sdk) before proceeding.
+
+* Admin UI SDK menu entries, grid columns, mass actions, and order view buttons (the `adminUi` configuration) additionally require Admin UI SDK version 4.2.0 or greater.
 
 * App managers (Admin users) who associate apps must have the **App Management** permission enabled for their role under **Admin UI SDK** in **System** > **User Roles** > **Role Resources**. [Cannot access App Management (permissions)](./troubleshooting.md#cannot-access-app-management-permissions) describes how to set permissions.
 
 * App Builder applications with the following minimum library versions:
 
-  * `@adobe/aio-commerce-lib-config` version 1.0.0 or later.
-  * `@adobe/aio-commerce-lib-app` version 1.0.0 or later.
+  * `@adobe/aio-commerce-lib-config` version 1.0.0 or later, required only if the app defines business configuration.
+  * `@adobe/aio-commerce-lib-app` version 1.0.0 or later (some features may require newer versions).
+  * `@adobe/aio-commerce-lib-admin-ui` version 1.0.0 or later, required for working with the `commerce/backend-ui/2` Admin UI extension point.
   * `@adobe/aio-commerce-sdk` version 1.0.0 or later.
 
 * **Network connectivity to Adobe Commerce**. App Management requires connectivity to the Adobe Commerce instance you associate the app with. If that instance restricts inbound traffic with an IP allowlist, add the [Adobe I/O Runtime egress IPs](https://developer.adobe.com/app-builder/docs/guides/runtime_guides/security-general/#secure-communication-with-back-end-services) used by your app. See [Commerce instance behind an IP allowlist](./troubleshooting.md#commerce-instance-behind-an-ip-allowlist) for details.

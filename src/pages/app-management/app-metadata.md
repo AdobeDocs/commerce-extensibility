@@ -35,7 +35,7 @@ The metadata contains the following properties:
 
 | Property | Type | Required | Description |
 |----------|------|----------|-------------|
-| `id` | string | Yes | Unique identifier for your app. Must contain only alphanumeric characters and hyphens. |
+| `id` | string | Yes | Unique identifier for your app. Must contain only alphanumeric characters and hyphens. Maximum 100 characters. |
 | `displayName` | string | Yes | Name shown in the Admin UI. Maximum 50 characters. |
 | `description` | string | Yes | Brief description of your app's functionality. Maximum 255 characters. |
 | `version` | string | Yes | Semantic version number (for example, `1.0.0`, `2.1.3`). |

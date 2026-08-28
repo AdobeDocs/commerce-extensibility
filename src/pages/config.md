@@ -43,6 +43,7 @@
             - [Admin UI SDK](/app-management/installation/admin-ui-sdk.md)
             - [Customize](/app-management/installation/customize.md)
     - [Build and deploy](/app-management/build-deploy.md)
+    - [App Management helpers](/app-management/helpers.md)
     - [Purchase Approval reference app](/app-management/purchase-approval-app.md)
     - [Working with AI](/app-management/working-with-ai.md)
     - [Troubleshooting](/app-management/troubleshooting.md)

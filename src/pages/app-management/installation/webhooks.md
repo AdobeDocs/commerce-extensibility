@@ -19,7 +19,7 @@ Use [Events](./events.md) and webhooks when you need both asynchronous event del
 Webhook configuration spans both the developer who ships the app and the merchant who associates it with Commerce:
 
 * **App developers** declare webhooks in the `webhooks` field of `app.commerce.config`. That manifest is what App Management uses to know which webhook subscriptions belong to your app.
-* **Merchants** usually get webhooks from that manifest without extra setup. See [Install and access App Management](https://experienceleague.adobe.com/en/docs/commerce/app-management/install#access-app-management) and [Commerce webhooks and apps](https://experienceleague.adobe.com/en/docs/commerce/app-management/install#commerce-webhooks-and-apps)  for more information on how to configure Adobe Commerce.
+* **Merchants** usually get webhooks from that manifest without extra setup. See [Install and access App Management](https://experienceleague.adobe.com/en/docs/commerce/app-management/install#access-app-management) and [Commerce webhooks and apps](https://experienceleague.adobe.com/en/docs/commerce/app-management/install#commerce-webhooks-and-apps) for more information on how to configure Adobe Commerce.
 
 ## Webhook entries
 
@@ -27,7 +27,7 @@ Add a `webhooks` array at the top level of `defineConfig`. When present, it must
 
 Each entry must use **one** of these patterns (not both):
 
-* **`runtimeAction`**. No `url` inside `webhook`. The runtime action (format `package/action`) supplies the webhook URL at runtime. Optional `requireAdobeAuth` controls Adobe auth on that resolution path.
+* **`runtimeAction`**. No `url` inside `webhook`. The runtime action (format `package/action`) supplies the webhook URL at runtime. The optional `requireAdobeAuth` property controls Adobe auth on that resolution path.
 * **Explicit `url`**. The nested `webhook` object includes a valid absolute `https` URL. Do not set `runtimeAction` on the entry, or your configuration will be flagged as invalid.
 
 Each webhook entry uses the following properties:
@@ -37,21 +37,22 @@ Each webhook entry uses the following properties:
 | `label` | string | Yes | Display label in App Management. |
 | `description` | string | Yes | Description shown in App Management. |
 | `category` | string | No | Used for webhook conflict resolution when multiple apps are using the same webhooks. Possible values are one of `validation`, `append`, or `modification`. |
+| `env` | array | No | Restricts the webhook to **PaaS** (`paas`) and/or **SaaS** (`saas`). Omit or specify both to apply to all environments. |
 | `runtimeAction` | string | Conditional | Required when not using an explicit `url` in `webhook`. Runtime action that resolves the webhook URL. |
 | `requireAdobeAuth` | boolean | No | When using `runtimeAction`, indicates whether Adobe authentication is required. Must match the `require-adobe-auth` setting for that runtime action in `app.config.yaml`. |
 | `webhook` | object | Yes | Webhook method, hook identity, HTTP method, and optional fields, rules, headers, timeouts, and either a `url` or no `url` (if `runtimeAction` is set). |
 
 ### Webhook category property
 
-Webhooks are divided into 3 categories (from lower to higher when it comes to possible conflicts with other applications):
+Webhooks are divided into three categories, ordered from lowest to highest potential for conflicts with other applications:
 
-* `validation` - Webhook is used only for validation purposes, returns only `success` or `validation` operations.
-* `append` - Webhook only appends data to the result and does not modify existing data. For example, add a shipping method on the checkout page.
-* `modification` - Webhook modifies the Commerce data with `add`, `replace`, and `remove` operations.
+* `validation`: Used only for validation purposes; returns only `success` or `validation` operations.
+* `append`: Appends data to the result without modifying existing data. For example, adding a shipping method on the checkout page.
+* `modification`: Modifies Commerce data with `add`, `replace`, and `remove` operations.
 
 <InlineAlert variant="warning" slots="text"/>
 
-If you're not sure which `category` to choose between `append` and `modification`, use `modification`. Keep in mind that it will not stop the app from install if there are possible conflicts, it only warns the user before install.
+If you're not sure whether to choose `append` or `modification`, use `modification`. Choosing the wrong category doesn't block installation when there are possible conflicts; it only warns the user before install.
 
 ### Nested `webhook` object
 
@@ -60,10 +61,10 @@ The `webhook` object contains the following properties:
 | Property | Type | Required | Description |
 |----------|------|----------|-------------|
 | `webhook_method` | string | Yes | Commerce webhook method (for example, `observer.catalog_product_save_after`). |
-| `webhook_type` | string | Yes | Typically `before` or `after` the original action. |
+| `webhook_type` | string | Yes | Must be `before` or `after`. |
 | `batch_name` | string | Yes | Batch identifier. Letters, numbers, and underscores only. |
 | `hook_name` | string | Yes | Hook identifier within the batch. Same character rules as `batch_name`. |
-| `method` | string | Yes | HTTP method for the outbound request (for example, `POST`). |
+| `method` | string | Yes | HTTP method for the outbound request. Must be `POST`, `PUT`, `DELETE`, or `GET`. |
 | `url` | string | Conditional | Absolute HTTPS URL. Required when the entry does **not** use `runtimeAction`. Omit when using `runtimeAction`. |
 | `batch_order` | number | No | Positive number; order among batches. |
 | `priority` | number | No | Positive priority hint. |
@@ -152,6 +153,6 @@ When your runtime action **handles** the HTTP callback from Commerce, you build 
 
 ## Related documentation
 
-* [Install and access App Management](https://experienceleague.adobe.com/en/docs/commerce/app-management/install#access-app-management) (Experience League) — user guide for App Management in the Admin.
-* [Adobe Commerce Webhooks](../../webhooks/index.md) — product concepts and Admin behavior.
-* [Webhook responses](../../webhooks/responses.md) — operation types for handler actions.
+* [Install and access App Management](https://experienceleague.adobe.com/en/docs/commerce/app-management/install#access-app-management) (Experience League): user guide for App Management in the Admin.
+* [Adobe Commerce Webhooks](../../webhooks/index.md): product concepts and Admin behavior.
+* [Webhook responses](../../webhooks/responses.md): operation types for handler actions.

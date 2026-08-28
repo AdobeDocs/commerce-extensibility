@@ -37,10 +37,16 @@ When your app defines `businessConfig`, each App Builder runtime action that cal
 An error message appears when you do not call `initialize` before any of those three methods:
 
 ```text
-Schema not initialized. Call initialize({ schema }) before using configuration functions.
+Schema not initialized. Call `initialize({ schema })` before using configuration functions.
 ```
 
 See [Retrieve configuration at runtime](./configuration-schema.md#retrieve-configuration-at-runtime) for an example.
+
+If your `businessConfig` schema uses `dynamicList` fields, the `initialize` call also needs `params` to resolve the list options at runtime. Omitting `params` produces:
+
+```text
+Dynamic list options require runtime params. Call `initialize({ schema, params })` to resolve them.
+```
 
 ## Local Adobe Commerce instances
 
@@ -58,7 +64,7 @@ aio runtime ip-list get
 
 See [Secure communication with back-end services](https://developer.adobe.com/app-builder/docs/guides/runtime_guides/security-general/#secure-communication-with-back-end-services) in the App Builder documentation for the full process, including the one-time terms acceptance and contact email prompt.
 
-Because this must be configured on the Commerce instance itself, only a Commerce administrator can apply the change—not the App Builder application owner.
+Because this must be configured on the Commerce instance itself, only a Commerce administrator can apply the change, not the App Builder application owner.
 
 ## Commerce instance behind HTTP authentication
 
@@ -68,7 +74,7 @@ Plan network and access controls so Commerce endpoints required by App Managemen
 
 ## Scope tree synchronization issues
 
-If new websites, stores, or store views exist in Commerce but **Manage scopes** in App Management looks stale—or scopes removed in Commerce still appear—the scope tree is almost certainly **out of date**.
+If new websites, stores, or store views exist in Commerce but **Manage scopes** in App Management looks stale (or scopes removed in Commerce still appear), the scope tree is almost certainly **out of date**.
 
 Scope hierarchy in App Management is **cached**. Changes to Commerce websites, stores, or store views **do not** sync automatically.
 
@@ -80,7 +86,7 @@ For full behavior and UI context, see [Scope tree synchronization](configuration
 
 `app.commerce.config` is validated against its schema every time the config is loaded. This happens during the `postinstall` and `pre-app-build` hooks, and whenever you run an `npx aio-commerce-lib-app generate …` command manually. If validation fails, check:
 
-1. **Required properties**. Fields must have `name`, `label`, and `type`.
+1. **Required properties**. Fields must have `name` and `type`. `label` is optional.
 
 1. **Type-matched defaults**. Default values must match the field type.
 
@@ -112,7 +118,7 @@ This message refers to the **App Management** association flow, not general Adob
 
 ### Develop or maintain the application
 
-1. Adobe Commerce treats an app as compatible with the association flow when the deployed package exposes the manifest and App Management runtime actions produced from **`app.commerce.config`**—specifically including valid **`metadata`**—by **`@adobe/aio-commerce-lib-app`**. Generic App Builder projects are not sufficient without that library-driven definition and generation step.
+1. Adobe Commerce treats an app as compatible with the association flow when the deployed package exposes the manifest and App Management runtime actions produced from **`app.commerce.config`** (specifically including valid **`metadata`**) by **`@adobe/aio-commerce-lib-app`**. Generic App Builder projects are not sufficient without that library-driven definition and generation step.
 
 1. Add the [SDK libraries](index.md#sdk-libraries), maintain a root [`app.commerce.config`](define-app.md) with [`metadata`](app-metadata.md) (and other sections as needed), run generators so `.generated` artifacts exist, then build and deploy. See [Initialize your app](initialize-app.md) and [Define your configuration schema](configuration-schema.md) for more information.
 
@@ -135,7 +141,7 @@ This message refers to the **App Management** association flow, not general Adob
 
 ### Runtime actions
 
-Code generation is a mandatory step for App Management to work. The `pre-app-build` hook only regenerates the commerce app manifest (a snapshot of your config), and the configuration schema, so runtime actions must be generated manually with the following command (idempotent):
+The `pre-app-build` hook regenerates the manifest, schema, and runtime actions under `.generated` automatically, so a regular `aio app build` keeps them in sync. When debugging, you can run the following command manually to refresh generated files without a full build (idempotent):
 
 <CodeBlock slots="heading, code" repeat="4" languages="BASH, BASH, BASH, BASH" />
 
@@ -175,9 +181,19 @@ Errors when opening **Configure** in App Management after re-associating or rede
 
 1. Restore `AIO_COMMERCE_CONFIG_ENCRYPTION_KEY` to the default value from the first installation. Align local `.env` with whatever is configured for the deployed runtime so ciphertext and key are paired.
 
+### Encryption key has not been given (writing password fields)
+
+Calling `setConfiguration` to write a `password` field without passing `encryptionKey` in the options throws:
+
+```text
+Encryption key has not been given
+```
+
+Pass `encryptionKey: params.AIO_COMMERCE_CONFIG_ENCRYPTION_KEY` whenever you call `setConfiguration` to write a `password` field.
+
 ### Generate an encryption key
 
-Run the command below to ensure `AIO_COMMERCE_CONFIG_ENCRYPTION_KEY` is present in `.env`. If a key already exists, `encryption setup` leaves it unchanged.
+Run the command below to ensure `AIO_COMMERCE_CONFIG_ENCRYPTION_KEY` is present in `.env`. If a key already exists, the `encryption setup` command leaves it unchanged.
 
 If `.env` was removed or has no key, the command generates a **new** key. That new key cannot decrypt configuration that was encrypted with an older key. If that happens, see [Failed to decrypt configuration](#failed-to-decrypt-configuration-re-association-or-configuration-page) for more information.
 
@@ -209,7 +225,7 @@ bun x aio-commerce-lib-config encryption setup
 
 ### Validate your encryption key configuration
 
-If it's already there, validate it has the expected format:
+If it's already there, validate that it has the expected format:
 
 <CodeBlock slots="heading, code" repeat="4" languages="BASH, BASH, BASH, BASH" />
 

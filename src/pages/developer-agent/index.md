@@ -15,11 +15,7 @@ This page defines what the Commerce Developer Agent can and cannot do. It is int
 
 ## Access the Commerce Developer Agent
 
-Launch the Commerce Developer Agent directly at the following URL:
-
-`https://experience.adobe.com/#/@<your-ims-org-name>/commerce-migration-assessment/developer-agent`
-
-Replace `<your-ims-org-name>` with your own IMS organization ID.
+Launch the [Commerce Developer Agent](https://experience.adobe.com/commerce-migration-assessment/developer-agent).
 
 For step-by-step access instructions and entry points, see [Getting started](getting-started.md).
 

@@ -51,7 +51,8 @@ Once in the Commerce Developer Agent, the agent displays a summary of the module
 
 * **Module name and path** — the module that was passed.
 * **Detected customizations** — the types of overrides, plugins, or dependencies Migration Assessment Tool identified.
-* **Migration risk level** — the complexity rating from the assessment.
+
+Click the **Context Attached** button to review the context summary.
 
 Review this summary carefully. If the context looks incorrect or incomplete, you can correct it through a prompt before proceeding.
 
@@ -132,3 +133,5 @@ Generate a README with setup and deployment instructions.
 ```
 
 The agent retains project context and can update generated files without starting over.
+
+To continue to iterate on your design refer to the [integrate](./integrations.md) and [deployment](./deployment.md) workflows.

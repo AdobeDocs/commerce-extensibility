@@ -56,7 +56,7 @@ The following sections describe the workflow from starting a new project to expo
 
 ### Access the Commerce Developer Agent
 
-1. Navigate directly to the Commerce Developer Agent home screen. The URL depends on your IMS organization name: `https://experience.adobe.com/#/@<your-ims-org-name>/commerce-developer-agent/`.
+1. Navigate directly to the [Commerce Developer Agent](https://experience.adobe.com/commerce-migration-assessment/developer-agent) home screen.
 1. Sign in with your Adobe IMS credentials when prompted.
 1. From the Commerce Developer Agent home screen, click **New Project** or start entering your project details on the **App Builder** or **Edge Delivery** tab, depending on what you want to develop.
 

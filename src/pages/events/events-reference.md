@@ -5869,7 +5869,7 @@ It cannot be triggered from the following sources:
 
 ### plugin.sales_rule.model.resource_model.coupon.delete
 
-Triggered after a SalesRule coupon resource model delete completes. Commit timing depends on context: the coupon resource normally commits its own transaction, but when the delete is nested inside a larger rule-save or rule-delete operation, the commit is deferred to that outer transaction, so the data isn't guaranteed to be durable when the event fires.
+Triggered after a SalesRule coupon resource model delete completes. Commit timing depends on the context. The coupon resource normally commits its own transaction, but when the delete is nested inside a larger rule-save or rule-delete operation, the commit is deferred to that outer transaction, so the data is not guaranteed to be durable when the event fires.
 
 **Event details**:
 
@@ -5905,7 +5905,7 @@ It cannot be triggered from the following sources:
 
 ### plugin.sales_rule.model.resource_model.coupon.save
 
-Triggered after a SalesRule coupon resource model create or update completes. Commit timing depends on context: the coupon resource normally commits its own transaction, but when the save is nested inside a larger rule-save operation, the commit is deferred to that outer transaction, so the data isn't guaranteed to be durable when the event fires.
+Triggered after a SalesRule coupon resource model create or update completes. Commit timing depends on the context. The coupon resource normally commits its own transaction, but when the save is nested inside a larger rule-save operation, the commit is deferred to that outer transaction, so the data is not guaranteed to be durable when the event fires.
 
 **Event details**:
 

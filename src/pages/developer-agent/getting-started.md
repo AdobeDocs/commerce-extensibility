@@ -11,6 +11,8 @@ keywords:
 
 This guide provides everything you need to access and start using the Commerce Developer Agent for the first time.
 
+>[!VIDEO](https://video.tv.adobe.com/v/3502440)
+
 ## Prerequisites
 
 To access the developer agent, you must have access to the following:

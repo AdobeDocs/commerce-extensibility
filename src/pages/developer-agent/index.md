@@ -28,7 +28,7 @@ For step-by-step access instructions and entry points, see [Getting started](get
 
 * Access to Adobe Experience Manager's Experience Modernization Agent. Content-specific Edge Delivery Service (EDS) use cases are not currently supported by the Commerce Developer Agent.
 * API Mesh integrations
-* Usage dashboards
+* Usage dashboards - expanded details will be available in a future release.
 
 ## What to expect from generated code quality
 

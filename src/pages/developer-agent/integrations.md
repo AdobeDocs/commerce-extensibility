@@ -9,6 +9,8 @@ keywords:
 
 # Configure integrations
 
+>[!VIDEO](https://video.tv.adobe.com/v/3502480)
+
 The **Integrations** tab is where you connect your Commerce development environment so the Commerce Developer Agent can generate, validate, deploy, and test your project. Configure integrations after you generate code on the **Develop** stage and before you [deploy your app](deployment.md).
 
 ![Integrations tab in the Commerce Developer Agent](../images/developer-agent/integrations.png)

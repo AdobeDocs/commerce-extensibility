@@ -21,7 +21,7 @@
 - subPages:
     - [Overview](/app-development/index.md)
     - [Extensibility examples](/app-development/examples.md)
-    - [Use case: social login SSO](/app-development/use-cases/social-login.md)
+    - [Use case: social login SSO](/app-development/use-cases/social-login-sso.md)
     - [Porting extensions](/app-development/port-extensions.md)
         - [App development comparison](/app-development/app-development-comparison.md)
         - [Services comparison](/app-development/services-comparison.md)

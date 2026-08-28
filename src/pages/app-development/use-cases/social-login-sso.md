@@ -19,15 +19,13 @@ The end-to-end flow has four steps:
 1. Create a customer account if one does not already exist.
 1. Generate a Commerce customer token and return it to the storefront for use in future GraphQL requests.
 
-The same approach works on both **Adobe Commerce as a Cloud Service** and **Adobe Commerce on Cloud/on-premises**, using standard REST APIs with no custom backend (PHP) code. Only the base URL, authentication, and one prerequisite differ between the two—see [Prerequisites](#prerequisites) and [Base URL and authentication](#base-url-and-authentication) below.
+The same approach works on **Adobe Commerce as a Cloud Service** and **Adobe Commerce on Cloud/on-premises** using standard REST APIs without custom backend (PHP) code. Only the base URL, authentication, and one prerequisite differ between the two—see [Prerequisites](#prerequisites) and [Base URL and authentication](#base-url-and-authentication) below.
 
-The following endpoints are used:
+## Prerequisites
 
-- `GET /V1/customers/search`—find an existing customer by email.
-- `POST /V1/customers`—create a customer account.
-- `POST /V1/customers/{customerId}/token`—generate a customer token.
+On both platforms, your App Builder app must implement the OAuth/OpenID Connect flow for each external provider you support. It validates the identity token the provider returns. Trust profile data (such as the email address) only after the provider's token has been verified.
 
-The customer token endpoint is provided by the Social Login storefront compatibility module and is intended specifically to support this App Builder integration pattern.
+This integration pattern requires the `POST /V1/customers/{customerId}/token` endpoint, which is provided by the Storefront Compatibility Package. This package is always available on Adobe Commerce as a Cloud Service but requires separate installation on Adobe Commerce on Cloud and on-premises. On those platforms, the package version must be 4.7.6 or higher to include the token endpoint. See [Storefront Compatibility Package](https://experienceleague.adobe.com/developer/commerce/storefront/setup/configuration/storefront-compatibility/install/) for installation instructions.
 
 ## Overall flow
 
@@ -45,26 +43,25 @@ All three endpoints are admin-scoped and must be called **server-side from your 
 
 The token endpoint (`POST /V1/customers/{customerId}/token`) requires the `Magento_Customer::retrieve_tokens` permission (in the Admin, **Customer** > **Manage** > **Actions** > **Retrieve tokens**); the search and create endpoints require standard customer management access. Grant these to the credential your app uses, as described in [Base URL and authentication](#base-url-and-authentication).
 
-## Prerequisites
+## REST endpoints and authentication
 
-Common to both platforms:
+The following endpoints are used in this flow:
 
-- **An App Builder app** that implements the OAuth/OpenID Connect flow for each external provider you support and validates the identity token the provider returns. Only trust profile data (such as the email address) after the provider's token has been verified.
-
-Platform-specific:
-
-- **Adobe Commerce as a Cloud Service**—the Storefront Compatibility Package (which supplies the customer token endpoint) is installed and updated automatically. No additional installation is required.
-- **Adobe Commerce PaaS / on-premises**—you must install the [Storefront Compatibility Package](https://experienceleague.adobe.com/developer/commerce/storefront/setup/configuration/storefront-compatibility/install/) with Composer. The package supports Adobe Commerce only (Magento Open Source is not supported). The `POST /V1/customers/{customerId}/token` endpoint was added in Storefront Compatibility Package **version 4.7.6**, so install that version or later. Follow the official install guide for the exact package name and the version that matches your Adobe Commerce release, then run `bin/magento setup:upgrade` (on cloud infrastructure, commit and push the updated `composer.json` and `composer.lock` to trigger deployment).
-
-## Base URL and authentication
+- `GET /V1/customers/search` finds an existing customer by email.
+- `POST /V1/customers` creates a customer account.
+- `POST /V1/customers/{customerId}/token` generates a customer token.
 
 The endpoint paths are identical on both platforms, but the base URL, request headers, and authentication token differ. In the examples further below, `<BASE_URL>` stands for the base URL for your platform, and requests use the headers described here.
 
+The following sections describe the base URL and authentication for each platform. See [REST API Overview](https://developer.adobe.com/commerce/webapi/rest/) for more details about the differences between platforms.
+
 ### Adobe Commerce as a Cloud Service
 
-- **Base URL**: `https://<server>.api.commerce.adobe.com/<tenant-id>`. Find the exact value in your instance details in Commerce Cloud Manager. Paths do **not** include `/rest` or a store view code.
+When your app runs on Adobe Commerce as a Cloud Service, the following apply:
+
+- **Base URL**: `https://<server>.api.commerce.adobe.com/<tenant-id>`. Find the exact value in your Commerce Cloud Manager instance details. Paths do **not** include `/rest` or a store view code.
 - **Store scope**: supplied in a `Store` request header (for example, `Store: default`).
-- **Authentication**: an Adobe Identity Management Service (IMS) access token. The admin and integration token methods used on PaaS are not available on ACCS. The admin identity behind the token must hold the permissions listed in [Where each call runs](#where-each-call-runs), including `Magento_Customer::retrieve_tokens` for the token endpoint.
+- **Authentication**: an Adobe Identity Management Service (IMS) access token. The admin and integration token methods used on PaaS are not available. The admin identity behind the token must hold the permissions listed in [Where each call runs](#where-each-call-runs), including `Magento_Customer::retrieve_tokens` for the token endpoint.
 
 Obtain the IMS access token with a client-credentials request, then reuse it until it expires:
 
@@ -86,12 +83,14 @@ Content-Type: application/json
 Store: default
 ```
 
-### Adobe Commerce PaaS / on-premises
+### Adobe Commerce on Cloud and on-premises
+
+On Adobe Commerce on Cloud and on-premises, the following apply:
 
 - **Base URL**: `https://<host>/rest/<store_code>`, where `<store_code>` is a store view code such as `default` (or `all` for global scope). Paths include `/rest` and the store code; there is no `Store` header.
-- **Authentication**: an admin or integration bearer token. For a server-to-server integration, create an integration in the Admin (**System** > **Extensions** > **Integrations**) and grant it the `Magento_Customer::retrieve_tokens` permission (**Customer** > **Manage** > **Actions** > **Retrieve tokens**) for the token endpoint, plus customer management access for the search and create endpoints. Use its access token. Alternatively, request an admin token from `POST /V1/integration/admin/token`.
+- **Authentication**: an admin or integration bearer token. For a server-to-server integration, create an integration in the Admin (**System** > **Extensions** > **Integrations**). Grant it the `Magento_Customer::retrieve_tokens` permission (**Customer** > **Manage** > **Actions** > **Retrieve tokens**) for the token endpoint and customer management access for the search and create endpoints. Use its access token. Alternatively, request an admin token from `POST /V1/integration/admin/token`.
 
-A typical PaaS request:
+A typical request:
 
 ```text
 POST https://<host>/rest/default/V1/customers
@@ -202,7 +201,6 @@ Because shoppers always authenticate through the SSO bridge—search, create if 
 
 Also consider the following when hardening this integration:
 
-- **Internal session token lifetime**: keep the token your app issues after authenticating the shopper (see [Overall flow](#overall-flow)) short-lived and single-use—generate it only at the moment the storefront needs it, never ahead of time, and invalidate it once the exchange with Commerce completes. A long-lived or reusable internal token widens the window for token theft to result in account takeover.
-- **Commerce customer token lifetime**: the token returned by `POST /V1/customers/{customerId}/token` is a standard Commerce customer token—it remains valid, and can be reused for multiple GraphQL requests, until it expires or the customer's tokens are revoked. Its lifetime is controlled by the **Customer Token Lifetime (hours)** setting under **Stores** > **Configuration** > **Services** > **OAuth** > **Access Token Expiration**. Choose a value appropriate for how long a shopper session should remain valid without re-authenticating with the provider.
+- **Internal session token lifetime**: Keep the token your app issues after authenticating the shopper (see [Overall flow](#overall-flow)) short-lived and single-use. Generate it only when the storefront needs it and invalidate it after the Commerce exchange. A long-lived or reusable internal token increases the risk of token theft resulting in account takeover.
+- **Commerce customer token lifetime**: the token returned by `POST /V1/customers/{customerId}/token` is a standard Commerce customer token—it remains valid, and can be reused for multiple GraphQL requests, until it expires or the customer's tokens are revoked. The **Customer Token Lifetime (hours)** setting under **Stores** > **Configuration** > **Services** > **OAuth** > **Access Token Expiration** controls its lifetime. Choose a value appropriate for the duration a shopper session remains valid without re-authenticating with the provider.
 - **Credential rotation**: rotate the IMS client secret (ACCS) or the integration/admin token (PaaS) periodically, and immediately if you suspect it has leaked. Because every call in this flow is admin-scoped, a leaked credential lets an attacker search, create, and issue tokens for any customer.
-- **Matching by email only**: `GET /V1/customers/search` matches solely on email address. If a customer already has a password-based Commerce account using that email, this flow issues them a customer token without any additional verification beyond the identity provider's assertion. Decide upfront whether that behavior is acceptable for your storefront, or add an additional check—for example, a custom customer attribute marking SSO-provisioned accounts—if you need to distinguish or restrict them.

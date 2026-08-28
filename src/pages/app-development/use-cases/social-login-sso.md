@@ -19,7 +19,7 @@ The end-to-end flow has four steps:
 1. Create a customer account if one does not already exist.
 1. Generate a Commerce customer token and return it to the storefront for use in future GraphQL requests.
 
-The same approach works on **Adobe Commerce as a Cloud Service** and **Adobe Commerce on Cloud/on-premises** using standard REST APIs without custom backend (PHP) code. Only the base URL, authentication, and one prerequisite differ between the two—see [Prerequisites](#prerequisites) and [Base URL and authentication](#base-url-and-authentication) below.
+The same approach works on **Adobe Commerce as a Cloud Service** and **Adobe Commerce on Cloud/on-premises** using standard REST APIs without custom backend (PHP) code. Only the base URL, authentication, and one prerequisite differ between the two. The [REST endpoints and authentication](#rest-endpoints-and-authentication) section describes these differences.
 
 ## Prerequisites
 
@@ -41,7 +41,7 @@ The diagram shows two phases:
 
 All three endpoints are admin-scoped and must be called **server-side from your App Builder app**, never from the browser, because they require privileged credentials. The app returns only the resulting customer token to the storefront.
 
-The token endpoint (`POST /V1/customers/{customerId}/token`) requires the `Magento_Customer::retrieve_tokens` permission (in the Admin, **Customer** > **Manage** > **Actions** > **Retrieve tokens**); the search and create endpoints require standard customer management access. Grant these to the credential your app uses, as described in [Base URL and authentication](#base-url-and-authentication).
+The token endpoint (`POST /V1/customers/{customerId}/token`) requires the `Magento_Customer::retrieve_tokens` permission (in the Admin, **Customer** > **Manage** > **Actions** > **Retrieve tokens**); the search and create endpoints require standard customer management access. Grant these to the credential your app uses, as described below.
 
 ## REST endpoints and authentication
 

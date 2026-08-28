@@ -5,14 +5,15 @@ keywords:
   - Developer Agent
   - Migration Assessment
   - Blueprint
-  - Early Access
 ---
 
 # Migration assessment development
 
-<Fragment src="/_includes/developer-agent.md" />
+>[!VIDEO](https://video.tv.adobe.com/v/3502483)
 
 The following sections describe how to migrate existing Adobe Commerce modules, plugins, or customizations based on a completed [Migration Assessment](https://experienceleague.adobe.com/en/docs/commerce/cloud-service/migration/migration-tools/assessment).
+
+For an overview of migrating to Adobe Commerce as a Cloud Service, see the [migration overview](https://experienceleague.adobe.com/en/docs/commerce/cloud-service/migration/overview).
 
 ## Requirements
 
@@ -37,9 +38,10 @@ The following sections describe the workflow from running the Migration Assessme
 
 ### Access the Commerce Developer Agent
 
-1. Navigate to the [Migration Assessment Tool](https://experience.adobe.com/migration-assessment) and complete a migration assessment for your Adobe Commerce module or plugin. The URL for the migration assessment depends on your IMS organization name: `https://experience.adobe.com/#/@<your-ims-org-name>/commerce-migration-assessment/`.
+1. Navigate to https://experience.adobe.com/#/commerce-migration-assessment/shared-assessments to view your completed migration assessments for your Adobe Commerce module or plugin.
+   - To request an assessment, contact your support representative, see [Migration Assessment](https://experienceleague.adobe.com/en/docs/commerce/cloud-service/migration/migration-tools/assessment) for more information.
 1. Select a completed assessment and navigate to the **Module Reports** section.
-1. Select a report and click **Open in Developer Agent**. You are redirected to the Commerce Developer Agent home screen with the assessment context pre-loaded.
+1. Select an individual module report and click **Open in Developer Agent**. You are redirected to the Commerce Developer Agent home screen with the assessment context pre-loaded.
 
 <InlineAlert variant="info" slots="text"/>
 
@@ -51,13 +53,16 @@ Once in the Commerce Developer Agent, the agent displays a summary of the module
 
 * **Module name and path** — the module that was passed.
 * **Detected customizations** — the types of overrides, plugins, or dependencies Migration Assessment Tool identified.
-* **Migration risk level** — the complexity rating from the assessment.
+
+Click the **Context Attached** button to review the context summary.
 
 Review this summary carefully. If the context looks incorrect or incomplete, you can correct it through a prompt before proceeding.
 
 After adding any additional context, click **Generate Blueprint** to start the development workflow.
 
 ### Review the blueprint
+
+>[!VIDEO](https://video.tv.adobe.com/v/3502479)
 
 Once you confirm the pre-loaded assessment context, Commerce Developer Agent uses that context to prepare a blueprint. During this step, review the planning view for:
 
@@ -133,4 +138,4 @@ Generate a README with setup and deployment instructions.
 
 The agent retains project context and can update generated files without starting over.
 
-<Fragment src="/_includes/developer-agent-deploy.md" />
+To continue to iterate on your design refer to the [integrate](./integrations.md) and [deployment](./deployment.md) workflows.

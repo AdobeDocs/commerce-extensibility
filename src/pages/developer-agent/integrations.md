@@ -5,12 +5,11 @@ keywords:
   - Developer Agent
   - Integrations
   - App Builder
-  - Early Access
 ---
 
 # Configure integrations
 
-<Fragment src="/_includes/developer-agent.md" />
+>[!VIDEO](https://video.tv.adobe.com/v/3502480)
 
 The **Integrations** tab is where you connect your Commerce development environment so the Commerce Developer Agent can generate, validate, deploy, and test your project. Configure integrations after you generate code on the **Develop** stage and before you [deploy your app](deployment.md).
 

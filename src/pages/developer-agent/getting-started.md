@@ -3,22 +3,22 @@ title: Getting started
 description: Learn how to access and begin using the Commerce Developer Agent for the first time, including IMS login, interface overview, and your first session.
 keywords:
   - Developer Agent
-  - Early Access
   - Getting Started
   - App Builder
 ---
 
 # Getting started
 
-<Fragment src="/_includes/developer-agent.md" />
-
 This guide provides everything you need to access and start using the Commerce Developer Agent for the first time.
+
+>[!VIDEO](https://video.tv.adobe.com/v/3502440)
 
 ## Prerequisites
 
 To access the developer agent, you must have access to the following:
 
-* An Early Access invitation from your Adobe representative
+* An Adobe Commerce entitlement. The Commerce Developer Agent is available to Adobe Commerce customers only.
+* Adobe Developer App Builder access. App Builder access is required to use the Commerce Developer Agent.
 * An active Adobe IMS identity (Adobe ID or Federated ID) associated with your organization
 
 ## Use cases
@@ -34,7 +34,7 @@ Accessing the developer agent differs depending on your use case:
 
 #### Net-new development
 
-1. Navigate directly to the Commerce Developer Agent home screen. The URL depends on your IMS organization name: `https://experience.adobe.com/#/@<your-ims-org-name>/commerce-developer-agent/`.
+1. Navigate directly to the [Commerce Developer Agent home screen](https://experience.adobe.com/commerce-migration-assessment/developer-agent).
 1. Sign in with your Adobe IMS credentials when prompted.
 1. After successful authentication, you land on the Commerce Developer Agent home screen.
 
@@ -42,7 +42,7 @@ For more information on starting a net-new project, see [Net-new development](ne
 
 #### Migration development
 
-1. Navigate to the [Migration Assessment Tool](https://experience.adobe.com/migration-assessment) and complete a migration assessment for your Adobe Commerce module or plugin. The URL for the migration assessment depends on your IMS organization name: `https://experience.adobe.com/#/@<your-ims-org-name>/commerce-migration-assessment/`.
+1. Navigate to the [Migration Assessment list](https://experience.adobe.com/commerce-migration-assessment/shared-assessments).
 1. Select a completed assessment and navigate to the **Module Reports** section.
 1. Select a report and click **Open in Developer Agent**. You are redirected to the Commerce Developer Agent home screen with the assessment context pre-loaded.
 
@@ -73,6 +73,14 @@ The developer agent features to consider when planning your workflow:
 * **Memory persists across sessions** — the agent remembers decisions and generated content within your project. If you return to a project, prior context carries forward.
 * **The project is the source of truth** — all blueprints, runs, and artifacts live under a project. A new chat thread within the same project is not a fresh start.
 * **Execution can be paused and resumed** — if you need to step away mid-execution, the run can be paused and picked up later.
+
+## View your usage
+
+The **Usage** tab displays the percentage of your org's capacity that has been used. Currently, the allocated capacity is provided at no additional charge. Expanded usage details and pricing information will be available at a later date.
+
+### Request additional capacity
+
+If you need additional capacity, contact your Adobe Commerce representative. An administrator can also raise your organization's limit in the Adobe Admin Console.
 
 ## Next steps
 

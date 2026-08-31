@@ -11,9 +11,39 @@ keywords:
 
 This reference lists the full payload for each event supported on Adobe Commerce as a Cloud Service. Adobe recommends that you minimize the data that you send to App Builder, as described in [Create event subscriptions from the Admin](create-events.md).
 
+* [Catalog](#catalog)
+* [CatalogInventory](#cataloginventory)
+* [Checkout](#checkout)
+* [Company](#company)
+* [Customer](#customer)
+* [CustomerCustomAttributes](#customercustomattributes)
+* [Integration](#integration)
+* [Multishipping](#multishipping)
+* [PayPal](#paypal)
+* [Quote](#quote)
+* [RMA](#rma)
+* [SaasReminder](#saasreminder)
+* [Sales](#sales)
+* [SalesRule](#salesrule)
+
+Events can be triggered from the Commerce Admin, REST APIs, GraphQL APIs, Edge Delivery Service (EDS) storefront calls, and import actions. The event details section for each event lists the sources that can trigger the event. In the cases where a source is not listed, whether the event can be triggered from that source cannot be determined.
+
 ## Catalog
 
 ### observer.catalog_category_delete_after
+
+Triggered after a catalog category is deleted, while the database transaction is still open. The deletion is not yet durable and can be rolled back. In most cases, you should use `observer.catalog_category_delete_commit_after` for external integrations.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* REST
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
 
 ```json
 {
@@ -86,6 +116,20 @@ This reference lists the full payload for each event supported on Adobe Commerce
 
 ### observer.catalog_category_save_after
 
+Triggered after a catalog category is created or updated, while the database transaction is still open. The write is not yet durable and can be rolled back.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* REST
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
+
 ```json
 {
     "products_position": "array",
@@ -156,6 +200,23 @@ This reference lists the full payload for each event supported on Adobe Commerce
 ```
 
 ### observer.catalog_product_delete_commit_after
+
+Triggered after a catalog product is deleted and the database transaction has committed. Because the deletion is durable at this point, this is the recommended event for external integrations.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* REST
+
+It cannot be triggered from the following sources:
+
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
 
 ```json
 {
@@ -264,6 +325,23 @@ This reference lists the full payload for each event supported on Adobe Commerce
 
 ### observer.catalog_product_save_after
 
+Triggered after a catalog product is created or updated, while the database transaction is still open. The write is not yet durable and can be rolled back. Use `observer.catalog_product_save_commit_after` for external integrations.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* REST
+
+It cannot be triggered from the following source:
+
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
+
 ```json
 {
     "store_id": "int",
@@ -370,6 +448,23 @@ This reference lists the full payload for each event supported on Adobe Commerce
 ```
 
 ### observer.catalog_product_save_commit_after
+
+Triggered after a catalog product is created or updated and the database transaction has committed. Because the write is durable at this point, this is the recommended event for external integrations.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* REST
+
+It cannot be triggered from the following source:
+
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
 
 ```json
 {
@@ -480,6 +575,23 @@ This reference lists the full payload for each event supported on Adobe Commerce
 
 ### observer.cataloginventory_stock_item_save_commit_after
 
+Triggered after a stock item is saved and the database transaction has committed. Because the write is durable at this point, this is the recommended event for external inventory integrations.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* REST
+
+It cannot be triggered from the following source:
+
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
+
 ```json
 {
     "item_id": "int",
@@ -517,6 +629,20 @@ This reference lists the full payload for each event supported on Adobe Commerce
 
 ### observer.checkout_cart_product_add_after
 
+Triggered after a product is added to the shopping cart through the session-based checkout cart model. This is a point-in-time signal, and the cart is not necessarily persisted when it fires.
+
+**Event details**:
+
+This event cannot be triggered from the following sources:
+
+* GraphQL
+* Storefront (EDS)
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
+
 ```json
 {
     "quote_product_ids": "array",
@@ -547,6 +673,27 @@ This reference lists the full payload for each event supported on Adobe Commerce
 ```
 
 ### observer.checkout_submit_all_after
+
+Triggered after a quote is converted into an order and the order-placement transaction has completed. The order is persisted by the time this event fires, but it is a workflow signal rather than a database commit callback.
+
+**Event details**:
+
+This event triggers after the place operation, as a point-in-time signal.
+
+This event can be triggered from the following sources:
+
+* Admin
+* GraphQL
+* Storefront (EDS)
+
+It cannot be triggered from the following sources:
+
+* REST
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
 
 ```json
 {
@@ -963,6 +1110,25 @@ This reference lists the full payload for each event supported on Adobe Commerce
 
 ### observer.company_save_commit_after
 
+Triggered after a B2B company is created or updated and the database transaction has committed.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* REST
+* GraphQL
+* Storefront (EDS)
+
+It cannot be triggered from the following source:
+
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
+
 ```json
 {
     "id": "int",
@@ -994,6 +1160,23 @@ This reference lists the full payload for each event supported on Adobe Commerce
 
 ### observer.customer_delete_commit_after
 
+Triggered after a customer is deleted and the database transaction has committed. Because the deletion is durable at this point, this is the recommended event for integrations that react to customer deletion.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* REST
+
+It cannot be triggered from the following source:
+
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
+
 ```json
 {
     "id": "int",
@@ -1023,6 +1206,19 @@ This reference lists the full payload for each event supported on Adobe Commerce
 
 ### observer.customer_group_delete_commit_after
 
+Triggered after a customer group is deleted and the database transaction has committed. Because the deletion is durable at this point, this is the recommended event for integrations that react to group removal.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* REST
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
+
 ```json
 {
     "tax_class_name": "string",
@@ -1033,6 +1229,19 @@ This reference lists the full payload for each event supported on Adobe Commerce
 
 ### observer.customer_group_save_commit_after
 
+Triggered after a customer group is created or updated and the database transaction has committed. Because the write is durable at this point, this is the recommended event for integrations that react to group changes.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* REST
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
+
 ```json
 {
     "tax_class_name": "string",
@@ -1042,6 +1251,24 @@ This reference lists the full payload for each event supported on Adobe Commerce
 ```
 
 ### observer.customer_login
+
+Triggered when a customer is logged in on the storefront. This is a point-in-time authentication signal with no transaction or persistence semantics of its own.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Storefront (EDS)
+
+It cannot be triggered from the following sources:
+
+* Admin
+* GraphQL
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
 
 ```json
 {
@@ -1102,6 +1329,22 @@ This reference lists the full payload for each event supported on Adobe Commerce
 \<!--
 
 ### observer.customer_register_success
+
+Triggered after a customer account is successfully created through storefront registration. This is a point-in-time workflow signal with no transaction semantics of its own.
+
+**Event details**:
+
+It cannot be triggered from the following sources:
+
+* Admin
+* REST
+* GraphQL
+* Storefront (EDS)
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
 
 ```json
 {
@@ -1164,6 +1407,24 @@ This reference lists the full payload for each event supported on Adobe Commerce
 
 ### observer.customer_save_after
 
+Triggered after a customer record is created or updated, while the database transaction is still open. The write is not yet durable and can be rolled back. Use `observer.customer_save_commit_after` for external integrations.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* REST
+* GraphQL
+
+It cannot be triggered from the following source:
+
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
+
 ```json
 {
     "id": "int",
@@ -1192,6 +1453,24 @@ This reference lists the full payload for each event supported on Adobe Commerce
 ```
 
 ### observer.customer_save_commit_after
+
+Triggered after a customer record is created or updated and the database transaction has committed. Because the write is durable at this point, this is the recommended event for external integrations such as CRM synchronization.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* REST
+* GraphQL
+
+It cannot be triggered from the following sources:
+
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
 
 ```json
 {
@@ -1224,6 +1503,25 @@ This reference lists the full payload for each event supported on Adobe Commerce
 
 ### observer.customercustomattributes_attribute_save
 
+Triggered after a customer custom (EAV) attribute definition is created or updated from the Admin. The attribute definition is durable by the time this event fires.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+
+It cannot be triggered from the following sources:
+
+* REST
+* GraphQL
+* Storefront (EDS)
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
+
 ```json
 []
 ```
@@ -1231,6 +1529,24 @@ This reference lists the full payload for each event supported on Adobe Commerce
 ## Integration
 
 ### observer.customer_login
+
+Triggered when a customer logs in from the storefront. This is a point-in-time authentication signal with no transaction or persistence semantics of its own.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Storefront (EDS)
+
+It cannot be triggered from the following sources:
+
+* Admin
+* GraphQL
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
 
 ```json
 {
@@ -1291,6 +1607,25 @@ This reference lists the full payload for each event supported on Adobe Commerce
 ## Multishipping
 
 ### observer.checkout_submit_all_after
+
+Triggered after a quote is converted into an order and the order-placement transaction has completed. The order is persisted by the time this event fires, but it is a workflow signal rather than a database commit callback.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* GraphQL
+* Storefront (EDS)
+
+It cannot be triggered from the following sources:
+
+* REST
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
 
 ```json
 {
@@ -1707,6 +2042,25 @@ This reference lists the full payload for each event supported on Adobe Commerce
 
 ### observer.checkout_submit_all_after
 
+Triggered after a quote is converted into an order and the order-placement transaction has completed. The order is persisted by the time this event fires, but it is a workflow signal rather than a database commit callback.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* GraphQL
+* Storefront (EDS)
+
+It cannot be triggered from the following sources:
+
+* REST
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
+
 ```json
 {
     "order": {
@@ -2122,6 +2476,25 @@ This reference lists the full payload for each event supported on Adobe Commerce
 
 ### observer.checkout_submit_all_after
 
+Triggered after a quote is converted into an order and the order-placement transaction has completed. The order is persisted by the time this event fires, but it is a workflow signal rather than a database commit callback.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* GraphQL
+* Storefront (EDS)
+
+It cannot be triggered from the following sources:
+
+* REST
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
+
 ```json
 {
     "order": {
@@ -2535,6 +2908,25 @@ This reference lists the full payload for each event supported on Adobe Commerce
 
 ### observer.sales_quote_save_after
 
+Triggered after a quote (cart) is created or updated, while the database transaction is still open. The write is not yet durable and can be rolled back.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* REST
+* GraphQL
+* Storefront (EDS)
+
+It cannot be triggered from the following source:
+
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
+
 ```json
 {
     "currency": {
@@ -2593,6 +2985,25 @@ This reference lists the full payload for each event supported on Adobe Commerce
 
 ### observer.rma_save_after
 
+Triggered after a return merchandise authorization (RMA) is created or updated, while the database transaction is still open. The write is not yet durable and can be rolled back. Use `observer.rma_save_commit_after` in most external integrations,
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* REST
+* GraphQL
+* Storefront (EDS)
+
+It cannot be triggered from the following source:
+
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
+
 ```json
 {
     "increment_id": "mixed",
@@ -2622,6 +3033,25 @@ This reference lists the full payload for each event supported on Adobe Commerce
 ```
 
 ### observer.rma_save_commit_after
+
+Triggered after an RMA is created or updated and the database transaction has committed. Because the write is durable at this point, this is the recommended event for external integrations.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* REST
+* GraphQL
+* Storefront (EDS)
+
+It cannot be triggered from the following source:
+
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
 
 ```json
 {
@@ -2655,6 +3085,22 @@ This reference lists the full payload for each event supported on Adobe Commerce
 
 ### observer.reminder_matched_carts
 
+Triggered when the abandoned-cart reminder process matches one or more carts against a reminder rule. The payload contains the matched cart identifiers for downstream notification. This is a point-in-time signal rather than a persistence event.
+
+**Event details**:
+
+It cannot be triggered from the following sources:
+
+* Admin
+* REST
+* GraphQL
+* Storefront (EDS)
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
+
 ```json
 {
     "carts": [
@@ -2670,6 +3116,25 @@ This reference lists the full payload for each event supported on Adobe Commerce
 ## Sales
 
 ### observer.checkout_submit_all_after
+
+Triggered after a quote is converted into an order and the order-placement transaction has completed. The order is persisted by the time this event fires, but it is a workflow signal rather than a database commit callback.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* GraphQL
+* Storefront (EDS)
+
+It cannot be triggered from the following sources:
+
+* REST
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
 
 ```json
 {
@@ -3084,6 +3549,23 @@ This reference lists the full payload for each event supported on Adobe Commerce
 
 ### observer.sales_order_creditmemo_save_after
 
+Triggered after a credit memo is created or updated for an order, while the database transaction is still open. The write is not yet durable and can be rolled back. Use `observer.sales_order_creditmemo_save_commit_after` in most external integrations.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* REST
+
+It cannot be triggered from the following sources:
+
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
+
 ```json
 {
     "invoice": {
@@ -3248,6 +3730,23 @@ This reference lists the full payload for each event supported on Adobe Commerce
 
 ### observer.sales_order_invoice_pay
 
+Triggered when an invoice registers a payment, during the invoicing flow. This is a point-in-time workflow event dispatched before the surrounding invoice and order save is committed, so the underlying data can still be rolled back.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* REST
+
+It cannot be triggered from the following sources:
+
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
+
 ```json
 {
     "items": [
@@ -3340,6 +3839,23 @@ This reference lists the full payload for each event supported on Adobe Commerce
 
 ### observer.sales_order_invoice_save_after
 
+Triggered after an invoice is created or updated for an order, while the database transaction is still open. The write is not yet durable and can be rolled back. This is not a reliable event for external integrations.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* REST
+
+It cannot be triggered from the following source:
+
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
+
 ```json
 {
     "items": [
@@ -3425,6 +3941,25 @@ This reference lists the full payload for each event supported on Adobe Commerce
 ```
 
 ### observer.sales_order_save_after
+
+Triggered after an order is created or updated, while the database transaction is still open. The write is not yet committed and can be rolled back. Use `observer.sales_order_save_commit_after` for external integrations.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* REST
+* GraphQL
+* Storefront (EDS)
+
+It cannot be triggered from the following sources:
+
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
 
 ```json
 {
@@ -3778,6 +4313,25 @@ This reference lists the full payload for each event supported on Adobe Commerce
 
 ### observer.sales_order_save_commit_after
 
+Triggered after an order is created or saved and the database transaction has committed. Because the write is durable at this point, this is the recommended event for integrations that react to order changes.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* REST
+* GraphQL
+* Storefront (EDS)
+
+It cannot be triggered from the following sources:
+
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
+
 ```json
 {
     "payment": {
@@ -4130,6 +4684,23 @@ This reference lists the full payload for each event supported on Adobe Commerce
 
 ### observer.sales_order_shipment_save_after
 
+Triggered after an order shipment is created or updated while the database transaction is still open. The write is not yet durable and can be rolled back.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* REST
+
+It cannot be triggered from the following sources:
+
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
+
 ```json
 {
     "shipping_label": "mixed",
@@ -4188,6 +4759,23 @@ This reference lists the full payload for each event supported on Adobe Commerce
 
 ### observer.sales_order_shipment_track_save_after
 
+Triggered after a shipment tracking record is created or updated, while the database transaction is still open. The write is not yet durable and can be rolled back.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* REST
+
+It cannot be triggered from the following sources:
+
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
+
 ```json
 {
     "number": "string",
@@ -4208,6 +4796,23 @@ This reference lists the full payload for each event supported on Adobe Commerce
 
 ### observer.sales_order_status_history_save_after
 
+Triggered after an order status history record (a comment or status change) is created or updated, while the database transaction is still open. The write is not yet durable and can be rolled back.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* REST
+
+It cannot be triggered from the following sources:
+
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
+
 ```json
 {
     "comment": "string",
@@ -4224,6 +4829,25 @@ This reference lists the full payload for each event supported on Adobe Commerce
 ```
 
 ### plugin.sales.api.order_management.place
+
+Triggered after an order has been placed and persisted. The order is durable at this point, making this a reliable event for order-placement integrations.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* REST
+* GraphQL
+* Storefront (EDS)
+
+It cannot be triggered from the following sources:
+
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
 
 ```json
 {
@@ -4654,6 +5278,25 @@ This reference lists the full payload for each event supported on Adobe Commerce
 
 ### plugin.sales.api.order_repository.save
 
+Triggered after an order has been created or updated and persisted. The order is durable at this point, making this a reliable event for order-persistence integrations.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* REST
+* GraphQL
+* Storefront (EDS)
+
+It cannot be triggered from the following source:
+
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
+
 ```json
 {
     "adjustment_negative": "float",
@@ -5083,7 +5726,25 @@ This reference lists the full payload for each event supported on Adobe Commerce
 
 ## SalesRule
 
-### observer.salesrule_save_commit_after
+### observer.salesrule_delete_after
+
+Triggered after a cart price rule is deleted, while the database transaction is still open. The write is not yet durable and can still rollback, so this is not a safe hook for external integrations that require committed data.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* REST
+
+It cannot be triggered from the following sources:
+
+* GraphQL
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
 
 ```json
 {
@@ -5099,6 +5760,24 @@ This reference lists the full payload for each event supported on Adobe Commerce
 
 ### observer.salesrule_rule_save_after
 
+Triggered after a cart price rule is created or updated, while the database transaction is still open. The write is not yet durable and can be rolled back, so this is not a reliable event for external integrations that require committed data.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* REST
+
+It cannot be triggered from the following sources:
+
+* GraphQL
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
+
 ```json
 {
     "customer_group_ids": "array",
@@ -5112,6 +5791,24 @@ This reference lists the full payload for each event supported on Adobe Commerce
 ```
 
 ### plugin.sales_rule.api.rule_repository.save
+
+Triggered after the SalesRule `RuleRepository` service contract creates or updates a cart price rule. The repository fully persists the rule before returning, so the data is durable when the event fires, making this the recommended event for REST-based integrations.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* REST
+
+It cannot be triggered from the following sources:
+
+* Admin
+* GraphQL
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
 
 ```json
 {
@@ -5172,6 +5869,23 @@ This reference lists the full payload for each event supported on Adobe Commerce
 
 ### plugin.sales_rule.model.resource_model.coupon.delete
 
+Triggered after a SalesRule coupon resource model delete completes. Commit timing depends on the context. The coupon resource normally commits its own transaction, but when the delete is nested inside a larger rule-save or rule-delete operation, the commit is deferred to that outer transaction, so the data is not guaranteed to be durable when the event fires.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* REST
+
+It cannot be triggered from the following sources:
+
+* GraphQL
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
+
 ```json
 {
     "coupon_id": "int",
@@ -5190,6 +5904,23 @@ This reference lists the full payload for each event supported on Adobe Commerce
 ```
 
 ### plugin.sales_rule.model.resource_model.coupon.save
+
+Triggered after a SalesRule coupon resource model create or update completes. Commit timing depends on the context. The coupon resource normally commits its own transaction, but when the save is nested inside a larger rule-save operation, the commit is deferred to that outer transaction, so the data is not guaranteed to be durable when the event fires.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* REST
+
+It cannot be triggered from the following sources:
+
+* GraphQL
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
 
 ```json
 {

@@ -37,7 +37,7 @@ Complete the following steps before initializing your app:
 
 ## Initialize
 
-Run the following command to set up your App Builder project:
+To set up your App Builder project, run the following command:
 
 <InlineAlert variant="info" slots="text"/>
 
@@ -76,15 +76,15 @@ bun x @adobe/aio-commerce-lib-app init
 
 The initialization process:
 
-* Creates `app.commerce.config` with a template (prompts you to choose format and features if the file doesn't exist)
-* Installs required dependencies (`@adobe/aio-commerce-lib-app`, `@adobe/aio-commerce-sdk`, and `@adobe/aio-commerce-lib-config` when business configuration is enabled)
+* Creates `app.commerce.config` with a template (prompts you to choose format and features if the file doesn't exist).
+* Installs required dependencies (`@adobe/aio-commerce-lib-app`, `@adobe/aio-commerce-sdk`, and `@adobe/aio-commerce-lib-config` when business configuration is enabled).
 * Generates all required artifacts (`commerce/configuration/1` resources are only generated when `businessConfig` is defined)
 * Updates `app.config.yaml` and `install.yaml` with the appropriate extension references. Creates these files if they do not exist.
-* Adds a `postinstall` hook to `package.json`
+* Adds a `postinstall` hook to `package.json`.
 
 ### Working with TypeScript
 
-As of version 1.10.0 of `@adobe/aio-commerce-lib-app`, the `init` command supports TypeScript scaffolding. Using TypeScript in an App Management project requires the project's TypeScript build setup: a `webpack-config.cjs` file, a root `tsconfig.json`, and the `typescript` development dependency. Scaffolding a new project with a TypeScript config sets this up for you out of the box.
+As of version 1.10.0 of `@adobe/aio-commerce-lib-app`, the `init` command supports TypeScript scaffolding. Using TypeScript in an App Management project requires the project's TypeScript build setup: a `webpack-config.cjs` file, a root `tsconfig.json`, and the `typescript` development dependency. Scaffolding a new project with a TypeScript config sets this up for you automatically.
 
 If you're adding TypeScript to an existing project, re-run `init`. It's idempotent: it only adds files and dependencies that don't already exist, so your existing setup and code are preserved.
 

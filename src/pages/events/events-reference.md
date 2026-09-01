@@ -25,6 +25,7 @@ This reference lists the full payload for each event supported on Adobe Commerce
 * [SaasReminder](#saasreminder)
 * [Sales](#sales)
 * [SalesRule](#salesrule)
+* [SharedCatalog](#sharedcatalog)
 
 Events can be triggered from the Commerce Admin, REST APIs, GraphQL APIs, Edge Delivery Service (EDS) storefront calls, and import actions. The event details section for each event lists the sources that can trigger the event. In the cases where a source is not listed, whether the event can be triggered from that source cannot be determined.
 
@@ -5726,7 +5727,7 @@ It cannot be triggered from the following source:
 
 ## SalesRule
 
-### observer.salesrule_delete_after
+### observer.salesrule_rule_delete_after
 
 Triggered after a cart price rule is deleted, while the database transaction is still open. The write is not yet durable and can still rollback, so this is not a safe hook for external integrations that require committed data.
 
@@ -5937,4 +5938,153 @@ It cannot be triggered from the following sources:
     "_origData": "array",
     "_isNew": "boolean"
 }
+```
+
+## SharedCatalog
+
+### plugin.shared_catalog.api.company_management.assign_companies
+
+Triggered after companies are assigned to a shared catalog. The assignment is persisted before the method returns, so the linkage is durable when the event fires.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* REST
+
+It cannot be triggered from the following sources:
+
+* GraphQL
+* Storefront (EDS)
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
+
+```json
+{
+    "sharedCatalogId": "int",
+    "companies": "object{}[]"
+}
+```
+
+### plugin.shared_catalog.api.company_management.unassign_all_companies
+
+Triggered after every company is unassigned from a shared catalog. This method has no dedicated REST route of its own and is only reached when nested inside a larger shared-catalog delete or duplicate operation, so the outer transaction may still be open when the event fires.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* REST
+
+It cannot be triggered from the following sources:
+
+* GraphQL
+* Storefront (EDS)
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
+
+```json
+{
+    "sharedCatalogId": "int"
+}
+```
+
+### plugin.shared_catalog.api.company_management.unassign_companies
+
+Triggered after specific companies are unassigned from a shared catalog. The removal is persisted before the method returns, so the change is durable when the event fires.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* REST
+
+It cannot be triggered from the following sources:
+
+* GraphQL
+* Storefront (EDS)
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
+
+```json
+{
+    "sharedCatalogId": "int",
+    "companies": "object{}[]"
+}
+```
+
+### plugin.shared_catalog.api.shared_catalog_repository.delete
+
+Triggered after a shared catalog is removed. The repository fully removes the catalog before returning, so the deletion is durable when the event fires.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* REST
+
+It cannot be triggered from the following sources:
+
+* GraphQL
+* Storefront (EDS)
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
+
+```json
+{
+    "sharedCatalog": {
+        "id": "int",
+        "name": "string",
+        "description": "string",
+        "customer_group_id": "int",
+        "type": "int",
+        "created_at": "string",
+        "created_by": "int",
+        "store_id": "int",
+        "tax_class_id": "int"
+    }
+}
+```
+
+### plugin.shared_catalog.api.shared_catalog_repository.save
+
+Triggered after a shared catalog is created or updated. The repository fully persists the catalog before returning its ID, so the record is durable when the event fires.
+
+**Event details**:
+
+This event can be triggered from the following sources:
+
+* Admin
+* REST
+
+It cannot be triggered from the following sources:
+
+* GraphQL
+* Storefront (EDS)
+* Import
+
+**Payload**:
+
+<Details slots="content" summary="Show payload" />
+
+```json
+[
+    "int"
+]
 ```

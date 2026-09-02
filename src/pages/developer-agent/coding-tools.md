@@ -1,6 +1,6 @@
 ---
 title: Commerce development MCPs and skills
-description: Commerce MCPs and skills for AI developer tooling, including the Commerce Developer MCP, App Builder MCP Server, and dropins MCP server.
+description: Commerce MCPs and skills for AI developer tooling, including the Commerce Developer MCP, App Builder MCP Server, and Dropins AI Tools.
 keywords:
   - App Builder
   - Cloud
@@ -26,7 +26,7 @@ By installing the Commerce development MCPs and skills, you get access to:
 * Skills - An Adobe Commerce and App Builder specific skill set designed to guide and inform your application development.
 * Commerce Developer MCP Server
 * App Builder MCP Server
-* dropins MCP Server
+* Dropins AI Tools
 
 For skills, prompts, and best practices after setup, see [Skills, prompts, and commands](skills-and-prompts.md) and [Best practices](best-practices.md).
 
@@ -86,7 +86,7 @@ Run the following command and follow the interactive prompts:
 aio commerce extensibility app-setup
 ```
 
-After the command completes, navigate to your project directory and restart your coding agent to load the new MCP tools and skills. If your tutorial requires a storefront, rerun the command and select the AEM Boilerplate Commerce starter kit. This additionally installs the [`dropins` MCP server](dropins-mcp-server.md) and storefront agent skills.
+After the command completes, navigate to your project directory and restart your coding agent to load the new MCP tools and skills. If your tutorial requires a storefront, rerun the command and select the AEM Boilerplate Commerce starter kit. This additionally installs [Dropins AI Tools](dropins-mcp-server.md) and storefront agent skills.
 
 The following example installation shows the interactive prompts and output for the checkout starter kit.
 
@@ -231,7 +231,7 @@ Next steps:
          AEM Boilerplate Commerce
       ```
 
-      **Note:** Selecting **AEM Boilerplate Commerce** additionally installs and configures the [`dropins` MCP server](dropins-mcp-server.md) and storefront agent skills in addition to the `commerce-extensibility` MCP server.
+      **Note:** Selecting **AEM Boilerplate Commerce** additionally installs and configures [Dropins AI Tools](dropins-mcp-server.md) and storefront agent skills in addition to the `commerce-extensibility` MCP server.
 
    * Select your preferred coding agent. Over 40 coding agents are supported; if you do not see your preferred agent, use the `Other` option to install skills for any coding agent. Refer to your coding agent's documentation for how to configure skills.
 
@@ -267,7 +267,7 @@ Next steps:
 
 Before deploying your project, complete configuration tasks: log in to [Adobe Developer Console](https://developer.adobe.com/console) using the Adobe I/O CLI, create an App Builder project (see [Project setup](../events/project-setup.md)), and set up environment variables in an `.env` file. You can do these steps manually or use the Commerce development MCPs and skills for guidance. See [Create an integration](../starter-kit/integration/create-integration.md) for detailed configuration instructions.
 
-If you selected the AEM Boilerplate Commerce starter kit, see [`dropins` MCP server for storefront development](dropins-mcp-server.md) for details on the additional server and skills that were installed.
+If you selected the AEM Boilerplate Commerce starter kit, see [Dropins AI Tools for storefront development](dropins-mcp-server.md) for details on the additional server and skills that were installed.
 
 ## Post-installation configuration
 

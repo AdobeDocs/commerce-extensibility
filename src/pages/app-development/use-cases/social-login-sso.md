@@ -33,9 +33,18 @@ This integration pattern requires the `POST /V1/customers/{customerId}/token` en
 
 The diagram breaks down the social login into two phases:
 
-1. **Authenticate with the external provider**: the shopper signs in from the storefront, and App Builder redirects them to the identity provider. The shopper authenticates directly with the provider, so their credentials never reach the storefront or App Builder. The provider returns an authorization code or ID token, which App Builder validates before reading the verified email and name. App Builder then starts a session, stores an internal token, and returns that token to the storefront.
+1. **Authenticate with the external provider**:
 
-1. **Bridge to Commerce (server-side, admin-scoped)**: the storefront exchanges the internal token for a Commerce customer token by calling App Builder. App Builder validates the internal token, loads the verified email, and searches Commerce for an existing customer with that email (`GET /V1/customers/search`). If none exists, App Builder creates one (`POST /V1/customers`). App Builder then generates a customer token (`POST /V1/customers/{customerId}/token`) and returns it to the storefront, which uses it as a bearer token on subsequent GraphQL requests.
+   - The shopper signs in from the storefront, and App Builder redirects them to the identity provider.
+   - The shopper authenticates directly with the provider, so their credentials never reach the storefront or App Builder.
+   - The provider returns an authorization code or ID token, which App Builder validates before reading the verified email and name.
+   - App Builder then starts a session, stores an internal token, and returns that token to the storefront.
+
+1. **Bridge to Commerce (server-side, admin-scoped)**:
+
+   - The storefront exchanges the internal token for a Commerce customer token by calling App Builder.
+   - App Builder validates the internal token, loads the verified email, and searches Commerce for an existing customer with that email (`GET /V1/customers/search`). If none exists, App Builder creates one (`POST /V1/customers`).
+   - App Builder then generates a customer token (`POST /V1/customers/{customerId}/token`) and returns it to the storefront, which uses it as a bearer token on subsequent GraphQL requests.
 
 ## Where each call runs
 
@@ -61,7 +70,7 @@ When your app runs on Adobe Commerce as a Cloud Service, the following apply:
 
 - **Base URL**: `https://<server>.api.commerce.adobe.com/<tenant-id>`. Find the exact value in your Commerce Cloud Manager instance details. Paths do **not** include `/rest` or a store view code.
 - **Store scope**: supplied in a `Store` request header (for example, `Store: default`).
-- **Authentication**: an Adobe Identity Management Service (IMS) access token. The admin and integration token methods used on PaaS are not available. The admin identity behind the token must hold the permissions listed in [Where each call runs](#where-each-call-runs), including `Magento_Customer::retrieve_tokens` for the token endpoint.
+- **Authentication**: an Adobe Identity Management Service (IMS) access token. The admin and integration token methods used on Adobe Commerce on Cloud and on-premises are not available. The admin identity behind the token must hold the permissions listed in [Where each call runs](#where-each-call-runs), including `Magento_Customer::retrieve_tokens` for the token endpoint.
 
 Obtain the IMS access token with a client-credentials request, then reuse it until it expires:
 
@@ -74,7 +83,7 @@ curl -X POST 'https://ims-na1.adobelogin.com/ims/token/v3' \
   -d 'scope=<SCOPES>'
 ```
 
-A typical ACCS request:
+A typical request:
 
 ```text
 POST https://<server>.api.commerce.adobe.com/<tenant-id>/V1/customers

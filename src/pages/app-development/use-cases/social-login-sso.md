@@ -12,7 +12,7 @@ keywords:
 
 Social login lets shoppers sign in to your storefront with an external identity provider (for example, Google or Meta) instead of creating and remembering a dedicated Commerce password. An [App Builder](https://developer.adobe.com/app-builder/) app handles the provider sign-in and then bridges the shopper into Adobe Commerce by obtaining a Commerce customer token. The storefront uses that token to authenticate the shopper's subsequent GraphQL requests.
 
-The end-to-end flow has four steps:
+The end-to-end flow has the following steps:
 
 1. Authenticate the shopper with the external provider and retrieve their verified profile data (at minimum, a verified email address, plus first and last name).
 1. Check whether a Commerce customer already exists for that email.
@@ -31,7 +31,7 @@ This integration pattern requires the `POST /V1/customers/{customerId}/token` en
 
 ![Sequence diagram of the social login SSO flow, showing the shopper authenticating with an external provider, then App Builder bridging the session into an Adobe Commerce customer token](../../_images/app-development/social-login-sso-flow.png)
 
-The diagram shows two phases:
+The diagram breaks down the social login into two phases:
 
 1. **Authenticate with the external provider**: the shopper signs in from the storefront, and App Builder redirects them to the identity provider. The shopper authenticates directly with the provider, so their credentials never reach the storefront or App Builder. The provider returns an authorization code or ID token, which App Builder validates before reading the verified email and name. App Builder then starts a session, stores an internal token, and returns that token to the storefront.
 
@@ -197,10 +197,10 @@ Return this token to the storefront. The storefront then sends it as a bearer to
 
 When your integration creates a customer account on the shopper's behalf, the shopper never chooses or sees a password. Your app generates a strong, random password only to satisfy the `POST /V1/customers` call, then discards it immediately. The plaintext password is generated in memory, used for that single request, and never stored, logged, returned to the browser, or retained anywhere in your systems.
 
-Because shoppers always authenticate through the SSO bridge—search, create if needed, then `POST /V1/customers/{customerId}/token`—the password is never used to sign in. It has no role once the account exists; it is set only because the create-customer API requires a value. (Commerce still keeps a password hash for the account, as it does for any customer, but this flow never relies on it.)
+Because shoppers always authenticate through the SSO bridge, you can search for a token or create a token if needed, and then `POST /V1/customers/{customerId}/token`. This password is never used to sign in. It has no role once the account is created. The password is only set to satisfy the create-customer API password requirement. Commerce still keeps a password hash for the account, as it does for any customer, but this flow never relies on it.
 
 Also consider the following when hardening this integration:
 
 - **Internal session token lifetime**: Keep the token your app issues after authenticating the shopper (see [Overall flow](#overall-flow)) short-lived and single-use. Generate it only when the storefront needs it and invalidate it after the Commerce exchange. A long-lived or reusable internal token increases the risk of token theft resulting in account takeover.
-- **Commerce customer token lifetime**: the token returned by `POST /V1/customers/{customerId}/token` is a standard Commerce customer token—it remains valid, and can be reused for multiple GraphQL requests, until it expires or the customer's tokens are revoked. The **Customer Token Lifetime (hours)** setting under **Stores** > **Configuration** > **Services** > **OAuth** > **Access Token Expiration** controls its lifetime. Choose a value appropriate for the duration a shopper session remains valid without re-authenticating with the provider.
-- **Credential rotation**: rotate the IMS client secret (ACCS) or the integration/admin token (PaaS) periodically, and immediately if you suspect it has leaked. Because every call in this flow is admin-scoped, a leaked credential lets an attacker search, create, and issue tokens for any customer.
+- **Commerce customer token lifetime**: the token returned by `POST /V1/customers/{customerId}/token` is a standard Commerce customer token, which remains valid, and can be reused for multiple GraphQL requests, until it expires or the customer's tokens are revoked. The **Customer Token Lifetime (hours)** setting under **Stores** > **Configuration** > **Services** > **OAuth** > **Access Token Expiration** controls its lifetime. Choose a value appropriate for the duration a shopper session remains valid without re-authenticating with the provider.
+- **Credential rotation**: rotate the IMS client secret (Adobe Commerce as a Cloud Service) or the integration/admin token (Adobe Commerce on Cloud or On Premises) periodically, and immediately if you suspect it has leaked. Because every call in this flow is admin-scoped, a leaked credential lets an attacker search, create, and issue tokens for any customer.

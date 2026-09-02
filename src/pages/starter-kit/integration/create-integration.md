@@ -29,15 +29,15 @@ Integrating Adobe Commerce with your enterprise resource planning (ERP), order m
 
 ## Create your integration (step-by-step)
 
-The best part about the integration starter kit is that it provides a standardized architecture that follows Adobe Commerce best practices. We think that you can get through this single-page tutorial in under an hour.
+The best part about the integration starter kit is that it provides a standardized architecture that follows Adobe Commerce best practices. This single-page tutorial can be completed in under an hour.
 
 <InlineAlert variant="info" slots="text"/>
 
-Support services for the starter kit include the basic functionality and configuration. Because the starter kit is a scaffolding designed to make custom integrations easier, Adobe does not provide support services for modified code or your custom integrations.
+Support services for the starter kit include the basic functionality and configuration. The starter kit is a scaffolding designed to make custom integrations easier. Adobe does not provide support services for modified code or your custom integrations.
 
 ### Onboarding
 
-[Projects Overview](https://developer.adobe.com/developer-console/docs/guides/projects/) describes the different types of projects and how to manage them. Here, we'll create a templated project.
+[Projects Overview](https://developer.adobe.com/developer-console/docs/guides/projects/) describes the different types of projects and how to manage them. Here, a templated project is created.
 
 1. Log in to the Adobe Developer Console and select the desired organization from the dropdown menu in the top-right corner.
 
@@ -45,7 +45,7 @@ Support services for the starter kit include the basic functionality and configu
 
    ![Create a project](../../images/common/create-project.png)
 
-   If the **Create project from template** option is not displayed, it might be because your request to access App Builder has not yet been approved.
+   If the **Create project from template** option is not displayed, your request to access App Builder has not yet been approved.
 
 1. Select **App Builder**. The **Set up templated project** page displays.
 
@@ -86,7 +86,7 @@ Support services for the starter kit include the basic functionality and configu
 
 #### Download the workspace configuration file
 
-The console can generate a JSON file that defines the configuration of your workspace. You will use this file to configure the Commerce Admin and to set up the starter kit.
+The console can generate a JSON file that defines the configuration of your workspace. You use this file to configure the Commerce Admin and to set up the starter kit.
 
 To download a `.json` file containing your workspace configuration:
 
@@ -98,11 +98,11 @@ To download a `.json` file containing your workspace configuration:
 
 #### PaaS or SaaS
 
-The integration starter kit is designed to work with all Adobe Commerce versions, but only one at a time. This means that you can use either Adobe Commerce on Cloud / on Premises (PaaS) or Adobe Commerce as a Cloud Service (SaaS). By default, the starter kit will check for PaaS authentication first using **OAuth1**, before it checks for SaaS authentication using **IMS**.
+The integration starter kit is designed to work with all Adobe Commerce versions, but only one at a time. This means that you can use either Adobe Commerce on Cloud / on Premises (PaaS) or Adobe Commerce as a Cloud Service (SaaS). By default, the starter kit checks for PaaS authentication first using **OAuth1**, before it checks for SaaS authentication using **IMS**.
 
-[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) For PaaS configurations, refer to [Create an integration in Adobe Commerce (PaaS only)](#create-an-integration-in-adobe-commerce-paas-only) and make sure your environment variables `COMMERCE_XXXX` are set correctly in the `.env` file.
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) To configure PaaS, refer to [Create an integration in Adobe Commerce (PaaS only)](#create-an-integration-in-adobe-commerce-paas-only) and ensure that you set your environment variables `COMMERCE_XXXX` correctly in the `.env` file.
 
-[SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) For SaaS configurations, refer to [Create an integration in Adobe Commerce as a Cloud Service](#create-an-integration-in-adobe-commerce-as-a-cloud-service) and make sure the environment variables file does not contain `COMMERCE_XXXX` variables.
+[SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) To configure SaaS, refer to [Create an integration in Adobe Commerce as a Cloud Service](#create-an-integration-in-adobe-commerce-as-a-cloud-service) and ensure the environment variables file does not contain `COMMERCE_XXXX` variables.
 
 <InlineAlert variant="info" slots="text"/>
 
@@ -142,7 +142,7 @@ Use the following steps to create and activate an integration.
 
    ![Integration tokens](../../images/starterkit/secrets.png)
 
-   You will need the integration details (consumer key, consumer secret, access token, and access token secret) to configure the starter kit. Copy these values to a safe place and click **Done**.
+   To configure the starter kit, you need the integration details (consumer key, consumer secret, access token, and access token secret). Copy these values to a safe place and click **Done**.
 
 #### Create an integration in Adobe Commerce as a Cloud Service
 
@@ -178,14 +178,14 @@ This section applies to **SaaS** customers only. For **PaaS** customers, see [Cr
 
 #### Install Adobe I/O Events for Adobe Commerce (Commerce 2.4.4 and 2.4.5 only)
 
-If you are running Adobe Commerce 2.4.6 or higher, the modules that enable eventing are installed automatically. Skip to the next step. If you are running Commerce 2.4.4 or 2.4.5, you must install modules to enable eventing, as described in [Install Adobe I/O Events for Adobe Commerce](../../events/installation.md).
+If you are running Adobe Commerce 2.4.6 or higher, the modules that enable eventing are installed automatically. Skip to the next step. If you are running Commerce 2.4.4 or 2.4.5, to enable eventing, install modules as described in [Install Adobe I/O Events for Adobe Commerce](../../events/installation.md).
 
 ### Download and configure the integration starter kit
 
 Integration starter Kit versions earlier than v3.0.0 are compatible with Commerce Eventing versions earlier than 1.12.1.
 Starting with version v3.0.0, the integration starter kit requires Commerce Eventing version 1.12.1 or higher and is not backward compatible with older versions of Commerce Eventing.
 
-We are introducing this backward-incompatible change to support multi-event-provider functionality. This enables multiple App Builder based Commerce extensions to connect to the same Adobe Commerce instance using isolated event providers. This isolation:
+This backward-incompatible change is being introduced to support multi-event-provider functionality. This enables multiple App Builder based Commerce extensions to connect to the same Adobe Commerce instance using isolated event providers. This isolation:
 
 - Prevents one application from overriding the event provider registered by another application.
 
@@ -245,7 +245,7 @@ Make sure to use your actual environment name or tenant ID in the URL. The examp
    npm install
    ```
 
-1. Run the following Adobe I/O commands to connect your starter kit project to the App Builder project you created earlier:
+1. To connect your starter kit project to the App Builder project you created earlier, run the following Adobe I/O commands:
 
    ```bash
    aio login
@@ -266,7 +266,7 @@ Make sure to use your actual environment name or tenant ID in the URL. The examp
 
 #### Deploy the project
 
-Run the following command to deploy the project. The command deploys the runtime actions needed for the onboarding step:
+To deploy the project, run the following command. The command deploys the runtime actions needed for the onboarding step:
 
 ```bash
 aio app deploy
@@ -297,7 +297,7 @@ The Customize Registrations and Events [code sample](https://github.com/adobe/ad
 
 **Execute the onboarding:**
 
-Run the following command to generate the IO Event providers and the registrations for your starter kit project.
+To generate the IO Event providers and the registrations for your starter kit project, run the following command.
 
 <InlineAlert variant="info" slots="text"/>
 
@@ -307,7 +307,7 @@ As of version `1.12.0`, your Commerce instance can connect to multiple event pro
 npm run onboard
 ```
 
-The console displays the provider's IDs. The commerce instance and provider IDs will be used to configure your Commerce instance. You will need the backoffice provider ID to send the events to the App builder project.
+The console displays the provider's IDs. The commerce instance and provider IDs will be used to configure your Commerce instance. You need the backoffice provider ID to send the events to the App builder project.
 
 ```terminal
 Process of On-Boarding done successfully: [
@@ -334,11 +334,11 @@ Check your App in the Developer Console to confirm the registrations were create
 
 <InlineAlert variant="info" slots="text"/>
 
-The following steps are not required when using Adobe I/O Events version `1.12.0` or later. The onboarding script will configure the Adobe Commerce instance automatically.
+The following steps are not required when using Adobe I/O Events version `1.12.0` or later. The onboarding script configures the Adobe Commerce instance automatically.
 
 Proceed to the next section, or continue following the steps in this section to validate that the configuration is correct.
 
-You must configure Commerce to communicate with your project. Configuration includes copying and pasting the contents of the workspace configuration file that you downloaded from the Adobe Developer Console.
+Configure Commerce to communicate with your project. Configuration includes copying and pasting the contents of the workspace configuration file that you downloaded from the Adobe Developer Console.
 
 1. In the Commerce Admin, navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Adobe I/O Events** > **General configuration**. The following screen displays.
 
@@ -376,7 +376,7 @@ You must configure Commerce to communicate with your project. Configuration incl
 
 **Subscribe to events in Adobe Commerce:**
 
-To automatically subscribe to Commerce events using Adobe I/O Events, run the `commerce-event-subscribe` script in the `scripts/commerce-event-subscribe/config/` directory.
+To subscribe automatically to Commerce events using Adobe I/O Events, run the `commerce-event-subscribe` script in the `scripts/commerce-event-subscribe/config/` directory.
 
 ```bash
 npm run commerce-event-subscribe

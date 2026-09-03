@@ -12,6 +12,16 @@ These release notes describe the latest version of Adobe I/O Events for Adobe Co
 
 See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io-events-for-adobe-commerce) for upgrade instructions.
 
+## Version 1.22.2
+
+### Release date
+
+September 3, 2026
+
+### Bug fixes
+
+* The eventing priority consumer could process only one message per cron run, causing its queue backlog to grow over time. It now drains the backlog normally each cycle. \<!-- CEXT-6712 --\>
+
 ## Version 1.22.1
 
 ### Release date

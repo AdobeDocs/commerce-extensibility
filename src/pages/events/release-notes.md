@@ -20,7 +20,7 @@ September 3, 2026
 
 ### Bug fixes
 
-* In some configurations the eventing priority consumer could process only one message per cron run, causing its queue backlog to grow over time. It now drains the backlog normally each cycle. \<!-- CEXT-6712 --\>
+* In some configurations, the eventing priority consumer processed only one message per cron run, causing its queue backlog to grow over time. It now drains the backlog normally each cycle. \<!-- CEXT-6712 --\>
 
 ## Version 1.22.1
 

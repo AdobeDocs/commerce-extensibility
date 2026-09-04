@@ -214,7 +214,7 @@
     - [AI coding tooling](/developer-agent/tools-overview.md)
       - [Overview](/developer-agent/tools-overview.md)
       - [Commerce development MCPs and skills](/developer-agent/coding-tools.md)
-        - [Dropins MCP server](/developer-agent/dropins-mcp-server.md)
+        - [Dropins AI Tools](/developer-agent/dropins-mcp-server.md)
       - [Skills, prompts, and commands](/developer-agent/skills-and-prompts.md)
       - [Use cases](/developer-agent/use-cases.md)
       - [Best practices](/developer-agent/best-practices.md)

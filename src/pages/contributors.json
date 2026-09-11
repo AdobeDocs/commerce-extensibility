@@ -471,7 +471,7 @@
         "https://avatars.githubusercontent.com/u/16409901?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4"
       ],
-      "lastUpdated": "8/11/2026"
+      "lastUpdated": "9/11/2026"
     },
     {
       "page": "/app-development/best-practices/",
@@ -525,7 +525,7 @@
         "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4"
       ],
-      "lastUpdated": "7/29/2026"
+      "lastUpdated": "9/11/2026"
     },
     {
       "page": "/app-development/learning-path",
@@ -537,7 +537,7 @@
         "https://avatars.githubusercontent.com/in/29110?v=4",
         "https://avatars.githubusercontent.com/u/111585301?v=4"
       ],
-      "lastUpdated": "6/17/2026"
+      "lastUpdated": "9/11/2026"
     },
     {
       "page": "/app-development/port-extensions",
@@ -577,7 +577,7 @@
       "avatars": [
         "https://avatars.githubusercontent.com/u/11652541?v=4"
       ],
-      "lastUpdated": "9/2/2026"
+      "lastUpdated": "9/11/2026"
     },
     {
       "page": "/app-management/",
@@ -834,10 +834,11 @@
     {
       "page": "/developer-agent/use-cases",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4",
         "https://avatars.githubusercontent.com/u/10073809?v=4"
       ],
-      "lastUpdated": "8/5/2026"
+      "lastUpdated": "9/11/2026"
     },
     {
       "page": "/events/",
@@ -1140,7 +1141,7 @@
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4"
       ],
-      "lastUpdated": "8/11/2026"
+      "lastUpdated": "9/11/2026"
     },
     {
       "page": "/observability/installation",
@@ -1238,11 +1239,12 @@
     {
       "page": "/starter-kit/checkout/eds",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/6404095?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4",
         "https://avatars.githubusercontent.com/u/8988184?v=4"
       ],
-      "lastUpdated": "5/19/2026"
+      "lastUpdated": "9/11/2026"
     },
     {
       "page": "/starter-kit/checkout/getting-started",
@@ -1303,14 +1305,14 @@
     {
       "page": "/starter-kit/checkout/payment-use-cases",
       "avatars": [
-        "https://avatars.githubusercontent.com/u/8988184?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
+        "https://avatars.githubusercontent.com/u/8988184?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/16409901?v=4",
         "https://avatars.githubusercontent.com/u/80530839?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4"
       ],
-      "lastUpdated": "7/14/2026"
+      "lastUpdated": "9/11/2026"
     },
     {
       "page": "/starter-kit/checkout/shipping-install",

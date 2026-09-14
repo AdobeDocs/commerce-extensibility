@@ -10,6 +10,10 @@ keywords:
  - Tools
 ---
 
+<SuperHero slots="image, heading, text"/>
+
+![Commerce Extensibility](images/home-bg.jpeg)
+
 # Adobe Commerce extensibility
 
 Learn how to create out-of-process extensions for Adobe Commerce using App Builder and App Management.

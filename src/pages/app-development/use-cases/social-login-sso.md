@@ -25,7 +25,7 @@ The same approach works on **Adobe Commerce as a Cloud Service** and **Adobe Com
 
 On both platforms, your App Builder app must implement the OAuth/OpenID Connect flow for each external provider you support. It validates the identity token the provider returns. Trust profile data (such as the email address) only after the provider's token has been verified.
 
-This integration pattern requires the `POST /V1/customers/{customerId}/token` endpoint, which is provided by the Storefront Compatibility Package. This package is always available on Adobe Commerce as a Cloud Service but requires separate installation on Adobe Commerce on Cloud and on-premises. On those platforms, the package version must be 4.7.6 or higher to include the token endpoint. See [Storefront Compatibility Package](https://experienceleague.adobe.com/developer/commerce/storefront/setup/configuration/storefront-compatibility/install/) for installation instructions.
+This integration pattern requires the `POST /V1/customers/{customerId}/token` endpoint, which is provided by the Storefront Compatibility Package. This package is always available on Adobe Commerce as a Cloud Service but requires separate installation on Adobe Commerce on Cloud and on-premises. On those platforms, the package version must be 4.7.6 or higher to include the token endpoint. See [Storefront Compatibility Package](https://experienceleague.adobe.com/en/tools/commerce-storefront/setup/configuration/storefront-compatibility/install/) for installation instructions.
 
 ## Overall flow
 

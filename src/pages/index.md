@@ -82,4 +82,4 @@ Regardless of whether you start from an empty App Builder project or a starter k
 - [App development](/app-development/index.md) — learn how to build, port, and submit Commerce apps.
 - [Events](/events/index.md), [Webhooks](/webhooks/index.md), [Admin UI SDK](/admin-ui-sdk/index.md), and [OOPE modules](/oope-modules/index.md) — the supported extension points for connecting your app to Commerce.
 - [Observability](/observability/index.md) — monitor and troubleshoot your Commerce apps.
-- [API Mesh](/api-mesh/index.md) — A GraphQL gateway that composes Commerce APIs and third-party APIs behind a single endpoint, reducing round trips from the storefront or App Builder actions.
+- [API Mesh](https://developer.adobe.com/graphql-mesh-gateway/) — A GraphQL gateway that composes Commerce APIs and third-party APIs behind a single endpoint, reducing round trips from the storefront or App Builder actions.

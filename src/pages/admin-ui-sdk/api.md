@@ -260,6 +260,42 @@ curl -X DELETE \
 - **404**: Not Found: Selected extension does not exist.
 - **500**: Internal server error
 
+### Refresh a selected extension's registrations
+
+`POST /V1/adminuisdk/extension/<workspace_name>/<extension_name>/refresh`
+
+Re-syncs the registrations of an already-selected extension by fetching its latest configuration from the App Registry and persisting it. The selected extension record itself (title, workspace) is left unchanged.
+
+**Headers:**
+
+| Header | Value |
+| --- | --- |
+| `Authorization` | Bearer `<Token>` |
+| `Content-Type` | application/json |
+
+**Path parameters:**
+
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| `workspace_name` | string | Yes | The workspace name |
+| `extension_name` | string | Yes | The extension name |
+
+**Example usage:**
+
+```bash
+curl -X POST \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer <TOKEN>" \
+    '<ADOBE_COMMERCE_URL>/rest/V1/adminuisdk/extension/<WORKSPACE_NAME>/<EXTENSION_NAME>/refresh'
+```
+
+**Responses:**
+
+- **200**: Ok
+- **401**: Unauthorized
+- **404**: Not Found: Selected extension does not exist.
+- **500**: Internal server error: The extension could not be refreshed. Check Admin UI SDK logs for more information and refresh registrations manually in the Admin Panel.
+
 ### Enable or disable the Admin UI SDK
 
 `PUT /V1/adminuisdk/config`

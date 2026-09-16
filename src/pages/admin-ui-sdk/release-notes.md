@@ -16,7 +16,7 @@ September 16, 2026
 
 ### Enhancements
 
-* Added the [`invoice`](extension-points/v2/invoice/grid-columns.md), [`credit memo`](extension-points/v2/credit-memo/grid-columns.md), and [`shipment`](extension-points/v2/shipment/grid-columns.md) grid columns extension points to V2. Add custom columns to the Invoices, Credit Memos, and Shipments grids the same way as the existing [order](extension-points/v2/order/grid-columns.md) and [product](extension-points/v2/product/grid-columns.md) grid columns extension points.
+* Added the [`invoice`](extension-points/v2/invoice/grid-columns.md), [`credit memo`](extension-points/v2/credit-memo/grid-columns.md), and [`shipment`](extension-points/v2/shipment/grid-columns.md) grid columns extension points to V2. Add custom columns to the invoices, credit memos, and shipments grids the same way as the existing [order](extension-points/v2/order/grid-columns.md) and [product](extension-points/v2/product/grid-columns.md) grid columns extension points.
 
 * Added a [`POST` endpoint](api.md#refresh-a-selected-extensions-registrations) to refresh the registrations of a single selected extension by workspace and extension name, without affecting other installed extensions.
 

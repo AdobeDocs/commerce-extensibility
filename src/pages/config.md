@@ -5,8 +5,8 @@
     - [Commerce](https://developer.adobe.com/commerce/docs)
     - [Extensibility](/index.md)
     - [Developer agent](/developer-agent/index.md)
-    - [App Development](/app-development/index.md)
     - [App Management](/app-management/index.md)
+    - [App Development](/app-development/index.md)
     - Components
         - [Events](/events/index.md)
         - [Webhooks](/webhooks/index.md)

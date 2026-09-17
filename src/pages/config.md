@@ -7,16 +7,15 @@
     - [Developer agent](/developer-agent/index.md)
     - [App Development](/app-development/index.md)
     - [App Management](/app-management/index.md)
-    - Starter Kits
-        - [Integration starter kit](/starter-kit/integration/index.md)
-        - [Checkout starter kit](/starter-kit/checkout/index.md)
     - Components
         - [Events](/events/index.md)
         - [Webhooks](/webhooks/index.md)
         - [Admin UI SDK](/admin-ui-sdk/index.md)
         - [OOPE modules](/oope-modules/index.md)
+        - [Integration starter kit](/starter-kit/integration/index.md)
+        - [Checkout starter kit](/starter-kit/checkout/index.md)
+        - [API Mesh](https://developer.adobe.com/graphql-mesh-gateway/)
     - [Observability](/observability/index.md)
-    - [API Mesh](https://developer.adobe.com/graphql-mesh-gateway/)
 
 - subPages:
     - [Overview](/app-development/index.md)

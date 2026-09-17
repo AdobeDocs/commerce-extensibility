@@ -1,7 +1,7 @@
 {
-  "total": 242,
+  "total": 247,
   "offset": 0,
-  "limit": 242,
+  "limit": 247,
   "data": [
     {
       "page": "/",
@@ -105,7 +105,7 @@
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/71198017?v=4"
       ],
-      "lastUpdated": "7/28/2026"
+      "lastUpdated": "9/15/2026"
     },
     {
       "page": "/admin-ui-sdk/app-registration",
@@ -212,18 +212,7 @@
         "https://avatars.githubusercontent.com/u/71198017?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4"
       ],
-      "lastUpdated": "9/2/2024"
-    },
-    {
-      "page": "/admin-ui-sdk/extension-points/order/custom-fees",
-      "avatars": [
-        "https://avatars.githubusercontent.com/u/47715589?v=4",
-        "https://avatars.githubusercontent.com/u/12731225?v=4",
-        "https://avatars.githubusercontent.com/u/71198017?v=4",
-        "https://avatars.githubusercontent.com/u/98363870?v=4",
-        "https://avatars.githubusercontent.com/u/11652541?v=4"
-      ],
-      "lastUpdated": "7/29/2026"
+      "lastUpdated": "9/15/2026"
     },
     {
       "page": "/admin-ui-sdk/extension-points/order/grid-columns",
@@ -295,7 +284,17 @@
       "avatars": [
         "https://avatars.githubusercontent.com/u/11652541?v=4"
       ],
-      "lastUpdated": "9/1/2026"
+      "lastUpdated": "9/15/2026"
+    },
+    {
+      "page": "/admin-ui-sdk/extension-points/v2/credit-memo/",
+      "avatars": [],
+      "lastUpdated": "9/15/2026"
+    },
+    {
+      "page": "/admin-ui-sdk/extension-points/v2/credit-memo/grid-columns",
+      "avatars": [],
+      "lastUpdated": "9/15/2026"
     },
     {
       "page": "/admin-ui-sdk/extension-points/v2/customer/",
@@ -319,6 +318,16 @@
       "lastUpdated": "7/27/2026"
     },
     {
+      "page": "/admin-ui-sdk/extension-points/v2/invoice/",
+      "avatars": [],
+      "lastUpdated": "9/15/2026"
+    },
+    {
+      "page": "/admin-ui-sdk/extension-points/v2/invoice/grid-columns",
+      "avatars": [],
+      "lastUpdated": "9/15/2026"
+    },
+    {
       "page": "/admin-ui-sdk/extension-points/v2/menu",
       "avatars": [
         "https://avatars.githubusercontent.com/u/11652541?v=4"
@@ -330,7 +339,7 @@
       "avatars": [
         "https://avatars.githubusercontent.com/u/11652541?v=4"
       ],
-      "lastUpdated": "7/28/2026"
+      "lastUpdated": "9/15/2026"
     },
     {
       "page": "/admin-ui-sdk/extension-points/v2/order/",
@@ -382,6 +391,16 @@
       "lastUpdated": "7/27/2026"
     },
     {
+      "page": "/admin-ui-sdk/extension-points/v2/shipment/",
+      "avatars": [],
+      "lastUpdated": "9/15/2026"
+    },
+    {
+      "page": "/admin-ui-sdk/extension-points/v2/shipment/grid-columns",
+      "avatars": [],
+      "lastUpdated": "9/15/2026"
+    },
+    {
       "page": "/admin-ui-sdk/installation",
       "avatars": [
         "https://avatars.githubusercontent.com/u/11652541?v=4",
@@ -414,7 +433,7 @@
         "https://avatars.githubusercontent.com/u/18550571?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4"
       ],
-      "lastUpdated": "8/20/2026"
+      "lastUpdated": "9/16/2026"
     },
     {
       "page": "/admin-ui-sdk/troubleshooting",
@@ -740,7 +759,7 @@
         "https://avatars.githubusercontent.com/u/18550571?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4"
       ],
-      "lastUpdated": "9/2/2026"
+      "lastUpdated": "9/15/2026"
     },
     {
       "page": "/developer-agent/",

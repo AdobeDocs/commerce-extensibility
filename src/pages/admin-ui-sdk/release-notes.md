@@ -8,6 +8,26 @@ keywords:
 
 # Admin UI SDK release notes
 
+## Version 5.0.0
+
+### Release date
+
+September 16, 2026
+
+### Enhancements
+
+* Added the [`invoice`](extension-points/v2/invoice/grid-columns.md), [`credit memo`](extension-points/v2/credit-memo/grid-columns.md), and [`shipment`](extension-points/v2/shipment/grid-columns.md) grid columns extension points to V2. Add custom columns to the invoices, credit memos, and shipments grids the same way as the existing [order](extension-points/v2/order/grid-columns.md) and [product](extension-points/v2/product/grid-columns.md) grid columns extension points.
+
+* Added a [`POST` endpoint](api.md#refresh-a-selected-extensions-registrations) to refresh the registrations of a single selected extension by workspace and extension name, without affecting other installed extensions.
+
+* Removed the `order get custom fees` extension point (V1). If your extension registers `customFees`, that registration is no longer read by Commerce. Order total modifications are implemented as a webhook instead; neither V1 nor V2 reads a `customFees` registration going forward. See [customFees support is deprecated](extension-points/v2/migration-from-v1.md#customfees-support-is-deprecated) for the replacement.
+
+### Bug fixes
+
+* Fixed an issue where registering menus from apps deployed to different workspaces could cause a menu item to disappear.
+
+* Fixed a security issue where extension sources and URLs were not validated against a trusted origin before saving extensions or fetching their registrations, which could expose an admin's IMS token to an untrusted origin.
+
 ## Version 4.2.1
 
 ### Release date
@@ -371,7 +391,7 @@ June 28, 2024
   * [`banner notification`](extension-points/banner-notification.md)
   * [`customer grid columns`](extension-points/customer/grid-columns.md)
   * [`customer mass action`](extension-points/customer/mass-action.md)
-  * [`order get custom fees`](extension-points/order/custom-fees.md)
+  * `order get custom fees`
 
 * Mass actions can now be implemented [without an iFrame](api.md#mass-actions-without-iframes).
 

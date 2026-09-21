@@ -26,7 +26,7 @@ Adobe implements this model through **Adobe Developer App Builder** and **Commer
 
 - **App Builder** provides the platform for building secure, scalable Commerce applications. See [App development](/app-development/index.md) and the [App Builder documentation](https://developer.adobe.com/app-builder/docs/get_started/) to get started.
 - **I/O Runtime** hosts serverless actions that execute your custom logic.
-- **Commerce APIs, [events](/events/index.md), and [webhooks](/webhooks/index.md)** connect your application to Commerce data and behavior.
+- **Commerce [APIs](https://developer.adobe.com/commerce/webapi/)**, [events](/events/index.md), and [webhooks](/webhooks/index.md)** connect your application to Commerce data and behavior.
 - **Commerce SDKs and libraries** provide reusable patterns for authentication, configuration, event handling, and Commerce integration, including the [Admin UI SDK](/admin-ui-sdk/index.md) and [OOPE modules](/oope-modules/index.md).
 - **[App Management](/app-management/index.md)** provides the application lifecycle: associate, configure, install, update, and remove Commerce apps.
 
@@ -83,3 +83,4 @@ Regardless of whether you start from an empty App Builder project or a starter k
 - [Events](/events/index.md), [Webhooks](/webhooks/index.md), [Admin UI SDK](/admin-ui-sdk/index.md), and [OOPE modules](/oope-modules/index.md) — the supported extension points for connecting your app to Commerce.
 - [Observability](/observability/index.md) — monitor and troubleshoot your Commerce apps.
 - [API Mesh](https://developer.adobe.com/graphql-mesh-gateway/) — A GraphQL gateway that composes Commerce APIs and third-party APIs behind a single endpoint, reducing round trips from the storefront or App Builder actions.
+- The [#app-builder-community](https://magentocommeng.slack.com/archives/C04KT43Q75K) Slack channel allows you to ask questions, share your work, and connect with other developers interested in Adobe Commerce extensibility and App Builder.

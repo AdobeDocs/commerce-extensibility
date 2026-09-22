@@ -42,6 +42,7 @@ The `adminUi` object is where every extension point in this section is registere
 
 * [menu](menu.md) &mdash; a single object at `adminUi.menu`.
 * [customer](customer/index.md), [order](order/index.md), and [product](product/index.md) &mdash; each accepts `massActions` and `gridColumns`; `order` additionally accepts `viewButtons`.
+* [invoice](invoice/index.md), [credit memo](credit-memo/index.md), and [shipment](shipment/index.md) &mdash; each accepts `gridColumns` only.
 
 ## Access control list protection
 
@@ -88,7 +89,7 @@ function Welcome() {
 }
 ```
 
-When a component is guaranteed to render within a supported host and you do not need explicit error handling, you can ignore error and use optional chaining:
+When a component is guaranteed to render within a supported host and you do not need explicit error handling, you can ignore the error and use optional chaining:
 
 ```tsx
 function Welcome() {
@@ -97,11 +98,11 @@ function Welcome() {
 }
 ```
 
-This is valid, but it is less explicit and not recommended. If the component renders outside the expected host, it silently renders an absent value instead of explaining or forwarding the error.
+This approach is valid, but it is less explicit and not recommended. If the component renders outside the expected host, it silently renders an absent value instead of explaining or forwarding the error.
 
 ### Interact with the Commerce Admin host
 
-`useHostConnection` returns typed helpers for closing the extension iframe and returning control to the Commerce Admin. Note that these are only useful in flows that need to close the current iframe and navigate back, such as mass actions and order view buttons.
+`useHostConnection` returns typed helpers for closing the extension iframe and returning control to the Commerce Admin. Note that these helpers are only useful in flows that need to close the current iframe and navigate back, such as mass actions and order view buttons.
 
 ```tsx
 import { useHostConnection } from "@adobe/aio-commerce-lib-admin-ui/web";
@@ -162,9 +163,9 @@ function CommerceInfo() {
 
 ### Shared context access
 
-`useSharedContext` exposes the raw Commerce shared context and host proxy from the guest connection. We recommend using `useCommerce`, `useMassActionContext`, `useOrderViewButtonContext`, or `useHostConnection`) whenever possible.
+`useSharedContext` exposes the raw Commerce shared context and host proxy from the guest connection. Use `useCommerce`, `useMassActionContext`, `useOrderViewButtonContext`, or `useHostConnection`) whenever possible.
 
-`useSharedContext` (and the hooks built on it) require the Commerce guest connection. In Experience Cloud Shell or a standalone page, they will always return an error.
+`useSharedContext` (and the hooks built on it) require the Commerce guest connection. In Experience Cloud Shell or a standalone page, they always return an error.
 
 ```tsx
 import { useSharedContext } from "@adobe/aio-commerce-lib-admin-ui/web";

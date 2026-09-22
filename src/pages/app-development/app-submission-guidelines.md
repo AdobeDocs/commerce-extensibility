@@ -51,7 +51,7 @@ Some requirements will differ based on whether you indicated the app was non-dow
 - Installation guide clarity
   - **Prerequisites**: Add clear prerequisites (example: Admin UI SDK must be enabled and configured, as described in [the Admin UI SDK documentation](../admin-ui-sdk/configuration.md#general-configuration)).
 
-      - If the app is compatible with the EDS storefront, include instructions for setup. [Example documentation](https://experienceleague.adobe.com/developer/commerce/storefront/get-started/create-storefront/)
+      - If the app is compatible with the EDS storefront, include instructions for setup. [Example documentation](https://experienceleague.adobe.com/en/tools/commerce-storefront/get-started/create-storefront/)
       - If the app uses a Mesh, provide detailed information on how to configure it according to Adobe guidelines. [Example documentation](https://developer.adobe.com/graphql-mesh-gateway/mesh/basic/create-mesh)
       - If the app uses eventing, provide information about the events used in the project and how to subscribe to them. Example documentation:
          - [Integration starter kit overview](https://github.com/adobe/commerce-integration-starter-kit?tab=readme-ov-file#onboarding)
@@ -168,6 +168,21 @@ The following best practices are not required for your app to be accepted, but t
   - **Feature utilization**: Leverage new starter kit features where applicable.
     - [Integration starter kit](../starter-kit/integration/index.md)
     - [Checkout starter kit](../starter-kit/checkout/index.md)
+
+- Adobe Commerce SDK
+  - **Typed API clients**: Use packages from the [Adobe Commerce SDK](https://github.com/adobe/aio-commerce-sdk) family instead of writing custom HTTP/auth/eventing logic from scratch. These libraries provide typed clients, built-in authentication, and retry logic, and keep your code aligned with Adobe's recommended patterns:
+    - `@adobe/aio-commerce-lib-auth` — authentication flows for Adobe IMS and Commerce integrations
+    - `@adobe/aio-commerce-lib-api` — HTTP/API client builders for Adobe Commerce and Adobe I/O Events
+    - `@adobe/aio-commerce-lib-events` — event-driven integrations between Commerce and Adobe I/O Events
+    - `@adobe/aio-commerce-lib-webhooks` — utilities for the Adobe Commerce Webhooks API
+    - `@adobe/aio-commerce-lib-core` — shared foundational utilities used across the family
+
+    Apps that adopt full App Management additionally require `@adobe/aio-commerce-lib-app` and `@adobe/aio-commerce-lib-config`, but the libraries above can be used independently for apps not yet using App Management.
+
+  - **App Management**: Use [App Management](../app-management/index.md) to define your configuration schema, event subscriptions, and Admin UI once in an `app.commerce.config` file, and let the system auto-generate the required runtime actions and Admin UI. This is the Adobe-endorsed approach for installing, configuring, and managing App Builder applications in Commerce, and removes the need for merchants to manually configure event providers, subscriptions, or environment variables.
+    - Requires [Admin UI SDK](../admin-ui-sdk/index.md) version 3.3.1 or later.
+    - Requires minimum library versions 1.0.0 or later for `@adobe/aio-commerce-lib-config`, `@adobe/aio-commerce-lib-app`, and `@adobe/aio-commerce-sdk`.
+    - Not currently supported for local Commerce installations — requires a hosted (cloud or on-premises) environment.
 
 - Script management
   - **Script validation**: Execute everything in `package.json` scripts section and ensure there are no errors.

@@ -1,0 +1,58 @@
+---
+title: AI developer tools for Commerce extensibility
+description: Overview of Adobe-provided Commerce development MCPs and skills for Adobe Commerce and App Builder development.
+keywords:
+  - App Builder
+  - Cloud
+  - Extensibility
+  - Tools
+---
+
+# AI developer tools for Commerce extensibility
+
+Adobe provides Commerce development MCPs and skills so you can build and maintain Adobe Developer App Builder applications for Adobe Commerce with less friction. The same stack supports teams who are migrating from in-process PHP extensions to out-of-process apps and teams who are starting new integrations from the starter kits.
+
+This section documents the current tooling and is structured so additional guides (for new agents, skills, or workflows) can be added alongside these pages.
+
+## Who this is for
+
+- Developers using Adobe Commerce as a Cloud Service (and related SaaS offerings) who want guided, Commerce-aware assistance in the IDE.
+- Teams standardizing on agent skills and MCP (Model Context Protocol) integrations for documentation and App Builder workflows.
+- Developers customizing storefronts built on the [AEM Boilerplate Commerce](https://github.com/hlxsites/aem-boilerplate-commerce) starter kit who want AI assistance grounded in authoritative drop-in component data.
+
+## What you get
+
+| Capability | Description |
+| --- | --- |
+| Agent skills | Commerce and App Builder skills that guide architecture, implementation, DevOps, requirements, docs, testing, and learning workflows. |
+| Adobe Commerce App Builder MCP server | IDE integration for Commerce development tasks, documentation-aware assistance, and tooling aligned with App Builder application development patterns. |
+| [`dropins` MCP server](dropins-mcp-server.md) | For storefronts built on the AEM Boilerplate Commerce starter kit. Provides structured, authoritative data about drop-in slots, events, containers, APIs, models, and design tokens. |
+
+Together, these improve workflow integration, context-aware generation, and repeatable development and deployment steps.
+
+## Guides in this section
+
+| Guide | Description |
+| --- | --- |
+| [Commerce development MCPs and skills](coding-tools.md) | Prerequisites, installation with `aio commerce extensibility tools-setup`, post-install CLI auth, and IDE configuration (for example Cursor and GitHub Copilot). |
+| [`dropins` MCP server](dropins-mcp-server.md) | Installation, update, and skill integration details for the `dropins` MCP server used on AEM Boilerplate Commerce storefronts. |
+| [Use cases](use-cases.md) | Common extension patterns — REST APIs, checkout extensions, storefront components, event-driven integrations, and more. |
+| [Skills, prompts, and commands](skills-and-prompts.md) | Slash commands, sample prompts, and the `/search-commerce-docs` command. |
+| [Best practices](best-practices.md) | Planning mode, session checklists, workflow and protocol, MCP vs CLI, testing, deployment, monitoring, anti-patterns, and feedback. |
+
+## Related resources
+
+- [Create an integration](../starter-kit/integration/create-integration.md) — Integration starter kit
+- [Checkout starter kit](../starter-kit/checkout/index.md) — Checkout and payments
+- [Project setup](../events/project-setup.md) — App Builder project and events
+- [App Builder sample applications](https://developer.adobe.com/app-builder/docs/resources/sample_apps/)
+
+## Updating the tools
+
+After the initial [installation](coding-tools.md#installation), update to the latest version from your project or tooling directory:
+
+```bash
+aio commerce extensibility tools-setup
+```
+
+See [Coding Commerce development MCPs and skills](coding-tools.md#updating-to-the-latest-version) for details.

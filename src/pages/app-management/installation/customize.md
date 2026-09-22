@@ -59,7 +59,7 @@ export default defineConfig({
         description: "Set up webhook endpoints for order notifications",
       },
       {
-        script: "./scripts/initialize-database.js",
+        script: "./scripts/initialize-database.ts",
         name: "Initialize Database",
         description: "Create required database tables and indexes",
       },
@@ -72,7 +72,7 @@ export default defineConfig({
 
 | Property | Type | Required | Description |
 |----------|------|----------|-------------|
-| `script` | string | Yes | Path to the script file relative to your project root. |
+| `script` | string | Yes | Path to the script file relative to your project root. Must end with a `.js` or `.ts` extension. |
 | `name` | string | Yes | Display name for the installation step. Maximum 255 characters. |
 | `description` | string | No | Description of what the step does. Maximum 255 characters. |
 
@@ -80,9 +80,23 @@ export default defineConfig({
 
 Two custom installation steps cannot have the same name. Step names must be unique.
 
+### Working with TypeScript
+
+You can write custom installation step scripts as `.ts` files instead of `.js` once your project has the TypeScript build setup in place. See [Working with TypeScript](../initialize-app.md#working-with-typescript) for details.
+
 ### Writing installation scripts
 
-Your custom installation scripts must export a default function using `defineCustomInstallationStep`:
+Your custom installation scripts must export a default value using `defineCustomInstallationStep`. It accepts either a plain handler function (install only) or an object with `install` and optional `uninstall` handlers.
+
+The `context` passed to each handler exposes:
+
+| Property | Description |
+|----------|--------------|
+| `appData` | Credentials of the app being managed. |
+| `params` | Raw action parameters from the App Builder runtime action. |
+| `logger` | Logger instance for workflow logging. |
+
+#### Plain function form
 
 ```js
 import { defineCustomInstallationStep } from "@adobe/aio-commerce-lib-app/management";
@@ -103,6 +117,28 @@ export default defineCustomInstallationStep(async (config, context) => {
   };
 });
 ```
+
+#### Object form with install and uninstall
+
+Use the object form when your step needs to clean up resources it created when the app is uninstalled:
+
+```js
+import { defineCustomInstallationStep } from "@adobe/aio-commerce-lib-app/management";
+
+export default defineCustomInstallationStep({
+  install: async (config, context) => {
+    context.logger.info(`Registering ${config.metadata.displayName}...`);
+    return { status: "success" };
+  },
+  uninstall: async (config, context) => {
+    context.logger.info(`Removing ${config.metadata.displayName}...`);
+  },
+});
+```
+
+<InlineAlert variant="info" slots="text"/>
+
+On uninstall, steps run in the **same declared order as install**, not reversed. Steps without an `uninstall` handler are silently skipped during uninstallation.
 
 ### Script with error handling
 
@@ -140,9 +176,9 @@ export default defineCustomInstallationStep(async (config, context) => {
 
 ### Script requirements
 
-* Scripts **must** use `export default` to export the main function.
-* Scripts are executed **sequentially** in the order defined.
+* Scripts **must** use `export default` to export either a handler function or an object with `install`/`uninstall` handlers.
+* Scripts are executed **sequentially** in the order defined, for both installation and uninstallation (uninstall does **not** reverse the order).
 * If any script throws an error, the installation fails and subsequent scripts are not executed.
 * Scripts have access to the complete app configuration.
 
-After you modify custom installation scripts, you must manually run the `npx aio-commerce-lib-app` generate actions command before building and deploying. This ensures the installation action picks up your changes. For all other `app.commerce.config` updates, build and deploy alone is sufficient, as artifacts are regenerated during pre-app-build.
+After you modify custom installation scripts, you must manually run the `npx aio-commerce-lib-app generate actions` command before building and deploying. This ensures the installation action picks up your changes. For all other `app.commerce.config` updates, build and deploy alone is sufficient, as artifacts are regenerated during pre-app-build.

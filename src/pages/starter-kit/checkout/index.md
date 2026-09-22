@@ -8,14 +8,18 @@ keywords:
 
 # Adobe Commerce checkout starter kit
 
-The checkout starter kit helps you get started building custom checkout experiences for Adobe Commerce. It provides four independent Adobe Commerce App Management apps, one per checkout domain, each of which you can install, associate, and version on its own:
+<InlineAlert variant="info" slots="text"/>
+
+[App Management](../../app-management/index.md) is the preferred tool for creating and updating these extensions. The starter kit accelerates that process by providing a ready-made app for each checkout domain, so you can define, build, and deploy through App Management rather than starting from scratch.
+
+The checkout starter kit provides a foundation for building custom checkout experiences for Adobe Commerce. It provides four independent Adobe Commerce App Management apps, one per checkout domain, each of which you can install, associate, and version on its own:
 
 - **Payment** - out-of-process payment method validation and filtering. See [Payment](payment-install.md).
 - **Shipping** - out-of-process shipping carrier setup and the shipping rates webhook. See [Shipping](shipping-install.md).
 - **Tax** - out-of-process tax calculation, tax integration setup, and the Tax Management admin UI. See [Tax](tax-install.md).
 - **Totals collector** - example out-of-process discount webhook implementations. See [Totals collector](totals-collector-install.md).
 
-Refer to the [Getting Started](getting-started.md) page to learn how to set up an app.
+To learn how to set up an app, refer to the [Getting Started](getting-started.md) page.
 
 ## Resources
 

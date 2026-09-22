@@ -36,6 +36,7 @@ export default defineConfig({
         events: [
           {
             name: "plugin.order_placed",
+            label: "Order Placed",
             fields: [
               { name: "order_id" },
               { name: "customer_id" },
@@ -45,6 +46,7 @@ export default defineConfig({
           },
           {
             name: "observer.catalog_product_save_after",
+            label: "Product Price Updated",
             fields: [
               { name: "price" },
               { name: "sku" },
@@ -71,15 +73,16 @@ export default defineConfig({
 | Property | Type | Required | Description |
 |----------|------|----------|-------------|
 | `name` | string | Yes | Event name. Must start with `plugin.` or `observer.` followed by lowercase letters and underscores. |
-| `label` | string | No | Display name for the event. Maximum 100 characters. |
-| `description` | string | No | Description of the event. Maximum 255 characters. |
-| `fields` | array | No | Array of field objects with `name` (required) and `source` (optional) properties. |
+| `label` | string | Yes | Display name for the event. Maximum 100 characters. |
+| `description` | string | Yes | Description of the event. Maximum 255 characters. |
+| `fields` | array | Yes | Array of field objects with `name` (required) and `source` (optional) properties. |
 | `rules` | array | No | Array of filtering rules. See [Event rules](#event-rules). |
 | `runtimeActions` | array | Yes | Array of runtime actions to invoke (format: `package/action`). |
 | `destination` | string | No | Destination for the event. Must be a valid destination name. |
-| `hipaaAuditRequired` | boolean | No | Indicates if the event requires HIPAA audit. |
-| `prioritary` | boolean | No | Indicates if the event is prioritary. |
-| `force` | boolean | No | Indicates if the event should be forced. |
+| `env` | array | No | Restricts the event to **PaaS** (`paas`) and/or **SaaS** (`saas`). Omit or specify both to apply to all environments. |
+| `hipaa_audit_required` | boolean | No | Indicates whether the event requires HIPAA audit. |
+| `priority` | boolean | No | Indicates whether the event is high priority. |
+| `force` | boolean | No | Indicates whether the event should be forced. |
 
 ### Event rules
 
@@ -122,8 +125,10 @@ eventing: {
 |----------|------|----------|-------------|
 | `name` | string | Yes | Event name. Word characters, hyphens, underscores, and dots allowed. |
 | `label` | string | Yes | Display name for the event. Maximum 100 characters. |
-| `description` | string | No | Description of the event. Maximum 255 characters. |
+| `description` | string | Yes | Description of the event. Maximum 255 characters. |
 | `runtimeActions` | array | Yes | Array of runtime actions to invoke. |
+| `env` | array | No | Restricts the event to **PaaS** (`paas`) and/or **SaaS** (`saas`). Omit or specify both to apply to all environments. |
+| `hipaa_audit_required` | boolean | No | Indicates whether the event requires HIPAA audit. |
 
 ## Provider configuration
 
@@ -132,9 +137,9 @@ Both commerce and external event sources require a provider configuration:
 | Property | Type | Required | Description |
 |----------|------|----------|-------------|
 | `label` | string | Yes | Display name for the provider. Maximum 100 characters. |
-| `description` | string | No | Description of the provider. Maximum 255 characters. |
+| `description` | string | Yes | Description of the provider. Maximum 255 characters. |
 | `key` | string | No | Optional unique key for the provider. Maximum 50 characters, alphanumeric with hyphens. |
 
 ## Related topics
 
-[Webhooks](webhooks.md) — Learn how to declare Commerce webhook subscriptions in `app.commerce.config` for App Management
+[Webhooks](webhooks.md): Learn how to declare Commerce webhook subscriptions in `app.commerce.config` for App Management

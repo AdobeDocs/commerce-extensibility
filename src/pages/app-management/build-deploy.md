@@ -111,7 +111,7 @@ To run your own code in the `pre-app-build`, `pre-app-run`, `pre-app-dev`, or `p
 The file must export a function. It runs after the generated hook and receives the aio CLI hook argument and an object with the `extensionPoint` ID, such as `commerce/backend-ui/2`.
 
 ```js
-// hooks/pre-app-build.mjs
+// hooks/pre-app-build.js
 export default async function (config, { extensionPoint }) {
   if (extensionPoint === "commerce/backend-ui/2") {
     // Your code
@@ -119,7 +119,7 @@ export default async function (config, { extensionPoint }) {
 }
 ```
 
-You can use `.js`, `.mjs`, `.cjs`, `.ts`, `.mts`, or `.cts` files. TypeScript files can use `export default` or `module.exports`. JavaScript files follow Node.js rules: `.js` files are ES modules when your `package.json` sets `"type": "module"`, so use `.cjs` for `module.exports` in that case.
+Write the file in JavaScript (`.js`) or TypeScript (`.ts`).
 
 The command stops if your function throws, or if a folder has more than one file for the same hook.
 

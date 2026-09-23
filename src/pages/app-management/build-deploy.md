@@ -23,7 +23,8 @@ The initialization process creates files organized by extension point:
 | `src/commerce-extensibility-1/.generated/app.commerce.manifest.json` | Validated JSON snapshot of your app config, generated only when the whole config can be represented as JSON |
 | `src/commerce-extensibility-1/.generated/app.commerce.config.js` | Generated module that the `#app.commerce.config` import alias resolves to |
 | `src/commerce-extensibility-1/.generated/actions/app-management/` | Runtime actions for app config and installation |
-| `src/commerce-extensibility-1/ext.config.yaml` | Extension manifest with `pre-app-build` hook |
+| `src/commerce-extensibility-1/.generated/hooks/` | `pre-app-build` and `post-app-deploy` hook files |
+| `src/commerce-extensibility-1/ext.config.yaml` | Extension manifest with `pre-app-build` and `post-app-deploy` hooks |
 
 Import your app configuration through the `#app.commerce.config` alias. The `generate` command registers this alias in your project's `package.json` `imports` for every app (since `@adobe/aio-commerce-lib-app` 1.8.0), so your own runtime actions can import your config the same way the generated actions do, without referencing generated file paths. The alias resolves to the generated `app.commerce.config.js` module, which is built differently depending on whether your config is static or dynamic:
 
@@ -36,14 +37,25 @@ Import your app configuration through the `#app.commerce.config` alias. The `gen
 |------|-------------|
 | `src/commerce-configuration-1/.generated/configuration-schema.json` | Validated JSON representation of your schema |
 | `src/commerce-configuration-1/.generated/actions/app-management/` | Runtime actions for config and scope management |
+| `src/commerce-configuration-1/.generated/hooks/` | `pre-app-build` hook file |
 | `src/commerce-configuration-1/ext.config.yaml` | Extension manifest with `pre-app-build` hook |
 
 **`commerce/backend-ui/2`** for [Admin UI SDK](installation/admin-ui-sdk.md) registration (when `adminUi` is defined in `app.commerce.config`).
 
 | File | Description |
 |------|-------------|
-| `src/commerce-backend-ui-2/ext.config.yaml` | Extension manifest |
+| `src/commerce-backend-ui-2/.generated/hooks/` | `pre-app-build`, `pre-app-run`, and `pre-app-dev` hook files |
+| `src/commerce-backend-ui-2/ext.config.yaml` | Extension manifest with `pre-app-build`, `pre-app-run`, and `pre-app-dev` hooks |
 | `src/commerce-backend-ui-2/web-src/` | Browser scaffold generated when a menu, or a `view` mass action or order view button, is configured |
+
+Each hook in a generated `ext.config.yaml` points to a file under `.generated/hooks/`, relative to the project root:
+
+```yaml
+hooks:
+  pre-app-build: src/commerce-backend-ui-2/.generated/hooks/pre-app-build.cjs
+```
+
+Generation rewrites these values every time it runs, so don't edit them. To run your own code in a hook, see [Custom hook code](#custom-hook-code).
 
 ## Generated runtime actions
 
@@ -85,7 +97,35 @@ aio app deploy --force-deploy --no-build
 
 When debugging, you can run `npx aio-commerce-lib-app generate …` without a full App Builder build to refresh generated files quickly.
 
+If a hook fails, the command stops with an error.
+
 After deployment, your application is ready to be associated with Adobe Commerce using App Management. See [manage your app](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app) for association, installation, and other lifecycle steps.
+
+## Custom hook code
+
+To run your own code in the `pre-app-build`, `pre-app-run`, `pre-app-dev`, or `post-app-deploy` hook, add a file named after the hook:
+
+* `hooks/<hook>.<ext>` at the project root runs for every extension point.
+* `src/<extension-point>/hooks/<hook>.<ext>` runs only for that extension point, instead of the root file.
+
+The file must export a function. It runs after the generated hook and receives the aio CLI hook argument and an object with the `extensionPoint` ID, such as `commerce/backend-ui/2`.
+
+```js
+// hooks/pre-app-build.mjs
+export default async function (config, { extensionPoint }) {
+  if (extensionPoint === "commerce/backend-ui/2") {
+    // Your code
+  }
+}
+```
+
+You can use `.js`, `.mjs`, `.cjs`, `.ts`, `.mts`, or `.cts` files. TypeScript files can use `export default` or `module.exports`. JavaScript files follow Node.js rules: `.js` files are ES modules when your `package.json` sets `"type": "module"`, so use `.cjs` for `module.exports` in that case.
+
+The command stops if your function throws, or if a folder has more than one file for the same hook.
+
+A root hook file runs once per extension point. To limit it to one, move it to that extension point's `hooks` folder, or check `extensionPoint`.
+
+Set hooks that generation doesn't manage, such as `post-app-build`, in `ext.config.yaml` directly. Generation keeps them.
 
 ## Find an application in the Admin
 

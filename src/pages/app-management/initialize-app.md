@@ -172,3 +172,5 @@ bun add @adobe/aio-commerce-lib-config@latest
 ```
 
 The `postinstall` hook refreshes generated artifacts when you install or update the library. Separately, `aio app build` runs `pre-app-build`, which regenerates runtime action sources from your current `app.commerce.config`.
+
+If you install dependencies with `--ignore-scripts`, run `npx aio-commerce-lib-app generate all` after updating so the hooks in `ext.config.yaml` point to the new files under `.generated/hooks/`.

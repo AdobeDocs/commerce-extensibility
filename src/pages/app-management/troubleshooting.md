@@ -169,6 +169,16 @@ pnpm exec aio-commerce-lib-app generate all
 bun x aio-commerce-lib-app generate all
 ```
 
+## React Refresh runtime error on `aio app run`
+
+Admin UI SDK apps with a web UI can fail on `aio app run` with this error:
+
+```text
+React Refresh runtime should not be included in the production bundle
+```
+
+To fix it, [update `@adobe/aio-commerce-lib-app`](initialize-app.md#update-the-library) to the latest version.
+
 ## Encryption key errors
 
 Business configuration `password` fields rely on `AIO_COMMERCE_CONFIG_ENCRYPTION_KEY` at runtime. Errors usually mean decrypt failures after a key change, or a missing or invalid key, in `.env`. The following covers both cases.

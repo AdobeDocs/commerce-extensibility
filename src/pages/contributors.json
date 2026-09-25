@@ -1,18 +1,18 @@
 {
-  "total": 247,
+  "total": 248,
   "offset": 0,
-  "limit": 247,
+  "limit": 248,
   "data": [
     {
       "page": "/",
       "avatars": [
-        "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4",
+        "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4",
         "https://avatars.githubusercontent.com/u/23483039?v=4"
       ],
-      "lastUpdated": "9/21/2026"
+      "lastUpdated": "9/25/2026"
     },
     {
       "page": "/_includes/actions",
@@ -82,6 +82,13 @@
       "page": "/_includes/starter-kit-beta",
       "avatars": [],
       "lastUpdated": "5/19/2026"
+    },
+    {
+      "page": "/_includes/templated/whats-new",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/12731225?v=4"
+      ],
+      "lastUpdated": "9/25/2026"
     },
     {
       "page": "/_includes/webhook-auth",

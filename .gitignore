@@ -16,7 +16,8 @@ package-lock.json
 linter-report.txt
 
 # Preserved from external contributors
-.cursor/*
 lerna-debug.log
 tmp
-.claude
+AGENTS.md
+.scout/
+_helper/

@@ -76,11 +76,21 @@ Regardless of whether you start from an empty App Builder project or a starter k
 
 **Build with App Management. Start with a starter kit if you need an accelerator.**
 
-## Related resources
+## What's new
 
-- [Developer agent](/developer-agent/index.md) — get AI-assisted help while building Commerce apps.
-- [App development](/app-development/index.md) — learn how to build, port, and submit Commerce apps.
-- [Events](/events/index.md), [Webhooks](/webhooks/index.md), [Admin UI SDK](/admin-ui-sdk/index.md), and [OOPE modules](/oope-modules/index.md) — the supported extension points for connecting your app to Commerce.
-- [Observability](/observability/index.md) — monitor and troubleshoot your Commerce apps.
-- [API Mesh](https://developer.adobe.com/graphql-mesh-gateway/) — A GraphQL gateway that composes Commerce APIs and third-party APIs behind a single endpoint, reducing round trips from the storefront or App Builder actions.
-- The [#app-builder-community](https://magentocommeng.slack.com/archives/C04KT43Q75K) Slack channel allows you to ask questions, share your work, and connect with other developers interested in Adobe Commerce extensibility and App Builder.
+<Fragment src="/_includes/templated/whats-new.md" />
+
+<Resources slots="heading, links"/>
+
+#### Resources
+
+- [What's new](#whats-new)
+- [Developer agent](/developer-agent/index.md)
+- [App development](/app-development/index.md)
+- [Events](/events/index.md)
+- [Webhooks](/webhooks/index.md)
+- [Admin UI SDK](/admin-ui-sdk/index.md)
+- [OOPE modules](/oope-modules/index.md)
+- [Observability](/observability/index.md)
+- [API Mesh](https://developer.adobe.com/graphql-mesh-gateway/)
+- [#app-builder-community](https://magentocommeng.slack.com/archives/C04KT43Q75K)

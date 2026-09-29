@@ -42,7 +42,7 @@ The following resources will help you get to know the extensibility options offe
     - [Working with projects and workspaces](https://experienceleague.adobe.com/en/docs/commerce-learn/tutorials/extensibility/api-mesh/aio-projects-workspaces)
     - [Create a mesh with a single source](https://experienceleague.adobe.com/en/docs/commerce-learn/tutorials/extensibility/api-mesh/graphql-single-source)
     - [Create a mesh with multiple sources](https://experienceleague.adobe.com/en/docs/commerce-learn/tutorials/extensibility/api-mesh/graphql-multiple-source)
-  - [Try out the Commerce API](https://experienceleague.adobe.com/developer/commerce/storefront/playgrounds/commerce-services/) in the developer playground with zero setup required.
+  - [Try out the Commerce API](https://experienceleague.adobe.com/en/tools/commerce-storefront/playgrounds/commerce-services/) in the developer playground with zero setup required.
 - Build event-driven integrations with Adobe I/O Events for Adobe Commerce
   - [Adobe I/O Events](https://developer.adobe.com/events/docs/) - Developer documentation for general Adobe I/O Events functionality, not specific to Adobe Commerce. View this documentation for information about consuming events in App Builder using journaling, runtime actions, retry mechanisms, and more.
   - [Adobe I/O Events for Adobe Commerce](../events/index.md) - Developer documentation for Adobe I/O Events for Adobe Commerce.

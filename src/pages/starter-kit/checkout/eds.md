@@ -14,15 +14,15 @@ Integrate your Out-of-Process Extensions (OOPE) with the Edge Delivery Service (
 
 The following prerequisites are required to enable your OOPE integration with the EDS Storefront:
 
-- [Integrate EDS Storefront with Adobe Commerce](https://experienceleague.adobe.com/developer/commerce/storefront/).
-- Configure Storefront in EDS with the [checkout drop-in component](https://experienceleague.adobe.com/developer/commerce/storefront/dropins/checkout/).
+- [Integrate EDS Storefront with Adobe Commerce](https://experienceleague.adobe.com/en/tools/commerce-storefront/).
+- Configure Storefront in EDS with the [checkout drop-in component](https://experienceleague.adobe.com/en/tools/commerce-storefront/dropins/checkout/).
   - The checkout drop-in component allows users to enter shipping and payment information, review their order details, and confirm their purchase.
   - To access the latest EDS Storefront boilerplate with drop-in components, see [EDS Adobe Commerce Boilerplate](https://github.com/hlxsites/aem-boilerplate-commerce).
 
 ## Integrate with checkout drop-in components
 
 Checkout drop-in components provide extensibility points to integrate with OOPE payment methods.
-See [Add a payment method](https://experienceleague.adobe.com/developer/commerce/storefront/dropins/checkout/tutorials/add-payment-method/) from the Checkout drop-in documentation for integration details.
+See [Add a payment method](https://experienceleague.adobe.com/en/tools/commerce-storefront/dropins/checkout/tutorials/add-payment-method/) from the Checkout drop-in documentation for integration details.
 
 The following image indicates the location of the checkout drop-in component in the EDS Storefront:
 
@@ -30,7 +30,7 @@ The following image indicates the location of the checkout drop-in component in 
 
 ## Extend OOPE GraphQL Schema
 
-If you want to retrieve OOPE payment method information from the Commerce instance, you can extend the GraphQL query using drop-in components with the [GraphQL Extensibility API](https://experienceleague.adobe.com/developer/commerce/storefront/dropins/all/extending/).
+If you want to retrieve OOPE payment method information from the Commerce instance, you can extend the GraphQL query using drop-in components with the [GraphQL Extensibility API](https://experienceleague.adobe.com/en/tools/commerce-storefront/dropins/all/extending/).
 
 1. In `build.mjs` of the boilerplate, add the following code to extend the OOPE GraphQL schema:
 

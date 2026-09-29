@@ -42,6 +42,7 @@ The `adminUi` object is where every extension point in this section is registere
 
 * [menu](menu.md) &mdash; a single object at `adminUi.menu`.
 * [customer](customer/index.md), [order](order/index.md), and [product](product/index.md) &mdash; each accepts `massActions` and `gridColumns`; `order` additionally accepts `viewButtons`.
+* [invoice](invoice/index.md), [credit memo](credit-memo/index.md), and [shipment](shipment/index.md) &mdash; each accepts `gridColumns` only.
 
 ## Access control list protection
 

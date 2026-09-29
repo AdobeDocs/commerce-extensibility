@@ -8,7 +8,11 @@ keywords:
 
 # Integrate your backoffice systems
 
-Use the Adobe Commerce integration starter kit to enrich your shopping experience and support multichannel, global commerce for B2B, B2C, and hybrid businesses.
+<InlineAlert variant="info" slots="text"/>
+
+[App Management](../../app-management/index.md) is the preferred tool for creating and updating Commerce extensions. Use the integration starter kit as an accelerator for scaffolding your integration, then define, build, and deploy the resulting app through App Management.
+
+The Adobe Commerce integration starter kit provides a foundation for building custom integrations to enrich customer shopping experiences and support multichannel, global commerce for B2B, B2C, and hybrid businesses.
 
 <DiscoverBlock slots="link, text"/>
 

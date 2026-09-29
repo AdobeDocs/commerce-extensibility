@@ -1,0 +1,40 @@
+---
+config:
+  theme: default
+---
+sequenceDiagram
+    autonumber
+    actor User
+    participant Frontend as Browser / Storefront
+    participant App as App Builder
+    participant State as Session Store
+    participant Provider as Identity Provider
+    participant Commerce as Adobe Commerce
+
+    Note over User,Commerce: Phase 1 — Authenticate with the external provider
+    User->>Frontend: Sign in with social provider
+    Frontend->>App: Begin login
+    App-->>Frontend: Redirect to provider
+    Frontend->>Provider: Authenticate directly (front-channel)
+    Note over Frontend,Provider: Credentials go only to the provider,<br>never to the storefront or App Builder
+    Provider-->>App: Authorization code / ID token
+    App->>App: Validate provider token,<br>read verified email + name
+    App->>State: Create session, store internal token
+    App-->>Frontend: Internal token
+
+    Note over User,Commerce: Phase 2 — Bridge to Commerce (server-side, admin-scoped)
+    Frontend->>App: getCustomerToken(internal token)
+    App->>State: Validate token, load verified email
+    State-->>App: Verified email (or reject)
+    App->>Commerce: GET /V1/customers/search?email
+    Commerce-->>App: customer or empty
+    alt customer not found
+        App->>Commerce: POST /V1/customers<br>(strong random password)
+        Commerce-->>App: customer
+    end
+    App->>Commerce: POST /V1/customers/{id}/token
+    Commerce-->>App: customer token
+    App-->>Frontend: customer token
+
+    Frontend->>Commerce: GraphQL with customer token
+    Commerce-->>Frontend: response

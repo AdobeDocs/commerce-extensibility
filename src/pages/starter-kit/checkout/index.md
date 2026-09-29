@@ -8,6 +8,10 @@ keywords:
 
 # Adobe Commerce checkout starter kit
 
+<InlineAlert variant="info" slots="text"/>
+
+[App Management](../../app-management/index.md) is the preferred tool for creating and updating these extensions. The starter kit accelerates that process by providing a ready-made app for each checkout domain, so you can define, build, and deploy through App Management rather than starting from scratch.
+
 The checkout starter kit provides a foundation for building custom checkout experiences for Adobe Commerce. It provides four independent Adobe Commerce App Management apps, one per checkout domain, each of which you can install, associate, and version on its own:
 
 - **Payment** - out-of-process payment method validation and filtering. See [Payment](payment-install.md).

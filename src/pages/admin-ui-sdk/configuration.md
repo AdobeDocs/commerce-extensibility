@@ -46,7 +46,7 @@ Navigate to **System** > Admin UI SDK > **Admin UI SDK Logs** to check the saved
 
 <InlineAlert variant="info" slots="text" />
 
-The local testing feature is available only for PaaS versions of Adobe Commerce and [V1 Extensions](../extension-points/index.md). On Adobe Commerce as a Cloud Service, you must ensure the **Enable local testing** field is set to **No**.
+The local testing feature is available only for PaaS versions of Adobe Commerce and [V1 extension points](../extension-points/index.md). On Adobe Commerce as a Cloud Service, you must ensure the **Enable local testing** field is set to **No**.
 
 When you enable the local service, all calls are automatically redirected to the local server, instead of connecting to Adobe's App Registry. The values you specify must match the contents of your local `server.js` file.
 
@@ -54,9 +54,9 @@ When you enable the local service, all calls are automatically redirected to the
 
 1. Select **Yes** from the **Enable local testing** menu.
 
-2. Set the **Local Server Base URL** that points to your localhost, including the port.
+1. Set the **Local Server Base URL** that points to your localhost, including the port.
 
-3. Save your configuration.
+1. Save your configuration.
 
 ### Configuration
 

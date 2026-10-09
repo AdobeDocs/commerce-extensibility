@@ -27,20 +27,7 @@ The `adminUi` config block requires `@adobe/aio-commerce-lib-app` version 1.8.0 
 
 App Management creates a minimal `web-src/` scaffold the first time you add a UI feature, such as a menu, a `view` mass action, or a `view` order view button. It uses `.tsx` files for TypeScript configs and `.jsx` files otherwise. `createExtensionApp`, exported from `@adobe/aio-commerce-lib-admin-ui/web`, is the entry point for any `commerce/backend-ui/2` UI that uses App Management and/or `@adobe/aio-commerce-lib-admin-ui`.
 
-Use `createExtensionApp` to connect the app metadata and UI pages. When `adminUi.menu` is configured, its page component is required in the `menu` property. For every other extension point configured with `type: "view"` and a `path`, register its page component in `routes`. Each route's `path` must match the `path` value for that extension point in `app.commerce.config`:
-
-```tsx
-import { createExtensionApp } from "@adobe/aio-commerce-lib-admin-ui/web";
-import config from "#app.commerce.config";
-import { MenuPage } from "#web/pages/menu-page.tsx";
-import { ViewPage } from "#web/pages/view-page.tsx";
-
-createExtensionApp({
-  menu: <MenuPage />,
-  metadata: { extensionId: config.metadata.id },
-  routes: [{ element: <ViewPage />, path: "#/custom-page" }],
-});
-```
+Use `createExtensionApp` to connect the app metadata and UI pages. When `adminUi.menu` is configured, its page component is required in the `menu` property. For every other extension point configured with `type: "view"` and a `path`, register its page component in `routes`. Each route's `path` must match the `path` value for that extension point in `app.commerce.config`. The examples below pair each configuration with its corresponding entrypoint setup.
 
 For general Admin UI SDK concepts and extension points outside of App Management, see the [Admin UI SDK](../../admin-ui-sdk/index.md) documentation.
 
@@ -66,6 +53,15 @@ export default defineConfig({
       aclProtected: true,
     },
   },
+});
+```
+
+For this configuration with an `adminUi.menu` entry, the `createExtensionApp` call in `app.tsx` includes its menu page:
+
+```tsx
+createExtensionApp({
+  menu: <ApprovalDashboardPage />,
+  metadata: { extensionId: config.metadata.id },
 });
 ```
 
@@ -195,6 +191,15 @@ adminUi: {
 }
 ```
 
+For the `view` mass action above, register a route whose path matches `adminUi.order.massActions[0].path` in `app.commerce.config`:
+
+```tsx
+createExtensionApp({
+  metadata: { extensionId: config.metadata.id },
+  routes: [{ element: <ExportOrdersPage />, path: "#/export-orders" }],
+});
+```
+
 Mass actions are supported on `order`, `product`, and `customer`. The `id` is authored as a bare name (for example `bulk-approve`). Commerce handles prefixing and collision resolution when rendering the final Admin UI configuration.
 
 ### Field applicability by variant
@@ -321,6 +326,15 @@ adminUi: {
     ],
   },
 }
+```
+
+For the `view` button above, register a route whose path matches `adminUi.order.viewButtons[0].path` in `app.commerce.config`:
+
+```tsx
+createExtensionApp({
+  metadata: { extensionId: config.metadata.id },
+  routes: [{ element: <DeleteOrderPage />, path: "#/delete-order" }],
+});
 ```
 
 Order view buttons are only available on `order`.

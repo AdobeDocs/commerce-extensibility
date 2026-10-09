@@ -27,18 +27,18 @@ The `adminUi` config block requires `@adobe/aio-commerce-lib-app` version 1.8.0 
 
 App Management creates a minimal `web-src/` scaffold the first time you add a UI feature, such as a menu, a `view` mass action, or a `view` order view button. It uses `.tsx` files for TypeScript configs and `.jsx` files otherwise. `createExtensionApp`, exported from `@adobe/aio-commerce-lib-admin-ui/web`, is the entry point for any `commerce/backend-ui/2` UI that uses App Management and/or `@adobe/aio-commerce-lib-admin-ui`.
 
-Use `createExtensionApp` to connect the app metadata and menu page to the UI, and map each route path to its page component. A route path must match the `path` configured for its view extension point:
+Use `createExtensionApp` to connect the app metadata and UI pages. When `adminUi.menu` is configured, its page component is required in the `menu` property. For every other extension point configured with `type: "view"` and a `path`, register its page component in `routes`. Each route's `path` must match the `path` value for that extension point in `app.commerce.config`:
 
 ```tsx
 import { createExtensionApp } from "@adobe/aio-commerce-lib-admin-ui/web";
 import config from "#app.commerce.config";
-import { MainPage } from "#web/pages/main-page.tsx";
-import { CustomPage } from "#web/pages/custom-page.tsx";
+import { MenuPage } from "#web/pages/menu-page.tsx";
+import { ViewPage } from "#web/pages/view-page.tsx";
 
 createExtensionApp({
-  menu: <MainPage />,
+  menu: <MenuPage />,
   metadata: { extensionId: config.metadata.id },
-  routes: [{ element: <CustomPage />, path: "#/custom-page" }],
+  routes: [{ element: <ViewPage />, path: "#/custom-page" }],
 });
 ```
 

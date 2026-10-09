@@ -399,20 +399,6 @@ Use `orderViewButtonErrorResponse(status, message)` to report a failure. See the
 
 Set `aclProtected: true` on any supported V2 extension point to have Commerce generate a per-app ACL resource for that item and add it to the Adobe Commerce User Roles tree. Admins can then grant or deny the resource per role. Users without the resource do not see the item and cannot invoke it.
 
-The V2 ACL-protected extension points include:
-
-* `adminUi.menu`
-* `adminUi.customer.gridColumns`
-* `adminUi.order.gridColumns`
-* `adminUi.product.gridColumns`
-* `adminUi.invoice.gridColumns`
-* `adminUi.creditMemo.gridColumns`
-* `adminUi.shipment.gridColumns`
-* `adminUi.customer.massActions`
-* `adminUi.order.massActions`
-* `adminUi.product.massActions`
-* `adminUi.order.viewButtons`
-
 Each resource id follows a hierarchical scheme rooted at the app (derived from `metadata.id`), with a leaf id per protected item. Use the id helpers from `@adobe/aio-commerce-lib-admin-ui` instead of hardcoding the generated string:
 
 | Extension point | Helper |

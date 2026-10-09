@@ -340,7 +340,22 @@ The `view` and `worker` variants are strict. Setting `path` or `sandboxPermissio
 
 ### View order view button page
 
-A `view` button opens an iframe at `<extension-host>/index.html<path>?orderId=<orderId>` inside your App Builder frontend. There is no server-side handler. Read the order ID and close the iframe with the React hooks exported from `@adobe/aio-commerce-lib-admin-ui/web`:
+A `view` button opens an iframe at `<extension-host>/index.html<path>?orderId=<orderId>` inside your App Builder frontend. Register the page component in `createExtensionApp` in your web app's `app.tsx`; its route path must match the button's `path` (for example, `#/delete-order`):
+
+```tsx
+import { createExtensionApp } from "@adobe/aio-commerce-lib-admin-ui/web";
+import config from "#app.commerce.config";
+import { DeleteOrderPage } from "#web/pages/delete-order.tsx";
+import { MainPage } from "#web/pages/main-page.tsx";
+
+createExtensionApp({
+  menu: <MainPage />,
+  metadata: { extensionId: config.metadata.id },
+  routes: [{ element: <DeleteOrderPage />, path: "#/delete-order" }],
+});
+```
+
+There is no server-side handler for a `view` button. In the registered page, read the order ID and close the iframe with the React hooks exported from `@adobe/aio-commerce-lib-admin-ui/web`:
 
 ```jsx
 import { useHostConnection, useOrderViewButtonContext } from "@adobe/aio-commerce-lib-admin-ui/web";

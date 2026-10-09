@@ -436,6 +436,8 @@ The following contexts are supported:
 
 <Fragment src="/_includes/commerce-context.md" />
 
+<Fragment src="/_includes/commerce-context-methods.md" />
+
 #### Checkout session context
 
 The `context_checkout_session` context retrieves information about the current checkout session. You can use this context to access the information about the current quote.

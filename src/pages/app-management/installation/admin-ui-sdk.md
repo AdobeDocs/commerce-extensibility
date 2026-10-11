@@ -1,5 +1,5 @@
 ---
-title: Admin UI SDK configuration
+title: Admin UI configuration
 description: Configure the Admin UI SDK menu, grid columns, mass actions, and order view buttons in the app.commerce.config file for App Management
 keywords:
   - App Builder
@@ -8,7 +8,7 @@ keywords:
   - Admin UI SDK
 ---
 
-# Admin UI SDK configuration
+# Admin UI configuration
 
 The `adminUi` field in `app.commerce.config` defines how your app extends the Adobe Commerce Admin UI through the `commerce/backend-ui/2` extension point. It is not compatible with the `commerce/backend-ui/1` extension point used by the previous version of the Admin UI SDK.
 
@@ -19,9 +19,15 @@ At a high level, it is the top-level config block for declaring:
 * Mass actions
 * Order view buttons
 
-Admin UI SDK V2 handles registration automatically. Unlike V1, there is no `registration` action to hand-author. `commerce/backend-ui/2` reads the registration directly from the generated `app-config` runtime action. When `adminUi` is defined, the `init` and `generate all` commands automatically wire up the extension point, including the `pre-app-build` hook and the `workerProcess` declarations in `ext.config.yaml`. View-based features (a menu, a `view` mass action, or a `view` order view button) also get a minimal `web-src/` scaffold the first time they're added, using `.tsx` files for TypeScript configs and `.jsx` files otherwise.
+Admin UI SDK V2 handles registration automatically. Unlike V1, there is no `registration` action to hand-author. `commerce/backend-ui/2` reads the registration directly from the generated `app-config` runtime action. When `adminUi` is defined, the `init` and `generate all` commands automatically wire up the extension point, including the `pre-app-build` hook and the `workerProcess` declarations in `ext.config.yaml`.
 
 The `adminUi` config block requires `@adobe/aio-commerce-lib-app` version 1.8.0 or later. Its schema (menu, grid columns, mass actions, order view buttons) became API-stable in version 1.9.0.
+
+## Develop the Admin UI
+
+App Management creates a minimal `web-src/` scaffold the first time you add a UI feature, such as a menu, a `view` mass action, or a `view` order view button. It uses `.tsx` files for TypeScript configs and `.jsx` files otherwise. `createExtensionApp`, exported from `@adobe/aio-commerce-lib-admin-ui/web`, is the entry point for any `commerce/backend-ui/2` UI that uses App Management and/or `@adobe/aio-commerce-lib-admin-ui`.
+
+Use `createExtensionApp` to connect the app metadata and UI pages. When `adminUi.menu` is configured, its page component is required in the `menu` property. For every other extension point configured with `type: "view"` and a `path`, register its page component in `routes`. Each route's `path` must match the `path` value for that extension point in `app.commerce.config`. The examples below pair each configuration with its corresponding entrypoint setup.
 
 For general Admin UI SDK concepts and extension points outside of App Management, see the [Admin UI SDK](../../admin-ui-sdk/index.md) documentation.
 
@@ -50,6 +56,15 @@ export default defineConfig({
 });
 ```
 
+For this configuration with an `adminUi.menu` entry, the `createExtensionApp` call in `app.tsx` includes its menu page:
+
+```tsx
+createExtensionApp({
+  menu: <ApprovalDashboardPage />,
+  metadata: { extensionId: config.metadata.id },
+});
+```
+
 | Property | Type | Required | Description |
 |----------|------|----------|-------------|
 | `id` | string | Yes | App-local menu identifier. Allowed characters: letters, digits, `/`, `:`, `_`. |
@@ -59,6 +74,8 @@ export default defineConfig({
 | `parentMenu` | string | No | Existing Commerce menu ID under which the app menu is attached. App Management automatically generates a per-app section from `metadata.displayName`. When this property is omitted, Commerce places it under the Apps menu. |
 | `sandboxPermissions` | array | No | iframe sandbox permissions. One or more of `allow-downloads`, `allow-modals`, `allow-popups`. |
 | `aclProtected` | boolean | No | When `true`, Commerce generates a per-app ACL resource and adds it to the Adobe Commerce User Roles tree. See [ACL-protected extension points](#acl-protected-extension-points). |
+
+For the app UI entry point and page setup, see [Develop the Admin UI](#develop-the-admin-ui).
 
 ## Add grid columns
 
@@ -143,7 +160,7 @@ The `parseGridRequest` method throws a `CommerceSdkValidationError` error on a m
 
 ## Add mass actions
 
-Add mass actions that run against a selection of grid rows. Each entry uses `type` to select how it runs. When the value is `view`, it opens an iframe at `path`; when the value is `worker`, it invokes a `runtimeAction`:
+Add mass actions that run against a selection of grid rows. For orders, merchants choose an action from the **Sales** > **Orders** grid after selecting one or more orders. Each entry uses `type` to select how it runs: `view` opens an iframe at `path` and exposes the selected IDs through `useMassActionContext()`; `worker` invokes a `runtimeAction` with the selected IDs and no iframe:
 
 ```js
 adminUi: {
@@ -174,6 +191,15 @@ adminUi: {
 }
 ```
 
+For the `view` mass action above, register a route whose path matches `adminUi.order.massActions[0].path` in `app.commerce.config`:
+
+```tsx
+createExtensionApp({
+  metadata: { extensionId: config.metadata.id },
+  routes: [{ element: <ExportOrdersPage />, path: "#/export-orders" }],
+});
+```
+
 Mass actions are supported on `order`, `product`, and `customer`. The `id` is authored as a bare name (for example `bulk-approve`). Commerce handles prefixing and collision resolution when rendering the final Admin UI configuration.
 
 ### Field applicability by variant
@@ -200,10 +226,10 @@ The `view` and `worker` variants are strict: setting `path` or `sandboxPermissio
 | `id` | string | Yes | Stable action identifier. |
 | `label` | string | Yes | Action label rendered in the Admin UI. |
 | `title` | string | No | Page title rendered in the iframe (`view`) or confirmation surface (`worker`). |
-| `description` | string | No | Summary exposed through `app-config` for installation tooling. |
+| `description` | string | No | Summary exposed through `app-config` for installation tooling and shown to identify the action in ACL settings when protected. |
 | `confirm` | object | No | `{ title?, message? }` confirmation dialog shown before the action runs. |
 | `notifications` | object | No | `{ success?, error? }` banner messages shown in Commerce Admin after the action completes. When omitted, Commerce displays a default success or error banner. |
-| `selectionLimit` | number | No | Caps how many records may be selected at once. |
+| `selectionLimit` | number | No | Caps how many records may be selected at once. Defaults to `-1` (unlimited). |
 | `aclProtected` | boolean | No | See [ACL-protected extension points](#acl-protected-extension-points). |
 | `path` (`view`) | string | Yes | In-app iframe URL, for example `#/export-orders`. |
 | `sandboxPermissions` (`view`) | array | No | One or more of `allow-downloads`, `allow-modals`, `allow-popups`. |
@@ -230,7 +256,7 @@ Use `massActionErrorResponse(status, message)` to report a failure. See the [`@a
 
 ### View mass action page
 
-A `view` mass action opens an iframe at `path` inside your App Builder frontend. There's no server-side handler. Read the selected row IDs and close the iframe with the React hooks exported from `@adobe/aio-commerce-lib-admin-ui/web`:
+A `view` mass action opens an iframe at `path` inside your App Builder frontend. There's no server-side handler. Register its page route in `createExtensionApp`; see [Develop the Admin UI](#develop-the-admin-ui). Read the selected row IDs and close the iframe with the React hooks exported from `@adobe/aio-commerce-lib-admin-ui/web`:
 
 ```jsx
 import {
@@ -266,7 +292,7 @@ export function MassActionWithRedirect() {
 
 ## Add order view buttons
 
-Add buttons to the order detail page. As with mass actions, `type` selects `view` (iframe) or `worker` (runtime action):
+Add buttons to the order detail page, where they appear alongside the built-in order actions. A `view` button opens an iframe at `path` and provides the order ID through `useOrderViewButtonContext()`; a `worker` button invokes a `runtimeAction` with the order ID and no iframe:
 
 ```js
 adminUi: {
@@ -302,6 +328,15 @@ adminUi: {
 }
 ```
 
+For the `view` button above, register a route whose path matches `adminUi.order.viewButtons[0].path` in `app.commerce.config`:
+
+```tsx
+createExtensionApp({
+  metadata: { extensionId: config.metadata.id },
+  routes: [{ element: <DeleteOrderPage />, path: "#/delete-order" }],
+});
+```
+
 Order view buttons are only available on `order`.
 
 ### Field applicability by variant
@@ -325,9 +360,9 @@ The `view` and `worker` variants are strict. Setting `path` or `sandboxPermissio
 
 | Property | Type | Required | Description |
 |----------|------|----------|-------------|
-| `id` | string | Yes | Stable button identifier, served to Commerce as-is. |
+| `id` | string | Yes | Stable button identifier, served to Commerce as-is. App-specific IDs can be namespaced, for example `order-custom-view-button::delete-order`. |
 | `label` | string | Yes | On-button text rendered in Admin. |
-| `description` | string | No | Summary exposed through `app-config` for installation tooling. |
+| `description` | string | No | Summary exposed through `app-config` for installation tooling and shown to identify the button in ACL settings when protected. |
 | `level` | number | No | Position of the button in the toolbar: `-1` (left), `0` (center), or `1` (right). |
 | `sortOrder` | number | No | Positive number controlling the button's order within its `level`. |
 | `confirm` | object | No | `{ title?, message? }` confirmation dialog shown before the handler runs. |
@@ -340,7 +375,7 @@ The `view` and `worker` variants are strict. Setting `path` or `sandboxPermissio
 
 ### View order view button page
 
-A `view` button opens an iframe at `<extension-host>/index.html<path>?orderId=<orderId>` inside your App Builder frontend. There is no server-side handler. Read the order ID and close the iframe with the React hooks exported from `@adobe/aio-commerce-lib-admin-ui/web`:
+A `view` button opens an iframe at `<extension-host>/index.html<path>?orderId=<orderId>` inside your App Builder frontend. There is no server-side handler. Register its page route in `createExtensionApp` with a path matching the button's `path`; see [Develop the Admin UI](#develop-the-admin-ui). In the registered page, read the order ID and close the iframe with the React hooks exported from `@adobe/aio-commerce-lib-admin-ui/web`:
 
 ```jsx
 import { useHostConnection, useOrderViewButtonContext } from "@adobe/aio-commerce-lib-admin-ui/web";
@@ -382,7 +417,7 @@ Use `orderViewButtonErrorResponse(status, message)` to report a failure. See the
 
 ## ACL-protected extension points
 
-Set `aclProtected: true` on a menu, grid column, mass action, or order view button to have Commerce generate a per-app ACL resource for that item and add it to the Adobe Commerce User Roles tree. Admins can then grant or deny the resource per role. Users without the resource do not see the item and cannot invoke it.
+Set `aclProtected: true` on any supported V2 extension point to have Commerce generate a per-app ACL resource for that item and add it to the Adobe Commerce User Roles tree. Admins can then grant or deny the resource per role. Users without the resource do not see the item and cannot invoke it.
 
 Each resource id follows a hierarchical scheme rooted at the app (derived from `metadata.id`), with a leaf id per protected item. Use the id helpers from `@adobe/aio-commerce-lib-admin-ui` instead of hardcoding the generated string:
 
@@ -390,9 +425,18 @@ Each resource id follows a hierarchical scheme rooted at the app (derived from `
 |------------------|--------|
 | App root | `getAclResourceId(metadataId)` from `/api` |
 | Menu | `getMenuAclResourceId(metadataId, menuId)` from `/menu` |
-| Grid column | `getGridColumnAclResourceId(metadataId, entity, columnId)` from `/grid-columns` |
-| Mass action | `getMassActionAclResourceId(metadataId, entity, actionId)` from `/mass-actions` |
+| Customer grid column | `getGridColumnAclResourceId(metadataId, "customer", columnId)` from `/grid-columns` |
+| Order grid column | `getGridColumnAclResourceId(metadataId, "order", columnId)` from `/grid-columns` |
+| Product grid column | `getGridColumnAclResourceId(metadataId, "product", columnId)` from `/grid-columns` |
+| Invoice grid column | `getGridColumnAclResourceId(metadataId, "invoice", columnId)` from `/grid-columns` |
+| Credit memo grid column | `getGridColumnAclResourceId(metadataId, "creditMemo", columnId)` from `/grid-columns` |
+| Shipment grid column | `getGridColumnAclResourceId(metadataId, "shipment", columnId)` from `/grid-columns` |
+| Customer mass action | `getMassActionAclResourceId(metadataId, "customer", actionId)` from `/mass-actions` |
+| Order mass action | `getMassActionAclResourceId(metadataId, "order", actionId)` from `/mass-actions` |
+| Product mass action | `getMassActionAclResourceId(metadataId, "product", actionId)` from `/mass-actions` |
 | Order view button | `getOrderViewButtonAclResourceId(metadataId, buttonId)` from `/order-view-buttons` |
+
+See the [Admin UI SDK V2 extension points](../../admin-ui-sdk/extension-points/v2/index.md) for the full list of V2 supported extension points.
 
 Check the resource from the runtime action handler with `getAdminUiPermissionClient` before serving protected content:
 

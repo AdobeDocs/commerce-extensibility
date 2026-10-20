@@ -8,6 +8,20 @@ keywords:
 
 # Admin UI SDK release notes
 
+## Version 5.1.0
+
+### Release date
+
+October 20, 2026
+
+### Enhancements
+
+* Added [native UI form replacements](extension-points/v2/native-ui.md) to V2. Replace supported native Commerce Admin forms with App Builder pages. Replacements follow the native form's Commerce ACL permissions.
+
+* Added [invoice view buttons](extension-points/v2/invoice/view-button.md) to V2. Add custom buttons to the invoice detail page that open an app page in an iframe or invoke a runtime action.
+
+* Updated dependencies, including support for version `1.1.11` of the `@adobe/uix-sdk` dependencies.
+
 ## Version 5.0.0
 
 ### Release date

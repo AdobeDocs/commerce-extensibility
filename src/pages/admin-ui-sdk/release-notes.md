@@ -22,6 +22,10 @@ October 20, 2026
 
 * Updated dependencies, including support for version `1.1.11` of the `@adobe/uix-sdk` dependencies.
 
+### Bug fixes
+
+* Fixed ACL checks for app extension points. When a dedicated permission resource is defined for an extension point, Commerce checks that resource. Otherwise, Commerce checks the shared **Admin App Permissions** resource, previously named **Selected Extensions**.
+
 ## Version 5.0.0
 
 ### Release date

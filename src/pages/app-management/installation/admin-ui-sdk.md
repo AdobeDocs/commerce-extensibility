@@ -31,6 +31,8 @@ Use `createExtensionApp` to connect the app metadata and UI pages. When `adminUi
 
 For general Admin UI SDK concepts and extension points outside of App Management, see the [Admin UI SDK](../../admin-ui-sdk/index.md) documentation.
 
+For accessing IMS credentials, the Commerce host, and other host-provided context from your extension pages, see [Reading context in your app](../../admin-ui-sdk/extension-points/v2/index.md#reading-context-in-your-app).
+
 ## Add a menu declaration
 
 Declare a single Commerce Admin menu entry for the application. Use the named constants exported by `@adobe/aio-commerce-lib-admin-ui/menu` instead of raw strings for `parentMenu`:
@@ -49,6 +51,7 @@ export default defineConfig({
       label: "Approval Dashboard",
       description: "Review and approve purchase requests from Commerce Admin.",
       parentMenu: MENU_SALES,
+      pageTitle: "Purchase Approval Requests",
       sandboxPermissions: ["allow-popups", "allow-downloads"],
       aclProtected: true,
     },
@@ -79,7 +82,7 @@ For the app UI entry point and page setup, see [Develop the Admin UI](#develop-t
 
 ## Add grid columns
 
-You can add custom columns to order, product, or customer grids. Each grid's columns are fetched by a runtime action you implement. The `generate` command derives the `workerProcess` entry from `runtimeAction` automatically:
+You can add custom columns to order, product, customer, invoice, credit memo, or shipment grids. Each grid's columns are fetched by a runtime action you implement. The `generate` command derives the `workerProcess` entry from `runtimeAction` automatically:
 
 ```js
 adminUi: {
@@ -114,12 +117,42 @@ adminUi: {
       ],
     },
   },
+  invoice: {
+    gridColumns: {
+      label: "Invoice warehouse data",
+      description: "Adds warehouse location to the invoice grid",
+      runtimeAction: "invoices/fetch-invoice-grid-data",
+      columns: [
+        { id: "warehouse_location", label: "Warehouse Location", type: "string", align: "left" },
+      ],
+    },
+  },
+  creditMemo: {
+    gridColumns: {
+      label: "Credit memo refund data",
+      description: "Adds refund reason to the credit memo grid",
+      runtimeAction: "credit-memos/fetch-credit-memo-grid-data",
+      columns: [
+        { id: "refund_reason", label: "Refund Reason", type: "string", align: "left" },
+      ],
+    },
+  },
+  shipment: {
+    gridColumns: {
+      label: "Shipment carrier data",
+      description: "Adds carrier information to the shipment grid",
+      runtimeAction: "shipments/fetch-shipment-grid-data",
+      columns: [
+        { id: "carrier", label: "Carrier", type: "string", align: "left" },
+      ],
+    },
+  },
 }
 ```
 
 ### Common grid column properties
 
-The `order`, `product`, and `customer` definitions are all optional. Configure only the grids your application extends.
+The `order`, `product`, `customer`, `invoice`, `creditMemo`, and `shipment` definitions are all optional. Configure only the grids your application extends. Invoice, credit memo, and shipment extensions support grid columns only, not mass actions or view buttons.
 
 | Property | Type | Required | Description |
 |----------|------|----------|-------------|
@@ -136,25 +169,41 @@ The `columns` array contains one or more column definitions. Each column is rend
 |----------|------|----------|-------------|
 | `id` | string | Yes | Stable column identifier; also used as the response data key. |
 | `label` | string | Yes | Column header displayed in the grid. |
-| `type` | string | Yes | One of `boolean`, `date`, `datetime`, `float`, `integer`, `string`. |
+| `type` | string | Yes | One of `boolean`, `date`, `datetime`, `float`, `integer`, `string`. Date and datetime values must be ISO 8601-compliant. |
 | `align` | string | Yes | One of `left`, `center`, `right`. |
 | `aclProtected` | boolean | No | When `true`, Commerce generates a per-app nested ACL resource for this column. See [ACL-protected extension points](#acl-protected-extension-points). |
 
 ### Grid column handler
 
-Implement the `runtimeAction` handler with the typed request and response builders from `@adobe/aio-commerce-lib-admin-ui/grid-columns`:
+Implement the `runtimeAction` handler with the typed request and response builders from `@adobe/aio-commerce-lib-admin-ui/grid-columns`. This example serves the order columns declared above and returns data only for the requested IDs:
 
 ```js
 import { okGridResponse, parseGridRequest } from "@adobe/aio-commerce-lib-admin-ui/grid-columns";
 
-export async function main(params) {
-  const { gridType, ids } = parseGridRequest(params);
+const orderData = {
+  "000000001": { fulfillment_status: "shipped", risk_score: 12 },
+  "000000002": { fulfillment_status: "pending", risk_score: 47 },
+};
 
-  return okGridResponse({
-    "000000001": { fulfillment_status: "shipped", risk_score: 12 },
-  });
+const defaults = { fulfillment_status: "unknown", risk_score: 0 };
+
+export async function main(params) {
+  const { ids } = parseGridRequest(params);
+  const data = {};
+
+  for (const id of ids) {
+    if (Object.hasOwn(orderData, id)) {
+      data[id] = orderData[id];
+    }
+  }
+
+  return okGridResponse(data, defaults);
 }
 ```
+
+Replace the sample data with lookups in your data source. Response column keys must match the configured column IDs. Commerce uses the second argument to `okGridResponse` as defaults for missing rows or cells whose values do not match the declared column type. Without a default, a missing value leaves the cell empty.
+
+The parsed request also includes `gridType`. Product grid requests identify rows by SKU, while customer grid requests use customer IDs. For credit memos, the configuration key is `creditMemo`, but the request's `gridType` is lowercase: `"creditmemo"`.
 
 The `parseGridRequest` method throws a `CommerceSdkValidationError` error on a malformed request. Use `errorGridResponse(status, message)` to return a non-2xx response. See the [`@adobe/aio-commerce-lib-admin-ui` usage guide](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-admin-ui/docs/usage.md#grid-column-wire-contract) for the full wire contract.
 
@@ -173,12 +222,20 @@ adminUi: {
         title: "Export orders",
         path: "#/export-orders",
         sandboxPermissions: ["allow-downloads"],
+        notifications: {
+          success: "Order export completed.",
+          error: "Order export failed.",
+        },
       },
       {
         type: "worker",
         id: "bulk-approve",
         label: "Approve",
-        confirm: { message: "Approve the selected orders?" },
+        confirm: {
+          title: "Approve orders",
+          message: "Approve the selected orders?",
+        },
+        selectionLimit: 50,
         runtimeAction: "orders/bulk-approve",
         timeout: 15,
         notifications: {
@@ -201,6 +258,57 @@ createExtensionApp({
 ```
 
 Mass actions are supported on `order`, `product`, and `customer`. The `id` is authored as a bare name (for example `bulk-approve`). Commerce handles prefixing and collision resolution when rendering the final Admin UI configuration.
+
+For product and customer grids, declare actions under the corresponding entity. This example adds a product `view` action limited to one selection and a customer `worker` action:
+
+```js
+adminUi: {
+  product: {
+    massActions: [
+      {
+        type: "view",
+        id: "review-product",
+        label: "Review product",
+        path: "#/review-product",
+        selectionLimit: 1,
+        confirm: {
+          title: "Review product",
+          message: "Open the selected product for review?",
+        },
+      },
+    ],
+  },
+  customer: {
+    massActions: [
+      {
+        type: "worker",
+        id: "sync-customers",
+        label: "Sync customers",
+        runtimeAction: "customers/sync-customers",
+        timeout: 15,
+        notifications: {
+          success: "Customers synced.",
+          error: "Customer sync failed.",
+        },
+      },
+    ],
+  },
+}
+```
+
+Register the product review page alongside any other `view` routes:
+
+```tsx
+createExtensionApp({
+  metadata: { extensionId: config.metadata.id },
+  routes: [
+    { element: <ExportOrdersPage />, path: "#/export-orders" },
+    { element: <ReviewProductPage />, path: "#/review-product" },
+  ],
+});
+```
+
+The product page reads its selection with `useMassActionContext()`, just like the order page below. Implement `customers/sync-customers` using the same request and response helpers as the [mass action worker handler](#mass-action-worker-handler), replacing the order approval logic with customer synchronization.
 
 ### Field applicability by variant
 
@@ -290,6 +398,14 @@ export function MassActionWithRedirect() {
 }
 ```
 
+For a `view` action, call `actions.close()` after successful completion. If the operation fails, call `actions.closeWithError()` in the failure branch instead:
+
+```js
+await actions.closeWithError();
+```
+
+Both methods close the iframe and return to the originating grid. With the `export-orders` configuration above, `close()` displays "Order export completed." and `closeWithError()` displays "Order export failed." Use these methods to report the operation's outcome, not merely to dismiss an unfinished operation.
+
 ## Add order view buttons
 
 Add buttons to the order detail page, where they appear alongside the built-in order actions. A `view` button opens an iframe at `path` and provides the order ID through `useOrderViewButtonContext()`; a `worker` button invokes a `runtimeAction` with the order ID and no iframe:
@@ -308,6 +424,10 @@ adminUi: {
         sortOrder: 80,
         sandboxPermissions: ["allow-modals", "allow-popups"],
         confirm: { message: "Are you sure you want to delete this order?" },
+        notifications: {
+          success: "Order deleted successfully.",
+          error: "Order deletion failed.",
+        },
       },
       {
         type: "worker",
@@ -391,6 +511,8 @@ export function DeleteOrderPage() {
 }
 ```
 
+After the delete operation succeeds, call `actions.close()` to return to the order view with the configured success banner. If it fails, call `actions.closeWithError()` to return with the configured error banner, as in the [view mass action page](#view-mass-action-page).
+
 ### Order view button worker handler
 
 A `worker` button POSTs to your runtime action; parse the request and build the response with `@adobe/aio-commerce-lib-admin-ui/order-view-buttons`:
@@ -429,7 +551,7 @@ Each resource id follows a hierarchical scheme rooted at the app (derived from `
 | Order grid column | `getGridColumnAclResourceId(metadataId, "order", columnId)` from `/grid-columns` |
 | Product grid column | `getGridColumnAclResourceId(metadataId, "product", columnId)` from `/grid-columns` |
 | Invoice grid column | `getGridColumnAclResourceId(metadataId, "invoice", columnId)` from `/grid-columns` |
-| Credit memo grid column | `getGridColumnAclResourceId(metadataId, "creditMemo", columnId)` from `/grid-columns` |
+| Credit memo grid column | `getGridColumnAclResourceId(metadataId, "creditmemo", columnId)` from `/grid-columns` |
 | Shipment grid column | `getGridColumnAclResourceId(metadataId, "shipment", columnId)` from `/grid-columns` |
 | Customer mass action | `getMassActionAclResourceId(metadataId, "customer", actionId)` from `/mass-actions` |
 | Order mass action | `getMassActionAclResourceId(metadataId, "order", actionId)` from `/mass-actions` |

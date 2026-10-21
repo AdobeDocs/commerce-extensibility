@@ -20,6 +20,8 @@ October 20, 2026
 
 * Added [invoice view buttons](extension-points/v2/invoice/view-button.md) to V2. Add custom buttons to the invoice detail page that open an app page in an iframe or invoke a runtime action.
 
+* Added [newsletter subscribers grid columns](extension-points/v2/newsletter/grid-columns.md) to V2. Add custom columns to the Newsletter Subscribers grid.
+
 * Updated dependencies, including support for version `1.1.11` of the `@adobe/uix-sdk` dependencies.
 
 ### Bug fixes

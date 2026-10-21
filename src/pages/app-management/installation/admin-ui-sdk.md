@@ -1,6 +1,6 @@
 ---
 title: Admin UI SDK configuration
-description: Configure the Admin UI SDK menu, grid columns, mass actions, and order view buttons in the app.commerce.config file for App Management
+description: Configure the Admin UI SDK menu, grid columns, mass actions, order and invoice view buttons, and native UI form replacements in the app.commerce.config file for App Management
 keywords:
   - App Builder
   - Extensibility
@@ -17,9 +17,10 @@ At a high level, it is the top-level config block for declaring:
 * Menu entries
 * Grid columns
 * Mass actions
-* Order view buttons
+* Order and invoice view buttons
+* Native UI form replacements
 
-Admin UI SDK V2 handles registration automatically. Unlike V1, there is no `registration` action to hand-author. `commerce/backend-ui/2` reads the registration directly from the generated `app-config` runtime action. When `adminUi` is defined, the `init` and `generate all` commands automatically wire up the extension point, including the `pre-app-build` hook and the `workerProcess` declarations in `ext.config.yaml`. View-based features (a menu, a `view` mass action, or a `view` order view button) also get a minimal `web-src/` scaffold the first time they're added, using `.tsx` files for TypeScript configs and `.jsx` files otherwise.
+Admin UI SDK V2 handles registration automatically. Unlike V1, there is no `registration` action to hand-author. `commerce/backend-ui/2` reads the registration directly from the generated `app-config` runtime action. When `adminUi` is defined, the `init` and `generate all` commands automatically wire up the extension point, including the `pre-app-build` hook and the `workerProcess` declarations in `ext.config.yaml`. View-based features (a menu, a `view` mass action, a `view` order or invoice view button, or a native UI form replacement) also get a minimal `web-src/` scaffold the first time they're added, using `.tsx` files for TypeScript configs and `.jsx` files otherwise. Implement the replacement page itself in your app.
 
 The `adminUi` config block requires `@adobe/aio-commerce-lib-app` version 1.8.0 or later. Its schema (menu, grid columns, mass actions, order view buttons) became API-stable in version 1.9.0.
 
@@ -380,9 +381,71 @@ export async function main(params) {
 
 Use `orderViewButtonErrorResponse(status, message)` to report a failure. See the [`@adobe/aio-commerce-lib-admin-ui` usage guide](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-admin-ui/docs/usage.md#order-view-button-wire-contract) for the full wire contract.
 
+## Add invoice view buttons
+
+Declare buttons for the invoice detail page under `adminUi.invoice.viewButtons`. As with order buttons, `type: "view"` opens an iframe and `type: "worker"` invokes a runtime action:
+
+```js
+adminUi: {
+  invoice: {
+    viewButtons: [
+      {
+        id: "invoice-details",
+        label: "Invoice details",
+        type: "view",
+        path: "#/invoice-details",
+        title: "Custom invoice details",
+        sortOrder: 100,
+      },
+      {
+        id: "send-invoice",
+        label: "Send invoice",
+        type: "worker",
+        runtimeAction: "invoice/send",
+        timeout: 15,
+        confirm: { message: "Send this invoice?" },
+      },
+    ],
+  },
+}
+```
+
+Invoice view buttons share the common fields and variant restrictions of order buttons, with an optional `title` supported only on invoice `view` buttons. IDs must be unique after Commerce ID sanitization.
+
+Iframe pages read the invoice ID with `useInvoiceViewButtonContext()` from `@adobe/aio-commerce-lib-admin-ui/web` and complete the flow with `useHostConnection()`. Worker handlers use `parseInvoiceViewButtonRequest`, `okInvoiceViewButtonResponse`, and `invoiceViewButtonErrorResponse` from `@adobe/aio-commerce-lib-admin-ui/invoice-view-buttons`. Worker requests require `requestId`, `id`, and `invoiceId`; do not substitute `orderId`.
+
+See [Invoice view button](../../admin-ui-sdk/extension-points/v2/invoice/view-button.md) for the full parameter reference, iframe example, worker contract, and ACL guidance.
+
+## Replace a native Admin form
+
+Declare native form replacements under `adminUi.nativeUi.replacedPages`. For example, the following configuration replaces the native order creation form:
+
+```js
+adminUi: {
+  nativeUi: {
+    replacedPages: [
+      {
+        target: "order.create",
+        path: "#/create-order",
+        title: "Create Order (App)",
+        sandboxPermissions: ["allow-modals"],
+      },
+    ],
+  },
+}
+```
+
+Choose a target from the [supported targets](../../admin-ui-sdk/extension-points/v2/native-ui.md#supported-targets). Each target must be unique within the app. A native target can be replaced by only one app on a Commerce instance at a time; the SDK does not validate conflicts across apps.
+
+Configuring a replacement enables the Admin UI `view` operation and web source. Implement the matching route and replacement page in `web-src`; the SDK does not generate the page itself. Use `useNativeUiContext()` from `@adobe/aio-commerce-lib-admin-ui/web` to read optional `customerId` and `storeId` values supplied by Commerce.
+
+The replacement follows the ACL permissions of the native form in Commerce and does not define a separate `aclProtected` resource.
+
+See [Native UI form replacements](../../admin-ui-sdk/extension-points/v2/native-ui.md) for the parameter reference, context example, and limitations.
+
 ## ACL-protected extension points
 
-Set `aclProtected: true` on a menu, grid column, mass action, or order view button to have Commerce generate a per-app ACL resource for that item and add it to the Adobe Commerce User Roles tree. Admins can then grant or deny the resource per role. Users without the resource do not see the item and cannot invoke it.
+Set `aclProtected: true` on a menu, grid column, mass action, or order or invoice view button to have Commerce generate a per-app ACL resource for that item and add it to the Adobe Commerce User Roles tree. Admins can then grant or deny the resource per role. Users without the resource do not see the item and cannot invoke it.
 
 Each resource id follows a hierarchical scheme rooted at the app (derived from `metadata.id`), with a leaf id per protected item. Use the id helpers from `@adobe/aio-commerce-lib-admin-ui` instead of hardcoding the generated string:
 
@@ -393,6 +456,7 @@ Each resource id follows a hierarchical scheme rooted at the app (derived from `
 | Grid column | `getGridColumnAclResourceId(metadataId, entity, columnId)` from `/grid-columns` |
 | Mass action | `getMassActionAclResourceId(metadataId, entity, actionId)` from `/mass-actions` |
 | Order view button | `getOrderViewButtonAclResourceId(metadataId, buttonId)` from `/order-view-buttons` |
+| Invoice view button | `getInvoiceViewButtonAclResourceId(metadataId, buttonId)` from `/invoice-view-buttons` |
 
 Check the resource from the runtime action handler with `getAdminUiPermissionClient` before serving protected content:
 

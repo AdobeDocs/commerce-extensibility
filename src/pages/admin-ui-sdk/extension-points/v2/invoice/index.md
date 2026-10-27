@@ -12,3 +12,4 @@ keywords:
 The Adobe Commerce Admin UI SDK allows you to make modifications to the following elements on the **Sales** > **Invoices** page in the Adobe Commerce Admin:
 
 * Add [custom columns](grid-columns.md) to the invoice grid.
+* Add [custom view buttons](view-button.md) to the invoice detail page.

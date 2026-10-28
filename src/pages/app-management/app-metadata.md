@@ -40,7 +40,7 @@ The metadata contains the following properties:
 | `displayName` | string | Yes | Name shown in the Admin UI. Maximum 50 characters. |
 | `description` | string | Yes | Brief description of your app's functionality. Maximum 255 characters. |
 | `version` | string | Yes | Semantic version number (for example, `1.0.0`, `2.1.3`). |
-| `upgradeMode` | `"manual"` \| `"auto"` | No | Controls whether an upgrade plan created after deployment is executed automatically. Defaults to `"manual"`; `"auto"` is experimental. See [Upgrade your app](upgrade-app.md). |
+| `upgradeMode` | string | No | Controls whether an upgrade plan created after deployment is executed automatically. Possible values are: `manual`, or  `auto`. Defaults to `manual`. See [Upgrade your app](upgrade-app.md) for more information. |
 
 ## App icon
 

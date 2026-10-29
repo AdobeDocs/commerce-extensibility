@@ -41,7 +41,7 @@ An App Builder deployment and an App Management upgrade are separate operations:
 
 App upgrades require `@adobe/aio-commerce-lib-app` version 2.1.0 or later.
 
-For an existing app, test migration from its installed SDK version before upgrading a production instance. The SDK can initialize lifecycle state from a legacy installation record without reinstalling the app.
+For an existing app, test migration from its installed SDK version before upgrading a production instance. When no lifecycle state exists, the SDK can initialize it from a successful legacy installation record that includes the app configuration, without reinstalling the app. This migration runs once. Failed or in-progress installation records, and records without configuration, are not used to initialize lifecycle state.
 
 1. Record the installed app version and configuration, and back up application data and external resources that your scripts manage.
 1. Update your app's SDK libraries, including `@adobe/aio-commerce-lib-app`, regenerate actions with `npx aio-commerce-lib-app generate actions`, and build and deploy in a non-production environment.
@@ -69,6 +69,8 @@ export default defineConfig({
 | --- | --- | --- |
 | `manual` | Yes | App Management is notified that an upgrade is available. An administrator reviews and starts the upgrade in the App Management UI. |
 | `auto` | No | App Management is notified and automatically starts the upgrade. Automatic upgrades are experimental. |
+
+After deployment, the `post-app-deploy` hook reads `metadata.upgradeMode` from the project's `app.commerce.config`. If the installed version uses `manual` and the newly deployed version sets `auto`, the hook starts the planned upgrade automatically, without administrator review.
 
 In `auto` mode, planned operations run without manual review, including custom installation scripts that modify external resources. Set `upgradeMode: "manual"` explicitly when review is required. Test automatic upgrades and failure recovery in a non-production environment before enabling them in production.
 
@@ -98,6 +100,8 @@ The following table describes how each type of change is applied:
 | New custom installation step | Runs its `install` handler if no step with that name has completed successfully. |
 | Implementation of a completed custom step | Does not run the step again. Add a new step with a new name. |
 
+For example, changing `metadata.version` from `1.0.0` to `1.1.0` identifies a new app release. Changing an event's `label` under `eventing` updates the event metadata during that release's upgrade. To publish the label change, update both the label and `metadata.version`.
+
 <InlineAlert variant="info" slots="text"/>
 
 Business Configuration is not part of the app installation or upgrade process. After you deploy a change to the business configuration schema, it is reflected in App Management automatically; it does not trigger an app upgrade.
@@ -114,6 +118,8 @@ The `name` property is the stable identity of a custom installation step. Manage
 * Design handlers to tolerate partial execution and repeated calls. A step interrupted before completion, such as by a timeout, can run again.
 
 For example, if version `1.0.0` ran a step named `Configure legacy integration`, version `2.0.0` can retain that declaration and add a new step named `Migrate legacy integration`. The upgrade runs the new step without rerunning the completed one. The new handler should check which resources exist before changing or removing them.
+
+When multiple versions are deployed before an upgrade is started, the plan uses the currently deployed configuration. It does not replay the configuration of each intermediate release. If version `1.1.0` introduces a step named `Migrate database schema` and version `1.2.0` removes it, an app upgraded directly from `1.0.0` to `1.2.0` does not run that step. Keep required migrations declared in subsequent releases so installations that skip versions can still run them. Test upgrades from each supported installed version to the target release.
 
 ### Removing custom installation steps
 
@@ -152,6 +158,14 @@ To inspect a particular run, pass its run ID:
 ```bash
 npx aio-commerce-lib-app upgrade status <run-id>
 ```
+
+For a failed run with an execution activation ID, the command prints a summary in this format:
+
+```text
+App upgrade failed (run <run-id>, execution activation <activation-id>): <error-message>
+```
+
+The execution activation ID is included when available. Use it to retrieve Runtime logs. Identify the failed step in those logs or in the installation action's attempt history.
 
 The installation action's `GET /installation?history=true` response provides attempt history, plans, step statuses, and execution activation IDs. Use the `activations.execution` value of the failed attempt to read its Runtime logs:
 

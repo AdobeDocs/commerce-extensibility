@@ -99,6 +99,30 @@ Under **Apps** > **App Management**, each application appears as a card. The lis
 
 Search text and both dropdowns apply together (logical AND). To display the full list again, set **Status** and **Extensibility patterns** back to their **All …** options, and clear the search field.
 
+### Review application details
+
+Open an application's details to review its name, description, and version. The dialog provides two tabs: **Details** and **App config**.
+
+The **Details** tab lists the application's business use cases, including events and custom installation steps. Labels and descriptions help administrators understand what the application adds to Commerce.
+
+![Application Details tab showing event and custom installation business use cases](../images/app-management/app-details.png)
+
+Provide meaningful labels and descriptions in `app.commerce.config` so administrators can understand the application before installing it.
+
+The **App config** tab displays the application configuration as JSON for inspection.
+
+![App config tab displaying the application's JSON configuration](../images/app-management/app-config.png)
+
 ### Acquire App
 
 **Acquire App** opens a new browser tab (or a separate browser view) to [Adobe Exchange](https://exchange.adobe.com/apps/browse/ec), where you can discover Commerce-related marketplace listings and add applications to your Adobe IMS organization. After the app is acquired, approved, and deployed, it appears in App Management for [association and installation](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app).
+
+## Review unassociation
+
+Before confirming **Unassociate**, review the application's listed business use cases. The confirmation dialog identifies components that uninstalling the application removes from the Commerce instance, including events and custom installation steps.
+
+![Unassociate confirmation showing the application's events and custom installation steps](../images/app-management/unassociate-app.png)
+
+Review custom cleanup behavior carefully. Listing a custom installation step does not, by itself, guarantee that resources created by that step will be removed. See [Customize](installation/customize.md) for installation script guidance.
+
+Unassociation and uninstallation are distinct lifecycle concerns. Do not assume that unassociation preserves application settings or removes every resource created by custom code.

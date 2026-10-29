@@ -26,7 +26,9 @@ To upgrade your app:
 
 App upgrades require `@adobe/aio-commerce-lib-app` version 2.1.0 or later.
 
-For an existing app, we recommend completing the unassociate-and-install workflow one last time to ensure subsequent upgrades work reliably:
+Before unassociating the app, [review the unassociation confirmation](build-deploy.md#review-unassociation) and any cleanup implemented by custom installation steps.
+
+For an existing app, we recommend completing the **unassociate-and-install** workflow one last time to ensure subsequent upgrades work reliably:
 
 1. Unassociate the app from your Adobe Commerce instance in App Management.
 1. Update your app's SDK libraries, including `@adobe/aio-commerce-lib-app` to version 2.1.0 or later, before installing the app again.

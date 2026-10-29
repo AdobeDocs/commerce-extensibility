@@ -37,6 +37,22 @@ export default defineConfig({
 | `preInstallation` | string | No | Message displayed before installation starts. Maximum 1000 characters. |
 | `postInstallation` | string | No | Message displayed after installation completes. Maximum 1000 characters. |
 
+### Installation experience
+
+Before installation begins, App Management displays the application's business use cases, including configured events and custom installation steps. If `installation.messages.preInstallation` is defined, it appears under **Pre Installation Instructions**.
+
+![Installation review showing pre-installation instructions, business use cases, and the Install button](../../images/app-management/installation-review.png)
+
+After the administrator selects **Install**, the dialog displays installation progress for individual items. Keep the page open until installation finishes: closing or refreshing it might prevent installation from completing correctly.
+
+![Installation in progress showing per-item progress indicators and a warning to keep the page open](../../images/app-management/installation-progress.png)
+
+When installation succeeds, the dialog displays **Successfully Installed** and marks completed items with a check mark.
+
+![Successfully Installed banner with check marks for completed events and custom installation steps](../../images/app-management/installation-success.png)
+
+Use pre-installation instructions to explain prerequisites administrators must complete before selecting **Install**. Use `postInstallation` for any remaining setup required after installation.
+
 ## Custom installation steps
 
 The `customInstallationSteps` field allows you to define custom scripts that run during the application installation process. These scripts are loaded and executed in the order they are defined.

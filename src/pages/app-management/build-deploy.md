@@ -106,6 +106,8 @@ Open an application's details to review its name, description, and version.
 * **Details** lists the application's business use cases, including events and custom installation steps. Labels and descriptions help administrators understand what the application adds to Commerce.
 * **App config** displays the application configuration as JSON.
 
+![Application Details tab showing event and custom installation business use cases](../images/app-management/app-details.png)
+
 Provide meaningful labels and descriptions in `app.commerce.config` so administrators can understand the application before installing it.
 
 ### Acquire App
@@ -115,6 +117,8 @@ Provide meaningful labels and descriptions in `app.commerce.config` so administr
 ## Review unassociation
 
 Before confirming **Unassociate**, review the application's listed business use cases. The confirmation dialog identifies components that uninstalling the application removes from the Commerce instance, including events and custom installation steps.
+
+![Unassociate confirmation showing the application's events and custom installation steps](../images/app-management/unassociate-app.png)
 
 Review custom cleanup behavior carefully. Listing a custom installation step does not, by itself, guarantee that resources created by that step will be removed. See [Customize](installation/customize.md) for installation script guidance.
 

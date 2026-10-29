@@ -24,7 +24,8 @@ export default defineConfig({
     id: "my-commerce-application",
     displayName: "My Commerce Application",
     description: "This is a description for my application",
-    version: "1.0.0"
+    version: "1.0.0",
+    upgradeMode: "manual"
   },
 });
 ```
@@ -39,6 +40,7 @@ The metadata contains the following properties:
 | `displayName` | string | Yes | Name shown in the Admin UI. Maximum 50 characters. |
 | `description` | string | Yes | Brief description of your app's functionality. Maximum 255 characters. |
 | `version` | string | Yes | Semantic version number (for example, `1.0.0`, `2.1.3`). |
+| `upgradeMode` | string | No | Controls whether an upgrade plan created after deployment waits for review (`manual`, the default) or starts automatically (`auto`, experimental). Automatic execution can run custom installation scripts. See [Choose an upgrade mode](upgrade-app.md#choose-an-upgrade-mode) for configuration details. |
 
 ## App icon
 

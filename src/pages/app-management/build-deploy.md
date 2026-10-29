@@ -101,14 +101,17 @@ Search text and both dropdowns apply together (logical AND). To display the full
 
 ### Review application details
 
-Open an application's details to review its name, description, and version.
+Open an application's details to review its name, description, and version. The dialog provides two tabs: **Details** and **App config**.
 
-* **Details** lists the application's business use cases, including events and custom installation steps. Labels and descriptions help administrators understand what the application adds to Commerce.
-* **App config** displays the application configuration as JSON.
+The **Details** tab lists the application's business use cases, including events and custom installation steps. Labels and descriptions help administrators understand what the application adds to Commerce.
 
 ![Application Details tab showing event and custom installation business use cases](../images/app-management/app-details.png)
 
 Provide meaningful labels and descriptions in `app.commerce.config` so administrators can understand the application before installing it.
+
+The **App config** tab displays the application configuration as JSON for inspection.
+
+![App config tab displaying the application's JSON configuration](../images/app-management/app-config.png)
 
 ### Acquire App
 

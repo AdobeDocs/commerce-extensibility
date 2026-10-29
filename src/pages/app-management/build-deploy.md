@@ -119,14 +119,12 @@ The **App config** tab displays the application configuration as JSON for inspec
 
 ## Review unassociation
 
-Before confirming **Unassociate**, review the application's listed business use cases. The confirmation dialog identifies components that uninstalling the application removes from the Commerce instance, including events and custom installation steps.
+Before confirming **Unassociate**, review the application's listed business use cases. The confirmation dialog identifies components affected by uninstallation, including events and custom installation steps.
 
 ![Unassociate confirmation showing the application's events and custom installation steps](../images/app-management/unassociate-app.png)
 
-Review custom cleanup behavior carefully. Listing a custom installation step does not, by itself, guarantee that resources created by that step will be removed. See [Customize](installation/customize.md) for installation script guidance.
-
-Unassociation and uninstallation are distinct lifecycle concerns. Do not assume that unassociation preserves application settings or removes every resource created by custom code.
+Cleanup of resources created by custom installation steps depends on the application's uninstall handlers. Review those handlers to determine which resources are removed and which require manual cleanup. See [Customize](installation/customize.md) for installation script guidance.
 
 <InlineAlert variant="info" slots="text"/>
 
-Before proceeding, record the installed version and configuration, back up app-owned data, and check each custom step's `uninstall` handler for destructive cleanup and external dependencies. Confirm how the application will be restored and whether service interruption is acceptable. For a failed upgrade, [inspect the failure and retry](upgrade-app.md#retry-a-failed-upgrade) instead of using unassociation as a reset.
+Before unassociating the app, record the installed version and configuration, back up application data, and check each custom step's `uninstall` handler for destructive cleanup and external dependencies. Plan for any service interruption and identify how to restore the application, its settings, and its data. To recover from a failed upgrade, [inspect the failure and retry](upgrade-app.md#retry-a-failed-upgrade).

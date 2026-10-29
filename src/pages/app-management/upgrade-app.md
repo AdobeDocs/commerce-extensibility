@@ -18,7 +18,7 @@ To upgrade your app:
 
 1. [Prepare your app](#before-you-upgrade) with the required library version and migration checks.
 1. [Choose an upgrade mode](#choose-an-upgrade-mode): manual (default) or automatic (experimental).
-1. [Review which configuration changes qualify](#configuration-changes-and-upgrades), and add a cleanup step if you need to undo a custom installation step.
+1. [Review how configuration changes are applied](#configuration-changes-and-upgrades), and add a cleanup step if you need to remove resources created by a custom installation step.
 1. [Update the configuration and version, then build and deploy](#upgrade-workflow).
 1. Start the upgrade in App Management, or let it start automatically. If it fails, [retry the upgrade](#retry-a-failed-upgrade).
 
@@ -33,19 +33,21 @@ An App Builder deployment and an App Management upgrade are separate operations:
 | Upgrade plan | The operations needed to reconcile supported components with the desired configuration. Planning also checks for issues that prevent execution. |
 | Execution | Applying the planned operations and recording their results. A plan waiting for review has not applied those operations. |
 
-`metadata.version` identifies the target release; it does not describe the operations to execute. The plan determines which components need changes. Updating the version does not, by itself, mean that an event, webhook, or Admin UI component needs to be changed.
+`metadata.version` identifies the target release. The upgrade plan determines which events, webhooks, and Admin UI components require changes. A version-only update does not require component changes unless the plan identifies drift from the configured state.
 
 ## Before you upgrade
 
+<InlineAlert variant="info" slots="text"/>
+
 App upgrades require `@adobe/aio-commerce-lib-app` version 2.1.0 or later.
 
-For an existing app, test migration from its installed SDK version before upgrading a production instance. The SDK can initialize lifecycle state from a legacy installation record; reinstallation is not a universal prerequisite.
+For an existing app, test migration from its installed SDK version before upgrading a production instance. The SDK can initialize lifecycle state from a legacy installation record without reinstalling the app.
 
 1. Record the installed app version and configuration, and back up application data and external resources that your scripts manage.
 1. Update your app's SDK libraries, including `@adobe/aio-commerce-lib-app`, regenerate actions with `npx aio-commerce-lib-app generate actions`, and build and deploy in a non-production environment.
 1. Validate that the existing installation is recognized, review the upgrade plan, and test the upgrade and its recovery paths.
 
-If the installation cannot be migrated, work with the app provider to plan recovery before unassociating or reinstalling. [Review the unassociation confirmation](build-deploy.md#review-unassociation) and custom uninstall handlers first. Cleanup can remove resources, and service availability and configuration preservation must be checked for that application. Do not use unassociation as a routine upgrade or retry step.
+Resolve migration errors before upgrading a production instance. If recovery requires unassociation or reinstallation, [review the unassociation confirmation](build-deploy.md#review-unassociation) and custom uninstall handlers, identify resources that cleanup removes, and plan for any service interruption or configuration restoration. Use the upgrade workflow for routine updates and [Retry Upgrade](#retry-a-failed-upgrade) to recover from a failed upgrade.
 
 ## Choose an upgrade mode
 
@@ -68,7 +70,7 @@ export default defineConfig({
 | `manual` | Yes | App Management is notified that an upgrade is available. An administrator reviews and starts the upgrade in the App Management UI. |
 | `auto` | No | App Management is notified and automatically starts the upgrade. Automatic upgrades are experimental. |
 
-The app developer sets this mode in the deployed configuration. With `auto`, planned operations can run without the manual review step, including custom installation scripts with external side effects. Keep `manual` explicit when review is required, and test automatic upgrades and failure recovery in a non-production environment before enabling them in production.
+In `auto` mode, planned operations run without manual review, including custom installation scripts that modify external resources. Set `upgradeMode: "manual"` explicitly when review is required. Test automatic upgrades and failure recovery in a non-production environment before enabling them in production.
 
 ## Upgrade workflow
 
@@ -77,34 +79,34 @@ The app developer sets this mode in the deployed configuration. With `auto`, pla
 1. App Management is notified that an upgrade is available.
 1. In `manual` mode, an administrator starts the upgrade in the App Management UI. In `auto` mode, App Management starts it automatically.
 
-Update `metadata.version` for a new release. Planning and execution remain separate: in manual mode, deployment does not mean that the installed Commerce configuration has been upgraded.
+In `manual` mode, the installed Commerce configuration remains unchanged until an administrator starts the upgrade.
 
 If deployment replaces Runtime actions already used by the installed app, the new code can receive requests before the manual upgrade completes. Keep it compatible with the installed event, webhook, and configuration contracts during that interval. Test both the pending-upgrade state and the completed upgrade.
 
 ## Configuration changes and upgrades
 
-Use the upgrade plan to distinguish a new release from changes to installed components:
+The following table describes how each type of change is applied:
 
 | Change | App Management behavior |
 | --- | --- |
 | `metadata.version` only | Identifies a new target release; does not itself require component changes. |
-| `eventing` | Reconciles event providers, metadata, registrations, and Commerce subscriptions. Provider and event label or description changes are applied too. |
+| `eventing` | Reconciles event providers, metadata, registrations, and Commerce subscriptions, including provider and event labels and descriptions. |
 | `webhooks` | Reconciles configured webhook subscriptions. |
 | `adminUi` | Applies supported Admin UI registration changes. |
 | `businessConfig.schema` | Updated through deployment, outside the installation and upgrade process. |
 | Runtime action implementation only | Updated by App Builder deployment, not by an App Management migration step. |
-| New custom installation step | Runs its `install` handler when its name has not already completed. |
+| New custom installation step | Runs its `install` handler if no step with that name has completed successfully. |
 | Implementation of a completed custom step | Does not run the step again. Add a new step with a new name. |
 
 <InlineAlert variant="info" slots="text"/>
 
 Business Configuration is not part of the app installation or upgrade process. After you deploy a change to the business configuration schema, it is reflected in App Management automatically; it does not trigger an app upgrade.
 
-Changes to `eventing`, `webhooks`, and `adminUi` can add, modify, or remove components as part of an upgrade. Plans can also repair drift, such as a configured resource that was manually removed or left missing by a failed operation. A retry therefore depends on current state, not only on the configuration diff.
+Changes to `eventing`, `webhooks`, and `adminUi` can add, modify, or remove components as part of an upgrade. Plans can also repair drift, such as a configured resource that was manually removed or left missing by a failed operation. Each retry evaluates the current state when planning these operations.
 
 ### Custom installation steps as migrations
 
-Custom installation steps are identified by their `name`, not by a hash of the script contents. Treat completed steps as migrations:
+The `name` property is the stable identity of a custom installation step. Manage these steps as migrations:
 
 * Keep each completed step's name stable. Renaming it introduces a new step whose `install` handler can run again.
 * To change behavior, add a new script with a new, unique step name. Editing the implementation or script path of a completed step does not rerun it.
@@ -123,7 +125,7 @@ In App Management:
 * The removed step does not appear on the upgrade progress screen because nothing is executed for it.
 * After the upgrade, the removed step no longer appears in the app details.
 
-If you need to undo a previous step's changes, we recommend keeping that step declared and adding a new custom installation step instead of removing it. Give the new step a unique, descriptive name, such as "Remove legacy webhook registrations", and put the cleanup logic in its `install` handler, not its `uninstall` handler. The new step's `install` handler runs during the upgrade and performs the cleanup explicitly.
+To remove resources created by a previous step, keep that step declared and add a new custom installation step. Give the new step a unique, descriptive name, such as "Remove legacy webhook registrations", and put the cleanup logic in its `install` handler. This handler runs during the upgrade; the `uninstall` handler runs during application uninstallation.
 
 After adding the cleanup script, regenerate the actions with `npx aio-commerce-lib-app generate actions`, update `metadata.version`, and build and deploy the app. See [Writing installation scripts](installation/customize.md#writing-installation-scripts) for the handler syntax.
 
@@ -133,9 +135,9 @@ Keep the original step declared for as long as its `uninstall` handler may be ne
 
 If an upgrade fails, use **Retry Upgrade** in the App Management UI to try again. This button is available whether the app uses `manual` or `auto` mode. In `auto` mode, deploying the app again also triggers another automatic upgrade attempt.
 
-A failed upgrade can leave some operations applied. Retrying creates a fresh plan from current state rather than resuming the old plan at a checkpoint. Custom installation steps recorded as successful are not run again; failed or interrupted steps can run again. A failed handler may already have changed an external resource, so do not treat retry as an undo operation.
+A failed upgrade can leave some operations applied. Each retry creates a new plan from the current state. Custom installation steps recorded as successful are skipped; failed or interrupted steps can run again. Account for changes a handler made to external resources before it failed when preparing the app for retry.
 
-Before retrying, identify the failed step, inspect its logs, and correct the cause. Make custom handlers idempotent, including cleanup that tolerates resources already being absent. If repeated attempts fail, retain the attempt and activation IDs for investigation rather than unassociating the app to reset it.
+Before retrying, identify the failed step, inspect its logs, and correct the cause. Make custom handlers idempotent, including cleanup that tolerates resources already being absent. If repeated attempts fail, retain the attempt and activation IDs for troubleshooting.
 
 ### Inspect an upgrade run
 
@@ -159,4 +161,4 @@ aio rt activation logs <execution-activation-id>
 
 <InlineAlert variant="info" slots="text"/>
 
-Closing the terminal that follows an automatic upgrade does not stop that upgrade. Check its result with `upgrade status`. This differs from the browser-based [installation experience](installation/customize.md#installation-experience); do not assume closing that dialog is safe.
+An automatic upgrade continues running after you close the terminal that displays its progress. Check the result with `upgrade status`. For browser-based [installation](installation/customize.md#installation-experience), keep the page open until installation completes.

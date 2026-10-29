@@ -198,7 +198,7 @@ export default defineCustomInstallationStep(async (config, context) => {
 * Scripts are executed **sequentially** in the order defined, for both installation and uninstallation (uninstall does **not** reverse the order).
 * If any script throws an error, the installation fails and subsequent scripts are not executed.
 * On retry of a failed installation, upgrade, or uninstallation, custom steps recorded as successful are skipped. A failed or interrupted handler can run again, including after a timeout.
-* Make handlers idempotent: check for resources already created by partial execution, and let cleanup tolerate resources already removed. Test interruption and retry, not only successful first execution.
+* Make handlers safe to run repeatedly (idempotent): check for resources created by partial execution, and allow cleanup to succeed when resources are already removed. Test retries after failures and interruptions.
 * Scripts have access to the complete app configuration.
 
 After you modify custom installation scripts, you must manually run the `npx aio-commerce-lib-app generate actions` command before building and deploying. This ensures the installation action picks up your changes. For all other `app.commerce.config` updates, build and deploy alone is sufficient, as artifacts are regenerated during pre-app-build.

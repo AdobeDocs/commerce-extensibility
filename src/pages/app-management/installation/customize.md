@@ -89,12 +89,14 @@ export default defineConfig({
 | Property | Type | Required | Description |
 |----------|------|----------|-------------|
 | `script` | string | Yes | Path to the script file relative to your project root. Must end with a `.js` or `.ts` extension. |
-| `name` | string | Yes | Display name for the installation step. Maximum 255 characters. |
+| `name` | string | Yes | Display name and stable lifecycle identity for the installation step. Maximum 255 characters. |
 | `description` | string | No | Description of what the step does. Maximum 255 characters. |
 
 <InlineAlert variant="info" slots="text"/>
 
 Two custom installation steps cannot have the same name. Step names must be unique.
+
+Keep the name stable after a step has run. A new name introduces a new migration; changing a completed step's script does not run it again. See [Custom installation steps as migrations](../upgrade-app.md#custom-installation-steps-as-migrations) for upgrade and cleanup behavior.
 
 ### Working with TypeScript
 
@@ -195,6 +197,8 @@ export default defineCustomInstallationStep(async (config, context) => {
 * Scripts **must** use `export default` to export either a handler function or an object with `install`/`uninstall` handlers.
 * Scripts are executed **sequentially** in the order defined, for both installation and uninstallation (uninstall does **not** reverse the order).
 * If any script throws an error, the installation fails and subsequent scripts are not executed.
+* On retry of a failed installation, upgrade, or uninstallation, custom steps recorded as successful are skipped. A failed or interrupted handler can run again, including after a timeout.
+* Make handlers idempotent: check for resources already created by partial execution, and let cleanup tolerate resources already removed. Test interruption and retry, not only successful first execution.
 * Scripts have access to the complete app configuration.
 
 After you modify custom installation scripts, you must manually run the `npx aio-commerce-lib-app generate actions` command before building and deploying. This ensures the installation action picks up your changes. For all other `app.commerce.config` updates, build and deploy alone is sufficient, as artifacts are regenerated during pre-app-build.

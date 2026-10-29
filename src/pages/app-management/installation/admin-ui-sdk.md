@@ -12,6 +12,8 @@ keywords:
 
 The `adminUi` field in `app.commerce.config` defines how your app extends the Adobe Commerce Admin UI through the `commerce/backend-ui/2` extension point. It is not compatible with the `commerce/backend-ui/1` extension point used by the previous version of the Admin UI SDK.
 
+For an existing V1 extension, follow [Migration from V1](../../admin-ui-sdk/extension-points/v2/migration-from-v1.md) to update its registration, handlers, and frontend. Adding `adminUi` or upgrading the App Management library alone does not convert V1 code to V2.
+
 At a high level, it is the top-level config block for declaring:
 
 * Menu entries
@@ -539,7 +541,9 @@ Use `orderViewButtonErrorResponse(status, message)` to report a failure. See the
 
 ## ACL-protected extension points
 
-Set `aclProtected: true` on any supported V2 extension point to have Commerce generate a per-app ACL resource for that item and add it to the Adobe Commerce User Roles tree. Admins can then grant or deny the resource per role. Users without the resource do not see the item and cannot invoke it.
+Set `aclProtected: true` on any supported V2 extension point to have Commerce generate a per-app ACL resource for that item and add it to the Adobe Commerce User Roles tree. Admins can then grant or deny the resource per role. Commerce uses that resource to control access through the Admin UI.
+
+This does not replace authorization in your Runtime actions. A hidden menu item, column, or button is not a security boundary for a directly invoked endpoint. Authenticate incoming requests and check the calling administrator's permission before returning protected data or performing a protected operation.
 
 Each resource id follows a hierarchical scheme rooted at the app (derived from `metadata.id`), with a leaf id per protected item. Use the id helpers from `@adobe/aio-commerce-lib-admin-ui` instead of hardcoding the generated string:
 
@@ -560,7 +564,7 @@ Each resource id follows a hierarchical scheme rooted at the app (derived from `
 
 See the [Admin UI SDK V2 extension points](../../admin-ui-sdk/extension-points/v2/index.md) for the full list of V2 supported extension points.
 
-Check the resource from the runtime action handler with `getAdminUiPermissionClient` before serving protected content:
+Check the resource from the runtime action handler with `getAdminUiPermissionClient` before serving protected content. Forward the authenticated administrator's IMS credentials to Commerce for this check, not the application's server-to-server credentials. The example uses request headers explicitly so an action input cannot select a different token source:
 
 ```js
 import {
@@ -573,13 +577,17 @@ import {
 } from "@adobe/aio-commerce-lib-admin-ui/mass-actions";
 
 import { getCommerceClient } from "@adobe/aio-commerce-lib-app";
-import { resolveImsAuthParams } from "@adobe/aio-commerce-lib-auth";
+import { getForwardedImsAuthProvider } from "@adobe/aio-commerce-lib-auth";
 
 import appConfig from "#app.commerce.config";
 
 export async function main(params) {
   const appId = appConfig.metadata.id;
-  const httpClient = await getCommerceClient(resolveImsAuthParams(params));
+  const auth = getForwardedImsAuthProvider({
+    from: "headers",
+    headers: params.__ow_headers ?? {},
+  });
+  const httpClient = await getCommerceClient(auth);
   const permissionClient = getAdminUiPermissionClient({ httpClient, appId });
 
   try {

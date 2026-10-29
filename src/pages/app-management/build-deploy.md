@@ -126,3 +126,7 @@ Before confirming **Unassociate**, review the application's listed business use 
 Review custom cleanup behavior carefully. Listing a custom installation step does not, by itself, guarantee that resources created by that step will be removed. See [Customize](installation/customize.md) for installation script guidance.
 
 Unassociation and uninstallation are distinct lifecycle concerns. Do not assume that unassociation preserves application settings or removes every resource created by custom code.
+
+<InlineAlert variant="info" slots="text"/>
+
+Before proceeding, record the installed version and configuration, back up app-owned data, and check each custom step's `uninstall` handler for destructive cleanup and external dependencies. Confirm how the application will be restored and whether service interruption is acceptable. For a failed upgrade, [inspect the failure and retry](upgrade-app.md#retry-a-failed-upgrade) instead of using unassociation as a reset.

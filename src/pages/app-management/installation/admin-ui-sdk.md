@@ -14,14 +14,14 @@ The `adminUi` field in `app.commerce.config` defines how your app extends the Ad
 
 For an existing V1 extension, update its registration, handlers, and frontend using the [Migration from V1](../../admin-ui-sdk/extension-points/v2/migration-from-v1.md) guide.
 
-At a high level, it is the top-level config block for declaring:
+The `adminUi` configuration supports the following extension points:
 
 * Menu entries
 * Grid columns
 * Mass actions
 * Order view buttons
 
-Admin UI SDK V2 handles registration automatically. Unlike V1, there is no `registration` action to hand-author. `commerce/backend-ui/2` reads the registration directly from the generated `app-config` runtime action. When `adminUi` is defined, the `init` and `generate all` commands automatically wire up the extension point, including the `pre-app-build` hook and the `workerProcess` declarations in `ext.config.yaml`.
+Admin UI SDK V2 handles registration automatically. The `commerce/backend-ui/2` extension point reads registration directly from the generated `app-config` Runtime action. When `adminUi` is defined, the `init` and `generate all` commands configure the extension point, including the `pre-app-build` hook and the `workerProcess` declarations in `ext.config.yaml`.
 
 The `adminUi` config block requires `@adobe/aio-commerce-lib-app` version 1.8.0 or later. Its schema (menu, grid columns, mass actions, order view buttons) became API-stable in version 1.9.0.
 

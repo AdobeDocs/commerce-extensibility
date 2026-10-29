@@ -72,7 +72,7 @@ The scope tree action supports syncing scopes from Adobe Commerce, setting custo
 
 ### Admin UI SDK registration on `commerce/backend-ui/2`
 
-When [`adminUi`](installation/admin-ui-sdk.md) is defined, Admin UI SDK V2 handles registration automatically. Unlike V1, there is no `registration` action to hand-author. Adobe Commerce reads the registration directly from the `app-config` action described above. `generate` derives any `workerProcess` operations from the `runtimeAction` values in your `adminUi` configuration and keeps them in sync in `src/commerce-backend-ui-2/ext.config.yaml` at build time.
+When [`adminUi`](installation/admin-ui-sdk.md) is defined, Admin UI SDK V2 handles registration automatically. Adobe Commerce reads the registration directly from the `app-config` action described above. The `generate` command derives `workerProcess` operations from the `runtimeAction` values in your `adminUi` configuration and updates them in `src/commerce-backend-ui-2/ext.config.yaml` at build time.
 
 ## Build and deploy
 

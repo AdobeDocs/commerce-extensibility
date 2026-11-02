@@ -12,6 +12,18 @@ These release notes describe the latest version of Adobe I/O Events for Adobe Co
 
 See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io-events-for-adobe-commerce) for upgrade instructions.
 
+## Version 1.23.0
+
+### Release date
+
+October 9, 2026
+
+### Enhancements
+
+* Plugin event payloads now include the method arguments when the method returns no data or a result object. Sensitive values, such as passwords and tokens, are masked. \<!-- CEXT-6848 --\>
+
+* Improved the validation of context values used in event fields and rules. \<!-- CEXT-6844 --\>
+
 ## Version 1.22.2
 
 ### Release date

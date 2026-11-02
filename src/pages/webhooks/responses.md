@@ -47,7 +47,7 @@ The `exception` operation causes Commerce to terminate the process that triggere
 | Field | Type | Description |
 |---|---|---|
 | `op` | Required | Contains `exception`. |
-| `type` | Optional | Specifies the exception class. If `type` is not set, `\Magento\Framework\Exception\LocalizedException` will be thrown. |
+| `type` | Optional | Specifies the exception class. The class must be a valid exception class. If `type` is not set or is not an exception class, `\Magento\Framework\Exception\LocalizedException` is thrown. |
 | `message` | Optional | Specifies the exception message. If this field is not explicitly set, then the message defined in the `fallbackErrorMessage` configuration field will be returned. If `fallbackErrorMessage` is not set, the system default error message will be returned. |
 
 If an error occurs, the response is similar to the following:
@@ -69,7 +69,7 @@ The `add` operation causes Commerce to add the provided `value` to the provided 
 | `op` | Required | Contains `add`. |
 | `path` | Required | Specifies the path at which the `value` should be added to the triggered event arguments. |
 | `value` | Required | Specifies the value to be added. This can be as a single value or in an array format. |
-| `instance` | Optional | Specifies the `DataObject` class name to create, based on the  `value` and added to the provided `path`. Use this field for cases when the object should be added in provided path. |
+| `instance` | Optional | Specifies the data object class or interface to create, based on the `value` and added to the provided `path`. Use this field for cases when the object should be added in provided path. See [Allowed instance types](#allowed-instance-types). |
 
 For example, we want to add a new shipping method to the triggered event result payload.
 The result is an array of `Magento\Quote\Model\Cart\ShippingMethod` objects:
@@ -118,7 +118,7 @@ The `replace` operation causes Commerce to replace a value in triggered event ar
 | `op` | Required | Contains `replace`. |
 | `path` | Required | Specifies the path at which the value should be replaced with the provided `value`. |
 | `value` | Required | Specifies the replacement value. This can be as a single value or in an array format. |
-| `instance` | Optional | Specifies the `DataObject` class name to create, based on the  `value` and added to the provided `path`. |
+| `instance` | Optional | Specifies the data object class or interface to create, based on the `value` and added to the provided `path`. See [Allowed instance types](#allowed-instance-types). |
 
 The following example replaces a nested element in the triggered event result payload:
 
@@ -152,6 +152,22 @@ $result = [
         ]           
     ]   
 ];
+```
+
+### Allowed instance types
+
+The `instance` field of the `add` and `replace` operations accepts only data object classes, or interfaces whose implementation is a data object, such as `Magento\Quote\Api\Data\ShippingMethodInterface`. The class must extend `Magento\Framework\DataObject` or `Magento\Framework\Api\AbstractSimpleObject`, or implement `Magento\Framework\Api\ExtensibleDataInterface`. If the class is not allowed or does not exist, the operation is not applied and an error is returned.
+
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) To allow additional classes, add them to the `allowedTypes` argument of `Magento\AdobeCommerceWebhooks\Model\WebhookRunner\Response\Operation\InstanceValidator` in the `etc/di.xml` file of a custom module:
+
+```xml
+<type name="Magento\AdobeCommerceWebhooks\Model\WebhookRunner\Response\Operation\InstanceValidator">
+    <arguments>
+        <argument name="allowedTypes" xsi:type="array">
+            <item name="my_custom_type" xsi:type="string">Vendor\Module\Api\Data\CustomTypeInterface</item>
+        </argument>
+    </arguments>
+</type>
 ```
 
 ### Remove operation

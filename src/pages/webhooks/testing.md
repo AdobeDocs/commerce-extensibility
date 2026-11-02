@@ -120,3 +120,11 @@ Or, to specify the path to the SSL certificate:
         </hooks>
     </method>
 ```
+
+## Testing webhook endpoints on a local network
+
+<InlineAlert variant="info" slots="text1" />
+
+Do not disable destination validation in production environments. This option is recommended for development purposes only.
+
+By default, Commerce does not send webhook requests to private or internal network addresses. To test a webhook with an endpoint running on your local network, navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Webhooks** > **Security** and set **Validate Webhook Destinations** to **No**.

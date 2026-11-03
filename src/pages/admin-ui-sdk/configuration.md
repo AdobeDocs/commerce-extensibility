@@ -20,7 +20,7 @@ The **General configuration** section enables the Admin UI SDK and refreshes reg
 
 The [**Configure eligible extensions**](./eligible-extensions-config.md) button displays a list of extensions that were installed with App Management. It also allows you to configure the eligible extensions that were installed before App Management became the primary installation method.
 
-The **Refresh registrations** button reloads all registrations from the App Builder registry. It is typically used when changes are made to the registration on the App Builder application side or when a new app is added and published, to reflect these changes in the Admin.
+The **Refresh registrations** button reloads registrations for manually configured V1 extensions from the App Builder registry. Use it when you change an extension's registration in your App Builder application or publish a new V1 extension. This action does not refresh extensions installed with App Management.
 
 ## Database logging configuration
 

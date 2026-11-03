@@ -24,6 +24,8 @@ November 3, 2026
 
 * Added [newsletter subscribers grid columns](extension-points/v2/newsletter/grid-columns.md) to V2. Add custom columns to the Newsletter Subscribers grid.
 
+* Restricted the **Refresh registrations** action to manually configured V1 extensions.
+
 * Updated dependencies, including support for version `1.1.11` of the `@adobe/uix-sdk` dependencies.
 
 ### Bug fixes

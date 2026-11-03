@@ -1,7 +1,6 @@
 ---
 title: credit memo grid columns
 description: Customize the credit memos page in the Adobe Commerce Admin.
-edition: paas
 keywords:
   - App Builder
   - Extensibility

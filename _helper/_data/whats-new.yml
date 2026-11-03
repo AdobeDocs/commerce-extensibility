@@ -1,0 +1,83 @@
+---
+title: What's new
+description: This section contains the changes made in the last 60 days. We exclude
+  all minor updates, such as copy editing, from this list.
+updated: Mon Nov 2 11:58:52 2026
+entries:
+- description: Updated the [App submission guidelines](https://developer.adobe.com/commerce/extensibility/app-development/app-submission-guidelines)
+    to include Adobe Commerce Optimizer environments.
+  versions: ''
+  type: technical
+  date: '2026-09-22'
+  link: https://github.com/AdobeDocs/commerce-extensibility/pull/610
+  merge_commit: 062f11a54111a39a18b96dd5f0420764c596c30c
+  contributor: mkovdrysh
+  labels:
+  - internal
+  - technical
+- description: Revised the extensibility [landing page](https://developer.adobe.com/commerce/extensibility)
+    to feature today's development workstreams.
+  versions: ''
+  type: major-update
+  date: '2026-09-21'
+  link: https://github.com/AdobeDocs/commerce-extensibility/pull/607
+  merge_commit: 63d6d7d54f32f81718d02728059988916e90012c
+  contributor: keharper
+  labels:
+  - major-update
+  - blocked
+- description: Admin UI SDK 5.0.0 introduces [V2 extension points](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/extension-points/v2/)
+    for credit memo, invoice, and shipment grid columns. See the [release notes](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/release-notes)
+    for additional information.
+  versions: ''
+  type: major-update, new-topic
+  date: '2026-09-17'
+  link: https://github.com/AdobeDocs/commerce-extensibility/pull/608
+  merge_commit: '092f4e5095bf052a8832569ce257361a07a098ea'
+  contributor: asalloum5
+  labels:
+  - major-update
+  - new-topic
+- description: Updated the eventing [release notes](https://developer.adobe.com/commerce/extensibility/events/release-notes)
+    for version 1.22.2.
+  versions: ''
+  type: release-notes
+  date: '2026-09-03'
+  link: https://github.com/AdobeDocs/commerce-extensibility/pull/604
+  merge_commit: 9bd86428ad00db50d05ecce08df861a8750507f9
+  contributor: oshmyheliuk
+  labels:
+  - release-notes
+- description: Added a new [Social login SSO](https://developer.adobe.com/commerce/extensibility/app-development/use-cases/social-login-sso)
+    best practices topic. It describes the end-to-end flow and security considerations
+    for bridging shopper social logins into Adobe Commerce customer tokens to authenticate
+    the customers subsequent GraphQL requests.
+  versions: ''
+  type: new-topic
+  date: '2026-09-02'
+  link: https://github.com/AdobeDocs/commerce-extensibility/pull/597
+  merge_commit: e2a014e7c237a005a1ae3102dc424e0ca1527f95
+  contributor: keharper
+  labels:
+  - new-topic
+- description: Added the SharedCatalog section to the Adobe Commerce as a Cloud Service
+    [events reference](https://developer.adobe.com/commerce/extensibility/events/events-reference/).
+  versions: ''
+  type: major-update
+  date: '2026-09-01'
+  link: https://github.com/AdobeDocs/commerce-extensibility/pull/601
+  merge_commit: a81651231485d75d4ed6fd372585c77f37f34b45
+  contributor: keharper
+  labels:
+  - major-update
+- description: Enriched the [Events reference](https://developer.adobe.com/commerce/extensibility/events/events-reference/)
+    with per-event trigger sources and collapsible payload examples for easier scanning.
+  versions: ''
+  type: major-update, feedback
+  date: '2026-08-31'
+  link: https://github.com/AdobeDocs/commerce-extensibility/pull/599
+  merge_commit: 4128400921a70200b31fd28122e0d192cd5c5b21
+  contributor: keharper
+  labels:
+  - major-update
+  - feedback

@@ -42,6 +42,7 @@
             - [Webhooks](/app-management/installation/webhooks.md)
             - [Admin UI SDK](/app-management/installation/admin-ui-sdk.md)
             - [Customize](/app-management/installation/customize.md)
+    - [Upgrade your app](/app-management/upgrade-app.md)
     - [Build and deploy](/app-management/build-deploy.md)
     - [App Management helpers](/app-management/helpers.md)
     - [Purchase Approval reference app](/app-management/purchase-approval-app.md)

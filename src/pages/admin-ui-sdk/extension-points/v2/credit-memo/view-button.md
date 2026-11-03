@@ -1,7 +1,6 @@
 ---
 title: credit memo view button
 description: Add custom iframe and runtime action buttons to the credit memo detail page in the Adobe Commerce Admin.
-edition: paas
 keywords:
   - App Builder
   - Extensibility

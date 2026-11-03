@@ -1,7 +1,6 @@
 ---
 title: Extension points (V2)
 description: Learn about the Admin UI SDK V2 extension points built on App Management.
-edition: paas
 keywords:
   - App Builder
   - Extensibility

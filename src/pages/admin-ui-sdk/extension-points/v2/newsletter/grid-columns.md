@@ -1,7 +1,6 @@
 ---
 title: newsletter subscribers grid columns
 description: Customize the newsletter subscribers grid in the Adobe Commerce Admin.
-edition: paas
 keywords:
   - App Builder
   - Extensibility

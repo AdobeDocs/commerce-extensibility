@@ -1,7 +1,6 @@
 ---
 title: Credit memo extension points (V2)
 description: Learn how to make modifications to the Credit Memos page in the Adobe Commerce Admin.
-edition: paas
 keywords:
   - App Builder
   - Extensibility

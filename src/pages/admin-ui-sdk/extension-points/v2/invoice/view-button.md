@@ -1,7 +1,6 @@
 ---
 title: invoice view button
 description: Add custom iframe and runtime action buttons to the invoice detail page in the Adobe Commerce Admin.
-edition: paas
 keywords:
   - App Builder
   - Extensibility

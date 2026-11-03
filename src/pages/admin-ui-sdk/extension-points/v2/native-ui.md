@@ -1,7 +1,6 @@
 ---
 title: Native UI form replacements
 description: Replace a supported native Adobe Commerce Admin form with a page from your App Builder application.
-edition: paas
 keywords:
   - App Builder
   - Extensibility

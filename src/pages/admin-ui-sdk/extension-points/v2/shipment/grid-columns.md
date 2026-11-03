@@ -1,7 +1,6 @@
 ---
 title: shipment grid columns
 description: Customize the shipments page in the Adobe Commerce Admin.
-edition: paas
 keywords:
   - App Builder
   - Extensibility

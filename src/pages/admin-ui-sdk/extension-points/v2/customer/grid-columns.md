@@ -1,7 +1,6 @@
 ---
 title: customer grid columns
 description: Customize the customers page in the Adobe Commerce Admin.
-edition: paas
 keywords:
   - App Builder
   - Extensibility

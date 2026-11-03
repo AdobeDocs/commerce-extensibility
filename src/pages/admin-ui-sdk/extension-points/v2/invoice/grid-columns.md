@@ -1,7 +1,6 @@
 ---
 title: invoice grid columns
 description: Customize the invoices page in the Adobe Commerce Admin.
-edition: paas
 keywords:
   - App Builder
   - Extensibility

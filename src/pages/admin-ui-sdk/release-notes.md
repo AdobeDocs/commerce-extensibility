@@ -12,13 +12,15 @@ keywords:
 
 ### Release date
 
-October 20, 2026
+November 3, 2026
 
 ### Enhancements
 
 * Added [native UI form replacements](extension-points/v2/native-ui.md) to V2. Replace supported native Commerce Admin forms with App Builder pages. Replacements follow the native form's Commerce ACL permissions.
 
 * Added [invoice view buttons](extension-points/v2/invoice/view-button.md) to V2. Add custom buttons to the invoice detail page that open an app page in an iframe or invoke a runtime action.
+
+* Added [credit memo view buttons](extension-points/v2/credit-memo/view-button.md) to V2. Add custom buttons to the credit memo detail page that open an app page in an iframe or invoke a runtime action.
 
 * Added [newsletter subscribers grid columns](extension-points/v2/newsletter/grid-columns.md) to V2. Add custom columns to the Newsletter Subscribers grid.
 
@@ -27,6 +29,10 @@ October 20, 2026
 ### Bug fixes
 
 * Fixed ACL checks for app extension points. When a dedicated permission resource is defined for an extension point, Commerce checks that resource. Otherwise, Commerce checks the shared **Admin App Permissions** resource, previously named **Selected Extensions**.
+
+* Resolved extension URLs from the App Registry instead of accepting client-provided URLs.
+
+* Fixed stored cross-site scripting (XSS) through the Admin UI SDK selected workspace.
 
 ## Version 5.0.0
 

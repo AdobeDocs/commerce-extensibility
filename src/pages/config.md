@@ -170,6 +170,7 @@
         - [Migration from V1](/admin-ui-sdk/extension-points/v2/migration-from-v1.md)
         - [credit memo](/admin-ui-sdk/extension-points/v2/credit-memo/index.md)
             - [grid columns](/admin-ui-sdk/extension-points/v2/credit-memo/grid-columns.md)
+            - [view button](/admin-ui-sdk/extension-points/v2/credit-memo/view-button.md)
         - [customer](/admin-ui-sdk/extension-points/v2/customer/index.md)
             - [grid columns](/admin-ui-sdk/extension-points/v2/customer/grid-columns.md)
             - [mass action](/admin-ui-sdk/extension-points/v2/customer/mass-action.md)

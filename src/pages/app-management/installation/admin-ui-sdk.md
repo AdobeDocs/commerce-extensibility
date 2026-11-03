@@ -1,6 +1,6 @@
 ---
 title: Admin UI SDK configuration
-description: Configure the Admin UI SDK menu, grid columns, mass actions, order and invoice view buttons, and native UI form replacements in the app.commerce.config file for App Management
+description: Configure the Admin UI SDK menu, grid columns, mass actions, order, invoice, and credit memo view buttons, and native UI form replacements in the app.commerce.config file for App Management
 keywords:
   - App Builder
   - Extensibility
@@ -17,10 +17,10 @@ At a high level, it is the top-level config block for declaring:
 * Menu entries
 * Grid columns
 * Mass actions
-* Order and invoice view buttons
+* Order, invoice, and credit memo view buttons
 * Native UI form replacements
 
-Admin UI SDK V2 handles registration automatically. Unlike V1, there is no `registration` action to hand-author. `commerce/backend-ui/2` reads the registration directly from the generated `app-config` runtime action. When `adminUi` is defined, the `init` and `generate all` commands automatically wire up the extension point, including the `pre-app-build` hook and the `workerProcess` declarations in `ext.config.yaml`. View-based features (a menu, a `view` mass action, a `view` order or invoice view button, or a native UI form replacement) also get a minimal `web-src/` scaffold the first time they're added, using `.tsx` files for TypeScript configs and `.jsx` files otherwise. Implement the replacement page itself in your app.
+Admin UI SDK V2 handles registration automatically. Unlike V1, there is no `registration` action to hand-author. `commerce/backend-ui/2` reads the registration directly from the generated `app-config` runtime action. When `adminUi` is defined, the `init` and `generate all` commands automatically wire up the extension point, including the `pre-app-build` hook and the `workerProcess` declarations in `ext.config.yaml`. View-based features (a menu, a `view` mass action, a `view` order, invoice, or credit memo view button, or a native UI form replacement) also get a minimal `web-src/` scaffold the first time they're added, using `.tsx` files for TypeScript configs and `.jsx` files otherwise. Implement the replacement page itself in your app.
 
 The `adminUi` config block requires `@adobe/aio-commerce-lib-app` version 1.8.0 or later. Its schema (menu, grid columns, mass actions, order view buttons) became API-stable in version 1.9.0.
 
@@ -416,6 +416,41 @@ Iframe pages read the invoice ID with `useInvoiceViewButtonContext()` from `@ado
 
 See [Invoice view button](../../admin-ui-sdk/extension-points/v2/invoice/view-button.md) for the full parameter reference, iframe example, worker contract, and ACL guidance.
 
+## Add credit memo view buttons
+
+Declare buttons for the credit memo detail page under `adminUi.creditMemo.viewButtons`. As with order and invoice buttons, `type: "view"` opens an iframe and `type: "worker"` invokes a runtime action:
+
+```js
+adminUi: {
+  creditMemo: {
+    viewButtons: [
+      {
+        id: "credit-memo-details",
+        label: "Credit memo details",
+        type: "view",
+        path: "#/credit-memo-details",
+        title: "Custom credit memo details",
+        sortOrder: 100,
+      },
+      {
+        id: "send-credit-memo",
+        label: "Send credit memo",
+        type: "worker",
+        runtimeAction: "credit-memo/send",
+        timeout: 15,
+        confirm: { message: "Send this credit memo?" },
+      },
+    ],
+  },
+}
+```
+
+Credit memo view buttons use the same common fields and variant restrictions as invoice view buttons, with an optional `title` supported only on `view` buttons. IDs must be unique after Commerce ID sanitization.
+
+Iframe pages read the credit memo ID with `useCreditMemoViewButtonContext()` from `@adobe/aio-commerce-lib-admin-ui/web` and complete the flow with `useHostConnection()`. Worker handlers use `parseCreditMemoViewButtonRequest`, `okCreditMemoViewButtonResponse`, and `creditMemoViewButtonErrorResponse` from `@adobe/aio-commerce-lib-admin-ui/credit-memo-view-buttons`. Worker requests require `requestId`, `id`, and `creditMemoId`.
+
+See [Credit memo view button](../../admin-ui-sdk/extension-points/v2/credit-memo/view-button.md) for the full parameter reference, iframe example, worker contract, and ACL guidance.
+
 ## Replace a native Admin form
 
 Declare native form replacements under `adminUi.nativeUi.replacedPages`. For example, the following configuration replaces the native order creation form:
@@ -445,7 +480,7 @@ See [Native UI form replacements](../../admin-ui-sdk/extension-points/v2/native-
 
 ## ACL-protected extension points
 
-Set `aclProtected: true` on a menu, grid column, mass action, or order or invoice view button to have Commerce generate a per-app ACL resource for that item and add it to the Adobe Commerce User Roles tree. Admins can then grant or deny the resource per role. Users without the resource do not see the item and cannot invoke it.
+Set `aclProtected: true` on a menu, grid column, mass action, or order, invoice, or credit memo view button to have Commerce generate a per-app ACL resource for that item and add it to the Adobe Commerce User Roles tree. Admins can then grant or deny the resource per role. Users without the resource do not see the item and cannot invoke it.
 
 Each resource id follows a hierarchical scheme rooted at the app (derived from `metadata.id`), with a leaf id per protected item. Use the id helpers from `@adobe/aio-commerce-lib-admin-ui` instead of hardcoding the generated string:
 
@@ -457,6 +492,7 @@ Each resource id follows a hierarchical scheme rooted at the app (derived from `
 | Mass action | `getMassActionAclResourceId(metadataId, entity, actionId)` from `/mass-actions` |
 | Order view button | `getOrderViewButtonAclResourceId(metadataId, buttonId)` from `/order-view-buttons` |
 | Invoice view button | `getInvoiceViewButtonAclResourceId(metadataId, buttonId)` from `/invoice-view-buttons` |
+| Credit memo view button | `getCreditMemoViewButtonAclResourceId(metadataId, buttonId)` from `/credit-memo-view-buttons` |
 
 Check the resource from the runtime action handler with `getAdminUiPermissionClient` before serving protected content:
 

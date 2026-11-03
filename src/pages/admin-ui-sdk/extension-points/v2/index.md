@@ -45,7 +45,8 @@ The `adminUi` object is where every extension point in this section is registere
 * [customer](customer/index.md), [order](order/index.md), and [product](product/index.md) &mdash; each accepts `massActions` and `gridColumns`; `order` additionally accepts `viewButtons`.
 * [newsletter](newsletter/index.md) &mdash; accepts `gridColumns`.
 * [invoice](invoice/index.md) &mdash; accepts `gridColumns` and [view buttons](invoice/view-button.md) at `adminUi.invoice.viewButtons`.
-* [credit memo](credit-memo/index.md) and [shipment](shipment/index.md) &mdash; each accepts `gridColumns` only.
+* [credit memo](credit-memo/index.md) &mdash; accepts `gridColumns` and [view buttons](credit-memo/view-button.md) at `adminUi.creditMemo.viewButtons`.
+* [shipment](shipment/index.md) &mdash; accepts `gridColumns`.
 
 ## Access control list protection
 
@@ -74,6 +75,7 @@ V2 iframe pages read context through React hooks exported from `@adobe/aio-comme
 | `useMassActionContext()` | Mass action `view` pages | `selectedIds`, the array of grid row IDs the mass action was triggered with. |
 | `useOrderViewButtonContext()` | Order view button `view` pages | `orderId`, the order the button was rendered for. |
 | `useInvoiceViewButtonContext()` | Invoice view button `view` pages | `invoiceId`, read from the page URL. See [Read the iframe context](invoice/view-button.md#read-the-iframe-context). |
+| `useCreditMemoViewButtonContext()` | Credit memo view button `view` pages | `creditMemoId`, read from the page URL. See [Read the iframe context](credit-memo/view-button.md#read-the-iframe-context). |
 | `useNativeUiContext()` | Native UI replacement pages | Optional `customerId` and `storeId` values, preserved as strings or numbers. See [Read the replacement context](native-ui.md#read-the-replacement-context). |
 | `useCommerce()` | Any page | The host (domain) of the Commerce Admin the extension is embedded in. |
 | `useSharedContext()` | Any page | The raw Commerce shared context and host proxy from the guest connection. |
@@ -107,7 +109,7 @@ This approach is valid, but it is less explicit and not recommended. If the comp
 
 ### Interact with the Commerce Admin host
 
-`useHostConnection` returns typed helpers for closing the extension iframe and returning control to the Commerce Admin. Note that these helpers are only useful in flows that need to close the current iframe and navigate back, such as mass actions and order or invoice view buttons.
+`useHostConnection` returns typed helpers for closing the extension iframe and returning control to the Commerce Admin. Note that these helpers are only useful in flows that need to close the current iframe and navigate back, such as mass actions and order, invoice, or credit memo view buttons.
 
 ```tsx
 import { useHostConnection } from "@adobe/aio-commerce-lib-admin-ui/web";
@@ -168,7 +170,7 @@ function CommerceInfo() {
 
 ### Shared context access
 
-`useSharedContext` exposes the raw Commerce shared context and host proxy from the guest connection. Use `useCommerce`, `useMassActionContext`, `useOrderViewButtonContext`, `useInvoiceViewButtonContext`, `useNativeUiContext`, or `useHostConnection` whenever possible.
+`useSharedContext` exposes the raw Commerce shared context and host proxy from the guest connection. Use `useCommerce`, `useMassActionContext`, `useOrderViewButtonContext`, `useInvoiceViewButtonContext`, `useCreditMemoViewButtonContext`, `useNativeUiContext`, or `useHostConnection` whenever possible.
 
 `useSharedContext` (and the hooks built on it) require the Commerce guest connection. In Experience Cloud Shell or a standalone page, they always return an error.
 

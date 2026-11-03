@@ -16,6 +16,8 @@ November 3, 2026
 
 ### Enhancements
 
+The following enhancements are immediately available for Adobe Commerce on Cloud and on-premises (PaaS) instances. They will be available on Adobe Commerce as a Cloued Service (SaaS) in the near future.
+
 * Added [native UI form replacements](extension-points/v2/native-ui.md) to V2. Replace supported native Commerce Admin forms with App Builder pages. Replacements follow the native form's Commerce ACL permissions.
 
 * Added [invoice view buttons](extension-points/v2/invoice/view-button.md) to V2. Add custom buttons to the invoice detail page that open an app page in an iframe or invoke a runtime action.

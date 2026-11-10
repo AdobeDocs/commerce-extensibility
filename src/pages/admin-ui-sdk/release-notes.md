@@ -16,6 +16,8 @@ November 11, 2026
 
 ### Enhancements
 
+* Added [return view buttons](extension-points/v2/rma/view-button.md) to V2. Add custom buttons to return detail pages that open an app page in an iframe or invoke a runtime action.
+
 * Added `return.create` to [native UI form replacements](extension-points/v2/native-ui.md#supported-targets). Replace the **New Return** form with an App Builder page.
 
 * Added [failed-request retention](configuration.md#failed-request-retention) for no-iframe mass actions and view buttons. Configure how long failed requests are retained, independently of database logs.

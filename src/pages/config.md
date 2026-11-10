@@ -190,6 +190,8 @@
         - [product](/admin-ui-sdk/extension-points/v2/product/index.md)
             - [grid columns](/admin-ui-sdk/extension-points/v2/product/grid-columns.md)
             - [mass action](/admin-ui-sdk/extension-points/v2/product/mass-action.md)
+        - [return](/admin-ui-sdk/extension-points/v2/rma/index.md)
+            - [view button](/admin-ui-sdk/extension-points/v2/rma/view-button.md)
         - [shipment](/admin-ui-sdk/extension-points/v2/shipment/index.md)
             - [grid columns](/admin-ui-sdk/extension-points/v2/shipment/grid-columns.md)
     - [V1 Extension points](/admin-ui-sdk/extension-points/index.md)

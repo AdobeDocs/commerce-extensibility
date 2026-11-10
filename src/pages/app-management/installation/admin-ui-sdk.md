@@ -19,7 +19,7 @@ The `adminUi` configuration supports the following extension points:
 * Menu entries
 * Grid columns
 * Mass actions
-* Order, invoice, and credit memo view buttons
+* Order, invoice, credit memo, and return view buttons
 * Native UI form replacements
 
 Admin UI SDK V2 handles registration automatically. Unlike V1, there is no `registration` action to hand-author. `commerce/backend-ui/2` reads the registration directly from the generated `app-config` runtime action. When `adminUi` is defined, the `init` and `generate all` commands automatically wire up the extension point, including the `pre-app-build` hook and the `workerProcess` declarations in `ext.config.yaml`. View-based features (a menu, a `view` mass action, a `view` order, invoice, or credit memo view button, or a native UI form replacement) also get a minimal `web-src/` scaffold the first time they're added, using `.tsx` files for TypeScript configs and `.jsx` files otherwise. Implement the replacement page itself in your app.
@@ -612,6 +612,14 @@ Iframe pages read the credit memo ID with `useCreditMemoViewButtonContext()` fro
 
 See [Credit memo view button](../../admin-ui-sdk/extension-points/v2/credit-memo/view-button.md) for the full parameter reference, iframe example, worker contract, and ACL guidance.
 
+## Add return view buttons
+
+Declare return (RMA) detail-page buttons under `adminUi.rma.viewButtons`. Use `type: "view"` with a frontend `path` or `type: "worker"` with a `runtimeAction`. Returns support view buttons only, not grid columns or mass actions.
+
+Iframe pages use `useRmaViewButtonContext()` from `@adobe/aio-commerce-lib-admin-ui/web` to read `data.rmaId`. Worker handlers use `parseRmaViewButtonRequest`, `okRmaViewButtonResponse`, and `rmaViewButtonErrorResponse` from `@adobe/aio-commerce-lib-admin-ui/rma-view-buttons`. The parser normalizes the incoming request to `{ requestId, id, rmaId }`.
+
+See [Return view button](../../admin-ui-sdk/extension-points/v2/rma/view-button.md) for configuration examples, parameters, and ACL guidance.
+
 ## Replace a native Admin form
 
 Declare native form replacements under `adminUi.nativeUi.replacedPages`. For example, the following configuration replaces the native order creation form:
@@ -661,6 +669,7 @@ Each resource id follows a hierarchical scheme rooted at the app (derived from `
 | Order view button | `getOrderViewButtonAclResourceId(metadataId, buttonId)` from `/order-view-buttons` |
 | Invoice view button | `getInvoiceViewButtonAclResourceId(metadataId, buttonId)` from `/invoice-view-buttons` |
 | Credit memo view button | `getCreditMemoViewButtonAclResourceId(metadataId, buttonId)` from `/credit-memo-view-buttons` |
+| Return view button | `getRmaViewButtonAclResourceId(metadataId, buttonId)` from `/rma-view-buttons` |
 
 See the [Admin UI SDK V2 extension points](../../admin-ui-sdk/extension-points/v2/index.md) for the full list of V2 supported extension points.
 

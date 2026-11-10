@@ -2,8 +2,21 @@
 title: What's new
 description: This section contains the changes made in the last 60 days. We exclude
   all minor updates, such as copy editing, from this list.
-updated: Mon Nov 2 11:58:52 2026
+updated: Tue Nov 10 13:37:58 2026
 entries:
+- description: 'Added support for the following [V2 extension points](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/extension-points/v2/):
+    invoice and credit view buttons, newsletter subscriber grid columns, and native
+    UI form replacements.'
+  versions: ''
+  type: major-update, new-topic, release-notes
+  date: '2026-11-03'
+  link: https://github.com/AdobeDocs/commerce-extensibility/pull/617
+  merge_commit: f6aa1f8ac2d1e12a2b19485bc18ea9a1c95b1fc2
+  contributor: asalloum5
+  labels:
+  - major-update
+  - new-topic
+  - release-notes
 - description: Updated the [App submission guidelines](https://developer.adobe.com/commerce/extensibility/app-development/app-submission-guidelines)
     to include Adobe Commerce Optimizer environments.
   versions: ''

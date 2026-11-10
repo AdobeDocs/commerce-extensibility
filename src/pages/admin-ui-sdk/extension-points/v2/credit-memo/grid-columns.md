@@ -8,7 +8,9 @@ keywords:
 
 # credit memo grid columns
 
-The `credit memo grid columns` extension point adds columns to the grid on the **Sales** > **Credit Memos** page in the Adobe Commerce Admin. It calls a `runtimeAction` in your App Builder app directly, the same as the [order](../order/grid-columns.md) and [product](../product/grid-columns.md) grid columns extension points.
+The `credit memo grid columns` extension point adds columns to the grid on the **Sales** > **Credit Memos** page in the Adobe Commerce Admin. Configure runtime-action columns under `adminUi.creditMemo.gridColumns.columns`, the same as the [order](../order/grid-columns.md) and [product](../product/grid-columns.md) grid columns extension points.
+
+For columns backed by stored custom attributes instead of a runtime action, use the separate [credit memo custom attribute grid columns](custom-attribute-grid-columns.md) extension point. Both extension points can be used together.
 
 ## Example customization
 

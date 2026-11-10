@@ -85,7 +85,9 @@ For the app UI entry point and page setup, see [Develop the Admin UI](#develop-t
 
 ## Add grid columns
 
-You can add custom columns to order, product, customer, invoice, credit memo, or shipment grids. Each grid's columns are fetched by a runtime action you implement. The `generate` command derives the `workerProcess` entry from `runtimeAction` automatically:
+You can add custom columns to order, product, customer, invoice, credit memo, or shipment grids. Columns declared under `gridColumns` are fetched by a runtime action you implement. The `generate` command derives the `workerProcess` entry from `runtimeAction` automatically:
+
+Credit Memo also supports the separate [custom attribute grid columns](../../admin-ui-sdk/extension-points/v2/credit-memo/custom-attribute-grid-columns.md) extension point under `adminUi.creditMemo.customAttributeGridColumns.columns`, with optional boolean and text filters. Keep these separate from `gridColumns.columns`. Attribute-only registrations need no runtime action; the parameter tables below describe runtime-action columns.
 
 ```js
 adminUi: {

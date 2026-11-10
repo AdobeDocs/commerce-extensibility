@@ -44,7 +44,7 @@ The `adminUi` object is where every extension point in this section is registere
 * [customer](customer/index.md), [order](order/index.md), and [product](product/index.md) &mdash; each accepts `massActions` and `gridColumns`; `order` additionally accepts `viewButtons`.
 * [newsletter](newsletter/index.md) &mdash; accepts `gridColumns`.
 * [invoice](invoice/index.md) &mdash; accepts `gridColumns` and [view buttons](invoice/view-button.md) at `adminUi.invoice.viewButtons`.
-* [credit memo](credit-memo/index.md) &mdash; accepts `gridColumns` and [view buttons](credit-memo/view-button.md) at `adminUi.creditMemo.viewButtons`.
+* [credit memo](credit-memo/index.md) &mdash; accepts runtime-action `gridColumns`, [custom attribute grid columns](credit-memo/custom-attribute-grid-columns.md) in `customAttributeGridColumns`, and [view buttons](credit-memo/view-button.md) at `adminUi.creditMemo.viewButtons`.
 * [shipment](shipment/index.md) &mdash; accepts `gridColumns`.
 
 ## Access control list protection

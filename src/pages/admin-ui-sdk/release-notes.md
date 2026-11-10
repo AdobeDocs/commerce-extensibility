@@ -8,6 +8,24 @@ keywords:
 
 # Admin UI SDK release notes
 
+## Version 5.2.0
+
+### Release date
+
+November 11, 2026
+
+### Enhancements
+
+* Added `return.create` to [native UI form replacements](extension-points/v2/native-ui.md#supported-targets). Replace the **New Return** form with an App Builder page.
+
+* Added [failed-request retention](configuration.md#failed-request-retention) for no-iframe mass actions and view buttons. Configure how long failed requests are retained, independently of database logs.
+
+* Added [credit memo custom attribute grid columns](extension-points/v2/credit-memo/custom-attribute-grid-columns.md) to V2. Add columns backed by stored custom attributes to the credit memo grid, with optional boolean and text filters.
+
+### Bug fixes
+
+* Restored the legacy service and response contract for `GET /V1/adminuisdk/orderviewbutton/:request_id` after failed requests were migrated to shared view-button storage. The endpoint returns only order-related failures and retains its existing ACL.
+
 ## Version 5.1.0
 
 ### Release date

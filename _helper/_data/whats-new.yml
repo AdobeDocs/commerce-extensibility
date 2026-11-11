@@ -1,7 +1,7 @@
 ---
 title: What's new
-description: This section contains the changes made in the last 60 days. We exclude
-  all minor updates, such as copy editing, from this list.
+description: This section contains the changes made in the last 60 days. Minor
+  updates, such as copy editing, are excluded from this list.
 updated: Tue Nov 10 13:37:58 2026
 entries:
 - description: 'Added support for the following [V2 extension points](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/extension-points/v2/):

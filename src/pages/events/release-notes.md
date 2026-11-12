@@ -12,6 +12,24 @@ These release notes describe the latest version of Adobe I/O Events for Adobe Co
 
 See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io-events-for-adobe-commerce) for upgrade instructions.
 
+## Version 1.24.0
+
+### Release date
+
+November 12, 2026
+
+### Enhancements
+
+* Sensitive data, such as passwords and tokens, is now [masked](module-development.md#mask-sensitive-data-in-event-payloads) in more event payloads, including observer events, resource model events, and values stored as JSON. \<!-- CEXT-6872 --\> \<!-- CEXT-6873 --\>
+
+* Redesigned the **Events List** Admin page, with search and a payload example you can copy. \<!-- CEXT-6999 --\>
+
+* Improved the security of context values used in event fields and rules. \<!-- CEXT-7013 --\>
+
+### Bug fixes
+
+* The `events:info` command now shows the details of event arguments that contain lists of objects. \<!-- CEXT-6874 --\>
+
 ## Version 1.23.0
 
 ### Release date

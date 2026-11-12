@@ -219,6 +219,7 @@ The following table describes webhook logging activity. Each hook can be configu
 | An optional hook is aborted due to reaching the hard timeout limit. | Add error log entry |
 | A required hook is aborted due to reaching the hard timeout limit. | Add error log entry\<br/\>Throw an exception |
 | The execution time of hook exceeds the soft timeout limit. | Add a notice to the error log |
+| An operation from the hook response cannot be applied, for example, because its `path` or `instance` value is not valid. | Add error log entry with the hook name and the reason |
 
 ## Database logging
 

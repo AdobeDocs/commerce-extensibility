@@ -228,9 +228,9 @@ The `Magento\AdobeCommerceEventsClient\Event\PluginPayload\ArgumentPayloadSaniti
 
 | Argument | Description | Default values |
 | --- | --- | --- |
-| `sensitiveKeyFragments` | Masks the scalar value of any key that contains one of the fragments. Nested arrays are sanitized rather than replaced. | `password`, `passwd`, `secret`, `token`, `private_key`, `api_key`, `access_key`, `credential`, `cvv`, `cc_number`, `card_number`, `gift_card_code`, `api_signature`, `license_number`, `insert_key` |
-| `sensitiveKeys` | Masks the scalar value of keys that exactly match one of the values. | `otp`, `cid`, `pin`, `pwd`, `confirmation` |
-| `maskedWholeKeyFragments` | Masks the whole value of any key that contains one of the fragments, even when the value is an array. | `serialized_data`, `config_data`, `workspace_configuration` |
+| `sensitiveKeyFragments` | Masks the scalar value of any key that contains one of the fragments. Nested arrays are sanitized rather than replaced. | `access_key`, `api_key`, `api_signature`, `card_number`, `cc_number`, `credential`, `cvv`, `gift_card_code`, `insert_key`, `license_number`, `passwd`, `password`, `private_key`, `secret`, `token` |
+| `sensitiveKeys` | Masks the scalar value of keys that exactly match one of the values. | `cid`, `confirmation`, `otp`, `pin`, `pwd` |
+| `maskedWholeKeyFragments` | Masks the whole value of any key that contains one of the fragments, even when the value is an array. | `config_data`, `serialized_data`, `workspace_configuration` |
 | `notSensitiveKeys` | Never masks these keys. Use this list to prevent false positives from key fragments. | `rp_token_created_at` |
 
 To customize masking, add items to these arguments in the `etc/di.xml` file of your module. To stop masking a default key, override its item with `xsi:type="null"`. The following example masks keys that contain `ssn` and stops masking the `pin` key:

@@ -9,7 +9,9 @@ keywords:
 
 # Migration assessment development
 
->[!VIDEO](https://video.tv.adobe.com/v/3502483)
+<Embed slots="video" />
+
+https://video.tv.adobe.com/v/3502483
 
 The following sections describe how to migrate existing Adobe Commerce modules, plugins, or customizations based on a completed [Migration Assessment](https://experienceleague.adobe.com/en/docs/commerce/cloud-service/migration/migration-tools/assessment).
 
@@ -62,7 +64,9 @@ After adding any additional context, click **Generate Blueprint** to start the d
 
 ### Review the blueprint
 
->[!VIDEO](https://video.tv.adobe.com/v/3502479)
+<Embed slots="video" />
+
+https://video.tv.adobe.com/v/3502479s
 
 Once you confirm the pre-loaded assessment context, Commerce Developer Agent uses that context to prepare a blueprint. During this step, review the planning view for:
 

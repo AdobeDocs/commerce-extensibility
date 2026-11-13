@@ -48,6 +48,7 @@ MD033:
     - InlineAlert
     - GetCredential
     - Details
+    - Embed
 
 # MD034/no-bare-urls - Bare URL used
 MD034: false

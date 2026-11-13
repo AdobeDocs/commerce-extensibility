@@ -1,9 +1,20 @@
 ---
 title: What's new
-description: This section contains the changes made in the last 60 days. Minor
-  updates, such as copy editing, are excluded from this list.
-updated: Tue Nov 10 13:37:58 2026
+description: This section contains the changes made in the last 60 days. Minor updates,
+  such as copy editing, are excluded from this list.
+updated: Fri Nov 13 15:30:35 2026
 entries:
+- description: Released [webhooks 1.21.0](https://developer.adobe.com/commerce/extensibility/webhooks/release-notes/)
+    and [eventing 1.24.0]( https://developer.adobe.com/commerce/extensibility/events/release-notes/)
+  versions: ''
+  type: major-update, release-notes
+  date: '2026-11-12'
+  link: https://github.com/AdobeDocs/commerce-extensibility/pull/629
+  merge_commit: 6658b4ac63ee8235fb6773bd487aa651c6049b0d
+  contributor: oshmyheliuk
+  labels:
+  - major-update
+  - release-notes
 - description: 'Added support for the following [V2 extension points](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/extension-points/v2/):
     invoice and credit view buttons, newsletter subscriber grid columns, and native
     UI form replacements.'

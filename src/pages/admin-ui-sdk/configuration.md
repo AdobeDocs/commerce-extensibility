@@ -38,6 +38,16 @@ Navigate to **System** > Admin UI SDK > **Admin UI SDK Logs** to check the saved
 
 ![Admin UI SDK Logs screen](../images/admin-ui-sdk/admin-ui-sdk-logs.png)
 
+## Failed request retention
+
+The Admin UI SDK provides a retention setting for failed no-iframe mass-action and view-button requests, including order, invoice, and credit memo view-button failures.
+
+Navigate to **Stores** > **Configuration** > **Adobe Services** > **Admin UI SDK** > **Failed request retention**. Set **Failed request retention period (days)** to the number of days to keep failed requests. The default is **3** days, and the minimum is **1** day. This setting is independent of database log retention.
+
+![Admin UI SDK failed request retention configuration](../images/admin-ui-sdk/configuration/failed-request-retention.png)
+
+A daily cron job deletes timestamped failures older than the configured period. Records without a timestamp are retained. Once deleted, a failure can no longer be retrieved through its [failed-request API](api.md). Actual deletion depends on Commerce cron running successfully.
+
 ## Local testing
 
 <Edition slots="text" backgroundcolor="blue" />

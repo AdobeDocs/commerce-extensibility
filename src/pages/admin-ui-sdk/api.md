@@ -74,7 +74,7 @@ curl -X GET \
 
 <InlineAlert variant="warning" slots="text" />
 
-The order-specific `GET V1/adminuisdk/orderviewbutton/<requestId>` endpoint is deprecated. Use [Get a view-button failed request](#get-a-view-button-failed-request) for order, invoice, and credit memo failures. The legacy endpoint remains available with its existing service and response contract and ACL, and returns only order-related failures.
+The order-specific `GET V1/adminuisdk/orderviewbutton/<requestId>` endpoint is deprecated. Use [Get a view-button failed request](#view-buttons-without-iframes) for order, invoice, and credit memo failures. The legacy endpoint remains available with its existing service and response contract and ACL, and returns only order-related failures.
 
 When an order view button `displayIframe` parameter is set to false, you must account for additional factors.
 

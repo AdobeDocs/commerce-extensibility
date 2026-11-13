@@ -21,6 +21,8 @@ The following configuration adds a boolean-filtered **Appeasement** column and a
   "adminUi": {
     "creditMemo": {
       "customAttributeGridColumns": {
+        "label": "Credit memo custom attributes",
+        "description": "Adds custom attribute columns to the credit memo grid",
         "columns": [
           {
             "id": "appeasement",
@@ -46,6 +48,8 @@ The following configuration adds a boolean-filtered **Appeasement** column and a
 To display an attribute without a filter, omit its `filter` object.
 
 ## Parameters
+
+The `customAttributeGridColumns` object's `label` and `description` identify the set of columns in App Management during installation and upgrades. They are separate from each column's display label.
 
 Declare these fields on each entry in `customAttributeGridColumns.columns`:
 
@@ -76,6 +80,8 @@ This extension point can be used independently or alongside [credit memo grid co
         ]
       },
       "customAttributeGridColumns": {
+        "label": "Credit memo custom attributes",
+        "description": "Adds custom attribute columns to the credit memo grid",
         "columns": [
           {
             "id": "appeasement",

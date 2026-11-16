@@ -11,13 +11,13 @@ The payload for a hook can be large, but in many cases you only need to transmit
 
 Defining the hook requires knowledge of the structure of the original event and the requirements of the remote call. You can use the following methods to determine the structure of the original event:
 
+* View the list of supported webhook methods by going to **System** > Webhooks > **Webhooks List** in the Admin. Webhook methods are grouped by module, and you can search by module or webhook method name. Click a webhook method name to display a schema example of its payload, which you can copy as JSON. In PaaS environments, this page is available in Adobe Commerce Webhooks 1.21.0 and later.
+
 * [PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
    * Run the [`bin/magento webhooks:list:all` command](commands.md#return-a-list-of-supported-webhook-event-names) to return a list of all supported webhooks methods. Then run the [`bin/magento webhooks:info <webhook-name>` command](commands.md#display-the-payload-of-a-webhook) to return the payload of the specified webhook method.
 
 * [SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
-
-   * View the list supported webhook methods by going to **System** > Webhooks > **Webhooks List** in the Admin. Then click on a webhook method name to display its default contents.
 
    * Call the `GET /V1/webhooks/supportedList` [REST endpoint](api.md#get-supported-webhooks-for-saas).
 
@@ -890,7 +890,10 @@ Active: Yes
                 "price": "125.0000",
                 "product": {
                     "name": "Simple product 3",
-                    "customer_group_id": "0"
+                    "customer_group_id": "0",
+                    "attributes": {
+                        "url_key": "simple-product-3"
+                    }
                 }
             },
             {
@@ -898,7 +901,10 @@ Active: Yes
                 "price": "123.0300",
                 "product": {
                     "name": "Simple product 22",
-                    "customer_group_id": "0"
+                    "customer_group_id": "0",
+                    "attributes": {
+                        "url_key": "simple-product-22"
+                    }
                 }
             },
             {
@@ -906,11 +912,63 @@ Active: Yes
                 "price": "124.0400",
                 "product": {
                     "name": "Simple product Demo Product 2",
-                    "customer_group_id": "0"
+                    "customer_group_id": "0",
+                    "attributes": {
+                        "url_key": "simple-product-2"
+                    }
                 }
             }
         ]
     }
+}
+```
+
+#### Product attributes
+
+Products returned by a context method often do not have all of their attributes loaded. When a field filter contains a `product.attributes` path, Commerce loads the requested attribute values for each product in the result before the filter is applied. The product is identified by the `sku` of the item or of the product. If the item contains a `store_id` value, attribute values are loaded for that store view. This functionality is available in Adobe Commerce Webhooks 1.21.0 and later.
+
+* `product.attributes.<attribute_code>` adds only the specified attributes. You can specify multiple attributes in the same filter.
+* `product.attributes` without an attribute code adds all product attributes that have values.
+* `product.attributes.category_ids` adds the IDs of the categories assigned to the product.
+
+Attribute values are returned as they are displayed on the storefront. For example, the values of dropdown attributes, such as `color`, are returned as option labels instead of option IDs. Attributes that do not exist or have no value for the product are omitted.
+
+<CodeBlock slots="heading, code" repeat="2" languages="XML, YAML" />
+
+##### webhooks.xml (PaaS)
+
+```xml
+<fields>
+    <field name="items" source="context_checkout_session.get_quote.get_all_visible_items[sku,product.attributes.color,product.attributes.manufacturer,product.attributes.category_ids]" />
+</fields>
+```
+
+##### Admin (SaaS)
+
+```yaml
+Hook Fields
+
+Name: items
+Source: context_checkout_session.get_quote.get_all_visible_items[sku,product.attributes.color,product.attributes.manufacturer,product.attributes.category_ids]
+Active: Yes
+```
+
+##### Result
+
+```json
+{
+    "items": [
+        {
+            "sku": "simple-product-1",
+            "product": {
+                "attributes": {
+                    "color": "Red",
+                    "manufacturer": "Acme",
+                    "category_ids": ["3", "5"]
+                }
+            }
+        }
+    ]
 }
 ```
 

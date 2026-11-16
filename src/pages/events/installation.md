@@ -99,6 +99,12 @@ Use the following procedure to update minor or patch versions of Adobe I/O Event
    composer update magento/commerce-eventing --with-dependencies
    ```
 
+1. Regenerate the `AdobeCommerceEvents` module so that the generated plugins include changes from the new version, such as masking of sensitive values in event payloads:
+
+   ```bash
+   bin/magento events:generate:module
+   ```
+
 1. Upgrade Commerce:
 
    ```bash

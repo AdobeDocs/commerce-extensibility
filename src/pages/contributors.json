@@ -41,7 +41,7 @@
       "avatars": [
         "https://avatars.githubusercontent.com/u/18550571?v=4"
       ],
-      "lastUpdated": "10/9/2026"
+      "lastUpdated": "11/12/2026"
     },
     {
       "page": "/_includes/conditional-event",
@@ -93,9 +93,10 @@
     {
       "page": "/_includes/templated/whats-new",
       "avatars": [
-        "https://avatars.githubusercontent.com/u/12731225?v=4"
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
+        "https://avatars.githubusercontent.com/u/48562208?v=4"
       ],
-      "lastUpdated": "11/3/2026"
+      "lastUpdated": "11/11/2026"
     },
     {
       "page": "/_includes/webhook-auth",
@@ -843,7 +844,7 @@
       "avatars": [
         "https://avatars.githubusercontent.com/u/98363870?v=4"
       ],
-      "lastUpdated": "8/28/2026"
+      "lastUpdated": "11/13/2026"
     },
     {
       "page": "/developer-agent/best-practices",
@@ -865,8 +866,10 @@
     },
     {
       "page": "/developer-agent/deployment",
-      "avatars": [],
-      "lastUpdated": "8/28/2026"
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/98363870?v=4"
+      ],
+      "lastUpdated": "11/13/2026"
     },
     {
       "page": "/developer-agent/dropins-mcp-server",
@@ -881,14 +884,14 @@
       "avatars": [
         "https://avatars.githubusercontent.com/u/98363870?v=4"
       ],
-      "lastUpdated": "8/28/2026"
+      "lastUpdated": "11/13/2026"
     },
     {
       "page": "/developer-agent/integrations",
       "avatars": [
         "https://avatars.githubusercontent.com/u/98363870?v=4"
       ],
-      "lastUpdated": "8/28/2026"
+      "lastUpdated": "11/13/2026"
     },
     {
       "page": "/developer-agent/new-development",
@@ -1083,13 +1086,13 @@
     {
       "page": "/events/installation",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/18550571?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/47368809?v=4",
-        "https://avatars.githubusercontent.com/u/18550571?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4"
       ],
-      "lastUpdated": "5/19/2026"
+      "lastUpdated": "11/12/2026"
     },
     {
       "page": "/events/journaling-tutorial/",
@@ -1127,14 +1130,14 @@
     {
       "page": "/events/module-development",
       "avatars": [
-        "https://avatars.githubusercontent.com/u/12731225?v=4",
-        "https://avatars.githubusercontent.com/u/18550571?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
+        "https://avatars.githubusercontent.com/u/18550571?v=4",
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/47368809?v=4",
         "https://avatars.githubusercontent.com/u/17369548?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4"
       ],
-      "lastUpdated": "5/19/2026"
+      "lastUpdated": "11/12/2026"
     },
     {
       "page": "/events/project-setup",
@@ -1154,7 +1157,7 @@
         "https://avatars.githubusercontent.com/u/47368809?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4"
       ],
-      "lastUpdated": "10/9/2026"
+      "lastUpdated": "11/12/2026"
     },
     {
       "page": "/events/troubleshooting",
@@ -1790,11 +1793,11 @@
     {
       "page": "/webhooks/",
       "avatars": [
-        "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/18550571?v=4",
+        "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/47368809?v=4"
       ],
-      "lastUpdated": "9/1/2026"
+      "lastUpdated": "11/12/2026"
     },
     {
       "page": "/webhooks/api",
@@ -1845,7 +1848,7 @@
         "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/47368809?v=4"
       ],
-      "lastUpdated": "10/9/2026"
+      "lastUpdated": "11/12/2026"
     },
     {
       "page": "/webhooks/installation",
@@ -1865,7 +1868,7 @@
         "https://avatars.githubusercontent.com/u/98363870?v=4",
         "https://avatars.githubusercontent.com/u/47368809?v=4"
       ],
-      "lastUpdated": "10/9/2026"
+      "lastUpdated": "11/12/2026"
     },
     {
       "page": "/webhooks/responses",
@@ -1874,7 +1877,7 @@
         "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4"
       ],
-      "lastUpdated": "10/9/2026"
+      "lastUpdated": "11/12/2026"
     },
     {
       "page": "/webhooks/signature-verification",

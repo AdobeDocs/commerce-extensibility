@@ -11,7 +11,9 @@ keywords:
 
 This guide provides everything you need to access and start using the Commerce Developer Agent for the first time.
 
->[!VIDEO](https://video.tv.adobe.com/v/3502440)
+<Embed slots="video" />
+
+https://video.tv.adobe.com/v/3502440s
 
 If you would like to view more videos for the Commerce Developer Agent, see [Video tutorials](https://experienceleague.adobe.com/en/playlists/commerce-developer-agent).
 

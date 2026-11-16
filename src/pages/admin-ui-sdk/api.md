@@ -72,6 +72,10 @@ curl -X GET \
 
 ## Order view button without iFrames
 
+<InlineAlert variant="warning" slots="text" />
+
+The order-specific `GET V1/adminuisdk/orderviewbutton/<requestId>` endpoint is deprecated. Use [Get a view-button failed request](#view-buttons-without-iframes) for order, invoice, and credit memo failures. The legacy endpoint remains available with its existing service and response contract and ACL, and returns only order-related failures.
+
 When an order view button `displayIframe` parameter is set to false, you must account for additional factors.
 
 **Application failures**:
@@ -127,6 +131,83 @@ curl -X GET \
 ### Recommendations
 
 - Event and REST API responses contain the order ID for a request. It is the application's responsibility to monitor updates or failures in Commerce.
+
+## View buttons without iFrames
+
+Retrieves a failed no-iframe view-button request for an order, invoice, or credit memo. Use this generic endpoint instead of the deprecated order-specific endpoint.
+
+`GET V1/adminuisdk/viewbutton/{requestId}`
+
+In V2, no-iframe view buttons use `type: "worker"`. See the [order](extension-points/v2/order/view-button.md), [invoice](extension-points/v2/invoice/view-button.md), and [credit memo](extension-points/v2/credit-memo/view-button.md) references for handler configuration.
+
+### Authorization
+
+The access token must have the `Magento_CommerceBackendUix::adminuisdk_api_get_view_button` ACL resource. In the Admin role permissions tree, this is **Admin UI SDK** > **API** > **GET View Button Failed Request**.
+
+| Header | Value |
+| --- | --- |
+| `Authorization` | ****** |
+| `Accept` | application/json |
+
+### Path parameters
+
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| `storeCode` | string | Yes, for the URL shown | Commerce store-view code, such as `default`. |
+| `requestId` | string | Yes | Request identifier associated with the failed view-button execution, stored as a UUID v4. |
+
+No request body or query parameters are required.
+
+### Successful response
+
+HTTP **200** returns the failed request:
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | string or null | Internal failed-request record ID. |
+| `request_id` | string | Failed request identifier. |
+| `button_id` | string | View-button identifier. |
+| `order_id` | string or null | Order entity ID, when applicable. |
+| `invoice_id` | string or null | Invoice entity ID, when applicable. |
+| `credit_memo_id` | string or null | Credit memo entity ID, when applicable. |
+| `error_status` | string | Status code returned by the failed request. |
+| `error_message` | string | Error details. |
+| `request_timestamp` | string | Timestamp recorded for the failed request. |
+
+Entity ID fields that do not apply are nullable and may be omitted by REST serialization.
+
+Example response for an order failure:
+
+```json
+{
+  "id": "123",
+  "request_id": "550e8400-e29b-41d4-a716-446655440000",
+  "button_id": "send_to_external_system",
+  "order_id": "42",
+  "error_status": "500",
+  "error_message": "External service returned an error.",
+  "request_timestamp": "2026-11-09 12:00:00"
+}
+```
+
+### Example usage
+
+```bash
+curl -X GET \
+    -H "Accept: application/json" \
+    -H "Authorization: ******" \
+    '<ADOBE_COMMERCE_URL>/rest/default/V1/adminuisdk/viewbutton/<REQUEST_ID>'
+```
+
+### Errors
+
+| Status | Meaning |
+| --- | --- |
+| **401 / 403** | Authentication failed or the caller lacks the required ACL permission. |
+| **404** | No failed request exists for the supplied request ID. |
+| **500** | An unexpected server error occurred. |
+
+The current missing-request error message refers to an "order view button" even when this generic endpoint is used for another entity type.
 
 ## Permission Checks
 

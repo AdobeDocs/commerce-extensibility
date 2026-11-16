@@ -56,9 +56,10 @@ App Management tracks each replacement by its `target` during registration, refr
 
 The following targets are currently supported:
 
-| Target | Native form |
-| --- | --- |
-| `order.create` | Create order |
+| Target | Native form | Available starting with Admin UI SDK |
+| --- | --- | --- |
+| `order.create` | Create order | 5.1.0 |
+| `return.create` | New Return | 5.2.0 |
 
 Targets not listed above fail app configuration validation. Each target must be unique within the app's `replacedPages` array.
 

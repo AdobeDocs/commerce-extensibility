@@ -44,8 +44,9 @@ The `adminUi` object is where every extension point in this section is registere
 * [customer](customer/index.md), [order](order/index.md), and [product](product/index.md) &mdash; each accepts `massActions` and `gridColumns`; `order` additionally accepts `viewButtons`.
 * [newsletter](newsletter/index.md) &mdash; accepts `gridColumns`.
 * [invoice](invoice/index.md) &mdash; accepts `gridColumns` and [view buttons](invoice/view-button.md) at `adminUi.invoice.viewButtons`.
-* [credit memo](credit-memo/index.md) &mdash; accepts `gridColumns` and [view buttons](credit-memo/view-button.md) at `adminUi.creditMemo.viewButtons`.
+* [credit memo](credit-memo/index.md) &mdash; accepts runtime-action `gridColumns`, [custom attribute grid columns](credit-memo/custom-attribute-grid-columns.md) in `customAttributeGridColumns`, and [view buttons](credit-memo/view-button.md) at `adminUi.creditMemo.viewButtons`.
 * [shipment](shipment/index.md) &mdash; accepts `gridColumns`.
+* [return](rma/index.md) &mdash; accepts [view buttons](rma/view-button.md) at `adminUi.rma.viewButtons`, not grid columns or mass actions.
 
 ## Access control list protection
 
@@ -75,6 +76,7 @@ V2 iframe pages read context through React hooks exported from `@adobe/aio-comme
 | `useOrderViewButtonContext()` | Order view button `view` pages | `orderId`, the order the button was rendered for. |
 | `useInvoiceViewButtonContext()` | Invoice view button `view` pages | `invoiceId`, read from the page URL. See [Read the iframe context](invoice/view-button.md#read-the-iframe-context). |
 | `useCreditMemoViewButtonContext()` | Credit memo view button `view` pages | `creditMemoId`, read from the page URL. See [Read the iframe context](credit-memo/view-button.md#read-the-iframe-context). |
+| `useRmaViewButtonContext()` | Return view button `view` pages | `rmaId`, read from the page URL. See [Read the iframe context](rma/view-button.md#read-the-iframe-context). |
 | `useNativeUiContext()` | Native UI replacement pages | Optional `customerId` and `storeId` values, preserved as strings or numbers. See [Read the replacement context](native-ui.md#read-the-replacement-context). |
 | `useCommerce()` | Any page | The host (domain) of the Commerce Admin the extension is embedded in. |
 | `useSharedContext()` | Any page | The raw Commerce shared context and host proxy from the guest connection. |

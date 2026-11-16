@@ -46,6 +46,8 @@ The following enhancements are immediately available for Adobe Commerce on Cloud
 
 * Added [newsletter subscribers grid columns](extension-points/v2/newsletter/grid-columns.md) to V2. Add custom columns to the Newsletter Subscribers grid.
 
+* Added the GET V1/adminuisdk/viewbutton/{requestId} endpoint to a failed no-retrieve iframe view-button request for an order, invoice, or credit memo. Because this endpoint can be used for multiple types of buttons, the GET V1/adminuisdk/orderviewbutton/{requestId} has been deprecated. See [View buttons without iFrames for details](api.md#view-buttons-without-iframes).
+
 * Restricted the **Refresh registrations** action to manually configured V1 extensions.
 
 * Updated dependencies, including support for version `1.1.11` of the `@adobe/uix-sdk` dependencies.

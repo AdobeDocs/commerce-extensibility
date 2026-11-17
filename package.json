@@ -80,7 +80,9 @@
       "https://github.com/adobe-commerce/aio-cli-plugin-commerce",
       "https://experienceleaguecommunities.adobe.com/t5/app-builder/ct-p/adobe-app-builder",
       "https://exchange.adobe.com/apps/browse/ec",
-      "https://developer.adobe.com/console"
+      "https://developer.adobe.com/console",
+      "https://www.npmjs.com/package/skills",
+      "https://www.npmjs.com/package/@dropins/ai-tools"
     ]
   }
 }

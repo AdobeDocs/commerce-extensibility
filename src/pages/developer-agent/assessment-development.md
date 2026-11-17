@@ -66,7 +66,7 @@ After adding any additional context, click **Generate Blueprint** to start the d
 
 <Embed slots="video" />
 
-https://video.tv.adobe.com/v/3502479s
+https://video.tv.adobe.com/v/3502479
 
 Once you confirm the pre-loaded assessment context, Commerce Developer Agent uses that context to prepare a blueprint. During this step, review the planning view for:
 

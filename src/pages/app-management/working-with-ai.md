@@ -29,7 +29,7 @@ Use these skills when building a new App Builder application with App Management
 | `commerce-app-business-config` | Adds merchant-configurable settings that appear as fields in the Commerce Admin. |
 | `commerce-app-storage` | Adds persistent, queryable storage backed by App Builder Database Storage. |
 | `commerce-app-admin-ui` | Adds Admin UI extensions, such as grid columns, mass actions, order view buttons, and custom menu entries. |
-| `commerce-app-api-mesh` | Adds an Adobe API Mesh configuration that stitches your app's runtime actions into Commerce's GraphQL schema. |
+| `commerce-app-api-mesh` | Adds an Adobe API Mesh configuration that integrates your app's runtime actions into the Adobe Commerce GraphQL schema. |
 
 ### Installation
 

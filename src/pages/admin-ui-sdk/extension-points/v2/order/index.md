@@ -1,7 +1,6 @@
 ---
 title: Order extension points (V2)
 description: Learn how to make modifications to the Orders page in the Adobe Commerce Admin.
-edition: paas
 keywords:
   - App Builder
   - Extensibility

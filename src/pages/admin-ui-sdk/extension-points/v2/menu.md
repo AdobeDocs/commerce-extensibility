@@ -1,7 +1,6 @@
 ---
 title: menu
 description: Create a new menu that redirects to the App Builder app.
-edition: paas
 keywords:
   - App Builder
   - Extensibility

@@ -51,7 +51,7 @@ Some requirements will differ based on whether you indicated the app was non-dow
 - Installation guide clarity
   - **Prerequisites**: Add clear prerequisites (example: Admin UI SDK must be enabled and configured, as described in [the Admin UI SDK documentation](../admin-ui-sdk/configuration.md#general-configuration)).
 
-      - If the app is compatible with the EDS storefront, include instructions for setup. [Example documentation](https://experienceleague.adobe.com/developer/commerce/storefront/get-started/create-storefront/)
+      - If the app is compatible with the EDS storefront, include instructions for setup. [Example documentation](https://experienceleague.adobe.com/en/tools/commerce-storefront/get-started/create-storefront/)
       - If the app uses a Mesh, provide detailed information on how to configure it according to Adobe guidelines. [Example documentation](https://developer.adobe.com/graphql-mesh-gateway/mesh/basic/create-mesh)
       - If the app uses eventing, provide information about the events used in the project and how to subscribe to them. Example documentation:
          - [Integration starter kit overview](https://github.com/adobe/commerce-integration-starter-kit?tab=readme-ov-file#onboarding)
@@ -59,7 +59,7 @@ Some requirements will differ based on whether you indicated the app was non-dow
       - If the app uses webhooks, provide information on how to create a webhook. [Example documentation](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/SUBMISSION_TEMPLATE.md#configure-webhooks)
   - **Version requirements**: Indicate the required module versions (example: Admin UI SDK minimum version `3.0.0`).
   - **Developer documentation**: Include links to relevant Adobe developer documentation (example: App Builder [getting started guide](https://developer.adobe.com/app-builder/docs/get_started/)).
-  - **PaaS support**: Documentation must include installation steps for PaaS merchants. This means if you are submitting an app for Adobe Commerce as a Cloud Service (SaaS), you also need to support Adobe Commerce on cloud infrastructure (PaaS) and Adobe Commerce on-premises (on-prem).
+  - **PaaS support**: Documentation must include installation steps for PaaS merchants. This means if you are submitting an app for Adobe Commerce as a Cloud Service (SaaS), you also need to support Adobe Commerce on cloud infrastructure (PaaS) and Adobe Commerce on-premises (on-prem). For apps whose functionality depends on the storefront, EDS support with an Adobe Commerce Optimizer (ACO) license satisfies this requirement, and Luma compatibility is not required.
   - **Action scoping**: All runtime actions must be scoped and documented, if they are exposed as webhooks.
   - **PaaS vs SaaS configuration**: Document variables that differ based on Commerce flavor.
     - Explain differences in the structure of the `COMMERCE_BASE_URL` value  if the variable is used (see [Download and configure the integration starter kit](../starter-kit/integration/create-integration.md#download-and-configure-the-integration-starter-kit) for an explanation)
@@ -134,7 +134,7 @@ Some requirements will differ based on whether you indicated the app was non-dow
 - Project cleanup
   - **Unused folders**: Remove any unused or unnecessary folders.
   - **Adobe compliance files**: Do not include any Adobe compliance files, such as `CODE_OF_CONDUCT` or `COPYRIGHT`, that you copied from a starter kit.
-  - **Multi-environment support**: Provide out-of-the-box support for SaaS and PaaS deployments by using configuration or different initialization scripts.
+  - **Multi-environment support**: Provide out-of-the-box support for SaaS and PaaS deployments by using configuration or different initialization scripts. For storefront-dependent apps, EDS support with an ACO license is sufficient, and Luma compatibility is not required.
 
 ### Code review
 

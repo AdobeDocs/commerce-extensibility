@@ -1,7 +1,6 @@
 ---
 title: order view button
 description: Customize the orders page in the Adobe Commerce Admin.
-edition: paas
 keywords:
   - App Builder
   - Extensibility

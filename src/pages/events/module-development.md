@@ -21,7 +21,7 @@ You can use the Commerce Admin or the command line to find supported events and 
 
    ![Events list page](../images/events/event-list.png)
 
-   The left navigation contains a list of enabled modules on your system. Click on a module name to display a list of supported events. When you select an event, the main panel of the Admin displays the event's payload.
+   The left navigation lists the enabled modules on your system. Expand a module to display its supported events, or use the search field to find modules and events by name. When you select an event, the main panel displays a schema example of the event's payload, which you can copy as JSON.
 
 *  The `bin/magento events:list:all` command returns all the detectable supported events in the specified module. Once you know the name of the event, you can use the `events:info` command to return its payload.
 
@@ -213,3 +213,39 @@ The resulting configuration:
     </event>
 </config>
 ```
+
+## Mask sensitive data in event payloads
+
+<Edition slots="text" backgroundcolor="blue" />
+
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
+
+Before Commerce sends an event, it masks the values of payload fields that might contain sensitive data, such as passwords, tokens, and payment card details. Masked values are replaced with `******`. Masking applies to events built from plugin method arguments, observer event data, and resource model events. String values that contain a JSON object or array are decoded and masked using the same rules.
+
+Keys are matched case-insensitively, and non-alphanumeric characters are ignored. For example, `apiKey`, `api_key`, and `API-KEY` are treated as the same key. Keys that name an identifier, such as `payment_token_id` or `paymentTokenId`, are not masked by key fragments. Boolean values are never masked.
+
+The `Magento\AdobeCommerceEventsClient\Event\PluginPayload\ArgumentPayloadSanitizer` class defines the following lists of keys in the `AdobeCommerceEventsClient` module's `di.xml` file:
+
+| Argument | Description | Default values |
+| --- | --- | --- |
+| `sensitiveKeyFragments` | Masks the scalar value of any key that contains one of the fragments. Nested arrays are sanitized rather than replaced. | `access_key`, `api_key`, `api_signature`, `card_number`, `cc_number`, `credential`, `cvv`, `gift_card_code`, `insert_key`, `license_number`, `passwd`, `password`, `private_key`, `secret`, `token` |
+| `sensitiveKeys` | Masks the scalar value of keys that exactly match one of the values. | `cid`, `confirmation`, `otp`, `pin`, `pwd` |
+| `maskedWholeKeyFragments` | Masks the whole value of any key that contains one of the fragments, even when the value is an array. | `config_data`, `serialized_data`, `workspace_configuration` |
+| `notSensitiveKeys` | Never masks these keys. Use this list to prevent false positives from key fragments. | `rp_token_created_at` |
+
+To customize masking, add items to these arguments in the `etc/di.xml` file of your module. To stop masking a default key, override its item with `xsi:type="null"`. The following example masks keys that contain `ssn` and stops masking the `pin` key:
+
+```xml
+<type name="Magento\AdobeCommerceEventsClient\Event\PluginPayload\ArgumentPayloadSanitizer">
+    <arguments>
+        <argument name="sensitiveKeyFragments" xsi:type="array">
+            <item name="ssn" xsi:type="string">ssn</item>
+        </argument>
+        <argument name="sensitiveKeys" xsi:type="array">
+            <item name="pin" xsi:type="null"/>
+        </argument>
+    </arguments>
+</type>
+```
+
+Your module must load after the `Magento_AdobeCommerceEventsClient` module. Add `Magento_AdobeCommerceEventsClient` to the `<sequence>` node of your module's `etc/module.xml` file.

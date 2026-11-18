@@ -72,7 +72,7 @@ The scope tree action supports syncing scopes from Adobe Commerce, setting custo
 
 ### Admin UI SDK registration on `commerce/backend-ui/2`
 
-When [`adminUi`](installation/admin-ui-sdk.md) is defined, Admin UI SDK V2 handles registration automatically. Unlike V1, there is no `registration` action to hand-author. Adobe Commerce reads the registration directly from the `app-config` action described above. `generate` derives any `workerProcess` operations from the `runtimeAction` values in your `adminUi` configuration and keeps them in sync in `src/commerce-backend-ui-2/ext.config.yaml` at build time.
+When [`adminUi`](installation/admin-ui-sdk.md) is defined, Admin UI SDK V2 handles registration automatically. Adobe Commerce reads the registration directly from the `app-config` action described above. The `generate` command derives `workerProcess` operations from the `runtimeAction` values in your `adminUi` configuration and updates them in `src/commerce-backend-ui-2/ext.config.yaml` at build time.
 
 ## Build and deploy
 
@@ -99,6 +99,32 @@ Under **Apps** > **App Management**, each application appears as a card. The lis
 
 Search text and both dropdowns apply together (logical AND). To display the full list again, set **Status** and **Extensibility patterns** back to their **All …** options, and clear the search field.
 
+### Review application details
+
+Open an application's details to review its name, description, and version. The dialog provides two tabs: **Details** and **App config**.
+
+The **Details** tab lists the application's business use cases, including events and custom installation steps. Labels and descriptions help administrators understand what the application adds to Commerce.
+
+![Application Details tab showing event and custom installation business use cases](../images/app-management/app-details.png)
+
+Provide meaningful labels and descriptions in `app.commerce.config` so administrators can understand the application before installing it.
+
+The **App config** tab displays the application configuration as JSON for inspection.
+
+![App config tab displaying the application's JSON configuration](../images/app-management/app-config.png)
+
 ### Acquire App
 
 **Acquire App** opens a new browser tab (or a separate browser view) to [Adobe Exchange](https://exchange.adobe.com/apps/browse/ec), where you can discover Commerce-related marketplace listings and add applications to your Adobe IMS organization. After the app is acquired, approved, and deployed, it appears in App Management for [association and installation](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app).
+
+## Review unassociation
+
+Before confirming **Unassociate**, review the application's listed business use cases. The confirmation dialog identifies components affected by uninstallation, including events and custom installation steps.
+
+![Unassociate confirmation showing the application's events and custom installation steps](../images/app-management/unassociate-app.png)
+
+Cleanup of resources created by custom installation steps depends on the application's uninstall handlers. Review those handlers to determine which resources are removed and which require manual cleanup. See [Customize](installation/customize.md) for installation script guidance.
+
+<InlineAlert variant="info" slots="text"/>
+
+Before unassociating the app, record the installed version and configuration, back up application data, and check each custom step's `uninstall` handler for destructive cleanup and external dependencies. Plan for any service interruption and identify how to restore the application, its settings, and its data. To recover from a failed upgrade, [inspect the failure and retry](upgrade-app.md#retry-a-failed-upgrade).

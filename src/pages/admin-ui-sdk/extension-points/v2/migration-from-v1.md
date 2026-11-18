@@ -1,7 +1,6 @@
 ---
 title: Migration from V1
 description: Learn how version 2 of the Admin UI SDK differs from version 1, and how to migrate your extension.
-edition: paas
 keywords:
   - App Builder
   - Extensibility
@@ -81,7 +80,7 @@ Instead of an API Mesh source, a V2 `gridColumns` registration declares a `runti
 { "requestId": "...", "gridType": "order", "ids": ["000000001", "000000002"] }
 ```
 
-See [Order grid columns](order/grid-columns.md), [Product grid columns](product/grid-columns.md), and [Customer grid columns](customer/grid-columns.md) for the full column schema and a sample runtime action.
+See [Order grid columns](order/grid-columns.md), [Product grid columns](product/grid-columns.md), [Customer grid columns](customer/grid-columns.md), [Invoice grid columns](invoice/grid-columns.md), [Credit memo grid columns](credit-memo/grid-columns.md), and [Shipment grid columns](shipment/grid-columns.md) for the full column schema and a sample runtime action.
 
 ## customFees support is deprecated
 

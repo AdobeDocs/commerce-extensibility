@@ -8,6 +8,78 @@ keywords:
 
 # Admin UI SDK release notes
 
+## Version 5.2.0
+
+### Release date
+
+November 16, 2026
+
+### Enhancements
+
+* Added [return view buttons](extension-points/v2/rma/view-button.md) to V2. Add custom buttons to return detail pages that open an app page in an iframe or invoke a runtime action.
+
+* Added `return.create` to [native UI form replacements](extension-points/v2/native-ui.md#supported-targets). Replace the **New Return** form with an App Builder page.
+
+* Added [failed-request retention](configuration.md#failed-request-retention) for no-iframe mass actions and view buttons. Configure how long failed requests are retained, independently of database logs.
+
+* Added [credit memo custom attribute grid columns](extension-points/v2/credit-memo/custom-attribute-grid-columns.md) to V2. Add columns backed by stored custom attributes to the credit memo grid, with optional boolean and text filters.
+
+### Bug fixes
+
+* Restored the legacy service and response contract for `GET /V1/adminuisdk/orderviewbutton/:request_id` after failed requests were migrated to shared view-button storage. The endpoint returns only order-related failures and retains its existing ACL.
+
+## Version 5.1.0
+
+### Release date
+
+November 3, 2026
+
+### Enhancements
+
+The following enhancements are immediately available for Adobe Commerce on Cloud and on-premises (PaaS) instances. They will be available on Adobe Commerce as a Cloued Service (SaaS) in the near future.
+
+* Added [native UI form replacements](extension-points/v2/native-ui.md) to V2. Replace supported native Commerce Admin forms with App Builder pages. Replacements follow the native form's Commerce ACL permissions.
+
+* Added [invoice view buttons](extension-points/v2/invoice/view-button.md) to V2. Add custom buttons to the invoice detail page that open an app page in an iframe or invoke a runtime action.
+
+* Added [credit memo view buttons](extension-points/v2/credit-memo/view-button.md) to V2. Add custom buttons to the credit memo detail page that open an app page in an iframe or invoke a runtime action.
+
+* Added [newsletter subscribers grid columns](extension-points/v2/newsletter/grid-columns.md) to V2. Add custom columns to the Newsletter Subscribers grid.
+
+* Added the `GET V1/adminuisdk/viewbutton/{requestId}` endpoint to a failed no-retrieve iframe view-button request for an order, invoice, or credit memo. Because this endpoint can be used for multiple types of buttons, the `GET V1/adminuisdk/orderviewbutton/{requestId}` has been deprecated. See [View buttons without iFrames](api.md#view-buttons-without-iframes) for details.
+
+* Restricted the **Refresh registrations** action to manually configured V1 extensions.
+
+* Updated dependencies, including support for version `1.1.11` of the `@adobe/uix-sdk` dependencies.
+
+### Bug fixes
+
+* Fixed ACL checks for app extension points. When a dedicated permission resource is defined for an extension point, Commerce checks that resource. Otherwise, Commerce checks the shared **Admin App Permissions** resource, previously named **Selected Extensions**.
+
+* Resolved extension URLs from the App Registry instead of accepting client-provided URLs.
+
+* Fixed stored cross-site scripting (XSS) through the Admin UI SDK selected workspace.
+
+## Version 5.0.0
+
+### Release date
+
+September 16, 2026
+
+### Enhancements
+
+* Added the [`invoice`](extension-points/v2/invoice/grid-columns.md), [`credit memo`](extension-points/v2/credit-memo/grid-columns.md), and [`shipment`](extension-points/v2/shipment/grid-columns.md) grid columns extension points to V2. Add custom columns to the invoices, credit memos, and shipments grids the same way as the existing [order](extension-points/v2/order/grid-columns.md) and [product](extension-points/v2/product/grid-columns.md) grid columns extension points.
+
+* Added a [`POST` endpoint](api.md#refresh-a-selected-extensions-registrations) to refresh the registrations of a single selected extension by workspace and extension name, without affecting other installed extensions.
+
+* Removed the `order get custom fees` extension point (V1). If your extension registers `customFees`, that registration is no longer read by Commerce. Order total modifications are implemented as a webhook instead; neither V1 nor V2 reads a `customFees` registration going forward. See [customFees support is deprecated](extension-points/v2/migration-from-v1.md#customfees-support-is-deprecated) for the replacement.
+
+### Bug fixes
+
+* Fixed an issue where registering menus from apps deployed to different workspaces could cause a menu item to disappear.
+
+* Fixed a security issue where extension sources and URLs were not validated against a trusted origin before saving extensions or fetching their registrations, which could expose an admin's IMS token to an untrusted origin.
+
 ## Version 4.2.1
 
 ### Release date
@@ -371,7 +443,7 @@ June 28, 2024
   * [`banner notification`](extension-points/banner-notification.md)
   * [`customer grid columns`](extension-points/customer/grid-columns.md)
   * [`customer mass action`](extension-points/customer/mass-action.md)
-  * [`order get custom fees`](extension-points/order/custom-fees.md)
+  * `order get custom fees`
 
 * Mass actions can now be implemented [without an iFrame](api.md#mass-actions-without-iframes).
 

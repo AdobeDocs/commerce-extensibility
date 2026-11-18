@@ -9,6 +9,44 @@ keywords:
 
 These release notes describe the latest version of Adobe Commerce Webhooks.
 
+## Version 1.21.0
+
+### Release date
+
+November 12, 2026
+
+### Enhancements
+
+* The **Webhooks List** Admin page is now available on PaaS, with search and a payload example you can copy. \<!-- CEXT-6999 --\>
+
+* Improved [context fields](hooks.md#product-attributes) to retrieve product attributes. \<!-- ACCS-2216 --\>
+
+* Webhook response operations that fail to apply are now [logged](responses.md#logging). \<!-- CEXT-6875 --\>
+
+* Improved the security of [context values](hooks.md#context-values) used in webhook fields, rules, and headers. \<!-- CEXT-7013 --\>
+
+### Bug fixes
+
+* Webhooks created in the Admin or with the REST API now correctly respect settings, such as **Required**, that are turned off. \<!-- CEXT-6871 --\>
+
+## Version 1.20.0
+
+### Release date
+
+October 9, 2026
+
+### Enhancements
+
+* Improved validation and handling of webhook endpoint URLs. \<!-- CEXT-6737 --\>
+
+* Improved the validation of the `instance` and exception `type` values in [webhook responses](responses.md). \<!-- CEXT-6708 --\>
+
+* Improved the validation of context values used in webhook fields, rules, and headers. \<!-- CEXT-6843 --\>
+
+### Bug fixes
+
+* Regular expression rules that fail to run are now logged as errors. \<!-- CEXT-6817 --\>
+
 ## Version 1.19.0
 
 ### Release date

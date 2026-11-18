@@ -37,6 +37,22 @@ export default defineConfig({
 | `preInstallation` | string | No | Message displayed before installation starts. Maximum 1000 characters. |
 | `postInstallation` | string | No | Message displayed after installation completes. Maximum 1000 characters. |
 
+### Installation experience
+
+Before installation begins, App Management displays the application's business use cases, including configured events and custom installation steps. If `installation.messages.preInstallation` is defined, it appears under **Pre Installation Instructions**.
+
+![Installation review showing pre-installation instructions, business use cases, and the Install button](../../images/app-management/installation-review.png)
+
+After the administrator selects **Install**, the dialog displays installation progress for individual items. Keep the page open until installation finishes: closing or refreshing it might prevent installation from completing correctly.
+
+![Installation in progress showing per-item progress indicators and a warning to keep the page open](../../images/app-management/installation-progress.png)
+
+When installation succeeds, the dialog displays **Successfully Installed** and marks completed items with a check mark.
+
+![Successfully Installed banner with check marks for completed events and custom installation steps](../../images/app-management/installation-success.png)
+
+Use pre-installation instructions to explain prerequisites administrators must complete before selecting **Install**. Use `postInstallation` for any remaining setup required after installation.
+
 ## Custom installation steps
 
 The `customInstallationSteps` field allows you to define custom scripts that run during the application installation process. These scripts are loaded and executed in the order they are defined.
@@ -73,12 +89,14 @@ export default defineConfig({
 | Property | Type | Required | Description |
 |----------|------|----------|-------------|
 | `script` | string | Yes | Path to the script file relative to your project root. Must end with a `.js` or `.ts` extension. |
-| `name` | string | Yes | Display name for the installation step. Maximum 255 characters. |
+| `name` | string | Yes | Display name and stable lifecycle identity for the installation step. Maximum 255 characters. |
 | `description` | string | No | Description of what the step does. Maximum 255 characters. |
 
 <InlineAlert variant="info" slots="text"/>
 
 Two custom installation steps cannot have the same name. Step names must be unique.
+
+Keep the name stable after a step has run. A new name introduces a new migration; changing a completed step's script does not run it again. See [Custom installation steps as migrations](../upgrade-app.md#custom-installation-steps-as-migrations) for upgrade and cleanup behavior.
 
 ### Working with TypeScript
 
@@ -179,6 +197,8 @@ export default defineCustomInstallationStep(async (config, context) => {
 * Scripts **must** use `export default` to export either a handler function or an object with `install`/`uninstall` handlers.
 * Scripts are executed **sequentially** in the order defined, for both installation and uninstallation (uninstall does **not** reverse the order).
 * If any script throws an error, the installation fails and subsequent scripts are not executed.
+* On retry of a failed installation, upgrade, or uninstallation, custom steps recorded as successful are skipped. A failed or interrupted handler can run again, including after a timeout.
+* Make handlers safe to run repeatedly (idempotent): check for resources created by partial execution, and allow cleanup to succeed when resources are already removed. Test retries after failures and interruptions.
 * Scripts have access to the complete app configuration.
 
 After you modify custom installation scripts, you must manually run the `npx aio-commerce-lib-app generate actions` command before building and deploying. This ensures the installation action picks up your changes. For all other `app.commerce.config` updates, build and deploy alone is sufficient, as artifacts are regenerated during pre-app-build.

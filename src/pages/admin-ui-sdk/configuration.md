@@ -20,7 +20,7 @@ The **General configuration** section enables the Admin UI SDK and refreshes reg
 
 The [**Configure eligible extensions**](./eligible-extensions-config.md) button displays a list of extensions that were installed with App Management. It also allows you to configure the eligible extensions that were installed before App Management became the primary installation method.
 
-The **Refresh registrations** button reloads all registrations from the App Builder registry. It is typically used when changes are made to the registration on the App Builder application side or when a new app is added and published, to reflect these changes in the Admin.
+The **Refresh selected extensions** button reloads registrations for manually configured V1 extensions from the App Builder registry. Use it when you change an extension's registration in your App Builder application or publish a new V1 extension. This action does not refresh extensions installed with App Management.
 
 ## Database logging configuration
 
@@ -38,6 +38,16 @@ Navigate to **System** > Admin UI SDK > **Admin UI SDK Logs** to check the saved
 
 ![Admin UI SDK Logs screen](../images/admin-ui-sdk/admin-ui-sdk-logs.png)
 
+## Failed request retention
+
+The Admin UI SDK provides a retention setting for failed no-iframe mass-action and view-button requests, including order, invoice, and credit memo view-button failures.
+
+Navigate to **Stores** > **Configuration** > **Adobe Services** > **Admin UI SDK** > **Failed request retention**. Set **Failed request retention period (days)** to the number of days to keep failed requests. The default is **3** days, and the minimum is **1** day. This setting is independent of database log retention.
+
+![Admin UI SDK failed request retention configuration](../images/admin-ui-sdk/configuration/failed-request-retention.png)
+
+A daily cron job deletes timestamped failures older than the configured period. Records without a timestamp are retained. Once deleted, a failure can no longer be retrieved through its [failed-request API](api.md). Actual deletion depends on Commerce cron running successfully.
+
 ## Local testing
 
 <Edition slots="text" backgroundcolor="blue" />
@@ -46,7 +56,7 @@ Navigate to **System** > Admin UI SDK > **Admin UI SDK Logs** to check the saved
 
 <InlineAlert variant="info" slots="text" />
 
-The local testing feature is available only for PaaS versions of Adobe Commerce. On Adobe Commerce as a Cloud Service, you must ensure the **Enable local testing** field is set to **No**.
+The local testing feature is available only for PaaS versions of Adobe Commerce and [V1 extension points](./extension-points/index.md). On Adobe Commerce as a Cloud Service, you must ensure the **Enable local testing** field is set to **No**.
 
 When you enable the local service, all calls are automatically redirected to the local server, instead of connecting to Adobe's App Registry. The values you specify must match the contents of your local `server.js` file.
 

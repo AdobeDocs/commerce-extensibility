@@ -1,7 +1,6 @@
 ---
 title: mass action
 description: Customize the customer grid mass action in the Adobe Commerce Admin.
-edition: paas
 keywords:
   - App Builder
   - Extensibility

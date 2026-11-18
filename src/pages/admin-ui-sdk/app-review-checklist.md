@@ -23,7 +23,7 @@ These checklists cover only Admin UI SDK integration. Business configuration, ev
 
 ## V2 Extension points
 
-V2 extensions use App Management. They declare extension points in `app.commerce.config` instead of a V1 `ExtensionRegistration` component or a custom registration action. Review the files and code below; a running Commerce environment is not required.
+V2 extensions implement App Management. They declare extension points in an `app.commerce.config` file instead of a V1 `ExtensionRegistration` component or a custom registration action. Review the files and code below; a running Commerce environment is not required.
 
 | Category | Description | Required? |
 |---|---|---|

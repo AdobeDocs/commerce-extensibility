@@ -6,7 +6,7 @@ keywords:
   - Extensibility
 ---
 
-# Admin UI SDK App Review Checklist
+# Admin UI SDK App review checklist
 
 Use the checklist for the extension point your app implements:
 
@@ -15,7 +15,7 @@ Use the checklist for the extension point your app implements:
 
 <InlineAlert variant="warning" slots="text" />
 
-V1 extension points are deprecated. Use V2 for new extensions and see [Migration from V1](extension-points/v2/migration-from-v1.md) when updating an existing extension.
+V1 extension points are deprecated. New extensions must use V2. See [Migration from V1](extension-points/v2/migration-from-v1.md) when updating an existing extension.
 
 Both checklists supplement the [App submission guidelines](../app-development/app-submission-guidelines.md), which cover documentation, security, dependencies, and submission assets. Complete required items and apply preferred items where relevant. Review conditional requirements only for the capabilities your app implements.
 

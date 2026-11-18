@@ -13,7 +13,7 @@ This guide provides everything you need to access and start using the Commerce D
 
 <Embed slots="video" />
 
-https://video.tv.adobe.com/v/3502440s
+https://video.tv.adobe.com/v/3502440
 
 If you would like to view more videos for the Commerce Developer Agent, see [Video tutorials](https://experienceleague.adobe.com/en/playlists/commerce-developer-agent).
 

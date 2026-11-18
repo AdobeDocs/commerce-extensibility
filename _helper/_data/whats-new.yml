@@ -20,7 +20,7 @@ entries:
   - new-topic
   - release-notes
 - description: Released [Adobe Commerce Webhooks 1.21.0](https://developer.adobe.com/commerce/extensibility/webhooks/release-notes)
-    and [Adobe I/O Events for Adobe Commerce 1.24.0]( https://developer.adobe.com/commerce/extensibility/events/release-notes).
+    and [Adobe I/O Events for Adobe Commerce 1.24.0](https://developer.adobe.com/commerce/extensibility/events/release-notes).
   versions: ''
   type: major-update, release-notes
   date: '2026-11-12'

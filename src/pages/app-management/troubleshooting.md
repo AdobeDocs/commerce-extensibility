@@ -62,7 +62,7 @@ If Adobe Commerce only accepts traffic from allowlisted IP addresses, add the Ad
 aio runtime ip-list get
 ```
 
-See [Secure communication with back-end services](https://developer.adobe.com/app-builder/docs/guides/runtime_guides/security-general/#secure-communication-with-back-end-services) in the App Builder documentation for the full process, including the one-time terms acceptance and contact email prompt.
+See [Secure communication with back-end services](https://developer.adobe.com/app-builder/docs/guides/runtime_guides/security-general#secure-communication-with-back-end-services) in the App Builder documentation for the full process, including the one-time terms acceptance and contact email prompt.
 
 Because this must be configured on the Commerce instance itself, only a Commerce administrator can apply the change, not the App Builder application owner.
 

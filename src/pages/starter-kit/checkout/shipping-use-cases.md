@@ -293,3 +293,162 @@ In the [`setShippingMethodsOnCart` mutation](https://developer.adobe.com/commerc
 The `plugin.magento.out_of_process_shipping_methods.api.shipping_rate_repository.get_rates` webhook allows you to remove specific shipping methods from the list of available options.
 
 If you use the `flatrate` shipping method, but want to disable it, you must update your webhook response to mark the shipping method as removed. This example is demonstrated in [`actions/shipping-methods.js`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/apps/shipping-method/src/commerce-extensibility-1/actions/shipping-methods/index.js).
+
+## Filter shipment items
+
+The `plugin.magento.out_of_process_shipping_methods.api.shipment_item_filter.filter` webhook lets you exclude order items from new shipments. For example, you can keep items that a third party fulfills out of Commerce shipments.
+
+The webhook is called when a shipment is created in one of the following ways:
+
+- **Ship** > **Submit Shipment** in the Admin (`admin_shipment` channel).
+- **Invoice** > **Create Shipment** > **Submit Invoice** in the Admin (`admin_invoice` channel).
+- The `POST /V1/order/{orderId}/ship` REST endpoint, including its asynchronous and bulk variants, and in-store pickup "ready for pickup" notifications (`api` channel).
+
+Shipments created in other ways, including through the `POST /V1/shipment` endpoint, are not filtered.
+
+The webhook only changes the contents of the shipment. It does not change order items or invoiced quantities, and excluded quantities remain available for a later shipment.
+
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) This webhook requires version 1.3.0 or later of the `magento/module-out-of-process-shipping-methods` module.
+
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) The following example registers an `after` webhook for the `plugin.magento.out_of_process_shipping_methods.api.shipment_item_filter.filter` method in a `webhooks.xml` [configuration file](../../webhooks/xml-schema.md):
+
+```xml
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_AdobeCommerceWebhooks:etc/webhooks.xsd">
+    <method name="plugin.magento.out_of_process_shipping_methods.api.shipment_item_filter.filter" type="after">
+        <hooks>
+            <batch name="shipment_item_filter">
+                <hook name="exclude_third_party_items" url="https://<your_app_builder>.runtime.adobe.io/api/v1/web/shipping-method/shipment-item-filter" method="POST" timeout="5000" softTimeout="1000" required="true">
+                    <fields>
+                        <field name="payload" />
+                        <field name="result" />
+                    </fields>
+                </hook>
+            </batch>
+        </hooks>
+    </method>
+</config>
+```
+
+[SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) Use the `plugin.out_of_process_shipping_methods.api.shipment_item_filter.filter` method.
+
+Whether a failed webhook call blocks the shipment depends on the **Required** setting of the webhook.
+
+### Request payload
+
+The request contains the shipment creation context, the order, and the items requested to be shipped. The `result` field contains the IDs of order items that other webhooks subscribed to the same method have already excluded. It is empty otherwise.
+
+```json
+{
+  "payload": {
+    "context": {
+      "channel": "api",
+      "source_code": "default",
+      "caller_type": "integration",
+      "caller_id": 7
+    },
+    "order": {
+      "entity_id": 100,
+      "increment_id": "000000100",
+      "store_id": 1,
+      "status": "processing"
+    },
+    "items": {
+      "101": {
+        "order_item_id": 101,
+        "product_id": 42,
+        "sku": "regular-item",
+        "name": "Regular item",
+        "product_type": "simple",
+        "parent_item_id": null,
+        "qty": 2,
+        "qty_ordered": 2,
+        "qty_shipped": 0,
+        "source_code": "default",
+        "custom_attributes": [
+          {
+            "attribute_code": "vendor",
+            "value": "acme"
+          }
+        ]
+      }
+    }
+  },
+  "result": []
+}
+```
+
+The `payload.context` object describes how the shipment is being created:
+
+| Field | Type | Description |
+|---|---|---|
+| `channel` | String | How the shipment is being created: `admin_shipment`, `admin_invoice`, or `api`. |
+| `source_code` | String | The source requested for the whole shipment: the source selected in the Admin, or the `source_code` extension attribute of the `arguments` object in the `POST /V1/order/{orderId}/ship` request. `null` if no source was requested. |
+| `caller_type` | String | The type of the authenticated caller: `integration`, `admin`, `customer`, or `guest`. `null` if the caller is unknown, for example, when a message queue consumer processes an asynchronous request. |
+| `caller_id` | Integer | The ID of the authenticated caller, such as the integration ID or Admin user ID. `null` if the caller is unknown. |
+
+The `payload.order` object describes the order that the shipment is created for:
+
+| Field | Type | Description |
+|---|---|---|
+| `entity_id` | Integer | The order ID. |
+| `increment_id` | String | The order increment ID. |
+| `store_id` | Integer | The ID of the store the order was placed in. |
+| `status` | String | The order status. |
+
+The `payload.items` object is keyed by order item ID. It contains the non-virtual items with a positive requested quantity. For composite products, it also contains the parent items of the requested child items. Each item contains the following fields:
+
+| Field | Type | Description |
+|---|---|---|
+| `order_item_id` | Integer | The order item ID. |
+| `product_id` | Integer | The product ID. `null` if the product no longer exists. |
+| `sku` | String | The product SKU. |
+| `name` | String | The product name. |
+| `product_type` | String | The product type, such as `simple`, `configurable`, or `bundle`. |
+| `parent_item_id` | Integer | The ID of the parent order item. `null` for a top-level item. |
+| `qty` | Float | The quantity requested to be shipped. |
+| `qty_ordered` | Float | The ordered quantity. |
+| `qty_shipped` | Float | The quantity that has already been shipped. |
+| `source_code` | String | The source selected for the shipment. `null` if no source was selected. |
+| `custom_attributes` | Array | The custom attributes of the order item, as a list of `attribute_code` and `value` pairs. Empty if the order item has no custom attributes. |
+
+[SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) If a source was nominated for an order item, the `source_code` field of the item contains the nominated source instead of the source selected for the shipment. Items without a nominated source keep the source selected for the shipment.
+
+### Response
+
+To exclude an item, return an [`add` operation](../../webhooks/responses.md#add-operation) that adds its order item ID to `result`:
+
+```json
+[
+  {
+    "op": "add",
+    "path": "result",
+    "value": 101
+  }
+]
+```
+
+Return one `add` operation for each excluded item. To exclude nothing, return a [`success` operation](../../webhooks/responses.md#success-operation). To block the shipment, return an [`exception` operation](../../webhooks/responses.md#exception-operation). For the `api` channel, the exception message is returned to the caller.
+
+The following rules apply to the returned IDs:
+
+- IDs that do not match an item in `payload.items` are ignored and logged.
+- Excluding a parent item of a composite product also excludes its child items.
+- A child item can only be excluded together with its parent item. A child item ID returned without its parent item ID is ignored and logged, and the child item is shipped. This includes the child items of bundle products with **Ship Bundle Items** set to **Separately**, which are sent in `payload.items` with their own quantities. To exclude one of these items from the shipment, exclude the whole bundle.
+
+### Shipment behavior
+
+The result of the webhook depends on how the shipment is being created:
+
+| Case | Submit Shipment | Submit Invoice with Create Shipment | `POST /V1/order/{orderId}/ship` |
+|---|---|---|---|
+| Some items are excluded | The other items are shipped. A notice lists the excluded SKUs. | Same as Submit Shipment. | No shipment is created. The request fails with an error that lists the excluded SKUs. |
+| Only a child item is excluded, without its parent item | The exclusion is ignored and logged. All items are shipped without a notice. | Same as Submit Shipment. | The exclusion is ignored and logged. The shipment is created with all items. |
+| Some items are excluded and the other items were already shipped | Not applicable. | The invoice is created without a shipment. A warning is displayed. | No shipment is created. The request fails with an error that lists the excluded SKUs. |
+| All items are excluded | No shipment is created. An error is displayed. | The invoice is created without a shipment. A warning is displayed. | No shipment is created. The request fails with an error that lists the excluded SKUs. |
+| The webhook fails or returns an `exception` operation | No shipment is created. The error is displayed. | The invoice is created without a shipment. A warning is displayed. | No shipment is created. The request fails with the error. |
+
+REST API callers never receive a shipment that is missing requested items. They can retry the request without the excluded items.
+
+When the invoice is created without a shipment, the Admin displays the message `The invoice has been created.` instead of `You created the invoice and shipment.`

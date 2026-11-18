@@ -13,31 +13,33 @@ Use the checklist for the extension point your app implements:
 * [V2 Extension points](#v2-extension-points) for `commerce/backend-ui/2`.
 * [V1 Extension points](#v1-extension-points) for `commerce/backend-ui/1`.
 
-V1 and V2 refer to extension point versions, not the installed Admin UI SDK module version. V1 extension points are deprecated. Use V2 for new extensions and see [Migration from V1](extension-points/v2/migration-from-v1.md) when updating an existing extension.
+<InlineAlert variant="warning" slots="text" />
+
+V1 extension points are deprecated. Use V2 for new extensions and see [Migration from V1](extension-points/v2/migration-from-v1.md) when updating an existing extension.
 
 Both checklists supplement the [App submission guidelines](../app-development/app-submission-guidelines.md), which cover documentation, security, dependencies, and submission assets. Complete required items and apply preferred items where relevant. Review conditional requirements only for the capabilities your app implements.
 
 These checklists cover only Admin UI SDK integration. Business configuration, events, webhooks, and general App Management lifecycle requirements are outside their scope.
 
-Review the submitted source code, configuration files, and dependency manifests. These checks do not require deployment, installation, or access to a running Commerce environment.
-
 ## V2 Extension points
 
-V2 extensions declare their Admin UI in `app.commerce.config` and are associated and installed through App Management. Commerce reads their registration from the generated `app-config` runtime action. Do not apply V1 requirements for an `ExtensionRegistration` component, registration route, hand-authored registration action, or `commerce-backend-ui-1` folder to a V2-only app.
+V2 extensions use App Management. They declare extension points in `app.commerce.config` instead of a V1 `ExtensionRegistration` component or a custom registration action. Review the files and code below; a running Commerce environment is not required.
 
 | Category | Description | Required? |
 |---|---|---|
-| Admin UI compatibility | Document the Admin UI SDK module and library versions required by the V2 extension points your app uses. Follow [Admin UI configuration](../app-management/installation/admin-ui-sdk.md); do not apply the V1 checklist's direct `@adobe/uix-sdk` dependency pin to V2. | Required |
-| Admin UI declarations | Declare supported extension points under `adminUi` in `app.commerce.config`. Validate each declaration against its [V2 extension point reference](extension-points/v2/index.md), including identifiers, required fields, and view-versus-worker field restrictions. | Required |
-| Generated Admin UI configuration | `app.config.yaml` and `install.yaml` reference `commerce/backend-ui/2` and its generated `ext.config.yaml`. The `pre-app-build` hook regenerates Admin UI artifacts, including `workerProcess` operations derived from `runtimeAction`. See [Admin UI SDK registration](../app-management/build-deploy.md#admin-ui-sdk-registration-on-commercebackend-ui2). | Required |
-| Admin UI registration | Registration uses the generated `app-config` action and the `adminUi` declarations in `app.commerce.config`, not a hand-authored V1 registration action. Custom registration changes are made in the source configuration, not in `.generated` files. | Required |
-| Frontend entry point and routing | The frontend uses [`createExtensionApp`](../app-management/installation/admin-ui-sdk.md#develop-the-admin-ui). Its `menu` property supplies a page component when `adminUi.menu` is configured. Each configured view path has a matching page component in `routes`. Routing does not depend on a V1 `ExtensionRegistration` component. | Required when the app renders UI |
-| Host context and completion | Pages use the appropriate [context hooks](extension-points/v2/index.md#reading-context-in-your-app) for IMS credentials, Commerce host, selected IDs, and entity IDs, and handle returned errors. Iframe action pages use `useHostConnection()` and call `actions.close()` or `actions.closeWithError()` to complete the flow. | Required when applicable |
-| Runtime handlers | Each `runtimeAction` uses `<package>/<action>` format and matches an action declared in the runtime manifest with an implemented handler. Handlers parse requests and return responses according to the matching V2 contract, including selection or entity IDs and error responses. See [Admin UI configuration](../app-management/installation/admin-ui-sdk.md). | Required when the app declares runtime actions |
-| Action authentication | Runtime action configuration sets `require-adobe-auth: true` for actions used by the Admin UI, including `app-config`. See the general [security requirements](../app-development/app-submission-guidelines.md#security). | Required |
-| Authorization | For items with `aclProtected: true`, runtime handlers check the corresponding resource with [`getAdminUiPermissionClient`](../app-management/installation/admin-ui-sdk.md#acl-protected-extension-points) before accessing protected data or performing the operation. They derive the resource ID with the matching SDK helper and forward the administrator's IMS credentials, rather than using server-to-server credentials for the permission check. | Required when the app declares ACL-protected items |
-| Safe rendering | Do not use `innerHTML` in the Admin UI frontend. | Required |
-| Automated coverage | The submission includes tests for custom Admin UI handlers and UI flows, including malformed requests, denied permissions, and failure responses where applicable. | Preferred |
+| Dependency versions | The app documentation lists the Admin UI SDK module and library versions required by its [V2 features](../app-management/installation/admin-ui-sdk.md). The V1 `@adobe/uix-sdk` version requirement does not apply to V2. | Required |
+| `app.commerce.config` | Extension points are declared under `adminUi`, with valid IDs and the required fields for each [extension point](extension-points/v2/index.md). Fields for `view` and `worker` actions are not mixed. | Required |
+| `app.config.yaml` and `install.yaml` | The files reference the `commerce/backend-ui/2` extension and its generated `ext.config.yaml`. See [Generated files](../app-management/build-deploy.md#generated-files). | Required |
+| `ext.config.yaml` | The `pre-app-build` hook generates the Admin UI configuration and worker operations from the declared `runtimeAction` values. See [Admin UI SDK registration](../app-management/build-deploy.md#admin-ui-sdk-registration-on-commercebackend-ui2). | Required |
+| Extension registration | Registration uses the generated `app-config` action. Changes are made in `app.commerce.config`, not in `.generated` files. | Required |
+| Application routing | If the app renders UI, it uses [`createExtensionApp`](../app-management/installation/admin-ui-sdk.md#develop-the-admin-ui). A configured menu has a `menu` page component, and each view `path` has a matching page component in `routes`. Worker-only apps do not require frontend routing. | Required when applicable |
+| Pages requiring shared data | Pages use the appropriate [context hooks](extension-points/v2/index.md#reading-context-in-your-app) to read IMS credentials, the Commerce host, selected IDs, or entity IDs. Returned errors are handled before using the data. | Required when applicable |
+| Closing iframe actions | Iframe action pages call `actions.close()` or `actions.closeWithError()` from `useHostConnection()` to finish the action. | Required when applicable |
+| Runtime actions | Each `runtimeAction` uses `<package>/<action>` format and matches an action and handler in the runtime manifest. The handler follows the matching [V2 request and response format](../app-management/installation/admin-ui-sdk.md), including IDs and error responses. | Required when applicable |
+| Action authentication | Runtime actions used by the Admin UI, including `app-config`, have `require-adobe-auth` set to `true`. See [Security requirements](../app-development/app-submission-guidelines.md#security). | Required |
+| ACL-protected actions | If an item has `aclProtected: true`, its handler checks permissions with [`getAdminUiPermissionClient`](../app-management/installation/admin-ui-sdk.md#acl-protected-extension-points) before reading protected data or running the operation. The check uses the matching SDK resource ID helper and the administrator's forwarded IMS credentials, not server-to-server credentials. | Required |
+| Use of `innerHTML` | The use of `innerHTML` within the Admin UI frontend is prohibited. | Required |
+| Tests | Tests cover custom Admin UI handlers and pages, including invalid requests, denied permissions, and errors where applicable. | Preferred |
 
 ## V1 Extension points
 

@@ -1,9 +1,48 @@
 ---
 title: What's new
-description: This section contains the changes made in the last 60 days. We exclude
-  all minor updates, such as copy editing, from this list.
-updated: Mon Nov 2 11:58:52 2026
+description: This section contains the changes made in the last 60 days. Minor updates,
+  such as copy editing, are excluded from this list.
+updated: Mon Nov 16 14:54:04 2026
 entries:
+- description: Admin UI SDK 5.2.0 adds V2 extension points for [return view buttons](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/extension-points/v2/rma/view-button)
+    and [credit memo custom attribute grid columns](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/extension-points/v2/credit-memo/custom-attribute-grid-columns),
+    a [native UI form replacement](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/extension-points/v2/native-ui#supported-targets)
+    for the New Return form, and [failed-request retention](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/configuration#failed-request-retention)
+    settings. See the [release notes](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/release-notes)
+    for additional information.
+  versions: ''
+  type: new-topic, release-notes
+  date: '2026-11-16'
+  link: https://github.com/AdobeDocs/commerce-extensibility/pull/626
+  merge_commit: 927a832145b49142ae7e936e1ff74d98c2c39da3
+  contributor: asalloum5
+  labels:
+  - new-topic
+  - release-notes
+- description: Released [Adobe Commerce Webhooks 1.21.0](https://developer.adobe.com/commerce/extensibility/webhooks/release-notes)
+    and [Adobe I/O Events for Adobe Commerce 1.24.0]( https://developer.adobe.com/commerce/extensibility/events/release-notes).
+  versions: ''
+  type: major-update, release-notes
+  date: '2026-11-12'
+  link: https://github.com/AdobeDocs/commerce-extensibility/pull/629
+  merge_commit: 6658b4ac63ee8235fb6773bd487aa651c6049b0d
+  contributor: oshmyheliuk
+  labels:
+  - major-update
+  - release-notes
+- description: 'Added support for the following [V2 extension points](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/extension-points/v2/):
+    invoice and credit view buttons, newsletter subscriber grid columns, and native
+    UI form replacements.'
+  versions: ''
+  type: major-update, new-topic, release-notes
+  date: '2026-11-03'
+  link: https://github.com/AdobeDocs/commerce-extensibility/pull/617
+  merge_commit: f6aa1f8ac2d1e12a2b19485bc18ea9a1c95b1fc2
+  contributor: asalloum5
+  labels:
+  - major-update
+  - new-topic
+  - release-notes
 - description: Updated the [App submission guidelines](https://developer.adobe.com/commerce/extensibility/app-development/app-submission-guidelines)
     to include Adobe Commerce Optimizer environments.
   versions: ''

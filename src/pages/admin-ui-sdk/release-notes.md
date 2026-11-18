@@ -8,6 +8,26 @@ keywords:
 
 # Admin UI SDK release notes
 
+## Version 5.2.0
+
+### Release date
+
+November 16, 2026
+
+### Enhancements
+
+* Added [return view buttons](extension-points/v2/rma/view-button.md) to V2. Add custom buttons to return detail pages that open an app page in an iframe or invoke a runtime action.
+
+* Added `return.create` to [native UI form replacements](extension-points/v2/native-ui.md#supported-targets). Replace the **New Return** form with an App Builder page.
+
+* Added [failed-request retention](configuration.md#failed-request-retention) for no-iframe mass actions and view buttons. Configure how long failed requests are retained, independently of database logs.
+
+* Added [credit memo custom attribute grid columns](extension-points/v2/credit-memo/custom-attribute-grid-columns.md) to V2. Add columns backed by stored custom attributes to the credit memo grid, with optional boolean and text filters.
+
+### Bug fixes
+
+* Restored the legacy service and response contract for `GET /V1/adminuisdk/orderviewbutton/:request_id` after failed requests were migrated to shared view-button storage. The endpoint returns only order-related failures and retains its existing ACL.
+
 ## Version 5.1.0
 
 ### Release date
@@ -25,6 +45,8 @@ The following enhancements are immediately available for Adobe Commerce on Cloud
 * Added [credit memo view buttons](extension-points/v2/credit-memo/view-button.md) to V2. Add custom buttons to the credit memo detail page that open an app page in an iframe or invoke a runtime action.
 
 * Added [newsletter subscribers grid columns](extension-points/v2/newsletter/grid-columns.md) to V2. Add custom columns to the Newsletter Subscribers grid.
+
+* Added the `GET V1/adminuisdk/viewbutton/{requestId}` endpoint to a failed no-retrieve iframe view-button request for an order, invoice, or credit memo. Because this endpoint can be used for multiple types of buttons, the `GET V1/adminuisdk/orderviewbutton/{requestId}` has been deprecated. See [View buttons without iFrames](api.md#view-buttons-without-iframes) for details.
 
 * Restricted the **Refresh registrations** action to manually configured V1 extensions.
 

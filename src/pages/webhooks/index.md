@@ -27,7 +27,7 @@ The resolution of a remote call also determines whether to implement a webhook. 
 
 Use these guidelines to develop your own webhooks:
 
-1. Identify the Adobe Commerce event that triggers a webhook. In Adobe Commerce as a Cloud Service (SaaS), you can browse the available events from the Admin by selecting **System** > Webhooks > **Webhooks List** or using the `GET /V1/webhooks/supportedList` [REST endpoint](api.md#get-supported-webhooks-for-saas). In PaaS environments, run the [`bin/magento webhooks:list:all` command](commands.md#return-a-list-of-supported-webhook-event-names) to list supported methods and the [`bin/magento webhooks:info <webhook-name>` command](commands.md#display-the-payload-of-a-webhook) to return the payload.
+1. Identify the Adobe Commerce event that triggers a webhook. You can browse the available events from the Admin by selecting **System** > Webhooks > **Webhooks List**. In PaaS environments, this page is available in Adobe Commerce Webhooks 1.21.0 and later. In Adobe Commerce as a Cloud Service (SaaS), you can also use the `GET /V1/webhooks/supportedList` [REST endpoint](api.md#get-supported-webhooks-for-saas). In PaaS environments, you can also run the [`bin/magento webhooks:list:all` command](commands.md#return-a-list-of-supported-webhook-event-names) to list supported methods and the [`bin/magento webhooks:info <webhook-name>` command](commands.md#display-the-payload-of-a-webhook) to return the payload.
 
 1. To make a web call to the external server, gather the requirements. This includes the URL, connection information, headers, and the payload the server expects.
 

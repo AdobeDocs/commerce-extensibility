@@ -1,0 +1,130 @@
+---
+title: Build and deploy
+description: Build and deploy your App Builder application for App Management
+keywords:
+  - App Builder
+  - App Management
+  - Configuration
+  - Extensibility
+---
+
+# Build and deploy
+
+After defining your app configuration, build and deploy your application so it is ready for association and installation with Adobe Commerce through App Management.
+
+## Generated files
+
+The initialization process creates files organized by extension point:
+
+**`commerce/extensibility/1`** for App Management.
+
+| File | Description |
+|------|-------------|
+| `src/commerce-extensibility-1/.generated/app.commerce.manifest.json` | Validated JSON snapshot of your app config, generated only when the whole config can be represented as JSON |
+| `src/commerce-extensibility-1/.generated/app.commerce.config.js` | Generated module that the `#app.commerce.config` import alias resolves to |
+| `src/commerce-extensibility-1/.generated/actions/app-management/` | Runtime actions for app config and installation |
+| `src/commerce-extensibility-1/ext.config.yaml` | Extension manifest with `pre-app-build` hook |
+
+Import your app configuration through the `#app.commerce.config` alias. The `generate` command registers this alias in your project's `package.json` `imports` for every app (since `@adobe/aio-commerce-lib-app` 1.8.0), so your own runtime actions can import your config the same way the generated actions do, without referencing generated file paths. The alias resolves to the generated `app.commerce.config.js` module, which is built differently depending on whether your config is static or dynamic:
+
+* **Static (serializable) config**: the validated `app.commerce.manifest.json` snapshot is generated, and the module re-exports it.
+* **Dynamic config** (contains logic that can't be expressed as JSON, such as a `dynamicList` field with a function-based `options`): no manifest is generated, and the module is built directly from your `app.commerce.config` source file.
+
+**`commerce/configuration/1`** for Business configuration (when a `businessConfig` is defined).
+
+| File | Description |
+|------|-------------|
+| `src/commerce-configuration-1/.generated/configuration-schema.json` | Validated JSON representation of your schema |
+| `src/commerce-configuration-1/.generated/actions/app-management/` | Runtime actions for config and scope management |
+| `src/commerce-configuration-1/ext.config.yaml` | Extension manifest with `pre-app-build` hook |
+
+**`commerce/backend-ui/2`** for [Admin UI SDK](installation/admin-ui-sdk.md) registration (when `adminUi` is defined in `app.commerce.config`).
+
+| File | Description |
+|------|-------------|
+| `src/commerce-backend-ui-2/ext.config.yaml` | Extension manifest |
+| `src/commerce-backend-ui-2/web-src/` | Browser scaffold generated when a menu, or a `view` mass action or order view button, is configured |
+
+## Generated runtime actions
+
+The libraries generate runtime actions organized by extension point. These are auto-generated directories and any manual changes can be lost during regeneration. Generated runtime actions default to the `nodejs:24` App Builder runtime, and the CLI requires Node.js 22–24.
+
+### App Management actions from `commerce/extensibility/1`
+
+| Action | Description |
+|--------|-------------|
+| `app-config` | Serves the app configuration to the App Management UI. |
+| `association` | Keeps track of which Commerce instance the app is associated with, so the app can identify and connect to it while installed; clears that record when the app is unassociated. |
+| `installation` | Drives the installation and uninstallation flow, including custom installation steps. |
+
+`generate` only creates the `installation` action when your config includes custom installation steps, Commerce or external events, webhooks, or `adminUi`.
+
+### Business configuration actions from `commerce/configuration/1`
+
+These actions handle configuration and scope operations (generated when a `businessConfig` is defined).
+
+| Action | Description |
+|--------|-------------|
+| `config` | Handles retrieving and updating configuration values across scopes. |
+| `scope-tree` | Handles scope hierarchy management for Commerce and custom scopes. |
+
+The scope tree action supports syncing scopes from Adobe Commerce, setting custom scope hierarchies for external systems, and unsyncing Commerce scopes. Structural changes in Commerce (websites, stores, store views) are **not** reflected in App Management until an Admin runs **Sync commerce scopes** for each associated application that uses scopes; see [Scope tree synchronization](configuration-schema.md#scope-tree-synchronization).
+
+### Admin UI SDK registration on `commerce/backend-ui/2`
+
+When [`adminUi`](installation/admin-ui-sdk.md) is defined, Admin UI SDK V2 handles registration automatically. Adobe Commerce reads the registration directly from the `app-config` action described above. The `generate` command derives `workerProcess` operations from the `runtimeAction` values in your `adminUi` configuration and updates them in `src/commerce-backend-ui-2/ext.config.yaml` at build time.
+
+## Build and deploy
+
+After you change `app.commerce.config`, build and deploy your application. The `pre-app-build` hook runs the generators for you, so the manifest, schema, and runtime actions under `.generated` stay in sync without a separate step.
+
+```bash
+aio app build --force-build
+aio app deploy --force-deploy --no-build
+```
+
+When debugging, you can run `npx aio-commerce-lib-app generate …` without a full App Builder build to refresh generated files quickly.
+
+After deployment, your application is ready to be associated with Adobe Commerce using App Management. See [manage your app](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app) for association, installation, and other lifecycle steps.
+
+## Find an application in the Admin
+
+Under **Apps** > **App Management**, each application appears as a card. The list can include every app associated with the Adobe Commerce instance for the selected Adobe IMS organization. Use the controls above the cards to narrow results:
+
+| Control | Description |
+| --- | --- |
+| **Filter by app…** | Search by application name. |
+| **Status** | Limit cards by lifecycle state. **All Statuses** shows every app; other values include **Associated**, **Installed**, **Partially Installed**, and **Unassociated**. The status on each card matches the colored indicator in the list. |
+| **Extensibility patterns** | Limit cards by the capabilities the app uses. **All Extensibility Patterns** shows every app; other values align with the badges on each card, such as **Business Configuration**, **Admin UI SDK**, **Webhooks**, and **Events**. |
+
+Search text and both dropdowns apply together (logical AND). To display the full list again, set **Status** and **Extensibility patterns** back to their **All …** options, and clear the search field.
+
+### Review application details
+
+Open an application's details to review its name, description, and version. The dialog provides two tabs: **Details** and **App config**.
+
+The **Details** tab lists the application's business use cases, including events and custom installation steps. Labels and descriptions help administrators understand what the application adds to Commerce.
+
+![Application Details tab showing event and custom installation business use cases](../images/app-management/app-details.png)
+
+Provide meaningful labels and descriptions in `app.commerce.config` so administrators can understand the application before installing it.
+
+The **App config** tab displays the application configuration as JSON for inspection.
+
+![App config tab displaying the application's JSON configuration](../images/app-management/app-config.png)
+
+### Acquire App
+
+**Acquire App** opens a new browser tab (or a separate browser view) to [Adobe Exchange](https://exchange.adobe.com/apps/browse/ec), where you can discover Commerce-related marketplace listings and add applications to your Adobe IMS organization. After the app is acquired, approved, and deployed, it appears in App Management for [association and installation](https://experienceleague.adobe.com/en/docs/commerce/app-management/manage-app/manage-app).
+
+## Review unassociation
+
+Before confirming **Unassociate**, review the application's listed business use cases. The confirmation dialog identifies components affected by uninstallation, including events and custom installation steps.
+
+![Unassociate confirmation showing the application's events and custom installation steps](../images/app-management/unassociate-app.png)
+
+Cleanup of resources created by custom installation steps depends on the application's uninstall handlers. Review those handlers to determine which resources are removed and which require manual cleanup. See [Customize](installation/customize.md) for installation script guidance.
+
+<InlineAlert variant="info" slots="text"/>
+
+Before unassociating the app, record the installed version and configuration, back up application data, and check each custom step's `uninstall` handler for destructive cleanup and external dependencies. Plan for any service interruption and identify how to restore the application, its settings, and its data. To recover from a failed upgrade, [inspect the failure and retry](upgrade-app.md#retry-a-failed-upgrade).

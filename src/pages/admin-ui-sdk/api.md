@@ -8,7 +8,7 @@ keywords:
 
 # REST endpoints for Admin UI SDK
 
-Adobe Commerce provides several REST endpoints that interact with the Admin UI SDK processes. These endpoints require an [admin token](https://developer.adobe.com/commerce/webapi/get-started/authentication/gs-authentication-token/) on PaaS systems or a token using [Adobe's Identity Management System (IMS)](https://developer.adobe.com/commerce/webapi/rest/authentication/user/) on SaaS systems.
+Adobe Commerce provides several REST endpoints that interact with the Admin UI SDK processes. These endpoints require an [admin token](https://developer.adobe.com/commerce/webapi/get-started/authentication/gs-authentication-token) on PaaS systems or a token using [Adobe's Identity Management System (IMS)](https://developer.adobe.com/commerce/webapi/rest/authentication/user) on SaaS systems.
 
 ## Mass actions without iFrames
 
@@ -72,6 +72,10 @@ curl -X GET \
 
 ## Order view button without iFrames
 
+<InlineAlert variant="warning" slots="text" />
+
+The order-specific `GET V1/adminuisdk/orderviewbutton/<requestId>` endpoint is deprecated. Use [Get a view-button failed request](#view-buttons-without-iframes) for order, invoice, and credit memo failures. The legacy endpoint remains available with its existing service and response contract and ACL, and returns only order-related failures.
+
 When an order view button `displayIframe` parameter is set to false, you must account for additional factors.
 
 **Application failures**:
@@ -127,3 +131,291 @@ curl -X GET \
 ### Recommendations
 
 - Event and REST API responses contain the order ID for a request. It is the application's responsibility to monitor updates or failures in Commerce.
+
+## View buttons without iFrames
+
+Retrieves a failed no-iframe view-button request for an order, invoice, or credit memo. Use this generic endpoint instead of the deprecated order-specific endpoint.
+
+`GET V1/adminuisdk/viewbutton/{requestId}`
+
+In V2, no-iframe view buttons use `type: "worker"`. See the [order](extension-points/v2/order/view-button.md), [invoice](extension-points/v2/invoice/view-button.md), and [credit memo](extension-points/v2/credit-memo/view-button.md) references for handler configuration.
+
+### Authorization
+
+The access token must have the `Magento_CommerceBackendUix::adminuisdk_api_get_view_button` ACL resource. In the Admin role permissions tree, this is **Admin UI SDK** > **API** > **GET View Button Failed Request**.
+
+| Header | Value |
+| --- | --- |
+| `Authorization` | ****** |
+| `Accept` | application/json |
+
+### Path parameters
+
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| `storeCode` | string | Yes, for the URL shown | Commerce store-view code, such as `default`. |
+| `requestId` | string | Yes | Request identifier associated with the failed view-button execution, stored as a UUID v4. |
+
+No request body or query parameters are required.
+
+### Successful response
+
+HTTP **200** returns the failed request:
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | string or null | Internal failed-request record ID. |
+| `request_id` | string | Failed request identifier. |
+| `button_id` | string | View-button identifier. |
+| `order_id` | string or null | Order entity ID, when applicable. |
+| `invoice_id` | string or null | Invoice entity ID, when applicable. |
+| `credit_memo_id` | string or null | Credit memo entity ID, when applicable. |
+| `error_status` | string | Status code returned by the failed request. |
+| `error_message` | string | Error details. |
+| `request_timestamp` | string | Timestamp recorded for the failed request. |
+
+Entity ID fields that do not apply are nullable and may be omitted by REST serialization.
+
+Example response for an order failure:
+
+```json
+{
+  "id": "123",
+  "request_id": "550e8400-e29b-41d4-a716-446655440000",
+  "button_id": "send_to_external_system",
+  "order_id": "42",
+  "error_status": "500",
+  "error_message": "External service returned an error.",
+  "request_timestamp": "2026-11-09 12:00:00"
+}
+```
+
+### Example usage
+
+```bash
+curl -X GET \
+    -H "Accept: application/json" \
+    -H "Authorization: ******" \
+    '<ADOBE_COMMERCE_URL>/rest/default/V1/adminuisdk/viewbutton/<REQUEST_ID>'
+```
+
+### Errors
+
+| Status | Meaning |
+| --- | --- |
+| **401 / 403** | Authentication failed or the caller lacks the required ACL permission. |
+| **404** | No failed request exists for the supplied request ID. |
+| **500** | An unexpected server error occurred. |
+
+The current missing-request error message refers to an "order view button" even when this generic endpoint is used for another entity type.
+
+## Permission Checks
+
+The following endpoint lets an extension point verify whether the currently authenticated admin user is authorized for an Admin UI SDK ACL resource that the extension registered.
+
+### Check a user's permission for an ACL resource
+
+`POST /V1/adminuisdk/permission/check`
+
+Checks whether the currently authenticated admin user holds the specified Admin UI SDK ACL resource. The resource must have been registered by an extension point (for example, through a menu, mass action, or order view button registration) for this endpoint to grant it. Resources that are unregistered or unrecognized return `false`, the same as a genuine permission denial, so the response cannot be used to determine whether a resource ID exists.
+
+**Headers:**
+
+| Header | Value |
+| --- | --- |
+| `Authorization` | Bearer `<Token>` |
+| `Content-Type` | application/json |
+
+**Request body:**
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `resource` | string | Yes | The ACL resource ID to check, in the format `Vendor_Module::resource_id` |
+
+**Example usage:**
+
+```bash
+curl -X POST \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer <TOKEN>" \
+    -d '{"resource": "Acme_Promotions::manage_promotions"}' \
+    '<ADOBE_COMMERCE_URL>/rest/V1/adminuisdk/permission/check'
+```
+
+**Responses:**
+
+- **200**: Successful response with the following response payload:
+
+    ```json
+    {
+        "allowed": true
+    }
+    ```
+
+    `allowed` is `false` both when the resource isn't registered by any extension point and when the user's role doesn't grant it.
+
+- **400**: Bad request: `resource` is missing, empty, or contains only whitespace.
+- **401**: Unauthorized
+- **500**: Internal server error
+
+## App Management
+
+The following endpoints manage selected extensions stored in the Commerce database.
+
+### Save a selected extension
+
+`POST /V1/adminuisdk/extension`
+
+Saves a selected extension record to the database.
+
+**Headers:**
+
+| Header | Value |
+| --- | --- |
+| `Authorization` | Bearer `<Token>` |
+| `Content-Type` | application/json |
+
+**Request body:**
+
+All fields are defined in the `extension` object.
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `extension_name` | string | Yes | The extension name |
+| `extension_title` | string | Yes | The extension title |
+| `extension_workspace` | string | Yes | The extension workspace |
+
+<InlineAlert variant="info" slots="text" />
+
+The Admin UI SDK V2 Beta version of this endpoint added the `extension_url` field on an experimental basis. This field has been removed.
+
+**Example usage:**
+
+```bash
+curl -X POST \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer <TOKEN>" \
+    -d '{"extension": {"extension_name": "my-extension", "extension_title": "My Extension",  "extension_workspace": "production"}}' \
+    '<ADOBE_COMMERCE_URL>/rest/V1/adminuisdk/extension'
+```
+
+**Responses:**
+
+- **400**: Bad request
+- **401**: Unauthorized
+- **500**: Internal server error
+
+### Delete a selected extension
+
+`DELETE /V1/adminuisdk/extension/<workspace_name>/<extension_name>`
+
+Deletes the specified extension from the database by workspace name and extension name.
+
+**Headers:**
+
+| Header | Value |
+| --- | --- |
+| `Authorization` | Bearer `<Token>` |
+| `Content-Type` | application/json |
+
+**Path parameters:**
+
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| `workspace_name` | string | Yes | The workspace name |
+| `extension_name` | string | Yes | The extension name |
+
+**Example usage:**
+
+```bash
+curl -X DELETE \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer <TOKEN>" \
+    '<ADOBE_COMMERCE_URL>/rest/V1/adminuisdk/extension/<WORKSPACE_NAME>/<EXTENSION_NAME>'
+```
+
+**Responses:**
+
+- **200**: Ok
+- **401**: Unauthorized
+- **404**: Not Found: Selected extension does not exist.
+- **500**: Internal server error
+
+### Refresh a selected extension's registrations
+
+`POST /V1/adminuisdk/extension/<workspace_name>/<extension_name>/refresh`
+
+Re-syncs the registrations of an already-selected extension by fetching its latest configuration from the App Registry and persisting it. The selected extension record itself (title, workspace) is left unchanged.
+
+**Headers:**
+
+| Header | Value |
+| --- | --- |
+| `Authorization` | Bearer `<Token>` |
+| `Content-Type` | application/json |
+
+**Path parameters:**
+
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| `workspace_name` | string | Yes | The workspace name |
+| `extension_name` | string | Yes | The extension name |
+
+**Example usage:**
+
+```bash
+curl -X POST \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer <TOKEN>" \
+    '<ADOBE_COMMERCE_URL>/rest/V1/adminuisdk/extension/<WORKSPACE_NAME>/<EXTENSION_NAME>/refresh'
+```
+
+**Responses:**
+
+- **200**: Ok
+- **401**: Unauthorized
+- **404**: Not Found: Selected extension does not exist.
+- **500**: Internal server error: The extension could not be refreshed. Check Admin UI SDK logs for more information and refresh registrations manually in the Admin Panel.
+
+### Enable or disable the Admin UI SDK
+
+`PUT /V1/adminuisdk/config`
+
+This endpoint manages whether the Admin UI SDK is enabled. It is available for Admin UI SDK V2 only.
+
+**Headers:**
+
+| Header | Value |
+| --- | --- |
+| `Authorization` | Bearer `<Token>` |
+| `Content-Type` | application/json |
+
+**Request body:**
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `enableAdminUiSdk` | boolean | Yes | Set to `true` to enable the Admin UI SDK, or `false` to disable it |
+
+**Example usage:**
+
+```bash
+curl -X PUT \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer <TOKEN>" \
+    -d '{"enableAdminUiSdk": true}' \
+    '<ADOBE_COMMERCE_URL>/rest/V1/adminuisdk/config'
+```
+
+**Responses:**
+
+- **200**: Successful response with the following response payload:
+
+    ```json
+    {
+        "enabled": true
+    }
+    ```
+
+- **400**: Bad request: `enableAdminUiSdk` is missing from the request body or is not a valid boolean value.
+- **401**: Unauthorized
+- **500**: Internal server error

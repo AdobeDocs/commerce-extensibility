@@ -1,3 +1,8 @@
+---
+title: Customer Address Validation XML Configuration
+description: XML configuration for the customer address validation webhook use case.
+---
+
 ```xml
 <method name="plugin.magento.customer.api.address_repository.save" type="before">
     <hooks>

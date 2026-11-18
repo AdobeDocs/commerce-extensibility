@@ -1,3 +1,8 @@
+---
+title: Customer Address Validation Admin Configuration
+description: Admin panel configuration for the customer address validation webhook use case.
+---
+
 ```yaml
 Hook Settings
 

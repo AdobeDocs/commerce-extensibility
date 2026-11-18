@@ -1,7 +1,6 @@
 ---
 title: Code development and deployment
 description: Learn how to write, deploy, and manage runtime action code that processes events from Adobe Commerce using the Adobe I/O Events Journaling API.
-edition: saas
 keywords:
   - Extensibility
   - Events

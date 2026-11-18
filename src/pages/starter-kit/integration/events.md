@@ -11,13 +11,11 @@ keywords:
  - Tools
 ---
 
-import Actions from '/src/_includes/actions.md'
-
 # Event-based integrations
 
 The following sections demonstrate all the event-based integrations that Adobe Commerce integration starter kit has to offer, including webhook ingestion, event handler actions and event ingestion actions.
 
-<Actions />
+<Fragment src="/_includes/actions.md" />
 
 ## Ingestion webhook
 
@@ -36,7 +34,7 @@ ingestion:
 
 ### Customizing ingest webhooks
 
-Data parameters contain the information of the [event](../../events/) to publish. Each event must include an entity, `event`, and `value`. The value parameter contains the data to send through the event.
+Data parameters contain the information of the [event](../../events/index.md) to publish. Each event must include an entity, `event`, and `value`. The value parameter contains the data to send through the event.
 
 The following entities and their corresponding events are currently available:
 
@@ -162,7 +160,7 @@ The main purpose of this action is to manage an event that notifies you about a 
 
 The [`consumer` action](#consumer-action) synchronously activates these event handler actions to delegate the handling of an event.
 
-The response returned by an event handler action includes a `statusCode` attribute. This attribute allows the consumer action to propagate the response HTTP status code upstream to properly reflect the event registration information located on the [Debug Tracing](https://developer.adobe.com/events/docs/support/tracing/) tab in the Adobe Developer Console.
+The response returned by an event handler action includes a `statusCode` attribute. This attribute allows the consumer action to propagate the response HTTP status code upstream to properly reflect the event registration information located on the [Debug Tracing](https://developer.adobe.com/events/docs/support/tracing) tab in the Adobe Developer Console.
 
 By default, `event handler` actions have the following response:
 
@@ -196,7 +194,7 @@ return {
 
 ## event ingestion action
 
-The main purpose of this runtime action is to provide an alternative method to deliver events to the integration, if the 3rd-party, backoffice application cannot fulfill the [Events Publishing API's](https://developer.adobe.com/events/docs/guides/api/eventsingress_api/) requirements.
+The main purpose of this runtime action is to provide an alternative method to deliver events to the integration, if the 3rd-party, backoffice application cannot fulfill the [Events Publishing API's](https://developer.adobe.com/events/docs/guides/api/eventsingress-api) requirements.
 
 For more information, see [Ingestion webhooks](#ingestion-webhook).
 

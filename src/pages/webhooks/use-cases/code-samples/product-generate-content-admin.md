@@ -1,3 +1,8 @@
+---
+title: Product Generate Content Admin Configuration
+description: Admin panel configuration for the product generate content webhook use case.
+---
+
 ```yaml
 Webhook method: observer.catalog_product_save_before
 Webhook type: before

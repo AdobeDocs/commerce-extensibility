@@ -11,19 +11,17 @@ keywords:
  - Tools
 ---
 
-import Integration from '/src/_includes/integration.md'
-
 # Expose Commerce data
 
 This runtime action is responsible for notifying the external backoffice application when an `<object>` is created, updated, or deleted in Adobe Commerce.
 
-<Integration />
+<Fragment src="/_includes/integration.md" />
 
 ## Incoming event payload
 
 The incoming event payload specified during [event registration](../../events/configure-commerce.md#subscribe-and-register-events) determines the incoming information.
 
-![publish info from commerce](../../_images/starterkit/publish.png)
+![publish info from commerce](../../images/starterkit/publish.png)
 
 The `order` runtime action requires the `created_at` and `updated_at` fields.
 

@@ -15,7 +15,7 @@ Signature verifications are disabled by default, because you might have other wa
 
 To enable signature verification, navigate to **Stores** > Settings > **Configuration** > **Adobe Services** > **Webhooks** and change the **Enabled** to **Yes**. Then click **Regenerate key pair** to generate a new key pair.
 
-![Webhooks configuration](../_images/webhooks/signature-configuration.png)
+![Webhooks configuration](../images/webhooks/signature-configuration.png)
 
 After enabling the signature verification, Commerce adds the `x-adobe-commerce-webhook-signature` header. The value of this header is a base64 encoded HMAC SHA256 signature of the request body based on the private key.
 
@@ -107,7 +107,7 @@ PwIDAQAB
 
 **Note:** Do not commit the `.env` file to version control.
 
-[App Builder Configuration Files](https://developer.adobe.com/app-builder/docs/guides/configuration/#env) describes `.env` file usage in detail.
+[App Builder Configuration Files](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/configuration/configuration#the-env-file) describes `.env` file usage in detail.
 
 The following code example below shows how the signature can be verified in the App Builder action:
 

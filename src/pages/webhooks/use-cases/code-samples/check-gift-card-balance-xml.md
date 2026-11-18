@@ -1,3 +1,8 @@
+---
+title: Check Gift Card Balance XML Configuration
+description: XML configuration for the check gift card balance webhook use case.
+---
+
 ```xml
 <method name="plugin.magento.gift_card_account.api.gift_card_account_management.check_gift_card" type="after">
     <hooks>

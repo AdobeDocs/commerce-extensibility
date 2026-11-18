@@ -1,3 +1,8 @@
+---
+title: Order Place Custom Attributes Validation XML Configuration
+description: XML configuration for the order place custom attributes validation webhook use case.
+---
+
 ```xml
 <method name="observer.sales_order_place_before" type="before">
     <hooks>

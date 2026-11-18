@@ -1,3 +1,8 @@
+---
+title: Product Update Validation XML Configuration
+description: XML configuration for the product update validation webhook use case.
+---
+
 ```xml
 <method name="observer.catalog_product_save_after" type="before">
     <hooks>

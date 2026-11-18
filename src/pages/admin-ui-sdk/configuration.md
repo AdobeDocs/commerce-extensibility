@@ -14,32 +14,19 @@ The Adobe Commerce Admin UI SDK allows you to use a local server to view and tes
 
 Configure the Admin UI SDK from the Commerce Admin by navigating to **Stores** > Settings > **Configuration** > **Adobe Services** > **Admin UI SDK**.
 
-![Admin UI SDK general configuration](../_images/admin-ui-sdk/configuration/general.png)
+![Admin UI SDK general configuration](../images/admin-ui-sdk/configuration/general.png)
 
 ### Enable and configure the Admin UI SDK
 
-Set to **Yes** to enable the Admin UI SDK. Disabled by default.
+The [**Configure eligible extensions**](./eligible-extensions-config.md) button displays a list of extensions that were installed with App Management. It also allows you to configure the eligible extensions that were installed before App Management became the primary installation method.
 
-* <Edition name="saas" /> **SaaS** - Toggle to **Yes**. No additional installation required.
-* <Edition name="paas" /> **PaaS / On-Premises** - Install the Admin UI SDK using Composer (versions `2.4.5-2.4.7`) before enabling. Version `2.4.8+` is pre-installed.
-
-After enabling the Admin UI SDK, configure your IMS credentials and select extensions using the [**Configure extensions**](./eligible-extensions-config.md) button, which allows you to:
-
-* Select your App Builder workspace
-* Choose which extensions display in the Admin
-* View eligible extensions from your organization
-
-The **Refresh registrations** button reloads extension registrations from App Builder. Use this button when:
-
-* An extension registration changes in App Builder
-* A new app or version is published
-* Extensions are not appearing as expected
+The **Refresh selected extensions** button reloads registrations for manually configured V1 extensions from the App Builder registry. Use it when you change an extension's registration in your App Builder application or publish a new V1 extension. This action does not refresh extensions installed with App Management.
 
 ## Database logging configuration
 
 The **Database logging configuration** section allows you to save Admin UI SDK log entries for the specified retention period.
 
-![Admin UI SDK database logging configuration](../_images/admin-ui-sdk/configuration/database-logging.png)
+![Admin UI SDK database logging configuration](../images/admin-ui-sdk/configuration/database-logging.png)
 
 To save logs, set the **Enable Logs** field to **Yes**. By default, this field is set to **No**.
 
@@ -49,19 +36,31 @@ Set the retention period for logs to be cleaned from the database. This field sp
 
 Navigate to **System** > Admin UI SDK > **Admin UI SDK Logs** to check the saved logs.
 
-![Admin UI SDK Logs screen](../_images/admin-ui-sdk/admin-ui-sdk-logs.png)
+![Admin UI SDK Logs screen](../images/admin-ui-sdk/admin-ui-sdk-logs.png)
+
+## Failed request retention
+
+The Admin UI SDK provides a retention setting for failed no-iframe mass-action and view-button requests, including order, invoice, and credit memo view-button failures.
+
+Navigate to **Stores** > **Configuration** > **Adobe Services** > **Admin UI SDK** > **Failed request retention**. Set **Failed request retention period (days)** to the number of days to keep failed requests. The default is **3** days, and the minimum is **1** day. This setting is independent of database log retention.
+
+![Admin UI SDK failed request retention configuration](../images/admin-ui-sdk/configuration/failed-request-retention.png)
+
+A daily cron job deletes timestamped failures older than the configured period. Records without a timestamp are retained. Once deleted, a failure can no longer be retrieved through its [failed-request API](api.md). Actual deletion depends on Commerce cron running successfully.
 
 ## Local testing
 
-<Edition name="paas" />
+<Edition slots="text" backgroundcolor="blue" />
+
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 <InlineAlert variant="info" slots="text" />
 
-The local testing feature is available only for PaaS versions of Adobe Commerce. On Adobe Commerce as a Cloud Service, you must ensure the **Enable local testing** field is set to **No**.
+The local testing feature is available only for PaaS versions of Adobe Commerce and [V1 extension points](./extension-points/index.md). On Adobe Commerce as a Cloud Service, you must ensure the **Enable local testing** field is set to **No**.
 
 When you enable the local service, all calls are automatically redirected to the local server, instead of connecting to Adobe's App Registry. The values you specify must match the contents of your local `server.js` file.
 
-![Admin UI SDK local testing configuration](../_images/admin-ui-sdk/configuration/local-testing.png)
+![Admin UI SDK local testing configuration](../images/admin-ui-sdk/configuration/local-testing.png)
 
 1. Select **Yes** from the **Enable local testing** menu.
 
@@ -71,7 +70,7 @@ When you enable the local service, all calls are automatically redirected to the
 
 ### Configuration
 
-You can download a sample app from the [Adobe Commerce Samples repository](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/menu/custom-menu) to gain insight on how the Admin SDK injects menus and pages into the Admin.
+You can download a sample app from the [Adobe Commerce Samples repository](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/v1/menu/custom-menu) to gain insight on how the Admin SDK injects menus and pages into the Admin.
 
 1. Run the following command to clone and sync the repository:
 
@@ -197,7 +196,7 @@ You can download a sample app from the [Adobe Commerce Samples repository](https
 
 ### Custom menu example
 
-1. Change directories to `<repoRootDir>/admin-ui-sdk/menu/custom-menu`.
+1. Change directories to `<repoRootDir>/admin-ui-sdk/v1/menu/custom-menu`.
 
 1. Run the following command to load dependencies.
 
@@ -239,6 +238,6 @@ You can download a sample app from the [Adobe Commerce Samples repository](https
 
 1. Confirm that the **Apps** section appears on the main menu and the **First App on App Builder** option appears in the **Apps** menu in the Admin. Click **First App on App Builder** and confirm that the **Fetched orders from Adobe Commerce** page opens.
 
-   ![Fetched orders from Adobe Commerce page](../_images/first-app.png)
+   ![Fetched orders from Adobe Commerce page](../images/first-app.png)
 
-   ![First App on App Builder menu](../_images/fetched-orders.png)
+   ![First App on App Builder menu](../images/fetched-orders.png)

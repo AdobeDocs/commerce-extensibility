@@ -1,59 +1,69 @@
-# Adobe Commerce Extensibility Developer Documentation
+# Adobe Commerce Extensibility Documentation
 
-Welcome! This site contains the latest Adobe Commerce extensibility developer documentation for ongoing releases.
+This repository contains the code for the [Commerce Extensibility documentation](https://developer.adobe.com/commerce/extensibility/) website. It is built using [Adobe Edge Delivery Services](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/edge-delivery/overview) and deployed to [Adobe Developer](https://developer.adobe.com/commerce/extensibility/).
 
-## Local development
+The site covers APIs and tools for extending and customizing Adobe Commerce, including App Builder integrations, event-driven architecture, API mesh, webhooks, and out-of-process extensibility patterns.
 
-This is a [Gatsby](https://www.gatsbyjs.com/) project that uses the [Adobe I/O Theme](https://github.com/adobe/aio-theme).
+## Quick start
 
-To build the site locally:
+For local development, you need to start three servers:
 
-1. Clone this repo.
-1. Install project dependencies.
-
-   ```bash
-   yarn install
-   ```
-
-1. Launch the project in development mode.
+1. **Content server** (this repo):
 
    ```bash
-   yarn dev
+   npm run dev
    ```
 
-## Components
+2. **Code server** ([adp-devsite](https://github.com/AdobeDocs/adp-devsite)):
 
-To achieve specific user experience goals for Commerce documentation, this repo overrides the original [`Edition`](https://github.com/adobe/aio-theme/blob/main/packages/gatsby-theme-aio/src/components/Edition/index.js) component from the upstream [`aio-theme`](https://github.com/adobe/aio-theme/) repo that we use as a dependency.
+   ```bash
+   git clone https://github.com/AdobeDocs/adp-devsite
+   cd adp-devsite
+   npm install
+   npm run dev
+   ```
 
-### Edition
+3. **Runtime connector** ([devsite-runtime-connector](https://github.com/aemsites/devsite-runtime-connector)):
 
-The custom `Edition` component in this repo displays a badge indicating whether a feature or functionality is available in specific Adobe Commerce environments. It has been customized to align with the badges that we use in Experience League docs.
+   ```bash
+   git clone https://github.com/aemsites/devsite-runtime-connector
+   cd devsite-runtime-connector
+   npm install
+   npm run dev
+   ```
 
-#### Usage
+Once all three servers are running, navigate to `http://localhost:3000/commerce/extensibility`.
 
-```yaml
-# Page-level (metadata)
-edition: saas # For SaaS-only features
-edition: paas # For PaaS-only features
+For common utilities and documentation, see the [centralized README](https://github.com/AdobeDocs/adp-devsite-utils/blob/main/README.md).
+
+## Testing and linting
+
+### Markdown linting
+
+To lint Markdown files before pushing:
+
+```bash
+npm run lint:md
 ```
 
-```md
-<!-- Section-level (inline) -->
-<Edition name="paas" />  <!-- For PaaS-only features -->
-<Edition name="saas" />  <!-- For SaaS-only features -->
+To automatically fix linting errors:
+
+```bash
+npm run lint:md:fix
 ```
 
-## Resources
+### Content validation
 
-See the following resources to learn more about using the theme:
+To check internal and external links, validate front matter, and more:
 
-- [Arranging content structure](https://github.com/adobe/aio-theme#content-structure)
-- [Linking to pages](https://github.com/adobe/aio-theme#links)
-- [Using assets](https://github.com/adobe/aio-theme#assets)
-- [Configuring global navigation](https://github.com/adobe/aio-theme#global-navigation)
-- [Configuring side navigation](https://github.com/adobe/aio-theme#side-navigation)
-- [Using content blocks](https://github.com/adobe/aio-theme#jsx-blocks)
-- [Writing enhanced Markdown](https://github.com/adobe/aio-theme#writing-enhanced-markdown)
-- [Deploying the site](https://github.com/adobe/aio-theme#deploy-to-azure-storage-static-websites) _(Adobe employees only)_
+```bash
+npm run lint
+```
 
-If you have questions, open an issue and ask us. We look forward to hearing from you!
+### TOC validation
+
+To validate the table of contents file:
+
+```bash
+npm run test:config
+```

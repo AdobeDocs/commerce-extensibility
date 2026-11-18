@@ -14,7 +14,7 @@ After you have tested your app locally, you are ready to submit your app for app
 
 During the testing phase, an administrator of your enterprise organization performs the approvals. At this point, your app is not public.
 
-[Publishing Your First App Builder Application](https://developer.adobe.com/app-builder/docs/getting_started/publish_app/) in the _App Builder Getting Started_ guide describes how to publish your app. Deploy your app to your Production workspace, then use the following steps:
+[Publishing Your First App Builder Application](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/publish-app) in the _App Builder Getting Started_ guide describes how to publish your app. Deploy your app to your Production workspace, then use the following steps:
 
 1. Perform all testing. If any changes need to be made to your app, update your code and redeploy. Repeat these steps until you have completed all testing.
 

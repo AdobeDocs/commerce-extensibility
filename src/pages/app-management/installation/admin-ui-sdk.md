@@ -1,0 +1,725 @@
+---
+title: Admin UI SDK configuration
+description: Configure the Admin UI SDK menu, grid columns, mass actions, order, invoice, and credit memo view buttons, and native UI form replacements in the app.commerce.config file for App Management
+keywords:
+  - App Builder
+  - Extensibility
+  - App Management
+  - Admin UI SDK
+---
+
+# Admin UI configuration
+
+The `adminUi` field in `app.commerce.config` defines how your app extends the Adobe Commerce Admin UI through the `commerce/backend-ui/2` extension point. It is not compatible with the `commerce/backend-ui/1` extension point used by the previous version of the Admin UI SDK.
+
+For an existing V1 extension, update its registration, handlers, and frontend using the [Migration from V1](../../admin-ui-sdk/extension-points/v2/migration-from-v1.md) guide.
+
+The `adminUi` configuration supports the following extension points:
+
+* Menu entries
+* Grid columns
+* Mass actions
+* Order, invoice, credit memo, and return view buttons
+* Native UI form replacements
+
+Admin UI SDK V2 handles registration automatically. Unlike V1, there is no `registration` action to hand-author. `commerce/backend-ui/2` reads the registration directly from the generated `app-config` runtime action. When `adminUi` is defined, the `init` and `generate all` commands automatically wire up the extension point, including the `pre-app-build` hook and the `workerProcess` declarations in `ext.config.yaml`. View-based features (a menu, a `view` mass action, a `view` order, invoice, or credit memo view button, or a native UI form replacement) also get a minimal `web-src/` scaffold the first time they're added, using `.tsx` files for TypeScript configs and `.jsx` files otherwise. Implement the replacement page itself in your app.
+
+The `adminUi` config block requires `@adobe/aio-commerce-lib-app` version 1.8.0 or later. Its schema (menu, grid columns, mass actions, order view buttons) became API-stable in version 1.9.0.
+
+## Develop the Admin UI
+
+App Management creates a minimal `web-src/` scaffold the first time you add a UI feature, such as a menu, a `view` mass action, or a `view` order view button. It uses `.tsx` files for TypeScript configs and `.jsx` files otherwise. `createExtensionApp`, exported from `@adobe/aio-commerce-lib-admin-ui/web`, is the entry point for any `commerce/backend-ui/2` UI that uses App Management and/or `@adobe/aio-commerce-lib-admin-ui`.
+
+Use `createExtensionApp` to connect the app metadata and UI pages. When `adminUi.menu` is configured, its page component is required in the `menu` property. For every other extension point configured with `type: "view"` and a `path`, register its page component in `routes`. Each route's `path` must match the `path` value for that extension point in `app.commerce.config`. The examples below pair each configuration with its corresponding entrypoint setup.
+
+For general Admin UI SDK concepts and extension points outside of App Management, see the [Admin UI SDK](../../admin-ui-sdk/index.md) documentation.
+
+For accessing IMS credentials, the Commerce host, and other host-provided context from your extension pages, see [Reading context in your app](../../admin-ui-sdk/extension-points/v2/index.md#reading-context-in-your-app).
+
+## Add a menu declaration
+
+Declare a single Commerce Admin menu entry for the application. Use the named constants exported by `@adobe/aio-commerce-lib-admin-ui/menu` instead of raw strings for `parentMenu`:
+
+```js
+import { defineConfig } from "@adobe/aio-commerce-lib-app/config"
+import { MENU_SALES } from "@adobe/aio-commerce-lib-admin-ui/menu";
+
+export default defineConfig({
+  metadata: {
+    // ...
+  },
+  adminUi: {
+    menu: {
+      id: "approval_dashboard",
+      label: "Approval Dashboard",
+      description: "Review and approve purchase requests from Commerce Admin.",
+      parentMenu: MENU_SALES,
+      pageTitle: "Purchase Approval Requests",
+      sandboxPermissions: ["allow-popups", "allow-downloads"],
+      aclProtected: true,
+    },
+  },
+});
+```
+
+For this configuration with an `adminUi.menu` entry, the `createExtensionApp` call in `app.tsx` includes its menu page:
+
+```tsx
+createExtensionApp({
+  menu: <ApprovalDashboardPage />,
+  metadata: { extensionId: config.metadata.id },
+});
+```
+
+| Property | Type | Required | Description |
+|----------|------|----------|-------------|
+| `id` | string | Yes | App-local menu identifier. Allowed characters: letters, digits, `/`, `:`, `_`. |
+| `label` | string | Yes | Menu label rendered in Commerce Admin. |
+| `description` | string | Yes | Summary shown in installation and permission-review surfaces. |
+| `pageTitle` | string | No | Page title for the menu entry. |
+| `parentMenu` | string | No | Existing Commerce menu ID under which the app menu is attached. App Management automatically generates a per-app section from `metadata.displayName`. When this property is omitted, Commerce places it under the Apps menu. |
+| `sandboxPermissions` | array | No | iframe sandbox permissions. One or more of `allow-downloads`, `allow-modals`, `allow-popups`. |
+| `aclProtected` | boolean | No | When `true`, Commerce generates a per-app ACL resource and adds it to the Adobe Commerce User Roles tree. See [ACL-protected extension points](#acl-protected-extension-points). |
+
+For the app UI entry point and page setup, see [Develop the Admin UI](#develop-the-admin-ui).
+
+## Add grid columns
+
+You can add custom columns to order, product, customer, invoice, credit memo, or shipment grids. Columns declared under `gridColumns` are fetched by a runtime action you implement. The `generate` command derives the `workerProcess` entry from `runtimeAction` automatically:
+
+Credit Memo also supports the separate [custom attribute grid columns](../../admin-ui-sdk/extension-points/v2/credit-memo/custom-attribute-grid-columns.md) extension point under `adminUi.creditMemo.customAttributeGridColumns.columns`, with optional boolean and text filters. Keep these separate from `gridColumns.columns`. Attribute-only registrations need no runtime action; the parameter tables below describe runtime-action columns.
+
+```js
+adminUi: {
+  order: {
+    gridColumns: {
+      label: "Order fulfillment data",
+      description: "Adds fulfillment status and risk score to the order grid",
+      runtimeAction: "orders/fetch-order-grid-data",
+      columns: [
+        { id: "fulfillment_status", label: "Fulfillment", type: "string", align: "left" },
+        { id: "risk_score", label: "Risk", type: "integer", align: "right" },
+      ],
+    },
+  },
+  product: {
+    gridColumns: {
+      label: "Product inventory data",
+      description: "Adds inventory status to the product grid",
+      runtimeAction: "products/fetch-product-grid-data",
+      columns: [
+        { id: "inventory_status", label: "Inventory", type: "string", align: "left" },
+      ],
+    },
+  },
+  customer: {
+    gridColumns: {
+      label: "Customer loyalty data",
+      description: "Adds loyalty tier to the customer grid",
+      runtimeAction: "customers/fetch-customer-grid-data",
+      columns: [
+        { id: "loyalty_tier", label: "Loyalty Tier", type: "string", align: "left" },
+      ],
+    },
+  },
+  invoice: {
+    gridColumns: {
+      label: "Invoice warehouse data",
+      description: "Adds warehouse location to the invoice grid",
+      runtimeAction: "invoices/fetch-invoice-grid-data",
+      columns: [
+        { id: "warehouse_location", label: "Warehouse Location", type: "string", align: "left" },
+      ],
+    },
+  },
+  creditMemo: {
+    gridColumns: {
+      label: "Credit memo refund data",
+      description: "Adds refund reason to the credit memo grid",
+      runtimeAction: "credit-memos/fetch-credit-memo-grid-data",
+      columns: [
+        { id: "refund_reason", label: "Refund Reason", type: "string", align: "left" },
+      ],
+    },
+  },
+  shipment: {
+    gridColumns: {
+      label: "Shipment carrier data",
+      description: "Adds carrier information to the shipment grid",
+      runtimeAction: "shipments/fetch-shipment-grid-data",
+      columns: [
+        { id: "carrier", label: "Carrier", type: "string", align: "left" },
+      ],
+    },
+  },
+}
+```
+
+### Common grid column properties
+
+The `order`, `product`, `customer`, `invoice`, `creditMemo`, and `shipment` definitions are all optional. Configure only the grids your application extends. Invoice, credit memo, and shipment extensions support grid columns only, not mass actions or view buttons.
+
+| Property | Type | Required | Description |
+|----------|------|----------|-------------|
+| `label` | string | Yes | Displayed in App Management during installation. |
+| `description` | string | Yes | Displayed in App Management during installation. |
+| `runtimeAction` | string | Yes | `package/action` path matching a handler you implement. Registered as a `workerProcess` operation automatically. |
+| `columns` | array | Yes | At least one column. See [column properties](#column-properties) below. |
+
+### Column properties
+
+The `columns` array contains one or more column definitions. Each column is rendered in the grid with the specified label, type, and alignment. The `id` is used as the response data key in the runtime action.
+
+| Property | Type | Required | Description |
+|----------|------|----------|-------------|
+| `id` | string | Yes | Stable column identifier; also used as the response data key. |
+| `label` | string | Yes | Column header displayed in the grid. |
+| `type` | string | Yes | One of `boolean`, `date`, `datetime`, `float`, `integer`, `string`. Date and datetime values must be ISO 8601-compliant. |
+| `align` | string | Yes | One of `left`, `center`, `right`. |
+| `aclProtected` | boolean | No | When `true`, Commerce generates a per-app nested ACL resource for this column. See [ACL-protected extension points](#acl-protected-extension-points). |
+
+### Grid column handler
+
+Implement the `runtimeAction` handler with the typed request and response builders from `@adobe/aio-commerce-lib-admin-ui/grid-columns`. This example serves the order columns declared above and returns data only for the requested IDs:
+
+```js
+import { okGridResponse, parseGridRequest } from "@adobe/aio-commerce-lib-admin-ui/grid-columns";
+
+const orderData = {
+  "000000001": { fulfillment_status: "shipped", risk_score: 12 },
+  "000000002": { fulfillment_status: "pending", risk_score: 47 },
+};
+
+const defaults = { fulfillment_status: "unknown", risk_score: 0 };
+
+export async function main(params) {
+  const { ids } = parseGridRequest(params);
+  const data = {};
+
+  for (const id of ids) {
+    if (Object.hasOwn(orderData, id)) {
+      data[id] = orderData[id];
+    }
+  }
+
+  return okGridResponse(data, defaults);
+}
+```
+
+Replace the sample data with lookups in your data source. Response column keys must match the configured column IDs. Commerce uses the second argument to `okGridResponse` as defaults for missing rows or cells whose values do not match the declared column type. Without a default, a missing value leaves the cell empty.
+
+The parsed request also includes `gridType`. Product grid requests identify rows by SKU, while customer grid requests use customer IDs. For credit memos, the configuration key is `creditMemo`, but the request's `gridType` is lowercase: `"creditmemo"`.
+
+The `parseGridRequest` method throws a `CommerceSdkValidationError` error on a malformed request. Use `errorGridResponse(status, message)` to return a non-2xx response. See the [`@adobe/aio-commerce-lib-admin-ui` usage guide](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-admin-ui/docs/usage.md#grid-column-wire-contract) for the full wire contract.
+
+## Add mass actions
+
+Add mass actions that run against a selection of grid rows. For orders, merchants choose an action from the **Sales** > **Orders** grid after selecting one or more orders. Each entry uses `type` to select how it runs: `view` opens an iframe at `path` and exposes the selected IDs through `useMassActionContext()`; `worker` invokes a `runtimeAction` with the selected IDs and no iframe:
+
+```js
+adminUi: {
+  order: {
+    massActions: [
+      {
+        type: "view",
+        id: "export-orders",
+        label: "Export",
+        title: "Export orders",
+        path: "#/export-orders",
+        sandboxPermissions: ["allow-downloads"],
+        notifications: {
+          success: "Order export completed.",
+          error: "Order export failed.",
+        },
+      },
+      {
+        type: "worker",
+        id: "bulk-approve",
+        label: "Approve",
+        confirm: {
+          title: "Approve orders",
+          message: "Approve the selected orders?",
+        },
+        selectionLimit: 50,
+        runtimeAction: "orders/bulk-approve",
+        timeout: 15,
+        notifications: {
+          success: "Orders approved.",
+          error: "Approval failed. Check the runtime logs.",
+        },
+      },
+    ],
+  },
+}
+```
+
+For the `view` mass action above, register a route whose path matches `adminUi.order.massActions[0].path` in `app.commerce.config`:
+
+```tsx
+createExtensionApp({
+  metadata: { extensionId: config.metadata.id },
+  routes: [{ element: <ExportOrdersPage />, path: "#/export-orders" }],
+});
+```
+
+Mass actions are supported on `order`, `product`, and `customer`. The `id` is authored as a bare name (for example `bulk-approve`). Commerce handles prefixing and collision resolution when rendering the final Admin UI configuration.
+
+For product and customer grids, declare actions under the corresponding entity. This example adds a product `view` action limited to one selection and a customer `worker` action:
+
+```js
+adminUi: {
+  product: {
+    massActions: [
+      {
+        type: "view",
+        id: "review-product",
+        label: "Review product",
+        path: "#/review-product",
+        selectionLimit: 1,
+        confirm: {
+          title: "Review product",
+          message: "Open the selected product for review?",
+        },
+      },
+    ],
+  },
+  customer: {
+    massActions: [
+      {
+        type: "worker",
+        id: "sync-customers",
+        label: "Sync customers",
+        runtimeAction: "customers/sync-customers",
+        timeout: 15,
+        notifications: {
+          success: "Customers synced.",
+          error: "Customer sync failed.",
+        },
+      },
+    ],
+  },
+}
+```
+
+Register the product review page alongside any other `view` routes:
+
+```tsx
+createExtensionApp({
+  metadata: { extensionId: config.metadata.id },
+  routes: [
+    { element: <ExportOrdersPage />, path: "#/export-orders" },
+    { element: <ReviewProductPage />, path: "#/review-product" },
+  ],
+});
+```
+
+Use `useMassActionContext()` to read the selected product IDs on the product page. Implement `customers/sync-customers` using the request and response helpers in the [mass action worker handler](#mass-action-worker-handler), replacing the order approval logic with customer synchronization.
+
+### Field applicability by variant
+
+| Field | Common | `view` only | `worker` only |
+|-------|:------:|:-----------:|:-------------:|
+| `id` | x | | |
+| `label` | x | | |
+| `title` | x | | |
+| `description` | x | | |
+| `confirm` | x | | |
+| `notifications` | x | | |
+| `selectionLimit` | x | | |
+| `aclProtected` | x | | |
+| `path` | | x | |
+| `sandboxPermissions` | | x | |
+| `runtimeAction` | | | x |
+| `timeout` | | | x |
+
+The `view` and `worker` variants are strict: setting `path` or `sandboxPermissions` on a `worker` action, or `runtimeAction` or `timeout` on a `view` action, fails validation.
+
+| Property | Type | Required | Description |
+|----------|------|----------|-------------|
+| `id` | string | Yes | Stable action identifier. |
+| `label` | string | Yes | Action label rendered in the Admin UI. |
+| `title` | string | No | Page title rendered in the iframe (`view`) or confirmation surface (`worker`). |
+| `description` | string | No | Summary exposed through `app-config` for installation tooling and shown to identify the action in ACL settings when protected. |
+| `confirm` | object | No | `{ title?, message? }` confirmation dialog shown before the action runs. |
+| `notifications` | object | No | `{ success?, error? }` banner messages shown in Commerce Admin after the action completes. When omitted, Commerce displays a default success or error banner. |
+| `selectionLimit` | number | No | Caps how many records may be selected at once. Defaults to `-1` (unlimited). |
+| `aclProtected` | boolean | No | See [ACL-protected extension points](#acl-protected-extension-points). |
+| `path` (`view`) | string | Yes | In-app iframe URL, for example `#/export-orders`. |
+| `sandboxPermissions` (`view`) | array | No | One or more of `allow-downloads`, `allow-modals`, `allow-popups`. |
+| `runtimeAction` (`worker`) | string | Yes | `package/action` path. Registered as a `workerProcess` operation automatically. |
+| `timeout` (`worker`) | number | No | Timeout in seconds. |
+
+### Mass action worker handler
+
+```js
+import {
+  okMassActionResponse,
+  parseMassActionRequest,
+} from "@adobe/aio-commerce-lib-admin-ui/mass-actions";
+
+export async function main(params) {
+  const { gridType, selectedIds } = parseMassActionRequest(params);
+
+  await approveOrders(selectedIds);
+  return okMassActionResponse({ approved: selectedIds.length });
+}
+```
+
+Use `massActionErrorResponse(status, message)` to report a failure. See the [`@adobe/aio-commerce-lib-admin-ui` usage guide](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-admin-ui/docs/usage.md#mass-action-worker-contract) for the full wire contract, including the end-to-end ACL example.
+
+### View mass action page
+
+A `view` mass action opens an iframe at `path` inside your App Builder frontend. There is no server-side view handler. Register its page route in `createExtensionApp`; see [Develop the Admin UI](#develop-the-admin-ui). Read the selected row IDs and close the iframe with the React hooks exported from `@adobe/aio-commerce-lib-admin-ui/web`:
+
+```jsx
+import {
+  useHostConnection,
+  useMassActionContext,
+} from "@adobe/aio-commerce-lib-admin-ui/web";
+import { Button, ComboBox, ComboBoxItem, Heading } from "@react-spectrum/s2";
+import { style } from "@react-spectrum/s2/style" with { type: "macro" };
+
+import { throwIfError } from "#web/utils.ts";
+
+/** Lists the order IDs the mass action was triggered with, then closes the iframe on demand. */
+export function MassActionWithRedirect() {
+  const { data } = throwIfError(useMassActionContext());
+  const { actions } = throwIfError(useHostConnection());
+
+  return (
+    <div className={style({ margin: 8 })}>
+      <Heading level={1}>Selected Ids</Heading>
+      <ComboBox defaultItems={data.selectedIds.map((id) => ({ id }))}>
+        {(item) => <ComboBoxItem id={item.id}>{item.id}</ComboBoxItem>}
+      </ComboBox>
+      <Button
+        onPress={actions.close}
+        styles={style({ marginTop: 8 })}
+        variant="primary">
+        Done
+      </Button>
+    </div>
+  );
+}
+```
+
+For a `view` action, call `actions.close()` after successful completion. If the operation fails, call `actions.closeWithError()` in the failure branch instead:
+
+```js
+await actions.closeWithError();
+```
+
+Both methods close the iframe and return to the originating grid. With the `export-orders` configuration above, `close()` displays "Order export completed." and `closeWithError()` displays "Order export failed." Call the appropriate method after the operation completes to report its outcome.
+
+## Add order view buttons
+
+Add buttons to the order detail page, where they appear alongside the built-in order actions. A `view` button opens an iframe at `path` and provides the order ID through `useOrderViewButtonContext()`; a `worker` button invokes a `runtimeAction` with the order ID and no iframe:
+
+```js
+adminUi: {
+  order: {
+    viewButtons: [
+      {
+        type: "view",
+        id: "delete-order",
+        label: "Delete",
+        description: "Permanently removes the order and its associated records.",
+        path: "#/delete-order",
+        level: 0,
+        sortOrder: 80,
+        sandboxPermissions: ["allow-modals", "allow-popups"],
+        confirm: { message: "Are you sure you want to delete this order?" },
+        notifications: {
+          success: "Order deleted successfully.",
+          error: "Order deletion failed.",
+        },
+      },
+      {
+        type: "worker",
+        id: "sync-inventory",
+        label: "Sync inventory",
+        description: "Pushes the latest stock counts for this order's items to the ERP.",
+        runtimeAction: "orders/sync-inventory",
+        timeout: 15,
+        level: 1,
+        sortOrder: 10,
+        notifications: {
+          success: "Inventory synced successfully.",
+          error: "Inventory sync failed. Check the runtime logs.",
+        },
+      },
+    ],
+  },
+}
+```
+
+For the `view` button above, register a route whose path matches `adminUi.order.viewButtons[0].path` in `app.commerce.config`:
+
+```tsx
+createExtensionApp({
+  metadata: { extensionId: config.metadata.id },
+  routes: [{ element: <DeleteOrderPage />, path: "#/delete-order" }],
+});
+```
+
+Order view buttons are only available on `order`.
+
+### Field applicability by variant
+
+| Field | Common | `view` only | `worker` only |
+|-------|:------:|:-----------:|:-------------:|
+| `id` | x | | |
+| `label` | x | | |
+| `description` | x | | |
+| `level` | x | | |
+| `sortOrder` | x | | |
+| `confirm` | x | | |
+| `notifications` | x | | |
+| `aclProtected` | x | | |
+| `path` | | x | |
+| `sandboxPermissions` | | x | |
+| `runtimeAction` | | | x |
+| `timeout` | | | x |
+
+The `view` and `worker` variants are strict. Setting `path` or `sandboxPermissions` on a `worker` button, or `runtimeAction` or `timeout` on a `view` button, fails validation.
+
+| Property | Type | Required | Description |
+|----------|------|----------|-------------|
+| `id` | string | Yes | Stable button identifier, served to Commerce as-is. App-specific IDs can be namespaced, for example `order-custom-view-button::delete-order`. |
+| `label` | string | Yes | On-button text rendered in Admin. |
+| `description` | string | No | Summary exposed through `app-config` for installation tooling and shown to identify the button in ACL settings when protected. |
+| `level` | number | No | Position of the button in the toolbar: `-1` (left), `0` (center), or `1` (right). |
+| `sortOrder` | number | No | Positive number controlling the button's order within its `level`. |
+| `confirm` | object | No | `{ title?, message? }` confirmation dialog shown before the handler runs. |
+| `notifications` | object | No | `{ success?, error? }` banner messages shown in Commerce Admin after the handler returns. When omitted, Commerce displays a default success or error banner. |
+| `aclProtected` | boolean | No | See [ACL-protected extension points](#acl-protected-extension-points). |
+| `path` (`view`) | string | Yes | In-app iframe URL, for example `#/delete-order`. |
+| `sandboxPermissions` (`view`) | array | No | One or more of `allow-downloads`, `allow-modals`, `allow-popups`. |
+| `runtimeAction` (`worker`) | string | Yes | `package/action` path. Registered as a `workerProcess` operation automatically. |
+| `timeout` (`worker`) | number | No | Timeout in seconds. |
+
+### View order view button page
+
+A `view` button opens an iframe at `<extension-host>/index.html<path>?orderId=<orderId>` inside your App Builder frontend. There is no server-side handler. Register its page route in `createExtensionApp` with a path matching the button's `path`; see [Develop the Admin UI](#develop-the-admin-ui). In the registered page, read the order ID and close the iframe with the React hooks exported from `@adobe/aio-commerce-lib-admin-ui/web`:
+
+```jsx
+import { useHostConnection, useOrderViewButtonContext } from "@adobe/aio-commerce-lib-admin-ui/web";
+
+import { throwIfError } from "#web/utils.ts";
+
+export function DeleteOrderPage() {
+  const { data } = throwIfError(useOrderViewButtonContext());
+  const { actions } = throwIfError(useHostConnection());
+  const { orderId } = data;
+
+  // ...delete orderId, then call actions.close() to return to the order view.
+}
+```
+
+After the delete operation succeeds, call `actions.close()` to return to the order view with the configured success banner. If it fails, call `actions.closeWithError()` to return with the configured error banner, as in the [view mass action page](#view-mass-action-page).
+
+### Order view button worker handler
+
+A `worker` button POSTs to your runtime action; parse the request and build the response with `@adobe/aio-commerce-lib-admin-ui/order-view-buttons`:
+
+```js
+import {
+  okOrderViewButtonResponse,
+  parseOrderViewButtonRequest,
+} from "@adobe/aio-commerce-lib-admin-ui/order-view-buttons";
+
+async function syncInventory(orderId) {
+  // Your sync inventory logic for orderId
+}
+
+export async function main(params) {
+  const { id, orderId } = parseOrderViewButtonRequest(params);
+  await syncInventory(orderId);
+  
+  return okOrderViewButtonResponse();
+}
+```
+
+Use `orderViewButtonErrorResponse(status, message)` to report a failure. See the [`@adobe/aio-commerce-lib-admin-ui` usage guide](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-admin-ui/docs/usage.md#order-view-button-wire-contract) for the full wire contract.
+
+## Add invoice view buttons
+
+Declare buttons for the invoice detail page under `adminUi.invoice.viewButtons`. As with order buttons, `type: "view"` opens an iframe and `type: "worker"` invokes a runtime action:
+
+```js
+adminUi: {
+  invoice: {
+    viewButtons: [
+      {
+        id: "invoice-details",
+        label: "Invoice details",
+        type: "view",
+        path: "#/invoice-details",
+        title: "Custom invoice details",
+        sortOrder: 100,
+      },
+      {
+        id: "send-invoice",
+        label: "Send invoice",
+        type: "worker",
+        runtimeAction: "invoice/send",
+        timeout: 15,
+        confirm: { message: "Send this invoice?" },
+      },
+    ],
+  },
+}
+```
+
+Invoice view buttons share the common fields and variant restrictions of order buttons, with an optional `title` supported only on invoice `view` buttons. IDs must be unique after Commerce ID sanitization.
+
+Iframe pages read the invoice ID with `useInvoiceViewButtonContext()` from `@adobe/aio-commerce-lib-admin-ui/web` and complete the flow with `useHostConnection()`. Worker handlers use `parseInvoiceViewButtonRequest`, `okInvoiceViewButtonResponse`, and `invoiceViewButtonErrorResponse` from `@adobe/aio-commerce-lib-admin-ui/invoice-view-buttons`. Worker requests require `requestId`, `id`, and `invoiceId`; do not substitute `orderId`.
+
+See [Invoice view button](../../admin-ui-sdk/extension-points/v2/invoice/view-button.md) for the full parameter reference, iframe example, worker contract, and ACL guidance.
+
+## Add credit memo view buttons
+
+Declare buttons for the credit memo detail page under `adminUi.creditMemo.viewButtons`. As with order and invoice buttons, `type: "view"` opens an iframe and `type: "worker"` invokes a runtime action:
+
+```js
+adminUi: {
+  creditMemo: {
+    viewButtons: [
+      {
+        id: "credit-memo-details",
+        label: "Credit memo details",
+        type: "view",
+        path: "#/credit-memo-details",
+        title: "Custom credit memo details",
+        sortOrder: 100,
+      },
+      {
+        id: "send-credit-memo",
+        label: "Send credit memo",
+        type: "worker",
+        runtimeAction: "credit-memo/send",
+        timeout: 15,
+        confirm: { message: "Send this credit memo?" },
+      },
+    ],
+  },
+}
+```
+
+Credit memo view buttons use the same common fields and variant restrictions as invoice view buttons, with an optional `title` supported only on `view` buttons. IDs must be unique after Commerce ID sanitization.
+
+Iframe pages read the credit memo ID with `useCreditMemoViewButtonContext()` from `@adobe/aio-commerce-lib-admin-ui/web` and complete the flow with `useHostConnection()`. Worker handlers use `parseCreditMemoViewButtonRequest`, `okCreditMemoViewButtonResponse`, and `creditMemoViewButtonErrorResponse` from `@adobe/aio-commerce-lib-admin-ui/credit-memo-view-buttons`. Worker requests require `requestId`, `id`, and `creditMemoId`.
+
+See [Credit memo view button](../../admin-ui-sdk/extension-points/v2/credit-memo/view-button.md) for the full parameter reference, iframe example, worker contract, and ACL guidance.
+
+## Add return view buttons
+
+Declare return (RMA) detail-page buttons under `adminUi.rma.viewButtons`. Use `type: "view"` with a frontend `path` or `type: "worker"` with a `runtimeAction`. Returns support view buttons only, not grid columns or mass actions.
+
+Iframe pages use `useRmaViewButtonContext()` from `@adobe/aio-commerce-lib-admin-ui/web` to read `data.rmaId`. Worker handlers use `parseRmaViewButtonRequest`, `okRmaViewButtonResponse`, and `rmaViewButtonErrorResponse` from `@adobe/aio-commerce-lib-admin-ui/rma-view-buttons`. The parser normalizes the incoming request to `{ requestId, id, rmaId }`.
+
+See [Return view button](../../admin-ui-sdk/extension-points/v2/rma/view-button.md) for configuration examples, parameters, and ACL guidance.
+
+## Replace a native Admin form
+
+Declare native form replacements under `adminUi.nativeUi.replacedPages`. For example, the following configuration replaces the native order creation form:
+
+```js
+adminUi: {
+  nativeUi: {
+    replacedPages: [
+      {
+        target: "order.create",
+        path: "#/create-order",
+        title: "Create Order (App)",
+        sandboxPermissions: ["allow-modals"],
+      },
+    ],
+  },
+}
+```
+
+Choose a target from the [supported targets](../../admin-ui-sdk/extension-points/v2/native-ui.md#supported-targets). Each target must be unique within the app. A native target can be replaced by only one app on a Commerce instance at a time; the SDK does not validate conflicts across apps.
+
+Configuring a replacement enables the Admin UI `view` operation and web source. Implement the matching route and replacement page in `web-src`; the SDK does not generate the page itself. Use `useNativeUiContext()` from `@adobe/aio-commerce-lib-admin-ui/web` to read optional `customerId` and `storeId` values supplied by Commerce.
+
+The replacement follows the ACL permissions of the native form in Commerce and does not define a separate `aclProtected` resource.
+
+See [Native UI form replacements](../../admin-ui-sdk/extension-points/v2/native-ui.md) for the parameter reference, context example, and limitations.
+
+## ACL-protected extension points
+
+Set `aclProtected: true` on a menu, grid column, mass action, or order, invoice, or credit memo view button to have Commerce generate a per-app ACL resource for that item and add it to the Adobe Commerce User Roles tree. Admins can then grant or deny the resource per role. Users without the resource do not see the item and cannot invoke it.
+
+Each resource id follows a hierarchical scheme rooted at the app (derived from `metadata.id`), with a leaf id per protected item. Use the id helpers from `@adobe/aio-commerce-lib-admin-ui` instead of hardcoding the generated string:
+
+| Extension point | Helper |
+|------------------|--------|
+| App root | `getAclResourceId(metadataId)` from `/api` |
+| Menu | `getMenuAclResourceId(metadataId, menuId)` from `/menu` |
+| Customer grid column | `getGridColumnAclResourceId(metadataId, "customer", columnId)` from `/grid-columns` |
+| Order grid column | `getGridColumnAclResourceId(metadataId, "order", columnId)` from `/grid-columns` |
+| Product grid column | `getGridColumnAclResourceId(metadataId, "product", columnId)` from `/grid-columns` |
+| Invoice grid column | `getGridColumnAclResourceId(metadataId, "invoice", columnId)` from `/grid-columns` |
+| Credit memo grid column | `getGridColumnAclResourceId(metadataId, "creditmemo", columnId)` from `/grid-columns` |
+| Shipment grid column | `getGridColumnAclResourceId(metadataId, "shipment", columnId)` from `/grid-columns` |
+| Customer mass action | `getMassActionAclResourceId(metadataId, "customer", actionId)` from `/mass-actions` |
+| Order mass action | `getMassActionAclResourceId(metadataId, "order", actionId)` from `/mass-actions` |
+| Product mass action | `getMassActionAclResourceId(metadataId, "product", actionId)` from `/mass-actions` |
+| Order view button | `getOrderViewButtonAclResourceId(metadataId, buttonId)` from `/order-view-buttons` |
+| Invoice view button | `getInvoiceViewButtonAclResourceId(metadataId, buttonId)` from `/invoice-view-buttons` |
+| Credit memo view button | `getCreditMemoViewButtonAclResourceId(metadataId, buttonId)` from `/credit-memo-view-buttons` |
+| Return view button | `getRmaViewButtonAclResourceId(metadataId, buttonId)` from `/rma-view-buttons` |
+
+See the [Admin UI SDK V2 extension points](../../admin-ui-sdk/extension-points/v2/index.md) for the full list of V2 supported extension points.
+
+Use `getAdminUiPermissionClient` in the Runtime action handler to check the resource before serving protected content. Forward the authenticated administrator's IMS credentials from the incoming request headers to Commerce. This checks the administrator's permissions rather than the application's server-to-server permissions:
+
+```js
+import {
+  AdminUiPermissionDeniedError,
+  getAdminUiPermissionClient,
+} from "@adobe/aio-commerce-lib-admin-ui/api";
+import {
+  getMassActionAclResourceId,
+  massActionErrorResponse,
+} from "@adobe/aio-commerce-lib-admin-ui/mass-actions";
+
+import { getCommerceClient } from "@adobe/aio-commerce-lib-app";
+import { getForwardedImsAuthProvider } from "@adobe/aio-commerce-lib-auth";
+
+import appConfig from "#app.commerce.config";
+
+export async function main(params) {
+  const appId = appConfig.metadata.id;
+  const auth = getForwardedImsAuthProvider({
+    from: "headers",
+    headers: params.__ow_headers ?? {},
+  });
+  const httpClient = await getCommerceClient(auth);
+  const permissionClient = getAdminUiPermissionClient({ httpClient, appId });
+
+  try {
+    await permissionClient.require(
+      getMassActionAclResourceId(appId, "order", "bulk-approve"),
+    );
+    
+    // Do something after checking permission is granted.
+  } catch (error) {
+    if (error instanceof AdminUiPermissionDeniedError) {
+      return massActionErrorResponse(403, "You do not have access to this action");
+    }
+    throw error;
+  }
+}
+```
+
+See the [Permission Client documentation](https://github.com/adobe/aio-commerce-sdk/blob/main/packages/aio-commerce-lib-admin-ui/docs/usage.md#permission-client) for caching, deduplication, and the full end-to-end example.
+
+After changing `adminUi`, rebuild and deploy your app so the `pre-app-build` hook refreshes generated artifacts. See [Build and deploy](../build-deploy.md) for more information.
+
+## Related documentation
+
+* [Admin UI SDK](../../admin-ui-sdk/index.md): general Admin UI SDK concepts and extension points.
+* [`@adobe/aio-commerce-lib-admin-ui`](https://github.com/adobe/aio-commerce-sdk/tree/main/packages/aio-commerce-lib-admin-ui): wire contract builders, menu constants, and the permission client used by `commerce/backend-ui/2` handlers.
+* [Build and deploy](../build-deploy.md): generated files and runtime actions for `commerce/backend-ui/2`.

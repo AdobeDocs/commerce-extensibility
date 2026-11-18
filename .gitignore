@@ -1,36 +1,34 @@
-.editorconfig
-.idea
+
+# OS
 .DS_Store
-.vscode/*
 
-# npm yarn
-node_modules
-package.lock
-yarn-error.log
-.pnp.*
-.yarn/*
+# IDE
+.vscode
 
-# keep in repo
-!.gitignore
-!.yarn.lock
-!.yarnrc.yml
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
-
-# gatsby files
+# environment variables
 .env
+
+# npm
+node_modules
+package-lock.json
+
+# Preserved from external contributors
+.idea
+.editorconfig
+.cursor
+.claude/
 .cache
 public
-
-# cypress
 cypress/videos
 cypress/screenshots
-
-# lerna
-lerna-debug.log
-
-# cursor
-.cursor
+_site
+super-linter-output
+github_conf
+tmp
+*.log
+*.tmp
+*.bak
+*.swp
+*.txt
+AGENTS.md
+.scout

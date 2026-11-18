@@ -11,15 +11,17 @@ keywords:
 To call the Commerce REST endpoints, initialize the Adobe Commerce Client:
 
 ```javascript
-const { getAdobeCommerceClient } = require("../lib/adobe-commerce");
-const commerceClient = await getAdobeCommerceClient(process.env);
+import { getCommerceClient } from "@adobe/aio-commerce-lib-app";
+import { resolveImsAuthParams } from "@adobe/aio-commerce-sdk/auth";
+
+const commerceClient = await getCommerceClient(resolveImsAuthParams(params));
 ```
 
 ## Create a new payment method
 
 `createOopePaymentMethod` creates a new out-of-process payment method with the necessary details such as `code`, `title`, and `configuration`.
 
-Check the [API reference](./payment-reference.md#create-or-update-a-payment-method) for more details.
+Check the [API reference](payment-reference.md#create-or-update-a-payment-method) for more details.
 
 <CodeBlock slots="heading, code" repeat="1" languages="javascript" />
 
@@ -60,7 +62,7 @@ try {
 
 `getOopePaymentMethods` retrieves a list of all out-of-process payment methods in the Adobe Commerce instance.
 
-Check the [API reference](./payment-reference.md#list-all-payment-methods) for more details.
+Check the [API reference](payment-reference.md#list-all-payment-methods) for more details.
 
 <CodeBlock slots="heading, code" repeat="1" languages="javascript" />
 
@@ -88,7 +90,7 @@ try {
 
 `getOopePaymentMethod` retrieves one out-of-process payment method by code from the Adobe Commerce instance.
 
-Check the [API reference](./payment-reference.md#get-an-oope-payment-method-by-code) for more details.
+Check the [API reference](payment-reference.md#get-an-oope-payment-method-by-code) for more details.
 
 <CodeBlock slots="heading, code" repeat="1" languages="javascript" />
 
@@ -116,7 +118,7 @@ try {
 
 `getOrderByMaskedCartId` retrieves order details from the Adobe Commerce instance using `maskedCartID`. This is typically used when the app builder application receives a webhook or event from the payment gateway.
 
-This method uses the Adobe Commerce API [order search criteria](https://developer.adobe.com/commerce/webapi/rest/use-rest/performing-searches/#other-search-criteria).
+This method uses the Adobe Commerce API [order search criteria](https://developer.adobe.com/commerce/webapi/rest/use-rest/performing-searches#other-search-criteria).
 
 **Payload parameters:**
 

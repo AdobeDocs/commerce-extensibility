@@ -9,17 +9,13 @@ keywords:
 
 # Install or update Adobe Commerce Admin UI SDK
 
-The installation process varies by deployment type:
-
-* <Edition name="saas" /> **Adobe Commerce as a Cloud Service (SaaS)** - Pre-installed. Enable in the Admin panel only.
-
-* <Edition name="paas" /> **Adobe Commerce on Cloud Infrastructure (PaaS) and On-Premises** - Pre-installed on version `2.4.8+`. Manual Composer installation required for versions `2.4.5-2.4.7`.
+Adobe Commerce as a Cloud Service (SaaS) automatically includes the Adobe Commerce Admin UI SDK. You only need to enable it. For Adobe Commerce on Cloud and on-premises (PaaS) projects, the SDK is installed automatically on Adobe Commerce version 2.4.8 and later. You must install it manually on older versions.
 
 <InlineAlert variant="info" slots="text1" />
 
 Magento Open Source is not supported.
 
-[Admin configuration and testing](./configuration.md) describes how to enable and configure the Admin UI SDK.
+[Admin configuration and testing](configuration.md) describes how to enable and configure the Admin UI SDK.
 
 ## Enable the Admin UI SDK on Adobe Commerce as a Cloud Service (SaaS)
 
@@ -45,13 +41,13 @@ Adobe Commerce has the following software requirements:
 
 * Adobe Commerce on cloud infrastructure or on premises: 2.4.5+
 * PHP 8.1+
-* [Adobe Identity Management Service (IMS) for Adobe Commerce](https://experienceleague.adobe.com/docs/commerce-admin/start/admin/ims/adobe-ims-integration-overview.html)
+* [Adobe Identity Management Service (IMS) for Adobe Commerce](https://experienceleague.adobe.com/en/docs/commerce-admin/start/admin/ims/adobe-ims-integration-overview)
 
-The [Adobe App Builder _Getting Started_ guide](https://developer.adobe.com/app-builder/docs/getting_started/) lists the latest software requirements for creating App Builder apps.
+The [Adobe App Builder _Getting Started_ guide](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app) lists the latest software requirements for creating App Builder apps.
 
 ### Enable Adobe IMS for Commerce
 
-You must implement Adobe Identity Management Service (IMS) for Adobe Commerce to use the Admin UI SDK. [Configure the Commerce Admin Integration with Adobe ID](https://experienceleague.adobe.com/docs/commerce-admin/start/admin/ims/adobe-ims-config.html?lang=en) describes this process.
+You must implement Adobe Identity Management Service (IMS) for Adobe Commerce to use the Admin UI SDK. [Configure the Commerce Admin Integration with Adobe ID](https://experienceleague.adobe.com/en/docs/commerce-admin/start/admin/ims/adobe-ims-config) describes this process.
 
 ### Adobe Commerce on cloud infrastructure installation
 
@@ -129,7 +125,7 @@ This method installs the SDK on an On-premises instance.
 
 1. Commit your changes.
 
-1. Update your on-premises instance to ensure the committed code is deployed.
+1. To ensure the committed code is deployed, update your on-premises instance.
 
 ## Update the Commerce Admin UI SDK
 
@@ -147,6 +143,8 @@ The Admin UI SDK is automatically updated for SaaS projects. For PaaS projects, 
    bin/magento setup:upgrade && bin/magento indexer:reindex && bin/magento cache:clean
    ```
 
-1. If you are updating from V1.x to V2.0, refer to [Migrate your extension point](./extension-points/index.md#migrate-your-extension-point-from-version-1x-to-20) for additional instructions.
+1. If you are updating from V1.x to V2.0, refer to [Migrate your extension point](extension-points/index.md#migrate-your-extension-point-from-version-1x-to-20) for additional instructions.
 
 1. If you are updating from V2.x to V3.0, the published extensions won't be fetched automatically. Refer to [Eligible extensions configuration](./eligible-extensions-config.md) to select the needed extensions to display.
+
+1. If you are updating from V3.x to V4.1, be aware that the Configure Extensions modal dialog has been deprecated and will be removed in a future release. This dialog displays when you click on the **Configure Extensions** button on the **Stores** > Settings > **Configuration** > **Adobe Services** > **Admin UI SDK** > screen. App Management now handles the association of new apps to Commerce instances. You can still select extensions by workspace, but Adobe recommends using App Management.

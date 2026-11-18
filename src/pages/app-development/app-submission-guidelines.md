@@ -5,8 +5,6 @@ keywords:
   - Extensibility
 ---
 
-import Webhook from '/src/_includes/webhook-auth.md'
-
 # App submission guidelines
 
 This page provides a list of requirements and best practices for Adobe Commerce app developers to ensure your app is ready for submission. Following these guidelines will help reduce rejection rates and improve the quality of your app.
@@ -46,30 +44,32 @@ Some requirements will differ based on whether you indicated the app was non-dow
 - General documentation guidelines
   - **Project-specific language**: Use project-specific language. Avoid generic references to "Adobe", "Magento" or "starter kit".
   - **Configuration details**: Clearly list the app configuration and any third-party service-specific setup steps.
-  - **Clear summary**: Provide a compact description that captures the app’s purpose and primary use cases.
+  - **Clear summary**: Provide a compact description that captures the app's purpose and primary use cases.
   - **Usage instructions**: Add instructions on how to use the app post-installation.
   - For non-downloadable apps:
       - All installation steps and usage instructions must be posted at the application documentation URL provided in Exchange. Because the app is not downloadable, README files and similar documents will not be accessible to customers.
 - Installation guide clarity
-  - **Prerequisites**: Add clear prerequisites (example: Admin UI SDK must be enabled and configured, as described in [the Admin UI SDK documentation](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/configuration/#general-configuration)).
+  - **Prerequisites**: Add clear prerequisites (example: Admin UI SDK must be enabled and configured, as described in [the Admin UI SDK documentation](../admin-ui-sdk/configuration.md#general-configuration)).
 
-      - If the app is compatible with the EDS storefront, include instructions for setup. [Example documentation](https://experienceleague.adobe.com/developer/commerce/storefront/get-started/create-storefront/)
-      - If the app uses a Mesh, provide detailed information on how to configure it according to Adobe guidelines. [Example documentation](https://developer.adobe.com/commerce/extensibility/app-development/app-submission-guidelines/)
-      - If the app uses eventing, provide information about the events used in the project and how to subscribe to them. [Example documentation](https://github.com/adobe/commerce-integration-starter-kit?tab=readme-ov-file#onboarding)
-      - If the app uses webhooks, provide information on how to create a webhook. [Example documentation](https://github.com/adobe/commerce-checkout-starter-kit?tab=readme-ov-file#create-webhooks)
+      - If the app is compatible with the EDS storefront, include instructions for setup. [Example documentation](https://experienceleague.adobe.com/en/tools/commerce-storefront/get-started/create-storefront/)
+      - If the app uses a Mesh, provide detailed information on how to configure it according to Adobe guidelines. [Example documentation](https://developer.adobe.com/graphql-mesh-gateway/mesh/basic/create-mesh)
+      - If the app uses eventing, provide information about the events used in the project and how to subscribe to them. Example documentation:
+         - [Integration starter kit overview](https://github.com/adobe/commerce-integration-starter-kit?tab=readme-ov-file#onboarding)
+         - [Configure eventing in the checkout starter kit](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/SUBMISSION_TEMPLATE.md#configure-eventing)
+      - If the app uses webhooks, provide information on how to create a webhook. [Example documentation](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/SUBMISSION_TEMPLATE.md#configure-webhooks)
   - **Version requirements**: Indicate the required module versions (example: Admin UI SDK minimum version `3.0.0`).
   - **Developer documentation**: Include links to relevant Adobe developer documentation (example: App Builder [getting started guide](https://developer.adobe.com/app-builder/docs/get_started/)).
-  - **PaaS support**: Documentation must include installation steps for PaaS merchants. This means if you are submitting an app for Adobe Commerce as a Cloud Service (SaaS), you also need to support Adobe Commerce on cloud infrastructure (PaaS) and Adobe Commerce on-premises (on-prem).
+  - **PaaS support**: Documentation must include installation steps for PaaS merchants. This means if you are submitting an app for Adobe Commerce as a Cloud Service (SaaS), you also need to support Adobe Commerce on cloud infrastructure (PaaS) and Adobe Commerce on-premises (on-prem). For apps whose functionality depends on the storefront, EDS support with an Adobe Commerce Optimizer (ACO) license satisfies this requirement, and Luma compatibility is not required.
   - **Action scoping**: All runtime actions must be scoped and documented, if they are exposed as webhooks.
   - **PaaS vs SaaS configuration**: Document variables that differ based on Commerce flavor.
-    - Explain differences in the structure of the `COMMERCE_BASE_URL` value  if the variable is used (see [Download and configure the integration starter kit](https://developer.adobe.com/commerce/extensibility/starter-kit/integration/create-integration/#download-and-configure-the-integration-starter-kit) for an explanation)
-    - Mention in the documentation how to obtain auth credentials for [PaaS](https://developer.adobe.com/commerce/extensibility/starter-kit/integration/create-integration/#paas-or-saas) and [SaaS](https://developer.adobe.com/commerce/extensibility/starter-kit/integration/create-integration/#create-an-integration-in-adobe-commerce-as-a-cloud-service)
+    - Explain differences in the structure of the `COMMERCE_BASE_URL` value  if the variable is used (see [Download and configure the integration starter kit](../starter-kit/integration/create-integration.md#download-and-configure-the-integration-starter-kit) for an explanation)
+    - Mention in the documentation how to obtain auth credentials for [PaaS](../starter-kit/integration/create-integration.md#paas-or-saas) and [SaaS](../starter-kit/integration/create-integration.md#create-an-integration-in-adobe-commerce-as-a-cloud-service)
   - For downloadable apps:
-    - **Environment setup**: Label all required environment variables in an [`env.dist`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/env.dist) file with clear guidance. Add a setup instruction to create an `.env` file from the `env.dist`.
-    - **API requirements**: List the required services for your application following [this template](https://github.com/adobe/commerce-checkout-starter-kit?tab=readme-ov-file#initialize-app-builder-project).
+    - **Environment setup**: Label all required environment variables in an `env.dist` file with clear guidance. Add a setup instruction to create an `.env` file from the `env.dist`.
+    - **API requirements**: List the required services for your application following [this template](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/SUBMISSION_TEMPLATE.md#initialize-app-builder-project).
     - **Project creation**:
         - Document how to create a project and workspaces for deploying the app. Consider linking to [Create your First App Builder Application](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app)
-        - Document CLI commands for installing dependencies and connecting to the created project, which are mentioned in [Configure the starter kit](https://developer.adobe.com/commerce/extensibility/starter-kit/integration/create-integration/#configure-the-starter-kit)
+        - Document CLI commands for installing dependencies and connecting to the created project, which are mentioned in [Configure the starter kit](../starter-kit/integration/create-integration.md#configure-the-starter-kit)
   - For non-downloadable apps:
     - **Environment creation**: Add documentation on how an environment gets created when installing the app from the app page on Adobe Exchange. Consider linking to the [Discover and Manage](https://developer.adobe.com/developer-distribution/experience-cloud/docs/guides/discoverAndManage/app-builder-discover) documentation for App Builder apps.
     - **Required credentials**: Provide an explanation of the credentials to fill out in the Exchange configuration page.
@@ -93,12 +93,12 @@ Some requirements will differ based on whether you indicated the app was non-dow
 
   - **Webhook protection**: For webhooks, actions need to be protected by [signature verification](../webhooks/signature-verification.md) or by enabling the use of IMS authentication in your configuration file.
 
-    <Webhook />
+<Fragment src="/_includes/webhook-auth.md" />
 
 - Credential management
   - **Hardcoded secrets**: No hardcoded secrets (account IDs or tokens) in the code or configuration files.
   - **Encryption**: Secrets or credentials provided in runtime must be encrypted before persisting in state/files.
-  - See [Best Practices for Credentials](https://developer.adobe.com/commerce/extensibility/app-development/best-practices/credentials/).
+  - See [Best Practices for Credentials](./best-practices/credentials.md).
   - **No logging of secrets**: No logging of sensitive credentials or tokens in any runtime action.
 
 - **Publication**: If your app is hosted on GitHub or other platforms for collaboration or other reasons, the repository should be private.
@@ -127,14 +127,14 @@ Some requirements will differ based on whether you indicated the app was non-dow
           minVersion: 2.4.5
       ```
 
-  - **Events configuration**: Review [`events.config.yaml`](/starter-kit/checkout/configure/#eventsconfigyaml) to verify event providers and registrations, document usage, and prefix events with your app's scope to avoid collisions. Remove this file if your app does not use events.
-  - **Admin UI SDK configuration**: If an app implements the Admin UI SDK, make sure requirements in the [Admin UI SDK review checklist](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/app-review-checklist/) are met.
+  - **Events configuration**: Review `events.config.yaml` to verify event providers and registrations, document usage, and prefix events with your app's scope to avoid collisions. Remove this file if your app does not use events.
+  - **Admin UI SDK configuration**: If an app implements the Admin UI SDK, make sure requirements in the [Admin UI SDK review checklist](../admin-ui-sdk/app-review-checklist.md) are met.
   - **API Mesh configuration**: For non-downloadable apps, having an automatically-created mesh that is configured for an app builder action deployed within the same environment is not currently supported. If this is needed by an app, we recommend adding a `mesh.json` example in the documentation or in a public repo and providing instructions for setting up the mesh after the auto-generated environment is created.
 
 - Project cleanup
   - **Unused folders**: Remove any unused or unnecessary folders.
   - **Adobe compliance files**: Do not include any Adobe compliance files, such as `CODE_OF_CONDUCT` or `COPYRIGHT`, that you copied from a starter kit.
-  - **Multi-environment support**: Provide out-of-the-box support for SaaS and PaaS deployments by using configuration or different initialization scripts.
+  - **Multi-environment support**: Provide out-of-the-box support for SaaS and PaaS deployments by using configuration or different initialization scripts. For storefront-dependent apps, EDS support with an ACO license is sufficient, and Luma compatibility is not required.
 
 ### Code review
 
@@ -144,8 +144,8 @@ Some requirements will differ based on whether you indicated the app was non-dow
 
 - Commerce compatibility
   - **Multi-flavor support**: Ensure compatibility between Commerce flavors (PaaS and SaaS):
-    - &#8203;<Edition name="saas" /> Use [IMS](/starter-kit/checkout/connect/#adobe-identity-management-service-ims) for authentication instead of [Commerce integrations (OAuth1)](/starter-kit/checkout/connect/#create-a-commerce-integration).
-  - For detailed guidelines on supporting both SaaS and PaaS, see [Extension Compatibility](./extension-compatibility.md).
+    - [SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) Use [IMS](/starter-kit/checkout/connect.md#adobe-identity-management-service-ims) for authentication instead of [Commerce integrations (OAuth1)](/starter-kit/checkout/connect.md#create-a-commerce-integration).
+  - For detailed guidelines on supporting both SaaS and PaaS, see [Extension Compatibility](extension-compatibility.md).
 
 - Quality assurance
   - **Test suite**: Ensure tests all tests are passing. Run `npm test` to validate.
@@ -164,10 +164,25 @@ The following best practices are not required for your app to be accepted, but t
 ### Project enhancement
 
 - Tracking and monitoring
-  - **Starter kit info**: Include the [`starter-kit-info`](https://github.com/adobe/commerce-integration-starter-kit/blob/main/actions/starter-kit-info/index.js) runtime action for deployment tracking.
+  - **Starter kit info**: Include the [`starter-kit-info`](https://github.com/adobe/commerce-integration-starter-kit/blob/main/src/commerce-extensibility-1/actions/starter-kit/info/index.js) runtime action for deployment tracking.
   - **Feature utilization**: Leverage new starter kit features where applicable.
-    - [Integration starter kit](https://developer.adobe.com/commerce/extensibility/starter-kit/integration/)
-    - [Checkout starter kit](https://developer.adobe.com/commerce/extensibility/starter-kit/checkout/)
+    - [Integration starter kit](../starter-kit/integration/index.md)
+    - [Checkout starter kit](../starter-kit/checkout/index.md)
+
+- Adobe Commerce SDK
+  - **Typed API clients**: Use packages from the [Adobe Commerce SDK](https://github.com/adobe/aio-commerce-sdk) family instead of writing custom HTTP/auth/eventing logic from scratch. These libraries provide typed clients, built-in authentication, and retry logic, and keep your code aligned with Adobe's recommended patterns:
+    - `@adobe/aio-commerce-lib-auth` — authentication flows for Adobe IMS and Commerce integrations
+    - `@adobe/aio-commerce-lib-api` — HTTP/API client builders for Adobe Commerce and Adobe I/O Events
+    - `@adobe/aio-commerce-lib-events` — event-driven integrations between Commerce and Adobe I/O Events
+    - `@adobe/aio-commerce-lib-webhooks` — utilities for the Adobe Commerce Webhooks API
+    - `@adobe/aio-commerce-lib-core` — shared foundational utilities used across the family
+
+    Apps that adopt full App Management additionally require `@adobe/aio-commerce-lib-app` and `@adobe/aio-commerce-lib-config`, but the libraries above can be used independently for apps not yet using App Management.
+
+  - **App Management**: Use [App Management](../app-management/index.md) to define your configuration schema, event subscriptions, and Admin UI once in an `app.commerce.config` file, and let the system auto-generate the required runtime actions and Admin UI. This is the Adobe-endorsed approach for installing, configuring, and managing App Builder applications in Commerce, and removes the need for merchants to manually configure event providers, subscriptions, or environment variables.
+    - Requires [Admin UI SDK](../admin-ui-sdk/index.md) version 3.3.1 or later.
+    - Requires minimum library versions 1.0.0 or later for `@adobe/aio-commerce-lib-config`, `@adobe/aio-commerce-lib-app`, and `@adobe/aio-commerce-sdk`.
+    - Not currently supported for local Commerce installations — requires a hosted (cloud or on-premises) environment.
 
 - Script management
   - **Script validation**: Execute everything in `package.json` scripts section and ensure there are no errors.
@@ -186,7 +201,7 @@ To facilitate proper testing during review, ensure you provide:
 - Test credentials or demo environments (if applicable)
 - Documentation of any third-party service dependencies
 
-<InlineAlert variant="help" slots="header, text1, text2, text3" />
+<InlineAlert variant="help" slots="heading, text1, text2, text3" />
 
 Alternative options
 

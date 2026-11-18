@@ -48,19 +48,19 @@ bannerNotification: {
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-`customer.actionId` | string | Yes | The `actionId` of a customer mass action where a banner notification will be customized. It must match an ID that is defined in the customer mass action extension point.
-`customer.successMessage` | string | No | The success message to display when a mass action is successful. A default message is displayed if this parameter is not defined.
-`customer.errorMessage` | string | No | The error message to display when a mass action fails. A default message is displayed if this parameter is not defined.
-`order.actionId` | string | Yes | The `actionId` of an [order mass action](./order/mass-action.md).
-`order.successMessage` | string | No | The success message to display when a mass action is successful. A default message is displayed if this parameter is not defined.
-`order.errorMessage` | string | No | The error message to display when a mass action fails. A default message is displayed if this parameter is not defined.
-`product.actionId` | string | Yes | The `actionId` of a [product mass action](./product/mass-action.md).
-`product.successMessage` | string | No | The success message to display when a mass action is successful. A default message is displayed if this parameter is not defined.
-`product.errorMessage` | string | No | The error message to display when a mass action fails. A default message is displayed if this parameter is not defined.
+| `customer.actionId` | string | Yes | The `actionId` of a customer mass action where a banner notification will be customized. It must match an ID that is defined in the customer mass action extension point. |
+| `customer.successMessage` | string | No | The success message to display when a mass action is successful. A default message is displayed if this parameter is not defined. |
+| `customer.errorMessage` | string | No | The error message to display when a mass action fails. A default message is displayed if this parameter is not defined. |
+| `order.actionId` | string | Yes | The `actionId` of an [order mass action](order/mass-action.md). |
+| `order.successMessage` | string | No | The success message to display when a mass action is successful. A default message is displayed if this parameter is not defined. |
+| `order.errorMessage` | string | No | The error message to display when a mass action fails. A default message is displayed if this parameter is not defined. |
+| `product.actionId` | string | Yes | The `actionId` of a [product mass action](product/mass-action.md). |
+| `product.successMessage` | string | No | The success message to display when a mass action is successful. A default message is displayed if this parameter is not defined. |
+| `product.errorMessage` | string | No | The error message to display when a mass action fails. A default message is displayed if this parameter is not defined. |
 
 ### Sample code
 
-The Adobe Commerce Extensibility Code Samples repository demonstrates how to customize [mass action banner notifications](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/banner-notification/custom-mass-actions).
+The Adobe Commerce Extensibility Code Samples repository demonstrates how to customize [mass action banner notifications](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/v1/order/custom-mass-action).
 
 ## Order view button customization
 
@@ -89,10 +89,10 @@ bannerNotification: {
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-`buttonId` | string | Yes | A `buttonId` defined in an order view button extension point.
-`successMessage` | string | No | The success message to display when the view button notification is successful. A default message is displayed if this parameter is not defined.
-`errorMessage` | string | No | The error message to display when the view button notification fails. A default message is displayed if this parameter is not defined.
+| `buttonId` | string | Yes | A `buttonId` defined in an order view button extension point. |
+| `successMessage` | string | No | The success message to display when the view button notification is successful. A default message is displayed if this parameter is not defined. |
+| `errorMessage` | string | No | The error message to display when the view button notification fails. A default message is displayed if this parameter is not defined. |
 
 ### Sample code
 
-The Adobe Commerce Extensibility Code Samples repository demonstrates how to customize [order view button banner notifications](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/banner-notification/custom-order-view-button).
+The Adobe Commerce Extensibility Code Samples repository demonstrates how to customize [order view button banner notifications](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/v1/order/custom-view-button).

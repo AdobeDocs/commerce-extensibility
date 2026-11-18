@@ -1,3 +1,8 @@
+---
+title: Order Placement Validation XML Configuration
+description: XML configuration for the order placement validation webhook use case.
+---
+
 ```xml
 <method name="plugin.magento.sales.api.order_management.place" type="before">
     <hooks>

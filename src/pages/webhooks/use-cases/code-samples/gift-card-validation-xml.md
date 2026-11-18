@@ -1,3 +1,8 @@
+---
+title: Gift Card Validation XML Configuration
+description: XML configuration for the gift card validation webhook use case.
+---
+
 ```xml
 <method name="plugin.magento.gift_card_account.api.gift_card_account_management.save_by_quote_id" type="before">
     <hooks>

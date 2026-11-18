@@ -1,7 +1,6 @@
 ---
 title: Integrate events with Adobe I/O Events Journaling API
 description: Learn how to configure and build event-driven integrations between Adobe Commerce and Adobe App Builder using Journaling API.
-edition: saas
 keywords:
   - Extensibility
   - Events

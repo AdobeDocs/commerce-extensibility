@@ -1,3 +1,8 @@
+---
+title: Incoming Shipment
+description: Incoming shipment data samples for the Adobe Commerce integration starter kit.
+---
+
 <CodeBlock slots="heading, code" repeat="2" languages="JSON, JSON" />
 
 #### create

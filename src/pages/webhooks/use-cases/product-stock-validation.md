@@ -1,24 +1,21 @@
 ---
 title: Product stock validation
-description: Learn how to validate product stock on adding product to the cart using webhooks in Adobe Commerce.
+description: Learn how to validate product stock when a cart item is saved using webhooks in Adobe Commerce.
 keywords:
   - Extensibility
 ---
 
-import ConfigXml from './code-samples/product-stock-validation-xml.md';
-import ConfigAdmin from './code-samples/product-stock-validation-admin.md';
-
 # Product stock validation
 
-When a shopper adds a product to the cart, a third-party inventory management system checks whether the item is in stock. If it is, allow the product to be added. Otherwise, display an error message.
+When a shopper adds or updates a product in the cart, a third-party inventory management system checks whether the requested quantity is available. If it is, allow the operation to proceed. Otherwise, display an error message.
 
 ## Webhook name
 
-`observer.checkout_cart_product_add_before`
+`observer.sales_quote_item_save_before`
 
 ## Payloads
 
-The following `observer.checkout_cart_product_add_before` default payload was obtained from execution of the application code. The `extension_attributes` section was deleted for brevity.
+The following `observer.sales_quote_item_save_before` default payload was obtained from execution of the application code. Some data has been removed for brevity.
 
 <CodeBlock slots="heading, code" repeat="2" languages="JSON, JSON" />
 
@@ -26,72 +23,61 @@ The following `observer.checkout_cart_product_add_before` default payload was ob
 
 ```json
 {
+    "eventName": "sales_quote_item_save_before",
     "subject": [],
-    "eventName": "checkout_cart_product_add_before",
     "data": {
-        "info": {
-            "uenc": "<value>",
-            "product": "23",
-            "selected_configurable_option": "",
-            "related_product": "",
-            "item": "23",
-            "form_key": "<value>",
-            "qty": "1"
-        },
-        "product": {
-            "store_id": "1",
-            "entity_id": "23",
-            "attribute_set_id": "4",
-            "type_id": "simple",
-            "sku": "Product-1",
-            "has_options": "0",
-            "required_options": "0",
-            "created_at": "2023-08-22 14:14:20",
-            "updated_at": "2023-08-22 14:54:44",
-            "row_id": "23",
-            "created_in": "1",
-            "updated_in": "2147483647",
-            "name": "Product test 22",
-            "meta_title": "Product 1",
-            "meta_description": "Product 1 ",
-            "page_layout": "product-full-width",
-            "options_container": "container2",
-            "country_of_manufacture": "AM",
-            "url_key": "product-1",
-            "msrp_display_actual_price_type": "0",
-            "gift_message_available": "2",
-            "gift_wrapping_available": "2",
-            "is_returnable": "2",
-            "status": "1",
-            "visibility": "4",
-            "tax_class_id": "2",
-            "price": "123.000000",
-            "weight": "12.000000",
-            "meta_keyword": "Product 1",
-            "options": [],
-            "media_gallery": {
-                "images": [],
-                "values": []
-            },
-            "extension_attributes": {
+        "item": {
+            "applied_rule_ids": null,
+            "applied_taxes": [],
+            ...
+            "base_price": 123,
+            "base_price_incl_tax": 123,
+            "base_row_total": 123,
+            ...
+            "custom_attributes_serializable": [],
+            "discount_amount": 0,
+            ...
+            "discount_percent": 0,
+            "extension_attributes": [],
+            "free_shipping": false,
+            "is_qty_decimal": false,
+            "name": "Product 1",
+            "previous_qty": null,
+            "price": 123,
+            "price_incl_tax": 123,
+            "product": {
+                "attribute_set_id": "4",
+                "attributes": {
+                    ...
+                },
+                "cart_qty": 1,
+                "cost": null,
+                "created_at": "2026-06-18 20:27:11",
+                "customer_group_id": "1",
+                "entity_id": "216",
+                "extension_attributes": [],
+                ...
+                "name": "Product 1",
+                "price": "123.000000",
+                "qty": 1,
+                "required_options": "0",
+                "salable": true,
+                "sku": "Product-1",
                 ...
             },
-            "tier_price": [],
-            "tier_price_changed": 0,
-            "quantity_and_stock_status": {
-                "is_in_stock": true,
-                "qty": 1233
-            },
-            "category_ids": [
-                "4",
-                "5",
-                "2",
-                "3"
-            ],
-            "is_salable": 1,
-            "website_ids": [
-                "1"
-            ]
+            "product_id": "216",
+            "product_type": "simple",
+            "qty": 1,
+            "qty_to_add": 1,
+            "quote_id": "63",
+            "row_total": 123,
+            "row_total_incl_tax": 123,
+            "row_weight": 12,
+            "sku": "Product-1",
+            ...
+        },
+        "data_object": {
+            ...
         }
     }
 }
@@ -101,25 +87,77 @@ The following `observer.checkout_cart_product_add_before` default payload was ob
 
 ```json
 {
-   "product": {
+    "item": {
         "name": "string",
-        "category_ids": "string[]",
-        "sku": "string"
+        "sku": "string",
+        "qty": "number"
     }
 }
 ```
 
 ## Configuration
 
-<TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" />
+<CodeBlock slots="heading, code" repeat="2" languages="XML, YAML" />
 
 #### webhook.xml (PaaS)
 
-<ConfigXml/>
+```xml
+<method name="observer.sales_quote_item_save_before" type="before">
+    <hooks>
+        <batch name="quote_item_stock">
+            <hook name="validate_stock" url="{env:APP_BUILDER_URL}/validate-stock" fallbackErrorMessage="The product stock cannot be validated" method="POST" timeout="5000" softTimeout="1000">
+                <headers>
+                    <header name="x-gw-ims-org-id">{env:APP_BUILDER_IMS_ORG_ID}</header>
+                    <header name="Authorization">Bearer {env:APP_BUILDER_AUTH_TOKEN}</header>
+                </headers>
+                <fields>
+                    <field name="item.sku" source="data.item.sku" />
+                    <field name="item.qty" source="data.item.qty" />
+                    <field name="item.name" source="data.item.name" />
+                </fields>
+            </hook>
+        </batch>
+    </hooks>
+</method>
+```
 
 #### Admin (SaaS)
 
-<ConfigAdmin/>
+```yaml
+Hook Settings
+
+Webhook method: observer.sales_quote_item_save_before
+Webhook type: before
+Batch name: quote_item_stock
+Hook name: validate_stock
+URL: <Host>/validate-stock
+Timeout: 5000
+Soft timeout: 1000
+Fallback Error Message: The product stock cannot be validated
+Required: Required
+Active: Yes
+Method: POST
+
+Developer Console OAuth
+
+Client ID: The client ID for the OAuth credential.
+Client Secret: The client secret for the OAuth credential.
+Organization ID: The organization ID for the OAuth credential.
+
+Hook Fields
+
+Name: item.sku
+Source: data.item.sku
+Active: Yes
+
+Name: item.qty
+Source: data.item.qty
+Active: Yes
+
+Name: item.name
+Source: data.item.name
+Active: Yes
+```
 
 ## Endpoint code example
 
@@ -156,10 +194,11 @@ async function main (params) {
     // If it is, an exception with an out of stock message is thrown.
     
     const response = {statusCode: 200}
-    const sku = params.sku
+    const sku = params.item.sku
     if (sku === "Pr-1") {
       response.body = JSON.stringify({
         op: "exception",
+        type: "Magento\\Framework\\GraphQl\\Exception\\GraphQlInputException",
         message: `App Builder Webhook Response: The product with sku "${sku}" is out of stock.`
       })
     } else {
@@ -180,11 +219,12 @@ async function main (params) {
 exports.main = main
 ```
 
-If the product is out of stock, the runtime AppBuilder action returns an exception message. The message is visible to the customer.
+If the product is out of stock, the runtime AppBuilder action returns an exception message. The `type` is set to `GraphQlInputException` so that the error message is surfaced in GraphQL responses. The message is visible to the customer.
 
 ```js
 response.body = JSON.stringify({
   op: "exception",
+  type: "Magento\\Framework\\GraphQl\\Exception\\GraphQlInputException",
   message: `App Builder Webhook Response: The product with sku "${sku}" is out of stock.`
 })
 ```

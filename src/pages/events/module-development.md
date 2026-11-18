@@ -7,12 +7,9 @@ keywords:
   - Extensibility
 ---
 
-import SampleEvent from '/src/_includes/sample-event.md'
-import NestedEvent from '/src/_includes/nested-event.md'
-
 # Commerce module development
 
-This topic describes how to enable your custom modules for Adobe I/O Events. You can also manually register observer events using the [`events:subscribe` command](./commands.md#subscribe-to-an-event).
+This topic describes how to enable your custom modules for Adobe I/O Events. You can also manually register observer events using the [`events:subscribe` command](commands.md#subscribe-to-an-event).
 
 ## Find supported events
 
@@ -22,9 +19,9 @@ You can use the Commerce Admin or the command line to find supported events and 
 
 *  In the Admin, select **System** > Events > **Events List** to display the _Events list_ page.
 
-   ![Events list page](../_images/events/event-list.png)
+   ![Events list page](../images/events/event-list.png)
 
-   The left navigation contains a list of enabled modules on your system. Click on a module name to display a list of supported events. When you select an event, the main panel of the Admin displays the event's payload.
+   The left navigation lists the enabled modules on your system. Expand a module to display its supported events, or use the search field to find modules and events by name. When you select an event, the main panel displays a schema example of the event's payload, which you can copy as JSON.
 
 *  The `bin/magento events:list:all` command returns all the detectable supported events in the specified module. Once you know the name of the event, you can use the `events:info` command to return its payload.
 
@@ -35,19 +32,17 @@ You can programmatically register events using the following methods:
 *  Create an `io_events.xml` file in your module or in the root `app/etc` directory
 *  Declare them in the system `env.php` or `config.php` file
 
-<SampleEvent />
+<Fragment src="/_includes/sample-event.md" />
 
-After you've registered at least one event, run the [events:generate:module command](./commands.md#generate-a-commerce-module-based-on-a-list-of-subscribed-events) to generate the required plugins.
+After you've registered at least one event, run the [events:generate:module command](commands.md#generate-a-commerce-module-based-on-a-list-of-subscribed-events) to generate the required plugins.
 
 ### io_events.xml
 
-Create the `<module-root>/etc/io_events.xml` or `app/etc/io_events.xml` file and define a list of events that should always be transmitted. Events listed in this file cannot be disabled with the [`events:unsubscribe` command](./commands.md#unsubscribe-from-a-commerce-event).
+Create the `<module-root>/etc/io_events.xml` or `app/etc/io_events.xml` file and define a list of events that should always be transmitted. Events listed in this file cannot be disabled with the [`events:unsubscribe` command](commands.md#unsubscribe-from-a-commerce-event).
 
 You can transmit all the fields within an event by setting the value of the `field` element to `*` (`<field name="*"  />`). You cannot use the `*` wildcard character to match partial strings.
 
-<InlineAlert variant="warning" slots="text"/>
-
-Adobe recommends sending a limited number of fields per event. If you send all fields, you increase the risk of including sensitive or PCI compliance data in the event. In addition, specifying only the fields that are applicable to your business case is recommended for optimal performance and cost effectiveness. Including all fields might lead to larger payloads that exceed the size limit of 64 KB, and as a result, the event will not be created.
+<Fragment src="/_includes/event-size-limitation.md" />
 
 [Add custom fields to an event](custom-event-fields.md) describes how to enhance the payload of pre-defined events.
 
@@ -95,11 +90,11 @@ The contents of an `observer.catalog_product_save_after` event are similar to th
 }
 ```
 
-The `<field>` element can also contain the `converter` attribute. Use this attribute to change the value of a field in the event payload. [Convert payload field values](./convert-field-values.md) describes its usage.
+The `<field>` element can also contain the `converter` attribute. Use this attribute to change the value of a field in the event payload. [Convert payload field values](convert-field-values.md) describes its usage.
 
 ### Array of nested objects
 
-<NestedEvent />
+<Fragment src="/_includes/nested-event.md" />
 
 ```xml
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module-commerce-events-client/etc/io_events.xsd">
@@ -133,7 +128,7 @@ The contents of the event are similar to the following:
 
 ### config.php and env.php
 
-You can also create an `io_events` section in the Commerce [`app/etc/config.php file`](https://experienceleague.adobe.com/docs/commerce-operations/configuration-guide/files/deployment-files.html). As of version of **1.11.0** of Adobe I/O Events for Adobe Commerce, you can also create an `io_events` section in the Commerce [`app/etc/env.php file`](https://experienceleague.adobe.com/en/docs/commerce-operations/configuration-guide/files/deployment-files). Events registered using this mechanism can be disabled from the command line.
+You can also create an `io_events` section in the Commerce [`app/etc/config.php file`](https://experienceleague.adobe.com/en/docs/commerce-operations/configuration-guide/files/deployment-files). As of version of **1.11.0** of Adobe I/O Events for Adobe Commerce, you can also create an `io_events` section in the Commerce [`app/etc/env.php file`](https://experienceleague.adobe.com/en/docs/commerce-operations/configuration-guide/files/deployment-files). Events registered using this mechanism can be disabled from the command line.
 
 For example:
 
@@ -218,3 +213,39 @@ The resulting configuration:
     </event>
 </config>
 ```
+
+## Mask sensitive data in event payloads
+
+<Edition slots="text" backgroundcolor="blue" />
+
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
+
+Before Commerce sends an event, it masks the values of payload fields that might contain sensitive data, such as passwords, tokens, and payment card details. Masked values are replaced with `******`. Masking applies to events built from plugin method arguments, observer event data, and resource model events. String values that contain a JSON object or array are decoded and masked using the same rules.
+
+Keys are matched case-insensitively, and non-alphanumeric characters are ignored. For example, `apiKey`, `api_key`, and `API-KEY` are treated as the same key. Keys that name an identifier, such as `payment_token_id` or `paymentTokenId`, are not masked by key fragments. Boolean values are never masked.
+
+The `Magento\AdobeCommerceEventsClient\Event\PluginPayload\ArgumentPayloadSanitizer` class defines the following lists of keys in the `AdobeCommerceEventsClient` module's `di.xml` file:
+
+| Argument | Description | Default values |
+| --- | --- | --- |
+| `sensitiveKeyFragments` | Masks the scalar value of any key that contains one of the fragments. Nested arrays are sanitized rather than replaced. | `access_key`, `api_key`, `api_signature`, `card_number`, `cc_number`, `credential`, `cvv`, `gift_card_code`, `insert_key`, `license_number`, `passwd`, `password`, `private_key`, `secret`, `token` |
+| `sensitiveKeys` | Masks the scalar value of keys that exactly match one of the values. | `cid`, `confirmation`, `otp`, `pin`, `pwd` |
+| `maskedWholeKeyFragments` | Masks the whole value of any key that contains one of the fragments, even when the value is an array. | `config_data`, `serialized_data`, `workspace_configuration` |
+| `notSensitiveKeys` | Never masks these keys. Use this list to prevent false positives from key fragments. | `rp_token_created_at` |
+
+To customize masking, add items to these arguments in the `etc/di.xml` file of your module. To stop masking a default key, override its item with `xsi:type="null"`. The following example masks keys that contain `ssn` and stops masking the `pin` key:
+
+```xml
+<type name="Magento\AdobeCommerceEventsClient\Event\PluginPayload\ArgumentPayloadSanitizer">
+    <arguments>
+        <argument name="sensitiveKeyFragments" xsi:type="array">
+            <item name="ssn" xsi:type="string">ssn</item>
+        </argument>
+        <argument name="sensitiveKeys" xsi:type="array">
+            <item name="pin" xsi:type="null"/>
+        </argument>
+    </arguments>
+</type>
+```
+
+Your module must load after the `Magento_AdobeCommerceEventsClient` module. Add `Magento_AdobeCommerceEventsClient` to the `<sequence>` node of your module's `etc/module.xml` file.

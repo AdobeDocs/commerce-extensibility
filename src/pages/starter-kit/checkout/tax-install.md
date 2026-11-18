@@ -6,14 +6,11 @@ keywords:
   - Extensibility
 ---
 
-import Configuration from '/src/_includes/checkout-configuration.md'
-import Version from '/src/_includes/checkout-version.md'
-
 # Install the tax module
 
-To begin using the checkout starter kit, ensure that you have completed the [getting started](./getting-started.md) and [configuration](./configure.md) steps.
+To begin using the `tax-integration` app, ensure that you have completed the [getting started](getting-started.md) and [configuration](configure.md) steps.
 
-For more ideas on how you can use the tax module, refer to [tax use cases](./tax-use-cases.md).
+For more ideas on how you can use the tax module, refer to [tax use cases](tax-use-cases.md).
 
 ## Prerequisites
 
@@ -23,7 +20,7 @@ For more ideas on how you can use the tax module, refer to [tax use cases](./tax
 
 ## Installation
 
-<Version />
+<Fragment src="/_includes/checkout-version.md" />
 
 To enable out-of-process tax management in Adobe Commerce, install the `magento/module-out-of-process-tax-management` module using the following command:
 
@@ -39,15 +36,17 @@ magento setup:di:compile
 
 ## Configuration
 
-<Configuration />
+<Fragment src="/_includes/checkout-configuration.md" />
 
-The checkout starter kit provides the [`create-tax-integrations`](https://github.com/adobe/commerce-checkout-starter-kit/blob/main/scripts/create-tax-integrations.js) script to help configure Adobe Commerce. It reads the tax integrations configuration from the `tax-integrations.yaml` file and creates tax integrations in Adobe Commerce.
+The `tax-integration` app uses an [App Management custom installation step](../../app-management/installation/customize.md#custom-installation-steps) to set up Commerce for you automatically.
 
-To run this script, use the following command:
+### Install
 
-```bash
-npm run create-tax-integrations
-```
+Installing the app creates a demo tax integration, **My tax integration**, using the `/V1/oope_tax_management/tax_integration` REST endpoint, allowing you to test out-of-process tax calculation right away.
+
+### Uninstall
+
+Uninstalling the app disables this tax integration using the same endpoint. Commerce immediately goes back to calculating tax itself, instead of calling out to the app. If you re-install the app later, the same tax integration is turned back on, instead of being created again.
 
 ## Limitations
 

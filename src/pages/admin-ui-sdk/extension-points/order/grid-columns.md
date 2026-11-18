@@ -8,9 +8,9 @@ keywords:
 
 # order grid columns
 
-The `order grid columns` extension point enables you to add columns to the grid on the **Sales** > **Orders** page in the Adobe Commerce Admin. This extension point requires an [API Mesh](https://developer.adobe.com/graphql-mesh-gateway/gateway) for Adobe Developer App Builder instance to retrieve the data to be added to the custom columns.
+The `order grid columns` extension point enables you to add columns to the grid on the **Sales** > **Orders** page in the Adobe Commerce Admin. This extension point requires an [API Mesh](https://developer.adobe.com/graphql-mesh-gateway/mesh/) for Adobe Developer App Builder instance to retrieve the data to be added to the custom columns.
 
-You can use the [`aio api-mesh:describe` command](https://developer.adobe.com/graphql-mesh-gateway/gateway/command-reference/#aio-api-meshdescribe) to retrieve the value of the mesh ID.
+You can use the [`aio api-mesh:describe` command](https://developer.adobe.com/graphql-mesh-gateway/mesh/advanced/#aio-api-meshdescribe) to retrieve the value of the mesh ID.
 
 ## Example customization
 
@@ -49,7 +49,7 @@ order: {
 ### Sample API Mesh configuration file
 
 The following sample mesh configuration file defines the external source that contains the data to populate in the custom columns.
-It leverages API Mesh [JSON Schemas handler](https://developer.adobe.com/graphql-mesh-gateway/mesh/basic/handlers/json-schema/).
+It leverages API Mesh [JSON Schemas handler](https://developer.adobe.com/graphql-mesh-gateway/mesh/basic/handlers/json-schema).
 
 ```json
 {
@@ -206,4 +206,4 @@ In case of error, more info can be found in the Adobe Commerce logs.
 
 ## Sample code
 
-The Adobe Commerce Extensibility Code Samples repository demonstrates how to customize [order grid columns](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/order/custom-grid-columns).
+The Adobe Commerce Extensibility Code Samples repository demonstrates how to customize [order grid columns](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/v1/order/custom-grid-columns).

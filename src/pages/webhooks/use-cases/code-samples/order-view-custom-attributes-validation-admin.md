@@ -1,3 +1,8 @@
+---
+title: Order View Custom Attributes Validation Admin Configuration
+description: Admin panel configuration for the order view custom attributes validation webhook use case.
+---
+
 ```yaml
 Hook Settings
 

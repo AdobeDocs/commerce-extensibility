@@ -1,3 +1,8 @@
+---
+title: Order View Custom Attributes Validation XML Configuration
+description: XML configuration for the order view custom attributes validation webhook use case.
+---
+
 ```xml
 <method name="observer.sales_order_view_custom_attributes_update_before" type="before">
     <hooks>

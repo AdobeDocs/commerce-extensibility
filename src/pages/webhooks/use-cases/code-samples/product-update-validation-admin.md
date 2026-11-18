@@ -1,3 +1,8 @@
+---
+title: Product Update Validation Admin Configuration
+description: Admin panel configuration for the product update validation webhook use case.
+---
+
 ```yaml
 Hook Settings
 

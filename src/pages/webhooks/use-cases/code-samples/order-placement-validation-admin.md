@@ -1,3 +1,8 @@
+---
+title: Order Placement Validation Admin Configuration
+description: Admin panel configuration for the order placement validation webhook use case.
+---
+
 ```yaml
 Hook Settings
 

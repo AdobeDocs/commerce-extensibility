@@ -24,7 +24,7 @@ The Adobe Commerce integration starter kit provides boilerplate code to synchron
 
 By default, object synchronization is bi-directional. Changes in Commerce are propagated to the external backoffice application and vice versa.
 
-The source code follows the [file structure](https://developer.adobe.com/app-builder/docs/guides/extensions/extension_migration_guide/#old-file-structure) of a typical App Builder application. Most importantly, the `actions` directory contains the source code for all the serverless actions.
+The source code follows the [file structure](https://developer.adobe.com/app-builder/docs/guides/app_builder_guides/extensions/extension-migration-guide#old-file-structure) of a typical App Builder application. Most importantly, the `actions` directory contains the source code for all the serverless actions.
 
 The following diagram shows the directory structure of the starter kit project:
 
@@ -69,25 +69,25 @@ The contents of the `commerce` and `external` directories are similar. Each cont
 
 Individual directories that define actions contain the following files:
 
-File | Purpose
---- | ---
-`index.js` | Contains the main method that gets invoked when handling an event. It is responsible for coordinating the different activities involved in that handling, such as validating the incoming payload, transforming the payload to the target API, and interacting with the target API.
-`pre.js` and `post.js` | Provide convenient extension points to introduce custom business logic before and after interacting with the target API.
-`sender.js` | Implements the logic to interact with the target API so that the changes are propagated. For actions in the `external` directory, Commerce APIs are the target. Actions in the `commerce` directory target external APIs.
-`schema.json` | (`external` directories only) Defines the schema to be validated against the incoming event payload.
-`transformer.js` | Implements the logic to transform the incoming event payload to make it suitable for the target API being called to propagate the changes.
-`validator.js` | Implements the logic to validate the incoming event payload.
+| File | Purpose |
+|---|---|
+| `index.js` | Contains the main method that gets invoked when handling an event. It is responsible for coordinating the different activities involved in that handling, such as validating the incoming payload, transforming the payload to the target API, and interacting with the target API. |
+| `pre.js` and `post.js` | Provide convenient extension points to introduce custom business logic before and after interacting with the target API. |
+| `sender.js` | Implements the logic to interact with the target API so that the changes are propagated. For actions in the `external` directory, Commerce APIs are the target. Actions in the `commerce` directory target external APIs. |
+| `schema.json` | (`external` directories only) Defines the schema to be validated against the incoming event payload. |
+| `transformer.js` | Implements the logic to transform the incoming event payload to make it suitable for the target API being called to propagate the changes. |
+| `validator.js` | Implements the logic to validate the incoming event payload. |
 
 ### `scripts/onboarding` directory
 
-The `onboarding` directory contains the scripting needed to install and set up the starter kit. The `scripts/onboarding/config/starter-kit-registrations.json` configuration file creates all the registrations for all entities that are present in the repo's `app.config.yaml` file. You can edit this file to remove any unnecessary Commerce or back office registrations. [Onboarding](./create-integration.md#onboarding) describes the installation process.
+The `onboarding` directory contains the scripting needed to install and set up the starter kit. The `scripts/onboarding/config/starter-kit-registrations.json` configuration file creates all the registrations for all entities that are present in the repo's `app.config.yaml` file. You can edit this file to remove any unnecessary Commerce or back office registrations. [Onboarding](create-integration.md#onboarding) describes the installation process.
 
 ### `scripts/commerce-event-subscribe` directory
 
-The `commerce-event-subscribe` directory contains the script to subscribe the Commerce event provider, which was created during onboarding, to the Commerce events. The `scripts/onboarding/config/starter-kit-registrations.json` configuration file contains all the Commerce events you want subscribe to. Edit this file to add, remove, or modify the events necessary for your project. [Onboarding](./create-integration.md#onboarding) describes the installation process.
+The `commerce-event-subscribe` directory contains the script to subscribe the Commerce event provider, which was created during onboarding, to the Commerce events. The `scripts/onboarding/config/starter-kit-registrations.json` configuration file contains all the Commerce events you want subscribe to. Edit this file to add, remove, or modify the events necessary for your project. [Onboarding](create-integration.md#onboarding) describes the installation process.
 
 ### `test` directory
 
 The starter kit provides unit tests for most of the included runtime actions. These tests are in the `test/actions` directory. You can also find unit tests for the onboarding script in the `test/onboarding` directory.
 
-[Testing a Serverless Action](https://developer.adobe.com/app-builder/docs/resources/barcode-reader/test/) provides details about unit testing.
+[Testing a Serverless Action](https://developer.adobe.com/app-builder/docs/resources/barcode-reader/test) provides details about unit testing.

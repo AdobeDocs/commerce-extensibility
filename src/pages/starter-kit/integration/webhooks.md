@@ -11,15 +11,13 @@ keywords:
  - Tools
 ---
 
-import Actions from '/src/_includes/actions.md'
-
 # Real-time integrations
 
 The following sections demonstrate all the real-time integrations that Adobe Commerce Extensibility Integration Kit has to offer, including the synchronous webhook action and an example implementation of a webhook.
 
 ## Synchronous webhook action
 
-<Actions />
+<Fragment src="/_includes/actions.md" />
 
 The contents of the `./actions/webhook` directory expose a webhook that can be invoked synchronously from Commerce to affect the behavior of a particular business flow.
 
@@ -64,7 +62,7 @@ return {
 
 ## Webhooks example
 
-The Adobe Commerce integration starter kit can use the [Adobe Commerce webhook module](../../webhooks/) to allow intercepting flows in Adobe Commerce.
+The Adobe Commerce integration starter kit can use the [Adobe Commerce webhook module](../../webhooks/index.md) to allow intercepting flows in Adobe Commerce.
 
 This reference implementation makes a real-time query to a third-party system to determine whether the product a shopper placed in their cart is in stock.
 
@@ -72,7 +70,7 @@ This reference implementation makes a real-time query to a third-party system to
 
 If you do not want to implement webhooks, comment out the `webhook` section of the starter kit's `app.config.yaml` file before running `aio app deploy`.
 
-Webhooks are enabled by default. If you initially disabled webhooks, you can reenable them by uncommenting the `webhook` section of the `app.config.yaml` file. Additionally, you will need to redeploy the project and repeat the [onboarding process](./create-integration.md#onboarding).
+Webhooks are enabled by default. If you initially disabled webhooks, you can reenable them by uncommenting the `webhook` section of the `app.config.yaml` file. Additionally, you will need to redeploy the project and repeat the [onboarding process](create-integration.md#onboarding).
 
 The runtime action included is in the starter kit package in the following location:
 

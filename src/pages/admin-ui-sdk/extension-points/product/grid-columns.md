@@ -8,9 +8,9 @@ keywords:
 
 # product grid columns
 
-The `product grid columns` extension point enables you to add columns to the grid on the **Catalog** > **Products** page in the Adobe Commerce Admin. This extension point requires an [API Mesh](https://developer.adobe.com/graphql-mesh-gateway/gateway) for Adobe Developer App Builder instance to retrieve the data to be added to the custom columns.
+The `product grid columns` extension point enables you to add columns to the grid on the **Catalog** > **Products** page in the Adobe Commerce Admin. This extension point requires an [API Mesh](https://developer.adobe.com/graphql-mesh-gateway/mesh/) for Adobe Developer App Builder instance to retrieve the data to be added to the custom columns.
 
-You can use the [`aio api-mesh:describe` command](https://developer.adobe.com/graphql-mesh-gateway/gateway/command-reference/#aio-api-meshdescribe) to retrieve the value of the mesh ID.
+You can use the [`aio api-mesh:describe` command](https://developer.adobe.com/graphql-mesh-gateway/mesh/advanced/#aio-api-meshdescribe) to retrieve the value of the mesh ID.
 
 ## Example customization
 
@@ -85,7 +85,7 @@ export async function main(props) {
 ### Sample API Mesh configuration file
 
 The following sample mesh configuration file defines the external source that contains the data to populate in the custom columns.
-It leverages API Mesh [JSON Schemas handler](https://developer.adobe.com/graphql-mesh-gateway/mesh/basic/handlers/json-schema/).
+It leverages API Mesh [JSON Schemas handler](https://developer.adobe.com/graphql-mesh-gateway/mesh/basic/handlers/json-schema).
 
 ```json
 {
@@ -190,4 +190,4 @@ The following example provides a default value.
 
 ## Sample code
 
-The Adobe Commerce Extensibility Code Samples repository demonstrates how to customize [product grid columns](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/product/custom-grid-columns).
+The Adobe Commerce Extensibility Code Samples repository demonstrates how to customize [product grid columns](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/v1/product/custom-grid-columns).

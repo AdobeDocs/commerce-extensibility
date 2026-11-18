@@ -12,6 +12,146 @@ These release notes describe the latest version of Adobe I/O Events for Adobe Co
 
 See [Update Adobe I/O Events for Adobe Commerce](installation.md#update-adobe-io-events-for-adobe-commerce) for upgrade instructions.
 
+## Version 1.24.0
+
+### Release date
+
+November 12, 2026
+
+### Enhancements
+
+* Sensitive data, such as passwords and tokens, is now [masked](module-development.md#mask-sensitive-data-in-event-payloads) in more event payloads, including observer events, resource model events, and values stored as JSON. \<!-- CEXT-6872 --\> \<!-- CEXT-6873 --\>
+
+* Redesigned the **Events List** Admin page, with search and a payload example you can copy. \<!-- CEXT-6999 --\>
+
+* Improved the security of context values used in event fields and rules. \<!-- CEXT-7013 --\>
+
+### Bug fixes
+
+* The `events:info` command now shows the details of event arguments that contain lists of objects. \<!-- CEXT-6874 --\>
+
+## Version 1.23.0
+
+### Release date
+
+October 9, 2026
+
+### Enhancements
+
+* Plugin event payloads now include the method arguments when the method returns no data or a result object. Sensitive values, such as passwords and tokens, are masked. \<!-- CEXT-6848 --\>
+
+* Improved the validation of context values used in event fields and rules. \<!-- CEXT-6844 --\>
+
+## Version 1.22.2
+
+### Release date
+
+September 3, 2026
+
+### Bug fixes
+
+* In some configurations, the eventing priority consumer processed only one message per cron run, causing its queue backlog to grow over time. It now drains the backlog normally each cycle. \<!-- CEXT-6712 --\>
+
+## Version 1.22.1
+
+### Release date
+
+August 18, 2026
+
+### Bug fixes
+
+* Fixed an issue where objects inside a top-level array event field were not converted, causing empty objects in the event payload. \<!-- CEXT-6554 --\>
+
+## Version 1.22.0
+
+### Release date
+
+August 6, 2026
+
+### Enhancements
+
+* Added an opt-in setting to build only the event fields you subscribed to instead of the entire source object before filtering, reducing memory and processing for large records. See [Convert payload field values](convert-field-values.md#field-aware-event-conversion). \<!-- CEXT-6501 --\>
+
+### Bug fixes
+
+* Fixed an issue where the `commerce.eventing.event.publish` message queue could accumulate a large backlog of priority events instead of draining as events were processed. \<!-- CEXT-6541 --\>
+
+## Version 1.21.0
+
+### Release date
+
+July 14, 2026
+
+### Enhancements
+
+* Added event name validation for new event subscriptions. \<!-- CEXT-6164 --\>
+
+* Improved event name validation and removed unnecessary files from module generation. \<!-- CEXT-6303 --\>
+
+### Bug fixes
+
+* Fixed event field filtering for events with uppercase alias characters. \<!-- CEXT-6162 --\>
+
+## Version 1.20.0
+
+### Release date
+
+Mar 31, 2026
+
+### Enhancements
+
+* Added filtration functionality for the context fields.
+
+### Bug fixes
+
+* Fixed event payload information for several events.
+
+* Fixed an issue where the `workspace_configuration.json` file generated in App Builder could exceed size of the configuration field, leading to corrupted data. The workspace configuration is now cleaned up before saving.
+
+## Version 1.19.0
+
+Feb 19, 2026
+
+### Enhancements
+
+* Added support for context fields in event rules.
+
+## Version 1.18.0
+
+### Release date
+
+Feb 2, 2026
+
+### Enhancements
+
+* Added PHP 8.5 support.
+
+## Version 1.17.0
+
+### Release date
+
+Jan 30, 2026
+
+### Enhancements
+
+* You can now add event payload values [from the application context](context-fields.md)
+
+### Bug fixes
+
+* Fixed event payload information for several order-related events.
+
+## Version 1.16.0
+
+### Release date
+
+Jan 7, 2026
+
+### Enhancements
+
+* Added fields and made improvements to multiple events.
+
+* Resolved compatibility issues with new versions of dependencies.
+
 ## Version 1.15.0
 
 ### Release date
@@ -20,7 +160,7 @@ Nov 26, 2025
 
 ### Bug fixes
 
-* Fixed the event size payload validation to verify the size after payload filtering. <!-- CEXT-5561 -->
+* Fixed the event size payload validation to verify the size after payload filtering.
 
 ## Version 1.14.0
 
@@ -30,11 +170,11 @@ Oct 30, 2025
 
 ### Enhancements
 
-* Added [original data](./events-original-data.md) to the event payload. <!-- CEXT-5400 -->
+* Added [original data](events-original-data.md) to the event payload.
 
-* Added [on-change rules](./conditional-events.md#trigger-events-on-specific-field-changes) for event subscriptions. <!-- CEXT-5400 -->
+* Added [on-change rules](conditional-events.md#trigger-events-on-specific-field-changes) for event subscriptions.
 
-* Added event size validation. <!-- CEXT-5229 -->
+* Added event size validation.
 
 ## Version 1.13.1
 
@@ -44,13 +184,13 @@ Sep 2, 2025
 
 ### Enhancements
 
-* Added validation to check the request format of the event subscribe API. <!-- CEXT-4823 -->
+* Added validation to check the request format of the event subscribe API.
 
-* Improved error responses for multiple event providers management. <!-- CEXT-5008 -->
+* Improved error responses for multiple event providers management.
 
 ### Bug fixes
 
-* Updated the plugin generation to handle the case when API interface methods return a scalar type. <!-- CEXT-5174 -->
+* Updated the plugin generation to handle the case when API interface methods return a scalar type.
 
 ## Version 1.13.0
 
@@ -60,13 +200,13 @@ July 30, 2025
 
 ### Enhancements
 
-* Updated logic for the **Send Test Event** button to support multiple event providers. <!-- CEXT-4651 -->
+* Updated logic for the **Send Test Event** button to support multiple event providers.
 
-* Added logging improvements. <!-- CEXT-4803 -->
+* Added logging improvements.
 
 ### Bug fixes
 
-* Fixed validation of supported plugin-type events with empty parent code. <!-- CEXT-4911 -->
+* Fixed validation of supported plugin-type events with empty parent code.
 
 ## Version 1.12.1
 
@@ -76,11 +216,11 @@ April 30, 2025
 
 ### Enhancements
 
-* Returns the provider ID instead of "default" in the REST API. <!-- CEXT-4561 -->
+* Returns the provider ID instead of "default" in the REST API.
 
-* Improves the message during the removal of providers with linked event subscriptions. <!-- CEXT-4577 -->
+* Improves the message during the removal of providers with linked event subscriptions.
 
-* Allows the removal of event providers with inactive subscriptions. <!-- CEXT-4583 -->
+* Allows the removal of event providers with inactive subscriptions.
 
 ## Version 1.12.0
 
@@ -90,9 +230,9 @@ April 17, 2025
 
 ### Enhancements
 
-* Added support of [multiple event providers](./configure-additional-event-providers.md) <!-- CEXT-4383 -->
+* Added support of [multiple event providers](configure-additional-event-providers.md)
 
-* Improved conversion of event payloads. In some cases payload of extension attributes was not converted correctly. <!-- CEXT-4487 -->
+* Improved conversion of event payloads. In some cases payload of extension attributes was not converted correctly.
 
 ## Version 1.11.1
 
@@ -102,7 +242,7 @@ February 25, 2025
 
 ### Enhancements
 
-* Removed the requirement for Merchant ID and Environment ID to start with letters. <!-- CEXT-4246 -->
+* Removed the requirement for Merchant ID and Environment ID to start with letters.
 
 ## Version 1.11.0
 
@@ -112,15 +252,15 @@ January 23, 2025
 
 ### Enhancements
 
-* Event subscriptions created/updated via API or CLI now get stored in `env.php`. These subscriptions were previously stored in `config.php`. Event subscriptions remaining in `config.php` continue to be read by the modules to preserve backward compatibility. <!-- CEXT-3459 -->
+* Event subscriptions created/updated via API or CLI now get stored in `env.php`. These subscriptions were previously stored in `config.php`. Event subscriptions remaining in `config.php` continue to be read by the modules to preserve backward compatibility.
 
-* Added the `GET /rest/<store_view_code>/V1/eventing/getEventSubscriptions` REST endpoint for retrieving a list of enabled event subscriptions. <!-- CEXT-3925, CEXT-4055, CEXT-4066 -->
+* Added the `GET /rest/<store_view_code>/V1/eventing/getEventSubscriptions` REST endpoint for retrieving a list of enabled event subscriptions.
 
-* Added the `PUT /rest/<store_view_code>/V1/eventing/eventSubscribe/{name}` REST endpoint for updating event subscriptions. <!-- CEXT-3974 -->
+* Added the `PUT /rest/<store_view_code>/V1/eventing/eventSubscribe/{name}` REST endpoint for updating event subscriptions.
 
-* Added the `POST /rest/<store_view_code>/V1/eventing/eventUnsubscribe/{name}` REST endpoint for unsubscribing from events. <!-- CEXT-3975 -->
+* Added the `POST /rest/<store_view_code>/V1/eventing/eventUnsubscribe/{name}` REST endpoint for unsubscribing from events.
 
-* Event name prefix validation is now skipped when subscribing to an event with a parent name. <!-- CEXT-3989 -->
+* Event name prefix validation is now skipped when subscribing to an event with a parent name.
 
 ## Version 1.10.0
 
@@ -130,7 +270,7 @@ December 10, 2024
 
 ### Enhancements
 
-* Added the `GET /rest/<store_view_code>/V1/eventing/getEventProviders` REST endpoint for retrieving information about the configured event provider. <!---CEXT-3913 -->
+* Added the `GET /rest/<store_view_code>/V1/eventing/getEventProviders` REST endpoint for retrieving information about the configured event provider.
 
 ## Version 1.9.0
 
@@ -140,13 +280,13 @@ October 30, 2024
 
 ### Enhancements
 
-* Added the **Events Status** grid to the Admin. This grid can be used to monitor the status of triggered events. <!--- CEXT-3593 -->
+* Added the **Events Status** grid to the Admin. This grid can be used to monitor the status of triggered events.
 
-* Added more detailed error messages for the **Execute Synchronization** and **Test Connection** buttons in the Adobe I/O Events configuration section of the Admin. <!--- CEXT-3594 -->
+* Added more detailed error messages for the **Execute Synchronization** and **Test Connection** buttons in the Adobe I/O Events configuration section of the Admin.
 
-* Added additional observer events to the list of supported event names. <!--CEXT-3671 -->
+* Added additional observer events to the list of supported event names.
 
-* Renamed the **Events** item in the System menu of the Admin to **Events List**. <!--- CEXT-3658 -->
+* Renamed the **Events** item in the System menu of the Admin to **Events List**.
 
 ## Version 1.8.2
 
@@ -160,7 +300,7 @@ August 15, 2024
 
 ### Bug fixes
 
-* Fixed the test connection button handling of error status codes <!--- CEXT-3484 -->
+* Fixed the test connection button handling of error status codes
 
 ## Version 1.8.1
 
@@ -170,7 +310,7 @@ August 6, 2024
 
 ### Enhancements
 
-* Improved error handling while managing event metadata. <!--- CEXT-3430 -->
+* Improved error handling while managing event metadata.
 
 ## Version 1.8.0
 
@@ -180,15 +320,15 @@ July 31, 2024
 
 ### Enhancements
 
-* Added the **Execute Synchronization** button the eventing general configuration in the Admin. This button performs the same action as running the `bin/magento events:metadata:populate` command. <!--- CEXT-3337 -->
+* Added the **Execute Synchronization** button the eventing general configuration in the Admin. This button performs the same action as running the `bin/magento events:metadata:populate` command.
 
-* Added the **Create Event Provider** button, which replicates the function of the `bin/magento events:create-event-provider` command. <!--- CEXT-3336 -->
+* Added the **Create Event Provider** button, which replicates the function of the `bin/magento events:create-event-provider` command.
 
-* Updated copyrights in the generated module files. <!--- CEXT-3425 -->
+* Updated copyrights in the generated module files.
 
 ### Bug fixes
 
-* Improved the conversion of event payloads, which fixes an issue with missing data for some events. <!--- CEXT-3360 -->
+* Improved the conversion of event payloads, which fixes an issue with missing data for some events.
 
 ## Version 1.7.1
 
@@ -198,7 +338,7 @@ June 21, 2024
 
 ### Enhancements
 
-* Added additional validation on HIPAA customers. Events now contain the `cst:aio:x-event-phidata` header. <!--- CEXT-3322 -->
+* Added additional validation on HIPAA customers. Events now contain the `cst:aio:x-event-phidata` header.
 
 ## Version 1.7.0
 
@@ -208,9 +348,9 @@ May 15, 2024
 
 ### Enhancements
 
-* Added the `--hipaaAuditRequired` option to the `bin/magento events:subscribe` command. Use this command to indicate the event contains data that is subject to HIPAA auditing. <!--- CEXT-3129 -->
+* Added the `--hipaaAuditRequired` option to the `bin/magento events:subscribe` command. Use this command to indicate the event contains data that is subject to HIPAA auditing.
 
-* Added the ability to log data sent from Adobe Commerce to the Commerce Eventing Service. As a result, events are dispatched at the moment when data is sent. <!--- CEXT-3156 -->
+* Added the ability to log data sent from Adobe Commerce to the Commerce Eventing Service. As a result, events are dispatched at the moment when data is sent.
 
 ## Version 1.6.0
 
@@ -222,9 +362,9 @@ April 3, 2024
 
 Added [REST endpoints](api.md) that perform the following operations:
 
-* Configure the eventing module. <!--- CEXT-2912 -->
+* Configure the eventing module.
 
-* Subscribe to events. <!--- CEXT-2911 -->
+* Subscribe to events.
 
 ## Version 1.5.1
 
@@ -234,11 +374,11 @@ March 4, 2024
 
 ### Enhancements
 
-* Changed the format of the event tracking ID to uuid4. <!--- CEXT-2853 -->
+* Changed the format of the event tracking ID to uuid4.
 
-* Added the `--destination` option to the `event:subscribe` command. <!--- CEXT-2895 -->
+* Added the `--destination` option to the `event:subscribe` command.
 
-* Fixed an issue that occurred when the event metadata was created for a configured event provider for events with a custom destination. <!--- CEXT-2857 -->
+* Fixed an issue that occurred when the event metadata was created for a configured event provider for events with a custom destination.
 
 ## Version 1.5.0
 
@@ -248,11 +388,11 @@ February 7, 2024
 
 ### Enhancements
 
-* Added support for [field converters](convert-field-values.md). You can now create a converter class that changes the data type or value of fields in an event payload. <!--- CEXT-1699 -->
+* Added support for [field converters](convert-field-values.md). You can now create a converter class that changes the data type or value of fields in an event payload.
 
-* Added an event tracking ID field for better tracking of the event delivery process.  <!--- CEXT-2759 -->
+* Added an event tracking ID field for better tracking of the event delivery process.
 
-* Increased test coverage of eventing modules. <!--- CEXT-2640 -->
+* Increased test coverage of eventing modules.
 
 ## Version 1.4.1
 
@@ -262,7 +402,7 @@ December 14, 2023
 
 ### Bug fixes
 
-* Fixed an error that occurred when on-premise instances updated to version 1.4.0.  <!--- CEXT-2606 -->
+* Fixed an error that occurred when on-premise instances updated to version 1.4.0.
 
 ## Version 1.4.0
 
@@ -274,39 +414,39 @@ November 30, 2023
 
 ### Enhancements
 
-* Events can now be defined in the Commerce `app/etc/io_events.xml` file. <!--- CEXT-2360 -->
+* Events can now be defined in the Commerce `app/etc/io_events.xml` file.
 
-* Added support for using nested fields in the rules of conditional events. <!--- CEXT-2482 -->
+* Added support for using nested fields in the rules of conditional events.
 
-* Increased the default value of the **Maximum retries to send events** configuration field from three to seven. <!--- CEXT-2466 -->
+* Increased the default value of the **Maximum retries to send events** configuration field from three to seven.
 
-* Updated the conversion logic for child array elements in an event. <!--- CEXT-2245 -->
+* Updated the conversion logic for child array elements in an event.
 
-* Added the ability to switch to a development environment when testing the transmission of events. <!--- CEXT-2121 -->
+* Added the ability to switch to a development environment when testing the transmission of events.
 
-* Common logic for data collecting has been moved to a new module, `OutOfProcessExtensibility`. This module must be enabled as described in the [update instructions](./installation.md#update-adobe-io-events-for-adobe-commerce). <!--- CEXT-2215, 2266, 2267, 2312, 2503-->
+* Common logic for data collecting has been moved to a new module, `OutOfProcessExtensibility`. This module must be enabled as described in the [update instructions](installation.md#update-adobe-io-events-for-adobe-commerce).
 
 ### Bug fixes
 
-* Corrected a condition that caused the `bin/magento setup:upgrade` command to return an error when the eventing module has been disabled. <!--- CEXT-2569 -->
+* Corrected a condition that caused the `bin/magento setup:upgrade` command to return an error when the eventing module has been disabled.
 
-* The **Test Connection** is now disabled when the provider ID is removed. <!--- CEXT-2216 -->
+* The **Test Connection** is now disabled when the provider ID is removed.
 
 ## Adobe IO Events client module updates
 
 ### Enhancements
 
-* Added validation to ensure the workspace configuration has the correct structure of project > workspace credentials. <!--- CEXT-2174 -->
+* Added validation to ensure the workspace configuration has the correct structure of project > workspace credentials.
 
-* Added the ability to switch to a development environment when testing the transmission of events. <!--- CEXT-2121 -->
+* Added the ability to switch to a development environment when testing the transmission of events.
 
-* The eventing template in App Builder works correctly when the Adobe I/O Authorization type is set to OAuth. <!--- CEXT-2254 -->
+* The eventing template in App Builder works correctly when the Adobe I/O Authorization type is set to OAuth.
 
-* Updated an error message that occurred when eventing is not configured. <!--- CEXT-2568 -->
+* Updated an error message that occurred when eventing is not configured.
 
 ### Bug fixes
 
-* Corrected an issue that caused the Adobe Services tab of the Admin to disappear. <!--- PR-50 -->
+* Corrected an issue that caused the Adobe Services tab of the Admin to disappear.
 
 ## Version 1.3.0
 
@@ -385,7 +525,7 @@ April 20, 2023
 
 ### Enhancements
 
-*  Added support for delivering events using message queues. Previously, all events were delivered by cron, which could delay delivery by up to a minute. Use the `bin/magento events:subscribe --priority` command to register the event as requiring expedited delivery. See [Configure Adobe Commerce](./configure-commerce.md#check-cron-and-message-queue-configuration) for information about configuring the message queues.
+*  Added support for delivering events using message queues. Previously, all events were delivered by cron, which could delay delivery by up to a minute. Use the `bin/magento events:subscribe --priority` command to register the event as requiring expedited delivery. See [Configure Adobe Commerce](configure-commerce.md#check-cron-and-message-queue-configuration) for information about configuring the message queues.
 
 *  Added the ability to filter on fields in an array of nested objects. For example, you can retrieve the `sku` and `qty` fields in an `items[]` array as shown:
 

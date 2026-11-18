@@ -5,18 +5,15 @@ keywords:
   - Extensibility
 ---
 
-import ConfigXml from './code-samples/order-placement-validation-xml.md';
-import ConfigAdmin from './code-samples/order-placement-validation-admin.md';
-
 # Order placement validation
 
 As a shopper places an order, a third-party system is used to confirm that the items added to the order can be shipped to the selected address.
 
 ## Webhook name
 
-&#8203;<Edition name="paas" /> `plugin.magento.sales.api.order_management.place`
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) `plugin.magento.sales.api.order_management.place`
 
-&#8203;<Edition name="saas" /> `plugin.sales.api.order_management.place`
+[SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) `plugin.sales.api.order_management.place`
 
 <InlineAlert variant="info" slots="text" />
 
@@ -121,15 +118,64 @@ In the following example default payload, some data has been removed for brevity
 
 ## Configuration
 
-<TabsBlock orientation="horizontal" slots="heading, content" theme="light" repeat="2" />
+<CodeBlock slots="heading, code" repeat="2" languages="XML, YAML" />
 
 #### webhook.xml (PaaS)
 
-<ConfigXml/>
+```xml
+<method name="plugin.magento.sales.api.order_management.place" type="before">
+    <hooks>
+        <batch name="order_validation" order="200">
+            <hook name="validate_product_shipping_address" url="{env:APP_BUILDER_URL}/validate-order" priority="100" fallbackErrorMessage="Could not validate the shipping address" timeout="5000" softTimeout="1000" required="true" active="true" method="POST">
+                <headers>
+                    <header name="x-gw-ims-org-id">{env:APP_BUILDER_IMS_ORG_ID}</header>
+                    <header name="Authorization">Bearer {env:APP_BUILDER_AUTH_TOKEN}</header>
+                </headers>
+                <fields>
+                    <field name="order.items[].sku"/>
+                    <field name="order.addresses"/>
+                </fields>
+            </hook>
+        </batch>
+    </hooks>
+</method>
+```
 
 #### Admin (SaaS)
 
-<ConfigAdmin/>
+```yaml
+Hook Settings
+
+Webhook method: plugin.sales.api.order_management.place
+Webhook type: before
+Batch name: order_validation
+Batch order: 200
+Hook name: validate_product_shipping_address
+Hook priority: 100
+URL: <Host>/validate-order
+Timeout: 5000
+Soft timeout: 1000
+Fallback Error Message: Could not validate the shipping address
+Required: Required
+Active: Yes
+Method: POST
+
+Developer Console OAuth
+
+Client ID: The client ID for the OAuth credential.
+Client Secret: The client secret for the OAuth credential.
+Organization ID: The organization ID for the OAuth credential.
+
+Hook Fields
+
+Name: order.items[].sku
+Source: order.items[].sku
+Active: Yes
+
+Name: order.addresses
+Source: order.addresses
+Active: Yes
+```
 
 ## Endpoint code example
 

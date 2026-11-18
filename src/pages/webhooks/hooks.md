@@ -11,15 +11,15 @@ The payload for a hook can be large, but in many cases you only need to transmit
 
 Defining the hook requires knowledge of the structure of the original event and the requirements of the remote call. You can use the following methods to determine the structure of the original event:
 
-* &#8203;<Edition name="paas" />
+* View the list of supported webhook methods by going to **System** > Webhooks > **Webhooks List** in the Admin. Webhook methods are grouped by module, and you can search by module or webhook method name. Click a webhook method name to display a schema example of its payload, which you can copy as JSON. In PaaS environments, this page is available in Adobe Commerce Webhooks 1.21.0 and later.
 
-   * Run the [`bin/magento webhooks:list:all` command](./commands.md#return-a-list-of-supported-webhook-event-names) to return a list of all supported webhooks methods. Then run the [`bin/magento webhooks:info <webhook-name>` command](./commands.md#display-the-payload-of-a-webhook) to return the payload of the specified webhook method.
+* [PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
-* &#8203;<Edition name="saas" />
+   * Run the [`bin/magento webhooks:list:all` command](commands.md#return-a-list-of-supported-webhook-event-names) to return a list of all supported webhooks methods. Then run the [`bin/magento webhooks:info <webhook-name>` command](commands.md#display-the-payload-of-a-webhook) to return the payload of the specified webhook method.
 
-   * View the list supported webhook methods by going to **System** > Webhooks > **Webhooks List** in the Admin. Then click on a webhook method name to display its default contents.
+* [SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
-   * Call the `GET /V1/webhooks/supportedList` [REST endpoint](./api.md#get-supported-webhooks-for-saas).
+   * Call the `GET /V1/webhooks/supportedList` [REST endpoint](api.md#get-supported-webhooks-for-saas).
 
 Imagine that a hypothetical webhook has the following structure:
 
@@ -55,7 +55,7 @@ Make sure the webhook method you select contains the information you need. Now, 
 {
     "eventName": "string",
     "data": {
-        "quoteItem": {
+        "quote_item": {
             "qty_options": "array",
             "product_type": "string",
             "real_product_type": "string",
@@ -81,7 +81,7 @@ Make sure the webhook method you select contains the information you need. Now, 
 
 At minimum, you need to transmit the `sku` and `qty` fields to check product availability. Other fields, such as `name` and `price`, might also be necessary. However, there are many other fields that contain data that is outside the scope of your call.
 
-Meanwhile, your external source probably does not accept data as a `quoteItem` object. Imagine that your remote application expects a payload with the following structure:
+Meanwhile, your external source probably does not accept data as a `quote_item` object. Imagine that your remote application expects a payload with the following structure:
 
 ```json
 {
@@ -103,10 +103,10 @@ The following example configures the webhook described above.
 ```xml
 <hook name="validate_stock" url="https://example.com/product-validate-stock" timeout="2000" softTimeout="200" required="true" fallbackErrorMessage="Can't add the product to the cart right now">
     <fields>
-        <field name='product.name' source='data.quoteItem.name' />
-        <field name='product.sku' source='data.quoteItem.sku' />
-        <field name='product.price' source='data.quoteItem.price' />
-        <field name='product.quantity' source='data.quoteItem.qty' />
+        <field name='product.name' source='data.quote_item.name' />
+        <field name='product.sku' source='data.quote_item.sku' />
+        <field name='product.price' source='data.quote_item.price' />
+        <field name='product.quantity' source='data.quote_item.qty' />
     </fields>
 </hook>
 ```
@@ -117,19 +117,19 @@ The following example configures the webhook described above.
 Hook Fields
 
 Name: product.name
-Source: data.quoteItem.name
+Source: data.quote_item.name
 Active: Yes
 
 Name: product.sku
-Source: data.quoteItem.sku
+Source: data.quote_item.sku
 Active: Yes
 
 Name: product.price
-Source: data.quoteItem.price
+Source: data.quote_item.price
 Active: Yes
 
 Name: product.quantity
-Source: data.quoteItem.qty
+Source: data.quote_item.qty
 Active: Yes
 ```
 
@@ -348,6 +348,27 @@ Source: context_checkout_session.get_quote
 Active: Yes
 ```
 
+To get a list of items from the quote object, you can use the `getItems()` method of the quote object. The following example retrieves the list of items from the quote object by calling `Magento\Checkout\Model\Session::getQuote()::getItems()`:
+
+<CodeBlock slots="heading, code" repeat="2" languages="XML, YAML" />
+
+##### webhooks.xml (PaaS)
+
+```xml
+<fields>
+    <field name="quote.items" source="context_checkout_session.get_quote.get_items" />
+</fields>
+```
+
+##### Admin (SaaS)
+
+```yaml
+Hook Fields
+Name: quote.items
+Source: context_checkout_session.get_quote.get_items
+Active: Yes
+```
+
 To get a value of the specific field of an object, you can use the `get_<field_name>` method of the object. The following example retrieves the `subtotal` value from the quote object by calling `Magento\Checkout\Model\Session::getQuote()::getSubtotal()`:
 
 <CodeBlock slots="heading, code" repeat="2" languages="XML, YAML" />
@@ -369,6 +390,30 @@ Source: context_checkout_session.get_quote.get_sub_total
 Active: Yes
 ```
 
+To get the product custom options such as text field, text area, radio button, check box, or product quantity while adding the product to cart from the storefront or GraphQL API.
+
+<CodeBlock slots="heading, code" repeat="2" languages="XML, YAML" />
+
+##### webhooks.xml (PaaS)
+
+```xml
+<fields>
+    <field name="custom_options" source="context_quote_item_options.get_options" />
+    <field name="quantity"       source="context_quote_item_options.get_qty" />
+</fields>
+```
+
+##### Admin (SaaS)
+
+```yaml
+Hook Fields
+Name: custom_options
+Source: context_quote_item_options.get_options
+Name: quantity
+Source: context_quote_item_options.get_qty
+Active: Yes
+```
+
 ### Context headers
 
 You can use the same syntax and features available for context values in fields to set hook headers.
@@ -383,36 +428,15 @@ You can use the same syntax and features available for context values in fields 
 </headers>
 ```
 
-<!--
-
-When uncommenting the SaaS example, change the "repeat" attribute to "2" to show both code blocks.
-
-##### Admin (SaaS)
-
-```yaml
-Hook Headers
-
-Name: X-Custom-Header
-Value: context_http_request.get_header{X-Custom-Header}
-Active: Yes
-```
--->
-
 In this example, the `X-Custom-Header` from an incoming HTTP request to Commerce will be forwarded as a header in the request sent by the webhook. This approach can be used to pass Authorization headers required by an external system.
 
 ### Supported contexts
 
 The following contexts are supported:
 
-| Context                     | Context class                                     |
-|-----------------------------|---------------------------------------------------|
-| `context_checkout_session`  | Magento\Checkout\Model\Session                    |
-| `context_customer_session`  | Magento\Customer\Model\Session                    |
-| `context_application_state` | Magento\Framework\App\State                       |
-| `context_scope_config`      | Magento\Framework\App\Config\ScopeConfigInterface |
-| `context_http_request`      | Magento\Framework\App\Request\Http                |
-| `context_staging`           | Magento\Staging\Model\VersionManager              |
-| `context_store`             | Magento\Store\Model\StoreManagerInterface         |
+<Fragment src="/_includes/commerce-context.md" />
+
+<Fragment src="/_includes/commerce-context-methods.md" />
 
 #### Checkout session context
 
@@ -757,9 +781,202 @@ This hook sends the following JSON object to the webhook endpoint:
 }
 ```
 
+### Context field filtration
+
+When a context method returns an array of objects, you can filter the fields included in the result by appending a comma-separated list of field paths in square brackets to the source expression. This lets you reduce the payload size by including only the fields you need.
+
+The filtration syntax is:
+
+```text
+<context_name>.<method>[field1,field2,nested.field,...]
+```
+
+Use square bracket filtration directly on a collection method to include only specific fields from each item.
+
+<CodeBlock slots="heading, code" repeat="2" languages="XML, YAML" />
+
+##### webhooks.xml (PaaS)
+
+```xml
+<fields>
+    <field name="quote.items" source="context_checkout_session.get_quote.get_items[qty,price,product.name,product.customer_group_id,product.attributes.url_key]" />
+</fields>
+```
+
+##### Admin (SaaS)
+
+```yaml
+Hook Fields
+
+Name: quote.items
+Source: context_checkout_session.get_quote.get_items[qty,price,product.name,product.customer_group_id,product.attributes.url_key]
+Active: Yes
+```
+
+##### Result
+
+```json
+{
+    "quote": {
+        "items": [
+            {
+                "qty": 1,
+                "price": 124.04,
+                "product": {
+                    "name": "Simple product Demo Product 2",
+                    "customer_group_id": "0",
+                    "attributes": {
+                        "url_key": "simple-product-2"
+                    }
+                }
+            },
+            {
+                "qty": 1,
+                "price": 123,
+                "product": {
+                    "name": "Virtual product 1",
+                    "customer_group_id": "0",
+                    "attributes": {
+                        "url_key": "virtual-product-1"
+                    }
+                }
+            },
+            {
+                "qty": 1,
+                "price": 125,
+                "product": {
+                    "name": "Simple product 3",
+                    "customer_group_id": "0",
+                    "attributes": {
+                        "url_key": "simple-product-3"
+                    }
+                }
+            }
+        ]
+    }
+}
+```
+
+You can also apply filtration on an object method and specify the paths to nested collection fields using dot notation, prefixing collection item fields with the collection key.
+
+<CodeBlock slots="heading, code" repeat="2" languages="XML, YAML" />
+
+##### webhooks.xml (PaaS)
+
+```xml
+<fields>
+    <field name="quote" source="context_checkout_session.get_quote[items.qty,items.price,items.product.name,items.product.customer_group_id,items.product.attributes.url_key]" />
+</fields>
+```
+
+##### Admin (SaaS)
+
+```yaml
+Hook Fields
+
+Name: quote
+Source: context_checkout_session.get_quote[items.qty,items.price,items.product.name,items.product.customer_group_id,items.product.attributes.url_key]
+Active: Yes
+```
+
+##### Result
+
+```json
+{
+    "quote": {
+        "items": [
+            {
+                "qty": 2,
+                "price": "125.0000",
+                "product": {
+                    "name": "Simple product 3",
+                    "customer_group_id": "0",
+                    "attributes": {
+                        "url_key": "simple-product-3"
+                    }
+                }
+            },
+            {
+                "qty": 1,
+                "price": "123.0300",
+                "product": {
+                    "name": "Simple product 22",
+                    "customer_group_id": "0",
+                    "attributes": {
+                        "url_key": "simple-product-22"
+                    }
+                }
+            },
+            {
+                "qty": 1,
+                "price": "124.0400",
+                "product": {
+                    "name": "Simple product Demo Product 2",
+                    "customer_group_id": "0",
+                    "attributes": {
+                        "url_key": "simple-product-2"
+                    }
+                }
+            }
+        ]
+    }
+}
+```
+
+#### Product attributes
+
+Products returned by a context method often do not have all of their attributes loaded. When a field filter contains a `product.attributes` path, Commerce loads the requested attribute values for each product in the result before the filter is applied. The product is identified by the `sku` of the item or of the product. If the item contains a `store_id` value, attribute values are loaded for that store view. This functionality is available in Adobe Commerce Webhooks 1.21.0 and later.
+
+* `product.attributes.<attribute_code>` adds only the specified attributes. You can specify multiple attributes in the same filter.
+* `product.attributes` without an attribute code adds all product attributes that have values.
+* `product.attributes.category_ids` adds the IDs of the categories assigned to the product.
+
+Attribute values are returned as they are displayed on the storefront. For example, the values of dropdown attributes, such as `color`, are returned as option labels instead of option IDs. Attributes that do not exist or have no value for the product are omitted.
+
+<CodeBlock slots="heading, code" repeat="2" languages="XML, YAML" />
+
+##### webhooks.xml (PaaS)
+
+```xml
+<fields>
+    <field name="items" source="context_checkout_session.get_quote.get_all_visible_items[sku,product.attributes.color,product.attributes.manufacturer,product.attributes.category_ids]" />
+</fields>
+```
+
+##### Admin (SaaS)
+
+```yaml
+Hook Fields
+
+Name: items
+Source: context_checkout_session.get_quote.get_all_visible_items[sku,product.attributes.color,product.attributes.manufacturer,product.attributes.category_ids]
+Active: Yes
+```
+
+##### Result
+
+```json
+{
+    "items": [
+        {
+            "sku": "simple-product-1",
+            "product": {
+                "attributes": {
+                    "color": "Red",
+                    "manufacturer": "Acme",
+                    "category_ids": ["3", "5"]
+                }
+            }
+        }
+    ]
+}
+```
+
 ## Clean the cache
 
-<Edition name="paas" />
+<Edition slots="text" backgroundcolor="blue" />
+
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 If you are adding webhook functionality to an instance that is in production mode, run the following command to clean the cache and make the webhook available to the system:
 

@@ -14,7 +14,7 @@ The `product mass action` extension point customizes product grid mass actions i
 
 The following example creates mass actions labeled `First App Mass Action` and `Another Mass Action`. The `extensionId` value matches the ID specified at [app registration](../../app-registration.md).
 
-The `path` parameter specifies where to redirect an action. The Admin UI SDK provides the selected product IDs in a [`sharedContext`](../../extension-points/index.md#shared-contexts) when a merchant selects a mass action. Your implementation must read the selected items from the `sharedContext`.
+The `path` parameter specifies where to redirect an action. The Admin UI SDK provides the selected product IDs in a [`sharedContext`](../index.md#shared-contexts) when a merchant selects a mass action. Your implementation must read the selected items from the `sharedContext`.
 
 ```javascript
 product: {
@@ -51,14 +51,8 @@ product: {
 | `productSelectLimit` | integer | No | Set the maximum number products that can be selected for a mass action. By default, the number is unlimited. |
 | `displayIframe` | boolean | No | Indicates whether an iFrame will be displayed at the relative path. The default value is `true`. [Mass actions without iFrames](../../api.md#mass-actions-without-iframes) provides additional details. |
 | `timeout` | integer | No | Only relevant when `displayIframe` is set to `false`. The number of seconds to wait for a response to a request sent to the application. Default value is 10 seconds. |
-| `sandbox` | string | No | Only relevant when `displayIframe` is set to `true`. The sandbox attribute applies additional restrictions to the content within an iFrame. Allowed values are `allow-downloads` and `allow-popups`. Separate multiple values with a single space (" "). |
+| `sandbox` | string | No | Only relevant when `displayIframe` is set to `true`. The sandbox attribute applies additional restrictions to the content within an iFrame. Allowed values are `allow-downloads`, `allow-modals`, and `allow-popups`. Separate multiple values with a single space (" "). |
 
 ## Sample code
 
-The Adobe Commerce Extensibility Code Samples repository demonstrates how to customize the [product mass action](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/product/custom-mass-action).
-
-<InlineAlert variant="warning" slots="text1, text2" />
-
-This sample requires two separate App Builder projects.
-
-Both parts are interdependent and must be configured and deployed together. See the `README.md` file for setup instructions.
+The Adobe Commerce Extensibility Code Samples repository demonstrates how to customize the [product mass action](https://github.com/adobe/adobe-commerce-samples/tree/main/admin-ui-sdk/v1/product/custom-mass-action).

@@ -13,15 +13,17 @@ To manage OOP shipping carriers, Adobe Commerce provides a set of REST endpoints
 To call the Commerce REST endpoints, initialize the Adobe Commerce Client:
 
 ```javascript
-const { getAdobeCommerceClient } = require("../lib/adobe-commerce");
-const commerceClient = await getAdobeCommerceClient(process.env);
+import { getCommerceClient } from "@adobe/aio-commerce-lib-app";
+import { resolveImsAuthParams } from "@adobe/aio-commerce-sdk/auth";
+
+const commerceClient = await getCommerceClient(resolveImsAuthParams(params));
 ```
 
 ## Create a new OOPE shipping carrier
 
 `createOopeShippingCarrier` creates a new out-of-process shipping carrier with the necessary details such as `code`, `title`, and `configuration`.
 
-Check the [API reference](./shipping-reference.md#create-a-new-oope-shipping-carrier) for more details.
+Check the [API reference](shipping-reference.md#create-a-new-oope-shipping-carrier) for more details.
 
 <CodeBlock slots="heading, code" repeat="1" languages="javascript" />
 
@@ -60,7 +62,7 @@ try {
 
 `getOopeShippingCarriers` retrieves a list of all out-of-process shipping carriers in the Adobe Commerce instance.
 
-Check the [API reference](./shipping-reference.md#list-all-shipping-carriers) for more details.
+Check the [API reference](shipping-reference.md#list-all-shipping-carriers) for more details.
 
 <CodeBlock slots="heading, code" repeat="1" languages="javascript" />
 
@@ -88,7 +90,7 @@ try {
 
 `getOopeShippingCarrier` retrieves one out-of-process shipping carrier by `code` from the Adobe Commerce instance.
 
-Check the [API reference](./shipping-reference.md#get-an-oope-shipping-carrier-by-code) for more details.
+Check the [API reference](shipping-reference.md#get-an-oope-shipping-carrier-by-code) for more details.
 
 <CodeBlock slots="heading, code" repeat="1" languages="javascript" />
 

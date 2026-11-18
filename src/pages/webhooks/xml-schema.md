@@ -28,7 +28,7 @@ A maximal `webhooks.xml` file has the following structure:
                         |__ rule
 ```
 
-[Configure hooks](hooks.md) and [Create conditional webhooks](./conditional-webhooks.md) contain examples of fully-defined hooks.
+[Configure hooks](hooks.md) and [Create conditional webhooks](conditional-webhooks.md) contain examples of fully-defined hooks.
 
 ## `config` attributes
 
@@ -97,7 +97,7 @@ A `headers` element is optional and can contain one or more `header` elements. E
 
 ## `fields` and `field` elements
 
-A `fields` element is optional and can contain one or more `field` elements. The `fields` element provides the ability to limit the payload of a webhook to only those fields defined in the individual `field` definitions. [Configure hook contents](./hooks.md) shows a fully-constructed hook.
+A `fields` element is optional and can contain one or more `field` elements. The `fields` element provides the ability to limit the payload of a webhook to only those fields defined in the individual `field` definitions. [Configure hook contents](hooks.md) shows a fully-constructed hook.
 
 | Attribute | Type   | Description  | Is required | Default |
 |---|---|---|---|---|
@@ -108,14 +108,14 @@ A `fields` element is optional and can contain one or more `field` elements. The
 
 ## `rules` and `rule` elements
 
-A `rules` element is optional and can contain one or more `rule` elements. Each `rule` element defines a conditional webhook, which configures the conditions that cause the webhook to be triggered when all conditions evaluate to `true`. [Create conditional webhooks](./conditional-webhooks.md) provides example rules and fully describes the possible operator values.
+A `rules` element is optional and can contain one or more `rule` elements. Each `rule` element defines a conditional webhook, which configures the conditions that cause the webhook to be triggered when all conditions evaluate to `true`. [Create conditional webhooks](conditional-webhooks.md) provides example rules and fully describes the possible operator values.
 
 | Attribute | Type   | Description  | Is required | Default |
 |---|---|---|---|---|
-| `field` | String | The event field to be evaluated. For nested fields, use the dot-separated format, such as `data.order.product.id`. | true | Not applicable
-| `operator` | String | A string that defines which comparison operator to use. Examples include `equal`, `notEqual`, and `regex`. | true | Not applicable
-| `value` | String | The value to be compared. | true | Not applicable
-| `remove` | Boolean | Indicates whether the rule is active. The default value of `true` indicates the rule is active. | false | false
+| `field` | String | The event field to be evaluated. For nested fields, use the dot-separated format, such as `data.order.product.id`. | true | Not applicable |
+| `operator` | String | A string that defines which comparison operator to use. Examples include `equal`, `notEqual`, and `regex`. | true | Not applicable |
+| `value` | String | The value to be compared. | true | Not applicable |
+| `remove` | Boolean | Indicates whether the rule is active. The default value of `true` indicates the rule is active. | false | false |
 
 ## `developerConsoleOauth` element
 

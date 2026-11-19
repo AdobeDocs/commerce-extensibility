@@ -65,6 +65,7 @@ These patterns provide flexibility in how payment operations are integrated with
 - [Non-blocking invoice creation](#non-blocking-invoice-creation)
 - [Blocking invoice creation](#blocking-invoice-creation)
 - [Incoming payment synchronization](#incoming-payment-synchronization)
+- [Commerce-initiated OOPE refunds](#commerce-initiated-oope-refunds)
 
 #### Non-blocking invoice creation
 
@@ -85,6 +86,27 @@ Alternatively, you can use the `plugin.magento.sales.api.invoice_repository.crea
 Payment gateway captures and refunds are synchronized bidirectionally with Adobe Commerce through the Admin REST API, enabling real-time updates between the payment system and commerce platform.
 
 ![incoming-captures-and-refunds](../../images/starterkit/incoming-captures-and-refunds.png)
+
+#### Commerce-initiated OOPE refunds
+
+You can also integrate refunds initiated through Commerce Admin or the refund REST APIs using the dedicated `plugin.out_of_process_payment_methods.api.refund_request.execute` webhook. Your integration supplies the external refund handler.
+
+For Admin users, configure `allow_online_refunds` to enable the enhanced **Refund Online** action for an OOPE payment method. This setting controls Admin button visibility only; REST API refunds do not depend on it. See the [Payment API reference](payment-reference.md#create-or-update-a-payment-method) for configuration details.
+
+<!-- TODO: Replace the generic Payment API reference link with the refund configuration documentation when available. -->
+
+The flow is:
+
+1. A merchant submits an invoice-based credit memo through Admin, choosing **Refund Online** or **Refund Offline**, or an integration submits a refund through a supported REST API.
+1. Commerce invokes the webhook with the requested online/offline choice, refund totals, items, and available payment and invoice references.
+1. For an offline request, the handler is expected not to initiate a gateway refund. For an online request, it is expected either to complete the gateway refund before responding or to durably accept responsibility for asynchronous processing.
+1. The handler can return an exception response to reject the submission or supply an optional comment. Commerce saves a supplied comment internally with the successfully created credit memo, without notifying the customer.
+
+The webhook runs during refund processing, not when a credit-memo entity is merely saved through the repository API. See the [webhook documentation](../../webhooks/index.md) for subscription and response configuration.
+
+<!-- TODO: Replace the generic webhook documentation link with the refund webhook documentation when available. -->
+
+Webhook delivery is synchronous, even when external processing is asynchronous. Acceptance is not refund completion, and gateway processing and Commerce persistence are not atomic.
 
 ### Checkout session pattern
 

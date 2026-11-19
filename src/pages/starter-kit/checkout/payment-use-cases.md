@@ -93,8 +93,6 @@ You can also integrate refunds initiated through Commerce Admin or the refund RE
 
 For Admin users, configure `allow_online_refunds` to enable the enhanced **Refund Online** action for an OOPE payment method. This setting controls Admin button visibility only; REST API refunds do not depend on it. See the [Payment API reference](payment-reference.md#create-or-update-a-payment-method) for configuration details.
 
-<!-- TODO: Replace the generic Payment API reference link with the refund configuration documentation when available. -->
-
 The flow is:
 
 1. A merchant submits an invoice-based credit memo through Admin, choosing **Refund Online** or **Refund Offline**, or an integration submits a refund through a supported REST API.

@@ -184,7 +184,9 @@ Use this for an offline no-op, or when online processing has completed or been a
 
 The service result is an extensible object. Commerce currently recognizes only `comment`; unknown result fields are ignored.
 
-If supplied, `comment` must be a plain-text string without HTML. A missing, empty or whitespace-only comment adds nothing. An invalid comment rejects processing.
+The optional `comment` accepts a string or `null`. A missing, `null`, empty or whitespace-only comment adds nothing. Non-string values are ignored with a warning that does not log the supplied content; they do not reject the refund.
+
+Commerce HTML-escapes strings before storing them through native comment handling. HTML markup is displayed literally, not rendered as HTML; ordinary text containing angle brackets, currency symbols or email addresses remains readable. If the credit memo implementation does not support native comment handling, Commerce skips the comment with a warning rather than rejecting the refund. Refund execution exceptions still reject processing as before.
 
 Commerce saves the comment with the successfully saved credit memo. It is not visible on the storefront and does not trigger customer notification. The comment records information from the handler; it does not change the refund's financial status.
 

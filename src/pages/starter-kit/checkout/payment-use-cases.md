@@ -100,9 +100,7 @@ The flow is:
 1. For an offline request, the handler is expected not to initiate a gateway refund. For an online request, it is expected either to complete the gateway refund before responding or to durably accept responsibility for asynchronous processing.
 1. The handler can return an exception response to reject the submission or supply an optional comment. Commerce saves a supplied comment internally with the successfully created credit memo, without notifying the customer.
 
-The webhook runs during refund processing, not when a credit-memo entity is merely saved through the repository API. See the [webhook documentation](../../webhooks/index.md) for subscription and response configuration.
-
-<!-- TODO: Replace the generic webhook documentation link with the refund webhook documentation when available. -->
+The webhook runs during refund processing, not when a credit-memo entity is merely saved through the repository API. See the [OOPE refunds webhook documentation](../../webhooks/use-cases/oope-refunds.md) for subscription and response configuration.
 
 Webhook delivery is synchronous, even when external processing is asynchronous. Acceptance is not refund completion, and gateway processing and Commerce persistence are not atomic.
 

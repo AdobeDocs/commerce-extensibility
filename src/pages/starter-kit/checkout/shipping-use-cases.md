@@ -298,6 +298,14 @@ If you use the `flatrate` shipping method, but want to disable it, you must upda
 
 The `plugin.magento.out_of_process_shipping_methods.api.shipment_item_filter.filter` webhook lets you exclude order items from new shipments. For example, you can keep items that a third party fulfills out of Commerce shipments.
 
+This use case runs with a webhook of type `after`.
+
+### Webhook name
+
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) `plugin.magento.out_of_process_shipping_methods.api.shipment_item_filter.filter`
+
+[SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) `plugin.out_of_process_shipping_methods.api.shipment_item_filter.filter`
+
 The webhook is called when a shipment is created in one of the following ways:
 
 - **Ship** > **Submit Shipment** in the Admin (`admin_shipment` channel).
@@ -310,28 +318,56 @@ The webhook only changes the contents of the shipment. It does not change order 
 
 [PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) This webhook requires version 1.3.0 or later of the `magento/module-out-of-process-shipping-methods` module.
 
-[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) The following example registers an `after` webhook for the `plugin.magento.out_of_process_shipping_methods.api.shipment_item_filter.filter` method in a `webhooks.xml` [configuration file](../../webhooks/xml-schema.md):
+### Configuration
+
+<CodeBlock slots="heading, code" repeat="2" languages="XML, YAML" />
+
+#### webhooks.xml (PaaS)
 
 ```xml
-<?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_AdobeCommerceWebhooks:etc/webhooks.xsd">
-    <method name="plugin.magento.out_of_process_shipping_methods.api.shipment_item_filter.filter" type="after">
-        <hooks>
-            <batch name="shipment_item_filter">
-                <hook name="exclude_third_party_items" url="https://<your_app_builder>.runtime.adobe.io/api/v1/web/shipping-method/shipment-item-filter" method="POST" timeout="5000" softTimeout="1000" required="true">
-                    <fields>
-                        <field name="payload" />
-                        <field name="result" />
-                    </fields>
-                </hook>
-            </batch>
-        </hooks>
-    </method>
+  <method name="plugin.magento.out_of_process_shipping_methods.api.shipment_item_filter.filter" type="after">
+    <hooks>
+      <batch name="shipment_item_filter">
+        <hook name="exclude_third_party_items" url="https://<your_app_builder>.runtime.adobe.io/api/v1/web/shipping-method/shipment-item-filter" method="POST" timeout="5000" softTimeout="1000" required="true">
+          <fields>
+            <field name="payload" />
+            <field name="result" />
+          </fields>
+        </hook>
+      </batch>
+    </hooks>
+  </method>
 </config>
 ```
 
-[SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) Use the `plugin.out_of_process_shipping_methods.api.shipment_item_filter.filter` method.
+#### Admin (SaaS)
+
+```yaml
+Hook Settings
+
+  Webhook Method: plugin.out_of_process_shipping_methods.api.shipment_item_filter.filter
+  Webhook Type: after
+  Batch Name: shipment_item_filter
+  Hook Name: exclude_third_party_items
+  URL: https://<your_app_builder>.runtime.adobe.io/api/v1/web/shipping-method/shipment-item-filter
+  Timeout: 5000
+  Soft timeout: 1000
+  Required: Required
+  Active: Yes
+  Method: POST
+
+Hook Fields
+
+  Name: payload
+  Source: payload
+  Active: Yes
+
+  Name: result
+  Source: result
+  Active: Yes
+```
 
 Whether a failed webhook call blocks the shipment depends on the **Required** setting of the webhook.
 

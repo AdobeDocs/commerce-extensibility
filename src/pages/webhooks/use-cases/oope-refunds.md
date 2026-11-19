@@ -15,11 +15,11 @@ For the overall workflow and Admin payment configuration, see [Commerce-initiate
 
 ## Webhook names
 
-**PaaS and on-premises**
+### PaaS and on-premises
 
 `plugin.magento.out_of_process_payment_methods.api.refund_request.execute`
 
-**Adobe Commerce as a Cloud Service**
+### Adobe Commerce as a Cloud Service
 
 `plugin.out_of_process_payment_methods.api.refund_request.execute`
 

@@ -128,7 +128,7 @@ The Appbuilder application receives the following payload as an `oopQuote` objec
 }
 ```
 
-The `is_virtual` field indicates whether a product is virtual (`true`) or physical (`false`).
+The `is_virtual` field indicates whether a product requires shipping. It is `true` for virtual, non-shippable products and `false` for physical products. Non-product lines, such as shipping, are also `false`.
 
 Responses to commerce webhooks are expected to modify the original request body in various ways (see [`Webhook responses and logging`](../../webhooks/responses.md)). The following response example uses the `replace` operation to set the tax field and the `add` operation to add different taxes to the `tax_breakdown` array.
 

@@ -9,6 +9,16 @@ keywords:
 
 These release notes describe the latest version of Adobe Commerce Webhooks.
 
+## Version 1.22.0
+
+### Release date
+
+November 19, 2026
+
+### Bug fixes
+
+* You can now [unsubscribe](api.md#unsubscribe-a-webhook) from webhooks with any valid batch and hook names. Previously, some names containing underscores caused the request to fail with an error that the webhook does not exist. \<!-- CEXT-6965 --\>
+
 ## Version 1.21.0
 
 ### Release date

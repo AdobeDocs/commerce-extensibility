@@ -60,6 +60,7 @@ The Appbuilder application receives the following payload as an `oopQuote` objec
         "tax_class": "tax-1",
         "unit_price": 60,
         "quantity": 2,
+        "is_virtual": true,
         "is_tax_included": false,
         "discount_amount": 0,
         "custom_attributes": [],
@@ -74,6 +75,7 @@ The Appbuilder application receives the following payload as an `oopQuote` objec
         "tax_class": "Shipping Tax",
         "unit_price": 60,
         "quantity": 1,
+        "is_virtual": false,
         "is_tax_included": false,
         "discount_amount": 0,
         "custom_attributes": [],
@@ -125,6 +127,8 @@ The Appbuilder application receives the following payload as an `oopQuote` objec
   }
 }
 ```
+
+The `is_virtual` value is a boolean derived from the matched product's `getIsVirtual()`, not the persisted quote-item value. This keeps it stable across totals passes and before and after saving and reloading the cart. Rows without a matched product, such as shipping, use `false`.
 
 Responses to commerce webhooks are expected to modify the original request body in various ways (see [`Webhook responses and logging`](../../webhooks/responses.md)). The following response example uses the `replace` operation to set the tax field and the `add` operation to add different taxes to the `tax_breakdown` array.
 

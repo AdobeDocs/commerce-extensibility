@@ -57,7 +57,7 @@ The following example selects the complete payload argument:
 </method>
 ```
 
-Install an OOPE payment module version that provides this method and generate the webhook interception code as described in the [webhooks configuration reference](../xml-schema.md).
+Install `magento/module-out-of-process-payment-methods` version 0.6.0 or later and generate the webhook interception code as described in the [webhooks configuration reference](../xml-schema.md).
 
 ### Adobe Commerce as a Cloud Service
 

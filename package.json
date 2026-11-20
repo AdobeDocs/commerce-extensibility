@@ -35,7 +35,8 @@
     "skipRules": {
       "check-frontmatter": {
         "paths": [
-          "src/pages/_includes"
+          "src/pages/_includes",
+          "src/pages/config.md"
         ]
       }
     },

@@ -65,6 +65,7 @@ The Appbuilder application receives the following payload as an `oopQuote` objec
         "custom_attributes": [],
         "sku": "SKU-1",
         "name": "Product Name 01",
+        "parent_code": null,
         "tax": null,
         "tax_breakdown": []
       },
@@ -79,6 +80,7 @@ The Appbuilder application receives the following payload as an `oopQuote` objec
         "custom_attributes": [],
         "sku": null,
         "name": null,
+        "parent_code": null,
         "tax": null,
         "tax_breakdown": []
       }
@@ -179,6 +181,32 @@ The key points for constructing the response are:
   }
 ]
 ```
+
+### Bundle products
+
+When a cart contains a bundle product with dynamic price, `oopQuote.items` contains one item for the bundle and one item for each product in the bundle. The `parent_code` of each product in the bundle is set to the `code` of the bundle item.
+
+This applies only to bundle products with dynamic price. In comparison, configurable products and bundle products with fixed price are sent as a single item with a `parent_code` of `null`.
+
+Commerce calculates the tax of the bundle item as the sum of the tax of its products and ignores any tax returned for the bundle item. Return the tax for each product in the bundle instead.
+
+The `quantity` of a product in a bundle is its quantity in a single bundle, while its `discount_amount` applies to all bundles in the cart. Calculate the taxable amount of the product as follows:
+
+```text
+unit_price * quantity * (quantity of the parent_code item) - discount_amount
+```
+
+In the following example, the cart contains two bundles. Each bundle contains one `CHILD-A` and two `CHILD-B`.
+
+```json
+[
+  { "code": "sequence-1", "sku": "BUNDLE-1", "quantity": 2, "unit_price": 436.4, "discount_amount": 0, "parent_code": null },
+  { "code": "sequence-2", "sku": "CHILD-A", "quantity": 1, "unit_price": 195, "discount_amount": 39, "parent_code": "sequence-1" },
+  { "code": "sequence-3", "sku": "CHILD-B", "quantity": 2, "unit_price": 120.7, "discount_amount": 0, "parent_code": "sequence-1" }
+]
+```
+
+The taxable amount of `CHILD-A` is `195 * 1 * 2 - 39 = 351`, and the taxable amount of `CHILD-B` is `120.7 * 2 * 2 - 0 = 482.8`. Commerce sets the tax of `BUNDLE-1` to the sum of the tax returned for `CHILD-A` and `CHILD-B`.
 
 ## Collect adjustment taxes for credit memo
 

@@ -45,11 +45,7 @@ When updating a payment method, preserve its existing settings. The `custom_conf
 
 **Recognized custom configuration:**
 
-The `custom_config` array accepts key/value entries. Commerce recognizes the following keys:
-
-**`allow_online_refunds`** - String
-
-Controls the Admin **Refund Online** action:
+The `custom_config` array accepts key/value entries. Commerce recognizes the `allow_online_refunds` key (string). It controls the Admin **Refund Online** action:
 
 - `"true"` enables the enhanced action for eligible invoice-based credit memos.
 - Other explicitly configured values hide the online action for refundable credit memos.

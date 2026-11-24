@@ -1,91 +1,31 @@
 ---
-title: OOPE refunds
+title: Out of process refunds
 description: Learn how to connect Commerce-initiated OOPE refunds to an external payment provider using webhooks.
 keywords:
   - Extensibility
 ---
 
-# OOPE refunds
+# Out of process refunds
 
 Use this webhook to connect Commerce-initiated refunds for out-of-process extensibility (OOPE) payment methods to an external payment provider.
 
 Commerce invokes the webhook during native online and offline refund processing, before the refund adapter continues. Your integration supplies the external handler.
 
+On Adobe Commerce on Cloud and on-premises (PaaS)instances, install `magento/module-out-of-process-payment-methods` version 0.6.0 or later and generate the webhook interception code as described in the [webhooks configuration reference](../xml-schema.md).
+
+Define an _after_ subscription to return refund result data. This means after the OOPE refund-request service executes, **not after the credit memo is saved**. Commerce still waits for the webhook response before continuing refund processing. A _before_ subscription can reject the operation but cannot replace the service result.
+
 For the overall workflow and Admin payment configuration, see [Commerce-initiated OOPE refunds](../../starter-kit/checkout/payment-use-cases.md#commerce-initiated-oope-refunds).
 
-## Webhook names
+## Webhook name
 
-### PaaS and on-premises
+[PaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) `plugin.magento.out_of_process_payment_methods.api.refund_request.execute`
 
-`plugin.magento.out_of_process_payment_methods.api.refund_request.execute`
+[SaaS Only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions) `plugin.out_of_process_payment_methods.api.refund_request.execute`
 
-### Adobe Commerce as a Cloud Service
+## Payload
 
-`plugin.out_of_process_payment_methods.api.refund_request.execute`
-
-Use an **after** subscription to return refund result data. This means after the OOPE refund-request service executes, **not after the credit memo is saved**. Commerce still waits for the webhook response before continuing refund processing.
-
-A before subscription can reject the operation but cannot replace the service result.
-
-## Configuration
-
-Configure the webhook as required so that a delivery failure or timeout prevents Commerce from continuing without the handler's response.
-
-### PaaS and on-premises
-
-The following example selects the complete payload argument:
-
-```xml
-<method name="plugin.magento.out_of_process_payment_methods.api.refund_request.execute"
-        type="after">
-    <hooks>
-        <batch name="oope_refunds">
-            <hook name="refund_request"
-                  url="{env:OOPE_REFUND_URL}"
-                  method="POST"
-                  timeout="5000"
-                  softTimeout="1000"
-                  required="true"
-                  active="true"
-                  fallbackErrorMessage="The refund could not be processed.">
-                <fields>
-                    <field name="payload"/>
-                </fields>
-            </hook>
-        </batch>
-    </hooks>
-</method>
-```
-
-Install `magento/module-out-of-process-payment-methods` version 0.6.0 or later and generate the webhook interception code as described in the [webhooks configuration reference](../xml-schema.md).
-
-### Adobe Commerce as a Cloud Service
-
-Create a subscription with the following settings:
-
-```yaml
-Webhook method: plugin.out_of_process_payment_methods.api.refund_request.execute
-Webhook type: after
-Batch name: oope_refunds
-Hook name: refund_request
-URL: <Your refund handler URL>
-Timeout: 5000
-Soft timeout: 1000
-Required: Required
-Active: Yes
-Method: POST
-
-Hook Fields:
-  Name: payload
-  Source: payload
-  Active: Yes
-```
-
-The timeout values are examples. Choose bounded limits appropriate for the integration, and configure endpoint authentication as described in [Create a webhook](../create-webhooks.md).
-
-## Request payload
-
-With the field configuration above, Commerce sends a request such as:
+The following example shows the default payload structure:
 
 ```json
 {
@@ -117,34 +57,65 @@ With the field configuration above, Commerce sends a request such as:
 }
 ```
 
-### Payload fields
-
-| Field | Type | Description |
-|---|---|---|
-| `schema_version` | Integer | Payload schema version. Currently `1`. |
-| `is_online` | Boolean | Requested online-refund intent. Does not confirm that a gateway refund has occurred. |
-| `store_id` | Integer | Order store ID. |
-| `order_id` | Integer | Internal order ID. |
-| `order_increment_id` | String | Order increment ID. |
-| `invoice_id` | Integer or null | Invoice associated with the credit memo, when available. |
-| `invoice_transaction_id` | String or null | Transaction reference from that invoice, when available. |
-| `payment_id` | Integer | Order payment ID. |
-| `payment_method` | String | OOPE payment method code. |
-| `payment_last_transaction_id` | String or null | Latest payment transaction reference. Not necessarily the capture being refunded. |
-| `grand_total`, `base_grand_total` | Number | Calculated credit memo total in order currency and base currency, respectively. Includes shipping, tax and adjustments. |
-| `order_currency_code`, `base_currency_code` | String | Currency codes for the corresponding amounts. |
-| `shipping_amount`, `base_shipping_amount` | Number | Refunded shipping excluding tax, in order currency and base currency. |
-| `adjustment_positive`, `base_adjustment_positive` | Number | Positive refund adjustment in order currency and base currency. |
-| `adjustment_negative`, `base_adjustment_negative` | Number | Negative refund adjustment in order currency and base currency. |
-| `items` | Array | Refunded order-item references and quantities. |
-| `items[].order_item_id` | Integer | Internal order item ID, not a credit memo item ID. |
-| `items[].qty` | Number | Refund quantity for the order item. |
-
 Amounts are expressed in currency units, not integer minor units.
 
-The item list excludes nonpositive quantities and rows already marked for deletion. Positive parent and child rows remain separate. Use the supplied totals rather than summing item quantities to determine the refund amount. Shipping-only or adjustment-only refunds can have an empty `items` array.
+The item list excludes non-positive quantities and rows already marked for deletion. Positive parent and child rows remain separate. Use the supplied totals rather than summing item quantities to determine the refund amount. Shipping-only or adjustment-only refunds can have an empty `items` array.
 
 The payload does not contain a persisted credit memo ID or a retry-stable refund identifier.
+
+## Configuration
+
+Configure the webhook as required so that a delivery failure or timeout prevents Commerce from continuing without the handler's response.
+
+The following example selects the complete payload argument:
+
+<CodeBlock slots="heading, code" repeat="2" languages="XML, YAML" />
+
+#### webhook.xml (PaaS)
+
+```xml
+<method name="plugin.magento.out_of_process_payment_methods.api.refund_request.execute"
+        type="after">
+    <hooks>
+        <batch name="oope_refunds">
+            <hook name="refund_request"
+                  url="{env:OOPE_REFUND_URL}"
+                  method="POST"
+                  timeout="5000"
+                  softTimeout="1000"
+                  required="true"
+                  active="true"
+                  fallbackErrorMessage="The refund could not be processed.">
+                <fields>
+                    <field name="payload"/>
+                </fields>
+            </hook>
+        </batch>
+    </hooks>
+</method>
+```
+
+### Admin (SaaS)
+
+```yaml
+Webhook method: plugin.out_of_process_payment_methods.api.refund_request.execute
+Webhook type: after
+Batch name: oope_refunds
+Hook name: refund_request
+URL: <Your refund handler URL>
+Timeout: 5000
+Soft timeout: 1000
+Required: Required
+Active: Yes
+Method: POST
+
+Hook Fields:
+  Name: payload
+  Source: payload
+  Active: Yes
+```
+
+The timeout values are examples. Choose bounded limits appropriate for the integration, and configure endpoint authentication as described in [Create a webhook](../create-webhooks.md).
 
 ## Handler behavior
 
@@ -182,13 +153,13 @@ Use this for an offline no-op, or when online processing has completed or been a
 }
 ```
 
-The service result is an extensible object. Commerce currently recognizes only `comment`; unknown result fields are ignored.
+The service result is an extensible object. Commerce currently recognizes only `comment`. Unknown result fields are ignored.
 
 The optional `comment` accepts a string or `null`. A missing, `null`, empty or whitespace-only comment adds nothing. Non-string values are ignored with a warning that does not log the supplied content; they do not reject the refund.
 
-Commerce HTML-escapes strings before storing them through native comment handling. HTML markup is displayed literally, not rendered as HTML; ordinary text containing angle brackets, currency symbols or email addresses remains readable. If the credit memo implementation does not support native comment handling, Commerce skips the comment with a warning rather than rejecting the refund. Refund execution exceptions still reject processing as before.
+Commerce HTML-escapes strings before storing them through native comment handling. HTML markup is displayed literally, not rendered as HTML. Ordinary text containing angle brackets, currency symbols or email addresses remains readable. If the credit memo implementation does not support native comment handling, Commerce skips the comment with a warning rather than rejecting the refund. Refund execution exceptions still reject processing as before.
 
-Commerce saves the comment with the successfully saved credit memo. It is not visible on the storefront and does not trigger customer notification. The comment records information from the handler; it does not change the refund's financial status.
+Commerce saves the comment with the successfully saved credit memo. It is not visible on the storefront and does not trigger customer notification. The comment records information from the handler. It does not change the refund's financial status.
 
 ### Reject the refund
 

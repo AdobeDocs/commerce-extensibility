@@ -2,8 +2,39 @@
 title: What's new
 description: This section contains the changes made in the last 60 days. Minor updates,
   such as copy editing, are excluded from this list.
-updated: Mon Nov 16 14:54:04 2026
+updated: Fri Nov 20 15:30:39 2026
 entries:
+- description: Released Adobe Commerce [webhooks version 1.22.0](https://developer.adobe.com/commerce/extensibility/webhooks/release-notes).
+  versions: ''
+  type: major-update, release-notes
+  date: '2026-11-19'
+  link: https://github.com/AdobeDocs/commerce-extensibility/pull/640
+  merge_commit: 6a90259e48e5176ef31337507a2e08b7d1670d94
+  contributor: oshmyheliuk
+  labels:
+  - major-update
+  - release-notes
+- description: Documented the `commerce-app-api-mesh` [App Management AI skill](https://developer.adobe.com/commerce/extensibility/app-management/working-with-ai)
+    that integrates your app's runtime actions into the Adobe Commerce GraphQL schema.
+  versions: ''
+  type: technical
+  date: '2026-11-18'
+  link: https://github.com/AdobeDocs/commerce-extensibility/pull/605
+  merge_commit: 768a96538087b8e1774dfacceb56c463a0568dea
+  contributor: jcuerdo
+  labels:
+  - technical
+- description: General improvements to the [Admin UI SDK](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/).
+  versions: ''
+  type: major-update, feedback
+  date: '2026-11-18'
+  link: https://github.com/AdobeDocs/commerce-extensibility/pull/487
+  merge_commit: c8201ed7b01a6ea074808b17de0f72e2b50bf941
+  contributor: jhadobe
+  labels:
+  - major-update
+  - feedback
+  - blocked
 - description: Admin UI SDK 5.2.0 adds V2 extension points for [return view buttons](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/extension-points/v2/rma/view-button)
     and [credit memo custom attribute grid columns](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/extension-points/v2/credit-memo/custom-attribute-grid-columns),
     a [native UI form replacement](https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/extension-points/v2/native-ui#supported-targets)

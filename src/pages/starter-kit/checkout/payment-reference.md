@@ -27,6 +27,8 @@ The POST `/V1/oope_payment_method/` creates or updates an out-of-process payment
 The `code` parameter is used to identify the payment method. If a payment method with the same `code` already exists,
 it will be updated; otherwise, a new payment method will be created.
 
+When updating a payment method, preserve its existing settings. The `custom_config` array replaces the stored configuration; entries are not merged by key.
+
 **Payload parameters:**
 
 | Parameter                 | Type    | Required | Description                                                                                                                                                |
@@ -40,6 +42,18 @@ it will be updated; otherwise, a new payment method will be created.
 | `countries`               | Array   | No       | List of countries where the method is available.                                                                                                           |
 | `currencies`              | Array   | No       | Currencies supported by the payment method.                                                                                                                |
 | `custom_config`           | Array   | No       | Custom configuration settings for payment methods.                                                                                                         |
+
+**Recognized custom configuration:**
+
+The `custom_config` array accepts key/value entries. Commerce recognizes the `allow_online_refunds` key (string). It controls the Admin **Refund Online** action:
+
+- `"true"` enables the enhanced action for eligible invoice-based credit memos.
+- Other explicitly configured values hide the online action for refundable credit memos.
+- Omitting the entry preserves native Commerce behavior.
+
+The enhanced action requires an associated invoice and remains subject to native refundability checks, but does not require an invoice transaction ID. **Refund Offline** remains available where supported.
+
+This setting controls Admin visibility only. It does not change `can_refund`, restrict refund REST APIs, or configure an external refund handler. See [Commerce-initiated OOPE refunds](payment-use-cases.md#commerce-initiated-oope-refunds) for the integration flow.
 
 <CodeBlock slots="heading, code" repeat="2" languages="bash, json" />
 

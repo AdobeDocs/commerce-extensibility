@@ -1,7 +1,7 @@
 {
-  "total": 258,
+  "total": 259,
   "offset": 0,
-  "limit": 258,
+  "limit": 259,
   "data": [
     {
       "page": "/",
@@ -93,10 +93,10 @@
     {
       "page": "/_includes/templated/whats-new",
       "avatars": [
-        "https://avatars.githubusercontent.com/u/12731225?v=4",
-        "https://avatars.githubusercontent.com/u/48562208?v=4"
+        "https://avatars.githubusercontent.com/u/48562208?v=4",
+        "https://avatars.githubusercontent.com/u/12731225?v=4"
       ],
-      "lastUpdated": "11/17/2026"
+      "lastUpdated": "11/20/2026"
     },
     {
       "page": "/_includes/webhook-auth",
@@ -843,9 +843,10 @@
     {
       "page": "/config",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/11652541?v=4",
+        "https://avatars.githubusercontent.com/u/6577801?v=4",
         "https://avatars.githubusercontent.com/u/38460853?v=4",
         "https://avatars.githubusercontent.com/u/10073809?v=4",
-        "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4",
         "https://avatars.githubusercontent.com/u/171511902?v=4",
         "https://avatars.githubusercontent.com/u/8988184?v=4",
@@ -853,7 +854,7 @@
         "https://avatars.githubusercontent.com/u/18550571?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4"
       ],
-      "lastUpdated": "11/10/2026"
+      "lastUpdated": "11/24/2026"
     },
     {
       "page": "/developer-agent/",
@@ -1402,14 +1403,15 @@
     {
       "page": "/starter-kit/checkout/payment-reference",
       "avatars": [
-        "https://avatars.githubusercontent.com/u/12731225?v=4",
+        "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/6577801?v=4",
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/16409901?v=4",
         "https://avatars.githubusercontent.com/u/8988184?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4",
         "https://avatars.githubusercontent.com/u/3788579?v=4"
       ],
-      "lastUpdated": "5/19/2026"
+      "lastUpdated": "11/24/2026"
     },
     {
       "page": "/starter-kit/checkout/payment-usage",
@@ -1424,6 +1426,7 @@
     {
       "page": "/starter-kit/checkout/payment-use-cases",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/6577801?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/8988184?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4",
@@ -1431,7 +1434,7 @@
         "https://avatars.githubusercontent.com/u/80530839?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4"
       ],
-      "lastUpdated": "9/11/2026"
+      "lastUpdated": "11/19/2026"
     },
     {
       "page": "/starter-kit/checkout/shipping-install",
@@ -1465,6 +1468,7 @@
       "page": "/starter-kit/checkout/shipping-use-cases",
       "avatars": [
         "https://avatars.githubusercontent.com/u/11652541?v=4",
+        "https://avatars.githubusercontent.com/u/133184706?v=4",
         "https://avatars.githubusercontent.com/u/8988184?v=4",
         "https://avatars.githubusercontent.com/u/47368809?v=4",
         "https://avatars.githubusercontent.com/u/6404095?v=4",
@@ -1472,7 +1476,7 @@
         "https://avatars.githubusercontent.com/u/16409901?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4"
       ],
-      "lastUpdated": "8/3/2026"
+      "lastUpdated": "11/19/2026"
     },
     {
       "page": "/starter-kit/checkout/tax-install",
@@ -1506,16 +1510,16 @@
     {
       "page": "/starter-kit/checkout/tax-use-cases",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/16409901?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4",
         "https://avatars.githubusercontent.com/u/8988184?v=4",
         "https://avatars.githubusercontent.com/u/6404095?v=4",
-        "https://avatars.githubusercontent.com/u/16409901?v=4",
         "https://avatars.githubusercontent.com/u/38460853?v=4",
         "https://avatars.githubusercontent.com/u/98363870?v=4",
         "https://avatars.githubusercontent.com/u/3788579?v=4",
         "https://avatars.githubusercontent.com/u/80530839?v=4"
       ],
-      "lastUpdated": "7/20/2026"
+      "lastUpdated": "11/19/2026"
     },
     {
       "page": "/starter-kit/checkout/totals-collector-development-considerations",
@@ -2131,6 +2135,14 @@
         "https://avatars.githubusercontent.com/u/18550571?v=4"
       ],
       "lastUpdated": "5/20/2026"
+    },
+    {
+      "page": "/webhooks/use-cases/oope-refunds",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/11652541?v=4",
+        "https://avatars.githubusercontent.com/u/6577801?v=4"
+      ],
+      "lastUpdated": "11/24/2026"
     },
     {
       "page": "/webhooks/use-cases/order-custom-attributes-validation",

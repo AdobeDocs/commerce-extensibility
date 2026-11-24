@@ -158,6 +158,7 @@
     - [Signature Verification](/webhooks/signature-verification.md)
     - [API reference](/webhooks/api.md)
     - [Command reference](/webhooks/commands.md)
+    - [Webhooks reference](/webhooks/webhooks-reference.md)
     - [Installation](/webhooks/installation.md)
     - [Release notes](/webhooks/release-notes.md)
     - [Overview](/observability/index.md)

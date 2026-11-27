@@ -2,8 +2,52 @@
 title: What's new
 description: This section contains the changes made in the last 60 days. Minor updates,
   such as copy editing, are excluded from this list.
-updated: Fri Nov 20 15:30:39 2026
+updated: Fri Nov 27 15:30:36 2026
 entries:
+- description: Added the `parent_code` field on `oopQuote` items in the tax collection
+    webhook payload. The [tax use cases](https://developer.adobe.com/commerce/extensibility/starter-kit/checkout/tax-use-cases/)
+    page now includes a "Bundle products" section that explains which items have `parent_code`
+    and how to calculate tax for a product in a bundle with dynamic price.
+  versions: ''
+  type: major-update
+  date: '2026-11-24'
+  link: https://github.com/AdobeDocs/commerce-extensibility/pull/639
+  merge_commit: 8e3494e41686a22bb747f2bcfff2a6e9680b941e
+  contributor: kuflower
+  labels:
+  - major-update
+- description: Added the `is_virtual` field to the product and shipping examples in
+    the [tax webhook payload](https://developer.adobe.com/commerce/extensibility/starter-kit/checkout/tax-use-cases).
+  versions: ''
+  type: major-update
+  date: '2026-11-24'
+  link: https://github.com/AdobeDocs/commerce-extensibility/pull/641
+  merge_commit: bb1ddff1bfc15b38a17f17c88f2d85b2f57f504c
+  contributor: pablomoreno61
+  labels:
+  - major-update
+- description: Added documentation for Commerce-initiated out-of-process extensibility
+    (OOPE) refunds. The new [OOPE refunds webhook use case](https://developer.adobe.com/commerce/extensibility/webhooks/use-cases/oope-refunds/)
+    describes the webhook configuration, payload, response examples, and processing
+    boundaries.
+  versions: ''
+  type: new-topic
+  date: '2026-11-24'
+  link: https://github.com/AdobeDocs/commerce-extensibility/pull/638
+  merge_commit: 0ce1d7441ccd5eaf8d9f77adf4fe3fa6a78d18f9
+  contributor: nofuss
+  labels:
+  - new-topic
+- description: Added the [`plugin.magento.out_of_process_shipping_methods.api.shipment_item_filter.filter`](https://developer.adobe.com/commerce/extensibility/starter-kit/checkout/shipping-use-cases#filter-shipment-items)
+    webhook.
+  versions: ''
+  type: major-update
+  date: '2026-11-23'
+  link: https://github.com/AdobeDocs/commerce-extensibility/pull/643
+  merge_commit: 043d3d0ca3839c8ea407686a2a9d8c48c2557298
+  contributor: aa-kashk
+  labels:
+  - major-update
 - description: Released Adobe Commerce [webhooks version 1.22.0](https://developer.adobe.com/commerce/extensibility/webhooks/release-notes).
   versions: ''
   type: major-update, release-notes
